@@ -83,9 +83,9 @@ type MockEventGatewayVirtualClustersSDK_CreateEventGatewayVirtualCluster_Call st
 //   - gatewayID string
 //   - createVirtualClusterRequest *components.CreateVirtualClusterRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClustersSDK_Expecter) CreateEventGatewayVirtualCluster(ctx interface{}, gatewayID interface{}, createVirtualClusterRequest interface{}, opts ...interface{}) *MockEventGatewayVirtualClustersSDK_CreateEventGatewayVirtualCluster_Call {
+func (_e *MockEventGatewayVirtualClustersSDK_Expecter) CreateEventGatewayVirtualCluster(ctx any, gatewayID any, createVirtualClusterRequest any, opts ...any) *MockEventGatewayVirtualClustersSDK_CreateEventGatewayVirtualCluster_Call {
 	return &MockEventGatewayVirtualClustersSDK_CreateEventGatewayVirtualCluster_Call{Call: _e.mock.On("CreateEventGatewayVirtualCluster",
-		append([]interface{}{ctx, gatewayID, createVirtualClusterRequest}, opts...)...)}
+		append([]any{ctx, gatewayID, createVirtualClusterRequest}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClustersSDK_CreateEventGatewayVirtualCluster_Call) Run(run func(ctx context.Context, gatewayID string, createVirtualClusterRequest *components.CreateVirtualClusterRequest, opts ...operations.Option)) *MockEventGatewayVirtualClustersSDK_CreateEventGatewayVirtualCluster_Call {
@@ -172,9 +172,9 @@ type MockEventGatewayVirtualClustersSDK_DeleteEventGatewayVirtualCluster_Call st
 //   - gatewayID string
 //   - virtualClusterID string
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClustersSDK_Expecter) DeleteEventGatewayVirtualCluster(ctx interface{}, gatewayID interface{}, virtualClusterID interface{}, opts ...interface{}) *MockEventGatewayVirtualClustersSDK_DeleteEventGatewayVirtualCluster_Call {
+func (_e *MockEventGatewayVirtualClustersSDK_Expecter) DeleteEventGatewayVirtualCluster(ctx any, gatewayID any, virtualClusterID any, opts ...any) *MockEventGatewayVirtualClustersSDK_DeleteEventGatewayVirtualCluster_Call {
 	return &MockEventGatewayVirtualClustersSDK_DeleteEventGatewayVirtualCluster_Call{Call: _e.mock.On("DeleteEventGatewayVirtualCluster",
-		append([]interface{}{ctx, gatewayID, virtualClusterID}, opts...)...)}
+		append([]any{ctx, gatewayID, virtualClusterID}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClustersSDK_DeleteEventGatewayVirtualCluster_Call) Run(run func(ctx context.Context, gatewayID string, virtualClusterID string, opts ...operations.Option)) *MockEventGatewayVirtualClustersSDK_DeleteEventGatewayVirtualCluster_Call {
@@ -261,9 +261,9 @@ type MockEventGatewayVirtualClustersSDK_GetEventGatewayVirtualCluster_Call struc
 //   - gatewayID string
 //   - virtualClusterID string
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClustersSDK_Expecter) GetEventGatewayVirtualCluster(ctx interface{}, gatewayID interface{}, virtualClusterID interface{}, opts ...interface{}) *MockEventGatewayVirtualClustersSDK_GetEventGatewayVirtualCluster_Call {
+func (_e *MockEventGatewayVirtualClustersSDK_Expecter) GetEventGatewayVirtualCluster(ctx any, gatewayID any, virtualClusterID any, opts ...any) *MockEventGatewayVirtualClustersSDK_GetEventGatewayVirtualCluster_Call {
 	return &MockEventGatewayVirtualClustersSDK_GetEventGatewayVirtualCluster_Call{Call: _e.mock.On("GetEventGatewayVirtualCluster",
-		append([]interface{}{ctx, gatewayID, virtualClusterID}, opts...)...)}
+		append([]any{ctx, gatewayID, virtualClusterID}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClustersSDK_GetEventGatewayVirtualCluster_Call) Run(run func(ctx context.Context, gatewayID string, virtualClusterID string, opts ...operations.Option)) *MockEventGatewayVirtualClustersSDK_GetEventGatewayVirtualCluster_Call {
@@ -349,9 +349,9 @@ type MockEventGatewayVirtualClustersSDK_ListEventGatewayVirtualClusters_Call str
 //   - ctx context.Context
 //   - request operations.ListEventGatewayVirtualClustersRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClustersSDK_Expecter) ListEventGatewayVirtualClusters(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClustersSDK_ListEventGatewayVirtualClusters_Call {
+func (_e *MockEventGatewayVirtualClustersSDK_Expecter) ListEventGatewayVirtualClusters(ctx any, request any, opts ...any) *MockEventGatewayVirtualClustersSDK_ListEventGatewayVirtualClusters_Call {
 	return &MockEventGatewayVirtualClustersSDK_ListEventGatewayVirtualClusters_Call{Call: _e.mock.On("ListEventGatewayVirtualClusters",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClustersSDK_ListEventGatewayVirtualClusters_Call) Run(run func(ctx context.Context, request operations.ListEventGatewayVirtualClustersRequest, opts ...operations.Option)) *MockEventGatewayVirtualClustersSDK_ListEventGatewayVirtualClusters_Call {
@@ -432,9 +432,9 @@ type MockEventGatewayVirtualClustersSDK_UpdateEventGatewayVirtualCluster_Call st
 //   - ctx context.Context
 //   - request operations.UpdateEventGatewayVirtualClusterRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClustersSDK_Expecter) UpdateEventGatewayVirtualCluster(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClustersSDK_UpdateEventGatewayVirtualCluster_Call {
+func (_e *MockEventGatewayVirtualClustersSDK_Expecter) UpdateEventGatewayVirtualCluster(ctx any, request any, opts ...any) *MockEventGatewayVirtualClustersSDK_UpdateEventGatewayVirtualCluster_Call {
 	return &MockEventGatewayVirtualClustersSDK_UpdateEventGatewayVirtualCluster_Call{Call: _e.mock.On("UpdateEventGatewayVirtualCluster",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClustersSDK_UpdateEventGatewayVirtualCluster_Call) Run(run func(ctx context.Context, request operations.UpdateEventGatewayVirtualClusterRequest, opts ...operations.Option)) *MockEventGatewayVirtualClustersSDK_UpdateEventGatewayVirtualCluster_Call {

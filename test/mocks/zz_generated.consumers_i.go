@@ -82,9 +82,9 @@ type MockConsumersSDK_AddConsumerToSpecificConsumerGroup_Call struct {
 //   - ctx context.Context
 //   - request operations.AddConsumerToSpecificConsumerGroupRequest
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) AddConsumerToSpecificConsumerGroup(ctx interface{}, request interface{}, opts ...interface{}) *MockConsumersSDK_AddConsumerToSpecificConsumerGroup_Call {
+func (_e *MockConsumersSDK_Expecter) AddConsumerToSpecificConsumerGroup(ctx any, request any, opts ...any) *MockConsumersSDK_AddConsumerToSpecificConsumerGroup_Call {
 	return &MockConsumersSDK_AddConsumerToSpecificConsumerGroup_Call{Call: _e.mock.On("AddConsumerToSpecificConsumerGroup",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockConsumersSDK_AddConsumerToSpecificConsumerGroup_Call) Run(run func(ctx context.Context, request operations.AddConsumerToSpecificConsumerGroupRequest, opts ...operations.Option)) *MockConsumersSDK_AddConsumerToSpecificConsumerGroup_Call {
@@ -166,9 +166,9 @@ type MockConsumersSDK_CreateConsumer_Call struct {
 //   - controlPlaneID string
 //   - consumer components.Consumer
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) CreateConsumer(ctx interface{}, controlPlaneID interface{}, consumer interface{}, opts ...interface{}) *MockConsumersSDK_CreateConsumer_Call {
+func (_e *MockConsumersSDK_Expecter) CreateConsumer(ctx any, controlPlaneID any, consumer any, opts ...any) *MockConsumersSDK_CreateConsumer_Call {
 	return &MockConsumersSDK_CreateConsumer_Call{Call: _e.mock.On("CreateConsumer",
-		append([]interface{}{ctx, controlPlaneID, consumer}, opts...)...)}
+		append([]any{ctx, controlPlaneID, consumer}, opts...)...)}
 }
 
 func (_c *MockConsumersSDK_CreateConsumer_Call) Run(run func(ctx context.Context, controlPlaneID string, consumer components.Consumer, opts ...operations.Option)) *MockConsumersSDK_CreateConsumer_Call {
@@ -255,9 +255,9 @@ type MockConsumersSDK_DeleteConsumer_Call struct {
 //   - controlPlaneID string
 //   - consumerID string
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) DeleteConsumer(ctx interface{}, controlPlaneID interface{}, consumerID interface{}, opts ...interface{}) *MockConsumersSDK_DeleteConsumer_Call {
+func (_e *MockConsumersSDK_Expecter) DeleteConsumer(ctx any, controlPlaneID any, consumerID any, opts ...any) *MockConsumersSDK_DeleteConsumer_Call {
 	return &MockConsumersSDK_DeleteConsumer_Call{Call: _e.mock.On("DeleteConsumer",
-		append([]interface{}{ctx, controlPlaneID, consumerID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, consumerID}, opts...)...)}
 }
 
 func (_c *MockConsumersSDK_DeleteConsumer_Call) Run(run func(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option)) *MockConsumersSDK_DeleteConsumer_Call {
@@ -344,9 +344,9 @@ type MockConsumersSDK_GetConsumer_Call struct {
 //   - consumerID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) GetConsumer(ctx interface{}, consumerID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockConsumersSDK_GetConsumer_Call {
+func (_e *MockConsumersSDK_Expecter) GetConsumer(ctx any, consumerID any, controlPlaneID any, opts ...any) *MockConsumersSDK_GetConsumer_Call {
 	return &MockConsumersSDK_GetConsumer_Call{Call: _e.mock.On("GetConsumer",
-		append([]interface{}{ctx, consumerID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, consumerID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockConsumersSDK_GetConsumer_Call) Run(run func(ctx context.Context, consumerID string, controlPlaneID string, opts ...operations.Option)) *MockConsumersSDK_GetConsumer_Call {
@@ -432,9 +432,9 @@ type MockConsumersSDK_ListConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.ListConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) ListConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockConsumersSDK_ListConsumer_Call {
+func (_e *MockConsumersSDK_Expecter) ListConsumer(ctx any, request any, opts ...any) *MockConsumersSDK_ListConsumer_Call {
 	return &MockConsumersSDK_ListConsumer_Call{Call: _e.mock.On("ListConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockConsumersSDK_ListConsumer_Call) Run(run func(ctx context.Context, request operations.ListConsumerRequest, opts ...operations.Option)) *MockConsumersSDK_ListConsumer_Call {
@@ -515,9 +515,9 @@ type MockConsumersSDK_ListConsumerGroupsForConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.ListConsumerGroupsForConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) ListConsumerGroupsForConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockConsumersSDK_ListConsumerGroupsForConsumer_Call {
+func (_e *MockConsumersSDK_Expecter) ListConsumerGroupsForConsumer(ctx any, request any, opts ...any) *MockConsumersSDK_ListConsumerGroupsForConsumer_Call {
 	return &MockConsumersSDK_ListConsumerGroupsForConsumer_Call{Call: _e.mock.On("ListConsumerGroupsForConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockConsumersSDK_ListConsumerGroupsForConsumer_Call) Run(run func(ctx context.Context, request operations.ListConsumerGroupsForConsumerRequest, opts ...operations.Option)) *MockConsumersSDK_ListConsumerGroupsForConsumer_Call {
@@ -599,9 +599,9 @@ type MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call struct {
 //   - controlPlaneID string
 //   - consumerID string
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) RemoveConsumerFromAllConsumerGroups(ctx interface{}, controlPlaneID interface{}, consumerID interface{}, opts ...interface{}) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
+func (_e *MockConsumersSDK_Expecter) RemoveConsumerFromAllConsumerGroups(ctx any, controlPlaneID any, consumerID any, opts ...any) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
 	return &MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call{Call: _e.mock.On("RemoveConsumerFromAllConsumerGroups",
-		append([]interface{}{ctx, controlPlaneID, consumerID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, consumerID}, opts...)...)}
 }
 
 func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) Run(run func(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option)) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
@@ -687,9 +687,9 @@ type MockConsumersSDK_RemoveConsumerFromConsumerGroup_Call struct {
 //   - ctx context.Context
 //   - request operations.RemoveConsumerFromConsumerGroupRequest
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) RemoveConsumerFromConsumerGroup(ctx interface{}, request interface{}, opts ...interface{}) *MockConsumersSDK_RemoveConsumerFromConsumerGroup_Call {
+func (_e *MockConsumersSDK_Expecter) RemoveConsumerFromConsumerGroup(ctx any, request any, opts ...any) *MockConsumersSDK_RemoveConsumerFromConsumerGroup_Call {
 	return &MockConsumersSDK_RemoveConsumerFromConsumerGroup_Call{Call: _e.mock.On("RemoveConsumerFromConsumerGroup",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockConsumersSDK_RemoveConsumerFromConsumerGroup_Call) Run(run func(ctx context.Context, request operations.RemoveConsumerFromConsumerGroupRequest, opts ...operations.Option)) *MockConsumersSDK_RemoveConsumerFromConsumerGroup_Call {
@@ -770,9 +770,9 @@ type MockConsumersSDK_UpsertConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) UpsertConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockConsumersSDK_UpsertConsumer_Call {
+func (_e *MockConsumersSDK_Expecter) UpsertConsumer(ctx any, request any, opts ...any) *MockConsumersSDK_UpsertConsumer_Call {
 	return &MockConsumersSDK_UpsertConsumer_Call{Call: _e.mock.On("UpsertConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockConsumersSDK_UpsertConsumer_Call) Run(run func(ctx context.Context, request operations.UpsertConsumerRequest, opts ...operations.Option)) *MockConsumersSDK_UpsertConsumer_Call {

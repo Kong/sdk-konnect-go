@@ -83,9 +83,9 @@ type MockSnippetsSDK_CreatePortalSnippet_Call struct {
 //   - portalID string
 //   - createPortalSnippetRequest components.CreatePortalSnippetRequest
 //   - opts ...operations.Option
-func (_e *MockSnippetsSDK_Expecter) CreatePortalSnippet(ctx interface{}, portalID interface{}, createPortalSnippetRequest interface{}, opts ...interface{}) *MockSnippetsSDK_CreatePortalSnippet_Call {
+func (_e *MockSnippetsSDK_Expecter) CreatePortalSnippet(ctx any, portalID any, createPortalSnippetRequest any, opts ...any) *MockSnippetsSDK_CreatePortalSnippet_Call {
 	return &MockSnippetsSDK_CreatePortalSnippet_Call{Call: _e.mock.On("CreatePortalSnippet",
-		append([]interface{}{ctx, portalID, createPortalSnippetRequest}, opts...)...)}
+		append([]any{ctx, portalID, createPortalSnippetRequest}, opts...)...)}
 }
 
 func (_c *MockSnippetsSDK_CreatePortalSnippet_Call) Run(run func(ctx context.Context, portalID string, createPortalSnippetRequest components.CreatePortalSnippetRequest, opts ...operations.Option)) *MockSnippetsSDK_CreatePortalSnippet_Call {
@@ -172,9 +172,9 @@ type MockSnippetsSDK_DeletePortalSnippet_Call struct {
 //   - portalID string
 //   - snippetID string
 //   - opts ...operations.Option
-func (_e *MockSnippetsSDK_Expecter) DeletePortalSnippet(ctx interface{}, portalID interface{}, snippetID interface{}, opts ...interface{}) *MockSnippetsSDK_DeletePortalSnippet_Call {
+func (_e *MockSnippetsSDK_Expecter) DeletePortalSnippet(ctx any, portalID any, snippetID any, opts ...any) *MockSnippetsSDK_DeletePortalSnippet_Call {
 	return &MockSnippetsSDK_DeletePortalSnippet_Call{Call: _e.mock.On("DeletePortalSnippet",
-		append([]interface{}{ctx, portalID, snippetID}, opts...)...)}
+		append([]any{ctx, portalID, snippetID}, opts...)...)}
 }
 
 func (_c *MockSnippetsSDK_DeletePortalSnippet_Call) Run(run func(ctx context.Context, portalID string, snippetID string, opts ...operations.Option)) *MockSnippetsSDK_DeletePortalSnippet_Call {
@@ -261,9 +261,9 @@ type MockSnippetsSDK_GetPortalSnippet_Call struct {
 //   - portalID string
 //   - snippetID string
 //   - opts ...operations.Option
-func (_e *MockSnippetsSDK_Expecter) GetPortalSnippet(ctx interface{}, portalID interface{}, snippetID interface{}, opts ...interface{}) *MockSnippetsSDK_GetPortalSnippet_Call {
+func (_e *MockSnippetsSDK_Expecter) GetPortalSnippet(ctx any, portalID any, snippetID any, opts ...any) *MockSnippetsSDK_GetPortalSnippet_Call {
 	return &MockSnippetsSDK_GetPortalSnippet_Call{Call: _e.mock.On("GetPortalSnippet",
-		append([]interface{}{ctx, portalID, snippetID}, opts...)...)}
+		append([]any{ctx, portalID, snippetID}, opts...)...)}
 }
 
 func (_c *MockSnippetsSDK_GetPortalSnippet_Call) Run(run func(ctx context.Context, portalID string, snippetID string, opts ...operations.Option)) *MockSnippetsSDK_GetPortalSnippet_Call {
@@ -349,9 +349,9 @@ type MockSnippetsSDK_ListPortalSnippets_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalSnippetsRequest
 //   - opts ...operations.Option
-func (_e *MockSnippetsSDK_Expecter) ListPortalSnippets(ctx interface{}, request interface{}, opts ...interface{}) *MockSnippetsSDK_ListPortalSnippets_Call {
+func (_e *MockSnippetsSDK_Expecter) ListPortalSnippets(ctx any, request any, opts ...any) *MockSnippetsSDK_ListPortalSnippets_Call {
 	return &MockSnippetsSDK_ListPortalSnippets_Call{Call: _e.mock.On("ListPortalSnippets",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockSnippetsSDK_ListPortalSnippets_Call) Run(run func(ctx context.Context, request operations.ListPortalSnippetsRequest, opts ...operations.Option)) *MockSnippetsSDK_ListPortalSnippets_Call {
@@ -432,9 +432,9 @@ type MockSnippetsSDK_UpdatePortalSnippet_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdatePortalSnippetRequest
 //   - opts ...operations.Option
-func (_e *MockSnippetsSDK_Expecter) UpdatePortalSnippet(ctx interface{}, request interface{}, opts ...interface{}) *MockSnippetsSDK_UpdatePortalSnippet_Call {
+func (_e *MockSnippetsSDK_Expecter) UpdatePortalSnippet(ctx any, request any, opts ...any) *MockSnippetsSDK_UpdatePortalSnippet_Call {
 	return &MockSnippetsSDK_UpdatePortalSnippet_Call{Call: _e.mock.On("UpdatePortalSnippet",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockSnippetsSDK_UpdatePortalSnippet_Call) Run(run func(ctx context.Context, request operations.UpdatePortalSnippetRequest, opts ...operations.Option)) *MockSnippetsSDK_UpdatePortalSnippet_Call {

@@ -81,9 +81,9 @@ type MockTargetsSDK_CreateTargetWithUpstream_Call struct {
 //   - ctx context.Context
 //   - request operations.CreateTargetWithUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockTargetsSDK_Expecter) CreateTargetWithUpstream(ctx interface{}, request interface{}, opts ...interface{}) *MockTargetsSDK_CreateTargetWithUpstream_Call {
+func (_e *MockTargetsSDK_Expecter) CreateTargetWithUpstream(ctx any, request any, opts ...any) *MockTargetsSDK_CreateTargetWithUpstream_Call {
 	return &MockTargetsSDK_CreateTargetWithUpstream_Call{Call: _e.mock.On("CreateTargetWithUpstream",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockTargetsSDK_CreateTargetWithUpstream_Call) Run(run func(ctx context.Context, request operations.CreateTargetWithUpstreamRequest, opts ...operations.Option)) *MockTargetsSDK_CreateTargetWithUpstream_Call {
@@ -164,9 +164,9 @@ type MockTargetsSDK_DeleteTargetWithUpstream_Call struct {
 //   - ctx context.Context
 //   - request operations.DeleteTargetWithUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockTargetsSDK_Expecter) DeleteTargetWithUpstream(ctx interface{}, request interface{}, opts ...interface{}) *MockTargetsSDK_DeleteTargetWithUpstream_Call {
+func (_e *MockTargetsSDK_Expecter) DeleteTargetWithUpstream(ctx any, request any, opts ...any) *MockTargetsSDK_DeleteTargetWithUpstream_Call {
 	return &MockTargetsSDK_DeleteTargetWithUpstream_Call{Call: _e.mock.On("DeleteTargetWithUpstream",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockTargetsSDK_DeleteTargetWithUpstream_Call) Run(run func(ctx context.Context, request operations.DeleteTargetWithUpstreamRequest, opts ...operations.Option)) *MockTargetsSDK_DeleteTargetWithUpstream_Call {
@@ -247,9 +247,9 @@ type MockTargetsSDK_GetTargetWithUpstream_Call struct {
 //   - ctx context.Context
 //   - request operations.GetTargetWithUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockTargetsSDK_Expecter) GetTargetWithUpstream(ctx interface{}, request interface{}, opts ...interface{}) *MockTargetsSDK_GetTargetWithUpstream_Call {
+func (_e *MockTargetsSDK_Expecter) GetTargetWithUpstream(ctx any, request any, opts ...any) *MockTargetsSDK_GetTargetWithUpstream_Call {
 	return &MockTargetsSDK_GetTargetWithUpstream_Call{Call: _e.mock.On("GetTargetWithUpstream",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockTargetsSDK_GetTargetWithUpstream_Call) Run(run func(ctx context.Context, request operations.GetTargetWithUpstreamRequest, opts ...operations.Option)) *MockTargetsSDK_GetTargetWithUpstream_Call {
@@ -330,9 +330,9 @@ type MockTargetsSDK_ListTargetWithUpstream_Call struct {
 //   - ctx context.Context
 //   - request operations.ListTargetWithUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockTargetsSDK_Expecter) ListTargetWithUpstream(ctx interface{}, request interface{}, opts ...interface{}) *MockTargetsSDK_ListTargetWithUpstream_Call {
+func (_e *MockTargetsSDK_Expecter) ListTargetWithUpstream(ctx any, request any, opts ...any) *MockTargetsSDK_ListTargetWithUpstream_Call {
 	return &MockTargetsSDK_ListTargetWithUpstream_Call{Call: _e.mock.On("ListTargetWithUpstream",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockTargetsSDK_ListTargetWithUpstream_Call) Run(run func(ctx context.Context, request operations.ListTargetWithUpstreamRequest, opts ...operations.Option)) *MockTargetsSDK_ListTargetWithUpstream_Call {
@@ -413,9 +413,9 @@ type MockTargetsSDK_ListTargets_Call struct {
 //   - ctx context.Context
 //   - request operations.ListTargetsRequest
 //   - opts ...operations.Option
-func (_e *MockTargetsSDK_Expecter) ListTargets(ctx interface{}, request interface{}, opts ...interface{}) *MockTargetsSDK_ListTargets_Call {
+func (_e *MockTargetsSDK_Expecter) ListTargets(ctx any, request any, opts ...any) *MockTargetsSDK_ListTargets_Call {
 	return &MockTargetsSDK_ListTargets_Call{Call: _e.mock.On("ListTargets",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockTargetsSDK_ListTargets_Call) Run(run func(ctx context.Context, request operations.ListTargetsRequest, opts ...operations.Option)) *MockTargetsSDK_ListTargets_Call {
@@ -496,9 +496,9 @@ type MockTargetsSDK_UpsertTargetWithUpstream_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertTargetWithUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockTargetsSDK_Expecter) UpsertTargetWithUpstream(ctx interface{}, request interface{}, opts ...interface{}) *MockTargetsSDK_UpsertTargetWithUpstream_Call {
+func (_e *MockTargetsSDK_Expecter) UpsertTargetWithUpstream(ctx any, request any, opts ...any) *MockTargetsSDK_UpsertTargetWithUpstream_Call {
 	return &MockTargetsSDK_UpsertTargetWithUpstream_Call{Call: _e.mock.On("UpsertTargetWithUpstream",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockTargetsSDK_UpsertTargetWithUpstream_Call) Run(run func(ctx context.Context, request operations.UpsertTargetWithUpstreamRequest, opts ...operations.Option)) *MockTargetsSDK_UpsertTargetWithUpstream_Call {

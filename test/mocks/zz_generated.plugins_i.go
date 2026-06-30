@@ -83,9 +83,9 @@ type MockPluginsSDK_CreatePlugin_Call struct {
 //   - controlPlaneID string
 //   - plugin components.Plugin
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) CreatePlugin(ctx interface{}, controlPlaneID interface{}, plugin interface{}, opts ...interface{}) *MockPluginsSDK_CreatePlugin_Call {
+func (_e *MockPluginsSDK_Expecter) CreatePlugin(ctx any, controlPlaneID any, plugin any, opts ...any) *MockPluginsSDK_CreatePlugin_Call {
 	return &MockPluginsSDK_CreatePlugin_Call{Call: _e.mock.On("CreatePlugin",
-		append([]interface{}{ctx, controlPlaneID, plugin}, opts...)...)}
+		append([]any{ctx, controlPlaneID, plugin}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_CreatePlugin_Call) Run(run func(ctx context.Context, controlPlaneID string, plugin components.Plugin, opts ...operations.Option)) *MockPluginsSDK_CreatePlugin_Call {
@@ -171,9 +171,9 @@ type MockPluginsSDK_CreatePluginWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.CreatePluginWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) CreatePluginWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_CreatePluginWithConsumer_Call {
+func (_e *MockPluginsSDK_Expecter) CreatePluginWithConsumer(ctx any, request any, opts ...any) *MockPluginsSDK_CreatePluginWithConsumer_Call {
 	return &MockPluginsSDK_CreatePluginWithConsumer_Call{Call: _e.mock.On("CreatePluginWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_CreatePluginWithConsumer_Call) Run(run func(ctx context.Context, request operations.CreatePluginWithConsumerRequest, opts ...operations.Option)) *MockPluginsSDK_CreatePluginWithConsumer_Call {
@@ -254,9 +254,9 @@ type MockPluginsSDK_CreatePluginWithConsumerGroup_Call struct {
 //   - ctx context.Context
 //   - request operations.CreatePluginWithConsumerGroupRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) CreatePluginWithConsumerGroup(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_CreatePluginWithConsumerGroup_Call {
+func (_e *MockPluginsSDK_Expecter) CreatePluginWithConsumerGroup(ctx any, request any, opts ...any) *MockPluginsSDK_CreatePluginWithConsumerGroup_Call {
 	return &MockPluginsSDK_CreatePluginWithConsumerGroup_Call{Call: _e.mock.On("CreatePluginWithConsumerGroup",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_CreatePluginWithConsumerGroup_Call) Run(run func(ctx context.Context, request operations.CreatePluginWithConsumerGroupRequest, opts ...operations.Option)) *MockPluginsSDK_CreatePluginWithConsumerGroup_Call {
@@ -337,9 +337,9 @@ type MockPluginsSDK_CreatePluginWithRoute_Call struct {
 //   - ctx context.Context
 //   - request operations.CreatePluginWithRouteRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) CreatePluginWithRoute(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_CreatePluginWithRoute_Call {
+func (_e *MockPluginsSDK_Expecter) CreatePluginWithRoute(ctx any, request any, opts ...any) *MockPluginsSDK_CreatePluginWithRoute_Call {
 	return &MockPluginsSDK_CreatePluginWithRoute_Call{Call: _e.mock.On("CreatePluginWithRoute",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_CreatePluginWithRoute_Call) Run(run func(ctx context.Context, request operations.CreatePluginWithRouteRequest, opts ...operations.Option)) *MockPluginsSDK_CreatePluginWithRoute_Call {
@@ -420,9 +420,9 @@ type MockPluginsSDK_CreatePluginWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.CreatePluginWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) CreatePluginWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_CreatePluginWithService_Call {
+func (_e *MockPluginsSDK_Expecter) CreatePluginWithService(ctx any, request any, opts ...any) *MockPluginsSDK_CreatePluginWithService_Call {
 	return &MockPluginsSDK_CreatePluginWithService_Call{Call: _e.mock.On("CreatePluginWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_CreatePluginWithService_Call) Run(run func(ctx context.Context, request operations.CreatePluginWithServiceRequest, opts ...operations.Option)) *MockPluginsSDK_CreatePluginWithService_Call {
@@ -504,9 +504,9 @@ type MockPluginsSDK_DeletePlugin_Call struct {
 //   - controlPlaneID string
 //   - pluginID string
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) DeletePlugin(ctx interface{}, controlPlaneID interface{}, pluginID interface{}, opts ...interface{}) *MockPluginsSDK_DeletePlugin_Call {
+func (_e *MockPluginsSDK_Expecter) DeletePlugin(ctx any, controlPlaneID any, pluginID any, opts ...any) *MockPluginsSDK_DeletePlugin_Call {
 	return &MockPluginsSDK_DeletePlugin_Call{Call: _e.mock.On("DeletePlugin",
-		append([]interface{}{ctx, controlPlaneID, pluginID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, pluginID}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_DeletePlugin_Call) Run(run func(ctx context.Context, controlPlaneID string, pluginID string, opts ...operations.Option)) *MockPluginsSDK_DeletePlugin_Call {
@@ -592,9 +592,9 @@ type MockPluginsSDK_DeletePluginWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.DeletePluginWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) DeletePluginWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_DeletePluginWithConsumer_Call {
+func (_e *MockPluginsSDK_Expecter) DeletePluginWithConsumer(ctx any, request any, opts ...any) *MockPluginsSDK_DeletePluginWithConsumer_Call {
 	return &MockPluginsSDK_DeletePluginWithConsumer_Call{Call: _e.mock.On("DeletePluginWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_DeletePluginWithConsumer_Call) Run(run func(ctx context.Context, request operations.DeletePluginWithConsumerRequest, opts ...operations.Option)) *MockPluginsSDK_DeletePluginWithConsumer_Call {
@@ -675,9 +675,9 @@ type MockPluginsSDK_DeletePluginWithConsumerGroup_Call struct {
 //   - ctx context.Context
 //   - request operations.DeletePluginWithConsumerGroupRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) DeletePluginWithConsumerGroup(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_DeletePluginWithConsumerGroup_Call {
+func (_e *MockPluginsSDK_Expecter) DeletePluginWithConsumerGroup(ctx any, request any, opts ...any) *MockPluginsSDK_DeletePluginWithConsumerGroup_Call {
 	return &MockPluginsSDK_DeletePluginWithConsumerGroup_Call{Call: _e.mock.On("DeletePluginWithConsumerGroup",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_DeletePluginWithConsumerGroup_Call) Run(run func(ctx context.Context, request operations.DeletePluginWithConsumerGroupRequest, opts ...operations.Option)) *MockPluginsSDK_DeletePluginWithConsumerGroup_Call {
@@ -758,9 +758,9 @@ type MockPluginsSDK_DeletePluginWithRoute_Call struct {
 //   - ctx context.Context
 //   - request operations.DeletePluginWithRouteRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) DeletePluginWithRoute(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_DeletePluginWithRoute_Call {
+func (_e *MockPluginsSDK_Expecter) DeletePluginWithRoute(ctx any, request any, opts ...any) *MockPluginsSDK_DeletePluginWithRoute_Call {
 	return &MockPluginsSDK_DeletePluginWithRoute_Call{Call: _e.mock.On("DeletePluginWithRoute",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_DeletePluginWithRoute_Call) Run(run func(ctx context.Context, request operations.DeletePluginWithRouteRequest, opts ...operations.Option)) *MockPluginsSDK_DeletePluginWithRoute_Call {
@@ -841,9 +841,9 @@ type MockPluginsSDK_DeletePluginWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.DeletePluginWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) DeletePluginWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_DeletePluginWithService_Call {
+func (_e *MockPluginsSDK_Expecter) DeletePluginWithService(ctx any, request any, opts ...any) *MockPluginsSDK_DeletePluginWithService_Call {
 	return &MockPluginsSDK_DeletePluginWithService_Call{Call: _e.mock.On("DeletePluginWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_DeletePluginWithService_Call) Run(run func(ctx context.Context, request operations.DeletePluginWithServiceRequest, opts ...operations.Option)) *MockPluginsSDK_DeletePluginWithService_Call {
@@ -925,9 +925,9 @@ type MockPluginsSDK_FetchPluginSchema_Call struct {
 //   - pluginName string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) FetchPluginSchema(ctx interface{}, pluginName interface{}, controlPlaneID interface{}, opts ...interface{}) *MockPluginsSDK_FetchPluginSchema_Call {
+func (_e *MockPluginsSDK_Expecter) FetchPluginSchema(ctx any, pluginName any, controlPlaneID any, opts ...any) *MockPluginsSDK_FetchPluginSchema_Call {
 	return &MockPluginsSDK_FetchPluginSchema_Call{Call: _e.mock.On("FetchPluginSchema",
-		append([]interface{}{ctx, pluginName, controlPlaneID}, opts...)...)}
+		append([]any{ctx, pluginName, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_FetchPluginSchema_Call) Run(run func(ctx context.Context, pluginName string, controlPlaneID string, opts ...operations.Option)) *MockPluginsSDK_FetchPluginSchema_Call {
@@ -1013,9 +1013,9 @@ type MockPluginsSDK_GetPlugin_Call struct {
 //   - ctx context.Context
 //   - request operations.GetPluginRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) GetPlugin(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_GetPlugin_Call {
+func (_e *MockPluginsSDK_Expecter) GetPlugin(ctx any, request any, opts ...any) *MockPluginsSDK_GetPlugin_Call {
 	return &MockPluginsSDK_GetPlugin_Call{Call: _e.mock.On("GetPlugin",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_GetPlugin_Call) Run(run func(ctx context.Context, request operations.GetPluginRequest, opts ...operations.Option)) *MockPluginsSDK_GetPlugin_Call {
@@ -1096,9 +1096,9 @@ type MockPluginsSDK_GetPluginWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.GetPluginWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) GetPluginWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_GetPluginWithConsumer_Call {
+func (_e *MockPluginsSDK_Expecter) GetPluginWithConsumer(ctx any, request any, opts ...any) *MockPluginsSDK_GetPluginWithConsumer_Call {
 	return &MockPluginsSDK_GetPluginWithConsumer_Call{Call: _e.mock.On("GetPluginWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_GetPluginWithConsumer_Call) Run(run func(ctx context.Context, request operations.GetPluginWithConsumerRequest, opts ...operations.Option)) *MockPluginsSDK_GetPluginWithConsumer_Call {
@@ -1179,9 +1179,9 @@ type MockPluginsSDK_GetPluginWithConsumerGroup_Call struct {
 //   - ctx context.Context
 //   - request operations.GetPluginWithConsumerGroupRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) GetPluginWithConsumerGroup(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_GetPluginWithConsumerGroup_Call {
+func (_e *MockPluginsSDK_Expecter) GetPluginWithConsumerGroup(ctx any, request any, opts ...any) *MockPluginsSDK_GetPluginWithConsumerGroup_Call {
 	return &MockPluginsSDK_GetPluginWithConsumerGroup_Call{Call: _e.mock.On("GetPluginWithConsumerGroup",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_GetPluginWithConsumerGroup_Call) Run(run func(ctx context.Context, request operations.GetPluginWithConsumerGroupRequest, opts ...operations.Option)) *MockPluginsSDK_GetPluginWithConsumerGroup_Call {
@@ -1262,9 +1262,9 @@ type MockPluginsSDK_GetPluginWithRoute_Call struct {
 //   - ctx context.Context
 //   - request operations.GetPluginWithRouteRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) GetPluginWithRoute(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_GetPluginWithRoute_Call {
+func (_e *MockPluginsSDK_Expecter) GetPluginWithRoute(ctx any, request any, opts ...any) *MockPluginsSDK_GetPluginWithRoute_Call {
 	return &MockPluginsSDK_GetPluginWithRoute_Call{Call: _e.mock.On("GetPluginWithRoute",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_GetPluginWithRoute_Call) Run(run func(ctx context.Context, request operations.GetPluginWithRouteRequest, opts ...operations.Option)) *MockPluginsSDK_GetPluginWithRoute_Call {
@@ -1345,9 +1345,9 @@ type MockPluginsSDK_GetPluginWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.GetPluginWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) GetPluginWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_GetPluginWithService_Call {
+func (_e *MockPluginsSDK_Expecter) GetPluginWithService(ctx any, request any, opts ...any) *MockPluginsSDK_GetPluginWithService_Call {
 	return &MockPluginsSDK_GetPluginWithService_Call{Call: _e.mock.On("GetPluginWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_GetPluginWithService_Call) Run(run func(ctx context.Context, request operations.GetPluginWithServiceRequest, opts ...operations.Option)) *MockPluginsSDK_GetPluginWithService_Call {
@@ -1428,9 +1428,9 @@ type MockPluginsSDK_ListPlugin_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPluginRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) ListPlugin(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_ListPlugin_Call {
+func (_e *MockPluginsSDK_Expecter) ListPlugin(ctx any, request any, opts ...any) *MockPluginsSDK_ListPlugin_Call {
 	return &MockPluginsSDK_ListPlugin_Call{Call: _e.mock.On("ListPlugin",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_ListPlugin_Call) Run(run func(ctx context.Context, request operations.ListPluginRequest, opts ...operations.Option)) *MockPluginsSDK_ListPlugin_Call {
@@ -1511,9 +1511,9 @@ type MockPluginsSDK_ListPluginWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPluginWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) ListPluginWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_ListPluginWithConsumer_Call {
+func (_e *MockPluginsSDK_Expecter) ListPluginWithConsumer(ctx any, request any, opts ...any) *MockPluginsSDK_ListPluginWithConsumer_Call {
 	return &MockPluginsSDK_ListPluginWithConsumer_Call{Call: _e.mock.On("ListPluginWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_ListPluginWithConsumer_Call) Run(run func(ctx context.Context, request operations.ListPluginWithConsumerRequest, opts ...operations.Option)) *MockPluginsSDK_ListPluginWithConsumer_Call {
@@ -1594,9 +1594,9 @@ type MockPluginsSDK_ListPluginWithConsumerGroup_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPluginWithConsumerGroupRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) ListPluginWithConsumerGroup(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_ListPluginWithConsumerGroup_Call {
+func (_e *MockPluginsSDK_Expecter) ListPluginWithConsumerGroup(ctx any, request any, opts ...any) *MockPluginsSDK_ListPluginWithConsumerGroup_Call {
 	return &MockPluginsSDK_ListPluginWithConsumerGroup_Call{Call: _e.mock.On("ListPluginWithConsumerGroup",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_ListPluginWithConsumerGroup_Call) Run(run func(ctx context.Context, request operations.ListPluginWithConsumerGroupRequest, opts ...operations.Option)) *MockPluginsSDK_ListPluginWithConsumerGroup_Call {
@@ -1677,9 +1677,9 @@ type MockPluginsSDK_ListPluginWithRoute_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPluginWithRouteRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) ListPluginWithRoute(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_ListPluginWithRoute_Call {
+func (_e *MockPluginsSDK_Expecter) ListPluginWithRoute(ctx any, request any, opts ...any) *MockPluginsSDK_ListPluginWithRoute_Call {
 	return &MockPluginsSDK_ListPluginWithRoute_Call{Call: _e.mock.On("ListPluginWithRoute",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_ListPluginWithRoute_Call) Run(run func(ctx context.Context, request operations.ListPluginWithRouteRequest, opts ...operations.Option)) *MockPluginsSDK_ListPluginWithRoute_Call {
@@ -1760,9 +1760,9 @@ type MockPluginsSDK_ListPluginWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPluginWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) ListPluginWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_ListPluginWithService_Call {
+func (_e *MockPluginsSDK_Expecter) ListPluginWithService(ctx any, request any, opts ...any) *MockPluginsSDK_ListPluginWithService_Call {
 	return &MockPluginsSDK_ListPluginWithService_Call{Call: _e.mock.On("ListPluginWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_ListPluginWithService_Call) Run(run func(ctx context.Context, request operations.ListPluginWithServiceRequest, opts ...operations.Option)) *MockPluginsSDK_ListPluginWithService_Call {
@@ -1843,9 +1843,9 @@ type MockPluginsSDK_UpsertPlugin_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertPluginRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) UpsertPlugin(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_UpsertPlugin_Call {
+func (_e *MockPluginsSDK_Expecter) UpsertPlugin(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPlugin_Call {
 	return &MockPluginsSDK_UpsertPlugin_Call{Call: _e.mock.On("UpsertPlugin",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_UpsertPlugin_Call) Run(run func(ctx context.Context, request operations.UpsertPluginRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPlugin_Call {
@@ -1926,9 +1926,9 @@ type MockPluginsSDK_UpsertPluginWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertPluginWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) UpsertPluginWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_UpsertPluginWithConsumer_Call {
+func (_e *MockPluginsSDK_Expecter) UpsertPluginWithConsumer(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPluginWithConsumer_Call {
 	return &MockPluginsSDK_UpsertPluginWithConsumer_Call{Call: _e.mock.On("UpsertPluginWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_UpsertPluginWithConsumer_Call) Run(run func(ctx context.Context, request operations.UpsertPluginWithConsumerRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPluginWithConsumer_Call {
@@ -2009,9 +2009,9 @@ type MockPluginsSDK_UpsertPluginWithConsumerGroup_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertPluginWithConsumerGroupRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) UpsertPluginWithConsumerGroup(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_UpsertPluginWithConsumerGroup_Call {
+func (_e *MockPluginsSDK_Expecter) UpsertPluginWithConsumerGroup(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPluginWithConsumerGroup_Call {
 	return &MockPluginsSDK_UpsertPluginWithConsumerGroup_Call{Call: _e.mock.On("UpsertPluginWithConsumerGroup",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_UpsertPluginWithConsumerGroup_Call) Run(run func(ctx context.Context, request operations.UpsertPluginWithConsumerGroupRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPluginWithConsumerGroup_Call {
@@ -2092,9 +2092,9 @@ type MockPluginsSDK_UpsertPluginWithRoute_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertPluginWithRouteRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) UpsertPluginWithRoute(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_UpsertPluginWithRoute_Call {
+func (_e *MockPluginsSDK_Expecter) UpsertPluginWithRoute(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPluginWithRoute_Call {
 	return &MockPluginsSDK_UpsertPluginWithRoute_Call{Call: _e.mock.On("UpsertPluginWithRoute",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_UpsertPluginWithRoute_Call) Run(run func(ctx context.Context, request operations.UpsertPluginWithRouteRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPluginWithRoute_Call {
@@ -2175,9 +2175,9 @@ type MockPluginsSDK_UpsertPluginWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertPluginWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) UpsertPluginWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockPluginsSDK_UpsertPluginWithService_Call {
+func (_e *MockPluginsSDK_Expecter) UpsertPluginWithService(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPluginWithService_Call {
 	return &MockPluginsSDK_UpsertPluginWithService_Call{Call: _e.mock.On("UpsertPluginWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPluginsSDK_UpsertPluginWithService_Call) Run(run func(ctx context.Context, request operations.UpsertPluginWithServiceRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPluginWithService_Call {

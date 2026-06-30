@@ -83,9 +83,9 @@ type MockDPCertificatesSDK_CreateDataplaneCertificate_Call struct {
 //   - controlPlaneID string
 //   - dataPlaneClientCertificateRequest *components.DataPlaneClientCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockDPCertificatesSDK_Expecter) CreateDataplaneCertificate(ctx interface{}, controlPlaneID interface{}, dataPlaneClientCertificateRequest interface{}, opts ...interface{}) *MockDPCertificatesSDK_CreateDataplaneCertificate_Call {
+func (_e *MockDPCertificatesSDK_Expecter) CreateDataplaneCertificate(ctx any, controlPlaneID any, dataPlaneClientCertificateRequest any, opts ...any) *MockDPCertificatesSDK_CreateDataplaneCertificate_Call {
 	return &MockDPCertificatesSDK_CreateDataplaneCertificate_Call{Call: _e.mock.On("CreateDataplaneCertificate",
-		append([]interface{}{ctx, controlPlaneID, dataPlaneClientCertificateRequest}, opts...)...)}
+		append([]any{ctx, controlPlaneID, dataPlaneClientCertificateRequest}, opts...)...)}
 }
 
 func (_c *MockDPCertificatesSDK_CreateDataplaneCertificate_Call) Run(run func(ctx context.Context, controlPlaneID string, dataPlaneClientCertificateRequest *components.DataPlaneClientCertificateRequest, opts ...operations.Option)) *MockDPCertificatesSDK_CreateDataplaneCertificate_Call {
@@ -172,9 +172,9 @@ type MockDPCertificatesSDK_DeleteDataplaneCertificate_Call struct {
 //   - controlPlaneID string
 //   - certificateID string
 //   - opts ...operations.Option
-func (_e *MockDPCertificatesSDK_Expecter) DeleteDataplaneCertificate(ctx interface{}, controlPlaneID interface{}, certificateID interface{}, opts ...interface{}) *MockDPCertificatesSDK_DeleteDataplaneCertificate_Call {
+func (_e *MockDPCertificatesSDK_Expecter) DeleteDataplaneCertificate(ctx any, controlPlaneID any, certificateID any, opts ...any) *MockDPCertificatesSDK_DeleteDataplaneCertificate_Call {
 	return &MockDPCertificatesSDK_DeleteDataplaneCertificate_Call{Call: _e.mock.On("DeleteDataplaneCertificate",
-		append([]interface{}{ctx, controlPlaneID, certificateID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, certificateID}, opts...)...)}
 }
 
 func (_c *MockDPCertificatesSDK_DeleteDataplaneCertificate_Call) Run(run func(ctx context.Context, controlPlaneID string, certificateID string, opts ...operations.Option)) *MockDPCertificatesSDK_DeleteDataplaneCertificate_Call {
@@ -261,9 +261,9 @@ type MockDPCertificatesSDK_GetDataplaneCertificate_Call struct {
 //   - controlPlaneID string
 //   - certificateID string
 //   - opts ...operations.Option
-func (_e *MockDPCertificatesSDK_Expecter) GetDataplaneCertificate(ctx interface{}, controlPlaneID interface{}, certificateID interface{}, opts ...interface{}) *MockDPCertificatesSDK_GetDataplaneCertificate_Call {
+func (_e *MockDPCertificatesSDK_Expecter) GetDataplaneCertificate(ctx any, controlPlaneID any, certificateID any, opts ...any) *MockDPCertificatesSDK_GetDataplaneCertificate_Call {
 	return &MockDPCertificatesSDK_GetDataplaneCertificate_Call{Call: _e.mock.On("GetDataplaneCertificate",
-		append([]interface{}{ctx, controlPlaneID, certificateID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, certificateID}, opts...)...)}
 }
 
 func (_c *MockDPCertificatesSDK_GetDataplaneCertificate_Call) Run(run func(ctx context.Context, controlPlaneID string, certificateID string, opts ...operations.Option)) *MockDPCertificatesSDK_GetDataplaneCertificate_Call {
@@ -349,9 +349,9 @@ type MockDPCertificatesSDK_ListDpClientCertificates_Call struct {
 //   - ctx context.Context
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockDPCertificatesSDK_Expecter) ListDpClientCertificates(ctx interface{}, controlPlaneID interface{}, opts ...interface{}) *MockDPCertificatesSDK_ListDpClientCertificates_Call {
+func (_e *MockDPCertificatesSDK_Expecter) ListDpClientCertificates(ctx any, controlPlaneID any, opts ...any) *MockDPCertificatesSDK_ListDpClientCertificates_Call {
 	return &MockDPCertificatesSDK_ListDpClientCertificates_Call{Call: _e.mock.On("ListDpClientCertificates",
-		append([]interface{}{ctx, controlPlaneID}, opts...)...)}
+		append([]any{ctx, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockDPCertificatesSDK_ListDpClientCertificates_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockDPCertificatesSDK_ListDpClientCertificates_Call {
@@ -432,9 +432,9 @@ type MockDPCertificatesSDK_UpdateDataplaneCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdateDataplaneCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockDPCertificatesSDK_Expecter) UpdateDataplaneCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call {
+func (_e *MockDPCertificatesSDK_Expecter) UpdateDataplaneCertificate(ctx any, request any, opts ...any) *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call {
 	return &MockDPCertificatesSDK_UpdateDataplaneCertificate_Call{Call: _e.mock.On("UpdateDataplaneCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call) Run(run func(ctx context.Context, request operations.UpdateDataplaneCertificateRequest, opts ...operations.Option)) *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call {

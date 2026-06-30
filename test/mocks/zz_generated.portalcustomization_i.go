@@ -82,9 +82,9 @@ type MockPortalCustomizationSDK_GetPortalCustomization_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalCustomizationSDK_Expecter) GetPortalCustomization(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalCustomizationSDK_GetPortalCustomization_Call {
+func (_e *MockPortalCustomizationSDK_Expecter) GetPortalCustomization(ctx any, portalID any, opts ...any) *MockPortalCustomizationSDK_GetPortalCustomization_Call {
 	return &MockPortalCustomizationSDK_GetPortalCustomization_Call{Call: _e.mock.On("GetPortalCustomization",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalCustomizationSDK_GetPortalCustomization_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalCustomizationSDK_GetPortalCustomization_Call {
@@ -166,9 +166,9 @@ type MockPortalCustomizationSDK_ReplacePortalCustomization_Call struct {
 //   - portalID string
 //   - portalCustomization *components.PortalCustomization
 //   - opts ...operations.Option
-func (_e *MockPortalCustomizationSDK_Expecter) ReplacePortalCustomization(ctx interface{}, portalID interface{}, portalCustomization interface{}, opts ...interface{}) *MockPortalCustomizationSDK_ReplacePortalCustomization_Call {
+func (_e *MockPortalCustomizationSDK_Expecter) ReplacePortalCustomization(ctx any, portalID any, portalCustomization any, opts ...any) *MockPortalCustomizationSDK_ReplacePortalCustomization_Call {
 	return &MockPortalCustomizationSDK_ReplacePortalCustomization_Call{Call: _e.mock.On("ReplacePortalCustomization",
-		append([]interface{}{ctx, portalID, portalCustomization}, opts...)...)}
+		append([]any{ctx, portalID, portalCustomization}, opts...)...)}
 }
 
 func (_c *MockPortalCustomizationSDK_ReplacePortalCustomization_Call) Run(run func(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option)) *MockPortalCustomizationSDK_ReplacePortalCustomization_Call {
@@ -255,9 +255,9 @@ type MockPortalCustomizationSDK_UpdatePortalCustomization_Call struct {
 //   - portalID string
 //   - portalCustomization *components.PortalCustomization
 //   - opts ...operations.Option
-func (_e *MockPortalCustomizationSDK_Expecter) UpdatePortalCustomization(ctx interface{}, portalID interface{}, portalCustomization interface{}, opts ...interface{}) *MockPortalCustomizationSDK_UpdatePortalCustomization_Call {
+func (_e *MockPortalCustomizationSDK_Expecter) UpdatePortalCustomization(ctx any, portalID any, portalCustomization any, opts ...any) *MockPortalCustomizationSDK_UpdatePortalCustomization_Call {
 	return &MockPortalCustomizationSDK_UpdatePortalCustomization_Call{Call: _e.mock.On("UpdatePortalCustomization",
-		append([]interface{}{ctx, portalID, portalCustomization}, opts...)...)}
+		append([]any{ctx, portalID, portalCustomization}, opts...)...)}
 }
 
 func (_c *MockPortalCustomizationSDK_UpdatePortalCustomization_Call) Run(run func(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option)) *MockPortalCustomizationSDK_UpdatePortalCustomization_Call {

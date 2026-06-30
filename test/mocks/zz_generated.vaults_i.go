@@ -83,9 +83,9 @@ type MockVaultsSDK_CreateVault_Call struct {
 //   - controlPlaneID string
 //   - vault components.Vault
 //   - opts ...operations.Option
-func (_e *MockVaultsSDK_Expecter) CreateVault(ctx interface{}, controlPlaneID interface{}, vault interface{}, opts ...interface{}) *MockVaultsSDK_CreateVault_Call {
+func (_e *MockVaultsSDK_Expecter) CreateVault(ctx any, controlPlaneID any, vault any, opts ...any) *MockVaultsSDK_CreateVault_Call {
 	return &MockVaultsSDK_CreateVault_Call{Call: _e.mock.On("CreateVault",
-		append([]interface{}{ctx, controlPlaneID, vault}, opts...)...)}
+		append([]any{ctx, controlPlaneID, vault}, opts...)...)}
 }
 
 func (_c *MockVaultsSDK_CreateVault_Call) Run(run func(ctx context.Context, controlPlaneID string, vault components.Vault, opts ...operations.Option)) *MockVaultsSDK_CreateVault_Call {
@@ -172,9 +172,9 @@ type MockVaultsSDK_DeleteVault_Call struct {
 //   - controlPlaneID string
 //   - vaultID string
 //   - opts ...operations.Option
-func (_e *MockVaultsSDK_Expecter) DeleteVault(ctx interface{}, controlPlaneID interface{}, vaultID interface{}, opts ...interface{}) *MockVaultsSDK_DeleteVault_Call {
+func (_e *MockVaultsSDK_Expecter) DeleteVault(ctx any, controlPlaneID any, vaultID any, opts ...any) *MockVaultsSDK_DeleteVault_Call {
 	return &MockVaultsSDK_DeleteVault_Call{Call: _e.mock.On("DeleteVault",
-		append([]interface{}{ctx, controlPlaneID, vaultID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, vaultID}, opts...)...)}
 }
 
 func (_c *MockVaultsSDK_DeleteVault_Call) Run(run func(ctx context.Context, controlPlaneID string, vaultID string, opts ...operations.Option)) *MockVaultsSDK_DeleteVault_Call {
@@ -261,9 +261,9 @@ type MockVaultsSDK_GetVault_Call struct {
 //   - vaultID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockVaultsSDK_Expecter) GetVault(ctx interface{}, vaultID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockVaultsSDK_GetVault_Call {
+func (_e *MockVaultsSDK_Expecter) GetVault(ctx any, vaultID any, controlPlaneID any, opts ...any) *MockVaultsSDK_GetVault_Call {
 	return &MockVaultsSDK_GetVault_Call{Call: _e.mock.On("GetVault",
-		append([]interface{}{ctx, vaultID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, vaultID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockVaultsSDK_GetVault_Call) Run(run func(ctx context.Context, vaultID string, controlPlaneID string, opts ...operations.Option)) *MockVaultsSDK_GetVault_Call {
@@ -349,9 +349,9 @@ type MockVaultsSDK_ListVault_Call struct {
 //   - ctx context.Context
 //   - request operations.ListVaultRequest
 //   - opts ...operations.Option
-func (_e *MockVaultsSDK_Expecter) ListVault(ctx interface{}, request interface{}, opts ...interface{}) *MockVaultsSDK_ListVault_Call {
+func (_e *MockVaultsSDK_Expecter) ListVault(ctx any, request any, opts ...any) *MockVaultsSDK_ListVault_Call {
 	return &MockVaultsSDK_ListVault_Call{Call: _e.mock.On("ListVault",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockVaultsSDK_ListVault_Call) Run(run func(ctx context.Context, request operations.ListVaultRequest, opts ...operations.Option)) *MockVaultsSDK_ListVault_Call {
@@ -432,9 +432,9 @@ type MockVaultsSDK_UpsertVault_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertVaultRequest
 //   - opts ...operations.Option
-func (_e *MockVaultsSDK_Expecter) UpsertVault(ctx interface{}, request interface{}, opts ...interface{}) *MockVaultsSDK_UpsertVault_Call {
+func (_e *MockVaultsSDK_Expecter) UpsertVault(ctx any, request any, opts ...any) *MockVaultsSDK_UpsertVault_Call {
 	return &MockVaultsSDK_UpsertVault_Call{Call: _e.mock.On("UpsertVault",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockVaultsSDK_UpsertVault_Call) Run(run func(ctx context.Context, request operations.UpsertVaultRequest, opts ...operations.Option)) *MockVaultsSDK_UpsertVault_Call {

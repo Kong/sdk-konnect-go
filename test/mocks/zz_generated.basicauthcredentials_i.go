@@ -81,9 +81,9 @@ type MockBasicAuthCredentialsSDK_CreateBasicAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.CreateBasicAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockBasicAuthCredentialsSDK_Expecter) CreateBasicAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockBasicAuthCredentialsSDK_CreateBasicAuthWithConsumer_Call {
+func (_e *MockBasicAuthCredentialsSDK_Expecter) CreateBasicAuthWithConsumer(ctx any, request any, opts ...any) *MockBasicAuthCredentialsSDK_CreateBasicAuthWithConsumer_Call {
 	return &MockBasicAuthCredentialsSDK_CreateBasicAuthWithConsumer_Call{Call: _e.mock.On("CreateBasicAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockBasicAuthCredentialsSDK_CreateBasicAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.CreateBasicAuthWithConsumerRequest, opts ...operations.Option)) *MockBasicAuthCredentialsSDK_CreateBasicAuthWithConsumer_Call {
@@ -164,9 +164,9 @@ type MockBasicAuthCredentialsSDK_DeleteBasicAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.DeleteBasicAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockBasicAuthCredentialsSDK_Expecter) DeleteBasicAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockBasicAuthCredentialsSDK_DeleteBasicAuthWithConsumer_Call {
+func (_e *MockBasicAuthCredentialsSDK_Expecter) DeleteBasicAuthWithConsumer(ctx any, request any, opts ...any) *MockBasicAuthCredentialsSDK_DeleteBasicAuthWithConsumer_Call {
 	return &MockBasicAuthCredentialsSDK_DeleteBasicAuthWithConsumer_Call{Call: _e.mock.On("DeleteBasicAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockBasicAuthCredentialsSDK_DeleteBasicAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.DeleteBasicAuthWithConsumerRequest, opts ...operations.Option)) *MockBasicAuthCredentialsSDK_DeleteBasicAuthWithConsumer_Call {
@@ -248,9 +248,9 @@ type MockBasicAuthCredentialsSDK_GetBasicAuth_Call struct {
 //   - basicAuthID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockBasicAuthCredentialsSDK_Expecter) GetBasicAuth(ctx interface{}, basicAuthID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockBasicAuthCredentialsSDK_GetBasicAuth_Call {
+func (_e *MockBasicAuthCredentialsSDK_Expecter) GetBasicAuth(ctx any, basicAuthID any, controlPlaneID any, opts ...any) *MockBasicAuthCredentialsSDK_GetBasicAuth_Call {
 	return &MockBasicAuthCredentialsSDK_GetBasicAuth_Call{Call: _e.mock.On("GetBasicAuth",
-		append([]interface{}{ctx, basicAuthID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, basicAuthID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockBasicAuthCredentialsSDK_GetBasicAuth_Call) Run(run func(ctx context.Context, basicAuthID string, controlPlaneID string, opts ...operations.Option)) *MockBasicAuthCredentialsSDK_GetBasicAuth_Call {
@@ -336,9 +336,9 @@ type MockBasicAuthCredentialsSDK_GetBasicAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.GetBasicAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockBasicAuthCredentialsSDK_Expecter) GetBasicAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockBasicAuthCredentialsSDK_GetBasicAuthWithConsumer_Call {
+func (_e *MockBasicAuthCredentialsSDK_Expecter) GetBasicAuthWithConsumer(ctx any, request any, opts ...any) *MockBasicAuthCredentialsSDK_GetBasicAuthWithConsumer_Call {
 	return &MockBasicAuthCredentialsSDK_GetBasicAuthWithConsumer_Call{Call: _e.mock.On("GetBasicAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockBasicAuthCredentialsSDK_GetBasicAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.GetBasicAuthWithConsumerRequest, opts ...operations.Option)) *MockBasicAuthCredentialsSDK_GetBasicAuthWithConsumer_Call {
@@ -419,9 +419,9 @@ type MockBasicAuthCredentialsSDK_ListBasicAuth_Call struct {
 //   - ctx context.Context
 //   - request operations.ListBasicAuthRequest
 //   - opts ...operations.Option
-func (_e *MockBasicAuthCredentialsSDK_Expecter) ListBasicAuth(ctx interface{}, request interface{}, opts ...interface{}) *MockBasicAuthCredentialsSDK_ListBasicAuth_Call {
+func (_e *MockBasicAuthCredentialsSDK_Expecter) ListBasicAuth(ctx any, request any, opts ...any) *MockBasicAuthCredentialsSDK_ListBasicAuth_Call {
 	return &MockBasicAuthCredentialsSDK_ListBasicAuth_Call{Call: _e.mock.On("ListBasicAuth",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockBasicAuthCredentialsSDK_ListBasicAuth_Call) Run(run func(ctx context.Context, request operations.ListBasicAuthRequest, opts ...operations.Option)) *MockBasicAuthCredentialsSDK_ListBasicAuth_Call {
@@ -502,9 +502,9 @@ type MockBasicAuthCredentialsSDK_ListBasicAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.ListBasicAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockBasicAuthCredentialsSDK_Expecter) ListBasicAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockBasicAuthCredentialsSDK_ListBasicAuthWithConsumer_Call {
+func (_e *MockBasicAuthCredentialsSDK_Expecter) ListBasicAuthWithConsumer(ctx any, request any, opts ...any) *MockBasicAuthCredentialsSDK_ListBasicAuthWithConsumer_Call {
 	return &MockBasicAuthCredentialsSDK_ListBasicAuthWithConsumer_Call{Call: _e.mock.On("ListBasicAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockBasicAuthCredentialsSDK_ListBasicAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.ListBasicAuthWithConsumerRequest, opts ...operations.Option)) *MockBasicAuthCredentialsSDK_ListBasicAuthWithConsumer_Call {
@@ -585,9 +585,9 @@ type MockBasicAuthCredentialsSDK_UpsertBasicAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertBasicAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockBasicAuthCredentialsSDK_Expecter) UpsertBasicAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockBasicAuthCredentialsSDK_UpsertBasicAuthWithConsumer_Call {
+func (_e *MockBasicAuthCredentialsSDK_Expecter) UpsertBasicAuthWithConsumer(ctx any, request any, opts ...any) *MockBasicAuthCredentialsSDK_UpsertBasicAuthWithConsumer_Call {
 	return &MockBasicAuthCredentialsSDK_UpsertBasicAuthWithConsumer_Call{Call: _e.mock.On("UpsertBasicAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockBasicAuthCredentialsSDK_UpsertBasicAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.UpsertBasicAuthWithConsumerRequest, opts ...operations.Option)) *MockBasicAuthCredentialsSDK_UpsertBasicAuthWithConsumer_Call {

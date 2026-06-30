@@ -82,9 +82,9 @@ type MockPortalEmailsSDK_CreateEmailDomain_Call struct {
 //   - ctx context.Context
 //   - request components.EmailDomainPayload
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) CreateEmailDomain(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalEmailsSDK_CreateEmailDomain_Call {
+func (_e *MockPortalEmailsSDK_Expecter) CreateEmailDomain(ctx any, request any, opts ...any) *MockPortalEmailsSDK_CreateEmailDomain_Call {
 	return &MockPortalEmailsSDK_CreateEmailDomain_Call{Call: _e.mock.On("CreateEmailDomain",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_CreateEmailDomain_Call) Run(run func(ctx context.Context, request components.EmailDomainPayload, opts ...operations.Option)) *MockPortalEmailsSDK_CreateEmailDomain_Call {
@@ -166,9 +166,9 @@ type MockPortalEmailsSDK_CreatePortalEmailConfig_Call struct {
 //   - portalID string
 //   - postPortalEmailConfig components.PostPortalEmailConfig
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) CreatePortalEmailConfig(ctx interface{}, portalID interface{}, postPortalEmailConfig interface{}, opts ...interface{}) *MockPortalEmailsSDK_CreatePortalEmailConfig_Call {
+func (_e *MockPortalEmailsSDK_Expecter) CreatePortalEmailConfig(ctx any, portalID any, postPortalEmailConfig any, opts ...any) *MockPortalEmailsSDK_CreatePortalEmailConfig_Call {
 	return &MockPortalEmailsSDK_CreatePortalEmailConfig_Call{Call: _e.mock.On("CreatePortalEmailConfig",
-		append([]interface{}{ctx, portalID, postPortalEmailConfig}, opts...)...)}
+		append([]any{ctx, portalID, postPortalEmailConfig}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_CreatePortalEmailConfig_Call) Run(run func(ctx context.Context, portalID string, postPortalEmailConfig components.PostPortalEmailConfig, opts ...operations.Option)) *MockPortalEmailsSDK_CreatePortalEmailConfig_Call {
@@ -254,9 +254,9 @@ type MockPortalEmailsSDK_DeleteEmailDelivery_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) DeleteEmailDelivery(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalEmailsSDK_DeleteEmailDelivery_Call {
+func (_e *MockPortalEmailsSDK_Expecter) DeleteEmailDelivery(ctx any, portalID any, opts ...any) *MockPortalEmailsSDK_DeleteEmailDelivery_Call {
 	return &MockPortalEmailsSDK_DeleteEmailDelivery_Call{Call: _e.mock.On("DeleteEmailDelivery",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_DeleteEmailDelivery_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalEmailsSDK_DeleteEmailDelivery_Call {
@@ -337,9 +337,9 @@ type MockPortalEmailsSDK_DeleteEmailDomain_Call struct {
 //   - ctx context.Context
 //   - emailDomain string
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) DeleteEmailDomain(ctx interface{}, emailDomain interface{}, opts ...interface{}) *MockPortalEmailsSDK_DeleteEmailDomain_Call {
+func (_e *MockPortalEmailsSDK_Expecter) DeleteEmailDomain(ctx any, emailDomain any, opts ...any) *MockPortalEmailsSDK_DeleteEmailDomain_Call {
 	return &MockPortalEmailsSDK_DeleteEmailDomain_Call{Call: _e.mock.On("DeleteEmailDomain",
-		append([]interface{}{ctx, emailDomain}, opts...)...)}
+		append([]any{ctx, emailDomain}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_DeleteEmailDomain_Call) Run(run func(ctx context.Context, emailDomain string, opts ...operations.Option)) *MockPortalEmailsSDK_DeleteEmailDomain_Call {
@@ -421,9 +421,9 @@ type MockPortalEmailsSDK_DeletePortalCustomEmailTemplate_Call struct {
 //   - portalID string
 //   - templateName components.EmailTemplateName
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) DeletePortalCustomEmailTemplate(ctx interface{}, portalID interface{}, templateName interface{}, opts ...interface{}) *MockPortalEmailsSDK_DeletePortalCustomEmailTemplate_Call {
+func (_e *MockPortalEmailsSDK_Expecter) DeletePortalCustomEmailTemplate(ctx any, portalID any, templateName any, opts ...any) *MockPortalEmailsSDK_DeletePortalCustomEmailTemplate_Call {
 	return &MockPortalEmailsSDK_DeletePortalCustomEmailTemplate_Call{Call: _e.mock.On("DeletePortalCustomEmailTemplate",
-		append([]interface{}{ctx, portalID, templateName}, opts...)...)}
+		append([]any{ctx, portalID, templateName}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_DeletePortalCustomEmailTemplate_Call) Run(run func(ctx context.Context, portalID string, templateName components.EmailTemplateName, opts ...operations.Option)) *MockPortalEmailsSDK_DeletePortalCustomEmailTemplate_Call {
@@ -509,9 +509,9 @@ type MockPortalEmailsSDK_DeletePortalEmailConfig_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) DeletePortalEmailConfig(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalEmailsSDK_DeletePortalEmailConfig_Call {
+func (_e *MockPortalEmailsSDK_Expecter) DeletePortalEmailConfig(ctx any, portalID any, opts ...any) *MockPortalEmailsSDK_DeletePortalEmailConfig_Call {
 	return &MockPortalEmailsSDK_DeletePortalEmailConfig_Call{Call: _e.mock.On("DeletePortalEmailConfig",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_DeletePortalEmailConfig_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalEmailsSDK_DeletePortalEmailConfig_Call {
@@ -592,9 +592,9 @@ type MockPortalEmailsSDK_GetDefaultEmailTemplate_Call struct {
 //   - ctx context.Context
 //   - templateName components.EmailTemplateName
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) GetDefaultEmailTemplate(ctx interface{}, templateName interface{}, opts ...interface{}) *MockPortalEmailsSDK_GetDefaultEmailTemplate_Call {
+func (_e *MockPortalEmailsSDK_Expecter) GetDefaultEmailTemplate(ctx any, templateName any, opts ...any) *MockPortalEmailsSDK_GetDefaultEmailTemplate_Call {
 	return &MockPortalEmailsSDK_GetDefaultEmailTemplate_Call{Call: _e.mock.On("GetDefaultEmailTemplate",
-		append([]interface{}{ctx, templateName}, opts...)...)}
+		append([]any{ctx, templateName}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_GetDefaultEmailTemplate_Call) Run(run func(ctx context.Context, templateName components.EmailTemplateName, opts ...operations.Option)) *MockPortalEmailsSDK_GetDefaultEmailTemplate_Call {
@@ -675,9 +675,9 @@ type MockPortalEmailsSDK_GetEmailConfig_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) GetEmailConfig(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalEmailsSDK_GetEmailConfig_Call {
+func (_e *MockPortalEmailsSDK_Expecter) GetEmailConfig(ctx any, portalID any, opts ...any) *MockPortalEmailsSDK_GetEmailConfig_Call {
 	return &MockPortalEmailsSDK_GetEmailConfig_Call{Call: _e.mock.On("GetEmailConfig",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_GetEmailConfig_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalEmailsSDK_GetEmailConfig_Call {
@@ -758,9 +758,9 @@ type MockPortalEmailsSDK_GetEmailDelivery_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) GetEmailDelivery(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalEmailsSDK_GetEmailDelivery_Call {
+func (_e *MockPortalEmailsSDK_Expecter) GetEmailDelivery(ctx any, portalID any, opts ...any) *MockPortalEmailsSDK_GetEmailDelivery_Call {
 	return &MockPortalEmailsSDK_GetEmailDelivery_Call{Call: _e.mock.On("GetEmailDelivery",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_GetEmailDelivery_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalEmailsSDK_GetEmailDelivery_Call {
@@ -841,9 +841,9 @@ type MockPortalEmailsSDK_GetEmailDomain_Call struct {
 //   - ctx context.Context
 //   - emailDomain string
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) GetEmailDomain(ctx interface{}, emailDomain interface{}, opts ...interface{}) *MockPortalEmailsSDK_GetEmailDomain_Call {
+func (_e *MockPortalEmailsSDK_Expecter) GetEmailDomain(ctx any, emailDomain any, opts ...any) *MockPortalEmailsSDK_GetEmailDomain_Call {
 	return &MockPortalEmailsSDK_GetEmailDomain_Call{Call: _e.mock.On("GetEmailDomain",
-		append([]interface{}{ctx, emailDomain}, opts...)...)}
+		append([]any{ctx, emailDomain}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_GetEmailDomain_Call) Run(run func(ctx context.Context, emailDomain string, opts ...operations.Option)) *MockPortalEmailsSDK_GetEmailDomain_Call {
@@ -925,9 +925,9 @@ type MockPortalEmailsSDK_GetPortalCustomEmailTemplate_Call struct {
 //   - portalID string
 //   - templateName components.EmailTemplateName
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) GetPortalCustomEmailTemplate(ctx interface{}, portalID interface{}, templateName interface{}, opts ...interface{}) *MockPortalEmailsSDK_GetPortalCustomEmailTemplate_Call {
+func (_e *MockPortalEmailsSDK_Expecter) GetPortalCustomEmailTemplate(ctx any, portalID any, templateName any, opts ...any) *MockPortalEmailsSDK_GetPortalCustomEmailTemplate_Call {
 	return &MockPortalEmailsSDK_GetPortalCustomEmailTemplate_Call{Call: _e.mock.On("GetPortalCustomEmailTemplate",
-		append([]interface{}{ctx, portalID, templateName}, opts...)...)}
+		append([]any{ctx, portalID, templateName}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_GetPortalCustomEmailTemplate_Call) Run(run func(ctx context.Context, portalID string, templateName components.EmailTemplateName, opts ...operations.Option)) *MockPortalEmailsSDK_GetPortalCustomEmailTemplate_Call {
@@ -1012,9 +1012,9 @@ type MockPortalEmailsSDK_ListDefaultEmailTemplates_Call struct {
 // ListDefaultEmailTemplates is a helper method to define mock.On call
 //   - ctx context.Context
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) ListDefaultEmailTemplates(ctx interface{}, opts ...interface{}) *MockPortalEmailsSDK_ListDefaultEmailTemplates_Call {
+func (_e *MockPortalEmailsSDK_Expecter) ListDefaultEmailTemplates(ctx any, opts ...any) *MockPortalEmailsSDK_ListDefaultEmailTemplates_Call {
 	return &MockPortalEmailsSDK_ListDefaultEmailTemplates_Call{Call: _e.mock.On("ListDefaultEmailTemplates",
-		append([]interface{}{ctx}, opts...)...)}
+		append([]any{ctx}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_ListDefaultEmailTemplates_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockPortalEmailsSDK_ListDefaultEmailTemplates_Call {
@@ -1090,9 +1090,9 @@ type MockPortalEmailsSDK_ListEmailDomains_Call struct {
 //   - ctx context.Context
 //   - request operations.ListEmailDomainsRequest
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) ListEmailDomains(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalEmailsSDK_ListEmailDomains_Call {
+func (_e *MockPortalEmailsSDK_Expecter) ListEmailDomains(ctx any, request any, opts ...any) *MockPortalEmailsSDK_ListEmailDomains_Call {
 	return &MockPortalEmailsSDK_ListEmailDomains_Call{Call: _e.mock.On("ListEmailDomains",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_ListEmailDomains_Call) Run(run func(ctx context.Context, request operations.ListEmailDomainsRequest, opts ...operations.Option)) *MockPortalEmailsSDK_ListEmailDomains_Call {
@@ -1172,9 +1172,9 @@ type MockPortalEmailsSDK_ListEmailTemplateVariables_Call struct {
 // ListEmailTemplateVariables is a helper method to define mock.On call
 //   - ctx context.Context
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) ListEmailTemplateVariables(ctx interface{}, opts ...interface{}) *MockPortalEmailsSDK_ListEmailTemplateVariables_Call {
+func (_e *MockPortalEmailsSDK_Expecter) ListEmailTemplateVariables(ctx any, opts ...any) *MockPortalEmailsSDK_ListEmailTemplateVariables_Call {
 	return &MockPortalEmailsSDK_ListEmailTemplateVariables_Call{Call: _e.mock.On("ListEmailTemplateVariables",
-		append([]interface{}{ctx}, opts...)...)}
+		append([]any{ctx}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_ListEmailTemplateVariables_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockPortalEmailsSDK_ListEmailTemplateVariables_Call {
@@ -1250,9 +1250,9 @@ type MockPortalEmailsSDK_ListPortalCustomEmailTemplates_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) ListPortalCustomEmailTemplates(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalEmailsSDK_ListPortalCustomEmailTemplates_Call {
+func (_e *MockPortalEmailsSDK_Expecter) ListPortalCustomEmailTemplates(ctx any, portalID any, opts ...any) *MockPortalEmailsSDK_ListPortalCustomEmailTemplates_Call {
 	return &MockPortalEmailsSDK_ListPortalCustomEmailTemplates_Call{Call: _e.mock.On("ListPortalCustomEmailTemplates",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_ListPortalCustomEmailTemplates_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalEmailsSDK_ListPortalCustomEmailTemplates_Call {
@@ -1333,9 +1333,9 @@ type MockPortalEmailsSDK_PostPortalCustomEmailTestSend_Call struct {
 //   - ctx context.Context
 //   - request operations.PostPortalCustomEmailTestSendRequest
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) PostPortalCustomEmailTestSend(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalEmailsSDK_PostPortalCustomEmailTestSend_Call {
+func (_e *MockPortalEmailsSDK_Expecter) PostPortalCustomEmailTestSend(ctx any, request any, opts ...any) *MockPortalEmailsSDK_PostPortalCustomEmailTestSend_Call {
 	return &MockPortalEmailsSDK_PostPortalCustomEmailTestSend_Call{Call: _e.mock.On("PostPortalCustomEmailTestSend",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_PostPortalCustomEmailTestSend_Call) Run(run func(ctx context.Context, request operations.PostPortalCustomEmailTestSendRequest, opts ...operations.Option)) *MockPortalEmailsSDK_PostPortalCustomEmailTestSend_Call {
@@ -1417,9 +1417,9 @@ type MockPortalEmailsSDK_UpdateEmailDelivery_Call struct {
 //   - portalID string
 //   - emailDeliveryUpdatePayload components.EmailDeliveryUpdatePayload
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) UpdateEmailDelivery(ctx interface{}, portalID interface{}, emailDeliveryUpdatePayload interface{}, opts ...interface{}) *MockPortalEmailsSDK_UpdateEmailDelivery_Call {
+func (_e *MockPortalEmailsSDK_Expecter) UpdateEmailDelivery(ctx any, portalID any, emailDeliveryUpdatePayload any, opts ...any) *MockPortalEmailsSDK_UpdateEmailDelivery_Call {
 	return &MockPortalEmailsSDK_UpdateEmailDelivery_Call{Call: _e.mock.On("UpdateEmailDelivery",
-		append([]interface{}{ctx, portalID, emailDeliveryUpdatePayload}, opts...)...)}
+		append([]any{ctx, portalID, emailDeliveryUpdatePayload}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_UpdateEmailDelivery_Call) Run(run func(ctx context.Context, portalID string, emailDeliveryUpdatePayload components.EmailDeliveryUpdatePayload, opts ...operations.Option)) *MockPortalEmailsSDK_UpdateEmailDelivery_Call {
@@ -1505,9 +1505,9 @@ type MockPortalEmailsSDK_UpdatePortalCustomEmailTemplate_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdatePortalCustomEmailTemplateRequest
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) UpdatePortalCustomEmailTemplate(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalEmailsSDK_UpdatePortalCustomEmailTemplate_Call {
+func (_e *MockPortalEmailsSDK_Expecter) UpdatePortalCustomEmailTemplate(ctx any, request any, opts ...any) *MockPortalEmailsSDK_UpdatePortalCustomEmailTemplate_Call {
 	return &MockPortalEmailsSDK_UpdatePortalCustomEmailTemplate_Call{Call: _e.mock.On("UpdatePortalCustomEmailTemplate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_UpdatePortalCustomEmailTemplate_Call) Run(run func(ctx context.Context, request operations.UpdatePortalCustomEmailTemplateRequest, opts ...operations.Option)) *MockPortalEmailsSDK_UpdatePortalCustomEmailTemplate_Call {
@@ -1589,9 +1589,9 @@ type MockPortalEmailsSDK_UpdatePortalEmailConfig_Call struct {
 //   - portalID string
 //   - patchPortalEmailConfig *components.PatchPortalEmailConfig
 //   - opts ...operations.Option
-func (_e *MockPortalEmailsSDK_Expecter) UpdatePortalEmailConfig(ctx interface{}, portalID interface{}, patchPortalEmailConfig interface{}, opts ...interface{}) *MockPortalEmailsSDK_UpdatePortalEmailConfig_Call {
+func (_e *MockPortalEmailsSDK_Expecter) UpdatePortalEmailConfig(ctx any, portalID any, patchPortalEmailConfig any, opts ...any) *MockPortalEmailsSDK_UpdatePortalEmailConfig_Call {
 	return &MockPortalEmailsSDK_UpdatePortalEmailConfig_Call{Call: _e.mock.On("UpdatePortalEmailConfig",
-		append([]interface{}{ctx, portalID, patchPortalEmailConfig}, opts...)...)}
+		append([]any{ctx, portalID, patchPortalEmailConfig}, opts...)...)}
 }
 
 func (_c *MockPortalEmailsSDK_UpdatePortalEmailConfig_Call) Run(run func(ctx context.Context, portalID string, patchPortalEmailConfig *components.PatchPortalEmailConfig, opts ...operations.Option)) *MockPortalEmailsSDK_UpdatePortalEmailConfig_Call {

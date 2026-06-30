@@ -81,9 +81,9 @@ type MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.CreateHmacAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockHMACAuthCredentialsSDK_Expecter) CreateHmacAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumer_Call {
+func (_e *MockHMACAuthCredentialsSDK_Expecter) CreateHmacAuthWithConsumer(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumer_Call {
 	return &MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumer_Call{Call: _e.mock.On("CreateHmacAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.CreateHmacAuthWithConsumerRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumer_Call {
@@ -164,9 +164,9 @@ type MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.DeleteHmacAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockHMACAuthCredentialsSDK_Expecter) DeleteHmacAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call {
+func (_e *MockHMACAuthCredentialsSDK_Expecter) DeleteHmacAuthWithConsumer(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call {
 	return &MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call{Call: _e.mock.On("DeleteHmacAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.DeleteHmacAuthWithConsumerRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call {
@@ -248,9 +248,9 @@ type MockHMACAuthCredentialsSDK_GetHmacAuth_Call struct {
 //   - hmacAuthID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockHMACAuthCredentialsSDK_Expecter) GetHmacAuth(ctx interface{}, hmacAuthID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockHMACAuthCredentialsSDK_GetHmacAuth_Call {
+func (_e *MockHMACAuthCredentialsSDK_Expecter) GetHmacAuth(ctx any, hmacAuthID any, controlPlaneID any, opts ...any) *MockHMACAuthCredentialsSDK_GetHmacAuth_Call {
 	return &MockHMACAuthCredentialsSDK_GetHmacAuth_Call{Call: _e.mock.On("GetHmacAuth",
-		append([]interface{}{ctx, hmacAuthID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, hmacAuthID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockHMACAuthCredentialsSDK_GetHmacAuth_Call) Run(run func(ctx context.Context, hmacAuthID string, controlPlaneID string, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_GetHmacAuth_Call {
@@ -336,9 +336,9 @@ type MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.GetHmacAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockHMACAuthCredentialsSDK_Expecter) GetHmacAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumer_Call {
+func (_e *MockHMACAuthCredentialsSDK_Expecter) GetHmacAuthWithConsumer(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumer_Call {
 	return &MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumer_Call{Call: _e.mock.On("GetHmacAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.GetHmacAuthWithConsumerRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumer_Call {
@@ -419,9 +419,9 @@ type MockHMACAuthCredentialsSDK_ListHmacAuth_Call struct {
 //   - ctx context.Context
 //   - request operations.ListHmacAuthRequest
 //   - opts ...operations.Option
-func (_e *MockHMACAuthCredentialsSDK_Expecter) ListHmacAuth(ctx interface{}, request interface{}, opts ...interface{}) *MockHMACAuthCredentialsSDK_ListHmacAuth_Call {
+func (_e *MockHMACAuthCredentialsSDK_Expecter) ListHmacAuth(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_ListHmacAuth_Call {
 	return &MockHMACAuthCredentialsSDK_ListHmacAuth_Call{Call: _e.mock.On("ListHmacAuth",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockHMACAuthCredentialsSDK_ListHmacAuth_Call) Run(run func(ctx context.Context, request operations.ListHmacAuthRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_ListHmacAuth_Call {
@@ -502,9 +502,9 @@ type MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.ListHmacAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockHMACAuthCredentialsSDK_Expecter) ListHmacAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumer_Call {
+func (_e *MockHMACAuthCredentialsSDK_Expecter) ListHmacAuthWithConsumer(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumer_Call {
 	return &MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumer_Call{Call: _e.mock.On("ListHmacAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.ListHmacAuthWithConsumerRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumer_Call {
@@ -585,9 +585,9 @@ type MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertHmacAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockHMACAuthCredentialsSDK_Expecter) UpsertHmacAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumer_Call {
+func (_e *MockHMACAuthCredentialsSDK_Expecter) UpsertHmacAuthWithConsumer(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumer_Call {
 	return &MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumer_Call{Call: _e.mock.On("UpsertHmacAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.UpsertHmacAuthWithConsumerRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumer_Call {

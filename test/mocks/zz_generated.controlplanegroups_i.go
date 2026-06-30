@@ -82,9 +82,9 @@ type MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call struct {
 //   - ctx context.Context
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupMemberStatus(ctx interface{}, controlPlaneID interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupMemberStatus(ctx any, controlPlaneID any, opts ...any) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call {
 	return &MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call{Call: _e.mock.On("GetControlPlanesIDGroupMemberStatus",
-		append([]interface{}{ctx, controlPlaneID}, opts...)...)}
+		append([]any{ctx, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call {
@@ -165,9 +165,9 @@ type MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberships_Call struct {
 //   - ctx context.Context
 //   - request operations.GetControlPlanesIDGroupMembershipsRequest
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupMemberships(ctx interface{}, request interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberships_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupMemberships(ctx any, request any, opts ...any) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberships_Call {
 	return &MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberships_Call{Call: _e.mock.On("GetControlPlanesIDGroupMemberships",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberships_Call) Run(run func(ctx context.Context, request operations.GetControlPlanesIDGroupMembershipsRequest, opts ...operations.Option)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberships_Call {
@@ -248,9 +248,9 @@ type MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call struct {
 //   - ctx context.Context
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupStatus(ctx interface{}, controlPlaneID interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupStatus(ctx any, controlPlaneID any, opts ...any) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call {
 	return &MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call{Call: _e.mock.On("GetControlPlanesIDGroupStatus",
-		append([]interface{}{ctx, controlPlaneID}, opts...)...)}
+		append([]any{ctx, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call {
@@ -332,9 +332,9 @@ type MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call struc
 //   - controlPlaneID string
 //   - groupMembership *components.GroupMembership
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) PostControlPlanesIDGroupMembershipsAdd(ctx interface{}, controlPlaneID interface{}, groupMembership interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) PostControlPlanesIDGroupMembershipsAdd(ctx any, controlPlaneID any, groupMembership any, opts ...any) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call {
 	return &MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call{Call: _e.mock.On("PostControlPlanesIDGroupMembershipsAdd",
-		append([]interface{}{ctx, controlPlaneID, groupMembership}, opts...)...)}
+		append([]any{ctx, controlPlaneID, groupMembership}, opts...)...)}
 }
 
 func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call) Run(run func(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call {
@@ -421,9 +421,9 @@ type MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call st
 //   - controlPlaneID string
 //   - groupMembership *components.GroupMembership
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) PostControlPlanesIDGroupMembershipsRemove(ctx interface{}, controlPlaneID interface{}, groupMembership interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) PostControlPlanesIDGroupMembershipsRemove(ctx any, controlPlaneID any, groupMembership any, opts ...any) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call {
 	return &MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call{Call: _e.mock.On("PostControlPlanesIDGroupMembershipsRemove",
-		append([]interface{}{ctx, controlPlaneID, groupMembership}, opts...)...)}
+		append([]any{ctx, controlPlaneID, groupMembership}, opts...)...)}
 }
 
 func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call) Run(run func(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call {
@@ -510,9 +510,9 @@ type MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call struct {
 //   - controlPlaneID string
 //   - groupMembership *components.GroupMembership
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) PutControlPlanesIDGroupMemberships(ctx interface{}, controlPlaneID interface{}, groupMembership interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) PutControlPlanesIDGroupMemberships(ctx any, controlPlaneID any, groupMembership any, opts ...any) *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call {
 	return &MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call{Call: _e.mock.On("PutControlPlanesIDGroupMemberships",
-		append([]interface{}{ctx, controlPlaneID, groupMembership}, opts...)...)}
+		append([]any{ctx, controlPlaneID, groupMembership}, opts...)...)}
 }
 
 func (_c *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call) Run(run func(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option)) *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call {

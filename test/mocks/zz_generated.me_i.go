@@ -80,9 +80,9 @@ type MockMeSDK_GetOrganizationsMe_Call struct {
 // GetOrganizationsMe is a helper method to define mock.On call
 //   - ctx context.Context
 //   - opts ...operations.Option
-func (_e *MockMeSDK_Expecter) GetOrganizationsMe(ctx interface{}, opts ...interface{}) *MockMeSDK_GetOrganizationsMe_Call {
+func (_e *MockMeSDK_Expecter) GetOrganizationsMe(ctx any, opts ...any) *MockMeSDK_GetOrganizationsMe_Call {
 	return &MockMeSDK_GetOrganizationsMe_Call{Call: _e.mock.On("GetOrganizationsMe",
-		append([]interface{}{ctx}, opts...)...)}
+		append([]any{ctx}, opts...)...)}
 }
 
 func (_c *MockMeSDK_GetOrganizationsMe_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockMeSDK_GetOrganizationsMe_Call {
@@ -157,9 +157,9 @@ type MockMeSDK_GetUsersMe_Call struct {
 // GetUsersMe is a helper method to define mock.On call
 //   - ctx context.Context
 //   - opts ...operations.Option
-func (_e *MockMeSDK_Expecter) GetUsersMe(ctx interface{}, opts ...interface{}) *MockMeSDK_GetUsersMe_Call {
+func (_e *MockMeSDK_Expecter) GetUsersMe(ctx any, opts ...any) *MockMeSDK_GetUsersMe_Call {
 	return &MockMeSDK_GetUsersMe_Call{Call: _e.mock.On("GetUsersMe",
-		append([]interface{}{ctx}, opts...)...)}
+		append([]any{ctx}, opts...)...)}
 }
 
 func (_c *MockMeSDK_GetUsersMe_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockMeSDK_GetUsersMe_Call {

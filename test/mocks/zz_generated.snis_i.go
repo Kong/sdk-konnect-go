@@ -83,9 +83,9 @@ type MockSNIsSDK_CreateSni_Call struct {
 //   - controlPlaneID string
 //   - sni components.Sni
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) CreateSni(ctx interface{}, controlPlaneID interface{}, sni interface{}, opts ...interface{}) *MockSNIsSDK_CreateSni_Call {
+func (_e *MockSNIsSDK_Expecter) CreateSni(ctx any, controlPlaneID any, sni any, opts ...any) *MockSNIsSDK_CreateSni_Call {
 	return &MockSNIsSDK_CreateSni_Call{Call: _e.mock.On("CreateSni",
-		append([]interface{}{ctx, controlPlaneID, sni}, opts...)...)}
+		append([]any{ctx, controlPlaneID, sni}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_CreateSni_Call) Run(run func(ctx context.Context, controlPlaneID string, sni components.Sni, opts ...operations.Option)) *MockSNIsSDK_CreateSni_Call {
@@ -171,9 +171,9 @@ type MockSNIsSDK_CreateSniWithCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.CreateSniWithCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) CreateSniWithCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockSNIsSDK_CreateSniWithCertificate_Call {
+func (_e *MockSNIsSDK_Expecter) CreateSniWithCertificate(ctx any, request any, opts ...any) *MockSNIsSDK_CreateSniWithCertificate_Call {
 	return &MockSNIsSDK_CreateSniWithCertificate_Call{Call: _e.mock.On("CreateSniWithCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_CreateSniWithCertificate_Call) Run(run func(ctx context.Context, request operations.CreateSniWithCertificateRequest, opts ...operations.Option)) *MockSNIsSDK_CreateSniWithCertificate_Call {
@@ -255,9 +255,9 @@ type MockSNIsSDK_DeleteSni_Call struct {
 //   - controlPlaneID string
 //   - sniID string
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) DeleteSni(ctx interface{}, controlPlaneID interface{}, sniID interface{}, opts ...interface{}) *MockSNIsSDK_DeleteSni_Call {
+func (_e *MockSNIsSDK_Expecter) DeleteSni(ctx any, controlPlaneID any, sniID any, opts ...any) *MockSNIsSDK_DeleteSni_Call {
 	return &MockSNIsSDK_DeleteSni_Call{Call: _e.mock.On("DeleteSni",
-		append([]interface{}{ctx, controlPlaneID, sniID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, sniID}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_DeleteSni_Call) Run(run func(ctx context.Context, controlPlaneID string, sniID string, opts ...operations.Option)) *MockSNIsSDK_DeleteSni_Call {
@@ -343,9 +343,9 @@ type MockSNIsSDK_DeleteSniWithCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.DeleteSniWithCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) DeleteSniWithCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockSNIsSDK_DeleteSniWithCertificate_Call {
+func (_e *MockSNIsSDK_Expecter) DeleteSniWithCertificate(ctx any, request any, opts ...any) *MockSNIsSDK_DeleteSniWithCertificate_Call {
 	return &MockSNIsSDK_DeleteSniWithCertificate_Call{Call: _e.mock.On("DeleteSniWithCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_DeleteSniWithCertificate_Call) Run(run func(ctx context.Context, request operations.DeleteSniWithCertificateRequest, opts ...operations.Option)) *MockSNIsSDK_DeleteSniWithCertificate_Call {
@@ -427,9 +427,9 @@ type MockSNIsSDK_GetSni_Call struct {
 //   - sniID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) GetSni(ctx interface{}, sniID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockSNIsSDK_GetSni_Call {
+func (_e *MockSNIsSDK_Expecter) GetSni(ctx any, sniID any, controlPlaneID any, opts ...any) *MockSNIsSDK_GetSni_Call {
 	return &MockSNIsSDK_GetSni_Call{Call: _e.mock.On("GetSni",
-		append([]interface{}{ctx, sniID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, sniID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_GetSni_Call) Run(run func(ctx context.Context, sniID string, controlPlaneID string, opts ...operations.Option)) *MockSNIsSDK_GetSni_Call {
@@ -515,9 +515,9 @@ type MockSNIsSDK_GetSniWithCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.GetSniWithCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) GetSniWithCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockSNIsSDK_GetSniWithCertificate_Call {
+func (_e *MockSNIsSDK_Expecter) GetSniWithCertificate(ctx any, request any, opts ...any) *MockSNIsSDK_GetSniWithCertificate_Call {
 	return &MockSNIsSDK_GetSniWithCertificate_Call{Call: _e.mock.On("GetSniWithCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_GetSniWithCertificate_Call) Run(run func(ctx context.Context, request operations.GetSniWithCertificateRequest, opts ...operations.Option)) *MockSNIsSDK_GetSniWithCertificate_Call {
@@ -598,9 +598,9 @@ type MockSNIsSDK_ListSni_Call struct {
 //   - ctx context.Context
 //   - request operations.ListSniRequest
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) ListSni(ctx interface{}, request interface{}, opts ...interface{}) *MockSNIsSDK_ListSni_Call {
+func (_e *MockSNIsSDK_Expecter) ListSni(ctx any, request any, opts ...any) *MockSNIsSDK_ListSni_Call {
 	return &MockSNIsSDK_ListSni_Call{Call: _e.mock.On("ListSni",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_ListSni_Call) Run(run func(ctx context.Context, request operations.ListSniRequest, opts ...operations.Option)) *MockSNIsSDK_ListSni_Call {
@@ -681,9 +681,9 @@ type MockSNIsSDK_ListSniWithCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.ListSniWithCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) ListSniWithCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockSNIsSDK_ListSniWithCertificate_Call {
+func (_e *MockSNIsSDK_Expecter) ListSniWithCertificate(ctx any, request any, opts ...any) *MockSNIsSDK_ListSniWithCertificate_Call {
 	return &MockSNIsSDK_ListSniWithCertificate_Call{Call: _e.mock.On("ListSniWithCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_ListSniWithCertificate_Call) Run(run func(ctx context.Context, request operations.ListSniWithCertificateRequest, opts ...operations.Option)) *MockSNIsSDK_ListSniWithCertificate_Call {
@@ -764,9 +764,9 @@ type MockSNIsSDK_UpsertSni_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertSniRequest
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) UpsertSni(ctx interface{}, request interface{}, opts ...interface{}) *MockSNIsSDK_UpsertSni_Call {
+func (_e *MockSNIsSDK_Expecter) UpsertSni(ctx any, request any, opts ...any) *MockSNIsSDK_UpsertSni_Call {
 	return &MockSNIsSDK_UpsertSni_Call{Call: _e.mock.On("UpsertSni",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_UpsertSni_Call) Run(run func(ctx context.Context, request operations.UpsertSniRequest, opts ...operations.Option)) *MockSNIsSDK_UpsertSni_Call {
@@ -847,9 +847,9 @@ type MockSNIsSDK_UpsertSniWithCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertSniWithCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockSNIsSDK_Expecter) UpsertSniWithCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockSNIsSDK_UpsertSniWithCertificate_Call {
+func (_e *MockSNIsSDK_Expecter) UpsertSniWithCertificate(ctx any, request any, opts ...any) *MockSNIsSDK_UpsertSniWithCertificate_Call {
 	return &MockSNIsSDK_UpsertSniWithCertificate_Call{Call: _e.mock.On("UpsertSniWithCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockSNIsSDK_UpsertSniWithCertificate_Call) Run(run func(ctx context.Context, request operations.UpsertSniWithCertificateRequest, opts ...operations.Option)) *MockSNIsSDK_UpsertSniWithCertificate_Call {

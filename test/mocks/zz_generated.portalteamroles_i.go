@@ -81,9 +81,9 @@ type MockPortalTeamRolesSDK_AssignRoleToPortalTeams_Call struct {
 //   - ctx context.Context
 //   - request operations.AssignRoleToPortalTeamsRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamRolesSDK_Expecter) AssignRoleToPortalTeams(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalTeamRolesSDK_AssignRoleToPortalTeams_Call {
+func (_e *MockPortalTeamRolesSDK_Expecter) AssignRoleToPortalTeams(ctx any, request any, opts ...any) *MockPortalTeamRolesSDK_AssignRoleToPortalTeams_Call {
 	return &MockPortalTeamRolesSDK_AssignRoleToPortalTeams_Call{Call: _e.mock.On("AssignRoleToPortalTeams",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalTeamRolesSDK_AssignRoleToPortalTeams_Call) Run(run func(ctx context.Context, request operations.AssignRoleToPortalTeamsRequest, opts ...operations.Option)) *MockPortalTeamRolesSDK_AssignRoleToPortalTeams_Call {
@@ -163,9 +163,9 @@ type MockPortalTeamRolesSDK_ListPortalRoles_Call struct {
 // ListPortalRoles is a helper method to define mock.On call
 //   - ctx context.Context
 //   - opts ...operations.Option
-func (_e *MockPortalTeamRolesSDK_Expecter) ListPortalRoles(ctx interface{}, opts ...interface{}) *MockPortalTeamRolesSDK_ListPortalRoles_Call {
+func (_e *MockPortalTeamRolesSDK_Expecter) ListPortalRoles(ctx any, opts ...any) *MockPortalTeamRolesSDK_ListPortalRoles_Call {
 	return &MockPortalTeamRolesSDK_ListPortalRoles_Call{Call: _e.mock.On("ListPortalRoles",
-		append([]interface{}{ctx}, opts...)...)}
+		append([]any{ctx}, opts...)...)}
 }
 
 func (_c *MockPortalTeamRolesSDK_ListPortalRoles_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockPortalTeamRolesSDK_ListPortalRoles_Call {
@@ -241,9 +241,9 @@ type MockPortalTeamRolesSDK_ListPortalTeamRoles_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalTeamRolesRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamRolesSDK_Expecter) ListPortalTeamRoles(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalTeamRolesSDK_ListPortalTeamRoles_Call {
+func (_e *MockPortalTeamRolesSDK_Expecter) ListPortalTeamRoles(ctx any, request any, opts ...any) *MockPortalTeamRolesSDK_ListPortalTeamRoles_Call {
 	return &MockPortalTeamRolesSDK_ListPortalTeamRoles_Call{Call: _e.mock.On("ListPortalTeamRoles",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalTeamRolesSDK_ListPortalTeamRoles_Call) Run(run func(ctx context.Context, request operations.ListPortalTeamRolesRequest, opts ...operations.Option)) *MockPortalTeamRolesSDK_ListPortalTeamRoles_Call {
@@ -324,9 +324,9 @@ type MockPortalTeamRolesSDK_RemoveRoleFromPortalTeam_Call struct {
 //   - ctx context.Context
 //   - request operations.RemoveRoleFromPortalTeamRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamRolesSDK_Expecter) RemoveRoleFromPortalTeam(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalTeamRolesSDK_RemoveRoleFromPortalTeam_Call {
+func (_e *MockPortalTeamRolesSDK_Expecter) RemoveRoleFromPortalTeam(ctx any, request any, opts ...any) *MockPortalTeamRolesSDK_RemoveRoleFromPortalTeam_Call {
 	return &MockPortalTeamRolesSDK_RemoveRoleFromPortalTeam_Call{Call: _e.mock.On("RemoveRoleFromPortalTeam",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalTeamRolesSDK_RemoveRoleFromPortalTeam_Call) Run(run func(ctx context.Context, request operations.RemoveRoleFromPortalTeamRequest, opts ...operations.Option)) *MockPortalTeamRolesSDK_RemoveRoleFromPortalTeam_Call {

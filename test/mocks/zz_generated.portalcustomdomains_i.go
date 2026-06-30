@@ -83,9 +83,9 @@ type MockPortalCustomDomainsSDK_CreatePortalCustomDomain_Call struct {
 //   - portalID string
 //   - createPortalCustomDomainRequest components.CreatePortalCustomDomainRequest
 //   - opts ...operations.Option
-func (_e *MockPortalCustomDomainsSDK_Expecter) CreatePortalCustomDomain(ctx interface{}, portalID interface{}, createPortalCustomDomainRequest interface{}, opts ...interface{}) *MockPortalCustomDomainsSDK_CreatePortalCustomDomain_Call {
+func (_e *MockPortalCustomDomainsSDK_Expecter) CreatePortalCustomDomain(ctx any, portalID any, createPortalCustomDomainRequest any, opts ...any) *MockPortalCustomDomainsSDK_CreatePortalCustomDomain_Call {
 	return &MockPortalCustomDomainsSDK_CreatePortalCustomDomain_Call{Call: _e.mock.On("CreatePortalCustomDomain",
-		append([]interface{}{ctx, portalID, createPortalCustomDomainRequest}, opts...)...)}
+		append([]any{ctx, portalID, createPortalCustomDomainRequest}, opts...)...)}
 }
 
 func (_c *MockPortalCustomDomainsSDK_CreatePortalCustomDomain_Call) Run(run func(ctx context.Context, portalID string, createPortalCustomDomainRequest components.CreatePortalCustomDomainRequest, opts ...operations.Option)) *MockPortalCustomDomainsSDK_CreatePortalCustomDomain_Call {
@@ -171,9 +171,9 @@ type MockPortalCustomDomainsSDK_DeletePortalCustomDomain_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalCustomDomainsSDK_Expecter) DeletePortalCustomDomain(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalCustomDomainsSDK_DeletePortalCustomDomain_Call {
+func (_e *MockPortalCustomDomainsSDK_Expecter) DeletePortalCustomDomain(ctx any, portalID any, opts ...any) *MockPortalCustomDomainsSDK_DeletePortalCustomDomain_Call {
 	return &MockPortalCustomDomainsSDK_DeletePortalCustomDomain_Call{Call: _e.mock.On("DeletePortalCustomDomain",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalCustomDomainsSDK_DeletePortalCustomDomain_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalCustomDomainsSDK_DeletePortalCustomDomain_Call {
@@ -254,9 +254,9 @@ type MockPortalCustomDomainsSDK_GetPortalCustomDomain_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalCustomDomainsSDK_Expecter) GetPortalCustomDomain(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalCustomDomainsSDK_GetPortalCustomDomain_Call {
+func (_e *MockPortalCustomDomainsSDK_Expecter) GetPortalCustomDomain(ctx any, portalID any, opts ...any) *MockPortalCustomDomainsSDK_GetPortalCustomDomain_Call {
 	return &MockPortalCustomDomainsSDK_GetPortalCustomDomain_Call{Call: _e.mock.On("GetPortalCustomDomain",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalCustomDomainsSDK_GetPortalCustomDomain_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalCustomDomainsSDK_GetPortalCustomDomain_Call {
@@ -338,9 +338,9 @@ type MockPortalCustomDomainsSDK_UpdatePortalCustomDomain_Call struct {
 //   - portalID string
 //   - updatePortalCustomDomainRequest components.UpdatePortalCustomDomainRequest
 //   - opts ...operations.Option
-func (_e *MockPortalCustomDomainsSDK_Expecter) UpdatePortalCustomDomain(ctx interface{}, portalID interface{}, updatePortalCustomDomainRequest interface{}, opts ...interface{}) *MockPortalCustomDomainsSDK_UpdatePortalCustomDomain_Call {
+func (_e *MockPortalCustomDomainsSDK_Expecter) UpdatePortalCustomDomain(ctx any, portalID any, updatePortalCustomDomainRequest any, opts ...any) *MockPortalCustomDomainsSDK_UpdatePortalCustomDomain_Call {
 	return &MockPortalCustomDomainsSDK_UpdatePortalCustomDomain_Call{Call: _e.mock.On("UpdatePortalCustomDomain",
-		append([]interface{}{ctx, portalID, updatePortalCustomDomainRequest}, opts...)...)}
+		append([]any{ctx, portalID, updatePortalCustomDomainRequest}, opts...)...)}
 }
 
 func (_c *MockPortalCustomDomainsSDK_UpdatePortalCustomDomain_Call) Run(run func(ctx context.Context, portalID string, updatePortalCustomDomainRequest components.UpdatePortalCustomDomainRequest, opts ...operations.Option)) *MockPortalCustomDomainsSDK_UpdatePortalCustomDomain_Call {

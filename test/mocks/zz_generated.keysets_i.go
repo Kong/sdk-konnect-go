@@ -83,9 +83,9 @@ type MockKeySetsSDK_CreateKeySet_Call struct {
 //   - controlPlaneID string
 //   - keySet *components.KeySet
 //   - opts ...operations.Option
-func (_e *MockKeySetsSDK_Expecter) CreateKeySet(ctx interface{}, controlPlaneID interface{}, keySet interface{}, opts ...interface{}) *MockKeySetsSDK_CreateKeySet_Call {
+func (_e *MockKeySetsSDK_Expecter) CreateKeySet(ctx any, controlPlaneID any, keySet any, opts ...any) *MockKeySetsSDK_CreateKeySet_Call {
 	return &MockKeySetsSDK_CreateKeySet_Call{Call: _e.mock.On("CreateKeySet",
-		append([]interface{}{ctx, controlPlaneID, keySet}, opts...)...)}
+		append([]any{ctx, controlPlaneID, keySet}, opts...)...)}
 }
 
 func (_c *MockKeySetsSDK_CreateKeySet_Call) Run(run func(ctx context.Context, controlPlaneID string, keySet *components.KeySet, opts ...operations.Option)) *MockKeySetsSDK_CreateKeySet_Call {
@@ -172,9 +172,9 @@ type MockKeySetsSDK_DeleteKeySet_Call struct {
 //   - controlPlaneID string
 //   - keySetID string
 //   - opts ...operations.Option
-func (_e *MockKeySetsSDK_Expecter) DeleteKeySet(ctx interface{}, controlPlaneID interface{}, keySetID interface{}, opts ...interface{}) *MockKeySetsSDK_DeleteKeySet_Call {
+func (_e *MockKeySetsSDK_Expecter) DeleteKeySet(ctx any, controlPlaneID any, keySetID any, opts ...any) *MockKeySetsSDK_DeleteKeySet_Call {
 	return &MockKeySetsSDK_DeleteKeySet_Call{Call: _e.mock.On("DeleteKeySet",
-		append([]interface{}{ctx, controlPlaneID, keySetID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, keySetID}, opts...)...)}
 }
 
 func (_c *MockKeySetsSDK_DeleteKeySet_Call) Run(run func(ctx context.Context, controlPlaneID string, keySetID string, opts ...operations.Option)) *MockKeySetsSDK_DeleteKeySet_Call {
@@ -261,9 +261,9 @@ type MockKeySetsSDK_GetKeySet_Call struct {
 //   - keySetID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockKeySetsSDK_Expecter) GetKeySet(ctx interface{}, keySetID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockKeySetsSDK_GetKeySet_Call {
+func (_e *MockKeySetsSDK_Expecter) GetKeySet(ctx any, keySetID any, controlPlaneID any, opts ...any) *MockKeySetsSDK_GetKeySet_Call {
 	return &MockKeySetsSDK_GetKeySet_Call{Call: _e.mock.On("GetKeySet",
-		append([]interface{}{ctx, keySetID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, keySetID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockKeySetsSDK_GetKeySet_Call) Run(run func(ctx context.Context, keySetID string, controlPlaneID string, opts ...operations.Option)) *MockKeySetsSDK_GetKeySet_Call {
@@ -349,9 +349,9 @@ type MockKeySetsSDK_ListKeySet_Call struct {
 //   - ctx context.Context
 //   - request operations.ListKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeySetsSDK_Expecter) ListKeySet(ctx interface{}, request interface{}, opts ...interface{}) *MockKeySetsSDK_ListKeySet_Call {
+func (_e *MockKeySetsSDK_Expecter) ListKeySet(ctx any, request any, opts ...any) *MockKeySetsSDK_ListKeySet_Call {
 	return &MockKeySetsSDK_ListKeySet_Call{Call: _e.mock.On("ListKeySet",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockKeySetsSDK_ListKeySet_Call) Run(run func(ctx context.Context, request operations.ListKeySetRequest, opts ...operations.Option)) *MockKeySetsSDK_ListKeySet_Call {
@@ -432,9 +432,9 @@ type MockKeySetsSDK_UpsertKeySet_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeySetsSDK_Expecter) UpsertKeySet(ctx interface{}, request interface{}, opts ...interface{}) *MockKeySetsSDK_UpsertKeySet_Call {
+func (_e *MockKeySetsSDK_Expecter) UpsertKeySet(ctx any, request any, opts ...any) *MockKeySetsSDK_UpsertKeySet_Call {
 	return &MockKeySetsSDK_UpsertKeySet_Call{Call: _e.mock.On("UpsertKeySet",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockKeySetsSDK_UpsertKeySet_Call) Run(run func(ctx context.Context, request operations.UpsertKeySetRequest, opts ...operations.Option)) *MockKeySetsSDK_UpsertKeySet_Call {

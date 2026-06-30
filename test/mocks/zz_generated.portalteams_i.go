@@ -83,9 +83,9 @@ type MockPortalTeamsSDK_CreatePortalTeam_Call struct {
 //   - portalID string
 //   - portalCreateTeamRequest *components.PortalCreateTeamRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamsSDK_Expecter) CreatePortalTeam(ctx interface{}, portalID interface{}, portalCreateTeamRequest interface{}, opts ...interface{}) *MockPortalTeamsSDK_CreatePortalTeam_Call {
+func (_e *MockPortalTeamsSDK_Expecter) CreatePortalTeam(ctx any, portalID any, portalCreateTeamRequest any, opts ...any) *MockPortalTeamsSDK_CreatePortalTeam_Call {
 	return &MockPortalTeamsSDK_CreatePortalTeam_Call{Call: _e.mock.On("CreatePortalTeam",
-		append([]interface{}{ctx, portalID, portalCreateTeamRequest}, opts...)...)}
+		append([]any{ctx, portalID, portalCreateTeamRequest}, opts...)...)}
 }
 
 func (_c *MockPortalTeamsSDK_CreatePortalTeam_Call) Run(run func(ctx context.Context, portalID string, portalCreateTeamRequest *components.PortalCreateTeamRequest, opts ...operations.Option)) *MockPortalTeamsSDK_CreatePortalTeam_Call {
@@ -172,9 +172,9 @@ type MockPortalTeamsSDK_DeletePortalTeam_Call struct {
 //   - teamID string
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalTeamsSDK_Expecter) DeletePortalTeam(ctx interface{}, teamID interface{}, portalID interface{}, opts ...interface{}) *MockPortalTeamsSDK_DeletePortalTeam_Call {
+func (_e *MockPortalTeamsSDK_Expecter) DeletePortalTeam(ctx any, teamID any, portalID any, opts ...any) *MockPortalTeamsSDK_DeletePortalTeam_Call {
 	return &MockPortalTeamsSDK_DeletePortalTeam_Call{Call: _e.mock.On("DeletePortalTeam",
-		append([]interface{}{ctx, teamID, portalID}, opts...)...)}
+		append([]any{ctx, teamID, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalTeamsSDK_DeletePortalTeam_Call) Run(run func(ctx context.Context, teamID string, portalID string, opts ...operations.Option)) *MockPortalTeamsSDK_DeletePortalTeam_Call {
@@ -261,9 +261,9 @@ type MockPortalTeamsSDK_GetPortalTeam_Call struct {
 //   - teamID string
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalTeamsSDK_Expecter) GetPortalTeam(ctx interface{}, teamID interface{}, portalID interface{}, opts ...interface{}) *MockPortalTeamsSDK_GetPortalTeam_Call {
+func (_e *MockPortalTeamsSDK_Expecter) GetPortalTeam(ctx any, teamID any, portalID any, opts ...any) *MockPortalTeamsSDK_GetPortalTeam_Call {
 	return &MockPortalTeamsSDK_GetPortalTeam_Call{Call: _e.mock.On("GetPortalTeam",
-		append([]interface{}{ctx, teamID, portalID}, opts...)...)}
+		append([]any{ctx, teamID, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalTeamsSDK_GetPortalTeam_Call) Run(run func(ctx context.Context, teamID string, portalID string, opts ...operations.Option)) *MockPortalTeamsSDK_GetPortalTeam_Call {
@@ -349,9 +349,9 @@ type MockPortalTeamsSDK_ListPortalTeams_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalTeamsRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamsSDK_Expecter) ListPortalTeams(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalTeamsSDK_ListPortalTeams_Call {
+func (_e *MockPortalTeamsSDK_Expecter) ListPortalTeams(ctx any, request any, opts ...any) *MockPortalTeamsSDK_ListPortalTeams_Call {
 	return &MockPortalTeamsSDK_ListPortalTeams_Call{Call: _e.mock.On("ListPortalTeams",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalTeamsSDK_ListPortalTeams_Call) Run(run func(ctx context.Context, request operations.ListPortalTeamsRequest, opts ...operations.Option)) *MockPortalTeamsSDK_ListPortalTeams_Call {
@@ -432,9 +432,9 @@ type MockPortalTeamsSDK_UpdatePortalTeam_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdatePortalTeamRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamsSDK_Expecter) UpdatePortalTeam(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalTeamsSDK_UpdatePortalTeam_Call {
+func (_e *MockPortalTeamsSDK_Expecter) UpdatePortalTeam(ctx any, request any, opts ...any) *MockPortalTeamsSDK_UpdatePortalTeam_Call {
 	return &MockPortalTeamsSDK_UpdatePortalTeam_Call{Call: _e.mock.On("UpdatePortalTeam",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalTeamsSDK_UpdatePortalTeam_Call) Run(run func(ctx context.Context, request operations.UpdatePortalTeamRequest, opts ...operations.Option)) *MockPortalTeamsSDK_UpdatePortalTeam_Call {

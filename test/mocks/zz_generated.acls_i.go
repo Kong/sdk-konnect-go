@@ -81,9 +81,9 @@ type MockACLsSDK_CreateACLWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.CreateACLWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockACLsSDK_Expecter) CreateACLWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockACLsSDK_CreateACLWithConsumer_Call {
+func (_e *MockACLsSDK_Expecter) CreateACLWithConsumer(ctx any, request any, opts ...any) *MockACLsSDK_CreateACLWithConsumer_Call {
 	return &MockACLsSDK_CreateACLWithConsumer_Call{Call: _e.mock.On("CreateACLWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockACLsSDK_CreateACLWithConsumer_Call) Run(run func(ctx context.Context, request operations.CreateACLWithConsumerRequest, opts ...operations.Option)) *MockACLsSDK_CreateACLWithConsumer_Call {
@@ -164,9 +164,9 @@ type MockACLsSDK_DeleteACLWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.DeleteACLWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockACLsSDK_Expecter) DeleteACLWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockACLsSDK_DeleteACLWithConsumer_Call {
+func (_e *MockACLsSDK_Expecter) DeleteACLWithConsumer(ctx any, request any, opts ...any) *MockACLsSDK_DeleteACLWithConsumer_Call {
 	return &MockACLsSDK_DeleteACLWithConsumer_Call{Call: _e.mock.On("DeleteACLWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockACLsSDK_DeleteACLWithConsumer_Call) Run(run func(ctx context.Context, request operations.DeleteACLWithConsumerRequest, opts ...operations.Option)) *MockACLsSDK_DeleteACLWithConsumer_Call {
@@ -248,9 +248,9 @@ type MockACLsSDK_GetACL_Call struct {
 //   - aclID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockACLsSDK_Expecter) GetACL(ctx interface{}, aclID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockACLsSDK_GetACL_Call {
+func (_e *MockACLsSDK_Expecter) GetACL(ctx any, aclID any, controlPlaneID any, opts ...any) *MockACLsSDK_GetACL_Call {
 	return &MockACLsSDK_GetACL_Call{Call: _e.mock.On("GetACL",
-		append([]interface{}{ctx, aclID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, aclID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockACLsSDK_GetACL_Call) Run(run func(ctx context.Context, aclID string, controlPlaneID string, opts ...operations.Option)) *MockACLsSDK_GetACL_Call {
@@ -336,9 +336,9 @@ type MockACLsSDK_GetACLWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.GetACLWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockACLsSDK_Expecter) GetACLWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockACLsSDK_GetACLWithConsumer_Call {
+func (_e *MockACLsSDK_Expecter) GetACLWithConsumer(ctx any, request any, opts ...any) *MockACLsSDK_GetACLWithConsumer_Call {
 	return &MockACLsSDK_GetACLWithConsumer_Call{Call: _e.mock.On("GetACLWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockACLsSDK_GetACLWithConsumer_Call) Run(run func(ctx context.Context, request operations.GetACLWithConsumerRequest, opts ...operations.Option)) *MockACLsSDK_GetACLWithConsumer_Call {
@@ -419,9 +419,9 @@ type MockACLsSDK_ListACL_Call struct {
 //   - ctx context.Context
 //   - request operations.ListACLRequest
 //   - opts ...operations.Option
-func (_e *MockACLsSDK_Expecter) ListACL(ctx interface{}, request interface{}, opts ...interface{}) *MockACLsSDK_ListACL_Call {
+func (_e *MockACLsSDK_Expecter) ListACL(ctx any, request any, opts ...any) *MockACLsSDK_ListACL_Call {
 	return &MockACLsSDK_ListACL_Call{Call: _e.mock.On("ListACL",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockACLsSDK_ListACL_Call) Run(run func(ctx context.Context, request operations.ListACLRequest, opts ...operations.Option)) *MockACLsSDK_ListACL_Call {
@@ -502,9 +502,9 @@ type MockACLsSDK_ListACLWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.ListACLWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockACLsSDK_Expecter) ListACLWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockACLsSDK_ListACLWithConsumer_Call {
+func (_e *MockACLsSDK_Expecter) ListACLWithConsumer(ctx any, request any, opts ...any) *MockACLsSDK_ListACLWithConsumer_Call {
 	return &MockACLsSDK_ListACLWithConsumer_Call{Call: _e.mock.On("ListACLWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockACLsSDK_ListACLWithConsumer_Call) Run(run func(ctx context.Context, request operations.ListACLWithConsumerRequest, opts ...operations.Option)) *MockACLsSDK_ListACLWithConsumer_Call {
@@ -585,9 +585,9 @@ type MockACLsSDK_UpsertACLWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertACLWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockACLsSDK_Expecter) UpsertACLWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockACLsSDK_UpsertACLWithConsumer_Call {
+func (_e *MockACLsSDK_Expecter) UpsertACLWithConsumer(ctx any, request any, opts ...any) *MockACLsSDK_UpsertACLWithConsumer_Call {
 	return &MockACLsSDK_UpsertACLWithConsumer_Call{Call: _e.mock.On("UpsertACLWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockACLsSDK_UpsertACLWithConsumer_Call) Run(run func(ctx context.Context, request operations.UpsertACLWithConsumerRequest, opts ...operations.Option)) *MockACLsSDK_UpsertACLWithConsumer_Call {
