@@ -1,0 +1,13 @@
+# Workflow
+
+The billing workflow settings for this profile
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `Collection`                                                                                    | [*components.WorkflowCollectionSettings](../../models/components/workflowcollectionsettings.md) | :heavy_minus_sign:                                                                              | The collection settings for this workflow                                                       |
+| `Invoicing`                                                                                     | [*components.WorkflowInvoiceSettings](../../models/components/workflowinvoicesettings.md)       | :heavy_minus_sign:                                                                              | The invoicing settings for this workflow                                                        |
+| `Payment`                                                                                       | [*components.Payment](../../models/components/payment.md)                                       | :heavy_minus_sign:                                                                              | The payment settings for this workflow                                                          |
+| `Tax`                                                                                           | [*components.WorkflowTaxSettings](../../models/components/workflowtaxsettings.md)               | :heavy_minus_sign:                                                                              | The tax settings for this workflow                                                              |

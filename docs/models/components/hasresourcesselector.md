@@ -1,0 +1,11 @@
+# HasResourcesSelector
+
+Entity selector that includes services by mapped resources.
+
+
+## Fields
+
+| Field                                                                                                                            | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `Selector`                                                                                                                       | [components.HasResourcesSelectorServiceSelectorSelector](../../models/components/hasresourcesselectorserviceselectorselector.md) | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              |
+| `SelectorParameters`                                                                                                             | [components.HasResourcesSelectorParams](../../models/components/hasresourcesselectorparams.md)                                   | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              |

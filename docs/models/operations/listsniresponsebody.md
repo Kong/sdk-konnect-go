@@ -1,0 +1,12 @@
+# ListSniResponseBody
+
+A successful response listing SNIs
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Data`                                                                                                           | [][components.Sni](../../models/components/sni.md)                                                               | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `Next`                                                                                                           | `*string`                                                                                                        | :heavy_minus_sign:                                                                                               | URI to the next page (may be null)                                                                               |
+| `Offset`                                                                                                         | `*string`                                                                                                        | :heavy_minus_sign:                                                                                               | Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page |

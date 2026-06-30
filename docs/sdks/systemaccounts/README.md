@@ -1,0 +1,316 @@
+# SystemAccounts
+
+## Overview
+
+### Available Operations
+
+* [GetSystemAccounts](#getsystemaccounts) - List System Accounts
+* [PostSystemAccounts](#postsystemaccounts) - Create System Account
+* [GetSystemAccountsID](#getsystemaccountsid) - Get a System Account
+* [PatchSystemAccountsID](#patchsystemaccountsid) - Update System Account
+* [DeleteSystemAccountsID](#deletesystemaccountsid) - Delete System Account
+
+## GetSystemAccounts
+
+Returns an array of system accounts (SA) in the organization. Returns 400 if any filter parameters are invalid.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-system-accounts" method="get" path="/v3/system-accounts" example="Sample System Accounts" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccounts.GetSystemAccounts(ctx, operations.GetSystemAccountsRequest{
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        Filter: &operations.GetSystemAccountsQueryParamFilter{
+            KonnectManaged: sdkkonnectgo.Pointer(true),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.SystemAccountCollection != nil {
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [operations.GetSystemAccountsRequest](../../models/operations/getsystemaccountsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
+
+### Response
+
+**[*operations.GetSystemAccountsResponse](../../models/operations/getsystemaccountsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401, 403                    | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## PostSystemAccounts
+
+Creates a system account. Returns a 409 if a system account with the same name already exists.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="post-system-accounts" method="post" path="/v3/system-accounts" example="Sample System Account" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccounts.PostSystemAccounts(ctx, &components.CreateSystemAccount{
+        Name: "Sample System Account",
+        Description: "This is a sample system account description.",
+        KonnectManaged: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.SystemAccount != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
+| `request`                                                                        | [components.CreateSystemAccount](../../models/components/createsystemaccount.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |
+
+### Response
+
+**[*operations.PostSystemAccountsResponse](../../models/operations/postsystemaccountsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401, 403                    | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetSystemAccountsID
+
+Returns the system account (SA) for the SA ID specified as a path parameter.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-system-accounts-id" method="get" path="/v3/system-accounts/{accountId}" example="Sample System Account" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccounts.GetSystemAccountsID(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.SystemAccount != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `accountID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the system account.                                |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.GetSystemAccountsIDResponse](../../models/operations/getsystemaccountsidresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401, 403                    | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## PatchSystemAccountsID
+
+Updates the specified system account. Returns a 409 if the updated name is the same as another system account in the organization.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="patch-system-accounts-id" method="patch" path="/v3/system-accounts/{accountId}" example="Sample System Account" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccounts.PatchSystemAccountsID(ctx, "<id>", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.SystemAccount != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |
+| `accountID`                                                                       | `string`                                                                          | :heavy_check_mark:                                                                | ID of the system account.                                                         |
+| `updateSystemAccount`                                                             | [*components.UpdateSystemAccount](../../models/components/updatesystemaccount.md) | :heavy_minus_sign:                                                                | The request schema for the update system account request.                         |
+| `opts`                                                                            | [][operations.Option](../../models/operations/option.md)                          | :heavy_minus_sign:                                                                | The options for this request.                                                     |
+
+### Response
+
+**[*operations.PatchSystemAccountsIDResponse](../../models/operations/patchsystemaccountsidresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401, 403                    | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteSystemAccountsID
+
+Deletes the specified system account. Returns 404 if the requested account was not found.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-system-accounts-id" method="delete" path="/v3/system-accounts/{accountId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccounts.DeleteSystemAccountsID(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `accountID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the system account.                                |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.DeleteSystemAccountsIDResponse](../../models/operations/deletesystemaccountsidresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401, 403                    | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |

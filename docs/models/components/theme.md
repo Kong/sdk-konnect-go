@@ -1,0 +1,10 @@
+# Theme
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `Name`                                                                                        | `*string`                                                                                     | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `Mode`                                                                                        | [*components.PortalCustomizationV3Mode](../../models/components/portalcustomizationv3mode.md) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `Colors`                                                                                      | [*components.Colors](../../models/components/colors.md)                                       | :heavy_minus_sign:                                                                            | N/A                                                                                           |

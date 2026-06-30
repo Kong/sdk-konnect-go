@@ -1,0 +1,11 @@
+# ConfigSchema
+
+Defines the shape of the API spec provider config.
+
+
+## Fields
+
+| Field                                                                                                                                       | Type                                                                                                                                        | Required                                                                                                                                    | Description                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                                      | [components.CatalogIntegrationAPISpecProviderType](../../models/components/catalogintegrationapispecprovidertype.md)                        | :heavy_check_mark:                                                                                                                          | N/A                                                                                                                                         |
+| `Definition`                                                                                                                                | map[string][components.CatalogIntegrationAPISpecProviderDefinition](../../models/components/catalogintegrationapispecproviderdefinition.md) | :heavy_check_mark:                                                                                                                          | N/A                                                                                                                                         |

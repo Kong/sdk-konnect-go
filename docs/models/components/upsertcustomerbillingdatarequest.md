@@ -1,0 +1,11 @@
+# UpsertCustomerBillingDataRequest
+
+CustomerBillingData upsert request.
+
+
+## Fields
+
+| Field                                                                                                                                     | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `BillingProfile`                                                                                                                          | [*components.UpsertCustomerBillingDataRequestBillingProfile](../../models/components/upsertcustomerbillingdatarequestbillingprofile.md)   | :heavy_minus_sign:                                                                                                                        | The billing profile for the customer.<br/><br/>If not provided, the default billing profile will be used.                                 |
+| `AppData`                                                                                                                                 | [*components.UpsertCustomerBillingDataRequestAppCustomerData](../../models/components/upsertcustomerbillingdatarequestappcustomerdata.md) | :heavy_minus_sign:                                                                                                                        | App customer data.                                                                                                                        |
