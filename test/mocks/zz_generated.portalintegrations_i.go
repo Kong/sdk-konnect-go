@@ -82,9 +82,9 @@ type MockPortalIntegrationsSDK_GetPortalIntegrations_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalIntegrationsSDK_Expecter) GetPortalIntegrations(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalIntegrationsSDK_GetPortalIntegrations_Call {
+func (_e *MockPortalIntegrationsSDK_Expecter) GetPortalIntegrations(ctx any, portalID any, opts ...any) *MockPortalIntegrationsSDK_GetPortalIntegrations_Call {
 	return &MockPortalIntegrationsSDK_GetPortalIntegrations_Call{Call: _e.mock.On("GetPortalIntegrations",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalIntegrationsSDK_GetPortalIntegrations_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalIntegrationsSDK_GetPortalIntegrations_Call {
@@ -166,9 +166,9 @@ type MockPortalIntegrationsSDK_UpdatePortalIntegrations_Call struct {
 //   - portalID string
 //   - updatePortalIntegrations *components.UpdatePortalIntegrations
 //   - opts ...operations.Option
-func (_e *MockPortalIntegrationsSDK_Expecter) UpdatePortalIntegrations(ctx interface{}, portalID interface{}, updatePortalIntegrations interface{}, opts ...interface{}) *MockPortalIntegrationsSDK_UpdatePortalIntegrations_Call {
+func (_e *MockPortalIntegrationsSDK_Expecter) UpdatePortalIntegrations(ctx any, portalID any, updatePortalIntegrations any, opts ...any) *MockPortalIntegrationsSDK_UpdatePortalIntegrations_Call {
 	return &MockPortalIntegrationsSDK_UpdatePortalIntegrations_Call{Call: _e.mock.On("UpdatePortalIntegrations",
-		append([]interface{}{ctx, portalID, updatePortalIntegrations}, opts...)...)}
+		append([]any{ctx, portalID, updatePortalIntegrations}, opts...)...)}
 }
 
 func (_c *MockPortalIntegrationsSDK_UpdatePortalIntegrations_Call) Run(run func(ctx context.Context, portalID string, updatePortalIntegrations *components.UpdatePortalIntegrations, opts ...operations.Option)) *MockPortalIntegrationsSDK_UpdatePortalIntegrations_Call {
@@ -255,9 +255,9 @@ type MockPortalIntegrationsSDK_UpsertPortalIntegrations_Call struct {
 //   - portalID string
 //   - portalIntegrations *components.PortalIntegrations
 //   - opts ...operations.Option
-func (_e *MockPortalIntegrationsSDK_Expecter) UpsertPortalIntegrations(ctx interface{}, portalID interface{}, portalIntegrations interface{}, opts ...interface{}) *MockPortalIntegrationsSDK_UpsertPortalIntegrations_Call {
+func (_e *MockPortalIntegrationsSDK_Expecter) UpsertPortalIntegrations(ctx any, portalID any, portalIntegrations any, opts ...any) *MockPortalIntegrationsSDK_UpsertPortalIntegrations_Call {
 	return &MockPortalIntegrationsSDK_UpsertPortalIntegrations_Call{Call: _e.mock.On("UpsertPortalIntegrations",
-		append([]interface{}{ctx, portalID, portalIntegrations}, opts...)...)}
+		append([]any{ctx, portalID, portalIntegrations}, opts...)...)}
 }
 
 func (_c *MockPortalIntegrationsSDK_UpsertPortalIntegrations_Call) Run(run func(ctx context.Context, portalID string, portalIntegrations *components.PortalIntegrations, opts ...operations.Option)) *MockPortalIntegrationsSDK_UpsertPortalIntegrations_Call {

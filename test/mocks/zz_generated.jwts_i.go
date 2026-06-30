@@ -81,9 +81,9 @@ type MockJWTsSDK_CreateJwtWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.CreateJwtWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockJWTsSDK_Expecter) CreateJwtWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockJWTsSDK_CreateJwtWithConsumer_Call {
+func (_e *MockJWTsSDK_Expecter) CreateJwtWithConsumer(ctx any, request any, opts ...any) *MockJWTsSDK_CreateJwtWithConsumer_Call {
 	return &MockJWTsSDK_CreateJwtWithConsumer_Call{Call: _e.mock.On("CreateJwtWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockJWTsSDK_CreateJwtWithConsumer_Call) Run(run func(ctx context.Context, request operations.CreateJwtWithConsumerRequest, opts ...operations.Option)) *MockJWTsSDK_CreateJwtWithConsumer_Call {
@@ -164,9 +164,9 @@ type MockJWTsSDK_DeleteJwtWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.DeleteJwtWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockJWTsSDK_Expecter) DeleteJwtWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockJWTsSDK_DeleteJwtWithConsumer_Call {
+func (_e *MockJWTsSDK_Expecter) DeleteJwtWithConsumer(ctx any, request any, opts ...any) *MockJWTsSDK_DeleteJwtWithConsumer_Call {
 	return &MockJWTsSDK_DeleteJwtWithConsumer_Call{Call: _e.mock.On("DeleteJwtWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockJWTsSDK_DeleteJwtWithConsumer_Call) Run(run func(ctx context.Context, request operations.DeleteJwtWithConsumerRequest, opts ...operations.Option)) *MockJWTsSDK_DeleteJwtWithConsumer_Call {
@@ -248,9 +248,9 @@ type MockJWTsSDK_GetJwt_Call struct {
 //   - jwtID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockJWTsSDK_Expecter) GetJwt(ctx interface{}, jwtID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockJWTsSDK_GetJwt_Call {
+func (_e *MockJWTsSDK_Expecter) GetJwt(ctx any, jwtID any, controlPlaneID any, opts ...any) *MockJWTsSDK_GetJwt_Call {
 	return &MockJWTsSDK_GetJwt_Call{Call: _e.mock.On("GetJwt",
-		append([]interface{}{ctx, jwtID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, jwtID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockJWTsSDK_GetJwt_Call) Run(run func(ctx context.Context, jwtID string, controlPlaneID string, opts ...operations.Option)) *MockJWTsSDK_GetJwt_Call {
@@ -336,9 +336,9 @@ type MockJWTsSDK_GetJwtWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.GetJwtWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockJWTsSDK_Expecter) GetJwtWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockJWTsSDK_GetJwtWithConsumer_Call {
+func (_e *MockJWTsSDK_Expecter) GetJwtWithConsumer(ctx any, request any, opts ...any) *MockJWTsSDK_GetJwtWithConsumer_Call {
 	return &MockJWTsSDK_GetJwtWithConsumer_Call{Call: _e.mock.On("GetJwtWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockJWTsSDK_GetJwtWithConsumer_Call) Run(run func(ctx context.Context, request operations.GetJwtWithConsumerRequest, opts ...operations.Option)) *MockJWTsSDK_GetJwtWithConsumer_Call {
@@ -419,9 +419,9 @@ type MockJWTsSDK_ListJwt_Call struct {
 //   - ctx context.Context
 //   - request operations.ListJwtRequest
 //   - opts ...operations.Option
-func (_e *MockJWTsSDK_Expecter) ListJwt(ctx interface{}, request interface{}, opts ...interface{}) *MockJWTsSDK_ListJwt_Call {
+func (_e *MockJWTsSDK_Expecter) ListJwt(ctx any, request any, opts ...any) *MockJWTsSDK_ListJwt_Call {
 	return &MockJWTsSDK_ListJwt_Call{Call: _e.mock.On("ListJwt",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockJWTsSDK_ListJwt_Call) Run(run func(ctx context.Context, request operations.ListJwtRequest, opts ...operations.Option)) *MockJWTsSDK_ListJwt_Call {
@@ -502,9 +502,9 @@ type MockJWTsSDK_ListJwtWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.ListJwtWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockJWTsSDK_Expecter) ListJwtWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockJWTsSDK_ListJwtWithConsumer_Call {
+func (_e *MockJWTsSDK_Expecter) ListJwtWithConsumer(ctx any, request any, opts ...any) *MockJWTsSDK_ListJwtWithConsumer_Call {
 	return &MockJWTsSDK_ListJwtWithConsumer_Call{Call: _e.mock.On("ListJwtWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockJWTsSDK_ListJwtWithConsumer_Call) Run(run func(ctx context.Context, request operations.ListJwtWithConsumerRequest, opts ...operations.Option)) *MockJWTsSDK_ListJwtWithConsumer_Call {
@@ -585,9 +585,9 @@ type MockJWTsSDK_UpsertJwtWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertJwtWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockJWTsSDK_Expecter) UpsertJwtWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockJWTsSDK_UpsertJwtWithConsumer_Call {
+func (_e *MockJWTsSDK_Expecter) UpsertJwtWithConsumer(ctx any, request any, opts ...any) *MockJWTsSDK_UpsertJwtWithConsumer_Call {
 	return &MockJWTsSDK_UpsertJwtWithConsumer_Call{Call: _e.mock.On("UpsertJwtWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockJWTsSDK_UpsertJwtWithConsumer_Call) Run(run func(ctx context.Context, request operations.UpsertJwtWithConsumerRequest, opts ...operations.Option)) *MockJWTsSDK_UpsertJwtWithConsumer_Call {

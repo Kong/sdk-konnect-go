@@ -83,9 +83,9 @@ type MockKeysSDK_CreateKey_Call struct {
 //   - controlPlaneID string
 //   - key components.Key
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) CreateKey(ctx interface{}, controlPlaneID interface{}, key interface{}, opts ...interface{}) *MockKeysSDK_CreateKey_Call {
+func (_e *MockKeysSDK_Expecter) CreateKey(ctx any, controlPlaneID any, key any, opts ...any) *MockKeysSDK_CreateKey_Call {
 	return &MockKeysSDK_CreateKey_Call{Call: _e.mock.On("CreateKey",
-		append([]interface{}{ctx, controlPlaneID, key}, opts...)...)}
+		append([]any{ctx, controlPlaneID, key}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_CreateKey_Call) Run(run func(ctx context.Context, controlPlaneID string, key components.Key, opts ...operations.Option)) *MockKeysSDK_CreateKey_Call {
@@ -171,9 +171,9 @@ type MockKeysSDK_CreateKeyWithKeySet_Call struct {
 //   - ctx context.Context
 //   - request operations.CreateKeyWithKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) CreateKeyWithKeySet(ctx interface{}, request interface{}, opts ...interface{}) *MockKeysSDK_CreateKeyWithKeySet_Call {
+func (_e *MockKeysSDK_Expecter) CreateKeyWithKeySet(ctx any, request any, opts ...any) *MockKeysSDK_CreateKeyWithKeySet_Call {
 	return &MockKeysSDK_CreateKeyWithKeySet_Call{Call: _e.mock.On("CreateKeyWithKeySet",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_CreateKeyWithKeySet_Call) Run(run func(ctx context.Context, request operations.CreateKeyWithKeySetRequest, opts ...operations.Option)) *MockKeysSDK_CreateKeyWithKeySet_Call {
@@ -255,9 +255,9 @@ type MockKeysSDK_DeleteKey_Call struct {
 //   - controlPlaneID string
 //   - keyID string
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) DeleteKey(ctx interface{}, controlPlaneID interface{}, keyID interface{}, opts ...interface{}) *MockKeysSDK_DeleteKey_Call {
+func (_e *MockKeysSDK_Expecter) DeleteKey(ctx any, controlPlaneID any, keyID any, opts ...any) *MockKeysSDK_DeleteKey_Call {
 	return &MockKeysSDK_DeleteKey_Call{Call: _e.mock.On("DeleteKey",
-		append([]interface{}{ctx, controlPlaneID, keyID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, keyID}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_DeleteKey_Call) Run(run func(ctx context.Context, controlPlaneID string, keyID string, opts ...operations.Option)) *MockKeysSDK_DeleteKey_Call {
@@ -343,9 +343,9 @@ type MockKeysSDK_DeleteKeyWithKeySet_Call struct {
 //   - ctx context.Context
 //   - request operations.DeleteKeyWithKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) DeleteKeyWithKeySet(ctx interface{}, request interface{}, opts ...interface{}) *MockKeysSDK_DeleteKeyWithKeySet_Call {
+func (_e *MockKeysSDK_Expecter) DeleteKeyWithKeySet(ctx any, request any, opts ...any) *MockKeysSDK_DeleteKeyWithKeySet_Call {
 	return &MockKeysSDK_DeleteKeyWithKeySet_Call{Call: _e.mock.On("DeleteKeyWithKeySet",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_DeleteKeyWithKeySet_Call) Run(run func(ctx context.Context, request operations.DeleteKeyWithKeySetRequest, opts ...operations.Option)) *MockKeysSDK_DeleteKeyWithKeySet_Call {
@@ -427,9 +427,9 @@ type MockKeysSDK_GetKey_Call struct {
 //   - keyID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) GetKey(ctx interface{}, keyID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockKeysSDK_GetKey_Call {
+func (_e *MockKeysSDK_Expecter) GetKey(ctx any, keyID any, controlPlaneID any, opts ...any) *MockKeysSDK_GetKey_Call {
 	return &MockKeysSDK_GetKey_Call{Call: _e.mock.On("GetKey",
-		append([]interface{}{ctx, keyID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, keyID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_GetKey_Call) Run(run func(ctx context.Context, keyID string, controlPlaneID string, opts ...operations.Option)) *MockKeysSDK_GetKey_Call {
@@ -515,9 +515,9 @@ type MockKeysSDK_GetKeyWithKeySet_Call struct {
 //   - ctx context.Context
 //   - request operations.GetKeyWithKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) GetKeyWithKeySet(ctx interface{}, request interface{}, opts ...interface{}) *MockKeysSDK_GetKeyWithKeySet_Call {
+func (_e *MockKeysSDK_Expecter) GetKeyWithKeySet(ctx any, request any, opts ...any) *MockKeysSDK_GetKeyWithKeySet_Call {
 	return &MockKeysSDK_GetKeyWithKeySet_Call{Call: _e.mock.On("GetKeyWithKeySet",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_GetKeyWithKeySet_Call) Run(run func(ctx context.Context, request operations.GetKeyWithKeySetRequest, opts ...operations.Option)) *MockKeysSDK_GetKeyWithKeySet_Call {
@@ -598,9 +598,9 @@ type MockKeysSDK_ListKey_Call struct {
 //   - ctx context.Context
 //   - request operations.ListKeyRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) ListKey(ctx interface{}, request interface{}, opts ...interface{}) *MockKeysSDK_ListKey_Call {
+func (_e *MockKeysSDK_Expecter) ListKey(ctx any, request any, opts ...any) *MockKeysSDK_ListKey_Call {
 	return &MockKeysSDK_ListKey_Call{Call: _e.mock.On("ListKey",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_ListKey_Call) Run(run func(ctx context.Context, request operations.ListKeyRequest, opts ...operations.Option)) *MockKeysSDK_ListKey_Call {
@@ -681,9 +681,9 @@ type MockKeysSDK_ListKeyWithKeySet_Call struct {
 //   - ctx context.Context
 //   - request operations.ListKeyWithKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) ListKeyWithKeySet(ctx interface{}, request interface{}, opts ...interface{}) *MockKeysSDK_ListKeyWithKeySet_Call {
+func (_e *MockKeysSDK_Expecter) ListKeyWithKeySet(ctx any, request any, opts ...any) *MockKeysSDK_ListKeyWithKeySet_Call {
 	return &MockKeysSDK_ListKeyWithKeySet_Call{Call: _e.mock.On("ListKeyWithKeySet",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_ListKeyWithKeySet_Call) Run(run func(ctx context.Context, request operations.ListKeyWithKeySetRequest, opts ...operations.Option)) *MockKeysSDK_ListKeyWithKeySet_Call {
@@ -764,9 +764,9 @@ type MockKeysSDK_UpsertKey_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertKeyRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) UpsertKey(ctx interface{}, request interface{}, opts ...interface{}) *MockKeysSDK_UpsertKey_Call {
+func (_e *MockKeysSDK_Expecter) UpsertKey(ctx any, request any, opts ...any) *MockKeysSDK_UpsertKey_Call {
 	return &MockKeysSDK_UpsertKey_Call{Call: _e.mock.On("UpsertKey",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_UpsertKey_Call) Run(run func(ctx context.Context, request operations.UpsertKeyRequest, opts ...operations.Option)) *MockKeysSDK_UpsertKey_Call {
@@ -847,9 +847,9 @@ type MockKeysSDK_UpsertKeyWithKeySet_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertKeyWithKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) UpsertKeyWithKeySet(ctx interface{}, request interface{}, opts ...interface{}) *MockKeysSDK_UpsertKeyWithKeySet_Call {
+func (_e *MockKeysSDK_Expecter) UpsertKeyWithKeySet(ctx any, request any, opts ...any) *MockKeysSDK_UpsertKeyWithKeySet_Call {
 	return &MockKeysSDK_UpsertKeyWithKeySet_Call{Call: _e.mock.On("UpsertKeyWithKeySet",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockKeysSDK_UpsertKeyWithKeySet_Call) Run(run func(ctx context.Context, request operations.UpsertKeyWithKeySetRequest, opts ...operations.Option)) *MockKeysSDK_UpsertKeyWithKeySet_Call {

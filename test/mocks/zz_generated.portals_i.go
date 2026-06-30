@@ -82,9 +82,9 @@ type MockPortalsSDK_CreatePortal_Call struct {
 //   - ctx context.Context
 //   - request components.CreatePortal
 //   - opts ...operations.Option
-func (_e *MockPortalsSDK_Expecter) CreatePortal(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalsSDK_CreatePortal_Call {
+func (_e *MockPortalsSDK_Expecter) CreatePortal(ctx any, request any, opts ...any) *MockPortalsSDK_CreatePortal_Call {
 	return &MockPortalsSDK_CreatePortal_Call{Call: _e.mock.On("CreatePortal",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalsSDK_CreatePortal_Call) Run(run func(ctx context.Context, request components.CreatePortal, opts ...operations.Option)) *MockPortalsSDK_CreatePortal_Call {
@@ -166,9 +166,9 @@ type MockPortalsSDK_DeletePortal_Call struct {
 //   - portalID string
 //   - force *operations.DeletePortalQueryParamForce
 //   - opts ...operations.Option
-func (_e *MockPortalsSDK_Expecter) DeletePortal(ctx interface{}, portalID interface{}, force interface{}, opts ...interface{}) *MockPortalsSDK_DeletePortal_Call {
+func (_e *MockPortalsSDK_Expecter) DeletePortal(ctx any, portalID any, force any, opts ...any) *MockPortalsSDK_DeletePortal_Call {
 	return &MockPortalsSDK_DeletePortal_Call{Call: _e.mock.On("DeletePortal",
-		append([]interface{}{ctx, portalID, force}, opts...)...)}
+		append([]any{ctx, portalID, force}, opts...)...)}
 }
 
 func (_c *MockPortalsSDK_DeletePortal_Call) Run(run func(ctx context.Context, portalID string, force *operations.DeletePortalQueryParamForce, opts ...operations.Option)) *MockPortalsSDK_DeletePortal_Call {
@@ -254,9 +254,9 @@ type MockPortalsSDK_GetPortal_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalsSDK_Expecter) GetPortal(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalsSDK_GetPortal_Call {
+func (_e *MockPortalsSDK_Expecter) GetPortal(ctx any, portalID any, opts ...any) *MockPortalsSDK_GetPortal_Call {
 	return &MockPortalsSDK_GetPortal_Call{Call: _e.mock.On("GetPortal",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalsSDK_GetPortal_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalsSDK_GetPortal_Call {
@@ -337,9 +337,9 @@ type MockPortalsSDK_ListPortals_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalsRequest
 //   - opts ...operations.Option
-func (_e *MockPortalsSDK_Expecter) ListPortals(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalsSDK_ListPortals_Call {
+func (_e *MockPortalsSDK_Expecter) ListPortals(ctx any, request any, opts ...any) *MockPortalsSDK_ListPortals_Call {
 	return &MockPortalsSDK_ListPortals_Call{Call: _e.mock.On("ListPortals",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalsSDK_ListPortals_Call) Run(run func(ctx context.Context, request operations.ListPortalsRequest, opts ...operations.Option)) *MockPortalsSDK_ListPortals_Call {
@@ -421,9 +421,9 @@ type MockPortalsSDK_UpdatePortal_Call struct {
 //   - portalID string
 //   - updatePortal components.UpdatePortal
 //   - opts ...operations.Option
-func (_e *MockPortalsSDK_Expecter) UpdatePortal(ctx interface{}, portalID interface{}, updatePortal interface{}, opts ...interface{}) *MockPortalsSDK_UpdatePortal_Call {
+func (_e *MockPortalsSDK_Expecter) UpdatePortal(ctx any, portalID any, updatePortal any, opts ...any) *MockPortalsSDK_UpdatePortal_Call {
 	return &MockPortalsSDK_UpdatePortal_Call{Call: _e.mock.On("UpdatePortal",
-		append([]interface{}{ctx, portalID, updatePortal}, opts...)...)}
+		append([]any{ctx, portalID, updatePortal}, opts...)...)}
 }
 
 func (_c *MockPortalsSDK_UpdatePortal_Call) Run(run func(ctx context.Context, portalID string, updatePortal components.UpdatePortal, opts ...operations.Option)) *MockPortalsSDK_UpdatePortal_Call {

@@ -82,9 +82,9 @@ type MockPortalDevelopersSDK_DeleteDeveloper_Call struct {
 //   - portalID string
 //   - developerID string
 //   - opts ...operations.Option
-func (_e *MockPortalDevelopersSDK_Expecter) DeleteDeveloper(ctx interface{}, portalID interface{}, developerID interface{}, opts ...interface{}) *MockPortalDevelopersSDK_DeleteDeveloper_Call {
+func (_e *MockPortalDevelopersSDK_Expecter) DeleteDeveloper(ctx any, portalID any, developerID any, opts ...any) *MockPortalDevelopersSDK_DeleteDeveloper_Call {
 	return &MockPortalDevelopersSDK_DeleteDeveloper_Call{Call: _e.mock.On("DeleteDeveloper",
-		append([]interface{}{ctx, portalID, developerID}, opts...)...)}
+		append([]any{ctx, portalID, developerID}, opts...)...)}
 }
 
 func (_c *MockPortalDevelopersSDK_DeleteDeveloper_Call) Run(run func(ctx context.Context, portalID string, developerID string, opts ...operations.Option)) *MockPortalDevelopersSDK_DeleteDeveloper_Call {
@@ -171,9 +171,9 @@ type MockPortalDevelopersSDK_GetDeveloper_Call struct {
 //   - portalID string
 //   - developerID string
 //   - opts ...operations.Option
-func (_e *MockPortalDevelopersSDK_Expecter) GetDeveloper(ctx interface{}, portalID interface{}, developerID interface{}, opts ...interface{}) *MockPortalDevelopersSDK_GetDeveloper_Call {
+func (_e *MockPortalDevelopersSDK_Expecter) GetDeveloper(ctx any, portalID any, developerID any, opts ...any) *MockPortalDevelopersSDK_GetDeveloper_Call {
 	return &MockPortalDevelopersSDK_GetDeveloper_Call{Call: _e.mock.On("GetDeveloper",
-		append([]interface{}{ctx, portalID, developerID}, opts...)...)}
+		append([]any{ctx, portalID, developerID}, opts...)...)}
 }
 
 func (_c *MockPortalDevelopersSDK_GetDeveloper_Call) Run(run func(ctx context.Context, portalID string, developerID string, opts ...operations.Option)) *MockPortalDevelopersSDK_GetDeveloper_Call {
@@ -259,9 +259,9 @@ type MockPortalDevelopersSDK_ListPortalDevelopers_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalDevelopersRequest
 //   - opts ...operations.Option
-func (_e *MockPortalDevelopersSDK_Expecter) ListPortalDevelopers(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalDevelopersSDK_ListPortalDevelopers_Call {
+func (_e *MockPortalDevelopersSDK_Expecter) ListPortalDevelopers(ctx any, request any, opts ...any) *MockPortalDevelopersSDK_ListPortalDevelopers_Call {
 	return &MockPortalDevelopersSDK_ListPortalDevelopers_Call{Call: _e.mock.On("ListPortalDevelopers",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalDevelopersSDK_ListPortalDevelopers_Call) Run(run func(ctx context.Context, request operations.ListPortalDevelopersRequest, opts ...operations.Option)) *MockPortalDevelopersSDK_ListPortalDevelopers_Call {
@@ -342,9 +342,9 @@ type MockPortalDevelopersSDK_UpdateDeveloper_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdateDeveloperRequest
 //   - opts ...operations.Option
-func (_e *MockPortalDevelopersSDK_Expecter) UpdateDeveloper(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalDevelopersSDK_UpdateDeveloper_Call {
+func (_e *MockPortalDevelopersSDK_Expecter) UpdateDeveloper(ctx any, request any, opts ...any) *MockPortalDevelopersSDK_UpdateDeveloper_Call {
 	return &MockPortalDevelopersSDK_UpdateDeveloper_Call{Call: _e.mock.On("UpdateDeveloper",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalDevelopersSDK_UpdateDeveloper_Call) Run(run func(ctx context.Context, request operations.UpdateDeveloperRequest, opts ...operations.Option)) *MockPortalDevelopersSDK_UpdateDeveloper_Call {

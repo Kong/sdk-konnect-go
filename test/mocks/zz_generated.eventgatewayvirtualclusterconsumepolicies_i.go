@@ -81,9 +81,9 @@ type MockEventGatewayVirtualClusterConsumePoliciesSDK_CreateEventGatewayVirtualC
 //   - ctx context.Context
 //   - request operations.CreateEventGatewayVirtualClusterConsumePolicyRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) CreateEventGatewayVirtualClusterConsumePolicy(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClusterConsumePoliciesSDK_CreateEventGatewayVirtualClusterConsumePolicy_Call {
+func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) CreateEventGatewayVirtualClusterConsumePolicy(ctx any, request any, opts ...any) *MockEventGatewayVirtualClusterConsumePoliciesSDK_CreateEventGatewayVirtualClusterConsumePolicy_Call {
 	return &MockEventGatewayVirtualClusterConsumePoliciesSDK_CreateEventGatewayVirtualClusterConsumePolicy_Call{Call: _e.mock.On("CreateEventGatewayVirtualClusterConsumePolicy",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClusterConsumePoliciesSDK_CreateEventGatewayVirtualClusterConsumePolicy_Call) Run(run func(ctx context.Context, request operations.CreateEventGatewayVirtualClusterConsumePolicyRequest, opts ...operations.Option)) *MockEventGatewayVirtualClusterConsumePoliciesSDK_CreateEventGatewayVirtualClusterConsumePolicy_Call {
@@ -164,9 +164,9 @@ type MockEventGatewayVirtualClusterConsumePoliciesSDK_DeleteEventGatewayVirtualC
 //   - ctx context.Context
 //   - request operations.DeleteEventGatewayVirtualClusterConsumePolicyRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) DeleteEventGatewayVirtualClusterConsumePolicy(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClusterConsumePoliciesSDK_DeleteEventGatewayVirtualClusterConsumePolicy_Call {
+func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) DeleteEventGatewayVirtualClusterConsumePolicy(ctx any, request any, opts ...any) *MockEventGatewayVirtualClusterConsumePoliciesSDK_DeleteEventGatewayVirtualClusterConsumePolicy_Call {
 	return &MockEventGatewayVirtualClusterConsumePoliciesSDK_DeleteEventGatewayVirtualClusterConsumePolicy_Call{Call: _e.mock.On("DeleteEventGatewayVirtualClusterConsumePolicy",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClusterConsumePoliciesSDK_DeleteEventGatewayVirtualClusterConsumePolicy_Call) Run(run func(ctx context.Context, request operations.DeleteEventGatewayVirtualClusterConsumePolicyRequest, opts ...operations.Option)) *MockEventGatewayVirtualClusterConsumePoliciesSDK_DeleteEventGatewayVirtualClusterConsumePolicy_Call {
@@ -247,9 +247,9 @@ type MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClus
 //   - ctx context.Context
 //   - request operations.GetEventGatewayVirtualClusterConsumePolicyRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) GetEventGatewayVirtualClusterConsumePolicy(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicy_Call {
+func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) GetEventGatewayVirtualClusterConsumePolicy(ctx any, request any, opts ...any) *MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicy_Call {
 	return &MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicy_Call{Call: _e.mock.On("GetEventGatewayVirtualClusterConsumePolicy",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicy_Call) Run(run func(ctx context.Context, request operations.GetEventGatewayVirtualClusterConsumePolicyRequest, opts ...operations.Option)) *MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicy_Call {
@@ -331,9 +331,9 @@ type MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClus
 //   - gatewayID string
 //   - virtualClusterID string
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) GetEventGatewayVirtualClusterConsumePolicyChain(ctx interface{}, gatewayID interface{}, virtualClusterID interface{}, opts ...interface{}) *MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicyChain_Call {
+func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) GetEventGatewayVirtualClusterConsumePolicyChain(ctx any, gatewayID any, virtualClusterID any, opts ...any) *MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicyChain_Call {
 	return &MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicyChain_Call{Call: _e.mock.On("GetEventGatewayVirtualClusterConsumePolicyChain",
-		append([]interface{}{ctx, gatewayID, virtualClusterID}, opts...)...)}
+		append([]any{ctx, gatewayID, virtualClusterID}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicyChain_Call) Run(run func(ctx context.Context, gatewayID string, virtualClusterID string, opts ...operations.Option)) *MockEventGatewayVirtualClusterConsumePoliciesSDK_GetEventGatewayVirtualClusterConsumePolicyChain_Call {
@@ -419,9 +419,9 @@ type MockEventGatewayVirtualClusterConsumePoliciesSDK_ListEventGatewayVirtualClu
 //   - ctx context.Context
 //   - request operations.ListEventGatewayVirtualClusterConsumePoliciesRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) ListEventGatewayVirtualClusterConsumePolicies(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClusterConsumePoliciesSDK_ListEventGatewayVirtualClusterConsumePolicies_Call {
+func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) ListEventGatewayVirtualClusterConsumePolicies(ctx any, request any, opts ...any) *MockEventGatewayVirtualClusterConsumePoliciesSDK_ListEventGatewayVirtualClusterConsumePolicies_Call {
 	return &MockEventGatewayVirtualClusterConsumePoliciesSDK_ListEventGatewayVirtualClusterConsumePolicies_Call{Call: _e.mock.On("ListEventGatewayVirtualClusterConsumePolicies",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClusterConsumePoliciesSDK_ListEventGatewayVirtualClusterConsumePolicies_Call) Run(run func(ctx context.Context, request operations.ListEventGatewayVirtualClusterConsumePoliciesRequest, opts ...operations.Option)) *MockEventGatewayVirtualClusterConsumePoliciesSDK_ListEventGatewayVirtualClusterConsumePolicies_Call {
@@ -502,9 +502,9 @@ type MockEventGatewayVirtualClusterConsumePoliciesSDK_MoveEventGatewayVirtualClu
 //   - ctx context.Context
 //   - request operations.MoveEventGatewayVirtualClusterConsumePolicyRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) MoveEventGatewayVirtualClusterConsumePolicy(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClusterConsumePoliciesSDK_MoveEventGatewayVirtualClusterConsumePolicy_Call {
+func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) MoveEventGatewayVirtualClusterConsumePolicy(ctx any, request any, opts ...any) *MockEventGatewayVirtualClusterConsumePoliciesSDK_MoveEventGatewayVirtualClusterConsumePolicy_Call {
 	return &MockEventGatewayVirtualClusterConsumePoliciesSDK_MoveEventGatewayVirtualClusterConsumePolicy_Call{Call: _e.mock.On("MoveEventGatewayVirtualClusterConsumePolicy",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClusterConsumePoliciesSDK_MoveEventGatewayVirtualClusterConsumePolicy_Call) Run(run func(ctx context.Context, request operations.MoveEventGatewayVirtualClusterConsumePolicyRequest, opts ...operations.Option)) *MockEventGatewayVirtualClusterConsumePoliciesSDK_MoveEventGatewayVirtualClusterConsumePolicy_Call {
@@ -585,9 +585,9 @@ type MockEventGatewayVirtualClusterConsumePoliciesSDK_PatchEventGatewayVirtualCl
 //   - ctx context.Context
 //   - request operations.PatchEventGatewayVirtualClusterConsumePolicyRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) PatchEventGatewayVirtualClusterConsumePolicy(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClusterConsumePoliciesSDK_PatchEventGatewayVirtualClusterConsumePolicy_Call {
+func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) PatchEventGatewayVirtualClusterConsumePolicy(ctx any, request any, opts ...any) *MockEventGatewayVirtualClusterConsumePoliciesSDK_PatchEventGatewayVirtualClusterConsumePolicy_Call {
 	return &MockEventGatewayVirtualClusterConsumePoliciesSDK_PatchEventGatewayVirtualClusterConsumePolicy_Call{Call: _e.mock.On("PatchEventGatewayVirtualClusterConsumePolicy",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClusterConsumePoliciesSDK_PatchEventGatewayVirtualClusterConsumePolicy_Call) Run(run func(ctx context.Context, request operations.PatchEventGatewayVirtualClusterConsumePolicyRequest, opts ...operations.Option)) *MockEventGatewayVirtualClusterConsumePoliciesSDK_PatchEventGatewayVirtualClusterConsumePolicy_Call {
@@ -668,9 +668,9 @@ type MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualC
 //   - ctx context.Context
 //   - request operations.UpdateEventGatewayVirtualClusterConsumePolicyRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) UpdateEventGatewayVirtualClusterConsumePolicy(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicy_Call {
+func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) UpdateEventGatewayVirtualClusterConsumePolicy(ctx any, request any, opts ...any) *MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicy_Call {
 	return &MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicy_Call{Call: _e.mock.On("UpdateEventGatewayVirtualClusterConsumePolicy",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicy_Call) Run(run func(ctx context.Context, request operations.UpdateEventGatewayVirtualClusterConsumePolicyRequest, opts ...operations.Option)) *MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicy_Call {
@@ -751,9 +751,9 @@ type MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualC
 //   - ctx context.Context
 //   - request operations.UpdateEventGatewayVirtualClusterConsumePolicyChainRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) UpdateEventGatewayVirtualClusterConsumePolicyChain(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicyChain_Call {
+func (_e *MockEventGatewayVirtualClusterConsumePoliciesSDK_Expecter) UpdateEventGatewayVirtualClusterConsumePolicyChain(ctx any, request any, opts ...any) *MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicyChain_Call {
 	return &MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicyChain_Call{Call: _e.mock.On("UpdateEventGatewayVirtualClusterConsumePolicyChain",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicyChain_Call) Run(run func(ctx context.Context, request operations.UpdateEventGatewayVirtualClusterConsumePolicyChainRequest, opts ...operations.Option)) *MockEventGatewayVirtualClusterConsumePoliciesSDK_UpdateEventGatewayVirtualClusterConsumePolicyChain_Call {

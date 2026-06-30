@@ -82,9 +82,9 @@ type MockDCRProvidersSDK_CreateDcrProvider_Call struct {
 //   - ctx context.Context
 //   - request components.CreateDcrProviderRequest
 //   - opts ...operations.Option
-func (_e *MockDCRProvidersSDK_Expecter) CreateDcrProvider(ctx interface{}, request interface{}, opts ...interface{}) *MockDCRProvidersSDK_CreateDcrProvider_Call {
+func (_e *MockDCRProvidersSDK_Expecter) CreateDcrProvider(ctx any, request any, opts ...any) *MockDCRProvidersSDK_CreateDcrProvider_Call {
 	return &MockDCRProvidersSDK_CreateDcrProvider_Call{Call: _e.mock.On("CreateDcrProvider",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockDCRProvidersSDK_CreateDcrProvider_Call) Run(run func(ctx context.Context, request components.CreateDcrProviderRequest, opts ...operations.Option)) *MockDCRProvidersSDK_CreateDcrProvider_Call {
@@ -165,9 +165,9 @@ type MockDCRProvidersSDK_DeleteDcrProvider_Call struct {
 //   - ctx context.Context
 //   - dcrProviderID string
 //   - opts ...operations.Option
-func (_e *MockDCRProvidersSDK_Expecter) DeleteDcrProvider(ctx interface{}, dcrProviderID interface{}, opts ...interface{}) *MockDCRProvidersSDK_DeleteDcrProvider_Call {
+func (_e *MockDCRProvidersSDK_Expecter) DeleteDcrProvider(ctx any, dcrProviderID any, opts ...any) *MockDCRProvidersSDK_DeleteDcrProvider_Call {
 	return &MockDCRProvidersSDK_DeleteDcrProvider_Call{Call: _e.mock.On("DeleteDcrProvider",
-		append([]interface{}{ctx, dcrProviderID}, opts...)...)}
+		append([]any{ctx, dcrProviderID}, opts...)...)}
 }
 
 func (_c *MockDCRProvidersSDK_DeleteDcrProvider_Call) Run(run func(ctx context.Context, dcrProviderID string, opts ...operations.Option)) *MockDCRProvidersSDK_DeleteDcrProvider_Call {
@@ -248,9 +248,9 @@ type MockDCRProvidersSDK_GetDcrProvider_Call struct {
 //   - ctx context.Context
 //   - dcrProviderID string
 //   - opts ...operations.Option
-func (_e *MockDCRProvidersSDK_Expecter) GetDcrProvider(ctx interface{}, dcrProviderID interface{}, opts ...interface{}) *MockDCRProvidersSDK_GetDcrProvider_Call {
+func (_e *MockDCRProvidersSDK_Expecter) GetDcrProvider(ctx any, dcrProviderID any, opts ...any) *MockDCRProvidersSDK_GetDcrProvider_Call {
 	return &MockDCRProvidersSDK_GetDcrProvider_Call{Call: _e.mock.On("GetDcrProvider",
-		append([]interface{}{ctx, dcrProviderID}, opts...)...)}
+		append([]any{ctx, dcrProviderID}, opts...)...)}
 }
 
 func (_c *MockDCRProvidersSDK_GetDcrProvider_Call) Run(run func(ctx context.Context, dcrProviderID string, opts ...operations.Option)) *MockDCRProvidersSDK_GetDcrProvider_Call {
@@ -331,9 +331,9 @@ type MockDCRProvidersSDK_ListDcrProviders_Call struct {
 //   - ctx context.Context
 //   - request operations.ListDcrProvidersRequest
 //   - opts ...operations.Option
-func (_e *MockDCRProvidersSDK_Expecter) ListDcrProviders(ctx interface{}, request interface{}, opts ...interface{}) *MockDCRProvidersSDK_ListDcrProviders_Call {
+func (_e *MockDCRProvidersSDK_Expecter) ListDcrProviders(ctx any, request any, opts ...any) *MockDCRProvidersSDK_ListDcrProviders_Call {
 	return &MockDCRProvidersSDK_ListDcrProviders_Call{Call: _e.mock.On("ListDcrProviders",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockDCRProvidersSDK_ListDcrProviders_Call) Run(run func(ctx context.Context, request operations.ListDcrProvidersRequest, opts ...operations.Option)) *MockDCRProvidersSDK_ListDcrProviders_Call {
@@ -415,9 +415,9 @@ type MockDCRProvidersSDK_UpdateDcrProvider_Call struct {
 //   - dcrProviderID string
 //   - updateDcrProviderRequest components.UpdateDcrProviderRequest
 //   - opts ...operations.Option
-func (_e *MockDCRProvidersSDK_Expecter) UpdateDcrProvider(ctx interface{}, dcrProviderID interface{}, updateDcrProviderRequest interface{}, opts ...interface{}) *MockDCRProvidersSDK_UpdateDcrProvider_Call {
+func (_e *MockDCRProvidersSDK_Expecter) UpdateDcrProvider(ctx any, dcrProviderID any, updateDcrProviderRequest any, opts ...any) *MockDCRProvidersSDK_UpdateDcrProvider_Call {
 	return &MockDCRProvidersSDK_UpdateDcrProvider_Call{Call: _e.mock.On("UpdateDcrProvider",
-		append([]interface{}{ctx, dcrProviderID, updateDcrProviderRequest}, opts...)...)}
+		append([]any{ctx, dcrProviderID, updateDcrProviderRequest}, opts...)...)}
 }
 
 func (_c *MockDCRProvidersSDK_UpdateDcrProvider_Call) Run(run func(ctx context.Context, dcrProviderID string, updateDcrProviderRequest components.UpdateDcrProviderRequest, opts ...operations.Option)) *MockDCRProvidersSDK_UpdateDcrProvider_Call {
@@ -503,9 +503,9 @@ type MockDCRProvidersSDK_VerifyDcrProvider_Call struct {
 //   - ctx context.Context
 //   - dcrProviderID string
 //   - opts ...operations.Option
-func (_e *MockDCRProvidersSDK_Expecter) VerifyDcrProvider(ctx interface{}, dcrProviderID interface{}, opts ...interface{}) *MockDCRProvidersSDK_VerifyDcrProvider_Call {
+func (_e *MockDCRProvidersSDK_Expecter) VerifyDcrProvider(ctx any, dcrProviderID any, opts ...any) *MockDCRProvidersSDK_VerifyDcrProvider_Call {
 	return &MockDCRProvidersSDK_VerifyDcrProvider_Call{Call: _e.mock.On("VerifyDcrProvider",
-		append([]interface{}{ctx, dcrProviderID}, opts...)...)}
+		append([]any{ctx, dcrProviderID}, opts...)...)}
 }
 
 func (_c *MockDCRProvidersSDK_VerifyDcrProvider_Call) Run(run func(ctx context.Context, dcrProviderID string, opts ...operations.Option)) *MockDCRProvidersSDK_VerifyDcrProvider_Call {

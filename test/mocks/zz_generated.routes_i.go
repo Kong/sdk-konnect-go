@@ -83,9 +83,9 @@ type MockRoutesSDK_CreateRoute_Call struct {
 //   - controlPlaneID string
 //   - route components.Route
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) CreateRoute(ctx interface{}, controlPlaneID interface{}, route interface{}, opts ...interface{}) *MockRoutesSDK_CreateRoute_Call {
+func (_e *MockRoutesSDK_Expecter) CreateRoute(ctx any, controlPlaneID any, route any, opts ...any) *MockRoutesSDK_CreateRoute_Call {
 	return &MockRoutesSDK_CreateRoute_Call{Call: _e.mock.On("CreateRoute",
-		append([]interface{}{ctx, controlPlaneID, route}, opts...)...)}
+		append([]any{ctx, controlPlaneID, route}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_CreateRoute_Call) Run(run func(ctx context.Context, controlPlaneID string, route components.Route, opts ...operations.Option)) *MockRoutesSDK_CreateRoute_Call {
@@ -171,9 +171,9 @@ type MockRoutesSDK_CreateRouteWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.CreateRouteWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) CreateRouteWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockRoutesSDK_CreateRouteWithService_Call {
+func (_e *MockRoutesSDK_Expecter) CreateRouteWithService(ctx any, request any, opts ...any) *MockRoutesSDK_CreateRouteWithService_Call {
 	return &MockRoutesSDK_CreateRouteWithService_Call{Call: _e.mock.On("CreateRouteWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_CreateRouteWithService_Call) Run(run func(ctx context.Context, request operations.CreateRouteWithServiceRequest, opts ...operations.Option)) *MockRoutesSDK_CreateRouteWithService_Call {
@@ -255,9 +255,9 @@ type MockRoutesSDK_DeleteRoute_Call struct {
 //   - controlPlaneID string
 //   - routeID string
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) DeleteRoute(ctx interface{}, controlPlaneID interface{}, routeID interface{}, opts ...interface{}) *MockRoutesSDK_DeleteRoute_Call {
+func (_e *MockRoutesSDK_Expecter) DeleteRoute(ctx any, controlPlaneID any, routeID any, opts ...any) *MockRoutesSDK_DeleteRoute_Call {
 	return &MockRoutesSDK_DeleteRoute_Call{Call: _e.mock.On("DeleteRoute",
-		append([]interface{}{ctx, controlPlaneID, routeID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, routeID}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_DeleteRoute_Call) Run(run func(ctx context.Context, controlPlaneID string, routeID string, opts ...operations.Option)) *MockRoutesSDK_DeleteRoute_Call {
@@ -343,9 +343,9 @@ type MockRoutesSDK_DeleteRouteWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.DeleteRouteWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) DeleteRouteWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockRoutesSDK_DeleteRouteWithService_Call {
+func (_e *MockRoutesSDK_Expecter) DeleteRouteWithService(ctx any, request any, opts ...any) *MockRoutesSDK_DeleteRouteWithService_Call {
 	return &MockRoutesSDK_DeleteRouteWithService_Call{Call: _e.mock.On("DeleteRouteWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_DeleteRouteWithService_Call) Run(run func(ctx context.Context, request operations.DeleteRouteWithServiceRequest, opts ...operations.Option)) *MockRoutesSDK_DeleteRouteWithService_Call {
@@ -427,9 +427,9 @@ type MockRoutesSDK_GetRoute_Call struct {
 //   - routeID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) GetRoute(ctx interface{}, routeID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockRoutesSDK_GetRoute_Call {
+func (_e *MockRoutesSDK_Expecter) GetRoute(ctx any, routeID any, controlPlaneID any, opts ...any) *MockRoutesSDK_GetRoute_Call {
 	return &MockRoutesSDK_GetRoute_Call{Call: _e.mock.On("GetRoute",
-		append([]interface{}{ctx, routeID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, routeID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_GetRoute_Call) Run(run func(ctx context.Context, routeID string, controlPlaneID string, opts ...operations.Option)) *MockRoutesSDK_GetRoute_Call {
@@ -515,9 +515,9 @@ type MockRoutesSDK_GetRouteWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.GetRouteWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) GetRouteWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockRoutesSDK_GetRouteWithService_Call {
+func (_e *MockRoutesSDK_Expecter) GetRouteWithService(ctx any, request any, opts ...any) *MockRoutesSDK_GetRouteWithService_Call {
 	return &MockRoutesSDK_GetRouteWithService_Call{Call: _e.mock.On("GetRouteWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_GetRouteWithService_Call) Run(run func(ctx context.Context, request operations.GetRouteWithServiceRequest, opts ...operations.Option)) *MockRoutesSDK_GetRouteWithService_Call {
@@ -598,9 +598,9 @@ type MockRoutesSDK_ListRoute_Call struct {
 //   - ctx context.Context
 //   - request operations.ListRouteRequest
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) ListRoute(ctx interface{}, request interface{}, opts ...interface{}) *MockRoutesSDK_ListRoute_Call {
+func (_e *MockRoutesSDK_Expecter) ListRoute(ctx any, request any, opts ...any) *MockRoutesSDK_ListRoute_Call {
 	return &MockRoutesSDK_ListRoute_Call{Call: _e.mock.On("ListRoute",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_ListRoute_Call) Run(run func(ctx context.Context, request operations.ListRouteRequest, opts ...operations.Option)) *MockRoutesSDK_ListRoute_Call {
@@ -681,9 +681,9 @@ type MockRoutesSDK_ListRouteWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.ListRouteWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) ListRouteWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockRoutesSDK_ListRouteWithService_Call {
+func (_e *MockRoutesSDK_Expecter) ListRouteWithService(ctx any, request any, opts ...any) *MockRoutesSDK_ListRouteWithService_Call {
 	return &MockRoutesSDK_ListRouteWithService_Call{Call: _e.mock.On("ListRouteWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_ListRouteWithService_Call) Run(run func(ctx context.Context, request operations.ListRouteWithServiceRequest, opts ...operations.Option)) *MockRoutesSDK_ListRouteWithService_Call {
@@ -764,9 +764,9 @@ type MockRoutesSDK_UpsertRoute_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertRouteRequest
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) UpsertRoute(ctx interface{}, request interface{}, opts ...interface{}) *MockRoutesSDK_UpsertRoute_Call {
+func (_e *MockRoutesSDK_Expecter) UpsertRoute(ctx any, request any, opts ...any) *MockRoutesSDK_UpsertRoute_Call {
 	return &MockRoutesSDK_UpsertRoute_Call{Call: _e.mock.On("UpsertRoute",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_UpsertRoute_Call) Run(run func(ctx context.Context, request operations.UpsertRouteRequest, opts ...operations.Option)) *MockRoutesSDK_UpsertRoute_Call {
@@ -847,9 +847,9 @@ type MockRoutesSDK_UpsertRouteWithService_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertRouteWithServiceRequest
 //   - opts ...operations.Option
-func (_e *MockRoutesSDK_Expecter) UpsertRouteWithService(ctx interface{}, request interface{}, opts ...interface{}) *MockRoutesSDK_UpsertRouteWithService_Call {
+func (_e *MockRoutesSDK_Expecter) UpsertRouteWithService(ctx any, request any, opts ...any) *MockRoutesSDK_UpsertRouteWithService_Call {
 	return &MockRoutesSDK_UpsertRouteWithService_Call{Call: _e.mock.On("UpsertRouteWithService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockRoutesSDK_UpsertRouteWithService_Call) Run(run func(ctx context.Context, request operations.UpsertRouteWithServiceRequest, opts ...operations.Option)) *MockRoutesSDK_UpsertRouteWithService_Call {

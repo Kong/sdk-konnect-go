@@ -81,9 +81,9 @@ type MockPortalTeamMembershipSDK_AddDeveloperToPortalTeam_Call struct {
 //   - ctx context.Context
 //   - request operations.AddDeveloperToPortalTeamRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamMembershipSDK_Expecter) AddDeveloperToPortalTeam(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalTeamMembershipSDK_AddDeveloperToPortalTeam_Call {
+func (_e *MockPortalTeamMembershipSDK_Expecter) AddDeveloperToPortalTeam(ctx any, request any, opts ...any) *MockPortalTeamMembershipSDK_AddDeveloperToPortalTeam_Call {
 	return &MockPortalTeamMembershipSDK_AddDeveloperToPortalTeam_Call{Call: _e.mock.On("AddDeveloperToPortalTeam",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalTeamMembershipSDK_AddDeveloperToPortalTeam_Call) Run(run func(ctx context.Context, request operations.AddDeveloperToPortalTeamRequest, opts ...operations.Option)) *MockPortalTeamMembershipSDK_AddDeveloperToPortalTeam_Call {
@@ -164,9 +164,9 @@ type MockPortalTeamMembershipSDK_ListPortalDeveloperTeams_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalDeveloperTeamsRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamMembershipSDK_Expecter) ListPortalDeveloperTeams(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalTeamMembershipSDK_ListPortalDeveloperTeams_Call {
+func (_e *MockPortalTeamMembershipSDK_Expecter) ListPortalDeveloperTeams(ctx any, request any, opts ...any) *MockPortalTeamMembershipSDK_ListPortalDeveloperTeams_Call {
 	return &MockPortalTeamMembershipSDK_ListPortalDeveloperTeams_Call{Call: _e.mock.On("ListPortalDeveloperTeams",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalTeamMembershipSDK_ListPortalDeveloperTeams_Call) Run(run func(ctx context.Context, request operations.ListPortalDeveloperTeamsRequest, opts ...operations.Option)) *MockPortalTeamMembershipSDK_ListPortalDeveloperTeams_Call {
@@ -247,9 +247,9 @@ type MockPortalTeamMembershipSDK_ListPortalTeamDevelopers_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalTeamDevelopersRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamMembershipSDK_Expecter) ListPortalTeamDevelopers(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalTeamMembershipSDK_ListPortalTeamDevelopers_Call {
+func (_e *MockPortalTeamMembershipSDK_Expecter) ListPortalTeamDevelopers(ctx any, request any, opts ...any) *MockPortalTeamMembershipSDK_ListPortalTeamDevelopers_Call {
 	return &MockPortalTeamMembershipSDK_ListPortalTeamDevelopers_Call{Call: _e.mock.On("ListPortalTeamDevelopers",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalTeamMembershipSDK_ListPortalTeamDevelopers_Call) Run(run func(ctx context.Context, request operations.ListPortalTeamDevelopersRequest, opts ...operations.Option)) *MockPortalTeamMembershipSDK_ListPortalTeamDevelopers_Call {
@@ -330,9 +330,9 @@ type MockPortalTeamMembershipSDK_RemoveDeveloperFromPortalTeam_Call struct {
 //   - ctx context.Context
 //   - request operations.RemoveDeveloperFromPortalTeamRequest
 //   - opts ...operations.Option
-func (_e *MockPortalTeamMembershipSDK_Expecter) RemoveDeveloperFromPortalTeam(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalTeamMembershipSDK_RemoveDeveloperFromPortalTeam_Call {
+func (_e *MockPortalTeamMembershipSDK_Expecter) RemoveDeveloperFromPortalTeam(ctx any, request any, opts ...any) *MockPortalTeamMembershipSDK_RemoveDeveloperFromPortalTeam_Call {
 	return &MockPortalTeamMembershipSDK_RemoveDeveloperFromPortalTeam_Call{Call: _e.mock.On("RemoveDeveloperFromPortalTeam",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalTeamMembershipSDK_RemoveDeveloperFromPortalTeam_Call) Run(run func(ctx context.Context, request operations.RemoveDeveloperFromPortalTeamRequest, opts ...operations.Option)) *MockPortalTeamMembershipSDK_RemoveDeveloperFromPortalTeam_Call {

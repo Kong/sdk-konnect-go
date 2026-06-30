@@ -83,9 +83,9 @@ type MockEventGatewayListenersSDK_CreateEventGatewayListener_Call struct {
 //   - gatewayID string
 //   - createEventGatewayListenerRequest *components.CreateEventGatewayListenerRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayListenersSDK_Expecter) CreateEventGatewayListener(ctx interface{}, gatewayID interface{}, createEventGatewayListenerRequest interface{}, opts ...interface{}) *MockEventGatewayListenersSDK_CreateEventGatewayListener_Call {
+func (_e *MockEventGatewayListenersSDK_Expecter) CreateEventGatewayListener(ctx any, gatewayID any, createEventGatewayListenerRequest any, opts ...any) *MockEventGatewayListenersSDK_CreateEventGatewayListener_Call {
 	return &MockEventGatewayListenersSDK_CreateEventGatewayListener_Call{Call: _e.mock.On("CreateEventGatewayListener",
-		append([]interface{}{ctx, gatewayID, createEventGatewayListenerRequest}, opts...)...)}
+		append([]any{ctx, gatewayID, createEventGatewayListenerRequest}, opts...)...)}
 }
 
 func (_c *MockEventGatewayListenersSDK_CreateEventGatewayListener_Call) Run(run func(ctx context.Context, gatewayID string, createEventGatewayListenerRequest *components.CreateEventGatewayListenerRequest, opts ...operations.Option)) *MockEventGatewayListenersSDK_CreateEventGatewayListener_Call {
@@ -172,9 +172,9 @@ type MockEventGatewayListenersSDK_DeleteEventGatewayListener_Call struct {
 //   - gatewayID string
 //   - eventGatewayListenerID string
 //   - opts ...operations.Option
-func (_e *MockEventGatewayListenersSDK_Expecter) DeleteEventGatewayListener(ctx interface{}, gatewayID interface{}, eventGatewayListenerID interface{}, opts ...interface{}) *MockEventGatewayListenersSDK_DeleteEventGatewayListener_Call {
+func (_e *MockEventGatewayListenersSDK_Expecter) DeleteEventGatewayListener(ctx any, gatewayID any, eventGatewayListenerID any, opts ...any) *MockEventGatewayListenersSDK_DeleteEventGatewayListener_Call {
 	return &MockEventGatewayListenersSDK_DeleteEventGatewayListener_Call{Call: _e.mock.On("DeleteEventGatewayListener",
-		append([]interface{}{ctx, gatewayID, eventGatewayListenerID}, opts...)...)}
+		append([]any{ctx, gatewayID, eventGatewayListenerID}, opts...)...)}
 }
 
 func (_c *MockEventGatewayListenersSDK_DeleteEventGatewayListener_Call) Run(run func(ctx context.Context, gatewayID string, eventGatewayListenerID string, opts ...operations.Option)) *MockEventGatewayListenersSDK_DeleteEventGatewayListener_Call {
@@ -261,9 +261,9 @@ type MockEventGatewayListenersSDK_GetEventGatewayListener_Call struct {
 //   - gatewayID string
 //   - eventGatewayListenerID string
 //   - opts ...operations.Option
-func (_e *MockEventGatewayListenersSDK_Expecter) GetEventGatewayListener(ctx interface{}, gatewayID interface{}, eventGatewayListenerID interface{}, opts ...interface{}) *MockEventGatewayListenersSDK_GetEventGatewayListener_Call {
+func (_e *MockEventGatewayListenersSDK_Expecter) GetEventGatewayListener(ctx any, gatewayID any, eventGatewayListenerID any, opts ...any) *MockEventGatewayListenersSDK_GetEventGatewayListener_Call {
 	return &MockEventGatewayListenersSDK_GetEventGatewayListener_Call{Call: _e.mock.On("GetEventGatewayListener",
-		append([]interface{}{ctx, gatewayID, eventGatewayListenerID}, opts...)...)}
+		append([]any{ctx, gatewayID, eventGatewayListenerID}, opts...)...)}
 }
 
 func (_c *MockEventGatewayListenersSDK_GetEventGatewayListener_Call) Run(run func(ctx context.Context, gatewayID string, eventGatewayListenerID string, opts ...operations.Option)) *MockEventGatewayListenersSDK_GetEventGatewayListener_Call {
@@ -349,9 +349,9 @@ type MockEventGatewayListenersSDK_ListEventGatewayListeners_Call struct {
 //   - ctx context.Context
 //   - request operations.ListEventGatewayListenersRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayListenersSDK_Expecter) ListEventGatewayListeners(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayListenersSDK_ListEventGatewayListeners_Call {
+func (_e *MockEventGatewayListenersSDK_Expecter) ListEventGatewayListeners(ctx any, request any, opts ...any) *MockEventGatewayListenersSDK_ListEventGatewayListeners_Call {
 	return &MockEventGatewayListenersSDK_ListEventGatewayListeners_Call{Call: _e.mock.On("ListEventGatewayListeners",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayListenersSDK_ListEventGatewayListeners_Call) Run(run func(ctx context.Context, request operations.ListEventGatewayListenersRequest, opts ...operations.Option)) *MockEventGatewayListenersSDK_ListEventGatewayListeners_Call {
@@ -432,9 +432,9 @@ type MockEventGatewayListenersSDK_UpdateEventGatewayListener_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdateEventGatewayListenerRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayListenersSDK_Expecter) UpdateEventGatewayListener(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayListenersSDK_UpdateEventGatewayListener_Call {
+func (_e *MockEventGatewayListenersSDK_Expecter) UpdateEventGatewayListener(ctx any, request any, opts ...any) *MockEventGatewayListenersSDK_UpdateEventGatewayListener_Call {
 	return &MockEventGatewayListenersSDK_UpdateEventGatewayListener_Call{Call: _e.mock.On("UpdateEventGatewayListener",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayListenersSDK_UpdateEventGatewayListener_Call) Run(run func(ctx context.Context, request operations.UpdateEventGatewayListenerRequest, opts ...operations.Option)) *MockEventGatewayListenersSDK_UpdateEventGatewayListener_Call {

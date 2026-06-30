@@ -83,9 +83,9 @@ type MockUpstreamsSDK_CreateUpstream_Call struct {
 //   - controlPlaneID string
 //   - upstream components.Upstream
 //   - opts ...operations.Option
-func (_e *MockUpstreamsSDK_Expecter) CreateUpstream(ctx interface{}, controlPlaneID interface{}, upstream interface{}, opts ...interface{}) *MockUpstreamsSDK_CreateUpstream_Call {
+func (_e *MockUpstreamsSDK_Expecter) CreateUpstream(ctx any, controlPlaneID any, upstream any, opts ...any) *MockUpstreamsSDK_CreateUpstream_Call {
 	return &MockUpstreamsSDK_CreateUpstream_Call{Call: _e.mock.On("CreateUpstream",
-		append([]interface{}{ctx, controlPlaneID, upstream}, opts...)...)}
+		append([]any{ctx, controlPlaneID, upstream}, opts...)...)}
 }
 
 func (_c *MockUpstreamsSDK_CreateUpstream_Call) Run(run func(ctx context.Context, controlPlaneID string, upstream components.Upstream, opts ...operations.Option)) *MockUpstreamsSDK_CreateUpstream_Call {
@@ -172,9 +172,9 @@ type MockUpstreamsSDK_DeleteUpstream_Call struct {
 //   - controlPlaneID string
 //   - upstreamID string
 //   - opts ...operations.Option
-func (_e *MockUpstreamsSDK_Expecter) DeleteUpstream(ctx interface{}, controlPlaneID interface{}, upstreamID interface{}, opts ...interface{}) *MockUpstreamsSDK_DeleteUpstream_Call {
+func (_e *MockUpstreamsSDK_Expecter) DeleteUpstream(ctx any, controlPlaneID any, upstreamID any, opts ...any) *MockUpstreamsSDK_DeleteUpstream_Call {
 	return &MockUpstreamsSDK_DeleteUpstream_Call{Call: _e.mock.On("DeleteUpstream",
-		append([]interface{}{ctx, controlPlaneID, upstreamID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, upstreamID}, opts...)...)}
 }
 
 func (_c *MockUpstreamsSDK_DeleteUpstream_Call) Run(run func(ctx context.Context, controlPlaneID string, upstreamID string, opts ...operations.Option)) *MockUpstreamsSDK_DeleteUpstream_Call {
@@ -261,9 +261,9 @@ type MockUpstreamsSDK_GetUpstream_Call struct {
 //   - upstreamID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockUpstreamsSDK_Expecter) GetUpstream(ctx interface{}, upstreamID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockUpstreamsSDK_GetUpstream_Call {
+func (_e *MockUpstreamsSDK_Expecter) GetUpstream(ctx any, upstreamID any, controlPlaneID any, opts ...any) *MockUpstreamsSDK_GetUpstream_Call {
 	return &MockUpstreamsSDK_GetUpstream_Call{Call: _e.mock.On("GetUpstream",
-		append([]interface{}{ctx, upstreamID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, upstreamID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockUpstreamsSDK_GetUpstream_Call) Run(run func(ctx context.Context, upstreamID string, controlPlaneID string, opts ...operations.Option)) *MockUpstreamsSDK_GetUpstream_Call {
@@ -349,9 +349,9 @@ type MockUpstreamsSDK_ListUpstream_Call struct {
 //   - ctx context.Context
 //   - request operations.ListUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockUpstreamsSDK_Expecter) ListUpstream(ctx interface{}, request interface{}, opts ...interface{}) *MockUpstreamsSDK_ListUpstream_Call {
+func (_e *MockUpstreamsSDK_Expecter) ListUpstream(ctx any, request any, opts ...any) *MockUpstreamsSDK_ListUpstream_Call {
 	return &MockUpstreamsSDK_ListUpstream_Call{Call: _e.mock.On("ListUpstream",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockUpstreamsSDK_ListUpstream_Call) Run(run func(ctx context.Context, request operations.ListUpstreamRequest, opts ...operations.Option)) *MockUpstreamsSDK_ListUpstream_Call {
@@ -432,9 +432,9 @@ type MockUpstreamsSDK_UpsertUpstream_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockUpstreamsSDK_Expecter) UpsertUpstream(ctx interface{}, request interface{}, opts ...interface{}) *MockUpstreamsSDK_UpsertUpstream_Call {
+func (_e *MockUpstreamsSDK_Expecter) UpsertUpstream(ctx any, request any, opts ...any) *MockUpstreamsSDK_UpsertUpstream_Call {
 	return &MockUpstreamsSDK_UpsertUpstream_Call{Call: _e.mock.On("UpsertUpstream",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockUpstreamsSDK_UpsertUpstream_Call) Run(run func(ctx context.Context, request operations.UpsertUpstreamRequest, opts ...operations.Option)) *MockUpstreamsSDK_UpsertUpstream_Call {

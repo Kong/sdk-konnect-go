@@ -83,9 +83,9 @@ type MockCACertificatesSDK_CreateCaCertificate_Call struct {
 //   - controlPlaneID string
 //   - caCertificate components.CACertificate
 //   - opts ...operations.Option
-func (_e *MockCACertificatesSDK_Expecter) CreateCaCertificate(ctx interface{}, controlPlaneID interface{}, caCertificate interface{}, opts ...interface{}) *MockCACertificatesSDK_CreateCaCertificate_Call {
+func (_e *MockCACertificatesSDK_Expecter) CreateCaCertificate(ctx any, controlPlaneID any, caCertificate any, opts ...any) *MockCACertificatesSDK_CreateCaCertificate_Call {
 	return &MockCACertificatesSDK_CreateCaCertificate_Call{Call: _e.mock.On("CreateCaCertificate",
-		append([]interface{}{ctx, controlPlaneID, caCertificate}, opts...)...)}
+		append([]any{ctx, controlPlaneID, caCertificate}, opts...)...)}
 }
 
 func (_c *MockCACertificatesSDK_CreateCaCertificate_Call) Run(run func(ctx context.Context, controlPlaneID string, caCertificate components.CACertificate, opts ...operations.Option)) *MockCACertificatesSDK_CreateCaCertificate_Call {
@@ -172,9 +172,9 @@ type MockCACertificatesSDK_DeleteCaCertificate_Call struct {
 //   - controlPlaneID string
 //   - caCertificateID string
 //   - opts ...operations.Option
-func (_e *MockCACertificatesSDK_Expecter) DeleteCaCertificate(ctx interface{}, controlPlaneID interface{}, caCertificateID interface{}, opts ...interface{}) *MockCACertificatesSDK_DeleteCaCertificate_Call {
+func (_e *MockCACertificatesSDK_Expecter) DeleteCaCertificate(ctx any, controlPlaneID any, caCertificateID any, opts ...any) *MockCACertificatesSDK_DeleteCaCertificate_Call {
 	return &MockCACertificatesSDK_DeleteCaCertificate_Call{Call: _e.mock.On("DeleteCaCertificate",
-		append([]interface{}{ctx, controlPlaneID, caCertificateID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, caCertificateID}, opts...)...)}
 }
 
 func (_c *MockCACertificatesSDK_DeleteCaCertificate_Call) Run(run func(ctx context.Context, controlPlaneID string, caCertificateID string, opts ...operations.Option)) *MockCACertificatesSDK_DeleteCaCertificate_Call {
@@ -261,9 +261,9 @@ type MockCACertificatesSDK_GetCaCertificate_Call struct {
 //   - caCertificateID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockCACertificatesSDK_Expecter) GetCaCertificate(ctx interface{}, caCertificateID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockCACertificatesSDK_GetCaCertificate_Call {
+func (_e *MockCACertificatesSDK_Expecter) GetCaCertificate(ctx any, caCertificateID any, controlPlaneID any, opts ...any) *MockCACertificatesSDK_GetCaCertificate_Call {
 	return &MockCACertificatesSDK_GetCaCertificate_Call{Call: _e.mock.On("GetCaCertificate",
-		append([]interface{}{ctx, caCertificateID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, caCertificateID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockCACertificatesSDK_GetCaCertificate_Call) Run(run func(ctx context.Context, caCertificateID string, controlPlaneID string, opts ...operations.Option)) *MockCACertificatesSDK_GetCaCertificate_Call {
@@ -349,9 +349,9 @@ type MockCACertificatesSDK_ListCaCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.ListCaCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockCACertificatesSDK_Expecter) ListCaCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockCACertificatesSDK_ListCaCertificate_Call {
+func (_e *MockCACertificatesSDK_Expecter) ListCaCertificate(ctx any, request any, opts ...any) *MockCACertificatesSDK_ListCaCertificate_Call {
 	return &MockCACertificatesSDK_ListCaCertificate_Call{Call: _e.mock.On("ListCaCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCACertificatesSDK_ListCaCertificate_Call) Run(run func(ctx context.Context, request operations.ListCaCertificateRequest, opts ...operations.Option)) *MockCACertificatesSDK_ListCaCertificate_Call {
@@ -432,9 +432,9 @@ type MockCACertificatesSDK_UpsertCaCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertCaCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockCACertificatesSDK_Expecter) UpsertCaCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockCACertificatesSDK_UpsertCaCertificate_Call {
+func (_e *MockCACertificatesSDK_Expecter) UpsertCaCertificate(ctx any, request any, opts ...any) *MockCACertificatesSDK_UpsertCaCertificate_Call {
 	return &MockCACertificatesSDK_UpsertCaCertificate_Call{Call: _e.mock.On("UpsertCaCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCACertificatesSDK_UpsertCaCertificate_Call) Run(run func(ctx context.Context, request operations.UpsertCaCertificateRequest, opts ...operations.Option)) *MockCACertificatesSDK_UpsertCaCertificate_Call {

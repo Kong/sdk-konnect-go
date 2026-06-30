@@ -83,9 +83,9 @@ type MockEventGatewayBackendClustersSDK_CreateEventGatewayBackendCluster_Call st
 //   - gatewayID string
 //   - createBackendClusterRequest *components.CreateBackendClusterRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayBackendClustersSDK_Expecter) CreateEventGatewayBackendCluster(ctx interface{}, gatewayID interface{}, createBackendClusterRequest interface{}, opts ...interface{}) *MockEventGatewayBackendClustersSDK_CreateEventGatewayBackendCluster_Call {
+func (_e *MockEventGatewayBackendClustersSDK_Expecter) CreateEventGatewayBackendCluster(ctx any, gatewayID any, createBackendClusterRequest any, opts ...any) *MockEventGatewayBackendClustersSDK_CreateEventGatewayBackendCluster_Call {
 	return &MockEventGatewayBackendClustersSDK_CreateEventGatewayBackendCluster_Call{Call: _e.mock.On("CreateEventGatewayBackendCluster",
-		append([]interface{}{ctx, gatewayID, createBackendClusterRequest}, opts...)...)}
+		append([]any{ctx, gatewayID, createBackendClusterRequest}, opts...)...)}
 }
 
 func (_c *MockEventGatewayBackendClustersSDK_CreateEventGatewayBackendCluster_Call) Run(run func(ctx context.Context, gatewayID string, createBackendClusterRequest *components.CreateBackendClusterRequest, opts ...operations.Option)) *MockEventGatewayBackendClustersSDK_CreateEventGatewayBackendCluster_Call {
@@ -172,9 +172,9 @@ type MockEventGatewayBackendClustersSDK_DeleteEventGatewayBackendCluster_Call st
 //   - gatewayID string
 //   - backendClusterID string
 //   - opts ...operations.Option
-func (_e *MockEventGatewayBackendClustersSDK_Expecter) DeleteEventGatewayBackendCluster(ctx interface{}, gatewayID interface{}, backendClusterID interface{}, opts ...interface{}) *MockEventGatewayBackendClustersSDK_DeleteEventGatewayBackendCluster_Call {
+func (_e *MockEventGatewayBackendClustersSDK_Expecter) DeleteEventGatewayBackendCluster(ctx any, gatewayID any, backendClusterID any, opts ...any) *MockEventGatewayBackendClustersSDK_DeleteEventGatewayBackendCluster_Call {
 	return &MockEventGatewayBackendClustersSDK_DeleteEventGatewayBackendCluster_Call{Call: _e.mock.On("DeleteEventGatewayBackendCluster",
-		append([]interface{}{ctx, gatewayID, backendClusterID}, opts...)...)}
+		append([]any{ctx, gatewayID, backendClusterID}, opts...)...)}
 }
 
 func (_c *MockEventGatewayBackendClustersSDK_DeleteEventGatewayBackendCluster_Call) Run(run func(ctx context.Context, gatewayID string, backendClusterID string, opts ...operations.Option)) *MockEventGatewayBackendClustersSDK_DeleteEventGatewayBackendCluster_Call {
@@ -261,9 +261,9 @@ type MockEventGatewayBackendClustersSDK_GetEventGatewayBackendCluster_Call struc
 //   - gatewayID string
 //   - backendClusterID string
 //   - opts ...operations.Option
-func (_e *MockEventGatewayBackendClustersSDK_Expecter) GetEventGatewayBackendCluster(ctx interface{}, gatewayID interface{}, backendClusterID interface{}, opts ...interface{}) *MockEventGatewayBackendClustersSDK_GetEventGatewayBackendCluster_Call {
+func (_e *MockEventGatewayBackendClustersSDK_Expecter) GetEventGatewayBackendCluster(ctx any, gatewayID any, backendClusterID any, opts ...any) *MockEventGatewayBackendClustersSDK_GetEventGatewayBackendCluster_Call {
 	return &MockEventGatewayBackendClustersSDK_GetEventGatewayBackendCluster_Call{Call: _e.mock.On("GetEventGatewayBackendCluster",
-		append([]interface{}{ctx, gatewayID, backendClusterID}, opts...)...)}
+		append([]any{ctx, gatewayID, backendClusterID}, opts...)...)}
 }
 
 func (_c *MockEventGatewayBackendClustersSDK_GetEventGatewayBackendCluster_Call) Run(run func(ctx context.Context, gatewayID string, backendClusterID string, opts ...operations.Option)) *MockEventGatewayBackendClustersSDK_GetEventGatewayBackendCluster_Call {
@@ -349,9 +349,9 @@ type MockEventGatewayBackendClustersSDK_ListEventGatewayBackendClusters_Call str
 //   - ctx context.Context
 //   - request operations.ListEventGatewayBackendClustersRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayBackendClustersSDK_Expecter) ListEventGatewayBackendClusters(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayBackendClustersSDK_ListEventGatewayBackendClusters_Call {
+func (_e *MockEventGatewayBackendClustersSDK_Expecter) ListEventGatewayBackendClusters(ctx any, request any, opts ...any) *MockEventGatewayBackendClustersSDK_ListEventGatewayBackendClusters_Call {
 	return &MockEventGatewayBackendClustersSDK_ListEventGatewayBackendClusters_Call{Call: _e.mock.On("ListEventGatewayBackendClusters",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayBackendClustersSDK_ListEventGatewayBackendClusters_Call) Run(run func(ctx context.Context, request operations.ListEventGatewayBackendClustersRequest, opts ...operations.Option)) *MockEventGatewayBackendClustersSDK_ListEventGatewayBackendClusters_Call {
@@ -432,9 +432,9 @@ type MockEventGatewayBackendClustersSDK_UpdateEventGatewayBackendCluster_Call st
 //   - ctx context.Context
 //   - request operations.UpdateEventGatewayBackendClusterRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayBackendClustersSDK_Expecter) UpdateEventGatewayBackendCluster(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayBackendClustersSDK_UpdateEventGatewayBackendCluster_Call {
+func (_e *MockEventGatewayBackendClustersSDK_Expecter) UpdateEventGatewayBackendCluster(ctx any, request any, opts ...any) *MockEventGatewayBackendClustersSDK_UpdateEventGatewayBackendCluster_Call {
 	return &MockEventGatewayBackendClustersSDK_UpdateEventGatewayBackendCluster_Call{Call: _e.mock.On("UpdateEventGatewayBackendCluster",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayBackendClustersSDK_UpdateEventGatewayBackendCluster_Call) Run(run func(ctx context.Context, request operations.UpdateEventGatewayBackendClusterRequest, opts ...operations.Option)) *MockEventGatewayBackendClustersSDK_UpdateEventGatewayBackendCluster_Call {

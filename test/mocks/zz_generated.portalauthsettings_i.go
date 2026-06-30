@@ -83,9 +83,9 @@ type MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call struct {
 //   - portalID string
 //   - portalCreateIdentityProvider components.PortalCreateIdentityProvider
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) CreatePortalIdentityProvider(ctx interface{}, portalID interface{}, portalCreateIdentityProvider interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) CreatePortalIdentityProvider(ctx any, portalID any, portalCreateIdentityProvider any, opts ...any) *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call {
 	return &MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call{Call: _e.mock.On("CreatePortalIdentityProvider",
-		append([]interface{}{ctx, portalID, portalCreateIdentityProvider}, opts...)...)}
+		append([]any{ctx, portalID, portalCreateIdentityProvider}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call) Run(run func(ctx context.Context, portalID string, portalCreateIdentityProvider components.PortalCreateIdentityProvider, opts ...operations.Option)) *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call {
@@ -171,9 +171,9 @@ type MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call struct {
 //   - ctx context.Context
 //   - request operations.CreatePortalIdpTeamGroupMappingRequest
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) CreatePortalIdpTeamGroupMapping(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) CreatePortalIdpTeamGroupMapping(ctx any, request any, opts ...any) *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call {
 	return &MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call{Call: _e.mock.On("CreatePortalIdpTeamGroupMapping",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call) Run(run func(ctx context.Context, request operations.CreatePortalIdpTeamGroupMappingRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call {
@@ -255,9 +255,9 @@ type MockPortalAuthSettingsSDK_DeletePortalIdentityProvider_Call struct {
 //   - portalID string
 //   - id string
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) DeletePortalIdentityProvider(ctx interface{}, portalID interface{}, id interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_DeletePortalIdentityProvider_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) DeletePortalIdentityProvider(ctx any, portalID any, id any, opts ...any) *MockPortalAuthSettingsSDK_DeletePortalIdentityProvider_Call {
 	return &MockPortalAuthSettingsSDK_DeletePortalIdentityProvider_Call{Call: _e.mock.On("DeletePortalIdentityProvider",
-		append([]interface{}{ctx, portalID, id}, opts...)...)}
+		append([]any{ctx, portalID, id}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_DeletePortalIdentityProvider_Call) Run(run func(ctx context.Context, portalID string, id string, opts ...operations.Option)) *MockPortalAuthSettingsSDK_DeletePortalIdentityProvider_Call {
@@ -343,9 +343,9 @@ type MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call struct {
 //   - ctx context.Context
 //   - request operations.DeletePortalIdpTeamGroupMappingRequest
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) DeletePortalIdpTeamGroupMapping(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) DeletePortalIdpTeamGroupMapping(ctx any, request any, opts ...any) *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call {
 	return &MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call{Call: _e.mock.On("DeletePortalIdpTeamGroupMapping",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call) Run(run func(ctx context.Context, request operations.DeletePortalIdpTeamGroupMappingRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call {
@@ -426,9 +426,9 @@ type MockPortalAuthSettingsSDK_GetPortalAuthenticationSettings_Call struct {
 //   - ctx context.Context
 //   - portalID string
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) GetPortalAuthenticationSettings(ctx interface{}, portalID interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_GetPortalAuthenticationSettings_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) GetPortalAuthenticationSettings(ctx any, portalID any, opts ...any) *MockPortalAuthSettingsSDK_GetPortalAuthenticationSettings_Call {
 	return &MockPortalAuthSettingsSDK_GetPortalAuthenticationSettings_Call{Call: _e.mock.On("GetPortalAuthenticationSettings",
-		append([]interface{}{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_GetPortalAuthenticationSettings_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPortalAuthSettingsSDK_GetPortalAuthenticationSettings_Call {
@@ -510,9 +510,9 @@ type MockPortalAuthSettingsSDK_GetPortalIdentityProvider_Call struct {
 //   - portalID string
 //   - id string
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) GetPortalIdentityProvider(ctx interface{}, portalID interface{}, id interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_GetPortalIdentityProvider_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) GetPortalIdentityProvider(ctx any, portalID any, id any, opts ...any) *MockPortalAuthSettingsSDK_GetPortalIdentityProvider_Call {
 	return &MockPortalAuthSettingsSDK_GetPortalIdentityProvider_Call{Call: _e.mock.On("GetPortalIdentityProvider",
-		append([]interface{}{ctx, portalID, id}, opts...)...)}
+		append([]any{ctx, portalID, id}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_GetPortalIdentityProvider_Call) Run(run func(ctx context.Context, portalID string, id string, opts ...operations.Option)) *MockPortalAuthSettingsSDK_GetPortalIdentityProvider_Call {
@@ -599,9 +599,9 @@ type MockPortalAuthSettingsSDK_GetPortalIdentityProviders_Call struct {
 //   - portalID string
 //   - filter *operations.GetPortalIdentityProvidersQueryParamFilter
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) GetPortalIdentityProviders(ctx interface{}, portalID interface{}, filter interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_GetPortalIdentityProviders_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) GetPortalIdentityProviders(ctx any, portalID any, filter any, opts ...any) *MockPortalAuthSettingsSDK_GetPortalIdentityProviders_Call {
 	return &MockPortalAuthSettingsSDK_GetPortalIdentityProviders_Call{Call: _e.mock.On("GetPortalIdentityProviders",
-		append([]interface{}{ctx, portalID, filter}, opts...)...)}
+		append([]any{ctx, portalID, filter}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_GetPortalIdentityProviders_Call) Run(run func(ctx context.Context, portalID string, filter *operations.GetPortalIdentityProvidersQueryParamFilter, opts ...operations.Option)) *MockPortalAuthSettingsSDK_GetPortalIdentityProviders_Call {
@@ -687,9 +687,9 @@ type MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call struct {
 //   - ctx context.Context
 //   - request operations.GetPortalIdpTeamGroupMappingRequest
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) GetPortalIdpTeamGroupMapping(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) GetPortalIdpTeamGroupMapping(ctx any, request any, opts ...any) *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call {
 	return &MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call{Call: _e.mock.On("GetPortalIdpTeamGroupMapping",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call) Run(run func(ctx context.Context, request operations.GetPortalIdpTeamGroupMappingRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call {
@@ -770,9 +770,9 @@ type MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalIdpTeamGroupMappingsRequest
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) ListPortalIdpTeamGroupMappings(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) ListPortalIdpTeamGroupMappings(ctx any, request any, opts ...any) *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call {
 	return &MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call{Call: _e.mock.On("ListPortalIdpTeamGroupMappings",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call) Run(run func(ctx context.Context, request operations.ListPortalIdpTeamGroupMappingsRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call {
@@ -853,9 +853,9 @@ type MockPortalAuthSettingsSDK_ListPortalTeamGroupMappings_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalTeamGroupMappingsRequest
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) ListPortalTeamGroupMappings(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_ListPortalTeamGroupMappings_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) ListPortalTeamGroupMappings(ctx any, request any, opts ...any) *MockPortalAuthSettingsSDK_ListPortalTeamGroupMappings_Call {
 	return &MockPortalAuthSettingsSDK_ListPortalTeamGroupMappings_Call{Call: _e.mock.On("ListPortalTeamGroupMappings",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_ListPortalTeamGroupMappings_Call) Run(run func(ctx context.Context, request operations.ListPortalTeamGroupMappingsRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_ListPortalTeamGroupMappings_Call {
@@ -937,9 +937,9 @@ type MockPortalAuthSettingsSDK_UpdatePortalAuthenticationSettings_Call struct {
 //   - portalID string
 //   - portalAuthenticationSettingsUpdateRequest *components.PortalAuthenticationSettingsUpdateRequest
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) UpdatePortalAuthenticationSettings(ctx interface{}, portalID interface{}, portalAuthenticationSettingsUpdateRequest interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_UpdatePortalAuthenticationSettings_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) UpdatePortalAuthenticationSettings(ctx any, portalID any, portalAuthenticationSettingsUpdateRequest any, opts ...any) *MockPortalAuthSettingsSDK_UpdatePortalAuthenticationSettings_Call {
 	return &MockPortalAuthSettingsSDK_UpdatePortalAuthenticationSettings_Call{Call: _e.mock.On("UpdatePortalAuthenticationSettings",
-		append([]interface{}{ctx, portalID, portalAuthenticationSettingsUpdateRequest}, opts...)...)}
+		append([]any{ctx, portalID, portalAuthenticationSettingsUpdateRequest}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_UpdatePortalAuthenticationSettings_Call) Run(run func(ctx context.Context, portalID string, portalAuthenticationSettingsUpdateRequest *components.PortalAuthenticationSettingsUpdateRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_UpdatePortalAuthenticationSettings_Call {
@@ -1025,9 +1025,9 @@ type MockPortalAuthSettingsSDK_UpdatePortalIdentityProvider_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdatePortalIdentityProviderRequest
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) UpdatePortalIdentityProvider(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_UpdatePortalIdentityProvider_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) UpdatePortalIdentityProvider(ctx any, request any, opts ...any) *MockPortalAuthSettingsSDK_UpdatePortalIdentityProvider_Call {
 	return &MockPortalAuthSettingsSDK_UpdatePortalIdentityProvider_Call{Call: _e.mock.On("UpdatePortalIdentityProvider",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_UpdatePortalIdentityProvider_Call) Run(run func(ctx context.Context, request operations.UpdatePortalIdentityProviderRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_UpdatePortalIdentityProvider_Call {
@@ -1109,9 +1109,9 @@ type MockPortalAuthSettingsSDK_UpdatePortalTeamGroupMappings_Call struct {
 //   - portalID string
 //   - portalTeamGroupMappingsUpdateRequest *components.PortalTeamGroupMappingsUpdateRequest
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) UpdatePortalTeamGroupMappings(ctx interface{}, portalID interface{}, portalTeamGroupMappingsUpdateRequest interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_UpdatePortalTeamGroupMappings_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) UpdatePortalTeamGroupMappings(ctx any, portalID any, portalTeamGroupMappingsUpdateRequest any, opts ...any) *MockPortalAuthSettingsSDK_UpdatePortalTeamGroupMappings_Call {
 	return &MockPortalAuthSettingsSDK_UpdatePortalTeamGroupMappings_Call{Call: _e.mock.On("UpdatePortalTeamGroupMappings",
-		append([]interface{}{ctx, portalID, portalTeamGroupMappingsUpdateRequest}, opts...)...)}
+		append([]any{ctx, portalID, portalTeamGroupMappingsUpdateRequest}, opts...)...)}
 }
 
 func (_c *MockPortalAuthSettingsSDK_UpdatePortalTeamGroupMappings_Call) Run(run func(ctx context.Context, portalID string, portalTeamGroupMappingsUpdateRequest *components.PortalTeamGroupMappingsUpdateRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_UpdatePortalTeamGroupMappings_Call {

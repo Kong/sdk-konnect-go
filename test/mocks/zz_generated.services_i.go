@@ -83,9 +83,9 @@ type MockServicesSDK_CreateService_Call struct {
 //   - controlPlaneID string
 //   - service components.Service
 //   - opts ...operations.Option
-func (_e *MockServicesSDK_Expecter) CreateService(ctx interface{}, controlPlaneID interface{}, service interface{}, opts ...interface{}) *MockServicesSDK_CreateService_Call {
+func (_e *MockServicesSDK_Expecter) CreateService(ctx any, controlPlaneID any, service any, opts ...any) *MockServicesSDK_CreateService_Call {
 	return &MockServicesSDK_CreateService_Call{Call: _e.mock.On("CreateService",
-		append([]interface{}{ctx, controlPlaneID, service}, opts...)...)}
+		append([]any{ctx, controlPlaneID, service}, opts...)...)}
 }
 
 func (_c *MockServicesSDK_CreateService_Call) Run(run func(ctx context.Context, controlPlaneID string, service components.Service, opts ...operations.Option)) *MockServicesSDK_CreateService_Call {
@@ -172,9 +172,9 @@ type MockServicesSDK_DeleteService_Call struct {
 //   - controlPlaneID string
 //   - serviceID string
 //   - opts ...operations.Option
-func (_e *MockServicesSDK_Expecter) DeleteService(ctx interface{}, controlPlaneID interface{}, serviceID interface{}, opts ...interface{}) *MockServicesSDK_DeleteService_Call {
+func (_e *MockServicesSDK_Expecter) DeleteService(ctx any, controlPlaneID any, serviceID any, opts ...any) *MockServicesSDK_DeleteService_Call {
 	return &MockServicesSDK_DeleteService_Call{Call: _e.mock.On("DeleteService",
-		append([]interface{}{ctx, controlPlaneID, serviceID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, serviceID}, opts...)...)}
 }
 
 func (_c *MockServicesSDK_DeleteService_Call) Run(run func(ctx context.Context, controlPlaneID string, serviceID string, opts ...operations.Option)) *MockServicesSDK_DeleteService_Call {
@@ -261,9 +261,9 @@ type MockServicesSDK_GetService_Call struct {
 //   - serviceID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockServicesSDK_Expecter) GetService(ctx interface{}, serviceID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockServicesSDK_GetService_Call {
+func (_e *MockServicesSDK_Expecter) GetService(ctx any, serviceID any, controlPlaneID any, opts ...any) *MockServicesSDK_GetService_Call {
 	return &MockServicesSDK_GetService_Call{Call: _e.mock.On("GetService",
-		append([]interface{}{ctx, serviceID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, serviceID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockServicesSDK_GetService_Call) Run(run func(ctx context.Context, serviceID string, controlPlaneID string, opts ...operations.Option)) *MockServicesSDK_GetService_Call {
@@ -349,9 +349,9 @@ type MockServicesSDK_ListService_Call struct {
 //   - ctx context.Context
 //   - request operations.ListServiceRequest
 //   - opts ...operations.Option
-func (_e *MockServicesSDK_Expecter) ListService(ctx interface{}, request interface{}, opts ...interface{}) *MockServicesSDK_ListService_Call {
+func (_e *MockServicesSDK_Expecter) ListService(ctx any, request any, opts ...any) *MockServicesSDK_ListService_Call {
 	return &MockServicesSDK_ListService_Call{Call: _e.mock.On("ListService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockServicesSDK_ListService_Call) Run(run func(ctx context.Context, request operations.ListServiceRequest, opts ...operations.Option)) *MockServicesSDK_ListService_Call {
@@ -432,9 +432,9 @@ type MockServicesSDK_UpsertService_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertServiceRequest
 //   - opts ...operations.Option
-func (_e *MockServicesSDK_Expecter) UpsertService(ctx interface{}, request interface{}, opts ...interface{}) *MockServicesSDK_UpsertService_Call {
+func (_e *MockServicesSDK_Expecter) UpsertService(ctx any, request any, opts ...any) *MockServicesSDK_UpsertService_Call {
 	return &MockServicesSDK_UpsertService_Call{Call: _e.mock.On("UpsertService",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockServicesSDK_UpsertService_Call) Run(run func(ctx context.Context, request operations.UpsertServiceRequest, opts ...operations.Option)) *MockServicesSDK_UpsertService_Call {

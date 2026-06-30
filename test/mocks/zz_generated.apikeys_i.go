@@ -81,9 +81,9 @@ type MockAPIKeysSDK_CreateKeyAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.CreateKeyAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockAPIKeysSDK_Expecter) CreateKeyAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockAPIKeysSDK_CreateKeyAuthWithConsumer_Call {
+func (_e *MockAPIKeysSDK_Expecter) CreateKeyAuthWithConsumer(ctx any, request any, opts ...any) *MockAPIKeysSDK_CreateKeyAuthWithConsumer_Call {
 	return &MockAPIKeysSDK_CreateKeyAuthWithConsumer_Call{Call: _e.mock.On("CreateKeyAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockAPIKeysSDK_CreateKeyAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.CreateKeyAuthWithConsumerRequest, opts ...operations.Option)) *MockAPIKeysSDK_CreateKeyAuthWithConsumer_Call {
@@ -164,9 +164,9 @@ type MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.DeleteKeyAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockAPIKeysSDK_Expecter) DeleteKeyAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call {
+func (_e *MockAPIKeysSDK_Expecter) DeleteKeyAuthWithConsumer(ctx any, request any, opts ...any) *MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call {
 	return &MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call{Call: _e.mock.On("DeleteKeyAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.DeleteKeyAuthWithConsumerRequest, opts ...operations.Option)) *MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call {
@@ -248,9 +248,9 @@ type MockAPIKeysSDK_GetKeyAuth_Call struct {
 //   - keyAuthID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockAPIKeysSDK_Expecter) GetKeyAuth(ctx interface{}, keyAuthID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockAPIKeysSDK_GetKeyAuth_Call {
+func (_e *MockAPIKeysSDK_Expecter) GetKeyAuth(ctx any, keyAuthID any, controlPlaneID any, opts ...any) *MockAPIKeysSDK_GetKeyAuth_Call {
 	return &MockAPIKeysSDK_GetKeyAuth_Call{Call: _e.mock.On("GetKeyAuth",
-		append([]interface{}{ctx, keyAuthID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, keyAuthID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockAPIKeysSDK_GetKeyAuth_Call) Run(run func(ctx context.Context, keyAuthID string, controlPlaneID string, opts ...operations.Option)) *MockAPIKeysSDK_GetKeyAuth_Call {
@@ -336,9 +336,9 @@ type MockAPIKeysSDK_GetKeyAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.GetKeyAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockAPIKeysSDK_Expecter) GetKeyAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockAPIKeysSDK_GetKeyAuthWithConsumer_Call {
+func (_e *MockAPIKeysSDK_Expecter) GetKeyAuthWithConsumer(ctx any, request any, opts ...any) *MockAPIKeysSDK_GetKeyAuthWithConsumer_Call {
 	return &MockAPIKeysSDK_GetKeyAuthWithConsumer_Call{Call: _e.mock.On("GetKeyAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockAPIKeysSDK_GetKeyAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.GetKeyAuthWithConsumerRequest, opts ...operations.Option)) *MockAPIKeysSDK_GetKeyAuthWithConsumer_Call {
@@ -419,9 +419,9 @@ type MockAPIKeysSDK_ListKeyAuth_Call struct {
 //   - ctx context.Context
 //   - request operations.ListKeyAuthRequest
 //   - opts ...operations.Option
-func (_e *MockAPIKeysSDK_Expecter) ListKeyAuth(ctx interface{}, request interface{}, opts ...interface{}) *MockAPIKeysSDK_ListKeyAuth_Call {
+func (_e *MockAPIKeysSDK_Expecter) ListKeyAuth(ctx any, request any, opts ...any) *MockAPIKeysSDK_ListKeyAuth_Call {
 	return &MockAPIKeysSDK_ListKeyAuth_Call{Call: _e.mock.On("ListKeyAuth",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockAPIKeysSDK_ListKeyAuth_Call) Run(run func(ctx context.Context, request operations.ListKeyAuthRequest, opts ...operations.Option)) *MockAPIKeysSDK_ListKeyAuth_Call {
@@ -502,9 +502,9 @@ type MockAPIKeysSDK_ListKeyAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.ListKeyAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockAPIKeysSDK_Expecter) ListKeyAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockAPIKeysSDK_ListKeyAuthWithConsumer_Call {
+func (_e *MockAPIKeysSDK_Expecter) ListKeyAuthWithConsumer(ctx any, request any, opts ...any) *MockAPIKeysSDK_ListKeyAuthWithConsumer_Call {
 	return &MockAPIKeysSDK_ListKeyAuthWithConsumer_Call{Call: _e.mock.On("ListKeyAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockAPIKeysSDK_ListKeyAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.ListKeyAuthWithConsumerRequest, opts ...operations.Option)) *MockAPIKeysSDK_ListKeyAuthWithConsumer_Call {
@@ -585,9 +585,9 @@ type MockAPIKeysSDK_UpsertKeyAuthWithConsumer_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertKeyAuthWithConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockAPIKeysSDK_Expecter) UpsertKeyAuthWithConsumer(ctx interface{}, request interface{}, opts ...interface{}) *MockAPIKeysSDK_UpsertKeyAuthWithConsumer_Call {
+func (_e *MockAPIKeysSDK_Expecter) UpsertKeyAuthWithConsumer(ctx any, request any, opts ...any) *MockAPIKeysSDK_UpsertKeyAuthWithConsumer_Call {
 	return &MockAPIKeysSDK_UpsertKeyAuthWithConsumer_Call{Call: _e.mock.On("UpsertKeyAuthWithConsumer",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockAPIKeysSDK_UpsertKeyAuthWithConsumer_Call) Run(run func(ctx context.Context, request operations.UpsertKeyAuthWithConsumerRequest, opts ...operations.Option)) *MockAPIKeysSDK_UpsertKeyAuthWithConsumer_Call {

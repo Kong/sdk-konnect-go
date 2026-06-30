@@ -82,9 +82,9 @@ type MockCloudGatewaysSDK_CreateAddOn_Call struct {
 //   - ctx context.Context
 //   - request components.CreateAddOnRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) CreateAddOn(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_CreateAddOn_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) CreateAddOn(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_CreateAddOn_Call {
 	return &MockCloudGatewaysSDK_CreateAddOn_Call{Call: _e.mock.On("CreateAddOn",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_CreateAddOn_Call) Run(run func(ctx context.Context, request components.CreateAddOnRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreateAddOn_Call {
@@ -165,9 +165,9 @@ type MockCloudGatewaysSDK_CreateConfiguration_Call struct {
 //   - ctx context.Context
 //   - request components.CreateConfigurationRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) CreateConfiguration(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_CreateConfiguration_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) CreateConfiguration(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_CreateConfiguration_Call {
 	return &MockCloudGatewaysSDK_CreateConfiguration_Call{Call: _e.mock.On("CreateConfiguration",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_CreateConfiguration_Call) Run(run func(ctx context.Context, request components.CreateConfigurationRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreateConfiguration_Call {
@@ -248,9 +248,9 @@ type MockCloudGatewaysSDK_CreateCustomDomains_Call struct {
 //   - ctx context.Context
 //   - request components.CreateCustomDomainRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) CreateCustomDomains(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_CreateCustomDomains_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) CreateCustomDomains(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_CreateCustomDomains_Call {
 	return &MockCloudGatewaysSDK_CreateCustomDomains_Call{Call: _e.mock.On("CreateCustomDomains",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_CreateCustomDomains_Call) Run(run func(ctx context.Context, request components.CreateCustomDomainRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreateCustomDomains_Call {
@@ -331,9 +331,9 @@ type MockCloudGatewaysSDK_CreateNetwork_Call struct {
 //   - ctx context.Context
 //   - request components.CreateNetworkRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) CreateNetwork(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_CreateNetwork_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) CreateNetwork(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_CreateNetwork_Call {
 	return &MockCloudGatewaysSDK_CreateNetwork_Call{Call: _e.mock.On("CreateNetwork",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_CreateNetwork_Call) Run(run func(ctx context.Context, request components.CreateNetworkRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreateNetwork_Call {
@@ -415,9 +415,9 @@ type MockCloudGatewaysSDK_CreatePrivateDNS_Call struct {
 //   - networkID string
 //   - createPrivateDNSRequest components.CreatePrivateDNSRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) CreatePrivateDNS(ctx interface{}, networkID interface{}, createPrivateDNSRequest interface{}, opts ...interface{}) *MockCloudGatewaysSDK_CreatePrivateDNS_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) CreatePrivateDNS(ctx any, networkID any, createPrivateDNSRequest any, opts ...any) *MockCloudGatewaysSDK_CreatePrivateDNS_Call {
 	return &MockCloudGatewaysSDK_CreatePrivateDNS_Call{Call: _e.mock.On("CreatePrivateDNS",
-		append([]interface{}{ctx, networkID, createPrivateDNSRequest}, opts...)...)}
+		append([]any{ctx, networkID, createPrivateDNSRequest}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_CreatePrivateDNS_Call) Run(run func(ctx context.Context, networkID string, createPrivateDNSRequest components.CreatePrivateDNSRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreatePrivateDNS_Call {
@@ -504,9 +504,9 @@ type MockCloudGatewaysSDK_CreateTransitGateway_Call struct {
 //   - networkID string
 //   - createTransitGatewayRequest components.CreateTransitGatewayRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) CreateTransitGateway(ctx interface{}, networkID interface{}, createTransitGatewayRequest interface{}, opts ...interface{}) *MockCloudGatewaysSDK_CreateTransitGateway_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) CreateTransitGateway(ctx any, networkID any, createTransitGatewayRequest any, opts ...any) *MockCloudGatewaysSDK_CreateTransitGateway_Call {
 	return &MockCloudGatewaysSDK_CreateTransitGateway_Call{Call: _e.mock.On("CreateTransitGateway",
-		append([]interface{}{ctx, networkID, createTransitGatewayRequest}, opts...)...)}
+		append([]any{ctx, networkID, createTransitGatewayRequest}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_CreateTransitGateway_Call) Run(run func(ctx context.Context, networkID string, createTransitGatewayRequest components.CreateTransitGatewayRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreateTransitGateway_Call {
@@ -592,9 +592,9 @@ type MockCloudGatewaysSDK_DeleteAddOn_Call struct {
 //   - ctx context.Context
 //   - addOnID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) DeleteAddOn(ctx interface{}, addOnID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_DeleteAddOn_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) DeleteAddOn(ctx any, addOnID any, opts ...any) *MockCloudGatewaysSDK_DeleteAddOn_Call {
 	return &MockCloudGatewaysSDK_DeleteAddOn_Call{Call: _e.mock.On("DeleteAddOn",
-		append([]interface{}{ctx, addOnID}, opts...)...)}
+		append([]any{ctx, addOnID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_DeleteAddOn_Call) Run(run func(ctx context.Context, addOnID string, opts ...operations.Option)) *MockCloudGatewaysSDK_DeleteAddOn_Call {
@@ -675,9 +675,9 @@ type MockCloudGatewaysSDK_DeleteCustomDomain_Call struct {
 //   - ctx context.Context
 //   - customDomainID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) DeleteCustomDomain(ctx interface{}, customDomainID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_DeleteCustomDomain_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) DeleteCustomDomain(ctx any, customDomainID any, opts ...any) *MockCloudGatewaysSDK_DeleteCustomDomain_Call {
 	return &MockCloudGatewaysSDK_DeleteCustomDomain_Call{Call: _e.mock.On("DeleteCustomDomain",
-		append([]interface{}{ctx, customDomainID}, opts...)...)}
+		append([]any{ctx, customDomainID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_DeleteCustomDomain_Call) Run(run func(ctx context.Context, customDomainID string, opts ...operations.Option)) *MockCloudGatewaysSDK_DeleteCustomDomain_Call {
@@ -758,9 +758,9 @@ type MockCloudGatewaysSDK_DeleteNetwork_Call struct {
 //   - ctx context.Context
 //   - networkID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) DeleteNetwork(ctx interface{}, networkID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_DeleteNetwork_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) DeleteNetwork(ctx any, networkID any, opts ...any) *MockCloudGatewaysSDK_DeleteNetwork_Call {
 	return &MockCloudGatewaysSDK_DeleteNetwork_Call{Call: _e.mock.On("DeleteNetwork",
-		append([]interface{}{ctx, networkID}, opts...)...)}
+		append([]any{ctx, networkID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_DeleteNetwork_Call) Run(run func(ctx context.Context, networkID string, opts ...operations.Option)) *MockCloudGatewaysSDK_DeleteNetwork_Call {
@@ -842,9 +842,9 @@ type MockCloudGatewaysSDK_DeletePrivateDNS_Call struct {
 //   - networkID string
 //   - privateDNSID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) DeletePrivateDNS(ctx interface{}, networkID interface{}, privateDNSID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_DeletePrivateDNS_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) DeletePrivateDNS(ctx any, networkID any, privateDNSID any, opts ...any) *MockCloudGatewaysSDK_DeletePrivateDNS_Call {
 	return &MockCloudGatewaysSDK_DeletePrivateDNS_Call{Call: _e.mock.On("DeletePrivateDNS",
-		append([]interface{}{ctx, networkID, privateDNSID}, opts...)...)}
+		append([]any{ctx, networkID, privateDNSID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_DeletePrivateDNS_Call) Run(run func(ctx context.Context, networkID string, privateDNSID string, opts ...operations.Option)) *MockCloudGatewaysSDK_DeletePrivateDNS_Call {
@@ -931,9 +931,9 @@ type MockCloudGatewaysSDK_DeleteTransitGateway_Call struct {
 //   - networkID string
 //   - transitGatewayID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) DeleteTransitGateway(ctx interface{}, networkID interface{}, transitGatewayID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_DeleteTransitGateway_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) DeleteTransitGateway(ctx any, networkID any, transitGatewayID any, opts ...any) *MockCloudGatewaysSDK_DeleteTransitGateway_Call {
 	return &MockCloudGatewaysSDK_DeleteTransitGateway_Call{Call: _e.mock.On("DeleteTransitGateway",
-		append([]interface{}{ctx, networkID, transitGatewayID}, opts...)...)}
+		append([]any{ctx, networkID, transitGatewayID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_DeleteTransitGateway_Call) Run(run func(ctx context.Context, networkID string, transitGatewayID string, opts ...operations.Option)) *MockCloudGatewaysSDK_DeleteTransitGateway_Call {
@@ -1019,9 +1019,9 @@ type MockCloudGatewaysSDK_GetAddOn_Call struct {
 //   - ctx context.Context
 //   - addOnID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetAddOn(ctx interface{}, addOnID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetAddOn_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetAddOn(ctx any, addOnID any, opts ...any) *MockCloudGatewaysSDK_GetAddOn_Call {
 	return &MockCloudGatewaysSDK_GetAddOn_Call{Call: _e.mock.On("GetAddOn",
-		append([]interface{}{ctx, addOnID}, opts...)...)}
+		append([]any{ctx, addOnID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetAddOn_Call) Run(run func(ctx context.Context, addOnID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetAddOn_Call {
@@ -1101,9 +1101,9 @@ type MockCloudGatewaysSDK_GetAvailabilityJSON_Call struct {
 // GetAvailabilityJSON is a helper method to define mock.On call
 //   - ctx context.Context
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetAvailabilityJSON(ctx interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetAvailabilityJSON_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetAvailabilityJSON(ctx any, opts ...any) *MockCloudGatewaysSDK_GetAvailabilityJSON_Call {
 	return &MockCloudGatewaysSDK_GetAvailabilityJSON_Call{Call: _e.mock.On("GetAvailabilityJSON",
-		append([]interface{}{ctx}, opts...)...)}
+		append([]any{ctx}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetAvailabilityJSON_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockCloudGatewaysSDK_GetAvailabilityJSON_Call {
@@ -1179,9 +1179,9 @@ type MockCloudGatewaysSDK_GetConfiguration_Call struct {
 //   - ctx context.Context
 //   - configurationID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetConfiguration(ctx interface{}, configurationID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetConfiguration_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetConfiguration(ctx any, configurationID any, opts ...any) *MockCloudGatewaysSDK_GetConfiguration_Call {
 	return &MockCloudGatewaysSDK_GetConfiguration_Call{Call: _e.mock.On("GetConfiguration",
-		append([]interface{}{ctx, configurationID}, opts...)...)}
+		append([]any{ctx, configurationID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetConfiguration_Call) Run(run func(ctx context.Context, configurationID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetConfiguration_Call {
@@ -1262,9 +1262,9 @@ type MockCloudGatewaysSDK_GetCustomDomain_Call struct {
 //   - ctx context.Context
 //   - customDomainID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetCustomDomain(ctx interface{}, customDomainID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetCustomDomain_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetCustomDomain(ctx any, customDomainID any, opts ...any) *MockCloudGatewaysSDK_GetCustomDomain_Call {
 	return &MockCloudGatewaysSDK_GetCustomDomain_Call{Call: _e.mock.On("GetCustomDomain",
-		append([]interface{}{ctx, customDomainID}, opts...)...)}
+		append([]any{ctx, customDomainID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetCustomDomain_Call) Run(run func(ctx context.Context, customDomainID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetCustomDomain_Call {
@@ -1345,9 +1345,9 @@ type MockCloudGatewaysSDK_GetCustomDomainOnlineStatus_Call struct {
 //   - ctx context.Context
 //   - customDomainID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetCustomDomainOnlineStatus(ctx interface{}, customDomainID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetCustomDomainOnlineStatus_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetCustomDomainOnlineStatus(ctx any, customDomainID any, opts ...any) *MockCloudGatewaysSDK_GetCustomDomainOnlineStatus_Call {
 	return &MockCloudGatewaysSDK_GetCustomDomainOnlineStatus_Call{Call: _e.mock.On("GetCustomDomainOnlineStatus",
-		append([]interface{}{ctx, customDomainID}, opts...)...)}
+		append([]any{ctx, customDomainID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetCustomDomainOnlineStatus_Call) Run(run func(ctx context.Context, customDomainID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetCustomDomainOnlineStatus_Call {
@@ -1428,9 +1428,9 @@ type MockCloudGatewaysSDK_GetNetwork_Call struct {
 //   - ctx context.Context
 //   - networkID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetNetwork(ctx interface{}, networkID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetNetwork_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetNetwork(ctx any, networkID any, opts ...any) *MockCloudGatewaysSDK_GetNetwork_Call {
 	return &MockCloudGatewaysSDK_GetNetwork_Call{Call: _e.mock.On("GetNetwork",
-		append([]interface{}{ctx, networkID}, opts...)...)}
+		append([]any{ctx, networkID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetNetwork_Call) Run(run func(ctx context.Context, networkID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetNetwork_Call {
@@ -1512,9 +1512,9 @@ type MockCloudGatewaysSDK_GetPrivateDNS_Call struct {
 //   - networkID string
 //   - privateDNSID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetPrivateDNS(ctx interface{}, networkID interface{}, privateDNSID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetPrivateDNS_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetPrivateDNS(ctx any, networkID any, privateDNSID any, opts ...any) *MockCloudGatewaysSDK_GetPrivateDNS_Call {
 	return &MockCloudGatewaysSDK_GetPrivateDNS_Call{Call: _e.mock.On("GetPrivateDNS",
-		append([]interface{}{ctx, networkID, privateDNSID}, opts...)...)}
+		append([]any{ctx, networkID, privateDNSID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetPrivateDNS_Call) Run(run func(ctx context.Context, networkID string, privateDNSID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetPrivateDNS_Call {
@@ -1600,9 +1600,9 @@ type MockCloudGatewaysSDK_GetProviderAccount_Call struct {
 //   - ctx context.Context
 //   - providerAccountID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetProviderAccount(ctx interface{}, providerAccountID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetProviderAccount_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetProviderAccount(ctx any, providerAccountID any, opts ...any) *MockCloudGatewaysSDK_GetProviderAccount_Call {
 	return &MockCloudGatewaysSDK_GetProviderAccount_Call{Call: _e.mock.On("GetProviderAccount",
-		append([]interface{}{ctx, providerAccountID}, opts...)...)}
+		append([]any{ctx, providerAccountID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetProviderAccount_Call) Run(run func(ctx context.Context, providerAccountID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetProviderAccount_Call {
@@ -1683,9 +1683,9 @@ type MockCloudGatewaysSDK_GetResourceConfiguration_Call struct {
 //   - ctx context.Context
 //   - resourceConfigurationID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetResourceConfiguration(ctx interface{}, resourceConfigurationID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetResourceConfiguration_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetResourceConfiguration(ctx any, resourceConfigurationID any, opts ...any) *MockCloudGatewaysSDK_GetResourceConfiguration_Call {
 	return &MockCloudGatewaysSDK_GetResourceConfiguration_Call{Call: _e.mock.On("GetResourceConfiguration",
-		append([]interface{}{ctx, resourceConfigurationID}, opts...)...)}
+		append([]any{ctx, resourceConfigurationID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetResourceConfiguration_Call) Run(run func(ctx context.Context, resourceConfigurationID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetResourceConfiguration_Call {
@@ -1766,9 +1766,9 @@ type MockCloudGatewaysSDK_GetResourceQuota_Call struct {
 //   - ctx context.Context
 //   - resourceQuotaID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetResourceQuota(ctx interface{}, resourceQuotaID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetResourceQuota_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetResourceQuota(ctx any, resourceQuotaID any, opts ...any) *MockCloudGatewaysSDK_GetResourceQuota_Call {
 	return &MockCloudGatewaysSDK_GetResourceQuota_Call{Call: _e.mock.On("GetResourceQuota",
-		append([]interface{}{ctx, resourceQuotaID}, opts...)...)}
+		append([]any{ctx, resourceQuotaID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetResourceQuota_Call) Run(run func(ctx context.Context, resourceQuotaID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetResourceQuota_Call {
@@ -1850,9 +1850,9 @@ type MockCloudGatewaysSDK_GetTransitGateway_Call struct {
 //   - networkID string
 //   - transitGatewayID string
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) GetTransitGateway(ctx interface{}, networkID interface{}, transitGatewayID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetTransitGateway_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) GetTransitGateway(ctx any, networkID any, transitGatewayID any, opts ...any) *MockCloudGatewaysSDK_GetTransitGateway_Call {
 	return &MockCloudGatewaysSDK_GetTransitGateway_Call{Call: _e.mock.On("GetTransitGateway",
-		append([]interface{}{ctx, networkID, transitGatewayID}, opts...)...)}
+		append([]any{ctx, networkID, transitGatewayID}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_GetTransitGateway_Call) Run(run func(ctx context.Context, networkID string, transitGatewayID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetTransitGateway_Call {
@@ -1938,9 +1938,9 @@ type MockCloudGatewaysSDK_ListAddOns_Call struct {
 //   - ctx context.Context
 //   - request operations.ListAddOnsRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListAddOns(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListAddOns_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListAddOns(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_ListAddOns_Call {
 	return &MockCloudGatewaysSDK_ListAddOns_Call{Call: _e.mock.On("ListAddOns",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListAddOns_Call) Run(run func(ctx context.Context, request operations.ListAddOnsRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_ListAddOns_Call {
@@ -2021,9 +2021,9 @@ type MockCloudGatewaysSDK_ListConfigurations_Call struct {
 //   - ctx context.Context
 //   - request operations.ListConfigurationsRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListConfigurations(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListConfigurations_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListConfigurations(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_ListConfigurations_Call {
 	return &MockCloudGatewaysSDK_ListConfigurations_Call{Call: _e.mock.On("ListConfigurations",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListConfigurations_Call) Run(run func(ctx context.Context, request operations.ListConfigurationsRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_ListConfigurations_Call {
@@ -2104,9 +2104,9 @@ type MockCloudGatewaysSDK_ListCustomDomains_Call struct {
 //   - ctx context.Context
 //   - request operations.ListCustomDomainsRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListCustomDomains(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListCustomDomains_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListCustomDomains(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_ListCustomDomains_Call {
 	return &MockCloudGatewaysSDK_ListCustomDomains_Call{Call: _e.mock.On("ListCustomDomains",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListCustomDomains_Call) Run(run func(ctx context.Context, request operations.ListCustomDomainsRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_ListCustomDomains_Call {
@@ -2188,9 +2188,9 @@ type MockCloudGatewaysSDK_ListDefaultResourceConfigurations_Call struct {
 //   - pageSize *int64
 //   - pageNumber *int64
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListDefaultResourceConfigurations(ctx interface{}, pageSize interface{}, pageNumber interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListDefaultResourceConfigurations_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListDefaultResourceConfigurations(ctx any, pageSize any, pageNumber any, opts ...any) *MockCloudGatewaysSDK_ListDefaultResourceConfigurations_Call {
 	return &MockCloudGatewaysSDK_ListDefaultResourceConfigurations_Call{Call: _e.mock.On("ListDefaultResourceConfigurations",
-		append([]interface{}{ctx, pageSize, pageNumber}, opts...)...)}
+		append([]any{ctx, pageSize, pageNumber}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListDefaultResourceConfigurations_Call) Run(run func(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option)) *MockCloudGatewaysSDK_ListDefaultResourceConfigurations_Call {
@@ -2277,9 +2277,9 @@ type MockCloudGatewaysSDK_ListDefaultResourceQuotas_Call struct {
 //   - pageSize *int64
 //   - pageNumber *int64
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListDefaultResourceQuotas(ctx interface{}, pageSize interface{}, pageNumber interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListDefaultResourceQuotas_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListDefaultResourceQuotas(ctx any, pageSize any, pageNumber any, opts ...any) *MockCloudGatewaysSDK_ListDefaultResourceQuotas_Call {
 	return &MockCloudGatewaysSDK_ListDefaultResourceQuotas_Call{Call: _e.mock.On("ListDefaultResourceQuotas",
-		append([]interface{}{ctx, pageSize, pageNumber}, opts...)...)}
+		append([]any{ctx, pageSize, pageNumber}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListDefaultResourceQuotas_Call) Run(run func(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option)) *MockCloudGatewaysSDK_ListDefaultResourceQuotas_Call {
@@ -2365,9 +2365,9 @@ type MockCloudGatewaysSDK_ListNetworkConfigurations_Call struct {
 //   - ctx context.Context
 //   - request operations.ListNetworkConfigurationsRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListNetworkConfigurations(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListNetworkConfigurations_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListNetworkConfigurations(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_ListNetworkConfigurations_Call {
 	return &MockCloudGatewaysSDK_ListNetworkConfigurations_Call{Call: _e.mock.On("ListNetworkConfigurations",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListNetworkConfigurations_Call) Run(run func(ctx context.Context, request operations.ListNetworkConfigurationsRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_ListNetworkConfigurations_Call {
@@ -2448,9 +2448,9 @@ type MockCloudGatewaysSDK_ListNetworks_Call struct {
 //   - ctx context.Context
 //   - request operations.ListNetworksRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListNetworks(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListNetworks_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListNetworks(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_ListNetworks_Call {
 	return &MockCloudGatewaysSDK_ListNetworks_Call{Call: _e.mock.On("ListNetworks",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListNetworks_Call) Run(run func(ctx context.Context, request operations.ListNetworksRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_ListNetworks_Call {
@@ -2531,9 +2531,9 @@ type MockCloudGatewaysSDK_ListPrivateDNS_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPrivateDNSRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListPrivateDNS(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListPrivateDNS_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListPrivateDNS(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_ListPrivateDNS_Call {
 	return &MockCloudGatewaysSDK_ListPrivateDNS_Call{Call: _e.mock.On("ListPrivateDNS",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListPrivateDNS_Call) Run(run func(ctx context.Context, request operations.ListPrivateDNSRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_ListPrivateDNS_Call {
@@ -2614,9 +2614,9 @@ type MockCloudGatewaysSDK_ListProviderAccounts_Call struct {
 //   - ctx context.Context
 //   - request operations.ListProviderAccountsRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListProviderAccounts(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListProviderAccounts_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListProviderAccounts(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_ListProviderAccounts_Call {
 	return &MockCloudGatewaysSDK_ListProviderAccounts_Call{Call: _e.mock.On("ListProviderAccounts",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListProviderAccounts_Call) Run(run func(ctx context.Context, request operations.ListProviderAccountsRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_ListProviderAccounts_Call {
@@ -2698,9 +2698,9 @@ type MockCloudGatewaysSDK_ListResourceConfigurations_Call struct {
 //   - pageSize *int64
 //   - pageNumber *int64
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListResourceConfigurations(ctx interface{}, pageSize interface{}, pageNumber interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListResourceConfigurations_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListResourceConfigurations(ctx any, pageSize any, pageNumber any, opts ...any) *MockCloudGatewaysSDK_ListResourceConfigurations_Call {
 	return &MockCloudGatewaysSDK_ListResourceConfigurations_Call{Call: _e.mock.On("ListResourceConfigurations",
-		append([]interface{}{ctx, pageSize, pageNumber}, opts...)...)}
+		append([]any{ctx, pageSize, pageNumber}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListResourceConfigurations_Call) Run(run func(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option)) *MockCloudGatewaysSDK_ListResourceConfigurations_Call {
@@ -2787,9 +2787,9 @@ type MockCloudGatewaysSDK_ListResourceQuotas_Call struct {
 //   - pageSize *int64
 //   - pageNumber *int64
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListResourceQuotas(ctx interface{}, pageSize interface{}, pageNumber interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListResourceQuotas_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListResourceQuotas(ctx any, pageSize any, pageNumber any, opts ...any) *MockCloudGatewaysSDK_ListResourceQuotas_Call {
 	return &MockCloudGatewaysSDK_ListResourceQuotas_Call{Call: _e.mock.On("ListResourceQuotas",
-		append([]interface{}{ctx, pageSize, pageNumber}, opts...)...)}
+		append([]any{ctx, pageSize, pageNumber}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListResourceQuotas_Call) Run(run func(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option)) *MockCloudGatewaysSDK_ListResourceQuotas_Call {
@@ -2875,9 +2875,9 @@ type MockCloudGatewaysSDK_ListTransitGateways_Call struct {
 //   - ctx context.Context
 //   - request operations.ListTransitGatewaysRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) ListTransitGateways(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListTransitGateways_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) ListTransitGateways(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_ListTransitGateways_Call {
 	return &MockCloudGatewaysSDK_ListTransitGateways_Call{Call: _e.mock.On("ListTransitGateways",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_ListTransitGateways_Call) Run(run func(ctx context.Context, request operations.ListTransitGatewaysRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_ListTransitGateways_Call {
@@ -2959,9 +2959,9 @@ type MockCloudGatewaysSDK_UpdateAddOn_Call struct {
 //   - addOnID string
 //   - updateAddOnRequest components.UpdateAddOnRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) UpdateAddOn(ctx interface{}, addOnID interface{}, updateAddOnRequest interface{}, opts ...interface{}) *MockCloudGatewaysSDK_UpdateAddOn_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) UpdateAddOn(ctx any, addOnID any, updateAddOnRequest any, opts ...any) *MockCloudGatewaysSDK_UpdateAddOn_Call {
 	return &MockCloudGatewaysSDK_UpdateAddOn_Call{Call: _e.mock.On("UpdateAddOn",
-		append([]interface{}{ctx, addOnID, updateAddOnRequest}, opts...)...)}
+		append([]any{ctx, addOnID, updateAddOnRequest}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_UpdateAddOn_Call) Run(run func(ctx context.Context, addOnID string, updateAddOnRequest components.UpdateAddOnRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_UpdateAddOn_Call {
@@ -3048,9 +3048,9 @@ type MockCloudGatewaysSDK_UpdateNetwork_Call struct {
 //   - networkID string
 //   - patchNetworkRequest components.PatchNetworkRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) UpdateNetwork(ctx interface{}, networkID interface{}, patchNetworkRequest interface{}, opts ...interface{}) *MockCloudGatewaysSDK_UpdateNetwork_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) UpdateNetwork(ctx any, networkID any, patchNetworkRequest any, opts ...any) *MockCloudGatewaysSDK_UpdateNetwork_Call {
 	return &MockCloudGatewaysSDK_UpdateNetwork_Call{Call: _e.mock.On("UpdateNetwork",
-		append([]interface{}{ctx, networkID, patchNetworkRequest}, opts...)...)}
+		append([]any{ctx, networkID, patchNetworkRequest}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_UpdateNetwork_Call) Run(run func(ctx context.Context, networkID string, patchNetworkRequest components.PatchNetworkRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_UpdateNetwork_Call {
@@ -3136,9 +3136,9 @@ type MockCloudGatewaysSDK_UpdatePrivateDNS_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdatePrivateDNSRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) UpdatePrivateDNS(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_UpdatePrivateDNS_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) UpdatePrivateDNS(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_UpdatePrivateDNS_Call {
 	return &MockCloudGatewaysSDK_UpdatePrivateDNS_Call{Call: _e.mock.On("UpdatePrivateDNS",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_UpdatePrivateDNS_Call) Run(run func(ctx context.Context, request operations.UpdatePrivateDNSRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_UpdatePrivateDNS_Call {
@@ -3219,9 +3219,9 @@ type MockCloudGatewaysSDK_UpdateTransitGateway_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdateTransitGatewayRequest
 //   - opts ...operations.Option
-func (_e *MockCloudGatewaysSDK_Expecter) UpdateTransitGateway(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_UpdateTransitGateway_Call {
+func (_e *MockCloudGatewaysSDK_Expecter) UpdateTransitGateway(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_UpdateTransitGateway_Call {
 	return &MockCloudGatewaysSDK_UpdateTransitGateway_Call{Call: _e.mock.On("UpdateTransitGateway",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCloudGatewaysSDK_UpdateTransitGateway_Call) Run(run func(ctx context.Context, request operations.UpdateTransitGatewayRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_UpdateTransitGateway_Call {

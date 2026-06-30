@@ -83,9 +83,9 @@ type MockEventGatewayDataPlaneCertificatesSDK_CreateEventGatewayDataPlaneCertifi
 //   - gatewayID string
 //   - createEventGatewayDataPlaneCertificateRequest *components.CreateEventGatewayDataPlaneCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) CreateEventGatewayDataPlaneCertificate(ctx interface{}, gatewayID interface{}, createEventGatewayDataPlaneCertificateRequest interface{}, opts ...interface{}) *MockEventGatewayDataPlaneCertificatesSDK_CreateEventGatewayDataPlaneCertificate_Call {
+func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) CreateEventGatewayDataPlaneCertificate(ctx any, gatewayID any, createEventGatewayDataPlaneCertificateRequest any, opts ...any) *MockEventGatewayDataPlaneCertificatesSDK_CreateEventGatewayDataPlaneCertificate_Call {
 	return &MockEventGatewayDataPlaneCertificatesSDK_CreateEventGatewayDataPlaneCertificate_Call{Call: _e.mock.On("CreateEventGatewayDataPlaneCertificate",
-		append([]interface{}{ctx, gatewayID, createEventGatewayDataPlaneCertificateRequest}, opts...)...)}
+		append([]any{ctx, gatewayID, createEventGatewayDataPlaneCertificateRequest}, opts...)...)}
 }
 
 func (_c *MockEventGatewayDataPlaneCertificatesSDK_CreateEventGatewayDataPlaneCertificate_Call) Run(run func(ctx context.Context, gatewayID string, createEventGatewayDataPlaneCertificateRequest *components.CreateEventGatewayDataPlaneCertificateRequest, opts ...operations.Option)) *MockEventGatewayDataPlaneCertificatesSDK_CreateEventGatewayDataPlaneCertificate_Call {
@@ -172,9 +172,9 @@ type MockEventGatewayDataPlaneCertificatesSDK_DeleteEventGatewayDataPlaneCertifi
 //   - gatewayID string
 //   - certificateID string
 //   - opts ...operations.Option
-func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) DeleteEventGatewayDataPlaneCertificate(ctx interface{}, gatewayID interface{}, certificateID interface{}, opts ...interface{}) *MockEventGatewayDataPlaneCertificatesSDK_DeleteEventGatewayDataPlaneCertificate_Call {
+func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) DeleteEventGatewayDataPlaneCertificate(ctx any, gatewayID any, certificateID any, opts ...any) *MockEventGatewayDataPlaneCertificatesSDK_DeleteEventGatewayDataPlaneCertificate_Call {
 	return &MockEventGatewayDataPlaneCertificatesSDK_DeleteEventGatewayDataPlaneCertificate_Call{Call: _e.mock.On("DeleteEventGatewayDataPlaneCertificate",
-		append([]interface{}{ctx, gatewayID, certificateID}, opts...)...)}
+		append([]any{ctx, gatewayID, certificateID}, opts...)...)}
 }
 
 func (_c *MockEventGatewayDataPlaneCertificatesSDK_DeleteEventGatewayDataPlaneCertificate_Call) Run(run func(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option)) *MockEventGatewayDataPlaneCertificatesSDK_DeleteEventGatewayDataPlaneCertificate_Call {
@@ -261,9 +261,9 @@ type MockEventGatewayDataPlaneCertificatesSDK_GetEventGatewayDataPlaneCertificat
 //   - gatewayID string
 //   - certificateID string
 //   - opts ...operations.Option
-func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) GetEventGatewayDataPlaneCertificate(ctx interface{}, gatewayID interface{}, certificateID interface{}, opts ...interface{}) *MockEventGatewayDataPlaneCertificatesSDK_GetEventGatewayDataPlaneCertificate_Call {
+func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) GetEventGatewayDataPlaneCertificate(ctx any, gatewayID any, certificateID any, opts ...any) *MockEventGatewayDataPlaneCertificatesSDK_GetEventGatewayDataPlaneCertificate_Call {
 	return &MockEventGatewayDataPlaneCertificatesSDK_GetEventGatewayDataPlaneCertificate_Call{Call: _e.mock.On("GetEventGatewayDataPlaneCertificate",
-		append([]interface{}{ctx, gatewayID, certificateID}, opts...)...)}
+		append([]any{ctx, gatewayID, certificateID}, opts...)...)}
 }
 
 func (_c *MockEventGatewayDataPlaneCertificatesSDK_GetEventGatewayDataPlaneCertificate_Call) Run(run func(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option)) *MockEventGatewayDataPlaneCertificatesSDK_GetEventGatewayDataPlaneCertificate_Call {
@@ -349,9 +349,9 @@ type MockEventGatewayDataPlaneCertificatesSDK_ListEventGatewayDataPlaneCertifica
 //   - ctx context.Context
 //   - request operations.ListEventGatewayDataPlaneCertificatesRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) ListEventGatewayDataPlaneCertificates(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayDataPlaneCertificatesSDK_ListEventGatewayDataPlaneCertificates_Call {
+func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) ListEventGatewayDataPlaneCertificates(ctx any, request any, opts ...any) *MockEventGatewayDataPlaneCertificatesSDK_ListEventGatewayDataPlaneCertificates_Call {
 	return &MockEventGatewayDataPlaneCertificatesSDK_ListEventGatewayDataPlaneCertificates_Call{Call: _e.mock.On("ListEventGatewayDataPlaneCertificates",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayDataPlaneCertificatesSDK_ListEventGatewayDataPlaneCertificates_Call) Run(run func(ctx context.Context, request operations.ListEventGatewayDataPlaneCertificatesRequest, opts ...operations.Option)) *MockEventGatewayDataPlaneCertificatesSDK_ListEventGatewayDataPlaneCertificates_Call {
@@ -432,9 +432,9 @@ type MockEventGatewayDataPlaneCertificatesSDK_UpdateEventGatewayDataPlaneCertifi
 //   - ctx context.Context
 //   - request operations.UpdateEventGatewayDataPlaneCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) UpdateEventGatewayDataPlaneCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockEventGatewayDataPlaneCertificatesSDK_UpdateEventGatewayDataPlaneCertificate_Call {
+func (_e *MockEventGatewayDataPlaneCertificatesSDK_Expecter) UpdateEventGatewayDataPlaneCertificate(ctx any, request any, opts ...any) *MockEventGatewayDataPlaneCertificatesSDK_UpdateEventGatewayDataPlaneCertificate_Call {
 	return &MockEventGatewayDataPlaneCertificatesSDK_UpdateEventGatewayDataPlaneCertificate_Call{Call: _e.mock.On("UpdateEventGatewayDataPlaneCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockEventGatewayDataPlaneCertificatesSDK_UpdateEventGatewayDataPlaneCertificate_Call) Run(run func(ctx context.Context, request operations.UpdateEventGatewayDataPlaneCertificateRequest, opts ...operations.Option)) *MockEventGatewayDataPlaneCertificatesSDK_UpdateEventGatewayDataPlaneCertificate_Call {

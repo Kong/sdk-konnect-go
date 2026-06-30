@@ -83,9 +83,9 @@ type MockPortalsIPAllowListSDK_CreatePortalIPAllowList_Call struct {
 //   - portalID string
 //   - createPortalSourceIPRestriction *components.CreatePortalSourceIPRestriction
 //   - opts ...operations.Option
-func (_e *MockPortalsIPAllowListSDK_Expecter) CreatePortalIPAllowList(ctx interface{}, portalID interface{}, createPortalSourceIPRestriction interface{}, opts ...interface{}) *MockPortalsIPAllowListSDK_CreatePortalIPAllowList_Call {
+func (_e *MockPortalsIPAllowListSDK_Expecter) CreatePortalIPAllowList(ctx any, portalID any, createPortalSourceIPRestriction any, opts ...any) *MockPortalsIPAllowListSDK_CreatePortalIPAllowList_Call {
 	return &MockPortalsIPAllowListSDK_CreatePortalIPAllowList_Call{Call: _e.mock.On("CreatePortalIPAllowList",
-		append([]interface{}{ctx, portalID, createPortalSourceIPRestriction}, opts...)...)}
+		append([]any{ctx, portalID, createPortalSourceIPRestriction}, opts...)...)}
 }
 
 func (_c *MockPortalsIPAllowListSDK_CreatePortalIPAllowList_Call) Run(run func(ctx context.Context, portalID string, createPortalSourceIPRestriction *components.CreatePortalSourceIPRestriction, opts ...operations.Option)) *MockPortalsIPAllowListSDK_CreatePortalIPAllowList_Call {
@@ -172,9 +172,9 @@ type MockPortalsIPAllowListSDK_DeletePortalIPAllowList_Call struct {
 //   - portalID string
 //   - id string
 //   - opts ...operations.Option
-func (_e *MockPortalsIPAllowListSDK_Expecter) DeletePortalIPAllowList(ctx interface{}, portalID interface{}, id interface{}, opts ...interface{}) *MockPortalsIPAllowListSDK_DeletePortalIPAllowList_Call {
+func (_e *MockPortalsIPAllowListSDK_Expecter) DeletePortalIPAllowList(ctx any, portalID any, id any, opts ...any) *MockPortalsIPAllowListSDK_DeletePortalIPAllowList_Call {
 	return &MockPortalsIPAllowListSDK_DeletePortalIPAllowList_Call{Call: _e.mock.On("DeletePortalIPAllowList",
-		append([]interface{}{ctx, portalID, id}, opts...)...)}
+		append([]any{ctx, portalID, id}, opts...)...)}
 }
 
 func (_c *MockPortalsIPAllowListSDK_DeletePortalIPAllowList_Call) Run(run func(ctx context.Context, portalID string, id string, opts ...operations.Option)) *MockPortalsIPAllowListSDK_DeletePortalIPAllowList_Call {
@@ -261,9 +261,9 @@ type MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call struct {
 //   - portalID string
 //   - id string
 //   - opts ...operations.Option
-func (_e *MockPortalsIPAllowListSDK_Expecter) GetPortalIPAllowList(ctx interface{}, portalID interface{}, id interface{}, opts ...interface{}) *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call {
+func (_e *MockPortalsIPAllowListSDK_Expecter) GetPortalIPAllowList(ctx any, portalID any, id any, opts ...any) *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call {
 	return &MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call{Call: _e.mock.On("GetPortalIPAllowList",
-		append([]interface{}{ctx, portalID, id}, opts...)...)}
+		append([]any{ctx, portalID, id}, opts...)...)}
 }
 
 func (_c *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call) Run(run func(ctx context.Context, portalID string, id string, opts ...operations.Option)) *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call {
@@ -349,9 +349,9 @@ type MockPortalsIPAllowListSDK_ListPortalIPAllowList_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalIPAllowListRequest
 //   - opts ...operations.Option
-func (_e *MockPortalsIPAllowListSDK_Expecter) ListPortalIPAllowList(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalsIPAllowListSDK_ListPortalIPAllowList_Call {
+func (_e *MockPortalsIPAllowListSDK_Expecter) ListPortalIPAllowList(ctx any, request any, opts ...any) *MockPortalsIPAllowListSDK_ListPortalIPAllowList_Call {
 	return &MockPortalsIPAllowListSDK_ListPortalIPAllowList_Call{Call: _e.mock.On("ListPortalIPAllowList",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalsIPAllowListSDK_ListPortalIPAllowList_Call) Run(run func(ctx context.Context, request operations.ListPortalIPAllowListRequest, opts ...operations.Option)) *MockPortalsIPAllowListSDK_ListPortalIPAllowList_Call {
@@ -432,9 +432,9 @@ type MockPortalsIPAllowListSDK_PutPortalIPAllowList_Call struct {
 //   - ctx context.Context
 //   - request operations.PutPortalIPAllowListRequest
 //   - opts ...operations.Option
-func (_e *MockPortalsIPAllowListSDK_Expecter) PutPortalIPAllowList(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalsIPAllowListSDK_PutPortalIPAllowList_Call {
+func (_e *MockPortalsIPAllowListSDK_Expecter) PutPortalIPAllowList(ctx any, request any, opts ...any) *MockPortalsIPAllowListSDK_PutPortalIPAllowList_Call {
 	return &MockPortalsIPAllowListSDK_PutPortalIPAllowList_Call{Call: _e.mock.On("PutPortalIPAllowList",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalsIPAllowListSDK_PutPortalIPAllowList_Call) Run(run func(ctx context.Context, request operations.PutPortalIPAllowListRequest, opts ...operations.Option)) *MockPortalsIPAllowListSDK_PutPortalIPAllowList_Call {
@@ -515,9 +515,9 @@ type MockPortalsIPAllowListSDK_UpdatePortalIPAllowList_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdatePortalIPAllowListRequest
 //   - opts ...operations.Option
-func (_e *MockPortalsIPAllowListSDK_Expecter) UpdatePortalIPAllowList(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalsIPAllowListSDK_UpdatePortalIPAllowList_Call {
+func (_e *MockPortalsIPAllowListSDK_Expecter) UpdatePortalIPAllowList(ctx any, request any, opts ...any) *MockPortalsIPAllowListSDK_UpdatePortalIPAllowList_Call {
 	return &MockPortalsIPAllowListSDK_UpdatePortalIPAllowList_Call{Call: _e.mock.On("UpdatePortalIPAllowList",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalsIPAllowListSDK_UpdatePortalIPAllowList_Call) Run(run func(ctx context.Context, request operations.UpdatePortalIPAllowListRequest, opts ...operations.Option)) *MockPortalsIPAllowListSDK_UpdatePortalIPAllowList_Call {

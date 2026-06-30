@@ -82,9 +82,9 @@ type MockControlPlanesSDK_CreateControlPlane_Call struct {
 //   - ctx context.Context
 //   - request components.CreateControlPlaneRequest
 //   - opts ...operations.Option
-func (_e *MockControlPlanesSDK_Expecter) CreateControlPlane(ctx interface{}, request interface{}, opts ...interface{}) *MockControlPlanesSDK_CreateControlPlane_Call {
+func (_e *MockControlPlanesSDK_Expecter) CreateControlPlane(ctx any, request any, opts ...any) *MockControlPlanesSDK_CreateControlPlane_Call {
 	return &MockControlPlanesSDK_CreateControlPlane_Call{Call: _e.mock.On("CreateControlPlane",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockControlPlanesSDK_CreateControlPlane_Call) Run(run func(ctx context.Context, request components.CreateControlPlaneRequest, opts ...operations.Option)) *MockControlPlanesSDK_CreateControlPlane_Call {
@@ -165,9 +165,9 @@ type MockControlPlanesSDK_DeleteControlPlane_Call struct {
 //   - ctx context.Context
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockControlPlanesSDK_Expecter) DeleteControlPlane(ctx interface{}, controlPlaneID interface{}, opts ...interface{}) *MockControlPlanesSDK_DeleteControlPlane_Call {
+func (_e *MockControlPlanesSDK_Expecter) DeleteControlPlane(ctx any, controlPlaneID any, opts ...any) *MockControlPlanesSDK_DeleteControlPlane_Call {
 	return &MockControlPlanesSDK_DeleteControlPlane_Call{Call: _e.mock.On("DeleteControlPlane",
-		append([]interface{}{ctx, controlPlaneID}, opts...)...)}
+		append([]any{ctx, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockControlPlanesSDK_DeleteControlPlane_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockControlPlanesSDK_DeleteControlPlane_Call {
@@ -248,9 +248,9 @@ type MockControlPlanesSDK_GetControlPlane_Call struct {
 //   - ctx context.Context
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockControlPlanesSDK_Expecter) GetControlPlane(ctx interface{}, controlPlaneID interface{}, opts ...interface{}) *MockControlPlanesSDK_GetControlPlane_Call {
+func (_e *MockControlPlanesSDK_Expecter) GetControlPlane(ctx any, controlPlaneID any, opts ...any) *MockControlPlanesSDK_GetControlPlane_Call {
 	return &MockControlPlanesSDK_GetControlPlane_Call{Call: _e.mock.On("GetControlPlane",
-		append([]interface{}{ctx, controlPlaneID}, opts...)...)}
+		append([]any{ctx, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockControlPlanesSDK_GetControlPlane_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockControlPlanesSDK_GetControlPlane_Call {
@@ -331,9 +331,9 @@ type MockControlPlanesSDK_ListControlPlanes_Call struct {
 //   - ctx context.Context
 //   - request operations.ListControlPlanesRequest
 //   - opts ...operations.Option
-func (_e *MockControlPlanesSDK_Expecter) ListControlPlanes(ctx interface{}, request interface{}, opts ...interface{}) *MockControlPlanesSDK_ListControlPlanes_Call {
+func (_e *MockControlPlanesSDK_Expecter) ListControlPlanes(ctx any, request any, opts ...any) *MockControlPlanesSDK_ListControlPlanes_Call {
 	return &MockControlPlanesSDK_ListControlPlanes_Call{Call: _e.mock.On("ListControlPlanes",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockControlPlanesSDK_ListControlPlanes_Call) Run(run func(ctx context.Context, request operations.ListControlPlanesRequest, opts ...operations.Option)) *MockControlPlanesSDK_ListControlPlanes_Call {
@@ -415,9 +415,9 @@ type MockControlPlanesSDK_UpdateControlPlane_Call struct {
 //   - controlPlaneID string
 //   - updateControlPlaneRequest components.UpdateControlPlaneRequest
 //   - opts ...operations.Option
-func (_e *MockControlPlanesSDK_Expecter) UpdateControlPlane(ctx interface{}, controlPlaneID interface{}, updateControlPlaneRequest interface{}, opts ...interface{}) *MockControlPlanesSDK_UpdateControlPlane_Call {
+func (_e *MockControlPlanesSDK_Expecter) UpdateControlPlane(ctx any, controlPlaneID any, updateControlPlaneRequest any, opts ...any) *MockControlPlanesSDK_UpdateControlPlane_Call {
 	return &MockControlPlanesSDK_UpdateControlPlane_Call{Call: _e.mock.On("UpdateControlPlane",
-		append([]interface{}{ctx, controlPlaneID, updateControlPlaneRequest}, opts...)...)}
+		append([]any{ctx, controlPlaneID, updateControlPlaneRequest}, opts...)...)}
 }
 
 func (_c *MockControlPlanesSDK_UpdateControlPlane_Call) Run(run func(ctx context.Context, controlPlaneID string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option)) *MockControlPlanesSDK_UpdateControlPlane_Call {

@@ -83,9 +83,9 @@ type MockPortalPagesSDK_CreatePortalPage_Call struct {
 //   - portalID string
 //   - createPortalPageRequest components.CreatePortalPageRequest
 //   - opts ...operations.Option
-func (_e *MockPortalPagesSDK_Expecter) CreatePortalPage(ctx interface{}, portalID interface{}, createPortalPageRequest interface{}, opts ...interface{}) *MockPortalPagesSDK_CreatePortalPage_Call {
+func (_e *MockPortalPagesSDK_Expecter) CreatePortalPage(ctx any, portalID any, createPortalPageRequest any, opts ...any) *MockPortalPagesSDK_CreatePortalPage_Call {
 	return &MockPortalPagesSDK_CreatePortalPage_Call{Call: _e.mock.On("CreatePortalPage",
-		append([]interface{}{ctx, portalID, createPortalPageRequest}, opts...)...)}
+		append([]any{ctx, portalID, createPortalPageRequest}, opts...)...)}
 }
 
 func (_c *MockPortalPagesSDK_CreatePortalPage_Call) Run(run func(ctx context.Context, portalID string, createPortalPageRequest components.CreatePortalPageRequest, opts ...operations.Option)) *MockPortalPagesSDK_CreatePortalPage_Call {
@@ -172,9 +172,9 @@ type MockPortalPagesSDK_DeletePortalPage_Call struct {
 //   - portalID string
 //   - pageID string
 //   - opts ...operations.Option
-func (_e *MockPortalPagesSDK_Expecter) DeletePortalPage(ctx interface{}, portalID interface{}, pageID interface{}, opts ...interface{}) *MockPortalPagesSDK_DeletePortalPage_Call {
+func (_e *MockPortalPagesSDK_Expecter) DeletePortalPage(ctx any, portalID any, pageID any, opts ...any) *MockPortalPagesSDK_DeletePortalPage_Call {
 	return &MockPortalPagesSDK_DeletePortalPage_Call{Call: _e.mock.On("DeletePortalPage",
-		append([]interface{}{ctx, portalID, pageID}, opts...)...)}
+		append([]any{ctx, portalID, pageID}, opts...)...)}
 }
 
 func (_c *MockPortalPagesSDK_DeletePortalPage_Call) Run(run func(ctx context.Context, portalID string, pageID string, opts ...operations.Option)) *MockPortalPagesSDK_DeletePortalPage_Call {
@@ -261,9 +261,9 @@ type MockPortalPagesSDK_GetPortalPage_Call struct {
 //   - portalID string
 //   - pageID string
 //   - opts ...operations.Option
-func (_e *MockPortalPagesSDK_Expecter) GetPortalPage(ctx interface{}, portalID interface{}, pageID interface{}, opts ...interface{}) *MockPortalPagesSDK_GetPortalPage_Call {
+func (_e *MockPortalPagesSDK_Expecter) GetPortalPage(ctx any, portalID any, pageID any, opts ...any) *MockPortalPagesSDK_GetPortalPage_Call {
 	return &MockPortalPagesSDK_GetPortalPage_Call{Call: _e.mock.On("GetPortalPage",
-		append([]interface{}{ctx, portalID, pageID}, opts...)...)}
+		append([]any{ctx, portalID, pageID}, opts...)...)}
 }
 
 func (_c *MockPortalPagesSDK_GetPortalPage_Call) Run(run func(ctx context.Context, portalID string, pageID string, opts ...operations.Option)) *MockPortalPagesSDK_GetPortalPage_Call {
@@ -349,9 +349,9 @@ type MockPortalPagesSDK_ListPortalPages_Call struct {
 //   - ctx context.Context
 //   - request operations.ListPortalPagesRequest
 //   - opts ...operations.Option
-func (_e *MockPortalPagesSDK_Expecter) ListPortalPages(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalPagesSDK_ListPortalPages_Call {
+func (_e *MockPortalPagesSDK_Expecter) ListPortalPages(ctx any, request any, opts ...any) *MockPortalPagesSDK_ListPortalPages_Call {
 	return &MockPortalPagesSDK_ListPortalPages_Call{Call: _e.mock.On("ListPortalPages",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalPagesSDK_ListPortalPages_Call) Run(run func(ctx context.Context, request operations.ListPortalPagesRequest, opts ...operations.Option)) *MockPortalPagesSDK_ListPortalPages_Call {
@@ -432,9 +432,9 @@ type MockPortalPagesSDK_MovePortalPages_Call struct {
 //   - ctx context.Context
 //   - request operations.MovePortalPagesRequest
 //   - opts ...operations.Option
-func (_e *MockPortalPagesSDK_Expecter) MovePortalPages(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalPagesSDK_MovePortalPages_Call {
+func (_e *MockPortalPagesSDK_Expecter) MovePortalPages(ctx any, request any, opts ...any) *MockPortalPagesSDK_MovePortalPages_Call {
 	return &MockPortalPagesSDK_MovePortalPages_Call{Call: _e.mock.On("MovePortalPages",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalPagesSDK_MovePortalPages_Call) Run(run func(ctx context.Context, request operations.MovePortalPagesRequest, opts ...operations.Option)) *MockPortalPagesSDK_MovePortalPages_Call {
@@ -515,9 +515,9 @@ type MockPortalPagesSDK_UpdatePortalPage_Call struct {
 //   - ctx context.Context
 //   - request operations.UpdatePortalPageRequest
 //   - opts ...operations.Option
-func (_e *MockPortalPagesSDK_Expecter) UpdatePortalPage(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalPagesSDK_UpdatePortalPage_Call {
+func (_e *MockPortalPagesSDK_Expecter) UpdatePortalPage(ctx any, request any, opts ...any) *MockPortalPagesSDK_UpdatePortalPage_Call {
 	return &MockPortalPagesSDK_UpdatePortalPage_Call{Call: _e.mock.On("UpdatePortalPage",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockPortalPagesSDK_UpdatePortalPage_Call) Run(run func(ctx context.Context, request operations.UpdatePortalPageRequest, opts ...operations.Option)) *MockPortalPagesSDK_UpdatePortalPage_Call {

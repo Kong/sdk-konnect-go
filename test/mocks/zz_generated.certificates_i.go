@@ -83,9 +83,9 @@ type MockCertificatesSDK_CreateCertificate_Call struct {
 //   - controlPlaneID string
 //   - certificateRequest components.CertificateRequest
 //   - opts ...operations.Option
-func (_e *MockCertificatesSDK_Expecter) CreateCertificate(ctx interface{}, controlPlaneID interface{}, certificateRequest interface{}, opts ...interface{}) *MockCertificatesSDK_CreateCertificate_Call {
+func (_e *MockCertificatesSDK_Expecter) CreateCertificate(ctx any, controlPlaneID any, certificateRequest any, opts ...any) *MockCertificatesSDK_CreateCertificate_Call {
 	return &MockCertificatesSDK_CreateCertificate_Call{Call: _e.mock.On("CreateCertificate",
-		append([]interface{}{ctx, controlPlaneID, certificateRequest}, opts...)...)}
+		append([]any{ctx, controlPlaneID, certificateRequest}, opts...)...)}
 }
 
 func (_c *MockCertificatesSDK_CreateCertificate_Call) Run(run func(ctx context.Context, controlPlaneID string, certificateRequest components.CertificateRequest, opts ...operations.Option)) *MockCertificatesSDK_CreateCertificate_Call {
@@ -172,9 +172,9 @@ type MockCertificatesSDK_DeleteCertificate_Call struct {
 //   - controlPlaneID string
 //   - certificateID string
 //   - opts ...operations.Option
-func (_e *MockCertificatesSDK_Expecter) DeleteCertificate(ctx interface{}, controlPlaneID interface{}, certificateID interface{}, opts ...interface{}) *MockCertificatesSDK_DeleteCertificate_Call {
+func (_e *MockCertificatesSDK_Expecter) DeleteCertificate(ctx any, controlPlaneID any, certificateID any, opts ...any) *MockCertificatesSDK_DeleteCertificate_Call {
 	return &MockCertificatesSDK_DeleteCertificate_Call{Call: _e.mock.On("DeleteCertificate",
-		append([]interface{}{ctx, controlPlaneID, certificateID}, opts...)...)}
+		append([]any{ctx, controlPlaneID, certificateID}, opts...)...)}
 }
 
 func (_c *MockCertificatesSDK_DeleteCertificate_Call) Run(run func(ctx context.Context, controlPlaneID string, certificateID string, opts ...operations.Option)) *MockCertificatesSDK_DeleteCertificate_Call {
@@ -261,9 +261,9 @@ type MockCertificatesSDK_GetCertificate_Call struct {
 //   - certificateID string
 //   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockCertificatesSDK_Expecter) GetCertificate(ctx interface{}, certificateID interface{}, controlPlaneID interface{}, opts ...interface{}) *MockCertificatesSDK_GetCertificate_Call {
+func (_e *MockCertificatesSDK_Expecter) GetCertificate(ctx any, certificateID any, controlPlaneID any, opts ...any) *MockCertificatesSDK_GetCertificate_Call {
 	return &MockCertificatesSDK_GetCertificate_Call{Call: _e.mock.On("GetCertificate",
-		append([]interface{}{ctx, certificateID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, certificateID, controlPlaneID}, opts...)...)}
 }
 
 func (_c *MockCertificatesSDK_GetCertificate_Call) Run(run func(ctx context.Context, certificateID string, controlPlaneID string, opts ...operations.Option)) *MockCertificatesSDK_GetCertificate_Call {
@@ -349,9 +349,9 @@ type MockCertificatesSDK_ListCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.ListCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockCertificatesSDK_Expecter) ListCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockCertificatesSDK_ListCertificate_Call {
+func (_e *MockCertificatesSDK_Expecter) ListCertificate(ctx any, request any, opts ...any) *MockCertificatesSDK_ListCertificate_Call {
 	return &MockCertificatesSDK_ListCertificate_Call{Call: _e.mock.On("ListCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCertificatesSDK_ListCertificate_Call) Run(run func(ctx context.Context, request operations.ListCertificateRequest, opts ...operations.Option)) *MockCertificatesSDK_ListCertificate_Call {
@@ -432,9 +432,9 @@ type MockCertificatesSDK_UpsertCertificate_Call struct {
 //   - ctx context.Context
 //   - request operations.UpsertCertificateRequest
 //   - opts ...operations.Option
-func (_e *MockCertificatesSDK_Expecter) UpsertCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockCertificatesSDK_UpsertCertificate_Call {
+func (_e *MockCertificatesSDK_Expecter) UpsertCertificate(ctx any, request any, opts ...any) *MockCertificatesSDK_UpsertCertificate_Call {
 	return &MockCertificatesSDK_UpsertCertificate_Call{Call: _e.mock.On("UpsertCertificate",
-		append([]interface{}{ctx, request}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
 func (_c *MockCertificatesSDK_UpsertCertificate_Call) Run(run func(ctx context.Context, request operations.UpsertCertificateRequest, opts ...operations.Option)) *MockCertificatesSDK_UpsertCertificate_Call {
