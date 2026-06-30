@@ -73,7 +73,6 @@ func (s *CatalogResources) UpdateResource(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-resource",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateCatalogResource", "json", `request:"mediaType=application/json"`)
@@ -369,7 +368,6 @@ func (s *CatalogResources) ListResources(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-resources",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -645,7 +643,6 @@ func (s *CatalogResources) FetchResource(ctx context.Context, id string, opts ..
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-resource",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

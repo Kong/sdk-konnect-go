@@ -64,7 +64,6 @@ func (s *APIOperations) ListAPIOperations(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-api-operations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -342,7 +341,6 @@ func (s *APIOperations) FetchAPIOperation(ctx context.Context, apiID string, ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-api-operation",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

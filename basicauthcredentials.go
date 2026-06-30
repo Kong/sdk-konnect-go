@@ -63,7 +63,6 @@ func (s *BasicAuthCredentials) ListBasicAuth(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-basic-auth",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -298,7 +297,6 @@ func (s *BasicAuthCredentials) GetBasicAuth(ctx context.Context, basicAuthID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-basic-auth",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -526,7 +524,6 @@ func (s *BasicAuthCredentials) ListBasicAuthWithConsumer(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-basic-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -735,7 +732,6 @@ func (s *BasicAuthCredentials) CreateBasicAuthWithConsumer(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-basic-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "BasicAuthWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -947,7 +943,6 @@ func (s *BasicAuthCredentials) DeleteBasicAuthWithConsumer(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-basic-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1133,7 +1128,6 @@ func (s *BasicAuthCredentials) GetBasicAuthWithConsumer(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-basic-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1340,7 +1334,6 @@ func (s *BasicAuthCredentials) UpsertBasicAuthWithConsumer(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-basic-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "BasicAuthWithoutParents", "json", `request:"mediaType=application/json"`)

@@ -63,7 +63,6 @@ func (s *APIImage) UpsertAPIImage(ctx context.Context, request operations.Upsert
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-api-image",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ReplaceImageRequestSchema", "json", `request:"mediaType=application/json"`)
@@ -366,7 +365,6 @@ func (s *APIImage) FetchAPIImage(ctx context.Context, apiID string, imageType co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-api-image",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -639,7 +637,6 @@ func (s *APIImage) DeleteAPIImage(ctx context.Context, apiID string, imageType c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-api-image",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -893,7 +890,6 @@ func (s *APIImage) FetchAPIRawImage(ctx context.Context, apiID string, imageType
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-api-raw-image",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

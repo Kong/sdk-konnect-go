@@ -63,7 +63,6 @@ func (s *Roles) GetPredefinedRoles(ctx context.Context, opts ...operations.Optio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-predefined-roles",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -314,7 +313,6 @@ func (s *Roles) ListTeamRoles(ctx context.Context, teamID string, filter *operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-team-roles",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -611,7 +609,6 @@ func (s *Roles) TeamsAssignRole(ctx context.Context, teamID string, assignRole *
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "teams-assign-role",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AssignRole", "json", `request:"mediaType=application/json"`)
@@ -932,7 +929,6 @@ func (s *Roles) GetTeamRole(ctx context.Context, teamID string, roleID string, o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-team-role",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1225,7 +1221,6 @@ func (s *Roles) TeamsRemoveRole(ctx context.Context, teamID string, roleID strin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "teams-remove-role",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1499,7 +1494,6 @@ func (s *Roles) ListUserRoles(ctx context.Context, userID string, filter *operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-user-roles",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1754,7 +1748,6 @@ func (s *Roles) UsersAssignRole(ctx context.Context, userID string, assignRole *
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "users-assign-role",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AssignRole", "json", `request:"mediaType=application/json"`)
@@ -2075,7 +2068,6 @@ func (s *Roles) GetUserRole(ctx context.Context, userID string, roleID string, o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-user-role",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2368,7 +2360,6 @@ func (s *Roles) UsersRemoveRole(ctx context.Context, userID string, roleID strin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "users-remove-role",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

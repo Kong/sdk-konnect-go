@@ -73,7 +73,6 @@ func (s *OpenMeterLLMCost) ListLlmCostOverrides(ctx context.Context, filter *com
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-llm-cost-overrides",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -348,7 +347,6 @@ func (s *OpenMeterLLMCost) CreateLlmCostOverride(ctx context.Context, request co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-llm-cost-override",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -630,7 +628,6 @@ func (s *OpenMeterLLMCost) DeleteLlmCostOverride(ctx context.Context, priceID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-llm-cost-override",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -903,7 +900,6 @@ func (s *OpenMeterLLMCost) ListLlmCostPrices(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-llm-cost-prices",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1183,7 +1179,6 @@ func (s *OpenMeterLLMCost) GetLlmCostPrice(ctx context.Context, priceID string, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-llm-cost-price",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

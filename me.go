@@ -63,7 +63,6 @@ func (s *Me) GetOrganizationsMe(ctx context.Context, opts ...operations.Option) 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-organizations-me",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -290,7 +289,6 @@ func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-users-me",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -63,7 +63,6 @@ func (s *Schemas) ValidateEntitySchema(ctx context.Context, request operations.V
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "validate-entity-schema",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -280,7 +279,6 @@ func (s *Schemas) FetchPartialSchema(ctx context.Context, partialType string, co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-partial-schema",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

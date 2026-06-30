@@ -68,7 +68,6 @@ func (s *CatalogServiceAPIMappings) ListServiceMappingsForAPI(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-service-mappings-for-api",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -361,7 +360,6 @@ func (s *CatalogServiceAPIMappings) ListCatalogServiceAPIMappings(ctx context.Co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-service-api-mappings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -659,7 +657,6 @@ func (s *CatalogServiceAPIMappings) CreateCatalogServiceAPIMapping(ctx context.C
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-catalog-service-api-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateCatalogServiceAPIMappingBody", "json", `request:"mediaType=application/json"`)
@@ -981,7 +978,6 @@ func (s *CatalogServiceAPIMappings) GetCatalogServiceAPIMapping(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-catalog-service-api-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1275,7 +1271,6 @@ func (s *CatalogServiceAPIMappings) DeleteCatalogServiceAPIMapping(ctx context.C
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-catalog-service-api-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

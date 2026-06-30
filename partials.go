@@ -64,7 +64,6 @@ func (s *Partials) ListPartial(ctx context.Context, request operations.ListParti
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-partial",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -299,7 +298,6 @@ func (s *Partials) CreatePartial(ctx context.Context, controlPlaneID string, par
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-partial",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Partial", "json", `request:"mediaType=application/json"`)
@@ -537,7 +535,6 @@ func (s *Partials) DeletePartial(ctx context.Context, controlPlaneID string, par
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-partial",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -749,7 +746,6 @@ func (s *Partials) GetPartial(ctx context.Context, partialID string, controlPlan
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-partial",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -977,7 +973,6 @@ func (s *Partials) UpsertPartial(ctx context.Context, request operations.UpsertP
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-partial",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Partial", "json", `request:"mediaType=application/json"`)

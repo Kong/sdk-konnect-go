@@ -67,7 +67,6 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-control-planes-id-group-member-status",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -398,7 +397,6 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-control-planes-id-group-memberships",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -738,7 +736,6 @@ func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "put-control-planes-id-group-memberships",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "GroupMembership", "json", `request:"mediaType=application/json"`)
@@ -1062,7 +1059,6 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "post-control-planes-id-group-memberships-add",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "GroupMembership", "json", `request:"mediaType=application/json"`)
@@ -1386,7 +1382,6 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "post-control-planes-id-group-memberships-remove",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "GroupMembership", "json", `request:"mediaType=application/json"`)
@@ -1709,7 +1704,6 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-control-planes-id-group-status",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

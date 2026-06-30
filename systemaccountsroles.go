@@ -67,7 +67,6 @@ func (s *SystemAccountsRoles) GetSystemAccountsAccountIDAssignedRoles(ctx contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-system-accounts-accountId-assigned-roles",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -345,7 +344,6 @@ func (s *SystemAccountsRoles) PostSystemAccountsAccountIDAssignedRoles(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "post-system-accounts-accountId-assigned-roles",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AssignRole", "json", `request:"mediaType=application/json"`)
@@ -626,7 +624,6 @@ func (s *SystemAccountsRoles) GetSystemAccountRole(ctx context.Context, accountI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-system-account-role",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -919,7 +916,6 @@ func (s *SystemAccountsRoles) DeleteSystemAccountsAccountIDAssignedRolesRoleID(c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-system-accounts-accountId-assigned-roles-roleId",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

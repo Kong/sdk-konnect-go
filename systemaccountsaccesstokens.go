@@ -62,7 +62,6 @@ func (s *SystemAccountsAccessTokens) GetSystemAccountIDAccessTokens(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-system-account-id-access-tokens",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -340,7 +339,6 @@ func (s *SystemAccountsAccessTokens) PostSystemAccountsIDAccessTokens(ctx contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "post-system-accounts-id-access-tokens",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreateSystemAccountAccessToken", "json", `request:"mediaType=application/json"`)
@@ -621,7 +619,6 @@ func (s *SystemAccountsAccessTokens) GetSystemAccountsIDAccessTokensID(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-system-accounts-id-access-tokens-id",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -869,7 +866,6 @@ func (s *SystemAccountsAccessTokens) PatchSystemAccountsIDAccessTokensID(ctx con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "patch-system-accounts-id-access-tokens-id",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateSystemAccountAccessToken", "json", `request:"mediaType=application/json"`)
@@ -1150,7 +1146,6 @@ func (s *SystemAccountsAccessTokens) DeleteSystemAccountsIDAccessTokensID(ctx co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-system-accounts-id-access-tokens-id",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

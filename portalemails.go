@@ -69,7 +69,6 @@ func (s *PortalEmails) GetEmailConfig(ctx context.Context, portalID string, opts
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-email-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -342,7 +341,6 @@ func (s *PortalEmails) CreatePortalEmailConfig(ctx context.Context, portalID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-email-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PostPortalEmailConfig", "json", `request:"mediaType=application/json"`)
@@ -664,7 +662,6 @@ func (s *PortalEmails) UpdatePortalEmailConfig(ctx context.Context, portalID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-email-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PatchPortalEmailConfig", "json", `request:"mediaType=application/json"`)
@@ -964,7 +961,6 @@ func (s *PortalEmails) DeletePortalEmailConfig(ctx context.Context, portalID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-email-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1219,7 +1215,6 @@ func (s *PortalEmails) GetEmailDelivery(ctx context.Context, portalID string, op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-email-delivery",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1494,7 +1489,6 @@ func (s *PortalEmails) UpdateEmailDelivery(ctx context.Context, portalID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-email-delivery",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "EmailDeliveryUpdatePayload", "json", `request:"mediaType=application/json"`)
@@ -1796,7 +1790,6 @@ func (s *PortalEmails) DeleteEmailDelivery(ctx context.Context, portalID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-email-delivery",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2049,7 +2042,6 @@ func (s *PortalEmails) ListPortalCustomEmailTemplates(ctx context.Context, porta
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-custom-email-templates",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2322,7 +2314,6 @@ func (s *PortalEmails) GetPortalCustomEmailTemplate(ctx context.Context, portalI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-custom-email-template",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2590,7 +2581,6 @@ func (s *PortalEmails) UpdatePortalCustomEmailTemplate(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-custom-email-template",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PatchCustomPortalEmailTemplatePayload", "json", `request:"mediaType=application/json"`)
@@ -2891,7 +2881,6 @@ func (s *PortalEmails) DeletePortalCustomEmailTemplate(ctx context.Context, port
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-custom-email-template",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3141,7 +3130,6 @@ func (s *PortalEmails) PostPortalCustomEmailTestSend(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "post-portal-custom-email-test-send",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PostSendTestEmailPayload", "json", `request:"mediaType=application/json"`)
@@ -3418,7 +3406,6 @@ func (s *PortalEmails) ListEmailDomains(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-email-domains",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3669,7 +3656,6 @@ func (s *PortalEmails) CreateEmailDomain(ctx context.Context, request components
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-email-domain",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -3969,7 +3955,6 @@ func (s *PortalEmails) GetEmailDomain(ctx context.Context, emailDomain string, o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-email-domain",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4241,7 +4226,6 @@ func (s *PortalEmails) DeleteEmailDomain(ctx context.Context, emailDomain string
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-email-domain",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4490,7 +4474,6 @@ func (s *PortalEmails) ListDefaultEmailTemplates(ctx context.Context, opts ...op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-default-email-templates",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4762,7 +4745,6 @@ func (s *PortalEmails) GetDefaultEmailTemplate(ctx context.Context, templateName
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-default-email-template",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -5030,7 +5012,6 @@ func (s *PortalEmails) ListEmailTemplateVariables(ctx context.Context, opts ...o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-email-template-variables",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

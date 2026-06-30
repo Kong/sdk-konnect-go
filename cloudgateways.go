@@ -67,7 +67,6 @@ func (s *CloudGateways) CreateAddOn(ctx context.Context, request components.Crea
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-add-on",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -384,7 +383,6 @@ func (s *CloudGateways) ListAddOns(ctx context.Context, request operations.ListA
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-add-ons",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -659,7 +657,6 @@ func (s *CloudGateways) GetAddOn(ctx context.Context, addOnID string, opts ...op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-add-on",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -931,7 +928,6 @@ func (s *CloudGateways) DeleteAddOn(ctx context.Context, addOnID string, opts ..
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-add-on",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1206,7 +1202,6 @@ func (s *CloudGateways) UpdateAddOn(ctx context.Context, addOnID string, updateA
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-add-on",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAddOnRequest", "json", `request:"mediaType=application/json"`)
@@ -1501,7 +1496,6 @@ func (s *CloudGateways) GetAvailabilityJSON(ctx context.Context, opts ...operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-availability-json",
-		OAuth2Scopes:     nil,
 		SecuritySource:   nil,
 	}
 
@@ -1702,7 +1696,6 @@ func (s *CloudGateways) ListConfigurations(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-configurations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1980,7 +1973,6 @@ func (s *CloudGateways) CreateConfiguration(ctx context.Context, request compone
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-configuration",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -2301,7 +2293,6 @@ func (s *CloudGateways) GetConfiguration(ctx context.Context, configurationID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-configuration",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2569,7 +2560,6 @@ func (s *CloudGateways) ListCustomDomains(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-custom-domains",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2866,7 +2856,6 @@ func (s *CloudGateways) CreateCustomDomains(ctx context.Context, request compone
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-custom-domains",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -3186,7 +3175,6 @@ func (s *CloudGateways) GetCustomDomain(ctx context.Context, customDomainID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-custom-domain",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3457,7 +3445,6 @@ func (s *CloudGateways) DeleteCustomDomain(ctx context.Context, customDomainID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-custom-domain",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3736,7 +3723,6 @@ func (s *CloudGateways) GetCustomDomainOnlineStatus(ctx context.Context, customD
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-custom-domain-online-status",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4011,7 +3997,6 @@ func (s *CloudGateways) ListDefaultResourceConfigurations(ctx context.Context, p
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-default-resource-configurations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4288,7 +4273,6 @@ func (s *CloudGateways) ListDefaultResourceQuotas(ctx context.Context, pageSize 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-default-resource-quotas",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4561,7 +4545,6 @@ func (s *CloudGateways) ListNetworks(ctx context.Context, request operations.Lis
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-networks",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4833,7 +4816,6 @@ func (s *CloudGateways) CreateNetwork(ctx context.Context, request components.Cr
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-network",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -5132,7 +5114,6 @@ func (s *CloudGateways) GetNetwork(ctx context.Context, networkID string, opts .
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-network",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -5404,7 +5385,6 @@ func (s *CloudGateways) UpdateNetwork(ctx context.Context, networkID string, pat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-network",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PatchNetworkRequest", "json", `request:"mediaType=application/json"`)
@@ -5724,7 +5704,6 @@ func (s *CloudGateways) DeleteNetwork(ctx context.Context, networkID string, opt
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-network",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -6000,7 +5979,6 @@ func (s *CloudGateways) ListNetworkConfigurations(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-network-configurations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -6292,7 +6270,6 @@ func (s *CloudGateways) ListPrivateDNS(ctx context.Context, request operations.L
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-private-dns",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -6592,7 +6569,6 @@ func (s *CloudGateways) CreatePrivateDNS(ctx context.Context, networkID string, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-private-dns",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreatePrivateDNSRequest", "json", `request:"mediaType=application/json"`)
@@ -6919,7 +6895,6 @@ func (s *CloudGateways) GetPrivateDNS(ctx context.Context, networkID string, pri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-private-dns",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -7187,7 +7162,6 @@ func (s *CloudGateways) UpdatePrivateDNS(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-private-dns",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PatchPrivateDNSRequest", "json", `request:"mediaType=application/json"`)
@@ -7510,7 +7484,6 @@ func (s *CloudGateways) DeletePrivateDNS(ctx context.Context, networkID string, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-private-dns",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -7785,7 +7758,6 @@ func (s *CloudGateways) ListTransitGateways(ctx context.Context, request operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-transit-gateways",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -8086,7 +8058,6 @@ func (s *CloudGateways) CreateTransitGateway(ctx context.Context, networkID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-transit-gateway",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateTransitGatewayRequest", "json", `request:"mediaType=application/json"`)
@@ -8413,7 +8384,6 @@ func (s *CloudGateways) GetTransitGateway(ctx context.Context, networkID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-transit-gateway",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -8681,7 +8651,6 @@ func (s *CloudGateways) UpdateTransitGateway(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-transit-gateway",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PatchTransitGatewayRequest", "json", `request:"mediaType=application/json"`)
@@ -9002,7 +8971,6 @@ func (s *CloudGateways) DeleteTransitGateway(ctx context.Context, networkID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-transit-gateway",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -9277,7 +9245,6 @@ func (s *CloudGateways) ListProviderAccounts(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-provider-accounts",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -9613,7 +9580,6 @@ func (s *CloudGateways) GetProviderAccount(ctx context.Context, providerAccountI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-provider-account",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -9888,7 +9854,6 @@ func (s *CloudGateways) ListResourceConfigurations(ctx context.Context, pageSize
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-resource-configurations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -10163,7 +10128,6 @@ func (s *CloudGateways) GetResourceConfiguration(ctx context.Context, resourceCo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-resource-configuration",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -10438,7 +10402,6 @@ func (s *CloudGateways) ListResourceQuotas(ctx context.Context, pageSize *int64,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-resource-quotas",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -10713,7 +10676,6 @@ func (s *CloudGateways) GetResourceQuota(ctx context.Context, resourceQuotaID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-resource-quota",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -66,7 +66,6 @@ func (s *EventGatewayBackendClusters) ListEventGatewayBackendClusters(ctx contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-backend-clusters",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -322,7 +321,6 @@ func (s *EventGatewayBackendClusters) CreateEventGatewayBackendCluster(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-gateway-backend-cluster",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreateBackendClusterRequest", "json", `request:"mediaType=application/json"`)
@@ -602,7 +600,6 @@ func (s *EventGatewayBackendClusters) GetEventGatewayBackendCluster(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-backend-cluster",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -870,7 +867,6 @@ func (s *EventGatewayBackendClusters) UpdateEventGatewayBackendCluster(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-gateway-backend-cluster",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateBackendClusterRequest", "json", `request:"mediaType=application/json"`)
@@ -1150,7 +1146,6 @@ func (s *EventGatewayBackendClusters) DeleteEventGatewayBackendCluster(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-gateway-backend-cluster",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

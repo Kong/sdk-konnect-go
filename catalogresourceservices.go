@@ -64,7 +64,6 @@ func (s *CatalogResourceServices) ListCatalogResourceServices(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-resource-services",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

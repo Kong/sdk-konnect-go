@@ -357,14 +357,10 @@ This endpoint is currently in beta and is subject to change.
 
 Client-initiated signals fetch with long-polling capabilities.
 The client supplies `capabilities` as a deepObject query parameter:
-
-
   - Keys are capability names (e.g. `mcp`)
   - Values contain the capability request fields (`version`)
 
 Example:
-
-
   GET /mcp-cp/{controlPlaneId}/signals?capabilities[mcp][version]=5
 
 The CP responds with a JSON payload containing zero or more signals that the client should process.

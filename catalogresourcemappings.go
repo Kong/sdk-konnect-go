@@ -68,7 +68,6 @@ func (s *CatalogResourceMappings) CreateResourceMapping(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-resource-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -364,7 +363,6 @@ func (s *CatalogResourceMappings) ListResourceMappings(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-resource-mappings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -640,7 +638,6 @@ func (s *CatalogResourceMappings) FetchResourceMapping(ctx context.Context, reso
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-resource-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -912,7 +909,6 @@ func (s *CatalogResourceMappings) DeleteResourceMapping(ctx context.Context, res
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-resource-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

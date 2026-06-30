@@ -65,7 +65,6 @@ func (s *Portals) ListPortals(ctx context.Context, request operations.ListPortal
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portals",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -337,7 +336,6 @@ func (s *Portals) CreatePortal(ctx context.Context, request components.CreatePor
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -616,7 +614,6 @@ func (s *Portals) GetPortal(ctx context.Context, portalID string, opts ...operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -889,7 +886,6 @@ func (s *Portals) UpdatePortal(ctx context.Context, portalID string, updatePorta
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdatePortal", "json", `request:"mediaType=application/json"`)
@@ -1211,7 +1207,6 @@ func (s *Portals) DeletePortal(ctx context.Context, portalID string, force *oper
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

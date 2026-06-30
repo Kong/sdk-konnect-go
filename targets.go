@@ -66,7 +66,6 @@ func (s *Targets) ListTargets(ctx context.Context, request operations.ListTarget
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-targets",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -338,7 +337,6 @@ func (s *Targets) ListTargetWithUpstream(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-target-with-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -547,7 +545,6 @@ func (s *Targets) CreateTargetWithUpstream(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-target-with-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "TargetWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -759,7 +756,6 @@ func (s *Targets) DeleteTargetWithUpstream(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-target-with-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -945,7 +941,6 @@ func (s *Targets) GetTargetWithUpstream(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-target-with-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1152,7 +1147,6 @@ func (s *Targets) UpsertTargetWithUpstream(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-target-with-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "TargetWithoutParents", "json", `request:"mediaType=application/json"`)

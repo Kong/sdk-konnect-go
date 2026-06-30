@@ -68,7 +68,6 @@ func (s *PortalIntegrations) GetPortalIntegrations(ctx context.Context, portalID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-integrations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -341,7 +340,6 @@ func (s *PortalIntegrations) UpsertPortalIntegrations(ctx context.Context, porta
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-portal-integrations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PortalIntegrations", "json", `request:"mediaType=application/json"`)
@@ -642,7 +640,6 @@ func (s *PortalIntegrations) UpdatePortalIntegrations(ctx context.Context, porta
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-integrations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdatePortalIntegrations", "json", `request:"mediaType=application/json"`)

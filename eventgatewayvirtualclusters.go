@@ -64,7 +64,6 @@ func (s *EventGatewayVirtualClusters) ListEventGatewayVirtualClusters(ctx contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-virtual-clusters",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -320,7 +319,6 @@ func (s *EventGatewayVirtualClusters) CreateEventGatewayVirtualCluster(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-gateway-virtual-cluster",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreateVirtualClusterRequest", "json", `request:"mediaType=application/json"`)
@@ -600,7 +598,6 @@ func (s *EventGatewayVirtualClusters) GetEventGatewayVirtualCluster(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-virtual-cluster",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -868,7 +865,6 @@ func (s *EventGatewayVirtualClusters) UpdateEventGatewayVirtualCluster(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-gateway-virtual-cluster",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateVirtualClusterRequest", "json", `request:"mediaType=application/json"`)
@@ -1148,7 +1144,6 @@ func (s *EventGatewayVirtualClusters) DeleteEventGatewayVirtualCluster(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-gateway-virtual-cluster",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

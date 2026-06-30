@@ -68,7 +68,6 @@ func (s *Scorecards) ListCatalogServiceScorecards(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-service-scorecards",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -366,7 +365,6 @@ func (s *Scorecards) FetchCatalogServiceScorecard(ctx context.Context, serviceID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-catalog-service-scorecard",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -655,7 +653,6 @@ func (s *Scorecards) ListScorecardTemplates(ctx context.Context, request operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-scorecard-templates",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -927,7 +924,6 @@ func (s *Scorecards) CreateScorecard(ctx context.Context, request components.Cre
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-scorecard",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -1202,7 +1198,6 @@ func (s *Scorecards) ListScorecards(ctx context.Context, request operations.List
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-scorecards",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1478,7 +1473,6 @@ func (s *Scorecards) FetchScorecard(ctx context.Context, id string, opts ...oper
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-scorecard",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1751,7 +1745,6 @@ func (s *Scorecards) UpdateScorecard(ctx context.Context, id string, updateScore
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-scorecard",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateScorecard", "json", `request:"mediaType=application/json"`)
@@ -2051,7 +2044,6 @@ func (s *Scorecards) DeleteScorecard(ctx context.Context, id string, opts ...ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-scorecard",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2300,7 +2292,6 @@ func (s *Scorecards) ListScorecardServices(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-scorecard-services",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2572,7 +2563,6 @@ func (s *Scorecards) ListScorecardCriteria(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-scorecard-criteria",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2844,7 +2834,6 @@ func (s *Scorecards) ListScorecardCriteriaServices(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-scorecard-criteria-services",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

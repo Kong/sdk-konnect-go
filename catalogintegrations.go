@@ -74,7 +74,6 @@ func (s *CatalogIntegrations) ListCatalogIntegrations(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-integrations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

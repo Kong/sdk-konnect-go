@@ -63,7 +63,6 @@ func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-jwt-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -272,7 +271,6 @@ func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.Cre
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-jwt-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "JWTWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -484,7 +482,6 @@ func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.Del
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-jwt-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -670,7 +667,6 @@ func (s *JWTs) GetJwtWithConsumer(ctx context.Context, request operations.GetJwt
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-jwt-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -877,7 +873,6 @@ func (s *JWTs) UpsertJwtWithConsumer(ctx context.Context, request operations.Ups
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-jwt-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "JWTWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1089,7 +1084,6 @@ func (s *JWTs) ListJwt(ctx context.Context, request operations.ListJwtRequest, o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-jwt",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1324,7 +1318,6 @@ func (s *JWTs) GetJwt(ctx context.Context, jwtID string, controlPlaneID string, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-jwt",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

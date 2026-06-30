@@ -64,7 +64,6 @@ func (s *APIPublication) PublishAPIPackageToPortal(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "publish-api-package-to-portal",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "APIPackagePublication", "json", `request:"mediaType=application/json"`)
@@ -366,7 +365,6 @@ func (s *APIPublication) FetchAPIPackagePublication(ctx context.Context, apiPack
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-api-package-publication",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -639,7 +637,6 @@ func (s *APIPublication) DeleteAPIPackagePublication(ctx context.Context, apiPac
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-api-package-publication",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -888,7 +885,6 @@ func (s *APIPublication) ListAPIPublications(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-api-publications",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1181,7 +1177,6 @@ func (s *APIPublication) PublishAPIToPortal(ctx context.Context, request operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "publish-api-to-portal",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "APIPublication", "json", `request:"mediaType=application/json"`)
@@ -1483,7 +1478,6 @@ func (s *APIPublication) FetchPublication(ctx context.Context, apiID string, por
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-publication",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1756,7 +1750,6 @@ func (s *APIPublication) DeletePublication(ctx context.Context, apiID string, po
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-publication",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2007,7 +2000,6 @@ func (s *APIPublication) ListPortalAPIPublications(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-api-publications",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

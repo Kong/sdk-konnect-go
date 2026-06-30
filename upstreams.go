@@ -67,7 +67,6 @@ func (s *Upstreams) ListUpstream(ctx context.Context, request operations.ListUps
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -302,7 +301,6 @@ func (s *Upstreams) CreateUpstream(ctx context.Context, controlPlaneID string, u
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Upstream", "json", `request:"mediaType=application/json"`)
@@ -540,7 +538,6 @@ func (s *Upstreams) DeleteUpstream(ctx context.Context, controlPlaneID string, u
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -752,7 +749,6 @@ func (s *Upstreams) GetUpstream(ctx context.Context, upstreamID string, controlP
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -980,7 +976,6 @@ func (s *Upstreams) UpsertUpstream(ctx context.Context, request operations.Upser
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-upstream",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Upstream", "json", `request:"mediaType=application/json"`)

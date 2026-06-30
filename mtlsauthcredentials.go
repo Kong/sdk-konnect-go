@@ -63,7 +63,6 @@ func (s *MTLSAuthCredentials) ListMtlsAuthWithConsumer(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-mtls-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -272,7 +271,6 @@ func (s *MTLSAuthCredentials) CreateMtlsAuthWithConsumer(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-mtls-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "MTLSAuthWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -484,7 +482,6 @@ func (s *MTLSAuthCredentials) DeleteMtlsAuthWithConsumer(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-mtls-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -670,7 +667,6 @@ func (s *MTLSAuthCredentials) GetMtlsAuthWithConsumer(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mtls-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -877,7 +873,6 @@ func (s *MTLSAuthCredentials) UpsertMtlsAuthWithConsumer(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-mtls-auth-with-consumer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "MTLSAuthWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1089,7 +1084,6 @@ func (s *MTLSAuthCredentials) ListMtlsAuth(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-mtls-auth",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1324,7 +1318,6 @@ func (s *MTLSAuthCredentials) GetMtlsAuth(ctx context.Context, mtlsAuthID string
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mtls-auth",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

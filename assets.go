@@ -68,7 +68,6 @@ func (s *Assets) GetPortalAssetFavicon(ctx context.Context, portalID string, opt
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-asset-favicon",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -320,7 +319,6 @@ func (s *Assets) ReplacePortalAssetFavicon(ctx context.Context, portalID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "replace-portal-asset-favicon",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, true, false, "ReplacePortalImageAsset", "json", `request:"mediaType=application/json"`)
@@ -600,7 +598,6 @@ func (s *Assets) GetPortalAssetFaviconRaw(ctx context.Context, portalID string, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-asset-favicon-raw",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -735,12 +732,12 @@ func (s *Assets) GetPortalAssetFaviconRaw(ctx context.Context, portalID string, 
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/jpeg`):
-			res.TwoHundredImageJpegPortalImageAssetBlob = httpRes.Body
-
-			return res, nil
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/png`):
 			res.TwoHundredImagePngPortalImageAssetBlob = httpRes.Body
+
+			return res, nil
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/jpeg`):
+			res.TwoHundredImageJpegPortalImageAssetBlob = httpRes.Body
 
 			return res, nil
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/svg+xml`):
@@ -856,7 +853,6 @@ func (s *Assets) GetPortalAssetLogo(ctx context.Context, portalID string, opts .
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-asset-logo",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1108,7 +1104,6 @@ func (s *Assets) ReplacePortalAssetLogo(ctx context.Context, portalID string, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "replace-portal-asset-logo",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, true, false, "ReplacePortalImageAsset", "json", `request:"mediaType=application/json"`)
@@ -1388,7 +1383,6 @@ func (s *Assets) GetPortalAssetLogoRaw(ctx context.Context, portalID string, opt
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-asset-logo-raw",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1523,12 +1517,12 @@ func (s *Assets) GetPortalAssetLogoRaw(ctx context.Context, portalID string, opt
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/jpeg`):
-			res.TwoHundredImageJpegPortalImageAssetBlob = httpRes.Body
-
-			return res, nil
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/png`):
 			res.TwoHundredImagePngPortalImageAssetBlob = httpRes.Body
+
+			return res, nil
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/jpeg`):
+			res.TwoHundredImageJpegPortalImageAssetBlob = httpRes.Body
 
 			return res, nil
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/svg+xml`):

@@ -64,7 +64,6 @@ func (s *APIImplementation) ListAPIImplementations(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-api-implementations",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -346,7 +345,6 @@ func (s *APIImplementation) CreateAPIImplementation(ctx context.Context, apiID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-api-implementation",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "APIImplementation", "json", `request:"mediaType=application/json"`)
@@ -668,7 +666,6 @@ func (s *APIImplementation) FetchAPIImplementation(ctx context.Context, apiID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-api-implementation",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -941,7 +938,6 @@ func (s *APIImplementation) DeleteAPIImplementation(ctx context.Context, apiID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-api-implementation",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
