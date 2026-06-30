@@ -35,6 +35,12 @@ chart := components.CreateChartHorizontalBar(components.BarChart{/* values here 
 chart := components.CreateChartVerticalBar(components.BarChart{/* values here */})
 ```
 
+### TopNChart
+
+```go
+chart := components.CreateChartTopN(components.TopNChart{/* values here */})
+```
+
 ### SingleValueChart
 
 ```go
@@ -63,6 +69,8 @@ switch chart.Type {
 		// chart.BarChart is populated
 	case components.ChartTypeVerticalBar:
 		// chart.BarChart is populated
+	case components.ChartTypeTopN:
+		// chart.TopNChart is populated
 	case components.ChartTypeSingleValue:
 		// chart.SingleValueChart is populated
 	case components.ChartTypeChoroplethMap:

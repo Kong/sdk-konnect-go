@@ -1,6 +1,10 @@
 # APIAccess
 
-Type of API access data-plane groups will support for a configuration.
+Controls how data planes in a configuration are exposed. Supported values:
+- `private` — data planes are accessible only within the VPC network; no public internet exposure
+- `public` — data planes are accessible from the public internet
+- `private+public` — equivalent to `public`; data planes are accessible from the public internet (default)
+
 
 ## Example Usage
 
