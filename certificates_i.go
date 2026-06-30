@@ -11,6 +11,21 @@ import (
 
 // CertificatesSDK is a generated interface.
 type CertificatesSDK interface {
+	// ListCertificateInWorkspace - List all Certificates in a workspace
+	// List all Certificates in a workspace
+	ListCertificateInWorkspace(ctx context.Context, request operations.ListCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.ListCertificateInWorkspaceResponse, error)
+	// CreateCertificateInWorkspace - Create a new Certificate in a workspace
+	// Create a new Certificate in a workspace
+	CreateCertificateInWorkspace(ctx context.Context, request operations.CreateCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.CreateCertificateInWorkspaceResponse, error)
+	// DeleteCertificateInWorkspace - Delete a Certificate in a workspace
+	// Delete a Certificate in a workspace
+	DeleteCertificateInWorkspace(ctx context.Context, request operations.DeleteCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteCertificateInWorkspaceResponse, error)
+	// GetCertificateInWorkspace - Get a Certificate in a workspace
+	// Get a Certificate using ID in a workspace.
+	GetCertificateInWorkspace(ctx context.Context, request operations.GetCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.GetCertificateInWorkspaceResponse, error)
+	// UpsertCertificateInWorkspace - Upsert a Certificate in a workspace
+	// Create or Update Certificate using ID in a workspace.
+	UpsertCertificateInWorkspace(ctx context.Context, request operations.UpsertCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertCertificateInWorkspaceResponse, error)
 	// ListCertificate - List all Certificates
 	// List all Certificates
 	ListCertificate(ctx context.Context, request operations.ListCertificateRequest, opts ...operations.Option) (*operations.ListCertificateResponse, error)

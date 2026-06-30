@@ -7,6 +7,16 @@ A key object holds a representation of asymmetric keys in various formats. When 
 
 ### Available Operations
 
+* [ListKeyWithKeySetInWorkspace](#listkeywithkeysetinworkspace) - List all Keys associated with a KeySet in a workspace
+* [CreateKeyWithKeySetInWorkspace](#createkeywithkeysetinworkspace) - Create a new Key associated with a KeySet in a workspace
+* [DeleteKeyWithKeySetInWorkspace](#deletekeywithkeysetinworkspace) - Delete a a Key associated with a KeySet in a workspace
+* [GetKeyWithKeySetInWorkspace](#getkeywithkeysetinworkspace) - Get a Key associated with a KeySet in a workspace
+* [UpsertKeyWithKeySetInWorkspace](#upsertkeywithkeysetinworkspace) - Upsert a Key associated with a KeySet in a workspace
+* [ListKeyInWorkspace](#listkeyinworkspace) - List all Keys in a workspace
+* [CreateKeyInWorkspace](#createkeyinworkspace) - Create a new Key in a workspace
+* [DeleteKeyInWorkspace](#deletekeyinworkspace) - Delete a Key in a workspace
+* [GetKeyInWorkspace](#getkeyinworkspace) - Get a Key in a workspace
+* [UpsertKeyInWorkspace](#upsertkeyinworkspace) - Upsert a Key in a workspace
 * [ListKeyWithKeySet](#listkeywithkeyset) - List all Keys associated with a KeySet
 * [CreateKeyWithKeySet](#createkeywithkeyset) - Create a new Key associated with a KeySet
 * [DeleteKeyWithKeySet](#deletekeywithkeyset) - Delete a a Key associated with a KeySet
@@ -17,6 +27,656 @@ A key object holds a representation of asymmetric keys in various formats. When 
 * [DeleteKey](#deletekey) - Delete a Key
 * [GetKey](#getkey) - Get a Key
 * [UpsertKey](#upsertkey) - Upsert a Key
+
+## ListKeyWithKeySetInWorkspace
+
+List all Keys associated with a KeySet in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-key-with-key-set-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.ListKeyWithKeySetInWorkspace(ctx, operations.ListKeyWithKeySetInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.ListKeyWithKeySetInWorkspaceRequest](../../models/operations/listkeywithkeysetinworkspacerequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.ListKeyWithKeySetInWorkspaceResponse](../../models/operations/listkeywithkeysetinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## CreateKeyWithKeySetInWorkspace
+
+Create a new Key associated with a KeySet in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-key-with-key-set-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.CreateKeyWithKeySetInWorkspace(ctx, operations.CreateKeyWithKeySetInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
+        Workspace: "team-payments",
+        KeyWithoutParents: components.KeyWithoutParents{
+            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            Kid: "42",
+            Name: sdkkonnectgo.Pointer("a-key"),
+            Pem: &components.KeyWithoutParentsPem{
+                PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+                PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            },
+            Set: &components.KeyWithoutParentsSet{
+                ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.CreateKeyWithKeySetInWorkspaceRequest](../../models/operations/createkeywithkeysetinworkspacerequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.CreateKeyWithKeySetInWorkspaceResponse](../../models/operations/createkeywithkeysetinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## DeleteKeyWithKeySetInWorkspace
+
+Delete a a Key associated with a KeySet using ID or name in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-key-with-key-set-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys/{KeyId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.DeleteKeyWithKeySetInWorkspace(ctx, operations.DeleteKeyWithKeySetInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.DeleteKeyWithKeySetInWorkspaceRequest](../../models/operations/deletekeywithkeysetinworkspacerequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.DeleteKeyWithKeySetInWorkspaceResponse](../../models/operations/deletekeywithkeysetinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## GetKeyWithKeySetInWorkspace
+
+Get a Key associated with a KeySet using ID or name in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-key-with-key-set-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys/{KeyId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.GetKeyWithKeySetInWorkspace(ctx, operations.GetKeyWithKeySetInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                          | :heavy_check_mark:                                                                                             | The context to use for the request.                                                                            |
+| `request`                                                                                                      | [operations.GetKeyWithKeySetInWorkspaceRequest](../../models/operations/getkeywithkeysetinworkspacerequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+| `opts`                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                       | :heavy_minus_sign:                                                                                             | The options for this request.                                                                                  |
+
+### Response
+
+**[*operations.GetKeyWithKeySetInWorkspaceResponse](../../models/operations/getkeywithkeysetinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## UpsertKeyWithKeySetInWorkspace
+
+Create or Update a Key associated with a KeySet using ID or name in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-key-with-key-set-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys/{KeyId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.UpsertKeyWithKeySetInWorkspace(ctx, operations.UpsertKeyWithKeySetInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        Workspace: "team-payments",
+        KeyWithoutParents: components.KeyWithoutParents{
+            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            Kid: "42",
+            Name: sdkkonnectgo.Pointer("a-key"),
+            Pem: &components.KeyWithoutParentsPem{
+                PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+                PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            },
+            Set: &components.KeyWithoutParentsSet{
+                ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.UpsertKeyWithKeySetInWorkspaceRequest](../../models/operations/upsertkeywithkeysetinworkspacerequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.UpsertKeyWithKeySetInWorkspaceResponse](../../models/operations/upsertkeywithkeysetinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ListKeyInWorkspace
+
+List all Keys in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-key-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.ListKeyInWorkspace(ctx, operations.ListKeyInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
+| `request`                                                                                    | [operations.ListKeyInWorkspaceRequest](../../models/operations/listkeyinworkspacerequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |
+
+### Response
+
+**[*operations.ListKeyInWorkspaceResponse](../../models/operations/listkeyinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## CreateKeyInWorkspace
+
+Create a new Key in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-key-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.CreateKeyInWorkspace(ctx, operations.CreateKeyInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Key: components.Key{
+            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            Kid: "42",
+            Name: sdkkonnectgo.Pointer("a-key"),
+            Pem: &components.Pem{
+                PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+                PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            },
+            Set: &components.Set{
+                ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
+| `request`                                                                                        | [operations.CreateKeyInWorkspaceRequest](../../models/operations/createkeyinworkspacerequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |
+
+### Response
+
+**[*operations.CreateKeyInWorkspaceResponse](../../models/operations/createkeyinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## DeleteKeyInWorkspace
+
+Delete a Key in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-key-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys/{KeyId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.DeleteKeyInWorkspace(ctx, operations.DeleteKeyInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
+| `request`                                                                                        | [operations.DeleteKeyInWorkspaceRequest](../../models/operations/deletekeyinworkspacerequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |
+
+### Response
+
+**[*operations.DeleteKeyInWorkspaceResponse](../../models/operations/deletekeyinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## GetKeyInWorkspace
+
+Get a Key using ID or name in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-key-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys/{KeyId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.GetKeyInWorkspace(ctx, operations.GetKeyInWorkspaceRequest{
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [operations.GetKeyInWorkspaceRequest](../../models/operations/getkeyinworkspacerequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
+
+### Response
+
+**[*operations.GetKeyInWorkspaceResponse](../../models/operations/getkeyinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## UpsertKeyInWorkspace
+
+Create or Update Key using ID or name in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-key-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys/{KeyId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.UpsertKeyInWorkspace(ctx, operations.UpsertKeyInWorkspaceRequest{
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Key: components.Key{
+            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            Kid: "42",
+            Name: sdkkonnectgo.Pointer("a-key"),
+            Pem: &components.Pem{
+                PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+                PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            },
+            Set: &components.Set{
+                ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
+| `request`                                                                                        | [operations.UpsertKeyInWorkspaceRequest](../../models/operations/upsertkeyinworkspacerequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |
+
+### Response
+
+**[*operations.UpsertKeyInWorkspaceResponse](../../models/operations/upsertkeyinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
 
 ## ListKeyWithKeySet
 

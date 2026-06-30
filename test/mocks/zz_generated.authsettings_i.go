@@ -544,7 +544,7 @@ func (_c *MockAuthSettingsSDK_GetIdentityProvider_Call) RunAndReturn(run func(ct
 }
 
 // GetIdentityProviders provides a mock function for the type MockAuthSettingsSDK
-func (_mock *MockAuthSettingsSDK) GetIdentityProviders(ctx context.Context, filter *operations.GetIdentityProvidersQueryParamFilter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error) {
+func (_mock *MockAuthSettingsSDK) GetIdentityProviders(ctx context.Context, filter *operations.Filter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
 		tmpRet = _mock.Called(ctx, filter, opts)
@@ -559,17 +559,17 @@ func (_mock *MockAuthSettingsSDK) GetIdentityProviders(ctx context.Context, filt
 
 	var r0 *operations.GetIdentityProvidersResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *operations.GetIdentityProvidersQueryParamFilter, ...operations.Option) (*operations.GetIdentityProvidersResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *operations.Filter, ...operations.Option) (*operations.GetIdentityProvidersResponse, error)); ok {
 		return returnFunc(ctx, filter, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *operations.GetIdentityProvidersQueryParamFilter, ...operations.Option) *operations.GetIdentityProvidersResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *operations.Filter, ...operations.Option) *operations.GetIdentityProvidersResponse); ok {
 		r0 = returnFunc(ctx, filter, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetIdentityProvidersResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *operations.GetIdentityProvidersQueryParamFilter, ...operations.Option) error); ok {
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *operations.Filter, ...operations.Option) error); ok {
 		r1 = returnFunc(ctx, filter, opts...)
 	} else {
 		r1 = ret.Error(1)
@@ -584,22 +584,22 @@ type MockAuthSettingsSDK_GetIdentityProviders_Call struct {
 
 // GetIdentityProviders is a helper method to define mock.On call
 //   - ctx context.Context
-//   - filter *operations.GetIdentityProvidersQueryParamFilter
+//   - filter *operations.Filter
 //   - opts ...operations.Option
 func (_e *MockAuthSettingsSDK_Expecter) GetIdentityProviders(ctx any, filter any, opts ...any) *MockAuthSettingsSDK_GetIdentityProviders_Call {
 	return &MockAuthSettingsSDK_GetIdentityProviders_Call{Call: _e.mock.On("GetIdentityProviders",
 		append([]any{ctx, filter}, opts...)...)}
 }
 
-func (_c *MockAuthSettingsSDK_GetIdentityProviders_Call) Run(run func(ctx context.Context, filter *operations.GetIdentityProvidersQueryParamFilter, opts ...operations.Option)) *MockAuthSettingsSDK_GetIdentityProviders_Call {
+func (_c *MockAuthSettingsSDK_GetIdentityProviders_Call) Run(run func(ctx context.Context, filter *operations.Filter, opts ...operations.Option)) *MockAuthSettingsSDK_GetIdentityProviders_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 *operations.GetIdentityProvidersQueryParamFilter
+		var arg1 *operations.Filter
 		if args[1] != nil {
-			arg1 = args[1].(*operations.GetIdentityProvidersQueryParamFilter)
+			arg1 = args[1].(*operations.Filter)
 		}
 		var arg2 []operations.Option
 		var variadicArgs []operations.Option
@@ -621,7 +621,7 @@ func (_c *MockAuthSettingsSDK_GetIdentityProviders_Call) Return(getIdentityProvi
 	return _c
 }
 
-func (_c *MockAuthSettingsSDK_GetIdentityProviders_Call) RunAndReturn(run func(ctx context.Context, filter *operations.GetIdentityProvidersQueryParamFilter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error)) *MockAuthSettingsSDK_GetIdentityProviders_Call {
+func (_c *MockAuthSettingsSDK_GetIdentityProviders_Call) RunAndReturn(run func(ctx context.Context, filter *operations.Filter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error)) *MockAuthSettingsSDK_GetIdentityProviders_Call {
 	_c.Call.Return(run)
 	return _c
 }

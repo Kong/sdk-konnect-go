@@ -17,11 +17,14 @@ type OpenMeterSubscriptionsSDK interface {
 	ListSubscriptions(ctx context.Context, request operations.ListSubscriptionsRequest, opts ...operations.Option) (*operations.ListSubscriptionsResponse, error)
 	// GetSubscription - Get subscription
 	GetSubscription(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.GetSubscriptionResponse, error)
+	// CreateSubscriptionAddon - Create a new subscription add-on
+	// Add add-on to a subscription.
+	CreateSubscriptionAddon(ctx context.Context, subscriptionID string, createSubscriptionAddonRequest components.CreateSubscriptionAddonRequest, opts ...operations.Option) (*operations.CreateSubscriptionAddonResponse, error)
 	// ListSubscriptionAddons - List subscription addons
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
-	// List the addons of a subscription.
+	// List the add-ons of a subscription.
 	ListSubscriptionAddons(ctx context.Context, request operations.ListSubscriptionAddonsRequest, opts ...operations.Option) (*operations.ListSubscriptionAddonsResponse, error)
 	// GetSubscriptionAddon - Get add-on association for subscription
 	// **Pre-release Endpoint**

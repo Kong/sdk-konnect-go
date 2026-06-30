@@ -1,0 +1,13 @@
+# TargetStatus
+
+Represents the status of supported features for a node instance based on its version
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `TargetID`                                                                   | `string`                                                                     | :heavy_check_mark:                                                           | Unique identifier of the data plane node.                                    | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                         |
+| `Version`                                                                    | `string`                                                                     | :heavy_check_mark:                                                           | Version of the node instance                                                 | 3.11                                                                         |
+| `CompatibleFeatures`                                                         | [][components.DebuggerFeatures](../../models/components/debuggerfeatures.md) | :heavy_check_mark:                                                           | List of debugger features that are compatible                                | [<br/>"logs",<br/>"traces"<br/>]                                             |
+| `IncompatibleFeatures`                                                       | [][components.DebuggerFeatures](../../models/components/debuggerfeatures.md) | :heavy_check_mark:                                                           | List of debugger features that are incompatible                              | [<br/>"logs"<br/>]                                                           |

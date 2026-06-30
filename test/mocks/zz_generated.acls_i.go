@@ -121,6 +121,89 @@ func (_c *MockACLsSDK_CreateACLWithConsumer_Call) RunAndReturn(run func(ctx cont
 	return _c
 }
 
+// CreateACLWithConsumerInWorkspace provides a mock function for the type MockACLsSDK
+func (_mock *MockACLsSDK) CreateACLWithConsumerInWorkspace(ctx context.Context, request operations.CreateACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateACLWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateACLWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.CreateACLWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateACLWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.CreateACLWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateACLWithConsumerInWorkspaceRequest, ...operations.Option) *operations.CreateACLWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateACLWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateACLWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockACLsSDK_CreateACLWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateACLWithConsumerInWorkspace'
+type MockACLsSDK_CreateACLWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateACLWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateACLWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockACLsSDK_Expecter) CreateACLWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockACLsSDK_CreateACLWithConsumerInWorkspace_Call {
+	return &MockACLsSDK_CreateACLWithConsumerInWorkspace_Call{Call: _e.mock.On("CreateACLWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockACLsSDK_CreateACLWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateACLWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockACLsSDK_CreateACLWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateACLWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateACLWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockACLsSDK_CreateACLWithConsumerInWorkspace_Call) Return(createACLWithConsumerInWorkspaceResponse *operations.CreateACLWithConsumerInWorkspaceResponse, err error) *MockACLsSDK_CreateACLWithConsumerInWorkspace_Call {
+	_c.Call.Return(createACLWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockACLsSDK_CreateACLWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateACLWithConsumerInWorkspaceResponse, error)) *MockACLsSDK_CreateACLWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteACLWithConsumer provides a mock function for the type MockACLsSDK
 func (_mock *MockACLsSDK) DeleteACLWithConsumer(ctx context.Context, request operations.DeleteACLWithConsumerRequest, opts ...operations.Option) (*operations.DeleteACLWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -200,6 +283,89 @@ func (_c *MockACLsSDK_DeleteACLWithConsumer_Call) Return(deleteACLWithConsumerRe
 }
 
 func (_c *MockACLsSDK_DeleteACLWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteACLWithConsumerRequest, opts ...operations.Option) (*operations.DeleteACLWithConsumerResponse, error)) *MockACLsSDK_DeleteACLWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteACLWithConsumerInWorkspace provides a mock function for the type MockACLsSDK
+func (_mock *MockACLsSDK) DeleteACLWithConsumerInWorkspace(ctx context.Context, request operations.DeleteACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteACLWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteACLWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.DeleteACLWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteACLWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.DeleteACLWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteACLWithConsumerInWorkspaceRequest, ...operations.Option) *operations.DeleteACLWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteACLWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteACLWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteACLWithConsumerInWorkspace'
+type MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteACLWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteACLWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockACLsSDK_Expecter) DeleteACLWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call {
+	return &MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call{Call: _e.mock.On("DeleteACLWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteACLWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteACLWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteACLWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call) Return(deleteACLWithConsumerInWorkspaceResponse *operations.DeleteACLWithConsumerInWorkspaceResponse, err error) *MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call {
+	_c.Call.Return(deleteACLWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteACLWithConsumerInWorkspaceResponse, error)) *MockACLsSDK_DeleteACLWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -293,6 +459,89 @@ func (_c *MockACLsSDK_GetACL_Call) RunAndReturn(run func(ctx context.Context, ac
 	return _c
 }
 
+// GetACLInWorkspace provides a mock function for the type MockACLsSDK
+func (_mock *MockACLsSDK) GetACLInWorkspace(ctx context.Context, request operations.GetACLInWorkspaceRequest, opts ...operations.Option) (*operations.GetACLInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetACLInWorkspace")
+	}
+
+	var r0 *operations.GetACLInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetACLInWorkspaceRequest, ...operations.Option) (*operations.GetACLInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetACLInWorkspaceRequest, ...operations.Option) *operations.GetACLInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetACLInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetACLInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockACLsSDK_GetACLInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetACLInWorkspace'
+type MockACLsSDK_GetACLInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetACLInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetACLInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockACLsSDK_Expecter) GetACLInWorkspace(ctx any, request any, opts ...any) *MockACLsSDK_GetACLInWorkspace_Call {
+	return &MockACLsSDK_GetACLInWorkspace_Call{Call: _e.mock.On("GetACLInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockACLsSDK_GetACLInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetACLInWorkspaceRequest, opts ...operations.Option)) *MockACLsSDK_GetACLInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetACLInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetACLInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockACLsSDK_GetACLInWorkspace_Call) Return(getACLInWorkspaceResponse *operations.GetACLInWorkspaceResponse, err error) *MockACLsSDK_GetACLInWorkspace_Call {
+	_c.Call.Return(getACLInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockACLsSDK_GetACLInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetACLInWorkspaceRequest, opts ...operations.Option) (*operations.GetACLInWorkspaceResponse, error)) *MockACLsSDK_GetACLInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetACLWithConsumer provides a mock function for the type MockACLsSDK
 func (_mock *MockACLsSDK) GetACLWithConsumer(ctx context.Context, request operations.GetACLWithConsumerRequest, opts ...operations.Option) (*operations.GetACLWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -372,6 +621,89 @@ func (_c *MockACLsSDK_GetACLWithConsumer_Call) Return(getACLWithConsumerResponse
 }
 
 func (_c *MockACLsSDK_GetACLWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.GetACLWithConsumerRequest, opts ...operations.Option) (*operations.GetACLWithConsumerResponse, error)) *MockACLsSDK_GetACLWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetACLWithConsumerInWorkspace provides a mock function for the type MockACLsSDK
+func (_mock *MockACLsSDK) GetACLWithConsumerInWorkspace(ctx context.Context, request operations.GetACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetACLWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetACLWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.GetACLWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetACLWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.GetACLWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetACLWithConsumerInWorkspaceRequest, ...operations.Option) *operations.GetACLWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetACLWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetACLWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockACLsSDK_GetACLWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetACLWithConsumerInWorkspace'
+type MockACLsSDK_GetACLWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetACLWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetACLWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockACLsSDK_Expecter) GetACLWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockACLsSDK_GetACLWithConsumerInWorkspace_Call {
+	return &MockACLsSDK_GetACLWithConsumerInWorkspace_Call{Call: _e.mock.On("GetACLWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockACLsSDK_GetACLWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetACLWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockACLsSDK_GetACLWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetACLWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetACLWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockACLsSDK_GetACLWithConsumerInWorkspace_Call) Return(getACLWithConsumerInWorkspaceResponse *operations.GetACLWithConsumerInWorkspaceResponse, err error) *MockACLsSDK_GetACLWithConsumerInWorkspace_Call {
+	_c.Call.Return(getACLWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockACLsSDK_GetACLWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetACLWithConsumerInWorkspaceResponse, error)) *MockACLsSDK_GetACLWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -459,6 +791,89 @@ func (_c *MockACLsSDK_ListACL_Call) RunAndReturn(run func(ctx context.Context, r
 	return _c
 }
 
+// ListACLInWorkspace provides a mock function for the type MockACLsSDK
+func (_mock *MockACLsSDK) ListACLInWorkspace(ctx context.Context, request operations.ListACLInWorkspaceRequest, opts ...operations.Option) (*operations.ListACLInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListACLInWorkspace")
+	}
+
+	var r0 *operations.ListACLInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListACLInWorkspaceRequest, ...operations.Option) (*operations.ListACLInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListACLInWorkspaceRequest, ...operations.Option) *operations.ListACLInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListACLInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListACLInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockACLsSDK_ListACLInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListACLInWorkspace'
+type MockACLsSDK_ListACLInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListACLInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListACLInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockACLsSDK_Expecter) ListACLInWorkspace(ctx any, request any, opts ...any) *MockACLsSDK_ListACLInWorkspace_Call {
+	return &MockACLsSDK_ListACLInWorkspace_Call{Call: _e.mock.On("ListACLInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockACLsSDK_ListACLInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListACLInWorkspaceRequest, opts ...operations.Option)) *MockACLsSDK_ListACLInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListACLInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListACLInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockACLsSDK_ListACLInWorkspace_Call) Return(listACLInWorkspaceResponse *operations.ListACLInWorkspaceResponse, err error) *MockACLsSDK_ListACLInWorkspace_Call {
+	_c.Call.Return(listACLInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockACLsSDK_ListACLInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListACLInWorkspaceRequest, opts ...operations.Option) (*operations.ListACLInWorkspaceResponse, error)) *MockACLsSDK_ListACLInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListACLWithConsumer provides a mock function for the type MockACLsSDK
 func (_mock *MockACLsSDK) ListACLWithConsumer(ctx context.Context, request operations.ListACLWithConsumerRequest, opts ...operations.Option) (*operations.ListACLWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -542,6 +957,89 @@ func (_c *MockACLsSDK_ListACLWithConsumer_Call) RunAndReturn(run func(ctx contex
 	return _c
 }
 
+// ListACLWithConsumerInWorkspace provides a mock function for the type MockACLsSDK
+func (_mock *MockACLsSDK) ListACLWithConsumerInWorkspace(ctx context.Context, request operations.ListACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListACLWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListACLWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.ListACLWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListACLWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.ListACLWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListACLWithConsumerInWorkspaceRequest, ...operations.Option) *operations.ListACLWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListACLWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListACLWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockACLsSDK_ListACLWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListACLWithConsumerInWorkspace'
+type MockACLsSDK_ListACLWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListACLWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListACLWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockACLsSDK_Expecter) ListACLWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockACLsSDK_ListACLWithConsumerInWorkspace_Call {
+	return &MockACLsSDK_ListACLWithConsumerInWorkspace_Call{Call: _e.mock.On("ListACLWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockACLsSDK_ListACLWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListACLWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockACLsSDK_ListACLWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListACLWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListACLWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockACLsSDK_ListACLWithConsumerInWorkspace_Call) Return(listACLWithConsumerInWorkspaceResponse *operations.ListACLWithConsumerInWorkspaceResponse, err error) *MockACLsSDK_ListACLWithConsumerInWorkspace_Call {
+	_c.Call.Return(listACLWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockACLsSDK_ListACLWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListACLWithConsumerInWorkspaceResponse, error)) *MockACLsSDK_ListACLWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertACLWithConsumer provides a mock function for the type MockACLsSDK
 func (_mock *MockACLsSDK) UpsertACLWithConsumer(ctx context.Context, request operations.UpsertACLWithConsumerRequest, opts ...operations.Option) (*operations.UpsertACLWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -621,6 +1119,89 @@ func (_c *MockACLsSDK_UpsertACLWithConsumer_Call) Return(upsertACLWithConsumerRe
 }
 
 func (_c *MockACLsSDK_UpsertACLWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertACLWithConsumerRequest, opts ...operations.Option) (*operations.UpsertACLWithConsumerResponse, error)) *MockACLsSDK_UpsertACLWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertACLWithConsumerInWorkspace provides a mock function for the type MockACLsSDK
+func (_mock *MockACLsSDK) UpsertACLWithConsumerInWorkspace(ctx context.Context, request operations.UpsertACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertACLWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertACLWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.UpsertACLWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertACLWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.UpsertACLWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertACLWithConsumerInWorkspaceRequest, ...operations.Option) *operations.UpsertACLWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertACLWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertACLWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertACLWithConsumerInWorkspace'
+type MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertACLWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertACLWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockACLsSDK_Expecter) UpsertACLWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call {
+	return &MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call{Call: _e.mock.On("UpsertACLWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertACLWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertACLWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertACLWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call) Return(upsertACLWithConsumerInWorkspaceResponse *operations.UpsertACLWithConsumerInWorkspaceResponse, err error) *MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call {
+	_c.Call.Return(upsertACLWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertACLWithConsumerInWorkspaceResponse, error)) *MockACLsSDK_UpsertACLWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

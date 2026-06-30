@@ -11,6 +11,21 @@ import (
 
 // PartialsSDK is a generated interface.
 type PartialsSDK interface {
+	// ListPartialInWorkspace - List all Partials in a workspace
+	// List all Partials in a workspace
+	ListPartialInWorkspace(ctx context.Context, request operations.ListPartialInWorkspaceRequest, opts ...operations.Option) (*operations.ListPartialInWorkspaceResponse, error)
+	// CreatePartialInWorkspace - Create a new Partial in a workspace
+	// Create a new Partial in a workspace
+	CreatePartialInWorkspace(ctx context.Context, request operations.CreatePartialInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePartialInWorkspaceResponse, error)
+	// DeletePartialInWorkspace - Delete a Partial in a workspace
+	// Delete a Partial in a workspace
+	DeletePartialInWorkspace(ctx context.Context, request operations.DeletePartialInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePartialInWorkspaceResponse, error)
+	// GetPartialInWorkspace - Get a Partial in a workspace
+	// Get a Partial using ID in a workspace.
+	GetPartialInWorkspace(ctx context.Context, request operations.GetPartialInWorkspaceRequest, opts ...operations.Option) (*operations.GetPartialInWorkspaceResponse, error)
+	// UpsertPartialInWorkspace - Upsert a Partial in a workspace
+	// Create or Update Partial using ID in a workspace.
+	UpsertPartialInWorkspace(ctx context.Context, request operations.UpsertPartialInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPartialInWorkspaceResponse, error)
 	// ListPartial - List all Partials
 	// List all Partials
 	ListPartial(ctx context.Context, request operations.ListPartialRequest, opts ...operations.Option) (*operations.ListPartialResponse, error)

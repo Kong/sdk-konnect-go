@@ -128,6 +128,89 @@ func (_c *MockVaultsSDK_CreateVault_Call) RunAndReturn(run func(ctx context.Cont
 	return _c
 }
 
+// CreateVaultInWorkspace provides a mock function for the type MockVaultsSDK
+func (_mock *MockVaultsSDK) CreateVaultInWorkspace(ctx context.Context, request operations.CreateVaultInWorkspaceRequest, opts ...operations.Option) (*operations.CreateVaultInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateVaultInWorkspace")
+	}
+
+	var r0 *operations.CreateVaultInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateVaultInWorkspaceRequest, ...operations.Option) (*operations.CreateVaultInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateVaultInWorkspaceRequest, ...operations.Option) *operations.CreateVaultInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateVaultInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateVaultInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockVaultsSDK_CreateVaultInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateVaultInWorkspace'
+type MockVaultsSDK_CreateVaultInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateVaultInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateVaultInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockVaultsSDK_Expecter) CreateVaultInWorkspace(ctx any, request any, opts ...any) *MockVaultsSDK_CreateVaultInWorkspace_Call {
+	return &MockVaultsSDK_CreateVaultInWorkspace_Call{Call: _e.mock.On("CreateVaultInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockVaultsSDK_CreateVaultInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateVaultInWorkspaceRequest, opts ...operations.Option)) *MockVaultsSDK_CreateVaultInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateVaultInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateVaultInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockVaultsSDK_CreateVaultInWorkspace_Call) Return(createVaultInWorkspaceResponse *operations.CreateVaultInWorkspaceResponse, err error) *MockVaultsSDK_CreateVaultInWorkspace_Call {
+	_c.Call.Return(createVaultInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockVaultsSDK_CreateVaultInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateVaultInWorkspaceRequest, opts ...operations.Option) (*operations.CreateVaultInWorkspaceResponse, error)) *MockVaultsSDK_CreateVaultInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteVault provides a mock function for the type MockVaultsSDK
 func (_mock *MockVaultsSDK) DeleteVault(ctx context.Context, controlPlaneID string, vaultID string, opts ...operations.Option) (*operations.DeleteVaultResponse, error) {
 	var tmpRet mock.Arguments
@@ -213,6 +296,89 @@ func (_c *MockVaultsSDK_DeleteVault_Call) Return(deleteVaultResponse *operations
 }
 
 func (_c *MockVaultsSDK_DeleteVault_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, vaultID string, opts ...operations.Option) (*operations.DeleteVaultResponse, error)) *MockVaultsSDK_DeleteVault_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteVaultInWorkspace provides a mock function for the type MockVaultsSDK
+func (_mock *MockVaultsSDK) DeleteVaultInWorkspace(ctx context.Context, request operations.DeleteVaultInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteVaultInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteVaultInWorkspace")
+	}
+
+	var r0 *operations.DeleteVaultInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteVaultInWorkspaceRequest, ...operations.Option) (*operations.DeleteVaultInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteVaultInWorkspaceRequest, ...operations.Option) *operations.DeleteVaultInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteVaultInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteVaultInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockVaultsSDK_DeleteVaultInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteVaultInWorkspace'
+type MockVaultsSDK_DeleteVaultInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteVaultInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteVaultInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockVaultsSDK_Expecter) DeleteVaultInWorkspace(ctx any, request any, opts ...any) *MockVaultsSDK_DeleteVaultInWorkspace_Call {
+	return &MockVaultsSDK_DeleteVaultInWorkspace_Call{Call: _e.mock.On("DeleteVaultInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockVaultsSDK_DeleteVaultInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteVaultInWorkspaceRequest, opts ...operations.Option)) *MockVaultsSDK_DeleteVaultInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteVaultInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteVaultInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockVaultsSDK_DeleteVaultInWorkspace_Call) Return(deleteVaultInWorkspaceResponse *operations.DeleteVaultInWorkspaceResponse, err error) *MockVaultsSDK_DeleteVaultInWorkspace_Call {
+	_c.Call.Return(deleteVaultInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockVaultsSDK_DeleteVaultInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteVaultInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteVaultInWorkspaceResponse, error)) *MockVaultsSDK_DeleteVaultInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -306,6 +472,89 @@ func (_c *MockVaultsSDK_GetVault_Call) RunAndReturn(run func(ctx context.Context
 	return _c
 }
 
+// GetVaultInWorkspace provides a mock function for the type MockVaultsSDK
+func (_mock *MockVaultsSDK) GetVaultInWorkspace(ctx context.Context, request operations.GetVaultInWorkspaceRequest, opts ...operations.Option) (*operations.GetVaultInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetVaultInWorkspace")
+	}
+
+	var r0 *operations.GetVaultInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetVaultInWorkspaceRequest, ...operations.Option) (*operations.GetVaultInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetVaultInWorkspaceRequest, ...operations.Option) *operations.GetVaultInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetVaultInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetVaultInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockVaultsSDK_GetVaultInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVaultInWorkspace'
+type MockVaultsSDK_GetVaultInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetVaultInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetVaultInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockVaultsSDK_Expecter) GetVaultInWorkspace(ctx any, request any, opts ...any) *MockVaultsSDK_GetVaultInWorkspace_Call {
+	return &MockVaultsSDK_GetVaultInWorkspace_Call{Call: _e.mock.On("GetVaultInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockVaultsSDK_GetVaultInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetVaultInWorkspaceRequest, opts ...operations.Option)) *MockVaultsSDK_GetVaultInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetVaultInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetVaultInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockVaultsSDK_GetVaultInWorkspace_Call) Return(getVaultInWorkspaceResponse *operations.GetVaultInWorkspaceResponse, err error) *MockVaultsSDK_GetVaultInWorkspace_Call {
+	_c.Call.Return(getVaultInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockVaultsSDK_GetVaultInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetVaultInWorkspaceRequest, opts ...operations.Option) (*operations.GetVaultInWorkspaceResponse, error)) *MockVaultsSDK_GetVaultInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListVault provides a mock function for the type MockVaultsSDK
 func (_mock *MockVaultsSDK) ListVault(ctx context.Context, request operations.ListVaultRequest, opts ...operations.Option) (*operations.ListVaultResponse, error) {
 	var tmpRet mock.Arguments
@@ -389,6 +638,89 @@ func (_c *MockVaultsSDK_ListVault_Call) RunAndReturn(run func(ctx context.Contex
 	return _c
 }
 
+// ListVaultInWorkspace provides a mock function for the type MockVaultsSDK
+func (_mock *MockVaultsSDK) ListVaultInWorkspace(ctx context.Context, request operations.ListVaultInWorkspaceRequest, opts ...operations.Option) (*operations.ListVaultInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListVaultInWorkspace")
+	}
+
+	var r0 *operations.ListVaultInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListVaultInWorkspaceRequest, ...operations.Option) (*operations.ListVaultInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListVaultInWorkspaceRequest, ...operations.Option) *operations.ListVaultInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListVaultInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListVaultInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockVaultsSDK_ListVaultInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListVaultInWorkspace'
+type MockVaultsSDK_ListVaultInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListVaultInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListVaultInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockVaultsSDK_Expecter) ListVaultInWorkspace(ctx any, request any, opts ...any) *MockVaultsSDK_ListVaultInWorkspace_Call {
+	return &MockVaultsSDK_ListVaultInWorkspace_Call{Call: _e.mock.On("ListVaultInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockVaultsSDK_ListVaultInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListVaultInWorkspaceRequest, opts ...operations.Option)) *MockVaultsSDK_ListVaultInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListVaultInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListVaultInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockVaultsSDK_ListVaultInWorkspace_Call) Return(listVaultInWorkspaceResponse *operations.ListVaultInWorkspaceResponse, err error) *MockVaultsSDK_ListVaultInWorkspace_Call {
+	_c.Call.Return(listVaultInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockVaultsSDK_ListVaultInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListVaultInWorkspaceRequest, opts ...operations.Option) (*operations.ListVaultInWorkspaceResponse, error)) *MockVaultsSDK_ListVaultInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertVault provides a mock function for the type MockVaultsSDK
 func (_mock *MockVaultsSDK) UpsertVault(ctx context.Context, request operations.UpsertVaultRequest, opts ...operations.Option) (*operations.UpsertVaultResponse, error) {
 	var tmpRet mock.Arguments
@@ -468,6 +800,89 @@ func (_c *MockVaultsSDK_UpsertVault_Call) Return(upsertVaultResponse *operations
 }
 
 func (_c *MockVaultsSDK_UpsertVault_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertVaultRequest, opts ...operations.Option) (*operations.UpsertVaultResponse, error)) *MockVaultsSDK_UpsertVault_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertVaultInWorkspace provides a mock function for the type MockVaultsSDK
+func (_mock *MockVaultsSDK) UpsertVaultInWorkspace(ctx context.Context, request operations.UpsertVaultInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertVaultInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertVaultInWorkspace")
+	}
+
+	var r0 *operations.UpsertVaultInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertVaultInWorkspaceRequest, ...operations.Option) (*operations.UpsertVaultInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertVaultInWorkspaceRequest, ...operations.Option) *operations.UpsertVaultInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertVaultInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertVaultInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockVaultsSDK_UpsertVaultInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertVaultInWorkspace'
+type MockVaultsSDK_UpsertVaultInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertVaultInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertVaultInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockVaultsSDK_Expecter) UpsertVaultInWorkspace(ctx any, request any, opts ...any) *MockVaultsSDK_UpsertVaultInWorkspace_Call {
+	return &MockVaultsSDK_UpsertVaultInWorkspace_Call{Call: _e.mock.On("UpsertVaultInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockVaultsSDK_UpsertVaultInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertVaultInWorkspaceRequest, opts ...operations.Option)) *MockVaultsSDK_UpsertVaultInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertVaultInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertVaultInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockVaultsSDK_UpsertVaultInWorkspace_Call) Return(upsertVaultInWorkspaceResponse *operations.UpsertVaultInWorkspaceResponse, err error) *MockVaultsSDK_UpsertVaultInWorkspace_Call {
+	_c.Call.Return(upsertVaultInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockVaultsSDK_UpsertVaultInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertVaultInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertVaultInWorkspaceResponse, error)) *MockVaultsSDK_UpsertVaultInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

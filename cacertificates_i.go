@@ -11,6 +11,21 @@ import (
 
 // CACertificatesSDK is a generated interface.
 type CACertificatesSDK interface {
+	// ListCaCertificateInWorkspace - List all CA Certificates in a workspace
+	// List all CA Certificates in a workspace
+	ListCaCertificateInWorkspace(ctx context.Context, request operations.ListCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.ListCaCertificateInWorkspaceResponse, error)
+	// CreateCaCertificateInWorkspace - Create a new CA Certificate in a workspace
+	// Create a new CA Certificate in a workspace
+	CreateCaCertificateInWorkspace(ctx context.Context, request operations.CreateCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.CreateCaCertificateInWorkspaceResponse, error)
+	// DeleteCaCertificateInWorkspace - Delete a CA Certificate in a workspace
+	// Delete a CA Certificate in a workspace
+	DeleteCaCertificateInWorkspace(ctx context.Context, request operations.DeleteCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteCaCertificateInWorkspaceResponse, error)
+	// GetCaCertificateInWorkspace - Get a CA Certificate in a workspace
+	// Get a CA Certificate using ID in a workspace.
+	GetCaCertificateInWorkspace(ctx context.Context, request operations.GetCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.GetCaCertificateInWorkspaceResponse, error)
+	// UpsertCaCertificateInWorkspace - Upsert a CA Certificate in a workspace
+	// Create or Update CA Certificate using ID in a workspace.
+	UpsertCaCertificateInWorkspace(ctx context.Context, request operations.UpsertCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertCaCertificateInWorkspaceResponse, error)
 	// ListCaCertificate - List all CA Certificates
 	// List all CA Certificates
 	ListCaCertificate(ctx context.Context, request operations.ListCaCertificateRequest, opts ...operations.Option) (*operations.ListCaCertificateResponse, error)

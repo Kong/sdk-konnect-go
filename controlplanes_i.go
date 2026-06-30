@@ -26,4 +26,10 @@ type ControlPlanesSDK interface {
 	// DeleteControlPlane - Delete Control Plane
 	// Delete an individual control plane.
 	DeleteControlPlane(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error)
+	// GetControlPlaneSettings - Get Control Plane Settings
+	// Returns the settings of a control plane.
+	GetControlPlaneSettings(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneSettingsResponse, error)
+	// PutControlPlaneSettings - Upsert Control Plane Settings
+	// Updates the settings of a control plane. If the settings do not exist, they will be created.
+	PutControlPlaneSettings(ctx context.Context, controlPlaneID string, settings *components.Settings, opts ...operations.Option) (*operations.PutControlPlaneSettingsResponse, error)
 }

@@ -5,11 +5,15 @@ package sdkkonnectgo
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // CatalogIntegrationsSDK is a generated interface.
 type CatalogIntegrationsSDK interface {
+	// CreateCatalogIntegration - Create Integration
+	// Creates a catalog integration.
+	CreateCatalogIntegration(ctx context.Context, request components.CreateCatalogIntegration, opts ...operations.Option) (*operations.CreateCatalogIntegrationResponse, error)
 	// ListCatalogIntegrations - List Integrations
 	// Returns a paginated collection of all catalog integrations available to connect.
 	// Each integration represents a built-in connector that extends the platform's capabilities;
@@ -19,4 +23,13 @@ type CatalogIntegrationsSDK interface {
 	//
 	// Currently, integrations are platform-defined and cannot be extend or registered by customers.
 	ListCatalogIntegrations(ctx context.Context, request operations.ListCatalogIntegrationsRequest, opts ...operations.Option) (*operations.ListCatalogIntegrationsResponse, error)
+	// GetCatalogIntegration - Get Integration
+	// Gets a catalog integration.
+	GetCatalogIntegration(ctx context.Context, integration string, opts ...operations.Option) (*operations.GetCatalogIntegrationResponse, error)
+	// UpdateCatalogIntegration - Update Integration
+	// Updates a catalog integration.
+	UpdateCatalogIntegration(ctx context.Context, integration string, updateCatalogIntegration components.UpdateCatalogIntegration, opts ...operations.Option) (*operations.UpdateCatalogIntegrationResponse, error)
+	// DeleteCatalogIntegration - Delete Integration
+	// Deletes a catalog integration.
+	DeleteCatalogIntegration(ctx context.Context, integration string, opts ...operations.Option) (*operations.DeleteCatalogIntegrationResponse, error)
 }

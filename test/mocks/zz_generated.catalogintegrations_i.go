@@ -7,6 +7,7 @@ package mocks
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -36,6 +37,255 @@ type MockCatalogIntegrationsSDK_Expecter struct {
 
 func (_m *MockCatalogIntegrationsSDK) EXPECT() *MockCatalogIntegrationsSDK_Expecter {
 	return &MockCatalogIntegrationsSDK_Expecter{mock: &_m.Mock}
+}
+
+// CreateCatalogIntegration provides a mock function for the type MockCatalogIntegrationsSDK
+func (_mock *MockCatalogIntegrationsSDK) CreateCatalogIntegration(ctx context.Context, request components.CreateCatalogIntegration, opts ...operations.Option) (*operations.CreateCatalogIntegrationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateCatalogIntegration")
+	}
+
+	var r0 *operations.CreateCatalogIntegrationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateCatalogIntegration, ...operations.Option) (*operations.CreateCatalogIntegrationResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateCatalogIntegration, ...operations.Option) *operations.CreateCatalogIntegrationResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateCatalogIntegrationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.CreateCatalogIntegration, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCatalogIntegration'
+type MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call struct {
+	*mock.Call
+}
+
+// CreateCatalogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request components.CreateCatalogIntegration
+//   - opts ...operations.Option
+func (_e *MockCatalogIntegrationsSDK_Expecter) CreateCatalogIntegration(ctx any, request any, opts ...any) *MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call {
+	return &MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call{Call: _e.mock.On("CreateCatalogIntegration",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call) Run(run func(ctx context.Context, request components.CreateCatalogIntegration, opts ...operations.Option)) *MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 components.CreateCatalogIntegration
+		if args[1] != nil {
+			arg1 = args[1].(components.CreateCatalogIntegration)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call) Return(createCatalogIntegrationResponse *operations.CreateCatalogIntegrationResponse, err error) *MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call {
+	_c.Call.Return(createCatalogIntegrationResponse, err)
+	return _c
+}
+
+func (_c *MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call) RunAndReturn(run func(ctx context.Context, request components.CreateCatalogIntegration, opts ...operations.Option) (*operations.CreateCatalogIntegrationResponse, error)) *MockCatalogIntegrationsSDK_CreateCatalogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteCatalogIntegration provides a mock function for the type MockCatalogIntegrationsSDK
+func (_mock *MockCatalogIntegrationsSDK) DeleteCatalogIntegration(ctx context.Context, integration string, opts ...operations.Option) (*operations.DeleteCatalogIntegrationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, integration, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, integration)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteCatalogIntegration")
+	}
+
+	var r0 *operations.DeleteCatalogIntegrationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteCatalogIntegrationResponse, error)); ok {
+		return returnFunc(ctx, integration, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteCatalogIntegrationResponse); ok {
+		r0 = returnFunc(ctx, integration, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteCatalogIntegrationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, integration, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCatalogIntegration'
+type MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call struct {
+	*mock.Call
+}
+
+// DeleteCatalogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - integration string
+//   - opts ...operations.Option
+func (_e *MockCatalogIntegrationsSDK_Expecter) DeleteCatalogIntegration(ctx any, integration any, opts ...any) *MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call {
+	return &MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call{Call: _e.mock.On("DeleteCatalogIntegration",
+		append([]any{ctx, integration}, opts...)...)}
+}
+
+func (_c *MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call) Run(run func(ctx context.Context, integration string, opts ...operations.Option)) *MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call) Return(deleteCatalogIntegrationResponse *operations.DeleteCatalogIntegrationResponse, err error) *MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call {
+	_c.Call.Return(deleteCatalogIntegrationResponse, err)
+	return _c
+}
+
+func (_c *MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call) RunAndReturn(run func(ctx context.Context, integration string, opts ...operations.Option) (*operations.DeleteCatalogIntegrationResponse, error)) *MockCatalogIntegrationsSDK_DeleteCatalogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetCatalogIntegration provides a mock function for the type MockCatalogIntegrationsSDK
+func (_mock *MockCatalogIntegrationsSDK) GetCatalogIntegration(ctx context.Context, integration string, opts ...operations.Option) (*operations.GetCatalogIntegrationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, integration, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, integration)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCatalogIntegration")
+	}
+
+	var r0 *operations.GetCatalogIntegrationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetCatalogIntegrationResponse, error)); ok {
+		return returnFunc(ctx, integration, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetCatalogIntegrationResponse); ok {
+		r0 = returnFunc(ctx, integration, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetCatalogIntegrationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, integration, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCatalogIntegrationsSDK_GetCatalogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCatalogIntegration'
+type MockCatalogIntegrationsSDK_GetCatalogIntegration_Call struct {
+	*mock.Call
+}
+
+// GetCatalogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - integration string
+//   - opts ...operations.Option
+func (_e *MockCatalogIntegrationsSDK_Expecter) GetCatalogIntegration(ctx any, integration any, opts ...any) *MockCatalogIntegrationsSDK_GetCatalogIntegration_Call {
+	return &MockCatalogIntegrationsSDK_GetCatalogIntegration_Call{Call: _e.mock.On("GetCatalogIntegration",
+		append([]any{ctx, integration}, opts...)...)}
+}
+
+func (_c *MockCatalogIntegrationsSDK_GetCatalogIntegration_Call) Run(run func(ctx context.Context, integration string, opts ...operations.Option)) *MockCatalogIntegrationsSDK_GetCatalogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCatalogIntegrationsSDK_GetCatalogIntegration_Call) Return(getCatalogIntegrationResponse *operations.GetCatalogIntegrationResponse, err error) *MockCatalogIntegrationsSDK_GetCatalogIntegration_Call {
+	_c.Call.Return(getCatalogIntegrationResponse, err)
+	return _c
+}
+
+func (_c *MockCatalogIntegrationsSDK_GetCatalogIntegration_Call) RunAndReturn(run func(ctx context.Context, integration string, opts ...operations.Option) (*operations.GetCatalogIntegrationResponse, error)) *MockCatalogIntegrationsSDK_GetCatalogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // ListCatalogIntegrations provides a mock function for the type MockCatalogIntegrationsSDK
@@ -117,6 +367,95 @@ func (_c *MockCatalogIntegrationsSDK_ListCatalogIntegrations_Call) Return(listCa
 }
 
 func (_c *MockCatalogIntegrationsSDK_ListCatalogIntegrations_Call) RunAndReturn(run func(ctx context.Context, request operations.ListCatalogIntegrationsRequest, opts ...operations.Option) (*operations.ListCatalogIntegrationsResponse, error)) *MockCatalogIntegrationsSDK_ListCatalogIntegrations_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateCatalogIntegration provides a mock function for the type MockCatalogIntegrationsSDK
+func (_mock *MockCatalogIntegrationsSDK) UpdateCatalogIntegration(ctx context.Context, integration string, updateCatalogIntegration components.UpdateCatalogIntegration, opts ...operations.Option) (*operations.UpdateCatalogIntegrationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, integration, updateCatalogIntegration, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, integration, updateCatalogIntegration)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateCatalogIntegration")
+	}
+
+	var r0 *operations.UpdateCatalogIntegrationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateCatalogIntegration, ...operations.Option) (*operations.UpdateCatalogIntegrationResponse, error)); ok {
+		return returnFunc(ctx, integration, updateCatalogIntegration, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateCatalogIntegration, ...operations.Option) *operations.UpdateCatalogIntegrationResponse); ok {
+		r0 = returnFunc(ctx, integration, updateCatalogIntegration, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateCatalogIntegrationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpdateCatalogIntegration, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, integration, updateCatalogIntegration, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateCatalogIntegration'
+type MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call struct {
+	*mock.Call
+}
+
+// UpdateCatalogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - integration string
+//   - updateCatalogIntegration components.UpdateCatalogIntegration
+//   - opts ...operations.Option
+func (_e *MockCatalogIntegrationsSDK_Expecter) UpdateCatalogIntegration(ctx any, integration any, updateCatalogIntegration any, opts ...any) *MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call {
+	return &MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call{Call: _e.mock.On("UpdateCatalogIntegration",
+		append([]any{ctx, integration, updateCatalogIntegration}, opts...)...)}
+}
+
+func (_c *MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call) Run(run func(ctx context.Context, integration string, updateCatalogIntegration components.UpdateCatalogIntegration, opts ...operations.Option)) *MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.UpdateCatalogIntegration
+		if args[2] != nil {
+			arg2 = args[2].(components.UpdateCatalogIntegration)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call) Return(updateCatalogIntegrationResponse *operations.UpdateCatalogIntegrationResponse, err error) *MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call {
+	_c.Call.Return(updateCatalogIntegrationResponse, err)
+	return _c
+}
+
+func (_c *MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call) RunAndReturn(run func(ctx context.Context, integration string, updateCatalogIntegration components.UpdateCatalogIntegration, opts ...operations.Option) (*operations.UpdateCatalogIntegrationResponse, error)) *MockCatalogIntegrationsSDK_UpdateCatalogIntegration_Call {
 	_c.Call.Return(run)
 	return _c
 }

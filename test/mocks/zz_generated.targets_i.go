@@ -121,6 +121,89 @@ func (_c *MockTargetsSDK_CreateTargetWithUpstream_Call) RunAndReturn(run func(ct
 	return _c
 }
 
+// CreateTargetWithUpstreamInWorkspace provides a mock function for the type MockTargetsSDK
+func (_mock *MockTargetsSDK) CreateTargetWithUpstreamInWorkspace(ctx context.Context, request operations.CreateTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.CreateTargetWithUpstreamInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateTargetWithUpstreamInWorkspace")
+	}
+
+	var r0 *operations.CreateTargetWithUpstreamInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateTargetWithUpstreamInWorkspaceRequest, ...operations.Option) (*operations.CreateTargetWithUpstreamInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateTargetWithUpstreamInWorkspaceRequest, ...operations.Option) *operations.CreateTargetWithUpstreamInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateTargetWithUpstreamInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateTargetWithUpstreamInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateTargetWithUpstreamInWorkspace'
+type MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateTargetWithUpstreamInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateTargetWithUpstreamInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockTargetsSDK_Expecter) CreateTargetWithUpstreamInWorkspace(ctx any, request any, opts ...any) *MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call {
+	return &MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call{Call: _e.mock.On("CreateTargetWithUpstreamInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option)) *MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateTargetWithUpstreamInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateTargetWithUpstreamInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call) Return(createTargetWithUpstreamInWorkspaceResponse *operations.CreateTargetWithUpstreamInWorkspaceResponse, err error) *MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Return(createTargetWithUpstreamInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.CreateTargetWithUpstreamInWorkspaceResponse, error)) *MockTargetsSDK_CreateTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteTargetWithUpstream provides a mock function for the type MockTargetsSDK
 func (_mock *MockTargetsSDK) DeleteTargetWithUpstream(ctx context.Context, request operations.DeleteTargetWithUpstreamRequest, opts ...operations.Option) (*operations.DeleteTargetWithUpstreamResponse, error) {
 	var tmpRet mock.Arguments
@@ -200,6 +283,89 @@ func (_c *MockTargetsSDK_DeleteTargetWithUpstream_Call) Return(deleteTargetWithU
 }
 
 func (_c *MockTargetsSDK_DeleteTargetWithUpstream_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteTargetWithUpstreamRequest, opts ...operations.Option) (*operations.DeleteTargetWithUpstreamResponse, error)) *MockTargetsSDK_DeleteTargetWithUpstream_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteTargetWithUpstreamInWorkspace provides a mock function for the type MockTargetsSDK
+func (_mock *MockTargetsSDK) DeleteTargetWithUpstreamInWorkspace(ctx context.Context, request operations.DeleteTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteTargetWithUpstreamInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteTargetWithUpstreamInWorkspace")
+	}
+
+	var r0 *operations.DeleteTargetWithUpstreamInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteTargetWithUpstreamInWorkspaceRequest, ...operations.Option) (*operations.DeleteTargetWithUpstreamInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteTargetWithUpstreamInWorkspaceRequest, ...operations.Option) *operations.DeleteTargetWithUpstreamInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteTargetWithUpstreamInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteTargetWithUpstreamInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTargetWithUpstreamInWorkspace'
+type MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteTargetWithUpstreamInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteTargetWithUpstreamInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockTargetsSDK_Expecter) DeleteTargetWithUpstreamInWorkspace(ctx any, request any, opts ...any) *MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call {
+	return &MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call{Call: _e.mock.On("DeleteTargetWithUpstreamInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option)) *MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteTargetWithUpstreamInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteTargetWithUpstreamInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call) Return(deleteTargetWithUpstreamInWorkspaceResponse *operations.DeleteTargetWithUpstreamInWorkspaceResponse, err error) *MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Return(deleteTargetWithUpstreamInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteTargetWithUpstreamInWorkspaceResponse, error)) *MockTargetsSDK_DeleteTargetWithUpstreamInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -287,6 +453,89 @@ func (_c *MockTargetsSDK_GetTargetWithUpstream_Call) RunAndReturn(run func(ctx c
 	return _c
 }
 
+// GetTargetWithUpstreamInWorkspace provides a mock function for the type MockTargetsSDK
+func (_mock *MockTargetsSDK) GetTargetWithUpstreamInWorkspace(ctx context.Context, request operations.GetTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.GetTargetWithUpstreamInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetTargetWithUpstreamInWorkspace")
+	}
+
+	var r0 *operations.GetTargetWithUpstreamInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetTargetWithUpstreamInWorkspaceRequest, ...operations.Option) (*operations.GetTargetWithUpstreamInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetTargetWithUpstreamInWorkspaceRequest, ...operations.Option) *operations.GetTargetWithUpstreamInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetTargetWithUpstreamInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetTargetWithUpstreamInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetTargetWithUpstreamInWorkspace'
+type MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetTargetWithUpstreamInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetTargetWithUpstreamInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockTargetsSDK_Expecter) GetTargetWithUpstreamInWorkspace(ctx any, request any, opts ...any) *MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call {
+	return &MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call{Call: _e.mock.On("GetTargetWithUpstreamInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option)) *MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetTargetWithUpstreamInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetTargetWithUpstreamInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call) Return(getTargetWithUpstreamInWorkspaceResponse *operations.GetTargetWithUpstreamInWorkspaceResponse, err error) *MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Return(getTargetWithUpstreamInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.GetTargetWithUpstreamInWorkspaceResponse, error)) *MockTargetsSDK_GetTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListTargetWithUpstream provides a mock function for the type MockTargetsSDK
 func (_mock *MockTargetsSDK) ListTargetWithUpstream(ctx context.Context, request operations.ListTargetWithUpstreamRequest, opts ...operations.Option) (*operations.ListTargetWithUpstreamResponse, error) {
 	var tmpRet mock.Arguments
@@ -366,6 +615,89 @@ func (_c *MockTargetsSDK_ListTargetWithUpstream_Call) Return(listTargetWithUpstr
 }
 
 func (_c *MockTargetsSDK_ListTargetWithUpstream_Call) RunAndReturn(run func(ctx context.Context, request operations.ListTargetWithUpstreamRequest, opts ...operations.Option) (*operations.ListTargetWithUpstreamResponse, error)) *MockTargetsSDK_ListTargetWithUpstream_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTargetWithUpstreamInWorkspace provides a mock function for the type MockTargetsSDK
+func (_mock *MockTargetsSDK) ListTargetWithUpstreamInWorkspace(ctx context.Context, request operations.ListTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.ListTargetWithUpstreamInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTargetWithUpstreamInWorkspace")
+	}
+
+	var r0 *operations.ListTargetWithUpstreamInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListTargetWithUpstreamInWorkspaceRequest, ...operations.Option) (*operations.ListTargetWithUpstreamInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListTargetWithUpstreamInWorkspaceRequest, ...operations.Option) *operations.ListTargetWithUpstreamInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListTargetWithUpstreamInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListTargetWithUpstreamInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTargetWithUpstreamInWorkspace'
+type MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListTargetWithUpstreamInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListTargetWithUpstreamInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockTargetsSDK_Expecter) ListTargetWithUpstreamInWorkspace(ctx any, request any, opts ...any) *MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call {
+	return &MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call{Call: _e.mock.On("ListTargetWithUpstreamInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option)) *MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListTargetWithUpstreamInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListTargetWithUpstreamInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call) Return(listTargetWithUpstreamInWorkspaceResponse *operations.ListTargetWithUpstreamInWorkspaceResponse, err error) *MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Return(listTargetWithUpstreamInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.ListTargetWithUpstreamInWorkspaceResponse, error)) *MockTargetsSDK_ListTargetWithUpstreamInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -453,6 +785,89 @@ func (_c *MockTargetsSDK_ListTargets_Call) RunAndReturn(run func(ctx context.Con
 	return _c
 }
 
+// ListTargetsInWorkspace provides a mock function for the type MockTargetsSDK
+func (_mock *MockTargetsSDK) ListTargetsInWorkspace(ctx context.Context, request operations.ListTargetsInWorkspaceRequest, opts ...operations.Option) (*operations.ListTargetsInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTargetsInWorkspace")
+	}
+
+	var r0 *operations.ListTargetsInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListTargetsInWorkspaceRequest, ...operations.Option) (*operations.ListTargetsInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListTargetsInWorkspaceRequest, ...operations.Option) *operations.ListTargetsInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListTargetsInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListTargetsInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockTargetsSDK_ListTargetsInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTargetsInWorkspace'
+type MockTargetsSDK_ListTargetsInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListTargetsInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListTargetsInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockTargetsSDK_Expecter) ListTargetsInWorkspace(ctx any, request any, opts ...any) *MockTargetsSDK_ListTargetsInWorkspace_Call {
+	return &MockTargetsSDK_ListTargetsInWorkspace_Call{Call: _e.mock.On("ListTargetsInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockTargetsSDK_ListTargetsInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListTargetsInWorkspaceRequest, opts ...operations.Option)) *MockTargetsSDK_ListTargetsInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListTargetsInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListTargetsInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockTargetsSDK_ListTargetsInWorkspace_Call) Return(listTargetsInWorkspaceResponse *operations.ListTargetsInWorkspaceResponse, err error) *MockTargetsSDK_ListTargetsInWorkspace_Call {
+	_c.Call.Return(listTargetsInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockTargetsSDK_ListTargetsInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListTargetsInWorkspaceRequest, opts ...operations.Option) (*operations.ListTargetsInWorkspaceResponse, error)) *MockTargetsSDK_ListTargetsInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertTargetWithUpstream provides a mock function for the type MockTargetsSDK
 func (_mock *MockTargetsSDK) UpsertTargetWithUpstream(ctx context.Context, request operations.UpsertTargetWithUpstreamRequest, opts ...operations.Option) (*operations.UpsertTargetWithUpstreamResponse, error) {
 	var tmpRet mock.Arguments
@@ -532,6 +947,89 @@ func (_c *MockTargetsSDK_UpsertTargetWithUpstream_Call) Return(upsertTargetWithU
 }
 
 func (_c *MockTargetsSDK_UpsertTargetWithUpstream_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertTargetWithUpstreamRequest, opts ...operations.Option) (*operations.UpsertTargetWithUpstreamResponse, error)) *MockTargetsSDK_UpsertTargetWithUpstream_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertTargetWithUpstreamInWorkspace provides a mock function for the type MockTargetsSDK
+func (_mock *MockTargetsSDK) UpsertTargetWithUpstreamInWorkspace(ctx context.Context, request operations.UpsertTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertTargetWithUpstreamInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertTargetWithUpstreamInWorkspace")
+	}
+
+	var r0 *operations.UpsertTargetWithUpstreamInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertTargetWithUpstreamInWorkspaceRequest, ...operations.Option) (*operations.UpsertTargetWithUpstreamInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertTargetWithUpstreamInWorkspaceRequest, ...operations.Option) *operations.UpsertTargetWithUpstreamInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertTargetWithUpstreamInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertTargetWithUpstreamInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertTargetWithUpstreamInWorkspace'
+type MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertTargetWithUpstreamInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertTargetWithUpstreamInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockTargetsSDK_Expecter) UpsertTargetWithUpstreamInWorkspace(ctx any, request any, opts ...any) *MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call {
+	return &MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call{Call: _e.mock.On("UpsertTargetWithUpstreamInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option)) *MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertTargetWithUpstreamInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertTargetWithUpstreamInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call) Return(upsertTargetWithUpstreamInWorkspaceResponse *operations.UpsertTargetWithUpstreamInWorkspaceResponse, err error) *MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call {
+	_c.Call.Return(upsertTargetWithUpstreamInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertTargetWithUpstreamInWorkspaceResponse, error)) *MockTargetsSDK_UpsertTargetWithUpstreamInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

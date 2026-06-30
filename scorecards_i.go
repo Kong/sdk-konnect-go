@@ -11,12 +11,6 @@ import (
 
 // ScorecardsSDK is a generated interface.
 type ScorecardsSDK interface {
-	// ListCatalogServiceScorecards - List Catalog Service Scorecards
-	// Returns a paginated collection of scorecards targeting the given service.
-	ListCatalogServiceScorecards(ctx context.Context, request operations.ListCatalogServiceScorecardsRequest, opts ...operations.Option) (*operations.ListCatalogServiceScorecardsResponse, error)
-	// FetchCatalogServiceScorecard - Get a Catalog Service Scorecard
-	// Fetches the given scorecard targeting the service.
-	FetchCatalogServiceScorecard(ctx context.Context, serviceID string, scorecardID string, opts ...operations.Option) (*operations.FetchCatalogServiceScorecardResponse, error)
 	// ListScorecardTemplates - List Scorecard Templates
 	// Returns a paginated collection of scorecard templates.
 	ListScorecardTemplates(ctx context.Context, request operations.ListScorecardTemplatesRequest, opts ...operations.Option) (*operations.ListScorecardTemplatesResponse, error)
@@ -35,6 +29,9 @@ type ScorecardsSDK interface {
 	// DeleteScorecard - Delete Scorecard
 	// Deletes a scorecard.
 	DeleteScorecard(ctx context.Context, id string, opts ...operations.Option) (*operations.DeleteScorecardResponse, error)
+	// ScheduleScorecardEvaluation - Schedule Scorecard Evaluation
+	// Schedules an evaluation of the scorecard selected services.
+	ScheduleScorecardEvaluation(ctx context.Context, id string, opts ...operations.Option) (*operations.ScheduleScorecardEvaluationResponse, error)
 	// ListScorecardServices - List Scorecard Services
 	// Lists services targeted by a scorecard.
 	ListScorecardServices(ctx context.Context, request operations.ListScorecardServicesRequest, opts ...operations.Option) (*operations.ListScorecardServicesResponse, error)
@@ -44,4 +41,10 @@ type ScorecardsSDK interface {
 	// ListScorecardCriteriaServices - List Scorecard Criteria Services
 	// Lists services targeted by a scorecard criteria with evaluation results per-service.
 	ListScorecardCriteriaServices(ctx context.Context, request operations.ListScorecardCriteriaServicesRequest, opts ...operations.Option) (*operations.ListScorecardCriteriaServicesResponse, error)
+	// ListCatalogServiceScorecards - List Catalog Service Scorecards
+	// Returns a paginated collection of scorecards targeting the given service.
+	ListCatalogServiceScorecards(ctx context.Context, request operations.ListCatalogServiceScorecardsRequest, opts ...operations.Option) (*operations.ListCatalogServiceScorecardsResponse, error)
+	// FetchCatalogServiceScorecard - Get a Catalog Service Scorecard
+	// Fetches the given scorecard targeting the service.
+	FetchCatalogServiceScorecard(ctx context.Context, serviceID string, scorecardID string, opts ...operations.Option) (*operations.FetchCatalogServiceScorecardResponse, error)
 }

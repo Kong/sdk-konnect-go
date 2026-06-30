@@ -121,6 +121,89 @@ func (_c *MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumer_Call) RunAndRetu
 	return _c
 }
 
+// CreateMtlsAuthWithConsumerInWorkspace provides a mock function for the type MockMTLSAuthCredentialsSDK
+func (_mock *MockMTLSAuthCredentialsSDK) CreateMtlsAuthWithConsumerInWorkspace(ctx context.Context, request operations.CreateMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateMtlsAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateMtlsAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.CreateMtlsAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.CreateMtlsAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.CreateMtlsAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateMtlsAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateMtlsAuthWithConsumerInWorkspace'
+type MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateMtlsAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateMtlsAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockMTLSAuthCredentialsSDK_Expecter) CreateMtlsAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call {
+	return &MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("CreateMtlsAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateMtlsAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateMtlsAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call) Return(createMtlsAuthWithConsumerInWorkspaceResponse *operations.CreateMtlsAuthWithConsumerInWorkspaceResponse, err error) *MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(createMtlsAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateMtlsAuthWithConsumerInWorkspaceResponse, error)) *MockMTLSAuthCredentialsSDK_CreateMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteMtlsAuthWithConsumer provides a mock function for the type MockMTLSAuthCredentialsSDK
 func (_mock *MockMTLSAuthCredentialsSDK) DeleteMtlsAuthWithConsumer(ctx context.Context, request operations.DeleteMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteMtlsAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -200,6 +283,89 @@ func (_c *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumer_Call) Return(del
 }
 
 func (_c *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteMtlsAuthWithConsumerResponse, error)) *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteMtlsAuthWithConsumerInWorkspace provides a mock function for the type MockMTLSAuthCredentialsSDK
+func (_mock *MockMTLSAuthCredentialsSDK) DeleteMtlsAuthWithConsumerInWorkspace(ctx context.Context, request operations.DeleteMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteMtlsAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteMtlsAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.DeleteMtlsAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.DeleteMtlsAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.DeleteMtlsAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteMtlsAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteMtlsAuthWithConsumerInWorkspace'
+type MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteMtlsAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteMtlsAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockMTLSAuthCredentialsSDK_Expecter) DeleteMtlsAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call {
+	return &MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("DeleteMtlsAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteMtlsAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteMtlsAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call) Return(deleteMtlsAuthWithConsumerInWorkspaceResponse *operations.DeleteMtlsAuthWithConsumerInWorkspaceResponse, err error) *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(deleteMtlsAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteMtlsAuthWithConsumerInWorkspaceResponse, error)) *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -293,6 +459,89 @@ func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call) RunAndReturn(run func(ctx
 	return _c
 }
 
+// GetMtlsAuthInWorkspace provides a mock function for the type MockMTLSAuthCredentialsSDK
+func (_mock *MockMTLSAuthCredentialsSDK) GetMtlsAuthInWorkspace(ctx context.Context, request operations.GetMtlsAuthInWorkspaceRequest, opts ...operations.Option) (*operations.GetMtlsAuthInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetMtlsAuthInWorkspace")
+	}
+
+	var r0 *operations.GetMtlsAuthInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetMtlsAuthInWorkspaceRequest, ...operations.Option) (*operations.GetMtlsAuthInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetMtlsAuthInWorkspaceRequest, ...operations.Option) *operations.GetMtlsAuthInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetMtlsAuthInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetMtlsAuthInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMtlsAuthInWorkspace'
+type MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetMtlsAuthInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetMtlsAuthInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockMTLSAuthCredentialsSDK_Expecter) GetMtlsAuthInWorkspace(ctx any, request any, opts ...any) *MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call {
+	return &MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call{Call: _e.mock.On("GetMtlsAuthInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetMtlsAuthInWorkspaceRequest, opts ...operations.Option)) *MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetMtlsAuthInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetMtlsAuthInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call) Return(getMtlsAuthInWorkspaceResponse *operations.GetMtlsAuthInWorkspaceResponse, err error) *MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call {
+	_c.Call.Return(getMtlsAuthInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetMtlsAuthInWorkspaceRequest, opts ...operations.Option) (*operations.GetMtlsAuthInWorkspaceResponse, error)) *MockMTLSAuthCredentialsSDK_GetMtlsAuthInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetMtlsAuthWithConsumer provides a mock function for the type MockMTLSAuthCredentialsSDK
 func (_mock *MockMTLSAuthCredentialsSDK) GetMtlsAuthWithConsumer(ctx context.Context, request operations.GetMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetMtlsAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -372,6 +621,89 @@ func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumer_Call) Return(getMtl
 }
 
 func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.GetMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetMtlsAuthWithConsumerResponse, error)) *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetMtlsAuthWithConsumerInWorkspace provides a mock function for the type MockMTLSAuthCredentialsSDK
+func (_mock *MockMTLSAuthCredentialsSDK) GetMtlsAuthWithConsumerInWorkspace(ctx context.Context, request operations.GetMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetMtlsAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetMtlsAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.GetMtlsAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.GetMtlsAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.GetMtlsAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetMtlsAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMtlsAuthWithConsumerInWorkspace'
+type MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetMtlsAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetMtlsAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockMTLSAuthCredentialsSDK_Expecter) GetMtlsAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call {
+	return &MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("GetMtlsAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetMtlsAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetMtlsAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call) Return(getMtlsAuthWithConsumerInWorkspaceResponse *operations.GetMtlsAuthWithConsumerInWorkspaceResponse, err error) *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(getMtlsAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetMtlsAuthWithConsumerInWorkspaceResponse, error)) *MockMTLSAuthCredentialsSDK_GetMtlsAuthWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -459,6 +791,89 @@ func (_c *MockMTLSAuthCredentialsSDK_ListMtlsAuth_Call) RunAndReturn(run func(ct
 	return _c
 }
 
+// ListMtlsAuthInWorkspace provides a mock function for the type MockMTLSAuthCredentialsSDK
+func (_mock *MockMTLSAuthCredentialsSDK) ListMtlsAuthInWorkspace(ctx context.Context, request operations.ListMtlsAuthInWorkspaceRequest, opts ...operations.Option) (*operations.ListMtlsAuthInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListMtlsAuthInWorkspace")
+	}
+
+	var r0 *operations.ListMtlsAuthInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListMtlsAuthInWorkspaceRequest, ...operations.Option) (*operations.ListMtlsAuthInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListMtlsAuthInWorkspaceRequest, ...operations.Option) *operations.ListMtlsAuthInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListMtlsAuthInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListMtlsAuthInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListMtlsAuthInWorkspace'
+type MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListMtlsAuthInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListMtlsAuthInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockMTLSAuthCredentialsSDK_Expecter) ListMtlsAuthInWorkspace(ctx any, request any, opts ...any) *MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call {
+	return &MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call{Call: _e.mock.On("ListMtlsAuthInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListMtlsAuthInWorkspaceRequest, opts ...operations.Option)) *MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListMtlsAuthInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListMtlsAuthInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call) Return(listMtlsAuthInWorkspaceResponse *operations.ListMtlsAuthInWorkspaceResponse, err error) *MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call {
+	_c.Call.Return(listMtlsAuthInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListMtlsAuthInWorkspaceRequest, opts ...operations.Option) (*operations.ListMtlsAuthInWorkspaceResponse, error)) *MockMTLSAuthCredentialsSDK_ListMtlsAuthInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListMtlsAuthWithConsumer provides a mock function for the type MockMTLSAuthCredentialsSDK
 func (_mock *MockMTLSAuthCredentialsSDK) ListMtlsAuthWithConsumer(ctx context.Context, request operations.ListMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListMtlsAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -542,6 +957,89 @@ func (_c *MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumer_Call) RunAndReturn
 	return _c
 }
 
+// ListMtlsAuthWithConsumerInWorkspace provides a mock function for the type MockMTLSAuthCredentialsSDK
+func (_mock *MockMTLSAuthCredentialsSDK) ListMtlsAuthWithConsumerInWorkspace(ctx context.Context, request operations.ListMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListMtlsAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListMtlsAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.ListMtlsAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.ListMtlsAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.ListMtlsAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListMtlsAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListMtlsAuthWithConsumerInWorkspace'
+type MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListMtlsAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListMtlsAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockMTLSAuthCredentialsSDK_Expecter) ListMtlsAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call {
+	return &MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("ListMtlsAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListMtlsAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListMtlsAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call) Return(listMtlsAuthWithConsumerInWorkspaceResponse *operations.ListMtlsAuthWithConsumerInWorkspaceResponse, err error) *MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(listMtlsAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListMtlsAuthWithConsumerInWorkspaceResponse, error)) *MockMTLSAuthCredentialsSDK_ListMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertMtlsAuthWithConsumer provides a mock function for the type MockMTLSAuthCredentialsSDK
 func (_mock *MockMTLSAuthCredentialsSDK) UpsertMtlsAuthWithConsumer(ctx context.Context, request operations.UpsertMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertMtlsAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -621,6 +1119,89 @@ func (_c *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumer_Call) Return(ups
 }
 
 func (_c *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertMtlsAuthWithConsumerResponse, error)) *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertMtlsAuthWithConsumerInWorkspace provides a mock function for the type MockMTLSAuthCredentialsSDK
+func (_mock *MockMTLSAuthCredentialsSDK) UpsertMtlsAuthWithConsumerInWorkspace(ctx context.Context, request operations.UpsertMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertMtlsAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertMtlsAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.UpsertMtlsAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.UpsertMtlsAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.UpsertMtlsAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertMtlsAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertMtlsAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertMtlsAuthWithConsumerInWorkspace'
+type MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertMtlsAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertMtlsAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockMTLSAuthCredentialsSDK_Expecter) UpsertMtlsAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call {
+	return &MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("UpsertMtlsAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertMtlsAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertMtlsAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call) Return(upsertMtlsAuthWithConsumerInWorkspaceResponse *operations.UpsertMtlsAuthWithConsumerInWorkspaceResponse, err error) *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(upsertMtlsAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertMtlsAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertMtlsAuthWithConsumerInWorkspaceResponse, error)) *MockMTLSAuthCredentialsSDK_UpsertMtlsAuthWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

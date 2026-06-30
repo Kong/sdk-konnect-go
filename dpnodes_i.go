@@ -19,13 +19,13 @@ type DPNodesSDK interface {
 	// ListDataplaneNodes - List Data Plane Node Records
 	// Returns a list of data plane node records that are associated to this control plane. A data plane node record contains metadata information for the data plane running Kong Gateway.
 	ListDataplaneNodes(ctx context.Context, request operations.ListDataplaneNodesRequest, opts ...operations.Option) (*operations.ListDataplaneNodesResponse, error)
+	// GetNodesEol - List End-of-Life Data Plane Node Records
+	// Returns a list of records of data plane nodes, whose versions are approaching End of Full Support/End of Life, that are associated with this control plane. Each record contains a data plane node's id, version, and corresponding resolution message to upgrade to the closest Long Term Support version.
+	GetNodesEol(ctx context.Context, request operations.GetNodesEolRequest, opts ...operations.Option) (*operations.GetNodesEolResponse, error)
 	// GetNodesNodeID - Get a Data Plane Node Record
 	// Retrieve a specific data plane node record associated to this control plane. A data plane node record contains all the metadata information of the Kong Gateway dataplane.
 	GetNodesNodeID(ctx context.Context, request operations.GetNodesNodeIDRequest, opts ...operations.Option) (*operations.GetNodesNodeIDResponse, error)
 	// DeleteNodesNodeID - Delete Data Plane Node Record
 	// Remove a specific data plane node record associated to this control plane. Deleting this record does not prevent the data plane node from re-connecting to the control plane.
 	DeleteNodesNodeID(ctx context.Context, controlPlaneID string, nodeID string, opts ...operations.Option) (*operations.DeleteNodesNodeIDResponse, error)
-	// GetNodesEol - List End-of-Life Data Plane Node Records
-	// Returns a list of records of data plane nodes, whose versions are approaching End of Full Support/End of Life, that are associated with this control plane. Each record contains a data plane node's id, version, and corresponding resolution message to upgrade to the closest Long Term Support version.
-	GetNodesEol(ctx context.Context, request operations.GetNodesEolRequest, opts ...operations.Option) (*operations.GetNodesEolResponse, error)
 }

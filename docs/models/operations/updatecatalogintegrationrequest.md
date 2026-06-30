@@ -1,0 +1,9 @@
+# UpdateCatalogIntegrationRequest
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `Integration`                                                                              | `string`                                                                                   | :heavy_check_mark:                                                                         | The name of the integration.                                                               | jira                                                                                       |
+| `UpdateCatalogIntegration`                                                                 | [components.UpdateCatalogIntegration](../../models/components/updatecatalogintegration.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |

@@ -7,7 +7,7 @@ import "os"
  * Any hooks you wish to add should be registered in the InitHooks function. Feel free to define them
  * in this file or in separate files in the hooks package.
  */
-
+//lint:ignore U1000 to satisfy the linter in speakeasy
 func initHooks(h *Hooks) {
 	h.registerBeforeRequestHook(&UserAgentPreRequestHook{})
 

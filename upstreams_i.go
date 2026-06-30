@@ -11,6 +11,21 @@ import (
 
 // UpstreamsSDK is a generated interface.
 type UpstreamsSDK interface {
+	// ListUpstreamInWorkspace - List all Upstreams in a workspace
+	// List all Upstreams in a workspace
+	ListUpstreamInWorkspace(ctx context.Context, request operations.ListUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.ListUpstreamInWorkspaceResponse, error)
+	// CreateUpstreamInWorkspace - Create a new Upstream in a workspace
+	// Create a new Upstream in a workspace
+	CreateUpstreamInWorkspace(ctx context.Context, request operations.CreateUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.CreateUpstreamInWorkspaceResponse, error)
+	// DeleteUpstreamInWorkspace - Delete an Upstream in a workspace
+	// Delete an Upstream in a workspace
+	DeleteUpstreamInWorkspace(ctx context.Context, request operations.DeleteUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteUpstreamInWorkspaceResponse, error)
+	// GetUpstreamInWorkspace - Get an Upstream in a workspace
+	// Get an Upstream using ID or name in a workspace.
+	GetUpstreamInWorkspace(ctx context.Context, request operations.GetUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.GetUpstreamInWorkspaceResponse, error)
+	// UpsertUpstreamInWorkspace - Upsert a Upstream in a workspace
+	// Create or Update Upstream using ID or name in a workspace.
+	UpsertUpstreamInWorkspace(ctx context.Context, request operations.UpsertUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertUpstreamInWorkspaceResponse, error)
 	// ListUpstream - List all Upstreams
 	// List all Upstreams
 	ListUpstream(ctx context.Context, request operations.ListUpstreamRequest, opts ...operations.Option) (*operations.ListUpstreamResponse, error)

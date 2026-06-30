@@ -11,16 +11,16 @@ Defines the authorization strategy for an integration.
 catalogIntegrationAuthorization := components.CreateCatalogIntegrationAuthorizationOne(components.One{/* values here */})
 ```
 
-### OAuth1
+### OAuth
 
 ```go
-catalogIntegrationAuthorization := components.CreateCatalogIntegrationAuthorizationOAuth1(components.OAuth1{/* values here */})
+catalogIntegrationAuthorization := components.CreateCatalogIntegrationAuthorizationOAuth(components.OAuth{/* values here */})
 ```
 
-### MultiKeyAuth1
+### MultiKeyAuth
 
 ```go
-catalogIntegrationAuthorization := components.CreateCatalogIntegrationAuthorizationMultiKeyAuth1(components.MultiKeyAuth1{/* values here */})
+catalogIntegrationAuthorization := components.CreateCatalogIntegrationAuthorizationMultiKeyAuth(components.MultiKeyAuth{/* values here */})
 ```
 
 ### GitHubAppInstallationAuth
@@ -37,10 +37,10 @@ Use the `Type` field to determine which variant is active, then access the corre
 switch catalogIntegrationAuthorization.Type {
 	case components.CatalogIntegrationAuthorizationTypeOne:
 		// catalogIntegrationAuthorization.One is populated
-	case components.CatalogIntegrationAuthorizationTypeOAuth1:
-		// catalogIntegrationAuthorization.OAuth1 is populated
-	case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth1:
-		// catalogIntegrationAuthorization.MultiKeyAuth1 is populated
+	case components.CatalogIntegrationAuthorizationTypeOAuth:
+		// catalogIntegrationAuthorization.OAuth is populated
+	case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:
+		// catalogIntegrationAuthorization.MultiKeyAuth is populated
 	case components.CatalogIntegrationAuthorizationTypeGitHubAppInstallationAuth:
 		// catalogIntegrationAuthorization.GitHubAppInstallationAuth is populated
 }

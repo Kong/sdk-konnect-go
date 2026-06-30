@@ -7,6 +7,7 @@ package mocks
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -36,6 +37,178 @@ type MockApplicationsSDK_Expecter struct {
 
 func (_m *MockApplicationsSDK) EXPECT() *MockApplicationsSDK_Expecter {
 	return &MockApplicationsSDK_Expecter{mock: &_m.Mock}
+}
+
+// AddDeveloperToApplication provides a mock function for the type MockApplicationsSDK
+func (_mock *MockApplicationsSDK) AddDeveloperToApplication(ctx context.Context, request operations.AddDeveloperToApplicationRequest, opts ...operations.Option) (*operations.AddDeveloperToApplicationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for AddDeveloperToApplication")
+	}
+
+	var r0 *operations.AddDeveloperToApplicationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.AddDeveloperToApplicationRequest, ...operations.Option) (*operations.AddDeveloperToApplicationResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.AddDeveloperToApplicationRequest, ...operations.Option) *operations.AddDeveloperToApplicationResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.AddDeveloperToApplicationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.AddDeveloperToApplicationRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockApplicationsSDK_AddDeveloperToApplication_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddDeveloperToApplication'
+type MockApplicationsSDK_AddDeveloperToApplication_Call struct {
+	*mock.Call
+}
+
+// AddDeveloperToApplication is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.AddDeveloperToApplicationRequest
+//   - opts ...operations.Option
+func (_e *MockApplicationsSDK_Expecter) AddDeveloperToApplication(ctx any, request any, opts ...any) *MockApplicationsSDK_AddDeveloperToApplication_Call {
+	return &MockApplicationsSDK_AddDeveloperToApplication_Call{Call: _e.mock.On("AddDeveloperToApplication",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockApplicationsSDK_AddDeveloperToApplication_Call) Run(run func(ctx context.Context, request operations.AddDeveloperToApplicationRequest, opts ...operations.Option)) *MockApplicationsSDK_AddDeveloperToApplication_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.AddDeveloperToApplicationRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.AddDeveloperToApplicationRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockApplicationsSDK_AddDeveloperToApplication_Call) Return(addDeveloperToApplicationResponse *operations.AddDeveloperToApplicationResponse, err error) *MockApplicationsSDK_AddDeveloperToApplication_Call {
+	_c.Call.Return(addDeveloperToApplicationResponse, err)
+	return _c
+}
+
+func (_c *MockApplicationsSDK_AddDeveloperToApplication_Call) RunAndReturn(run func(ctx context.Context, request operations.AddDeveloperToApplicationRequest, opts ...operations.Option) (*operations.AddDeveloperToApplicationResponse, error)) *MockApplicationsSDK_AddDeveloperToApplication_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateApplication provides a mock function for the type MockApplicationsSDK
+func (_mock *MockApplicationsSDK) CreateApplication(ctx context.Context, portalID string, createApplicationRequest components.CreateApplicationRequest, opts ...operations.Option) (*operations.CreateApplicationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, portalID, createApplicationRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, portalID, createApplicationRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateApplication")
+	}
+
+	var r0 *operations.CreateApplicationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateApplicationRequest, ...operations.Option) (*operations.CreateApplicationResponse, error)); ok {
+		return returnFunc(ctx, portalID, createApplicationRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateApplicationRequest, ...operations.Option) *operations.CreateApplicationResponse); ok {
+		r0 = returnFunc(ctx, portalID, createApplicationRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateApplicationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateApplicationRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, portalID, createApplicationRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockApplicationsSDK_CreateApplication_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateApplication'
+type MockApplicationsSDK_CreateApplication_Call struct {
+	*mock.Call
+}
+
+// CreateApplication is a helper method to define mock.On call
+//   - ctx context.Context
+//   - portalID string
+//   - createApplicationRequest components.CreateApplicationRequest
+//   - opts ...operations.Option
+func (_e *MockApplicationsSDK_Expecter) CreateApplication(ctx any, portalID any, createApplicationRequest any, opts ...any) *MockApplicationsSDK_CreateApplication_Call {
+	return &MockApplicationsSDK_CreateApplication_Call{Call: _e.mock.On("CreateApplication",
+		append([]any{ctx, portalID, createApplicationRequest}, opts...)...)}
+}
+
+func (_c *MockApplicationsSDK_CreateApplication_Call) Run(run func(ctx context.Context, portalID string, createApplicationRequest components.CreateApplicationRequest, opts ...operations.Option)) *MockApplicationsSDK_CreateApplication_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.CreateApplicationRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.CreateApplicationRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockApplicationsSDK_CreateApplication_Call) Return(createApplicationResponse *operations.CreateApplicationResponse, err error) *MockApplicationsSDK_CreateApplication_Call {
+	_c.Call.Return(createApplicationResponse, err)
+	return _c
+}
+
+func (_c *MockApplicationsSDK_CreateApplication_Call) RunAndReturn(run func(ctx context.Context, portalID string, createApplicationRequest components.CreateApplicationRequest, opts ...operations.Option) (*operations.CreateApplicationResponse, error)) *MockApplicationsSDK_CreateApplication_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // DeleteApplication provides a mock function for the type MockApplicationsSDK
@@ -544,6 +717,89 @@ func (_c *MockApplicationsSDK_ListDevelopersByApplication_Call) Return(listDevel
 }
 
 func (_c *MockApplicationsSDK_ListDevelopersByApplication_Call) RunAndReturn(run func(ctx context.Context, request operations.ListDevelopersByApplicationRequest, opts ...operations.Option) (*operations.ListDevelopersByApplicationResponse, error)) *MockApplicationsSDK_ListDevelopersByApplication_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RemoveDeveloperFromApplication provides a mock function for the type MockApplicationsSDK
+func (_mock *MockApplicationsSDK) RemoveDeveloperFromApplication(ctx context.Context, request operations.RemoveDeveloperFromApplicationRequest, opts ...operations.Option) (*operations.RemoveDeveloperFromApplicationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveDeveloperFromApplication")
+	}
+
+	var r0 *operations.RemoveDeveloperFromApplicationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.RemoveDeveloperFromApplicationRequest, ...operations.Option) (*operations.RemoveDeveloperFromApplicationResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.RemoveDeveloperFromApplicationRequest, ...operations.Option) *operations.RemoveDeveloperFromApplicationResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.RemoveDeveloperFromApplicationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.RemoveDeveloperFromApplicationRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockApplicationsSDK_RemoveDeveloperFromApplication_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveDeveloperFromApplication'
+type MockApplicationsSDK_RemoveDeveloperFromApplication_Call struct {
+	*mock.Call
+}
+
+// RemoveDeveloperFromApplication is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.RemoveDeveloperFromApplicationRequest
+//   - opts ...operations.Option
+func (_e *MockApplicationsSDK_Expecter) RemoveDeveloperFromApplication(ctx any, request any, opts ...any) *MockApplicationsSDK_RemoveDeveloperFromApplication_Call {
+	return &MockApplicationsSDK_RemoveDeveloperFromApplication_Call{Call: _e.mock.On("RemoveDeveloperFromApplication",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockApplicationsSDK_RemoveDeveloperFromApplication_Call) Run(run func(ctx context.Context, request operations.RemoveDeveloperFromApplicationRequest, opts ...operations.Option)) *MockApplicationsSDK_RemoveDeveloperFromApplication_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.RemoveDeveloperFromApplicationRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.RemoveDeveloperFromApplicationRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockApplicationsSDK_RemoveDeveloperFromApplication_Call) Return(removeDeveloperFromApplicationResponse *operations.RemoveDeveloperFromApplicationResponse, err error) *MockApplicationsSDK_RemoveDeveloperFromApplication_Call {
+	_c.Call.Return(removeDeveloperFromApplicationResponse, err)
+	return _c
+}
+
+func (_c *MockApplicationsSDK_RemoveDeveloperFromApplication_Call) RunAndReturn(run func(ctx context.Context, request operations.RemoveDeveloperFromApplicationRequest, opts ...operations.Option) (*operations.RemoveDeveloperFromApplicationResponse, error)) *MockApplicationsSDK_RemoveDeveloperFromApplication_Call {
 	_c.Call.Return(run)
 	return _c
 }

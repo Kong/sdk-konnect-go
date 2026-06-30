@@ -13,7 +13,7 @@ import (
 type RolesSDK interface {
 	// GetPredefinedRoles - Get Predefined Roles
 	// Retrieves the predefined, or system managed, roles.
-	GetPredefinedRoles(ctx context.Context, opts ...operations.Option) (*operations.GetPredefinedRolesResponse, error)
+	GetPredefinedRoles(ctx context.Context, filter *operations.GetPredefinedRolesQueryParamFilter, opts ...operations.Option) (*operations.GetPredefinedRolesResponse, error)
 	// ListTeamRoles - List Team Roles
 	// Lists the roles belonging to a team. Returns 400 if any filter parameters are invalid.
 	ListTeamRoles(ctx context.Context, teamID string, filter *operations.ListTeamRolesQueryParamFilter, opts ...operations.Option) (*operations.ListTeamRolesResponse, error)

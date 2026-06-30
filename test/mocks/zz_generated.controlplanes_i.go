@@ -288,6 +288,89 @@ func (_c *MockControlPlanesSDK_GetControlPlane_Call) RunAndReturn(run func(ctx c
 	return _c
 }
 
+// GetControlPlaneSettings provides a mock function for the type MockControlPlanesSDK
+func (_mock *MockControlPlanesSDK) GetControlPlaneSettings(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneSettingsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, controlPlaneID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, controlPlaneID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetControlPlaneSettings")
+	}
+
+	var r0 *operations.GetControlPlaneSettingsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetControlPlaneSettingsResponse, error)); ok {
+		return returnFunc(ctx, controlPlaneID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetControlPlaneSettingsResponse); ok {
+		r0 = returnFunc(ctx, controlPlaneID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetControlPlaneSettingsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, controlPlaneID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockControlPlanesSDK_GetControlPlaneSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetControlPlaneSettings'
+type MockControlPlanesSDK_GetControlPlaneSettings_Call struct {
+	*mock.Call
+}
+
+// GetControlPlaneSettings is a helper method to define mock.On call
+//   - ctx context.Context
+//   - controlPlaneID string
+//   - opts ...operations.Option
+func (_e *MockControlPlanesSDK_Expecter) GetControlPlaneSettings(ctx any, controlPlaneID any, opts ...any) *MockControlPlanesSDK_GetControlPlaneSettings_Call {
+	return &MockControlPlanesSDK_GetControlPlaneSettings_Call{Call: _e.mock.On("GetControlPlaneSettings",
+		append([]any{ctx, controlPlaneID}, opts...)...)}
+}
+
+func (_c *MockControlPlanesSDK_GetControlPlaneSettings_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockControlPlanesSDK_GetControlPlaneSettings_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockControlPlanesSDK_GetControlPlaneSettings_Call) Return(getControlPlaneSettingsResponse *operations.GetControlPlaneSettingsResponse, err error) *MockControlPlanesSDK_GetControlPlaneSettings_Call {
+	_c.Call.Return(getControlPlaneSettingsResponse, err)
+	return _c
+}
+
+func (_c *MockControlPlanesSDK_GetControlPlaneSettings_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneSettingsResponse, error)) *MockControlPlanesSDK_GetControlPlaneSettings_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListControlPlanes provides a mock function for the type MockControlPlanesSDK
 func (_mock *MockControlPlanesSDK) ListControlPlanes(ctx context.Context, request operations.ListControlPlanesRequest, opts ...operations.Option) (*operations.ListControlPlanesResponse, error) {
 	var tmpRet mock.Arguments
@@ -367,6 +450,95 @@ func (_c *MockControlPlanesSDK_ListControlPlanes_Call) Return(listControlPlanesR
 }
 
 func (_c *MockControlPlanesSDK_ListControlPlanes_Call) RunAndReturn(run func(ctx context.Context, request operations.ListControlPlanesRequest, opts ...operations.Option) (*operations.ListControlPlanesResponse, error)) *MockControlPlanesSDK_ListControlPlanes_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// PutControlPlaneSettings provides a mock function for the type MockControlPlanesSDK
+func (_mock *MockControlPlanesSDK) PutControlPlaneSettings(ctx context.Context, controlPlaneID string, settings *components.Settings, opts ...operations.Option) (*operations.PutControlPlaneSettingsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, controlPlaneID, settings, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, controlPlaneID, settings)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for PutControlPlaneSettings")
+	}
+
+	var r0 *operations.PutControlPlaneSettingsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.Settings, ...operations.Option) (*operations.PutControlPlaneSettingsResponse, error)); ok {
+		return returnFunc(ctx, controlPlaneID, settings, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.Settings, ...operations.Option) *operations.PutControlPlaneSettingsResponse); ok {
+		r0 = returnFunc(ctx, controlPlaneID, settings, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.PutControlPlaneSettingsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.Settings, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, controlPlaneID, settings, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockControlPlanesSDK_PutControlPlaneSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PutControlPlaneSettings'
+type MockControlPlanesSDK_PutControlPlaneSettings_Call struct {
+	*mock.Call
+}
+
+// PutControlPlaneSettings is a helper method to define mock.On call
+//   - ctx context.Context
+//   - controlPlaneID string
+//   - settings *components.Settings
+//   - opts ...operations.Option
+func (_e *MockControlPlanesSDK_Expecter) PutControlPlaneSettings(ctx any, controlPlaneID any, settings any, opts ...any) *MockControlPlanesSDK_PutControlPlaneSettings_Call {
+	return &MockControlPlanesSDK_PutControlPlaneSettings_Call{Call: _e.mock.On("PutControlPlaneSettings",
+		append([]any{ctx, controlPlaneID, settings}, opts...)...)}
+}
+
+func (_c *MockControlPlanesSDK_PutControlPlaneSettings_Call) Run(run func(ctx context.Context, controlPlaneID string, settings *components.Settings, opts ...operations.Option)) *MockControlPlanesSDK_PutControlPlaneSettings_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 *components.Settings
+		if args[2] != nil {
+			arg2 = args[2].(*components.Settings)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockControlPlanesSDK_PutControlPlaneSettings_Call) Return(putControlPlaneSettingsResponse *operations.PutControlPlaneSettingsResponse, err error) *MockControlPlanesSDK_PutControlPlaneSettings_Call {
+	_c.Call.Return(putControlPlaneSettingsResponse, err)
+	return _c
+}
+
+func (_c *MockControlPlanesSDK_PutControlPlaneSettings_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, settings *components.Settings, opts ...operations.Option) (*operations.PutControlPlaneSettingsResponse, error)) *MockControlPlanesSDK_PutControlPlaneSettings_Call {
 	_c.Call.Return(run)
 	return _c
 }

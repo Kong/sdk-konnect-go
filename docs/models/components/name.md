@@ -1,30 +1,12 @@
 # Name
 
-## Example Usage
-
-```go
-import (
-	"github.com/Kong/sdk-konnect-go/models/components"
-)
-
-value := components.NameAll
-
-// Open enum: custom values can be created with a direct type cast
-custom := components.Name("custom_value")
-```
+Filter using **one** of the following operators: `eq`, `neq`, `contains`
 
 
-## Values
+## Fields
 
-| Name                  | Value                 |
-| --------------------- | --------------------- |
-| `NameAll`             | all                   |
-| `NameAlter`           | alter                 |
-| `NameAlterConfigs`    | alter_configs         |
-| `NameCreate`          | create                |
-| `NameDelete`          | delete                |
-| `NameDescribe`        | describe              |
-| `NameDescribeConfigs` | describe_configs      |
-| `NameIdempotentWrite` | idempotent_write      |
-| `NameRead`            | read                  |
-| `NameWrite`           | write                 |
+| Field                                         | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `Eq`                                          | `*string`                                     | :heavy_minus_sign:                            | The field exactly matches the provided value. |
+| `Contains`                                    | `*string`                                     | :heavy_minus_sign:                            | The field contains the provided value.        |
+| `Neq`                                         | `*string`                                     | :heavy_minus_sign:                            | The field does not match the provided value.  |

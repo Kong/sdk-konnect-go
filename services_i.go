@@ -11,6 +11,21 @@ import (
 
 // ServicesSDK is a generated interface.
 type ServicesSDK interface {
+	// ListServiceInWorkspace - List all Services in a workspace
+	// List all Services in a workspace
+	ListServiceInWorkspace(ctx context.Context, request operations.ListServiceInWorkspaceRequest, opts ...operations.Option) (*operations.ListServiceInWorkspaceResponse, error)
+	// CreateServiceInWorkspace - Create a new Service in a workspace
+	// Create a new Service in a workspace
+	CreateServiceInWorkspace(ctx context.Context, request operations.CreateServiceInWorkspaceRequest, opts ...operations.Option) (*operations.CreateServiceInWorkspaceResponse, error)
+	// DeleteServiceInWorkspace - Delete a Service in a workspace
+	// Delete a Service in a workspace
+	DeleteServiceInWorkspace(ctx context.Context, request operations.DeleteServiceInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteServiceInWorkspaceResponse, error)
+	// GetServiceInWorkspace - Get a Service in a workspace
+	// Get a Service using ID or name in a workspace.
+	GetServiceInWorkspace(ctx context.Context, request operations.GetServiceInWorkspaceRequest, opts ...operations.Option) (*operations.GetServiceInWorkspaceResponse, error)
+	// UpsertServiceInWorkspace - Upsert a Service in a workspace
+	// Create or Update Service using ID or name in a workspace.
+	UpsertServiceInWorkspace(ctx context.Context, request operations.UpsertServiceInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertServiceInWorkspaceResponse, error)
 	// ListService - List all Services
 	// List all Services
 	ListService(ctx context.Context, request operations.ListServiceRequest, opts ...operations.Option) (*operations.ListServiceResponse, error)

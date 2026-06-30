@@ -6,65 +6,10 @@ APIs related to Konnect Developer Portal developer team roles.
 
 ### Available Operations
 
-* [ListPortalRoles](#listportalroles) - List Portal Roles
 * [ListPortalTeamRoles](#listportalteamroles) - List Team Roles
 * [AssignRoleToPortalTeams](#assignroletoportalteams) - Assign Role
 * [RemoveRoleFromPortalTeam](#removerolefromportalteam) - Remove Role
-
-## ListPortalRoles
-
-List roles that can be assigned to teams in a portal. Each role provides a set of permissions to perform an action on a resource.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-portal-roles" method="get" path="/v3/portal-roles" example="Example 1" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalTeamRoles.ListPortalRoles(ctx)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListRolesResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
-
-### Response
-
-**[*operations.ListPortalRolesResponse](../../models/operations/listportalrolesresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+* [ListPortalRoles](#listportalroles) - List Portal Roles
 
 ## ListPortalTeamRoles
 
@@ -690,4 +635,59 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListPortalRoles
+
+List roles that can be assigned to teams in a portal. Each role provides a set of permissions to perform an action on a resource.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-portal-roles" method="get" path="/v3/portal-roles" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.ListPortalRoles(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListRolesResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.ListPortalRolesResponse](../../models/operations/listportalrolesresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |

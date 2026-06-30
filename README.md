@@ -12,15 +12,16 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `ListServiceMappingsForAPI` function may return the following errors:
+For example, the `ListControlPlanes` function may return the following errors:
 
-| Error Type                  | Status Code | Content Type             |
-| --------------------------- | ----------- | ------------------------ |
-| sdkerrors.BadRequestError   | 400         | application/problem+json |
-| sdkerrors.UnauthorizedError | 401         | application/problem+json |
-| sdkerrors.ForbiddenError    | 403         | application/problem+json |
-| sdkerrors.NotFoundError     | 404         | application/problem+json |
-| sdkerrors.SDKError          | 4XX, 5XX    | \*/\*                    |
+| Error Type                   | Status Code | Content Type             |
+| ---------------------------- | ----------- | ------------------------ |
+| sdkerrors.BadRequestError    | 400         | application/problem+json |
+| sdkerrors.UnauthorizedError  | 401         | application/problem+json |
+| sdkerrors.ForbiddenError     | 403         | application/problem+json |
+| sdkerrors.BaseError          | 500         | application/problem+json |
+| sdkerrors.ServiceUnavailable | 503         | application/problem+json |
+| sdkerrors.SDKError           | 4XX, 5XX    | \*/\*                    |
 
 ### Example
 
@@ -46,11 +47,14 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
+		Filter: &components.ControlPlaneFilterParameters{
+			CloudGateway: sdkkonnectgo.Pointer(true),
+		},
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
 	})
 	if err != nil {
 
@@ -72,7 +76,13 @@ func main() {
 			log.Fatal(e.Error())
 		}
 
-		var e *sdkerrors.NotFoundError
+		var e *sdkerrors.BaseError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+
+		var e *sdkerrors.ServiceUnavailable
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -126,17 +136,32 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
+		Filter: &components.ControlPlaneFilterParameters{
+			CloudGateway: sdkkonnectgo.Pointer(true),
+		},
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
-		// handle response
+	if res.ListControlPlanesResponse != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
 	}
 }
 
@@ -166,17 +191,32 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
+		Filter: &components.ControlPlaneFilterParameters{
+			CloudGateway: sdkkonnectgo.Pointer(true),
+		},
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
-		// handle response
+	if res.ListControlPlanesResponse != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
 	}
 }
 
@@ -205,35 +245,12 @@ func main() {
 		}),
 	)
 
-	res, err := s.CloudGateways.CreateAddOn(ctx, components.CreateAddOnRequest{
-		Name: "my-add-on",
-		Owner: components.CreateAddOnOwnerControlPlaneGroupAddOnOwner(
-			components.ControlPlaneGroupAddOnOwner{
-				ControlPlaneGroupID:  "123e4567-e89b-12d3-a456-426614174000",
-				ControlPlaneGroupGeo: components.ControlPlaneGeoSg,
-			},
-		),
-		Config: components.CreateCreateAddOnConfigManagedCache(
-			components.ManagedCache{
-				CapacityConfig: components.CreateManagedCacheCapacityConfigTiered(
-					components.Tiered{
-						Tier: components.TierSmall,
-					},
-				),
-			},
-		),
-	}, operations.WithServerURL("https://global.api.konghq.com/"))
+	res, err := s.SSOAuth0.PostAuth0RegisterInternal(ctx, nil, operations.WithServerURL("https://global.api.konghq.com/"))
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.AddOnResponse != nil {
-		switch res.AddOnResponse.Owner.Type {
-		case components.AddOnOwnerTypeControlPlaneAddOnOwner:
-			// res.AddOnResponse.Owner.ControlPlaneAddOnOwner is populated
-		case components.AddOnOwnerTypeControlPlaneGroupAddOnOwner:
-			// res.AddOnResponse.Owner.ControlPlaneGroupAddOnOwner is populated
-		}
-
+	if res.Auth0Registration != nil {
+		// handle response
 	}
 }
 
@@ -282,6 +299,7 @@ This SDK supports the following security schemes globally:
 | `PersonalAccessToken`      | http | HTTP Bearer |
 | `SystemAccountAccessToken` | http | HTTP Bearer |
 | `KonnectAccessToken`       | http | HTTP Bearer |
+| `ClientToken`              | http | HTTP Bearer |
 | `ServiceAccessToken`       | http | HTTP Bearer |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
@@ -305,17 +323,32 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
+		Filter: &components.ControlPlaneFilterParameters{
+			CloudGateway: sdkkonnectgo.Pointer(true),
+		},
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
-		// handle response
+	if res.ListControlPlanesResponse != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
 	}
 }
 
@@ -325,7 +358,7 @@ func main() {
 <!-- Start Summary [summary] -->
 ## Summary
 
-Konnect API - Go SDK: The Konnect platform API
+Konnect API - Go Internal SDK: The Konnect platform API
 
 For more information about the API: [Documentation for Kong Gateway and its APIs](https://developer.konghq.com)
 <!-- End Summary [summary] -->
@@ -371,14 +404,19 @@ func main() {
 		}),
 	)
 
-	res, err := s.CloudGateways.ListProviderAccounts(ctx, operations.ListProviderAccountsRequest{
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
+		Filter: &components.ControlPlaneFilterParameters{
+			CloudGateway: sdkkonnectgo.Pointer(true),
+		},
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListProviderAccountsResponse != nil {
+	if res.ListControlPlanesResponse != nil {
 		for {
 			// handle items
 
@@ -426,11 +464,14 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
+		Filter: &components.ControlPlaneFilterParameters{
+			CloudGateway: sdkkonnectgo.Pointer(true),
+		},
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
 	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
@@ -445,8 +486,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
-		// handle response
+	if res.ListControlPlanesResponse != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
 	}
 }
 
@@ -485,17 +538,32 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
+		Filter: &components.ControlPlaneFilterParameters{
+			CloudGateway: sdkkonnectgo.Pointer(true),
+		},
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
-		// handle response
+	if res.ListControlPlanesResponse != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
 	}
 }
 

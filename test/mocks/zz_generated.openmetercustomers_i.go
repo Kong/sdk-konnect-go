@@ -39,6 +39,184 @@ func (_m *MockOpenMeterCustomersSDK) EXPECT() *MockOpenMeterCustomersSDK_Expecte
 	return &MockOpenMeterCustomersSDK_Expecter{mock: &_m.Mock}
 }
 
+// CreateCreditAdjustment provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) CreateCreditAdjustment(ctx context.Context, customerID string, createCreditAdjustmentRequest components.CreateCreditAdjustmentRequest, opts ...operations.Option) (*operations.CreateCreditAdjustmentResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, customerID, createCreditAdjustmentRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, customerID, createCreditAdjustmentRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateCreditAdjustment")
+	}
+
+	var r0 *operations.CreateCreditAdjustmentResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateCreditAdjustmentRequest, ...operations.Option) (*operations.CreateCreditAdjustmentResponse, error)); ok {
+		return returnFunc(ctx, customerID, createCreditAdjustmentRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateCreditAdjustmentRequest, ...operations.Option) *operations.CreateCreditAdjustmentResponse); ok {
+		r0 = returnFunc(ctx, customerID, createCreditAdjustmentRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateCreditAdjustmentResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateCreditAdjustmentRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, customerID, createCreditAdjustmentRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCreditAdjustment'
+type MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call struct {
+	*mock.Call
+}
+
+// CreateCreditAdjustment is a helper method to define mock.On call
+//   - ctx context.Context
+//   - customerID string
+//   - createCreditAdjustmentRequest components.CreateCreditAdjustmentRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) CreateCreditAdjustment(ctx any, customerID any, createCreditAdjustmentRequest any, opts ...any) *MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call {
+	return &MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call{Call: _e.mock.On("CreateCreditAdjustment",
+		append([]any{ctx, customerID, createCreditAdjustmentRequest}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call) Run(run func(ctx context.Context, customerID string, createCreditAdjustmentRequest components.CreateCreditAdjustmentRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.CreateCreditAdjustmentRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.CreateCreditAdjustmentRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call) Return(createCreditAdjustmentResponse *operations.CreateCreditAdjustmentResponse, err error) *MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call {
+	_c.Call.Return(createCreditAdjustmentResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call) RunAndReturn(run func(ctx context.Context, customerID string, createCreditAdjustmentRequest components.CreateCreditAdjustmentRequest, opts ...operations.Option) (*operations.CreateCreditAdjustmentResponse, error)) *MockOpenMeterCustomersSDK_CreateCreditAdjustment_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateCreditGrant provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) CreateCreditGrant(ctx context.Context, customerID string, createCreditGrantRequest components.CreateCreditGrantRequest, opts ...operations.Option) (*operations.CreateCreditGrantResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, customerID, createCreditGrantRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, customerID, createCreditGrantRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateCreditGrant")
+	}
+
+	var r0 *operations.CreateCreditGrantResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateCreditGrantRequest, ...operations.Option) (*operations.CreateCreditGrantResponse, error)); ok {
+		return returnFunc(ctx, customerID, createCreditGrantRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateCreditGrantRequest, ...operations.Option) *operations.CreateCreditGrantResponse); ok {
+		r0 = returnFunc(ctx, customerID, createCreditGrantRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateCreditGrantResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateCreditGrantRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, customerID, createCreditGrantRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_CreateCreditGrant_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCreditGrant'
+type MockOpenMeterCustomersSDK_CreateCreditGrant_Call struct {
+	*mock.Call
+}
+
+// CreateCreditGrant is a helper method to define mock.On call
+//   - ctx context.Context
+//   - customerID string
+//   - createCreditGrantRequest components.CreateCreditGrantRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) CreateCreditGrant(ctx any, customerID any, createCreditGrantRequest any, opts ...any) *MockOpenMeterCustomersSDK_CreateCreditGrant_Call {
+	return &MockOpenMeterCustomersSDK_CreateCreditGrant_Call{Call: _e.mock.On("CreateCreditGrant",
+		append([]any{ctx, customerID, createCreditGrantRequest}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_CreateCreditGrant_Call) Run(run func(ctx context.Context, customerID string, createCreditGrantRequest components.CreateCreditGrantRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_CreateCreditGrant_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.CreateCreditGrantRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.CreateCreditGrantRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_CreateCreditGrant_Call) Return(createCreditGrantResponse *operations.CreateCreditGrantResponse, err error) *MockOpenMeterCustomersSDK_CreateCreditGrant_Call {
+	_c.Call.Return(createCreditGrantResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_CreateCreditGrant_Call) RunAndReturn(run func(ctx context.Context, customerID string, createCreditGrantRequest components.CreateCreditGrantRequest, opts ...operations.Option) (*operations.CreateCreditGrantResponse, error)) *MockOpenMeterCustomersSDK_CreateCreditGrant_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // CreateCustomer provides a mock function for the type MockOpenMeterCustomersSDK
 func (_mock *MockOpenMeterCustomersSDK) CreateCustomer(ctx context.Context, request components.CreateCustomerRequest, opts ...operations.Option) (*operations.CreateCustomerResponse, error) {
 	var tmpRet mock.Arguments
@@ -118,6 +296,95 @@ func (_c *MockOpenMeterCustomersSDK_CreateCustomer_Call) Return(createCustomerRe
 }
 
 func (_c *MockOpenMeterCustomersSDK_CreateCustomer_Call) RunAndReturn(run func(ctx context.Context, request components.CreateCustomerRequest, opts ...operations.Option) (*operations.CreateCustomerResponse, error)) *MockOpenMeterCustomersSDK_CreateCustomer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateCustomerCharges provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) CreateCustomerCharges(ctx context.Context, customerID string, createChargeRequest components.CreateChargeRequest, opts ...operations.Option) (*operations.CreateCustomerChargesResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, customerID, createChargeRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, customerID, createChargeRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateCustomerCharges")
+	}
+
+	var r0 *operations.CreateCustomerChargesResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateChargeRequest, ...operations.Option) (*operations.CreateCustomerChargesResponse, error)); ok {
+		return returnFunc(ctx, customerID, createChargeRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateChargeRequest, ...operations.Option) *operations.CreateCustomerChargesResponse); ok {
+		r0 = returnFunc(ctx, customerID, createChargeRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateCustomerChargesResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateChargeRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, customerID, createChargeRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_CreateCustomerCharges_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCustomerCharges'
+type MockOpenMeterCustomersSDK_CreateCustomerCharges_Call struct {
+	*mock.Call
+}
+
+// CreateCustomerCharges is a helper method to define mock.On call
+//   - ctx context.Context
+//   - customerID string
+//   - createChargeRequest components.CreateChargeRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) CreateCustomerCharges(ctx any, customerID any, createChargeRequest any, opts ...any) *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call {
+	return &MockOpenMeterCustomersSDK_CreateCustomerCharges_Call{Call: _e.mock.On("CreateCustomerCharges",
+		append([]any{ctx, customerID, createChargeRequest}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call) Run(run func(ctx context.Context, customerID string, createChargeRequest components.CreateChargeRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.CreateChargeRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.CreateChargeRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call) Return(createCustomerChargesResponse *operations.CreateCustomerChargesResponse, err error) *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call {
+	_c.Call.Return(createCustomerChargesResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call) RunAndReturn(run func(ctx context.Context, customerID string, createChargeRequest components.CreateChargeRequest, opts ...operations.Option) (*operations.CreateCustomerChargesResponse, error)) *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -383,6 +650,95 @@ func (_c *MockOpenMeterCustomersSDK_DeleteCustomer_Call) RunAndReturn(run func(c
 	return _c
 }
 
+// GetCreditGrant provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) GetCreditGrant(ctx context.Context, customerID string, creditGrantID string, opts ...operations.Option) (*operations.GetCreditGrantResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, customerID, creditGrantID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, customerID, creditGrantID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCreditGrant")
+	}
+
+	var r0 *operations.GetCreditGrantResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetCreditGrantResponse, error)); ok {
+		return returnFunc(ctx, customerID, creditGrantID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetCreditGrantResponse); ok {
+		r0 = returnFunc(ctx, customerID, creditGrantID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetCreditGrantResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, customerID, creditGrantID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_GetCreditGrant_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCreditGrant'
+type MockOpenMeterCustomersSDK_GetCreditGrant_Call struct {
+	*mock.Call
+}
+
+// GetCreditGrant is a helper method to define mock.On call
+//   - ctx context.Context
+//   - customerID string
+//   - creditGrantID string
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) GetCreditGrant(ctx any, customerID any, creditGrantID any, opts ...any) *MockOpenMeterCustomersSDK_GetCreditGrant_Call {
+	return &MockOpenMeterCustomersSDK_GetCreditGrant_Call{Call: _e.mock.On("GetCreditGrant",
+		append([]any{ctx, customerID, creditGrantID}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_GetCreditGrant_Call) Run(run func(ctx context.Context, customerID string, creditGrantID string, opts ...operations.Option)) *MockOpenMeterCustomersSDK_GetCreditGrant_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 string
+		if args[2] != nil {
+			arg2 = args[2].(string)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_GetCreditGrant_Call) Return(getCreditGrantResponse *operations.GetCreditGrantResponse, err error) *MockOpenMeterCustomersSDK_GetCreditGrant_Call {
+	_c.Call.Return(getCreditGrantResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_GetCreditGrant_Call) RunAndReturn(run func(ctx context.Context, customerID string, creditGrantID string, opts ...operations.Option) (*operations.GetCreditGrantResponse, error)) *MockOpenMeterCustomersSDK_GetCreditGrant_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetCustomer provides a mock function for the type MockOpenMeterCustomersSDK
 func (_mock *MockOpenMeterCustomersSDK) GetCustomer(ctx context.Context, customerID string, opts ...operations.Option) (*operations.GetCustomerResponse, error) {
 	var tmpRet mock.Arguments
@@ -549,6 +905,338 @@ func (_c *MockOpenMeterCustomersSDK_GetCustomerBilling_Call) RunAndReturn(run fu
 	return _c
 }
 
+// GetCustomerCreditBalance provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) GetCustomerCreditBalance(ctx context.Context, request operations.GetCustomerCreditBalanceRequest, opts ...operations.Option) (*operations.GetCustomerCreditBalanceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCustomerCreditBalance")
+	}
+
+	var r0 *operations.GetCustomerCreditBalanceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetCustomerCreditBalanceRequest, ...operations.Option) (*operations.GetCustomerCreditBalanceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetCustomerCreditBalanceRequest, ...operations.Option) *operations.GetCustomerCreditBalanceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetCustomerCreditBalanceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetCustomerCreditBalanceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCustomerCreditBalance'
+type MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call struct {
+	*mock.Call
+}
+
+// GetCustomerCreditBalance is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetCustomerCreditBalanceRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) GetCustomerCreditBalance(ctx any, request any, opts ...any) *MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call {
+	return &MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call{Call: _e.mock.On("GetCustomerCreditBalance",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call) Run(run func(ctx context.Context, request operations.GetCustomerCreditBalanceRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetCustomerCreditBalanceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetCustomerCreditBalanceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call) Return(getCustomerCreditBalanceResponse *operations.GetCustomerCreditBalanceResponse, err error) *MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call {
+	_c.Call.Return(getCustomerCreditBalanceResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call) RunAndReturn(run func(ctx context.Context, request operations.GetCustomerCreditBalanceRequest, opts ...operations.Option) (*operations.GetCustomerCreditBalanceResponse, error)) *MockOpenMeterCustomersSDK_GetCustomerCreditBalance_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListCreditGrants provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) ListCreditGrants(ctx context.Context, request operations.ListCreditGrantsRequest, opts ...operations.Option) (*operations.ListCreditGrantsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListCreditGrants")
+	}
+
+	var r0 *operations.ListCreditGrantsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCreditGrantsRequest, ...operations.Option) (*operations.ListCreditGrantsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCreditGrantsRequest, ...operations.Option) *operations.ListCreditGrantsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListCreditGrantsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListCreditGrantsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_ListCreditGrants_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCreditGrants'
+type MockOpenMeterCustomersSDK_ListCreditGrants_Call struct {
+	*mock.Call
+}
+
+// ListCreditGrants is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListCreditGrantsRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) ListCreditGrants(ctx any, request any, opts ...any) *MockOpenMeterCustomersSDK_ListCreditGrants_Call {
+	return &MockOpenMeterCustomersSDK_ListCreditGrants_Call{Call: _e.mock.On("ListCreditGrants",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_ListCreditGrants_Call) Run(run func(ctx context.Context, request operations.ListCreditGrantsRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_ListCreditGrants_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListCreditGrantsRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListCreditGrantsRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_ListCreditGrants_Call) Return(listCreditGrantsResponse *operations.ListCreditGrantsResponse, err error) *MockOpenMeterCustomersSDK_ListCreditGrants_Call {
+	_c.Call.Return(listCreditGrantsResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_ListCreditGrants_Call) RunAndReturn(run func(ctx context.Context, request operations.ListCreditGrantsRequest, opts ...operations.Option) (*operations.ListCreditGrantsResponse, error)) *MockOpenMeterCustomersSDK_ListCreditGrants_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListCreditTransactions provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) ListCreditTransactions(ctx context.Context, request operations.ListCreditTransactionsRequest, opts ...operations.Option) (*operations.ListCreditTransactionsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListCreditTransactions")
+	}
+
+	var r0 *operations.ListCreditTransactionsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCreditTransactionsRequest, ...operations.Option) (*operations.ListCreditTransactionsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCreditTransactionsRequest, ...operations.Option) *operations.ListCreditTransactionsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListCreditTransactionsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListCreditTransactionsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_ListCreditTransactions_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCreditTransactions'
+type MockOpenMeterCustomersSDK_ListCreditTransactions_Call struct {
+	*mock.Call
+}
+
+// ListCreditTransactions is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListCreditTransactionsRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) ListCreditTransactions(ctx any, request any, opts ...any) *MockOpenMeterCustomersSDK_ListCreditTransactions_Call {
+	return &MockOpenMeterCustomersSDK_ListCreditTransactions_Call{Call: _e.mock.On("ListCreditTransactions",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_ListCreditTransactions_Call) Run(run func(ctx context.Context, request operations.ListCreditTransactionsRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_ListCreditTransactions_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListCreditTransactionsRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListCreditTransactionsRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_ListCreditTransactions_Call) Return(listCreditTransactionsResponse *operations.ListCreditTransactionsResponse, err error) *MockOpenMeterCustomersSDK_ListCreditTransactions_Call {
+	_c.Call.Return(listCreditTransactionsResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_ListCreditTransactions_Call) RunAndReturn(run func(ctx context.Context, request operations.ListCreditTransactionsRequest, opts ...operations.Option) (*operations.ListCreditTransactionsResponse, error)) *MockOpenMeterCustomersSDK_ListCreditTransactions_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListCustomerCharges provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) ListCustomerCharges(ctx context.Context, request operations.ListCustomerChargesRequest, opts ...operations.Option) (*operations.ListCustomerChargesResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListCustomerCharges")
+	}
+
+	var r0 *operations.ListCustomerChargesResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCustomerChargesRequest, ...operations.Option) (*operations.ListCustomerChargesResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCustomerChargesRequest, ...operations.Option) *operations.ListCustomerChargesResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListCustomerChargesResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListCustomerChargesRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_ListCustomerCharges_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCustomerCharges'
+type MockOpenMeterCustomersSDK_ListCustomerCharges_Call struct {
+	*mock.Call
+}
+
+// ListCustomerCharges is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListCustomerChargesRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) ListCustomerCharges(ctx any, request any, opts ...any) *MockOpenMeterCustomersSDK_ListCustomerCharges_Call {
+	return &MockOpenMeterCustomersSDK_ListCustomerCharges_Call{Call: _e.mock.On("ListCustomerCharges",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_ListCustomerCharges_Call) Run(run func(ctx context.Context, request operations.ListCustomerChargesRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_ListCustomerCharges_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListCustomerChargesRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListCustomerChargesRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_ListCustomerCharges_Call) Return(listCustomerChargesResponse *operations.ListCustomerChargesResponse, err error) *MockOpenMeterCustomersSDK_ListCustomerCharges_Call {
+	_c.Call.Return(listCustomerChargesResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_ListCustomerCharges_Call) RunAndReturn(run func(ctx context.Context, request operations.ListCustomerChargesRequest, opts ...operations.Option) (*operations.ListCustomerChargesResponse, error)) *MockOpenMeterCustomersSDK_ListCustomerCharges_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListCustomers provides a mock function for the type MockOpenMeterCustomersSDK
 func (_mock *MockOpenMeterCustomersSDK) ListCustomers(ctx context.Context, request operations.ListCustomersRequest, opts ...operations.Option) (*operations.ListCustomersResponse, error) {
 	var tmpRet mock.Arguments
@@ -628,6 +1316,89 @@ func (_c *MockOpenMeterCustomersSDK_ListCustomers_Call) Return(listCustomersResp
 }
 
 func (_c *MockOpenMeterCustomersSDK_ListCustomers_Call) RunAndReturn(run func(ctx context.Context, request operations.ListCustomersRequest, opts ...operations.Option) (*operations.ListCustomersResponse, error)) *MockOpenMeterCustomersSDK_ListCustomers_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateCreditGrantExternalSettlement provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) UpdateCreditGrantExternalSettlement(ctx context.Context, request operations.UpdateCreditGrantExternalSettlementRequest, opts ...operations.Option) (*operations.UpdateCreditGrantExternalSettlementResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateCreditGrantExternalSettlement")
+	}
+
+	var r0 *operations.UpdateCreditGrantExternalSettlementResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateCreditGrantExternalSettlementRequest, ...operations.Option) (*operations.UpdateCreditGrantExternalSettlementResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateCreditGrantExternalSettlementRequest, ...operations.Option) *operations.UpdateCreditGrantExternalSettlementResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateCreditGrantExternalSettlementResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpdateCreditGrantExternalSettlementRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateCreditGrantExternalSettlement'
+type MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call struct {
+	*mock.Call
+}
+
+// UpdateCreditGrantExternalSettlement is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpdateCreditGrantExternalSettlementRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) UpdateCreditGrantExternalSettlement(ctx any, request any, opts ...any) *MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call {
+	return &MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call{Call: _e.mock.On("UpdateCreditGrantExternalSettlement",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call) Run(run func(ctx context.Context, request operations.UpdateCreditGrantExternalSettlementRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpdateCreditGrantExternalSettlementRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpdateCreditGrantExternalSettlementRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call) Return(updateCreditGrantExternalSettlementResponse *operations.UpdateCreditGrantExternalSettlementResponse, err error) *MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call {
+	_c.Call.Return(updateCreditGrantExternalSettlementResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateCreditGrantExternalSettlementRequest, opts ...operations.Option) (*operations.UpdateCreditGrantExternalSettlementResponse, error)) *MockOpenMeterCustomersSDK_UpdateCreditGrantExternalSettlement_Call {
 	_c.Call.Return(run)
 	return _c
 }

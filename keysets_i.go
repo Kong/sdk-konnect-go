@@ -11,6 +11,21 @@ import (
 
 // KeySetsSDK is a generated interface.
 type KeySetsSDK interface {
+	// ListKeySetInWorkspace - List all KeySets in a workspace
+	// List all KeySets in a workspace
+	ListKeySetInWorkspace(ctx context.Context, request operations.ListKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.ListKeySetInWorkspaceResponse, error)
+	// CreateKeySetInWorkspace - Create a new KeySet in a workspace
+	// Create a new KeySet in a workspace
+	CreateKeySetInWorkspace(ctx context.Context, request operations.CreateKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.CreateKeySetInWorkspaceResponse, error)
+	// DeleteKeySetInWorkspace - Delete a KeySet in a workspace
+	// Delete a KeySet in a workspace
+	DeleteKeySetInWorkspace(ctx context.Context, request operations.DeleteKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteKeySetInWorkspaceResponse, error)
+	// GetKeySetInWorkspace - Get a KeySet in a workspace
+	// Get a KeySet using ID or name in a workspace.
+	GetKeySetInWorkspace(ctx context.Context, request operations.GetKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.GetKeySetInWorkspaceResponse, error)
+	// UpsertKeySetInWorkspace - Upsert a KeySet in a workspace
+	// Create or Update KeySet using ID or name in a workspace.
+	UpsertKeySetInWorkspace(ctx context.Context, request operations.UpsertKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertKeySetInWorkspaceResponse, error)
 	// ListKeySet - List all KeySets
 	// List all KeySets
 	ListKeySet(ctx context.Context, request operations.ListKeySetRequest, opts ...operations.Option) (*operations.ListKeySetResponse, error)

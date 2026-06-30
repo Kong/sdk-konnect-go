@@ -128,6 +128,89 @@ func (_c *MockPluginsSDK_CreatePlugin_Call) RunAndReturn(run func(ctx context.Co
 	return _c
 }
 
+// CreatePluginInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) CreatePluginInWorkspace(ctx context.Context, request operations.CreatePluginInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreatePluginInWorkspace")
+	}
+
+	var r0 *operations.CreatePluginInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginInWorkspaceRequest, ...operations.Option) (*operations.CreatePluginInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginInWorkspaceRequest, ...operations.Option) *operations.CreatePluginInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreatePluginInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreatePluginInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_CreatePluginInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePluginInWorkspace'
+type MockPluginsSDK_CreatePluginInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreatePluginInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreatePluginInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) CreatePluginInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_CreatePluginInWorkspace_Call {
+	return &MockPluginsSDK_CreatePluginInWorkspace_Call{Call: _e.mock.On("CreatePluginInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_CreatePluginInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreatePluginInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_CreatePluginInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreatePluginInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreatePluginInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginInWorkspace_Call) Return(createPluginInWorkspaceResponse *operations.CreatePluginInWorkspaceResponse, err error) *MockPluginsSDK_CreatePluginInWorkspace_Call {
+	_c.Call.Return(createPluginInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreatePluginInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginInWorkspaceResponse, error)) *MockPluginsSDK_CreatePluginInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // CreatePluginWithConsumer provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) CreatePluginWithConsumer(ctx context.Context, request operations.CreatePluginWithConsumerRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -294,6 +377,172 @@ func (_c *MockPluginsSDK_CreatePluginWithConsumerGroup_Call) RunAndReturn(run fu
 	return _c
 }
 
+// CreatePluginWithConsumerGroupInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) CreatePluginWithConsumerGroupInWorkspace(ctx context.Context, request operations.CreatePluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerGroupInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreatePluginWithConsumerGroupInWorkspace")
+	}
+
+	var r0 *operations.CreatePluginWithConsumerGroupInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) (*operations.CreatePluginWithConsumerGroupInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) *operations.CreatePluginWithConsumerGroupInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreatePluginWithConsumerGroupInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreatePluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePluginWithConsumerGroupInWorkspace'
+type MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreatePluginWithConsumerGroupInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreatePluginWithConsumerGroupInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) CreatePluginWithConsumerGroupInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call {
+	return &MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call{Call: _e.mock.On("CreatePluginWithConsumerGroupInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreatePluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreatePluginWithConsumerGroupInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreatePluginWithConsumerGroupInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call) Return(createPluginWithConsumerGroupInWorkspaceResponse *operations.CreatePluginWithConsumerGroupInWorkspaceResponse, err error) *MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(createPluginWithConsumerGroupInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreatePluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerGroupInWorkspaceResponse, error)) *MockPluginsSDK_CreatePluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreatePluginWithConsumerInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) CreatePluginWithConsumerInWorkspace(ctx context.Context, request operations.CreatePluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreatePluginWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.CreatePluginWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.CreatePluginWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginWithConsumerInWorkspaceRequest, ...operations.Option) *operations.CreatePluginWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreatePluginWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreatePluginWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePluginWithConsumerInWorkspace'
+type MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreatePluginWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreatePluginWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) CreatePluginWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call {
+	return &MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call{Call: _e.mock.On("CreatePluginWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreatePluginWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreatePluginWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreatePluginWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call) Return(createPluginWithConsumerInWorkspaceResponse *operations.CreatePluginWithConsumerInWorkspaceResponse, err error) *MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(createPluginWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreatePluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerInWorkspaceResponse, error)) *MockPluginsSDK_CreatePluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // CreatePluginWithRoute provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) CreatePluginWithRoute(ctx context.Context, request operations.CreatePluginWithRouteRequest, opts ...operations.Option) (*operations.CreatePluginWithRouteResponse, error) {
 	var tmpRet mock.Arguments
@@ -377,6 +626,89 @@ func (_c *MockPluginsSDK_CreatePluginWithRoute_Call) RunAndReturn(run func(ctx c
 	return _c
 }
 
+// CreatePluginWithRouteInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) CreatePluginWithRouteInWorkspace(ctx context.Context, request operations.CreatePluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginWithRouteInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreatePluginWithRouteInWorkspace")
+	}
+
+	var r0 *operations.CreatePluginWithRouteInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginWithRouteInWorkspaceRequest, ...operations.Option) (*operations.CreatePluginWithRouteInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginWithRouteInWorkspaceRequest, ...operations.Option) *operations.CreatePluginWithRouteInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreatePluginWithRouteInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreatePluginWithRouteInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePluginWithRouteInWorkspace'
+type MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreatePluginWithRouteInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreatePluginWithRouteInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) CreatePluginWithRouteInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call {
+	return &MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call{Call: _e.mock.On("CreatePluginWithRouteInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreatePluginWithRouteInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreatePluginWithRouteInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreatePluginWithRouteInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call) Return(createPluginWithRouteInWorkspaceResponse *operations.CreatePluginWithRouteInWorkspaceResponse, err error) *MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call {
+	_c.Call.Return(createPluginWithRouteInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreatePluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginWithRouteInWorkspaceResponse, error)) *MockPluginsSDK_CreatePluginWithRouteInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // CreatePluginWithService provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) CreatePluginWithService(ctx context.Context, request operations.CreatePluginWithServiceRequest, opts ...operations.Option) (*operations.CreatePluginWithServiceResponse, error) {
 	var tmpRet mock.Arguments
@@ -456,6 +788,89 @@ func (_c *MockPluginsSDK_CreatePluginWithService_Call) Return(createPluginWithSe
 }
 
 func (_c *MockPluginsSDK_CreatePluginWithService_Call) RunAndReturn(run func(ctx context.Context, request operations.CreatePluginWithServiceRequest, opts ...operations.Option) (*operations.CreatePluginWithServiceResponse, error)) *MockPluginsSDK_CreatePluginWithService_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreatePluginWithServiceInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) CreatePluginWithServiceInWorkspace(ctx context.Context, request operations.CreatePluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreatePluginWithServiceInWorkspace")
+	}
+
+	var r0 *operations.CreatePluginWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginWithServiceInWorkspaceRequest, ...operations.Option) (*operations.CreatePluginWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePluginWithServiceInWorkspaceRequest, ...operations.Option) *operations.CreatePluginWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreatePluginWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreatePluginWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePluginWithServiceInWorkspace'
+type MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreatePluginWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreatePluginWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) CreatePluginWithServiceInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call {
+	return &MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call{Call: _e.mock.On("CreatePluginWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreatePluginWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreatePluginWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreatePluginWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call) Return(createPluginWithServiceInWorkspaceResponse *operations.CreatePluginWithServiceInWorkspaceResponse, err error) *MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call {
+	_c.Call.Return(createPluginWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreatePluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.CreatePluginWithServiceInWorkspaceResponse, error)) *MockPluginsSDK_CreatePluginWithServiceInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -545,6 +960,89 @@ func (_c *MockPluginsSDK_DeletePlugin_Call) Return(deletePluginResponse *operati
 }
 
 func (_c *MockPluginsSDK_DeletePlugin_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, pluginID string, opts ...operations.Option) (*operations.DeletePluginResponse, error)) *MockPluginsSDK_DeletePlugin_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeletePluginInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) DeletePluginInWorkspace(ctx context.Context, request operations.DeletePluginInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeletePluginInWorkspace")
+	}
+
+	var r0 *operations.DeletePluginInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginInWorkspaceRequest, ...operations.Option) (*operations.DeletePluginInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginInWorkspaceRequest, ...operations.Option) *operations.DeletePluginInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeletePluginInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeletePluginInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_DeletePluginInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePluginInWorkspace'
+type MockPluginsSDK_DeletePluginInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeletePluginInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeletePluginInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) DeletePluginInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_DeletePluginInWorkspace_Call {
+	return &MockPluginsSDK_DeletePluginInWorkspace_Call{Call: _e.mock.On("DeletePluginInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_DeletePluginInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeletePluginInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_DeletePluginInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeletePluginInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeletePluginInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginInWorkspace_Call) Return(deletePluginInWorkspaceResponse *operations.DeletePluginInWorkspaceResponse, err error) *MockPluginsSDK_DeletePluginInWorkspace_Call {
+	_c.Call.Return(deletePluginInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeletePluginInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginInWorkspaceResponse, error)) *MockPluginsSDK_DeletePluginInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -715,6 +1213,172 @@ func (_c *MockPluginsSDK_DeletePluginWithConsumerGroup_Call) RunAndReturn(run fu
 	return _c
 }
 
+// DeletePluginWithConsumerGroupInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) DeletePluginWithConsumerGroupInWorkspace(ctx context.Context, request operations.DeletePluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerGroupInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeletePluginWithConsumerGroupInWorkspace")
+	}
+
+	var r0 *operations.DeletePluginWithConsumerGroupInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) (*operations.DeletePluginWithConsumerGroupInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) *operations.DeletePluginWithConsumerGroupInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeletePluginWithConsumerGroupInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeletePluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePluginWithConsumerGroupInWorkspace'
+type MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeletePluginWithConsumerGroupInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeletePluginWithConsumerGroupInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) DeletePluginWithConsumerGroupInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call {
+	return &MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call{Call: _e.mock.On("DeletePluginWithConsumerGroupInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeletePluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeletePluginWithConsumerGroupInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeletePluginWithConsumerGroupInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call) Return(deletePluginWithConsumerGroupInWorkspaceResponse *operations.DeletePluginWithConsumerGroupInWorkspaceResponse, err error) *MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(deletePluginWithConsumerGroupInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeletePluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerGroupInWorkspaceResponse, error)) *MockPluginsSDK_DeletePluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeletePluginWithConsumerInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) DeletePluginWithConsumerInWorkspace(ctx context.Context, request operations.DeletePluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeletePluginWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.DeletePluginWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.DeletePluginWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginWithConsumerInWorkspaceRequest, ...operations.Option) *operations.DeletePluginWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeletePluginWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeletePluginWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePluginWithConsumerInWorkspace'
+type MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeletePluginWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeletePluginWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) DeletePluginWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call {
+	return &MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call{Call: _e.mock.On("DeletePluginWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeletePluginWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeletePluginWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeletePluginWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call) Return(deletePluginWithConsumerInWorkspaceResponse *operations.DeletePluginWithConsumerInWorkspaceResponse, err error) *MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(deletePluginWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeletePluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerInWorkspaceResponse, error)) *MockPluginsSDK_DeletePluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeletePluginWithRoute provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) DeletePluginWithRoute(ctx context.Context, request operations.DeletePluginWithRouteRequest, opts ...operations.Option) (*operations.DeletePluginWithRouteResponse, error) {
 	var tmpRet mock.Arguments
@@ -798,6 +1462,89 @@ func (_c *MockPluginsSDK_DeletePluginWithRoute_Call) RunAndReturn(run func(ctx c
 	return _c
 }
 
+// DeletePluginWithRouteInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) DeletePluginWithRouteInWorkspace(ctx context.Context, request operations.DeletePluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginWithRouteInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeletePluginWithRouteInWorkspace")
+	}
+
+	var r0 *operations.DeletePluginWithRouteInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginWithRouteInWorkspaceRequest, ...operations.Option) (*operations.DeletePluginWithRouteInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginWithRouteInWorkspaceRequest, ...operations.Option) *operations.DeletePluginWithRouteInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeletePluginWithRouteInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeletePluginWithRouteInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePluginWithRouteInWorkspace'
+type MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeletePluginWithRouteInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeletePluginWithRouteInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) DeletePluginWithRouteInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call {
+	return &MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call{Call: _e.mock.On("DeletePluginWithRouteInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeletePluginWithRouteInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeletePluginWithRouteInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeletePluginWithRouteInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call) Return(deletePluginWithRouteInWorkspaceResponse *operations.DeletePluginWithRouteInWorkspaceResponse, err error) *MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call {
+	_c.Call.Return(deletePluginWithRouteInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeletePluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginWithRouteInWorkspaceResponse, error)) *MockPluginsSDK_DeletePluginWithRouteInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeletePluginWithService provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) DeletePluginWithService(ctx context.Context, request operations.DeletePluginWithServiceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceResponse, error) {
 	var tmpRet mock.Arguments
@@ -877,6 +1624,89 @@ func (_c *MockPluginsSDK_DeletePluginWithService_Call) Return(deletePluginWithSe
 }
 
 func (_c *MockPluginsSDK_DeletePluginWithService_Call) RunAndReturn(run func(ctx context.Context, request operations.DeletePluginWithServiceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceResponse, error)) *MockPluginsSDK_DeletePluginWithService_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeletePluginWithServiceInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) DeletePluginWithServiceInWorkspace(ctx context.Context, request operations.DeletePluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeletePluginWithServiceInWorkspace")
+	}
+
+	var r0 *operations.DeletePluginWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginWithServiceInWorkspaceRequest, ...operations.Option) (*operations.DeletePluginWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePluginWithServiceInWorkspaceRequest, ...operations.Option) *operations.DeletePluginWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeletePluginWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeletePluginWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePluginWithServiceInWorkspace'
+type MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeletePluginWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeletePluginWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) DeletePluginWithServiceInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call {
+	return &MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call{Call: _e.mock.On("DeletePluginWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeletePluginWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeletePluginWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeletePluginWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call) Return(deletePluginWithServiceInWorkspaceResponse *operations.DeletePluginWithServiceInWorkspaceResponse, err error) *MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call {
+	_c.Call.Return(deletePluginWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeletePluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceInWorkspaceResponse, error)) *MockPluginsSDK_DeletePluginWithServiceInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1053,6 +1883,89 @@ func (_c *MockPluginsSDK_GetPlugin_Call) RunAndReturn(run func(ctx context.Conte
 	return _c
 }
 
+// GetPluginInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) GetPluginInWorkspace(ctx context.Context, request operations.GetPluginInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPluginInWorkspace")
+	}
+
+	var r0 *operations.GetPluginInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginInWorkspaceRequest, ...operations.Option) (*operations.GetPluginInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginInWorkspaceRequest, ...operations.Option) *operations.GetPluginInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetPluginInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetPluginInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_GetPluginInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPluginInWorkspace'
+type MockPluginsSDK_GetPluginInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetPluginInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetPluginInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) GetPluginInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_GetPluginInWorkspace_Call {
+	return &MockPluginsSDK_GetPluginInWorkspace_Call{Call: _e.mock.On("GetPluginInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_GetPluginInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetPluginInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_GetPluginInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetPluginInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetPluginInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginInWorkspace_Call) Return(getPluginInWorkspaceResponse *operations.GetPluginInWorkspaceResponse, err error) *MockPluginsSDK_GetPluginInWorkspace_Call {
+	_c.Call.Return(getPluginInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetPluginInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginInWorkspaceResponse, error)) *MockPluginsSDK_GetPluginInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetPluginWithConsumer provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) GetPluginWithConsumer(ctx context.Context, request operations.GetPluginWithConsumerRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -1219,6 +2132,172 @@ func (_c *MockPluginsSDK_GetPluginWithConsumerGroup_Call) RunAndReturn(run func(
 	return _c
 }
 
+// GetPluginWithConsumerGroupInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) GetPluginWithConsumerGroupInWorkspace(ctx context.Context, request operations.GetPluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerGroupInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPluginWithConsumerGroupInWorkspace")
+	}
+
+	var r0 *operations.GetPluginWithConsumerGroupInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) (*operations.GetPluginWithConsumerGroupInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) *operations.GetPluginWithConsumerGroupInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetPluginWithConsumerGroupInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetPluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPluginWithConsumerGroupInWorkspace'
+type MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetPluginWithConsumerGroupInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetPluginWithConsumerGroupInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) GetPluginWithConsumerGroupInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call {
+	return &MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call{Call: _e.mock.On("GetPluginWithConsumerGroupInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetPluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetPluginWithConsumerGroupInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetPluginWithConsumerGroupInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call) Return(getPluginWithConsumerGroupInWorkspaceResponse *operations.GetPluginWithConsumerGroupInWorkspaceResponse, err error) *MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(getPluginWithConsumerGroupInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetPluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerGroupInWorkspaceResponse, error)) *MockPluginsSDK_GetPluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetPluginWithConsumerInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) GetPluginWithConsumerInWorkspace(ctx context.Context, request operations.GetPluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPluginWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.GetPluginWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.GetPluginWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginWithConsumerInWorkspaceRequest, ...operations.Option) *operations.GetPluginWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetPluginWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetPluginWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPluginWithConsumerInWorkspace'
+type MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetPluginWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetPluginWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) GetPluginWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call {
+	return &MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call{Call: _e.mock.On("GetPluginWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetPluginWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetPluginWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetPluginWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call) Return(getPluginWithConsumerInWorkspaceResponse *operations.GetPluginWithConsumerInWorkspaceResponse, err error) *MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(getPluginWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetPluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerInWorkspaceResponse, error)) *MockPluginsSDK_GetPluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetPluginWithRoute provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) GetPluginWithRoute(ctx context.Context, request operations.GetPluginWithRouteRequest, opts ...operations.Option) (*operations.GetPluginWithRouteResponse, error) {
 	var tmpRet mock.Arguments
@@ -1298,6 +2377,89 @@ func (_c *MockPluginsSDK_GetPluginWithRoute_Call) Return(getPluginWithRouteRespo
 }
 
 func (_c *MockPluginsSDK_GetPluginWithRoute_Call) RunAndReturn(run func(ctx context.Context, request operations.GetPluginWithRouteRequest, opts ...operations.Option) (*operations.GetPluginWithRouteResponse, error)) *MockPluginsSDK_GetPluginWithRoute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetPluginWithRouteInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) GetPluginWithRouteInWorkspace(ctx context.Context, request operations.GetPluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginWithRouteInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPluginWithRouteInWorkspace")
+	}
+
+	var r0 *operations.GetPluginWithRouteInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginWithRouteInWorkspaceRequest, ...operations.Option) (*operations.GetPluginWithRouteInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginWithRouteInWorkspaceRequest, ...operations.Option) *operations.GetPluginWithRouteInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetPluginWithRouteInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetPluginWithRouteInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_GetPluginWithRouteInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPluginWithRouteInWorkspace'
+type MockPluginsSDK_GetPluginWithRouteInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetPluginWithRouteInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetPluginWithRouteInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) GetPluginWithRouteInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_GetPluginWithRouteInWorkspace_Call {
+	return &MockPluginsSDK_GetPluginWithRouteInWorkspace_Call{Call: _e.mock.On("GetPluginWithRouteInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_GetPluginWithRouteInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetPluginWithRouteInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_GetPluginWithRouteInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetPluginWithRouteInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetPluginWithRouteInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginWithRouteInWorkspace_Call) Return(getPluginWithRouteInWorkspaceResponse *operations.GetPluginWithRouteInWorkspaceResponse, err error) *MockPluginsSDK_GetPluginWithRouteInWorkspace_Call {
+	_c.Call.Return(getPluginWithRouteInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginWithRouteInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetPluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginWithRouteInWorkspaceResponse, error)) *MockPluginsSDK_GetPluginWithRouteInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1385,6 +2547,89 @@ func (_c *MockPluginsSDK_GetPluginWithService_Call) RunAndReturn(run func(ctx co
 	return _c
 }
 
+// GetPluginWithServiceInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) GetPluginWithServiceInWorkspace(ctx context.Context, request operations.GetPluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPluginWithServiceInWorkspace")
+	}
+
+	var r0 *operations.GetPluginWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginWithServiceInWorkspaceRequest, ...operations.Option) (*operations.GetPluginWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPluginWithServiceInWorkspaceRequest, ...operations.Option) *operations.GetPluginWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetPluginWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetPluginWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_GetPluginWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPluginWithServiceInWorkspace'
+type MockPluginsSDK_GetPluginWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetPluginWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetPluginWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) GetPluginWithServiceInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_GetPluginWithServiceInWorkspace_Call {
+	return &MockPluginsSDK_GetPluginWithServiceInWorkspace_Call{Call: _e.mock.On("GetPluginWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_GetPluginWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetPluginWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_GetPluginWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetPluginWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetPluginWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginWithServiceInWorkspace_Call) Return(getPluginWithServiceInWorkspaceResponse *operations.GetPluginWithServiceInWorkspaceResponse, err error) *MockPluginsSDK_GetPluginWithServiceInWorkspace_Call {
+	_c.Call.Return(getPluginWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_GetPluginWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetPluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.GetPluginWithServiceInWorkspaceResponse, error)) *MockPluginsSDK_GetPluginWithServiceInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListPlugin provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) ListPlugin(ctx context.Context, request operations.ListPluginRequest, opts ...operations.Option) (*operations.ListPluginResponse, error) {
 	var tmpRet mock.Arguments
@@ -1464,6 +2709,89 @@ func (_c *MockPluginsSDK_ListPlugin_Call) Return(listPluginResponse *operations.
 }
 
 func (_c *MockPluginsSDK_ListPlugin_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPluginRequest, opts ...operations.Option) (*operations.ListPluginResponse, error)) *MockPluginsSDK_ListPlugin_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListPluginInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) ListPluginInWorkspace(ctx context.Context, request operations.ListPluginInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPluginInWorkspace")
+	}
+
+	var r0 *operations.ListPluginInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginInWorkspaceRequest, ...operations.Option) (*operations.ListPluginInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginInWorkspaceRequest, ...operations.Option) *operations.ListPluginInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListPluginInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListPluginInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_ListPluginInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPluginInWorkspace'
+type MockPluginsSDK_ListPluginInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListPluginInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListPluginInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) ListPluginInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_ListPluginInWorkspace_Call {
+	return &MockPluginsSDK_ListPluginInWorkspace_Call{Call: _e.mock.On("ListPluginInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_ListPluginInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListPluginInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_ListPluginInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListPluginInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListPluginInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginInWorkspace_Call) Return(listPluginInWorkspaceResponse *operations.ListPluginInWorkspaceResponse, err error) *MockPluginsSDK_ListPluginInWorkspace_Call {
+	_c.Call.Return(listPluginInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPluginInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginInWorkspaceResponse, error)) *MockPluginsSDK_ListPluginInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1634,6 +2962,172 @@ func (_c *MockPluginsSDK_ListPluginWithConsumerGroup_Call) RunAndReturn(run func
 	return _c
 }
 
+// ListPluginWithConsumerGroupInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) ListPluginWithConsumerGroupInWorkspace(ctx context.Context, request operations.ListPluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerGroupInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPluginWithConsumerGroupInWorkspace")
+	}
+
+	var r0 *operations.ListPluginWithConsumerGroupInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) (*operations.ListPluginWithConsumerGroupInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) *operations.ListPluginWithConsumerGroupInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListPluginWithConsumerGroupInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListPluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPluginWithConsumerGroupInWorkspace'
+type MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListPluginWithConsumerGroupInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListPluginWithConsumerGroupInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) ListPluginWithConsumerGroupInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call {
+	return &MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call{Call: _e.mock.On("ListPluginWithConsumerGroupInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListPluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListPluginWithConsumerGroupInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListPluginWithConsumerGroupInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call) Return(listPluginWithConsumerGroupInWorkspaceResponse *operations.ListPluginWithConsumerGroupInWorkspaceResponse, err error) *MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(listPluginWithConsumerGroupInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerGroupInWorkspaceResponse, error)) *MockPluginsSDK_ListPluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListPluginWithConsumerInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) ListPluginWithConsumerInWorkspace(ctx context.Context, request operations.ListPluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPluginWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.ListPluginWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.ListPluginWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginWithConsumerInWorkspaceRequest, ...operations.Option) *operations.ListPluginWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListPluginWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListPluginWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPluginWithConsumerInWorkspace'
+type MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListPluginWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListPluginWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) ListPluginWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call {
+	return &MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call{Call: _e.mock.On("ListPluginWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListPluginWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListPluginWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListPluginWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call) Return(listPluginWithConsumerInWorkspaceResponse *operations.ListPluginWithConsumerInWorkspaceResponse, err error) *MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(listPluginWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerInWorkspaceResponse, error)) *MockPluginsSDK_ListPluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListPluginWithRoute provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) ListPluginWithRoute(ctx context.Context, request operations.ListPluginWithRouteRequest, opts ...operations.Option) (*operations.ListPluginWithRouteResponse, error) {
 	var tmpRet mock.Arguments
@@ -1713,6 +3207,89 @@ func (_c *MockPluginsSDK_ListPluginWithRoute_Call) Return(listPluginWithRouteRes
 }
 
 func (_c *MockPluginsSDK_ListPluginWithRoute_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPluginWithRouteRequest, opts ...operations.Option) (*operations.ListPluginWithRouteResponse, error)) *MockPluginsSDK_ListPluginWithRoute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListPluginWithRouteInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) ListPluginWithRouteInWorkspace(ctx context.Context, request operations.ListPluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginWithRouteInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPluginWithRouteInWorkspace")
+	}
+
+	var r0 *operations.ListPluginWithRouteInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginWithRouteInWorkspaceRequest, ...operations.Option) (*operations.ListPluginWithRouteInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginWithRouteInWorkspaceRequest, ...operations.Option) *operations.ListPluginWithRouteInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListPluginWithRouteInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListPluginWithRouteInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_ListPluginWithRouteInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPluginWithRouteInWorkspace'
+type MockPluginsSDK_ListPluginWithRouteInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListPluginWithRouteInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListPluginWithRouteInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) ListPluginWithRouteInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_ListPluginWithRouteInWorkspace_Call {
+	return &MockPluginsSDK_ListPluginWithRouteInWorkspace_Call{Call: _e.mock.On("ListPluginWithRouteInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_ListPluginWithRouteInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListPluginWithRouteInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_ListPluginWithRouteInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListPluginWithRouteInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListPluginWithRouteInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginWithRouteInWorkspace_Call) Return(listPluginWithRouteInWorkspaceResponse *operations.ListPluginWithRouteInWorkspaceResponse, err error) *MockPluginsSDK_ListPluginWithRouteInWorkspace_Call {
+	_c.Call.Return(listPluginWithRouteInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginWithRouteInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginWithRouteInWorkspaceResponse, error)) *MockPluginsSDK_ListPluginWithRouteInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1800,6 +3377,172 @@ func (_c *MockPluginsSDK_ListPluginWithService_Call) RunAndReturn(run func(ctx c
 	return _c
 }
 
+// ListPluginWithServiceInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) ListPluginWithServiceInWorkspace(ctx context.Context, request operations.ListPluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPluginWithServiceInWorkspace")
+	}
+
+	var r0 *operations.ListPluginWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginWithServiceInWorkspaceRequest, ...operations.Option) (*operations.ListPluginWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPluginWithServiceInWorkspaceRequest, ...operations.Option) *operations.ListPluginWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListPluginWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListPluginWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_ListPluginWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPluginWithServiceInWorkspace'
+type MockPluginsSDK_ListPluginWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListPluginWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListPluginWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) ListPluginWithServiceInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_ListPluginWithServiceInWorkspace_Call {
+	return &MockPluginsSDK_ListPluginWithServiceInWorkspace_Call{Call: _e.mock.On("ListPluginWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_ListPluginWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListPluginWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_ListPluginWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListPluginWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListPluginWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginWithServiceInWorkspace_Call) Return(listPluginWithServiceInWorkspaceResponse *operations.ListPluginWithServiceInWorkspaceResponse, err error) *MockPluginsSDK_ListPluginWithServiceInWorkspace_Call {
+	_c.Call.Return(listPluginWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_ListPluginWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.ListPluginWithServiceInWorkspaceResponse, error)) *MockPluginsSDK_ListPluginWithServiceInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// SearchPlugin provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) SearchPlugin(ctx context.Context, request operations.SearchPluginRequest, opts ...operations.Option) (*operations.SearchPluginResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for SearchPlugin")
+	}
+
+	var r0 *operations.SearchPluginResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchPluginRequest, ...operations.Option) (*operations.SearchPluginResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchPluginRequest, ...operations.Option) *operations.SearchPluginResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.SearchPluginResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.SearchPluginRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_SearchPlugin_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SearchPlugin'
+type MockPluginsSDK_SearchPlugin_Call struct {
+	*mock.Call
+}
+
+// SearchPlugin is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.SearchPluginRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) SearchPlugin(ctx any, request any, opts ...any) *MockPluginsSDK_SearchPlugin_Call {
+	return &MockPluginsSDK_SearchPlugin_Call{Call: _e.mock.On("SearchPlugin",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_SearchPlugin_Call) Run(run func(ctx context.Context, request operations.SearchPluginRequest, opts ...operations.Option)) *MockPluginsSDK_SearchPlugin_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.SearchPluginRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.SearchPluginRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_SearchPlugin_Call) Return(searchPluginResponse *operations.SearchPluginResponse, err error) *MockPluginsSDK_SearchPlugin_Call {
+	_c.Call.Return(searchPluginResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_SearchPlugin_Call) RunAndReturn(run func(ctx context.Context, request operations.SearchPluginRequest, opts ...operations.Option) (*operations.SearchPluginResponse, error)) *MockPluginsSDK_SearchPlugin_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertPlugin provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) UpsertPlugin(ctx context.Context, request operations.UpsertPluginRequest, opts ...operations.Option) (*operations.UpsertPluginResponse, error) {
 	var tmpRet mock.Arguments
@@ -1879,6 +3622,89 @@ func (_c *MockPluginsSDK_UpsertPlugin_Call) Return(upsertPluginResponse *operati
 }
 
 func (_c *MockPluginsSDK_UpsertPlugin_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertPluginRequest, opts ...operations.Option) (*operations.UpsertPluginResponse, error)) *MockPluginsSDK_UpsertPlugin_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertPluginInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) UpsertPluginInWorkspace(ctx context.Context, request operations.UpsertPluginInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertPluginInWorkspace")
+	}
+
+	var r0 *operations.UpsertPluginInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginInWorkspaceRequest, ...operations.Option) (*operations.UpsertPluginInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginInWorkspaceRequest, ...operations.Option) *operations.UpsertPluginInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertPluginInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertPluginInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_UpsertPluginInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertPluginInWorkspace'
+type MockPluginsSDK_UpsertPluginInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertPluginInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertPluginInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) UpsertPluginInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPluginInWorkspace_Call {
+	return &MockPluginsSDK_UpsertPluginInWorkspace_Call{Call: _e.mock.On("UpsertPluginInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_UpsertPluginInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertPluginInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPluginInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertPluginInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertPluginInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginInWorkspace_Call) Return(upsertPluginInWorkspaceResponse *operations.UpsertPluginInWorkspaceResponse, err error) *MockPluginsSDK_UpsertPluginInWorkspace_Call {
+	_c.Call.Return(upsertPluginInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertPluginInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginInWorkspaceResponse, error)) *MockPluginsSDK_UpsertPluginInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2049,6 +3875,172 @@ func (_c *MockPluginsSDK_UpsertPluginWithConsumerGroup_Call) RunAndReturn(run fu
 	return _c
 }
 
+// UpsertPluginWithConsumerGroupInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) UpsertPluginWithConsumerGroupInWorkspace(ctx context.Context, request operations.UpsertPluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerGroupInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertPluginWithConsumerGroupInWorkspace")
+	}
+
+	var r0 *operations.UpsertPluginWithConsumerGroupInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) (*operations.UpsertPluginWithConsumerGroupInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) *operations.UpsertPluginWithConsumerGroupInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertPluginWithConsumerGroupInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertPluginWithConsumerGroupInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertPluginWithConsumerGroupInWorkspace'
+type MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertPluginWithConsumerGroupInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertPluginWithConsumerGroupInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) UpsertPluginWithConsumerGroupInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call {
+	return &MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call{Call: _e.mock.On("UpsertPluginWithConsumerGroupInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertPluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertPluginWithConsumerGroupInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertPluginWithConsumerGroupInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call) Return(upsertPluginWithConsumerGroupInWorkspaceResponse *operations.UpsertPluginWithConsumerGroupInWorkspaceResponse, err error) *MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(upsertPluginWithConsumerGroupInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertPluginWithConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerGroupInWorkspaceResponse, error)) *MockPluginsSDK_UpsertPluginWithConsumerGroupInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertPluginWithConsumerInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) UpsertPluginWithConsumerInWorkspace(ctx context.Context, request operations.UpsertPluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertPluginWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.UpsertPluginWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.UpsertPluginWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginWithConsumerInWorkspaceRequest, ...operations.Option) *operations.UpsertPluginWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertPluginWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertPluginWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertPluginWithConsumerInWorkspace'
+type MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertPluginWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertPluginWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) UpsertPluginWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call {
+	return &MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call{Call: _e.mock.On("UpsertPluginWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertPluginWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertPluginWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertPluginWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call) Return(upsertPluginWithConsumerInWorkspaceResponse *operations.UpsertPluginWithConsumerInWorkspaceResponse, err error) *MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(upsertPluginWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertPluginWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerInWorkspaceResponse, error)) *MockPluginsSDK_UpsertPluginWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertPluginWithRoute provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) UpsertPluginWithRoute(ctx context.Context, request operations.UpsertPluginWithRouteRequest, opts ...operations.Option) (*operations.UpsertPluginWithRouteResponse, error) {
 	var tmpRet mock.Arguments
@@ -2132,6 +4124,89 @@ func (_c *MockPluginsSDK_UpsertPluginWithRoute_Call) RunAndReturn(run func(ctx c
 	return _c
 }
 
+// UpsertPluginWithRouteInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) UpsertPluginWithRouteInWorkspace(ctx context.Context, request operations.UpsertPluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginWithRouteInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertPluginWithRouteInWorkspace")
+	}
+
+	var r0 *operations.UpsertPluginWithRouteInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginWithRouteInWorkspaceRequest, ...operations.Option) (*operations.UpsertPluginWithRouteInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginWithRouteInWorkspaceRequest, ...operations.Option) *operations.UpsertPluginWithRouteInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertPluginWithRouteInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertPluginWithRouteInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertPluginWithRouteInWorkspace'
+type MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertPluginWithRouteInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertPluginWithRouteInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) UpsertPluginWithRouteInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call {
+	return &MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call{Call: _e.mock.On("UpsertPluginWithRouteInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertPluginWithRouteInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertPluginWithRouteInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertPluginWithRouteInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call) Return(upsertPluginWithRouteInWorkspaceResponse *operations.UpsertPluginWithRouteInWorkspaceResponse, err error) *MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call {
+	_c.Call.Return(upsertPluginWithRouteInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertPluginWithRouteInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginWithRouteInWorkspaceResponse, error)) *MockPluginsSDK_UpsertPluginWithRouteInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertPluginWithService provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) UpsertPluginWithService(ctx context.Context, request operations.UpsertPluginWithServiceRequest, opts ...operations.Option) (*operations.UpsertPluginWithServiceResponse, error) {
 	var tmpRet mock.Arguments
@@ -2211,6 +4286,89 @@ func (_c *MockPluginsSDK_UpsertPluginWithService_Call) Return(upsertPluginWithSe
 }
 
 func (_c *MockPluginsSDK_UpsertPluginWithService_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertPluginWithServiceRequest, opts ...operations.Option) (*operations.UpsertPluginWithServiceResponse, error)) *MockPluginsSDK_UpsertPluginWithService_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertPluginWithServiceInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) UpsertPluginWithServiceInWorkspace(ctx context.Context, request operations.UpsertPluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertPluginWithServiceInWorkspace")
+	}
+
+	var r0 *operations.UpsertPluginWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginWithServiceInWorkspaceRequest, ...operations.Option) (*operations.UpsertPluginWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertPluginWithServiceInWorkspaceRequest, ...operations.Option) *operations.UpsertPluginWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertPluginWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertPluginWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertPluginWithServiceInWorkspace'
+type MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertPluginWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertPluginWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) UpsertPluginWithServiceInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call {
+	return &MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call{Call: _e.mock.On("UpsertPluginWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertPluginWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertPluginWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertPluginWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call) Return(upsertPluginWithServiceInWorkspaceResponse *operations.UpsertPluginWithServiceInWorkspaceResponse, err error) *MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call {
+	_c.Call.Return(upsertPluginWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertPluginWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertPluginWithServiceInWorkspaceResponse, error)) *MockPluginsSDK_UpsertPluginWithServiceInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

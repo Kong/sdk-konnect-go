@@ -6,25 +6,566 @@ APIs related to Konnect Developer Portal Emails.
 
 ### Available Operations
 
+* [ListEmailDomains](#listemaildomains) - List email domains
+* [CreateEmailDomain](#createemaildomain) - Create an email domain
+* [GetEmailDomain](#getemaildomain) - Get an email domain
+* [DeleteEmailDomain](#deleteemaildomain) - Delete an email domain
+* [~~GetEmailDelivery~~](#getemaildelivery) - Get the email delivery for the portal :warning: **Deprecated**
+* [~~UpdateEmailDelivery~~](#updateemaildelivery) - Setup the email delivery for a portal :warning: **Deprecated**
+* [~~DeleteEmailDelivery~~](#deleteemaildelivery) - Delete email delivery :warning: **Deprecated**
 * [GetEmailConfig](#getemailconfig) - Get the email config for the portal
 * [CreatePortalEmailConfig](#createportalemailconfig) - Create the email config for a portal
 * [UpdatePortalEmailConfig](#updateportalemailconfig) - Setup the email config for a portal
 * [DeletePortalEmailConfig](#deleteportalemailconfig) - Delete portal email config
-* [~~GetEmailDelivery~~](#getemaildelivery) - Get the email delivery for the portal :warning: **Deprecated**
-* [~~UpdateEmailDelivery~~](#updateemaildelivery) - Setup the email delivery for a portal :warning: **Deprecated**
-* [~~DeleteEmailDelivery~~](#deleteemaildelivery) - Delete email delivery :warning: **Deprecated**
+* [ListDefaultEmailTemplates](#listdefaultemailtemplates) - List default email templates
+* [ListEmailTemplateVariables](#listemailtemplatevariables) - List email template variables
+* [GetDefaultEmailTemplate](#getdefaultemailtemplate) - Get default email template
 * [ListPortalCustomEmailTemplates](#listportalcustomemailtemplates) - List custom email templates for a portal
 * [GetPortalCustomEmailTemplate](#getportalcustomemailtemplate) - Get custom email template used in a portal
 * [UpdatePortalCustomEmailTemplate](#updateportalcustomemailtemplate) - Update custom email template for a portal
 * [DeletePortalCustomEmailTemplate](#deleteportalcustomemailtemplate) - Delete custom email template
 * [PostPortalCustomEmailTestSend](#postportalcustomemailtestsend) - Send Test Email
-* [ListEmailDomains](#listemaildomains) - List email domains
-* [CreateEmailDomain](#createemaildomain) - Create an email domain
-* [GetEmailDomain](#getemaildomain) - Get an email domain
-* [DeleteEmailDomain](#deleteemaildomain) - Delete an email domain
-* [ListDefaultEmailTemplates](#listdefaultemailtemplates) - List default email templates
-* [GetDefaultEmailTemplate](#getdefaultemailtemplate) - Get default email template
-* [ListEmailTemplateVariables](#listemailtemplatevariables) - List email template variables
+
+## ListEmailDomains
+
+List email domains
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-email-domains" method="get" path="/v3/portals/email-domains" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.ListEmailDomains(ctx, operations.ListEmailDomainsRequest{
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListDomains != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
+| `request`                                                                                | [operations.ListEmailDomainsRequest](../../models/operations/listemaildomainsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |
+
+### Response
+
+**[*operations.ListEmailDomainsResponse](../../models/operations/listemaildomainsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreateEmailDomain
+
+Create an email domain
+
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.CreateEmailDomain(ctx, components.EmailDomainPayload{
+        Domain: "milky-advertisement.biz",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.CreateEmailDomain(ctx, components.EmailDomainPayload{
+        Domain: "milky-advertisement.biz",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.CreateEmailDomain(ctx, components.EmailDomainPayload{
+        Domain: "milky-advertisement.biz",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDomain != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [components.EmailDomainPayload](../../models/components/emaildomainpayload.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
+
+### Response
+
+**[*operations.CreateEmailDomainResponse](../../models/operations/createemaildomainresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetEmailDomain
+
+Get an email domain
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-email-domain" method="get" path="/v3/portals/email-domains/{emailDomain}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.GetEmailDomain(ctx, "<value>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDomain != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `emailDomain`                                            | `string`                                                 | :heavy_check_mark:                                       | Email domain for custom portal email sender              |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.GetEmailDomainResponse](../../models/operations/getemaildomainresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteEmailDomain
+
+Delete an email domain
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-email-domain" method="delete" path="/v3/portals/email-domains/{emailDomain}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.DeleteEmailDomain(ctx, "<value>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `emailDomain`                                            | `string`                                                 | :heavy_check_mark:                                       | Email domain for custom portal email sender              |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.DeleteEmailDomainResponse](../../models/operations/deleteemaildomainresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ~~GetEmailDelivery~~
+
+Retrieve the email delivery for the portal
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-email-delivery" method="get" path="/v3/portals/{portalId}/email-delivery" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.GetEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDelivery != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetEmailDeliveryResponse](../../models/operations/getemaildeliveryresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ~~UpdateEmailDelivery~~
+
+Setup the email delivery for a portal
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdateEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.EmailDeliveryUpdatePayload{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDelivery != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdateEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.EmailDeliveryUpdatePayload{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDelivery != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdateEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.EmailDeliveryUpdatePayload{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDelivery != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    | Example                                                                                        |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |                                                                                                |
+| `portalID`                                                                                     | `string`                                                                                       | :heavy_check_mark:                                                                             | ID of the portal.                                                                              | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                           |
+| `emailDeliveryUpdatePayload`                                                                   | [components.EmailDeliveryUpdatePayload](../../models/components/emaildeliveryupdatepayload.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |                                                                                                |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |                                                                                                |
+
+### Response
+
+**[*operations.UpdateEmailDeliveryResponse](../../models/operations/updateemaildeliveryresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ~~DeleteEmailDelivery~~
+
+Delete email delivery
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-email-delivery" method="delete" path="/v3/portals/{portalId}/email-delivery" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.DeleteEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteEmailDeliveryResponse](../../models/operations/deleteemaildeliveryresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## GetEmailConfig
 
@@ -424,15 +965,13 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## ~~GetEmailDelivery~~
+## ListDefaultEmailTemplates
 
-Retrieve the email delivery for the portal
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+List default email templates
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-email-delivery" method="get" path="/v3/portals/{portalId}/email-delivery" -->
+<!-- UsageSnippet language="go" operationID="list-default-email-templates" method="get" path="/v3/portals/email-templates" example="Example 1" -->
 ```go
 package main
 
@@ -452,11 +991,11 @@ func main() {
         }),
     )
 
-    res, err := s.PortalEmails.GetEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a")
+    res, err := s.PortalEmails.ListDefaultEmailTemplates(ctx)
     if err != nil {
         log.Fatal(err)
     }
-    if res.EmailDelivery != nil {
+    if res.ListDefaultEmailTemplates != nil {
         // handle response
     }
 }
@@ -464,15 +1003,14 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
 
-**[*operations.GetEmailDeliveryResponse](../../models/operations/getemaildeliveryresponse.md), error**
+**[*operations.ListDefaultEmailTemplatesResponse](../../models/operations/listdefaultemailtemplatesresponse.md), error**
 
 ### Errors
 
@@ -483,15 +1021,13 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## ~~UpdateEmailDelivery~~
+## ListEmailTemplateVariables
 
-Setup the email delivery for a portal
+List email template variables
 
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+### Example Usage
 
-### Example Usage: NotFoundExample
-
-<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" example="NotFoundExample" -->
+<!-- UsageSnippet language="go" operationID="list-email-template-variables" method="get" path="/v3/portals/email-templates/variables" example="Example 1" -->
 ```go
 package main
 
@@ -511,73 +1047,11 @@ func main() {
         }),
     )
 
-    res, err := s.PortalEmails.UpdateEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.EmailDeliveryUpdatePayload{})
+    res, err := s.PortalEmails.ListEmailTemplateVariables(ctx)
     if err != nil {
         log.Fatal(err)
     }
-    if res.EmailDelivery != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: Unauthorized
-
-<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" example="Unauthorized" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.UpdateEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.EmailDeliveryUpdatePayload{})
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.EmailDelivery != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: UnauthorizedExample
-
-<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" example="UnauthorizedExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.UpdateEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.EmailDeliveryUpdatePayload{})
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.EmailDelivery != nil {
+    if res.EmailTemplateVariablesList != nil {
         // handle response
     }
 }
@@ -585,36 +1059,31 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    | Example                                                                                        |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |                                                                                                |
-| `portalID`                                                                                     | `string`                                                                                       | :heavy_check_mark:                                                                             | ID of the portal.                                                                              | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                           |
-| `emailDeliveryUpdatePayload`                                                                   | [components.EmailDeliveryUpdatePayload](../../models/components/emaildeliveryupdatepayload.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |                                                                                                |
-| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |                                                                                                |
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
 
-**[*operations.UpdateEmailDeliveryResponse](../../models/operations/updateemaildeliveryresponse.md), error**
+**[*operations.ListEmailTemplateVariablesResponse](../../models/operations/listemailtemplatevariablesresponse.md), error**
 
 ### Errors
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## ~~DeleteEmailDelivery~~
+## GetDefaultEmailTemplate
 
-Delete email delivery
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+Get default email template
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-email-delivery" method="delete" path="/v3/portals/{portalId}/email-delivery" -->
+<!-- UsageSnippet language="go" operationID="get-default-email-template" method="get" path="/v3/portals/email-templates/{templateName}" example="Example 1" -->
 ```go
 package main
 
@@ -634,11 +1103,11 @@ func main() {
         }),
     )
 
-    res, err := s.PortalEmails.DeleteEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a")
+    res, err := s.PortalEmails.GetDefaultEmailTemplate(ctx, components.EmailTemplateNameConfirmEmailAddress)
     if err != nil {
         log.Fatal(err)
     }
-    if res != nil {
+    if res.DefaultEmailTemplate != nil {
         // handle response
     }
 }
@@ -646,15 +1115,15 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `templateName`                                                               | [components.EmailTemplateName](../../models/components/emailtemplatename.md) | :heavy_check_mark:                                                           | Name of the email template.                                                  |
+| `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |
 
 ### Response
 
-**[*operations.DeleteEmailDeliveryResponse](../../models/operations/deleteemaildeliveryresponse.md), error**
+**[*operations.GetDefaultEmailTemplateResponse](../../models/operations/getdefaultemailtemplateresponse.md), error**
 
 ### Errors
 
@@ -1280,475 +1749,6 @@ func main() {
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ListEmailDomains
-
-List email domains
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-email-domains" method="get" path="/v3/portals/email-domains" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.ListEmailDomains(ctx, operations.ListEmailDomainsRequest{
-        PageSize: sdkkonnectgo.Pointer[int64](10),
-        PageNumber: sdkkonnectgo.Pointer[int64](1),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListDomains != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
-| `request`                                                                                | [operations.ListEmailDomainsRequest](../../models/operations/listemaildomainsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |
-
-### Response
-
-**[*operations.ListEmailDomainsResponse](../../models/operations/listemaildomainsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## CreateEmailDomain
-
-Create an email domain
-
-### Example Usage: NotFoundExample
-
-<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" example="NotFoundExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.CreateEmailDomain(ctx, components.EmailDomainPayload{
-        Domain: "milky-advertisement.biz",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.EmailDomain != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: Unauthorized
-
-<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" example="Unauthorized" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.CreateEmailDomain(ctx, components.EmailDomainPayload{
-        Domain: "milky-advertisement.biz",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.EmailDomain != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: UnauthorizedExample
-
-<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" example="UnauthorizedExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.CreateEmailDomain(ctx, components.EmailDomainPayload{
-        Domain: "milky-advertisement.biz",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.EmailDomain != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `request`                                                                      | [components.EmailDomainPayload](../../models/components/emaildomainpayload.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
-
-### Response
-
-**[*operations.CreateEmailDomainResponse](../../models/operations/createemaildomainresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## GetEmailDomain
-
-Get an email domain
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="get-email-domain" method="get" path="/v3/portals/email-domains/{emailDomain}" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.GetEmailDomain(ctx, "<value>")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.EmailDomain != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `emailDomain`                                            | `string`                                                 | :heavy_check_mark:                                       | Email domain for custom portal email sender              |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
-
-### Response
-
-**[*operations.GetEmailDomainResponse](../../models/operations/getemaildomainresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## DeleteEmailDomain
-
-Delete an email domain
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="delete-email-domain" method="delete" path="/v3/portals/email-domains/{emailDomain}" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.DeleteEmailDomain(ctx, "<value>")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `emailDomain`                                            | `string`                                                 | :heavy_check_mark:                                       | Email domain for custom portal email sender              |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
-
-### Response
-
-**[*operations.DeleteEmailDomainResponse](../../models/operations/deleteemaildomainresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ListDefaultEmailTemplates
-
-List default email templates
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-default-email-templates" method="get" path="/v3/portals/email-templates" example="Example 1" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.ListDefaultEmailTemplates(ctx)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListDefaultEmailTemplates != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
-
-### Response
-
-**[*operations.ListDefaultEmailTemplatesResponse](../../models/operations/listdefaultemailtemplatesresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## GetDefaultEmailTemplate
-
-Get default email template
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="get-default-email-template" method="get" path="/v3/portals/email-templates/{templateName}" example="Example 1" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.GetDefaultEmailTemplate(ctx, components.EmailTemplateNameConfirmEmailAddress)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.DefaultEmailTemplate != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
-| `templateName`                                                               | [components.EmailTemplateName](../../models/components/emailtemplatename.md) | :heavy_check_mark:                                                           | Name of the email template.                                                  |
-| `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |
-
-### Response
-
-**[*operations.GetDefaultEmailTemplateResponse](../../models/operations/getdefaultemailtemplateresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ListEmailTemplateVariables
-
-List email template variables
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-email-template-variables" method="get" path="/v3/portals/email-templates/variables" example="Example 1" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.PortalEmails.ListEmailTemplateVariables(ctx)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.EmailTemplateVariablesList != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
-
-### Response
-
-**[*operations.ListEmailTemplateVariablesResponse](../../models/operations/listemailtemplatevariablesresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |

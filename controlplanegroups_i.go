@@ -11,9 +11,6 @@ import (
 
 // ControlPlaneGroupsSDK is a generated interface.
 type ControlPlaneGroupsSDK interface {
-	// GetControlPlanesIDGroupMemberStatus - Get Control Plane Group Member Status
-	// Determines the group membership status of a control plane.
-	GetControlPlanesIDGroupMemberStatus(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error)
 	// GetControlPlanesIDGroupMemberships - List Control Plane Group Memberships
 	// Returns an array of control planes that are a member of this control plane group.
 	GetControlPlanesIDGroupMemberships(ctx context.Context, request operations.GetControlPlanesIDGroupMembershipsRequest, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMembershipsResponse, error)
@@ -26,7 +23,16 @@ type ControlPlaneGroupsSDK interface {
 	// PostControlPlanesIDGroupMembershipsRemove - Remove Control Plane Group Members
 	// Removes one or more control planes from the members of a control plane group.
 	PostControlPlanesIDGroupMembershipsRemove(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error)
+	// GetControlPlanesIDGroupMemberStatus - Get Control Plane Group Member Status
+	// Determines the group membership status of a control plane.
+	GetControlPlanesIDGroupMemberStatus(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error)
 	// GetControlPlanesIDGroupStatus - Get Control Plane Group Status
 	// Returns the status of a control plane group, including existing conflicts.
 	GetControlPlanesIDGroupStatus(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error)
+	// GetControlPlaneGroupSettings - Get Control Plane Group Settings
+	// Returns the settings of a control plane group.
+	GetControlPlaneGroupSettings(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneGroupSettingsResponse, error)
+	// PutControlPlaneGroupSettings - Upsert Control Plane Group Settings
+	// Updates the settings of a control plane group. If the settings do not exist, they will be created.
+	PutControlPlaneGroupSettings(ctx context.Context, controlPlaneID string, groupSettings *components.GroupSettings, opts ...operations.Option) (*operations.PutControlPlaneGroupSettingsResponse, error)
 }

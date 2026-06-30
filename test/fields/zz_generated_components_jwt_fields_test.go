@@ -15,8 +15,10 @@ func TestComponentsJwtFieldTypes(t *testing.T) {
 	var _ *components.JWTAlgorithm = value.Algorithm
 	var _ *components.JWTConsumer = value.Consumer
 	var _ *int64 = value.CreatedAt
+	var _ *string = value.Description
 	var _ *string = value.ID
 	var _ *string = value.Key
+	var _ map[string]any = value.ManagedBy
 	var _ *string = value.RsaPublicKey
 	var _ *string = value.Secret
 	var _ []string = value.Tags

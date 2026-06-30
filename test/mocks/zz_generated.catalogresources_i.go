@@ -7,6 +7,7 @@ package mocks
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -36,6 +37,95 @@ type MockCatalogResourcesSDK_Expecter struct {
 
 func (_m *MockCatalogResourcesSDK) EXPECT() *MockCatalogResourcesSDK_Expecter {
 	return &MockCatalogResourcesSDK_Expecter{mock: &_m.Mock}
+}
+
+// DeleteResources provides a mock function for the type MockCatalogResourcesSDK
+func (_mock *MockCatalogResourcesSDK) DeleteResources(ctx context.Context, id string, deleteCatalogResources components.DeleteCatalogResources, opts ...operations.Option) (*operations.DeleteResourcesResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, id, deleteCatalogResources, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, id, deleteCatalogResources)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteResources")
+	}
+
+	var r0 *operations.DeleteResourcesResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.DeleteCatalogResources, ...operations.Option) (*operations.DeleteResourcesResponse, error)); ok {
+		return returnFunc(ctx, id, deleteCatalogResources, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.DeleteCatalogResources, ...operations.Option) *operations.DeleteResourcesResponse); ok {
+		r0 = returnFunc(ctx, id, deleteCatalogResources, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteResourcesResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.DeleteCatalogResources, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, id, deleteCatalogResources, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCatalogResourcesSDK_DeleteResources_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteResources'
+type MockCatalogResourcesSDK_DeleteResources_Call struct {
+	*mock.Call
+}
+
+// DeleteResources is a helper method to define mock.On call
+//   - ctx context.Context
+//   - id string
+//   - deleteCatalogResources components.DeleteCatalogResources
+//   - opts ...operations.Option
+func (_e *MockCatalogResourcesSDK_Expecter) DeleteResources(ctx any, id any, deleteCatalogResources any, opts ...any) *MockCatalogResourcesSDK_DeleteResources_Call {
+	return &MockCatalogResourcesSDK_DeleteResources_Call{Call: _e.mock.On("DeleteResources",
+		append([]any{ctx, id, deleteCatalogResources}, opts...)...)}
+}
+
+func (_c *MockCatalogResourcesSDK_DeleteResources_Call) Run(run func(ctx context.Context, id string, deleteCatalogResources components.DeleteCatalogResources, opts ...operations.Option)) *MockCatalogResourcesSDK_DeleteResources_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.DeleteCatalogResources
+		if args[2] != nil {
+			arg2 = args[2].(components.DeleteCatalogResources)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCatalogResourcesSDK_DeleteResources_Call) Return(deleteResourcesResponse *operations.DeleteResourcesResponse, err error) *MockCatalogResourcesSDK_DeleteResources_Call {
+	_c.Call.Return(deleteResourcesResponse, err)
+	return _c
+}
+
+func (_c *MockCatalogResourcesSDK_DeleteResources_Call) RunAndReturn(run func(ctx context.Context, id string, deleteCatalogResources components.DeleteCatalogResources, opts ...operations.Option) (*operations.DeleteResourcesResponse, error)) *MockCatalogResourcesSDK_DeleteResources_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // FetchResource provides a mock function for the type MockCatalogResourcesSDK
@@ -117,6 +207,95 @@ func (_c *MockCatalogResourcesSDK_FetchResource_Call) Return(fetchResourceRespon
 }
 
 func (_c *MockCatalogResourcesSDK_FetchResource_Call) RunAndReturn(run func(ctx context.Context, id string, opts ...operations.Option) (*operations.FetchResourceResponse, error)) *MockCatalogResourcesSDK_FetchResource_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// InitializeResource provides a mock function for the type MockCatalogResourcesSDK
+func (_mock *MockCatalogResourcesSDK) InitializeResource(ctx context.Context, integrationInstanceID string, initializeCatalogResource components.InitializeCatalogResource, opts ...operations.Option) (*operations.InitializeResourceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, integrationInstanceID, initializeCatalogResource, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, integrationInstanceID, initializeCatalogResource)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for InitializeResource")
+	}
+
+	var r0 *operations.InitializeResourceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.InitializeCatalogResource, ...operations.Option) (*operations.InitializeResourceResponse, error)); ok {
+		return returnFunc(ctx, integrationInstanceID, initializeCatalogResource, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.InitializeCatalogResource, ...operations.Option) *operations.InitializeResourceResponse); ok {
+		r0 = returnFunc(ctx, integrationInstanceID, initializeCatalogResource, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.InitializeResourceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.InitializeCatalogResource, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, integrationInstanceID, initializeCatalogResource, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCatalogResourcesSDK_InitializeResource_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'InitializeResource'
+type MockCatalogResourcesSDK_InitializeResource_Call struct {
+	*mock.Call
+}
+
+// InitializeResource is a helper method to define mock.On call
+//   - ctx context.Context
+//   - integrationInstanceID string
+//   - initializeCatalogResource components.InitializeCatalogResource
+//   - opts ...operations.Option
+func (_e *MockCatalogResourcesSDK_Expecter) InitializeResource(ctx any, integrationInstanceID any, initializeCatalogResource any, opts ...any) *MockCatalogResourcesSDK_InitializeResource_Call {
+	return &MockCatalogResourcesSDK_InitializeResource_Call{Call: _e.mock.On("InitializeResource",
+		append([]any{ctx, integrationInstanceID, initializeCatalogResource}, opts...)...)}
+}
+
+func (_c *MockCatalogResourcesSDK_InitializeResource_Call) Run(run func(ctx context.Context, integrationInstanceID string, initializeCatalogResource components.InitializeCatalogResource, opts ...operations.Option)) *MockCatalogResourcesSDK_InitializeResource_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.InitializeCatalogResource
+		if args[2] != nil {
+			arg2 = args[2].(components.InitializeCatalogResource)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCatalogResourcesSDK_InitializeResource_Call) Return(initializeResourceResponse *operations.InitializeResourceResponse, err error) *MockCatalogResourcesSDK_InitializeResource_Call {
+	_c.Call.Return(initializeResourceResponse, err)
+	return _c
+}
+
+func (_c *MockCatalogResourcesSDK_InitializeResource_Call) RunAndReturn(run func(ctx context.Context, integrationInstanceID string, initializeCatalogResource components.InitializeCatalogResource, opts ...operations.Option) (*operations.InitializeResourceResponse, error)) *MockCatalogResourcesSDK_InitializeResource_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -283,6 +462,95 @@ func (_c *MockCatalogResourcesSDK_UpdateResource_Call) Return(updateResourceResp
 }
 
 func (_c *MockCatalogResourcesSDK_UpdateResource_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateResourceRequest, opts ...operations.Option) (*operations.UpdateResourceResponse, error)) *MockCatalogResourcesSDK_UpdateResource_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertResources provides a mock function for the type MockCatalogResourcesSDK
+func (_mock *MockCatalogResourcesSDK) UpsertResources(ctx context.Context, integrationInstanceID string, upsertCatalogResourcesRequest components.UpsertCatalogResourcesRequest, opts ...operations.Option) (*operations.UpsertResourcesResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, integrationInstanceID, upsertCatalogResourcesRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, integrationInstanceID, upsertCatalogResourcesRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertResources")
+	}
+
+	var r0 *operations.UpsertResourcesResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpsertCatalogResourcesRequest, ...operations.Option) (*operations.UpsertResourcesResponse, error)); ok {
+		return returnFunc(ctx, integrationInstanceID, upsertCatalogResourcesRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpsertCatalogResourcesRequest, ...operations.Option) *operations.UpsertResourcesResponse); ok {
+		r0 = returnFunc(ctx, integrationInstanceID, upsertCatalogResourcesRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertResourcesResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpsertCatalogResourcesRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, integrationInstanceID, upsertCatalogResourcesRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCatalogResourcesSDK_UpsertResources_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertResources'
+type MockCatalogResourcesSDK_UpsertResources_Call struct {
+	*mock.Call
+}
+
+// UpsertResources is a helper method to define mock.On call
+//   - ctx context.Context
+//   - integrationInstanceID string
+//   - upsertCatalogResourcesRequest components.UpsertCatalogResourcesRequest
+//   - opts ...operations.Option
+func (_e *MockCatalogResourcesSDK_Expecter) UpsertResources(ctx any, integrationInstanceID any, upsertCatalogResourcesRequest any, opts ...any) *MockCatalogResourcesSDK_UpsertResources_Call {
+	return &MockCatalogResourcesSDK_UpsertResources_Call{Call: _e.mock.On("UpsertResources",
+		append([]any{ctx, integrationInstanceID, upsertCatalogResourcesRequest}, opts...)...)}
+}
+
+func (_c *MockCatalogResourcesSDK_UpsertResources_Call) Run(run func(ctx context.Context, integrationInstanceID string, upsertCatalogResourcesRequest components.UpsertCatalogResourcesRequest, opts ...operations.Option)) *MockCatalogResourcesSDK_UpsertResources_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.UpsertCatalogResourcesRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.UpsertCatalogResourcesRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCatalogResourcesSDK_UpsertResources_Call) Return(upsertResourcesResponse *operations.UpsertResourcesResponse, err error) *MockCatalogResourcesSDK_UpsertResources_Call {
+	_c.Call.Return(upsertResourcesResponse, err)
+	return _c
+}
+
+func (_c *MockCatalogResourcesSDK_UpsertResources_Call) RunAndReturn(run func(ctx context.Context, integrationInstanceID string, upsertCatalogResourcesRequest components.UpsertCatalogResourcesRequest, opts ...operations.Option) (*operations.UpsertResourcesResponse, error)) *MockCatalogResourcesSDK_UpsertResources_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -4,72 +4,14 @@
 
 ### Available Operations
 
-* [GetControlPlanesIDGroupMemberStatus](#getcontrolplanesidgroupmemberstatus) - Get Control Plane Group Member Status
 * [GetControlPlanesIDGroupMemberships](#getcontrolplanesidgroupmemberships) - List Control Plane Group Memberships
 * [PutControlPlanesIDGroupMemberships](#putcontrolplanesidgroupmemberships) - Upsert Control Plane Group Members
 * [PostControlPlanesIDGroupMembershipsAdd](#postcontrolplanesidgroupmembershipsadd) - Add Control Plane Group Members
 * [PostControlPlanesIDGroupMembershipsRemove](#postcontrolplanesidgroupmembershipsremove) - Remove Control Plane Group Members
+* [GetControlPlanesIDGroupMemberStatus](#getcontrolplanesidgroupmemberstatus) - Get Control Plane Group Member Status
 * [GetControlPlanesIDGroupStatus](#getcontrolplanesidgroupstatus) - Get Control Plane Group Status
-
-## GetControlPlanesIDGroupMemberStatus
-
-Determines the group membership status of a control plane.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-member-status" method="get" path="/v2/control-planes/{controlPlaneId}/group-member-status" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.ControlPlaneGroups.GetControlPlanesIDGroupMemberStatus(ctx, "<id>")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.GroupMemberStatus != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `controlPlaneID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of a control plane                                    |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
-
-### Response
-
-**[*operations.GetControlPlanesIDGroupMemberStatusResponse](../../models/operations/getcontrolplanesidgroupmemberstatusresponse.md), error**
-
-### Errors
-
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| sdkerrors.BadRequestError    | 400                          | application/problem+json     |
-| sdkerrors.UnauthorizedError  | 401                          | application/problem+json     |
-| sdkerrors.ForbiddenError     | 403                          | application/problem+json     |
-| sdkerrors.NotFoundError      | 404                          | application/problem+json     |
-| sdkerrors.BaseError          | 500                          | application/problem+json     |
-| sdkerrors.ServiceUnavailable | 503                          | application/problem+json     |
-| sdkerrors.SDKError           | 4XX, 5XX                     | \*/\*                        |
+* [GetControlPlaneGroupSettings](#getcontrolplanegroupsettings) - Get Control Plane Group Settings
+* [PutControlPlaneGroupSettings](#putcontrolplanegroupsettings) - Upsert Control Plane Group Settings
 
 ## GetControlPlanesIDGroupMemberships
 
@@ -355,6 +297,66 @@ func main() {
 | sdkerrors.ServiceUnavailable | 503                          | application/problem+json     |
 | sdkerrors.SDKError           | 4XX, 5XX                     | \*/\*                        |
 
+## GetControlPlanesIDGroupMemberStatus
+
+Determines the group membership status of a control plane.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-member-status" method="get" path="/v2/control-planes/{controlPlaneId}/group-member-status" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ControlPlaneGroups.GetControlPlanesIDGroupMemberStatus(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GroupMemberStatus != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `controlPlaneID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of a control plane                                    |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.GetControlPlanesIDGroupMemberStatusResponse](../../models/operations/getcontrolplanesidgroupmemberstatusresponse.md), error**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| sdkerrors.BadRequestError    | 400                          | application/problem+json     |
+| sdkerrors.UnauthorizedError  | 401                          | application/problem+json     |
+| sdkerrors.ForbiddenError     | 403                          | application/problem+json     |
+| sdkerrors.NotFoundError      | 404                          | application/problem+json     |
+| sdkerrors.BaseError          | 500                          | application/problem+json     |
+| sdkerrors.ServiceUnavailable | 503                          | application/problem+json     |
+| sdkerrors.SDKError           | 4XX, 5XX                     | \*/\*                        |
+
 ## GetControlPlanesIDGroupStatus
 
 Returns the status of a control plane group, including existing conflicts.
@@ -445,3 +447,129 @@ func main() {
 | sdkerrors.BaseError          | 500                          | application/problem+json     |
 | sdkerrors.ServiceUnavailable | 503                          | application/problem+json     |
 | sdkerrors.SDKError           | 4XX, 5XX                     | \*/\*                        |
+
+## GetControlPlaneGroupSettings
+
+Returns the settings of a control plane group.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-control-plane-group-settings" method="get" path="/v2/control-planes/{controlPlaneId}/group-settings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ControlPlaneGroups.GetControlPlaneGroupSettings(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GroupSettings != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `controlPlaneID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of a control plane group                              |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.GetControlPlaneGroupSettingsResponse](../../models/operations/getcontrolplanegroupsettingsresponse.md), error**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.BadRequestError     | 400                           | application/problem+json      |
+| sdkerrors.UnauthorizedError   | 401                           | application/problem+json      |
+| sdkerrors.ForbiddenError      | 403                           | application/problem+json      |
+| sdkerrors.NotFoundError       | 404                           | application/problem+json      |
+| sdkerrors.BaseError           | 500                           | application/problem+json      |
+| sdkerrors.NotImplementedError | 501                           | application/problem+json      |
+| sdkerrors.ServiceUnavailable  | 503                           | application/problem+json      |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
+
+## PutControlPlaneGroupSettings
+
+Updates the settings of a control plane group. If the settings do not exist, they will be created.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="put-control-plane-group-settings" method="put" path="/v2/control-planes/{controlPlaneId}/group-settings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ControlPlaneGroups.PutControlPlaneGroupSettings(ctx, "<id>", &components.GroupSettings{
+        Workspaceable: sdkkonnectgo.Pointer(true),
+        DefaultWorkspaceMemberID: sdkkonnectgo.Pointer("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GroupSettings != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
+| `controlPlaneID`                                                      | `string`                                                              | :heavy_check_mark:                                                    | ID of a control plane group                                           |
+| `groupSettings`                                                       | [*components.GroupSettings](../../models/components/groupsettings.md) | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `opts`                                                                | [][operations.Option](../../models/operations/option.md)              | :heavy_minus_sign:                                                    | The options for this request.                                         |
+
+### Response
+
+**[*operations.PutControlPlaneGroupSettingsResponse](../../models/operations/putcontrolplanegroupsettingsresponse.md), error**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.BadRequestError     | 400                           | application/problem+json      |
+| sdkerrors.UnauthorizedError   | 401                           | application/problem+json      |
+| sdkerrors.ForbiddenError      | 403                           | application/problem+json      |
+| sdkerrors.NotFoundError       | 404                           | application/problem+json      |
+| sdkerrors.BaseError           | 500                           | application/problem+json      |
+| sdkerrors.NotImplementedError | 501                           | application/problem+json      |
+| sdkerrors.ServiceUnavailable  | 503                           | application/problem+json      |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |

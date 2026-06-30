@@ -11,6 +11,12 @@ import (
 
 // EventGatewaysSDK is a generated interface.
 type EventGatewaysSDK interface {
+	// ListEventGatewaysUsage - Get Event Gateways Usage
+	// Returns usage statistics for Event Gateways across all Konnect Organizations.
+	ListEventGatewaysUsage(ctx context.Context, opts ...operations.Option) (*operations.ListEventGatewaysUsageResponse, error)
+	// ListEventGatewayVersions - List Event Gateway API Versions
+	// Returns a list of Event Gateway runtime versions which affects API behavior and compatibility.
+	ListEventGatewayVersions(ctx context.Context, opts ...operations.Option) (*operations.ListEventGatewayVersionsResponse, error)
 	// ListEventGateways - List all Event Gateways
 	// Returns an array of gateway objects containing information about the Konnect Event Gateways.
 	ListEventGateways(ctx context.Context, request operations.ListEventGatewaysRequest, opts ...operations.Option) (*operations.ListEventGatewaysResponse, error)

@@ -460,6 +460,255 @@ func (_c *MockCloudGatewaysSDK_CreatePrivateDNS_Call) RunAndReturn(run func(ctx 
 	return _c
 }
 
+// CreateProviderAccount provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) CreateProviderAccount(ctx context.Context, request components.CreateProviderAccountRequest, opts ...operations.Option) (*operations.CreateProviderAccountResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateProviderAccount")
+	}
+
+	var r0 *operations.CreateProviderAccountResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateProviderAccountRequest, ...operations.Option) (*operations.CreateProviderAccountResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateProviderAccountRequest, ...operations.Option) *operations.CreateProviderAccountResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateProviderAccountResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.CreateProviderAccountRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_CreateProviderAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProviderAccount'
+type MockCloudGatewaysSDK_CreateProviderAccount_Call struct {
+	*mock.Call
+}
+
+// CreateProviderAccount is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request components.CreateProviderAccountRequest
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) CreateProviderAccount(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_CreateProviderAccount_Call {
+	return &MockCloudGatewaysSDK_CreateProviderAccount_Call{Call: _e.mock.On("CreateProviderAccount",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_CreateProviderAccount_Call) Run(run func(ctx context.Context, request components.CreateProviderAccountRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreateProviderAccount_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 components.CreateProviderAccountRequest
+		if args[1] != nil {
+			arg1 = args[1].(components.CreateProviderAccountRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_CreateProviderAccount_Call) Return(createProviderAccountResponse *operations.CreateProviderAccountResponse, err error) *MockCloudGatewaysSDK_CreateProviderAccount_Call {
+	_c.Call.Return(createProviderAccountResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_CreateProviderAccount_Call) RunAndReturn(run func(ctx context.Context, request components.CreateProviderAccountRequest, opts ...operations.Option) (*operations.CreateProviderAccountResponse, error)) *MockCloudGatewaysSDK_CreateProviderAccount_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateResourceConfiguration provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) CreateResourceConfiguration(ctx context.Context, request components.CreateResourceConfigurationRequest, opts ...operations.Option) (*operations.CreateResourceConfigurationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateResourceConfiguration")
+	}
+
+	var r0 *operations.CreateResourceConfigurationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateResourceConfigurationRequest, ...operations.Option) (*operations.CreateResourceConfigurationResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateResourceConfigurationRequest, ...operations.Option) *operations.CreateResourceConfigurationResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateResourceConfigurationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.CreateResourceConfigurationRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_CreateResourceConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateResourceConfiguration'
+type MockCloudGatewaysSDK_CreateResourceConfiguration_Call struct {
+	*mock.Call
+}
+
+// CreateResourceConfiguration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request components.CreateResourceConfigurationRequest
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) CreateResourceConfiguration(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_CreateResourceConfiguration_Call {
+	return &MockCloudGatewaysSDK_CreateResourceConfiguration_Call{Call: _e.mock.On("CreateResourceConfiguration",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_CreateResourceConfiguration_Call) Run(run func(ctx context.Context, request components.CreateResourceConfigurationRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreateResourceConfiguration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 components.CreateResourceConfigurationRequest
+		if args[1] != nil {
+			arg1 = args[1].(components.CreateResourceConfigurationRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_CreateResourceConfiguration_Call) Return(createResourceConfigurationResponse *operations.CreateResourceConfigurationResponse, err error) *MockCloudGatewaysSDK_CreateResourceConfiguration_Call {
+	_c.Call.Return(createResourceConfigurationResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_CreateResourceConfiguration_Call) RunAndReturn(run func(ctx context.Context, request components.CreateResourceConfigurationRequest, opts ...operations.Option) (*operations.CreateResourceConfigurationResponse, error)) *MockCloudGatewaysSDK_CreateResourceConfiguration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateResourceQuota provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) CreateResourceQuota(ctx context.Context, request components.CreateResourceQuotaRequest, opts ...operations.Option) (*operations.CreateResourceQuotaResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateResourceQuota")
+	}
+
+	var r0 *operations.CreateResourceQuotaResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateResourceQuotaRequest, ...operations.Option) (*operations.CreateResourceQuotaResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateResourceQuotaRequest, ...operations.Option) *operations.CreateResourceQuotaResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateResourceQuotaResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.CreateResourceQuotaRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_CreateResourceQuota_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateResourceQuota'
+type MockCloudGatewaysSDK_CreateResourceQuota_Call struct {
+	*mock.Call
+}
+
+// CreateResourceQuota is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request components.CreateResourceQuotaRequest
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) CreateResourceQuota(ctx any, request any, opts ...any) *MockCloudGatewaysSDK_CreateResourceQuota_Call {
+	return &MockCloudGatewaysSDK_CreateResourceQuota_Call{Call: _e.mock.On("CreateResourceQuota",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_CreateResourceQuota_Call) Run(run func(ctx context.Context, request components.CreateResourceQuotaRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreateResourceQuota_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 components.CreateResourceQuotaRequest
+		if args[1] != nil {
+			arg1 = args[1].(components.CreateResourceQuotaRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_CreateResourceQuota_Call) Return(createResourceQuotaResponse *operations.CreateResourceQuotaResponse, err error) *MockCloudGatewaysSDK_CreateResourceQuota_Call {
+	_c.Call.Return(createResourceQuotaResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_CreateResourceQuota_Call) RunAndReturn(run func(ctx context.Context, request components.CreateResourceQuotaRequest, opts ...operations.Option) (*operations.CreateResourceQuotaResponse, error)) *MockCloudGatewaysSDK_CreateResourceQuota_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // CreateTransitGateway provides a mock function for the type MockCloudGatewaysSDK
 func (_mock *MockCloudGatewaysSDK) CreateTransitGateway(ctx context.Context, networkID string, createTransitGatewayRequest components.CreateTransitGatewayRequest, opts ...operations.Option) (*operations.CreateTransitGatewayResponse, error) {
 	var tmpRet mock.Arguments
@@ -883,6 +1132,89 @@ func (_c *MockCloudGatewaysSDK_DeletePrivateDNS_Call) Return(deletePrivateDNSRes
 }
 
 func (_c *MockCloudGatewaysSDK_DeletePrivateDNS_Call) RunAndReturn(run func(ctx context.Context, networkID string, privateDNSID string, opts ...operations.Option) (*operations.DeletePrivateDNSResponse, error)) *MockCloudGatewaysSDK_DeletePrivateDNS_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteProviderAccount provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) DeleteProviderAccount(ctx context.Context, providerAccountID string, opts ...operations.Option) (*operations.DeleteProviderAccountResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, providerAccountID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, providerAccountID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteProviderAccount")
+	}
+
+	var r0 *operations.DeleteProviderAccountResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteProviderAccountResponse, error)); ok {
+		return returnFunc(ctx, providerAccountID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteProviderAccountResponse); ok {
+		r0 = returnFunc(ctx, providerAccountID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteProviderAccountResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, providerAccountID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_DeleteProviderAccount_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProviderAccount'
+type MockCloudGatewaysSDK_DeleteProviderAccount_Call struct {
+	*mock.Call
+}
+
+// DeleteProviderAccount is a helper method to define mock.On call
+//   - ctx context.Context
+//   - providerAccountID string
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) DeleteProviderAccount(ctx any, providerAccountID any, opts ...any) *MockCloudGatewaysSDK_DeleteProviderAccount_Call {
+	return &MockCloudGatewaysSDK_DeleteProviderAccount_Call{Call: _e.mock.On("DeleteProviderAccount",
+		append([]any{ctx, providerAccountID}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_DeleteProviderAccount_Call) Run(run func(ctx context.Context, providerAccountID string, opts ...operations.Option)) *MockCloudGatewaysSDK_DeleteProviderAccount_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_DeleteProviderAccount_Call) Return(deleteProviderAccountResponse *operations.DeleteProviderAccountResponse, err error) *MockCloudGatewaysSDK_DeleteProviderAccount_Call {
+	_c.Call.Return(deleteProviderAccountResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_DeleteProviderAccount_Call) RunAndReturn(run func(ctx context.Context, providerAccountID string, opts ...operations.Option) (*operations.DeleteProviderAccountResponse, error)) *MockCloudGatewaysSDK_DeleteProviderAccount_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3172,6 +3504,184 @@ func (_c *MockCloudGatewaysSDK_UpdatePrivateDNS_Call) Return(updatePrivateDNSRes
 }
 
 func (_c *MockCloudGatewaysSDK_UpdatePrivateDNS_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdatePrivateDNSRequest, opts ...operations.Option) (*operations.UpdatePrivateDNSResponse, error)) *MockCloudGatewaysSDK_UpdatePrivateDNS_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateResourceConfiguration provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) UpdateResourceConfiguration(ctx context.Context, resourceConfigurationID string, patchResourceConfigurationRequest components.PatchResourceConfigurationRequest, opts ...operations.Option) (*operations.UpdateResourceConfigurationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, resourceConfigurationID, patchResourceConfigurationRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, resourceConfigurationID, patchResourceConfigurationRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateResourceConfiguration")
+	}
+
+	var r0 *operations.UpdateResourceConfigurationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PatchResourceConfigurationRequest, ...operations.Option) (*operations.UpdateResourceConfigurationResponse, error)); ok {
+		return returnFunc(ctx, resourceConfigurationID, patchResourceConfigurationRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PatchResourceConfigurationRequest, ...operations.Option) *operations.UpdateResourceConfigurationResponse); ok {
+		r0 = returnFunc(ctx, resourceConfigurationID, patchResourceConfigurationRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateResourceConfigurationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.PatchResourceConfigurationRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, resourceConfigurationID, patchResourceConfigurationRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_UpdateResourceConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateResourceConfiguration'
+type MockCloudGatewaysSDK_UpdateResourceConfiguration_Call struct {
+	*mock.Call
+}
+
+// UpdateResourceConfiguration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - resourceConfigurationID string
+//   - patchResourceConfigurationRequest components.PatchResourceConfigurationRequest
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) UpdateResourceConfiguration(ctx any, resourceConfigurationID any, patchResourceConfigurationRequest any, opts ...any) *MockCloudGatewaysSDK_UpdateResourceConfiguration_Call {
+	return &MockCloudGatewaysSDK_UpdateResourceConfiguration_Call{Call: _e.mock.On("UpdateResourceConfiguration",
+		append([]any{ctx, resourceConfigurationID, patchResourceConfigurationRequest}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_UpdateResourceConfiguration_Call) Run(run func(ctx context.Context, resourceConfigurationID string, patchResourceConfigurationRequest components.PatchResourceConfigurationRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_UpdateResourceConfiguration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.PatchResourceConfigurationRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.PatchResourceConfigurationRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_UpdateResourceConfiguration_Call) Return(updateResourceConfigurationResponse *operations.UpdateResourceConfigurationResponse, err error) *MockCloudGatewaysSDK_UpdateResourceConfiguration_Call {
+	_c.Call.Return(updateResourceConfigurationResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_UpdateResourceConfiguration_Call) RunAndReturn(run func(ctx context.Context, resourceConfigurationID string, patchResourceConfigurationRequest components.PatchResourceConfigurationRequest, opts ...operations.Option) (*operations.UpdateResourceConfigurationResponse, error)) *MockCloudGatewaysSDK_UpdateResourceConfiguration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateResourceQuota provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) UpdateResourceQuota(ctx context.Context, resourceQuotaID string, patchResourceQuotaRequest components.PatchResourceQuotaRequest, opts ...operations.Option) (*operations.UpdateResourceQuotaResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, resourceQuotaID, patchResourceQuotaRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, resourceQuotaID, patchResourceQuotaRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateResourceQuota")
+	}
+
+	var r0 *operations.UpdateResourceQuotaResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PatchResourceQuotaRequest, ...operations.Option) (*operations.UpdateResourceQuotaResponse, error)); ok {
+		return returnFunc(ctx, resourceQuotaID, patchResourceQuotaRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PatchResourceQuotaRequest, ...operations.Option) *operations.UpdateResourceQuotaResponse); ok {
+		r0 = returnFunc(ctx, resourceQuotaID, patchResourceQuotaRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateResourceQuotaResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.PatchResourceQuotaRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, resourceQuotaID, patchResourceQuotaRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_UpdateResourceQuota_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateResourceQuota'
+type MockCloudGatewaysSDK_UpdateResourceQuota_Call struct {
+	*mock.Call
+}
+
+// UpdateResourceQuota is a helper method to define mock.On call
+//   - ctx context.Context
+//   - resourceQuotaID string
+//   - patchResourceQuotaRequest components.PatchResourceQuotaRequest
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) UpdateResourceQuota(ctx any, resourceQuotaID any, patchResourceQuotaRequest any, opts ...any) *MockCloudGatewaysSDK_UpdateResourceQuota_Call {
+	return &MockCloudGatewaysSDK_UpdateResourceQuota_Call{Call: _e.mock.On("UpdateResourceQuota",
+		append([]any{ctx, resourceQuotaID, patchResourceQuotaRequest}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_UpdateResourceQuota_Call) Run(run func(ctx context.Context, resourceQuotaID string, patchResourceQuotaRequest components.PatchResourceQuotaRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_UpdateResourceQuota_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.PatchResourceQuotaRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.PatchResourceQuotaRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_UpdateResourceQuota_Call) Return(updateResourceQuotaResponse *operations.UpdateResourceQuotaResponse, err error) *MockCloudGatewaysSDK_UpdateResourceQuota_Call {
+	_c.Call.Return(updateResourceQuotaResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_UpdateResourceQuota_Call) RunAndReturn(run func(ctx context.Context, resourceQuotaID string, patchResourceQuotaRequest components.PatchResourceQuotaRequest, opts ...operations.Option) (*operations.UpdateResourceQuotaResponse, error)) *MockCloudGatewaysSDK_UpdateResourceQuota_Call {
 	_c.Call.Return(run)
 	return _c
 }

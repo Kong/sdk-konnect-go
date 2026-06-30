@@ -5,18 +5,35 @@ package sdkkonnectgo
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // CatalogResourcesSDK is a generated interface.
 type CatalogResourcesSDK interface {
-	// UpdateResource - Update Resource
-	// Updates a resource.
-	UpdateResource(ctx context.Context, request operations.UpdateResourceRequest, opts ...operations.Option) (*operations.UpdateResourceResponse, error)
 	// ListResources - List Resources
 	// Returns a paginated collection of resources.
 	ListResources(ctx context.Context, request operations.ListResourcesRequest, opts ...operations.Option) (*operations.ListResourcesResponse, error)
 	// FetchResource - Get a Resource
 	// Fetches a resource by ID.
 	FetchResource(ctx context.Context, id string, opts ...operations.Option) (*operations.FetchResourceResponse, error)
+	// InitializeResource - Initialize Resource
+	// Initializes a placeholder resource. This operation is typically used in GitOps workflows or other infrastructure-as-code setups where a resource is declared before it is fully discovered.
+	// The initialized resource acts as a stub — it contains minimal identifying metadata and does not yet include the full set of attributes typically populated by integration-based discovery.
+	// After initialization, the resource will be automatically hydrated with additional data by catalog integrations responsible for discovering and maintaining its up-to-date state.
+	// This API is not intended for direct resource management, but rather for signaling the intent to track a given resource, allowing integrations to take over and populate it asynchronously.
+	InitializeResource(ctx context.Context, integrationInstanceID string, initializeCatalogResource components.InitializeCatalogResource, opts ...operations.Option) (*operations.InitializeResourceResponse, error)
+	// UpsertResources - Upsert Resources
+	// Upserts resources. If a resource with the same `externalId` already exists for the given integration instance, it will be updated; otherwise, a new resource will be created.
+	// When a resource's backing definition in the integration has `integration_data_schema` populated, the `integration_data` value provided for that resource will be validated against `integration_data_schema` during upsert operations.
+	// When a resource's backing definition in the integration has no `integration_data_schema` populated (i.e. null), no validation will be performed on the `integration_data` value provided for that resource.
+	// This API is typically used by service catalog integration applications to report discovered resources back to the catalog.
+	UpsertResources(ctx context.Context, integrationInstanceID string, upsertCatalogResourcesRequest components.UpsertCatalogResourcesRequest, opts ...operations.Option) (*operations.UpsertResourcesResponse, error)
+	// DeleteResources - Delete Resources
+	// Delete up to 100 resources which belong to the related integration instance.
+	// This API is intended only for service catalog integration applications.
+	DeleteResources(ctx context.Context, id string, deleteCatalogResources components.DeleteCatalogResources, opts ...operations.Option) (*operations.DeleteResourcesResponse, error)
+	// UpdateResource - Update Resource
+	// Updates a resource.
+	UpdateResource(ctx context.Context, request operations.UpdateResourceRequest, opts ...operations.Option) (*operations.UpdateResourceResponse, error)
 }

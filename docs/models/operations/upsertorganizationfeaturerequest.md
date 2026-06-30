@@ -1,0 +1,9 @@
+# UpsertOrganizationFeatureRequest
+
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `FeatureName`                                                                                               | [components.FeatureName](../../models/components/featurename.md)                                            | :heavy_check_mark:                                                                                          | The feature name for the configuration.                                                                     |
+| `UpsertOrganizationFeatureRequest`                                                                          | [*components.UpsertOrganizationFeatureRequest](../../models/components/upsertorganizationfeaturerequest.md) | :heavy_minus_sign:                                                                                          | N/A                                                                                                         |

@@ -25,4 +25,19 @@ type ConfigStoresSDK interface {
 	// DeleteConfigStore - Delete Config Store
 	// Removes a config store
 	DeleteConfigStore(ctx context.Context, request operations.DeleteConfigStoreRequest, opts ...operations.Option) (*operations.DeleteConfigStoreResponse, error)
+	// ListConfigStoresInWorkspace - List all Config Stores for a workspace
+	// Returns a collection of all Config Stores associated with a workspace.
+	ListConfigStoresInWorkspace(ctx context.Context, request operations.ListConfigStoresInWorkspaceRequest, opts ...operations.Option) (*operations.ListConfigStoresInWorkspaceResponse, error)
+	// CreateConfigStoreInWorkspace - Create Config Store in a workspace
+	// Create a Config Store in a workspace.
+	CreateConfigStoreInWorkspace(ctx context.Context, request operations.CreateConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.CreateConfigStoreInWorkspaceResponse, error)
+	// GetConfigStoreInWorkspace - Get a Config Store in a workspace
+	// Returns a Config Store in a workspace.
+	GetConfigStoreInWorkspace(ctx context.Context, request operations.GetConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.GetConfigStoreInWorkspaceResponse, error)
+	// UpdateConfigStoreInWorkspace - Update a Config Store in a workspace
+	// Updates a Config Store in a workspace.
+	UpdateConfigStoreInWorkspace(ctx context.Context, request operations.UpdateConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.UpdateConfigStoreInWorkspaceResponse, error)
+	// DeleteConfigStoreInWorkspace - Delete Config Store in a workspace
+	// Removes a Config Store in a workspace.
+	DeleteConfigStoreInWorkspace(ctx context.Context, request operations.DeleteConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteConfigStoreInWorkspaceResponse, error)
 }

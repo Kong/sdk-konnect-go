@@ -1,0 +1,24 @@
+# MCPResourceSourceAPICatalogType
+
+The type of the MCP resource source.
+
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.MCPResourceSourceAPICatalogTypeAPICatalog
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.MCPResourceSourceAPICatalogType("custom_value")
+```
+
+
+## Values
+
+| Name                                        | Value                                       |
+| ------------------------------------------- | ------------------------------------------- |
+| `MCPResourceSourceAPICatalogTypeAPICatalog` | api_catalog                                 |
+| `MCPResourceSourceAPICatalogTypeRaw`        | raw                                         |

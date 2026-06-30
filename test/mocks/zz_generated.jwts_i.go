@@ -121,6 +121,89 @@ func (_c *MockJWTsSDK_CreateJwtWithConsumer_Call) RunAndReturn(run func(ctx cont
 	return _c
 }
 
+// CreateJwtWithConsumerInWorkspace provides a mock function for the type MockJWTsSDK
+func (_mock *MockJWTsSDK) CreateJwtWithConsumerInWorkspace(ctx context.Context, request operations.CreateJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateJwtWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateJwtWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.CreateJwtWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateJwtWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.CreateJwtWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateJwtWithConsumerInWorkspaceRequest, ...operations.Option) *operations.CreateJwtWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateJwtWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateJwtWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateJwtWithConsumerInWorkspace'
+type MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateJwtWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateJwtWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockJWTsSDK_Expecter) CreateJwtWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call {
+	return &MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call{Call: _e.mock.On("CreateJwtWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateJwtWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateJwtWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateJwtWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call) Return(createJwtWithConsumerInWorkspaceResponse *operations.CreateJwtWithConsumerInWorkspaceResponse, err error) *MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call {
+	_c.Call.Return(createJwtWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateJwtWithConsumerInWorkspaceResponse, error)) *MockJWTsSDK_CreateJwtWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteJwtWithConsumer provides a mock function for the type MockJWTsSDK
 func (_mock *MockJWTsSDK) DeleteJwtWithConsumer(ctx context.Context, request operations.DeleteJwtWithConsumerRequest, opts ...operations.Option) (*operations.DeleteJwtWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -200,6 +283,89 @@ func (_c *MockJWTsSDK_DeleteJwtWithConsumer_Call) Return(deleteJwtWithConsumerRe
 }
 
 func (_c *MockJWTsSDK_DeleteJwtWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteJwtWithConsumerRequest, opts ...operations.Option) (*operations.DeleteJwtWithConsumerResponse, error)) *MockJWTsSDK_DeleteJwtWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteJwtWithConsumerInWorkspace provides a mock function for the type MockJWTsSDK
+func (_mock *MockJWTsSDK) DeleteJwtWithConsumerInWorkspace(ctx context.Context, request operations.DeleteJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteJwtWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteJwtWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.DeleteJwtWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteJwtWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.DeleteJwtWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteJwtWithConsumerInWorkspaceRequest, ...operations.Option) *operations.DeleteJwtWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteJwtWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteJwtWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteJwtWithConsumerInWorkspace'
+type MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteJwtWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteJwtWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockJWTsSDK_Expecter) DeleteJwtWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call {
+	return &MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call{Call: _e.mock.On("DeleteJwtWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteJwtWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteJwtWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteJwtWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call) Return(deleteJwtWithConsumerInWorkspaceResponse *operations.DeleteJwtWithConsumerInWorkspaceResponse, err error) *MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call {
+	_c.Call.Return(deleteJwtWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteJwtWithConsumerInWorkspaceResponse, error)) *MockJWTsSDK_DeleteJwtWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -293,6 +459,89 @@ func (_c *MockJWTsSDK_GetJwt_Call) RunAndReturn(run func(ctx context.Context, jw
 	return _c
 }
 
+// GetJwtInWorkspace provides a mock function for the type MockJWTsSDK
+func (_mock *MockJWTsSDK) GetJwtInWorkspace(ctx context.Context, request operations.GetJwtInWorkspaceRequest, opts ...operations.Option) (*operations.GetJwtInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetJwtInWorkspace")
+	}
+
+	var r0 *operations.GetJwtInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetJwtInWorkspaceRequest, ...operations.Option) (*operations.GetJwtInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetJwtInWorkspaceRequest, ...operations.Option) *operations.GetJwtInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetJwtInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetJwtInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockJWTsSDK_GetJwtInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetJwtInWorkspace'
+type MockJWTsSDK_GetJwtInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetJwtInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetJwtInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockJWTsSDK_Expecter) GetJwtInWorkspace(ctx any, request any, opts ...any) *MockJWTsSDK_GetJwtInWorkspace_Call {
+	return &MockJWTsSDK_GetJwtInWorkspace_Call{Call: _e.mock.On("GetJwtInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockJWTsSDK_GetJwtInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetJwtInWorkspaceRequest, opts ...operations.Option)) *MockJWTsSDK_GetJwtInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetJwtInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetJwtInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockJWTsSDK_GetJwtInWorkspace_Call) Return(getJwtInWorkspaceResponse *operations.GetJwtInWorkspaceResponse, err error) *MockJWTsSDK_GetJwtInWorkspace_Call {
+	_c.Call.Return(getJwtInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockJWTsSDK_GetJwtInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetJwtInWorkspaceRequest, opts ...operations.Option) (*operations.GetJwtInWorkspaceResponse, error)) *MockJWTsSDK_GetJwtInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetJwtWithConsumer provides a mock function for the type MockJWTsSDK
 func (_mock *MockJWTsSDK) GetJwtWithConsumer(ctx context.Context, request operations.GetJwtWithConsumerRequest, opts ...operations.Option) (*operations.GetJwtWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -372,6 +621,89 @@ func (_c *MockJWTsSDK_GetJwtWithConsumer_Call) Return(getJwtWithConsumerResponse
 }
 
 func (_c *MockJWTsSDK_GetJwtWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.GetJwtWithConsumerRequest, opts ...operations.Option) (*operations.GetJwtWithConsumerResponse, error)) *MockJWTsSDK_GetJwtWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetJwtWithConsumerInWorkspace provides a mock function for the type MockJWTsSDK
+func (_mock *MockJWTsSDK) GetJwtWithConsumerInWorkspace(ctx context.Context, request operations.GetJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetJwtWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetJwtWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.GetJwtWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetJwtWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.GetJwtWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetJwtWithConsumerInWorkspaceRequest, ...operations.Option) *operations.GetJwtWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetJwtWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetJwtWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetJwtWithConsumerInWorkspace'
+type MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetJwtWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetJwtWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockJWTsSDK_Expecter) GetJwtWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call {
+	return &MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call{Call: _e.mock.On("GetJwtWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetJwtWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetJwtWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetJwtWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call) Return(getJwtWithConsumerInWorkspaceResponse *operations.GetJwtWithConsumerInWorkspaceResponse, err error) *MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call {
+	_c.Call.Return(getJwtWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetJwtWithConsumerInWorkspaceResponse, error)) *MockJWTsSDK_GetJwtWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -459,6 +791,89 @@ func (_c *MockJWTsSDK_ListJwt_Call) RunAndReturn(run func(ctx context.Context, r
 	return _c
 }
 
+// ListJwtInWorkspace provides a mock function for the type MockJWTsSDK
+func (_mock *MockJWTsSDK) ListJwtInWorkspace(ctx context.Context, request operations.ListJwtInWorkspaceRequest, opts ...operations.Option) (*operations.ListJwtInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListJwtInWorkspace")
+	}
+
+	var r0 *operations.ListJwtInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListJwtInWorkspaceRequest, ...operations.Option) (*operations.ListJwtInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListJwtInWorkspaceRequest, ...operations.Option) *operations.ListJwtInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListJwtInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListJwtInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockJWTsSDK_ListJwtInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListJwtInWorkspace'
+type MockJWTsSDK_ListJwtInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListJwtInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListJwtInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockJWTsSDK_Expecter) ListJwtInWorkspace(ctx any, request any, opts ...any) *MockJWTsSDK_ListJwtInWorkspace_Call {
+	return &MockJWTsSDK_ListJwtInWorkspace_Call{Call: _e.mock.On("ListJwtInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockJWTsSDK_ListJwtInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListJwtInWorkspaceRequest, opts ...operations.Option)) *MockJWTsSDK_ListJwtInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListJwtInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListJwtInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockJWTsSDK_ListJwtInWorkspace_Call) Return(listJwtInWorkspaceResponse *operations.ListJwtInWorkspaceResponse, err error) *MockJWTsSDK_ListJwtInWorkspace_Call {
+	_c.Call.Return(listJwtInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockJWTsSDK_ListJwtInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListJwtInWorkspaceRequest, opts ...operations.Option) (*operations.ListJwtInWorkspaceResponse, error)) *MockJWTsSDK_ListJwtInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListJwtWithConsumer provides a mock function for the type MockJWTsSDK
 func (_mock *MockJWTsSDK) ListJwtWithConsumer(ctx context.Context, request operations.ListJwtWithConsumerRequest, opts ...operations.Option) (*operations.ListJwtWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -542,6 +957,89 @@ func (_c *MockJWTsSDK_ListJwtWithConsumer_Call) RunAndReturn(run func(ctx contex
 	return _c
 }
 
+// ListJwtWithConsumerInWorkspace provides a mock function for the type MockJWTsSDK
+func (_mock *MockJWTsSDK) ListJwtWithConsumerInWorkspace(ctx context.Context, request operations.ListJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListJwtWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListJwtWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.ListJwtWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListJwtWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.ListJwtWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListJwtWithConsumerInWorkspaceRequest, ...operations.Option) *operations.ListJwtWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListJwtWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListJwtWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListJwtWithConsumerInWorkspace'
+type MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListJwtWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListJwtWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockJWTsSDK_Expecter) ListJwtWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call {
+	return &MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call{Call: _e.mock.On("ListJwtWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListJwtWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListJwtWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListJwtWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call) Return(listJwtWithConsumerInWorkspaceResponse *operations.ListJwtWithConsumerInWorkspaceResponse, err error) *MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call {
+	_c.Call.Return(listJwtWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListJwtWithConsumerInWorkspaceResponse, error)) *MockJWTsSDK_ListJwtWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertJwtWithConsumer provides a mock function for the type MockJWTsSDK
 func (_mock *MockJWTsSDK) UpsertJwtWithConsumer(ctx context.Context, request operations.UpsertJwtWithConsumerRequest, opts ...operations.Option) (*operations.UpsertJwtWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -621,6 +1119,89 @@ func (_c *MockJWTsSDK_UpsertJwtWithConsumer_Call) Return(upsertJwtWithConsumerRe
 }
 
 func (_c *MockJWTsSDK_UpsertJwtWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertJwtWithConsumerRequest, opts ...operations.Option) (*operations.UpsertJwtWithConsumerResponse, error)) *MockJWTsSDK_UpsertJwtWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertJwtWithConsumerInWorkspace provides a mock function for the type MockJWTsSDK
+func (_mock *MockJWTsSDK) UpsertJwtWithConsumerInWorkspace(ctx context.Context, request operations.UpsertJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertJwtWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertJwtWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.UpsertJwtWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertJwtWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.UpsertJwtWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertJwtWithConsumerInWorkspaceRequest, ...operations.Option) *operations.UpsertJwtWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertJwtWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertJwtWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertJwtWithConsumerInWorkspace'
+type MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertJwtWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertJwtWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockJWTsSDK_Expecter) UpsertJwtWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call {
+	return &MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call{Call: _e.mock.On("UpsertJwtWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertJwtWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertJwtWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertJwtWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call) Return(upsertJwtWithConsumerInWorkspaceResponse *operations.UpsertJwtWithConsumerInWorkspaceResponse, err error) *MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call {
+	_c.Call.Return(upsertJwtWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertJwtWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertJwtWithConsumerInWorkspaceResponse, error)) *MockJWTsSDK_UpsertJwtWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

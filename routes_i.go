@@ -11,6 +11,36 @@ import (
 
 // RoutesSDK is a generated interface.
 type RoutesSDK interface {
+	// ListRouteInWorkspace - List all Routes in a workspace
+	// List all Routes in a workspace
+	ListRouteInWorkspace(ctx context.Context, request operations.ListRouteInWorkspaceRequest, opts ...operations.Option) (*operations.ListRouteInWorkspaceResponse, error)
+	// CreateRouteInWorkspace - Create a new Route in a workspace
+	// Create a new Route in a workspace
+	CreateRouteInWorkspace(ctx context.Context, request operations.CreateRouteInWorkspaceRequest, opts ...operations.Option) (*operations.CreateRouteInWorkspaceResponse, error)
+	// DeleteRouteInWorkspace - Delete a Route in a workspace
+	// Delete a Route in a workspace
+	DeleteRouteInWorkspace(ctx context.Context, request operations.DeleteRouteInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteRouteInWorkspaceResponse, error)
+	// GetRouteInWorkspace - Get a Route in a workspace
+	// Get a Route using ID or name in a workspace.
+	GetRouteInWorkspace(ctx context.Context, request operations.GetRouteInWorkspaceRequest, opts ...operations.Option) (*operations.GetRouteInWorkspaceResponse, error)
+	// UpsertRouteInWorkspace - Upsert a Route in a workspace
+	// Create or Update Route using ID or name in a workspace.
+	UpsertRouteInWorkspace(ctx context.Context, request operations.UpsertRouteInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertRouteInWorkspaceResponse, error)
+	// ListRouteWithServiceInWorkspace - List all Routes associated with a Service in a workspace
+	// List all Routes associated with a Service in a workspace
+	ListRouteWithServiceInWorkspace(ctx context.Context, request operations.ListRouteWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.ListRouteWithServiceInWorkspaceResponse, error)
+	// CreateRouteWithServiceInWorkspace - Create a new Route associated with a Service in a workspace
+	// Create a new Route associated with a Service in a workspace
+	CreateRouteWithServiceInWorkspace(ctx context.Context, request operations.CreateRouteWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.CreateRouteWithServiceInWorkspaceResponse, error)
+	// DeleteRouteWithServiceInWorkspace - Delete a a Route associated with a Service in a workspace
+	// Delete a a Route associated with a Service using ID or name in a workspace.
+	DeleteRouteWithServiceInWorkspace(ctx context.Context, request operations.DeleteRouteWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteRouteWithServiceInWorkspaceResponse, error)
+	// GetRouteWithServiceInWorkspace - Get a Route associated with a Service in a workspace
+	// Get a Route associated with a Service using ID or name in a workspace.
+	GetRouteWithServiceInWorkspace(ctx context.Context, request operations.GetRouteWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.GetRouteWithServiceInWorkspaceResponse, error)
+	// UpsertRouteWithServiceInWorkspace - Upsert a Route associated with a Service in a workspace
+	// Create or Update a Route associated with a Service using ID or name in a workspace.
+	UpsertRouteWithServiceInWorkspace(ctx context.Context, request operations.UpsertRouteWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertRouteWithServiceInWorkspaceResponse, error)
 	// ListRoute - List all Routes
 	// List all Routes
 	ListRoute(ctx context.Context, request operations.ListRouteRequest, opts ...operations.Option) (*operations.ListRouteResponse, error)

@@ -13,9 +13,11 @@ func TestComponentsKeyFieldTypes(t *testing.T) {
 
 	var value components.Key
 	var _ *int64 = value.CreatedAt
+	var _ *string = value.Description
 	var _ *string = value.ID
 	var _ *string = value.Jwk
 	var _ string = value.Kid
+	var _ map[string]any = value.ManagedBy
 	var _ *string = value.Name
 	var _ *components.Pem = value.Pem
 	var _ *components.Set = value.Set

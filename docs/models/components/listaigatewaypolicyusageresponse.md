@@ -1,0 +1,14 @@
+# ListAIGatewayPolicyUsageResponse
+
+A successful response listing usage of a Policy.
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `Agents`                                                                                 | [][components.AIGatewayAgent](../../models/components/aigatewayagent.md)                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `Consumers`                                                                              | [][components.AIGatewayConsumer](../../models/components/aigatewayconsumer.md)           | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `ConsumerGroups`                                                                         | [][components.AIGatewayConsumerGroup](../../models/components/aigatewayconsumergroup.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `Models`                                                                                 | [][components.AIGatewayModel](../../models/components/aigatewaymodel.md)                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `McpServers`                                                                             | [][components.AIGatewayMCPServer](../../models/components/aigatewaymcpserver.md)         | :heavy_check_mark:                                                                       | N/A                                                                                      |

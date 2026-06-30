@@ -11,6 +11,36 @@ import (
 
 // SNIsSDK is a generated interface.
 type SNIsSDK interface {
+	// ListSniWithCertificateInWorkspace - List all SNIs associated with a Certificate in a workspace
+	// List all SNIs associated with a Certificate in a workspace
+	ListSniWithCertificateInWorkspace(ctx context.Context, request operations.ListSniWithCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.ListSniWithCertificateInWorkspaceResponse, error)
+	// CreateSniWithCertificateInWorkspace - Create a new SNI associated with a Certificate in a workspace
+	// Create a new SNI associated with a Certificate in a workspace
+	CreateSniWithCertificateInWorkspace(ctx context.Context, request operations.CreateSniWithCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.CreateSniWithCertificateInWorkspaceResponse, error)
+	// DeleteSniWithCertificateInWorkspace - Delete a an SNI associated with a Certificate in a workspace
+	// Delete a an SNI associated with a Certificate using ID or name in a workspace.
+	DeleteSniWithCertificateInWorkspace(ctx context.Context, request operations.DeleteSniWithCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteSniWithCertificateInWorkspaceResponse, error)
+	// GetSniWithCertificateInWorkspace - Get an SNI associated with a Certificate in a workspace
+	// Get an SNI associated with a Certificate using ID or name in a workspace.
+	GetSniWithCertificateInWorkspace(ctx context.Context, request operations.GetSniWithCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.GetSniWithCertificateInWorkspaceResponse, error)
+	// UpsertSniWithCertificateInWorkspace - Upsert an SNI associated with a Certificate in a workspace
+	// Create or Update an SNI associated with a Certificate using ID or name in a workspace.
+	UpsertSniWithCertificateInWorkspace(ctx context.Context, request operations.UpsertSniWithCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertSniWithCertificateInWorkspaceResponse, error)
+	// ListSniInWorkspace - List all SNIs in a workspace
+	// List all SNIs in a workspace
+	ListSniInWorkspace(ctx context.Context, request operations.ListSniInWorkspaceRequest, opts ...operations.Option) (*operations.ListSniInWorkspaceResponse, error)
+	// CreateSniInWorkspace - Create a new SNI in a workspace
+	// Create a new SNI in a workspace
+	CreateSniInWorkspace(ctx context.Context, request operations.CreateSniInWorkspaceRequest, opts ...operations.Option) (*operations.CreateSniInWorkspaceResponse, error)
+	// DeleteSniInWorkspace - Delete an SNI in a workspace
+	// Delete an SNI in a workspace
+	DeleteSniInWorkspace(ctx context.Context, request operations.DeleteSniInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteSniInWorkspaceResponse, error)
+	// GetSniInWorkspace - Get an SNI in a workspace
+	// Get an SNI using ID or name in a workspace.
+	GetSniInWorkspace(ctx context.Context, request operations.GetSniInWorkspaceRequest, opts ...operations.Option) (*operations.GetSniInWorkspaceResponse, error)
+	// UpsertSniInWorkspace - Upsert a SNI in a workspace
+	// Create or Update SNI using ID or name in a workspace.
+	UpsertSniInWorkspace(ctx context.Context, request operations.UpsertSniInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertSniInWorkspaceResponse, error)
 	// ListSniWithCertificate - List all SNIs associated with a Certificate
 	// List all SNIs associated with a Certificate
 	ListSniWithCertificate(ctx context.Context, request operations.ListSniWithCertificateRequest, opts ...operations.Option) (*operations.ListSniWithCertificateResponse, error)

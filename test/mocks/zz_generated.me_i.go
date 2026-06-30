@@ -7,6 +7,7 @@ package mocks
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -36,6 +37,83 @@ type MockMeSDK_Expecter struct {
 
 func (_m *MockMeSDK) EXPECT() *MockMeSDK_Expecter {
 	return &MockMeSDK_Expecter{mock: &_m.Mock}
+}
+
+// DeleteUsersMe provides a mock function for the type MockMeSDK
+func (_mock *MockMeSDK) DeleteUsersMe(ctx context.Context, opts ...operations.Option) (*operations.DeleteUsersMeResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, opts)
+	} else {
+		tmpRet = _mock.Called(ctx)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteUsersMe")
+	}
+
+	var r0 *operations.DeleteUsersMeResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, ...operations.Option) (*operations.DeleteUsersMeResponse, error)); ok {
+		return returnFunc(ctx, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, ...operations.Option) *operations.DeleteUsersMeResponse); ok {
+		r0 = returnFunc(ctx, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteUsersMeResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMeSDK_DeleteUsersMe_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteUsersMe'
+type MockMeSDK_DeleteUsersMe_Call struct {
+	*mock.Call
+}
+
+// DeleteUsersMe is a helper method to define mock.On call
+//   - ctx context.Context
+//   - opts ...operations.Option
+func (_e *MockMeSDK_Expecter) DeleteUsersMe(ctx any, opts ...any) *MockMeSDK_DeleteUsersMe_Call {
+	return &MockMeSDK_DeleteUsersMe_Call{Call: _e.mock.On("DeleteUsersMe",
+		append([]any{ctx}, opts...)...)}
+}
+
+func (_c *MockMeSDK_DeleteUsersMe_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockMeSDK_DeleteUsersMe_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 1 {
+			variadicArgs = args[1].([]operations.Option)
+		}
+		arg1 = variadicArgs
+		run(
+			arg0,
+			arg1...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMeSDK_DeleteUsersMe_Call) Return(deleteUsersMeResponse *operations.DeleteUsersMeResponse, err error) *MockMeSDK_DeleteUsersMe_Call {
+	_c.Call.Return(deleteUsersMeResponse, err)
+	return _c
+}
+
+func (_c *MockMeSDK_DeleteUsersMe_Call) RunAndReturn(run func(ctx context.Context, opts ...operations.Option) (*operations.DeleteUsersMeResponse, error)) *MockMeSDK_DeleteUsersMe_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // GetOrganizationsMe provides a mock function for the type MockMeSDK
@@ -188,6 +266,255 @@ func (_c *MockMeSDK_GetUsersMe_Call) Return(getUsersMeResponse *operations.GetUs
 }
 
 func (_c *MockMeSDK_GetUsersMe_Call) RunAndReturn(run func(ctx context.Context, opts ...operations.Option) (*operations.GetUsersMeResponse, error)) *MockMeSDK_GetUsersMe_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetUsersMePermissions provides a mock function for the type MockMeSDK
+func (_mock *MockMeSDK) GetUsersMePermissions(ctx context.Context, filter *operations.GetUsersMePermissionsQueryParamFilter, opts ...operations.Option) (*operations.GetUsersMePermissionsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, filter, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, filter)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetUsersMePermissions")
+	}
+
+	var r0 *operations.GetUsersMePermissionsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *operations.GetUsersMePermissionsQueryParamFilter, ...operations.Option) (*operations.GetUsersMePermissionsResponse, error)); ok {
+		return returnFunc(ctx, filter, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *operations.GetUsersMePermissionsQueryParamFilter, ...operations.Option) *operations.GetUsersMePermissionsResponse); ok {
+		r0 = returnFunc(ctx, filter, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetUsersMePermissionsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *operations.GetUsersMePermissionsQueryParamFilter, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, filter, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMeSDK_GetUsersMePermissions_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetUsersMePermissions'
+type MockMeSDK_GetUsersMePermissions_Call struct {
+	*mock.Call
+}
+
+// GetUsersMePermissions is a helper method to define mock.On call
+//   - ctx context.Context
+//   - filter *operations.GetUsersMePermissionsQueryParamFilter
+//   - opts ...operations.Option
+func (_e *MockMeSDK_Expecter) GetUsersMePermissions(ctx any, filter any, opts ...any) *MockMeSDK_GetUsersMePermissions_Call {
+	return &MockMeSDK_GetUsersMePermissions_Call{Call: _e.mock.On("GetUsersMePermissions",
+		append([]any{ctx, filter}, opts...)...)}
+}
+
+func (_c *MockMeSDK_GetUsersMePermissions_Call) Run(run func(ctx context.Context, filter *operations.GetUsersMePermissionsQueryParamFilter, opts ...operations.Option)) *MockMeSDK_GetUsersMePermissions_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *operations.GetUsersMePermissionsQueryParamFilter
+		if args[1] != nil {
+			arg1 = args[1].(*operations.GetUsersMePermissionsQueryParamFilter)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMeSDK_GetUsersMePermissions_Call) Return(getUsersMePermissionsResponse *operations.GetUsersMePermissionsResponse, err error) *MockMeSDK_GetUsersMePermissions_Call {
+	_c.Call.Return(getUsersMePermissionsResponse, err)
+	return _c
+}
+
+func (_c *MockMeSDK_GetUsersMePermissions_Call) RunAndReturn(run func(ctx context.Context, filter *operations.GetUsersMePermissionsQueryParamFilter, opts ...operations.Option) (*operations.GetUsersMePermissionsResponse, error)) *MockMeSDK_GetUsersMePermissions_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// PatchUsersMe provides a mock function for the type MockMeSDK
+func (_mock *MockMeSDK) PatchUsersMe(ctx context.Context, request *components.UpdateUser, opts ...operations.Option) (*operations.PatchUsersMeResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for PatchUsersMe")
+	}
+
+	var r0 *operations.PatchUsersMeResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.UpdateUser, ...operations.Option) (*operations.PatchUsersMeResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.UpdateUser, ...operations.Option) *operations.PatchUsersMeResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.PatchUsersMeResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *components.UpdateUser, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMeSDK_PatchUsersMe_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PatchUsersMe'
+type MockMeSDK_PatchUsersMe_Call struct {
+	*mock.Call
+}
+
+// PatchUsersMe is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request *components.UpdateUser
+//   - opts ...operations.Option
+func (_e *MockMeSDK_Expecter) PatchUsersMe(ctx any, request any, opts ...any) *MockMeSDK_PatchUsersMe_Call {
+	return &MockMeSDK_PatchUsersMe_Call{Call: _e.mock.On("PatchUsersMe",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMeSDK_PatchUsersMe_Call) Run(run func(ctx context.Context, request *components.UpdateUser, opts ...operations.Option)) *MockMeSDK_PatchUsersMe_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *components.UpdateUser
+		if args[1] != nil {
+			arg1 = args[1].(*components.UpdateUser)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMeSDK_PatchUsersMe_Call) Return(patchUsersMeResponse *operations.PatchUsersMeResponse, err error) *MockMeSDK_PatchUsersMe_Call {
+	_c.Call.Return(patchUsersMeResponse, err)
+	return _c
+}
+
+func (_c *MockMeSDK_PatchUsersMe_Call) RunAndReturn(run func(ctx context.Context, request *components.UpdateUser, opts ...operations.Option) (*operations.PatchUsersMeResponse, error)) *MockMeSDK_PatchUsersMe_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateOrganizationsMe provides a mock function for the type MockMeSDK
+func (_mock *MockMeSDK) UpdateOrganizationsMe(ctx context.Context, request *components.UpdateOrganization, opts ...operations.Option) (*operations.UpdateOrganizationsMeResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateOrganizationsMe")
+	}
+
+	var r0 *operations.UpdateOrganizationsMeResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.UpdateOrganization, ...operations.Option) (*operations.UpdateOrganizationsMeResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.UpdateOrganization, ...operations.Option) *operations.UpdateOrganizationsMeResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateOrganizationsMeResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *components.UpdateOrganization, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMeSDK_UpdateOrganizationsMe_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrganizationsMe'
+type MockMeSDK_UpdateOrganizationsMe_Call struct {
+	*mock.Call
+}
+
+// UpdateOrganizationsMe is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request *components.UpdateOrganization
+//   - opts ...operations.Option
+func (_e *MockMeSDK_Expecter) UpdateOrganizationsMe(ctx any, request any, opts ...any) *MockMeSDK_UpdateOrganizationsMe_Call {
+	return &MockMeSDK_UpdateOrganizationsMe_Call{Call: _e.mock.On("UpdateOrganizationsMe",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMeSDK_UpdateOrganizationsMe_Call) Run(run func(ctx context.Context, request *components.UpdateOrganization, opts ...operations.Option)) *MockMeSDK_UpdateOrganizationsMe_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *components.UpdateOrganization
+		if args[1] != nil {
+			arg1 = args[1].(*components.UpdateOrganization)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMeSDK_UpdateOrganizationsMe_Call) Return(updateOrganizationsMeResponse *operations.UpdateOrganizationsMeResponse, err error) *MockMeSDK_UpdateOrganizationsMe_Call {
+	_c.Call.Return(updateOrganizationsMeResponse, err)
+	return _c
+}
+
+func (_c *MockMeSDK_UpdateOrganizationsMe_Call) RunAndReturn(run func(ctx context.Context, request *components.UpdateOrganization, opts ...operations.Option) (*operations.UpdateOrganizationsMeResponse, error)) *MockMeSDK_UpdateOrganizationsMe_Call {
 	_c.Call.Return(run)
 	return _c
 }

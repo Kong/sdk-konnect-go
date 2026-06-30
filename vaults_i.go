@@ -11,6 +11,21 @@ import (
 
 // VaultsSDK is a generated interface.
 type VaultsSDK interface {
+	// ListVaultInWorkspace - List all Vaults in a workspace
+	// List all Vaults in a workspace
+	ListVaultInWorkspace(ctx context.Context, request operations.ListVaultInWorkspaceRequest, opts ...operations.Option) (*operations.ListVaultInWorkspaceResponse, error)
+	// CreateVaultInWorkspace - Create a new Vault in a workspace
+	// Create a new Vault in a workspace
+	CreateVaultInWorkspace(ctx context.Context, request operations.CreateVaultInWorkspaceRequest, opts ...operations.Option) (*operations.CreateVaultInWorkspaceResponse, error)
+	// DeleteVaultInWorkspace - Delete a Vault in a workspace
+	// Delete a Vault in a workspace
+	DeleteVaultInWorkspace(ctx context.Context, request operations.DeleteVaultInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteVaultInWorkspaceResponse, error)
+	// GetVaultInWorkspace - Get a Vault in a workspace
+	// Get a Vault using ID or prefix in a workspace.
+	GetVaultInWorkspace(ctx context.Context, request operations.GetVaultInWorkspaceRequest, opts ...operations.Option) (*operations.GetVaultInWorkspaceResponse, error)
+	// UpsertVaultInWorkspace - Upsert a Vault in a workspace
+	// Create or Update Vault using ID or prefix in a workspace.
+	UpsertVaultInWorkspace(ctx context.Context, request operations.UpsertVaultInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertVaultInWorkspaceResponse, error)
 	// ListVault - List all Vaults
 	// List all Vaults
 	ListVault(ctx context.Context, request operations.ListVaultRequest, opts ...operations.Option) (*operations.ListVaultResponse, error)

@@ -10,6 +10,12 @@ import (
 
 // AuthenticationSDK is a generated interface.
 type AuthenticationSDK interface {
+	// RefreshToken - Refresh Token
+	// Issues new tokens. Returns 401 if a) the user is no longer active, b) the token has exceeded its lifetime limit, or c) the token has been revoked.
+	RefreshToken(ctx context.Context, opts ...operations.Option) (*operations.RefreshTokenResponse, error)
+	// Logout - Log Out
+	// Clears the auth cookies.
+	Logout(ctx context.Context, opts ...operations.Option) (*operations.LogoutResponse, error)
 	// AuthenticateSso - SSO Callback
 	// Callback for authenticating via an organization's IdP
 	AuthenticateSso(ctx context.Context, organizationLoginPath string, returnTo *string, opts ...operations.Option) (*operations.AuthenticateSsoResponse, error)

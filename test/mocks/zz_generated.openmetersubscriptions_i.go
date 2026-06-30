@@ -300,6 +300,95 @@ func (_c *MockOpenMeterSubscriptionsSDK_CreateSubscription_Call) RunAndReturn(ru
 	return _c
 }
 
+// CreateSubscriptionAddon provides a mock function for the type MockOpenMeterSubscriptionsSDK
+func (_mock *MockOpenMeterSubscriptionsSDK) CreateSubscriptionAddon(ctx context.Context, subscriptionID string, createSubscriptionAddonRequest components.CreateSubscriptionAddonRequest, opts ...operations.Option) (*operations.CreateSubscriptionAddonResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, subscriptionID, createSubscriptionAddonRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, subscriptionID, createSubscriptionAddonRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateSubscriptionAddon")
+	}
+
+	var r0 *operations.CreateSubscriptionAddonResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateSubscriptionAddonRequest, ...operations.Option) (*operations.CreateSubscriptionAddonResponse, error)); ok {
+		return returnFunc(ctx, subscriptionID, createSubscriptionAddonRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateSubscriptionAddonRequest, ...operations.Option) *operations.CreateSubscriptionAddonResponse); ok {
+		r0 = returnFunc(ctx, subscriptionID, createSubscriptionAddonRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateSubscriptionAddonResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateSubscriptionAddonRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, subscriptionID, createSubscriptionAddonRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateSubscriptionAddon'
+type MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call struct {
+	*mock.Call
+}
+
+// CreateSubscriptionAddon is a helper method to define mock.On call
+//   - ctx context.Context
+//   - subscriptionID string
+//   - createSubscriptionAddonRequest components.CreateSubscriptionAddonRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterSubscriptionsSDK_Expecter) CreateSubscriptionAddon(ctx any, subscriptionID any, createSubscriptionAddonRequest any, opts ...any) *MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call {
+	return &MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call{Call: _e.mock.On("CreateSubscriptionAddon",
+		append([]any{ctx, subscriptionID, createSubscriptionAddonRequest}, opts...)...)}
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call) Run(run func(ctx context.Context, subscriptionID string, createSubscriptionAddonRequest components.CreateSubscriptionAddonRequest, opts ...operations.Option)) *MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.CreateSubscriptionAddonRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.CreateSubscriptionAddonRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call) Return(createSubscriptionAddonResponse *operations.CreateSubscriptionAddonResponse, err error) *MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call {
+	_c.Call.Return(createSubscriptionAddonResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call) RunAndReturn(run func(ctx context.Context, subscriptionID string, createSubscriptionAddonRequest components.CreateSubscriptionAddonRequest, opts ...operations.Option) (*operations.CreateSubscriptionAddonResponse, error)) *MockOpenMeterSubscriptionsSDK_CreateSubscriptionAddon_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetSubscription provides a mock function for the type MockOpenMeterSubscriptionsSDK
 func (_mock *MockOpenMeterSubscriptionsSDK) GetSubscription(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.GetSubscriptionResponse, error) {
 	var tmpRet mock.Arguments

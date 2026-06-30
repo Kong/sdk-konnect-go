@@ -16,6 +16,7 @@ func TestComponentsVaultFieldTypes(t *testing.T) {
 	var _ *int64 = value.CreatedAt
 	var _ *string = value.Description
 	var _ *string = value.ID
+	var _ map[string]any = value.ManagedBy
 	var _ string = value.Name
 	var _ string = value.Prefix
 	var _ []string = value.Tags

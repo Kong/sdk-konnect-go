@@ -6,21 +6,24 @@ APIs related to Konnect Developer Portal Applications.
 
 ### Available Operations
 
-* [GetApplicationUnscoped](#getapplicationunscoped) - Get an Application
+* [CreateApplication](#createapplication) - Create Application
 * [ListApplications](#listapplications) - List Applications
 * [GetApplication](#getapplication) - Get an Application by Portal
 * [UpdateApplication](#updateapplication) - Update Application
 * [DeleteApplication](#deleteapplication) - Delete Application by Portal
-* [ListCredentialsByApplication](#listcredentialsbyapplication) - List Credentials by Application
 * [ListDevelopersByApplication](#listdevelopersbyapplication) - List Developers by Application
+* [AddDeveloperToApplication](#adddevelopertoapplication) - Add Developer to Application
+* [RemoveDeveloperFromApplication](#removedeveloperfromapplication) - Remove Developer from Application
+* [GetApplicationUnscoped](#getapplicationunscoped) - Get an Application
+* [ListCredentialsByApplication](#listcredentialsbyapplication) - List Credentials by Application
 
-## GetApplicationUnscoped
+## CreateApplication
 
-Returns the configuration of a single application in any portal. If an application is linked to a DCR Provider, the `dcr_provider.id` and `client_id` can be used to correlate it. An application manages a set of credentials and registrations for specific APIs.
+Creates a new application for this portal. The application must be assigned to a developer or a team. An application can be registered for various APIs, issuing credentials for API access. If using DCR, an application will be linked to an Identity Provider's application by its `client_id`.
 
-### Example Usage: Client Credentials Application with DCR
+### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" example="Client Credentials Application with DCR" -->
+<!-- UsageSnippet language="go" operationID="create-application" method="post" path="/v3/portals/{portalId}/applications" -->
 ```go
 package main
 
@@ -40,81 +43,18 @@ func main() {
         }),
     )
 
-    res, err := s.Applications.GetApplicationUnscoped(ctx, "4d27ece0-3a2f-4519-885f-39e16f79463e")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.GetApplicationResponse != nil {
-        switch res.GetApplicationResponse.Type {
-            case components.GetApplicationResponseTypeClientCredentialsApplication:
-                // res.GetApplicationResponse.ClientCredentialsApplication is populated
-            case components.GetApplicationResponseTypeKeyAuthApplication:
-                // res.GetApplicationResponse.KeyAuthApplication is populated
-        }
-
-    }
-}
-```
-### Example Usage: Client Credentials Application without DCR
-
-<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" example="Client Credentials Application without DCR" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Applications.GetApplicationUnscoped(ctx, "4fa6e714-0ed8-4161-8e79-f950b56dd7a3")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.GetApplicationResponse != nil {
-        switch res.GetApplicationResponse.Type {
-            case components.GetApplicationResponseTypeClientCredentialsApplication:
-                // res.GetApplicationResponse.ClientCredentialsApplication is populated
-            case components.GetApplicationResponseTypeKeyAuthApplication:
-                // res.GetApplicationResponse.KeyAuthApplication is populated
-        }
-
-    }
-}
-```
-### Example Usage: Key Auth Application
-
-<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" example="Key Auth Application" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Applications.GetApplicationUnscoped(ctx, "bc3b2496-bca7-405d-87d7-f1f939c83744")
+    res, err := s.Applications.CreateApplication(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreateApplicationRequest{
+        Name: "Portal Application",
+        Description: sdkkonnectgo.Pointer("A portal application provisioned for a developer by a Portal Admin."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("production"),
+        },
+        AuthStrategyID: sdkkonnectgo.Pointer("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+        Owner: components.ApplicationOwner{
+            Type: components.ApplicationOwnerTypeDeveloper,
+            ID: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7",
+        },
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -132,23 +72,24 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `applicationID`                                          | `string`                                                 | :heavy_check_mark:                                       | ID of the application.                                   |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+| Parameter                                                                                                                                                                                                                                                                                             | Type                                                                                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                           | Example                                                                                                                                                                                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                                                                                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                                                                                                    | The context to use for the request.                                                                                                                                                                                                                                                                   |                                                                                                                                                                                                                                                                                                       |
+| `portalID`                                                                                                                                                                                                                                                                                            | `string`                                                                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                                                                    | ID of the portal.                                                                                                                                                                                                                                                                                     | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                                                                                                                                                                                                  |
+| `createApplicationRequest`                                                                                                                                                                                                                                                                            | [components.CreateApplicationRequest](../../models/components/createapplicationrequest.md)                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                                                                    | Create an application for a portal.                                                                                                                                                                                                                                                                   | {<br/>"name": "Portal Application",<br/>"description": "A portal application provisioned for a developer by a Portal Admin.",<br/>"labels": {<br/>"env": "production"<br/>},<br/>"auth_strategy_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",<br/>"owner": {<br/>"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7",<br/>"type": "developer"<br/>}<br/>} |
+| `opts`                                                                                                                                                                                                                                                                                                | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                                    | The options for this request.                                                                                                                                                                                                                                                                         |                                                                                                                                                                                                                                                                                                       |
 
 ### Response
 
-**[*operations.GetApplicationUnscopedResponse](../../models/operations/getapplicationunscopedresponse.md), error**
+**[*operations.CreateApplicationResponse](../../models/operations/createapplicationresponse.md), error**
 
 ### Errors
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListApplications
@@ -479,70 +420,6 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## ListCredentialsByApplication
-
-Lists all credentials for an application. This endpoint returns both API key credentials and DCR credentials, depending on the auth strategy the application uses: - For DCR applications: Credential information is retrieved from the identity provider using provider-specific APIs - For Key-Auth applications: Returns information about credentials Basic information about the credential is returned, but not the credential secret itself.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-credentials-by-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/credentials" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Applications.ListCredentialsByApplication(ctx, operations.ListCredentialsByApplicationRequest{
-        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
-        ApplicationID: "0c69eaf8-4e88-43b0-9884-2bd94caa2d0a",
-        PageSize: sdkkonnectgo.Pointer[int64](10),
-        PageNumber: sdkkonnectgo.Pointer[int64](1),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListCredentialsResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
-| `request`                                                                                                        | [operations.ListCredentialsByApplicationRequest](../../models/operations/listcredentialsbyapplicationrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
-| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
-
-### Response
-
-**[*operations.ListCredentialsByApplicationResponse](../../models/operations/listcredentialsbyapplicationresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
 ## ListDevelopersByApplication
 
 Lists each developer that can access the given application for this portal.
@@ -596,6 +473,333 @@ func main() {
 ### Response
 
 **[*operations.ListDevelopersByApplicationResponse](../../models/operations/listdevelopersbyapplicationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## AddDeveloperToApplication
+
+Add a developer as an owner of the application.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="add-developer-to-application" method="put" path="/v3/portals/{portalId}/applications/{applicationId}/developers/{developerId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.AddDeveloperToApplication(ctx, operations.AddDeveloperToApplicationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "c7bcdeec-712f-489e-bf59-089562d1b47d",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ApplicationDeveloperDetailed != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.AddDeveloperToApplicationRequest](../../models/operations/adddevelopertoapplicationrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
+
+### Response
+
+**[*operations.AddDeveloperToApplicationResponse](../../models/operations/adddevelopertoapplicationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## RemoveDeveloperFromApplication
+
+Remove a developer from an application. There must be at least one remaining owner.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="remove-developer-from-application" method="delete" path="/v3/portals/{portalId}/applications/{applicationId}/developers/{developerId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.RemoveDeveloperFromApplication(ctx, operations.RemoveDeveloperFromApplicationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "0ab74604-816a-435f-8240-956d63ae7400",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.RemoveDeveloperFromApplicationRequest](../../models/operations/removedeveloperfromapplicationrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.RemoveDeveloperFromApplicationResponse](../../models/operations/removedeveloperfromapplicationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetApplicationUnscoped
+
+Returns the configuration of a single application in any portal. If an application is linked to a DCR Provider, the `dcr_provider.id` and `client_id` can be used to correlate it. An application manages a set of credentials and registrations for specific APIs.
+
+### Example Usage: Client Credentials Application with DCR
+
+<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" example="Client Credentials Application with DCR" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.GetApplicationUnscoped(ctx, "4d27ece0-3a2f-4519-885f-39e16f79463e")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationResponse != nil {
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
+    }
+}
+```
+### Example Usage: Client Credentials Application without DCR
+
+<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" example="Client Credentials Application without DCR" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.GetApplicationUnscoped(ctx, "4fa6e714-0ed8-4161-8e79-f950b56dd7a3")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationResponse != nil {
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
+    }
+}
+```
+### Example Usage: Key Auth Application
+
+<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" example="Key Auth Application" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.GetApplicationUnscoped(ctx, "bc3b2496-bca7-405d-87d7-f1f939c83744")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationResponse != nil {
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `applicationID`                                          | `string`                                                 | :heavy_check_mark:                                       | ID of the application.                                   |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.GetApplicationUnscopedResponse](../../models/operations/getapplicationunscopedresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListCredentialsByApplication
+
+Lists all credentials for an application. This endpoint returns both API key credentials and DCR credentials, depending on the auth strategy the application uses: - For DCR applications: Credential information is retrieved from the identity provider using provider-specific APIs - For Key-Auth applications: Returns information about credentials Basic information about the credential is returned, but not the credential secret itself.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-credentials-by-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/credentials" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.ListCredentialsByApplication(ctx, operations.ListCredentialsByApplicationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "0c69eaf8-4e88-43b0-9884-2bd94caa2d0a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListCredentialsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.ListCredentialsByApplicationRequest](../../models/operations/listcredentialsbyapplicationrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.ListCredentialsByApplicationResponse](../../models/operations/listcredentialsbyapplicationresponse.md), error**
 
 ### Errors
 

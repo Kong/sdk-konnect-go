@@ -121,6 +121,89 @@ func (_c *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumer_Call) RunAndRetu
 	return _c
 }
 
+// CreateHmacAuthWithConsumerInWorkspace provides a mock function for the type MockHMACAuthCredentialsSDK
+func (_mock *MockHMACAuthCredentialsSDK) CreateHmacAuthWithConsumerInWorkspace(ctx context.Context, request operations.CreateHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateHmacAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateHmacAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.CreateHmacAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.CreateHmacAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.CreateHmacAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateHmacAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateHmacAuthWithConsumerInWorkspace'
+type MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateHmacAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateHmacAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockHMACAuthCredentialsSDK_Expecter) CreateHmacAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call {
+	return &MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("CreateHmacAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateHmacAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateHmacAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call) Return(createHmacAuthWithConsumerInWorkspaceResponse *operations.CreateHmacAuthWithConsumerInWorkspaceResponse, err error) *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(createHmacAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateHmacAuthWithConsumerInWorkspaceResponse, error)) *MockHMACAuthCredentialsSDK_CreateHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteHmacAuthWithConsumer provides a mock function for the type MockHMACAuthCredentialsSDK
 func (_mock *MockHMACAuthCredentialsSDK) DeleteHmacAuthWithConsumer(ctx context.Context, request operations.DeleteHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteHmacAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -200,6 +283,89 @@ func (_c *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call) Return(del
 }
 
 func (_c *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteHmacAuthWithConsumerResponse, error)) *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteHmacAuthWithConsumerInWorkspace provides a mock function for the type MockHMACAuthCredentialsSDK
+func (_mock *MockHMACAuthCredentialsSDK) DeleteHmacAuthWithConsumerInWorkspace(ctx context.Context, request operations.DeleteHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteHmacAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteHmacAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.DeleteHmacAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.DeleteHmacAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.DeleteHmacAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteHmacAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteHmacAuthWithConsumerInWorkspace'
+type MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteHmacAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteHmacAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockHMACAuthCredentialsSDK_Expecter) DeleteHmacAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call {
+	return &MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("DeleteHmacAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteHmacAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteHmacAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call) Return(deleteHmacAuthWithConsumerInWorkspaceResponse *operations.DeleteHmacAuthWithConsumerInWorkspaceResponse, err error) *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(deleteHmacAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteHmacAuthWithConsumerInWorkspaceResponse, error)) *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -293,6 +459,89 @@ func (_c *MockHMACAuthCredentialsSDK_GetHmacAuth_Call) RunAndReturn(run func(ctx
 	return _c
 }
 
+// GetHmacAuthInWorkspace provides a mock function for the type MockHMACAuthCredentialsSDK
+func (_mock *MockHMACAuthCredentialsSDK) GetHmacAuthInWorkspace(ctx context.Context, request operations.GetHmacAuthInWorkspaceRequest, opts ...operations.Option) (*operations.GetHmacAuthInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetHmacAuthInWorkspace")
+	}
+
+	var r0 *operations.GetHmacAuthInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetHmacAuthInWorkspaceRequest, ...operations.Option) (*operations.GetHmacAuthInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetHmacAuthInWorkspaceRequest, ...operations.Option) *operations.GetHmacAuthInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetHmacAuthInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetHmacAuthInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetHmacAuthInWorkspace'
+type MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetHmacAuthInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetHmacAuthInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockHMACAuthCredentialsSDK_Expecter) GetHmacAuthInWorkspace(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call {
+	return &MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call{Call: _e.mock.On("GetHmacAuthInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetHmacAuthInWorkspaceRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetHmacAuthInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetHmacAuthInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call) Return(getHmacAuthInWorkspaceResponse *operations.GetHmacAuthInWorkspaceResponse, err error) *MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call {
+	_c.Call.Return(getHmacAuthInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetHmacAuthInWorkspaceRequest, opts ...operations.Option) (*operations.GetHmacAuthInWorkspaceResponse, error)) *MockHMACAuthCredentialsSDK_GetHmacAuthInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetHmacAuthWithConsumer provides a mock function for the type MockHMACAuthCredentialsSDK
 func (_mock *MockHMACAuthCredentialsSDK) GetHmacAuthWithConsumer(ctx context.Context, request operations.GetHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetHmacAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -372,6 +621,89 @@ func (_c *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumer_Call) Return(getHma
 }
 
 func (_c *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.GetHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetHmacAuthWithConsumerResponse, error)) *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetHmacAuthWithConsumerInWorkspace provides a mock function for the type MockHMACAuthCredentialsSDK
+func (_mock *MockHMACAuthCredentialsSDK) GetHmacAuthWithConsumerInWorkspace(ctx context.Context, request operations.GetHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetHmacAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetHmacAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.GetHmacAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.GetHmacAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.GetHmacAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetHmacAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetHmacAuthWithConsumerInWorkspace'
+type MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetHmacAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetHmacAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockHMACAuthCredentialsSDK_Expecter) GetHmacAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call {
+	return &MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("GetHmacAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetHmacAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetHmacAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call) Return(getHmacAuthWithConsumerInWorkspaceResponse *operations.GetHmacAuthWithConsumerInWorkspaceResponse, err error) *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(getHmacAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetHmacAuthWithConsumerInWorkspaceResponse, error)) *MockHMACAuthCredentialsSDK_GetHmacAuthWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -459,6 +791,89 @@ func (_c *MockHMACAuthCredentialsSDK_ListHmacAuth_Call) RunAndReturn(run func(ct
 	return _c
 }
 
+// ListHmacAuthInWorkspace provides a mock function for the type MockHMACAuthCredentialsSDK
+func (_mock *MockHMACAuthCredentialsSDK) ListHmacAuthInWorkspace(ctx context.Context, request operations.ListHmacAuthInWorkspaceRequest, opts ...operations.Option) (*operations.ListHmacAuthInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListHmacAuthInWorkspace")
+	}
+
+	var r0 *operations.ListHmacAuthInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListHmacAuthInWorkspaceRequest, ...operations.Option) (*operations.ListHmacAuthInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListHmacAuthInWorkspaceRequest, ...operations.Option) *operations.ListHmacAuthInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListHmacAuthInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListHmacAuthInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListHmacAuthInWorkspace'
+type MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListHmacAuthInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListHmacAuthInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockHMACAuthCredentialsSDK_Expecter) ListHmacAuthInWorkspace(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call {
+	return &MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call{Call: _e.mock.On("ListHmacAuthInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListHmacAuthInWorkspaceRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListHmacAuthInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListHmacAuthInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call) Return(listHmacAuthInWorkspaceResponse *operations.ListHmacAuthInWorkspaceResponse, err error) *MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call {
+	_c.Call.Return(listHmacAuthInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListHmacAuthInWorkspaceRequest, opts ...operations.Option) (*operations.ListHmacAuthInWorkspaceResponse, error)) *MockHMACAuthCredentialsSDK_ListHmacAuthInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListHmacAuthWithConsumer provides a mock function for the type MockHMACAuthCredentialsSDK
 func (_mock *MockHMACAuthCredentialsSDK) ListHmacAuthWithConsumer(ctx context.Context, request operations.ListHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListHmacAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -542,6 +957,89 @@ func (_c *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumer_Call) RunAndReturn
 	return _c
 }
 
+// ListHmacAuthWithConsumerInWorkspace provides a mock function for the type MockHMACAuthCredentialsSDK
+func (_mock *MockHMACAuthCredentialsSDK) ListHmacAuthWithConsumerInWorkspace(ctx context.Context, request operations.ListHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListHmacAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListHmacAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.ListHmacAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.ListHmacAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.ListHmacAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListHmacAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListHmacAuthWithConsumerInWorkspace'
+type MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListHmacAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListHmacAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockHMACAuthCredentialsSDK_Expecter) ListHmacAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call {
+	return &MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("ListHmacAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListHmacAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListHmacAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call) Return(listHmacAuthWithConsumerInWorkspaceResponse *operations.ListHmacAuthWithConsumerInWorkspaceResponse, err error) *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(listHmacAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListHmacAuthWithConsumerInWorkspaceResponse, error)) *MockHMACAuthCredentialsSDK_ListHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertHmacAuthWithConsumer provides a mock function for the type MockHMACAuthCredentialsSDK
 func (_mock *MockHMACAuthCredentialsSDK) UpsertHmacAuthWithConsumer(ctx context.Context, request operations.UpsertHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertHmacAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -621,6 +1119,89 @@ func (_c *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumer_Call) Return(ups
 }
 
 func (_c *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertHmacAuthWithConsumerResponse, error)) *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertHmacAuthWithConsumerInWorkspace provides a mock function for the type MockHMACAuthCredentialsSDK
+func (_mock *MockHMACAuthCredentialsSDK) UpsertHmacAuthWithConsumerInWorkspace(ctx context.Context, request operations.UpsertHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertHmacAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertHmacAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.UpsertHmacAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.UpsertHmacAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.UpsertHmacAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertHmacAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertHmacAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertHmacAuthWithConsumerInWorkspace'
+type MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertHmacAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertHmacAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockHMACAuthCredentialsSDK_Expecter) UpsertHmacAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call {
+	return &MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("UpsertHmacAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertHmacAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertHmacAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call) Return(upsertHmacAuthWithConsumerInWorkspaceResponse *operations.UpsertHmacAuthWithConsumerInWorkspaceResponse, err error) *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(upsertHmacAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertHmacAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertHmacAuthWithConsumerInWorkspaceResponse, error)) *MockHMACAuthCredentialsSDK_UpsertHmacAuthWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

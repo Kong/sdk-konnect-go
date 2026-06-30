@@ -1,0 +1,9 @@
+# CreateDeveloperRequest
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `PortalID`                                                                             | `string`                                                                               | :heavy_check_mark:                                                                     | ID of the portal.                                                                      | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                   |
+| `CreateDeveloperRequest`                                                               | [components.CreateDeveloperRequest](../../models/components/createdeveloperrequest.md) | :heavy_check_mark:                                                                     | Create a developer for a portal.                                                       | {<br/>"email": "developer@example.com",<br/>"full_name": "Developer Name"<br/>}        |

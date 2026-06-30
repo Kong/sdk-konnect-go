@@ -10,9 +10,6 @@ import (
 
 // PortalTeamRolesSDK is a generated interface.
 type PortalTeamRolesSDK interface {
-	// ListPortalRoles - List Portal Roles
-	// List roles that can be assigned to teams in a portal. Each role provides a set of permissions to perform an action on a resource.
-	ListPortalRoles(ctx context.Context, opts ...operations.Option) (*operations.ListPortalRolesResponse, error)
 	// ListPortalTeamRoles - List Team Roles
 	// Lists the roles belonging to a developer team. Each role provides permissions to perform actions on a specified resource or collection.
 	ListPortalTeamRoles(ctx context.Context, request operations.ListPortalTeamRolesRequest, opts ...operations.Option) (*operations.ListPortalTeamRolesResponse, error)
@@ -22,4 +19,7 @@ type PortalTeamRolesSDK interface {
 	// RemoveRoleFromPortalTeam - Remove Role
 	// Removes an assigned role from a developer team. This deletes the association of the role with team and each of its members.
 	RemoveRoleFromPortalTeam(ctx context.Context, request operations.RemoveRoleFromPortalTeamRequest, opts ...operations.Option) (*operations.RemoveRoleFromPortalTeamResponse, error)
+	// ListPortalRoles - List Portal Roles
+	// List roles that can be assigned to teams in a portal. Each role provides a set of permissions to perform an action on a resource.
+	ListPortalRoles(ctx context.Context, opts ...operations.Option) (*operations.ListPortalRolesResponse, error)
 }

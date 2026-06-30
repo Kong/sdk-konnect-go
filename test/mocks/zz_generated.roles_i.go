@@ -40,12 +40,12 @@ func (_m *MockRolesSDK) EXPECT() *MockRolesSDK_Expecter {
 }
 
 // GetPredefinedRoles provides a mock function for the type MockRolesSDK
-func (_mock *MockRolesSDK) GetPredefinedRoles(ctx context.Context, opts ...operations.Option) (*operations.GetPredefinedRolesResponse, error) {
+func (_mock *MockRolesSDK) GetPredefinedRoles(ctx context.Context, filter *operations.GetPredefinedRolesQueryParamFilter, opts ...operations.Option) (*operations.GetPredefinedRolesResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, opts)
+		tmpRet = _mock.Called(ctx, filter, opts)
 	} else {
-		tmpRet = _mock.Called(ctx)
+		tmpRet = _mock.Called(ctx, filter)
 	}
 	ret := tmpRet
 
@@ -55,18 +55,18 @@ func (_mock *MockRolesSDK) GetPredefinedRoles(ctx context.Context, opts ...opera
 
 	var r0 *operations.GetPredefinedRolesResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, ...operations.Option) (*operations.GetPredefinedRolesResponse, error)); ok {
-		return returnFunc(ctx, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *operations.GetPredefinedRolesQueryParamFilter, ...operations.Option) (*operations.GetPredefinedRolesResponse, error)); ok {
+		return returnFunc(ctx, filter, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, ...operations.Option) *operations.GetPredefinedRolesResponse); ok {
-		r0 = returnFunc(ctx, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *operations.GetPredefinedRolesQueryParamFilter, ...operations.Option) *operations.GetPredefinedRolesResponse); ok {
+		r0 = returnFunc(ctx, filter, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetPredefinedRolesResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *operations.GetPredefinedRolesQueryParamFilter, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, filter, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -80,27 +80,33 @@ type MockRolesSDK_GetPredefinedRoles_Call struct {
 
 // GetPredefinedRoles is a helper method to define mock.On call
 //   - ctx context.Context
+//   - filter *operations.GetPredefinedRolesQueryParamFilter
 //   - opts ...operations.Option
-func (_e *MockRolesSDK_Expecter) GetPredefinedRoles(ctx any, opts ...any) *MockRolesSDK_GetPredefinedRoles_Call {
+func (_e *MockRolesSDK_Expecter) GetPredefinedRoles(ctx any, filter any, opts ...any) *MockRolesSDK_GetPredefinedRoles_Call {
 	return &MockRolesSDK_GetPredefinedRoles_Call{Call: _e.mock.On("GetPredefinedRoles",
-		append([]any{ctx}, opts...)...)}
+		append([]any{ctx, filter}, opts...)...)}
 }
 
-func (_c *MockRolesSDK_GetPredefinedRoles_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockRolesSDK_GetPredefinedRoles_Call {
+func (_c *MockRolesSDK_GetPredefinedRoles_Call) Run(run func(ctx context.Context, filter *operations.GetPredefinedRolesQueryParamFilter, opts ...operations.Option)) *MockRolesSDK_GetPredefinedRoles_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 []operations.Option
-		var variadicArgs []operations.Option
-		if len(args) > 1 {
-			variadicArgs = args[1].([]operations.Option)
+		var arg1 *operations.GetPredefinedRolesQueryParamFilter
+		if args[1] != nil {
+			arg1 = args[1].(*operations.GetPredefinedRolesQueryParamFilter)
 		}
-		arg1 = variadicArgs
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
 		run(
 			arg0,
-			arg1...,
+			arg1,
+			arg2...,
 		)
 	})
 	return _c
@@ -111,7 +117,7 @@ func (_c *MockRolesSDK_GetPredefinedRoles_Call) Return(getPredefinedRolesRespons
 	return _c
 }
 
-func (_c *MockRolesSDK_GetPredefinedRoles_Call) RunAndReturn(run func(ctx context.Context, opts ...operations.Option) (*operations.GetPredefinedRolesResponse, error)) *MockRolesSDK_GetPredefinedRoles_Call {
+func (_c *MockRolesSDK_GetPredefinedRoles_Call) RunAndReturn(run func(ctx context.Context, filter *operations.GetPredefinedRolesQueryParamFilter, opts ...operations.Option) (*operations.GetPredefinedRolesResponse, error)) *MockRolesSDK_GetPredefinedRoles_Call {
 	_c.Call.Return(run)
 	return _c
 }

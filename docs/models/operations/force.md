@@ -1,6 +1,9 @@
 # Force
 
-If true, delete specified config store and all secrets, even if there are secrets linked to the config store If false, do not allow deletion if there are secrets linked to the config store
+If true, allows operations to be removed from the current version when using access control enforcement.
+If false, operations removal will be rejected with a 409 error.
+Omitting the value means true.
+
 
 ## Example Usage
 

@@ -11,6 +11,9 @@ import (
 
 // UsersSDK is a generated interface.
 type UsersSDK interface {
+	// GetUsersInternal - List Users (Internal)
+	// The response contains user ids and (non-deleted, non-deleting) organization ids for users associated with provided auth0 user subject.
+	GetUsersInternal(ctx context.Context, aid *string, opts ...operations.Option) (*operations.GetUsersInternalResponse, error)
 	// ListUsers - List Users
 	// Returns a paginated list of user objects.
 	ListUsers(ctx context.Context, request operations.ListUsersRequest, opts ...operations.Option) (*operations.ListUsersResponse, error)
@@ -23,4 +26,9 @@ type UsersSDK interface {
 	// DeleteUser - Delete User
 	// Deletes an individual user. Returns 404 if the requested user was not found.
 	DeleteUser(ctx context.Context, userID string, opts ...operations.Option) (*operations.DeleteUserResponse, error)
+	// DeleteUserMfas - Delete User MFA
+	// Deletes all secondary factors for multi-factor authentication (MFA), of the user.
+	//
+	// If set, this operation will use either [Security.PersonalAccessToken] or [Security.KonnectAccessToken] from the global security.
+	DeleteUserMfas(ctx context.Context, userID string, opts ...operations.Option) (*operations.DeleteUserMfasResponse, error)
 }

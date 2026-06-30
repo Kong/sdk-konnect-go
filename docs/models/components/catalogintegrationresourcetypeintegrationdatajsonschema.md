@@ -1,0 +1,14 @@
+# CatalogIntegrationResourceTypeIntegrationDataJSONSchema
+
+Defines the schema to validate incoming integration_data values for a resource type, on resource
+ingestion, using JSON schema.
+Set to `null` when the given resource type does not validate incoming integration_data.
+
+
+
+## Fields
+
+| Field                                                                                                                                                      | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                                                     | [components.CatalogIntegrationResourceTypeIntegrationDataSchema3Type](../../models/components/catalogintegrationresourcetypeintegrationdataschema3type.md) | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |
+| `Definition`                                                                                                                                               | map[string]`any`                                                                                                                                           | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |

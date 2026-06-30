@@ -1,0 +1,9 @@
+# CreateIntegrationSuggestionRuleRequest
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `Integration`                                                                        | `string`                                                                             | :heavy_check_mark:                                                                   | Machine name of the integration.                                                     | gateway-manager                                                                      |
+| `SuggestionRulePayload`                                                              | [components.SuggestionRulePayload](../../models/components/suggestionrulepayload.md) | :heavy_check_mark:                                                                   | Request body schema for creating a suggestion rule for an integration.               |                                                                                      |

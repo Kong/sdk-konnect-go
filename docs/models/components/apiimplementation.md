@@ -5,10 +5,10 @@ An entity that implements an API
 
 ## Supported Types
 
-### ServiceReference
+### ServiceReferenceInput
 
 ```go
-apiImplementation := components.CreateAPIImplementationServiceReference(components.ServiceReference{/* values here */})
+apiImplementation := components.CreateAPIImplementationServiceReferenceInput(components.ServiceReferenceInput{/* values here */})
 ```
 
 ### ControlPlaneReference
@@ -23,8 +23,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch apiImplementation.Type {
-	case components.APIImplementationTypeServiceReference:
-		// apiImplementation.ServiceReference is populated
+	case components.APIImplementationTypeServiceReferenceInput:
+		// apiImplementation.ServiceReferenceInput is populated
 	case components.APIImplementationTypeControlPlaneReference:
 		// apiImplementation.ControlPlaneReference is populated
 }

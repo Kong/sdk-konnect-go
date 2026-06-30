@@ -28,6 +28,7 @@ custom := components.EntityTypeName("custom_value")
 | `EntityTypeNameControlPlanes`             | Control Planes                            |
 | `EntityTypeNameDashboards`                | Dashboards                                |
 | `EntityTypeNameDcrProviders`              | DCR Providers                             |
+| `EntityTypeNameEnvironments`              | Environments                              |
 | `EntityTypeNameMeshControlPlanes`         | Mesh Control Planes                       |
 | `EntityTypeNameNetworks`                  | Networks                                  |
 | `EntityTypeNamePortals`                   | Portals                                   |

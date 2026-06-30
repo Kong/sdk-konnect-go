@@ -17,5 +17,7 @@ func TestComponentsCreateNetworkRequestFieldTypes(t *testing.T) {
 	var _ string = value.Region
 	var _ []string = value.AvailabilityZones
 	var _ string = value.CidrBlock
+	var _ *components.NetworkFirewallConfig = value.Firewall
+	var _ *bool = value.DdosProtection
 	var _ *components.NetworkCreateState = value.State
 }

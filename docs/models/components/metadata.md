@@ -1,0 +1,13 @@
+# Metadata
+
+The device metadata to be displayed to the user for confirmation.
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ClientName`                                                                         | `string`                                                                             | :heavy_check_mark:                                                                   | The requesting application human name.                                               |                                                                                      |
+| `UserAgent`                                                                          | `string`                                                                             | :heavy_check_mark:                                                                   | The device's user agent used to perform the device authorization grant request.      |                                                                                      |
+| `SourceIP`                                                                           | `string`                                                                             | :heavy_check_mark:                                                                   | The IP address of the device used to perform the device authorization grant request. |                                                                                      |
+| `RequestedAt`                                                                        | [time.Time](https://pkg.go.dev/time#Time)                                            | :heavy_check_mark:                                                                   | The time stamp for the date the device authorization request was made.               | 2022-02-07T17:46:57.52Z                                                              |
