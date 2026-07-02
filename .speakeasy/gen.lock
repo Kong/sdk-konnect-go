@@ -3,14 +3,14 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: e2669fcb58631dd48adce8f6e26f74d4
   docVersion: 3.15.0
-  speakeasyVersion: 1.786.1
-  generationVersion: 2.913.3
-  releaseVersion: 0.41.0
-  configChecksum: 0e27c4e08eb63d9bd099748ba3e9f86a
+  speakeasyVersion: 1.787.0
+  generationVersion: 2.914.0
+  releaseVersion: 0.41.1
+  configChecksum: e4bb8fb49e3d73d1a8e6314de5dc7852
 persistentEdits:
-  generation_id: 256b8c73-f3d1-4002-9310-e3d5cdc5af69
-  pristine_commit_hash: fdc6d431a77d44901a0b0d2105a01fd3db0309b0
-  pristine_tree_hash: 599775f76cf741051c73ae2fc2f0edbf8aee60cb
+  generation_id: b4778e3c-7b81-4a8a-8aae-c8a3fb796f23
+  pristine_commit_hash: 33f5dd7f2d1d052ca032cd4968dc1e66ff5cf243
+  pristine_tree_hash: b902ffdb301f1ee8d5e87bd62ef53db7637c4a9c
 features:
   go:
     acceptHeaders: 2.81.2
@@ -15425,11 +15425,11 @@ trackedFiles:
     pristine_git_object: e6c7b211819cd310f784e7376fdf0600f30ae65c
   models/components/chart.go:
     id: 423ff591212c
-    last_write_checksum: sha1:ad48fb8e26d127e979fcc8e4d961b63a96250f78
+    last_write_checksum: sha1:ae5e21d7819480813717fb83666c0ef10adb9742
     pristine_git_object: 4b293ef287b7d1c6485566294ab8ee207a6708d3
   models/components/charttile.go:
     id: 8f57713ab332
-    last_write_checksum: sha1:27895b80a69276188f4dc2145a93a450fc99044b
+    last_write_checksum: sha1:505ed88d337c7d51efc71559f1d08e40e5a0f08a
     pristine_git_object: 18950ed434dc402cadf05a93b7ce0cd6cd8d2b68
   models/components/choroplethmapchart.go:
     id: 45448d9f654d
@@ -21745,8 +21745,8 @@ trackedFiles:
     pristine_git_object: 329751b1a4c05e1c8157838d580ba52c429a49c1
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:7b1a10bbdfb917ef0040a98364ad0412ddd2e1b5
-    pristine_git_object: c01ec6ac2184bc0c0007830c6dc9ae3093b65fd5
+    last_write_checksum: sha1:234ee46c2d9d25a829ee1c3a49d2e8ee4651403a
+    pristine_git_object: 600b958f8f4da6152ef0921783bcdda4f26497d3
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:5301c70482baed727f2523a333bbec05c92775cc
