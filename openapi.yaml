@@ -30514,6 +30514,7 @@ components:
           nullable: true
       additionalProperties: false
       title: PortalCustomization
+      x-speakeasy-name-override: PortalCustomization
     GoogleTagManagerIntegrationConfigProperties:
       description: Configuration data for the Google Tag Manager integration
       type: object
