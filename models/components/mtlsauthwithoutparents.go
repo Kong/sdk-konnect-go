@@ -30,9 +30,13 @@ type MTLSAuthWithoutParents struct {
 	Consumer      *MTLSAuthWithoutParentsConsumer      `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID          *string `json:"id,omitempty"`
-	SubjectName string  `json:"subject_name"`
+	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy   map[string]any `json:"managed_by,omitempty"`
+	SubjectName string         `json:"subject_name"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
 }
@@ -58,11 +62,25 @@ func (m *MTLSAuthWithoutParents) GetCreatedAt() *int64 {
 	return m.CreatedAt
 }
 
+func (m *MTLSAuthWithoutParents) GetDescription() *string {
+	if m == nil {
+		return nil
+	}
+	return m.Description
+}
+
 func (m *MTLSAuthWithoutParents) GetID() *string {
 	if m == nil {
 		return nil
 	}
 	return m.ID
+}
+
+func (m *MTLSAuthWithoutParents) GetManagedBy() map[string]any {
+	if m == nil {
+		return nil
+	}
+	return m.ManagedBy
 }
 
 func (m *MTLSAuthWithoutParents) GetSubjectName() string {

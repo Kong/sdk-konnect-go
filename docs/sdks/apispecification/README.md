@@ -4,12 +4,369 @@
 
 ### Available Operations
 
+* [ValidateSpecification](#validatespecification) - Validate API Specification
 * [~~CreateAPISpec~~](#createapispec) - Create API Specification :warning: **Deprecated**
 * [~~ListAPISpecs~~](#listapispecs) - List API Specifications :warning: **Deprecated**
 * [~~FetchAPISpec~~](#fetchapispec) - Get API Specification :warning: **Deprecated**
 * [~~UpdateAPISpec~~](#updateapispec) - Update API Specification :warning: **Deprecated**
 * [~~DeleteAPISpec~~](#deleteapispec) - Delete API Specification :warning: **Deprecated**
-* [ValidateSpecification](#validatespecification) - Validate API Specification
+
+## ValidateSpecification
+
+Validates the content and type (OpenAPI or AsyncAPI) of a potential API specification without associating it with a specific API.
+
+### Example Usage: ApiForbiddenExample
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ApiForbiddenExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiSpecContentBadRequestExample
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ApiSpecContentBadRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiSpecValidationFailedBadRequestExample
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ApiSpecValidationFailedBadRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiUnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ApiUnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnsupportedMediaTypeExample
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="UnsupportedMediaTypeExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ValidateApiSpecRequestExampleAsyncApi
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecRequestExampleAsyncApi" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "{\"asyncapi\":\"2.6.0\",\"info\":{\"title\":\"Account Service\",\"version\":\"1.0.0\",\"description\":\"This service is in charge of processing user signups\"},\"channels\":{\"user/signedup\":{\"publish\":{\"summary\":\"Inform about signed up users\",\"operationId\":\"sendUserSignedUp\",\"message\":{\"name\":\"UserSignedUp\",\"payload\":{\"type\":\"object\",\"properties\":{\"displayName\":{\"type\":\"string\",\"description\":\"Name of the user\"},\"email\":{\"type\":\"string\",\"format\":\"email\",\"description\":\"Email of the user\"}}}}}}}}",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ValidateApiSpecRequestExampleJson
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecRequestExampleJson" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Valid API\",\"version\":\"1.0.0\"},\"paths\":{\"/health\":{\"get\":{\"summary\":\"Health check\",\"responses\":{\"200\":{\"description\":\"OK\"}}}}}}",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ValidateApiSpecRequestExampleYaml
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecRequestExampleYaml" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "openapi: 3.0.3\\ninfo:\\n  title: Valid API\\n  version: 1.0.0\\npaths:\\n  /health:\\n    get:\\n      summary: Health check\\n      responses:\\n        '200':\\n          description: OK",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ValidateApiSpecSuccessResponseExample
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecSuccessResponseExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ValidateApiSpecSuccessResponseWithWarningExample
+
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecSuccessResponseWithWarningExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
+        Content: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ValidateAPISpecSuccessResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [components.ValidateAPISpecRequestPayload](../../models/components/validateapispecrequestpayload.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
+
+### Response
+
+**[*operations.ValidateSpecificationResponse](../../models/operations/validatespecificationresponse.md), error**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| sdkerrors.BadRequestError           | 400                                 | application/problem+json            |
+| sdkerrors.UnauthorizedError         | 401                                 | application/problem+json            |
+| sdkerrors.ForbiddenError            | 403                                 | application/problem+json            |
+| sdkerrors.UnsupportedMediaTypeError | 415                                 | application/problem+json            |
+| sdkerrors.SDKError                  | 4XX, 5XX                            | \*/\*                               |
 
 ## ~~CreateAPISpec~~
 
@@ -1097,360 +1454,3 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ValidateSpecification
-
-Validates the content and type (OpenAPI or AsyncAPI) of a potential API specification without associating it with a specific API.
-
-### Example Usage: ApiForbiddenExample
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ApiForbiddenExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "<value>",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: ApiSpecContentBadRequestExample
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ApiSpecContentBadRequestExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "<value>",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: ApiSpecValidationFailedBadRequestExample
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ApiSpecValidationFailedBadRequestExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "<value>",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: ApiUnauthorizedExample
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ApiUnauthorizedExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "<value>",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: UnsupportedMediaTypeExample
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="UnsupportedMediaTypeExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "<value>",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: ValidateApiSpecRequestExampleAsyncApi
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecRequestExampleAsyncApi" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "{\"asyncapi\":\"2.6.0\",\"info\":{\"title\":\"Account Service\",\"version\":\"1.0.0\",\"description\":\"This service is in charge of processing user signups\"},\"channels\":{\"user/signedup\":{\"publish\":{\"summary\":\"Inform about signed up users\",\"operationId\":\"sendUserSignedUp\",\"message\":{\"name\":\"UserSignedUp\",\"payload\":{\"type\":\"object\",\"properties\":{\"displayName\":{\"type\":\"string\",\"description\":\"Name of the user\"},\"email\":{\"type\":\"string\",\"format\":\"email\",\"description\":\"Email of the user\"}}}}}}}}",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: ValidateApiSpecRequestExampleJson
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecRequestExampleJson" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Valid API\",\"version\":\"1.0.0\"},\"paths\":{\"/health\":{\"get\":{\"summary\":\"Health check\",\"responses\":{\"200\":{\"description\":\"OK\"}}}}}}",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: ValidateApiSpecRequestExampleYaml
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecRequestExampleYaml" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "openapi: 3.0.3\\ninfo:\\n  title: Valid API\\n  version: 1.0.0\\npaths:\\n  /health:\\n    get:\\n      summary: Health check\\n      responses:\\n        '200':\\n          description: OK",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: ValidateApiSpecSuccessResponseExample
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecSuccessResponseExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "<value>",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: ValidateApiSpecSuccessResponseWithWarningExample
-
-<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" example="ValidateApiSpecSuccessResponseWithWarningExample" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "<value>",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ValidateAPISpecSuccessResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
-| `request`                                                                                            | [components.ValidateAPISpecRequestPayload](../../models/components/validateapispecrequestpayload.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
-
-### Response
-
-**[*operations.ValidateSpecificationResponse](../../models/operations/validatespecificationresponse.md), error**
-
-### Errors
-
-| Error Type                          | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| sdkerrors.BadRequestError           | 400                                 | application/problem+json            |
-| sdkerrors.UnauthorizedError         | 401                                 | application/problem+json            |
-| sdkerrors.ForbiddenError            | 403                                 | application/problem+json            |
-| sdkerrors.UnsupportedMediaTypeError | 415                                 | application/problem+json            |
-| sdkerrors.SDKError                  | 4XX, 5XX                            | \*/\*                               |

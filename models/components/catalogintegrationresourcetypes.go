@@ -3,10 +3,31 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type CatalogIntegrationResourceTypes struct {
 	// The user-friendly resource type name.
-	DisplayName *string      `json:"display_name,omitempty"`
-	Schema      SimpleSchema `json:"schema"`
+	DisplayName *string `json:"display_name,omitempty"`
+	// Custom template used to generate a string that uniquely identifies a resource.
+	// The template must include at least one key defined in the resource type schema definition, enclosed in double curly braces (e.g., `{{field_name}}`).
+	// This template must not reference keys not required to identify the external resource.
+	//
+	ResourceIDTemplate    string                                               `json:"resource_id_template"`
+	Schema                SimpleSchema                                         `json:"schema"`
+	IntegrationDataSchema *CatalogIntegrationResourceTypeIntegrationDataSchema `json:"integration_data_schema"`
+}
+
+func (c CatalogIntegrationResourceTypes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CatalogIntegrationResourceTypes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"resource_id_template", "schema"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CatalogIntegrationResourceTypes) GetDisplayName() *string {
@@ -16,9 +37,23 @@ func (c *CatalogIntegrationResourceTypes) GetDisplayName() *string {
 	return c.DisplayName
 }
 
+func (c *CatalogIntegrationResourceTypes) GetResourceIDTemplate() string {
+	if c == nil {
+		return ""
+	}
+	return c.ResourceIDTemplate
+}
+
 func (c *CatalogIntegrationResourceTypes) GetSchema() SimpleSchema {
 	if c == nil {
 		return SimpleSchema{}
 	}
 	return c.Schema
+}
+
+func (c *CatalogIntegrationResourceTypes) GetIntegrationDataSchema() *CatalogIntegrationResourceTypeIntegrationDataSchema {
+	if c == nil {
+		return nil
+	}
+	return c.IntegrationDataSchema
 }

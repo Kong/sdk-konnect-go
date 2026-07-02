@@ -1,6 +1,6 @@
 # EmbeddingInputType
 
-The purpose of the input text to calculate embedding vectors.
+The intended downstream use of the embeddings to improve model quality.
 
 ## Example Usage
 

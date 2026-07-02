@@ -3,32 +3,32 @@
 
 package components
 
-type Data struct {
+type PatchTeamGroupMappingsData struct {
 	TeamID *string  `json:"team_id,omitempty"`
 	Groups []string `json:"groups,omitempty"`
 }
 
-func (d *Data) GetTeamID() *string {
-	if d == nil {
+func (p *PatchTeamGroupMappingsData) GetTeamID() *string {
+	if p == nil {
 		return nil
 	}
-	return d.TeamID
+	return p.TeamID
 }
 
-func (d *Data) GetGroups() []string {
-	if d == nil {
+func (p *PatchTeamGroupMappingsData) GetGroups() []string {
+	if p == nil {
 		return nil
 	}
-	return d.Groups
+	return p.Groups
 }
 
 // PatchTeamGroupMappings - The request schema for a partial update of mappings from Konnect Teams to IdP Groups.
 type PatchTeamGroupMappings struct {
 	// The IdP groups to map to the given team.
-	Data []Data `json:"data,omitempty"`
+	Data []PatchTeamGroupMappingsData `json:"data,omitempty"`
 }
 
-func (p *PatchTeamGroupMappings) GetData() []Data {
+func (p *PatchTeamGroupMappings) GetData() []PatchTeamGroupMappingsData {
 	if p == nil {
 		return nil
 	}

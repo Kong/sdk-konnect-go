@@ -6,6 +6,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type SimpleSchemaType string
@@ -57,6 +58,17 @@ func (e *Definition) IsExact() bool {
 type SimpleSchema struct {
 	Type       SimpleSchemaType      `json:"type"`
 	Definition map[string]Definition `json:"definition"`
+}
+
+func (s SimpleSchema) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SimpleSchema) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"type", "definition"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (s *SimpleSchema) GetType() SimpleSchemaType {

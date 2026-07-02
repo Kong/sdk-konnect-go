@@ -3,31 +3,25 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // ResourceConfigurationQualifier - Enumeration of configuration qualifiers available for organization-wide configuration.
 type ResourceConfigurationQualifier string
 
 const (
 	ResourceConfigurationQualifierDataPlaneGroupIdleTimeoutMinutes ResourceConfigurationQualifier = "data-plane-group-idle-timeout-minutes"
+	ResourceConfigurationQualifierAutoPilotBaseRpsMaxValue         ResourceConfigurationQualifier = "auto-pilot-base-rps-max-value"
 )
 
 func (e ResourceConfigurationQualifier) ToPointer() *ResourceConfigurationQualifier {
 	return &e
 }
-func (e *ResourceConfigurationQualifier) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ResourceConfigurationQualifier) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "data-plane-group-idle-timeout-minutes", "auto-pilot-base-rps-max-value":
+			return true
+		}
 	}
-	switch v {
-	case "data-plane-group-idle-timeout-minutes":
-		*e = ResourceConfigurationQualifier(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ResourceConfigurationQualifier: %v", v)
-	}
+	return false
 }

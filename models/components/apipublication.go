@@ -22,6 +22,8 @@ type APIPublication struct {
 	// Private API publications require authentication to retrieve information about them.
 	//
 	Visibility *APIPublicationVisibility `default:"private" json:"visibility"`
+	// UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
+	FormID *string `json:"form_id,omitempty"`
 }
 
 func (a APIPublication) MarshalJSON() ([]byte, error) {
@@ -54,4 +56,11 @@ func (a *APIPublication) GetVisibility() *APIPublicationVisibility {
 		return nil
 	}
 	return a.Visibility
+}
+
+func (a *APIPublication) GetFormID() *string {
+	if a == nil {
+		return nil
+	}
+	return a.FormID
 }

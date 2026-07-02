@@ -11,7 +11,7 @@ import (
 type UpdateMcpServerConfigRequest struct {
 	// The ID of the MCP server.
 	McpServerID            string                            `pathParam:"style=simple,explode=false,name=mcpServerId"`
-	UpdateMCPServerRequest components.UpdateMCPServerRequest `request:"mediaType=application/json"`
+	CreateMCPServerRequest components.CreateMCPServerRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdateMcpServerConfigRequest) GetMcpServerID() string {
@@ -21,11 +21,11 @@ func (u *UpdateMcpServerConfigRequest) GetMcpServerID() string {
 	return u.McpServerID
 }
 
-func (u *UpdateMcpServerConfigRequest) GetUpdateMCPServerRequest() components.UpdateMCPServerRequest {
+func (u *UpdateMcpServerConfigRequest) GetCreateMCPServerRequest() components.CreateMCPServerRequest {
 	if u == nil {
-		return components.UpdateMCPServerRequest{}
+		return components.CreateMCPServerRequest{}
 	}
-	return u.UpdateMCPServerRequest
+	return u.CreateMCPServerRequest
 }
 
 type UpdateMcpServerConfigResponse struct {

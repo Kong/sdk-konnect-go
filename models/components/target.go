@@ -23,10 +23,14 @@ func (t *TargetUpstream) GetID() *string {
 type Target struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *float64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// Whether to use this target only as backup or not.
 	Failover *bool `default:"false" json:"failover"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// An optional set of strings associated with the Target for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// The target address (ip or hostname) and port. If the hostname resolves to an SRV record, the `port` value will be overridden by the value from the DNS record.
@@ -57,6 +61,13 @@ func (t *Target) GetCreatedAt() *float64 {
 	return t.CreatedAt
 }
 
+func (t *Target) GetDescription() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Description
+}
+
 func (t *Target) GetFailover() *bool {
 	if t == nil {
 		return nil
@@ -69,6 +80,13 @@ func (t *Target) GetID() *string {
 		return nil
 	}
 	return t.ID
+}
+
+func (t *Target) GetManagedBy() map[string]any {
+	if t == nil {
+		return nil
+	}
+	return t.ManagedBy
 }
 
 func (t *Target) GetTags() []string {

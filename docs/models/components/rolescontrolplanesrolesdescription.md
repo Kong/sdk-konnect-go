@@ -1,7 +1,5 @@
 # RolesControlPlanesRolesDescription
 
-This role grants full write access to administer Consumers. Can configure plugins and view plugin partials for Consumers they have access to. Cannot create or modify global plugins or plugins outside their scope.
-
 ## Example Usage
 
 ```go
@@ -9,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesControlPlanesRolesDescriptionThisRoleGrantsFullWriteAccessToAdministerConsumers
+value := components.RolesControlPlanesRolesDescriptionCreatesANewControlPlaneInAnOrganizationTheCreatorBecomesTheOwnerOfTheControlPlaneTheyCreate
 ```
 
 
 ## Values
 
-| Name                                                                                   | Value                                                                                  |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `RolesControlPlanesRolesDescriptionThisRoleGrantsFullWriteAccessToAdministerConsumers` | This role grants full write access to administer consumers.                            |
+| Name                                                                                                                            | Value                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `RolesControlPlanesRolesDescriptionCreatesANewControlPlaneInAnOrganizationTheCreatorBecomesTheOwnerOfTheControlPlaneTheyCreate` | Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create.                 |

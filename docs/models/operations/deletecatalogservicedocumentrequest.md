@@ -1,0 +1,9 @@
+# DeleteCatalogServiceDocumentRequest
+
+
+## Fields
+
+| Field                                | Type                                 | Required                             | Description                          | Example                              |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `ServiceID`                          | `string`                             | :heavy_check_mark:                   | The `id` of the service.             | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7 |
+| `DocumentID`                         | `string`                             | :heavy_check_mark:                   | The `id` of the document.            | 7b453ae4-66f5-4530-88b0-0b6e34072325 |

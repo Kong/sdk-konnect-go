@@ -14,14 +14,14 @@ type CreateIntegrationInstanceAuthCredentialType string
 const (
 	CreateIntegrationInstanceAuthCredentialTypeCreateOAuthCredential                 CreateIntegrationInstanceAuthCredentialType = "CreateOAuthCredential"
 	CreateIntegrationInstanceAuthCredentialTypeCreateGitHubAppInstallationCredential CreateIntegrationInstanceAuthCredentialType = "CreateGitHubAppInstallationCredential"
-	CreateIntegrationInstanceAuthCredentialTypeMultiKeyAuth                          CreateIntegrationInstanceAuthCredentialType = "multi_key_auth"
+	CreateIntegrationInstanceAuthCredentialTypeMultiKeyAuth1                         CreateIntegrationInstanceAuthCredentialType = "multi_key_auth1"
 	CreateIntegrationInstanceAuthCredentialTypeCreateAWSRoleDelegationAuthCredential CreateIntegrationInstanceAuthCredentialType = "CreateAWSRoleDelegationAuthCredential"
 )
 
 type CreateIntegrationInstanceAuthCredential struct {
 	CreateOAuthCredential                 *CreateOAuthCredential                 `queryParam:"inline" union:"member"`
 	CreateGitHubAppInstallationCredential *CreateGitHubAppInstallationCredential `queryParam:"inline" union:"member"`
-	MultiKeyAuth                          *MultiKeyAuth                          `queryParam:"inline" union:"member"`
+	MultiKeyAuth1                         *MultiKeyAuth1                         `queryParam:"inline" union:"member"`
 	CreateAWSRoleDelegationAuthCredential *CreateAWSRoleDelegationAuthCredential `queryParam:"inline" union:"member"`
 
 	Type CreateIntegrationInstanceAuthCredentialType
@@ -45,12 +45,12 @@ func CreateCreateIntegrationInstanceAuthCredentialCreateGitHubAppInstallationCre
 	}
 }
 
-func CreateCreateIntegrationInstanceAuthCredentialMultiKeyAuth(multiKeyAuth MultiKeyAuth) CreateIntegrationInstanceAuthCredential {
-	typ := CreateIntegrationInstanceAuthCredentialTypeMultiKeyAuth
+func CreateCreateIntegrationInstanceAuthCredentialMultiKeyAuth1(multiKeyAuth1 MultiKeyAuth1) CreateIntegrationInstanceAuthCredential {
+	typ := CreateIntegrationInstanceAuthCredentialTypeMultiKeyAuth1
 
 	return CreateIntegrationInstanceAuthCredential{
-		MultiKeyAuth: &multiKeyAuth,
-		Type:         typ,
+		MultiKeyAuth1: &multiKeyAuth1,
+		Type:          typ,
 	}
 }
 
@@ -79,10 +79,10 @@ func (u *CreateIntegrationInstanceAuthCredential) UnmarshalJSON(data []byte) err
 		return nil
 	}
 
-	var multiKeyAuth MultiKeyAuth = MultiKeyAuth{}
-	if err := utils.UnmarshalJSON(data, &multiKeyAuth, "", true, nil); err == nil {
-		u.MultiKeyAuth = &multiKeyAuth
-		u.Type = CreateIntegrationInstanceAuthCredentialTypeMultiKeyAuth
+	var multiKeyAuth1 MultiKeyAuth1 = MultiKeyAuth1{}
+	if err := utils.UnmarshalJSON(data, &multiKeyAuth1, "", true, nil); err == nil {
+		u.MultiKeyAuth1 = &multiKeyAuth1
+		u.Type = CreateIntegrationInstanceAuthCredentialTypeMultiKeyAuth1
 		return nil
 	}
 
@@ -105,8 +105,8 @@ func (u CreateIntegrationInstanceAuthCredential) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CreateGitHubAppInstallationCredential, "", true)
 	}
 
-	if u.MultiKeyAuth != nil {
-		return utils.MarshalJSON(u.MultiKeyAuth, "", true)
+	if u.MultiKeyAuth1 != nil {
+		return utils.MarshalJSON(u.MultiKeyAuth1, "", true)
 	}
 
 	if u.CreateAWSRoleDelegationAuthCredential != nil {

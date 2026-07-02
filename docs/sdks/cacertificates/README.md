@@ -7,11 +7,335 @@ These objects are used by Kong Gateway to verify the validity of a client or ser
 
 ### Available Operations
 
+* [ListCaCertificateInWorkspace](#listcacertificateinworkspace) - List all CA Certificates in a workspace
+* [CreateCaCertificateInWorkspace](#createcacertificateinworkspace) - Create a new CA Certificate in a workspace
+* [DeleteCaCertificateInWorkspace](#deletecacertificateinworkspace) - Delete a CA Certificate in a workspace
+* [GetCaCertificateInWorkspace](#getcacertificateinworkspace) - Get a CA Certificate in a workspace
+* [UpsertCaCertificateInWorkspace](#upsertcacertificateinworkspace) - Upsert a CA Certificate in a workspace
 * [ListCaCertificate](#listcacertificate) - List all CA Certificates
 * [CreateCaCertificate](#createcacertificate) - Create a new CA Certificate
 * [DeleteCaCertificate](#deletecacertificate) - Delete a CA Certificate
 * [GetCaCertificate](#getcacertificate) - Get a CA Certificate
 * [UpsertCaCertificate](#upsertcacertificate) - Upsert a CA Certificate
+
+## ListCaCertificateInWorkspace
+
+List all CA Certificates in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-ca_certificate-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/ca_certificates" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CACertificates.ListCaCertificateInWorkspace(ctx, operations.ListCaCertificateInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.ListCaCertificateInWorkspaceRequest](../../models/operations/listcacertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.ListCaCertificateInWorkspaceResponse](../../models/operations/listcacertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## CreateCaCertificateInWorkspace
+
+Create a new CA Certificate in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-ca_certificate-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/ca_certificates" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CACertificates.CreateCaCertificateInWorkspace(ctx, operations.CreateCaCertificateInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        CACertificate: components.CACertificate{
+            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+            CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
+            CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
+            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
+            Tags: []string{
+                "trusted",
+                "api",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CACertificate != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.CreateCaCertificateInWorkspaceRequest](../../models/operations/createcacertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.CreateCaCertificateInWorkspaceResponse](../../models/operations/createcacertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## DeleteCaCertificateInWorkspace
+
+Delete a CA Certificate in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-ca_certificate-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/ca_certificates/{CACertificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CACertificates.DeleteCaCertificateInWorkspace(ctx, operations.DeleteCaCertificateInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        CACertificateID: "3c31f18a-f27a-4f9b-8cd4-bf841554612f",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.DeleteCaCertificateInWorkspaceRequest](../../models/operations/deletecacertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.DeleteCaCertificateInWorkspaceResponse](../../models/operations/deletecacertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## GetCaCertificateInWorkspace
+
+Get a CA Certificate using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-ca_certificate-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/ca_certificates/{CACertificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CACertificates.GetCaCertificateInWorkspace(ctx, operations.GetCaCertificateInWorkspaceRequest{
+        CACertificateID: "3c31f18a-f27a-4f9b-8cd4-bf841554612f",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CACertificate != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                          | :heavy_check_mark:                                                                                             | The context to use for the request.                                                                            |
+| `request`                                                                                                      | [operations.GetCaCertificateInWorkspaceRequest](../../models/operations/getcacertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+| `opts`                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                       | :heavy_minus_sign:                                                                                             | The options for this request.                                                                                  |
+
+### Response
+
+**[*operations.GetCaCertificateInWorkspaceResponse](../../models/operations/getcacertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## UpsertCaCertificateInWorkspace
+
+Create or Update CA Certificate using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-ca_certificate-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/ca_certificates/{CACertificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CACertificates.UpsertCaCertificateInWorkspace(ctx, operations.UpsertCaCertificateInWorkspaceRequest{
+        CACertificateID: "3c31f18a-f27a-4f9b-8cd4-bf841554612f",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        CACertificate: components.CACertificate{
+            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+            CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
+            CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
+            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
+            Tags: []string{
+                "trusted",
+                "api",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CACertificate != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.UpsertCaCertificateInWorkspaceRequest](../../models/operations/upsertcacertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.UpsertCaCertificateInWorkspaceResponse](../../models/operations/upsertcacertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
 
 ## ListCaCertificate
 

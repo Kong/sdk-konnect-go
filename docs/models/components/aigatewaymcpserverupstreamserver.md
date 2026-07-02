@@ -1,0 +1,29 @@
+# AIGatewayMCPServerUpstreamServer
+
+
+## Supported Types
+
+### AIGatewayMCPServerBaseACLPropertiesConsumerAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesConsumer
+
+```go
+aiGatewayMCPServerUpstreamServer := components.CreateAIGatewayMCPServerUpstreamServerConsumer(components.AIGatewayMCPServerBaseACLPropertiesConsumerAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesConsumer{/* values here */})
+```
+
+### AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesOauth
+
+```go
+aiGatewayMCPServerUpstreamServer := components.CreateAIGatewayMCPServerUpstreamServerOauthAccessToken(components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesOauth{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch aiGatewayMCPServerUpstreamServer.Type {
+	case components.AIGatewayMCPServerUpstreamServerUnionTypeConsumer:
+		// aiGatewayMCPServerUpstreamServer.AIGatewayMCPServerBaseACLPropertiesConsumerAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesConsumer is populated
+	case components.AIGatewayMCPServerUpstreamServerUnionTypeOauthAccessToken:
+		// aiGatewayMCPServerUpstreamServer.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesOauth is populated
+}
+```

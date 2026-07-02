@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.TypeAwsRoleDelegation
+value := components.TypeURL
 ```
 
 
 ## Values
 
-| Name                    | Value                   |
-| ----------------------- | ----------------------- |
-| `TypeAwsRoleDelegation` | aws_role_delegation     |
+| Name      | Value     |
+| --------- | --------- |
+| `TypeURL` | url       |

@@ -46,6 +46,8 @@ type PortalAuditLogWebhookStatus struct {
 	LastResponseCode *int64 `json:"last_response_code,omitempty"`
 	// The last message received from the webhook. Useful for debugging.
 	LastResponseMessage *string `json:"last_response_message,omitempty"`
+	// The body of the last response received from the webhook endpoint.
+	LastResponseBody *string `json:"last_response_body,omitempty"`
 }
 
 func (p PortalAuditLogWebhookStatus) MarshalJSON() ([]byte, error) {
@@ -92,4 +94,11 @@ func (p *PortalAuditLogWebhookStatus) GetLastResponseMessage() *string {
 		return nil
 	}
 	return p.LastResponseMessage
+}
+
+func (p *PortalAuditLogWebhookStatus) GetLastResponseBody() *string {
+	if p == nil {
+		return nil
+	}
+	return p.LastResponseBody
 }

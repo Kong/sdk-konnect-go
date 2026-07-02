@@ -18,9 +18,13 @@ type KeyAuthWithoutParents struct {
 	Consumer *KeyAuthWithoutParentsConsumer `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID  *string `json:"id,omitempty"`
 	Key *string `json:"key,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
 	// key-auth ttl in seconds
@@ -41,6 +45,13 @@ func (k *KeyAuthWithoutParents) GetCreatedAt() *int64 {
 	return k.CreatedAt
 }
 
+func (k *KeyAuthWithoutParents) GetDescription() *string {
+	if k == nil {
+		return nil
+	}
+	return k.Description
+}
+
 func (k *KeyAuthWithoutParents) GetID() *string {
 	if k == nil {
 		return nil
@@ -53,6 +64,13 @@ func (k *KeyAuthWithoutParents) GetKey() *string {
 		return nil
 	}
 	return k.Key
+}
+
+func (k *KeyAuthWithoutParents) GetManagedBy() map[string]any {
+	if k == nil {
+		return nil
+	}
+	return k.ManagedBy
 }
 
 func (k *KeyAuthWithoutParents) GetTags() []string {

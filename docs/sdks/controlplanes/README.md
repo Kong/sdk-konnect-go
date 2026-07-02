@@ -9,6 +9,8 @@
 * [GetControlPlane](#getcontrolplane) - Get a Control Plane
 * [UpdateControlPlane](#updatecontrolplane) - Update Control Plane
 * [DeleteControlPlane](#deletecontrolplane) - Delete Control Plane
+* [GetControlPlaneSettings](#getcontrolplanesettings) - Get Control Plane Settings
+* [PutControlPlaneSettings](#putcontrolplanesettings) - Upsert Control Plane Settings
 
 ## ListControlPlanes
 
@@ -1368,5 +1370,130 @@ func main() {
 | sdkerrors.ForbiddenError      | 403                           | application/problem+json      |
 | sdkerrors.NotFoundError       | 404                           | application/problem+json      |
 | sdkerrors.InternalServerError | 500                           | application/problem+json      |
+| sdkerrors.ServiceUnavailable  | 503                           | application/problem+json      |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
+
+## GetControlPlaneSettings
+
+Returns the settings of a control plane.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-control-plane-settings" method="get" path="/v2/control-planes/{controlPlaneId}/settings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ControlPlanes.GetControlPlaneSettings(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.SettingsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `controlPlaneID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of a control plane                                    |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.GetControlPlaneSettingsResponse](../../models/operations/getcontrolplanesettingsresponse.md), error**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.BadRequestError     | 400                           | application/problem+json      |
+| sdkerrors.UnauthorizedError   | 401                           | application/problem+json      |
+| sdkerrors.ForbiddenError      | 403                           | application/problem+json      |
+| sdkerrors.NotFoundError       | 404                           | application/problem+json      |
+| sdkerrors.BaseError           | 500                           | application/problem+json      |
+| sdkerrors.NotImplementedError | 501                           | application/problem+json      |
+| sdkerrors.ServiceUnavailable  | 503                           | application/problem+json      |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
+
+## PutControlPlaneSettings
+
+Updates the settings of a control plane. If the settings do not exist, they will be created.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="put-control-plane-settings" method="put" path="/v2/control-planes/{controlPlaneId}/settings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ControlPlanes.PutControlPlaneSettings(ctx, "<id>", &components.Settings{
+        ResiliencyMode: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.SettingsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `ctx`                                                       | [context.Context](https://pkg.go.dev/context#Context)       | :heavy_check_mark:                                          | The context to use for the request.                         |
+| `controlPlaneID`                                            | `string`                                                    | :heavy_check_mark:                                          | ID of a control plane                                       |
+| `settings`                                                  | [*components.Settings](../../models/components/settings.md) | :heavy_minus_sign:                                          | N/A                                                         |
+| `opts`                                                      | [][operations.Option](../../models/operations/option.md)    | :heavy_minus_sign:                                          | The options for this request.                               |
+
+### Response
+
+**[*operations.PutControlPlaneSettingsResponse](../../models/operations/putcontrolplanesettingsresponse.md), error**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.BadRequestError     | 400                           | application/problem+json      |
+| sdkerrors.UnauthorizedError   | 401                           | application/problem+json      |
+| sdkerrors.ForbiddenError      | 403                           | application/problem+json      |
+| sdkerrors.NotFoundError       | 404                           | application/problem+json      |
+| sdkerrors.BaseError           | 500                           | application/problem+json      |
+| sdkerrors.NotImplementedError | 501                           | application/problem+json      |
 | sdkerrors.ServiceUnavailable  | 503                           | application/problem+json      |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |

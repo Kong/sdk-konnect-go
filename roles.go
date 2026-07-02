@@ -34,7 +34,11 @@ func newRoles(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hook
 
 // GetPredefinedRoles - Get Predefined Roles
 // Retrieves the predefined, or system managed, roles.
-func (s *Roles) GetPredefinedRoles(ctx context.Context, opts ...operations.Option) (*operations.GetPredefinedRolesResponse, error) {
+func (s *Roles) GetPredefinedRoles(ctx context.Context, filter *operations.GetPredefinedRolesQueryParamFilter, opts ...operations.Option) (*operations.GetPredefinedRolesResponse, error) {
+	request := operations.GetPredefinedRolesRequest{
+		Filter: filter,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -83,6 +87,10 @@ func (s *Roles) GetPredefinedRoles(ctx context.Context, opts ...operations.Optio
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err

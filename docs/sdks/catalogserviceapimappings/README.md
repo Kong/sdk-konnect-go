@@ -11,75 +11,11 @@ If a mapped API is unlinked from a Service, the mapping will be deleted.
 
 ### Available Operations
 
-* [ListServiceMappingsForAPI](#listservicemappingsforapi) - List Service Mappings for an API
 * [ListCatalogServiceAPIMappings](#listcatalogserviceapimappings) - List API Mappings for a Service
 * [CreateCatalogServiceAPIMapping](#createcatalogserviceapimapping) - Create API Mapping for a Service
 * [GetCatalogServiceAPIMapping](#getcatalogserviceapimapping) - Get API Mapping for a Service
 * [DeleteCatalogServiceAPIMapping](#deletecatalogserviceapimapping) - Delete API Mapping for a Service
-
-## ListServiceMappingsForAPI
-
-Returns a paginated collection of Service mappings for the given API.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-service-mappings-for-api" method="get" path="/v1/apis/{apiId}/service-mappings" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-        APIID: "d687f4ea-aa04-4157-b446-34519e5b18a7",
-        PageSize: sdkkonnectgo.Pointer[int64](10),
-        PageNumber: sdkkonnectgo.Pointer[int64](1),
-        Sort: sdkkonnectgo.Pointer("created_at desc"),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListCatalogServiceAPIMappingsResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
-| `request`                                                                                                  | [operations.ListServiceMappingsForAPIRequest](../../models/operations/listservicemappingsforapirequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
-
-### Response
-
-**[*operations.ListServiceMappingsForAPIResponse](../../models/operations/listservicemappingsforapiresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+* [ListServiceMappingsForAPI](#listservicemappingsforapi) - List Service Mappings for an API
 
 ## ListCatalogServiceAPIMappings
 
@@ -314,6 +250,70 @@ func main() {
 ### Response
 
 **[*operations.DeleteCatalogServiceAPIMappingResponse](../../models/operations/deletecatalogserviceapimappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListServiceMappingsForAPI
+
+Returns a paginated collection of Service mappings for the given API.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-service-mappings-for-api" method="get" path="/v1/apis/{apiId}/service-mappings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
+        APIID: "d687f4ea-aa04-4157-b446-34519e5b18a7",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListCatalogServiceAPIMappingsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.ListServiceMappingsForAPIRequest](../../models/operations/listservicemappingsforapirequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
+
+### Response
+
+**[*operations.ListServiceMappingsForAPIResponse](../../models/operations/listservicemappingsforapiresponse.md), error**
 
 ### Errors
 

@@ -3,25 +3,25 @@
 
 package components
 
-// AssignedRoleEntityRegion - Region of the entity.
-type AssignedRoleEntityRegion string
+// EntityRegion - Region of the entity.
+type EntityRegion string
 
 const (
-	AssignedRoleEntityRegionUs       AssignedRoleEntityRegion = "us"
-	AssignedRoleEntityRegionEu       AssignedRoleEntityRegion = "eu"
-	AssignedRoleEntityRegionAu       AssignedRoleEntityRegion = "au"
-	AssignedRoleEntityRegionMe       AssignedRoleEntityRegion = "me"
-	AssignedRoleEntityRegionIn       AssignedRoleEntityRegion = "in"
-	AssignedRoleEntityRegionSg       AssignedRoleEntityRegion = "sg"
-	AssignedRoleEntityRegionWildcard AssignedRoleEntityRegion = "*"
+	EntityRegionUs       EntityRegion = "us"
+	EntityRegionEu       EntityRegion = "eu"
+	EntityRegionAu       EntityRegion = "au"
+	EntityRegionMe       EntityRegion = "me"
+	EntityRegionIn       EntityRegion = "in"
+	EntityRegionSg       EntityRegion = "sg"
+	EntityRegionWildcard EntityRegion = "*"
 )
 
-func (e AssignedRoleEntityRegion) ToPointer() *AssignedRoleEntityRegion {
+func (e EntityRegion) ToPointer() *EntityRegion {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AssignedRoleEntityRegion) IsExact() bool {
+func (e *EntityRegion) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "us", "eu", "au", "me", "in", "sg", "*":
@@ -39,10 +39,12 @@ type AssignedRole struct {
 	RoleName *string `json:"role_name,omitempty"`
 	// A RBAC entity ID.
 	EntityID *string `json:"entity_id,omitempty"`
+	// The IDs of the entities associated with this role assignment. Mutually exclusive with entity_id; exactly one of entity_id or entity_ids must be provided.
+	EntityIds []string `json:"entity_ids,omitempty"`
 	// Name of the entity type the role is being assigned to.
 	EntityTypeName *string `json:"entity_type_name,omitempty"`
 	// Region of the entity.
-	EntityRegion *AssignedRoleEntityRegion `json:"entity_region,omitempty"`
+	EntityRegion *EntityRegion `json:"entity_region,omitempty"`
 }
 
 func (a *AssignedRole) GetID() *string {
@@ -66,6 +68,13 @@ func (a *AssignedRole) GetEntityID() *string {
 	return a.EntityID
 }
 
+func (a *AssignedRole) GetEntityIds() []string {
+	if a == nil {
+		return nil
+	}
+	return a.EntityIds
+}
+
 func (a *AssignedRole) GetEntityTypeName() *string {
 	if a == nil {
 		return nil
@@ -73,7 +82,7 @@ func (a *AssignedRole) GetEntityTypeName() *string {
 	return a.EntityTypeName
 }
 
-func (a *AssignedRole) GetEntityRegion() *AssignedRoleEntityRegion {
+func (a *AssignedRole) GetEntityRegion() *EntityRegion {
 	if a == nil {
 		return nil
 	}

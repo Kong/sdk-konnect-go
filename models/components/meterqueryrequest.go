@@ -34,18 +34,18 @@ func (e *MeterQueryRequestGranularity) IsExact() bool {
 	return false
 }
 
-// Filters to apply to the query.
-type Filters struct {
+// MeterQueryRequestFilters - Filters to apply to the query.
+type MeterQueryRequestFilters struct {
 	// Filters to apply to the dimensions of the query. For `subject` and `customer_id`
 	// only equals ("eq", "in") comparisons are supported.
 	Dimensions map[string]QueryFilterStringMapItem `json:"dimensions,omitempty"`
 }
 
-func (f *Filters) GetDimensions() map[string]QueryFilterStringMapItem {
-	if f == nil {
+func (m *MeterQueryRequestFilters) GetDimensions() map[string]QueryFilterStringMapItem {
+	if m == nil {
 		return nil
 	}
-	return f.Dimensions
+	return m.Dimensions
 }
 
 // MeterQueryRequest - A meter query request.
@@ -64,7 +64,7 @@ type MeterQueryRequest struct {
 	// The dimensions to group the results by.
 	GroupByDimensions []string `json:"group_by_dimensions,omitempty"`
 	// Filters to apply to the query.
-	Filters *Filters `json:"filters,omitempty"`
+	Filters *MeterQueryRequestFilters `json:"filters,omitempty"`
 }
 
 func (m MeterQueryRequest) MarshalJSON() ([]byte, error) {
@@ -113,7 +113,7 @@ func (m *MeterQueryRequest) GetGroupByDimensions() []string {
 	return m.GroupByDimensions
 }
 
-func (m *MeterQueryRequest) GetFilters() *Filters {
+func (m *MeterQueryRequest) GetFilters() *MeterQueryRequestFilters {
 	if m == nil {
 		return nil
 	}

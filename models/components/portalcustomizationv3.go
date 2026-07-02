@@ -68,6 +68,25 @@ func (t *Theme) GetColors() *Colors {
 	return t.Colors
 }
 
+type Js struct {
+	Custom  *string  `json:"custom,omitempty"`
+	Scripts []string `json:"scripts,omitempty"`
+}
+
+func (j *Js) GetCustom() *string {
+	if j == nil {
+		return nil
+	}
+	return j.Custom
+}
+
+func (j *Js) GetScripts() []string {
+	if j == nil {
+		return nil
+	}
+	return j.Scripts
+}
+
 type Menu struct {
 	Main           []PortalMenuItem          `json:"main,omitempty"`
 	FooterSections []PortalFooterMenuSection `json:"footer_sections,omitempty"`
@@ -172,14 +191,39 @@ func (s *SpecRenderer) GetAllowCustomServerUrls() *bool {
 	return s.AllowCustomServerUrls
 }
 
+type Footer struct {
+	// The unique name of a snippet in the portal to render in place of the default footer.
+	SnippetName *string `json:"snippet_name"`
+}
+
+func (f *Footer) GetSnippetName() *string {
+	if f == nil {
+		return nil
+	}
+	return f.SnippetName
+}
+
+type PortalLayout struct {
+	Footer *Footer `json:"footer,omitempty"`
+}
+
+func (p *PortalLayout) GetFooter() *Footer {
+	if p == nil {
+		return nil
+	}
+	return p.Footer
+}
+
 // PortalCustomizationV3 - The custom settings of this portal
 type PortalCustomizationV3 struct {
 	Theme        *Theme        `json:"theme,omitempty"`
 	Layout       *string       `json:"layout,omitempty"`
 	CSS          *string       `json:"css,omitempty"`
+	Js           *Js           `json:"js,omitempty"`
 	Menu         *Menu         `json:"menu,omitempty"`
 	SpecRenderer *SpecRenderer `json:"spec_renderer,omitempty"`
 	Robots       *string       `json:"robots,omitempty"`
+	PortalLayout *PortalLayout `json:"portal_layout,omitempty"`
 }
 
 func (p *PortalCustomizationV3) GetTheme() *Theme {
@@ -203,6 +247,13 @@ func (p *PortalCustomizationV3) GetCSS() *string {
 	return p.CSS
 }
 
+func (p *PortalCustomizationV3) GetJs() *Js {
+	if p == nil {
+		return nil
+	}
+	return p.Js
+}
+
 func (p *PortalCustomizationV3) GetMenu() *Menu {
 	if p == nil {
 		return nil
@@ -222,6 +273,13 @@ func (p *PortalCustomizationV3) GetRobots() *string {
 		return nil
 	}
 	return p.Robots
+}
+
+func (p *PortalCustomizationV3) GetPortalLayout() *PortalLayout {
+	if p == nil {
+		return nil
+	}
+	return p.PortalLayout
 }
 
 // #region class-body-portalcustomizationv3

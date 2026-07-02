@@ -7,12 +7,126 @@ Create an Event Gateway Control Plane, used to store Event Gateway configuration
 
 ### Available Operations
 
+* [ListEventGatewaysUsage](#listeventgatewaysusage) - Get Event Gateways Usage
+* [ListEventGatewayVersions](#listeventgatewayversions) - List Event Gateway API Versions
 * [ListEventGateways](#listeventgateways) - List all Event Gateways
 * [CreateEventGateway](#createeventgateway) - Create Event Gateway
 * [GetEventGateway](#geteventgateway) - Get an Event Gateway
 * [UpdateEventGateway](#updateeventgateway) - Update Event Gateway
 * [PatchEventGateway](#patcheventgateway) - Partially Update Event Gateway
 * [DeleteEventGateway](#deleteeventgateway) - Delete Event Gateway
+
+## ListEventGatewaysUsage
+
+Returns usage statistics for Event Gateways across all Konnect Organizations.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-event-gateways-usage" method="get" path="/v1/event-gateways-usage" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.EventGateways.ListEventGatewaysUsage(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListEventGatewayUsageResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.ListEventGatewaysUsageResponse](../../models/operations/listeventgatewaysusageresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListEventGatewayVersions
+
+Returns a list of Event Gateway runtime versions which affects API behavior and compatibility.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-event-gateway-versions" method="get" path="/v1/event-gateways-runtime-versions" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.EventGateways.ListEventGatewayVersions(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GatewayRuntimeAPIVersionsList != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.ListEventGatewayVersionsResponse](../../models/operations/listeventgatewayversionsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListEventGateways
 

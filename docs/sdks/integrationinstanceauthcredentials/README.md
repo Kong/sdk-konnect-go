@@ -46,11 +46,11 @@ func main() {
         }),
     )
 
-    res, err := s.IntegrationInstanceAuthCredentials.CreateIntegrationInstanceAuthCredential(ctx, "3f51fa25-310a-421d-bd1a-007f859021a3", components.CreateCreateIntegrationInstanceAuthCredentialMultiKeyAuth(
-        components.MultiKeyAuth{
+    res, err := s.IntegrationInstanceAuthCredentials.CreateIntegrationInstanceAuthCredential(ctx, "3f51fa25-310a-421d-bd1a-007f859021a3", components.CreateCreateIntegrationInstanceAuthCredentialMultiKeyAuth1(
+        components.MultiKeyAuth1{
             Config: components.CreateMultiKeyAuthCredentialConfig{
-                Headers: []components.Headers{
-                    components.Headers{
+                Headers: []components.MultiKeyAuthHeaders{
+                    components.MultiKeyAuthHeaders{
                         Name: "x-api-key",
                         Key: "9f2a3b4c8d6e7f00112233445566778899aabbccddeeff001122334455667788",
                     },
@@ -63,8 +63,8 @@ func main() {
     }
     if res.IntegrationInstanceAuthCredential != nil {
         switch res.IntegrationInstanceAuthCredential.Type {
-            case components.IntegrationInstanceAuthCredentialTypeOauth:
-                // res.IntegrationInstanceAuthCredential.Oauth is populated
+            case components.IntegrationInstanceAuthCredentialTypeOauth1:
+                // res.IntegrationInstanceAuthCredential.Oauth1 is populated
             case components.IntegrationInstanceAuthCredentialTypeGithubAppInstallation:
                 // res.IntegrationInstanceAuthCredential.GithubAppInstallation is populated
             case components.IntegrationInstanceAuthCredentialTypeMultiKeyAuthCredential:
@@ -133,8 +133,8 @@ func main() {
     }
     if res.IntegrationInstanceAuthCredential != nil {
         switch res.IntegrationInstanceAuthCredential.Type {
-            case components.IntegrationInstanceAuthCredentialTypeOauth:
-                // res.IntegrationInstanceAuthCredential.Oauth is populated
+            case components.IntegrationInstanceAuthCredentialTypeOauth1:
+                // res.IntegrationInstanceAuthCredential.Oauth1 is populated
             case components.IntegrationInstanceAuthCredentialTypeGithubAppInstallation:
                 // res.IntegrationInstanceAuthCredential.GithubAppInstallation is populated
             case components.IntegrationInstanceAuthCredentialTypeMultiKeyAuthCredential:

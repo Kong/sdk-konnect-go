@@ -1,0 +1,10 @@
+# DCRProvidersRolesRoles
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Maintainer`                                                                                      | [*components.DCRProvidersRolesMaintainer](../../models/components/dcrprovidersrolesmaintainer.md) | :heavy_minus_sign:                                                                                | N/A                                                                                               |
+| `Creator`                                                                                         | [*components.DCRProvidersRolesCreator](../../models/components/dcrprovidersrolescreator.md)       | :heavy_minus_sign:                                                                                | N/A                                                                                               |
+| `Viewer`                                                                                          | [*components.DCRProvidersRolesViewer](../../models/components/dcrprovidersrolesviewer.md)         | :heavy_minus_sign:                                                                                | N/A                                                                                               |

@@ -8,15 +8,15 @@ import (
 	"time"
 )
 
-type ValidationMessages struct {
+type APISpecResponseValidationMessages struct {
 	Message string `json:"message"`
 }
 
-func (v *ValidationMessages) GetMessage() string {
-	if v == nil {
+func (a *APISpecResponseValidationMessages) GetMessage() string {
+	if a == nil {
 		return ""
 	}
-	return v.Message
+	return a.Message
 }
 
 // APISpecResponseAPISpecType - The type of specification being stored. This allows us to render the specification correctly.
@@ -51,7 +51,7 @@ type APISpecResponse struct {
 	//
 	Content string `json:"content"`
 	// The errors that occurred while parsing the API specification.
-	ValidationMessages []ValidationMessages `json:"validation_messages"`
+	ValidationMessages []APISpecResponseValidationMessages `json:"validation_messages"`
 	// The type of specification being stored. This allows us to render the specification correctly.
 	//
 	Type APISpecResponseAPISpecType `json:"type"`
@@ -86,9 +86,9 @@ func (a *APISpecResponse) GetContent() string {
 	return a.Content
 }
 
-func (a *APISpecResponse) GetValidationMessages() []ValidationMessages {
+func (a *APISpecResponse) GetValidationMessages() []APISpecResponseValidationMessages {
 	if a == nil {
-		return []ValidationMessages{}
+		return []APISpecResponseValidationMessages{}
 	}
 	return a.ValidationMessages
 }

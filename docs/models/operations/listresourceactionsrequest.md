@@ -1,0 +1,9 @@
+# ListResourceActionsRequest
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `Page`                                                                                                  | [*components.CursorPageParameters](../../models/components/cursorpageparameters.md)                     | :heavy_minus_sign:                                                                                      | Determines which page of the collection to retrieve.                                                    |
+| `Filter`                                                                                                | [*components.ResourceActionFilterParameters](../../models/components/resourceactionfilterparameters.md) | :heavy_minus_sign:                                                                                      | Filters a collection of resource actions.                                                               |

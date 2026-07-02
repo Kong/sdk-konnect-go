@@ -6,8 +6,12 @@ package components
 type ConsumerGroup struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// The name of the consumer group.
 	Name string `json:"name"`
 	// A set of strings representing tags.
@@ -23,11 +27,25 @@ func (c *ConsumerGroup) GetCreatedAt() *int64 {
 	return c.CreatedAt
 }
 
+func (c *ConsumerGroup) GetDescription() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Description
+}
+
 func (c *ConsumerGroup) GetID() *string {
 	if c == nil {
 		return nil
 	}
 	return c.ID
+}
+
+func (c *ConsumerGroup) GetManagedBy() map[string]any {
+	if c == nil {
+		return nil
+	}
+	return c.ManagedBy
 }
 
 func (c *ConsumerGroup) GetName() string {

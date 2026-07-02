@@ -6,17 +6,354 @@ Operations related to notifications
 
 ### Available Operations
 
+* [ListNotifications](#listnotifications) - List available notifications
+* [GetNotificationDetails](#getnotificationdetails) - Get notification details
+* [UpdateNotification](#updatenotification) - Update notification
+* [DeleteNotification](#deletenotification) - Delete notification
+* [BulkNotifications](#bulknotifications) - Mark a list of notifications to a status
 * [ListUserConfigurations](#listuserconfigurations) - List available user configurations
 * [ListEventSubscriptions](#listeventsubscriptions) - List event subscriptions
 * [CreateEventSubscription](#createeventsubscription) - Create a new subscription for an event
 * [GetEventSubscription](#geteventsubscription) - Get subscription for an event
 * [UpdateEventSubscription](#updateeventsubscription) - Update subscription for an event
 * [DeleteEventSubscription](#deleteeventsubscription) - Delete subscription associated with event
-* [ListNotifications](#listnotifications) - List available notifications
-* [GetNotificationDetails](#getnotificationdetails) - Get notification details
-* [UpdateNotification](#updatenotification) - Update notification
-* [DeleteNotification](#deletenotification) - Delete notification
-* [BulkNotifications](#bulknotifications) - Mark a list of notifications to a status
+
+## ListNotifications
+
+List available notifications.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-notifications" method="get" path="/v1/notifications/inbox" example="Notifications List" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Notifications.ListNotifications(ctx, operations.ListNotificationsRequest{
+        PageBefore: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.NotificationListResponse != nil {
+        switch res.NotificationListResponse.Meta.Type {
+            case components.ListCursorMetaTypeCursorMeta:
+                // res.NotificationListResponse.Meta.CursorMeta is populated
+            case components.ListCursorMetaTypeTwo:
+                // res.NotificationListResponse.Meta.Two is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [operations.ListNotificationsRequest](../../models/operations/listnotificationsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
+
+### Response
+
+**[*operations.ListNotificationsResponse](../../models/operations/listnotificationsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetNotificationDetails
+
+Get notification details.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-notification-details" method="get" path="/v1/notifications/inbox/{notificationId}" example="Notification" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Notifications.GetNotificationDetails(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Notification != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `notificationID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of the notification.                                  |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.GetNotificationDetailsResponse](../../models/operations/getnotificationdetailsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateNotification
+
+Update notification.
+
+### Example Usage: Example Request Body
+
+<!-- UsageSnippet language="go" operationID="update-notification" method="patch" path="/v1/notifications/inbox/{notificationId}" example="Example Request Body" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Notifications.UpdateNotification(ctx, "<id>", &components.NotificationUpdatePayload{
+        Status: components.NotificationStatusRead,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Notification != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Notification
+
+<!-- UsageSnippet language="go" operationID="update-notification" method="patch" path="/v1/notifications/inbox/{notificationId}" example="Notification" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Notifications.UpdateNotification(ctx, "<id>", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Notification != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |
+| `notificationID`                                                                              | `string`                                                                                      | :heavy_check_mark:                                                                            | ID of the notification.                                                                       |
+| `notificationUpdatePayload`                                                                   | [*components.NotificationUpdatePayload](../../models/components/notificationupdatepayload.md) | :heavy_minus_sign:                                                                            | Request body schema for updating notification status.                                         |
+| `opts`                                                                                        | [][operations.Option](../../models/operations/option.md)                                      | :heavy_minus_sign:                                                                            | The options for this request.                                                                 |
+
+### Response
+
+**[*operations.UpdateNotificationResponse](../../models/operations/updatenotificationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteNotification
+
+Delete notification.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-notification" method="delete" path="/v1/notifications/inbox/{notificationId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Notifications.DeleteNotification(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `notificationID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of the notification.                                  |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.DeleteNotificationResponse](../../models/operations/deletenotificationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## BulkNotifications
+
+Mark a list of notifications to a status.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="bulk-notifications" method="post" path="/v1/notifications/inbox/bulk" example="Example Request Body" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Notifications.BulkNotifications(ctx, &components.BulkPayload{
+        Ids: []string{
+            "93f8380e-7798-4566-99e3-2edf2b57d289",
+            "93f8380e-7798-4566-99e3-2edf2b57d290",
+        },
+        Status: components.NotificationStatusRead,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `ctx`                                                            | [context.Context](https://pkg.go.dev/context#Context)            | :heavy_check_mark:                                               | The context to use for the request.                              |
+| `request`                                                        | [components.BulkPayload](../../models/components/bulkpayload.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| `opts`                                                           | [][operations.Option](../../models/operations/option.md)         | :heavy_minus_sign:                                               | The options for this request.                                    |
+
+### Response
+
+**[*operations.BulkNotificationsResponse](../../models/operations/bulknotificationsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListUserConfigurations
 
@@ -480,343 +817,6 @@ func main() {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ListNotifications
-
-List available notifications.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-notifications" method="get" path="/v1/notifications/inbox" example="Notifications List" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Notifications.ListNotifications(ctx, operations.ListNotificationsRequest{
-        PageBefore: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
-        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.NotificationListResponse != nil {
-        switch res.NotificationListResponse.Meta.Type {
-            case components.ListCursorMetaTypeCursorMeta:
-                // res.NotificationListResponse.Meta.CursorMeta is populated
-            case components.ListCursorMetaTypeTwo:
-                // res.NotificationListResponse.Meta.Two is populated
-        }
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `request`                                                                                  | [operations.ListNotificationsRequest](../../models/operations/listnotificationsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
-
-### Response
-
-**[*operations.ListNotificationsResponse](../../models/operations/listnotificationsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## GetNotificationDetails
-
-Get notification details.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="get-notification-details" method="get" path="/v1/notifications/inbox/{notificationId}" example="Notification" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Notifications.GetNotificationDetails(ctx, "<id>")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.Notification != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `notificationID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of the notification.                                  |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
-
-### Response
-
-**[*operations.GetNotificationDetailsResponse](../../models/operations/getnotificationdetailsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## UpdateNotification
-
-Update notification.
-
-### Example Usage: Example Request Body
-
-<!-- UsageSnippet language="go" operationID="update-notification" method="patch" path="/v1/notifications/inbox/{notificationId}" example="Example Request Body" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Notifications.UpdateNotification(ctx, "<id>", &components.NotificationUpdatePayload{
-        Status: components.NotificationStatusRead,
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.Notification != nil {
-        // handle response
-    }
-}
-```
-### Example Usage: Notification
-
-<!-- UsageSnippet language="go" operationID="update-notification" method="patch" path="/v1/notifications/inbox/{notificationId}" example="Notification" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Notifications.UpdateNotification(ctx, "<id>", nil)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.Notification != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |
-| `notificationID`                                                                              | `string`                                                                                      | :heavy_check_mark:                                                                            | ID of the notification.                                                                       |
-| `notificationUpdatePayload`                                                                   | [*components.NotificationUpdatePayload](../../models/components/notificationupdatepayload.md) | :heavy_minus_sign:                                                                            | Request body schema for updating notification status.                                         |
-| `opts`                                                                                        | [][operations.Option](../../models/operations/option.md)                                      | :heavy_minus_sign:                                                                            | The options for this request.                                                                 |
-
-### Response
-
-**[*operations.UpdateNotificationResponse](../../models/operations/updatenotificationresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## DeleteNotification
-
-Delete notification.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="delete-notification" method="delete" path="/v1/notifications/inbox/{notificationId}" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Notifications.DeleteNotification(ctx, "<id>")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `notificationID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of the notification.                                  |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
-
-### Response
-
-**[*operations.DeleteNotificationResponse](../../models/operations/deletenotificationresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## BulkNotifications
-
-Mark a list of notifications to a status.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="bulk-notifications" method="post" path="/v1/notifications/inbox/bulk" example="Example Request Body" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Notifications.BulkNotifications(ctx, &components.BulkPayload{
-        Ids: []string{
-            "93f8380e-7798-4566-99e3-2edf2b57d289",
-            "93f8380e-7798-4566-99e3-2edf2b57d290",
-        },
-        Status: components.NotificationStatusRead,
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `ctx`                                                            | [context.Context](https://pkg.go.dev/context#Context)            | :heavy_check_mark:                                               | The context to use for the request.                              |
-| `request`                                                        | [components.BulkPayload](../../models/components/bulkpayload.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
-| `opts`                                                           | [][operations.Option](../../models/operations/option.md)         | :heavy_minus_sign:                                               | The options for this request.                                    |
-
-### Response
-
-**[*operations.BulkNotificationsResponse](../../models/operations/bulknotificationsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |

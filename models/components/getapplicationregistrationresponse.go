@@ -70,6 +70,46 @@ func (g *GetApplicationRegistrationResponseApplication) GetName() string {
 	return g.Name
 }
 
+// GetApplicationRegistrationResponseConsumer - Details about the consumer associated with this application registration.
+type GetApplicationRegistrationResponseConsumer struct {
+	// Contains a unique identifier used for this resource.
+	ID string `json:"id"`
+	// The custom ID of the associated consumer.
+	CustomID *string `json:"custom_id,omitempty"`
+	// The username of the associated consumer.
+	Username *string `json:"username,omitempty"`
+	// Contains a unique identifier used for this resource.
+	ControlPlaneID string `json:"control_plane_id"`
+}
+
+func (g *GetApplicationRegistrationResponseConsumer) GetID() string {
+	if g == nil {
+		return ""
+	}
+	return g.ID
+}
+
+func (g *GetApplicationRegistrationResponseConsumer) GetCustomID() *string {
+	if g == nil {
+		return nil
+	}
+	return g.CustomID
+}
+
+func (g *GetApplicationRegistrationResponseConsumer) GetUsername() *string {
+	if g == nil {
+		return nil
+	}
+	return g.Username
+}
+
+func (g *GetApplicationRegistrationResponseConsumer) GetControlPlaneID() string {
+	if g == nil {
+		return ""
+	}
+	return g.ControlPlaneID
+}
+
 // GetApplicationRegistrationResponse - A application's registration for a specific version of an API.
 type GetApplicationRegistrationResponse struct {
 	// Contains a unique identifier used for this resource.
@@ -81,10 +121,14 @@ type GetApplicationRegistrationResponse struct {
 	// The status of an application registration request. Each registration is linked to a single API, and application credentials will not grant access to the API until the registration is approved.
 	// Pending, revoked, and rejected registrations will not provide access to the API.
 	Status ApplicationRegistrationStatus `json:"status"`
+	// Developer-supplied responses to the `api_registration` form linked to the API publication, captured at registration time. `null` when no responses were recorded. Keyed by field `name` (lowercase slug; letters, digits, underscores, or hyphens).
+	AdditionalData map[string]FormResponseEntry `json:"additional_data,omitempty"`
 	// Details about the API the application is registered to.
 	API GetApplicationRegistrationResponseAPI `json:"api"`
 	// Details about the application the registration is part of.
 	Application GetApplicationRegistrationResponseApplication `json:"application"`
+	// Details about the consumer associated with this application registration.
+	Consumer *GetApplicationRegistrationResponseConsumer `json:"consumer,omitempty"`
 }
 
 func (g GetApplicationRegistrationResponse) MarshalJSON() ([]byte, error) {
@@ -126,6 +170,13 @@ func (g *GetApplicationRegistrationResponse) GetStatus() ApplicationRegistration
 	return g.Status
 }
 
+func (g *GetApplicationRegistrationResponse) GetAdditionalData() map[string]FormResponseEntry {
+	if g == nil {
+		return nil
+	}
+	return g.AdditionalData
+}
+
 func (g *GetApplicationRegistrationResponse) GetAPI() GetApplicationRegistrationResponseAPI {
 	if g == nil {
 		return GetApplicationRegistrationResponseAPI{}
@@ -138,4 +189,11 @@ func (g *GetApplicationRegistrationResponse) GetApplication() GetApplicationRegi
 		return GetApplicationRegistrationResponseApplication{}
 	}
 	return g.Application
+}
+
+func (g *GetApplicationRegistrationResponse) GetConsumer() *GetApplicationRegistrationResponseConsumer {
+	if g == nil {
+		return nil
+	}
+	return g.Consumer
 }

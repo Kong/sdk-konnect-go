@@ -3,12 +3,27 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // IntegrationRef - Short-hand descriptor of an integration installed within the catalog.
 type IntegrationRef struct {
 	Name        string `json:"name"`
 	DisplayName string `json:"display_name"`
 	// Short-hand descriptor of an integration instance.
 	Instance IntegrationInstanceRef `json:"instance"`
+}
+
+func (i IntegrationRef) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IntegrationRef) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"name", "display_name", "instance"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (i *IntegrationRef) GetName() string {

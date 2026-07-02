@@ -65,6 +65,8 @@ type CreatePortal struct {
 	AuthenticationEnabled *bool `default:"true" json:"authentication_enabled"`
 	// Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.
 	RbacEnabled *bool `default:"false" json:"rbac_enabled"`
+	// Whether the portal has the MCP server enabled
+	McpServerEnabled *bool `json:"mcp_server_enabled,omitempty"`
 	// Whether ip allow list is enabled for the portal.
 	SiprEnabled *bool `default:"false" json:"sipr_enabled"`
 	// The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
@@ -86,6 +88,8 @@ type CreatePortal struct {
 	Labels map[string]*string `json:"labels,omitempty"`
 	// When enabled, portal registration notifications include the registering developer's identifying information (such as name and email).
 	NotificationsDeveloperPiiVisibilityEnabled *bool `default:"false" json:"notifications_developer_pii_visibility_enabled"`
+	// Use to create the portal page default content upon creation of this portal
+	CreateDefaultContent *bool `default:"false" json:"create_default_content"`
 }
 
 func (c CreatePortal) MarshalJSON() ([]byte, error) {
@@ -132,6 +136,13 @@ func (c *CreatePortal) GetRbacEnabled() *bool {
 		return nil
 	}
 	return c.RbacEnabled
+}
+
+func (c *CreatePortal) GetMcpServerEnabled() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.McpServerEnabled
 }
 
 func (c *CreatePortal) GetSiprEnabled() *bool {
@@ -188,4 +199,11 @@ func (c *CreatePortal) GetNotificationsDeveloperPiiVisibilityEnabled() *bool {
 		return nil
 	}
 	return c.NotificationsDeveloperPiiVisibilityEnabled
+}
+
+func (c *CreatePortal) GetCreateDefaultContent() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.CreateDefaultContent
 }

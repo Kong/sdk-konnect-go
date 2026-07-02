@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// PortalDeveloper - Details about the created developer in a portal.
 type PortalDeveloper struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
@@ -19,6 +20,8 @@ type PortalDeveloper struct {
 	FullName  string    `json:"full_name"`
 	// The status of a developer in a portal. Approved developers can log in, create applications, and view and register for products they have access to. Pending, revoked, and rejected developers cannot login or view any non-public portal information, or create or modify applications or registrations.
 	Status DeveloperStatus `json:"status"`
+	// Developer-supplied responses to the portal's `developer_registration` form, captured at registration time. `null` when no responses were recorded (form not configured at registration time, or developer created via admin endpoint without `additional_data`). Keyed by field `name` (lowercase slug; letters, digits, underscores, or hyphens).
+	AdditionalData map[string]FormResponseEntry `json:"additional_data,omitempty"`
 }
 
 func (p PortalDeveloper) MarshalJSON() ([]byte, error) {
@@ -72,4 +75,11 @@ func (p *PortalDeveloper) GetStatus() DeveloperStatus {
 		return DeveloperStatus("")
 	}
 	return p.Status
+}
+
+func (p *PortalDeveloper) GetAdditionalData() map[string]FormResponseEntry {
+	if p == nil {
+		return nil
+	}
+	return p.AdditionalData
 }

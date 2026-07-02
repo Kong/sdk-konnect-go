@@ -8,6 +8,8 @@ type CatalogIntegrationFilterParameters struct {
 	Name *StringFieldFilter `queryParam:"name=name"`
 	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	DisplayName *StringFieldFilter `queryParam:"name=display_name"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	Visibility *StringFieldFilter `queryParam:"name=visibility"`
 }
 
 func (c *CatalogIntegrationFilterParameters) GetName() *StringFieldFilter {
@@ -22,4 +24,11 @@ func (c *CatalogIntegrationFilterParameters) GetDisplayName() *StringFieldFilter
 		return nil
 	}
 	return c.DisplayName
+}
+
+func (c *CatalogIntegrationFilterParameters) GetVisibility() *StringFieldFilter {
+	if c == nil {
+		return nil
+	}
+	return c.Visibility
 }

@@ -35,27 +35,27 @@ func (e *APIImageStatus) IsExact() bool {
 	return false
 }
 
-// APIImageImageType - The type of the image.
-type APIImageImageType string
+// ImageType - The type of the image.
+type ImageType string
 
 const (
-	APIImageImageTypeIcon APIImageImageType = "icon"
+	ImageTypeIcon ImageType = "icon"
 )
 
-func (e APIImageImageType) ToPointer() *APIImageImageType {
+func (e ImageType) ToPointer() *ImageType {
 	return &e
 }
-func (e *APIImageImageType) UnmarshalJSON(data []byte) error {
+func (e *ImageType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "icon":
-		*e = APIImageImageType(v)
+		*e = ImageType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for APIImageImageType: %v", v)
+		return fmt.Errorf("invalid value for ImageType: %v", v)
 	}
 }
 
@@ -66,8 +66,8 @@ type APIImage struct {
 	// The status of the image.
 	Status APIImageStatus `json:"status"`
 	// The API identifier which the image belongs to.
-	APIID     string            `json:"api_id"`
-	ImageType APIImageImageType `json:"image_type"`
+	APIID     string    `json:"api_id"`
+	ImageType ImageType `json:"image_type"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -106,9 +106,9 @@ func (a *APIImage) GetAPIID() string {
 	return a.APIID
 }
 
-func (a *APIImage) GetImageType() APIImageImageType {
+func (a *APIImage) GetImageType() ImageType {
 	if a == nil {
-		return APIImageImageType("")
+		return ImageType("")
 	}
 	return a.ImageType
 }

@@ -1,0 +1,11 @@
+# ListCurrenciesParamsFilter
+
+Filter options for listing currencies.
+
+
+## Fields
+
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `Type`                                                                                                                         | [*components.BillingCurrencyType](../../models/components/billingcurrencytype.md)                                              | :heavy_minus_sign:                                                                                                             | Currency type for custom currencies. It should be a unique code but not<br/>conflicting with any existing standard currency codes. |
+| `Code`                                                                                                                         | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md)                                                  | :heavy_minus_sign:                                                                                                             | Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`                                   |

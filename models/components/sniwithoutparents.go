@@ -21,8 +21,12 @@ type SNIWithoutParents struct {
 	Certificate *SNIWithoutParentsCertificate `json:"certificate,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// The SNI name to associate with the given certificate.
 	Name string `json:"name"`
 	// An optional set of strings associated with the SNIs for grouping and filtering.
@@ -45,11 +49,25 @@ func (s *SNIWithoutParents) GetCreatedAt() *int64 {
 	return s.CreatedAt
 }
 
+func (s *SNIWithoutParents) GetDescription() *string {
+	if s == nil {
+		return nil
+	}
+	return s.Description
+}
+
 func (s *SNIWithoutParents) GetID() *string {
 	if s == nil {
 		return nil
 	}
 	return s.ID
+}
+
+func (s *SNIWithoutParents) GetManagedBy() map[string]any {
+	if s == nil {
+		return nil
+	}
+	return s.ManagedBy
 }
 
 func (s *SNIWithoutParents) GetName() string {

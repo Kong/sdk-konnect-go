@@ -12,6 +12,53 @@ var GetPredefinedRolesServerList = []string{
 	"https://global.api.konghq.com/",
 }
 
+// SubTypes - Filter using **one** of the following operators: `eq`, `oeq`
+type SubTypes struct {
+	// The field exactly matches the provided value.
+	Eq *string `queryParam:"name=eq"`
+	// The field matches any of the provided values.
+	Oeq *string `queryParam:"name=oeq"`
+}
+
+func (s *SubTypes) GetEq() *string {
+	if s == nil {
+		return nil
+	}
+	return s.Eq
+}
+
+func (s *SubTypes) GetOeq() *string {
+	if s == nil {
+		return nil
+	}
+	return s.Oeq
+}
+
+// GetPredefinedRolesQueryParamFilter - Filter roles returned in the response.
+type GetPredefinedRolesQueryParamFilter struct {
+	// Filter using **one** of the following operators: `eq`, `oeq`
+	SubTypes *SubTypes `queryParam:"name=sub_types"`
+}
+
+func (g *GetPredefinedRolesQueryParamFilter) GetSubTypes() *SubTypes {
+	if g == nil {
+		return nil
+	}
+	return g.SubTypes
+}
+
+type GetPredefinedRolesRequest struct {
+	// Filter roles returned in the response.
+	Filter *GetPredefinedRolesQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+}
+
+func (g *GetPredefinedRolesRequest) GetFilter() *GetPredefinedRolesQueryParamFilter {
+	if g == nil {
+		return nil
+	}
+	return g.Filter
+}
+
 type GetPredefinedRolesResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

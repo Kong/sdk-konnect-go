@@ -13,6 +13,8 @@ type PortalAuditLogWebhook struct {
 	Enabled *bool `default:"false" json:"enabled"`
 	// ID of the audit log destination.
 	AuditLogDestinationID *string `json:"audit_log_destination_id,omitempty"`
+	// Whether to include the principal name in the audit log entries sent to the webhook.
+	IncludePrincipalName *bool `default:"false" json:"include_principal_name"`
 }
 
 func (p PortalAuditLogWebhook) MarshalJSON() ([]byte, error) {
@@ -38,4 +40,11 @@ func (p *PortalAuditLogWebhook) GetAuditLogDestinationID() *string {
 		return nil
 	}
 	return p.AuditLogDestinationID
+}
+
+func (p *PortalAuditLogWebhook) GetIncludePrincipalName() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.IncludePrincipalName
 }

@@ -4,14 +4,126 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type APIVersionSummaryAPISpecProviderType string
+
+const (
+	APIVersionSummaryAPISpecProviderTypeRawAPISpecProvider                             APIVersionSummaryAPISpecProviderType = "RawApiSpecProvider"
+	APIVersionSummaryAPISpecProviderTypeURLAPISpecProvider                             APIVersionSummaryAPISpecProviderType = "UrlApiSpecProvider"
+	APIVersionSummaryAPISpecProviderTypeIntegrationAPISpecProviderPayload              APIVersionSummaryAPISpecProviderType = "IntegrationApiSpecProviderPayload"
+	APIVersionSummaryAPISpecProviderTypeResourceBoundIntegrationAPISpecProviderPayload APIVersionSummaryAPISpecProviderType = "ResourceBoundIntegrationApiSpecProviderPayload"
+)
+
+// APIVersionSummaryAPISpecProvider - Provenance of the spec for the current version. Present when a spec exists.
+type APIVersionSummaryAPISpecProvider struct {
+	RawAPISpecProvider                             *RawAPISpecProvider                             `queryParam:"inline" union:"member"`
+	URLAPISpecProvider                             *URLAPISpecProvider                             `queryParam:"inline" union:"member"`
+	IntegrationAPISpecProviderPayload              *IntegrationAPISpecProviderPayload              `queryParam:"inline" union:"member"`
+	ResourceBoundIntegrationAPISpecProviderPayload *ResourceBoundIntegrationAPISpecProviderPayload `queryParam:"inline" union:"member"`
+
+	Type APIVersionSummaryAPISpecProviderType
+}
+
+func CreateAPIVersionSummaryAPISpecProviderRawAPISpecProvider(rawAPISpecProvider RawAPISpecProvider) APIVersionSummaryAPISpecProvider {
+	typ := APIVersionSummaryAPISpecProviderTypeRawAPISpecProvider
+
+	return APIVersionSummaryAPISpecProvider{
+		RawAPISpecProvider: &rawAPISpecProvider,
+		Type:               typ,
+	}
+}
+
+func CreateAPIVersionSummaryAPISpecProviderURLAPISpecProvider(urlAPISpecProvider URLAPISpecProvider) APIVersionSummaryAPISpecProvider {
+	typ := APIVersionSummaryAPISpecProviderTypeURLAPISpecProvider
+
+	return APIVersionSummaryAPISpecProvider{
+		URLAPISpecProvider: &urlAPISpecProvider,
+		Type:               typ,
+	}
+}
+
+func CreateAPIVersionSummaryAPISpecProviderIntegrationAPISpecProviderPayload(integrationAPISpecProviderPayload IntegrationAPISpecProviderPayload) APIVersionSummaryAPISpecProvider {
+	typ := APIVersionSummaryAPISpecProviderTypeIntegrationAPISpecProviderPayload
+
+	return APIVersionSummaryAPISpecProvider{
+		IntegrationAPISpecProviderPayload: &integrationAPISpecProviderPayload,
+		Type:                              typ,
+	}
+}
+
+func CreateAPIVersionSummaryAPISpecProviderResourceBoundIntegrationAPISpecProviderPayload(resourceBoundIntegrationAPISpecProviderPayload ResourceBoundIntegrationAPISpecProviderPayload) APIVersionSummaryAPISpecProvider {
+	typ := APIVersionSummaryAPISpecProviderTypeResourceBoundIntegrationAPISpecProviderPayload
+
+	return APIVersionSummaryAPISpecProvider{
+		ResourceBoundIntegrationAPISpecProviderPayload: &resourceBoundIntegrationAPISpecProviderPayload,
+		Type: typ,
+	}
+}
+
+func (u *APIVersionSummaryAPISpecProvider) UnmarshalJSON(data []byte) error {
+
+	var integrationAPISpecProviderPayload IntegrationAPISpecProviderPayload = IntegrationAPISpecProviderPayload{}
+	if err := utils.UnmarshalJSON(data, &integrationAPISpecProviderPayload, "", true, nil); err == nil {
+		u.IntegrationAPISpecProviderPayload = &integrationAPISpecProviderPayload
+		u.Type = APIVersionSummaryAPISpecProviderTypeIntegrationAPISpecProviderPayload
+		return nil
+	}
+
+	var rawAPISpecProvider RawAPISpecProvider = RawAPISpecProvider{}
+	if err := utils.UnmarshalJSON(data, &rawAPISpecProvider, "", true, nil); err == nil {
+		u.RawAPISpecProvider = &rawAPISpecProvider
+		u.Type = APIVersionSummaryAPISpecProviderTypeRawAPISpecProvider
+		return nil
+	}
+
+	var urlAPISpecProvider URLAPISpecProvider = URLAPISpecProvider{}
+	if err := utils.UnmarshalJSON(data, &urlAPISpecProvider, "", true, nil); err == nil {
+		u.URLAPISpecProvider = &urlAPISpecProvider
+		u.Type = APIVersionSummaryAPISpecProviderTypeURLAPISpecProvider
+		return nil
+	}
+
+	var resourceBoundIntegrationAPISpecProviderPayload ResourceBoundIntegrationAPISpecProviderPayload = ResourceBoundIntegrationAPISpecProviderPayload{}
+	if err := utils.UnmarshalJSON(data, &resourceBoundIntegrationAPISpecProviderPayload, "", true, nil); err == nil {
+		u.ResourceBoundIntegrationAPISpecProviderPayload = &resourceBoundIntegrationAPISpecProviderPayload
+		u.Type = APIVersionSummaryAPISpecProviderTypeResourceBoundIntegrationAPISpecProviderPayload
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for APIVersionSummaryAPISpecProvider", string(data))
+}
+
+func (u APIVersionSummaryAPISpecProvider) MarshalJSON() ([]byte, error) {
+	if u.RawAPISpecProvider != nil {
+		return utils.MarshalJSON(u.RawAPISpecProvider, "", true)
+	}
+
+	if u.URLAPISpecProvider != nil {
+		return utils.MarshalJSON(u.URLAPISpecProvider, "", true)
+	}
+
+	if u.IntegrationAPISpecProviderPayload != nil {
+		return utils.MarshalJSON(u.IntegrationAPISpecProviderPayload, "", true)
+	}
+
+	if u.ResourceBoundIntegrationAPISpecProviderPayload != nil {
+		return utils.MarshalJSON(u.ResourceBoundIntegrationAPISpecProviderPayload, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type APIVersionSummaryAPISpecProvider: all fields are null")
+}
 
 type Spec struct {
 	// The type of specification being stored. This allows us to render the specification correctly.
 	//
 	Type *APISpecType `json:"type,omitempty"`
+	// Provenance of the spec for the current version. Present when a spec exists.
+	Provider *APIVersionSummaryAPISpecProvider `json:"provider,omitempty"`
 }
 
 func (s *Spec) GetType() *APISpecType {
@@ -19,6 +131,13 @@ func (s *Spec) GetType() *APISpecType {
 		return nil
 	}
 	return s.Type
+}
+
+func (s *Spec) GetProvider() *APIVersionSummaryAPISpecProvider {
+	if s == nil {
+		return nil
+	}
+	return s.Provider
 }
 
 type APIVersionSummary struct {

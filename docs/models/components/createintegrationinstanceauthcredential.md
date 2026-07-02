@@ -15,10 +15,10 @@ createIntegrationInstanceAuthCredential := components.CreateCreateIntegrationIns
 createIntegrationInstanceAuthCredential := components.CreateCreateIntegrationInstanceAuthCredentialCreateGitHubAppInstallationCredential(components.CreateGitHubAppInstallationCredential{/* values here */})
 ```
 
-### MultiKeyAuth
+### MultiKeyAuth1
 
 ```go
-createIntegrationInstanceAuthCredential := components.CreateCreateIntegrationInstanceAuthCredentialMultiKeyAuth(components.MultiKeyAuth{/* values here */})
+createIntegrationInstanceAuthCredential := components.CreateCreateIntegrationInstanceAuthCredentialMultiKeyAuth1(components.MultiKeyAuth1{/* values here */})
 ```
 
 ### CreateAWSRoleDelegationAuthCredential
@@ -37,8 +37,8 @@ switch createIntegrationInstanceAuthCredential.Type {
 		// createIntegrationInstanceAuthCredential.CreateOAuthCredential is populated
 	case components.CreateIntegrationInstanceAuthCredentialTypeCreateGitHubAppInstallationCredential:
 		// createIntegrationInstanceAuthCredential.CreateGitHubAppInstallationCredential is populated
-	case components.CreateIntegrationInstanceAuthCredentialTypeMultiKeyAuth:
-		// createIntegrationInstanceAuthCredential.MultiKeyAuth is populated
+	case components.CreateIntegrationInstanceAuthCredentialTypeMultiKeyAuth1:
+		// createIntegrationInstanceAuthCredential.MultiKeyAuth1 is populated
 	case components.CreateIntegrationInstanceAuthCredentialTypeCreateAWSRoleDelegationAuthCredential:
 		// createIntegrationInstanceAuthCredential.CreateAWSRoleDelegationAuthCredential is populated
 }

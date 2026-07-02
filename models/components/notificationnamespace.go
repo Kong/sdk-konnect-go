@@ -6,11 +6,13 @@ package components
 type NotificationNamespace string
 
 const (
-	NotificationNamespacePlanAndUsage   NotificationNamespace = "plan-and-usage"
-	NotificationNamespaceOrganization   NotificationNamespace = "organization"
-	NotificationNamespaceDevPortal      NotificationNamespace = "dev-portal"
-	NotificationNamespaceCloudGateways  NotificationNamespace = "cloud-gateways"
-	NotificationNamespaceGatewayManager NotificationNamespace = "gateway-manager"
+	NotificationNamespacePlanAndUsage           NotificationNamespace = "plan-and-usage"
+	NotificationNamespaceOrganization           NotificationNamespace = "organization"
+	NotificationNamespaceDevPortal              NotificationNamespace = "dev-portal"
+	NotificationNamespaceCloudGateways          NotificationNamespace = "cloud-gateways"
+	NotificationNamespaceRegionalEventNamespace NotificationNamespace = "regional-event-namespace"
+	NotificationNamespaceGatewayManager         NotificationNamespace = "gateway-manager"
+	NotificationNamespaceAdvancedAnalytics      NotificationNamespace = "advanced-analytics"
 )
 
 func (e NotificationNamespace) ToPointer() *NotificationNamespace {
@@ -21,7 +23,7 @@ func (e NotificationNamespace) ToPointer() *NotificationNamespace {
 func (e *NotificationNamespace) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "plan-and-usage", "organization", "dev-portal", "cloud-gateways", "gateway-manager":
+		case "plan-and-usage", "organization", "dev-portal", "cloud-gateways", "regional-event-namespace", "gateway-manager", "advanced-analytics":
 			return true
 		}
 	}

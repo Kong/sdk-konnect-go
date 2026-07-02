@@ -3,11 +3,11 @@
 
 package components
 
-type ValidateAPISpecSuccessResponseValidationMessages struct {
+type ValidationMessages struct {
 	Message string `json:"message"`
 }
 
-func (v *ValidateAPISpecSuccessResponseValidationMessages) GetMessage() string {
+func (v *ValidationMessages) GetMessage() string {
 	if v == nil {
 		return ""
 	}
@@ -17,12 +17,12 @@ func (v *ValidateAPISpecSuccessResponseValidationMessages) GetMessage() string {
 // ValidateAPISpecSuccessResponse - API specification (OpenAPI or AsyncAPI) validation successful
 type ValidateAPISpecSuccessResponse struct {
 	// Any informational messages or warnings generated during validation. Empty if none.
-	ValidationMessages []ValidateAPISpecSuccessResponseValidationMessages `json:"validation_messages"`
+	ValidationMessages []ValidationMessages `json:"validation_messages"`
 }
 
-func (v *ValidateAPISpecSuccessResponse) GetValidationMessages() []ValidateAPISpecSuccessResponseValidationMessages {
+func (v *ValidateAPISpecSuccessResponse) GetValidationMessages() []ValidationMessages {
 	if v == nil {
-		return []ValidateAPISpecSuccessResponseValidationMessages{}
+		return []ValidationMessages{}
 	}
 	return v.ValidationMessages
 }

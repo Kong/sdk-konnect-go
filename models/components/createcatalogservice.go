@@ -3,6 +3,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type CreateCatalogService struct {
 	// The machine name of the Service that uniquely identifies it within the catalog.
 	//
@@ -19,6 +23,17 @@ type CreateCatalogService struct {
 	// Map of customizable, catalog-defined fields providing information about a service.
 	//
 	CustomFields any `json:"custom_fields,omitempty"`
+}
+
+func (c CreateCatalogService) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateCatalogService) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "display_name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreateCatalogService) GetName() string {

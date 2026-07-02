@@ -3,20 +3,20 @@
 
 package components
 
-// PortalMenuItemVisibility - Whether a menu item is public or private. Private menu items are only accessible to authenticated users.
-type PortalMenuItemVisibility string
+// Visibility - Whether a menu item is public or private. Private menu items are only accessible to authenticated users.
+type Visibility string
 
 const (
-	PortalMenuItemVisibilityPublic  PortalMenuItemVisibility = "public"
-	PortalMenuItemVisibilityPrivate PortalMenuItemVisibility = "private"
+	VisibilityPublic  Visibility = "public"
+	VisibilityPrivate Visibility = "private"
 )
 
-func (e PortalMenuItemVisibility) ToPointer() *PortalMenuItemVisibility {
+func (e Visibility) ToPointer() *Visibility {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *PortalMenuItemVisibility) IsExact() bool {
+func (e *Visibility) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "public", "private":
@@ -32,7 +32,7 @@ type PortalMenuItem struct {
 	// The link display text
 	Title string `json:"title"`
 	// Whether a menu item is public or private. Private menu items are only accessible to authenticated users.
-	Visibility PortalMenuItemVisibility `json:"visibility"`
+	Visibility Visibility `json:"visibility"`
 	// When clicked, open the link in a new window
 	External bool `json:"external"`
 }
@@ -51,9 +51,9 @@ func (p *PortalMenuItem) GetTitle() string {
 	return p.Title
 }
 
-func (p *PortalMenuItem) GetVisibility() PortalMenuItemVisibility {
+func (p *PortalMenuItem) GetVisibility() Visibility {
 	if p == nil {
-		return PortalMenuItemVisibility("")
+		return Visibility("")
 	}
 	return p.Visibility
 }

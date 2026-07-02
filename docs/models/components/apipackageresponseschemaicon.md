@@ -1,0 +1,8 @@
+# APIPackageResponseSchemaIcon
+
+
+## Fields
+
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `URI`                                                        | `*string`                                                    | :heavy_minus_sign:                                           | The relative API path for retrieving the raw the icon image. |

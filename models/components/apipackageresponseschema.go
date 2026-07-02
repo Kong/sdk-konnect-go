@@ -8,6 +8,29 @@ import (
 	"time"
 )
 
+type APIPackageResponseSchemaIcon struct {
+	// The relative API path for retrieving the raw the icon image.
+	URI *string `json:"uri,omitempty"`
+}
+
+func (a *APIPackageResponseSchemaIcon) GetURI() *string {
+	if a == nil {
+		return nil
+	}
+	return a.URI
+}
+
+type APIPackageResponseSchemaImages struct {
+	Icon *APIPackageResponseSchemaIcon `json:"icon,omitempty"`
+}
+
+func (a *APIPackageResponseSchemaImages) GetIcon() *APIPackageResponseSchemaIcon {
+	if a == nil {
+		return nil
+	}
+	return a.Icon
+}
+
 type APIPackageResponseSchema struct {
 	// The API Package identifier.
 	ID string `json:"id"`
@@ -33,7 +56,8 @@ type APIPackageResponseSchema struct {
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt time.Time `json:"updated_at"`
+	UpdatedAt time.Time                       `json:"updated_at"`
+	Images    *APIPackageResponseSchemaImages `json:"images,omitempty"`
 }
 
 func (a APIPackageResponseSchema) MarshalJSON() ([]byte, error) {
@@ -115,4 +139,11 @@ func (a *APIPackageResponseSchema) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
+}
+
+func (a *APIPackageResponseSchema) GetImages() *APIPackageResponseSchemaImages {
+	if a == nil {
+		return nil
+	}
+	return a.Images
 }

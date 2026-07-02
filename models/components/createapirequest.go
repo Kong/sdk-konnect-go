@@ -22,7 +22,8 @@ type CreateAPIRequest struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// A set of attributes that describe the API
-	Attributes any `json:"attributes,omitempty"`
+	Attributes any             `json:"attributes,omitempty"`
+	Spec       *APISpecPayload `json:"spec,omitempty"`
 	// The content of the API specification. This is the raw content of the API specification, in json or yaml. By including this field, you can add a API specification without having to make a separate call to update the API specification.
 	SpecContent *string `json:"spec_content,omitempty"`
 }
@@ -67,6 +68,13 @@ func (c *CreateAPIRequest) GetAttributes() any {
 		return nil
 	}
 	return c.Attributes
+}
+
+func (c *CreateAPIRequest) GetSpec() *APISpecPayload {
+	if c == nil {
+		return nil
+	}
+	return c.Spec
 }
 
 func (c *CreateAPIRequest) GetSpecContent() *string {

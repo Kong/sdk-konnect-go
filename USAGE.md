@@ -19,17 +19,32 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
+		Filter: &components.ControlPlaneFilterParameters{
+			CloudGateway: sdkkonnectgo.Pointer(true),
+		},
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
-		// handle response
+	if res.ListControlPlanesResponse != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
 	}
 }
 

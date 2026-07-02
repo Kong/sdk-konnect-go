@@ -18,6 +18,10 @@ type CreateNetworkRequest struct {
 	AvailabilityZones []string `json:"availability_zones"`
 	// CIDR block for the network. Must not overlap with reserved blocks for the target region. Query the Resource Availability endpoint for valid CIDR ranges per region and provider.
 	CidrBlock string `json:"cidr_block"`
+	// Firewall configuration for a network.
+	Firewall *NetworkFirewallConfig `json:"firewall,omitempty"`
+	// Whether DDOS protection is enabled for the network.
+	DdosProtection *bool `json:"ddos_protection,omitempty"`
 	// Initial state for creating a network.
 	State *NetworkCreateState `default:"initializing" json:"state"`
 }
@@ -66,6 +70,20 @@ func (c *CreateNetworkRequest) GetCidrBlock() string {
 		return ""
 	}
 	return c.CidrBlock
+}
+
+func (c *CreateNetworkRequest) GetFirewall() *NetworkFirewallConfig {
+	if c == nil {
+		return nil
+	}
+	return c.Firewall
+}
+
+func (c *CreateNetworkRequest) GetDdosProtection() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.DdosProtection
 }
 
 func (c *CreateNetworkRequest) GetState() *NetworkCreateState {

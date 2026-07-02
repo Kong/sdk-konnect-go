@@ -8,26 +8,26 @@ import (
 	"net/http"
 )
 
-// Filter documents returned in the response.
-type Filter struct {
+// ListEventGatewayVirtualClustersQueryParamFilter - Filter documents returned in the response.
+type ListEventGatewayVirtualClustersQueryParamFilter struct {
 	// Filters on the given string field value by exact match.
 	BackendClusterID *components.StringFieldEqualsFilter `queryParam:"name=backend_cluster_id"`
 	// Filters on the given string field value by fuzzy match.
 	Name *components.StringFieldContainsFilter `queryParam:"name=name"`
 }
 
-func (f *Filter) GetBackendClusterID() *components.StringFieldEqualsFilter {
-	if f == nil {
+func (l *ListEventGatewayVirtualClustersQueryParamFilter) GetBackendClusterID() *components.StringFieldEqualsFilter {
+	if l == nil {
 		return nil
 	}
-	return f.BackendClusterID
+	return l.BackendClusterID
 }
 
-func (f *Filter) GetName() *components.StringFieldContainsFilter {
-	if f == nil {
+func (l *ListEventGatewayVirtualClustersQueryParamFilter) GetName() *components.StringFieldContainsFilter {
+	if l == nil {
 		return nil
 	}
-	return f.Name
+	return l.Name
 }
 
 type ListEventGatewayVirtualClustersRequest struct {
@@ -38,7 +38,7 @@ type ListEventGatewayVirtualClustersRequest struct {
 	// Request the next page of data, starting with the item after this parameter.
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 	// Filter documents returned in the response.
-	Filter *Filter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *ListEventGatewayVirtualClustersQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListEventGatewayVirtualClustersRequest) GetGatewayID() string {
@@ -62,7 +62,7 @@ func (l *ListEventGatewayVirtualClustersRequest) GetPageAfter() *string {
 	return l.PageAfter
 }
 
-func (l *ListEventGatewayVirtualClustersRequest) GetFilter() *Filter {
+func (l *ListEventGatewayVirtualClustersRequest) GetFilter() *ListEventGatewayVirtualClustersQueryParamFilter {
 	if l == nil {
 		return nil
 	}
