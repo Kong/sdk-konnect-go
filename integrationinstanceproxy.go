@@ -69,6 +69,7 @@ func (s *IntegrationInstanceProxy) IntegrationInstanceProxyRequest(ctx context.C
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "integration-instance-proxy-request",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "IntegrationInstanceProxyBody", "json", `request:"mediaType=application/json"`)

@@ -63,6 +63,7 @@ func (s *ConfigStoreSecrets) CreateConfigStoreSecret(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-config-store-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateConfigStoreSecret", "json", `request:"mediaType=application/json"`)
@@ -379,6 +380,7 @@ func (s *ConfigStoreSecrets) ListConfigStoreSecrets(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-config-store-secrets",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -671,6 +673,7 @@ func (s *ConfigStoreSecrets) GetConfigStoreSecret(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-config-store-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -938,6 +941,7 @@ func (s *ConfigStoreSecrets) UpdateConfigStoreSecret(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-config-store-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateConfigStoreSecret", "json", `request:"mediaType=application/json"`)
@@ -1256,6 +1260,7 @@ func (s *ConfigStoreSecrets) DeleteConfigStoreSecret(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-config-store-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1504,6 +1509,7 @@ func (s *ConfigStoreSecrets) CreateConfigStoreSecretInWorkspace(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-config-store-secret-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateConfigStoreSecret", "json", `request:"mediaType=application/json"`)
@@ -1820,6 +1826,7 @@ func (s *ConfigStoreSecrets) ListConfigStoreSecretsInWorkspace(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-config-store-secrets-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2112,6 +2119,7 @@ func (s *ConfigStoreSecrets) GetConfigStoreSecretInWorkspace(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-config-store-secret-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2379,6 +2387,7 @@ func (s *ConfigStoreSecrets) UpdateConfigStoreSecretInWorkspace(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-config-store-secret-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateConfigStoreSecret", "json", `request:"mediaType=application/json"`)
@@ -2697,6 +2706,7 @@ func (s *ConfigStoreSecrets) DeleteConfigStoreSecretInWorkspace(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-config-store-secret-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

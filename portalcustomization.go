@@ -67,6 +67,7 @@ func (s *PortalCustomization) GetPortalCustomization(ctx context.Context, portal
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-customization",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -339,6 +340,7 @@ func (s *PortalCustomization) ReplacePortalCustomization(ctx context.Context, po
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "replace-portal-customization",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PortalCustomizationV3", "json", `request:"mediaType=application/json"`)
@@ -639,6 +641,7 @@ func (s *PortalCustomization) UpdatePortalCustomization(ctx context.Context, por
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-customization",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PortalCustomizationV3", "json", `request:"mediaType=application/json"`)

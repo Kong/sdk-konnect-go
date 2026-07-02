@@ -67,6 +67,7 @@ func (s *CatalogIntegrations) CreateCatalogIntegration(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-catalog-integration",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -347,6 +348,7 @@ func (s *CatalogIntegrations) ListCatalogIntegrations(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-integrations",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -622,6 +624,7 @@ func (s *CatalogIntegrations) GetCatalogIntegration(ctx context.Context, integra
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-catalog-integration",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -894,6 +897,7 @@ func (s *CatalogIntegrations) UpdateCatalogIntegration(ctx context.Context, inte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-catalog-integration",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateCatalogIntegration", "json", `request:"mediaType=application/json"`)
@@ -1214,6 +1218,7 @@ func (s *CatalogIntegrations) DeleteCatalogIntegration(ctx context.Context, inte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-catalog-integration",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

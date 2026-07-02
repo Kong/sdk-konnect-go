@@ -70,6 +70,7 @@ func (s *AIGatewayDebug) GetAiGatewayDebugCpOutput(ctx context.Context, gatewayI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-debug-cp-output",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -67,6 +67,7 @@ func (s *PortalForms) CreatePortalForm(ctx context.Context, portalID string, cre
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-form",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreatePortalFormRequest", "json", `request:"mediaType=application/json"`)
@@ -383,6 +384,7 @@ func (s *PortalForms) ListPortalForms(ctx context.Context, request operations.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-forms",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -680,6 +682,7 @@ func (s *PortalForms) GetPortalForm(ctx context.Context, portalID string, formID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-form",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -947,6 +950,7 @@ func (s *PortalForms) ReplacePortalForm(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "replace-portal-form",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdatePortalFormRequest", "json", `request:"mediaType=application/json"`)
@@ -1247,6 +1251,7 @@ func (s *PortalForms) DeletePortalForm(ctx context.Context, portalID string, for
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-form",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

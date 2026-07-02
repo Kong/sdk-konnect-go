@@ -64,6 +64,7 @@ func (s *Notifications) ListNotifications(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-notifications",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -339,6 +340,7 @@ func (s *Notifications) GetNotificationDetails(ctx context.Context, notification
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-notification-details",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -611,6 +613,7 @@ func (s *Notifications) UpdateNotification(ctx context.Context, notificationID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-notification",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "NotificationUpdatePayload", "json", `request:"mediaType=application/json"`)
@@ -910,6 +913,7 @@ func (s *Notifications) DeleteNotification(ctx context.Context, notificationID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-notification",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1158,6 +1162,7 @@ func (s *Notifications) BulkNotifications(ctx context.Context, request *componen
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "bulk-notifications",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -1438,6 +1443,7 @@ func (s *Notifications) ListUserConfigurations(ctx context.Context, filter *comp
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-user-configurations",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1713,6 +1719,7 @@ func (s *Notifications) ListEventSubscriptions(ctx context.Context, eventID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-subscriptions",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1985,6 +1992,7 @@ func (s *Notifications) CreateEventSubscription(ctx context.Context, eventID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-subscription",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EventSubscription", "json", `request:"mediaType=application/json"`)
@@ -2285,6 +2293,7 @@ func (s *Notifications) GetEventSubscription(ctx context.Context, eventID string
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-subscription",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2573,6 +2582,7 @@ func (s *Notifications) UpdateEventSubscription(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-subscription",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EventSubscription", "json", `request:"mediaType=application/json"`)
@@ -2873,6 +2883,7 @@ func (s *Notifications) DeleteEventSubscription(ctx context.Context, eventID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-subscription",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

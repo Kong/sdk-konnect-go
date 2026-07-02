@@ -64,6 +64,7 @@ func (s *Consumers) ListConsumerInWorkspace(ctx context.Context, request operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -293,6 +294,7 @@ func (s *Consumers) CreateConsumerInWorkspace(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Consumer", "json", `request:"mediaType=application/json"`)
@@ -525,6 +527,7 @@ func (s *Consumers) DeleteConsumerInWorkspace(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -731,6 +734,7 @@ func (s *Consumers) GetConsumerInWorkspace(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -958,6 +962,7 @@ func (s *Consumers) UpsertConsumerInWorkspace(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Consumer", "json", `request:"mediaType=application/json"`)
@@ -1190,6 +1195,7 @@ func (s *Consumers) RemoveConsumerFromAllConsumerGroupsInWorkspace(ctx context.C
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-consumer-from-all-consumer-groups-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1377,6 +1383,7 @@ func (s *Consumers) ListConsumerGroupsForConsumerInWorkspace(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-consumer-groups-for-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1585,6 +1592,7 @@ func (s *Consumers) AddConsumerToSpecificConsumerGroupInWorkspace(ctx context.Co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "add-consumer-to-specific-consumer-group-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -1796,6 +1804,7 @@ func (s *Consumers) RemoveConsumerFromConsumerGroupInWorkspace(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-consumer-from-consumer-group-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1981,6 +1990,7 @@ func (s *Consumers) ListConsumer(ctx context.Context, request operations.ListCon
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2215,6 +2225,7 @@ func (s *Consumers) CreateConsumer(ctx context.Context, controlPlaneID string, c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Consumer", "json", `request:"mediaType=application/json"`)
@@ -2452,6 +2463,7 @@ func (s *Consumers) DeleteConsumer(ctx context.Context, controlPlaneID string, c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2663,6 +2675,7 @@ func (s *Consumers) GetConsumer(ctx context.Context, consumerID string, controlP
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2890,6 +2903,7 @@ func (s *Consumers) UpsertConsumer(ctx context.Context, request operations.Upser
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Consumer", "json", `request:"mediaType=application/json"`)
@@ -3127,6 +3141,7 @@ func (s *Consumers) RemoveConsumerFromAllConsumerGroups(ctx context.Context, con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-consumer-from-all-consumer-groups",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3314,6 +3329,7 @@ func (s *Consumers) ListConsumerGroupsForConsumer(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-consumer-groups-for-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3522,6 +3538,7 @@ func (s *Consumers) AddConsumerToSpecificConsumerGroup(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "add-consumer-to-specific-consumer-group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -3733,6 +3750,7 @@ func (s *Consumers) RemoveConsumerFromConsumerGroup(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-consumer-from-consumer-group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

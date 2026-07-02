@@ -63,6 +63,7 @@ func (s *AIGatewayVaults) ListAiGatewayVaults(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-vaults",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -360,6 +361,7 @@ func (s *AIGatewayVaults) CreateAiGatewayVault(ctx context.Context, gatewayID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-vault",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayVaultRequest", "json", `request:"mediaType=application/json"`)
@@ -702,6 +704,7 @@ func (s *AIGatewayVaults) GetAiGatewayVault(ctx context.Context, gatewayID strin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-vault",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -990,6 +993,7 @@ func (s *AIGatewayVaults) UpdateAiGatewayVault(ctx context.Context, request oper
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-ai-gateway-vault",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAIGatewayVaultRequest", "json", `request:"mediaType=application/json"`)
@@ -1311,6 +1315,7 @@ func (s *AIGatewayVaults) DeleteAiGatewayVault(ctx context.Context, gatewayID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-vault",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

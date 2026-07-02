@@ -66,6 +66,7 @@ func (s *DCRProviders) CreateDcrProvider(ctx context.Context, request components
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-dcr-provider",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -340,6 +341,7 @@ func (s *DCRProviders) ListDcrProviders(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-dcr-providers",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -615,6 +617,7 @@ func (s *DCRProviders) GetDcrProvider(ctx context.Context, dcrProviderID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-dcr-provider",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -887,6 +890,7 @@ func (s *DCRProviders) UpdateDcrProvider(ctx context.Context, dcrProviderID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-dcr-provider",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateDcrProviderRequest", "json", `request:"mediaType=application/json"`)
@@ -1186,6 +1190,7 @@ func (s *DCRProviders) DeleteDcrProvider(ctx context.Context, dcrProviderID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-dcr-provider",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1438,6 +1443,7 @@ func (s *DCRProviders) VerifyDcrProvider(ctx context.Context, dcrProviderID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "verify-dcr-provider",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

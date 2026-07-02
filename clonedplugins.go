@@ -62,6 +62,7 @@ func (s *ClonedPlugins) ListClonedPlugin(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-cloned-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -296,6 +297,7 @@ func (s *ClonedPlugins) CreateClonedPlugin(ctx context.Context, controlPlaneID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-cloned-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ClonedPlugin", "json", `request:"mediaType=application/json"`)
@@ -533,6 +535,7 @@ func (s *ClonedPlugins) GetClonedPlugin(ctx context.Context, clonedPluginID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-cloned-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -760,6 +763,7 @@ func (s *ClonedPlugins) UpsertClonedPlugin(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-cloned-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ClonedPlugin", "json", `request:"mediaType=application/json"`)
@@ -997,6 +1001,7 @@ func (s *ClonedPlugins) DeleteClonedPlugin(ctx context.Context, controlPlaneID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-cloned-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

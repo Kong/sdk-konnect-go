@@ -69,6 +69,7 @@ func (s *SuggestionRules) ListSystemIntegrationSuggestionRule(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-system-integration-suggestion-rule",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -366,6 +367,7 @@ func (s *SuggestionRules) CreateIntegrationSuggestionRule(ctx context.Context, i
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-integration-suggestion-rule",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "SuggestionRulePayload", "json", `request:"mediaType=application/json"`)
@@ -661,6 +663,7 @@ func (s *SuggestionRules) ListIntegrationSuggestionRule(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-integration-suggestion-rule",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -958,6 +961,7 @@ func (s *SuggestionRules) GetIntegrationSuggestionRule(ctx context.Context, inte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-integration-suggestion-rule",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1246,6 +1250,7 @@ func (s *SuggestionRules) UpdateIntegrationSuggestionRule(ctx context.Context, r
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-integration-suggestion-rule",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "SuggestionRulePayload", "json", `request:"mediaType=application/json"`)
@@ -1546,6 +1551,7 @@ func (s *SuggestionRules) DeleteIntegrationSuggestionRule(ctx context.Context, i
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-integration-suggestion-rule",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1820,6 +1826,7 @@ func (s *SuggestionRules) TestSuggestionRule(ctx context.Context, integration st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "test-suggestion-rule",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "TestSuggestionRulePayload", "json", `request:"mediaType=application/json"`)

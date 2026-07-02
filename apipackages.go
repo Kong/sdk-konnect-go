@@ -63,6 +63,7 @@ func (s *APIPackages) ListAPIPackages(ctx context.Context, request operations.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-api-packages",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -335,6 +336,7 @@ func (s *APIPackages) CreateAPIPackage(ctx context.Context, request components.C
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-api-package",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -634,6 +636,7 @@ func (s *APIPackages) GetAPIPackage(ctx context.Context, packageID string, opts 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-api-package",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -907,6 +910,7 @@ func (s *APIPackages) PatchAPIPackage(ctx context.Context, packageID string, upd
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "patch-api-package",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAPIPackageRequest", "json", `request:"mediaType=application/json"`)
@@ -1185,6 +1189,7 @@ func (s *APIPackages) DeleteAPIPackage(ctx context.Context, packageID string, op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-api-package",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

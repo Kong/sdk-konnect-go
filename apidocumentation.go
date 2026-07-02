@@ -69,6 +69,7 @@ func (s *APIDocumentation) CreateAPIDocument(ctx context.Context, apiID string, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-api-document",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAPIDocumentRequest", "json", `request:"mediaType=application/json"`)
@@ -411,6 +412,7 @@ func (s *APIDocumentation) ListAPIDocuments(ctx context.Context, apiID string, f
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-api-documents",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -708,6 +710,7 @@ func (s *APIDocumentation) FetchAPIDocument(ctx context.Context, apiID string, d
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-api-document",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -975,6 +978,7 @@ func (s *APIDocumentation) UpdateAPIDocument(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-api-document",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "APIDocument", "json", `request:"mediaType=application/json"`)
@@ -1317,6 +1321,7 @@ func (s *APIDocumentation) DeleteAPIDocument(ctx context.Context, apiID string, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-api-document",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1565,6 +1570,7 @@ func (s *APIDocumentation) MoveAPIDocument(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "move-api-document",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "MoveDocumentRequestPayload", "json", `request:"mediaType=application/json"`)

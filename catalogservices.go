@@ -78,6 +78,7 @@ func (s *CatalogServices) CreateCatalogService(ctx context.Context, request comp
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-catalog-service",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -352,6 +353,7 @@ func (s *CatalogServices) ListCatalogServices(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-services",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -627,6 +629,7 @@ func (s *CatalogServices) FetchCatalogService(ctx context.Context, id string, op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-catalog-service",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -899,6 +902,7 @@ func (s *CatalogServices) UpdateCatalogService(ctx context.Context, id string, u
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-catalog-service",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateCatalogService", "json", `request:"mediaType=application/json"`)
@@ -1219,6 +1223,7 @@ func (s *CatalogServices) DeleteCatalogService(ctx context.Context, id string, o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-catalog-service",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

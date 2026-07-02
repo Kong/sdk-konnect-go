@@ -67,6 +67,7 @@ func (s *Pages) CreateDefaultContent(ctx context.Context, portalID string, opts 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-default-content",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

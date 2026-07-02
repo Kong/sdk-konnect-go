@@ -64,6 +64,7 @@ func (s *SuggestedResourceActions) ListSuggestedResourceAction(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-suggested-resource-action",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -360,6 +361,7 @@ func (s *SuggestedResourceActions) GetSuggestedResourceAction(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-suggested-resource-action",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -653,6 +655,7 @@ func (s *SuggestedResourceActions) UpdateSuggestedResourceAction(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-suggested-resource-action",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateSuggestedResourceAction", "json", `request:"mediaType=application/json"`)

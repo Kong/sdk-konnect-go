@@ -63,6 +63,7 @@ func (s *AIGatewayMCPServers) ListAiGatewayMcpServers(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-mcp-servers",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -360,6 +361,7 @@ func (s *AIGatewayMCPServers) CreateAiGatewayMcpServer(ctx context.Context, gate
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-mcp-server",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayMCPServerRequest", "json", `request:"mediaType=application/json"`)
@@ -702,6 +704,7 @@ func (s *AIGatewayMCPServers) GetAiGatewayMcpServer(ctx context.Context, gateway
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-mcp-server",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -990,6 +993,7 @@ func (s *AIGatewayMCPServers) UpdateAiGatewayMcpServer(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-ai-gateway-mcp-server",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAIGatewayMCPServerRequest", "json", `request:"mediaType=application/json"`)
@@ -1311,6 +1315,7 @@ func (s *AIGatewayMCPServers) DeleteAiGatewayMcpServer(ctx context.Context, gate
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-mcp-server",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

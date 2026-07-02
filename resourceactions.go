@@ -74,6 +74,7 @@ func (s *ResourceActions) ListResourceActions(ctx context.Context, page *compone
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-resource-actions",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

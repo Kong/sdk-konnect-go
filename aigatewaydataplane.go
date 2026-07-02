@@ -66,6 +66,7 @@ func (s *AIGatewayDataPlane) GetAiGatewayExpectedConfigVersion(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-expected-config-version",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

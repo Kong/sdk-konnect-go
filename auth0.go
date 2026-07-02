@@ -63,6 +63,7 @@ func (s *Auth0) PostAuth0UserMfaSettingsInternal(ctx context.Context, request co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "post-auth0-user-mfa-settings-internal",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)

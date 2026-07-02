@@ -62,6 +62,7 @@ func (s *APIPackageOperations) ListAPIPackagesOperations(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-api-packages-operations",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -338,6 +339,7 @@ func (s *APIPackageOperations) UpdateAPIPackageOperations(ctx context.Context, p
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-api-package-operations",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -640,6 +642,7 @@ func (s *APIPackageOperations) GetAPIPackagesOperation(ctx context.Context, pack
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-api-packages-operation",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -912,6 +915,7 @@ func (s *APIPackageOperations) RemoveAPIPackageOperation(ctx context.Context, pa
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-api-package-operation",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

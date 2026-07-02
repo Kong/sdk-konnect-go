@@ -67,6 +67,7 @@ func (s *MCPServerRuntime) GetMcpServerRuntimeConfig(ctx context.Context, contro
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-server-runtime-config",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

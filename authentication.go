@@ -62,6 +62,7 @@ func (s *Authentication) RefreshToken(ctx context.Context, opts ...operations.Op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "refresh-token",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -267,6 +268,7 @@ func (s *Authentication) Logout(ctx context.Context, opts ...operations.Option) 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "logout",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -475,6 +477,7 @@ func (s *Authentication) AuthenticateSso(ctx context.Context, organizationLoginP
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "authenticate-sso",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

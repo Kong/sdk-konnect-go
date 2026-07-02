@@ -62,6 +62,7 @@ func (s *HMACAuthCredentials) ListHmacAuthWithConsumerInWorkspace(ctx context.Co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-hmac-auth-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -270,6 +271,7 @@ func (s *HMACAuthCredentials) CreateHmacAuthWithConsumerInWorkspace(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-hmac-auth-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "HMACAuthWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -481,6 +483,7 @@ func (s *HMACAuthCredentials) DeleteHmacAuthWithConsumerInWorkspace(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-hmac-auth-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -666,6 +669,7 @@ func (s *HMACAuthCredentials) GetHmacAuthWithConsumerInWorkspace(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-hmac-auth-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -872,6 +876,7 @@ func (s *HMACAuthCredentials) UpsertHmacAuthWithConsumerInWorkspace(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-hmac-auth-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "HMACAuthWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1083,6 +1088,7 @@ func (s *HMACAuthCredentials) ListHmacAuthInWorkspace(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-hmac-auth-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1312,6 +1318,7 @@ func (s *HMACAuthCredentials) GetHmacAuthInWorkspace(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-hmac-auth-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1539,6 +1546,7 @@ func (s *HMACAuthCredentials) ListHmacAuthWithConsumer(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-hmac-auth-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1747,6 +1755,7 @@ func (s *HMACAuthCredentials) CreateHmacAuthWithConsumer(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-hmac-auth-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "HMACAuthWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1958,6 +1967,7 @@ func (s *HMACAuthCredentials) DeleteHmacAuthWithConsumer(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-hmac-auth-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2143,6 +2153,7 @@ func (s *HMACAuthCredentials) GetHmacAuthWithConsumer(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-hmac-auth-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2349,6 +2360,7 @@ func (s *HMACAuthCredentials) UpsertHmacAuthWithConsumer(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-hmac-auth-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "HMACAuthWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -2560,6 +2572,7 @@ func (s *HMACAuthCredentials) ListHmacAuth(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-hmac-auth",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2794,6 +2807,7 @@ func (s *HMACAuthCredentials) GetHmacAuth(ctx context.Context, hmacAuthID string
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-hmac-auth",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -63,6 +63,7 @@ func (s *AIGatewayConsumers) ListAiGatewayConsumers(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-consumers",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -360,6 +361,7 @@ func (s *AIGatewayConsumers) CreateAiGatewayConsumer(ctx context.Context, gatewa
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayConsumerRequest", "json", `request:"mediaType=application/json"`)
@@ -681,6 +683,7 @@ func (s *AIGatewayConsumers) GetAiGatewayConsumer(ctx context.Context, gatewayID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -969,6 +972,7 @@ func (s *AIGatewayConsumers) UpdateAiGatewayConsumer(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-ai-gateway-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAIGatewayConsumerRequest", "json", `request:"mediaType=application/json"`)
@@ -1290,6 +1294,7 @@ func (s *AIGatewayConsumers) DeleteAiGatewayConsumer(ctx context.Context, gatewa
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1559,6 +1564,7 @@ func (s *AIGatewayConsumers) ListAiGatewayConsumerCredentials(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-consumer-credentials",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1851,6 +1857,7 @@ func (s *AIGatewayConsumers) CreateAiGatewayConsumerCredential(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-consumer-credential",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayConsumerCredentialRequest", "json", `request:"mediaType=application/json"`)
@@ -2167,6 +2174,7 @@ func (s *AIGatewayConsumers) GetAiGatewayConsumerCredential(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-consumer-credential",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2455,6 +2463,7 @@ func (s *AIGatewayConsumers) DeleteAiGatewayConsumerCredential(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-consumer-credential",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

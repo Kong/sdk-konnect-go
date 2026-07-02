@@ -87,6 +87,8 @@ func New() *Hooks {
 		afterErrorHook:    []afterErrorHook{},
 	}
 
+	initHooks(h)
+
 	return h
 }
 

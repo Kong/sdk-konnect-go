@@ -66,6 +66,7 @@ func (s *Plugins) SearchPlugin(ctx context.Context, request operations.SearchPlu
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "search-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -295,6 +296,7 @@ func (s *Plugins) ListPluginWithConsumerGroupInWorkspace(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin-with-consumer_group-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -503,6 +505,7 @@ func (s *Plugins) CreatePluginWithConsumerGroupInWorkspace(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin-with-consumer_group-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -714,6 +717,7 @@ func (s *Plugins) DeletePluginWithConsumerGroupInWorkspace(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin-with-consumer_group-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -899,6 +903,7 @@ func (s *Plugins) GetPluginWithConsumerGroupInWorkspace(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin-with-consumer_group-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1105,6 +1110,7 @@ func (s *Plugins) UpsertPluginWithConsumerGroupInWorkspace(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin-with-consumer_group-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1316,6 +1322,7 @@ func (s *Plugins) ListPluginWithConsumerInWorkspace(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1524,6 +1531,7 @@ func (s *Plugins) CreatePluginWithConsumerInWorkspace(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1735,6 +1743,7 @@ func (s *Plugins) DeletePluginWithConsumerInWorkspace(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1920,6 +1929,7 @@ func (s *Plugins) GetPluginWithConsumerInWorkspace(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2126,6 +2136,7 @@ func (s *Plugins) UpsertPluginWithConsumerInWorkspace(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin-with-consumer-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -2337,6 +2348,7 @@ func (s *Plugins) ListPluginInWorkspace(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2566,6 +2578,7 @@ func (s *Plugins) CreatePluginInWorkspace(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Plugin", "json", `request:"mediaType=application/json"`)
@@ -2798,6 +2811,7 @@ func (s *Plugins) DeletePluginInWorkspace(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3004,6 +3018,7 @@ func (s *Plugins) GetPluginInWorkspace(ctx context.Context, request operations.G
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3231,6 +3246,7 @@ func (s *Plugins) UpsertPluginInWorkspace(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Plugin", "json", `request:"mediaType=application/json"`)
@@ -3463,6 +3479,7 @@ func (s *Plugins) ListPluginWithRouteInWorkspace(ctx context.Context, request op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin-with-route-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3671,6 +3688,7 @@ func (s *Plugins) CreatePluginWithRouteInWorkspace(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin-with-route-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -3882,6 +3900,7 @@ func (s *Plugins) DeletePluginWithRouteInWorkspace(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin-with-route-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4067,6 +4086,7 @@ func (s *Plugins) GetPluginWithRouteInWorkspace(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin-with-route-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4273,6 +4293,7 @@ func (s *Plugins) UpsertPluginWithRouteInWorkspace(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin-with-route-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -4484,6 +4505,7 @@ func (s *Plugins) ListPluginWithServiceInWorkspace(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin-with-service-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4692,6 +4714,7 @@ func (s *Plugins) CreatePluginWithServiceInWorkspace(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin-with-service-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -4903,6 +4926,7 @@ func (s *Plugins) DeletePluginWithServiceInWorkspace(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin-with-service-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -5088,6 +5112,7 @@ func (s *Plugins) GetPluginWithServiceInWorkspace(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin-with-service-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -5294,6 +5319,7 @@ func (s *Plugins) UpsertPluginWithServiceInWorkspace(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin-with-service-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -5505,6 +5531,7 @@ func (s *Plugins) ListPluginWithConsumerGroup(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin-with-consumer_group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -5713,6 +5740,7 @@ func (s *Plugins) CreatePluginWithConsumerGroup(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin-with-consumer_group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -5924,6 +5952,7 @@ func (s *Plugins) DeletePluginWithConsumerGroup(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin-with-consumer_group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -6109,6 +6138,7 @@ func (s *Plugins) GetPluginWithConsumerGroup(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin-with-consumer_group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -6319,6 +6349,7 @@ func (s *Plugins) UpsertPluginWithConsumerGroup(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin-with-consumer_group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -6530,6 +6561,7 @@ func (s *Plugins) ListPluginWithConsumer(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -6738,6 +6770,7 @@ func (s *Plugins) CreatePluginWithConsumer(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -6949,6 +6982,7 @@ func (s *Plugins) DeletePluginWithConsumer(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -7134,6 +7168,7 @@ func (s *Plugins) GetPluginWithConsumer(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -7344,6 +7379,7 @@ func (s *Plugins) UpsertPluginWithConsumer(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin-with-consumer",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -7555,6 +7591,7 @@ func (s *Plugins) ListPlugin(ctx context.Context, request operations.ListPluginR
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -7789,6 +7826,7 @@ func (s *Plugins) CreatePlugin(ctx context.Context, controlPlaneID string, plugi
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Plugin", "json", `request:"mediaType=application/json"`)
@@ -8026,6 +8064,7 @@ func (s *Plugins) DeletePlugin(ctx context.Context, controlPlaneID string, plugi
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -8232,6 +8271,7 @@ func (s *Plugins) GetPlugin(ctx context.Context, request operations.GetPluginReq
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -8463,6 +8503,7 @@ func (s *Plugins) UpsertPlugin(ctx context.Context, request operations.UpsertPlu
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Plugin", "json", `request:"mediaType=application/json"`)
@@ -8695,6 +8736,7 @@ func (s *Plugins) ListPluginWithRoute(ctx context.Context, request operations.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin-with-route",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -8903,6 +8945,7 @@ func (s *Plugins) CreatePluginWithRoute(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin-with-route",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -9114,6 +9157,7 @@ func (s *Plugins) DeletePluginWithRoute(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin-with-route",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -9299,6 +9343,7 @@ func (s *Plugins) GetPluginWithRoute(ctx context.Context, request operations.Get
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin-with-route",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -9509,6 +9554,7 @@ func (s *Plugins) UpsertPluginWithRoute(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin-with-route",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -9725,6 +9771,7 @@ func (s *Plugins) FetchPluginSchema(ctx context.Context, pluginName string, cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-plugin-schema",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -9929,6 +9976,7 @@ func (s *Plugins) ListPluginWithService(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plugin-with-service",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -10137,6 +10185,7 @@ func (s *Plugins) CreatePluginWithService(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plugin-with-service",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -10348,6 +10397,7 @@ func (s *Plugins) DeletePluginWithService(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plugin-with-service",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -10533,6 +10583,7 @@ func (s *Plugins) GetPluginWithService(ctx context.Context, request operations.G
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plugin-with-service",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -10743,6 +10794,7 @@ func (s *Plugins) UpsertPluginWithService(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-plugin-with-service",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)

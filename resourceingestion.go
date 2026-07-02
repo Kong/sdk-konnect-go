@@ -70,6 +70,7 @@ func (s *ResourceIngestion) ScheduleResourceIngestion(ctx context.Context, integ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "schedule-resource-ingestion",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ScheduleResourceIngestion", "json", `request:"mediaType=application/json"`)
@@ -369,6 +370,7 @@ func (s *ResourceIngestion) FetchResourceIngestion(ctx context.Context, integrat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-resource-ingestion",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -63,6 +63,7 @@ func (s *EventGatewaySchemaRegistries) ListEventGatewaySchemaRegistries(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-schema-registries",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -318,6 +319,7 @@ func (s *EventGatewaySchemaRegistries) CreateEventGatewaySchemaRegistry(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-gateway-schema-registry",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "SchemaRegistryCreate", "json", `request:"mediaType=application/json"`)
@@ -597,6 +599,7 @@ func (s *EventGatewaySchemaRegistries) GetEventGatewaySchemaRegistry(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-schema-registry",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -864,6 +867,7 @@ func (s *EventGatewaySchemaRegistries) UpdateEventGatewaySchemaRegistry(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-gateway-schema-registry",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "SchemaRegistryUpdate", "json", `request:"mediaType=application/json"`)
@@ -1143,6 +1147,7 @@ func (s *EventGatewaySchemaRegistries) DeleteEventGatewaySchemaRegistry(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-gateway-schema-registry",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -62,6 +62,7 @@ func (s *SSOAuth0) PostAuth0RegisterInternal(ctx context.Context, request *compo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "post-auth0-register-internal",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -314,6 +315,7 @@ func (s *SSOAuth0) GetAuth0OrganizationsInternal(ctx context.Context, opts ...op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-auth0-organizations-internal",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
