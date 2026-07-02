@@ -10,9 +10,6 @@ import (
 
 // PortalTeamMembershipSDK is a generated interface.
 type PortalTeamMembershipSDK interface {
-	// ListPortalDeveloperTeams - List Developer Teams
-	// Lists the teams to which a developer belongs. Each team a developer is a member of grants them various roles that provide permissions to perform actions on certain resources.
-	ListPortalDeveloperTeams(ctx context.Context, request operations.ListPortalDeveloperTeamsRequest, opts ...operations.Option) (*operations.ListPortalDeveloperTeamsResponse, error)
 	// ListPortalTeamDevelopers - List Team Developers
 	// List a team's developers.
 	ListPortalTeamDevelopers(ctx context.Context, request operations.ListPortalTeamDevelopersRequest, opts ...operations.Option) (*operations.ListPortalTeamDevelopersResponse, error)
@@ -22,4 +19,7 @@ type PortalTeamMembershipSDK interface {
 	// RemoveDeveloperFromPortalTeam - Remove Developer from Team
 	// Removes a developer from a team. This removes the association of the team's roles from the developer.
 	RemoveDeveloperFromPortalTeam(ctx context.Context, request operations.RemoveDeveloperFromPortalTeamRequest, opts ...operations.Option) (*operations.RemoveDeveloperFromPortalTeamResponse, error)
+	// ListPortalDeveloperTeams - List Developer Teams
+	// Lists the teams to which a developer belongs. Each team a developer is a member of grants them various roles that provide permissions to perform actions on certain resources.
+	ListPortalDeveloperTeams(ctx context.Context, request operations.ListPortalDeveloperTeamsRequest, opts ...operations.Option) (*operations.ListPortalDeveloperTeamsResponse, error)
 }

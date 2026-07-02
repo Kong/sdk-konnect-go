@@ -5,10 +5,10 @@ Object containing metadata for an integration instance auth credential.
 
 ## Supported Types
 
-### Oauth
+### Oauth1
 
 ```go
-integrationInstanceAuthCredential := components.CreateIntegrationInstanceAuthCredentialOauth(components.Oauth{/* values here */})
+integrationInstanceAuthCredential := components.CreateIntegrationInstanceAuthCredentialOauth1(components.Oauth1{/* values here */})
 ```
 
 ### GithubAppInstallation
@@ -35,8 +35,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch integrationInstanceAuthCredential.Type {
-	case components.IntegrationInstanceAuthCredentialTypeOauth:
-		// integrationInstanceAuthCredential.Oauth is populated
+	case components.IntegrationInstanceAuthCredentialTypeOauth1:
+		// integrationInstanceAuthCredential.Oauth1 is populated
 	case components.IntegrationInstanceAuthCredentialTypeGithubAppInstallation:
 		// integrationInstanceAuthCredential.GithubAppInstallation is populated
 	case components.IntegrationInstanceAuthCredentialTypeMultiKeyAuthCredential:

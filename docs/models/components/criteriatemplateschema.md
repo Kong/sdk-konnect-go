@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### EmptySchema
+### CriteriaTemplateSchemaEmptySchema
 
 ```go
-criteriaTemplateSchema := components.CreateCriteriaTemplateSchemaEmptySchema(components.EmptySchema{/* values here */})
+criteriaTemplateSchema := components.CreateCriteriaTemplateSchemaCriteriaTemplateSchemaEmptySchema(components.CriteriaTemplateSchemaEmptySchema{/* values here */})
 ```
 
 ### CriteriaTemplateSimpleSchema
@@ -27,8 +27,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch criteriaTemplateSchema.Type {
-	case components.CriteriaTemplateSchemaUnionTypeEmptySchema:
-		// criteriaTemplateSchema.EmptySchema is populated
+	case components.CriteriaTemplateSchemaUnionTypeCriteriaTemplateSchemaEmptySchema:
+		// criteriaTemplateSchema.CriteriaTemplateSchemaEmptySchema is populated
 	case components.CriteriaTemplateSchemaUnionTypeCriteriaTemplateSimpleSchema:
 		// criteriaTemplateSchema.CriteriaTemplateSimpleSchema is populated
 	case components.CriteriaTemplateSchemaUnionTypeCriteriaTemplateJSONSchema:

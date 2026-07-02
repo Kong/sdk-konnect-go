@@ -120,3 +120,86 @@ func (_c *MockPartialLinksSDK_ListPartialLink_Call) RunAndReturn(run func(ctx co
 	_c.Call.Return(run)
 	return _c
 }
+
+// ListPartialLinkInWorkspace provides a mock function for the type MockPartialLinksSDK
+func (_mock *MockPartialLinksSDK) ListPartialLinkInWorkspace(ctx context.Context, request operations.ListPartialLinkInWorkspaceRequest, opts ...operations.Option) (*operations.ListPartialLinkInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPartialLinkInWorkspace")
+	}
+
+	var r0 *operations.ListPartialLinkInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPartialLinkInWorkspaceRequest, ...operations.Option) (*operations.ListPartialLinkInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPartialLinkInWorkspaceRequest, ...operations.Option) *operations.ListPartialLinkInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListPartialLinkInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListPartialLinkInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPartialLinksSDK_ListPartialLinkInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPartialLinkInWorkspace'
+type MockPartialLinksSDK_ListPartialLinkInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListPartialLinkInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListPartialLinkInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPartialLinksSDK_Expecter) ListPartialLinkInWorkspace(ctx any, request any, opts ...any) *MockPartialLinksSDK_ListPartialLinkInWorkspace_Call {
+	return &MockPartialLinksSDK_ListPartialLinkInWorkspace_Call{Call: _e.mock.On("ListPartialLinkInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPartialLinksSDK_ListPartialLinkInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListPartialLinkInWorkspaceRequest, opts ...operations.Option)) *MockPartialLinksSDK_ListPartialLinkInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListPartialLinkInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListPartialLinkInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPartialLinksSDK_ListPartialLinkInWorkspace_Call) Return(listPartialLinkInWorkspaceResponse *operations.ListPartialLinkInWorkspaceResponse, err error) *MockPartialLinksSDK_ListPartialLinkInWorkspace_Call {
+	_c.Call.Return(listPartialLinkInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPartialLinksSDK_ListPartialLinkInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPartialLinkInWorkspaceRequest, opts ...operations.Option) (*operations.ListPartialLinkInWorkspaceResponse, error)) *MockPartialLinksSDK_ListPartialLinkInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}

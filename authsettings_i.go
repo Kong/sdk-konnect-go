@@ -17,34 +17,10 @@ type AuthSettingsSDK interface {
 	// UpdateAuthenticationSettings - Update Auth Settings
 	// Updates authentication configuration.
 	UpdateAuthenticationSettings(ctx context.Context, request *components.UpdateAuthenticationSettings, opts ...operations.Option) (*operations.UpdateAuthenticationSettingsResponse, error)
-	// GetIdpConfiguration - Get the IdP Configuration
-	// Fetch the IdP configuration.
-	GetIdpConfiguration(ctx context.Context, opts ...operations.Option) (*operations.GetIdpConfigurationResponse, error)
-	// UpdateIdpConfiguration - Update IdP Configuration
-	// Update the IdP configuration.
-	UpdateIdpConfiguration(ctx context.Context, request *components.UpdateIDPConfiguration, opts ...operations.Option) (*operations.UpdateIdpConfigurationResponse, error)
-	// GetTeamGroupMappings - Get a Team Group Mappings
-	// Retrieves the mappings between Konnect Teams and Identity Provider Groups.
-	// Returns a 400 error if an Identity Provider has not yet been configured.
-	GetTeamGroupMappings(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.GetTeamGroupMappingsResponse, error)
-	// PatchTeamGroupMappings - Patch Mappings by Team ID
-	// Allows partial updates to the mappings between Konnect Teams and Identity Provider Groups.
-	// The request body must be keyed on team ID. For a given team ID, the given group list is a
-	// complete replacement. To remove all mappings for a given team, provide an empty group list.
-	//
-	// Returns a 400 error if an Identity Provider has not yet been configured, or if a team ID in
-	// the request body is not found or is not a UUID.
-	PatchTeamGroupMappings(ctx context.Context, request *components.PatchTeamGroupMappings, opts ...operations.Option) (*operations.PatchTeamGroupMappingsResponse, error)
-	// UpdateIdpTeamMappings - Update Team Mappings
-	// Updates the IdP group to Konnect team mapping.
-	UpdateIdpTeamMappings(ctx context.Context, request *components.UpdateTeamMappings, opts ...operations.Option) (*operations.UpdateIdpTeamMappingsResponse, error)
-	// GetIdpTeamMappings - Get a Team Mapping
-	// Fetch the IdP group to Konnect team mapping.
-	GetIdpTeamMappings(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.GetIdpTeamMappingsResponse, error)
 	// GetIdentityProviders - List Identity Providers
 	// Retrieves the identity providers available within the organization. This operation provides information about
 	// various identity providers for SAML or OIDC authentication integrations.
-	GetIdentityProviders(ctx context.Context, filter *operations.GetIdentityProvidersQueryParamFilter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error)
+	GetIdentityProviders(ctx context.Context, filter *operations.Filter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error)
 	// CreateIdentityProvider - Create Identity Provider
 	// Creates a new identity provider. This operation allows the creation of a new identity provider for
 	// authentication purposes.
@@ -76,4 +52,28 @@ type AuthSettingsSDK interface {
 	// Deletes a team group mapping by ID.
 	// Returns 204 if the mapping was deleted, or 404 if the mapping was not found.
 	DeleteIdpTeamGroupMapping(ctx context.Context, idpID string, id string, opts ...operations.Option) (*operations.DeleteIdpTeamGroupMappingResponse, error)
+	// GetIdpConfiguration - Get the IdP Configuration
+	// Fetch the IdP configuration.
+	GetIdpConfiguration(ctx context.Context, opts ...operations.Option) (*operations.GetIdpConfigurationResponse, error)
+	// UpdateIdpConfiguration - Update IdP Configuration
+	// Update the IdP configuration.
+	UpdateIdpConfiguration(ctx context.Context, request *components.UpdateIDPConfiguration, opts ...operations.Option) (*operations.UpdateIdpConfigurationResponse, error)
+	// UpdateIdpTeamMappings - Update Team Mappings
+	// Updates the IdP group to Konnect team mapping.
+	UpdateIdpTeamMappings(ctx context.Context, request *components.UpdateTeamMappings, opts ...operations.Option) (*operations.UpdateIdpTeamMappingsResponse, error)
+	// GetIdpTeamMappings - Get a Team Mapping
+	// Fetch the IdP group to Konnect team mapping.
+	GetIdpTeamMappings(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.GetIdpTeamMappingsResponse, error)
+	// GetTeamGroupMappings - Get a Team Group Mappings
+	// Retrieves the mappings between Konnect Teams and Identity Provider Groups.
+	// Returns a 400 error if an Identity Provider has not yet been configured.
+	GetTeamGroupMappings(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.GetTeamGroupMappingsResponse, error)
+	// PatchTeamGroupMappings - Patch Mappings by Team ID
+	// Allows partial updates to the mappings between Konnect Teams and Identity Provider Groups.
+	// The request body must be keyed on team ID. For a given team ID, the given group list is a
+	// complete replacement. To remove all mappings for a given team, provide an empty group list.
+	//
+	// Returns a 400 error if an Identity Provider has not yet been configured, or if a team ID in
+	// the request body is not found or is not a UUID.
+	PatchTeamGroupMappings(ctx context.Context, request *components.PatchTeamGroupMappings, opts ...operations.Option) (*operations.PatchTeamGroupMappingsResponse, error)
 }

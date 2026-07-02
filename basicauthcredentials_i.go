@@ -10,6 +10,27 @@ import (
 
 // BasicAuthCredentialsSDK is a generated interface.
 type BasicAuthCredentialsSDK interface {
+	// ListBasicAuthInWorkspace - List all Basic-auth credentials in a workspace
+	// List all Basic-auth credentials in a workspace
+	ListBasicAuthInWorkspace(ctx context.Context, request operations.ListBasicAuthInWorkspaceRequest, opts ...operations.Option) (*operations.ListBasicAuthInWorkspaceResponse, error)
+	// GetBasicAuthInWorkspace - Get a Basic-auth credential in a workspace
+	// Get a Basic-auth credential using ID in a workspace.
+	GetBasicAuthInWorkspace(ctx context.Context, request operations.GetBasicAuthInWorkspaceRequest, opts ...operations.Option) (*operations.GetBasicAuthInWorkspaceResponse, error)
+	// ListBasicAuthWithConsumerInWorkspace - List all Basic-auth credentials associated with a Consumer in a workspace
+	// List all Basic-auth credentials associated with a Consumer in a workspace
+	ListBasicAuthWithConsumerInWorkspace(ctx context.Context, request operations.ListBasicAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListBasicAuthWithConsumerInWorkspaceResponse, error)
+	// CreateBasicAuthWithConsumerInWorkspace - Create a new Basic-auth credential associated with a Consumer in a workspace
+	// Create a new Basic-auth credential associated with a Consumer in a workspace
+	CreateBasicAuthWithConsumerInWorkspace(ctx context.Context, request operations.CreateBasicAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateBasicAuthWithConsumerInWorkspaceResponse, error)
+	// DeleteBasicAuthWithConsumerInWorkspace - Delete a a Basic-auth credential associated with a Consumer in a workspace
+	// Delete a a Basic-auth credential associated with a Consumer using ID in a workspace.
+	DeleteBasicAuthWithConsumerInWorkspace(ctx context.Context, request operations.DeleteBasicAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteBasicAuthWithConsumerInWorkspaceResponse, error)
+	// GetBasicAuthWithConsumerInWorkspace - Get a Basic-auth credential associated with a Consumer in a workspace
+	// Get a Basic-auth credential associated with a Consumer using ID in a workspace.
+	GetBasicAuthWithConsumerInWorkspace(ctx context.Context, request operations.GetBasicAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetBasicAuthWithConsumerInWorkspaceResponse, error)
+	// UpsertBasicAuthWithConsumerInWorkspace - Upsert a Basic-auth credential associated with a Consumer in a workspace
+	// Create or Update a Basic-auth credential associated with a Consumer using ID in a workspace.
+	UpsertBasicAuthWithConsumerInWorkspace(ctx context.Context, request operations.UpsertBasicAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertBasicAuthWithConsumerInWorkspaceResponse, error)
 	// ListBasicAuth - List all Basic-auth credentials
 	// List all Basic-auth credentials
 	ListBasicAuth(ctx context.Context, request operations.ListBasicAuthRequest, opts ...operations.Option) (*operations.ListBasicAuthResponse, error)

@@ -38,6 +38,89 @@ func (_m *MockApplicationRegistrationsSDK) EXPECT() *MockApplicationRegistration
 	return &MockApplicationRegistrationsSDK_Expecter{mock: &_m.Mock}
 }
 
+// CreateApplicationRegistration provides a mock function for the type MockApplicationRegistrationsSDK
+func (_mock *MockApplicationRegistrationsSDK) CreateApplicationRegistration(ctx context.Context, request operations.CreateApplicationRegistrationRequest, opts ...operations.Option) (*operations.CreateApplicationRegistrationResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateApplicationRegistration")
+	}
+
+	var r0 *operations.CreateApplicationRegistrationResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateApplicationRegistrationRequest, ...operations.Option) (*operations.CreateApplicationRegistrationResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateApplicationRegistrationRequest, ...operations.Option) *operations.CreateApplicationRegistrationResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateApplicationRegistrationResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateApplicationRegistrationRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateApplicationRegistration'
+type MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call struct {
+	*mock.Call
+}
+
+// CreateApplicationRegistration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateApplicationRegistrationRequest
+//   - opts ...operations.Option
+func (_e *MockApplicationRegistrationsSDK_Expecter) CreateApplicationRegistration(ctx any, request any, opts ...any) *MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call {
+	return &MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call{Call: _e.mock.On("CreateApplicationRegistration",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call) Run(run func(ctx context.Context, request operations.CreateApplicationRegistrationRequest, opts ...operations.Option)) *MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateApplicationRegistrationRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateApplicationRegistrationRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call) Return(createApplicationRegistrationResponse *operations.CreateApplicationRegistrationResponse, err error) *MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call {
+	_c.Call.Return(createApplicationRegistrationResponse, err)
+	return _c
+}
+
+func (_c *MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateApplicationRegistrationRequest, opts ...operations.Option) (*operations.CreateApplicationRegistrationResponse, error)) *MockApplicationRegistrationsSDK_CreateApplicationRegistration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteApplicationRegistration provides a mock function for the type MockApplicationRegistrationsSDK
 func (_mock *MockApplicationRegistrationsSDK) DeleteApplicationRegistration(ctx context.Context, request operations.DeleteApplicationRegistrationRequest, opts ...operations.Option) (*operations.DeleteApplicationRegistrationResponse, error) {
 	var tmpRet mock.Arguments
@@ -117,6 +200,89 @@ func (_c *MockApplicationRegistrationsSDK_DeleteApplicationRegistration_Call) Re
 }
 
 func (_c *MockApplicationRegistrationsSDK_DeleteApplicationRegistration_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteApplicationRegistrationRequest, opts ...operations.Option) (*operations.DeleteApplicationRegistrationResponse, error)) *MockApplicationRegistrationsSDK_DeleteApplicationRegistration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteApplicationRegistrationConsumer provides a mock function for the type MockApplicationRegistrationsSDK
+func (_mock *MockApplicationRegistrationsSDK) DeleteApplicationRegistrationConsumer(ctx context.Context, request operations.DeleteApplicationRegistrationConsumerRequest, opts ...operations.Option) (*operations.DeleteApplicationRegistrationConsumerResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteApplicationRegistrationConsumer")
+	}
+
+	var r0 *operations.DeleteApplicationRegistrationConsumerResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteApplicationRegistrationConsumerRequest, ...operations.Option) (*operations.DeleteApplicationRegistrationConsumerResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteApplicationRegistrationConsumerRequest, ...operations.Option) *operations.DeleteApplicationRegistrationConsumerResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteApplicationRegistrationConsumerResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteApplicationRegistrationConsumerRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteApplicationRegistrationConsumer'
+type MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call struct {
+	*mock.Call
+}
+
+// DeleteApplicationRegistrationConsumer is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteApplicationRegistrationConsumerRequest
+//   - opts ...operations.Option
+func (_e *MockApplicationRegistrationsSDK_Expecter) DeleteApplicationRegistrationConsumer(ctx any, request any, opts ...any) *MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call {
+	return &MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call{Call: _e.mock.On("DeleteApplicationRegistrationConsumer",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call) Run(run func(ctx context.Context, request operations.DeleteApplicationRegistrationConsumerRequest, opts ...operations.Option)) *MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteApplicationRegistrationConsumerRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteApplicationRegistrationConsumerRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call) Return(deleteApplicationRegistrationConsumerResponse *operations.DeleteApplicationRegistrationConsumerResponse, err error) *MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call {
+	_c.Call.Return(deleteApplicationRegistrationConsumerResponse, err)
+	return _c
+}
+
+func (_c *MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteApplicationRegistrationConsumerRequest, opts ...operations.Option) (*operations.DeleteApplicationRegistrationConsumerResponse, error)) *MockApplicationRegistrationsSDK_DeleteApplicationRegistrationConsumer_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -449,6 +615,89 @@ func (_c *MockApplicationRegistrationsSDK_UpdateApplicationRegistration_Call) Re
 }
 
 func (_c *MockApplicationRegistrationsSDK_UpdateApplicationRegistration_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateApplicationRegistrationRequest, opts ...operations.Option) (*operations.UpdateApplicationRegistrationResponse, error)) *MockApplicationRegistrationsSDK_UpdateApplicationRegistration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateApplicationRegistrationConsumer provides a mock function for the type MockApplicationRegistrationsSDK
+func (_mock *MockApplicationRegistrationsSDK) UpdateApplicationRegistrationConsumer(ctx context.Context, request operations.UpdateApplicationRegistrationConsumerRequest, opts ...operations.Option) (*operations.UpdateApplicationRegistrationConsumerResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateApplicationRegistrationConsumer")
+	}
+
+	var r0 *operations.UpdateApplicationRegistrationConsumerResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateApplicationRegistrationConsumerRequest, ...operations.Option) (*operations.UpdateApplicationRegistrationConsumerResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateApplicationRegistrationConsumerRequest, ...operations.Option) *operations.UpdateApplicationRegistrationConsumerResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateApplicationRegistrationConsumerResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpdateApplicationRegistrationConsumerRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateApplicationRegistrationConsumer'
+type MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call struct {
+	*mock.Call
+}
+
+// UpdateApplicationRegistrationConsumer is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpdateApplicationRegistrationConsumerRequest
+//   - opts ...operations.Option
+func (_e *MockApplicationRegistrationsSDK_Expecter) UpdateApplicationRegistrationConsumer(ctx any, request any, opts ...any) *MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call {
+	return &MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call{Call: _e.mock.On("UpdateApplicationRegistrationConsumer",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call) Run(run func(ctx context.Context, request operations.UpdateApplicationRegistrationConsumerRequest, opts ...operations.Option)) *MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpdateApplicationRegistrationConsumerRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpdateApplicationRegistrationConsumerRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call) Return(updateApplicationRegistrationConsumerResponse *operations.UpdateApplicationRegistrationConsumerResponse, err error) *MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call {
+	_c.Call.Return(updateApplicationRegistrationConsumerResponse, err)
+	return _c
+}
+
+func (_c *MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateApplicationRegistrationConsumerRequest, opts ...operations.Option) (*operations.UpdateApplicationRegistrationConsumerResponse, error)) *MockApplicationRegistrationsSDK_UpdateApplicationRegistrationConsumer_Call {
 	_c.Call.Return(run)
 	return _c
 }

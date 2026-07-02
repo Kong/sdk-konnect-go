@@ -122,6 +122,89 @@ func (_c *MockUsersSDK_DeleteUser_Call) RunAndReturn(run func(ctx context.Contex
 	return _c
 }
 
+// DeleteUserMfas provides a mock function for the type MockUsersSDK
+func (_mock *MockUsersSDK) DeleteUserMfas(ctx context.Context, userID string, opts ...operations.Option) (*operations.DeleteUserMfasResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, userID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, userID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteUserMfas")
+	}
+
+	var r0 *operations.DeleteUserMfasResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteUserMfasResponse, error)); ok {
+		return returnFunc(ctx, userID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteUserMfasResponse); ok {
+		r0 = returnFunc(ctx, userID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteUserMfasResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, userID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockUsersSDK_DeleteUserMfas_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteUserMfas'
+type MockUsersSDK_DeleteUserMfas_Call struct {
+	*mock.Call
+}
+
+// DeleteUserMfas is a helper method to define mock.On call
+//   - ctx context.Context
+//   - userID string
+//   - opts ...operations.Option
+func (_e *MockUsersSDK_Expecter) DeleteUserMfas(ctx any, userID any, opts ...any) *MockUsersSDK_DeleteUserMfas_Call {
+	return &MockUsersSDK_DeleteUserMfas_Call{Call: _e.mock.On("DeleteUserMfas",
+		append([]any{ctx, userID}, opts...)...)}
+}
+
+func (_c *MockUsersSDK_DeleteUserMfas_Call) Run(run func(ctx context.Context, userID string, opts ...operations.Option)) *MockUsersSDK_DeleteUserMfas_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockUsersSDK_DeleteUserMfas_Call) Return(deleteUserMfasResponse *operations.DeleteUserMfasResponse, err error) *MockUsersSDK_DeleteUserMfas_Call {
+	_c.Call.Return(deleteUserMfasResponse, err)
+	return _c
+}
+
+func (_c *MockUsersSDK_DeleteUserMfas_Call) RunAndReturn(run func(ctx context.Context, userID string, opts ...operations.Option) (*operations.DeleteUserMfasResponse, error)) *MockUsersSDK_DeleteUserMfas_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetUser provides a mock function for the type MockUsersSDK
 func (_mock *MockUsersSDK) GetUser(ctx context.Context, userID string, opts ...operations.Option) (*operations.GetUserResponse, error) {
 	var tmpRet mock.Arguments
@@ -201,6 +284,89 @@ func (_c *MockUsersSDK_GetUser_Call) Return(getUserResponse *operations.GetUserR
 }
 
 func (_c *MockUsersSDK_GetUser_Call) RunAndReturn(run func(ctx context.Context, userID string, opts ...operations.Option) (*operations.GetUserResponse, error)) *MockUsersSDK_GetUser_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetUsersInternal provides a mock function for the type MockUsersSDK
+func (_mock *MockUsersSDK) GetUsersInternal(ctx context.Context, aid *string, opts ...operations.Option) (*operations.GetUsersInternalResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, aid, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, aid)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetUsersInternal")
+	}
+
+	var r0 *operations.GetUsersInternalResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *string, ...operations.Option) (*operations.GetUsersInternalResponse, error)); ok {
+		return returnFunc(ctx, aid, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *string, ...operations.Option) *operations.GetUsersInternalResponse); ok {
+		r0 = returnFunc(ctx, aid, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetUsersInternalResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, aid, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockUsersSDK_GetUsersInternal_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetUsersInternal'
+type MockUsersSDK_GetUsersInternal_Call struct {
+	*mock.Call
+}
+
+// GetUsersInternal is a helper method to define mock.On call
+//   - ctx context.Context
+//   - aid *string
+//   - opts ...operations.Option
+func (_e *MockUsersSDK_Expecter) GetUsersInternal(ctx any, aid any, opts ...any) *MockUsersSDK_GetUsersInternal_Call {
+	return &MockUsersSDK_GetUsersInternal_Call{Call: _e.mock.On("GetUsersInternal",
+		append([]any{ctx, aid}, opts...)...)}
+}
+
+func (_c *MockUsersSDK_GetUsersInternal_Call) Run(run func(ctx context.Context, aid *string, opts ...operations.Option)) *MockUsersSDK_GetUsersInternal_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *string
+		if args[1] != nil {
+			arg1 = args[1].(*string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockUsersSDK_GetUsersInternal_Call) Return(getUsersInternalResponse *operations.GetUsersInternalResponse, err error) *MockUsersSDK_GetUsersInternal_Call {
+	_c.Call.Return(getUsersInternalResponse, err)
+	return _c
+}
+
+func (_c *MockUsersSDK_GetUsersInternal_Call) RunAndReturn(run func(ctx context.Context, aid *string, opts ...operations.Option) (*operations.GetUsersInternalResponse, error)) *MockUsersSDK_GetUsersInternal_Call {
 	_c.Call.Return(run)
 	return _c
 }

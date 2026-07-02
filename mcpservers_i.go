@@ -11,43 +11,48 @@ import (
 
 // MCPServersSDK is a generated interface.
 type MCPServersSDK interface {
-	// ListMcpServersByControlPlane - List MCP Servers by Control Plane
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Returns an array of MCP server objects for the specified control plane.
-	ListMcpServersByControlPlane(ctx context.Context, request operations.ListMcpServersByControlPlaneRequest, opts ...operations.Option) (*operations.ListMcpServersByControlPlaneResponse, error)
-	// GetMcpServerByControlPlane - Get MCP Server by Control Plane
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Retrieves an MCP server by its ID within a specific control plane context.
-	GetMcpServerByControlPlane(ctx context.Context, controlPlaneID string, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerByControlPlaneResponse, error)
-	// GetMcpServerCode - Get generated Python code for the MCP Server
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
+	// ListMcpServerConfigs - List all MCP Servers
+	// Returns an array of MCP server objects.
+	ListMcpServerConfigs(ctx context.Context, request operations.ListMcpServerConfigsRequest, opts ...operations.Option) (*operations.ListMcpServerConfigsResponse, error)
+	// CreateMcpServerConfig - Create an MCP Server
+	// Create an MCP Server in the Konnect Organization.
+	CreateMcpServerConfig(ctx context.Context, request components.CreateMCPServerRequest, opts ...operations.Option) (*operations.CreateMcpServerConfigResponse, error)
+	// GetMcpServerConfig - Get MCP Server
+	// Returns information about an individual MCP server.
+	GetMcpServerConfig(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerConfigResponse, error)
+	// UpdateMcpServerConfig - Update MCP Server
+	// Update an individual MCP server.
+	UpdateMcpServerConfig(ctx context.Context, mcpServerID string, createMCPServerRequest components.CreateMCPServerRequest, opts ...operations.Option) (*operations.UpdateMcpServerConfigResponse, error)
+	// PatchMcpServerConfig - Partially Update MCP Server
+	// Partially update an individual MCP server.
+	PatchMcpServerConfig(ctx context.Context, mcpServerID string, patchMCPServerRequest components.PatchMCPServerRequest, opts ...operations.Option) (*operations.PatchMcpServerConfigResponse, error)
+	// DeleteMcpServerConfig - Delete MCP Server
+	// Delete an MCP server.
+	DeleteMcpServerConfig(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.DeleteMcpServerConfigResponse, error)
+	// GetMcpServerStatus - Get MCP Server deployment status
+	// Returns the current aggregated deployment status of an MCP server.
+	GetMcpServerStatus(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerStatusResponse, error)
+	// GetMcpServerGeneratedCode - Get generated Python code for an MCP Server
 	// Generates MCP server Python code from the OpenAPI specifications associated with the MCP server.
-	GetMcpServerCode(ctx context.Context, controlPlaneID string, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerCodeResponse, error)
-	// GetMcpServerKongEntities - Get Kong entities for the MCP Server Gateway
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Retrieves Kong entities (Routes, Services, Plugins) for the Gateway in front of the MCP Server.
-	GetMcpServerKongEntities(ctx context.Context, request operations.GetMcpServerKongEntitiesRequest, opts ...operations.Option) (*operations.GetMcpServerKongEntitiesResponse, error)
-	// PostMcpServerStatus - Report MCP Server deployment status
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Reports the current deployment status of an MCP server, including replica counts and per-version pod statuses.
-	PostMcpServerStatus(ctx context.Context, request operations.PostMcpServerStatusRequest, opts ...operations.Option) (*operations.PostMcpServerStatusResponse, error)
+	GetMcpServerGeneratedCode(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerGeneratedCodeResponse, error)
+	// ListMcpResources - List MCP Resources
+	// Returns a list of MCP resource objects.
+	ListMcpResources(ctx context.Context, request operations.ListMcpResourcesRequest, opts ...operations.Option) (*operations.ListMcpResourcesResponse, error)
+	// CreateMcpResource - Create an MCP Resource
+	// Create an MCP resource in the Konnect Organization.
+	CreateMcpResource(ctx context.Context, request components.MCPResourceInput, opts ...operations.Option) (*operations.CreateMcpResourceResponse, error)
+	// GetMcpResource - Get an MCP Resource
+	// Retrieve an MCP resource by its ID.
+	GetMcpResource(ctx context.Context, resourceID string, opts ...operations.Option) (*operations.GetMcpResourceResponse, error)
+	// DeleteMcpResource - Delete an MCP Resource
+	// Delete an MCP resource by its ID.
+	DeleteMcpResource(ctx context.Context, resourceID string, opts ...operations.Option) (*operations.DeleteMcpResourceResponse, error)
+	// UpdateMcpResource - Update an MCP Resource
+	// Update an MCP resource by its ID.
+	UpdateMcpResource(ctx context.Context, resourceID string, mcpResourceInput components.MCPResourceInput, opts ...operations.Option) (*operations.UpdateMcpResourceResponse, error)
 	// GetMcpServerSignals - Get MCP Server Signals
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Client-initiated signals fetch with long-polling capabilities.
 	// The client supplies `capabilities` as a deepObject query parameter:
-	//
 	//   - Keys are capability names (e.g. `mcp`)
 	//   - Values contain the capability request fields (`version`)
 	//
@@ -58,46 +63,19 @@ type MCPServersSDK interface {
 	// The CP responds with a JSON payload containing zero or more signals that the client should process.
 	// If no signals are available, the CP responds with HTTP 304 Not Modified.
 	GetMcpServerSignals(ctx context.Context, controlPlaneID string, capabilities *components.MCPCapabilitiesMap, opts ...operations.Option) (*operations.GetMcpServerSignalsResponse, error)
-	// ListMcpServerConfigs - List all MCP Servers
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Returns an array of MCP server objects.
-	ListMcpServerConfigs(ctx context.Context, request operations.ListMcpServerConfigsRequest, opts ...operations.Option) (*operations.ListMcpServerConfigsResponse, error)
-	// CreateMcpServerConfig - Create an MCP Server
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Create an MCP Server in the Konnect Organization.
-	CreateMcpServerConfig(ctx context.Context, request components.CreateMCPServerRequest, opts ...operations.Option) (*operations.CreateMcpServerConfigResponse, error)
-	// GetMcpServerConfig - Get MCP Server
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Returns information about an individual MCP server.
-	GetMcpServerConfig(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerConfigResponse, error)
-	// UpdateMcpServerConfig - Update MCP Server
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Update an individual MCP server.
-	UpdateMcpServerConfig(ctx context.Context, mcpServerID string, updateMCPServerRequest components.UpdateMCPServerRequest, opts ...operations.Option) (*operations.UpdateMcpServerConfigResponse, error)
-	// PatchMcpServerConfig - Partially Update MCP Server
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Partially update an individual MCP server.
-	PatchMcpServerConfig(ctx context.Context, mcpServerID string, patchMCPServerRequest components.PatchMCPServerRequest, opts ...operations.Option) (*operations.PatchMcpServerConfigResponse, error)
-	// DeleteMcpServerConfig - Delete MCP Server
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Delete an MCP server.
-	DeleteMcpServerConfig(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.DeleteMcpServerConfigResponse, error)
-	// GetMcpServerStatus - Get MCP Server deployment status
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Returns the current aggregated deployment status of an MCP server.
-	GetMcpServerStatus(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerStatusResponse, error)
+	// ListMcpServersByControlPlane - List MCP Servers by Control Plane
+	// Returns an array of MCP server objects for the specified control plane.
+	ListMcpServersByControlPlane(ctx context.Context, request operations.ListMcpServersByControlPlaneRequest, opts ...operations.Option) (*operations.ListMcpServersByControlPlaneResponse, error)
+	// GetMcpServerByControlPlane - Get MCP Server by Control Plane
+	// Retrieves an MCP server by its ID within a specific control plane context.
+	GetMcpServerByControlPlane(ctx context.Context, controlPlaneID string, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerByControlPlaneResponse, error)
+	// GetMcpServerKongEntities - Get Kong entities for the MCP Server Gateway
+	// Retrieves Kong entities (Routes, Services, Plugins) for the Gateway in front of the MCP Server.
+	GetMcpServerKongEntities(ctx context.Context, request operations.GetMcpServerKongEntitiesRequest, opts ...operations.Option) (*operations.GetMcpServerKongEntitiesResponse, error)
+	// PostMcpServerStatus - Report MCP Server deployment status
+	// Reports the current deployment status of an MCP server, including replica counts and per-version pod statuses.
+	PostMcpServerStatus(ctx context.Context, request operations.PostMcpServerStatusRequest, opts ...operations.Option) (*operations.PostMcpServerStatusResponse, error)
+	// GetMcpServerCode - Get generated Python code for the MCP Server
+	// Generates MCP server Python code from the OpenAPI specifications associated with the MCP server.
+	GetMcpServerCode(ctx context.Context, controlPlaneID string, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerCodeResponse, error)
 }

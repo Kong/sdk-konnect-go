@@ -11,6 +11,33 @@ import (
 
 // ConsumerGroupsSDK is a generated interface.
 type ConsumerGroupsSDK interface {
+	// ListConsumerGroupInWorkspace - List all Consumer Groups in a workspace
+	// List all Consumer Groups in a workspace
+	ListConsumerGroupInWorkspace(ctx context.Context, request operations.ListConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.ListConsumerGroupInWorkspaceResponse, error)
+	// CreateConsumerGroupInWorkspace - Create a new Consumer Group in a workspace
+	// Create a new Consumer Group in a workspace
+	CreateConsumerGroupInWorkspace(ctx context.Context, request operations.CreateConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.CreateConsumerGroupInWorkspaceResponse, error)
+	// DeleteConsumerGroupInWorkspace - Delete a Consumer Group in a workspace
+	// Delete a Consumer Group in a workspace
+	DeleteConsumerGroupInWorkspace(ctx context.Context, request operations.DeleteConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteConsumerGroupInWorkspaceResponse, error)
+	// GetConsumerGroupInWorkspace - Get a Consumer Group in a workspace
+	// Get a Consumer Group using ID in a workspace.
+	GetConsumerGroupInWorkspace(ctx context.Context, request operations.GetConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.GetConsumerGroupInWorkspaceResponse, error)
+	// UpsertConsumerGroupInWorkspace - Upsert a Consumer Group in a workspace
+	// Create or Update Consumer Group using ID in a workspace.
+	UpsertConsumerGroupInWorkspace(ctx context.Context, request operations.UpsertConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertConsumerGroupInWorkspaceResponse, error)
+	// RemoveAllConsumersFromConsumerGroupInWorkspace - Remove consumers from consumer group in a workspace
+	// Removes all consumers from a Consumer Groups. This operation does not delete the consumer group in a workspace.
+	RemoveAllConsumersFromConsumerGroupInWorkspace(ctx context.Context, request operations.RemoveAllConsumersFromConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.RemoveAllConsumersFromConsumerGroupInWorkspaceResponse, error)
+	// ListConsumersForConsumerGroupInWorkspace - List all Consumers in a Consumer Group in a workspace
+	// List all consumers in a consumer group in a workspace
+	ListConsumersForConsumerGroupInWorkspace(ctx context.Context, request operations.ListConsumersForConsumerGroupInWorkspaceRequest, opts ...operations.Option) (*operations.ListConsumersForConsumerGroupInWorkspaceResponse, error)
+	// AddConsumerToGroupInWorkspace - Add consumer to consumer group in a workspace
+	// Add a consumer to a consumer group in a workspace
+	AddConsumerToGroupInWorkspace(ctx context.Context, request operations.AddConsumerToGroupInWorkspaceRequest, opts ...operations.Option) (*operations.AddConsumerToGroupInWorkspaceResponse, error)
+	// RemoveConsumerFromGroupInWorkspace - Remove consumer from consumer group in a workspace
+	// Remove a consumer from a consumer group in a workspace
+	RemoveConsumerFromGroupInWorkspace(ctx context.Context, request operations.RemoveConsumerFromGroupInWorkspaceRequest, opts ...operations.Option) (*operations.RemoveConsumerFromGroupInWorkspaceResponse, error)
 	// ListConsumerGroup - List all Consumer Groups
 	// List all Consumer Groups
 	ListConsumerGroup(ctx context.Context, request operations.ListConsumerGroupRequest, opts ...operations.Option) (*operations.ListConsumerGroupResponse, error)

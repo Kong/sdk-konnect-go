@@ -10,19 +10,6 @@ import (
 
 // APIPublicationSDK is a generated interface.
 type APIPublicationSDK interface {
-	// PublishAPIPackageToPortal - Publish API Package
-	// Publish an API Package to a portal.
-	PublishAPIPackageToPortal(ctx context.Context, request operations.PublishAPIPackageToPortalRequest, opts ...operations.Option) (*operations.PublishAPIPackageToPortalResponse, error)
-	// FetchAPIPackagePublication - Get an API Package Publication
-	// Retrieve an API Package's publication in a portal.
-	// If the API Package is not published to the portal, a 404 response is returned.
-	FetchAPIPackagePublication(ctx context.Context, apiPackageID string, portalID string, opts ...operations.Option) (*operations.FetchAPIPackagePublicationResponse, error)
-	// DeleteAPIPackagePublication - Delete API Package Publication
-	// Unpublish an API Package from a portal.
-	DeleteAPIPackagePublication(ctx context.Context, apiPackageID string, portalID string, opts ...operations.Option) (*operations.DeleteAPIPackagePublicationResponse, error)
-	// ListAPIPublications - List Publications
-	// Returns a collection of all API Publications.
-	ListAPIPublications(ctx context.Context, request operations.ListAPIPublicationsRequest, opts ...operations.Option) (*operations.ListAPIPublicationsResponse, error)
 	// PublishAPIToPortal - Publish API
 	// Publish an API to a portal.
 	PublishAPIToPortal(ctx context.Context, request operations.PublishAPIToPortalRequest, opts ...operations.Option) (*operations.PublishAPIToPortalResponse, error)
@@ -33,9 +20,22 @@ type APIPublicationSDK interface {
 	// DeletePublication - Delete Publication
 	// Unpublish an API from a portal.
 	DeletePublication(ctx context.Context, apiID string, portalID string, opts ...operations.Option) (*operations.DeletePublicationResponse, error)
+	// ListAPIPublications - List Publications
+	// Returns a collection of all API Publications.
+	ListAPIPublications(ctx context.Context, request operations.ListAPIPublicationsRequest, opts ...operations.Option) (*operations.ListAPIPublicationsResponse, error)
 	// ListPortalAPIPublications - List Portal API Publications
 	// Returns a collection of all API Publications for a specific portal.
 	//
 	// **Access Control**: Requires permission to view the specified portal. Once portal access is granted, all API publications for that portal are returned regardless of the caller's individual API permissions.
 	ListPortalAPIPublications(ctx context.Context, request operations.ListPortalAPIPublicationsRequest, opts ...operations.Option) (*operations.ListPortalAPIPublicationsResponse, error)
+	// PublishAPIPackageToPortal - Publish API Package
+	// Publish an API Package to a portal.
+	PublishAPIPackageToPortal(ctx context.Context, request operations.PublishAPIPackageToPortalRequest, opts ...operations.Option) (*operations.PublishAPIPackageToPortalResponse, error)
+	// FetchAPIPackagePublication - Get an API Package Publication
+	// Retrieve an API Package's publication in a portal.
+	// If the API Package is not published to the portal, a 404 response is returned.
+	FetchAPIPackagePublication(ctx context.Context, apiPackageID string, portalID string, opts ...operations.Option) (*operations.FetchAPIPackagePublicationResponse, error)
+	// DeleteAPIPackagePublication - Delete API Package Publication
+	// Unpublish an API Package from a portal.
+	DeleteAPIPackagePublication(ctx context.Context, apiPackageID string, portalID string, opts ...operations.Option) (*operations.DeleteAPIPackagePublicationResponse, error)
 }

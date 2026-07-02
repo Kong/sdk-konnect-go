@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.CriteriaTemplateSchemaTypeJSONSchema
+value := components.CriteriaTemplateSchemaTypeSimple
 ```
 
 
 ## Values
 
-| Name                                   | Value                                  |
-| -------------------------------------- | -------------------------------------- |
-| `CriteriaTemplateSchemaTypeJSONSchema` | json_schema                            |
+| Name                               | Value                              |
+| ---------------------------------- | ---------------------------------- |
+| `CriteriaTemplateSchemaTypeSimple` | simple                             |

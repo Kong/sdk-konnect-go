@@ -128,6 +128,89 @@ func (_c *MockCACertificatesSDK_CreateCaCertificate_Call) RunAndReturn(run func(
 	return _c
 }
 
+// CreateCaCertificateInWorkspace provides a mock function for the type MockCACertificatesSDK
+func (_mock *MockCACertificatesSDK) CreateCaCertificateInWorkspace(ctx context.Context, request operations.CreateCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.CreateCaCertificateInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateCaCertificateInWorkspace")
+	}
+
+	var r0 *operations.CreateCaCertificateInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateCaCertificateInWorkspaceRequest, ...operations.Option) (*operations.CreateCaCertificateInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateCaCertificateInWorkspaceRequest, ...operations.Option) *operations.CreateCaCertificateInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateCaCertificateInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateCaCertificateInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCaCertificateInWorkspace'
+type MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateCaCertificateInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateCaCertificateInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockCACertificatesSDK_Expecter) CreateCaCertificateInWorkspace(ctx any, request any, opts ...any) *MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call {
+	return &MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call{Call: _e.mock.On("CreateCaCertificateInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateCaCertificateInWorkspaceRequest, opts ...operations.Option)) *MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateCaCertificateInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateCaCertificateInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call) Return(createCaCertificateInWorkspaceResponse *operations.CreateCaCertificateInWorkspaceResponse, err error) *MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call {
+	_c.Call.Return(createCaCertificateInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.CreateCaCertificateInWorkspaceResponse, error)) *MockCACertificatesSDK_CreateCaCertificateInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteCaCertificate provides a mock function for the type MockCACertificatesSDK
 func (_mock *MockCACertificatesSDK) DeleteCaCertificate(ctx context.Context, controlPlaneID string, caCertificateID string, opts ...operations.Option) (*operations.DeleteCaCertificateResponse, error) {
 	var tmpRet mock.Arguments
@@ -213,6 +296,89 @@ func (_c *MockCACertificatesSDK_DeleteCaCertificate_Call) Return(deleteCaCertifi
 }
 
 func (_c *MockCACertificatesSDK_DeleteCaCertificate_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, caCertificateID string, opts ...operations.Option) (*operations.DeleteCaCertificateResponse, error)) *MockCACertificatesSDK_DeleteCaCertificate_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteCaCertificateInWorkspace provides a mock function for the type MockCACertificatesSDK
+func (_mock *MockCACertificatesSDK) DeleteCaCertificateInWorkspace(ctx context.Context, request operations.DeleteCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteCaCertificateInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteCaCertificateInWorkspace")
+	}
+
+	var r0 *operations.DeleteCaCertificateInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteCaCertificateInWorkspaceRequest, ...operations.Option) (*operations.DeleteCaCertificateInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteCaCertificateInWorkspaceRequest, ...operations.Option) *operations.DeleteCaCertificateInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteCaCertificateInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteCaCertificateInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteCaCertificateInWorkspace'
+type MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteCaCertificateInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteCaCertificateInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockCACertificatesSDK_Expecter) DeleteCaCertificateInWorkspace(ctx any, request any, opts ...any) *MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call {
+	return &MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call{Call: _e.mock.On("DeleteCaCertificateInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteCaCertificateInWorkspaceRequest, opts ...operations.Option)) *MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteCaCertificateInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteCaCertificateInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call) Return(deleteCaCertificateInWorkspaceResponse *operations.DeleteCaCertificateInWorkspaceResponse, err error) *MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call {
+	_c.Call.Return(deleteCaCertificateInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteCaCertificateInWorkspaceResponse, error)) *MockCACertificatesSDK_DeleteCaCertificateInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -306,6 +472,89 @@ func (_c *MockCACertificatesSDK_GetCaCertificate_Call) RunAndReturn(run func(ctx
 	return _c
 }
 
+// GetCaCertificateInWorkspace provides a mock function for the type MockCACertificatesSDK
+func (_mock *MockCACertificatesSDK) GetCaCertificateInWorkspace(ctx context.Context, request operations.GetCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.GetCaCertificateInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCaCertificateInWorkspace")
+	}
+
+	var r0 *operations.GetCaCertificateInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetCaCertificateInWorkspaceRequest, ...operations.Option) (*operations.GetCaCertificateInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetCaCertificateInWorkspaceRequest, ...operations.Option) *operations.GetCaCertificateInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetCaCertificateInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetCaCertificateInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCACertificatesSDK_GetCaCertificateInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCaCertificateInWorkspace'
+type MockCACertificatesSDK_GetCaCertificateInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetCaCertificateInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetCaCertificateInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockCACertificatesSDK_Expecter) GetCaCertificateInWorkspace(ctx any, request any, opts ...any) *MockCACertificatesSDK_GetCaCertificateInWorkspace_Call {
+	return &MockCACertificatesSDK_GetCaCertificateInWorkspace_Call{Call: _e.mock.On("GetCaCertificateInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCACertificatesSDK_GetCaCertificateInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetCaCertificateInWorkspaceRequest, opts ...operations.Option)) *MockCACertificatesSDK_GetCaCertificateInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetCaCertificateInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetCaCertificateInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_GetCaCertificateInWorkspace_Call) Return(getCaCertificateInWorkspaceResponse *operations.GetCaCertificateInWorkspaceResponse, err error) *MockCACertificatesSDK_GetCaCertificateInWorkspace_Call {
+	_c.Call.Return(getCaCertificateInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_GetCaCertificateInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.GetCaCertificateInWorkspaceResponse, error)) *MockCACertificatesSDK_GetCaCertificateInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListCaCertificate provides a mock function for the type MockCACertificatesSDK
 func (_mock *MockCACertificatesSDK) ListCaCertificate(ctx context.Context, request operations.ListCaCertificateRequest, opts ...operations.Option) (*operations.ListCaCertificateResponse, error) {
 	var tmpRet mock.Arguments
@@ -389,6 +638,89 @@ func (_c *MockCACertificatesSDK_ListCaCertificate_Call) RunAndReturn(run func(ct
 	return _c
 }
 
+// ListCaCertificateInWorkspace provides a mock function for the type MockCACertificatesSDK
+func (_mock *MockCACertificatesSDK) ListCaCertificateInWorkspace(ctx context.Context, request operations.ListCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.ListCaCertificateInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListCaCertificateInWorkspace")
+	}
+
+	var r0 *operations.ListCaCertificateInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCaCertificateInWorkspaceRequest, ...operations.Option) (*operations.ListCaCertificateInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCaCertificateInWorkspaceRequest, ...operations.Option) *operations.ListCaCertificateInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListCaCertificateInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListCaCertificateInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCACertificatesSDK_ListCaCertificateInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCaCertificateInWorkspace'
+type MockCACertificatesSDK_ListCaCertificateInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListCaCertificateInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListCaCertificateInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockCACertificatesSDK_Expecter) ListCaCertificateInWorkspace(ctx any, request any, opts ...any) *MockCACertificatesSDK_ListCaCertificateInWorkspace_Call {
+	return &MockCACertificatesSDK_ListCaCertificateInWorkspace_Call{Call: _e.mock.On("ListCaCertificateInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCACertificatesSDK_ListCaCertificateInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListCaCertificateInWorkspaceRequest, opts ...operations.Option)) *MockCACertificatesSDK_ListCaCertificateInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListCaCertificateInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListCaCertificateInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_ListCaCertificateInWorkspace_Call) Return(listCaCertificateInWorkspaceResponse *operations.ListCaCertificateInWorkspaceResponse, err error) *MockCACertificatesSDK_ListCaCertificateInWorkspace_Call {
+	_c.Call.Return(listCaCertificateInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_ListCaCertificateInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.ListCaCertificateInWorkspaceResponse, error)) *MockCACertificatesSDK_ListCaCertificateInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertCaCertificate provides a mock function for the type MockCACertificatesSDK
 func (_mock *MockCACertificatesSDK) UpsertCaCertificate(ctx context.Context, request operations.UpsertCaCertificateRequest, opts ...operations.Option) (*operations.UpsertCaCertificateResponse, error) {
 	var tmpRet mock.Arguments
@@ -468,6 +800,89 @@ func (_c *MockCACertificatesSDK_UpsertCaCertificate_Call) Return(upsertCaCertifi
 }
 
 func (_c *MockCACertificatesSDK_UpsertCaCertificate_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertCaCertificateRequest, opts ...operations.Option) (*operations.UpsertCaCertificateResponse, error)) *MockCACertificatesSDK_UpsertCaCertificate_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertCaCertificateInWorkspace provides a mock function for the type MockCACertificatesSDK
+func (_mock *MockCACertificatesSDK) UpsertCaCertificateInWorkspace(ctx context.Context, request operations.UpsertCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertCaCertificateInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertCaCertificateInWorkspace")
+	}
+
+	var r0 *operations.UpsertCaCertificateInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertCaCertificateInWorkspaceRequest, ...operations.Option) (*operations.UpsertCaCertificateInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertCaCertificateInWorkspaceRequest, ...operations.Option) *operations.UpsertCaCertificateInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertCaCertificateInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertCaCertificateInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertCaCertificateInWorkspace'
+type MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertCaCertificateInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertCaCertificateInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockCACertificatesSDK_Expecter) UpsertCaCertificateInWorkspace(ctx any, request any, opts ...any) *MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call {
+	return &MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call{Call: _e.mock.On("UpsertCaCertificateInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertCaCertificateInWorkspaceRequest, opts ...operations.Option)) *MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertCaCertificateInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertCaCertificateInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call) Return(upsertCaCertificateInWorkspaceResponse *operations.UpsertCaCertificateInWorkspaceResponse, err error) *MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call {
+	_c.Call.Return(upsertCaCertificateInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertCaCertificateInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertCaCertificateInWorkspaceResponse, error)) *MockCACertificatesSDK_UpsertCaCertificateInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

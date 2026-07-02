@@ -10,6 +10,12 @@ To disable a target, post a new one with `weight=0`, or use the `DELETE` method 
 ### Available Operations
 
 * [ListTargets](#listtargets) - List all targets for a control plane
+* [ListTargetsInWorkspace](#listtargetsinworkspace) - List all targets for a control plane in a workspace
+* [ListTargetWithUpstreamInWorkspace](#listtargetwithupstreaminworkspace) - List all Targets associated with an Upstream in a workspace
+* [CreateTargetWithUpstreamInWorkspace](#createtargetwithupstreaminworkspace) - Create a new Target associated with an Upstream in a workspace
+* [DeleteTargetWithUpstreamInWorkspace](#deletetargetwithupstreaminworkspace) - Delete a a Target associated with an Upstream in a workspace
+* [GetTargetWithUpstreamInWorkspace](#gettargetwithupstreaminworkspace) - Get a Target associated with an Upstream in a workspace
+* [UpsertTargetWithUpstreamInWorkspace](#upserttargetwithupstreaminworkspace) - Upsert a Target associated with an Upstream in a workspace
 * [ListTargetWithUpstream](#listtargetwithupstream) - List all Targets associated with an Upstream
 * [CreateTargetWithUpstream](#createtargetwithupstream) - Create a new Target associated with an Upstream
 * [DeleteTargetWithUpstream](#deletetargetwithupstream) - Delete a a Target associated with an Upstream
@@ -76,6 +82,375 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListTargetsInWorkspace
+
+Returns a collection of all targets for a control plane.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-targets-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/targets" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Targets.ListTargetsInWorkspace(ctx, operations.ListTargetsInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListTargets != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.ListTargetsInWorkspaceRequest](../../models/operations/listtargetsinworkspacerequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
+
+### Response
+
+**[*operations.ListTargetsInWorkspaceResponse](../../models/operations/listtargetsinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListTargetWithUpstreamInWorkspace
+
+List all Targets associated with an Upstream in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-target-with-upstream-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamIdForTarget}/targets" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Targets.ListTargetWithUpstreamInWorkspace(ctx, operations.ListTargetWithUpstreamInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                                      | :heavy_check_mark:                                                                                                         | The context to use for the request.                                                                                        |
+| `request`                                                                                                                  | [operations.ListTargetWithUpstreamInWorkspaceRequest](../../models/operations/listtargetwithupstreaminworkspacerequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
+| `opts`                                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                                   | :heavy_minus_sign:                                                                                                         | The options for this request.                                                                                              |
+
+### Response
+
+**[*operations.ListTargetWithUpstreamInWorkspaceResponse](../../models/operations/listtargetwithupstreaminworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## CreateTargetWithUpstreamInWorkspace
+
+Create a new Target associated with an Upstream in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-target-with-upstream-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamIdForTarget}/targets" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Targets.CreateTargetWithUpstreamInWorkspace(ctx, operations.CreateTargetWithUpstreamInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
+        Workspace: "team-payments",
+        TargetWithoutParents: components.TargetWithoutParents{
+            ID: sdkkonnectgo.Pointer("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
+            Target: sdkkonnectgo.Pointer("203.0.113.42"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Target != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
+| `request`                                                                                                                      | [operations.CreateTargetWithUpstreamInWorkspaceRequest](../../models/operations/createtargetwithupstreaminworkspacerequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
+
+### Response
+
+**[*operations.CreateTargetWithUpstreamInWorkspaceResponse](../../models/operations/createtargetwithupstreaminworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## DeleteTargetWithUpstreamInWorkspace
+
+Delete a a Target associated with an Upstream using ID or target in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-target-with-upstream-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamIdForTarget}/targets/{TargetId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Targets.DeleteTargetWithUpstreamInWorkspace(ctx, operations.DeleteTargetWithUpstreamInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
+        TargetID: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
+| `request`                                                                                                                      | [operations.DeleteTargetWithUpstreamInWorkspaceRequest](../../models/operations/deletetargetwithupstreaminworkspacerequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
+
+### Response
+
+**[*operations.DeleteTargetWithUpstreamInWorkspaceResponse](../../models/operations/deletetargetwithupstreaminworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## GetTargetWithUpstreamInWorkspace
+
+Get a Target associated with an Upstream using ID or target in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-target-with-upstream-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamIdForTarget}/targets/{TargetId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Targets.GetTargetWithUpstreamInWorkspace(ctx, operations.GetTargetWithUpstreamInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
+        TargetID: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Target != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `request`                                                                                                                | [operations.GetTargetWithUpstreamInWorkspaceRequest](../../models/operations/gettargetwithupstreaminworkspacerequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |
+
+### Response
+
+**[*operations.GetTargetWithUpstreamInWorkspaceResponse](../../models/operations/gettargetwithupstreaminworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## UpsertTargetWithUpstreamInWorkspace
+
+Create or Update a Target associated with an Upstream using ID or target in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-target-with-upstream-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamIdForTarget}/targets/{TargetId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Targets.UpsertTargetWithUpstreamInWorkspace(ctx, operations.UpsertTargetWithUpstreamInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
+        TargetID: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
+        Workspace: "team-payments",
+        TargetWithoutParents: components.TargetWithoutParents{
+            ID: sdkkonnectgo.Pointer("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
+            Target: sdkkonnectgo.Pointer("203.0.113.42"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Target != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
+| `request`                                                                                                                      | [operations.UpsertTargetWithUpstreamInWorkspaceRequest](../../models/operations/upserttargetwithupstreaminworkspacerequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
+
+### Response
+
+**[*operations.UpsertTargetWithUpstreamInWorkspaceResponse](../../models/operations/upserttargetwithupstreaminworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ListTargetWithUpstream
 

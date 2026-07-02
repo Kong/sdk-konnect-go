@@ -29,6 +29,12 @@ createDcrProviderResponse := components.CreateCreateDcrProviderResponseCurity(co
 createDcrProviderResponse := components.CreateCreateDcrProviderResponseOkta(components.DCRProviderOKTA{/* values here */})
 ```
 
+### DCRProviderKongIdentity
+
+```go
+createDcrProviderResponse := components.CreateCreateDcrProviderResponseKongIdentity(components.DCRProviderKongIdentity{/* values here */})
+```
+
 ### DCRProviderHTTP
 
 ```go
@@ -49,6 +55,8 @@ switch createDcrProviderResponse.Type {
 		// createDcrProviderResponse.DCRProviderCurity is populated
 	case components.CreateDcrProviderResponseTypeOkta:
 		// createDcrProviderResponse.DCRProviderOKTA is populated
+	case components.CreateDcrProviderResponseTypeKongIdentity:
+		// createDcrProviderResponse.DCRProviderKongIdentity is populated
 	case components.CreateDcrProviderResponseTypeHTTP:
 		// createDcrProviderResponse.DCRProviderHTTP is populated
 }

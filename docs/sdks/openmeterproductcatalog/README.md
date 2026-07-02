@@ -6,13 +6,13 @@ Product catalog manages plans, add-ons, and their associations for subscription-
 
 ### Available Operations
 
-* [ListOpenmeterAddons](#listopenmeteraddons) - List add-ons
-* [CreateOpenmeterAddon](#createopenmeteraddon) - Create add-on
-* [UpdateOpenmeterAddon](#updateopenmeteraddon) - Update add-on
-* [GetOpenmeterAddon](#getopenmeteraddon) - Get add-on
-* [DeleteOpenmeterAddon](#deleteopenmeteraddon) - Soft delete add-on
-* [ArchiveOpenmeterAddon](#archiveopenmeteraddon) - Archive add-on version
-* [PublishAddon](#publishaddon) - Publish add-on version
+* [ListProductCatalogAddons](#listproductcatalogaddons) - List add-ons
+* [CreateProductCatalogAddon](#createproductcatalogaddon) - Create add-on
+* [UpdateProductCatalogAddon](#updateproductcatalogaddon) - Update add-on
+* [GetProductCatalogAddon](#getproductcatalogaddon) - Get add-on
+* [DeleteProductCatalogAddon](#deleteproductcatalogaddon) - Soft delete add-on
+* [ArchiveProductCatalogAddon](#archiveproductcatalogaddon) - Archive add-on version
+* [PublishProductCatalogAddon](#publishproductcatalogaddon) - Publish add-on version
 * [ListPlans](#listplans) - List plans
 * [CreatePlan](#createplan) - Create plan
 * [UpdatePlan](#updateplan) - Update plan
@@ -26,7 +26,7 @@ Product catalog manages plans, add-ons, and their associations for subscription-
 * [ArchivePlan](#archiveplan) - Archive plan version
 * [PublishPlan](#publishplan) - Publish plan version
 
-## ListOpenmeterAddons
+## ListProductCatalogAddons
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -35,7 +35,7 @@ List all add-ons.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-openmeter-addons" method="get" path="/v3/openmeter/addons" -->
+<!-- UsageSnippet language="go" operationID="list-product-catalog-addons" method="get" path="/v3/openmeter/addons" -->
 ```go
 package main
 
@@ -56,7 +56,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.ListOpenmeterAddons(ctx, operations.ListOpenmeterAddonsRequest{
+    res, err := s.OpenMeterProductCatalog.ListProductCatalogAddons(ctx, operations.ListProductCatalogAddonsRequest{
         Sort: sdkkonnectgo.Pointer("created_at desc"),
         Filter: &components.ListAddonsParamsFilter{
             ID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
@@ -75,15 +75,15 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
-| `request`                                                                                      | [operations.ListOpenmeterAddonsRequest](../../models/operations/listopenmeteraddonsrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |
+| `request`                                                                                                | [operations.ListProductCatalogAddonsRequest](../../models/operations/listproductcatalogaddonsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `opts`                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                 | :heavy_minus_sign:                                                                                       | The options for this request.                                                                            |
 
 ### Response
 
-**[*operations.ListOpenmeterAddonsResponse](../../models/operations/listopenmeteraddonsresponse.md), error**
+**[*operations.ListProductCatalogAddonsResponse](../../models/operations/listproductcatalogaddonsresponse.md), error**
 
 ### Errors
 
@@ -94,7 +94,7 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## CreateOpenmeterAddon
+## CreateProductCatalogAddon
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -103,7 +103,7 @@ Create a new add-on.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-openmeter-addon" method="post" path="/v3/openmeter/addons" -->
+<!-- UsageSnippet language="go" operationID="create-product-catalog-addon" method="post" path="/v3/openmeter/addons" -->
 ```go
 package main
 
@@ -123,13 +123,13 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.CreateOpenmeterAddon(ctx, components.CreateAddonRequest1{
+    res, err := s.OpenMeterProductCatalog.CreateProductCatalogAddon(ctx, components.CreateAddonRequest1{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
         Key: "resource_key",
-        InstanceType: components.CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleSingle,
+        InstanceType: components.CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleMultiple,
         Currency: "USD",
         RateCards: []components.BillingRateCard{
             components.BillingRateCard{
@@ -142,17 +142,22 @@ func main() {
                     ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                 },
                 BillingCadence: sdkkonnectgo.Pointer("P1Y"),
-                Price: components.CreatePriceUnit(
-                    components.BillingPriceUnit{
-                        Type: components.BillingPriceUnitTypeUnit,
-                        Amount: "278.76",
+                Price: components.CreatePriceFlat(
+                    components.BillingPriceFlat{
+                        Type: components.BillingPriceFlatTypeFlat,
+                        Amount: "902.15",
                     },
                 ),
                 TaxConfig: &components.TaxConfig{
-                    Code: components.TaxCodeReferenceItem{
+                    Code: components.TaxCodeReference{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },
+                Entitlement: sdkkonnectgo.Pointer(components.CreateEntitlementTemplateMetered(
+                    components.BillingRateCardMeteredEntitlement{
+                        Type: components.BillingRateCardMeteredEntitlementTypeMetered,
+                    },
+                )),
             },
         },
     })
@@ -175,7 +180,7 @@ func main() {
 
 ### Response
 
-**[*operations.CreateOpenmeterAddonResponse](../../models/operations/createopenmeteraddonresponse.md), error**
+**[*operations.CreateProductCatalogAddonResponse](../../models/operations/createproductcatalogaddonresponse.md), error**
 
 ### Errors
 
@@ -186,7 +191,7 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## UpdateOpenmeterAddon
+## UpdateProductCatalogAddon
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -195,7 +200,7 @@ Update an add-on by id.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="update-openmeter-addon" method="put" path="/v3/openmeter/addons/{addonId}" -->
+<!-- UsageSnippet language="go" operationID="update-product-catalog-addon" method="put" path="/v3/openmeter/addons/{addonId}" -->
 ```go
 package main
 
@@ -215,7 +220,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.UpdateOpenmeterAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpsertAddonRequest{
+    res, err := s.OpenMeterProductCatalog.UpdateProductCatalogAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpsertAddonRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
@@ -232,16 +237,25 @@ func main() {
                     ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                 },
                 BillingCadence: sdkkonnectgo.Pointer("P1Y"),
-                Price: components.CreatePriceFree(
-                    components.BillingPriceFree{
-                        Type: components.BillingPriceFreeTypeFree,
+                Price: components.CreatePriceVolume(
+                    components.BillingPriceVolume{
+                        Type: components.BillingPriceVolumeTypeVolume,
+                        Tiers: []components.BillingPriceTier{
+                            components.BillingPriceTier{},
+                        },
                     },
                 ),
                 TaxConfig: &components.TaxConfig{
-                    Code: components.TaxCodeReferenceItem{
+                    Code: components.TaxCodeReference{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },
+                Entitlement: sdkkonnectgo.Pointer(components.CreateEntitlementTemplateStatic(
+                    components.BillingRateCardStaticEntitlement{
+                        Type: components.BillingRateCardStaticEntitlementTypeStatic,
+                        Config: "<value>",
+                    },
+                )),
             },
         },
     })
@@ -265,7 +279,7 @@ func main() {
 
 ### Response
 
-**[*operations.UpdateOpenmeterAddonResponse](../../models/operations/updateopenmeteraddonresponse.md), error**
+**[*operations.UpdateProductCatalogAddonResponse](../../models/operations/updateproductcatalogaddonresponse.md), error**
 
 ### Errors
 
@@ -278,7 +292,7 @@ func main() {
 | sdkerrors.GoneError         | 410                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## GetOpenmeterAddon
+## GetProductCatalogAddon
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -287,7 +301,7 @@ Get add-on by id.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-openmeter-addon" method="get" path="/v3/openmeter/addons/{addonId}" -->
+<!-- UsageSnippet language="go" operationID="get-product-catalog-addon" method="get" path="/v3/openmeter/addons/{addonId}" -->
 ```go
 package main
 
@@ -307,7 +321,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.GetOpenmeterAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    res, err := s.OpenMeterProductCatalog.GetProductCatalogAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
     if err != nil {
         log.Fatal(err)
     }
@@ -327,7 +341,7 @@ func main() {
 
 ### Response
 
-**[*operations.GetOpenmeterAddonResponse](../../models/operations/getopenmeteraddonresponse.md), error**
+**[*operations.GetProductCatalogAddonResponse](../../models/operations/getproductcatalogaddonresponse.md), error**
 
 ### Errors
 
@@ -340,7 +354,7 @@ func main() {
 | sdkerrors.GoneError         | 410                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## DeleteOpenmeterAddon
+## DeleteProductCatalogAddon
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -349,7 +363,7 @@ Soft delete add-on by id.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-openmeter-addon" method="delete" path="/v3/openmeter/addons/{addonId}" -->
+<!-- UsageSnippet language="go" operationID="delete-product-catalog-addon" method="delete" path="/v3/openmeter/addons/{addonId}" -->
 ```go
 package main
 
@@ -369,7 +383,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.DeleteOpenmeterAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    res, err := s.OpenMeterProductCatalog.DeleteProductCatalogAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
     if err != nil {
         log.Fatal(err)
     }
@@ -389,7 +403,7 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteOpenmeterAddonResponse](../../models/operations/deleteopenmeteraddonresponse.md), error**
+**[*operations.DeleteProductCatalogAddonResponse](../../models/operations/deleteproductcatalogaddonresponse.md), error**
 
 ### Errors
 
@@ -401,7 +415,7 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## ArchiveOpenmeterAddon
+## ArchiveProductCatalogAddon
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -410,7 +424,7 @@ Archive an add-on version.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="archive-openmeter-addon" method="post" path="/v3/openmeter/addons/{addonId}/archive" -->
+<!-- UsageSnippet language="go" operationID="archive-product-catalog-addon" method="post" path="/v3/openmeter/addons/{addonId}/archive" -->
 ```go
 package main
 
@@ -430,7 +444,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.ArchiveOpenmeterAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    res, err := s.OpenMeterProductCatalog.ArchiveProductCatalogAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
     if err != nil {
         log.Fatal(err)
     }
@@ -450,7 +464,7 @@ func main() {
 
 ### Response
 
-**[*operations.ArchiveOpenmeterAddonResponse](../../models/operations/archiveopenmeteraddonresponse.md), error**
+**[*operations.ArchiveProductCatalogAddonResponse](../../models/operations/archiveproductcatalogaddonresponse.md), error**
 
 ### Errors
 
@@ -462,7 +476,7 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## PublishAddon
+## PublishProductCatalogAddon
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -471,7 +485,7 @@ Publish an add-on version.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="publish-addon" method="post" path="/v3/openmeter/addons/{addonId}/publish" -->
+<!-- UsageSnippet language="go" operationID="publish-product-catalog-addon" method="post" path="/v3/openmeter/addons/{addonId}/publish" -->
 ```go
 package main
 
@@ -491,7 +505,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.PublishAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    res, err := s.OpenMeterProductCatalog.PublishProductCatalogAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
     if err != nil {
         log.Fatal(err)
     }
@@ -511,7 +525,7 @@ func main() {
 
 ### Response
 
-**[*operations.PublishAddonResponse](../../models/operations/publishaddonresponse.md), error**
+**[*operations.PublishProductCatalogAddonResponse](../../models/operations/publishproductcatalogaddonresponse.md), error**
 
 ### Errors
 

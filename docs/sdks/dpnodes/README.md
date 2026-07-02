@@ -9,9 +9,9 @@ DP Nodes
 * [GetExpectedConfigHash](#getexpectedconfighash) - Get an Expected Config Hash
 * [GetExpectedConfigVersion](#getexpectedconfigversion) - Get an Expected Config Version
 * [ListDataplaneNodes](#listdataplanenodes) - List Data Plane Node Records
+* [GetNodesEol](#getnodeseol) - List End-of-Life Data Plane Node Records
 * [GetNodesNodeID](#getnodesnodeid) - Get a Data Plane Node Record
 * [DeleteNodesNodeID](#deletenodesnodeid) - Delete Data Plane Node Record
-* [GetNodesEol](#getnodeseol) - List End-of-Life Data Plane Node Records
 
 ## GetExpectedConfigHash
 
@@ -180,6 +180,65 @@ func main() {
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
+## GetNodesEol
+
+Returns a list of records of data plane nodes, whose versions are approaching End of Full Support/End of Life, that are associated with this control plane. Each record contains a data plane node's id, version, and corresponding resolution message to upgrade to the closest Long Term Support version.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-nodes-eol" method="get" path="/v2/control-planes/{controlPlaneId}/nodes/eol" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DPNodes.GetNodesEol(ctx, operations.GetNodesEolRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListNodesEol != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.GetNodesEolRequest](../../models/operations/getnodeseolrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
+
+### Response
+
+**[*operations.GetNodesEolResponse](../../models/operations/getnodeseolresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
 ## GetNodesNodeID
 
 Retrieve a specific data plane node record associated to this control plane. A data plane node record contains all the metadata information of the Kong Gateway dataplane.
@@ -287,65 +346,6 @@ func main() {
 ### Response
 
 **[*operations.DeleteNodesNodeIDResponse](../../models/operations/deletenodesnodeidresponse.md), error**
-
-### Errors
-
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
-
-## GetNodesEol
-
-Returns a list of records of data plane nodes, whose versions are approaching End of Full Support/End of Life, that are associated with this control plane. Each record contains a data plane node's id, version, and corresponding resolution message to upgrade to the closest Long Term Support version.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="get-nodes-eol" method="get" path="/v2/control-planes/{controlPlaneId}/nodes/eol" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.DPNodes.GetNodesEol(ctx, operations.GetNodesEolRequest{
-        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        PageSize: sdkkonnectgo.Pointer[int64](10),
-        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListNodesEol != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `request`                                                                      | [operations.GetNodesEolRequest](../../models/operations/getnodeseolrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
-
-### Response
-
-**[*operations.GetNodesEolResponse](../../models/operations/getnodeseolresponse.md), error**
 
 ### Errors
 

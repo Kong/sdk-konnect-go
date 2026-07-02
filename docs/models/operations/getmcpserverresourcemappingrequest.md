@@ -1,0 +1,9 @@
+# GetMcpServerResourceMappingRequest
+
+
+## Fields
+
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `McpServerID`                                  | `string`                                       | :heavy_check_mark:                             | The ID of the MCP server.                      |
+| `MappingID`                                    | `string`                                       | :heavy_check_mark:                             | The ID of the MCP server MCP resource mapping. |

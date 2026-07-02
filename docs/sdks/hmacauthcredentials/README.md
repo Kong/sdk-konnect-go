@@ -4,6 +4,13 @@
 
 ### Available Operations
 
+* [ListHmacAuthWithConsumerInWorkspace](#listhmacauthwithconsumerinworkspace) - List all HMAC-auth credentials associated with a Consumer in a workspace
+* [CreateHmacAuthWithConsumerInWorkspace](#createhmacauthwithconsumerinworkspace) - Create a new HMAC-auth credential associated with a Consumer in a workspace
+* [DeleteHmacAuthWithConsumerInWorkspace](#deletehmacauthwithconsumerinworkspace) - Delete a a HMAC-auth credential associated with a Consumer in a workspace
+* [GetHmacAuthWithConsumerInWorkspace](#gethmacauthwithconsumerinworkspace) - Get a HMAC-auth credential associated with a Consumer in a workspace
+* [UpsertHmacAuthWithConsumerInWorkspace](#upserthmacauthwithconsumerinworkspace) - Upsert a HMAC-auth credential associated with a Consumer in a workspace
+* [ListHmacAuthInWorkspace](#listhmacauthinworkspace) - List all HMAC-auth credentials in a workspace
+* [GetHmacAuthInWorkspace](#gethmacauthinworkspace) - Get a HMAC-auth credential in a workspace
 * [ListHmacAuthWithConsumer](#listhmacauthwithconsumer) - List all HMAC-auth credentials associated with a Consumer
 * [CreateHmacAuthWithConsumer](#createhmacauthwithconsumer) - Create a new HMAC-auth credential associated with a Consumer
 * [DeleteHmacAuthWithConsumer](#deletehmacauthwithconsumer) - Delete a a HMAC-auth credential associated with a Consumer
@@ -11,6 +18,435 @@
 * [UpsertHmacAuthWithConsumer](#upserthmacauthwithconsumer) - Upsert a HMAC-auth credential associated with a Consumer
 * [ListHmacAuth](#listhmacauth) - List all HMAC-auth credentials
 * [GetHmacAuth](#gethmacauth) - Get a HMAC-auth credential
+
+## ListHmacAuthWithConsumerInWorkspace
+
+List all HMAC-auth credentials associated with a Consumer in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-hmac-auth-with-consumer-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.HMACAuthCredentials.ListHmacAuthWithConsumerInWorkspace(ctx, operations.ListHmacAuthWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
+| `request`                                                                                                                      | [operations.ListHmacAuthWithConsumerInWorkspaceRequest](../../models/operations/listhmacauthwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
+
+### Response
+
+**[*operations.ListHmacAuthWithConsumerInWorkspaceResponse](../../models/operations/listhmacauthwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## CreateHmacAuthWithConsumerInWorkspace
+
+Create a new HMAC-auth credential associated with a Consumer in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-hmac-auth-with-consumer-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.HMACAuthCredentials.CreateHmacAuthWithConsumerInWorkspace(ctx, operations.CreateHmacAuthWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        Workspace: "team-payments",
+        HMACAuthWithoutParents: components.HMACAuthWithoutParents{
+            ID: sdkkonnectgo.Pointer("75695322-e8a0-4109-aed4-5416b0308d85"),
+            Secret: sdkkonnectgo.Pointer("wQazJ304DW5huJklHgUfjfiSyCyTAEDZ"),
+            Username: "xerxes",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.HMACAuth != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                              | :heavy_check_mark:                                                                                                                 | The context to use for the request.                                                                                                |
+| `request`                                                                                                                          | [operations.CreateHmacAuthWithConsumerInWorkspaceRequest](../../models/operations/createhmacauthwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                                 | The request object to use for the request.                                                                                         |
+| `opts`                                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                                           | :heavy_minus_sign:                                                                                                                 | The options for this request.                                                                                                      |
+
+### Response
+
+**[*operations.CreateHmacAuthWithConsumerInWorkspaceResponse](../../models/operations/createhmacauthwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## DeleteHmacAuthWithConsumerInWorkspace
+
+Delete a a HMAC-auth credential associated with a Consumer using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-hmac-auth-with-consumer-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.HMACAuthCredentials.DeleteHmacAuthWithConsumerInWorkspace(ctx, operations.DeleteHmacAuthWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        HMACAuthID: "70e7b00b-72f2-471b-a5ce-9c4171775360",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                              | :heavy_check_mark:                                                                                                                 | The context to use for the request.                                                                                                |
+| `request`                                                                                                                          | [operations.DeleteHmacAuthWithConsumerInWorkspaceRequest](../../models/operations/deletehmacauthwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                                 | The request object to use for the request.                                                                                         |
+| `opts`                                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                                           | :heavy_minus_sign:                                                                                                                 | The options for this request.                                                                                                      |
+
+### Response
+
+**[*operations.DeleteHmacAuthWithConsumerInWorkspaceResponse](../../models/operations/deletehmacauthwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## GetHmacAuthWithConsumerInWorkspace
+
+Get a HMAC-auth credential associated with a Consumer using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-hmac-auth-with-consumer-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.HMACAuthCredentials.GetHmacAuthWithConsumerInWorkspace(ctx, operations.GetHmacAuthWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        HMACAuthID: "70e7b00b-72f2-471b-a5ce-9c4171775360",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.HMACAuth != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
+| `request`                                                                                                                    | [operations.GetHmacAuthWithConsumerInWorkspaceRequest](../../models/operations/gethmacauthwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+| `opts`                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                     | :heavy_minus_sign:                                                                                                           | The options for this request.                                                                                                |
+
+### Response
+
+**[*operations.GetHmacAuthWithConsumerInWorkspaceResponse](../../models/operations/gethmacauthwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## UpsertHmacAuthWithConsumerInWorkspace
+
+Create or Update a HMAC-auth credential associated with a Consumer using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-hmac-auth-with-consumer-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.HMACAuthCredentials.UpsertHmacAuthWithConsumerInWorkspace(ctx, operations.UpsertHmacAuthWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        HMACAuthID: "70e7b00b-72f2-471b-a5ce-9c4171775360",
+        Workspace: "team-payments",
+        HMACAuthWithoutParents: components.HMACAuthWithoutParents{
+            ID: sdkkonnectgo.Pointer("75695322-e8a0-4109-aed4-5416b0308d85"),
+            Secret: sdkkonnectgo.Pointer("wQazJ304DW5huJklHgUfjfiSyCyTAEDZ"),
+            Username: "xerxes",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.HMACAuth != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                              | :heavy_check_mark:                                                                                                                 | The context to use for the request.                                                                                                |
+| `request`                                                                                                                          | [operations.UpsertHmacAuthWithConsumerInWorkspaceRequest](../../models/operations/upserthmacauthwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                                 | The request object to use for the request.                                                                                         |
+| `opts`                                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                                           | :heavy_minus_sign:                                                                                                                 | The options for this request.                                                                                                      |
+
+### Response
+
+**[*operations.UpsertHmacAuthWithConsumerInWorkspaceResponse](../../models/operations/upserthmacauthwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ListHmacAuthInWorkspace
+
+List all HMAC-auth credentials in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-hmac-auth-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/hmac-auths" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.HMACAuthCredentials.ListHmacAuthInWorkspace(ctx, operations.ListHmacAuthInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |
+| `request`                                                                                              | [operations.ListHmacAuthInWorkspaceRequest](../../models/operations/listhmacauthinworkspacerequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `opts`                                                                                                 | [][operations.Option](../../models/operations/option.md)                                               | :heavy_minus_sign:                                                                                     | The options for this request.                                                                          |
+
+### Response
+
+**[*operations.ListHmacAuthInWorkspaceResponse](../../models/operations/listhmacauthinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## GetHmacAuthInWorkspace
+
+Get a HMAC-auth credential using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-hmac-auth-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/hmac-auths/{HMACAuthId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.HMACAuthCredentials.GetHmacAuthInWorkspace(ctx, operations.GetHmacAuthInWorkspaceRequest{
+        HMACAuthID: "70e7b00b-72f2-471b-a5ce-9c4171775360",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.HMACAuth != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.GetHmacAuthInWorkspaceRequest](../../models/operations/gethmacauthinworkspacerequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
+
+### Response
+
+**[*operations.GetHmacAuthInWorkspaceResponse](../../models/operations/gethmacauthinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
 
 ## ListHmacAuthWithConsumer
 

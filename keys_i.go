@@ -11,6 +11,36 @@ import (
 
 // KeysSDK is a generated interface.
 type KeysSDK interface {
+	// ListKeyWithKeySetInWorkspace - List all Keys associated with a KeySet in a workspace
+	// List all Keys associated with a KeySet in a workspace
+	ListKeyWithKeySetInWorkspace(ctx context.Context, request operations.ListKeyWithKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.ListKeyWithKeySetInWorkspaceResponse, error)
+	// CreateKeyWithKeySetInWorkspace - Create a new Key associated with a KeySet in a workspace
+	// Create a new Key associated with a KeySet in a workspace
+	CreateKeyWithKeySetInWorkspace(ctx context.Context, request operations.CreateKeyWithKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.CreateKeyWithKeySetInWorkspaceResponse, error)
+	// DeleteKeyWithKeySetInWorkspace - Delete a a Key associated with a KeySet in a workspace
+	// Delete a a Key associated with a KeySet using ID or name in a workspace.
+	DeleteKeyWithKeySetInWorkspace(ctx context.Context, request operations.DeleteKeyWithKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteKeyWithKeySetInWorkspaceResponse, error)
+	// GetKeyWithKeySetInWorkspace - Get a Key associated with a KeySet in a workspace
+	// Get a Key associated with a KeySet using ID or name in a workspace.
+	GetKeyWithKeySetInWorkspace(ctx context.Context, request operations.GetKeyWithKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.GetKeyWithKeySetInWorkspaceResponse, error)
+	// UpsertKeyWithKeySetInWorkspace - Upsert a Key associated with a KeySet in a workspace
+	// Create or Update a Key associated with a KeySet using ID or name in a workspace.
+	UpsertKeyWithKeySetInWorkspace(ctx context.Context, request operations.UpsertKeyWithKeySetInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertKeyWithKeySetInWorkspaceResponse, error)
+	// ListKeyInWorkspace - List all Keys in a workspace
+	// List all Keys in a workspace
+	ListKeyInWorkspace(ctx context.Context, request operations.ListKeyInWorkspaceRequest, opts ...operations.Option) (*operations.ListKeyInWorkspaceResponse, error)
+	// CreateKeyInWorkspace - Create a new Key in a workspace
+	// Create a new Key in a workspace
+	CreateKeyInWorkspace(ctx context.Context, request operations.CreateKeyInWorkspaceRequest, opts ...operations.Option) (*operations.CreateKeyInWorkspaceResponse, error)
+	// DeleteKeyInWorkspace - Delete a Key in a workspace
+	// Delete a Key in a workspace
+	DeleteKeyInWorkspace(ctx context.Context, request operations.DeleteKeyInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteKeyInWorkspaceResponse, error)
+	// GetKeyInWorkspace - Get a Key in a workspace
+	// Get a Key using ID or name in a workspace.
+	GetKeyInWorkspace(ctx context.Context, request operations.GetKeyInWorkspaceRequest, opts ...operations.Option) (*operations.GetKeyInWorkspaceResponse, error)
+	// UpsertKeyInWorkspace - Upsert a Key in a workspace
+	// Create or Update Key using ID or name in a workspace.
+	UpsertKeyInWorkspace(ctx context.Context, request operations.UpsertKeyInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertKeyInWorkspaceResponse, error)
 	// ListKeyWithKeySet - List all Keys associated with a KeySet
 	// List all Keys associated with a KeySet
 	ListKeyWithKeySet(ctx context.Context, request operations.ListKeyWithKeySetRequest, opts ...operations.Option) (*operations.ListKeyWithKeySetResponse, error)

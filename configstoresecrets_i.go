@@ -25,4 +25,19 @@ type ConfigStoreSecretsSDK interface {
 	// DeleteConfigStoreSecret - Delete Config Store Secret
 	// Removes a secret from a Config Store.
 	DeleteConfigStoreSecret(ctx context.Context, request operations.DeleteConfigStoreSecretRequest, opts ...operations.Option) (*operations.DeleteConfigStoreSecretResponse, error)
+	// CreateConfigStoreSecretInWorkspace - Create Config Store Secret in a workspace
+	// Creates a secret for a Config Store in a workspace.
+	CreateConfigStoreSecretInWorkspace(ctx context.Context, request operations.CreateConfigStoreSecretInWorkspaceRequest, opts ...operations.Option) (*operations.CreateConfigStoreSecretInWorkspaceResponse, error)
+	// ListConfigStoreSecretsInWorkspace - List Config Store Secrets in a workspace
+	// Returns a collection of all secrets for a Config Store in a workspace.
+	ListConfigStoreSecretsInWorkspace(ctx context.Context, request operations.ListConfigStoreSecretsInWorkspaceRequest, opts ...operations.Option) (*operations.ListConfigStoreSecretsInWorkspaceResponse, error)
+	// GetConfigStoreSecretInWorkspace - Get a Config Store Secret in a workspace
+	// Returns the secret entity for the Config Store in a workspace. Secret values once stored cannot be retrieved.
+	GetConfigStoreSecretInWorkspace(ctx context.Context, request operations.GetConfigStoreSecretInWorkspaceRequest, opts ...operations.Option) (*operations.GetConfigStoreSecretInWorkspaceResponse, error)
+	// UpdateConfigStoreSecretInWorkspace - Update Config Store Secret in a workspace
+	// Updates a secret for a Config Store in a workspace.
+	UpdateConfigStoreSecretInWorkspace(ctx context.Context, request operations.UpdateConfigStoreSecretInWorkspaceRequest, opts ...operations.Option) (*operations.UpdateConfigStoreSecretInWorkspaceResponse, error)
+	// DeleteConfigStoreSecretInWorkspace - Delete Config Store Secret in a workspace
+	// Removes a secret from a Config Store in a workspace.
+	DeleteConfigStoreSecretInWorkspace(ctx context.Context, request operations.DeleteConfigStoreSecretInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteConfigStoreSecretInWorkspaceResponse, error)
 }

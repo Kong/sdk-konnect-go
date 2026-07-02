@@ -12,14 +12,17 @@ func TestComponentsPluginFieldTypes(t *testing.T) {
 	t.Parallel()
 
 	var value components.Plugin
+	var _ map[string]any = value.UIData
 	var _ *string = value.Condition
 	var _ map[string]any = value.Config
 	var _ *components.PluginConsumer = value.Consumer
 	var _ *components.PluginConsumerGroup = value.ConsumerGroup
 	var _ *int64 = value.CreatedAt
+	var _ *string = value.Description
 	var _ *bool = value.Enabled
 	var _ *string = value.ID
 	var _ *string = value.InstanceName
+	var _ map[string]any = value.ManagedBy
 	var _ string = value.Name
 	var _ *components.Ordering = value.Ordering
 	var _ []components.Partials = value.Partials

@@ -13,6 +13,24 @@ type TargetsSDK interface {
 	// ListTargets - List all targets for a control plane
 	// Returns a collection of all targets for a control plane.
 	ListTargets(ctx context.Context, request operations.ListTargetsRequest, opts ...operations.Option) (*operations.ListTargetsResponse, error)
+	// ListTargetsInWorkspace - List all targets for a control plane in a workspace
+	// Returns a collection of all targets for a control plane.
+	ListTargetsInWorkspace(ctx context.Context, request operations.ListTargetsInWorkspaceRequest, opts ...operations.Option) (*operations.ListTargetsInWorkspaceResponse, error)
+	// ListTargetWithUpstreamInWorkspace - List all Targets associated with an Upstream in a workspace
+	// List all Targets associated with an Upstream in a workspace
+	ListTargetWithUpstreamInWorkspace(ctx context.Context, request operations.ListTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.ListTargetWithUpstreamInWorkspaceResponse, error)
+	// CreateTargetWithUpstreamInWorkspace - Create a new Target associated with an Upstream in a workspace
+	// Create a new Target associated with an Upstream in a workspace
+	CreateTargetWithUpstreamInWorkspace(ctx context.Context, request operations.CreateTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.CreateTargetWithUpstreamInWorkspaceResponse, error)
+	// DeleteTargetWithUpstreamInWorkspace - Delete a a Target associated with an Upstream in a workspace
+	// Delete a a Target associated with an Upstream using ID or target in a workspace.
+	DeleteTargetWithUpstreamInWorkspace(ctx context.Context, request operations.DeleteTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteTargetWithUpstreamInWorkspaceResponse, error)
+	// GetTargetWithUpstreamInWorkspace - Get a Target associated with an Upstream in a workspace
+	// Get a Target associated with an Upstream using ID or target in a workspace.
+	GetTargetWithUpstreamInWorkspace(ctx context.Context, request operations.GetTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.GetTargetWithUpstreamInWorkspaceResponse, error)
+	// UpsertTargetWithUpstreamInWorkspace - Upsert a Target associated with an Upstream in a workspace
+	// Create or Update a Target associated with an Upstream using ID or target in a workspace.
+	UpsertTargetWithUpstreamInWorkspace(ctx context.Context, request operations.UpsertTargetWithUpstreamInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertTargetWithUpstreamInWorkspaceResponse, error)
 	// ListTargetWithUpstream - List all Targets associated with an Upstream
 	// List all Targets associated with an Upstream
 	ListTargetWithUpstream(ctx context.Context, request operations.ListTargetWithUpstreamRequest, opts ...operations.Option) (*operations.ListTargetWithUpstreamResponse, error)

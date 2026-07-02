@@ -79,7 +79,7 @@ func TestControlPlaneList(t *testing.T) {
 			},
 			req: sdkkonnectops.ListControlPlanesRequest{
 				Filter: &sdkkonnectcomp.ControlPlaneFilterParameters{
-					Name: &sdkkonnectcomp.ControlPlaneFilterParametersName{
+					Name: &sdkkonnectcomp.Name{
 						Eq: pkg.Ptr(KonnectTestRunID(t) + "-filter-1"),
 					},
 				},
@@ -106,7 +106,7 @@ func TestControlPlaneList(t *testing.T) {
 			},
 			req: sdkkonnectops.ListControlPlanesRequest{
 				Filter: &sdkkonnectcomp.ControlPlaneFilterParameters{
-					Name: &sdkkonnectcomp.ControlPlaneFilterParametersName{
+					Name: &sdkkonnectcomp.Name{
 						Eq: pkg.Ptr(KonnectTestRunID(t) + "-type-1"),
 					},
 					ClusterType: &sdkkonnectcomp.ClusterType{

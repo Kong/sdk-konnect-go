@@ -5,17 +5,37 @@ package sdkkonnectgo
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // MeSDK is a generated interface.
 type MeSDK interface {
-	// GetOrganizationsMe - Get My Organization
-	// Returns the organization of the user identified in the token of the request.
-	GetOrganizationsMe(ctx context.Context, opts ...operations.Option) (*operations.GetOrganizationsMeResponse, error)
 	// GetUsersMe - Get My User Account
 	// Returns the user account for the user identified in the token of the request.
 	//
 	// If set, this operation will use either [Security.PersonalAccessToken] or [Security.KonnectAccessToken] from the global security.
 	GetUsersMe(ctx context.Context, opts ...operations.Option) (*operations.GetUsersMeResponse, error)
+	// DeleteUsersMe - Delete My User Account
+	// Deletes the user account for the user identified in the token of the request.
+	//
+	// If set, this operation will use [Security.KonnectAccessToken] from the global security.
+	DeleteUsersMe(ctx context.Context, opts ...operations.Option) (*operations.DeleteUsersMeResponse, error)
+	// PatchUsersMe - Update My User Account
+	// Updates the user account for the user identified in the token of the request.
+	//
+	// If set, this operation will use [Security.KonnectAccessToken] from the global security.
+	PatchUsersMe(ctx context.Context, request *components.UpdateUser, opts ...operations.Option) (*operations.PatchUsersMeResponse, error)
+	// GetUsersMePermissions - Get My Permissions
+	// Returns the permissions for the current user
+	//
+	// If set, this operation will use [Security.KonnectAccessToken] from the global security.
+	GetUsersMePermissions(ctx context.Context, filter *operations.GetUsersMePermissionsQueryParamFilter, opts ...operations.Option) (*operations.GetUsersMePermissionsResponse, error)
+	// GetOrganizationsMe - Get My Organization
+	// Returns the organization of the user identified in the token of the request.
+	GetOrganizationsMe(ctx context.Context, opts ...operations.Option) (*operations.GetOrganizationsMeResponse, error)
+	// UpdateOrganizationsMe - Update My Organization
+	// Updates the current user's organization. When updating the owner, the new owner
+	// must be an organization admin.
+	UpdateOrganizationsMe(ctx context.Context, request *components.UpdateOrganization, opts ...operations.Option) (*operations.UpdateOrganizationsMeResponse, error)
 }

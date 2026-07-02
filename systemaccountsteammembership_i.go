@@ -11,9 +11,6 @@ import (
 
 // SystemAccountsTeamMembershipSDK is a generated interface.
 type SystemAccountsTeamMembershipSDK interface {
-	// GetSystemAccountsAccountIDTeams - List Teams for a System Account
-	// Returns a paginated list of a teams that the system account belongs to.
-	GetSystemAccountsAccountIDTeams(ctx context.Context, request operations.GetSystemAccountsAccountIDTeamsRequest, opts ...operations.Option) (*operations.GetSystemAccountsAccountIDTeamsResponse, error)
 	// GetTeamsTeamIDSystemAccounts - List System Accounts on a Team
 	// Returns a paginated list of system accounts that belong to the team specified in the path parameter.
 	GetTeamsTeamIDSystemAccounts(ctx context.Context, request operations.GetTeamsTeamIDSystemAccountsRequest, opts ...operations.Option) (*operations.GetTeamsTeamIDSystemAccountsResponse, error)
@@ -23,4 +20,7 @@ type SystemAccountsTeamMembershipSDK interface {
 	// DeleteTeamsTeamIDSystemAccountsAccountID - Remove System Account From Team
 	// Removes a system account from a team. Returns 404 if the team or system account were not found.
 	DeleteTeamsTeamIDSystemAccountsAccountID(ctx context.Context, teamID string, accountID string, opts ...operations.Option) (*operations.DeleteTeamsTeamIDSystemAccountsAccountIDResponse, error)
+	// GetSystemAccountsAccountIDTeams - List Teams for a System Account
+	// Returns a paginated list of a teams that the system account belongs to.
+	GetSystemAccountsAccountIDTeams(ctx context.Context, request operations.GetSystemAccountsAccountIDTeamsRequest, opts ...operations.Option) (*operations.GetSystemAccountsAccountIDTeamsResponse, error)
 }

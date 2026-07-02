@@ -1,0 +1,12 @@
+# Subscription
+
+The subscription that originated the charge, when the charge was created from a
+subscription item.
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ID`                                                                                             | `string`                                                                                         | :heavy_check_mark:                                                                               | The ID of the subscription.                                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                                                                       |
+| `Phase`                                                                                          | [components.BillingChargeFlatFeePhaseID](../../models/components/billingchargeflatfeephaseid.md) | :heavy_check_mark:                                                                               | The phase of the subscription.                                                                   |                                                                                                  |

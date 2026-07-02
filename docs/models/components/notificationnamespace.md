@@ -16,10 +16,12 @@ custom := components.NotificationNamespace("custom_value")
 
 ## Values
 
-| Name                                  | Value                                 |
-| ------------------------------------- | ------------------------------------- |
-| `NotificationNamespacePlanAndUsage`   | plan-and-usage                        |
-| `NotificationNamespaceOrganization`   | organization                          |
-| `NotificationNamespaceDevPortal`      | dev-portal                            |
-| `NotificationNamespaceCloudGateways`  | cloud-gateways                        |
-| `NotificationNamespaceGatewayManager` | gateway-manager                       |
+| Name                                          | Value                                         |
+| --------------------------------------------- | --------------------------------------------- |
+| `NotificationNamespacePlanAndUsage`           | plan-and-usage                                |
+| `NotificationNamespaceOrganization`           | organization                                  |
+| `NotificationNamespaceDevPortal`              | dev-portal                                    |
+| `NotificationNamespaceCloudGateways`          | cloud-gateways                                |
+| `NotificationNamespaceRegionalEventNamespace` | regional-event-namespace                      |
+| `NotificationNamespaceGatewayManager`         | gateway-manager                               |
+| `NotificationNamespaceAdvancedAnalytics`      | advanced-analytics                            |

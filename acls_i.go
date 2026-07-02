@@ -10,6 +10,27 @@ import (
 
 // ACLsSDK is a generated interface.
 type ACLsSDK interface {
+	// ListACLInWorkspace - List all ACLs in a workspace
+	// List all ACLs in a workspace
+	ListACLInWorkspace(ctx context.Context, request operations.ListACLInWorkspaceRequest, opts ...operations.Option) (*operations.ListACLInWorkspaceResponse, error)
+	// GetACLInWorkspace - Get an ACL in a workspace
+	// Get an ACL using ID in a workspace.
+	GetACLInWorkspace(ctx context.Context, request operations.GetACLInWorkspaceRequest, opts ...operations.Option) (*operations.GetACLInWorkspaceResponse, error)
+	// ListACLWithConsumerInWorkspace - List all ACLs associated with a Consumer in a workspace
+	// List all ACLs associated with a Consumer in a workspace
+	ListACLWithConsumerInWorkspace(ctx context.Context, request operations.ListACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListACLWithConsumerInWorkspaceResponse, error)
+	// CreateACLWithConsumerInWorkspace - Create a new ACL associated with a Consumer in a workspace
+	// Create a new ACL associated with a Consumer in a workspace
+	CreateACLWithConsumerInWorkspace(ctx context.Context, request operations.CreateACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateACLWithConsumerInWorkspaceResponse, error)
+	// DeleteACLWithConsumerInWorkspace - Delete a an ACL associated with a Consumer in a workspace
+	// Delete a an ACL associated with a Consumer using ID in a workspace.
+	DeleteACLWithConsumerInWorkspace(ctx context.Context, request operations.DeleteACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteACLWithConsumerInWorkspaceResponse, error)
+	// GetACLWithConsumerInWorkspace - Get an ACL associated with a Consumer in a workspace
+	// Get an ACL associated with a Consumer using ID in a workspace.
+	GetACLWithConsumerInWorkspace(ctx context.Context, request operations.GetACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetACLWithConsumerInWorkspaceResponse, error)
+	// UpsertACLWithConsumerInWorkspace - Upsert an ACL associated with a Consumer in a workspace
+	// Create or Update an ACL associated with a Consumer using ID in a workspace.
+	UpsertACLWithConsumerInWorkspace(ctx context.Context, request operations.UpsertACLWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertACLWithConsumerInWorkspaceResponse, error)
 	// ListACL - List all ACLs
 	// List all ACLs
 	ListACL(ctx context.Context, request operations.ListACLRequest, opts ...operations.Option) (*operations.ListACLResponse, error)

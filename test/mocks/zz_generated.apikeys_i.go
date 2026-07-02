@@ -121,6 +121,89 @@ func (_c *MockAPIKeysSDK_CreateKeyAuthWithConsumer_Call) RunAndReturn(run func(c
 	return _c
 }
 
+// CreateKeyAuthWithConsumerInWorkspace provides a mock function for the type MockAPIKeysSDK
+func (_mock *MockAPIKeysSDK) CreateKeyAuthWithConsumerInWorkspace(ctx context.Context, request operations.CreateKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateKeyAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateKeyAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.CreateKeyAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.CreateKeyAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.CreateKeyAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateKeyAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateKeyAuthWithConsumerInWorkspace'
+type MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateKeyAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateKeyAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockAPIKeysSDK_Expecter) CreateKeyAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call {
+	return &MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("CreateKeyAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateKeyAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateKeyAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call) Return(createKeyAuthWithConsumerInWorkspaceResponse *operations.CreateKeyAuthWithConsumerInWorkspaceResponse, err error) *MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(createKeyAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.CreateKeyAuthWithConsumerInWorkspaceResponse, error)) *MockAPIKeysSDK_CreateKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteKeyAuthWithConsumer provides a mock function for the type MockAPIKeysSDK
 func (_mock *MockAPIKeysSDK) DeleteKeyAuthWithConsumer(ctx context.Context, request operations.DeleteKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteKeyAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -200,6 +283,89 @@ func (_c *MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call) Return(deleteKeyAuthWit
 }
 
 func (_c *MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteKeyAuthWithConsumerResponse, error)) *MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteKeyAuthWithConsumerInWorkspace provides a mock function for the type MockAPIKeysSDK
+func (_mock *MockAPIKeysSDK) DeleteKeyAuthWithConsumerInWorkspace(ctx context.Context, request operations.DeleteKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteKeyAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteKeyAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.DeleteKeyAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.DeleteKeyAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.DeleteKeyAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteKeyAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteKeyAuthWithConsumerInWorkspace'
+type MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteKeyAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteKeyAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockAPIKeysSDK_Expecter) DeleteKeyAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call {
+	return &MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("DeleteKeyAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteKeyAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteKeyAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call) Return(deleteKeyAuthWithConsumerInWorkspaceResponse *operations.DeleteKeyAuthWithConsumerInWorkspaceResponse, err error) *MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(deleteKeyAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteKeyAuthWithConsumerInWorkspaceResponse, error)) *MockAPIKeysSDK_DeleteKeyAuthWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -293,6 +459,89 @@ func (_c *MockAPIKeysSDK_GetKeyAuth_Call) RunAndReturn(run func(ctx context.Cont
 	return _c
 }
 
+// GetKeyAuthInWorkspace provides a mock function for the type MockAPIKeysSDK
+func (_mock *MockAPIKeysSDK) GetKeyAuthInWorkspace(ctx context.Context, request operations.GetKeyAuthInWorkspaceRequest, opts ...operations.Option) (*operations.GetKeyAuthInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetKeyAuthInWorkspace")
+	}
+
+	var r0 *operations.GetKeyAuthInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeyAuthInWorkspaceRequest, ...operations.Option) (*operations.GetKeyAuthInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeyAuthInWorkspaceRequest, ...operations.Option) *operations.GetKeyAuthInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetKeyAuthInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetKeyAuthInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIKeysSDK_GetKeyAuthInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetKeyAuthInWorkspace'
+type MockAPIKeysSDK_GetKeyAuthInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetKeyAuthInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetKeyAuthInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockAPIKeysSDK_Expecter) GetKeyAuthInWorkspace(ctx any, request any, opts ...any) *MockAPIKeysSDK_GetKeyAuthInWorkspace_Call {
+	return &MockAPIKeysSDK_GetKeyAuthInWorkspace_Call{Call: _e.mock.On("GetKeyAuthInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAPIKeysSDK_GetKeyAuthInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetKeyAuthInWorkspaceRequest, opts ...operations.Option)) *MockAPIKeysSDK_GetKeyAuthInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetKeyAuthInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetKeyAuthInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_GetKeyAuthInWorkspace_Call) Return(getKeyAuthInWorkspaceResponse *operations.GetKeyAuthInWorkspaceResponse, err error) *MockAPIKeysSDK_GetKeyAuthInWorkspace_Call {
+	_c.Call.Return(getKeyAuthInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_GetKeyAuthInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetKeyAuthInWorkspaceRequest, opts ...operations.Option) (*operations.GetKeyAuthInWorkspaceResponse, error)) *MockAPIKeysSDK_GetKeyAuthInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetKeyAuthWithConsumer provides a mock function for the type MockAPIKeysSDK
 func (_mock *MockAPIKeysSDK) GetKeyAuthWithConsumer(ctx context.Context, request operations.GetKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetKeyAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -372,6 +621,89 @@ func (_c *MockAPIKeysSDK_GetKeyAuthWithConsumer_Call) Return(getKeyAuthWithConsu
 }
 
 func (_c *MockAPIKeysSDK_GetKeyAuthWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.GetKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetKeyAuthWithConsumerResponse, error)) *MockAPIKeysSDK_GetKeyAuthWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetKeyAuthWithConsumerInWorkspace provides a mock function for the type MockAPIKeysSDK
+func (_mock *MockAPIKeysSDK) GetKeyAuthWithConsumerInWorkspace(ctx context.Context, request operations.GetKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetKeyAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetKeyAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.GetKeyAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.GetKeyAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.GetKeyAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetKeyAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetKeyAuthWithConsumerInWorkspace'
+type MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetKeyAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetKeyAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockAPIKeysSDK_Expecter) GetKeyAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call {
+	return &MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("GetKeyAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetKeyAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetKeyAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call) Return(getKeyAuthWithConsumerInWorkspaceResponse *operations.GetKeyAuthWithConsumerInWorkspaceResponse, err error) *MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(getKeyAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.GetKeyAuthWithConsumerInWorkspaceResponse, error)) *MockAPIKeysSDK_GetKeyAuthWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -459,6 +791,89 @@ func (_c *MockAPIKeysSDK_ListKeyAuth_Call) RunAndReturn(run func(ctx context.Con
 	return _c
 }
 
+// ListKeyAuthInWorkspace provides a mock function for the type MockAPIKeysSDK
+func (_mock *MockAPIKeysSDK) ListKeyAuthInWorkspace(ctx context.Context, request operations.ListKeyAuthInWorkspaceRequest, opts ...operations.Option) (*operations.ListKeyAuthInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListKeyAuthInWorkspace")
+	}
+
+	var r0 *operations.ListKeyAuthInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListKeyAuthInWorkspaceRequest, ...operations.Option) (*operations.ListKeyAuthInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListKeyAuthInWorkspaceRequest, ...operations.Option) *operations.ListKeyAuthInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListKeyAuthInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListKeyAuthInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIKeysSDK_ListKeyAuthInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListKeyAuthInWorkspace'
+type MockAPIKeysSDK_ListKeyAuthInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListKeyAuthInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListKeyAuthInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockAPIKeysSDK_Expecter) ListKeyAuthInWorkspace(ctx any, request any, opts ...any) *MockAPIKeysSDK_ListKeyAuthInWorkspace_Call {
+	return &MockAPIKeysSDK_ListKeyAuthInWorkspace_Call{Call: _e.mock.On("ListKeyAuthInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAPIKeysSDK_ListKeyAuthInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListKeyAuthInWorkspaceRequest, opts ...operations.Option)) *MockAPIKeysSDK_ListKeyAuthInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListKeyAuthInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListKeyAuthInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_ListKeyAuthInWorkspace_Call) Return(listKeyAuthInWorkspaceResponse *operations.ListKeyAuthInWorkspaceResponse, err error) *MockAPIKeysSDK_ListKeyAuthInWorkspace_Call {
+	_c.Call.Return(listKeyAuthInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_ListKeyAuthInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListKeyAuthInWorkspaceRequest, opts ...operations.Option) (*operations.ListKeyAuthInWorkspaceResponse, error)) *MockAPIKeysSDK_ListKeyAuthInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListKeyAuthWithConsumer provides a mock function for the type MockAPIKeysSDK
 func (_mock *MockAPIKeysSDK) ListKeyAuthWithConsumer(ctx context.Context, request operations.ListKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListKeyAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -542,6 +957,89 @@ func (_c *MockAPIKeysSDK_ListKeyAuthWithConsumer_Call) RunAndReturn(run func(ctx
 	return _c
 }
 
+// ListKeyAuthWithConsumerInWorkspace provides a mock function for the type MockAPIKeysSDK
+func (_mock *MockAPIKeysSDK) ListKeyAuthWithConsumerInWorkspace(ctx context.Context, request operations.ListKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListKeyAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListKeyAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.ListKeyAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.ListKeyAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.ListKeyAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListKeyAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListKeyAuthWithConsumerInWorkspace'
+type MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListKeyAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListKeyAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockAPIKeysSDK_Expecter) ListKeyAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call {
+	return &MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("ListKeyAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListKeyAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListKeyAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call) Return(listKeyAuthWithConsumerInWorkspaceResponse *operations.ListKeyAuthWithConsumerInWorkspaceResponse, err error) *MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(listKeyAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListKeyAuthWithConsumerInWorkspaceResponse, error)) *MockAPIKeysSDK_ListKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertKeyAuthWithConsumer provides a mock function for the type MockAPIKeysSDK
 func (_mock *MockAPIKeysSDK) UpsertKeyAuthWithConsumer(ctx context.Context, request operations.UpsertKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertKeyAuthWithConsumerResponse, error) {
 	var tmpRet mock.Arguments
@@ -621,6 +1119,89 @@ func (_c *MockAPIKeysSDK_UpsertKeyAuthWithConsumer_Call) Return(upsertKeyAuthWit
 }
 
 func (_c *MockAPIKeysSDK_UpsertKeyAuthWithConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertKeyAuthWithConsumerResponse, error)) *MockAPIKeysSDK_UpsertKeyAuthWithConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertKeyAuthWithConsumerInWorkspace provides a mock function for the type MockAPIKeysSDK
+func (_mock *MockAPIKeysSDK) UpsertKeyAuthWithConsumerInWorkspace(ctx context.Context, request operations.UpsertKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertKeyAuthWithConsumerInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertKeyAuthWithConsumerInWorkspace")
+	}
+
+	var r0 *operations.UpsertKeyAuthWithConsumerInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) (*operations.UpsertKeyAuthWithConsumerInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) *operations.UpsertKeyAuthWithConsumerInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertKeyAuthWithConsumerInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertKeyAuthWithConsumerInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertKeyAuthWithConsumerInWorkspace'
+type MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertKeyAuthWithConsumerInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertKeyAuthWithConsumerInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockAPIKeysSDK_Expecter) UpsertKeyAuthWithConsumerInWorkspace(ctx any, request any, opts ...any) *MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call {
+	return &MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call{Call: _e.mock.On("UpsertKeyAuthWithConsumerInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option)) *MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertKeyAuthWithConsumerInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertKeyAuthWithConsumerInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call) Return(upsertKeyAuthWithConsumerInWorkspaceResponse *operations.UpsertKeyAuthWithConsumerInWorkspaceResponse, err error) *MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call {
+	_c.Call.Return(upsertKeyAuthWithConsumerInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertKeyAuthWithConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertKeyAuthWithConsumerInWorkspaceResponse, error)) *MockAPIKeysSDK_UpsertKeyAuthWithConsumerInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

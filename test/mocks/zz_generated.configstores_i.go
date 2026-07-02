@@ -128,6 +128,89 @@ func (_c *MockConfigStoresSDK_CreateConfigStore_Call) RunAndReturn(run func(ctx 
 	return _c
 }
 
+// CreateConfigStoreInWorkspace provides a mock function for the type MockConfigStoresSDK
+func (_mock *MockConfigStoresSDK) CreateConfigStoreInWorkspace(ctx context.Context, request operations.CreateConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.CreateConfigStoreInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateConfigStoreInWorkspace")
+	}
+
+	var r0 *operations.CreateConfigStoreInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateConfigStoreInWorkspaceRequest, ...operations.Option) (*operations.CreateConfigStoreInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateConfigStoreInWorkspaceRequest, ...operations.Option) *operations.CreateConfigStoreInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateConfigStoreInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateConfigStoreInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateConfigStoreInWorkspace'
+type MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateConfigStoreInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateConfigStoreInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockConfigStoresSDK_Expecter) CreateConfigStoreInWorkspace(ctx any, request any, opts ...any) *MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call {
+	return &MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call{Call: _e.mock.On("CreateConfigStoreInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateConfigStoreInWorkspaceRequest, opts ...operations.Option)) *MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateConfigStoreInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateConfigStoreInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call) Return(createConfigStoreInWorkspaceResponse *operations.CreateConfigStoreInWorkspaceResponse, err error) *MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call {
+	_c.Call.Return(createConfigStoreInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.CreateConfigStoreInWorkspaceResponse, error)) *MockConfigStoresSDK_CreateConfigStoreInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteConfigStore provides a mock function for the type MockConfigStoresSDK
 func (_mock *MockConfigStoresSDK) DeleteConfigStore(ctx context.Context, request operations.DeleteConfigStoreRequest, opts ...operations.Option) (*operations.DeleteConfigStoreResponse, error) {
 	var tmpRet mock.Arguments
@@ -207,6 +290,89 @@ func (_c *MockConfigStoresSDK_DeleteConfigStore_Call) Return(deleteConfigStoreRe
 }
 
 func (_c *MockConfigStoresSDK_DeleteConfigStore_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteConfigStoreRequest, opts ...operations.Option) (*operations.DeleteConfigStoreResponse, error)) *MockConfigStoresSDK_DeleteConfigStore_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteConfigStoreInWorkspace provides a mock function for the type MockConfigStoresSDK
+func (_mock *MockConfigStoresSDK) DeleteConfigStoreInWorkspace(ctx context.Context, request operations.DeleteConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteConfigStoreInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteConfigStoreInWorkspace")
+	}
+
+	var r0 *operations.DeleteConfigStoreInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteConfigStoreInWorkspaceRequest, ...operations.Option) (*operations.DeleteConfigStoreInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteConfigStoreInWorkspaceRequest, ...operations.Option) *operations.DeleteConfigStoreInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteConfigStoreInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteConfigStoreInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteConfigStoreInWorkspace'
+type MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteConfigStoreInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteConfigStoreInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockConfigStoresSDK_Expecter) DeleteConfigStoreInWorkspace(ctx any, request any, opts ...any) *MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call {
+	return &MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call{Call: _e.mock.On("DeleteConfigStoreInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteConfigStoreInWorkspaceRequest, opts ...operations.Option)) *MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteConfigStoreInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteConfigStoreInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call) Return(deleteConfigStoreInWorkspaceResponse *operations.DeleteConfigStoreInWorkspaceResponse, err error) *MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call {
+	_c.Call.Return(deleteConfigStoreInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteConfigStoreInWorkspaceResponse, error)) *MockConfigStoresSDK_DeleteConfigStoreInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -300,6 +466,89 @@ func (_c *MockConfigStoresSDK_GetConfigStore_Call) RunAndReturn(run func(ctx con
 	return _c
 }
 
+// GetConfigStoreInWorkspace provides a mock function for the type MockConfigStoresSDK
+func (_mock *MockConfigStoresSDK) GetConfigStoreInWorkspace(ctx context.Context, request operations.GetConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.GetConfigStoreInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetConfigStoreInWorkspace")
+	}
+
+	var r0 *operations.GetConfigStoreInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetConfigStoreInWorkspaceRequest, ...operations.Option) (*operations.GetConfigStoreInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetConfigStoreInWorkspaceRequest, ...operations.Option) *operations.GetConfigStoreInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetConfigStoreInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetConfigStoreInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockConfigStoresSDK_GetConfigStoreInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetConfigStoreInWorkspace'
+type MockConfigStoresSDK_GetConfigStoreInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetConfigStoreInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetConfigStoreInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockConfigStoresSDK_Expecter) GetConfigStoreInWorkspace(ctx any, request any, opts ...any) *MockConfigStoresSDK_GetConfigStoreInWorkspace_Call {
+	return &MockConfigStoresSDK_GetConfigStoreInWorkspace_Call{Call: _e.mock.On("GetConfigStoreInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockConfigStoresSDK_GetConfigStoreInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetConfigStoreInWorkspaceRequest, opts ...operations.Option)) *MockConfigStoresSDK_GetConfigStoreInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetConfigStoreInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetConfigStoreInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_GetConfigStoreInWorkspace_Call) Return(getConfigStoreInWorkspaceResponse *operations.GetConfigStoreInWorkspaceResponse, err error) *MockConfigStoresSDK_GetConfigStoreInWorkspace_Call {
+	_c.Call.Return(getConfigStoreInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_GetConfigStoreInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.GetConfigStoreInWorkspaceResponse, error)) *MockConfigStoresSDK_GetConfigStoreInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListConfigStores provides a mock function for the type MockConfigStoresSDK
 func (_mock *MockConfigStoresSDK) ListConfigStores(ctx context.Context, request operations.ListConfigStoresRequest, opts ...operations.Option) (*operations.ListConfigStoresResponse, error) {
 	var tmpRet mock.Arguments
@@ -383,6 +632,89 @@ func (_c *MockConfigStoresSDK_ListConfigStores_Call) RunAndReturn(run func(ctx c
 	return _c
 }
 
+// ListConfigStoresInWorkspace provides a mock function for the type MockConfigStoresSDK
+func (_mock *MockConfigStoresSDK) ListConfigStoresInWorkspace(ctx context.Context, request operations.ListConfigStoresInWorkspaceRequest, opts ...operations.Option) (*operations.ListConfigStoresInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListConfigStoresInWorkspace")
+	}
+
+	var r0 *operations.ListConfigStoresInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListConfigStoresInWorkspaceRequest, ...operations.Option) (*operations.ListConfigStoresInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListConfigStoresInWorkspaceRequest, ...operations.Option) *operations.ListConfigStoresInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListConfigStoresInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListConfigStoresInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockConfigStoresSDK_ListConfigStoresInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListConfigStoresInWorkspace'
+type MockConfigStoresSDK_ListConfigStoresInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListConfigStoresInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListConfigStoresInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockConfigStoresSDK_Expecter) ListConfigStoresInWorkspace(ctx any, request any, opts ...any) *MockConfigStoresSDK_ListConfigStoresInWorkspace_Call {
+	return &MockConfigStoresSDK_ListConfigStoresInWorkspace_Call{Call: _e.mock.On("ListConfigStoresInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockConfigStoresSDK_ListConfigStoresInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListConfigStoresInWorkspaceRequest, opts ...operations.Option)) *MockConfigStoresSDK_ListConfigStoresInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListConfigStoresInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListConfigStoresInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_ListConfigStoresInWorkspace_Call) Return(listConfigStoresInWorkspaceResponse *operations.ListConfigStoresInWorkspaceResponse, err error) *MockConfigStoresSDK_ListConfigStoresInWorkspace_Call {
+	_c.Call.Return(listConfigStoresInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_ListConfigStoresInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListConfigStoresInWorkspaceRequest, opts ...operations.Option) (*operations.ListConfigStoresInWorkspaceResponse, error)) *MockConfigStoresSDK_ListConfigStoresInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpdateConfigStore provides a mock function for the type MockConfigStoresSDK
 func (_mock *MockConfigStoresSDK) UpdateConfigStore(ctx context.Context, request operations.UpdateConfigStoreRequest, opts ...operations.Option) (*operations.UpdateConfigStoreResponse, error) {
 	var tmpRet mock.Arguments
@@ -462,6 +794,89 @@ func (_c *MockConfigStoresSDK_UpdateConfigStore_Call) Return(updateConfigStoreRe
 }
 
 func (_c *MockConfigStoresSDK_UpdateConfigStore_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateConfigStoreRequest, opts ...operations.Option) (*operations.UpdateConfigStoreResponse, error)) *MockConfigStoresSDK_UpdateConfigStore_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateConfigStoreInWorkspace provides a mock function for the type MockConfigStoresSDK
+func (_mock *MockConfigStoresSDK) UpdateConfigStoreInWorkspace(ctx context.Context, request operations.UpdateConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.UpdateConfigStoreInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateConfigStoreInWorkspace")
+	}
+
+	var r0 *operations.UpdateConfigStoreInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateConfigStoreInWorkspaceRequest, ...operations.Option) (*operations.UpdateConfigStoreInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateConfigStoreInWorkspaceRequest, ...operations.Option) *operations.UpdateConfigStoreInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateConfigStoreInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpdateConfigStoreInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateConfigStoreInWorkspace'
+type MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpdateConfigStoreInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpdateConfigStoreInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockConfigStoresSDK_Expecter) UpdateConfigStoreInWorkspace(ctx any, request any, opts ...any) *MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call {
+	return &MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call{Call: _e.mock.On("UpdateConfigStoreInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpdateConfigStoreInWorkspaceRequest, opts ...operations.Option)) *MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpdateConfigStoreInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpdateConfigStoreInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call) Return(updateConfigStoreInWorkspaceResponse *operations.UpdateConfigStoreInWorkspaceResponse, err error) *MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call {
+	_c.Call.Return(updateConfigStoreInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateConfigStoreInWorkspaceRequest, opts ...operations.Option) (*operations.UpdateConfigStoreInWorkspaceResponse, error)) *MockConfigStoresSDK_UpdateConfigStoreInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

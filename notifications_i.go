@@ -11,6 +11,21 @@ import (
 
 // NotificationsSDK is a generated interface.
 type NotificationsSDK interface {
+	// ListNotifications - List available notifications
+	// List available notifications.
+	ListNotifications(ctx context.Context, request operations.ListNotificationsRequest, opts ...operations.Option) (*operations.ListNotificationsResponse, error)
+	// GetNotificationDetails - Get notification details
+	// Get notification details.
+	GetNotificationDetails(ctx context.Context, notificationID string, opts ...operations.Option) (*operations.GetNotificationDetailsResponse, error)
+	// UpdateNotification - Update notification
+	// Update notification.
+	UpdateNotification(ctx context.Context, notificationID string, notificationUpdatePayload *components.NotificationUpdatePayload, opts ...operations.Option) (*operations.UpdateNotificationResponse, error)
+	// DeleteNotification - Delete notification
+	// Delete notification.
+	DeleteNotification(ctx context.Context, notificationID string, opts ...operations.Option) (*operations.DeleteNotificationResponse, error)
+	// BulkNotifications - Mark a list of notifications to a status
+	// Mark a list of notifications to a status.
+	BulkNotifications(ctx context.Context, request *components.BulkPayload, opts ...operations.Option) (*operations.BulkNotificationsResponse, error)
 	// ListUserConfigurations - List available user configurations
 	// List available user configurations.
 	ListUserConfigurations(ctx context.Context, filter *components.ConfigurationFilterParameters, opts ...operations.Option) (*operations.ListUserConfigurationsResponse, error)
@@ -29,19 +44,4 @@ type NotificationsSDK interface {
 	// DeleteEventSubscription - Delete subscription associated with event
 	// Delete subscription associated with event.
 	DeleteEventSubscription(ctx context.Context, eventID string, subscriptionID string, opts ...operations.Option) (*operations.DeleteEventSubscriptionResponse, error)
-	// ListNotifications - List available notifications
-	// List available notifications.
-	ListNotifications(ctx context.Context, request operations.ListNotificationsRequest, opts ...operations.Option) (*operations.ListNotificationsResponse, error)
-	// GetNotificationDetails - Get notification details
-	// Get notification details.
-	GetNotificationDetails(ctx context.Context, notificationID string, opts ...operations.Option) (*operations.GetNotificationDetailsResponse, error)
-	// UpdateNotification - Update notification
-	// Update notification.
-	UpdateNotification(ctx context.Context, notificationID string, notificationUpdatePayload *components.NotificationUpdatePayload, opts ...operations.Option) (*operations.UpdateNotificationResponse, error)
-	// DeleteNotification - Delete notification
-	// Delete notification.
-	DeleteNotification(ctx context.Context, notificationID string, opts ...operations.Option) (*operations.DeleteNotificationResponse, error)
-	// BulkNotifications - Mark a list of notifications to a status
-	// Mark a list of notifications to a status.
-	BulkNotifications(ctx context.Context, request *components.BulkPayload, opts ...operations.Option) (*operations.BulkNotificationsResponse, error)
 }

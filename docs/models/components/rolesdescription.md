@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesDescriptionThisRoleGrantsFullWriteAccessToAllEntitiesWithinAControlPlane
+value := components.RolesDescriptionThisRoleGrantsFullWriteAccessToAdministerCertificates
 ```
 
 
 ## Values
 
-| Name                                                                            | Value                                                                           |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `RolesDescriptionThisRoleGrantsFullWriteAccessToAllEntitiesWithinAControlPlane` | This role grants full write access to all entities within a control plane.      |
+| Name                                                                    | Value                                                                   |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `RolesDescriptionThisRoleGrantsFullWriteAccessToAdministerCertificates` | This role grants full write access to administer certificates.          |

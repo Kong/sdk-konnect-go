@@ -11,18 +11,18 @@ import (
 
 // PortalEmailsSDK is a generated interface.
 type PortalEmailsSDK interface {
-	// GetEmailConfig - Get the email config for the portal
-	// Retrieve the email config for the portal
-	GetEmailConfig(ctx context.Context, portalID string, opts ...operations.Option) (*operations.GetEmailConfigResponse, error)
-	// CreatePortalEmailConfig - Create the email config for a portal
-	// Create the email config for a portal
-	CreatePortalEmailConfig(ctx context.Context, portalID string, postPortalEmailConfig components.PostPortalEmailConfig, opts ...operations.Option) (*operations.CreatePortalEmailConfigResponse, error)
-	// UpdatePortalEmailConfig - Setup the email config for a portal
-	// Setup the email config for a portal
-	UpdatePortalEmailConfig(ctx context.Context, portalID string, patchPortalEmailConfig *components.PatchPortalEmailConfig, opts ...operations.Option) (*operations.UpdatePortalEmailConfigResponse, error)
-	// DeletePortalEmailConfig - Delete portal email config
-	// Delete portal email config
-	DeletePortalEmailConfig(ctx context.Context, portalID string, opts ...operations.Option) (*operations.DeletePortalEmailConfigResponse, error)
+	// ListEmailDomains - List email domains
+	// List email domains
+	ListEmailDomains(ctx context.Context, request operations.ListEmailDomainsRequest, opts ...operations.Option) (*operations.ListEmailDomainsResponse, error)
+	// CreateEmailDomain - Create an email domain
+	// Create an email domain
+	CreateEmailDomain(ctx context.Context, request components.EmailDomainPayload, opts ...operations.Option) (*operations.CreateEmailDomainResponse, error)
+	// GetEmailDomain - Get an email domain
+	// Get an email domain
+	GetEmailDomain(ctx context.Context, emailDomain string, opts ...operations.Option) (*operations.GetEmailDomainResponse, error)
+	// DeleteEmailDomain - Delete an email domain
+	// Delete an email domain
+	DeleteEmailDomain(ctx context.Context, emailDomain string, opts ...operations.Option) (*operations.DeleteEmailDomainResponse, error)
 	// GetEmailDelivery - Get the email delivery for the portal
 	// Retrieve the email delivery for the portal
 	//
@@ -38,6 +38,27 @@ type PortalEmailsSDK interface {
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	DeleteEmailDelivery(ctx context.Context, portalID string, opts ...operations.Option) (*operations.DeleteEmailDeliveryResponse, error)
+	// GetEmailConfig - Get the email config for the portal
+	// Retrieve the email config for the portal
+	GetEmailConfig(ctx context.Context, portalID string, opts ...operations.Option) (*operations.GetEmailConfigResponse, error)
+	// CreatePortalEmailConfig - Create the email config for a portal
+	// Create the email config for a portal
+	CreatePortalEmailConfig(ctx context.Context, portalID string, postPortalEmailConfig components.PostPortalEmailConfig, opts ...operations.Option) (*operations.CreatePortalEmailConfigResponse, error)
+	// UpdatePortalEmailConfig - Setup the email config for a portal
+	// Setup the email config for a portal
+	UpdatePortalEmailConfig(ctx context.Context, portalID string, patchPortalEmailConfig *components.PatchPortalEmailConfig, opts ...operations.Option) (*operations.UpdatePortalEmailConfigResponse, error)
+	// DeletePortalEmailConfig - Delete portal email config
+	// Delete portal email config
+	DeletePortalEmailConfig(ctx context.Context, portalID string, opts ...operations.Option) (*operations.DeletePortalEmailConfigResponse, error)
+	// ListDefaultEmailTemplates - List default email templates
+	// List default email templates
+	ListDefaultEmailTemplates(ctx context.Context, opts ...operations.Option) (*operations.ListDefaultEmailTemplatesResponse, error)
+	// ListEmailTemplateVariables - List email template variables
+	// List email template variables
+	ListEmailTemplateVariables(ctx context.Context, opts ...operations.Option) (*operations.ListEmailTemplateVariablesResponse, error)
+	// GetDefaultEmailTemplate - Get default email template
+	// Get default email template
+	GetDefaultEmailTemplate(ctx context.Context, templateName components.EmailTemplateName, opts ...operations.Option) (*operations.GetDefaultEmailTemplateResponse, error)
 	// ListPortalCustomEmailTemplates - List custom email templates for a portal
 	// List custom email templates
 	ListPortalCustomEmailTemplates(ctx context.Context, portalID string, opts ...operations.Option) (*operations.ListPortalCustomEmailTemplatesResponse, error)
@@ -54,25 +75,4 @@ type PortalEmailsSDK interface {
 	// Send a test email based on the portal's email template, using the content provided in the request.
 	// The email will be sent to the Konnect user who triggered the test.
 	PostPortalCustomEmailTestSend(ctx context.Context, request operations.PostPortalCustomEmailTestSendRequest, opts ...operations.Option) (*operations.PostPortalCustomEmailTestSendResponse, error)
-	// ListEmailDomains - List email domains
-	// List email domains
-	ListEmailDomains(ctx context.Context, request operations.ListEmailDomainsRequest, opts ...operations.Option) (*operations.ListEmailDomainsResponse, error)
-	// CreateEmailDomain - Create an email domain
-	// Create an email domain
-	CreateEmailDomain(ctx context.Context, request components.EmailDomainPayload, opts ...operations.Option) (*operations.CreateEmailDomainResponse, error)
-	// GetEmailDomain - Get an email domain
-	// Get an email domain
-	GetEmailDomain(ctx context.Context, emailDomain string, opts ...operations.Option) (*operations.GetEmailDomainResponse, error)
-	// DeleteEmailDomain - Delete an email domain
-	// Delete an email domain
-	DeleteEmailDomain(ctx context.Context, emailDomain string, opts ...operations.Option) (*operations.DeleteEmailDomainResponse, error)
-	// ListDefaultEmailTemplates - List default email templates
-	// List default email templates
-	ListDefaultEmailTemplates(ctx context.Context, opts ...operations.Option) (*operations.ListDefaultEmailTemplatesResponse, error)
-	// GetDefaultEmailTemplate - Get default email template
-	// Get default email template
-	GetDefaultEmailTemplate(ctx context.Context, templateName components.EmailTemplateName, opts ...operations.Option) (*operations.GetDefaultEmailTemplateResponse, error)
-	// ListEmailTemplateVariables - List email template variables
-	// List email template variables
-	ListEmailTemplateVariables(ctx context.Context, opts ...operations.Option) (*operations.ListEmailTemplateVariablesResponse, error)
 }

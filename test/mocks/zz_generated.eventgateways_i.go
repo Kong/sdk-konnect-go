@@ -288,6 +288,83 @@ func (_c *MockEventGatewaysSDK_GetEventGateway_Call) RunAndReturn(run func(ctx c
 	return _c
 }
 
+// ListEventGatewayVersions provides a mock function for the type MockEventGatewaysSDK
+func (_mock *MockEventGatewaysSDK) ListEventGatewayVersions(ctx context.Context, opts ...operations.Option) (*operations.ListEventGatewayVersionsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, opts)
+	} else {
+		tmpRet = _mock.Called(ctx)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListEventGatewayVersions")
+	}
+
+	var r0 *operations.ListEventGatewayVersionsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, ...operations.Option) (*operations.ListEventGatewayVersionsResponse, error)); ok {
+		return returnFunc(ctx, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, ...operations.Option) *operations.ListEventGatewayVersionsResponse); ok {
+		r0 = returnFunc(ctx, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListEventGatewayVersionsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockEventGatewaysSDK_ListEventGatewayVersions_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListEventGatewayVersions'
+type MockEventGatewaysSDK_ListEventGatewayVersions_Call struct {
+	*mock.Call
+}
+
+// ListEventGatewayVersions is a helper method to define mock.On call
+//   - ctx context.Context
+//   - opts ...operations.Option
+func (_e *MockEventGatewaysSDK_Expecter) ListEventGatewayVersions(ctx any, opts ...any) *MockEventGatewaysSDK_ListEventGatewayVersions_Call {
+	return &MockEventGatewaysSDK_ListEventGatewayVersions_Call{Call: _e.mock.On("ListEventGatewayVersions",
+		append([]any{ctx}, opts...)...)}
+}
+
+func (_c *MockEventGatewaysSDK_ListEventGatewayVersions_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockEventGatewaysSDK_ListEventGatewayVersions_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 1 {
+			variadicArgs = args[1].([]operations.Option)
+		}
+		arg1 = variadicArgs
+		run(
+			arg0,
+			arg1...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockEventGatewaysSDK_ListEventGatewayVersions_Call) Return(listEventGatewayVersionsResponse *operations.ListEventGatewayVersionsResponse, err error) *MockEventGatewaysSDK_ListEventGatewayVersions_Call {
+	_c.Call.Return(listEventGatewayVersionsResponse, err)
+	return _c
+}
+
+func (_c *MockEventGatewaysSDK_ListEventGatewayVersions_Call) RunAndReturn(run func(ctx context.Context, opts ...operations.Option) (*operations.ListEventGatewayVersionsResponse, error)) *MockEventGatewaysSDK_ListEventGatewayVersions_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListEventGateways provides a mock function for the type MockEventGatewaysSDK
 func (_mock *MockEventGatewaysSDK) ListEventGateways(ctx context.Context, request operations.ListEventGatewaysRequest, opts ...operations.Option) (*operations.ListEventGatewaysResponse, error) {
 	var tmpRet mock.Arguments
@@ -367,6 +444,83 @@ func (_c *MockEventGatewaysSDK_ListEventGateways_Call) Return(listEventGatewaysR
 }
 
 func (_c *MockEventGatewaysSDK_ListEventGateways_Call) RunAndReturn(run func(ctx context.Context, request operations.ListEventGatewaysRequest, opts ...operations.Option) (*operations.ListEventGatewaysResponse, error)) *MockEventGatewaysSDK_ListEventGateways_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListEventGatewaysUsage provides a mock function for the type MockEventGatewaysSDK
+func (_mock *MockEventGatewaysSDK) ListEventGatewaysUsage(ctx context.Context, opts ...operations.Option) (*operations.ListEventGatewaysUsageResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, opts)
+	} else {
+		tmpRet = _mock.Called(ctx)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListEventGatewaysUsage")
+	}
+
+	var r0 *operations.ListEventGatewaysUsageResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, ...operations.Option) (*operations.ListEventGatewaysUsageResponse, error)); ok {
+		return returnFunc(ctx, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, ...operations.Option) *operations.ListEventGatewaysUsageResponse); ok {
+		r0 = returnFunc(ctx, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListEventGatewaysUsageResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockEventGatewaysSDK_ListEventGatewaysUsage_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListEventGatewaysUsage'
+type MockEventGatewaysSDK_ListEventGatewaysUsage_Call struct {
+	*mock.Call
+}
+
+// ListEventGatewaysUsage is a helper method to define mock.On call
+//   - ctx context.Context
+//   - opts ...operations.Option
+func (_e *MockEventGatewaysSDK_Expecter) ListEventGatewaysUsage(ctx any, opts ...any) *MockEventGatewaysSDK_ListEventGatewaysUsage_Call {
+	return &MockEventGatewaysSDK_ListEventGatewaysUsage_Call{Call: _e.mock.On("ListEventGatewaysUsage",
+		append([]any{ctx}, opts...)...)}
+}
+
+func (_c *MockEventGatewaysSDK_ListEventGatewaysUsage_Call) Run(run func(ctx context.Context, opts ...operations.Option)) *MockEventGatewaysSDK_ListEventGatewaysUsage_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 1 {
+			variadicArgs = args[1].([]operations.Option)
+		}
+		arg1 = variadicArgs
+		run(
+			arg0,
+			arg1...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockEventGatewaysSDK_ListEventGatewaysUsage_Call) Return(listEventGatewaysUsageResponse *operations.ListEventGatewaysUsageResponse, err error) *MockEventGatewaysSDK_ListEventGatewaysUsage_Call {
+	_c.Call.Return(listEventGatewaysUsageResponse, err)
+	return _c
+}
+
+func (_c *MockEventGatewaysSDK_ListEventGatewaysUsage_Call) RunAndReturn(run func(ctx context.Context, opts ...operations.Option) (*operations.ListEventGatewaysUsageResponse, error)) *MockEventGatewaysSDK_ListEventGatewaysUsage_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -1,0 +1,11 @@
+# PatchResourceConfigurationRequest
+
+Request schema for patching a resource configuration for an organization.
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `Qualifier`                                                                                            | [components.ResourceConfigurationQualifier](../../models/components/resourceconfigurationqualifier.md) | :heavy_check_mark:                                                                                     | Enumeration of configuration qualifiers available for organization-wide configuration.                 |                                                                                                        |
+| `Value`                                                                                                | `int64`                                                                                                | :heavy_check_mark:                                                                                     | The value of this resource configuration.                                                              | 45                                                                                                     |

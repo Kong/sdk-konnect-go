@@ -15,6 +15,7 @@ func TestComponentsUpstreamFieldTypes(t *testing.T) {
 	var _ *components.UpstreamAlgorithm = value.Algorithm
 	var _ *components.UpstreamClientCertificate = value.ClientCertificate
 	var _ *int64 = value.CreatedAt
+	var _ *string = value.Description
 	var _ *components.HashFallback = value.HashFallback
 	var _ *string = value.HashFallbackHeader
 	var _ *string = value.HashFallbackQueryArg
@@ -28,6 +29,7 @@ func TestComponentsUpstreamFieldTypes(t *testing.T) {
 	var _ *components.Healthchecks = value.Healthchecks
 	var _ *string = value.HostHeader
 	var _ *string = value.ID
+	var _ map[string]any = value.ManagedBy
 	var _ string = value.Name
 	var _ *int64 = value.Slots
 	var _ *string = value.StickySessionsCookie

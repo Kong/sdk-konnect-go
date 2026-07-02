@@ -10,7 +10,109 @@ To set up and view a list of all the integrations we support please view our [do
 
 ### Available Operations
 
+* [CreateCatalogIntegration](#createcatalogintegration) - Create Integration
 * [ListCatalogIntegrations](#listcatalogintegrations) - List Integrations
+* [GetCatalogIntegration](#getcatalogintegration) - Get Integration
+* [UpdateCatalogIntegration](#updatecatalogintegration) - Update Integration
+* [DeleteCatalogIntegration](#deletecatalogintegration) - Delete Integration
+
+## CreateCatalogIntegration
+
+Creates a catalog integration.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-catalog-integration" method="post" path="/v1/integrations" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CatalogIntegrations.CreateCatalogIntegration(ctx, components.CreateCreateCatalogIntegrationCreatePrivateCatalogIntegration(
+        components.CreatePrivateCatalogIntegration{
+            Visibility: components.CreatePrivateCatalogIntegrationVisibilityPrivate,
+            ResourceTypes: map[string]components.CatalogIntegrationResourceTypes{
+                "gateway_svc": components.CatalogIntegrationResourceTypes{
+                    DisplayName: sdkkonnectgo.Pointer("Gateway Service"),
+                    ResourceIDTemplate: "{{control_plane_id}}:{{gateway_service_id}}",
+                    Schema: components.SimpleSchema{
+                        Type: components.SimpleSchemaTypeSimple,
+                        Definition: map[string]components.Definition{
+                            "control_plane_id": components.DefinitionString,
+                            "gatway_service_id": components.DefinitionString,
+                        },
+                    },
+                    IntegrationDataSchema: nil,
+                },
+                "analytics_dashboard": components.CatalogIntegrationResourceTypes{
+                    DisplayName: sdkkonnectgo.Pointer("Dashboard"),
+                    ResourceIDTemplate: "{{dashboard_id}}",
+                    Schema: components.SimpleSchema{
+                        Type: components.SimpleSchemaTypeSimple,
+                        Definition: map[string]components.Definition{
+                            "dashboard_id": components.DefinitionString,
+                        },
+                    },
+                    IntegrationDataSchema: nil,
+                },
+            },
+            Description: "pinstripe onto zowie amid interviewer alongside clueless",
+            DisplayName: "My Integration",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CatalogIntegration != nil {
+        switch res.CatalogIntegration.Authorization.Type {
+            case components.CatalogIntegrationAuthorizationTypeOne:
+                // res.CatalogIntegration.Authorization.One is populated
+            case components.CatalogIntegrationAuthorizationTypeOAuth:
+                // res.CatalogIntegration.Authorization.OAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:
+                // res.CatalogIntegration.Authorization.MultiKeyAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeGitHubAppInstallationAuth:
+                // res.CatalogIntegration.Authorization.GitHubAppInstallationAuth is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [components.CreateCatalogIntegration](../../models/components/createcatalogintegration.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
+
+### Response
+
+**[*operations.CreateCatalogIntegrationResponse](../../models/operations/createcatalogintegrationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListCatalogIntegrations
 
@@ -79,4 +181,201 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetCatalogIntegration
+
+Gets a catalog integration.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-catalog-integration" method="get" path="/v1/integrations/{integration}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CatalogIntegrations.GetCatalogIntegration(ctx, "jira")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CatalogIntegration != nil {
+        switch res.CatalogIntegration.Authorization.Type {
+            case components.CatalogIntegrationAuthorizationTypeOne:
+                // res.CatalogIntegration.Authorization.One is populated
+            case components.CatalogIntegrationAuthorizationTypeOAuth:
+                // res.CatalogIntegration.Authorization.OAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:
+                // res.CatalogIntegration.Authorization.MultiKeyAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeGitHubAppInstallationAuth:
+                // res.CatalogIntegration.Authorization.GitHubAppInstallationAuth is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `integration`                                            | `string`                                                 | :heavy_check_mark:                                       | The name of the integration.                             | jira                                                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetCatalogIntegrationResponse](../../models/operations/getcatalogintegrationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateCatalogIntegration
+
+Updates a catalog integration.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-catalog-integration" method="patch" path="/v1/integrations/{integration}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CatalogIntegrations.UpdateCatalogIntegration(ctx, "jira", components.UpdateCatalogIntegration{
+        DisplayName: sdkkonnectgo.Pointer("Updated Catalog Integration"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CatalogIntegration != nil {
+        switch res.CatalogIntegration.Authorization.Type {
+            case components.CatalogIntegrationAuthorizationTypeOne:
+                // res.CatalogIntegration.Authorization.One is populated
+            case components.CatalogIntegrationAuthorizationTypeOAuth:
+                // res.CatalogIntegration.Authorization.OAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:
+                // res.CatalogIntegration.Authorization.MultiKeyAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeGitHubAppInstallationAuth:
+                // res.CatalogIntegration.Authorization.GitHubAppInstallationAuth is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |                                                                                            |
+| `integration`                                                                              | `string`                                                                                   | :heavy_check_mark:                                                                         | The name of the integration.                                                               | jira                                                                                       |
+| `updateCatalogIntegration`                                                                 | [components.UpdateCatalogIntegration](../../models/components/updatecatalogintegration.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |                                                                                            |
+
+### Response
+
+**[*operations.UpdateCatalogIntegrationResponse](../../models/operations/updatecatalogintegrationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteCatalogIntegration
+
+Deletes a catalog integration.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-catalog-integration" method="delete" path="/v1/integrations/{integration}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CatalogIntegrations.DeleteCatalogIntegration(ctx, "jira")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `integration`                                            | `string`                                                 | :heavy_check_mark:                                       | The name of the integration.                             | jira                                                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteCatalogIntegrationResponse](../../models/operations/deletecatalogintegrationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |

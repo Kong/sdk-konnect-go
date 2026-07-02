@@ -11,6 +11,9 @@ import (
 
 // APISpecificationSDK is a generated interface.
 type APISpecificationSDK interface {
+	// ValidateSpecification - Validate API Specification
+	// Validates the content and type (OpenAPI or AsyncAPI) of a potential API specification without associating it with a specific API.
+	ValidateSpecification(ctx context.Context, request components.ValidateAPISpecRequestPayload, opts ...operations.Option) (*operations.ValidateSpecificationResponse, error)
 	// CreateAPISpec - Create API Specification
 	// Creates a specification (OpenAPI or AsyncAPI) for an API.
 	// **Note:** You can only have one specification for an API. This endpoint is deprecated and will be removed: use /versions instead.
@@ -41,7 +44,4 @@ type APISpecificationSDK interface {
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	DeleteAPISpec(ctx context.Context, apiID string, specID string, opts ...operations.Option) (*operations.DeleteAPISpecResponse, error)
-	// ValidateSpecification - Validate API Specification
-	// Validates the content and type (OpenAPI or AsyncAPI) of a potential API specification without associating it with a specific API.
-	ValidateSpecification(ctx context.Context, request components.ValidateAPISpecRequestPayload, opts ...operations.Option) (*operations.ValidateSpecificationResponse, error)
 }

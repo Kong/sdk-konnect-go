@@ -16,10 +16,10 @@ type EventGatewayNodesSDK interface {
 	// GetEventGatewayNode - Get a Node
 	// Returns information about a specific node associated with the Event Gateway.
 	GetEventGatewayNode(ctx context.Context, gatewayID string, eventGatewayNodeID string, opts ...operations.Option) (*operations.GetEventGatewayNodeResponse, error)
-	// ListEventGatewayNodeErrors - List Node Errors
-	// Returns information about the node errors.
-	ListEventGatewayNodeErrors(ctx context.Context, gatewayID string, eventGatewayNodeID string, opts ...operations.Option) (*operations.ListEventGatewayNodeErrorsResponse, error)
 	// GetEventGatewayNodeStatus - Get Node Status
 	// Returns information about the node status.
 	GetEventGatewayNodeStatus(ctx context.Context, gatewayID string, eventGatewayNodeID string, opts ...operations.Option) (*operations.GetEventGatewayNodeStatusResponse, error)
+	// ListEventGatewayNodeErrors - List Node Errors
+	// Returns information about the node errors.
+	ListEventGatewayNodeErrors(ctx context.Context, gatewayID string, eventGatewayNodeID string, opts ...operations.Option) (*operations.ListEventGatewayNodeErrorsResponse, error)
 }

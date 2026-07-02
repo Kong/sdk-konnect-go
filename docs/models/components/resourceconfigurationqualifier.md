@@ -10,6 +10,9 @@ import (
 )
 
 value := components.ResourceConfigurationQualifierDataPlaneGroupIdleTimeoutMinutes
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.ResourceConfigurationQualifier("custom_value")
 ```
 
 
@@ -18,3 +21,4 @@ value := components.ResourceConfigurationQualifierDataPlaneGroupIdleTimeoutMinut
 | Name                                                             | Value                                                            |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `ResourceConfigurationQualifierDataPlaneGroupIdleTimeoutMinutes` | data-plane-group-idle-timeout-minutes                            |
+| `ResourceConfigurationQualifierAutoPilotBaseRpsMaxValue`         | auto-pilot-base-rps-max-value                                    |

@@ -1,0 +1,15 @@
+# CatalogIntegrationPullRequestProvider
+
+Defines how an integration behaves as a source provider of Catalog Service Pull Requests.
+Pull Requests are entities that can be attached to Catalog Services via an integration's Resource mapping.
+When an integration implements this capability, it can act as a source type for Pull Request data.
+In this role, the integration becomes the source of truth for the pull request data.
+When a pull request is attached to a Catalog Service using this source type, the platform relies on the external system to provide and update the pull request data.
+A null value indicates the given integration does not act as a source provider of pull requests.
+
+
+
+## Fields
+
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

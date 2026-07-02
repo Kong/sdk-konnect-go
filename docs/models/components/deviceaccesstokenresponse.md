@@ -1,0 +1,14 @@
+# DeviceAccessTokenResponse
+
+Device access token response
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `AccessToken`                                                                                        | `string`                                                                                             | :heavy_check_mark:                                                                                   | The access token issued by the authorization server.                                                 |
+| `TokenType`                                                                                          | `string`                                                                                             | :heavy_check_mark:                                                                                   | The type of the token issued.                                                                        |
+| `ExpiresIn`                                                                                          | `int64`                                                                                              | :heavy_check_mark:                                                                                   | The lifetime in seconds of the access token.                                                         |
+| `RefreshToken`                                                                                       | `*string`                                                                                            | :heavy_minus_sign:                                                                                   | The refresh token, which can be used to obtain new access tokens using the same authorization grant. |
+| `Scope`                                                                                              | `*string`                                                                                            | :heavy_minus_sign:                                                                                   | The scope of the access token.                                                                       |

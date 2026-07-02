@@ -4,7 +4,116 @@
 
 ### Available Operations
 
+* [RefreshToken](#refreshtoken) - Refresh Token
+* [Logout](#logout) - Log Out
 * [AuthenticateSso](#authenticatesso) - SSO Callback
+
+## RefreshToken
+
+Issues new tokens. Returns 401 if a) the user is no longer active, b) the token has exceeded its lifetime limit, or c) the token has been revoked.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="refresh-token" method="post" path="/v3/refresh" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Authentication.RefreshToken(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.RefreshTokenResponse](../../models/operations/refreshtokenresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## Logout
+
+Clears the auth cookies.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="logout" method="post" path="/v3/logout" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Authentication.Logout(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.LogoutResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.LogoutResponse](../../models/operations/logoutresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## AuthenticateSso
 

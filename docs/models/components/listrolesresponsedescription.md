@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.ListRolesResponseDescriptionAPIConsumersCanMakeCallsToTheGivenService
+value := components.ListRolesResponseDescriptionAPIViewersHaveReadOnlyAccessToTheDocumentationOfAServiceInAPortal
 ```
 
 
 ## Values
 
-| Name                                                                    | Value                                                                   |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `ListRolesResponseDescriptionAPIConsumersCanMakeCallsToTheGivenService` | API Consumers can make calls to the given service                       |
+| Name                                                                                            | Value                                                                                           |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `ListRolesResponseDescriptionAPIViewersHaveReadOnlyAccessToTheDocumentationOfAServiceInAPortal` | API Viewers have read-only access to the documentation of a service in a portal                 |

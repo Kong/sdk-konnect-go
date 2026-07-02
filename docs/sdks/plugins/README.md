@@ -9,6 +9,32 @@ When adding a plugin configuration to a service, the plugin will run on every re
 
 ### Available Operations
 
+* [SearchPlugin](#searchplugin) - Search for Plugins
+* [ListPluginWithConsumerGroupInWorkspace](#listpluginwithconsumergroupinworkspace) - List all Plugins associated with a Consumer Group in a workspace
+* [CreatePluginWithConsumerGroupInWorkspace](#createpluginwithconsumergroupinworkspace) - Create a new Plugin associated with a Consumer Group in a workspace
+* [DeletePluginWithConsumerGroupInWorkspace](#deletepluginwithconsumergroupinworkspace) - Delete a a Plugin associated with a Consumer Group in a workspace
+* [GetPluginWithConsumerGroupInWorkspace](#getpluginwithconsumergroupinworkspace) - Get a Plugin associated with a Consumer Group in a workspace
+* [UpsertPluginWithConsumerGroupInWorkspace](#upsertpluginwithconsumergroupinworkspace) - Upsert a Plugin associated with a Consumer Group in a workspace
+* [ListPluginWithConsumerInWorkspace](#listpluginwithconsumerinworkspace) - List all Plugins associated with a Consumer in a workspace
+* [CreatePluginWithConsumerInWorkspace](#createpluginwithconsumerinworkspace) - Create a new Plugin associated with a Consumer in a workspace
+* [DeletePluginWithConsumerInWorkspace](#deletepluginwithconsumerinworkspace) - Delete a a Plugin associated with a Consumer in a workspace
+* [GetPluginWithConsumerInWorkspace](#getpluginwithconsumerinworkspace) - Get a Plugin associated with a Consumer in a workspace
+* [UpsertPluginWithConsumerInWorkspace](#upsertpluginwithconsumerinworkspace) - Upsert a Plugin associated with a Consumer in a workspace
+* [ListPluginInWorkspace](#listplugininworkspace) - List all Plugins in a workspace
+* [CreatePluginInWorkspace](#createplugininworkspace) - Create a new Plugin in a workspace
+* [DeletePluginInWorkspace](#deleteplugininworkspace) - Delete a Plugin in a workspace
+* [GetPluginInWorkspace](#getplugininworkspace) - Get a Plugin in a workspace
+* [UpsertPluginInWorkspace](#upsertplugininworkspace) - Upsert a Plugin in a workspace
+* [ListPluginWithRouteInWorkspace](#listpluginwithrouteinworkspace) - List all Plugins associated with a Route in a workspace
+* [CreatePluginWithRouteInWorkspace](#createpluginwithrouteinworkspace) - Create a new Plugin associated with a Route in a workspace
+* [DeletePluginWithRouteInWorkspace](#deletepluginwithrouteinworkspace) - Delete a a Plugin associated with a Route in a workspace
+* [GetPluginWithRouteInWorkspace](#getpluginwithrouteinworkspace) - Get a Plugin associated with a Route in a workspace
+* [UpsertPluginWithRouteInWorkspace](#upsertpluginwithrouteinworkspace) - Upsert a Plugin associated with a Route in a workspace
+* [ListPluginWithServiceInWorkspace](#listpluginwithserviceinworkspace) - List all Plugins associated with a Service in a workspace
+* [CreatePluginWithServiceInWorkspace](#createpluginwithserviceinworkspace) - Create a new Plugin associated with a Service in a workspace
+* [DeletePluginWithServiceInWorkspace](#deletepluginwithserviceinworkspace) - Delete a a Plugin associated with a Service in a workspace
+* [GetPluginWithServiceInWorkspace](#getpluginwithserviceinworkspace) - Get a Plugin associated with a Service in a workspace
+* [UpsertPluginWithServiceInWorkspace](#upsertpluginwithserviceinworkspace) - Upsert a Plugin associated with a Service in a workspace
 * [ListPluginWithConsumerGroup](#listpluginwithconsumergroup) - List all Plugins associated with a Consumer Group
 * [CreatePluginWithConsumerGroup](#createpluginwithconsumergroup) - Create a new Plugin associated with a Consumer Group
 * [DeletePluginWithConsumerGroup](#deletepluginwithconsumergroup) - Delete a a Plugin associated with a Consumer Group
@@ -35,6 +61,1890 @@ When adding a plugin configuration to a service, the plugin will run on every re
 * [DeletePluginWithService](#deletepluginwithservice) - Delete a a Plugin associated with a Service
 * [GetPluginWithService](#getpluginwithservice) - Get a Plugin associated with a Service
 * [UpsertPluginWithService](#upsertpluginwithservice) - Upsert a Plugin associated with a Service
+
+## SearchPlugin
+
+Search for Plugins
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="search-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/search" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.SearchPlugin(ctx, operations.SearchPluginRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
+| `request`                                                                        | [operations.SearchPluginRequest](../../models/operations/searchpluginrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |
+
+### Response
+
+**[*operations.SearchPluginResponse](../../models/operations/searchpluginresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## ListPluginWithConsumerGroupInWorkspace
+
+List all Plugins associated with a Consumer Group in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-plugin-with-consumer_group-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.ListPluginWithConsumerGroupInWorkspace(ctx, operations.ListPluginWithConsumerGroupInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerGroupID: "",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                            | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                                | :heavy_check_mark:                                                                                                                   | The context to use for the request.                                                                                                  |
+| `request`                                                                                                                            | [operations.ListPluginWithConsumerGroupInWorkspaceRequest](../../models/operations/listpluginwithconsumergroupinworkspacerequest.md) | :heavy_check_mark:                                                                                                                   | The request object to use for the request.                                                                                           |
+| `opts`                                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                                             | :heavy_minus_sign:                                                                                                                   | The options for this request.                                                                                                        |
+
+### Response
+
+**[*operations.ListPluginWithConsumerGroupInWorkspaceResponse](../../models/operations/listpluginwithconsumergroupinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## CreatePluginWithConsumerGroupInWorkspace
+
+Create a new Plugin associated with a Consumer Group in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-plugin-with-consumer_group-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.CreatePluginWithConsumerGroupInWorkspace(ctx, operations.CreatePluginWithConsumerGroupInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerGroupID: "",
+        Workspace: "team-payments",
+        PluginWithoutParents: components.PluginWithoutParents{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.PluginWithoutParentsPartials{
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.PluginWithoutParentsProtocols{
+                components.PluginWithoutParentsProtocolsGrpc,
+                components.PluginWithoutParentsProtocolsGrpcs,
+                components.PluginWithoutParentsProtocolsHTTP,
+                components.PluginWithoutParentsProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                    | :heavy_check_mark:                                                                                                                       | The context to use for the request.                                                                                                      |
+| `request`                                                                                                                                | [operations.CreatePluginWithConsumerGroupInWorkspaceRequest](../../models/operations/createpluginwithconsumergroupinworkspacerequest.md) | :heavy_check_mark:                                                                                                                       | The request object to use for the request.                                                                                               |
+| `opts`                                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                                 | :heavy_minus_sign:                                                                                                                       | The options for this request.                                                                                                            |
+
+### Response
+
+**[*operations.CreatePluginWithConsumerGroupInWorkspaceResponse](../../models/operations/createpluginwithconsumergroupinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## DeletePluginWithConsumerGroupInWorkspace
+
+Delete a a Plugin associated with a Consumer Group using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-consumer_group-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.DeletePluginWithConsumerGroupInWorkspace(ctx, operations.DeletePluginWithConsumerGroupInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerGroupID: "",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                    | :heavy_check_mark:                                                                                                                       | The context to use for the request.                                                                                                      |
+| `request`                                                                                                                                | [operations.DeletePluginWithConsumerGroupInWorkspaceRequest](../../models/operations/deletepluginwithconsumergroupinworkspacerequest.md) | :heavy_check_mark:                                                                                                                       | The request object to use for the request.                                                                                               |
+| `opts`                                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                                 | :heavy_minus_sign:                                                                                                                       | The options for this request.                                                                                                            |
+
+### Response
+
+**[*operations.DeletePluginWithConsumerGroupInWorkspaceResponse](../../models/operations/deletepluginwithconsumergroupinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## GetPluginWithConsumerGroupInWorkspace
+
+Get a Plugin associated with a Consumer Group using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-plugin-with-consumer_group-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.GetPluginWithConsumerGroupInWorkspace(ctx, operations.GetPluginWithConsumerGroupInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerGroupID: "",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                              | :heavy_check_mark:                                                                                                                 | The context to use for the request.                                                                                                |
+| `request`                                                                                                                          | [operations.GetPluginWithConsumerGroupInWorkspaceRequest](../../models/operations/getpluginwithconsumergroupinworkspacerequest.md) | :heavy_check_mark:                                                                                                                 | The request object to use for the request.                                                                                         |
+| `opts`                                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                                           | :heavy_minus_sign:                                                                                                                 | The options for this request.                                                                                                      |
+
+### Response
+
+**[*operations.GetPluginWithConsumerGroupInWorkspaceResponse](../../models/operations/getpluginwithconsumergroupinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## UpsertPluginWithConsumerGroupInWorkspace
+
+Create or Update a Plugin associated with a Consumer Group using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-consumer_group-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.UpsertPluginWithConsumerGroupInWorkspace(ctx, operations.UpsertPluginWithConsumerGroupInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerGroupID: "",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+        PluginWithoutParents: components.PluginWithoutParents{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.PluginWithoutParentsPartials{
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.PluginWithoutParentsProtocols{
+                components.PluginWithoutParentsProtocolsGrpc,
+                components.PluginWithoutParentsProtocolsGrpcs,
+                components.PluginWithoutParentsProtocolsHTTP,
+                components.PluginWithoutParentsProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                    | :heavy_check_mark:                                                                                                                       | The context to use for the request.                                                                                                      |
+| `request`                                                                                                                                | [operations.UpsertPluginWithConsumerGroupInWorkspaceRequest](../../models/operations/upsertpluginwithconsumergroupinworkspacerequest.md) | :heavy_check_mark:                                                                                                                       | The request object to use for the request.                                                                                               |
+| `opts`                                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                                 | :heavy_minus_sign:                                                                                                                       | The options for this request.                                                                                                            |
+
+### Response
+
+**[*operations.UpsertPluginWithConsumerGroupInWorkspaceResponse](../../models/operations/upsertpluginwithconsumergroupinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ListPluginWithConsumerInWorkspace
+
+List all Plugins associated with a Consumer in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-plugin-with-consumer-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.ListPluginWithConsumerInWorkspace(ctx, operations.ListPluginWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                                      | :heavy_check_mark:                                                                                                         | The context to use for the request.                                                                                        |
+| `request`                                                                                                                  | [operations.ListPluginWithConsumerInWorkspaceRequest](../../models/operations/listpluginwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
+| `opts`                                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                                   | :heavy_minus_sign:                                                                                                         | The options for this request.                                                                                              |
+
+### Response
+
+**[*operations.ListPluginWithConsumerInWorkspaceResponse](../../models/operations/listpluginwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## CreatePluginWithConsumerInWorkspace
+
+Create a new Plugin associated with a Consumer in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-plugin-with-consumer-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.CreatePluginWithConsumerInWorkspace(ctx, operations.CreatePluginWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        Workspace: "team-payments",
+        PluginWithoutParents: components.PluginWithoutParents{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.PluginWithoutParentsPartials{
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.PluginWithoutParentsProtocols{
+                components.PluginWithoutParentsProtocolsGrpc,
+                components.PluginWithoutParentsProtocolsGrpcs,
+                components.PluginWithoutParentsProtocolsHTTP,
+                components.PluginWithoutParentsProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
+| `request`                                                                                                                      | [operations.CreatePluginWithConsumerInWorkspaceRequest](../../models/operations/createpluginwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
+
+### Response
+
+**[*operations.CreatePluginWithConsumerInWorkspaceResponse](../../models/operations/createpluginwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## DeletePluginWithConsumerInWorkspace
+
+Delete a a Plugin associated with a Consumer using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-consumer-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.DeletePluginWithConsumerInWorkspace(ctx, operations.DeletePluginWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
+| `request`                                                                                                                      | [operations.DeletePluginWithConsumerInWorkspaceRequest](../../models/operations/deletepluginwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
+
+### Response
+
+**[*operations.DeletePluginWithConsumerInWorkspaceResponse](../../models/operations/deletepluginwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## GetPluginWithConsumerInWorkspace
+
+Get a Plugin associated with a Consumer using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-plugin-with-consumer-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.GetPluginWithConsumerInWorkspace(ctx, operations.GetPluginWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `request`                                                                                                                | [operations.GetPluginWithConsumerInWorkspaceRequest](../../models/operations/getpluginwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |
+
+### Response
+
+**[*operations.GetPluginWithConsumerInWorkspaceResponse](../../models/operations/getpluginwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## UpsertPluginWithConsumerInWorkspace
+
+Create or Update a Plugin associated with a Consumer using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-consumer-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.UpsertPluginWithConsumerInWorkspace(ctx, operations.UpsertPluginWithConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerIDForNestedEntities: "",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+        PluginWithoutParents: components.PluginWithoutParents{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.PluginWithoutParentsPartials{
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.PluginWithoutParentsProtocols{
+                components.PluginWithoutParentsProtocolsGrpc,
+                components.PluginWithoutParentsProtocolsGrpcs,
+                components.PluginWithoutParentsProtocolsHTTP,
+                components.PluginWithoutParentsProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
+| `request`                                                                                                                      | [operations.UpsertPluginWithConsumerInWorkspaceRequest](../../models/operations/upsertpluginwithconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
+
+### Response
+
+**[*operations.UpsertPluginWithConsumerInWorkspaceResponse](../../models/operations/upsertpluginwithconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ListPluginInWorkspace
+
+List all Plugins in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-plugin-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.ListPluginInWorkspace(ctx, operations.ListPluginInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
+| `request`                                                                                          | [operations.ListPluginInWorkspaceRequest](../../models/operations/listplugininworkspacerequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `opts`                                                                                             | [][operations.Option](../../models/operations/option.md)                                           | :heavy_minus_sign:                                                                                 | The options for this request.                                                                      |
+
+### Response
+
+**[*operations.ListPluginInWorkspaceResponse](../../models/operations/listplugininworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## CreatePluginInWorkspace
+
+Create a new Plugin in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-plugin-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.CreatePluginInWorkspace(ctx, operations.CreatePluginInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Plugin: components.Plugin{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.Partials{
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.Protocols{
+                components.ProtocolsGrpc,
+                components.ProtocolsGrpcs,
+                components.ProtocolsHTTP,
+                components.ProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |
+| `request`                                                                                              | [operations.CreatePluginInWorkspaceRequest](../../models/operations/createplugininworkspacerequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `opts`                                                                                                 | [][operations.Option](../../models/operations/option.md)                                               | :heavy_minus_sign:                                                                                     | The options for this request.                                                                          |
+
+### Response
+
+**[*operations.CreatePluginInWorkspaceResponse](../../models/operations/createplugininworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## DeletePluginInWorkspace
+
+Delete a Plugin in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-plugin-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.DeletePluginInWorkspace(ctx, operations.DeletePluginInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |
+| `request`                                                                                              | [operations.DeletePluginInWorkspaceRequest](../../models/operations/deleteplugininworkspacerequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `opts`                                                                                                 | [][operations.Option](../../models/operations/option.md)                                               | :heavy_minus_sign:                                                                                     | The options for this request.                                                                          |
+
+### Response
+
+**[*operations.DeletePluginInWorkspaceResponse](../../models/operations/deleteplugininworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## GetPluginInWorkspace
+
+Get a Plugin using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-plugin-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.GetPluginInWorkspace(ctx, operations.GetPluginInWorkspaceRequest{
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
+| `request`                                                                                        | [operations.GetPluginInWorkspaceRequest](../../models/operations/getplugininworkspacerequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |
+
+### Response
+
+**[*operations.GetPluginInWorkspaceResponse](../../models/operations/getplugininworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## UpsertPluginInWorkspace
+
+Create or Update Plugin using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-plugin-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.UpsertPluginInWorkspace(ctx, operations.UpsertPluginInWorkspaceRequest{
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Plugin: components.Plugin{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.Partials{
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.Protocols{
+                components.ProtocolsGrpc,
+                components.ProtocolsGrpcs,
+                components.ProtocolsHTTP,
+                components.ProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |
+| `request`                                                                                              | [operations.UpsertPluginInWorkspaceRequest](../../models/operations/upsertplugininworkspacerequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `opts`                                                                                                 | [][operations.Option](../../models/operations/option.md)                                               | :heavy_minus_sign:                                                                                     | The options for this request.                                                                          |
+
+### Response
+
+**[*operations.UpsertPluginInWorkspaceResponse](../../models/operations/upsertplugininworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## ListPluginWithRouteInWorkspace
+
+List all Plugins associated with a Route in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-plugin-with-route-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.ListPluginWithRouteInWorkspace(ctx, operations.ListPluginWithRouteInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.ListPluginWithRouteInWorkspaceRequest](../../models/operations/listpluginwithrouteinworkspacerequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.ListPluginWithRouteInWorkspaceResponse](../../models/operations/listpluginwithrouteinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## CreatePluginWithRouteInWorkspace
+
+Create a new Plugin associated with a Route in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-plugin-with-route-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.CreatePluginWithRouteInWorkspace(ctx, operations.CreatePluginWithRouteInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        Workspace: "team-payments",
+        PluginWithoutParents: components.PluginWithoutParents{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.PluginWithoutParentsPartials{
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.PluginWithoutParentsProtocols{
+                components.PluginWithoutParentsProtocolsGrpc,
+                components.PluginWithoutParentsProtocolsGrpcs,
+                components.PluginWithoutParentsProtocolsHTTP,
+                components.PluginWithoutParentsProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `request`                                                                                                                | [operations.CreatePluginWithRouteInWorkspaceRequest](../../models/operations/createpluginwithrouteinworkspacerequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |
+
+### Response
+
+**[*operations.CreatePluginWithRouteInWorkspaceResponse](../../models/operations/createpluginwithrouteinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## DeletePluginWithRouteInWorkspace
+
+Delete a a Plugin associated with a Route using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-route-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.DeletePluginWithRouteInWorkspace(ctx, operations.DeletePluginWithRouteInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `request`                                                                                                                | [operations.DeletePluginWithRouteInWorkspaceRequest](../../models/operations/deletepluginwithrouteinworkspacerequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |
+
+### Response
+
+**[*operations.DeletePluginWithRouteInWorkspaceResponse](../../models/operations/deletepluginwithrouteinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## GetPluginWithRouteInWorkspace
+
+Get a Plugin associated with a Route using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-plugin-with-route-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.GetPluginWithRouteInWorkspace(ctx, operations.GetPluginWithRouteInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                              | :heavy_check_mark:                                                                                                 | The context to use for the request.                                                                                |
+| `request`                                                                                                          | [operations.GetPluginWithRouteInWorkspaceRequest](../../models/operations/getpluginwithrouteinworkspacerequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
+| `opts`                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                           | :heavy_minus_sign:                                                                                                 | The options for this request.                                                                                      |
+
+### Response
+
+**[*operations.GetPluginWithRouteInWorkspaceResponse](../../models/operations/getpluginwithrouteinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## UpsertPluginWithRouteInWorkspace
+
+Create or Update a Plugin associated with a Route using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-route-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.UpsertPluginWithRouteInWorkspace(ctx, operations.UpsertPluginWithRouteInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+        PluginWithoutParents: components.PluginWithoutParents{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.PluginWithoutParentsPartials{
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.PluginWithoutParentsProtocols{
+                components.PluginWithoutParentsProtocolsGrpc,
+                components.PluginWithoutParentsProtocolsGrpcs,
+                components.PluginWithoutParentsProtocolsHTTP,
+                components.PluginWithoutParentsProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `request`                                                                                                                | [operations.UpsertPluginWithRouteInWorkspaceRequest](../../models/operations/upsertpluginwithrouteinworkspacerequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |
+
+### Response
+
+**[*operations.UpsertPluginWithRouteInWorkspaceResponse](../../models/operations/upsertpluginwithrouteinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ListPluginWithServiceInWorkspace
+
+List all Plugins associated with a Service in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-plugin-with-service-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.ListPluginWithServiceInWorkspace(ctx, operations.ListPluginWithServiceInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `request`                                                                                                                | [operations.ListPluginWithServiceInWorkspaceRequest](../../models/operations/listpluginwithserviceinworkspacerequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |
+
+### Response
+
+**[*operations.ListPluginWithServiceInWorkspaceResponse](../../models/operations/listpluginwithserviceinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## CreatePluginWithServiceInWorkspace
+
+Create a new Plugin associated with a Service in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-plugin-with-service-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.CreatePluginWithServiceInWorkspace(ctx, operations.CreatePluginWithServiceInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        Workspace: "team-payments",
+        PluginWithoutParents: components.PluginWithoutParents{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.PluginWithoutParentsPartials{
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.PluginWithoutParentsProtocols{
+                components.PluginWithoutParentsProtocolsGrpc,
+                components.PluginWithoutParentsProtocolsGrpcs,
+                components.PluginWithoutParentsProtocolsHTTP,
+                components.PluginWithoutParentsProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
+| `request`                                                                                                                    | [operations.CreatePluginWithServiceInWorkspaceRequest](../../models/operations/createpluginwithserviceinworkspacerequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+| `opts`                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                     | :heavy_minus_sign:                                                                                                           | The options for this request.                                                                                                |
+
+### Response
+
+**[*operations.CreatePluginWithServiceInWorkspaceResponse](../../models/operations/createpluginwithserviceinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## DeletePluginWithServiceInWorkspace
+
+Delete a a Plugin associated with a Service using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-service-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.DeletePluginWithServiceInWorkspace(ctx, operations.DeletePluginWithServiceInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
+| `request`                                                                                                                    | [operations.DeletePluginWithServiceInWorkspaceRequest](../../models/operations/deletepluginwithserviceinworkspacerequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+| `opts`                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                     | :heavy_minus_sign:                                                                                                           | The options for this request.                                                                                                |
+
+### Response
+
+**[*operations.DeletePluginWithServiceInWorkspaceResponse](../../models/operations/deletepluginwithserviceinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## GetPluginWithServiceInWorkspace
+
+Get a Plugin associated with a Service using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-plugin-with-service-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.GetPluginWithServiceInWorkspace(ctx, operations.GetPluginWithServiceInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.GetPluginWithServiceInWorkspaceRequest](../../models/operations/getpluginwithserviceinworkspacerequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                               | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
+
+### Response
+
+**[*operations.GetPluginWithServiceInWorkspaceResponse](../../models/operations/getpluginwithserviceinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## UpsertPluginWithServiceInWorkspace
+
+Create or Update a Plugin associated with a Service using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-service-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins/{PluginId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.UpsertPluginWithServiceInWorkspace(ctx, operations.UpsertPluginWithServiceInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+        PluginWithoutParents: components.PluginWithoutParents{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.PluginWithoutParentsPartials{
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.PluginWithoutParentsPartials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.PluginWithoutParentsProtocols{
+                components.PluginWithoutParentsProtocolsGrpc,
+                components.PluginWithoutParentsProtocolsGrpcs,
+                components.PluginWithoutParentsProtocolsHTTP,
+                components.PluginWithoutParentsProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
+| `request`                                                                                                                    | [operations.UpsertPluginWithServiceInWorkspaceRequest](../../models/operations/upsertpluginwithserviceinworkspacerequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+| `opts`                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                     | :heavy_minus_sign:                                                                                                           | The options for this request.                                                                                                |
+
+### Response
+
+**[*operations.UpsertPluginWithServiceInWorkspaceResponse](../../models/operations/upsertpluginwithserviceinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ListPluginWithConsumerGroup
 

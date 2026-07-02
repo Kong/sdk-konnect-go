@@ -39,6 +39,89 @@ func (_m *MockMCPServersSDK) EXPECT() *MockMCPServersSDK_Expecter {
 	return &MockMCPServersSDK_Expecter{mock: &_m.Mock}
 }
 
+// CreateMcpResource provides a mock function for the type MockMCPServersSDK
+func (_mock *MockMCPServersSDK) CreateMcpResource(ctx context.Context, request components.MCPResourceInput, opts ...operations.Option) (*operations.CreateMcpResourceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateMcpResource")
+	}
+
+	var r0 *operations.CreateMcpResourceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.MCPResourceInput, ...operations.Option) (*operations.CreateMcpResourceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.MCPResourceInput, ...operations.Option) *operations.CreateMcpResourceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateMcpResourceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.MCPResourceInput, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMCPServersSDK_CreateMcpResource_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateMcpResource'
+type MockMCPServersSDK_CreateMcpResource_Call struct {
+	*mock.Call
+}
+
+// CreateMcpResource is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request components.MCPResourceInput
+//   - opts ...operations.Option
+func (_e *MockMCPServersSDK_Expecter) CreateMcpResource(ctx any, request any, opts ...any) *MockMCPServersSDK_CreateMcpResource_Call {
+	return &MockMCPServersSDK_CreateMcpResource_Call{Call: _e.mock.On("CreateMcpResource",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMCPServersSDK_CreateMcpResource_Call) Run(run func(ctx context.Context, request components.MCPResourceInput, opts ...operations.Option)) *MockMCPServersSDK_CreateMcpResource_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 components.MCPResourceInput
+		if args[1] != nil {
+			arg1 = args[1].(components.MCPResourceInput)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMCPServersSDK_CreateMcpResource_Call) Return(createMcpResourceResponse *operations.CreateMcpResourceResponse, err error) *MockMCPServersSDK_CreateMcpResource_Call {
+	_c.Call.Return(createMcpResourceResponse, err)
+	return _c
+}
+
+func (_c *MockMCPServersSDK_CreateMcpResource_Call) RunAndReturn(run func(ctx context.Context, request components.MCPResourceInput, opts ...operations.Option) (*operations.CreateMcpResourceResponse, error)) *MockMCPServersSDK_CreateMcpResource_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // CreateMcpServerConfig provides a mock function for the type MockMCPServersSDK
 func (_mock *MockMCPServersSDK) CreateMcpServerConfig(ctx context.Context, request components.CreateMCPServerRequest, opts ...operations.Option) (*operations.CreateMcpServerConfigResponse, error) {
 	var tmpRet mock.Arguments
@@ -122,6 +205,89 @@ func (_c *MockMCPServersSDK_CreateMcpServerConfig_Call) RunAndReturn(run func(ct
 	return _c
 }
 
+// DeleteMcpResource provides a mock function for the type MockMCPServersSDK
+func (_mock *MockMCPServersSDK) DeleteMcpResource(ctx context.Context, resourceID string, opts ...operations.Option) (*operations.DeleteMcpResourceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, resourceID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, resourceID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteMcpResource")
+	}
+
+	var r0 *operations.DeleteMcpResourceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteMcpResourceResponse, error)); ok {
+		return returnFunc(ctx, resourceID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteMcpResourceResponse); ok {
+		r0 = returnFunc(ctx, resourceID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteMcpResourceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, resourceID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMCPServersSDK_DeleteMcpResource_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteMcpResource'
+type MockMCPServersSDK_DeleteMcpResource_Call struct {
+	*mock.Call
+}
+
+// DeleteMcpResource is a helper method to define mock.On call
+//   - ctx context.Context
+//   - resourceID string
+//   - opts ...operations.Option
+func (_e *MockMCPServersSDK_Expecter) DeleteMcpResource(ctx any, resourceID any, opts ...any) *MockMCPServersSDK_DeleteMcpResource_Call {
+	return &MockMCPServersSDK_DeleteMcpResource_Call{Call: _e.mock.On("DeleteMcpResource",
+		append([]any{ctx, resourceID}, opts...)...)}
+}
+
+func (_c *MockMCPServersSDK_DeleteMcpResource_Call) Run(run func(ctx context.Context, resourceID string, opts ...operations.Option)) *MockMCPServersSDK_DeleteMcpResource_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMCPServersSDK_DeleteMcpResource_Call) Return(deleteMcpResourceResponse *operations.DeleteMcpResourceResponse, err error) *MockMCPServersSDK_DeleteMcpResource_Call {
+	_c.Call.Return(deleteMcpResourceResponse, err)
+	return _c
+}
+
+func (_c *MockMCPServersSDK_DeleteMcpResource_Call) RunAndReturn(run func(ctx context.Context, resourceID string, opts ...operations.Option) (*operations.DeleteMcpResourceResponse, error)) *MockMCPServersSDK_DeleteMcpResource_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteMcpServerConfig provides a mock function for the type MockMCPServersSDK
 func (_mock *MockMCPServersSDK) DeleteMcpServerConfig(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.DeleteMcpServerConfigResponse, error) {
 	var tmpRet mock.Arguments
@@ -201,6 +367,89 @@ func (_c *MockMCPServersSDK_DeleteMcpServerConfig_Call) Return(deleteMcpServerCo
 }
 
 func (_c *MockMCPServersSDK_DeleteMcpServerConfig_Call) RunAndReturn(run func(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.DeleteMcpServerConfigResponse, error)) *MockMCPServersSDK_DeleteMcpServerConfig_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetMcpResource provides a mock function for the type MockMCPServersSDK
+func (_mock *MockMCPServersSDK) GetMcpResource(ctx context.Context, resourceID string, opts ...operations.Option) (*operations.GetMcpResourceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, resourceID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, resourceID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetMcpResource")
+	}
+
+	var r0 *operations.GetMcpResourceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetMcpResourceResponse, error)); ok {
+		return returnFunc(ctx, resourceID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetMcpResourceResponse); ok {
+		r0 = returnFunc(ctx, resourceID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetMcpResourceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, resourceID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMCPServersSDK_GetMcpResource_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMcpResource'
+type MockMCPServersSDK_GetMcpResource_Call struct {
+	*mock.Call
+}
+
+// GetMcpResource is a helper method to define mock.On call
+//   - ctx context.Context
+//   - resourceID string
+//   - opts ...operations.Option
+func (_e *MockMCPServersSDK_Expecter) GetMcpResource(ctx any, resourceID any, opts ...any) *MockMCPServersSDK_GetMcpResource_Call {
+	return &MockMCPServersSDK_GetMcpResource_Call{Call: _e.mock.On("GetMcpResource",
+		append([]any{ctx, resourceID}, opts...)...)}
+}
+
+func (_c *MockMCPServersSDK_GetMcpResource_Call) Run(run func(ctx context.Context, resourceID string, opts ...operations.Option)) *MockMCPServersSDK_GetMcpResource_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMCPServersSDK_GetMcpResource_Call) Return(getMcpResourceResponse *operations.GetMcpResourceResponse, err error) *MockMCPServersSDK_GetMcpResource_Call {
+	_c.Call.Return(getMcpResourceResponse, err)
+	return _c
+}
+
+func (_c *MockMCPServersSDK_GetMcpResource_Call) RunAndReturn(run func(ctx context.Context, resourceID string, opts ...operations.Option) (*operations.GetMcpResourceResponse, error)) *MockMCPServersSDK_GetMcpResource_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -466,6 +715,89 @@ func (_c *MockMCPServersSDK_GetMcpServerConfig_Call) RunAndReturn(run func(ctx c
 	return _c
 }
 
+// GetMcpServerGeneratedCode provides a mock function for the type MockMCPServersSDK
+func (_mock *MockMCPServersSDK) GetMcpServerGeneratedCode(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerGeneratedCodeResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, mcpServerID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, mcpServerID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetMcpServerGeneratedCode")
+	}
+
+	var r0 *operations.GetMcpServerGeneratedCodeResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetMcpServerGeneratedCodeResponse, error)); ok {
+		return returnFunc(ctx, mcpServerID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetMcpServerGeneratedCodeResponse); ok {
+		r0 = returnFunc(ctx, mcpServerID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetMcpServerGeneratedCodeResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, mcpServerID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMCPServersSDK_GetMcpServerGeneratedCode_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetMcpServerGeneratedCode'
+type MockMCPServersSDK_GetMcpServerGeneratedCode_Call struct {
+	*mock.Call
+}
+
+// GetMcpServerGeneratedCode is a helper method to define mock.On call
+//   - ctx context.Context
+//   - mcpServerID string
+//   - opts ...operations.Option
+func (_e *MockMCPServersSDK_Expecter) GetMcpServerGeneratedCode(ctx any, mcpServerID any, opts ...any) *MockMCPServersSDK_GetMcpServerGeneratedCode_Call {
+	return &MockMCPServersSDK_GetMcpServerGeneratedCode_Call{Call: _e.mock.On("GetMcpServerGeneratedCode",
+		append([]any{ctx, mcpServerID}, opts...)...)}
+}
+
+func (_c *MockMCPServersSDK_GetMcpServerGeneratedCode_Call) Run(run func(ctx context.Context, mcpServerID string, opts ...operations.Option)) *MockMCPServersSDK_GetMcpServerGeneratedCode_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMCPServersSDK_GetMcpServerGeneratedCode_Call) Return(getMcpServerGeneratedCodeResponse *operations.GetMcpServerGeneratedCodeResponse, err error) *MockMCPServersSDK_GetMcpServerGeneratedCode_Call {
+	_c.Call.Return(getMcpServerGeneratedCodeResponse, err)
+	return _c
+}
+
+func (_c *MockMCPServersSDK_GetMcpServerGeneratedCode_Call) RunAndReturn(run func(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerGeneratedCodeResponse, error)) *MockMCPServersSDK_GetMcpServerGeneratedCode_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetMcpServerKongEntities provides a mock function for the type MockMCPServersSDK
 func (_mock *MockMCPServersSDK) GetMcpServerKongEntities(ctx context.Context, request operations.GetMcpServerKongEntitiesRequest, opts ...operations.Option) (*operations.GetMcpServerKongEntitiesResponse, error) {
 	var tmpRet mock.Arguments
@@ -717,6 +1049,89 @@ func (_c *MockMCPServersSDK_GetMcpServerStatus_Call) Return(getMcpServerStatusRe
 }
 
 func (_c *MockMCPServersSDK_GetMcpServerStatus_Call) RunAndReturn(run func(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerStatusResponse, error)) *MockMCPServersSDK_GetMcpServerStatus_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListMcpResources provides a mock function for the type MockMCPServersSDK
+func (_mock *MockMCPServersSDK) ListMcpResources(ctx context.Context, request operations.ListMcpResourcesRequest, opts ...operations.Option) (*operations.ListMcpResourcesResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListMcpResources")
+	}
+
+	var r0 *operations.ListMcpResourcesResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListMcpResourcesRequest, ...operations.Option) (*operations.ListMcpResourcesResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListMcpResourcesRequest, ...operations.Option) *operations.ListMcpResourcesResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListMcpResourcesResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListMcpResourcesRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMCPServersSDK_ListMcpResources_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListMcpResources'
+type MockMCPServersSDK_ListMcpResources_Call struct {
+	*mock.Call
+}
+
+// ListMcpResources is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListMcpResourcesRequest
+//   - opts ...operations.Option
+func (_e *MockMCPServersSDK_Expecter) ListMcpResources(ctx any, request any, opts ...any) *MockMCPServersSDK_ListMcpResources_Call {
+	return &MockMCPServersSDK_ListMcpResources_Call{Call: _e.mock.On("ListMcpResources",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockMCPServersSDK_ListMcpResources_Call) Run(run func(ctx context.Context, request operations.ListMcpResourcesRequest, opts ...operations.Option)) *MockMCPServersSDK_ListMcpResources_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListMcpResourcesRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListMcpResourcesRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMCPServersSDK_ListMcpResources_Call) Return(listMcpResourcesResponse *operations.ListMcpResourcesResponse, err error) *MockMCPServersSDK_ListMcpResources_Call {
+	_c.Call.Return(listMcpResourcesResponse, err)
+	return _c
+}
+
+func (_c *MockMCPServersSDK_ListMcpResources_Call) RunAndReturn(run func(ctx context.Context, request operations.ListMcpResourcesRequest, opts ...operations.Option) (*operations.ListMcpResourcesResponse, error)) *MockMCPServersSDK_ListMcpResources_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1059,13 +1474,102 @@ func (_c *MockMCPServersSDK_PostMcpServerStatus_Call) RunAndReturn(run func(ctx 
 	return _c
 }
 
-// UpdateMcpServerConfig provides a mock function for the type MockMCPServersSDK
-func (_mock *MockMCPServersSDK) UpdateMcpServerConfig(ctx context.Context, mcpServerID string, updateMCPServerRequest components.UpdateMCPServerRequest, opts ...operations.Option) (*operations.UpdateMcpServerConfigResponse, error) {
+// UpdateMcpResource provides a mock function for the type MockMCPServersSDK
+func (_mock *MockMCPServersSDK) UpdateMcpResource(ctx context.Context, resourceID string, mcpResourceInput components.MCPResourceInput, opts ...operations.Option) (*operations.UpdateMcpResourceResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, mcpServerID, updateMCPServerRequest, opts)
+		tmpRet = _mock.Called(ctx, resourceID, mcpResourceInput, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, mcpServerID, updateMCPServerRequest)
+		tmpRet = _mock.Called(ctx, resourceID, mcpResourceInput)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateMcpResource")
+	}
+
+	var r0 *operations.UpdateMcpResourceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.MCPResourceInput, ...operations.Option) (*operations.UpdateMcpResourceResponse, error)); ok {
+		return returnFunc(ctx, resourceID, mcpResourceInput, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.MCPResourceInput, ...operations.Option) *operations.UpdateMcpResourceResponse); ok {
+		r0 = returnFunc(ctx, resourceID, mcpResourceInput, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateMcpResourceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.MCPResourceInput, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, resourceID, mcpResourceInput, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMCPServersSDK_UpdateMcpResource_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateMcpResource'
+type MockMCPServersSDK_UpdateMcpResource_Call struct {
+	*mock.Call
+}
+
+// UpdateMcpResource is a helper method to define mock.On call
+//   - ctx context.Context
+//   - resourceID string
+//   - mcpResourceInput components.MCPResourceInput
+//   - opts ...operations.Option
+func (_e *MockMCPServersSDK_Expecter) UpdateMcpResource(ctx any, resourceID any, mcpResourceInput any, opts ...any) *MockMCPServersSDK_UpdateMcpResource_Call {
+	return &MockMCPServersSDK_UpdateMcpResource_Call{Call: _e.mock.On("UpdateMcpResource",
+		append([]any{ctx, resourceID, mcpResourceInput}, opts...)...)}
+}
+
+func (_c *MockMCPServersSDK_UpdateMcpResource_Call) Run(run func(ctx context.Context, resourceID string, mcpResourceInput components.MCPResourceInput, opts ...operations.Option)) *MockMCPServersSDK_UpdateMcpResource_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.MCPResourceInput
+		if args[2] != nil {
+			arg2 = args[2].(components.MCPResourceInput)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMCPServersSDK_UpdateMcpResource_Call) Return(updateMcpResourceResponse *operations.UpdateMcpResourceResponse, err error) *MockMCPServersSDK_UpdateMcpResource_Call {
+	_c.Call.Return(updateMcpResourceResponse, err)
+	return _c
+}
+
+func (_c *MockMCPServersSDK_UpdateMcpResource_Call) RunAndReturn(run func(ctx context.Context, resourceID string, mcpResourceInput components.MCPResourceInput, opts ...operations.Option) (*operations.UpdateMcpResourceResponse, error)) *MockMCPServersSDK_UpdateMcpResource_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateMcpServerConfig provides a mock function for the type MockMCPServersSDK
+func (_mock *MockMCPServersSDK) UpdateMcpServerConfig(ctx context.Context, mcpServerID string, createMCPServerRequest components.CreateMCPServerRequest, opts ...operations.Option) (*operations.UpdateMcpServerConfigResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, mcpServerID, createMCPServerRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, mcpServerID, createMCPServerRequest)
 	}
 	ret := tmpRet
 
@@ -1075,18 +1579,18 @@ func (_mock *MockMCPServersSDK) UpdateMcpServerConfig(ctx context.Context, mcpSe
 
 	var r0 *operations.UpdateMcpServerConfigResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateMCPServerRequest, ...operations.Option) (*operations.UpdateMcpServerConfigResponse, error)); ok {
-		return returnFunc(ctx, mcpServerID, updateMCPServerRequest, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateMCPServerRequest, ...operations.Option) (*operations.UpdateMcpServerConfigResponse, error)); ok {
+		return returnFunc(ctx, mcpServerID, createMCPServerRequest, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateMCPServerRequest, ...operations.Option) *operations.UpdateMcpServerConfigResponse); ok {
-		r0 = returnFunc(ctx, mcpServerID, updateMCPServerRequest, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateMCPServerRequest, ...operations.Option) *operations.UpdateMcpServerConfigResponse); ok {
+		r0 = returnFunc(ctx, mcpServerID, createMCPServerRequest, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.UpdateMcpServerConfigResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpdateMCPServerRequest, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, mcpServerID, updateMCPServerRequest, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateMCPServerRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, mcpServerID, createMCPServerRequest, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -1101,14 +1605,14 @@ type MockMCPServersSDK_UpdateMcpServerConfig_Call struct {
 // UpdateMcpServerConfig is a helper method to define mock.On call
 //   - ctx context.Context
 //   - mcpServerID string
-//   - updateMCPServerRequest components.UpdateMCPServerRequest
+//   - createMCPServerRequest components.CreateMCPServerRequest
 //   - opts ...operations.Option
-func (_e *MockMCPServersSDK_Expecter) UpdateMcpServerConfig(ctx any, mcpServerID any, updateMCPServerRequest any, opts ...any) *MockMCPServersSDK_UpdateMcpServerConfig_Call {
+func (_e *MockMCPServersSDK_Expecter) UpdateMcpServerConfig(ctx any, mcpServerID any, createMCPServerRequest any, opts ...any) *MockMCPServersSDK_UpdateMcpServerConfig_Call {
 	return &MockMCPServersSDK_UpdateMcpServerConfig_Call{Call: _e.mock.On("UpdateMcpServerConfig",
-		append([]any{ctx, mcpServerID, updateMCPServerRequest}, opts...)...)}
+		append([]any{ctx, mcpServerID, createMCPServerRequest}, opts...)...)}
 }
 
-func (_c *MockMCPServersSDK_UpdateMcpServerConfig_Call) Run(run func(ctx context.Context, mcpServerID string, updateMCPServerRequest components.UpdateMCPServerRequest, opts ...operations.Option)) *MockMCPServersSDK_UpdateMcpServerConfig_Call {
+func (_c *MockMCPServersSDK_UpdateMcpServerConfig_Call) Run(run func(ctx context.Context, mcpServerID string, createMCPServerRequest components.CreateMCPServerRequest, opts ...operations.Option)) *MockMCPServersSDK_UpdateMcpServerConfig_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -1118,9 +1622,9 @@ func (_c *MockMCPServersSDK_UpdateMcpServerConfig_Call) Run(run func(ctx context
 		if args[1] != nil {
 			arg1 = args[1].(string)
 		}
-		var arg2 components.UpdateMCPServerRequest
+		var arg2 components.CreateMCPServerRequest
 		if args[2] != nil {
-			arg2 = args[2].(components.UpdateMCPServerRequest)
+			arg2 = args[2].(components.CreateMCPServerRequest)
 		}
 		var arg3 []operations.Option
 		var variadicArgs []operations.Option
@@ -1143,7 +1647,7 @@ func (_c *MockMCPServersSDK_UpdateMcpServerConfig_Call) Return(updateMcpServerCo
 	return _c
 }
 
-func (_c *MockMCPServersSDK_UpdateMcpServerConfig_Call) RunAndReturn(run func(ctx context.Context, mcpServerID string, updateMCPServerRequest components.UpdateMCPServerRequest, opts ...operations.Option) (*operations.UpdateMcpServerConfigResponse, error)) *MockMCPServersSDK_UpdateMcpServerConfig_Call {
+func (_c *MockMCPServersSDK_UpdateMcpServerConfig_Call) RunAndReturn(run func(ctx context.Context, mcpServerID string, createMCPServerRequest components.CreateMCPServerRequest, opts ...operations.Option) (*operations.UpdateMcpServerConfigResponse, error)) *MockMCPServersSDK_UpdateMcpServerConfig_Call {
 	_c.Call.Return(run)
 	return _c
 }

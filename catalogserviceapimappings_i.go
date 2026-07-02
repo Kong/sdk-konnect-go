@@ -11,9 +11,6 @@ import (
 
 // CatalogServiceAPIMappingsSDK is a generated interface.
 type CatalogServiceAPIMappingsSDK interface {
-	// ListServiceMappingsForAPI - List Service Mappings for an API
-	// Returns a paginated collection of Service mappings for the given API.
-	ListServiceMappingsForAPI(ctx context.Context, request operations.ListServiceMappingsForAPIRequest, opts ...operations.Option) (*operations.ListServiceMappingsForAPIResponse, error)
 	// ListCatalogServiceAPIMappings - List API Mappings for a Service
 	// Returns a paginated collection of API mappings for the given service.
 	ListCatalogServiceAPIMappings(ctx context.Context, request operations.ListCatalogServiceAPIMappingsRequest, opts ...operations.Option) (*operations.ListCatalogServiceAPIMappingsResponse, error)
@@ -26,4 +23,7 @@ type CatalogServiceAPIMappingsSDK interface {
 	// DeleteCatalogServiceAPIMapping - Delete API Mapping for a Service
 	// Deletes a specific API mapping for the given service.
 	DeleteCatalogServiceAPIMapping(ctx context.Context, serviceID string, mappingID string, opts ...operations.Option) (*operations.DeleteCatalogServiceAPIMappingResponse, error)
+	// ListServiceMappingsForAPI - List Service Mappings for an API
+	// Returns a paginated collection of Service mappings for the given API.
+	ListServiceMappingsForAPI(ctx context.Context, request operations.ListServiceMappingsForAPIRequest, opts ...operations.Option) (*operations.ListServiceMappingsForAPIResponse, error)
 }

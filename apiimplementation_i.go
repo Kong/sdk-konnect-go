@@ -11,9 +11,6 @@ import (
 
 // APIImplementationSDK is a generated interface.
 type APIImplementationSDK interface {
-	// ListAPIImplementations - List API Implementations
-	// List gateway implementations for this API
-	ListAPIImplementations(ctx context.Context, request operations.ListAPIImplementationsRequest, opts ...operations.Option) (*operations.ListAPIImplementationsResponse, error)
 	// CreateAPIImplementation - Create API Implementation
 	// Creates an implementation for an API.
 	// If all operations in an API are implemented by a single gateway service and the service
@@ -28,4 +25,7 @@ type APIImplementationSDK interface {
 	// DeleteAPIImplementation - Delete API Implementation
 	// Unlink a gateway implementation from this API
 	DeleteAPIImplementation(ctx context.Context, apiID string, implementationID string, opts ...operations.Option) (*operations.DeleteAPIImplementationResponse, error)
+	// ListAPIImplementations - List API Implementations
+	// List gateway implementations for this API
+	ListAPIImplementations(ctx context.Context, request operations.ListAPIImplementationsRequest, opts ...operations.Option) (*operations.ListAPIImplementationsResponse, error)
 }

@@ -11,11 +11,329 @@ If intermediate certificates are required in addition to the main certificate, t
 
 ### Available Operations
 
+* [ListCertificateInWorkspace](#listcertificateinworkspace) - List all Certificates in a workspace
+* [CreateCertificateInWorkspace](#createcertificateinworkspace) - Create a new Certificate in a workspace
+* [DeleteCertificateInWorkspace](#deletecertificateinworkspace) - Delete a Certificate in a workspace
+* [GetCertificateInWorkspace](#getcertificateinworkspace) - Get a Certificate in a workspace
+* [UpsertCertificateInWorkspace](#upsertcertificateinworkspace) - Upsert a Certificate in a workspace
 * [ListCertificate](#listcertificate) - List all Certificates
 * [CreateCertificate](#createcertificate) - Create a new Certificate
 * [DeleteCertificate](#deletecertificate) - Delete a Certificate
 * [GetCertificate](#getcertificate) - Get a Certificate
 * [UpsertCertificate](#upsertcertificate) - Upsert a Certificate
+
+## ListCertificateInWorkspace
+
+List all Certificates in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-certificate-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Certificates.ListCertificateInWorkspace(ctx, operations.ListCertificateInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
+| `request`                                                                                                    | [operations.ListCertificateInWorkspaceRequest](../../models/operations/listcertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
+
+### Response
+
+**[*operations.ListCertificateInWorkspaceResponse](../../models/operations/listcertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## CreateCertificateInWorkspace
+
+Create a new Certificate in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-certificate-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Certificates.CreateCertificateInWorkspace(ctx, operations.CreateCertificateInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        CertificateRequest: components.CreateCertificateRequestCertificateRequest2(
+            components.CertificateRequest2{
+                Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+                ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+                Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Certificate != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.CreateCertificateInWorkspaceRequest](../../models/operations/createcertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.CreateCertificateInWorkspaceResponse](../../models/operations/createcertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## DeleteCertificateInWorkspace
+
+Delete a Certificate in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-certificate-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Certificates.DeleteCertificateInWorkspace(ctx, operations.DeleteCertificateInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.DeleteCertificateInWorkspaceRequest](../../models/operations/deletecertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.DeleteCertificateInWorkspaceResponse](../../models/operations/deletecertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## GetCertificateInWorkspace
+
+Get a Certificate using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-certificate-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Certificates.GetCertificateInWorkspace(ctx, operations.GetCertificateInWorkspaceRequest{
+        CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Certificate != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.GetCertificateInWorkspaceRequest](../../models/operations/getcertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
+
+### Response
+
+**[*operations.GetCertificateInWorkspaceResponse](../../models/operations/getcertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## UpsertCertificateInWorkspace
+
+Create or Update Certificate using ID in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-certificate-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Certificates.UpsertCertificateInWorkspace(ctx, operations.UpsertCertificateInWorkspaceRequest{
+        CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        CertificateRequest: components.CreateCertificateRequestCertificateRequest2(
+            components.CertificateRequest2{
+                Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+                ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+                Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Certificate != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.UpsertCertificateInWorkspaceRequest](../../models/operations/upsertcertificateinworkspacerequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.UpsertCertificateInWorkspaceResponse](../../models/operations/upsertcertificateinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
 
 ## ListCertificate
 

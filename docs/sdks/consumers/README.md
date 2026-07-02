@@ -8,6 +8,15 @@ You can either rely on Kong Gateway as the primary datastore, or you can map the
 
 ### Available Operations
 
+* [ListConsumerInWorkspace](#listconsumerinworkspace) - List all Consumers in a workspace
+* [CreateConsumerInWorkspace](#createconsumerinworkspace) - Create a new Consumer in a workspace
+* [DeleteConsumerInWorkspace](#deleteconsumerinworkspace) - Delete a Consumer in a workspace
+* [GetConsumerInWorkspace](#getconsumerinworkspace) - Get a Consumer in a workspace
+* [UpsertConsumerInWorkspace](#upsertconsumerinworkspace) - Upsert a Consumer in a workspace
+* [RemoveConsumerFromAllConsumerGroupsInWorkspace](#removeconsumerfromallconsumergroupsinworkspace) - Remove consumer from all consumer groups in a workspace
+* [ListConsumerGroupsForConsumerInWorkspace](#listconsumergroupsforconsumerinworkspace) - List all Consumer Groups a Consumer belongs to in a workspace
+* [AddConsumerToSpecificConsumerGroupInWorkspace](#addconsumertospecificconsumergroupinworkspace) - Add consumer to a specific consumer group in a workspace
+* [RemoveConsumerFromConsumerGroupInWorkspace](#removeconsumerfromconsumergroupinworkspace) - Remove consumer from consumer group in a workspace
 * [ListConsumer](#listconsumer) - List all Consumers
 * [CreateConsumer](#createconsumer) - Create a new Consumer
 * [DeleteConsumer](#deleteconsumer) - Delete a Consumer
@@ -17,6 +26,562 @@ You can either rely on Kong Gateway as the primary datastore, or you can map the
 * [ListConsumerGroupsForConsumer](#listconsumergroupsforconsumer) - List all Consumer Groups a Consumer belongs to
 * [AddConsumerToSpecificConsumerGroup](#addconsumertospecificconsumergroup) - Add consumer to a specific consumer group
 * [RemoveConsumerFromConsumerGroup](#removeconsumerfromconsumergroup) - Remove consumer from consumer group
+
+## ListConsumerInWorkspace
+
+List all Consumers in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-consumer-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.ListConsumerInWorkspace(ctx, operations.ListConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |
+| `request`                                                                                              | [operations.ListConsumerInWorkspaceRequest](../../models/operations/listconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `opts`                                                                                                 | [][operations.Option](../../models/operations/option.md)                                               | :heavy_minus_sign:                                                                                     | The options for this request.                                                                          |
+
+### Response
+
+**[*operations.ListConsumerInWorkspaceResponse](../../models/operations/listconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## CreateConsumerInWorkspace
+
+Create a new Consumer in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-consumer-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.CreateConsumerInWorkspace(ctx, operations.CreateConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Consumer: components.Consumer{
+            CustomID: sdkkonnectgo.Pointer("4200"),
+            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
+            Tags: []string{
+                "silver-tier",
+            },
+            Username: sdkkonnectgo.Pointer("bob-the-builder"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Consumer != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.CreateConsumerInWorkspaceRequest](../../models/operations/createconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
+
+### Response
+
+**[*operations.CreateConsumerInWorkspaceResponse](../../models/operations/createconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## DeleteConsumerInWorkspace
+
+Delete a Consumer in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-consumer-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.DeleteConsumerInWorkspace(ctx, operations.DeleteConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.DeleteConsumerInWorkspaceRequest](../../models/operations/deleteconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
+
+### Response
+
+**[*operations.DeleteConsumerInWorkspaceResponse](../../models/operations/deleteconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## GetConsumerInWorkspace
+
+Get a Consumer using ID or username in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-consumer-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.GetConsumerInWorkspace(ctx, operations.GetConsumerInWorkspaceRequest{
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Consumer != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.GetConsumerInWorkspaceRequest](../../models/operations/getconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
+
+### Response
+
+**[*operations.GetConsumerInWorkspaceResponse](../../models/operations/getconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## UpsertConsumerInWorkspace
+
+Create or Update Consumer using ID or username in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="upsert-consumer-in-workspace" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.UpsertConsumerInWorkspace(ctx, operations.UpsertConsumerInWorkspaceRequest{
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Consumer: components.Consumer{
+            CustomID: sdkkonnectgo.Pointer("4200"),
+            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
+            Tags: []string{
+                "silver-tier",
+            },
+            Username: sdkkonnectgo.Pointer("bob-the-builder"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Consumer != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.UpsertConsumerInWorkspaceRequest](../../models/operations/upsertconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
+
+### Response
+
+**[*operations.UpsertConsumerInWorkspaceResponse](../../models/operations/upsertconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
+| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## RemoveConsumerFromAllConsumerGroupsInWorkspace
+
+Removes a consumer from all Consumer Groups. This operation does not delete the consumer group in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="remove-consumer-from-all-consumer-groups-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.RemoveConsumerFromAllConsumerGroupsInWorkspace(ctx, operations.RemoveConsumerFromAllConsumerGroupsInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                            | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                                                | :heavy_check_mark:                                                                                                                                   | The context to use for the request.                                                                                                                  |
+| `request`                                                                                                                                            | [operations.RemoveConsumerFromAllConsumerGroupsInWorkspaceRequest](../../models/operations/removeconsumerfromallconsumergroupsinworkspacerequest.md) | :heavy_check_mark:                                                                                                                                   | The request object to use for the request.                                                                                                           |
+| `opts`                                                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                                                             | :heavy_minus_sign:                                                                                                                                   | The options for this request.                                                                                                                        |
+
+### Response
+
+**[*operations.RemoveConsumerFromAllConsumerGroupsInWorkspaceResponse](../../models/operations/removeconsumerfromallconsumergroupsinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ListConsumerGroupsForConsumerInWorkspace
+
+List all Consumer Groups a Consumer belongs to in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-consumer-groups-for-consumer-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.ListConsumerGroupsForConsumerInWorkspace(ctx, operations.ListConsumerGroupsForConsumerInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                    | :heavy_check_mark:                                                                                                                       | The context to use for the request.                                                                                                      |
+| `request`                                                                                                                                | [operations.ListConsumerGroupsForConsumerInWorkspaceRequest](../../models/operations/listconsumergroupsforconsumerinworkspacerequest.md) | :heavy_check_mark:                                                                                                                       | The request object to use for the request.                                                                                               |
+| `opts`                                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                                 | :heavy_minus_sign:                                                                                                                       | The options for this request.                                                                                                            |
+
+### Response
+
+**[*operations.ListConsumerGroupsForConsumerInWorkspaceResponse](../../models/operations/listconsumergroupsforconsumerinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## AddConsumerToSpecificConsumerGroupInWorkspace
+
+Add a consumer to a consumer group in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="add-consumer-to-specific-consumer-group-in-workspace" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.AddConsumerToSpecificConsumerGroupInWorkspace(ctx, operations.AddConsumerToSpecificConsumerGroupInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        Workspace: "team-payments",
+        RequestBody: &operations.AddConsumerToSpecificConsumerGroupInWorkspaceRequestBody{
+            Group: sdkkonnectgo.Pointer("fedee695-2ae2-4e45-877a-776d9b2fc793"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                                              | :heavy_check_mark:                                                                                                                                 | The context to use for the request.                                                                                                                |
+| `request`                                                                                                                                          | [operations.AddConsumerToSpecificConsumerGroupInWorkspaceRequest](../../models/operations/addconsumertospecificconsumergroupinworkspacerequest.md) | :heavy_check_mark:                                                                                                                                 | The request object to use for the request.                                                                                                         |
+| `opts`                                                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                                                           | :heavy_minus_sign:                                                                                                                                 | The options for this request.                                                                                                                      |
+
+### Response
+
+**[*operations.AddConsumerToSpecificConsumerGroupInWorkspaceResponse](../../models/operations/addconsumertospecificconsumergroupinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## RemoveConsumerFromConsumerGroupInWorkspace
+
+Removes a consumer from a Consumer Group. This operation does not delete the consumer group in a workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="remove-consumer-from-consumer-group-in-workspace" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.RemoveConsumerFromConsumerGroupInWorkspace(ctx, operations.RemoveConsumerFromConsumerGroupInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        ConsumerGroupID: "",
+        Workspace: "team-payments",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                    | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                                        | :heavy_check_mark:                                                                                                                           | The context to use for the request.                                                                                                          |
+| `request`                                                                                                                                    | [operations.RemoveConsumerFromConsumerGroupInWorkspaceRequest](../../models/operations/removeconsumerfromconsumergroupinworkspacerequest.md) | :heavy_check_mark:                                                                                                                           | The request object to use for the request.                                                                                                   |
+| `opts`                                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                                     | :heavy_minus_sign:                                                                                                                           | The options for this request.                                                                                                                |
+
+### Response
+
+**[*operations.RemoveConsumerFromConsumerGroupInWorkspaceResponse](../../models/operations/removeconsumerfromconsumergroupinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ListConsumer
 

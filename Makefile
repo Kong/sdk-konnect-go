@@ -79,6 +79,8 @@ generate.deepcopy: controller-gen
 		models/components/createcontrolplanerequest.go
 	$(SED) -i 's#\(type CreateNetworkRequest struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/createnetworkrequest.go
+	$(SED) -i 's#\(type NetworkFirewallConfig struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/networkfirewallconfig.go
 	$(SED) -i 's#\(type RouteWithoutParents struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routewithoutparents.go
 	$(SED) -i 's#\(type RouteWithoutParentsDestinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
@@ -99,14 +101,10 @@ generate.deepcopy: controller-gen
 		models/components/route.go
 	$(SED) -i 's#\(type Destinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routejson.go
-	$(SED) -i 's#\(type RouteJSON struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
-		models/components/routejson.go
 	$(SED) -i 's#\(type RouteJSONService struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routejson.go
 	$(SED) -i 's#\(type Sources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routejson.go
-	$(SED) -i 's#\(type RouteExpression struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
-		models/components/routeexpression.go
 	$(SED) -i 's#\(type RouteExpressionService struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routeexpression.go
 	$(SED) -i 's#\(type UpstreamClientCertificate struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
@@ -136,6 +134,8 @@ generate.deepcopy: controller-gen
 		$(shell git ls-files docs/models/components/route*.md) \
 		$(shell git ls-files models/components/create*.go) \
 		$(shell git ls-files docs/models/components/create*.md) \
+		$(shell git ls-files models/components/network*.go) \
+		$(shell git ls-files docs/models/components/network*.md) \
 		$(shell git ls-files models/components/upstream*.go) \
 		$(shell git ls-files docs/models/components/upstream*.md) \
 		$(shell git ls-files docs/models/components/healthchecks*.md)

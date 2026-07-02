@@ -11,9 +11,6 @@ import (
 
 // APIPackageSpecificationSDK is a generated interface.
 type APIPackageSpecificationSDK interface {
-	// GetAPIPackageComputedSpecification - Get the API package computed specification
-	// Fetches the computed specification of an API Package.
-	GetAPIPackageComputedSpecification(ctx context.Context, packageID string, opts ...operations.Option) (*operations.GetAPIPackageComputedSpecificationResponse, error)
 	// UpdateAPIPackageCurrentSpecification - Update API package current specification
 	// Updates the current specification of an API package.
 	UpdateAPIPackageCurrentSpecification(ctx context.Context, packageID string, apiSpec components.APISpec, opts ...operations.Option) (*operations.UpdateAPIPackageCurrentSpecificationResponse, error)
@@ -23,4 +20,7 @@ type APIPackageSpecificationSDK interface {
 	// DeleteAPIPackageCurrentSpecification - Delete API Package current Specification
 	// Deletes the current specification of an API Package.
 	DeleteAPIPackageCurrentSpecification(ctx context.Context, packageID string, opts ...operations.Option) (*operations.DeleteAPIPackageCurrentSpecificationResponse, error)
+	// GetAPIPackageComputedSpecification - Get the API package computed specification
+	// Fetches the computed specification of an API Package.
+	GetAPIPackageComputedSpecification(ctx context.Context, packageID string, opts ...operations.Option) (*operations.GetAPIPackageComputedSpecificationResponse, error)
 }

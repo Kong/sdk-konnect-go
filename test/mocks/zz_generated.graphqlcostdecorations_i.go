@@ -121,6 +121,89 @@ func (_c *MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWit
 	return _c
 }
 
+// CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace provides a mock function for the type MockGraphQLCostDecorationsSDK
+func (_mock *MockGraphQLCostDecorationsSDK) CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace")
+	}
+
+	var r0 *operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) (*operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) *operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace'
+type MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockGraphQLCostDecorationsSDK_Expecter) CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx any, request any, opts ...any) *MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	return &MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call{Call: _e.mock.On("CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Return(createGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse *operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err error) *MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Return(createGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)) *MockGraphQLCostDecorationsSDK_CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteGraphqlRateLimitingAdvancedCostWithService provides a mock function for the type MockGraphQLCostDecorationsSDK
 func (_mock *MockGraphQLCostDecorationsSDK) DeleteGraphqlRateLimitingAdvancedCostWithService(ctx context.Context, request operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceResponse, error) {
 	var tmpRet mock.Arguments
@@ -200,6 +283,89 @@ func (_c *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWit
 }
 
 func (_c *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithService_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceResponse, error)) *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithService_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace provides a mock function for the type MockGraphQLCostDecorationsSDK
+func (_mock *MockGraphQLCostDecorationsSDK) DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace")
+	}
+
+	var r0 *operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) (*operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) *operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace'
+type MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockGraphQLCostDecorationsSDK_Expecter) DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx any, request any, opts ...any) *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	return &MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call{Call: _e.mock.On("DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Return(deleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse *operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err error) *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Return(deleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)) *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -293,6 +459,89 @@ func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call)
 	return _c
 }
 
+// GetGraphqlRateLimitingAdvancedCostInWorkspace provides a mock function for the type MockGraphQLCostDecorationsSDK
+func (_mock *MockGraphQLCostDecorationsSDK) GetGraphqlRateLimitingAdvancedCostInWorkspace(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGraphqlRateLimitingAdvancedCostInWorkspace")
+	}
+
+	var r0 *operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest, ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest, ...operations.Option) *operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGraphqlRateLimitingAdvancedCostInWorkspace'
+type MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetGraphqlRateLimitingAdvancedCostInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockGraphQLCostDecorationsSDK_Expecter) GetGraphqlRateLimitingAdvancedCostInWorkspace(ctx any, request any, opts ...any) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call {
+	return &MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call{Call: _e.mock.On("GetGraphqlRateLimitingAdvancedCostInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest, opts ...operations.Option)) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call) Return(getGraphqlRateLimitingAdvancedCostInWorkspaceResponse *operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceResponse, err error) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call {
+	_c.Call.Return(getGraphqlRateLimitingAdvancedCostInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceResponse, error)) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetGraphqlRateLimitingAdvancedCostWithService provides a mock function for the type MockGraphQLCostDecorationsSDK
 func (_mock *MockGraphQLCostDecorationsSDK) GetGraphqlRateLimitingAdvancedCostWithService(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostWithServiceResponse, error) {
 	var tmpRet mock.Arguments
@@ -372,6 +621,89 @@ func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithSe
 }
 
 func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithService_Call) RunAndReturn(run func(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostWithServiceResponse, error)) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithService_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace provides a mock function for the type MockGraphQLCostDecorationsSDK
+func (_mock *MockGraphQLCostDecorationsSDK) GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace")
+	}
+
+	var r0 *operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) *operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace'
+type MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockGraphQLCostDecorationsSDK_Expecter) GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx any, request any, opts ...any) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	return &MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call{Call: _e.mock.On("GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Return(getGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse *operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err error) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Return(getGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -459,6 +791,89 @@ func (_c *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCost_Call
 	return _c
 }
 
+// ListGraphqlRateLimitingAdvancedCostInWorkspace provides a mock function for the type MockGraphQLCostDecorationsSDK
+func (_mock *MockGraphQLCostDecorationsSDK) ListGraphqlRateLimitingAdvancedCostInWorkspace(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGraphqlRateLimitingAdvancedCostInWorkspace")
+	}
+
+	var r0 *operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest, ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest, ...operations.Option) *operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGraphqlRateLimitingAdvancedCostInWorkspace'
+type MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListGraphqlRateLimitingAdvancedCostInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockGraphQLCostDecorationsSDK_Expecter) ListGraphqlRateLimitingAdvancedCostInWorkspace(ctx any, request any, opts ...any) *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call {
+	return &MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call{Call: _e.mock.On("ListGraphqlRateLimitingAdvancedCostInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest, opts ...operations.Option)) *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call) Return(listGraphqlRateLimitingAdvancedCostInWorkspaceResponse *operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceResponse, err error) *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call {
+	_c.Call.Return(listGraphqlRateLimitingAdvancedCostInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceResponse, error)) *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListGraphqlRateLimitingAdvancedCostWithService provides a mock function for the type MockGraphQLCostDecorationsSDK
 func (_mock *MockGraphQLCostDecorationsSDK) ListGraphqlRateLimitingAdvancedCostWithService(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostWithServiceResponse, error) {
 	var tmpRet mock.Arguments
@@ -542,6 +957,89 @@ func (_c *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithS
 	return _c
 }
 
+// ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace provides a mock function for the type MockGraphQLCostDecorationsSDK
+func (_mock *MockGraphQLCostDecorationsSDK) ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace")
+	}
+
+	var r0 *operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) *operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace'
+type MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockGraphQLCostDecorationsSDK_Expecter) ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx any, request any, opts ...any) *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	return &MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call{Call: _e.mock.On("ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Return(listGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse *operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err error) *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Return(listGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)) *MockGraphQLCostDecorationsSDK_ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertGraphqlRateLimitingAdvancedCostWithService provides a mock function for the type MockGraphQLCostDecorationsSDK
 func (_mock *MockGraphQLCostDecorationsSDK) UpsertGraphqlRateLimitingAdvancedCostWithService(ctx context.Context, request operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceResponse, error) {
 	var tmpRet mock.Arguments
@@ -621,6 +1119,89 @@ func (_c *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWit
 }
 
 func (_c *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithService_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceResponse, error)) *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithService_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace provides a mock function for the type MockGraphQLCostDecorationsSDK
+func (_mock *MockGraphQLCostDecorationsSDK) UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace")
+	}
+
+	var r0 *operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) (*operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) *operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace'
+type MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call struct {
+	*mock.Call
+}
+
+// UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockGraphQLCostDecorationsSDK_Expecter) UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx any, request any, opts ...any) *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	return &MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call{Call: _e.mock.On("UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Run(run func(ctx context.Context, request operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option)) *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) Return(upsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse *operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err error) *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
+	_c.Call.Return(upsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)) *MockGraphQLCostDecorationsSDK_UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace_Call {
 	_c.Call.Return(run)
 	return _c
 }

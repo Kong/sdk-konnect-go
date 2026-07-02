@@ -15,9 +15,11 @@ func TestComponentsCertificateFieldTypes(t *testing.T) {
 	var _ string = value.Cert
 	var _ *string = value.CertAlt
 	var _ *int64 = value.CreatedAt
+	var _ *string = value.Description
 	var _ *string = value.ID
 	var _ string = value.Key
 	var _ *string = value.KeyAlt
+	var _ map[string]any = value.ManagedBy
 	var _ []string = value.Snis
 	var _ []string = value.Tags
 	var _ *int64 = value.UpdatedAt

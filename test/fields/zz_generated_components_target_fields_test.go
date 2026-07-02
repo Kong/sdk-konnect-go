@@ -13,8 +13,10 @@ func TestComponentsTargetFieldTypes(t *testing.T) {
 
 	var value components.Target
 	var _ *float64 = value.CreatedAt
+	var _ *string = value.Description
 	var _ *bool = value.Failover
 	var _ *string = value.ID
+	var _ map[string]any = value.ManagedBy
 	var _ []string = value.Tags
 	var _ *string = value.Target
 	var _ *float64 = value.UpdatedAt

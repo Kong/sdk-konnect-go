@@ -10,6 +10,27 @@ import (
 
 // GraphQLCostDecorationsSDK is a generated interface.
 type GraphQLCostDecorationsSDK interface {
+	// ListGraphqlRateLimitingAdvancedCostInWorkspace - List all GraphQL Cost Decorations in a workspace
+	// List all GraphQL Cost Decorations in a workspace
+	ListGraphqlRateLimitingAdvancedCostInWorkspace(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostInWorkspaceResponse, error)
+	// GetGraphqlRateLimitingAdvancedCostInWorkspace - Get a GraphQL Cost Decoration in a workspace
+	// Get a GraphQL Cost Decoration using ID in a workspace.
+	GetGraphqlRateLimitingAdvancedCostInWorkspace(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostInWorkspaceResponse, error)
+	// ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace - List all GraphQL Cost Decorations associated with a Service in a workspace
+	// List all GraphQL Cost Decorations associated with a Service in a workspace
+	ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)
+	// CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace - Create a new GraphQL Cost Decoration associated with a Service in a workspace
+	// Create a new GraphQL Cost Decoration associated with a Service in a workspace
+	CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)
+	// DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace - Delete a a GraphQL Cost Decoration associated with a Service in a workspace
+	// Delete a a GraphQL Cost Decoration associated with a Service using ID in a workspace.
+	DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)
+	// GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace - Get a GraphQL Cost Decoration associated with a Service in a workspace
+	// Get a GraphQL Cost Decoration associated with a Service using ID in a workspace.
+	GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)
+	// UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace - Upsert a GraphQL Cost Decoration associated with a Service in a workspace
+	// Create or Update a GraphQL Cost Decoration associated with a Service using ID in a workspace.
+	UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace(ctx context.Context, request operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceRequest, opts ...operations.Option) (*operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspaceResponse, error)
 	// ListGraphqlRateLimitingAdvancedCost - List all GraphQL Cost Decorations
 	// List all GraphQL Cost Decorations
 	ListGraphqlRateLimitingAdvancedCost(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostResponse, error)

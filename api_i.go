@@ -26,6 +26,9 @@ type APISDK interface {
 	// DeleteAPI - Delete API
 	// Deletes an API.
 	DeleteAPI(ctx context.Context, apiID string, opts ...operations.Option) (*operations.DeleteAPIResponse, error)
+	// ListApisComputed - List APIs computed
+	// Returns a collection of all APIs with computed fields.
+	ListApisComputed(ctx context.Context, request operations.ListApisComputedRequest, opts ...operations.Option) (*operations.ListApisComputedResponse, error)
 	// ListAPIRegistrations - List API Registrations
 	// Returns a paginated list of registrations for an API.
 	ListAPIRegistrations(ctx context.Context, request operations.ListAPIRegistrationsRequest, opts ...operations.Option) (*operations.ListAPIRegistrationsResponse, error)

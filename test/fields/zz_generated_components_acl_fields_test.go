@@ -14,7 +14,9 @@ func TestComponentsACLFieldTypes(t *testing.T) {
 	var value components.ACL
 	var _ *components.ACLConsumer = value.Consumer
 	var _ *int64 = value.CreatedAt
+	var _ *string = value.Description
 	var _ string = value.Group
 	var _ *string = value.ID
+	var _ map[string]any = value.ManagedBy
 	var _ []string = value.Tags
 }

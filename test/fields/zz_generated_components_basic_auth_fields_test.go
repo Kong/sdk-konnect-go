@@ -14,7 +14,9 @@ func TestComponentsBasicAuthFieldTypes(t *testing.T) {
 	var value components.BasicAuth
 	var _ *components.BasicAuthConsumer = value.Consumer
 	var _ *int64 = value.CreatedAt
+	var _ *string = value.Description
 	var _ *string = value.ID
+	var _ map[string]any = value.ManagedBy
 	var _ string = value.Password
 	var _ []string = value.Tags
 	var _ string = value.Username

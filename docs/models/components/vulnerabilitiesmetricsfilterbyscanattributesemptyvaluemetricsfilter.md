@@ -1,0 +1,9 @@
+# VulnerabilitiesMetricsFilterByScanAttributesEmptyValueMetricsFilter
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `Operator`                                                                                     | [components.MetricsFilterEmptyOperator](../../models/components/metricsfilteremptyoperator.md) | :heavy_check_mark:                                                                             | The type of filter to apply.<br/>Empty values are `null` or undefined.<br/>                    |
+| `Field`                                                                                        | `string`                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |

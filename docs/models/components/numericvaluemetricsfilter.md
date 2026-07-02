@@ -1,0 +1,10 @@
+# NumericValueMetricsFilter
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `Operator`                                                                                         | [components.MetricsFilterNumericOperator](../../models/components/metricsfilternumericoperator.md) | :heavy_check_mark:                                                                                 | The type of filter to apply to numeric field values.                                               |
+| `Value`                                                                                            | `float64`                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `Field`                                                                                            | `string`                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |

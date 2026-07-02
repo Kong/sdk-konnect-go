@@ -1,0 +1,18 @@
+# BillingInvoiceValidationIssue
+
+A validation issue found during invoice processing.
+
+Converges on the same structure used by plan and subscription validation errors:
+a machine-readable `code`, a human-readable `message`, optional structured
+`attributes`, plus a `severity` and optional `field` path.
+
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `Code`                                                                                                            | `string`                                                                                                          | :heavy_check_mark:                                                                                                | Machine-readable error code.                                                                                      |
+| `Message`                                                                                                         | `string`                                                                                                          | :heavy_check_mark:                                                                                                | Human-readable description of the error.                                                                          |
+| `Attributes`                                                                                                      | map[string]`any`                                                                                                  | :heavy_minus_sign:                                                                                                | Additional structured context.                                                                                    |
+| `Severity`                                                                                                        | [components.Severity](../../models/components/severity.md)                                                        | :heavy_check_mark:                                                                                                | Severity of the validation issue.                                                                                 |
+| `Field`                                                                                                           | `*string`                                                                                                         | :heavy_minus_sign:                                                                                                | JSON path to the field that caused this validation issue, if applicable.<br/><br/>For example: `lines/0/rate_card/price`. |

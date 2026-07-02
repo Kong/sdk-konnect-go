@@ -13,6 +13,9 @@ type ApplicationRegistrationsSDK interface {
 	// ListRegistrations - List Registrations by Portal
 	// Lists all of the application registrations and their current status (e.g., approved or pending) for this portal. Each registration is associated with a single API. Access is provided through the credentials issued to the application that contains each registration.
 	ListRegistrations(ctx context.Context, request operations.ListRegistrationsRequest, opts ...operations.Option) (*operations.ListRegistrationsResponse, error)
+	// CreateApplicationRegistration - Create Registration
+	// Creates a new registration for this application to access a specific API. Registrations created through the portal management API will respect the auto-approve settings of the portal and/or API publication. API publications that do not use auto-approve must be manually approved by an administrator after creation.
+	CreateApplicationRegistration(ctx context.Context, request operations.CreateApplicationRegistrationRequest, opts ...operations.Option) (*operations.CreateApplicationRegistrationResponse, error)
 	// ListRegistrationsByApplication - List Registrations by Application
 	// Lists each API that this application is registered for and their current status (e.g., pending, approved, rejected, revoked).
 	ListRegistrationsByApplication(ctx context.Context, request operations.ListRegistrationsByApplicationRequest, opts ...operations.Option) (*operations.ListRegistrationsByApplicationResponse, error)
@@ -26,4 +29,13 @@ type ApplicationRegistrationsSDK interface {
 	// Deletes an application registration, which if currently approved will immediately block API traffic to the API.
 	// Note: Developers can request a new application registration for the given API as long as they have RBAC access to consume.
 	DeleteApplicationRegistration(ctx context.Context, request operations.DeleteApplicationRegistrationRequest, opts ...operations.Option) (*operations.DeleteApplicationRegistrationResponse, error)
+	// UpdateApplicationRegistrationConsumer - Update application consumer mapping
+	// Associates an existing Gateway Consumer with the application in the Gateway context resolved from the specified registration.
+	// The consumer must already exist and be accessible within the API's Gateway context.
+	// If multiple registrations of the same application target APIs implemented in the same Gateway context, they share the same effective consumer mapping.
+	// Updating the consumer mapping for one registration updates the mapping for all registrations that resolve to the same Gateway context.
+	UpdateApplicationRegistrationConsumer(ctx context.Context, request operations.UpdateApplicationRegistrationConsumerRequest, opts ...operations.Option) (*operations.UpdateApplicationRegistrationConsumerResponse, error)
+	// DeleteApplicationRegistrationConsumer - Delete application consumer mapping
+	// Removes the Gateway Consumer mapping associated with the application in the Gateway context resolved from the specified registration.
+	DeleteApplicationRegistrationConsumer(ctx context.Context, request operations.DeleteApplicationRegistrationConsumerRequest, opts ...operations.Option) (*operations.DeleteApplicationRegistrationConsumerResponse, error)
 }
