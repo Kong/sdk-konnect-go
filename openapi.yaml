@@ -22273,6 +22273,11 @@ components:
             - 71.78.149.75
             - 91.149.112.244
             - 51.235.15.121
+        hostnames:
+          description: List of hostnames for proxying to the data-plane group.
+          type: array
+          items:
+            type: string
         created_at:
           description: An RFC-3339 timestamp representation of data-plane group creation date.
           type: string
