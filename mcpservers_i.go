@@ -35,21 +35,6 @@ type MCPServersSDK interface {
 	// GetMcpServerGeneratedCode - Get generated Python code for an MCP Server
 	// Generates MCP server Python code from the OpenAPI specifications associated with the MCP server.
 	GetMcpServerGeneratedCode(ctx context.Context, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerGeneratedCodeResponse, error)
-	// ListMcpResources - List MCP Resources
-	// Returns a list of MCP resource objects.
-	ListMcpResources(ctx context.Context, request operations.ListMcpResourcesRequest, opts ...operations.Option) (*operations.ListMcpResourcesResponse, error)
-	// CreateMcpResource - Create an MCP Resource
-	// Create an MCP resource in the Konnect Organization.
-	CreateMcpResource(ctx context.Context, request components.MCPResourceInput, opts ...operations.Option) (*operations.CreateMcpResourceResponse, error)
-	// GetMcpResource - Get an MCP Resource
-	// Retrieve an MCP resource by its ID.
-	GetMcpResource(ctx context.Context, resourceID string, opts ...operations.Option) (*operations.GetMcpResourceResponse, error)
-	// DeleteMcpResource - Delete an MCP Resource
-	// Delete an MCP resource by its ID.
-	DeleteMcpResource(ctx context.Context, resourceID string, opts ...operations.Option) (*operations.DeleteMcpResourceResponse, error)
-	// UpdateMcpResource - Update an MCP Resource
-	// Update an MCP resource by its ID.
-	UpdateMcpResource(ctx context.Context, resourceID string, mcpResourceInput components.MCPResourceInput, opts ...operations.Option) (*operations.UpdateMcpResourceResponse, error)
 	// GetMcpServerSignals - Get MCP Server Signals
 	// Client-initiated signals fetch with long-polling capabilities.
 	// The client supplies `capabilities` as a deepObject query parameter:

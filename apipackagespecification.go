@@ -67,7 +67,6 @@ func (s *APIPackageSpecification) UpdateAPIPackageCurrentSpecification(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-api-package-current-specification",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "APISpec", "json", `request:"mediaType=application/json"`)
@@ -409,7 +408,6 @@ func (s *APIPackageSpecification) GetAPIPackageCurrentSpecification(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-api-package-current-specification",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -702,7 +700,6 @@ func (s *APIPackageSpecification) DeleteAPIPackageCurrentSpecification(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-api-package-current-specification",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -955,7 +952,6 @@ func (s *APIPackageSpecification) GetAPIPackageComputedSpecification(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-api-package-computed-specification",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

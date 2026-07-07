@@ -187,59 +187,59 @@ func (c *ClusterNodes) GetPort() *int64 {
 	return c.Port
 }
 
-type PortType string
+type PartialRedisEePortType string
 
 const (
-	PortTypeInteger PortType = "integer"
-	PortTypeStr     PortType = "str"
+	PartialRedisEePortTypeInteger PartialRedisEePortType = "integer"
+	PartialRedisEePortTypeStr     PartialRedisEePortType = "str"
 )
 
-// Port - An integer representing a port number between 0 and 65535, inclusive.
-type Port struct {
+// PartialRedisEePort - An integer representing a port number between 0 and 65535, inclusive.
+type PartialRedisEePort struct {
 	Integer *int64  `queryParam:"inline" union:"member"`
 	Str     *string `queryParam:"inline" union:"member"`
 
-	Type PortType
+	Type PartialRedisEePortType
 }
 
-func CreatePortInteger(integer int64) Port {
-	typ := PortTypeInteger
+func CreatePartialRedisEePortInteger(integer int64) PartialRedisEePort {
+	typ := PartialRedisEePortTypeInteger
 
-	return Port{
+	return PartialRedisEePort{
 		Integer: &integer,
 		Type:    typ,
 	}
 }
 
-func CreatePortStr(str string) Port {
-	typ := PortTypeStr
+func CreatePartialRedisEePortStr(str string) PartialRedisEePort {
+	typ := PartialRedisEePortTypeStr
 
-	return Port{
+	return PartialRedisEePort{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func (u *Port) UnmarshalJSON(data []byte) error {
+func (u *PartialRedisEePort) UnmarshalJSON(data []byte) error {
 
 	var integer int64 = int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
 		u.Integer = &integer
-		u.Type = PortTypeInteger
+		u.Type = PartialRedisEePortTypeInteger
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = PortTypeStr
+		u.Type = PartialRedisEePortTypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Port", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PartialRedisEePort", string(data))
 }
 
-func (u Port) MarshalJSON() ([]byte, error) {
+func (u PartialRedisEePort) MarshalJSON() ([]byte, error) {
 	if u.Integer != nil {
 		return utils.MarshalJSON(u.Integer, "", true)
 	}
@@ -248,7 +248,7 @@ func (u Port) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Port: all fields are null")
+	return nil, errors.New("could not marshal union type PartialRedisEePort: all fields are null")
 }
 
 type SentinelNodes struct {
@@ -329,7 +329,7 @@ type PartialRedisEeConfig struct {
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
 	Password *string `json:"password,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *Port `json:"port,omitempty"`
+	Port *PartialRedisEePort `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
@@ -435,7 +435,7 @@ func (p *PartialRedisEeConfig) GetPassword() *string {
 	return p.Password
 }
 
-func (p *PartialRedisEeConfig) GetPort() *Port {
+func (p *PartialRedisEeConfig) GetPort() *PartialRedisEePort {
 	if p == nil {
 		return nil
 	}

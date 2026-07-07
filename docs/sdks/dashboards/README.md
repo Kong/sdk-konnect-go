@@ -116,14 +116,14 @@ func main() {
             Tiles: []components.Tile{},
             PresetFilters: []components.AllFilterItems{
                 components.AllFilterItems{
-                    Field: components.AllFilterItemsFieldControlPlane,
+                    Field: components.AllFilterItemsFieldA2aContextID,
                     Operator: components.AllFilterItemsOperatorIn,
                     Value: []any{
                         "00000000-0000-0000-0000-000000000000",
                     },
                 },
                 components.AllFilterItems{
-                    Field: components.AllFilterItemsFieldAiRequestModel,
+                    Field: components.AllFilterItemsFieldA2aContextID,
                     Operator: components.AllFilterItemsOperatorIn,
                     Value: []any{
                         "request_model1",
@@ -253,14 +253,14 @@ func main() {
             Tiles: []components.Tile{},
             PresetFilters: []components.AllFilterItems{
                 components.AllFilterItems{
-                    Field: components.AllFilterItemsFieldControlPlane,
+                    Field: components.AllFilterItemsFieldA2aContextID,
                     Operator: components.AllFilterItemsOperatorIn,
                     Value: []any{
                         "00000000-0000-0000-0000-000000000000",
                     },
                 },
                 components.AllFilterItems{
-                    Field: components.AllFilterItemsFieldAiRequestModel,
+                    Field: components.AllFilterItemsFieldA2aContextID,
                     Operator: components.AllFilterItemsOperatorIn,
                     Value: []any{
                         "request_model1",

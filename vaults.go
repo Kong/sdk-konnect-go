@@ -69,7 +69,6 @@ func (s *Vaults) ListVaultInWorkspace(ctx context.Context, request operations.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-vault-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -299,7 +298,6 @@ func (s *Vaults) CreateVaultInWorkspace(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-vault-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Vault", "json", `request:"mediaType=application/json"`)
@@ -532,7 +530,6 @@ func (s *Vaults) DeleteVaultInWorkspace(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-vault-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -739,7 +736,6 @@ func (s *Vaults) GetVaultInWorkspace(ctx context.Context, request operations.Get
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-vault-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -967,7 +963,6 @@ func (s *Vaults) UpsertVaultInWorkspace(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-vault-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Vault", "json", `request:"mediaType=application/json"`)
@@ -1200,7 +1195,6 @@ func (s *Vaults) ListVault(ctx context.Context, request operations.ListVaultRequ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-vault",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1435,7 +1429,6 @@ func (s *Vaults) CreateVault(ctx context.Context, controlPlaneID string, vault c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-vault",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Vault", "json", `request:"mediaType=application/json"`)
@@ -1673,7 +1666,6 @@ func (s *Vaults) DeleteVault(ctx context.Context, controlPlaneID string, vaultID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-vault",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1885,7 +1877,6 @@ func (s *Vaults) GetVault(ctx context.Context, vaultID string, controlPlaneID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-vault",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2113,7 +2104,6 @@ func (s *Vaults) UpsertVault(ctx context.Context, request operations.UpsertVault
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-vault",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Vault", "json", `request:"mediaType=application/json"`)

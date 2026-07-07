@@ -67,7 +67,6 @@ func (s *MCPResourceMappings) CreateMcpServerResourceMapping(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-mcp-server-resource-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateMCPServerMCPResourceMappingRequest", "json", `request:"mediaType=application/json"`)
@@ -384,7 +383,6 @@ func (s *MCPResourceMappings) ListMcpServerResourceMappings(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-mcp-server-resource-mappings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -682,7 +680,6 @@ func (s *MCPResourceMappings) DeleteMcpServerResourceMapping(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-mcp-server-resource-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -957,7 +954,6 @@ func (s *MCPResourceMappings) GetMcpServerResourceMapping(ctx context.Context, m
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-server-resource-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

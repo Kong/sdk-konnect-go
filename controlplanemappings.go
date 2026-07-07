@@ -62,7 +62,6 @@ func (s *ControlPlaneMappings) ListControlPlaneMappings(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-control-plane-mappings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -360,7 +359,6 @@ func (s *ControlPlaneMappings) CreateMcpServerControlPlaneMapping(ctx context.Co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-mcp-server-control-plane-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateMCPServerControlPlaneMappingRequest", "json", `request:"mediaType=application/json"`)
@@ -661,7 +659,6 @@ func (s *ControlPlaneMappings) GetControlPlaneMapping(ctx context.Context, mcpSe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-control-plane-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -955,7 +952,6 @@ func (s *ControlPlaneMappings) DeleteMcpServerControlPlaneMapping(ctx context.Co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-mcp-server-control-plane-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

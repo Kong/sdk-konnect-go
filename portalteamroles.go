@@ -64,7 +64,6 @@ func (s *PortalTeamRoles) ListPortalTeamRoles(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-team-roles",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -336,7 +335,6 @@ func (s *PortalTeamRoles) AssignRoleToPortalTeams(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "assign-role-to-portal-teams",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PortalAssignRoleRequest", "json", `request:"mediaType=application/json"`)
@@ -657,7 +655,6 @@ func (s *PortalTeamRoles) RemoveRoleFromPortalTeam(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-role-from-portal-team",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -906,7 +903,6 @@ func (s *PortalTeamRoles) ListPortalRoles(ctx context.Context, opts ...operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-roles",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

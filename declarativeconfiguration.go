@@ -67,7 +67,6 @@ func (s *DeclarativeConfiguration) UpsertDeclarativeConfig(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-declarative-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DeclarativeConfig", "json", `request:"mediaType=application/json"`)
@@ -367,7 +366,6 @@ func (s *DeclarativeConfiguration) GetDeclarativeConfig(ctx context.Context, con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-declarative-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -576,7 +574,6 @@ func (s *DeclarativeConfiguration) DeleteDeclarativeConfig(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-declarative-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -829,7 +826,6 @@ func (s *DeclarativeConfiguration) GetNativeEventProxyDeclarativeConfig(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-native-event-proxy-declarative-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1038,7 +1034,6 @@ func (s *DeclarativeConfiguration) GetHTTPGatewayDeclarativeConfig(ctx context.C
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-http-gateway-declarative-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1242,7 +1237,6 @@ func (s *DeclarativeConfiguration) GetHoudiniEventGatewayDeclarativeConfig(ctx c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-houdini-event-gateway-declarative-config",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -68,7 +68,6 @@ func (s *Applications) CreateApplication(ctx context.Context, portalID string, c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-application",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateApplicationRequest", "json", `request:"mediaType=application/json"`)
@@ -343,7 +342,6 @@ func (s *Applications) ListApplications(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-applications",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -641,7 +639,6 @@ func (s *Applications) GetApplication(ctx context.Context, portalID string, appl
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-application",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -909,7 +906,6 @@ func (s *Applications) UpdateApplication(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-application",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateApplicationRequest", "json", `request:"mediaType=application/json"`)
@@ -1210,7 +1206,6 @@ func (s *Applications) DeleteApplication(ctx context.Context, portalID string, a
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-application",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1459,7 +1454,6 @@ func (s *Applications) ListDevelopersByApplication(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-developers-by-application",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1752,7 +1746,6 @@ func (s *Applications) AddDeveloperToApplication(ctx context.Context, request op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "add-developer-to-application",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2041,7 +2034,6 @@ func (s *Applications) RemoveDeveloperFromApplication(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-developer-from-application",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2315,7 +2307,6 @@ func (s *Applications) GetApplicationUnscoped(ctx context.Context, applicationID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-application-unscoped",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2583,7 +2574,6 @@ func (s *Applications) ListCredentialsByApplication(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-credentials-by-application",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

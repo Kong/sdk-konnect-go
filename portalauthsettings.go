@@ -67,7 +67,6 @@ func (s *PortalAuthSettings) GetPortalAuthenticationSettings(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-authentication-settings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -298,7 +297,6 @@ func (s *PortalAuthSettings) UpdatePortalAuthenticationSettings(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-authentication-settings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PortalAuthenticationSettingsUpdateRequest", "json", `request:"mediaType=application/json"`)
@@ -576,7 +574,6 @@ func (s *PortalAuthSettings) ListPortalTeamGroupMappings(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-team-group-mappings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -857,7 +854,6 @@ func (s *PortalAuthSettings) UpdatePortalTeamGroupMappings(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-team-group-mappings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PortalTeamGroupMappingsUpdateRequest", "json", `request:"mediaType=application/json"`)
@@ -1138,7 +1134,6 @@ func (s *PortalAuthSettings) GetPortalIdentityProviders(ctx context.Context, por
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-identity-providers",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1395,7 +1390,6 @@ func (s *PortalAuthSettings) CreatePortalIdentityProvider(ctx context.Context, p
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-identity-provider",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PortalCreateIdentityProvider", "json", `request:"mediaType=application/json"`)
@@ -1697,7 +1691,6 @@ func (s *PortalAuthSettings) GetPortalIdentityProvider(ctx context.Context, port
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-identity-provider",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1987,7 +1980,6 @@ func (s *PortalAuthSettings) UpdatePortalIdentityProvider(ctx context.Context, r
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-identity-provider",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PortalUpdateIdentityProvider", "json", `request:"mediaType=application/json"`)
@@ -2310,7 +2302,6 @@ func (s *PortalAuthSettings) DeletePortalIdentityProvider(ctx context.Context, p
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-identity-provider",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2580,7 +2571,6 @@ func (s *PortalAuthSettings) ListPortalIdpTeamGroupMappings(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-idp-team-group-mappings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2873,7 +2863,6 @@ func (s *PortalAuthSettings) CreatePortalIdpTeamGroupMapping(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-idp-team-group-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreatePortalIdpTeamGroupMappingRequest", "json", `request:"mediaType=application/json"`)
@@ -3190,7 +3179,6 @@ func (s *PortalAuthSettings) GetPortalIdpTeamGroupMapping(ctx context.Context, r
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-idp-team-group-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3480,7 +3468,6 @@ func (s *PortalAuthSettings) DeletePortalIdpTeamGroupMapping(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-idp-team-group-mapping",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

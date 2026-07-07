@@ -65,7 +65,6 @@ func (s *EventGatewayListenerPolicies) ListEventGatewayListenerPolicies(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-listener-policies",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -316,7 +315,6 @@ func (s *EventGatewayListenerPolicies) CreateEventGatewayListenerPolicy(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-gateway-listener-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "EventGatewayListenerPolicyCreate", "json", `request:"mediaType=application/json"`)
@@ -595,7 +593,6 @@ func (s *EventGatewayListenerPolicies) GetEventGatewayListenerPolicy(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-listener-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -863,7 +860,6 @@ func (s *EventGatewayListenerPolicies) UpdateEventGatewayListenerPolicy(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-gateway-listener-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "EventGatewayListenerPolicyUpdate", "json", `request:"mediaType=application/json"`)
@@ -1138,7 +1134,6 @@ func (s *EventGatewayListenerPolicies) PatchEventGatewayListenerPolicy(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "patch-event-gateway-listener-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EventGatewayListenerPolicyPatch", "json", `request:"mediaType=application/json"`)
@@ -1413,7 +1408,6 @@ func (s *EventGatewayListenerPolicies) DeleteEventGatewayListenerPolicy(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-gateway-listener-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1662,7 +1656,6 @@ func (s *EventGatewayListenerPolicies) MoveEventGatewayListenerPolicy(ctx contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "move-event-gateway-listener-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "MoveEventGatewayPolicy", "json", `request:"mediaType=application/json"`)
@@ -1923,7 +1916,6 @@ func (s *EventGatewayListenerPolicies) GetEventGatewayListenerPolicyChain(ctx co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-listener-policy-chain",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2170,7 +2162,6 @@ func (s *EventGatewayListenerPolicies) UpdateEventGatewayListenerPolicyChain(ctx
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-gateway-listener-policy-chain",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateEventGatewayPolicyChainRequest", "json", `request:"mediaType=application/json"`)

@@ -64,7 +64,6 @@ func (s *CatalogServiceCustomFields) ListCatalogCustomFieldSchemas(ctx context.C
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-custom-field-schemas",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

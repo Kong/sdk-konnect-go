@@ -83,7 +83,6 @@ func (s *Routes) ListRouteInWorkspace(ctx context.Context, request operations.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-route-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -313,7 +312,6 @@ func (s *Routes) CreateRouteInWorkspace(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-route-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Route", "json", `request:"mediaType=application/json"`)
@@ -546,7 +544,6 @@ func (s *Routes) DeleteRouteInWorkspace(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-route-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -753,7 +750,6 @@ func (s *Routes) GetRouteInWorkspace(ctx context.Context, request operations.Get
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-route-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -981,7 +977,6 @@ func (s *Routes) UpsertRouteInWorkspace(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-route-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Route", "json", `request:"mediaType=application/json"`)
@@ -1214,7 +1209,6 @@ func (s *Routes) ListRouteWithServiceInWorkspace(ctx context.Context, request op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1423,7 +1417,6 @@ func (s *Routes) CreateRouteWithServiceInWorkspace(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RouteWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1635,7 +1628,6 @@ func (s *Routes) DeleteRouteWithServiceInWorkspace(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1821,7 +1813,6 @@ func (s *Routes) GetRouteWithServiceInWorkspace(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2028,7 +2019,6 @@ func (s *Routes) UpsertRouteWithServiceInWorkspace(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RouteWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -2240,7 +2230,6 @@ func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-route",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2475,7 +2464,6 @@ func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-route",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Route", "json", `request:"mediaType=application/json"`)
@@ -2713,7 +2701,6 @@ func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-route",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2925,7 +2912,6 @@ func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-route",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3153,7 +3139,6 @@ func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRoute
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-route",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Route", "json", `request:"mediaType=application/json"`)
@@ -3386,7 +3371,6 @@ func (s *Routes) ListRouteWithService(ctx context.Context, request operations.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3595,7 +3579,6 @@ func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RouteWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -3807,7 +3790,6 @@ func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3993,7 +3975,6 @@ func (s *Routes) GetRouteWithService(ctx context.Context, request operations.Get
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4200,7 +4181,6 @@ func (s *Routes) UpsertRouteWithService(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RouteWithoutParents", "json", `request:"mediaType=application/json"`)

@@ -31,6 +31,59 @@ func (e *AIGatewayTargetVertexConfigType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// GcpEnvironment - Configuration for a model hosted on Google Cloud Project.
+type GcpEnvironment struct {
+	// The custom API endpoint for the Gemini model.
+	APIEndpoint string `json:"api_endpoint"`
+	// The Google Cloud location ID for the model endpoint.
+	LocationID string `json:"location_id"`
+	// The Google Cloud project ID for the model endpoint.
+	ProjectID string `json:"project_id"`
+	// The endpoint ID for the model.
+	// This must be set when running a target model on Gemini on Vertex Model Garden.
+	//
+	EndpointID string `json:"endpoint_id"`
+}
+
+func (g GcpEnvironment) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GcpEnvironment) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"api_endpoint", "location_id", "project_id", "endpoint_id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (g *GcpEnvironment) GetAPIEndpoint() string {
+	if g == nil {
+		return ""
+	}
+	return g.APIEndpoint
+}
+
+func (g *GcpEnvironment) GetLocationID() string {
+	if g == nil {
+		return ""
+	}
+	return g.LocationID
+}
+
+func (g *GcpEnvironment) GetProjectID() string {
+	if g == nil {
+		return ""
+	}
+	return g.ProjectID
+}
+
+func (g *GcpEnvironment) GetEndpointID() string {
+	if g == nil {
+		return ""
+	}
+	return g.EndpointID
+}
+
 // AIGatewayTargetVertexConfig - Google Vertex-specific configuration for a model.
 type AIGatewayTargetVertexConfig struct {
 	// The number of dimensions for embedding outputs.
@@ -50,14 +103,8 @@ type AIGatewayTargetVertexConfig struct {
 	// The upstream URL for the model endpoint.
 	UpstreamURL *string                         `json:"upstream_url,omitempty"`
 	Type        AIGatewayTargetVertexConfigType `json:"type"`
-	// The Google Cloud location ID for the model endpoint.
-	LocationID *string `json:"location_id,omitempty"`
-	// The custom API endpoint for the Vertex model.
-	APIEndpoint *string `json:"api_endpoint,omitempty"`
-	// The endpoint ID for the Vertex model.
-	// This must be set when running on Vertex Model Garden.
-	//
-	EndpointID *string `json:"endpoint_id,omitempty"`
+	// Configuration for a model hosted on Google Cloud Project.
+	GcpEnvironment *GcpEnvironment `json:"gcp_environment,omitempty"`
 }
 
 func (a AIGatewayTargetVertexConfig) MarshalJSON() ([]byte, error) {
@@ -134,23 +181,9 @@ func (a *AIGatewayTargetVertexConfig) GetType() AIGatewayTargetVertexConfigType 
 	return a.Type
 }
 
-func (a *AIGatewayTargetVertexConfig) GetLocationID() *string {
+func (a *AIGatewayTargetVertexConfig) GetGcpEnvironment() *GcpEnvironment {
 	if a == nil {
 		return nil
 	}
-	return a.LocationID
-}
-
-func (a *AIGatewayTargetVertexConfig) GetAPIEndpoint() *string {
-	if a == nil {
-		return nil
-	}
-	return a.APIEndpoint
-}
-
-func (a *AIGatewayTargetVertexConfig) GetEndpointID() *string {
-	if a == nil {
-		return nil
-	}
-	return a.EndpointID
+	return a.GcpEnvironment
 }

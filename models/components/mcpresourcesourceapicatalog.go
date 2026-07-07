@@ -3,30 +3,32 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// MCPResourceSourceAPICatalogType - The type of the MCP resource source.
 type MCPResourceSourceAPICatalogType string
 
 const (
 	MCPResourceSourceAPICatalogTypeAPICatalog MCPResourceSourceAPICatalogType = "api_catalog"
-	MCPResourceSourceAPICatalogTypeRaw        MCPResourceSourceAPICatalogType = "raw"
 )
 
 func (e MCPResourceSourceAPICatalogType) ToPointer() *MCPResourceSourceAPICatalogType {
 	return &e
 }
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *MCPResourceSourceAPICatalogType) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "api_catalog", "raw":
-			return true
-		}
+func (e *MCPResourceSourceAPICatalogType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
 	}
-	return false
+	switch v {
+	case "api_catalog":
+		*e = MCPResourceSourceAPICatalogType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MCPResourceSourceAPICatalogType: %v", v)
+	}
 }
 
 // MCPResourceSourceAPICatalog - An MCP resource sourced from an API catalog entry.

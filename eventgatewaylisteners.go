@@ -65,7 +65,6 @@ func (s *EventGatewayListeners) ListEventGatewayListeners(ctx context.Context, r
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-listeners",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -321,7 +320,6 @@ func (s *EventGatewayListeners) CreateEventGatewayListener(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-gateway-listener",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreateEventGatewayListenerRequest", "json", `request:"mediaType=application/json"`)
@@ -601,7 +599,6 @@ func (s *EventGatewayListeners) GetEventGatewayListener(ctx context.Context, gat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-listener",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -869,7 +866,6 @@ func (s *EventGatewayListeners) UpdateEventGatewayListener(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-gateway-listener",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateEventGatewayListenerRequest", "json", `request:"mediaType=application/json"`)
@@ -1149,7 +1145,6 @@ func (s *EventGatewayListeners) DeleteEventGatewayListener(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-gateway-listener",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

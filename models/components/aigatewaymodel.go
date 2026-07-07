@@ -71,8 +71,8 @@ type AIGatewayModelAIGatewayModelModel struct {
 	Name string `json:"name"`
 	// Whether the model is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
-	// Access control rules for allowing or denying Consumers, Consumer Groups, or Authenticated Groups to this model.
-	Acls *AIGatewayACLS `json:"acls,omitempty"`
+	// Access control configuration for a model.
+	Access *AIGatewayModelAccess `json:"access,omitempty"`
 	// List of request/response formats supported by this model.
 	Formats []AIGatewayModelFormat `json:"formats"`
 	// One or more backend models that this model entry routes to.
@@ -136,11 +136,11 @@ func (a *AIGatewayModelAIGatewayModelModel) GetEnabled() *bool {
 	return a.Enabled
 }
 
-func (a *AIGatewayModelAIGatewayModelModel) GetAcls() *AIGatewayACLS {
+func (a *AIGatewayModelAIGatewayModelModel) GetAccess() *AIGatewayModelAccess {
 	if a == nil {
 		return nil
 	}
-	return a.Acls
+	return a.Access
 }
 
 func (a *AIGatewayModelAIGatewayModelModel) GetFormats() []AIGatewayModelFormat {
@@ -273,8 +273,8 @@ type AIGatewayModelAIGatewayModelAPI struct {
 	Name string `json:"name"`
 	// Whether the model is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
-	// Access control rules for allowing or denying Consumers, Consumer Groups, or Authenticated Groups to this model.
-	Acls *AIGatewayACLS `json:"acls,omitempty"`
+	// Access control configuration for a model.
+	Access *AIGatewayModelAccess `json:"access,omitempty"`
 	// List of request/response formats supported by this model.
 	Formats []AIGatewayModelFormat `json:"formats"`
 	// One or more backend models that this model entry routes to.
@@ -338,11 +338,11 @@ func (a *AIGatewayModelAIGatewayModelAPI) GetEnabled() *bool {
 	return a.Enabled
 }
 
-func (a *AIGatewayModelAIGatewayModelAPI) GetAcls() *AIGatewayACLS {
+func (a *AIGatewayModelAIGatewayModelAPI) GetAccess() *AIGatewayModelAccess {
 	if a == nil {
 		return nil
 	}
-	return a.Acls
+	return a.Access
 }
 
 func (a *AIGatewayModelAIGatewayModelAPI) GetFormats() []AIGatewayModelFormat {

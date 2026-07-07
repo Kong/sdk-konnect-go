@@ -66,7 +66,6 @@ func (s *OrganizationFeature) GetOrganizationFeature(ctx context.Context, featur
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-organization-feature",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -382,7 +381,6 @@ func (s *OrganizationFeature) UpsertOrganizationFeature(ctx context.Context, fea
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-organization-feature",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpsertOrganizationFeatureRequest", "json", `request:"mediaType=application/json"`)

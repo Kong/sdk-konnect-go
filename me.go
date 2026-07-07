@@ -64,7 +64,6 @@ func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-users-me",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -291,7 +290,6 @@ func (s *Me) DeleteUsersMe(ctx context.Context, opts ...operations.Option) (*ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-users-me",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -501,7 +499,6 @@ func (s *Me) PatchUsersMe(ctx context.Context, request *components.UpdateUser, o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "patch-users-me",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -743,7 +740,6 @@ func (s *Me) GetUsersMePermissions(ctx context.Context, filter *operations.GetUs
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-users-me-permissions",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -993,7 +989,6 @@ func (s *Me) GetOrganizationsMe(ctx context.Context, opts ...operations.Option) 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-organizations-me",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1219,7 +1214,6 @@ func (s *Me) UpdateOrganizationsMe(ctx context.Context, request *components.Upda
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-organizations-me",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)

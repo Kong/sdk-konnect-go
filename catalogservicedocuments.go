@@ -68,7 +68,6 @@ func (s *CatalogServiceDocuments) CreateCatalogServiceDocument(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-catalog-service-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateServiceDocumentPayload", "json", `request:"mediaType=application/json"`)
@@ -365,7 +364,6 @@ func (s *CatalogServiceDocuments) ListCatalogServiceDocuments(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-service-documents",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -701,7 +699,6 @@ func (s *CatalogServiceDocuments) FetchCatalogServiceDocument(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-catalog-service-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -990,7 +987,6 @@ func (s *CatalogServiceDocuments) UpdateCatalogServiceDocument(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-catalog-service-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateServiceDocumentPayload", "json", `request:"mediaType=application/json"`)
@@ -1312,7 +1308,6 @@ func (s *CatalogServiceDocuments) DeleteCatalogServiceDocument(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-catalog-service-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1582,7 +1577,6 @@ func (s *CatalogServiceDocuments) MoveCatalogServiceDocument(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "move-catalog-service-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "MoveDocumentRequestPayload", "json", `request:"mediaType=application/json"`)

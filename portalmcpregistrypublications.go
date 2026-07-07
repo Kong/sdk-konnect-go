@@ -63,7 +63,6 @@ func (s *PortalMCPRegistryPublications) ListPortalMcpRegistryPublications(ctx co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-mcp-registry-publications",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -377,7 +376,6 @@ func (s *PortalMCPRegistryPublications) ListPortalMcpRegistries(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-mcp-registries",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -691,7 +689,6 @@ func (s *PortalMCPRegistryPublications) ListPortalComputedMcpRegistries(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-computed-mcp-registries",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

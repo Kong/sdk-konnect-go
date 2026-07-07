@@ -10,8 +10,9 @@ import (
 type MCPResourceSourceRawInputType string
 
 const (
-	MCPResourceSourceRawInputTypeAPICatalog MCPResourceSourceRawInputType = "api_catalog"
-	MCPResourceSourceRawInputTypeRaw        MCPResourceSourceRawInputType = "raw"
+	MCPResourceSourceRawInputTypeAPICatalog      MCPResourceSourceRawInputType = "api_catalog"
+	MCPResourceSourceRawInputTypeRaw             MCPResourceSourceRawInputType = "raw"
+	MCPResourceSourceRawInputTypeRemoteMcpServer MCPResourceSourceRawInputType = "remote_mcp_server"
 )
 
 func (e MCPResourceSourceRawInputType) ToPointer() *MCPResourceSourceRawInputType {
@@ -22,7 +23,7 @@ func (e MCPResourceSourceRawInputType) ToPointer() *MCPResourceSourceRawInputTyp
 func (e *MCPResourceSourceRawInputType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "api_catalog", "raw":
+		case "api_catalog", "raw", "remote_mcp_server":
 			return true
 		}
 	}

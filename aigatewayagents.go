@@ -63,7 +63,6 @@ func (s *AIGatewayAgents) ListAiGatewayAgents(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-agents",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -361,7 +360,6 @@ func (s *AIGatewayAgents) CreateAiGatewayAgent(ctx context.Context, gatewayID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-agent",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayAgentRequest", "json", `request:"mediaType=application/json"`)
@@ -704,7 +702,6 @@ func (s *AIGatewayAgents) GetAiGatewayAgent(ctx context.Context, gatewayID strin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-agent",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -993,7 +990,6 @@ func (s *AIGatewayAgents) UpdateAiGatewayAgent(ctx context.Context, request oper
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-ai-gateway-agent",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAIGatewayAgentRequest", "json", `request:"mediaType=application/json"`)
@@ -1315,7 +1311,6 @@ func (s *AIGatewayAgents) DeleteAiGatewayAgent(ctx context.Context, gatewayID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-agent",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

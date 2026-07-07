@@ -72,7 +72,6 @@ func (s *IntegrationInstances) CreateIntegrationInstance(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-integration-instance",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -347,7 +346,6 @@ func (s *IntegrationInstances) ListIntegrationInstances(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-integration-instances",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -623,7 +621,6 @@ func (s *IntegrationInstances) FetchIntegrationInstance(ctx context.Context, id 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-integration-instance",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -896,7 +893,6 @@ func (s *IntegrationInstances) UpdateIntegrationInstance(ctx context.Context, id
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-integration-instance",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateIntegrationInstance", "json", `request:"mediaType=application/json"`)
@@ -1217,7 +1213,6 @@ func (s *IntegrationInstances) DeleteIntegrationInstance(ctx context.Context, id
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-integration-instance",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

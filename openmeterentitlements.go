@@ -66,7 +66,6 @@ func (s *OpenMeterEntitlements) ListCustomerEntitlementAccess(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-customer-entitlement-access",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

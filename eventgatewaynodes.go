@@ -62,7 +62,6 @@ func (s *EventGatewayNodes) ListEventGatewayNodes(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-nodes",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -318,7 +317,6 @@ func (s *EventGatewayNodes) GetEventGatewayNode(ctx context.Context, gatewayID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-node",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -591,7 +589,6 @@ func (s *EventGatewayNodes) GetEventGatewayNodeStatus(ctx context.Context, gatew
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-node-status",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -864,7 +861,6 @@ func (s *EventGatewayNodes) ListEventGatewayNodeErrors(ctx context.Context, gate
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-node-errors",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -62,7 +62,6 @@ func (s *Workspaces) ListWorkspaces(ctx context.Context, request operations.List
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-workspaces",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -422,7 +421,6 @@ func (s *Workspaces) CreateWorkspace(ctx context.Context, controlPlaneID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateWorkspaceRequest", "json", `request:"mediaType=application/json"`)
@@ -765,7 +763,6 @@ func (s *Workspaces) GetWorkspace(ctx context.Context, controlPlaneID string, wo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1122,7 +1119,6 @@ func (s *Workspaces) DeleteWorkspace(ctx context.Context, controlPlaneID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1455,7 +1451,6 @@ func (s *Workspaces) UpsertWorkspace(ctx context.Context, request operations.Ups
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Workspace", "json", `request:"mediaType=application/json"`)

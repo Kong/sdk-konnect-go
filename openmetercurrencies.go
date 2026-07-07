@@ -64,7 +64,6 @@ func (s *OpenMeterCurrencies) ListCurrencies(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-currencies",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -337,7 +336,6 @@ func (s *OpenMeterCurrencies) CreateCustomCurrency(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-custom-currency",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -613,7 +611,6 @@ func (s *OpenMeterCurrencies) ListCostBases(ctx context.Context, request operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-cost-bases",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -911,7 +908,6 @@ func (s *OpenMeterCurrencies) CreateCostBasis(ctx context.Context, currencyID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-cost-basis",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateCostBasisRequest", "json", `request:"mediaType=application/json"`)

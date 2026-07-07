@@ -68,7 +68,6 @@ func (s *PortalsIPAllowList) CreatePortalIPAllowList(ctx context.Context, portal
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-ip-allow-list",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreatePortalSourceIPRestriction", "json", `request:"mediaType=application/json"`)
@@ -343,7 +342,6 @@ func (s *PortalsIPAllowList) ListPortalIPAllowList(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-ip-allow-list",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -620,7 +618,6 @@ func (s *PortalsIPAllowList) GetPortalIPAllowList(ctx context.Context, portalID 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-ip-allow-list",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -888,7 +885,6 @@ func (s *PortalsIPAllowList) PutPortalIPAllowList(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "put-portal-ip-allow-list",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreatePortalSourceIPRestriction", "json", `request:"mediaType=application/json"`)
@@ -1184,7 +1180,6 @@ func (s *PortalsIPAllowList) UpdatePortalIPAllowList(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-ip-allow-list",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdatePortalSourceIPRestriction", "json", `request:"mediaType=application/json"`)
@@ -1485,7 +1480,6 @@ func (s *PortalsIPAllowList) DeletePortalIPAllowList(ctx context.Context, portal
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-ip-allow-list",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

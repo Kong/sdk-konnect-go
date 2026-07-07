@@ -6,6 +6,31 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type Access struct {
+	// Access control rules for allowing or denying consumer groups access to this tool.
+	// When configured, these will override the default access control rules defined on the MCP Server.
+	//
+	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
+}
+
+func (a Access) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *Access) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *Access) GetAcls() *AIGatewayMCPACLs {
+	if a == nil {
+		return nil
+	}
+	return a.Acls
+}
+
 // AIGatewayMCPConversionToolMethod - For conversion-only and conversion-listener modes, the method of the exported API, which must match the route's methods.
 type AIGatewayMCPConversionToolMethod string
 
@@ -57,10 +82,7 @@ func (e *Scheme) IsExact() bool {
 
 // AIGatewayMCPConversionTool - A tool exposed by an MCP Server in `conversion-only` or `conversion-listener` mode.
 type AIGatewayMCPConversionTool struct {
-	// Access control rules for allowing or denying consumer groups access to this tool.
-	// When configured, these will override the default access control rules defined on the MCP Server.
-	//
-	Acls        *AIGatewayMCPACLs            `json:"acls,omitempty"`
+	Access      *Access                      `json:"access,omitempty"`
 	Annotations *AIGatewayMCPToolAnnotations `json:"annotations,omitempty"`
 	// A description of what the tool does.
 	Description string `json:"description"`
@@ -96,11 +118,11 @@ func (a *AIGatewayMCPConversionTool) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPConversionTool) GetAcls() *AIGatewayMCPACLs {
+func (a *AIGatewayMCPConversionTool) GetAccess() *Access {
 	if a == nil {
 		return nil
 	}
-	return a.Acls
+	return a.Access
 }
 
 func (a *AIGatewayMCPConversionTool) GetAnnotations() *AIGatewayMCPToolAnnotations {

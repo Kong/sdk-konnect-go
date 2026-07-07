@@ -63,7 +63,6 @@ func (s *AIGatewayDataPlaneCertificates) ListAiGatewayDataPlaneCertificates(ctx 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-data-plane-certificates",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -382,7 +381,6 @@ func (s *AIGatewayDataPlaneCertificates) CreateAiGatewayDataPlaneCertificate(ctx
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-data-plane-certificate",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreateAIGatewayDataPlaneCertificateRequest", "json", `request:"mediaType=application/json"`)
@@ -704,7 +702,6 @@ func (s *AIGatewayDataPlaneCertificates) GetAiGatewayDataPlaneCertificate(ctx co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-data-plane-certificate",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1019,7 +1016,6 @@ func (s *AIGatewayDataPlaneCertificates) DeleteAiGatewayDataPlaneCertificate(ctx
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-data-plane-certificate",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

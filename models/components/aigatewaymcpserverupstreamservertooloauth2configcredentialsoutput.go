@@ -138,7 +138,7 @@ type AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials struct {
 	// The client secret for the OAuth 2.0 client-credentials.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	ClientSecret string `json:"client_secret"`
+	ClientSecret *string `json:"client_secret,omitempty"`
 }
 
 func (a AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) MarshalJSON() ([]byte, error) {
@@ -146,7 +146,7 @@ func (a AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) MarshalJSON
 }
 
 func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "token_endpoint", "client_id", "client_secret"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "token_endpoint", "client_id"}); err != nil {
 		return err
 	}
 	return nil
@@ -194,9 +194,9 @@ func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetClientI
 	return a.ClientID
 }
 
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetClientSecret() string {
+func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetClientSecret() *string {
 	if a == nil {
-		return ""
+		return nil
 	}
 	return a.ClientSecret
 }

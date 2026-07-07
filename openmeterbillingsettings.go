@@ -71,7 +71,6 @@ func (s *OpenMeterBillingSettings) GetInvoice(ctx context.Context, invoiceID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-invoice",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -364,7 +363,6 @@ func (s *OpenMeterBillingSettings) ListBillingProfiles(ctx context.Context, page
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-billing-profiles",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -641,7 +639,6 @@ func (s *OpenMeterBillingSettings) CreateBillingProfile(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-billing-profile",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -920,7 +917,6 @@ func (s *OpenMeterBillingSettings) GetBillingProfile(ctx context.Context, id str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-billing-profile",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1214,7 +1210,6 @@ func (s *OpenMeterBillingSettings) UpdateBillingProfile(ctx context.Context, id 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-billing-profile",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpsertBillingProfileRequest", "json", `request:"mediaType=application/json"`)
@@ -1520,7 +1515,6 @@ func (s *OpenMeterBillingSettings) DeleteBillingProfile(ctx context.Context, id 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-billing-profile",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

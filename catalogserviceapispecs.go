@@ -70,7 +70,6 @@ func (s *CatalogServiceAPISpecs) CreateCatalogServiceAPISpec(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-catalog-service-api-spec",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateCatalogServiceAPISpec", "json", `request:"mediaType=application/json"`)
@@ -366,7 +365,6 @@ func (s *CatalogServiceAPISpecs) ListCatalogServiceAPISpecs(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-service-api-specs",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -647,7 +645,6 @@ func (s *CatalogServiceAPISpecs) PreviewCatalogServiceAPISpec(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "preview-catalog-service-api-spec",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PreviewCatalogServiceAPISpec", "json", `request:"mediaType=application/json"`)
@@ -961,7 +958,6 @@ func (s *CatalogServiceAPISpecs) FetchCatalogServiceAPISpec(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-catalog-service-api-spec",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1229,7 +1225,6 @@ func (s *CatalogServiceAPISpecs) UpdateCatalogServiceAPISpec(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-catalog-service-api-spec",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateCatalogServiceAPISpec", "json", `request:"mediaType=application/json"`)
@@ -1530,7 +1525,6 @@ func (s *CatalogServiceAPISpecs) DeleteCatalogServiceAPISpec(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-catalog-service-api-spec",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1788,7 +1782,6 @@ func (s *CatalogServiceAPISpecs) FetchCatalogServiceAPISpecContents(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-catalog-service-api-spec-contents",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

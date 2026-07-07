@@ -1,7 +1,5 @@
 # MCPResourceSourceAPICatalogType
 
-The type of the MCP resource source.
-
 ## Example Usage
 
 ```go
@@ -10,9 +8,6 @@ import (
 )
 
 value := components.MCPResourceSourceAPICatalogTypeAPICatalog
-
-// Open enum: custom values can be created with a direct type cast
-custom := components.MCPResourceSourceAPICatalogType("custom_value")
 ```
 
 
@@ -21,4 +16,3 @@ custom := components.MCPResourceSourceAPICatalogType("custom_value")
 | Name                                        | Value                                       |
 | ------------------------------------------- | ------------------------------------------- |
 | `MCPResourceSourceAPICatalogTypeAPICatalog` | api_catalog                                 |
-| `MCPResourceSourceAPICatalogTypeRaw`        | raw                                         |

@@ -67,7 +67,6 @@ func (s *DPNodes) GetExpectedConfigHash(ctx context.Context, controlPlaneID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-expected-config-hash",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -276,7 +275,6 @@ func (s *DPNodes) GetExpectedConfigVersion(ctx context.Context, controlPlaneID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-expected-config-version",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -481,7 +479,6 @@ func (s *DPNodes) ListDataplaneNodes(ctx context.Context, request operations.Lis
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-dataplane-nodes",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -690,7 +687,6 @@ func (s *DPNodes) GetNodesEol(ctx context.Context, request operations.GetNodesEo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-nodes-eol",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -899,7 +895,6 @@ func (s *DPNodes) GetNodesNodeID(ctx context.Context, request operations.GetNode
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-nodes-node_id",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1113,7 +1108,6 @@ func (s *DPNodes) DeleteNodesNodeID(ctx context.Context, controlPlaneID string, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-nodes-node_id",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

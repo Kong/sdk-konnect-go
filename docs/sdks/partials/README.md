@@ -529,7 +529,7 @@ func main() {
                 },
                 Host: sdkkonnectgo.Pointer("localhost"),
                 Password: sdkkonnectgo.Pointer("password"),
-                Port: sdkkonnectgo.Pointer(components.CreatePortInteger(
+                Port: sdkkonnectgo.Pointer(components.CreatePartialRedisEePortInteger(
                     6379,
                 )),
                 ReadTimeout: sdkkonnectgo.Pointer[int64](1000),
@@ -805,7 +805,7 @@ func main() {
                     },
                     Host: sdkkonnectgo.Pointer("localhost"),
                     Password: sdkkonnectgo.Pointer("password"),
-                    Port: sdkkonnectgo.Pointer(components.CreatePortInteger(
+                    Port: sdkkonnectgo.Pointer(components.CreatePartialRedisEePortInteger(
                         6379,
                     )),
                     ReadTimeout: sdkkonnectgo.Pointer[int64](1000),

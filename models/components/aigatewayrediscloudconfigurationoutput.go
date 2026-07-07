@@ -220,6 +220,71 @@ func (a *AIGatewayRedisCloudConfigurationKeepalive) GetPoolSize() *int64 {
 	return a.PoolSize
 }
 
+type AIGatewayRedisCloudConfigurationPortType string
+
+const (
+	AIGatewayRedisCloudConfigurationPortTypeInteger AIGatewayRedisCloudConfigurationPortType = "integer"
+	AIGatewayRedisCloudConfigurationPortTypeStr     AIGatewayRedisCloudConfigurationPortType = "str"
+)
+
+// AIGatewayRedisCloudConfigurationPort - An integer representing a port number between 0 and 65535, inclusive.
+// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+type AIGatewayRedisCloudConfigurationPort struct {
+	Integer *int64  `queryParam:"inline" union:"member"`
+	Str     *string `queryParam:"inline" union:"member"`
+
+	Type AIGatewayRedisCloudConfigurationPortType
+}
+
+func CreateAIGatewayRedisCloudConfigurationPortInteger(integer int64) AIGatewayRedisCloudConfigurationPort {
+	typ := AIGatewayRedisCloudConfigurationPortTypeInteger
+
+	return AIGatewayRedisCloudConfigurationPort{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func CreateAIGatewayRedisCloudConfigurationPortStr(str string) AIGatewayRedisCloudConfigurationPort {
+	typ := AIGatewayRedisCloudConfigurationPortTypeStr
+
+	return AIGatewayRedisCloudConfigurationPort{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *AIGatewayRedisCloudConfigurationPort) UnmarshalJSON(data []byte) error {
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
+		u.Integer = &integer
+		u.Type = AIGatewayRedisCloudConfigurationPortTypeInteger
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = AIGatewayRedisCloudConfigurationPortTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayRedisCloudConfigurationPort", string(data))
+}
+
+func (u AIGatewayRedisCloudConfigurationPort) MarshalJSON() ([]byte, error) {
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type AIGatewayRedisCloudConfigurationPort: all fields are null")
+}
+
 type AIGatewayRedisCloudConfigurationSentinelNodes struct {
 	// A string representing a host name, such as example.com.
 	Host *string `default:"127.0.0.1" json:"host"`
@@ -365,7 +430,7 @@ type AIGatewayRedisCloudConfigurationOutput struct {
 	// An integer representing a port number between 0 and 65535, inclusive.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	Port *int64 `default:"6379" json:"port"`
+	Port *AIGatewayRedisCloudConfigurationPort `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
@@ -474,7 +539,7 @@ func (a *AIGatewayRedisCloudConfigurationOutput) GetPassword() *string {
 	return a.Password
 }
 
-func (a *AIGatewayRedisCloudConfigurationOutput) GetPort() *int64 {
+func (a *AIGatewayRedisCloudConfigurationOutput) GetPort() *AIGatewayRedisCloudConfigurationPort {
 	if a == nil {
 		return nil
 	}
@@ -668,7 +733,7 @@ type AIGatewayRedisCloudConfiguration struct {
 	// An integer representing a port number between 0 and 65535, inclusive.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	Port *int64 `default:"6379" json:"port"`
+	Port *AIGatewayRedisCloudConfigurationPort `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
@@ -777,7 +842,7 @@ func (a *AIGatewayRedisCloudConfiguration) GetPassword() *string {
 	return a.Password
 }
 
-func (a *AIGatewayRedisCloudConfiguration) GetPort() *int64 {
+func (a *AIGatewayRedisCloudConfiguration) GetPort() *AIGatewayRedisCloudConfigurationPort {
 	if a == nil {
 		return nil
 	}

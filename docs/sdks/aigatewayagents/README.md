@@ -105,13 +105,15 @@ func main() {
         DisplayName: "Kong Air Flight Booking Agent",
         Name: "kongair-flight-booking-agent",
         Type: components.CreateAIGatewayAgentRequestTypeA2a,
-        Acls: sdkkonnectgo.Pointer(components.CreateAIGatewayACLSAIGatewayAllowACL(
-            components.AIGatewayAllowACL{
-                Allow: []string{
-                    "consumer-group-1",
+        Access: &components.AIGatewayAgentAccess{
+            Acls: sdkkonnectgo.Pointer(components.CreateAIGatewayACLSAIGatewayAllowACL(
+                components.AIGatewayAllowACL{
+                    Allow: []string{
+                        "consumer-group-1",
+                    },
                 },
-            },
-        )),
+            )),
+        },
         Config: components.CreateAIGatewayAgentRequestConfig{
             URL: "https://booking-agent.internal.kongair.com",
             Route: &components.AIGatewayRouteConfig{
@@ -140,13 +142,7 @@ func main() {
         log.Fatal(err)
     }
     if res.AIGatewayAgent != nil {
-        switch res.AIGatewayAgent.Acls.Type {
-            case components.AIGatewayACLSTypeAIGatewayAllowACL:
-                // res.AIGatewayAgent.Acls.AIGatewayAllowACL is populated
-            case components.AIGatewayACLSTypeAIGatewayDenyACL:
-                // res.AIGatewayAgent.Acls.AIGatewayDenyACL is populated
-        }
-
+        // handle response
     }
 }
 ```
@@ -207,13 +203,7 @@ func main() {
         log.Fatal(err)
     }
     if res.AIGatewayAgent != nil {
-        switch res.AIGatewayAgent.Acls.Type {
-            case components.AIGatewayACLSTypeAIGatewayAllowACL:
-                // res.AIGatewayAgent.Acls.AIGatewayAllowACL is populated
-            case components.AIGatewayACLSTypeAIGatewayDenyACL:
-                // res.AIGatewayAgent.Acls.AIGatewayDenyACL is populated
-        }
-
+        // handle response
     }
 }
 ```
@@ -275,13 +265,15 @@ func main() {
             DisplayName: "Kong Air Flight Booking Agent",
             Name: "kongair-flight-booking-agent",
             Type: components.UpdateAIGatewayAgentRequestTypeA2a,
-            Acls: sdkkonnectgo.Pointer(components.CreateAIGatewayACLSAIGatewayAllowACL(
-                components.AIGatewayAllowACL{
-                    Allow: []string{
-                        "consumer-group-1",
+            Access: &components.AIGatewayAgentAccess{
+                Acls: sdkkonnectgo.Pointer(components.CreateAIGatewayACLSAIGatewayAllowACL(
+                    components.AIGatewayAllowACL{
+                        Allow: []string{
+                            "consumer-group-1",
+                        },
                     },
-                },
-            )),
+                )),
+            },
             Config: components.UpdateAIGatewayAgentRequestConfig{
                 URL: "https://booking-agent.internal.kongair.com",
                 Route: &components.AIGatewayRouteConfig{
@@ -311,13 +303,7 @@ func main() {
         log.Fatal(err)
     }
     if res.AIGatewayAgent != nil {
-        switch res.AIGatewayAgent.Acls.Type {
-            case components.AIGatewayACLSTypeAIGatewayAllowACL:
-                // res.AIGatewayAgent.Acls.AIGatewayAllowACL is populated
-            case components.AIGatewayACLSTypeAIGatewayDenyACL:
-                // res.AIGatewayAgent.Acls.AIGatewayDenyACL is populated
-        }
-
+        // handle response
     }
 }
 ```

@@ -67,7 +67,6 @@ func (s *PortalAuditLogs) UpdatePortalAuditLogReplayJob(ctx context.Context, por
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-audit-log-replay-job",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "ReplacePortalAuditLogReplayJob", "json", `request:"mediaType=application/json"`)
@@ -388,7 +387,6 @@ func (s *PortalAuditLogs) GetPortalAuditLogReplayJob(ctx context.Context, portal
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-audit-log-replay-job",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -661,7 +659,6 @@ func (s *PortalAuditLogs) UpdatePortalAuditLogWebhook(ctx context.Context, porta
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-audit-log-webhook",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdatePortalAuditLogWebhook", "json", `request:"mediaType=application/json"`)
@@ -961,7 +958,6 @@ func (s *PortalAuditLogs) GetPortalAuditLogWebhook(ctx context.Context, portalID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-audit-log-webhook",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1233,7 +1229,6 @@ func (s *PortalAuditLogs) DeletePortalAuditLogWebhook(ctx context.Context, porta
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-audit-log-webhook",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1507,7 +1502,6 @@ func (s *PortalAuditLogs) GetPortalAuditLogWebhookStatus(ctx context.Context, po
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-audit-log-webhook-status",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

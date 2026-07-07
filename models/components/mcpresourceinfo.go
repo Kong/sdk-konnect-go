@@ -3,130 +3,92 @@
 package components
 
 import (
-	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"time"
 )
 
-// MCPResourceInfoType - The type of the MCP resource.
 type MCPResourceInfoType string
 
 const (
-	MCPResourceInfoTypeAPI MCPResourceInfoType = "api"
+	MCPResourceInfoTypeRawAPIResource          MCPResourceInfoType = "RawApiResource"
+	MCPResourceInfoTypeCatalogAPIResource      MCPResourceInfoType = "CatalogApiResource"
+	MCPResourceInfoTypeRemoteMcpServerResource MCPResourceInfoType = "RemoteMcpServerResource"
 )
 
-func (e MCPResourceInfoType) ToPointer() *MCPResourceInfoType {
-	return &e
-}
-func (e *MCPResourceInfoType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "api":
-		*e = MCPResourceInfoType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for MCPResourceInfoType: %v", v)
-	}
-}
-
-// MCPResourceInfo - The MCP resource object.
 type MCPResourceInfo struct {
-	// The unique identifier for the MCP resource.
-	ID string `json:"id"`
-	// The unique name of the MCP resource.
-	Name string `json:"name"`
-	// The display name of the MCP resource.
-	DisplayName string `json:"display_name"`
-	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels"`
-	// The type of the MCP resource.
-	Type MCPResourceInfoType `json:"type"`
-	// The source of the MCP resource, indicating how it originated.
-	Source MCPResourceSourceDetail `json:"source"`
-	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
-	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt time.Time `json:"updated_at"`
+	RawAPIResource          *RawAPIResource          `queryParam:"inline" union:"member"`
+	CatalogAPIResource      *CatalogAPIResource      `queryParam:"inline" union:"member"`
+	RemoteMcpServerResource *RemoteMcpServerResource `queryParam:"inline" union:"member"`
+
+	Type MCPResourceInfoType
 }
 
-func (m MCPResourceInfo) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(m, "", false)
-}
+func CreateMCPResourceInfoRawAPIResource(rawAPIResource RawAPIResource) MCPResourceInfo {
+	typ := MCPResourceInfoTypeRawAPIResource
 
-func (m *MCPResourceInfo) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
-		return err
+	return MCPResourceInfo{
+		RawAPIResource: &rawAPIResource,
+		Type:           typ,
 	}
-	return nil
 }
 
-func (m *MCPResourceInfo) GetID() string {
-	if m == nil {
-		return ""
+func CreateMCPResourceInfoCatalogAPIResource(catalogAPIResource CatalogAPIResource) MCPResourceInfo {
+	typ := MCPResourceInfoTypeCatalogAPIResource
+
+	return MCPResourceInfo{
+		CatalogAPIResource: &catalogAPIResource,
+		Type:               typ,
 	}
-	return m.ID
 }
 
-func (m *MCPResourceInfo) GetName() string {
-	if m == nil {
-		return ""
+func CreateMCPResourceInfoRemoteMcpServerResource(remoteMcpServerResource RemoteMcpServerResource) MCPResourceInfo {
+	typ := MCPResourceInfoTypeRemoteMcpServerResource
+
+	return MCPResourceInfo{
+		RemoteMcpServerResource: &remoteMcpServerResource,
+		Type:                    typ,
 	}
-	return m.Name
 }
 
-func (m *MCPResourceInfo) GetDisplayName() string {
-	if m == nil {
-		return ""
+func (u *MCPResourceInfo) UnmarshalJSON(data []byte) error {
+
+	var rawAPIResource RawAPIResource = RawAPIResource{}
+	if err := utils.UnmarshalJSON(data, &rawAPIResource, "", true, nil); err == nil {
+		u.RawAPIResource = &rawAPIResource
+		u.Type = MCPResourceInfoTypeRawAPIResource
+		return nil
 	}
-	return m.DisplayName
-}
 
-func (m *MCPResourceInfo) GetLabels() map[string]string {
-	if m == nil {
-		return map[string]string{}
+	var catalogAPIResource CatalogAPIResource = CatalogAPIResource{}
+	if err := utils.UnmarshalJSON(data, &catalogAPIResource, "", true, nil); err == nil {
+		u.CatalogAPIResource = &catalogAPIResource
+		u.Type = MCPResourceInfoTypeCatalogAPIResource
+		return nil
 	}
-	return m.Labels
-}
 
-func (m *MCPResourceInfo) GetType() MCPResourceInfoType {
-	if m == nil {
-		return MCPResourceInfoType("")
+	var remoteMcpServerResource RemoteMcpServerResource = RemoteMcpServerResource{}
+	if err := utils.UnmarshalJSON(data, &remoteMcpServerResource, "", true, nil); err == nil {
+		u.RemoteMcpServerResource = &remoteMcpServerResource
+		u.Type = MCPResourceInfoTypeRemoteMcpServerResource
+		return nil
 	}
-	return m.Type
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for MCPResourceInfo", string(data))
 }
 
-func (m *MCPResourceInfo) GetSource() MCPResourceSourceDetail {
-	if m == nil {
-		return MCPResourceSourceDetail{}
+func (u MCPResourceInfo) MarshalJSON() ([]byte, error) {
+	if u.RawAPIResource != nil {
+		return utils.MarshalJSON(u.RawAPIResource, "", true)
 	}
-	return m.Source
-}
 
-func (m *MCPResourceInfo) GetSourceAPICatalog() *MCPResourceSourceAPICatalog {
-	return m.GetSource().MCPResourceSourceAPICatalog
-}
-
-func (m *MCPResourceInfo) GetSourceRaw() *MCPResourceSourceRaw {
-	return m.GetSource().MCPResourceSourceRaw
-}
-
-func (m *MCPResourceInfo) GetCreatedAt() time.Time {
-	if m == nil {
-		return time.Time{}
+	if u.CatalogAPIResource != nil {
+		return utils.MarshalJSON(u.CatalogAPIResource, "", true)
 	}
-	return m.CreatedAt
-}
 
-func (m *MCPResourceInfo) GetUpdatedAt() time.Time {
-	if m == nil {
-		return time.Time{}
+	if u.RemoteMcpServerResource != nil {
+		return utils.MarshalJSON(u.RemoteMcpServerResource, "", true)
 	}
-	return m.UpdatedAt
+
+	return nil, errors.New("could not marshal union type MCPResourceInfo: all fields are null")
 }

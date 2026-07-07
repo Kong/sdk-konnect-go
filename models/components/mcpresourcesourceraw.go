@@ -3,30 +3,32 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// MCPResourceSourceRawType - The type of the MCP resource source.
 type MCPResourceSourceRawType string
 
 const (
-	MCPResourceSourceRawTypeAPICatalog MCPResourceSourceRawType = "api_catalog"
-	MCPResourceSourceRawTypeRaw        MCPResourceSourceRawType = "raw"
+	MCPResourceSourceRawTypeRaw MCPResourceSourceRawType = "raw"
 )
 
 func (e MCPResourceSourceRawType) ToPointer() *MCPResourceSourceRawType {
 	return &e
 }
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *MCPResourceSourceRawType) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "api_catalog", "raw":
-			return true
-		}
+func (e *MCPResourceSourceRawType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
 	}
-	return false
+	switch v {
+	case "raw":
+		*e = MCPResourceSourceRawType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MCPResourceSourceRawType: %v", v)
+	}
 }
 
 // MCPResourceSourceRaw - An MCP resource sourced from a raw spec upload.

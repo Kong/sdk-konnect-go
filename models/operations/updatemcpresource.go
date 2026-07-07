@@ -3,14 +3,80 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
 
+type UpdateMcpResourceRequestBodyType string
+
+const (
+	UpdateMcpResourceRequestBodyTypeAPIResourcePayload       UpdateMcpResourceRequestBodyType = "ApiResourcePayload"
+	UpdateMcpResourceRequestBodyTypeMcpServerResourcePayload UpdateMcpResourceRequestBodyType = "McpServerResourcePayload"
+)
+
+type UpdateMcpResourceRequestBody struct {
+	APIResourcePayload       *components.APIResourcePayload       `queryParam:"inline" union:"member"`
+	McpServerResourcePayload *components.McpServerResourcePayload `queryParam:"inline" union:"member"`
+
+	Type UpdateMcpResourceRequestBodyType
+}
+
+func CreateUpdateMcpResourceRequestBodyAPIResourcePayload(apiResourcePayload components.APIResourcePayload) UpdateMcpResourceRequestBody {
+	typ := UpdateMcpResourceRequestBodyTypeAPIResourcePayload
+
+	return UpdateMcpResourceRequestBody{
+		APIResourcePayload: &apiResourcePayload,
+		Type:               typ,
+	}
+}
+
+func CreateUpdateMcpResourceRequestBodyMcpServerResourcePayload(mcpServerResourcePayload components.McpServerResourcePayload) UpdateMcpResourceRequestBody {
+	typ := UpdateMcpResourceRequestBodyTypeMcpServerResourcePayload
+
+	return UpdateMcpResourceRequestBody{
+		McpServerResourcePayload: &mcpServerResourcePayload,
+		Type:                     typ,
+	}
+}
+
+func (u *UpdateMcpResourceRequestBody) UnmarshalJSON(data []byte) error {
+
+	var apiResourcePayload components.APIResourcePayload = components.APIResourcePayload{}
+	if err := utils.UnmarshalJSON(data, &apiResourcePayload, "", true, nil); err == nil {
+		u.APIResourcePayload = &apiResourcePayload
+		u.Type = UpdateMcpResourceRequestBodyTypeAPIResourcePayload
+		return nil
+	}
+
+	var mcpServerResourcePayload components.McpServerResourcePayload = components.McpServerResourcePayload{}
+	if err := utils.UnmarshalJSON(data, &mcpServerResourcePayload, "", true, nil); err == nil {
+		u.McpServerResourcePayload = &mcpServerResourcePayload
+		u.Type = UpdateMcpResourceRequestBodyTypeMcpServerResourcePayload
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateMcpResourceRequestBody", string(data))
+}
+
+func (u UpdateMcpResourceRequestBody) MarshalJSON() ([]byte, error) {
+	if u.APIResourcePayload != nil {
+		return utils.MarshalJSON(u.APIResourcePayload, "", true)
+	}
+
+	if u.McpServerResourcePayload != nil {
+		return utils.MarshalJSON(u.McpServerResourcePayload, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateMcpResourceRequestBody: all fields are null")
+}
+
 type UpdateMcpResourceRequest struct {
 	// The ID of the MCP resource.
-	ResourceID       string                      `pathParam:"style=simple,explode=false,name=resourceId"`
-	MCPResourceInput components.MCPResourceInput `request:"mediaType=application/json"`
+	ResourceID  string                       `pathParam:"style=simple,explode=false,name=resourceId"`
+	RequestBody UpdateMcpResourceRequestBody `request:"mediaType=application/json"`
 }
 
 func (u *UpdateMcpResourceRequest) GetResourceID() string {
@@ -20,11 +86,11 @@ func (u *UpdateMcpResourceRequest) GetResourceID() string {
 	return u.ResourceID
 }
 
-func (u *UpdateMcpResourceRequest) GetMCPResourceInput() components.MCPResourceInput {
+func (u *UpdateMcpResourceRequest) GetRequestBody() UpdateMcpResourceRequestBody {
 	if u == nil {
-		return components.MCPResourceInput{}
+		return UpdateMcpResourceRequestBody{}
 	}
-	return u.MCPResourceInput
+	return u.RequestBody
 }
 
 type UpdateMcpResourceResponse struct {

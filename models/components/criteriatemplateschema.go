@@ -98,22 +98,16 @@ const (
 func (e CriteriaTemplateSchemaDefinition) ToPointer() *CriteriaTemplateSchemaDefinition {
 	return &e
 }
-func (e *CriteriaTemplateSchemaDefinition) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CriteriaTemplateSchemaDefinition) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "string", "number", "boolean":
+			return true
+		}
 	}
-	switch v {
-	case "string":
-		fallthrough
-	case "number":
-		fallthrough
-	case "boolean":
-		*e = CriteriaTemplateSchemaDefinition(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CriteriaTemplateSchemaDefinition: %v", v)
-	}
+	return false
 }
 
 // CriteriaTemplateSimpleSchema - Defines the parameters required to evaluate the criteria using simple schema.

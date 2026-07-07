@@ -63,7 +63,6 @@ func (s *EventGatewayStaticKeys) ListEventGatewayStaticKeys(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-static-keys",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -340,7 +339,6 @@ func (s *EventGatewayStaticKeys) CreateEventGatewayStaticKey(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-gateway-static-key",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EventGatewayStaticKeyCreate", "json", `request:"mediaType=application/json"`)
@@ -641,7 +639,6 @@ func (s *EventGatewayStaticKeys) GetEventGatewayStaticKey(ctx context.Context, g
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-static-key",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -914,7 +911,6 @@ func (s *EventGatewayStaticKeys) DeleteEventGatewayStaticKey(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-gateway-static-key",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

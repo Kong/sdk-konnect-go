@@ -64,7 +64,6 @@ func (s *EventGateways) ListEventGatewaysUsage(ctx context.Context, opts ...oper
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateways-usage",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -355,7 +354,6 @@ func (s *EventGateways) ListEventGatewayVersions(ctx context.Context, opts ...op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-versions",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -602,7 +600,6 @@ func (s *EventGateways) ListEventGateways(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateways",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -897,7 +894,6 @@ func (s *EventGateways) CreateEventGateway(ctx context.Context, request componen
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-gateway",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -1241,7 +1237,6 @@ func (s *EventGateways) GetEventGateway(ctx context.Context, gatewayID string, o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1558,7 +1553,6 @@ func (s *EventGateways) UpdateEventGateway(ctx context.Context, gatewayID string
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-gateway",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateGatewayRequest", "json", `request:"mediaType=application/json"`)
@@ -1882,7 +1876,6 @@ func (s *EventGateways) PatchEventGateway(ctx context.Context, gatewayID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "patch-event-gateway",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PatchGatewayRequest", "json", `request:"mediaType=application/json"`)
@@ -2205,7 +2198,6 @@ func (s *EventGateways) DeleteEventGateway(ctx context.Context, gatewayID string
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-gateway",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

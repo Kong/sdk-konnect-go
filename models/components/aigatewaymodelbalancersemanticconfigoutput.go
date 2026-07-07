@@ -67,7 +67,7 @@ type Embeddings struct {
 	// When enabled, request-level auth parameters (such as API keys or bearer tokens) will override the static values defined for the provider.
 	//
 	AllowAuthOverride *bool `default:"false" json:"allow_auth_override"`
-	// Reference to a provider instance. This is either the provider ID or the provider name.
+	// Reference to a model provider instance. This is either the model provider ID or the model provider name.
 	Provider string `json:"provider"`
 	// The name of the embeddings model.
 	Name string `json:"name"`

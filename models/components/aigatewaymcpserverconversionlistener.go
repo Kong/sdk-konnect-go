@@ -4,471 +4,155 @@ package components
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType - The type of attributes that ACL is evaluated with.
-type AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType string
+type AIGatewayMCPServerConversionListenerType string
 
 const (
-	AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeTypeOauthAccessToken AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType = "oauth_access_token"
+	AIGatewayMCPServerConversionListenerTypeConversionListener AIGatewayMCPServerConversionListenerType = "conversion-listener"
 )
 
-func (e AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType) ToPointer() *AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType {
+func (e AIGatewayMCPServerConversionListenerType) ToPointer() *AIGatewayMCPServerConversionListenerType {
 	return &e
 }
-func (e *AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "oauth_access_token":
-		*e = AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType: %v", v)
-	}
-}
-
-type AIGatewayMCPServerBaseACLPropertiesOauthType string
-
-const (
-	AIGatewayMCPServerBaseACLPropertiesOauthTypeConversionListener AIGatewayMCPServerBaseACLPropertiesOauthType = "conversion-listener"
-)
-
-func (e AIGatewayMCPServerBaseACLPropertiesOauthType) ToPointer() *AIGatewayMCPServerBaseACLPropertiesOauthType {
-	return &e
-}
-func (e *AIGatewayMCPServerBaseACLPropertiesOauthType) UnmarshalJSON(data []byte) error {
+func (e *AIGatewayMCPServerConversionListenerType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "conversion-listener":
-		*e = AIGatewayMCPServerBaseACLPropertiesOauthType(v)
+		*e = AIGatewayMCPServerConversionListenerType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerBaseACLPropertiesOauthType: %v", v)
+		return fmt.Errorf("invalid value for AIGatewayMCPServerConversionListenerType: %v", v)
 	}
 }
-
-type AIGatewayMCPServerBaseACLPropertiesOauth struct {
-	// The type of attributes that ACL is evaluated with.
-	ACLAttributeType AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType `json:"acl_attribute_type"`
-	// The claim in the OAuth2 access token to use as the subject for ACL evaluation when `acl_attribute_type` is set to `oauth_access_token`.
-	// Nested claim can be fetched by using a jq filter starts with dot, e.g., “.user.email”: https://jqlang.org/manual/#object-identifier-index
-	//
-	AccessTokenClaimField string `json:"access_token_claim_field"`
-	// Access control rules for allowing or denying consumer groups.
-	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
-	// Default access control rules for allowing or denying consumer groups to tools.
-	DefaultToolAcls *AIGatewayMCPACLs                            `json:"default_tool_acls,omitempty"`
-	Type            AIGatewayMCPServerBaseACLPropertiesOauthType `json:"type"`
-	// Routing, logging, and server configuration for the MCP Server.
-	Config AIGatewayMCPServerWithUpstreamNoProxyConfig `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPConversionTool `json:"tools,omitempty"`
-	// The display name for the MCP Server.
-	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
-	Name string `json:"name"`
-	// Whether the MCP Server is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
-	// List of policy references.
-	Policies []string `json:"policies,omitempty"`
-	// Public labels store information about an entity that can be used for filtering a list of objects.
-	//
-	// Public labels are intended to store **PUBLIC** metadata.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels,omitempty"`
-	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
-	//
-	ManagedBy            map[string]string `json:"managed_by,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
-}
-
-func (a AIGatewayMCPServerBaseACLPropertiesOauth) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"acl_attribute_type", "access_token_claim_field", "type", "config", "display_name", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetACLAttributeType() AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType {
-	if a == nil {
-		return AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType("")
-	}
-	return a.ACLAttributeType
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetAccessTokenClaimField() string {
-	if a == nil {
-		return ""
-	}
-	return a.AccessTokenClaimField
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetAcls() *AIGatewayMCPACLs {
-	if a == nil {
-		return nil
-	}
-	return a.Acls
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetDefaultToolAcls() *AIGatewayMCPACLs {
-	if a == nil {
-		return nil
-	}
-	return a.DefaultToolAcls
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetType() AIGatewayMCPServerBaseACLPropertiesOauthType {
-	if a == nil {
-		return AIGatewayMCPServerBaseACLPropertiesOauthType("")
-	}
-	return a.Type
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfig {
-	if a == nil {
-		return AIGatewayMCPServerWithUpstreamNoProxyConfig{}
-	}
-	return a.Config
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetTools() []AIGatewayMCPConversionTool {
-	if a == nil {
-		return nil
-	}
-	return a.Tools
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetDisplayName() string {
-	if a == nil {
-		return ""
-	}
-	return a.DisplayName
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetName() string {
-	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetPolicies() []string {
-	if a == nil {
-		return nil
-	}
-	return a.Policies
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetLabels() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.Labels
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetManagedBy() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
-}
-
-// ACLAttributeType - The type of attributes that ACL is evaluated with.
-type ACLAttributeType string
-
-const (
-	ACLAttributeTypeConsumer ACLAttributeType = "consumer"
-)
-
-func (e ACLAttributeType) ToPointer() *ACLAttributeType {
-	return &e
-}
-func (e *ACLAttributeType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "consumer":
-		*e = ACLAttributeType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ACLAttributeType: %v", v)
-	}
-}
-
-type AIGatewayMCPServerBaseACLPropertiesConsumerType string
-
-const (
-	AIGatewayMCPServerBaseACLPropertiesConsumerTypeConversionListener AIGatewayMCPServerBaseACLPropertiesConsumerType = "conversion-listener"
-)
-
-func (e AIGatewayMCPServerBaseACLPropertiesConsumerType) ToPointer() *AIGatewayMCPServerBaseACLPropertiesConsumerType {
-	return &e
-}
-func (e *AIGatewayMCPServerBaseACLPropertiesConsumerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "conversion-listener":
-		*e = AIGatewayMCPServerBaseACLPropertiesConsumerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerBaseACLPropertiesConsumerType: %v", v)
-	}
-}
-
-type AIGatewayMCPServerBaseACLPropertiesConsumer struct {
-	// The type of attributes that ACL is evaluated with.
-	ACLAttributeType *ACLAttributeType `default:"consumer" json:"acl_attribute_type"`
-	// Access control rules for allowing or denying consumer groups.
-	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
-	// Default access control rules for allowing or denying consumer groups to tools.
-	DefaultToolAcls *AIGatewayMCPACLs                               `json:"default_tool_acls,omitempty"`
-	Type            AIGatewayMCPServerBaseACLPropertiesConsumerType `json:"type"`
-	// Routing, logging, and server configuration for the MCP Server.
-	Config AIGatewayMCPServerWithUpstreamNoProxyConfig `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPConversionTool `json:"tools,omitempty"`
-	// The display name for the MCP Server.
-	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
-	Name string `json:"name"`
-	// Whether the MCP Server is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
-	// List of policy references.
-	Policies []string `json:"policies,omitempty"`
-	// Public labels store information about an entity that can be used for filtering a list of objects.
-	//
-	// Public labels are intended to store **PUBLIC** metadata.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels,omitempty"`
-	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
-	//
-	ManagedBy            map[string]string `json:"managed_by,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
-}
-
-func (a AIGatewayMCPServerBaseACLPropertiesConsumer) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetACLAttributeType() *ACLAttributeType {
-	if a == nil {
-		return nil
-	}
-	return a.ACLAttributeType
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetAcls() *AIGatewayMCPACLs {
-	if a == nil {
-		return nil
-	}
-	return a.Acls
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetDefaultToolAcls() *AIGatewayMCPACLs {
-	if a == nil {
-		return nil
-	}
-	return a.DefaultToolAcls
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetType() AIGatewayMCPServerBaseACLPropertiesConsumerType {
-	if a == nil {
-		return AIGatewayMCPServerBaseACLPropertiesConsumerType("")
-	}
-	return a.Type
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfig {
-	if a == nil {
-		return AIGatewayMCPServerWithUpstreamNoProxyConfig{}
-	}
-	return a.Config
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetTools() []AIGatewayMCPConversionTool {
-	if a == nil {
-		return nil
-	}
-	return a.Tools
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetDisplayName() string {
-	if a == nil {
-		return ""
-	}
-	return a.DisplayName
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetName() string {
-	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetPolicies() []string {
-	if a == nil {
-		return nil
-	}
-	return a.Policies
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetLabels() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.Labels
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetManagedBy() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
-}
-
-type AIGatewayMCPServerConversionListenerUnionType string
-
-const (
-	AIGatewayMCPServerConversionListenerUnionTypeConsumer         AIGatewayMCPServerConversionListenerUnionType = "consumer"
-	AIGatewayMCPServerConversionListenerUnionTypeOauthAccessToken AIGatewayMCPServerConversionListenerUnionType = "oauth_access_token"
-)
 
 type AIGatewayMCPServerConversionListener struct {
-	AIGatewayMCPServerBaseACLPropertiesConsumer *AIGatewayMCPServerBaseACLPropertiesConsumer `queryParam:"inline" union:"member"`
-	AIGatewayMCPServerBaseACLPropertiesOauth    *AIGatewayMCPServerBaseACLPropertiesOauth    `queryParam:"inline" union:"member"`
-
-	Type AIGatewayMCPServerConversionListenerUnionType
+	Type AIGatewayMCPServerConversionListenerType `json:"type"`
+	// Routing, logging, and server configuration for the MCP Server.
+	Config AIGatewayMCPServerWithUpstreamNoProxyConfig `json:"config"`
+	// List of tools exposed by this MCP Server.
+	Tools  []AIGatewayMCPConversionTool        `json:"tools,omitempty"`
+	Access AIGatewayMCPServerBaseACLProperties `json:"access"`
+	// The display name for the MCP Server.
+	DisplayName string `json:"display_name"`
+	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
+	Name string `json:"name"`
+	// Whether the MCP Server is enabled.
+	Enabled *bool `default:"true" json:"enabled"`
+	// List of policy references.
+	Policies []string `json:"policies,omitempty"`
+	// Public labels store information about an entity that can be used for filtering a list of objects.
+	//
+	// Public labels are intended to store **PUBLIC** metadata.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
+	Labels map[string]string `json:"labels,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy            map[string]string `json:"managed_by,omitempty"`
+	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
 }
 
-func CreateAIGatewayMCPServerConversionListenerConsumer(consumer AIGatewayMCPServerBaseACLPropertiesConsumer) AIGatewayMCPServerConversionListener {
-	typ := AIGatewayMCPServerConversionListenerUnionTypeConsumer
-
-	typStr := ACLAttributeType(typ)
-	consumer.ACLAttributeType = &typStr
-
-	return AIGatewayMCPServerConversionListener{
-		AIGatewayMCPServerBaseACLPropertiesConsumer: &consumer,
-		Type: typ,
-	}
+func (a AIGatewayMCPServerConversionListener) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
 }
 
-func CreateAIGatewayMCPServerConversionListenerOauthAccessToken(oauthAccessToken AIGatewayMCPServerBaseACLPropertiesOauth) AIGatewayMCPServerConversionListener {
-	typ := AIGatewayMCPServerConversionListenerUnionTypeOauthAccessToken
-
-	typStr := AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType(typ)
-	oauthAccessToken.ACLAttributeType = typStr
-
-	return AIGatewayMCPServerConversionListener{
-		AIGatewayMCPServerBaseACLPropertiesOauth: &oauthAccessToken,
-		Type:                                     typ,
+func (a *AIGatewayMCPServerConversionListener) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "access", "display_name", "name"}); err != nil {
+		return err
 	}
+	return nil
 }
 
-func (u *AIGatewayMCPServerConversionListener) UnmarshalJSON(data []byte) error {
-
-	type discriminator struct {
-		ACLAttributeType string `json:"acl_attribute_type"`
+func (a *AIGatewayMCPServerConversionListener) GetType() AIGatewayMCPServerConversionListenerType {
+	if a == nil {
+		return AIGatewayMCPServerConversionListenerType("")
 	}
+	return a.Type
+}
 
-	dis := new(discriminator)
-	if err := json.Unmarshal(data, &dis); err != nil {
-		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+func (a *AIGatewayMCPServerConversionListener) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfig {
+	if a == nil {
+		return AIGatewayMCPServerWithUpstreamNoProxyConfig{}
 	}
+	return a.Config
+}
 
-	switch dis.ACLAttributeType {
-	case "consumer":
-		aiGatewayMCPServerBaseACLPropertiesConsumer := new(AIGatewayMCPServerBaseACLPropertiesConsumer)
-		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerBaseACLPropertiesConsumer, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ACLAttributeType == consumer) type AIGatewayMCPServerBaseACLPropertiesConsumer within AIGatewayMCPServerConversionListener: %w", string(data), err)
-		}
-
-		u.AIGatewayMCPServerBaseACLPropertiesConsumer = aiGatewayMCPServerBaseACLPropertiesConsumer
-		u.Type = AIGatewayMCPServerConversionListenerUnionTypeConsumer
-		return nil
-	case "oauth_access_token":
-		aiGatewayMCPServerBaseACLPropertiesOauth := new(AIGatewayMCPServerBaseACLPropertiesOauth)
-		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerBaseACLPropertiesOauth, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ACLAttributeType == oauth_access_token) type AIGatewayMCPServerBaseACLPropertiesOauth within AIGatewayMCPServerConversionListener: %w", string(data), err)
-		}
-
-		u.AIGatewayMCPServerBaseACLPropertiesOauth = aiGatewayMCPServerBaseACLPropertiesOauth
-		u.Type = AIGatewayMCPServerConversionListenerUnionTypeOauthAccessToken
+func (a *AIGatewayMCPServerConversionListener) GetTools() []AIGatewayMCPConversionTool {
+	if a == nil {
 		return nil
 	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayMCPServerConversionListener", string(data))
+	return a.Tools
 }
 
-func (u AIGatewayMCPServerConversionListener) MarshalJSON() ([]byte, error) {
-	if u.AIGatewayMCPServerBaseACLPropertiesConsumer != nil {
-		return utils.MarshalJSON(u.AIGatewayMCPServerBaseACLPropertiesConsumer, "", true)
+func (a *AIGatewayMCPServerConversionListener) GetAccess() AIGatewayMCPServerBaseACLProperties {
+	if a == nil {
+		return AIGatewayMCPServerBaseACLProperties{}
 	}
+	return a.Access
+}
 
-	if u.AIGatewayMCPServerBaseACLPropertiesOauth != nil {
-		return utils.MarshalJSON(u.AIGatewayMCPServerBaseACLPropertiesOauth, "", true)
+func (a *AIGatewayMCPServerConversionListener) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
+	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesConsumer
+}
+
+func (a *AIGatewayMCPServerConversionListener) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
+	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesOauth
+}
+
+func (a *AIGatewayMCPServerConversionListener) GetDisplayName() string {
+	if a == nil {
+		return ""
 	}
+	return a.DisplayName
+}
 
-	return nil, errors.New("could not marshal union type AIGatewayMCPServerConversionListener: all fields are null")
+func (a *AIGatewayMCPServerConversionListener) GetName() string {
+	if a == nil {
+		return ""
+	}
+	return a.Name
+}
+
+func (a *AIGatewayMCPServerConversionListener) GetEnabled() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.Enabled
+}
+
+func (a *AIGatewayMCPServerConversionListener) GetPolicies() []string {
+	if a == nil {
+		return nil
+	}
+	return a.Policies
+}
+
+func (a *AIGatewayMCPServerConversionListener) GetLabels() map[string]string {
+	if a == nil {
+		return nil
+	}
+	return a.Labels
+}
+
+func (a *AIGatewayMCPServerConversionListener) GetManagedBy() map[string]string {
+	if a == nil {
+		return nil
+	}
+	return a.ManagedBy
+}
+
+func (a *AIGatewayMCPServerConversionListener) GetAdditionalProperties() map[string]any {
+	if a == nil {
+		return nil
+	}
+	return a.AdditionalProperties
 }

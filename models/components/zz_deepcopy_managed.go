@@ -14,11 +14,6 @@ func (in *RouteJSON) DeepCopyInto(out *RouteJSON) {
 		*out = new(int64)
 		**out = **in
 	}
-	if in.Description != nil {
-		in, out := &in.Description, &out.Description
-		*out = new(string)
-		**out = **in
-	}
 	if in.Destinations != nil {
 		in, out := &in.Destinations, &out.Destinations
 		*out = make([]Destinations, len(*in))
@@ -56,13 +51,6 @@ func (in *RouteJSON) DeepCopyInto(out *RouteJSON) {
 		in, out := &in.ID, &out.ID
 		*out = new(string)
 		**out = **in
-	}
-	if in.ManagedBy != nil {
-		in, out := &in.ManagedBy, &out.ManagedBy
-		*out = make(map[string]any, len(*in))
-		for key, val := range *in {
-			(*out)[key] = val
-		}
 	}
 	if in.Methods != nil {
 		in, out := &in.Methods, &out.Methods
@@ -162,11 +150,6 @@ func (in *RouteExpression) DeepCopyInto(out *RouteExpression) {
 		*out = new(int64)
 		**out = **in
 	}
-	if in.Description != nil {
-		in, out := &in.Description, &out.Description
-		*out = new(string)
-		**out = **in
-	}
 	if in.Expression != nil {
 		in, out := &in.Expression, &out.Expression
 		*out = new(string)
@@ -181,13 +164,6 @@ func (in *RouteExpression) DeepCopyInto(out *RouteExpression) {
 		in, out := &in.ID, &out.ID
 		*out = new(string)
 		**out = **in
-	}
-	if in.ManagedBy != nil {
-		in, out := &in.ManagedBy, &out.ManagedBy
-		*out = make(map[string]any, len(*in))
-		for key, val := range *in {
-			(*out)[key] = val
-		}
 	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name

@@ -68,7 +68,6 @@ func (s *OpenMeterApps) ListApps(ctx context.Context, page *components.PagePagin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-apps",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -344,7 +343,6 @@ func (s *OpenMeterApps) GetApp(ctx context.Context, appID string, opts ...operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-app",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

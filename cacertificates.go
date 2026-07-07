@@ -64,7 +64,6 @@ func (s *CACertificates) ListCaCertificateInWorkspace(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ca_certificate-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -294,7 +293,6 @@ func (s *CACertificates) CreateCaCertificateInWorkspace(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ca_certificate-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CACertificate", "json", `request:"mediaType=application/json"`)
@@ -527,7 +525,6 @@ func (s *CACertificates) DeleteCaCertificateInWorkspace(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ca_certificate-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -734,7 +731,6 @@ func (s *CACertificates) GetCaCertificateInWorkspace(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ca_certificate-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -962,7 +958,6 @@ func (s *CACertificates) UpsertCaCertificateInWorkspace(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-ca_certificate-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CACertificate", "json", `request:"mediaType=application/json"`)
@@ -1195,7 +1190,6 @@ func (s *CACertificates) ListCaCertificate(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ca_certificate",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1430,7 +1424,6 @@ func (s *CACertificates) CreateCaCertificate(ctx context.Context, controlPlaneID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ca_certificate",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CACertificate", "json", `request:"mediaType=application/json"`)
@@ -1668,7 +1661,6 @@ func (s *CACertificates) DeleteCaCertificate(ctx context.Context, controlPlaneID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ca_certificate",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1880,7 +1872,6 @@ func (s *CACertificates) GetCaCertificate(ctx context.Context, caCertificateID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ca_certificate",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2108,7 +2099,6 @@ func (s *CACertificates) UpsertCaCertificate(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-ca_certificate",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CACertificate", "json", `request:"mediaType=application/json"`)

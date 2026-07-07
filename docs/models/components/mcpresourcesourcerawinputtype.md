@@ -18,7 +18,8 @@ custom := components.MCPResourceSourceRawInputType("custom_value")
 
 ## Values
 
-| Name                                      | Value                                     |
-| ----------------------------------------- | ----------------------------------------- |
-| `MCPResourceSourceRawInputTypeAPICatalog` | api_catalog                               |
-| `MCPResourceSourceRawInputTypeRaw`        | raw                                       |
+| Name                                           | Value                                          |
+| ---------------------------------------------- | ---------------------------------------------- |
+| `MCPResourceSourceRawInputTypeAPICatalog`      | api_catalog                                    |
+| `MCPResourceSourceRawInputTypeRaw`             | raw                                            |
+| `MCPResourceSourceRawInputTypeRemoteMcpServer` | remote_mcp_server                              |

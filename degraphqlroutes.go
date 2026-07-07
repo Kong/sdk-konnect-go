@@ -62,7 +62,6 @@ func (s *DegraphqlRoutes) ListDegraphqlRouteInWorkspace(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-degraphql_route-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -292,7 +291,6 @@ func (s *DegraphqlRoutes) GetDegraphqlRouteInWorkspace(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-degraphql_route-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -520,7 +518,6 @@ func (s *DegraphqlRoutes) ListDegraphqlRouteWithServiceInWorkspace(ctx context.C
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-degraphql_route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -729,7 +726,6 @@ func (s *DegraphqlRoutes) CreateDegraphqlRouteWithServiceInWorkspace(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-degraphql_route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DegraphqlRouteWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -941,7 +937,6 @@ func (s *DegraphqlRoutes) DeleteDegraphqlRouteWithServiceInWorkspace(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-degraphql_route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1127,7 +1122,6 @@ func (s *DegraphqlRoutes) GetDegraphqlRouteWithServiceInWorkspace(ctx context.Co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-degraphql_route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1334,7 +1328,6 @@ func (s *DegraphqlRoutes) UpsertDegraphqlRouteWithServiceInWorkspace(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-degraphql_route-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DegraphqlRouteWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1546,7 +1539,6 @@ func (s *DegraphqlRoutes) ListDegraphqlRoute(ctx context.Context, request operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-degraphql_route",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1781,7 +1773,6 @@ func (s *DegraphqlRoutes) GetDegraphqlRoute(ctx context.Context, degraphqlRouteI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-degraphql_route",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2009,7 +2000,6 @@ func (s *DegraphqlRoutes) ListDegraphqlRouteWithService(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-degraphql_route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2218,7 +2208,6 @@ func (s *DegraphqlRoutes) CreateDegraphqlRouteWithService(ctx context.Context, r
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-degraphql_route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DegraphqlRouteWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -2430,7 +2419,6 @@ func (s *DegraphqlRoutes) DeleteDegraphqlRouteWithService(ctx context.Context, r
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-degraphql_route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2616,7 +2604,6 @@ func (s *DegraphqlRoutes) GetDegraphqlRouteWithService(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-degraphql_route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2823,7 +2810,6 @@ func (s *DegraphqlRoutes) UpsertDegraphqlRouteWithService(ctx context.Context, r
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-degraphql_route-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DegraphqlRouteWithoutParents", "json", `request:"mediaType=application/json"`)

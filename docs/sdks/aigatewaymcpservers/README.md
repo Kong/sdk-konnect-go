@@ -102,30 +102,36 @@ func main() {
     )
 
     res, err := s.AIGatewayMCPServers.CreateAiGatewayMcpServer(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayMCPServerRequestUpstreamServer(
-        components.CreateAIGatewayMCPServerUpstreamServerOauthAccessToken(
-            components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesOauth{
-                ACLAttributeType: components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerACLAttributeTypeOauthAccessToken,
-                AccessTokenClaimField: "<value>",
-                Type: components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerTypeUpstreamServer,
-                Config: components.AIGatewayMCPServerUpstreamServerConfig{
-                    Route: &components.AIGatewayRouteConfig{
-                        Headers: map[string]any{
-                            "version": []any{
-                                "v1",
-                                "v2",
-                            },
-                        },
-                        Hosts: []string{
-                            "foo.example.com",
+        components.AIGatewayMCPServerUpstreamServer{
+            Type: components.AIGatewayMCPServerUpstreamServerTypeUpstreamServer,
+            Config: components.AIGatewayMCPServerUpstreamServerConfig{
+                Route: &components.AIGatewayRouteConfig{
+                    Headers: map[string]any{
+                        "version": []any{
+                            "v1",
+                            "v2",
                         },
                     },
-                    URL: "https://mcp.internal.kongair.com",
-                    ToolsCacheTTLSeconds: 55656,
+                    Hosts: []string{
+                        "foo.example.com",
+                    },
                 },
-                DisplayName: "Kong Air Flights",
-                Name: "kongair-flights",
+                URL: "https://mcp.internal.kongair.com",
+                ToolsCacheTTLSeconds: 55656,
             },
-        ),
+            Access: components.CreateAIGatewayMCPServerBaseACLPropertiesOauthAccessToken(
+                components.AIGatewayMCPServerBaseACLPropertiesOauth{
+                    ACLAttributeType: components.AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeTypeOauthAccessToken,
+                    AccessTokenClaimField: "<value>",
+                },
+            ),
+            DisplayName: "Kong Air Flights",
+            Name: "kongair-flights",
+            AdditionalProperties: map[string]any{
+                "acl_attribute_type": "oauth_access_token",
+                "access_token_claim_field": "<value>",
+            },
+        },
     ))
     if err != nil {
         log.Fatal(err)
@@ -275,30 +281,36 @@ func main() {
         GatewayID: "bf138ba2-c9b1-4229-b268-04d9d8a6410b",
         McpServerIDOrName: "my-entity-name",
         UpdateAIGatewayMCPServerRequest: components.CreateUpdateAIGatewayMCPServerRequestUpstreamServer(
-            components.CreateAIGatewayMCPServerUpstreamServerOauthAccessToken(
-                components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesOauth{
-                    ACLAttributeType: components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerACLAttributeTypeOauthAccessToken,
-                    AccessTokenClaimField: "<value>",
-                    Type: components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerTypeUpstreamServer,
-                    Config: components.AIGatewayMCPServerUpstreamServerConfig{
-                        Route: &components.AIGatewayRouteConfig{
-                            Headers: map[string]any{
-                                "version": []any{
-                                    "v1",
-                                    "v2",
-                                },
-                            },
-                            Hosts: []string{
-                                "foo.example.com",
+            components.AIGatewayMCPServerUpstreamServer{
+                Type: components.AIGatewayMCPServerUpstreamServerTypeUpstreamServer,
+                Config: components.AIGatewayMCPServerUpstreamServerConfig{
+                    Route: &components.AIGatewayRouteConfig{
+                        Headers: map[string]any{
+                            "version": []any{
+                                "v1",
+                                "v2",
                             },
                         },
-                        URL: "https://mcp.internal.kongair.com",
-                        ToolsCacheTTLSeconds: 793952,
+                        Hosts: []string{
+                            "foo.example.com",
+                        },
                     },
-                    DisplayName: "Kong Air Flights",
-                    Name: "kongair-flights",
+                    URL: "https://mcp.internal.kongair.com",
+                    ToolsCacheTTLSeconds: 793952,
                 },
-            ),
+                Access: components.CreateAIGatewayMCPServerBaseACLPropertiesOauthAccessToken(
+                    components.AIGatewayMCPServerBaseACLPropertiesOauth{
+                        ACLAttributeType: components.AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeTypeOauthAccessToken,
+                        AccessTokenClaimField: "<value>",
+                    },
+                ),
+                DisplayName: "Kong Air Flights",
+                Name: "kongair-flights",
+                AdditionalProperties: map[string]any{
+                    "acl_attribute_type": "oauth_access_token",
+                    "access_token_claim_field": "<value>",
+                },
+            },
         ),
     })
     if err != nil {

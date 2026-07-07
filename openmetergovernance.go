@@ -76,7 +76,6 @@ func (s *OpenMeterGovernance) QueryGovernanceAccess(ctx context.Context, governa
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "query-governance-access",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "GovernanceQueryRequest", "json", `request:"mediaType=application/json"`)

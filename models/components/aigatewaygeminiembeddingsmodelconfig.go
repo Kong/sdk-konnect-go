@@ -36,10 +36,8 @@ type AIGatewayGeminiEmbeddingsModelConfig struct {
 	// The URL of the embeddings model.
 	UpstreamURL string                                   `json:"upstream_url"`
 	Type        AIGatewayGeminiEmbeddingsModelConfigType `json:"type"`
-	// The Google Cloud location ID for the model endpoint.
-	LocationID *string `json:"location_id,omitempty"`
-	// The custom API endpoint for the Gemini model.
-	APIEndpoint *string `json:"api_endpoint,omitempty"`
+	// Configuration for a model hosted on Google Cloud Project.
+	GcpEnvironment *GCPModelConfig `json:"gcp_environment,omitempty"`
 }
 
 func (a AIGatewayGeminiEmbeddingsModelConfig) MarshalJSON() ([]byte, error) {
@@ -67,16 +65,9 @@ func (a *AIGatewayGeminiEmbeddingsModelConfig) GetType() AIGatewayGeminiEmbeddin
 	return a.Type
 }
 
-func (a *AIGatewayGeminiEmbeddingsModelConfig) GetLocationID() *string {
+func (a *AIGatewayGeminiEmbeddingsModelConfig) GetGcpEnvironment() *GCPModelConfig {
 	if a == nil {
 		return nil
 	}
-	return a.LocationID
-}
-
-func (a *AIGatewayGeminiEmbeddingsModelConfig) GetAPIEndpoint() *string {
-	if a == nil {
-		return nil
-	}
-	return a.APIEndpoint
+	return a.GcpEnvironment
 }

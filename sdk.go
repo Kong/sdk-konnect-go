@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.15.0 and generator version 2.914.0
+// Generated from OpenAPI doc version 3.15.0 and generator version 2.916.2
 
 import (
 	"context"
@@ -372,6 +372,7 @@ type SDK struct {
 	// Tax codes are used to calculate taxes for customers.
 	OpenMeterTax         *OpenMeterTax
 	MCPServers           *MCPServers
+	MCPResources         *MCPResources
 	MCPResourceContents  *MCPResourceContents
 	MCPResourceMappings  *MCPResourceMappings
 	ControlPlaneMappings *ControlPlaneMappings
@@ -399,8 +400,10 @@ type SDK struct {
 	AIGatewayConsumerGroups *AIGatewayConsumerGroups
 	// MCP Servers that expose tools for AI Gateway integrations.
 	AIGatewayMCPServers *AIGatewayMCPServers
-	// Providers that define the backend AI service connections for the AI Gateway.
-	AIGatewayProviders          *AIGatewayProviders
+	// Model providers that define the backend AI service connections for the AI Gateway.
+	AIGatewayModelProviders *AIGatewayModelProviders
+	// Identity providers for authenticating users and accessing AI Gateway resources.
+	AIGatewayIdentityProviders  *AIGatewayIdentityProviders
 	AIGatewayConfigStores       *AIGatewayConfigStores
 	AIGatewayConfigStoreSecrets *AIGatewayConfigStoreSecrets
 	Dashboards                  *Dashboards
@@ -592,7 +595,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.2.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.2.0 2.914.0 3.15.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.2.0 2.916.2 3.15.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -732,6 +735,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.OpenMeterSubscriptions = newOpenMeterSubscriptions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterTax = newOpenMeterTax(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.MCPResources = newMCPResources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPResourceContents = newMCPResourceContents(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPResourceMappings = newMCPResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlaneMappings = newControlPlaneMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -748,7 +752,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.AIGatewayConsumers = newAIGatewayConsumers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConsumerGroups = newAIGatewayConsumerGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayMCPServers = newAIGatewayMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.AIGatewayProviders = newAIGatewayProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayModelProviders = newAIGatewayModelProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayIdentityProviders = newAIGatewayIdentityProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConfigStores = newAIGatewayConfigStores(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConfigStoreSecrets = newAIGatewayConfigStoreSecrets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Dashboards = newDashboards(sdk, sdk.sdkConfiguration, sdk.hooks)

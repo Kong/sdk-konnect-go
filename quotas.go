@@ -69,7 +69,6 @@ func (s *Quotas) ListDefaultQuotas(ctx context.Context, pageSize *int64, pageNum
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-default-quotas",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -367,7 +366,6 @@ func (s *Quotas) ListQuotas(ctx context.Context, pageSize *int64, pageNumber *in
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-quotas",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -660,7 +658,6 @@ func (s *Quotas) CreateQuota(ctx context.Context, request components.CreateQuota
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-quota",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -981,7 +978,6 @@ func (s *Quotas) FetchQuota(ctx context.Context, quotaID string, opts ...operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-quota",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1254,7 +1250,6 @@ func (s *Quotas) UpdateQuota(ctx context.Context, quotaID string, updateQuota co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-quota",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateQuota", "json", `request:"mediaType=application/json"`)

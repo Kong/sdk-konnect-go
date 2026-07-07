@@ -62,7 +62,6 @@ func (s *AIGatewayConfigStores) ListAiGatewayConfigStores(ctx context.Context, r
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-config-stores",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -360,7 +359,6 @@ func (s *AIGatewayConfigStores) CreateAiGatewayConfigStore(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-config-store",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayConfigStoreRequest", "json", `request:"mediaType=application/json"`)
@@ -682,7 +680,6 @@ func (s *AIGatewayConfigStores) GetAiGatewayConfigStore(ctx context.Context, gat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-config-store",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -971,7 +968,6 @@ func (s *AIGatewayConfigStores) UpdateAiGatewayConfigStore(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-ai-gateway-config-store",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAIGatewayConfigStoreRequest", "json", `request:"mediaType=application/json"`)
@@ -1288,7 +1284,6 @@ func (s *AIGatewayConfigStores) DeleteAiGatewayConfigStore(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-config-store",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

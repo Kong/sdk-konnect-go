@@ -69,8 +69,8 @@ type AIGatewayModelModel struct {
 	Name string `json:"name"`
 	// Whether the model is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
-	// Access control rules for allowing or denying Consumers, Consumer Groups, or Authenticated Groups to this model.
-	Acls *AIGatewayACLS `json:"acls,omitempty"`
+	// Access control configuration for a model.
+	Access *AIGatewayModelAccess `json:"access,omitempty"`
 	// List of request/response formats supported by this model.
 	Formats []AIGatewayModelFormat `json:"formats"`
 	// One or more backend models that this model entry routes to.
@@ -128,11 +128,11 @@ func (a *AIGatewayModelModel) GetEnabled() *bool {
 	return a.Enabled
 }
 
-func (a *AIGatewayModelModel) GetAcls() *AIGatewayACLS {
+func (a *AIGatewayModelModel) GetAccess() *AIGatewayModelAccess {
 	if a == nil {
 		return nil
 	}
-	return a.Acls
+	return a.Access
 }
 
 func (a *AIGatewayModelModel) GetFormats() []AIGatewayModelFormat {

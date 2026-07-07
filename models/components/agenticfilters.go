@@ -3,55 +3,32 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type AgenticFiltersField string
 
 const (
-	AgenticFiltersFieldA2aContextID              AgenticFiltersField = "a2a_context_id"
-	AgenticFiltersFieldA2aError                  AgenticFiltersField = "a2a_error"
-	AgenticFiltersFieldA2aMethod                 AgenticFiltersField = "a2a_method"
-	AgenticFiltersFieldA2aTaskID                 AgenticFiltersField = "a2a_task_id"
-	AgenticFiltersFieldAPI                       AgenticFiltersField = "api"
-	AgenticFiltersFieldAPIPackage                AgenticFiltersField = "api_package"
-	AgenticFiltersFieldAPIProduct                AgenticFiltersField = "api_product"
-	AgenticFiltersFieldAPIProductVersion         AgenticFiltersField = "api_product_version"
-	AgenticFiltersFieldApplication               AgenticFiltersField = "application"
-	AgenticFiltersFieldConsumer                  AgenticFiltersField = "consumer"
-	AgenticFiltersFieldControlPlane              AgenticFiltersField = "control_plane"
-	AgenticFiltersFieldControlPlaneGroup         AgenticFiltersField = "control_plane_group"
-	AgenticFiltersFieldCountryCode               AgenticFiltersField = "country_code"
-	AgenticFiltersFieldDataPlaneNode             AgenticFiltersField = "data_plane_node"
-	AgenticFiltersFieldDataPlaneNodeVersion      AgenticFiltersField = "data_plane_node_version"
-	AgenticFiltersFieldGatewayService            AgenticFiltersField = "gateway_service"
-	AgenticFiltersFieldMcpError                  AgenticFiltersField = "mcp_error"
-	AgenticFiltersFieldMcpMethod                 AgenticFiltersField = "mcp_method"
-	AgenticFiltersFieldMcpSessionID              AgenticFiltersField = "mcp_session_id"
-	AgenticFiltersFieldMcpToolName               AgenticFiltersField = "mcp_tool_name"
-	AgenticFiltersFieldPortal                    AgenticFiltersField = "portal"
-	AgenticFiltersFieldRealm                     AgenticFiltersField = "realm"
-	AgenticFiltersFieldResponseSource            AgenticFiltersField = "response_source"
-	AgenticFiltersFieldRoute                     AgenticFiltersField = "route"
-	AgenticFiltersFieldStatusCode                AgenticFiltersField = "status_code"
-	AgenticFiltersFieldStatusCodeGrouped         AgenticFiltersField = "status_code_grouped"
-	AgenticFiltersFieldUpstreamStatusCode        AgenticFiltersField = "upstream_status_code"
-	AgenticFiltersFieldUpstreamStatusCodeGrouped AgenticFiltersField = "upstream_status_code_grouped"
+	AgenticFiltersFieldA2aContextID AgenticFiltersField = "a2a_context_id"
 )
 
 func (e AgenticFiltersField) ToPointer() *AgenticFiltersField {
 	return &e
 }
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AgenticFiltersField) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "portal", "realm", "response_source", "route", "status_code", "status_code_grouped", "upstream_status_code", "upstream_status_code_grouped":
-			return true
-		}
+func (e *AgenticFiltersField) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
 	}
-	return false
+	switch v {
+	case "a2a_context_id":
+		*e = AgenticFiltersField(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AgenticFiltersField: %v", v)
+	}
 }
 
 type AgenticFiltersOperator string

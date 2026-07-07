@@ -44,6 +44,9 @@ func CreateUpdateAIGatewayMCPServerRequestConversionOnly(conversionOnly AIGatewa
 func CreateUpdateAIGatewayMCPServerRequestConversionListener(conversionListener AIGatewayMCPServerConversionListener) UpdateAIGatewayMCPServerRequest {
 	typ := UpdateAIGatewayMCPServerRequestTypeConversionListener
 
+	typStr := AIGatewayMCPServerConversionListenerType(typ)
+	conversionListener.Type = typStr
+
 	return UpdateAIGatewayMCPServerRequest{
 		AIGatewayMCPServerConversionListener: &conversionListener,
 		Type:                                 typ,
@@ -52,6 +55,9 @@ func CreateUpdateAIGatewayMCPServerRequestConversionListener(conversionListener 
 
 func CreateUpdateAIGatewayMCPServerRequestListener(listener AIGatewayMCPServerListener) UpdateAIGatewayMCPServerRequest {
 	typ := UpdateAIGatewayMCPServerRequestTypeListener
+
+	typStr := AIGatewayMCPServerListenerType(typ)
+	listener.Type = typStr
 
 	return UpdateAIGatewayMCPServerRequest{
 		AIGatewayMCPServerListener: &listener,
@@ -62,6 +68,9 @@ func CreateUpdateAIGatewayMCPServerRequestListener(listener AIGatewayMCPServerLi
 func CreateUpdateAIGatewayMCPServerRequestPassthroughListener(passthroughListener AIGatewayMCPServerPassthroughListener) UpdateAIGatewayMCPServerRequest {
 	typ := UpdateAIGatewayMCPServerRequestTypePassthroughListener
 
+	typStr := AIGatewayMCPServerPassthroughListenerType(typ)
+	passthroughListener.Type = typStr
+
 	return UpdateAIGatewayMCPServerRequest{
 		AIGatewayMCPServerPassthroughListener: &passthroughListener,
 		Type:                                  typ,
@@ -70,6 +79,9 @@ func CreateUpdateAIGatewayMCPServerRequestPassthroughListener(passthroughListene
 
 func CreateUpdateAIGatewayMCPServerRequestUpstreamServer(upstreamServer AIGatewayMCPServerUpstreamServer) UpdateAIGatewayMCPServerRequest {
 	typ := UpdateAIGatewayMCPServerRequestTypeUpstreamServer
+
+	typStr := AIGatewayMCPServerUpstreamServerType(typ)
+	upstreamServer.Type = typStr
 
 	return UpdateAIGatewayMCPServerRequest{
 		AIGatewayMCPServerUpstreamServer: &upstreamServer,

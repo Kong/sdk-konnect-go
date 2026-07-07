@@ -64,7 +64,6 @@ func (s *IntegrationEvents) ListIntegrationEvents(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-integration-events",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -341,7 +340,6 @@ func (s *IntegrationEvents) CreateIntegrationEvents(ctx context.Context, integra
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-integration-events",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateIntegrationEventsBody", "json", `request:"mediaType=application/json"`)
@@ -618,7 +616,6 @@ func (s *IntegrationEvents) ListCatalogServiceIntegrationEvents(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-service-integration-events",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

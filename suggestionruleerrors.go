@@ -65,7 +65,6 @@ func (s *SuggestionRuleErrors) ListSuggestionRuleErrors(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-suggestion-rule-errors",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

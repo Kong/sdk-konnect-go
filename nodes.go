@@ -62,7 +62,6 @@ func (s *Nodes) UpsertNode(ctx context.Context, request operations.UpsertNodeReq
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-node",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpsertNode", "json", `request:"mediaType=application/json"`)

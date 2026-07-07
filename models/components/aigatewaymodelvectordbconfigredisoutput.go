@@ -266,6 +266,71 @@ func (k *Keepalive) GetPoolSize() *int64 {
 	return k.PoolSize
 }
 
+type PortType string
+
+const (
+	PortTypeInteger PortType = "integer"
+	PortTypeStr     PortType = "str"
+)
+
+// Port - An integer representing a port number between 0 and 65535, inclusive.
+// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+type Port struct {
+	Integer *int64  `queryParam:"inline" union:"member"`
+	Str     *string `queryParam:"inline" union:"member"`
+
+	Type PortType
+}
+
+func CreatePortInteger(integer int64) Port {
+	typ := PortTypeInteger
+
+	return Port{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func CreatePortStr(str string) Port {
+	typ := PortTypeStr
+
+	return Port{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *Port) UnmarshalJSON(data []byte) error {
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
+		u.Integer = &integer
+		u.Type = PortTypeInteger
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = PortTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Port", string(data))
+}
+
+func (u Port) MarshalJSON() ([]byte, error) {
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Port: all fields are null")
+}
+
 type AIGatewayModelVectorDBConfigRedisNodes struct {
 	// A string representing a host name, such as example.com.
 	Host *string `default:"127.0.0.1" json:"host"`
@@ -418,7 +483,7 @@ type AIGatewayModelVectorDBConfigRedisOutput struct {
 	// An integer representing a port number between 0 and 65535, inclusive.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	Port *int64 `default:"6379" json:"port"`
+	Port *Port `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
@@ -555,7 +620,7 @@ func (a *AIGatewayModelVectorDBConfigRedisOutput) GetPassword() *string {
 	return a.Password
 }
 
-func (a *AIGatewayModelVectorDBConfigRedisOutput) GetPort() *int64 {
+func (a *AIGatewayModelVectorDBConfigRedisOutput) GetPort() *Port {
 	if a == nil {
 		return nil
 	}
@@ -756,7 +821,7 @@ type AIGatewayModelVectorDBConfigRedis struct {
 	// An integer representing a port number between 0 and 65535, inclusive.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	Port *int64 `default:"6379" json:"port"`
+	Port *Port `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
@@ -893,7 +958,7 @@ func (a *AIGatewayModelVectorDBConfigRedis) GetPassword() *string {
 	return a.Password
 }
 
-func (a *AIGatewayModelVectorDBConfigRedis) GetPort() *int64 {
+func (a *AIGatewayModelVectorDBConfigRedis) GetPort() *Port {
 	if a == nil {
 		return nil
 	}

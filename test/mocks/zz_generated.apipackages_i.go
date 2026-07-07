@@ -288,6 +288,89 @@ func (_c *MockAPIPackagesSDK_GetAPIPackage_Call) RunAndReturn(run func(ctx conte
 	return _c
 }
 
+// ListAPIPackageRegistrations provides a mock function for the type MockAPIPackagesSDK
+func (_mock *MockAPIPackagesSDK) ListAPIPackageRegistrations(ctx context.Context, request operations.ListAPIPackageRegistrationsRequest, opts ...operations.Option) (*operations.ListAPIPackageRegistrationsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListAPIPackageRegistrations")
+	}
+
+	var r0 *operations.ListAPIPackageRegistrationsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAPIPackageRegistrationsRequest, ...operations.Option) (*operations.ListAPIPackageRegistrationsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAPIPackageRegistrationsRequest, ...operations.Option) *operations.ListAPIPackageRegistrationsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListAPIPackageRegistrationsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListAPIPackageRegistrationsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIPackagesSDK_ListAPIPackageRegistrations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAPIPackageRegistrations'
+type MockAPIPackagesSDK_ListAPIPackageRegistrations_Call struct {
+	*mock.Call
+}
+
+// ListAPIPackageRegistrations is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListAPIPackageRegistrationsRequest
+//   - opts ...operations.Option
+func (_e *MockAPIPackagesSDK_Expecter) ListAPIPackageRegistrations(ctx any, request any, opts ...any) *MockAPIPackagesSDK_ListAPIPackageRegistrations_Call {
+	return &MockAPIPackagesSDK_ListAPIPackageRegistrations_Call{Call: _e.mock.On("ListAPIPackageRegistrations",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAPIPackagesSDK_ListAPIPackageRegistrations_Call) Run(run func(ctx context.Context, request operations.ListAPIPackageRegistrationsRequest, opts ...operations.Option)) *MockAPIPackagesSDK_ListAPIPackageRegistrations_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListAPIPackageRegistrationsRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListAPIPackageRegistrationsRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIPackagesSDK_ListAPIPackageRegistrations_Call) Return(listAPIPackageRegistrationsResponse *operations.ListAPIPackageRegistrationsResponse, err error) *MockAPIPackagesSDK_ListAPIPackageRegistrations_Call {
+	_c.Call.Return(listAPIPackageRegistrationsResponse, err)
+	return _c
+}
+
+func (_c *MockAPIPackagesSDK_ListAPIPackageRegistrations_Call) RunAndReturn(run func(ctx context.Context, request operations.ListAPIPackageRegistrationsRequest, opts ...operations.Option) (*operations.ListAPIPackageRegistrationsResponse, error)) *MockAPIPackagesSDK_ListAPIPackageRegistrations_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListAPIPackages provides a mock function for the type MockAPIPackagesSDK
 func (_mock *MockAPIPackagesSDK) ListAPIPackages(ctx context.Context, request operations.ListAPIPackagesRequest, opts ...operations.Option) (*operations.ListAPIPackagesResponse, error) {
 	var tmpRet mock.Arguments

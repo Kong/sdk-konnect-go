@@ -63,7 +63,6 @@ func (s *PortalTeams) ListPortalTeams(ctx context.Context, request operations.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-teams",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -340,7 +339,6 @@ func (s *PortalTeams) CreatePortalTeam(ctx context.Context, portalID string, por
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-team",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PortalCreateTeamRequest", "json", `request:"mediaType=application/json"`)
@@ -641,7 +639,6 @@ func (s *PortalTeams) GetPortalTeam(ctx context.Context, teamID string, portalID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-team",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -909,7 +906,6 @@ func (s *PortalTeams) UpdatePortalTeam(ctx context.Context, request operations.U
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-team",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PortalUpdateTeamRequest", "json", `request:"mediaType=application/json"`)
@@ -1189,7 +1185,6 @@ func (s *PortalTeams) DeletePortalTeam(ctx context.Context, teamID string, porta
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-team",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

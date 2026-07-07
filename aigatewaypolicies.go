@@ -67,7 +67,6 @@ func (s *AIGatewayPolicies) ListAiGatewayAvailablePolicies(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-available-policies",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -361,7 +360,6 @@ func (s *AIGatewayPolicies) GetAiGatewayPolicySchema(ctx context.Context, gatewa
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-policy-schema",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -650,7 +648,6 @@ func (s *AIGatewayPolicies) ListAiGatewayPolicies(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-policies",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -948,7 +945,6 @@ func (s *AIGatewayPolicies) CreateAiGatewayPolicy(ctx context.Context, gatewayID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayPolicyRequest", "json", `request:"mediaType=application/json"`)
@@ -1291,7 +1287,6 @@ func (s *AIGatewayPolicies) GetAiGatewayPolicy(ctx context.Context, gatewayID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1580,7 +1575,6 @@ func (s *AIGatewayPolicies) UpdateAiGatewayPolicy(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-ai-gateway-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAIGatewayPolicyRequest", "json", `request:"mediaType=application/json"`)
@@ -1902,7 +1896,6 @@ func (s *AIGatewayPolicies) DeleteAiGatewayPolicy(ctx context.Context, gatewayID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-policy",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2199,7 +2192,6 @@ func (s *AIGatewayPolicies) ListAiGatewayPolicyUsage(ctx context.Context, gatewa
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-policy-usage",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

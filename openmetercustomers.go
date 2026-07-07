@@ -63,7 +63,6 @@ func (s *OpenMeterCustomers) CreateCustomer(ctx context.Context, request compone
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-customer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -337,7 +336,6 @@ func (s *OpenMeterCustomers) ListCustomers(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-customers",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -612,7 +610,6 @@ func (s *OpenMeterCustomers) GetCustomer(ctx context.Context, customerID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-customer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -905,7 +902,6 @@ func (s *OpenMeterCustomers) UpsertCustomer(ctx context.Context, customerID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-customer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpsertCustomerRequest", "json", `request:"mediaType=application/json"`)
@@ -1225,7 +1221,6 @@ func (s *OpenMeterCustomers) DeleteCustomer(ctx context.Context, customerID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-customer",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1498,7 +1493,6 @@ func (s *OpenMeterCustomers) GetCustomerBilling(ctx context.Context, customerID 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-customer-billing",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1791,7 +1785,6 @@ func (s *OpenMeterCustomers) UpdateCustomerBilling(ctx context.Context, customer
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-customer-billing",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpsertCustomerBillingDataRequest", "json", `request:"mediaType=application/json"`)
@@ -2112,7 +2105,6 @@ func (s *OpenMeterCustomers) UpdateCustomerBillingAppData(ctx context.Context, c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-customer-billing-app-data",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpsertAppCustomerDataRequest", "json", `request:"mediaType=application/json"`)
@@ -2444,7 +2436,6 @@ func (s *OpenMeterCustomers) CreateCustomerStripeCheckoutSession(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-customer-stripe-checkout-session",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "BillingCustomerStripeCreateCheckoutSessionRequest", "json", `request:"mediaType=application/json"`)
@@ -2771,7 +2762,6 @@ func (s *OpenMeterCustomers) CreateCustomerStripePortalSession(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-customer-stripe-portal-session",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "BillingCustomerStripeCreateCustomerPortalSessionRequest", "json", `request:"mediaType=application/json"`)
@@ -3094,7 +3084,6 @@ func (s *OpenMeterCustomers) ListCustomerCharges(ctx context.Context, request op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-customer-charges",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3395,7 +3384,6 @@ func (s *OpenMeterCustomers) CreateCustomerCharges(ctx context.Context, customer
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-customer-charges",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateChargeRequest", "json", `request:"mediaType=application/json"`)
@@ -3683,7 +3671,6 @@ func (s *OpenMeterCustomers) CreateCreditAdjustment(ctx context.Context, custome
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-credit-adjustment",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateCreditAdjustmentRequest", "json", `request:"mediaType=application/json"`)
@@ -3982,7 +3969,6 @@ func (s *OpenMeterCustomers) GetCustomerCreditBalance(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-customer-credit-balance",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4284,7 +4270,6 @@ func (s *OpenMeterCustomers) CreateCreditGrant(ctx context.Context, customerID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-credit-grant",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateCreditGrantRequest", "json", `request:"mediaType=application/json"`)
@@ -4604,7 +4589,6 @@ func (s *OpenMeterCustomers) ListCreditGrants(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-credit-grants",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4905,7 +4889,6 @@ func (s *OpenMeterCustomers) GetCreditGrant(ctx context.Context, customerID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-credit-grant",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -5200,7 +5183,6 @@ func (s *OpenMeterCustomers) UpdateCreditGrantExternalSettlement(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-credit-grant-external-settlement",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateCreditGrantExternalSettlementRequest", "json", `request:"mediaType=application/json"`)
@@ -5503,7 +5485,6 @@ func (s *OpenMeterCustomers) ListCreditTransactions(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-credit-transactions",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

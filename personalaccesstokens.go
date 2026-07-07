@@ -67,7 +67,6 @@ func (s *PersonalAccessTokens) ListUsersPersonalAccessTokens(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-users-personal-access-tokens",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -362,7 +361,6 @@ func (s *PersonalAccessTokens) CreatePersonalAccessToken(ctx context.Context, us
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-personal-access-token",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PersonalAccessTokenCreateRequest", "json", `request:"mediaType=application/json"`)
@@ -685,7 +683,6 @@ func (s *PersonalAccessTokens) GetPersonalAccessTokenDetails(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-personal-access-token-details",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -975,7 +972,6 @@ func (s *PersonalAccessTokens) UpdatePersonalAccessTokenDetails(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-personal-access-token-details",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "PersonalAccessTokenUpdateRequest", "json", `request:"mediaType=application/json"`)
@@ -1277,7 +1273,6 @@ func (s *PersonalAccessTokens) DeletePersonalAccessToken(ctx context.Context, us
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-personal-access-token",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1553,7 +1548,6 @@ func (s *PersonalAccessTokens) RevokePersonalAccessToken(ctx context.Context, us
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "revoke-personal-access-token",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

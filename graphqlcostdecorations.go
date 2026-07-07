@@ -62,7 +62,6 @@ func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCostInWorkspace(
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-graphql-rate-limiting-advanced-cost-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -292,7 +291,6 @@ func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCostInWorkspace(c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-graphql-rate-limiting-advanced-cost-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -520,7 +518,6 @@ func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCostWithServiceI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-graphql-rate-limiting-advanced-cost-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -729,7 +726,6 @@ func (s *GraphQLCostDecorations) CreateGraphqlRateLimitingAdvancedCostWithServic
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-graphql-rate-limiting-advanced-cost-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "GraphQLCostDecorationWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -941,7 +937,6 @@ func (s *GraphQLCostDecorations) DeleteGraphqlRateLimitingAdvancedCostWithServic
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-graphql-rate-limiting-advanced-cost-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1127,7 +1122,6 @@ func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCostWithServiceIn
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-graphql-rate-limiting-advanced-cost-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1334,7 +1328,6 @@ func (s *GraphQLCostDecorations) UpsertGraphqlRateLimitingAdvancedCostWithServic
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-graphql-rate-limiting-advanced-cost-with-service-in-workspace",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "GraphQLCostDecorationWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1546,7 +1539,6 @@ func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCost(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-graphql-rate-limiting-advanced-cost",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1781,7 +1773,6 @@ func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCost(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-graphql-rate-limiting-advanced-cost",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2009,7 +2000,6 @@ func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCostWithService(
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-graphql-rate-limiting-advanced-cost-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2218,7 +2208,6 @@ func (s *GraphQLCostDecorations) CreateGraphqlRateLimitingAdvancedCostWithServic
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-graphql-rate-limiting-advanced-cost-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "GraphQLCostDecorationWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -2430,7 +2419,6 @@ func (s *GraphQLCostDecorations) DeleteGraphqlRateLimitingAdvancedCostWithServic
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-graphql-rate-limiting-advanced-cost-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2616,7 +2604,6 @@ func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCostWithService(c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-graphql-rate-limiting-advanced-cost-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2823,7 +2810,6 @@ func (s *GraphQLCostDecorations) UpsertGraphqlRateLimitingAdvancedCostWithServic
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-graphql-rate-limiting-advanced-cost-with-service",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "GraphQLCostDecorationWithoutParents", "json", `request:"mediaType=application/json"`)

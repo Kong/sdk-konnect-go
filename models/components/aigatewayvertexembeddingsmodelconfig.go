@@ -36,10 +36,8 @@ type AIGatewayVertexEmbeddingsModelConfig struct {
 	// The URL of the embeddings model.
 	UpstreamURL string                                   `json:"upstream_url"`
 	Type        AIGatewayVertexEmbeddingsModelConfigType `json:"type"`
-	// The Google Cloud location ID for the model endpoint.
-	LocationID *string `json:"location_id,omitempty"`
-	// The custom API endpoint for the Vertex model.
-	APIEndpoint *string `json:"api_endpoint,omitempty"`
+	// Configuration for a model hosted on Google Cloud Project.
+	GcpEnvironment *GCPModelConfig `json:"gcp_environment,omitempty"`
 }
 
 func (a AIGatewayVertexEmbeddingsModelConfig) MarshalJSON() ([]byte, error) {
@@ -67,16 +65,9 @@ func (a *AIGatewayVertexEmbeddingsModelConfig) GetType() AIGatewayVertexEmbeddin
 	return a.Type
 }
 
-func (a *AIGatewayVertexEmbeddingsModelConfig) GetLocationID() *string {
+func (a *AIGatewayVertexEmbeddingsModelConfig) GetGcpEnvironment() *GCPModelConfig {
 	if a == nil {
 		return nil
 	}
-	return a.LocationID
-}
-
-func (a *AIGatewayVertexEmbeddingsModelConfig) GetAPIEndpoint() *string {
-	if a == nil {
-		return nil
-	}
-	return a.APIEndpoint
+	return a.GcpEnvironment
 }

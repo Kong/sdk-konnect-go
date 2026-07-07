@@ -6,6 +6,31 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type AIGatewayMCPToolBaseAccess struct {
+	// Access control rules for allowing or denying consumer groups access to this tool.
+	// When configured, these will override the default access control rules defined on the MCP Server.
+	//
+	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
+}
+
+func (a AIGatewayMCPToolBaseAccess) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayMCPToolBaseAccess) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayMCPToolBaseAccess) GetAcls() *AIGatewayMCPACLs {
+	if a == nil {
+		return nil
+	}
+	return a.Acls
+}
+
 // AIGatewayMCPToolBaseMethod - For conversion-only and conversion-listener modes, the method of the exported API, which must match the route's methods.
 type AIGatewayMCPToolBaseMethod string
 
@@ -57,10 +82,7 @@ func (e *AIGatewayMCPToolBaseScheme) IsExact() bool {
 
 // AIGatewayMCPToolBase - A tool exposed by the MCP Server, mapped to a backend HTTP endpoint.
 type AIGatewayMCPToolBase struct {
-	// Access control rules for allowing or denying consumer groups access to this tool.
-	// When configured, these will override the default access control rules defined on the MCP Server.
-	//
-	Acls        *AIGatewayMCPACLs            `json:"acls,omitempty"`
+	Access      *AIGatewayMCPToolBaseAccess  `json:"access,omitempty"`
 	Annotations *AIGatewayMCPToolAnnotations `json:"annotations,omitempty"`
 	// A description of what the tool does.
 	Description string `json:"description"`
@@ -96,11 +118,11 @@ func (a *AIGatewayMCPToolBase) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPToolBase) GetAcls() *AIGatewayMCPACLs {
+func (a *AIGatewayMCPToolBase) GetAccess() *AIGatewayMCPToolBaseAccess {
 	if a == nil {
 		return nil
 	}
-	return a.Acls
+	return a.Access
 }
 
 func (a *AIGatewayMCPToolBase) GetAnnotations() *AIGatewayMCPToolAnnotations {

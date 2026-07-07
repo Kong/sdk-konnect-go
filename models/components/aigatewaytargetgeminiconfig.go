@@ -50,14 +50,8 @@ type AIGatewayTargetGeminiConfig struct {
 	// The upstream URL for the model endpoint.
 	UpstreamURL *string                         `json:"upstream_url,omitempty"`
 	Type        AIGatewayTargetGeminiConfigType `json:"type"`
-	// The Google Cloud location ID for the model endpoint.
-	LocationID *string `json:"location_id,omitempty"`
-	// The custom API endpoint for the Gemini model.
-	APIEndpoint *string `json:"api_endpoint,omitempty"`
-	// The endpoint ID for the Gemini model.
-	// This must be set when running on Gemini on Vertex Model Garden.
-	//
-	EndpointID *string `json:"endpoint_id,omitempty"`
+	// Configuration for a model hosted on Google Cloud Project.
+	GcpEnvironment *GCPModelConfig `json:"gcp_environment,omitempty"`
 }
 
 func (a AIGatewayTargetGeminiConfig) MarshalJSON() ([]byte, error) {
@@ -134,23 +128,9 @@ func (a *AIGatewayTargetGeminiConfig) GetType() AIGatewayTargetGeminiConfigType 
 	return a.Type
 }
 
-func (a *AIGatewayTargetGeminiConfig) GetLocationID() *string {
+func (a *AIGatewayTargetGeminiConfig) GetGcpEnvironment() *GCPModelConfig {
 	if a == nil {
 		return nil
 	}
-	return a.LocationID
-}
-
-func (a *AIGatewayTargetGeminiConfig) GetAPIEndpoint() *string {
-	if a == nil {
-		return nil
-	}
-	return a.APIEndpoint
-}
-
-func (a *AIGatewayTargetGeminiConfig) GetEndpointID() *string {
-	if a == nil {
-		return nil
-	}
-	return a.EndpointID
+	return a.GcpEnvironment
 }

@@ -66,7 +66,6 @@ func (s *MCPResourceContents) GetMcpResourceContents(ctx context.Context, resour
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-resource-contents",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

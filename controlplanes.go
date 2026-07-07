@@ -64,7 +64,6 @@ func (s *ControlPlanes) ListControlPlanes(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-control-planes",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -439,7 +438,6 @@ func (s *ControlPlanes) CreateControlPlane(ctx context.Context, request componen
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-control-plane",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -781,7 +779,6 @@ func (s *ControlPlanes) GetControlPlane(ctx context.Context, controlPlaneID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-control-plane",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1117,7 +1114,6 @@ func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, controlPlaneID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-control-plane",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateControlPlaneRequest", "json", `request:"mediaType=application/json"`)
@@ -1459,7 +1455,6 @@ func (s *ControlPlanes) DeleteControlPlane(ctx context.Context, controlPlaneID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-control-plane",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1775,7 +1770,6 @@ func (s *ControlPlanes) GetControlPlaneSettings(ctx context.Context, controlPlan
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-control-plane-settings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2132,7 +2126,6 @@ func (s *ControlPlanes) PutControlPlaneSettings(ctx context.Context, controlPlan
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "put-control-plane-settings",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Settings", "json", `request:"mediaType=application/json"`)

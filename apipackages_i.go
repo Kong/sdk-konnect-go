@@ -28,4 +28,7 @@ type APIPackagesSDK interface {
 	// DeleteAPIPackage - Delete API Package
 	// Deletes an API package.
 	DeleteAPIPackage(ctx context.Context, packageID string, opts ...operations.Option) (*operations.DeleteAPIPackageResponse, error)
+	// ListAPIPackageRegistrations - List API Package Registrations
+	// Returns a paginated list of registrations for an API Package.
+	ListAPIPackageRegistrations(ctx context.Context, request operations.ListAPIPackageRegistrationsRequest, opts ...operations.Option) (*operations.ListAPIPackageRegistrationsResponse, error)
 }

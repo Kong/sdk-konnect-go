@@ -69,7 +69,6 @@ func (s *APIPackageDocumentation) CreateAPIPackageDocument(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-api-package-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAPIDocumentRequest", "json", `request:"mediaType=application/json"`)
@@ -412,7 +411,6 @@ func (s *APIPackageDocumentation) ListAPIPackageDocuments(ctx context.Context, p
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-api-package-documents",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -710,7 +708,6 @@ func (s *APIPackageDocumentation) FetchAPIPackageDocument(ctx context.Context, p
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-api-package-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -978,7 +975,6 @@ func (s *APIPackageDocumentation) UpdateAPIPackageDocument(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-api-package-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "APIDocument", "json", `request:"mediaType=application/json"`)
@@ -1321,7 +1317,6 @@ func (s *APIPackageDocumentation) DeleteAPIPackageDocument(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-api-package-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1570,7 +1565,6 @@ func (s *APIPackageDocumentation) MoveAPIPackageDocument(ctx context.Context, re
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "move-api-package-document",
-		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "MoveDocumentRequestPayload", "json", `request:"mediaType=application/json"`)

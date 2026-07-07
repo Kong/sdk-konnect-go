@@ -6,6 +6,31 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type AIGatewayMCPUpstreamToolAccess struct {
+	// Access control rules for allowing or denying consumer groups access to this tool.
+	// When configured, these will override the default access control rules defined on the MCP Server.
+	//
+	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
+}
+
+func (a AIGatewayMCPUpstreamToolAccess) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayMCPUpstreamToolAccess) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayMCPUpstreamToolAccess) GetAcls() *AIGatewayMCPACLs {
+	if a == nil {
+		return nil
+	}
+	return a.Acls
+}
+
 // AIGatewayMCPUpstreamToolMethod - When provided, the method of the exported API, which must match the route's methods.
 type AIGatewayMCPUpstreamToolMethod string
 
@@ -57,11 +82,8 @@ func (e *AIGatewayMCPUpstreamToolScheme) IsExact() bool {
 
 // AIGatewayMCPUpstreamTool - A tool exposed by an MCP Server in `upstream-server` mode. Extends the base tool with input/output schema overrides for the upstream server's advertised tool.
 type AIGatewayMCPUpstreamTool struct {
-	// Access control rules for allowing or denying consumer groups access to this tool.
-	// When configured, these will override the default access control rules defined on the MCP Server.
-	//
-	Acls        *AIGatewayMCPACLs            `json:"acls,omitempty"`
-	Annotations *AIGatewayMCPToolAnnotations `json:"annotations,omitempty"`
+	Access      *AIGatewayMCPUpstreamToolAccess `json:"access,omitempty"`
+	Annotations *AIGatewayMCPToolAnnotations    `json:"annotations,omitempty"`
 	// A description of what the tool does.
 	Description string `json:"description"`
 	// The headers of the exported API. By default, Kong will extract the headers from API configuration. If the configured headers are not exactly matched, this field is required.
@@ -104,11 +126,11 @@ func (a *AIGatewayMCPUpstreamTool) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPUpstreamTool) GetAcls() *AIGatewayMCPACLs {
+func (a *AIGatewayMCPUpstreamTool) GetAccess() *AIGatewayMCPUpstreamToolAccess {
 	if a == nil {
 		return nil
 	}
-	return a.Acls
+	return a.Access
 }
 
 func (a *AIGatewayMCPUpstreamTool) GetAnnotations() *AIGatewayMCPToolAnnotations {
