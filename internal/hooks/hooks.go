@@ -5,8 +5,9 @@ package hooks
 import (
 	"context"
 	"errors"
-	"github.com/Kong/sdk-konnect-go/internal/config"
 	"net/http"
+
+	"github.com/Kong/sdk-konnect-go/internal/config"
 )
 
 type FailEarly struct {
@@ -86,6 +87,8 @@ func New() *Hooks {
 		afterSuccessHook:  []afterSuccessHook{},
 		afterErrorHook:    []afterErrorHook{},
 	}
+
+	initHooks(h)
 
 	return h
 }
