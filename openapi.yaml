@@ -48746,6 +48746,7 @@ components:
               - data_plane_node_version
               - gateway_service
               - portal
+              - principal
               - realm
               - response_source
               - route
@@ -48814,6 +48815,7 @@ components:
               - llm_embeddings_provider
               - llm_embeddings_model
               - time
+              - principal
               - realm
               - status_code
               - status_code_grouped
@@ -48883,6 +48885,7 @@ components:
               - mcp_session_id
               - mcp_tool_name
               - portal
+              - principal
               - realm
               - response_source
               - route
@@ -49693,6 +49696,42 @@ components:
             - operator
             - field
       title: Filter by portal
+    MetricsPrincipalFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - principal
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - principal
+          required:
+            - operator
+            - field
+      title: Filter by principal
     MetricsRealmFilterByField:
       oneOf:
         - title: Multiselect filters
@@ -49973,6 +50012,7 @@ components:
               - data_plane_node_version
               - gateway_service
               - portal
+              - principal
               - realm
               - response_source
               - route
@@ -50391,6 +50431,7 @@ components:
               - llm_cache_status
               - llm_embeddings_model
               - llm_embeddings_provider
+              - principal
               - realm
               - route
               - status_code
@@ -50768,6 +50809,7 @@ components:
               - mcp_session_id
               - mcp_tool_name
               - portal
+              - principal
               - realm
               - response_source
               - route
@@ -51100,6 +51142,7 @@ components:
             - mcp_session_id
             - mcp_tool_name
             - portal
+            - principal
             - realm
             - response_source
             - route
