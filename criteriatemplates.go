@@ -69,6 +69,7 @@ func (s *CriteriaTemplates) ListCriteriaTemplates(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-criteria-templates",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

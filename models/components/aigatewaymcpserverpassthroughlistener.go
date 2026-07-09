@@ -36,11 +36,11 @@ type AIGatewayMCPServerPassthroughListener struct {
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamConfig `json:"config"`
 	// List of tools exposed by this MCP Server.
-	Tools  []AIGatewayMCPToolBase              `json:"tools,omitempty"`
-	Access AIGatewayMCPServerBaseACLProperties `json:"access"`
+	Tools  []AIGatewayMCPToolBase               `json:"tools,omitempty"`
+	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
+	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
@@ -66,7 +66,7 @@ func (a AIGatewayMCPServerPassthroughListener) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayMCPServerPassthroughListener) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "access", "display_name", "name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name"}); err != nil {
 		return err
 	}
 	return nil
@@ -93,19 +93,25 @@ func (a *AIGatewayMCPServerPassthroughListener) GetTools() []AIGatewayMCPToolBas
 	return a.Tools
 }
 
-func (a *AIGatewayMCPServerPassthroughListener) GetAccess() AIGatewayMCPServerBaseACLProperties {
+func (a *AIGatewayMCPServerPassthroughListener) GetAccess() *AIGatewayMCPServerBaseACLProperties {
 	if a == nil {
-		return AIGatewayMCPServerBaseACLProperties{}
+		return nil
 	}
 	return a.Access
 }
 
 func (a *AIGatewayMCPServerPassthroughListener) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesConsumer
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerPassthroughListener) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesOauth
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesOauth
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerPassthroughListener) GetDisplayName() string {

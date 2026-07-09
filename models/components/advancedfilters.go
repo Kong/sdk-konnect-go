@@ -3,32 +3,48 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type AdvancedFiltersField string
 
 const (
-	AdvancedFiltersFieldAPI AdvancedFiltersField = "api"
+	AdvancedFiltersFieldAPI                       AdvancedFiltersField = "api"
+	AdvancedFiltersFieldAPIPackage                AdvancedFiltersField = "api_package"
+	AdvancedFiltersFieldAPIProduct                AdvancedFiltersField = "api_product"
+	AdvancedFiltersFieldAPIProductVersion         AdvancedFiltersField = "api_product_version"
+	AdvancedFiltersFieldApplication               AdvancedFiltersField = "application"
+	AdvancedFiltersFieldConsumer                  AdvancedFiltersField = "consumer"
+	AdvancedFiltersFieldControlPlane              AdvancedFiltersField = "control_plane"
+	AdvancedFiltersFieldControlPlaneGroup         AdvancedFiltersField = "control_plane_group"
+	AdvancedFiltersFieldCountryCode               AdvancedFiltersField = "country_code"
+	AdvancedFiltersFieldDataPlaneNode             AdvancedFiltersField = "data_plane_node"
+	AdvancedFiltersFieldDataPlaneNodeVersion      AdvancedFiltersField = "data_plane_node_version"
+	AdvancedFiltersFieldGatewayService            AdvancedFiltersField = "gateway_service"
+	AdvancedFiltersFieldPortal                    AdvancedFiltersField = "portal"
+	AdvancedFiltersFieldPrincipal                 AdvancedFiltersField = "principal"
+	AdvancedFiltersFieldRealm                     AdvancedFiltersField = "realm"
+	AdvancedFiltersFieldResponseSource            AdvancedFiltersField = "response_source"
+	AdvancedFiltersFieldRoute                     AdvancedFiltersField = "route"
+	AdvancedFiltersFieldStatusCode                AdvancedFiltersField = "status_code"
+	AdvancedFiltersFieldStatusCodeGrouped         AdvancedFiltersField = "status_code_grouped"
+	AdvancedFiltersFieldUpstreamStatusCode        AdvancedFiltersField = "upstream_status_code"
+	AdvancedFiltersFieldUpstreamStatusCodeGrouped AdvancedFiltersField = "upstream_status_code_grouped"
 )
 
 func (e AdvancedFiltersField) ToPointer() *AdvancedFiltersField {
 	return &e
 }
-func (e *AdvancedFiltersField) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AdvancedFiltersField) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "upstream_status_code", "upstream_status_code_grouped":
+			return true
+		}
 	}
-	switch v {
-	case "api":
-		*e = AdvancedFiltersField(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AdvancedFiltersField: %v", v)
-	}
+	return false
 }
 
 type Operator string

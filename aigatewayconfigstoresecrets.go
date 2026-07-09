@@ -62,6 +62,7 @@ func (s *AIGatewayConfigStoreSecrets) ListAiGatewayConfigStoreSecrets(ctx contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-config-store-secrets",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -375,6 +376,7 @@ func (s *AIGatewayConfigStoreSecrets) CreateAiGatewayConfigStoreSecret(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-config-store-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayConfigStoreSecretRequest", "json", `request:"mediaType=application/json"`)
@@ -712,6 +714,7 @@ func (s *AIGatewayConfigStoreSecrets) GetAiGatewayConfigStoreSecret(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-config-store-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1021,6 +1024,7 @@ func (s *AIGatewayConfigStoreSecrets) UpdateAiGatewayConfigStoreSecret(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-ai-gateway-config-store-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAIGatewayConfigStoreSecretRequest", "json", `request:"mediaType=application/json"`)
@@ -1337,6 +1341,7 @@ func (s *AIGatewayConfigStoreSecrets) DeleteAiGatewayConfigStoreSecret(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-config-store-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

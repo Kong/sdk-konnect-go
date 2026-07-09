@@ -63,6 +63,7 @@ func (s *AIGatewayConsumerGroups) ListAiGatewayConsumerGroups(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-consumer-groups",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -360,6 +361,7 @@ func (s *AIGatewayConsumerGroups) CreateAiGatewayConsumerGroup(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-consumer-group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayConsumerGroupRequest", "json", `request:"mediaType=application/json"`)
@@ -681,6 +683,7 @@ func (s *AIGatewayConsumerGroups) GetAiGatewayConsumerGroup(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-consumer-group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -969,6 +972,7 @@ func (s *AIGatewayConsumerGroups) UpdateAiGatewayConsumerGroup(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-ai-gateway-consumer-group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAIGatewayConsumerGroupRequest", "json", `request:"mediaType=application/json"`)
@@ -1290,6 +1294,7 @@ func (s *AIGatewayConsumerGroups) DeleteAiGatewayConsumerGroup(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-consumer-group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1559,6 +1564,7 @@ func (s *AIGatewayConsumerGroups) ListAiGatewayConsumersInConsumerGroup(ctx cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-consumers-in-consumer-group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1851,6 +1857,7 @@ func (s *AIGatewayConsumerGroups) AddAiGatewayConsumerToConsumerGroup(ctx contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "add-ai-gateway-consumer-to-consumer-group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "AddAIGatewayConsumerToGroupRequest", "json", `request:"mediaType=application/json"`)
@@ -2167,6 +2174,7 @@ func (s *AIGatewayConsumerGroups) RemoveAiGatewayConsumerFromConsumerGroup(ctx c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-ai-gateway-consumer-from-consumer-group",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

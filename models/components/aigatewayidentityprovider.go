@@ -76,7 +76,7 @@ type AIGatewayIdentityProviderOpenIDConnectConfigOutput struct {
 	// An array containing an array of string paths representing the location of the claim in a nested object.
 	// For example, to map to user.info.id, set [ "user", "info", "id" ].
 	//
-	ConsumerClaim [][]string `json:"consumer_claim,omitempty"`
+	ConsumerClaims [][]string `json:"consumer_claims,omitempty"`
 	// Do not terminate the request if consumer mapping fails.
 	//
 	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
@@ -114,11 +114,11 @@ func (a *AIGatewayIdentityProviderOpenIDConnectConfigOutput) GetClientID() []str
 	return a.ClientID
 }
 
-func (a *AIGatewayIdentityProviderOpenIDConnectConfigOutput) GetConsumerClaim() [][]string {
+func (a *AIGatewayIdentityProviderOpenIDConnectConfigOutput) GetConsumerClaims() [][]string {
 	if a == nil {
 		return nil
 	}
-	return a.ConsumerClaim
+	return a.ConsumerClaims
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectConfigOutput) GetConsumerOptional() *bool {
@@ -160,7 +160,7 @@ func (a *AIGatewayIdentityProviderOpenIDConnectConfigOutput) GetAdditionalProper
 type AIGatewayIdentityProviderOpenIDConnectAIGatewayIdentityProviderOpenIDConnectConfig struct {
 	// The display name for this identity provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this identity provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this identity provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -366,7 +366,7 @@ func (a *AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderConfig) GetAdd
 type AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderKeyAuthConfig struct {
 	// The display name for this identity provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this identity provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this identity provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//

@@ -39,6 +39,7 @@ custom := components.AgenticQueryDimensions("custom_value")
 | `AgenticQueryDimensionsMcpSessionID`              | mcp_session_id                                    |
 | `AgenticQueryDimensionsMcpToolName`               | mcp_tool_name                                     |
 | `AgenticQueryDimensionsPortal`                    | portal                                            |
+| `AgenticQueryDimensionsPrincipal`                 | principal                                         |
 | `AgenticQueryDimensionsRealm`                     | realm                                             |
 | `AgenticQueryDimensionsResponseSource`            | response_source                                   |
 | `AgenticQueryDimensionsRoute`                     | route                                             |

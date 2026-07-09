@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.15.0 and generator version 2.916.2
+// Generated from OpenAPI doc version 3.15.0 and generator version 2.914.0
 
 import (
 	"context"
@@ -407,6 +407,42 @@ type SDK struct {
 	AIGatewayConfigStores       *AIGatewayConfigStores
 	AIGatewayConfigStoreSecrets *AIGatewayConfigStoreSecrets
 	Dashboards                  *Dashboards
+	// The consumer object represents a consumer - or a user - of a service.
+	// You can either rely on Kong Gateway as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong Gateway and your existing primary datastore.
+	//
+	Consumers *Consumers
+	// Service entities are abstractions of your microservice interfaces or formal APIs. For example, a service could be a data transformation microservice or a billing API.
+	// <br><br>
+	// The main attribute of a service is the destination URL for proxying traffic. This URL can be set as a single string or by specifying its protocol, host, port and path individually.
+	// <br><br>
+	// Services are associated to routes, and a single service can have many routes associated with it. Routes are entrypoints in Kong Gateway which define rules to match client requests. Once a route is matched, Kong Gateway proxies the request to its associated service. See the [Route documentation](https://developer.konghq.com/gateway/entities/route/) for a detailed explanation of how Kong proxies traffic.
+	// <br><br>
+	// Services can be both [tagged and filtered by tags](https://developer.konghq.com/admin-api/).
+	//
+	Services *Services
+	// Route entities define rules to match client requests. Each route is associated with a service, and a service may have multiple routes associated to it. Every request matching a given route will be proxied to the associated service. You need at least one matching rule that applies to the protocol being matched by the route.
+	// <br><br>
+	// The combination of routes and services, and the separation of concerns between them, offers a powerful routing mechanism with which it is possible to define fine-grained entrypoints in Kong Gateway leading to different upstream services of your infrastructure.
+	// <br><br>
+	// Depending on the protocol, one of the following attributes must be set:
+	// <br>
+	//
+	// - `http`: At least one of `methods`, `hosts`, `headers`, or `paths`
+	// - `https`: At least one of `methods`, `hosts`, `headers`, `paths`, or `snis`
+	// - `tcp`: At least one of `sources` or `destinations`
+	// - `tls`: at least one of `sources`, `destinations`, or `snis`
+	// - `tls_passthrough`: set `snis`
+	// - `grpc`: At least one of `hosts`, `headers`, or `paths`
+	// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
+	// - `ws`: At least one of `hosts`, `headers`, or `paths`
+	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
+	//   <br>
+	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
+	//   <br><br>
+	//   Learn more about the router:
+	// - [Configure routes using expressions](https://developer.konghq.com/gateway/routing/expressions/)
+	//
+	Routes *Routes
 	// A plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. Plugins let you add functionality to services that run behind a Kong Gateway instance, like authentication or rate limiting.
 	// You can find more information about available plugins and which values each plugin accepts at the [Plugin Hub](https://developer.konghq.com/plugins/).
 	// <br><br>
@@ -449,11 +485,7 @@ type SDK struct {
 	SNIs *SNIs
 	// Consumer groups enable the organization and categorization of consumers (users or applications) within an API ecosystem.
 	// By grouping consumers together, you eliminate the need to manage them individually, providing a scalable, efficient approach to managing configurations.
-	ConsumerGroups *ConsumerGroups
-	// The consumer object represents a consumer - or a user - of a service.
-	// You can either rely on Kong Gateway as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong Gateway and your existing primary datastore.
-	//
-	Consumers              *Consumers
+	ConsumerGroups         *ConsumerGroups
 	HMACAuthCredentials    *HMACAuthCredentials
 	JWTs                   *JWTs
 	APIKeys                *APIKeys
@@ -469,38 +501,6 @@ type SDK struct {
 	// Some entities in Kong Gateway share common configuration settings that often need to be repeated. For example, multiple plugins that connect to Redis may require the same connection settings. Without Partials, you would need to replicate this configuration across all plugins. If the settings change, you would need to update each plugin individually.
 	Partials     *Partials
 	PartialLinks *PartialLinks
-	// Route entities define rules to match client requests. Each route is associated with a service, and a service may have multiple routes associated to it. Every request matching a given route will be proxied to the associated service. You need at least one matching rule that applies to the protocol being matched by the route.
-	// <br><br>
-	// The combination of routes and services, and the separation of concerns between them, offers a powerful routing mechanism with which it is possible to define fine-grained entrypoints in Kong Gateway leading to different upstream services of your infrastructure.
-	// <br><br>
-	// Depending on the protocol, one of the following attributes must be set:
-	// <br>
-	//
-	// - `http`: At least one of `methods`, `hosts`, `headers`, or `paths`
-	// - `https`: At least one of `methods`, `hosts`, `headers`, `paths`, or `snis`
-	// - `tcp`: At least one of `sources` or `destinations`
-	// - `tls`: at least one of `sources`, `destinations`, or `snis`
-	// - `tls_passthrough`: set `snis`
-	// - `grpc`: At least one of `hosts`, `headers`, or `paths`
-	// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
-	// - `ws`: At least one of `hosts`, `headers`, or `paths`
-	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-	//   <br>
-	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
-	//   <br><br>
-	//   Learn more about the router:
-	// - [Configure routes using expressions](https://developer.konghq.com/gateway/routing/expressions/)
-	//
-	Routes *Routes
-	// Service entities are abstractions of your microservice interfaces or formal APIs. For example, a service could be a data transformation microservice or a billing API.
-	// <br><br>
-	// The main attribute of a service is the destination URL for proxying traffic. This URL can be set as a single string or by specifying its protocol, host, port and path individually.
-	// <br><br>
-	// Services are associated to routes, and a single service can have many routes associated with it. Routes are entrypoints in Kong Gateway which define rules to match client requests. Once a route is matched, Kong Gateway proxies the request to its associated service. See the [Route documentation](https://developer.konghq.com/gateway/entities/route/) for a detailed explanation of how Kong proxies traffic.
-	// <br><br>
-	// Services can be both [tagged and filtered by tags](https://developer.konghq.com/admin-api/).
-	//
-	Services *Services
 	// The upstream object represents a virtual hostname and can be used to load balance incoming requests over multiple services (targets).
 	// <br><br>
 	// An upstream also includes a [health checker](https://developer.konghq.com/gateway/traffic-control/health-checks-circuit-breakers/), which can enable and disable targets based on their ability or inability to serve requests.
@@ -595,7 +595,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.2.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.2.0 2.916.2 3.15.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.2.0 2.914.0 3.15.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -757,6 +757,9 @@ func New(opts ...SDKOption) *SDK {
 	sdk.AIGatewayConfigStores = newAIGatewayConfigStores(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConfigStoreSecrets = newAIGatewayConfigStoreSecrets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Dashboards = newDashboards(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Consumers = newConsumers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Plugins = newPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPCertificates = newDPCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -773,7 +776,6 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Certificates = newCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.SNIs = newSNIs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ConsumerGroups = newConsumerGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Consumers = newConsumers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.HMACAuthCredentials = newHMACAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.JWTs = newJWTs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIKeys = newAPIKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -784,8 +786,6 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Keys = newKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Partials = newPartials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PartialLinks = newPartialLinks(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Upstreams = newUpstreams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Vaults = newVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ClonedPlugins = newClonedPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)

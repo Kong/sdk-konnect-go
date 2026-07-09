@@ -31,6 +31,7 @@ custom := components.AdvancedQueryDimensions("custom_value")
 | `AdvancedQueryDimensionsDataPlaneNodeVersion`      | data_plane_node_version                            |
 | `AdvancedQueryDimensionsGatewayService`            | gateway_service                                    |
 | `AdvancedQueryDimensionsPortal`                    | portal                                             |
+| `AdvancedQueryDimensionsPrincipal`                 | principal                                          |
 | `AdvancedQueryDimensionsRealm`                     | realm                                              |
 | `AdvancedQueryDimensionsResponseSource`            | response_source                                    |
 | `AdvancedQueryDimensionsRoute`                     | route                                              |

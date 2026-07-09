@@ -62,6 +62,7 @@ func (s *PortalPages) ListPortalPages(ctx context.Context, request operations.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-pages",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -338,6 +339,7 @@ func (s *PortalPages) CreatePortalPage(ctx context.Context, portalID string, cre
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-page",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreatePortalPageRequest", "json", `request:"mediaType=application/json"`)
@@ -638,6 +640,7 @@ func (s *PortalPages) GetPortalPage(ctx context.Context, portalID string, pageID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-page",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -884,6 +887,7 @@ func (s *PortalPages) UpdatePortalPage(ctx context.Context, request operations.U
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-page",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdatePortalPageRequest", "json", `request:"mediaType=application/json"`)
@@ -1184,6 +1188,7 @@ func (s *PortalPages) DeletePortalPage(ctx context.Context, portalID string, pag
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-page",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1432,6 +1437,7 @@ func (s *PortalPages) MovePortalPages(ctx context.Context, request operations.Mo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "move-portal-pages",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "MovePageRequestPayload", "json", `request:"mediaType=application/json"`)

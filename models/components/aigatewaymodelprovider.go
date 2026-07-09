@@ -153,7 +153,7 @@ type AIGatewayModelProviderAIGatewayModelProviderVertex struct {
 	Type AIGatewayModelProviderVertexAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -303,7 +303,7 @@ type AIGatewayModelProviderAIGatewayModelProviderXai struct {
 	Type AIGatewayModelProviderXaiAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -454,7 +454,7 @@ type AIGatewayModelProviderAIGatewayModelProviderVllm struct {
 	Type AIGatewayModelProviderVllmAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -605,7 +605,7 @@ type AIGatewayModelProviderAIGatewayModelProviderVercel struct {
 	Type AIGatewayModelProviderVercelAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -756,7 +756,7 @@ type AIGatewayModelProviderAIGatewayModelProviderOpenai struct {
 	Type AIGatewayModelProviderOpenaiAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -907,7 +907,7 @@ type AIGatewayModelProviderAIGatewayModelProviderOllama struct {
 	Type AIGatewayModelProviderOllamaAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -1058,7 +1058,7 @@ type AIGatewayModelProviderAIGatewayModelProviderMistral struct {
 	Type AIGatewayModelProviderMistralAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -1212,7 +1212,7 @@ type AIGatewayModelProviderAIGatewayModelProviderLlama2 struct {
 	Type AIGatewayModelProviderLlama2AIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -1366,7 +1366,7 @@ type AIGatewayModelProviderAIGatewayModelProviderKimi struct {
 	Type AIGatewayModelProviderKimiAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -1517,7 +1517,7 @@ type AIGatewayModelProviderAIGatewayModelProviderHuggingface struct {
 	Type AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -1758,7 +1758,7 @@ type AIGatewayModelProviderAIGatewayModelProviderGemini struct {
 	Type AIGatewayModelProviderGeminiAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -1908,7 +1908,7 @@ type AIGatewayModelProviderAIGatewayModelProviderDeepseek struct {
 	Type AIGatewayModelProviderDeepseekAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -2059,7 +2059,7 @@ type AIGatewayModelProviderAIGatewayModelProviderDatabricks struct {
 	Type AIGatewayModelProviderDatabricksAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -2210,7 +2210,7 @@ type AIGatewayModelProviderAIGatewayModelProviderDashscope struct {
 	Type AIGatewayModelProviderDashscopeAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -2361,7 +2361,7 @@ type AIGatewayModelProviderAIGatewayModelProviderCohere struct {
 	Type AIGatewayModelProviderCohereAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -2512,7 +2512,7 @@ type AIGatewayModelProviderAIGatewayModelProviderCerebras struct {
 	Type AIGatewayModelProviderCerebrasAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -2753,7 +2753,7 @@ type AIGatewayModelProviderAIGatewayModelProviderBedrock struct {
 	Type AIGatewayModelProviderBedrockAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -3001,7 +3001,7 @@ type AIGatewayModelProviderAIGatewayModelProviderAzure struct {
 	Type AIGatewayModelProviderAzureAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
@@ -3151,7 +3151,7 @@ type AIGatewayModelProviderAIGatewayModelProviderAnthropic struct {
 	Type AIGatewayModelProviderAnthropicAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//

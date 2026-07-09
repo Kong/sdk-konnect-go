@@ -32,7 +32,7 @@ func (e *Endpoints) GetTelemetry() string {
 type AIGateway struct {
 	// The display name for this AI Gateway.
 	DisplayName string `json:"display_name"`
-	// The name for this AI Gateway.
+	// The name for this AI Gateway. This value is immutable after creation.
 	Name string `json:"name"`
 	// The description of the AI Gateway.
 	Description *string `json:"description,omitempty"`

@@ -11,6 +11,9 @@ import (
 
 // ConsumersSDK is a generated interface.
 type ConsumersSDK interface {
+	// SearchConsumersInWorkspace - Search Consumers in a workspace
+	// Search Consumers in a workspace
+	SearchConsumersInWorkspace(ctx context.Context, request operations.SearchConsumersInWorkspaceRequest, opts ...operations.Option) (*operations.SearchConsumersInWorkspaceResponse, error)
 	// ListConsumerInWorkspace - List all Consumers in a workspace
 	// List all Consumers in a workspace
 	ListConsumerInWorkspace(ctx context.Context, request operations.ListConsumerInWorkspaceRequest, opts ...operations.Option) (*operations.ListConsumerInWorkspaceResponse, error)

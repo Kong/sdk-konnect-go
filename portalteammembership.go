@@ -63,6 +63,7 @@ func (s *PortalTeamMembership) ListPortalTeamDevelopers(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-team-developers",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -334,6 +335,7 @@ func (s *PortalTeamMembership) AddDeveloperToPortalTeam(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "add-developer-to-portal-team",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AddDeveloperToTeamRequest", "json", `request:"mediaType=application/json"`)
@@ -631,6 +633,7 @@ func (s *PortalTeamMembership) RemoveDeveloperFromPortalTeam(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-developer-from-portal-team",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -879,6 +882,7 @@ func (s *PortalTeamMembership) ListPortalDeveloperTeams(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-developer-teams",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -64,6 +64,7 @@ func (s *Vulnerabilities) ListVulnerabilityScans(ctx context.Context, request op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-vulnerability-scans",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -356,6 +357,7 @@ func (s *Vulnerabilities) CreateVulnerabilityScan(ctx context.Context, request c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-vulnerability-scan",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -634,6 +636,7 @@ func (s *Vulnerabilities) FetchVulnerabilityScan(ctx context.Context, scanID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-vulnerability-scan",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -922,6 +925,7 @@ func (s *Vulnerabilities) ListVulnerabilityScanVulnerabilities(ctx context.Conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-vulnerability-scan-vulnerabilities",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1214,6 +1218,7 @@ func (s *Vulnerabilities) ListServiceVulnerabilityScans(ctx context.Context, req
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-service-vulnerability-scans",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1511,6 +1516,7 @@ func (s *Vulnerabilities) FetchServiceVulnerabilityScan(ctx context.Context, ser
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-service-vulnerability-scan",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1799,6 +1805,7 @@ func (s *Vulnerabilities) ListVulnerabilities(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-vulnerabilities",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2095,6 +2102,7 @@ func (s *Vulnerabilities) FetchVulnerability(ctx context.Context, vulnerabilityI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-vulnerability",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2383,6 +2391,7 @@ func (s *Vulnerabilities) ListVulnerabilityServices(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-vulnerability-services",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2675,6 +2684,7 @@ func (s *Vulnerabilities) ListVulnerabilityInstances(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-vulnerability-instances",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2967,6 +2977,7 @@ func (s *Vulnerabilities) ListServiceVulnerabilities(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-service-vulnerabilities",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3264,6 +3275,7 @@ func (s *Vulnerabilities) FetchServiceVulnerability(ctx context.Context, service
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-service-vulnerability",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3552,6 +3564,7 @@ func (s *Vulnerabilities) ListServiceVulnerabilityInstances(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-service-vulnerability-instances",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3844,6 +3857,7 @@ func (s *Vulnerabilities) PutServiceVulnerabilitySeverityOverride(ctx context.Co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "put-service-vulnerability-severity-override",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PutVulnerabilitySeverityOverride", "json", `request:"mediaType=application/json"`)
@@ -4144,6 +4158,7 @@ func (s *Vulnerabilities) DeleteServiceVulnerabilitySeverityOverride(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-service-vulnerability-severity-override",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4413,6 +4428,7 @@ func (s *Vulnerabilities) PutServiceVulnerabilityDismissal(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "put-service-vulnerability-dismissal",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PutVulnerabilityDismissal", "json", `request:"mediaType=application/json"`)
@@ -4713,6 +4729,7 @@ func (s *Vulnerabilities) DeleteServiceVulnerabilityDismissal(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-service-vulnerability-dismissal",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4982,6 +4999,7 @@ func (s *Vulnerabilities) ListCatalogVulnerabilityServices(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-catalog-vulnerability-services",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -5254,6 +5272,7 @@ func (s *Vulnerabilities) QueryVulnerabilitiesMetrics(ctx context.Context, reque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "query-vulnerabilities-metrics",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)

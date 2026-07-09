@@ -1391,6 +1391,89 @@ func (_c *MockConsumersSDK_RemoveConsumerFromConsumerGroupInWorkspace_Call) RunA
 	return _c
 }
 
+// SearchConsumersInWorkspace provides a mock function for the type MockConsumersSDK
+func (_mock *MockConsumersSDK) SearchConsumersInWorkspace(ctx context.Context, request operations.SearchConsumersInWorkspaceRequest, opts ...operations.Option) (*operations.SearchConsumersInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for SearchConsumersInWorkspace")
+	}
+
+	var r0 *operations.SearchConsumersInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchConsumersInWorkspaceRequest, ...operations.Option) (*operations.SearchConsumersInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchConsumersInWorkspaceRequest, ...operations.Option) *operations.SearchConsumersInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.SearchConsumersInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.SearchConsumersInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockConsumersSDK_SearchConsumersInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SearchConsumersInWorkspace'
+type MockConsumersSDK_SearchConsumersInWorkspace_Call struct {
+	*mock.Call
+}
+
+// SearchConsumersInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.SearchConsumersInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockConsumersSDK_Expecter) SearchConsumersInWorkspace(ctx any, request any, opts ...any) *MockConsumersSDK_SearchConsumersInWorkspace_Call {
+	return &MockConsumersSDK_SearchConsumersInWorkspace_Call{Call: _e.mock.On("SearchConsumersInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockConsumersSDK_SearchConsumersInWorkspace_Call) Run(run func(ctx context.Context, request operations.SearchConsumersInWorkspaceRequest, opts ...operations.Option)) *MockConsumersSDK_SearchConsumersInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.SearchConsumersInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.SearchConsumersInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockConsumersSDK_SearchConsumersInWorkspace_Call) Return(searchConsumersInWorkspaceResponse *operations.SearchConsumersInWorkspaceResponse, err error) *MockConsumersSDK_SearchConsumersInWorkspace_Call {
+	_c.Call.Return(searchConsumersInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockConsumersSDK_SearchConsumersInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.SearchConsumersInWorkspaceRequest, opts ...operations.Option) (*operations.SearchConsumersInWorkspaceResponse, error)) *MockConsumersSDK_SearchConsumersInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertConsumer provides a mock function for the type MockConsumersSDK
 func (_mock *MockConsumersSDK) UpsertConsumer(ctx context.Context, request operations.UpsertConsumerRequest, opts ...operations.Option) (*operations.UpsertConsumerResponse, error) {
 	var tmpRet mock.Arguments

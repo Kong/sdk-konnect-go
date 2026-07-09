@@ -72,7 +72,7 @@ type Embeddings struct {
 	// The name of the embeddings model.
 	Name string `json:"name"`
 	// Configuration for an embeddings model.
-	Config *AIGatewayEmbeddingsModelConfig `json:"config,omitempty"`
+	Config AIGatewayEmbeddingsModelConfig `json:"config"`
 }
 
 func (e Embeddings) MarshalJSON() ([]byte, error) {
@@ -80,7 +80,7 @@ func (e Embeddings) MarshalJSON() ([]byte, error) {
 }
 
 func (e *Embeddings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"provider", "name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"provider", "name", "config"}); err != nil {
 		return err
 	}
 	return nil
@@ -107,60 +107,39 @@ func (e *Embeddings) GetName() string {
 	return e.Name
 }
 
-func (e *Embeddings) GetConfig() *AIGatewayEmbeddingsModelConfig {
+func (e *Embeddings) GetConfig() AIGatewayEmbeddingsModelConfig {
 	if e == nil {
-		return nil
+		return AIGatewayEmbeddingsModelConfig{}
 	}
 	return e.Config
 }
 
 func (e *Embeddings) GetConfigAzure() *AIGatewayAzureEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayAzureEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayAzureEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigBedrock() *AIGatewayBedrockEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayBedrockEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayBedrockEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigDatabricks() *AIGatewayDatabricksEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayDatabricksEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayDatabricksEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigGemini() *AIGatewayGeminiEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayGeminiEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayGeminiEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigHuggingface() *AIGatewayHuggingfaceEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayHuggingfaceEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayHuggingfaceEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigVercel() *AIGatewayVercelEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayVercelEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayVercelEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigVertex() *AIGatewayVertexEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayVertexEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayVertexEmbeddingsModelConfig
 }
 
 type AIGatewayModelBalancerSemanticConfigOutput struct {

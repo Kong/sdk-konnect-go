@@ -26,7 +26,7 @@ func TestComponentsPluginFieldTypes(t *testing.T) {
 	var _ string = value.Name
 	var _ *components.Ordering = value.Ordering
 	var _ []components.Partials = value.Partials
-	var _ []components.Protocols = value.Protocols
+	var _ []components.PluginProtocols = value.Protocols
 	var _ *components.PluginRoute = value.Route
 	var _ *components.PluginService = value.Service
 	var _ []string = value.Tags

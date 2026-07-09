@@ -63,6 +63,7 @@ func (s *MCPServers) ListMcpServerConfigs(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-mcp-server-configs",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -334,6 +335,7 @@ func (s *MCPServers) CreateMcpServerConfig(ctx context.Context, request componen
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-mcp-server-config",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -633,6 +635,7 @@ func (s *MCPServers) GetMcpServerConfig(ctx context.Context, mcpServerID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-server-config",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -926,6 +929,7 @@ func (s *MCPServers) UpdateMcpServerConfig(ctx context.Context, mcpServerID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-mcp-server-config",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateMCPServerRequest", "json", `request:"mediaType=application/json"`)
@@ -1247,6 +1251,7 @@ func (s *MCPServers) PatchMcpServerConfig(ctx context.Context, mcpServerID strin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "patch-mcp-server-config",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PatchMCPServerRequest", "json", `request:"mediaType=application/json"`)
@@ -1567,6 +1572,7 @@ func (s *MCPServers) DeleteMcpServerConfig(ctx context.Context, mcpServerID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-mcp-server-config",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1840,6 +1846,7 @@ func (s *MCPServers) GetMcpServerStatus(ctx context.Context, mcpServerID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-server-status",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2132,6 +2139,7 @@ func (s *MCPServers) GetMcpServerGeneratedCode(ctx context.Context, mcpServerID 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-server-generated-code",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2435,6 +2443,7 @@ func (s *MCPServers) GetMcpServerSignals(ctx context.Context, controlPlaneID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-server-signals",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2708,6 +2717,7 @@ func (s *MCPServers) ListMcpServersByControlPlane(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-mcp-servers-by-control-plane",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2984,6 +2994,7 @@ func (s *MCPServers) GetMcpServerByControlPlane(ctx context.Context, controlPlan
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-server-by-control-plane",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3272,6 +3283,7 @@ func (s *MCPServers) GetMcpServerKongEntities(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-server-kong-entities",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3564,6 +3576,7 @@ func (s *MCPServers) PostMcpServerStatus(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "post-mcp-server-status",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -3845,6 +3858,7 @@ func (s *MCPServers) GetMcpServerCode(ctx context.Context, controlPlaneID string
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-server-code",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

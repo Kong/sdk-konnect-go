@@ -62,6 +62,7 @@ func (s *EventGatewayVaultSecrets) ListEventGatewayVaultSecrets(ctx context.Cont
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-vault-secrets",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -312,6 +313,7 @@ func (s *EventGatewayVaultSecrets) CreateEventGatewayVaultSecret(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-gateway-vault-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EventGatewayModifyVaultSecret", "json", `request:"mediaType=application/json"`)
@@ -586,6 +588,7 @@ func (s *EventGatewayVaultSecrets) GetEventGatewayVaultSecret(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-vault-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -853,6 +856,7 @@ func (s *EventGatewayVaultSecrets) UpdateEventGatewayVaultSecret(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-gateway-vault-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "EventGatewayModifyVaultSecret", "json", `request:"mediaType=application/json"`)
@@ -1127,6 +1131,7 @@ func (s *EventGatewayVaultSecrets) DeleteEventGatewayVaultSecret(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-gateway-vault-secret",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

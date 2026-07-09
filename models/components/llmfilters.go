@@ -3,32 +3,44 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type LLMFiltersField string
 
 const (
-	LLMFiltersFieldAiPlugin LLMFiltersField = "ai_plugin"
+	LLMFiltersFieldAiPlugin              LLMFiltersField = "ai_plugin"
+	LLMFiltersFieldAiProvider            LLMFiltersField = "ai_provider"
+	LLMFiltersFieldAiRequestModel        LLMFiltersField = "ai_request_model"
+	LLMFiltersFieldAiResponseModel       LLMFiltersField = "ai_response_model"
+	LLMFiltersFieldApplication           LLMFiltersField = "application"
+	LLMFiltersFieldConsumer              LLMFiltersField = "consumer"
+	LLMFiltersFieldControlPlane          LLMFiltersField = "control_plane"
+	LLMFiltersFieldControlPlaneGroup     LLMFiltersField = "control_plane_group"
+	LLMFiltersFieldGatewayService        LLMFiltersField = "gateway_service"
+	LLMFiltersFieldLlmCacheStatus        LLMFiltersField = "llm_cache_status"
+	LLMFiltersFieldLlmEmbeddingsModel    LLMFiltersField = "llm_embeddings_model"
+	LLMFiltersFieldLlmEmbeddingsProvider LLMFiltersField = "llm_embeddings_provider"
+	LLMFiltersFieldPrincipal             LLMFiltersField = "principal"
+	LLMFiltersFieldRealm                 LLMFiltersField = "realm"
+	LLMFiltersFieldRoute                 LLMFiltersField = "route"
+	LLMFiltersFieldStatusCode            LLMFiltersField = "status_code"
+	LLMFiltersFieldStatusCodeGrouped     LLMFiltersField = "status_code_grouped"
 )
 
 func (e LLMFiltersField) ToPointer() *LLMFiltersField {
 	return &e
 }
-func (e *LLMFiltersField) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *LLMFiltersField) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "application", "consumer", "control_plane", "control_plane_group", "gateway_service", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "principal", "realm", "route", "status_code", "status_code_grouped":
+			return true
+		}
 	}
-	switch v {
-	case "ai_plugin":
-		*e = LLMFiltersField(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for LLMFiltersField: %v", v)
-	}
+	return false
 }
 
 type LLMFiltersOperator string

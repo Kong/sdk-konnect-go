@@ -3460,8 +3460,8 @@ func (_c *MockPluginsSDK_ListPluginWithServiceInWorkspace_Call) RunAndReturn(run
 	return _c
 }
 
-// SearchPlugin provides a mock function for the type MockPluginsSDK
-func (_mock *MockPluginsSDK) SearchPlugin(ctx context.Context, request operations.SearchPluginRequest, opts ...operations.Option) (*operations.SearchPluginResponse, error) {
+// SearchPlugins provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) SearchPlugins(ctx context.Context, request operations.SearchPluginsRequest, opts ...operations.Option) (*operations.SearchPluginsResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
 		tmpRet = _mock.Called(ctx, request, opts)
@@ -3471,22 +3471,22 @@ func (_mock *MockPluginsSDK) SearchPlugin(ctx context.Context, request operation
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for SearchPlugin")
+		panic("no return value specified for SearchPlugins")
 	}
 
-	var r0 *operations.SearchPluginResponse
+	var r0 *operations.SearchPluginsResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchPluginRequest, ...operations.Option) (*operations.SearchPluginResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchPluginsRequest, ...operations.Option) (*operations.SearchPluginsResponse, error)); ok {
 		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchPluginRequest, ...operations.Option) *operations.SearchPluginResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchPluginsRequest, ...operations.Option) *operations.SearchPluginsResponse); ok {
 		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.SearchPluginResponse)
+			r0 = ret.Get(0).(*operations.SearchPluginsResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.SearchPluginRequest, ...operations.Option) error); ok {
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.SearchPluginsRequest, ...operations.Option) error); ok {
 		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
@@ -3494,29 +3494,29 @@ func (_mock *MockPluginsSDK) SearchPlugin(ctx context.Context, request operation
 	return r0, r1
 }
 
-// MockPluginsSDK_SearchPlugin_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SearchPlugin'
-type MockPluginsSDK_SearchPlugin_Call struct {
+// MockPluginsSDK_SearchPlugins_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SearchPlugins'
+type MockPluginsSDK_SearchPlugins_Call struct {
 	*mock.Call
 }
 
-// SearchPlugin is a helper method to define mock.On call
+// SearchPlugins is a helper method to define mock.On call
 //   - ctx context.Context
-//   - request operations.SearchPluginRequest
+//   - request operations.SearchPluginsRequest
 //   - opts ...operations.Option
-func (_e *MockPluginsSDK_Expecter) SearchPlugin(ctx any, request any, opts ...any) *MockPluginsSDK_SearchPlugin_Call {
-	return &MockPluginsSDK_SearchPlugin_Call{Call: _e.mock.On("SearchPlugin",
+func (_e *MockPluginsSDK_Expecter) SearchPlugins(ctx any, request any, opts ...any) *MockPluginsSDK_SearchPlugins_Call {
+	return &MockPluginsSDK_SearchPlugins_Call{Call: _e.mock.On("SearchPlugins",
 		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockPluginsSDK_SearchPlugin_Call) Run(run func(ctx context.Context, request operations.SearchPluginRequest, opts ...operations.Option)) *MockPluginsSDK_SearchPlugin_Call {
+func (_c *MockPluginsSDK_SearchPlugins_Call) Run(run func(ctx context.Context, request operations.SearchPluginsRequest, opts ...operations.Option)) *MockPluginsSDK_SearchPlugins_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 operations.SearchPluginRequest
+		var arg1 operations.SearchPluginsRequest
 		if args[1] != nil {
-			arg1 = args[1].(operations.SearchPluginRequest)
+			arg1 = args[1].(operations.SearchPluginsRequest)
 		}
 		var arg2 []operations.Option
 		var variadicArgs []operations.Option
@@ -3533,12 +3533,12 @@ func (_c *MockPluginsSDK_SearchPlugin_Call) Run(run func(ctx context.Context, re
 	return _c
 }
 
-func (_c *MockPluginsSDK_SearchPlugin_Call) Return(searchPluginResponse *operations.SearchPluginResponse, err error) *MockPluginsSDK_SearchPlugin_Call {
-	_c.Call.Return(searchPluginResponse, err)
+func (_c *MockPluginsSDK_SearchPlugins_Call) Return(searchPluginsResponse *operations.SearchPluginsResponse, err error) *MockPluginsSDK_SearchPlugins_Call {
+	_c.Call.Return(searchPluginsResponse, err)
 	return _c
 }
 
-func (_c *MockPluginsSDK_SearchPlugin_Call) RunAndReturn(run func(ctx context.Context, request operations.SearchPluginRequest, opts ...operations.Option) (*operations.SearchPluginResponse, error)) *MockPluginsSDK_SearchPlugin_Call {
+func (_c *MockPluginsSDK_SearchPlugins_Call) RunAndReturn(run func(ctx context.Context, request operations.SearchPluginsRequest, opts ...operations.Option) (*operations.SearchPluginsResponse, error)) *MockPluginsSDK_SearchPlugins_Call {
 	_c.Call.Return(run)
 	return _c
 }

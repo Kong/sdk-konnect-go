@@ -63,6 +63,7 @@ func (s *PortalMCPServers) ListPortalMcpServers(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-mcp-servers",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -360,6 +361,7 @@ func (s *PortalMCPServers) CreatePortalMcpServer(ctx context.Context, portalID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-mcp-server",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreatePortalMCPServerRequest", "json", `request:"mediaType=application/json"`)
@@ -681,6 +683,7 @@ func (s *PortalMCPServers) DeletePortalMcpServer(ctx context.Context, portalID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-mcp-server",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

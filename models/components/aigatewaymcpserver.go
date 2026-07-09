@@ -38,11 +38,11 @@ type AIGatewayMCPServerAIGatewayMCPServerUpstreamServer struct {
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerUpstreamServerConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
-	Tools  []AIGatewayMCPUpstreamTool          `json:"tools,omitempty"`
-	Access AIGatewayMCPServerBaseACLProperties `json:"access"`
+	Tools  []AIGatewayMCPUpstreamTool           `json:"tools,omitempty"`
+	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
+	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
@@ -74,7 +74,7 @@ func (a AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) MarshalJSON() ([]byt
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "access", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -101,19 +101,25 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetTools() []AIGate
 	return a.Tools
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetAccess() AIGatewayMCPServerBaseACLProperties {
+func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetAccess() *AIGatewayMCPServerBaseACLProperties {
 	if a == nil {
-		return AIGatewayMCPServerBaseACLProperties{}
+		return nil
 	}
 	return a.Access
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesConsumer
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesOauth
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesOauth
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetDisplayName() string {
@@ -214,11 +220,11 @@ type AIGatewayMCPServerAIGatewayMCPServerPassthroughListener struct {
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
-	Tools  []AIGatewayMCPToolBase              `json:"tools,omitempty"`
-	Access AIGatewayMCPServerBaseACLProperties `json:"access"`
+	Tools  []AIGatewayMCPToolBase               `json:"tools,omitempty"`
+	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
+	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
@@ -250,7 +256,7 @@ func (a AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) MarshalJSON() (
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "access", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -277,19 +283,25 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetTools() []A
 	return a.Tools
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccess() AIGatewayMCPServerBaseACLProperties {
+func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccess() *AIGatewayMCPServerBaseACLProperties {
 	if a == nil {
-		return AIGatewayMCPServerBaseACLProperties{}
+		return nil
 	}
 	return a.Access
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesConsumer
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesOauth
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesOauth
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetDisplayName() string {
@@ -390,11 +402,11 @@ type AIGatewayMCPServerAIGatewayMCPServerListener struct {
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerNoUpstreamConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
-	Tools  []AIGatewayMCPToolBase              `json:"tools,omitempty"`
-	Access AIGatewayMCPServerBaseACLProperties `json:"access"`
+	Tools  []AIGatewayMCPToolBase               `json:"tools,omitempty"`
+	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
+	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
@@ -426,7 +438,7 @@ func (a AIGatewayMCPServerAIGatewayMCPServerListener) MarshalJSON() ([]byte, err
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerListener) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "access", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -453,19 +465,25 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetTools() []AIGatewayMCP
 	return a.Tools
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccess() AIGatewayMCPServerBaseACLProperties {
+func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccess() *AIGatewayMCPServerBaseACLProperties {
 	if a == nil {
-		return AIGatewayMCPServerBaseACLProperties{}
+		return nil
 	}
 	return a.Access
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesConsumer
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesOauth
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesOauth
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetDisplayName() string {
@@ -566,11 +584,11 @@ type AIGatewayMCPServerAIGatewayMCPServerConversionListener struct {
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamNoProxyConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
-	Tools  []AIGatewayMCPConversionTool        `json:"tools,omitempty"`
-	Access AIGatewayMCPServerBaseACLProperties `json:"access"`
+	Tools  []AIGatewayMCPConversionTool         `json:"tools,omitempty"`
+	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
+	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
@@ -602,7 +620,7 @@ func (a AIGatewayMCPServerAIGatewayMCPServerConversionListener) MarshalJSON() ([
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "access", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -629,19 +647,25 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetTools() []AI
 	return a.Tools
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccess() AIGatewayMCPServerBaseACLProperties {
+func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccess() *AIGatewayMCPServerBaseACLProperties {
 	if a == nil {
-		return AIGatewayMCPServerBaseACLProperties{}
+		return nil
 	}
 	return a.Access
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesConsumer
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
-	return a.GetAccess().AIGatewayMCPServerBaseACLPropertiesOauth
+	if v := a.GetAccess(); v != nil {
+		return v.AIGatewayMCPServerBaseACLPropertiesOauth
+	}
+	return nil
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetDisplayName() string {
@@ -739,13 +763,13 @@ func (e *AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType) UnmarshalJSON(d
 
 type AIGatewayMCPServerAIGatewayMCPServerConversionOnly struct {
 	Type AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType `json:"type"`
-	// Routing, logging, and server configuration for the MCP Server.
-	Config AIGatewayMCPServerWithUpstreamNoProxyConfigOutput `json:"config"`
+	// Routing, logging, and request body size limits for the MCP Server.
+	Config AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig `json:"config"`
 	// List of tools exposed by this MCP Server.
 	Tools []AIGatewayMCPConversionTool `json:"tools,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
+	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
@@ -790,9 +814,9 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetType() AIGateway
 	return a.Type
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigOutput {
+func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig {
 	if a == nil {
-		return AIGatewayMCPServerWithUpstreamNoProxyConfigOutput{}
+		return AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig{}
 	}
 	return a.Config
 }

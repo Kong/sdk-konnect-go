@@ -62,6 +62,7 @@ func (s *ImpersonationSettings) GetImpersonationSettings(ctx context.Context, op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-impersonation-settings",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -307,6 +308,7 @@ func (s *ImpersonationSettings) UpdateImpersonationSettings(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-impersonation-settings",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)

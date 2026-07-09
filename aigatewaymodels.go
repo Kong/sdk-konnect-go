@@ -63,6 +63,7 @@ func (s *AIGatewayModels) ListAiGatewayModels(ctx context.Context, request opera
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-ai-gateway-models",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -360,6 +361,7 @@ func (s *AIGatewayModels) CreateAiGatewayModel(ctx context.Context, gatewayID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-ai-gateway-model",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAIGatewayModelRequest", "json", `request:"mediaType=application/json"`)
@@ -702,6 +704,7 @@ func (s *AIGatewayModels) GetAiGatewayModel(ctx context.Context, gatewayID strin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-ai-gateway-model",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -990,6 +993,7 @@ func (s *AIGatewayModels) UpdateAiGatewayModel(ctx context.Context, request oper
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-ai-gateway-model",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAIGatewayModelRequest", "json", `request:"mediaType=application/json"`)
@@ -1311,6 +1315,7 @@ func (s *AIGatewayModels) DeleteAiGatewayModel(ctx context.Context, gatewayID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-ai-gateway-model",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

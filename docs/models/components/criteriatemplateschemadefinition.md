@@ -8,9 +8,6 @@ import (
 )
 
 value := components.CriteriaTemplateSchemaDefinitionString
-
-// Open enum: custom values can be created with a direct type cast
-custom := components.CriteriaTemplateSchemaDefinition("custom_value")
 ```
 
 

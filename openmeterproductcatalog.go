@@ -67,6 +67,7 @@ func (s *OpenMeterProductCatalog) ListProductCatalogAddons(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-product-catalog-addons",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -341,6 +342,7 @@ func (s *OpenMeterProductCatalog) CreateProductCatalogAddon(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-product-catalog-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -623,6 +625,7 @@ func (s *OpenMeterProductCatalog) UpdateProductCatalogAddon(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-product-catalog-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpsertAddonRequest", "json", `request:"mediaType=application/json"`)
@@ -946,6 +949,7 @@ func (s *OpenMeterProductCatalog) GetProductCatalogAddon(ctx context.Context, ad
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-product-catalog-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1262,6 +1266,7 @@ func (s *OpenMeterProductCatalog) DeleteProductCatalogAddon(ctx context.Context,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-product-catalog-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1538,6 +1543,7 @@ func (s *OpenMeterProductCatalog) ArchiveProductCatalogAddon(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "archive-product-catalog-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1833,6 +1839,7 @@ func (s *OpenMeterProductCatalog) PublishProductCatalogAddon(ctx context.Context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "publish-product-catalog-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2124,6 +2131,7 @@ func (s *OpenMeterProductCatalog) ListPlans(ctx context.Context, request operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plans",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2398,6 +2406,7 @@ func (s *OpenMeterProductCatalog) CreatePlan(ctx context.Context, request compon
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plan",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -2680,6 +2689,7 @@ func (s *OpenMeterProductCatalog) UpdatePlan(ctx context.Context, planID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-plan",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpsertPlanRequest", "json", `request:"mediaType=application/json"`)
@@ -3003,6 +3013,7 @@ func (s *OpenMeterProductCatalog) GetPlan(ctx context.Context, planID string, op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plan",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3319,6 +3330,7 @@ func (s *OpenMeterProductCatalog) DeletePlan(ctx context.Context, planID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plan",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3596,6 +3608,7 @@ func (s *OpenMeterProductCatalog) ListPlanAddons(ctx context.Context, planID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-plan-addons",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3896,6 +3909,7 @@ func (s *OpenMeterProductCatalog) CreatePlanAddon(ctx context.Context, planID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-plan-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreatePlanAddonRequest", "json", `request:"mediaType=application/json"`)
@@ -4199,6 +4213,7 @@ func (s *OpenMeterProductCatalog) GetPlanAddon(ctx context.Context, planID strin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-plan-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -4490,6 +4505,7 @@ func (s *OpenMeterProductCatalog) UpdatePlanAddon(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-plan-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpsertPlanAddonRequest", "json", `request:"mediaType=application/json"`)
@@ -4793,6 +4809,7 @@ func (s *OpenMeterProductCatalog) DeletePlanAddon(ctx context.Context, planID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-plan-addon",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -5069,6 +5086,7 @@ func (s *OpenMeterProductCatalog) ArchivePlan(ctx context.Context, planID string
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "archive-plan",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -5364,6 +5382,7 @@ func (s *OpenMeterProductCatalog) PublishPlan(ctx context.Context, planID string
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "publish-plan",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

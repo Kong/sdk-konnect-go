@@ -23144,11 +23144,140 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+  /v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/search:
+    get:
+      x-unstable: true
+      x-internal: true
+      operationId: search-consumers-in-workspace
+      summary: Search Consumers in a workspace
+      description: Search Consumers in a workspace
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+        - $ref: '#/components/parameters/ConsumerSearchFilter'
+      responses:
+        '200':
+          description: A successful response searching Consumers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Consumer'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
+      tags:
+        - Consumers
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/Workspace'
+  /v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/search:
+    get:
+      x-unstable: true
+      x-internal: true
+      operationId: search-services-in-workspace
+      summary: Search Services in a workspace
+      description: Search Services in a workspace
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+        - $ref: '#/components/parameters/ServiceSearchFilter'
+      responses:
+        '200':
+          description: A successful response searching Services
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Service'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
+      tags:
+        - Services
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/Workspace'
+  /v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/search:
+    get:
+      x-unstable: true
+      x-internal: true
+      operationId: search-routes-in-workspace
+      summary: Search Routes in a workspace
+      description: Search Routes in a workspace
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+        - $ref: '#/components/parameters/RouteSearchFilter'
+      responses:
+        '200':
+          description: A successful response searching Routes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Route'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
+      tags:
+        - Routes
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/Workspace'
   /v2/control-planes/{controlPlaneId}/core-entities/plugins/search:
     get:
       x-internal: true
       x-unstable: true
-      operationId: search-plugin
+      operationId: search-plugins
       summary: Search for Plugins
       description: Search for Plugins
       parameters:
@@ -23172,8 +23301,16 @@ paths:
                     $ref: '#/components/schemas/PaginationNextResponse'
                   offset:
                     $ref: '#/components/schemas/PaginationOffsetResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/HTTP401Error'
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
       tags:
         - Plugins
     parameters:
@@ -34935,6 +35072,39 @@ components:
       in: path
       required: true
       description: Node identifier
+    RouteSearchFilter:
+      name: filter
+      in: query
+      description: Filter routes by fields
+      required: false
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/LegacyStringFieldFilter'
+      style: deepObject
+    ServiceSearchFilter:
+      name: filter
+      in: query
+      description: Filter services by fields
+      required: false
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/LegacyStringFieldFilter'
+      style: deepObject
+    ConsumerSearchFilter:
+      name: filter
+      in: query
+      description: Filter consumers by fields
+      required: false
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/LegacyStringFieldFilter'
+      style: deepObject
     PluginSearchFilter:
       name: filter
       in: query
@@ -38179,10 +38349,14 @@ components:
                       infers type raw from spec.content.
                     x-internal: true
                     oneOf:
-                      - $ref: '#/components/schemas/RawApiSpecProvider'
-                      - $ref: '#/components/schemas/UrlApiSpecProvider'
-                      - $ref: '#/components/schemas/IntegrationApiSpecProviderPayload'
-                      - $ref: >-
+                      - &ref_0
+                        $ref: '#/components/schemas/RawApiSpecProvider'
+                      - &ref_1
+                        $ref: '#/components/schemas/UrlApiSpecProvider'
+                      - &ref_2
+                        $ref: '#/components/schemas/IntegrationApiSpecProviderPayload'
+                      - &ref_3
+                        $ref: >-
                           #/components/schemas/ResourceBoundIntegrationApiSpecProviderPayload
               created_at:
                 $ref: '#/components/schemas/CreatedAt'
@@ -38242,12 +38416,10 @@ components:
                             Present when a spec exists.
                           x-internal: true
                           oneOf:
-                            - $ref: '#/components/schemas/RawApiSpecProvider'
-                            - $ref: '#/components/schemas/UrlApiSpecProvider'
-                            - $ref: >-
-                                #/components/schemas/IntegrationApiSpecProviderPayload
-                            - $ref: >-
-                                #/components/schemas/ResourceBoundIntegrationApiSpecProviderPayload
+                            - *ref_0
+                            - *ref_1
+                            - *ref_2
+                            - *ref_3
                     created_at:
                       $ref: '#/components/schemas/CreatedAt'
                     updated_at:
@@ -49666,6 +49838,16 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ApiSpecContentPayload'
         - $ref: '#/components/schemas/ApiSpecProviderPayload'
+    ApiSpecProvider:
+      title: ApiSpecProvider
+      description: |
+        Represents the provider, or source, of an API spec.
+      x-internal: true
+      oneOf:
+        - *ref_0
+        - *ref_1
+        - *ref_2
+        - *ref_3
     ApiSpecContentPayload:
       title: ApiSpecContentPayload
       description: >
@@ -50826,7 +51008,8 @@ components:
       title: DateTimeFieldFilter
       description: Filters on the given datetime (RFC-3339) field value.
       oneOf:
-        - type: object
+        - &ref_4
+          type: object
           title: DateTimeFieldEqualsFilter
           additionalProperties: false
           properties:
@@ -50837,7 +51020,8 @@ components:
               example: '2022-03-30T07:20:50Z'
           required:
             - eq
-        - type: object
+        - &ref_5
+          type: object
           title: DateTimeFieldLTFilter
           additionalProperties: false
           properties:
@@ -50848,7 +51032,8 @@ components:
               example: '2022-03-30T07:20:50Z'
           required:
             - lt
-        - type: object
+        - &ref_6
+          type: object
           title: DateTimeFieldLTEFilter
           additionalProperties: false
           properties:
@@ -50861,7 +51046,8 @@ components:
               example: '2022-03-30T07:20:50Z'
           required:
             - lte
-        - type: object
+        - &ref_7
+          type: object
           title: DateTimeFieldGTFilter
           additionalProperties: false
           properties:
@@ -50874,7 +51060,8 @@ components:
               example: '2022-03-30T07:20:50Z'
           required:
             - gt
-        - type: object
+        - &ref_8
+          type: object
           title: DateTimeFieldGTEFilter
           additionalProperties: false
           properties:
@@ -51018,6 +51205,27 @@ components:
               type: string
               description: ID of the associated Resource the API spec is bound to.
               example: IqkHvMdyHukxcwAs
+    Images:
+      title: Images
+      type: object
+      additionalProperties: false
+      x-speakeasy-terraform-ignore: true
+      nullable: true
+      properties:
+        icon:
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            uri:
+              type: string
+              format: uri-reference
+              pattern: ^/[^\s]+/images/icon/raw$
+              nullable: true
+              description: The relative API path for retrieving the raw the icon image.
+      example:
+        icon:
+          uri: /apis/ebbac5b0-ac89-45c3-9d2e-c4542c657e79/images/icon/raw
     UnsupportedMediaTypeError:
       allOf:
         - $ref: '#/components/schemas/BaseError'
@@ -54113,6 +54321,11 @@ components:
           $ref: '#/components/schemas/StringFieldFilter'
         team_id:
           $ref: '#/components/schemas/UuidFieldFilter'
+    SourceIPEnabled:
+      type: boolean
+      description: Whether ip allow list is enabled for the organization.
+      example: true
+      default: false
     ImageGIFDataUri:
       title: ImageGIFDataUri
       type: string
@@ -54626,10 +54839,6 @@ components:
       description: Configuration data for Dev Portal integrations
       type: object
       additionalProperties: false
-      x-property-annotations:
-        equal_web:
-          - x-unstable
-          - x-internal
       default: {}
       properties:
         google_tag_manager:
@@ -54653,8 +54862,8 @@ components:
           enum:
             - tracking
         config_data:
-          $ref: '#/components/schemas/GoogleTagManagerIntegrationConfigProperties'
           type: object
+          $ref: '#/components/schemas/GoogleTagManagerIntegrationConfigProperties'
     UpdateGoogleAnalytics4Integration:
       description: Partially update Google Analytics 4 integration configuration
       type: object
@@ -54670,8 +54879,8 @@ components:
           enum:
             - analytics
         config_data:
-          $ref: '#/components/schemas/GoogleAnalytics4IntegrationConfigProperties'
           type: object
+          $ref: '#/components/schemas/GoogleAnalytics4IntegrationConfigProperties'
     UpdateEqualWebIntegration:
       description: Partially update EqualWeb integration configuration
       type: object
@@ -54687,17 +54896,13 @@ components:
           enum:
             - accessibility
         config_data:
-          $ref: '#/components/schemas/EqualWebIntegrationConfigProperties'
           type: object
+          $ref: '#/components/schemas/EqualWebIntegrationConfigProperties'
     UpdatePortalIntegrations:
       title: Update Portal Integrations
       description: Partially update configuration data for Dev Portal integrations
       type: object
       additionalProperties: false
-      x-property-annotations:
-        equal_web:
-          - x-unstable
-          - x-internal
       default: {}
       properties:
         google_tag_manager:
@@ -57183,7 +57388,6 @@ components:
                   - string
                   - number
                   - boolean
-                x-speakeasy-unknown-values: allow
           title: CatalogIntegrationResourceTypeIntegrationDataSimpleSchema
           description: >
             Defines the schema to validate incoming integration_data values for
@@ -58685,7 +58889,6 @@ components:
                   - string
                   - number
                   - boolean
-                x-speakeasy-unknown-values: allow
           title: CriteriaTemplateSimpleSchema
           description: >
             Defines the parameters required to evaluate the criteria using
@@ -59365,140 +59568,20 @@ components:
           title: DateTimeFieldFilter
           description: Filters on the given datetime (RFC-3339) field value.
           oneOf:
-            - type: object
-              title: DateTimeFieldEqualsFilter
-              additionalProperties: false
-              properties:
-                eq:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value strictly equals given RFC-3339 formatted timestamp in
-                    UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - eq
-            - type: object
-              title: DateTimeFieldLTFilter
-              additionalProperties: false
-              properties:
-                lt:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value is less than the given RFC-3339 formatted timestamp in
-                    UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - lt
-            - type: object
-              title: DateTimeFieldLTEFilter
-              additionalProperties: false
-              properties:
-                lte:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value is less than or equal to the given RFC-3339 formatted
-                    timestamp in UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - lte
-            - type: object
-              title: DateTimeFieldGTFilter
-              additionalProperties: false
-              properties:
-                gt:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value is greater than the given RFC-3339 formatted timestamp
-                    in UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - gt
-            - type: object
-              title: DateTimeFieldGTEFilter
-              additionalProperties: false
-              properties:
-                gte:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value is greater than or equal to the given RFC-3339
-                    formatted timestamp in UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - gte
+            - *ref_4
+            - *ref_5
+            - *ref_6
+            - *ref_7
+            - *ref_8
         evaluation.attempted_at:
           title: DateTimeFieldFilter
           description: Filters on the given datetime (RFC-3339) field value.
           oneOf:
-            - type: object
-              title: DateTimeFieldEqualsFilter
-              additionalProperties: false
-              properties:
-                eq:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value strictly equals given RFC-3339 formatted timestamp in
-                    UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - eq
-            - type: object
-              title: DateTimeFieldLTFilter
-              additionalProperties: false
-              properties:
-                lt:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value is less than the given RFC-3339 formatted timestamp in
-                    UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - lt
-            - type: object
-              title: DateTimeFieldLTEFilter
-              additionalProperties: false
-              properties:
-                lte:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value is less than or equal to the given RFC-3339 formatted
-                    timestamp in UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - lte
-            - type: object
-              title: DateTimeFieldGTFilter
-              additionalProperties: false
-              properties:
-                gt:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value is greater than the given RFC-3339 formatted timestamp
-                    in UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - gt
-            - type: object
-              title: DateTimeFieldGTEFilter
-              additionalProperties: false
-              properties:
-                gte:
-                  type: string
-                  format: date-time
-                  description: >-
-                    Value is greater than or equal to the given RFC-3339
-                    formatted timestamp in UTC
-                  example: '2022-03-30T07:20:50Z'
-              required:
-                - gte
+            - *ref_4
+            - *ref_5
+            - *ref_6
+            - *ref_7
+            - *ref_8
     CreateScorecardCriteria:
       type: object
       additionalProperties: false
@@ -64955,9 +65038,9 @@ components:
           description: The type of the schema registry.
           const: confluent
         config:
-          $ref: '#/components/schemas/SchemaRegistryConfluentConfigSensitiveDataAware'
           type: object
           description: The configuration of the schema registry.
+          $ref: '#/components/schemas/SchemaRegistryConfluentConfigSensitiveDataAware'
         labels:
           $ref: '#/components/schemas/Labels'
     SchemaRegistryConfluent:
@@ -64984,9 +65067,9 @@ components:
           description: The type of the schema registry.
           const: confluent
         config:
-          $ref: '#/components/schemas/SchemaRegistryConfluentConfig'
           type: object
           description: The configuration of the schema registry.
+          $ref: '#/components/schemas/SchemaRegistryConfluentConfig'
         labels:
           $ref: '#/components/schemas/Labels'
     SchemaRegistryConfluentConfigSensitiveDataAware:
@@ -65282,10 +65365,10 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: >-
-            #/components/schemas/EventGatewayTLSListenerPolicyConfigSensitiveDataAware
           description: The configuration of the policy.
           type: object
+          $ref: >-
+            #/components/schemas/EventGatewayTLSListenerPolicyConfigSensitiveDataAware
     EventGatewayTLSListenerPolicy:
       type: object
       description: >
@@ -65324,9 +65407,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayTLSListenerPolicyConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayTLSListenerPolicyConfig'
       title: TLS Listener
     EventGatewayTLSListenerPolicyConfigSensitiveDataAware:
       type: object
@@ -66039,9 +66122,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayEncryptConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayEncryptConfig'
         condition:
           type: string
           description: >-
@@ -66150,9 +66233,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayParsedRecordEncryptFieldsConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayParsedRecordEncryptFieldsConfig'
         condition:
           type: string
           description: >
@@ -66286,9 +66369,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayParsedRecordEncryptFieldsConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayParsedRecordEncryptFieldsConfig'
         condition:
           type: string
           description: >
@@ -66520,9 +66603,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayDecryptPolicyConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayDecryptPolicyConfig'
         condition:
           type: string
           description: >-
@@ -66635,9 +66718,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayParsedRecordDecryptFieldsConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayParsedRecordDecryptFieldsConfig'
         condition:
           type: string
           description: >
@@ -66771,9 +66854,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayParsedRecordDecryptFieldsConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayParsedRecordDecryptFieldsConfig'
         condition:
           type: string
           description: >
@@ -67490,9 +67573,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyConfig'
         condition:
           type: string
           description: >-
@@ -67654,9 +67737,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyConfig'
         condition:
           type: string
           description: >-
@@ -67818,9 +67901,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          $ref: '#/components/schemas/EventGatewayACLPolicyConfig'
           description: The configuration of the policy.
           type: object
+          $ref: '#/components/schemas/EventGatewayACLPolicyConfig'
         condition:
           type: string
           description: >-
@@ -69081,6 +69164,47 @@ components:
           $ref: '#/components/schemas/PaginatedMeta'
       additionalProperties: false
       description: Page paginated response.
+    Address:
+      type: object
+      properties:
+        country:
+          type: string
+          minLength: 2
+          maxLength: 2
+          pattern: ^[A-Z]{2}$
+          description: >-
+            Country code in [ISO
+            3166-1](https://www.iso.org/iso-3166-country-codes.html)
+
+            alpha-2 format.
+          example: US
+          title: Country
+        postal_code:
+          type: string
+          description: Postal code.
+          title: Postal Code
+        state:
+          type: string
+          description: State or province.
+          title: State
+        city:
+          type: string
+          description: City.
+          title: City
+        line1:
+          type: string
+          description: First line of the address.
+          title: Line 1
+        line2:
+          type: string
+          description: Second line of the address.
+          title: Line 2
+        phone_number:
+          type: string
+          description: Phone number.
+          title: Phone Number
+      additionalProperties: false
+      description: Address
     AppPagePaginatedResponse:
       type: object
       required:
@@ -69345,6 +69469,19 @@ components:
         progression
 
         until the external system confirms synchronization via API callbacks.
+    BillingAppReference:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          pattern: ^[0-7][0-9A-HJKMNP-TV-Z]{25}$
+          description: The ID of the app.
+          title: ULID
+          example: 01G65Z755AFWAKHE12NY0CQ9FH
+      additionalProperties: false
+      description: App reference.
     BillingAppSandbox:
       type: object
       required:
@@ -69568,6 +69705,13 @@ components:
           readOnly: true
       additionalProperties: false
       description: Stripe app.
+    BillingAppStripeCreateCheckoutSessionConsentCollectionPaymentMethodReuseAgreementPosition:
+      type: string
+      enum:
+        - auto
+        - hidden
+      description: Position of payment method reuse agreement in the UI.
+      x-speakeasy-unknown-values: allow
     BillingAppStripeCreateCheckoutSessionResult:
       type: object
       required:
@@ -69673,6 +69817,13 @@ components:
         checkout or
 
         initialize an embedded checkout flow.
+    BillingAppStripeCreateCheckoutSessionTaxIdCollectionRequired:
+      type: string
+      enum:
+        - if_supported
+        - never
+      description: Tax ID collection requirement level.
+      x-speakeasy-unknown-values: allow
     BillingAppStripeCreateCustomerPortalSessionResult:
       type: object
       required:
@@ -70881,6 +71032,21 @@ components:
 
         - Usage correction
       title: Credit adjustment
+    BillingCreditAvailabilityPolicy:
+      type: string
+      enum:
+        - on_creation
+      description: >-
+        When credits become available for consumption.
+
+
+        - `on_creation`: Credits are available as soon as the grant is created.
+
+        - `on_authorization`: Credits are available once the payment is
+        authorized.
+
+        - `on_settlement`: Credits are available once the payment is settled.
+      title: Credit availability policy
     BillingCreditBalances:
       type: object
       required:
@@ -71188,6 +71354,20 @@ components:
             - output_tokens
       additionalProperties: false
       description: Filters for the credit grant.
+    BillingCreditPurchasePaymentSettlementStatus:
+      type: string
+      enum:
+        - pending
+        - authorized
+        - settled
+      description: |-
+        Credit purchase payment settlement status.
+
+        - `pending`: Payment has been initiated and is not yet authorized.
+        - `authorized`: Payment has been authorized.
+        - `settled`: Payment has been settled.
+      title: Credit purchase payment settlement status
+      x-speakeasy-unknown-values: allow
     BillingCreditTransaction:
       type: object
       required:
@@ -72212,6 +72392,99 @@ components:
         The `type` field determines the concrete variant:
 
         - `standard`: a standard invoice for charges owed.
+    BillingInvoiceAvailableActions:
+      type: object
+      properties:
+        advance:
+          type: object
+          required:
+            - resulting_state
+          properties:
+            resulting_state:
+              type: string
+              description: >-
+                The extended status the invoice will transition to after
+                performing this action.
+              title: Resulting state
+              readOnly: true
+          additionalProperties: false
+          description: Advance the invoice to the next workflow step.
+          title: Advance
+          readOnly: true
+        approve:
+          type: object
+          required:
+            - resulting_state
+          properties:
+            resulting_state:
+              type: string
+              description: >-
+                The extended status the invoice will transition to after
+                performing this action.
+              title: Resulting state
+              readOnly: true
+          additionalProperties: false
+          description: Approve the invoice for issuance.
+          title: Approve
+          readOnly: true
+        delete:
+          type: object
+          required:
+            - resulting_state
+          properties:
+            resulting_state:
+              type: string
+              description: >-
+                The extended status the invoice will transition to after
+                performing this action.
+              title: Resulting state
+              readOnly: true
+          additionalProperties: false
+          description: Delete the invoice.
+          title: Delete
+          readOnly: true
+        retry:
+          type: object
+          required:
+            - resulting_state
+          properties:
+            resulting_state:
+              type: string
+              description: >-
+                The extended status the invoice will transition to after
+                performing this action.
+              title: Resulting state
+              readOnly: true
+          additionalProperties: false
+          description: Retry a failed workflow step.
+          title: Retry
+          readOnly: true
+        snapshot_quantities:
+          type: object
+          required:
+            - resulting_state
+          properties:
+            resulting_state:
+              type: string
+              description: >-
+                The extended status the invoice will transition to after
+                performing this action.
+              title: Resulting state
+              readOnly: true
+          additionalProperties: false
+          description: Snapshot the current usage quantities.
+          title: Snapshot quantities
+          readOnly: true
+      additionalProperties: false
+      description: >-
+        The set of state-transition actions available for an invoice in its
+        current
+
+        status.
+
+
+        A field is present only when that action is permitted from the current
+        state.
     BillingInvoiceDetailedLine:
       type: object
       required:
@@ -73274,9 +73547,11 @@ components:
                 payment:
                   type: object
                   oneOf:
-                    - $ref: >-
+                    - &ref_9
+                      $ref: >-
                         #/components/schemas/BillingWorkflowPaymentChargeAutomaticallySettings
-                    - $ref: >-
+                    - &ref_10
+                      $ref: >-
                         #/components/schemas/BillingWorkflowPaymentSendInvoiceSettings
                   discriminator:
                     propertyName: collection_method
@@ -73770,6 +74045,177 @@ components:
         structured
 
         `attributes`, plus a `severity` and optional `field` path.
+    BillingInvoiceWorkflow:
+      type: object
+      properties:
+        invoicing:
+          type: object
+          properties:
+            auto_advance:
+              type: boolean
+              description: >-
+                Whether to automatically issue the invoice after the
+                draft_period has passed.
+              default: true
+              readOnly: true
+            draft_period:
+              type: string
+              format: ISO8601
+              description: >-
+                The period for the invoice to be kept in draft status for manual
+                reviews.
+              example: P1D
+              default: P0D
+              readOnly: true
+          additionalProperties: false
+          description: Invoicing settings for this invoice.
+          title: Invoicing settings
+          readOnly: true
+        payment:
+          type: object
+          oneOf:
+            - *ref_9
+            - *ref_10
+          discriminator:
+            propertyName: collection_method
+            mapping:
+              charge_automatically: >-
+                #/components/schemas/BillingWorkflowPaymentChargeAutomaticallySettings
+              send_invoice: '#/components/schemas/BillingWorkflowPaymentSendInvoiceSettings'
+          description: Payment settings for this invoice.
+          title: Payment settings
+          readOnly: true
+      additionalProperties: false
+      description: >-
+        Invoice-level snapshot of the workflow configuration.
+
+
+        Contains only the settings that are meaningful for an already-created
+        invoice:
+
+        invoicing behaviour and payment settings. Collection alignment and tax
+        policy
+
+        are gather-time / profile-wide concerns and are not included.
+    BillingInvoiceWorkflowAppsReferences:
+      type: object
+      required:
+        - tax
+        - invoicing
+        - payment
+      properties:
+        tax:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              pattern: ^[0-7][0-9A-HJKMNP-TV-Z]{25}$
+              description: The ID of the app.
+              title: ULID
+              example: 01G65Z755AFWAKHE12NY0CQ9FH
+          additionalProperties: false
+          description: The tax app used for this workflow
+          readOnly: true
+        invoicing:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              pattern: ^[0-7][0-9A-HJKMNP-TV-Z]{25}$
+              description: The ID of the app.
+              title: ULID
+              example: 01G65Z755AFWAKHE12NY0CQ9FH
+          additionalProperties: false
+          description: The invoicing app used for this workflow
+          readOnly: true
+        payment:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              pattern: ^[0-7][0-9A-HJKMNP-TV-Z]{25}$
+              description: The ID of the app.
+              title: ULID
+              example: 01G65Z755AFWAKHE12NY0CQ9FH
+          additionalProperties: false
+          description: The payment app used for this workflow
+          readOnly: true
+      additionalProperties: false
+      description: >-
+        BillingInvoiceWorkflowAppsReferences represents the references (id) to
+        the apps
+
+        used by a billing profile
+    BillingPartyAddresses:
+      type: object
+      required:
+        - billing_address
+      properties:
+        billing_address:
+          type: object
+          properties:
+            country:
+              type: string
+              minLength: 2
+              maxLength: 2
+              pattern: ^[A-Z]{2}$
+              description: >-
+                Country code in [ISO
+                3166-1](https://www.iso.org/iso-3166-country-codes.html)
+
+                alpha-2 format.
+              example: US
+              title: Country
+            postal_code:
+              type: string
+              description: Postal code.
+              title: Postal Code
+            state:
+              type: string
+              description: State or province.
+              title: State
+            city:
+              type: string
+              description: City.
+              title: City
+            line1:
+              type: string
+              description: First line of the address.
+              title: Line 1
+            line2:
+              type: string
+              description: Second line of the address.
+              title: Line 2
+            phone_number:
+              type: string
+              description: Phone number.
+              title: Phone Number
+          additionalProperties: false
+          description: Billing address.
+      additionalProperties: false
+      description: A collection of addresses for the party.
+    BillingPartyTaxIdentity:
+      type: object
+      properties:
+        code:
+          type: string
+          minLength: 1
+          maxLength: 32
+          description: >-
+            Normalized tax identification code shown on the original identity
+            document.
+      additionalProperties: false
+      description: >-
+        Identity stores the details required to identify an entity for tax
+        purposes in a
+
+        specific country.
     BillingPlan:
       type: object
       required:
@@ -74369,9 +74815,11 @@ components:
                 alignment:
                   type: object
                   oneOf:
-                    - $ref: >-
+                    - &ref_11
+                      $ref: >-
                         #/components/schemas/BillingWorkflowCollectionAlignmentSubscription
-                    - $ref: >-
+                    - &ref_12
+                      $ref: >-
                         #/components/schemas/BillingWorkflowCollectionAlignmentAnchored
                   discriminator:
                     propertyName: type
@@ -74441,9 +74889,11 @@ components:
             payment:
               type: object
               oneOf:
-                - $ref: >-
+                - &ref_13
+                  $ref: >-
                     #/components/schemas/BillingWorkflowPaymentChargeAutomaticallySettings
-                - $ref: >-
+                - &ref_14
+                  $ref: >-
                     #/components/schemas/BillingWorkflowPaymentSendInvoiceSettings
               discriminator:
                 propertyName: collection_method
@@ -74648,6 +75098,19 @@ components:
           $ref: '#/components/schemas/PaginatedMeta'
       additionalProperties: false
       description: Page paginated response.
+    BillingProfileReference:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          pattern: ^[0-7][0-9A-HJKMNP-TV-Z]{25}$
+          description: The ID of the billing profile.
+          title: ULID
+          example: 01G65Z755AFWAKHE12NY0CQ9FH
+      additionalProperties: false
+      description: Billing profile reference.
     BillingRateCard:
       type: object
       required:
@@ -74950,6 +75413,25 @@ components:
           format: ISO8601
       additionalProperties: false
       description: The entitlement template of a metered entitlement.
+    BillingRateCardProrationMode:
+      type: string
+      enum:
+        - no_proration
+        - prorate_prices
+      description: >-
+        The proration mode of the rate card.
+
+
+        Values:
+
+
+        - `no_proration`: No proration.
+
+        - `prorate_prices`: Prorate the price based on the time remaining in the
+        billing
+
+        period.
+      x-speakeasy-unknown-values: allow
     BillingRateCardStaticEntitlement:
       type: object
       required:
@@ -75718,6 +76200,190 @@ components:
           title: Tax code
       additionalProperties: false
       description: Mapping of app types to tax codes.
+    BillingTaxConfig:
+      type: object
+      properties:
+        behavior:
+          type: string
+          enum:
+            - inclusive
+            - exclusive
+          description: >-
+            Tax behavior.
+
+
+            If not specified the billing profile is used to determine the tax
+            behavior. If
+
+            not specified in the billing profile, the provider's default
+            behavior is used.
+          title: Tax behavior
+          x-speakeasy-unknown-values: allow
+        stripe:
+          type: object
+          required:
+            - code
+          properties:
+            code:
+              type: string
+              pattern: ^txcd_\d{8}$
+              description: Product [tax code](https://docs.stripe.com/tax/tax-codes).
+              title: Tax code
+              example: txcd_10000000
+          additionalProperties: false
+          description: Stripe tax config.
+          title: Stripe tax config
+          deprecated: true
+        external_invoicing:
+          type: object
+          required:
+            - code
+          properties:
+            code:
+              type: string
+              maxLength: 64
+              description: >-
+                The tax code should be interpreted by the external invoicing
+                provider.
+              title: Tax code
+          additionalProperties: false
+          description: External invoicing tax config.
+          title: External invoicing tax config
+          deprecated: true
+        tax_code_id:
+          type: string
+          pattern: ^[0-7][0-9A-HJKMNP-TV-Z]{25}$
+          description: Tax code ID.
+          title: Tax code ID
+          example: 01G65Z755AFWAKHE12NY0CQ9FH
+          deprecated: true
+        tax_code:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              $ref: '#/components/schemas/ULID'
+          additionalProperties: false
+          description: >-
+            Tax code reference.
+
+
+            When both `tax_code` and `tax_code_id` are provided, `tax_code`
+            takes
+
+            precedence. When `stripe.code` is also provided, `tax_code` still
+            wins and
+
+            `stripe.code` is ignored.
+          title: Tax code
+      additionalProperties: false
+      description: Set of provider specific tax configs.
+    BillingTaxConfigExternalInvoicing:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          maxLength: 64
+          description: >-
+            The tax code should be interpreted by the external invoicing
+            provider.
+          title: Tax code
+      additionalProperties: false
+      description: External invoicing tax config.
+    BillingTaxConfigStripe:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          pattern: ^txcd_\d{8}$
+          description: Product [tax code](https://docs.stripe.com/tax/tax-codes).
+          title: Tax code
+          example: txcd_10000000
+      additionalProperties: false
+      description: The tax config for Stripe.
+    BillingTaxIdentificationCode:
+      type: string
+      minLength: 1
+      maxLength: 32
+      description: >-
+        Tax identifier code is a normalized tax code shown on the original
+        identity
+
+        document.
+    BillingUnitConfigOperation:
+      type: string
+      enum:
+        - divide
+        - multiply
+      description: >-
+        The arithmetic operation used to convert raw metered units into billing
+        units.
+
+
+        - `divide`: Divide the metered quantity by the conversion factor (e.g.,
+        bytes ÷
+
+        1e9 = GB).
+
+        - `multiply`: Multiply the metered quantity by the conversion factor
+        (e.g., cost
+
+        × 1.2 = cost + 20% margin).
+      x-speakeasy-unknown-values: allow
+    BillingUnitConfigRoundingMode:
+      type: string
+      enum:
+        - ceiling
+        - floor
+        - half_up
+        - none
+      description: >-
+        The rounding mode applied to the converted quantity for invoicing.
+
+
+        Rounding is applied only to the invoiced quantity. Entitlement balance
+        checks
+
+        use the precise decimal value after conversion.
+
+
+        - `ceiling`: Round up to the next integer (typical for package-style
+        billing).
+
+        - `floor`: Round down to the previous integer.
+
+        - `half_up`: Round to the nearest integer, with 0.5 rounding up.
+
+        - `none`: No rounding; the converted value is used as-is.
+      x-speakeasy-unknown-values: allow
+    BillingWorkflowCollectionAlignment:
+      type: object
+      oneOf:
+        - &ref_15
+          $ref: '#/components/schemas/BillingWorkflowCollectionAlignmentSubscription'
+        - &ref_16
+          $ref: '#/components/schemas/BillingWorkflowCollectionAlignmentAnchored'
+      discriminator:
+        propertyName: type
+        mapping:
+          subscription: '#/components/schemas/BillingWorkflowCollectionAlignmentSubscription'
+          anchored: '#/components/schemas/BillingWorkflowCollectionAlignmentAnchored'
+      description: >-
+        The alignment for collecting the pending line items into an invoice.
+
+
+        Defaults to subscription, which means that we are to create a new
+        invoice every
+
+        time the a subscription period starts (for in advance items) or ends
+        (for in
+
+        arrears items).
     BillingWorkflowCollectionAlignmentAnchored:
       type: object
       required:
@@ -75771,6 +76437,87 @@ components:
         for
 
         collecting the pending line items into an invoice.
+    BillingWorkflowCollectionSettings:
+      type: object
+      properties:
+        alignment:
+          type: object
+          oneOf:
+            - *ref_11
+            - *ref_12
+          discriminator:
+            propertyName: type
+            mapping:
+              subscription: >-
+                #/components/schemas/BillingWorkflowCollectionAlignmentSubscription
+              anchored: '#/components/schemas/BillingWorkflowCollectionAlignmentAnchored'
+          description: The alignment for collecting the pending line items into an invoice.
+          default:
+            type: subscription
+        interval:
+          type: string
+          format: ISO8601
+          description: >-
+            This grace period can be used to delay the collection of the pending
+            line items
+
+            specified in alignment.
+
+
+            This is useful, in case of multiple subscriptions having slightly
+            different
+
+            billing periods.
+          example: P1D
+          default: PT1H
+      additionalProperties: false
+      description: >-
+        Workflow collection specifies how to collect the pending line items for
+        an
+
+        invoice.
+      title: Workflow collection settings
+    BillingWorkflowInvoicingSettings:
+      type: object
+      properties:
+        auto_advance:
+          type: boolean
+          description: >-
+            Whether to automatically issue the invoice after the draftPeriod has
+            passed.
+          default: true
+        draft_period:
+          type: string
+          format: ISO8601
+          description: >-
+            The period for the invoice to be kept in draft status for manual
+            reviews.
+          example: P1D
+          default: P0D
+        progressive_billing:
+          type: boolean
+          description: Should progressive billing be allowed for this workflow?
+          default: true
+        subscription_end_proration_mode:
+          type: string
+          enum:
+            - bill_full_period
+            - bill_actual_period
+          description: >-
+            Controls how subscription-ending shortened service periods are
+            billed.
+          default: bill_actual_period
+          x-speakeasy-unknown-values: allow
+      additionalProperties: false
+      description: Invoice settings for a billing workflow.
+      title: Workflow invoice settings
+    BillingWorkflowInvoicingSubscriptionEndProrationMode:
+      type: string
+      enum:
+        - bill_full_period
+        - bill_actual_period
+      description: Billing workflow subscription end proration mode.
+      x-speakeasy-unknown-values: allow
     BillingWorkflowPaymentChargeAutomaticallySettings:
       type: object
       required:
@@ -75813,6 +76560,139 @@ components:
         send
 
         invoice.
+    BillingWorkflowPaymentSettings:
+      type: object
+      oneOf:
+        - *ref_13
+        - *ref_14
+      discriminator:
+        propertyName: collection_method
+        mapping:
+          charge_automatically: >-
+            #/components/schemas/BillingWorkflowPaymentChargeAutomaticallySettings
+          send_invoice: '#/components/schemas/BillingWorkflowPaymentSendInvoiceSettings'
+      description: Payment settings for a billing workflow.
+    BillingWorkflowTaxSettings:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: >-
+            Enable automatic tax calculation when tax is supported by the app.
+            For example,
+
+            with Stripe Invoicing when enabled, tax is calculated via Stripe
+            Tax.
+          default: true
+        enforced:
+          type: boolean
+          description: >-
+            Enforce tax calculation when tax is supported by the app. When
+            enabled, the
+
+            billing system will not allow to create an invoice without tax
+            calculation.
+
+            Enforcement is different per apps, for example, Stripe app requires
+            customer to
+
+            have a tax location when starting a paid subscription.
+          default: false
+        default_tax_config:
+          type: object
+          properties:
+            behavior:
+              type: string
+              enum:
+                - inclusive
+                - exclusive
+              description: >-
+                Tax behavior.
+
+
+                If not specified the billing profile is used to determine the
+                tax behavior. If
+
+                not specified in the billing profile, the provider's default
+                behavior is used.
+              title: Tax behavior
+              x-speakeasy-unknown-values: allow
+            stripe:
+              type: object
+              required:
+                - code
+              properties:
+                code:
+                  type: string
+                  pattern: ^txcd_\d{8}$
+                  description: Product [tax code](https://docs.stripe.com/tax/tax-codes).
+                  title: Tax code
+                  example: txcd_10000000
+              additionalProperties: false
+              description: Stripe tax config.
+              title: Stripe tax config
+              deprecated: true
+            external_invoicing:
+              type: object
+              required:
+                - code
+              properties:
+                code:
+                  type: string
+                  maxLength: 64
+                  description: >-
+                    The tax code should be interpreted by the external invoicing
+                    provider.
+                  title: Tax code
+              additionalProperties: false
+              description: External invoicing tax config.
+              title: External invoicing tax config
+              deprecated: true
+            tax_code_id:
+              type: string
+              pattern: ^[0-7][0-9A-HJKMNP-TV-Z]{25}$
+              description: Tax code ID.
+              title: Tax code ID
+              example: 01G65Z755AFWAKHE12NY0CQ9FH
+              deprecated: true
+            tax_code:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  $ref: '#/components/schemas/ULID'
+              additionalProperties: false
+              description: >-
+                Tax code reference.
+
+
+                When both `tax_code` and `tax_code_id` are provided, `tax_code`
+                takes
+
+                precedence. When `stripe.code` is also provided, `tax_code`
+                still wins and
+
+                `stripe.code` is ignored.
+              title: Tax code
+          additionalProperties: false
+          description: >-
+            Default tax configuration to apply to the invoices for line items.
+
+
+            Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's
+            default tax
+
+            config is deprecated and can no longer be added or changed: the
+            organization
+
+            default tax code is used instead. Existing tax-code values may still
+            be removed,
+
+            and `behavior` remains fully supported.
+      additionalProperties: false
+      description: Tax settings for a billing workflow.
+      title: Workflow tax settings
     ChargePagePaginatedResponse:
       type: object
       required:
@@ -76029,10 +76909,8 @@ components:
                 alignment:
                   type: object
                   oneOf:
-                    - $ref: >-
-                        #/components/schemas/BillingWorkflowCollectionAlignmentSubscription
-                    - $ref: >-
-                        #/components/schemas/BillingWorkflowCollectionAlignmentAnchored
+                    - *ref_15
+                    - *ref_16
                   discriminator:
                     propertyName: type
                     mapping:
@@ -77535,6 +78413,15 @@ components:
           title: Plan phases
       additionalProperties: false
       description: Plan create request.
+    CreateResourceReference:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          $ref: '#/components/schemas/ULID'
+      additionalProperties: false
+      description: TaxCode reference.
     CreateSubscriptionAddonRequest:
       type: object
       required:
@@ -78061,6 +78948,16 @@ components:
           readOnly: true
       additionalProperties: false
       description: Access status for a single feature.
+    GovernanceFeatureAccessReasonCode:
+      type: string
+      enum:
+        - unknown
+        - usage_limit_reached
+        - feature_unavailable
+        - feature_not_found
+        - no_credit_available
+      description: Machine-readable reason code for denied feature access.
+      x-speakeasy-unknown-values: allow
     GovernanceQueryError:
       type: object
       required:
@@ -78387,6 +79284,18 @@ components:
           readOnly: true
       additionalProperties: false
       description: Access evaluation result for a single resolved customer.
+    ISO8601Duration:
+      type: string
+      pattern: >-
+        ^P(?:\d+(?:\.\d+)?Y)?(?:\d+(?:\.\d+)?M)?(?:\d+(?:\.\d+)?W)?(?:\d+(?:\.\d+)?D)?(?:T(?:\d+(?:\.\d+)?H)?(?:\d+(?:\.\d+)?M)?(?:\d+(?:\.\d+)?S)?)?$
+      description: >-
+        [ISO 8601
+        Duration](https://docs.digi.com/resources/documentation/digidocs/90001488-13/reference/r_iso_8601_duration_format.htm)
+
+        string.
+      title: ISO 8601 Duration
+      example: P1Y
+      format: ISO8601
     IngestedEventPaginatedResponse:
       type: object
       required:
@@ -81047,10 +81956,8 @@ components:
                 alignment:
                   type: object
                   oneOf:
-                    - $ref: >-
-                        #/components/schemas/BillingWorkflowCollectionAlignmentSubscription
-                    - $ref: >-
-                        #/components/schemas/BillingWorkflowCollectionAlignmentAnchored
+                    - *ref_15
+                    - *ref_16
                   discriminator:
                     propertyName: type
                     mapping:
@@ -82508,7 +83415,9 @@ components:
           description: The display name for this AI Gateway.
           example: My AI Gateway
         name:
-          description: The name for this AI Gateway.
+          description: >-
+            The name for this AI Gateway. This value is immutable after
+            creation.
           example: my-ai-gateway
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -82543,7 +83452,9 @@ components:
           description: The display name for this AI Gateway.
           example: My AI Gateway
         name:
-          description: The name for this AI Gateway.
+          description: >-
+            The name for this AI Gateway. This value is immutable after
+            creation.
           example: my-ai-gateway
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -82582,7 +83493,9 @@ components:
           description: The display name for this AI Gateway.
           example: My AI Gateway
         name:
-          description: The name for this AI Gateway.
+          description: >-
+            The name for this AI Gateway. This value is immutable after
+            creation.
           example: my-ai-gateway
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -82937,7 +83850,7 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model, used as a stable
-            human-readable reference.
+            human-readable reference. This value is immutable after creation.
           example: my-gpt-5-model
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -83018,7 +83931,7 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model, used as a stable
-            human-readable reference.
+            human-readable reference. This value is immutable after creation.
           example: my-gpt-5-model
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -83888,6 +84801,7 @@ components:
           required:
             - name
             - provider
+            - config
           properties:
             allow_auth_override:
               type: boolean
@@ -85646,6 +86560,55 @@ components:
         description: >-
           Reference to a policy instance. This is either the policy ID or the
           policy name.
+    AIGatewayVaultConfigBaseProperties:
+      type: object
+      x-internal: true
+      x-unstable: true
+      properties:
+        base64_decode:
+          type: boolean
+          description: >
+            Decode all secrets in this vault as base64. Useful for binary data.
+
+            If some of the secrets in the vault are not base64-encoded, an error
+            will occur when using them.
+
+            We recommend creating a separate vault for base64 secrets.
+    AIGatewayVaultCloudProviderConfigBaseProperties:
+      type: object
+      x-internal: true
+      x-unstable: true
+      properties:
+        neg_ttl:
+          type: integer
+          description: >
+            Time-to-live (in seconds) for caching failed secret lookups.
+
+            A value of 0 disables negative caching. Kong will retry fetching the
+            secret after neg_ttl expires.
+          default: 0
+        resurrect_ttl:
+          type: integer
+          description: >
+            Time (in seconds) that secrets remain in use after expiration
+            (config.ttl ends).
+
+            Useful if the vault is unreachable or the secret is deleted but not
+            yet replaced.
+
+            Kong continues to retry for resurrect_ttl seconds before giving up.
+
+            The default is ~3 years to support uninterrupted service during
+            outages.
+          default: 100000000
+        ttl:
+          type: integer
+          description: >
+            Time-to-live (in seconds) for a cached secret. A value of 0 disables
+            rotation.
+
+            For non-zero values, use a minimum of 60 seconds.
+          default: 0
     KonnectConfigStoreVault:
       type: object
       x-internal: true
@@ -85661,6 +86624,8 @@ components:
           description: >
             A user-defined unique identifier for this vault instance, used as a
             stable human-readable reference.
+
+            This value is immutable after creation.
 
             The name is used to load the right Vault configuration and
             implementation when referencing secrets with the other entities.
@@ -85707,6 +86672,8 @@ components:
             A user-defined unique identifier for this vault instance, used as a
             stable human-readable reference.
 
+            This value is immutable after creation.
+
             The name is used to load the right Vault configuration and
             implementation when referencing secrets with the other entities.
           example: my-awesome-vault
@@ -85747,6 +86714,18 @@ components:
                 The prefix for the environment variable that the value will be
                 stored in.
           title: EnvironmentVariableVaultConfig
+    EnvironmentVariableVaultConfig:
+      title: EnvironmentVariableVaultConfig
+      type: object
+      x-internal: true
+      x-unstable: true
+      properties:
+        prefix:
+          type: string
+          example: MY_SECRET_
+          description: >
+            The prefix for the environment variable that the value will be
+            stored in.
     AwsSecretsManagerVault:
       type: object
       x-internal: true
@@ -85762,6 +86741,8 @@ components:
           description: >
             A user-defined unique identifier for this vault instance, used as a
             stable human-readable reference.
+
+            This value is immutable after creation.
 
             The name is used to load the right Vault configuration and
             implementation when referencing secrets with the other entities.
@@ -85863,6 +86844,47 @@ components:
           title: AwsSecretsManagerVaultConfig
           required:
             - role_session_name
+    AwsSecretsManagerVaultConfig:
+      title: AwsSecretsManagerVaultConfig
+      type: object
+      x-internal: true
+      x-unstable: true
+      required:
+        - role_session_name
+      properties:
+        assume_role_arn:
+          type: string
+          description: >
+            The ARN of the role to assume when retrieving secrets from AWS
+            Secrets Manager.
+        endpoint_url:
+          type: string
+          description: >
+            The endpoint URL of the AWS Secrets Manager service.
+
+            If not specified, the default is
+            https://secretsmanager.{region}.amazonaws.com.
+
+            You can override this by specifying a complete URL including the
+            http/https scheme.
+        region:
+          type: string
+          description: The AWS region where your vault is located.
+          example: us-east-1
+        role_session_name:
+          type: string
+          description: The session name used when assuming a role.
+          default: KongVault
+        sts_endpoint_url:
+          type: string
+          description: >
+            A custom STS endpoint URL used for IAM role assumption.
+
+            Overrides the default https://sts.amazonaws.com or regional variant
+            https://sts.<region>.amazonaws.com.
+
+            Include the full http/https scheme. Only specify this if using a
+            private VPC endpoint for STS.
     GoogleSecretManagerVault:
       type: object
       x-internal: true
@@ -85878,6 +86900,8 @@ components:
           description: >
             A user-defined unique identifier for this vault instance, used as a
             stable human-readable reference.
+
+            This value is immutable after creation.
 
             The name is used to load the right Vault configuration and
             implementation when referencing secrets with the other entities.
@@ -85953,6 +86977,21 @@ components:
           title: GoogleSecretManagerVaultConfig
           required:
             - project_id
+    GoogleSecretManagerVaultConfig:
+      title: GoogleSecretManagerVaultConfig
+      type: object
+      x-internal: true
+      x-unstable: true
+      required:
+        - project_id
+      properties:
+        project_id:
+          type: string
+          description: >
+            The project ID from your Google API Console.
+
+            You can find it by visiting your Google API Console and selecting
+            “Manage all projects” in the projects list.
     AzureKeyVault:
       type: object
       x-internal: true
@@ -85968,6 +87007,8 @@ components:
           description: >
             A user-defined unique identifier for this vault instance, used as a
             stable human-readable reference.
+
+            This value is immutable after creation.
 
             The name is used to load the right Vault configuration and
             implementation when referencing secrets with the other entities.
@@ -86075,6 +87116,51 @@ components:
             - vault_uri
             - location
             - type
+    AzureKeyVaultConfig:
+      title: AzureKeyVaultConfig
+      type: object
+      x-internal: true
+      x-unstable: true
+      required:
+        - vault_uri
+        - location
+        - type
+      properties:
+        credentials_prefix:
+          type: string
+          description: |
+            The prefix for the credentials stored in the Azure Key Vault.
+          default: AZURE
+        vault_uri:
+          type: string
+          description: >
+            The URI from which the vault is reachable.
+
+            This value can be found in your Azure Key Vault Dashboard under the
+            Vault URI entry.
+        location:
+          type: string
+          description: |
+            Each Azure geography includes one or more regions
+            that meet specific data residency and compliance requirements.
+        client_id:
+          type: string
+          description: |
+            The client ID for your registered application.
+            You can find this in the Azure Dashboard under App Registrations.
+        tenant_id:
+          type: string
+          description: >
+            The DirectoryId and TenantId are the same: both refer to the GUID
+            representing your Azure Active Directory tenant.
+
+            Microsoft documentation and products may use either term depending
+            on context.
+        type:
+          type: string
+          enum:
+            - secrets
+          default: secrets
     ConjurVault:
       type: object
       x-internal: true
@@ -86090,6 +87176,8 @@ components:
           description: >
             A user-defined unique identifier for this vault instance, used as a
             stable human-readable reference.
+
+            This value is immutable after creation.
 
             The name is used to load the right Vault configuration and
             implementation when referencing secrets with the other entities.
@@ -86178,6 +87266,34 @@ components:
             - endpoint_url
             - login
             - account
+    ConjurVaultConfig:
+      title: ConjurVaultConfig
+      type: object
+      x-internal: true
+      x-unstable: true
+      required:
+        - endpoint_url
+        - login
+        - account
+      properties:
+        account:
+          type: string
+          description: |
+            The CyberArk Secrets Manager organization account name.
+        api_key:
+          type: string
+          description: |
+            The API key of the workload identity.
+          writeOnly: true
+        endpoint_url:
+          type: string
+          description: >
+            The CyberArk Secrets Manager backend URL to connect with. Accepts
+            http or https protocols.
+        login:
+          type: string
+          description: |
+            The login name of the workload identity.
     HashiCorpVault:
       type: object
       x-internal: true
@@ -86193,6 +87309,8 @@ components:
           description: >
             A user-defined unique identifier for this vault instance, used as a
             stable human-readable reference.
+
+            This value is immutable after creation.
 
             The name is used to load the right Vault configuration and
             implementation when referencing secrets with the other entities.
@@ -87411,7 +88529,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this policy instance, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: ai-pii-sanitizer-1234
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -87479,7 +88598,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this policy instance, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: ai-pii-sanitizer-1234
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -87550,7 +88670,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this policy instance, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: ai-pii-sanitizer-1234
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -87673,7 +88794,7 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this agent, used as a stable
-            human-readable reference.
+            human-readable reference. This value is immutable after creation.
           example: kongair-flight-booking-agent
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -87765,7 +88886,7 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this agent, used as a stable
-            human-readable reference.
+            human-readable reference. This value is immutable after creation.
           example: kongair-flight-booking-agent
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -87860,7 +88981,7 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this agent, used as a stable
-            human-readable reference.
+            human-readable reference. This value is immutable after creation.
           example: kongair-flight-booking-agent
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -87958,7 +89079,7 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this consumer, used as a stable
-            human-readable reference.
+            human-readable reference. This value is immutable after creation.
           example: gregs-dev-consumer
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88001,7 +89122,7 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this consumer, used as a stable
-            human-readable reference.
+            human-readable reference. This value is immutable after creation.
           example: gregs-dev-consumer
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88047,7 +89168,7 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this consumer, used as a stable
-            human-readable reference.
+            human-readable reference. This value is immutable after creation.
           example: gregs-dev-consumer
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88093,10 +89214,12 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this credential, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: gregs-dev-key
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - &ref_17
+              $ref: '#/components/schemas/AIGatewayEntityIdentifier'
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -88140,10 +89263,11 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this credential, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: gregs-dev-key
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - *ref_17
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -88189,10 +89313,12 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this credential, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: gregs-dev-key
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - &ref_18
+              $ref: '#/components/schemas/AIGatewayEntityIdentifier'
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -88217,6 +89343,68 @@ components:
             The API Key value. If not provided, then the key will be auto
             generated by the server and returned in the response.
       additionalProperties: false
+    AIGatewayConsumerCredentialBaseProperties:
+      type: object
+      required:
+        - display_name
+        - name
+      properties:
+        display_name:
+          type: string
+          description: The display name for this credential instance.
+          example: Greg's Dev Key
+        name:
+          x-internal: true
+          x-unstable: true
+          description: >-
+            A user-defined unique identifier for this credential, used as a
+            stable human-readable reference. This value is immutable after
+            creation.
+          example: gregs-dev-key
+          allOf:
+            - *ref_17
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+    AIGatewayConsumerCredentialAPIKeyBase:
+      type: object
+      required:
+        - display_name
+        - name
+        - type
+      properties:
+        display_name:
+          type: string
+          description: The display name for this credential instance.
+          example: Greg's Dev Key
+        name:
+          x-internal: true
+          x-unstable: true
+          description: >-
+            A user-defined unique identifier for this credential, used as a
+            stable human-readable reference. This value is immutable after
+            creation.
+          example: gregs-dev-key
+          allOf:
+            - *ref_18
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        type:
+          type: string
+          enum:
+            - api-key
+          example: api-key
+        ttl:
+          type: integer
+          description: >-
+            The API Key's time-to-live in seconds. A value of 0 means the API
+            Key never expires.
+          example: 86400
+          default: 0
+      additionalProperties: false
     CreateAIGatewayConsumerGroupRequest:
       type: object
       x-internal: true
@@ -88237,7 +89425,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this consumer group, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: dev-users
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88267,7 +89456,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this consumer group, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: dev-users
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88311,7 +89501,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this consumer group, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: dev-users
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88340,7 +89531,8 @@ components:
           enum:
             - conversion-only
         config:
-          $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfig'
+          $ref: >-
+            #/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig
         tools:
           type: array
           description: List of tools exposed by this MCP Server.
@@ -88357,7 +89549,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this MCP server, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: kongair-flights
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88380,7 +89573,6 @@ components:
       required:
         - type
         - config
-        - access
         - display_name
         - name
       properties:
@@ -88408,7 +89600,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this MCP server, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: kongair-flights
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88431,7 +89624,6 @@ components:
       required:
         - type
         - config
-        - access
         - display_name
         - name
       properties:
@@ -88459,7 +89651,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this MCP server, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: kongair-flights
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88482,7 +89675,6 @@ components:
       required:
         - type
         - config
-        - access
         - display_name
         - name
       properties:
@@ -88510,7 +89702,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this MCP server, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: kongair-flights
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88533,7 +89726,6 @@ components:
       required:
         - type
         - config
-        - access
         - display_name
         - name
       properties:
@@ -88561,7 +89753,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this MCP server, used as a
-            stable human-readable reference.
+            stable human-readable reference. This value is immutable after
+            creation.
           example: kongair-flights
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -88666,6 +89859,8 @@ components:
     AIGatewayMCPServerBaseACLProperties:
       x-internal: true
       x-unstable: true
+      default:
+        acl_attribute_type: consumer
       oneOf:
         - $ref: '#/components/schemas/AIGatewayMCPServerBaseACLPropertiesConsumer'
         - $ref: '#/components/schemas/AIGatewayMCPServerBaseACLPropertiesOauth'
@@ -89301,6 +90496,19 @@ components:
           type: array
           items:
             type: string
+    AIGatewayLoggingConfig:
+      type: object
+      x-internal: true
+      x-unstable: true
+      description: Configuration for AI Gateway logging.
+      additionalProperties: false
+      properties:
+        payloads:
+          type: boolean
+          default: false
+        statistics:
+          type: boolean
+          default: true
     AIGatewayMCPServerNoUpstreamConfig:
       type: object
       x-internal: true
@@ -89332,6 +90540,47 @@ components:
           default: 8388608
         server:
           $ref: '#/components/schemas/AIGatewayMCPServerServerConfigBase'
+    AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig:
+      type: object
+      x-internal: true
+      x-unstable: true
+      description: Routing, logging, and request body size limits for the MCP Server.
+      additionalProperties: false
+      properties:
+        route:
+          $ref: '#/components/schemas/AIGatewayRouteConfig'
+        logging:
+          type: object
+          x-internal: true
+          x-unstable: true
+          description: Configuration for AI Gateway logging.
+          additionalProperties: false
+          properties:
+            payloads:
+              type: boolean
+              default: false
+            statistics:
+              type: boolean
+              default: true
+            audits:
+              type: boolean
+              default: false
+        max_request_body_size:
+          type: integer
+          description: Maximum size of request body to parse. Set to 0 for unlimited.
+          default: 8388608
+        url:
+          type: string
+          description: >
+            Helper field to set protocol, host, port and path of the upstream
+            service using a URL.
+
+            This is the same as a Kong Gateway Service URL:
+            ${scheme}://${host}:${port}/${path}
+          format: uri
+          example: https://mcp.internal.kongair.com
+      required:
+        - url
     AIGatewayMCPServerWithUpstreamNoProxyConfig:
       type: object
       x-internal: true
@@ -90148,7 +91397,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this identity provider
-            instance, used as a stable human-readable reference.
+            instance, used as a stable human-readable reference. This value is
+            immutable after creation.
           example: okta-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90176,14 +91426,14 @@ components:
               type: boolean
               description: >
                 An optional boolean value telling the plugin to show or hide the
-                credential from the upstream service. 
+                credential from the upstream service.
 
                 If true, the plugin strips the credential from the request.
               default: true
             key_in_body:
               type: boolean
               description: >
-                If enabled, reads the request body. 
+                If enabled, reads the request body.
 
                 Supported MIME types: application/www-form-urlencoded,
                 application/json, and multipart/form-data.
@@ -90231,7 +91481,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this identity provider
-            instance, used as a stable human-readable reference.
+            instance, used as a stable human-readable reference. This value is
+            immutable after creation.
           example: okta-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90301,11 +91552,11 @@ components:
                 [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
               items:
                 type: string
-            consumer_claim:
+            consumer_claims:
               type: array
               description: >
                 An array containing an array of string paths representing the
-                location of the claim in a nested object. 
+                location of the claim in a nested object.
 
                 For example, to map to user.info.id, set [ "user", "info", "id"
                 ].
@@ -90363,7 +91614,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90407,7 +91659,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90451,7 +91704,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90495,7 +91749,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90539,7 +91794,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90583,7 +91839,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90627,7 +91884,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90671,7 +91929,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90715,7 +91974,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90759,7 +92019,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90803,7 +92064,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90847,7 +92109,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90891,7 +92154,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90935,7 +92199,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -90979,7 +92244,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -91096,7 +92362,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -91205,7 +92472,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -91310,7 +92578,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -91360,7 +92629,8 @@ components:
           x-unstable: true
           description: >-
             A user-defined unique identifier for this model provider instance,
-            used as a stable human-readable reference.
+            used as a stable human-readable reference. This value is immutable
+            after creation.
           example: azure-ai-se
           allOf:
             - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -91455,7 +92725,9 @@ components:
           minLength: 1
           maxLength: 256
           pattern: ^[a-zA-Z0-9.\-_~]*$
-          description: The name of the Config Store.
+          description: >-
+            The name of the Config Store. This value is immutable after
+            creation.
           example: my-config-store
     UpdateAIGatewayConfigStoreRequest:
       x-internal: true
@@ -91493,7 +92765,9 @@ components:
           minLength: 1
           maxLength: 256
           pattern: ^[a-zA-Z0-9.\-_~]*$
-          description: The name of the Config Store.
+          description: >-
+            The name of the Config Store. This value is immutable after
+            creation.
           example: my-config-store
         id:
           $ref: '#/components/schemas/UUID'
@@ -91834,6 +93108,7 @@ components:
               - data_plane_node_version
               - gateway_service
               - portal
+              - principal
               - realm
               - response_source
               - route
@@ -91900,6 +93175,7 @@ components:
               - llm_embeddings_provider
               - llm_embeddings_model
               - time
+              - principal
               - realm
               - status_code
               - status_code_grouped
@@ -91969,6 +93245,7 @@ components:
               - mcp_session_id
               - mcp_tool_name
               - portal
+              - principal
               - realm
               - response_source
               - route
@@ -92322,6 +93599,808 @@ components:
           - upstream_latency_p95
           - upstream_latency_p99
         x-speakeasy-unknown-values: allow
+    RequestsFilterType:
+      type: string
+      description: >-
+        The type of filter to apply.  `in` filters will limit results to only
+        the specified values, while `not_in` filters will exclude the specified
+        values.
+      enum:
+        - in
+        - not_in
+      x-speakeasy-unknown-values: allow
+    UnscopedUuid:
+      type: string
+      pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+    RequestsFilterTypeEmpty:
+      type: string
+      description: The type of filter to apply.
+      enum:
+        - empty
+        - not_empty
+      x-speakeasy-unknown-values: allow
+    MetricsApiFilterByField:
+      title: Filter by api
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - api
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - api
+          required:
+            - operator
+            - field
+    MetricsApiPackageFilterByField:
+      title: Filter by api_package
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - api_package
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - api_package
+          required:
+            - operator
+            - field
+    MetricsApiProductFilterByField:
+      title: Filter by api_product
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - api_product
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - api_product
+          required:
+            - operator
+            - field
+    MetricsApiProductVersionFilterByField:
+      title: Filter by api_product_version
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - api_product_version
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - api_product_version
+          required:
+            - operator
+            - field
+    MetricsApplicationFilterByField:
+      title: Filter by application
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - application
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - application
+          required:
+            - operator
+            - field
+    ScopedUuid:
+      type: string
+      pattern: >-
+        ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+    MetricsConsumerFilterByField:
+      title: Filter by consumer
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: >
+                The IDs to include in the results. Because gateway IDs are only
+                unique within a given control plane, the filter values must be
+                of the form `control_plane_id:field_id` or
+                `control_plane_group_id:field_id` for data plane nodes within a
+                control plane group.
+              type: array
+              items:
+                $ref: '#/components/schemas/ScopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - consumer
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - consumer
+          required:
+            - operator
+            - field
+    MetricsControlPlaneFilterByField:
+      title: Filter by control_plane
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - control_plane
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - control_plane
+          required:
+            - operator
+            - field
+    MetricsControlPlaneGroupFilterByField:
+      title: Filter by control_plane_group
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - control_plane_group
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - control_plane_group
+          required:
+            - operator
+            - field
+    MetricsCountryCodeFilterByField:
+      title: Filter by country_code
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - country_code
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - country_code
+          required:
+            - operator
+            - field
+    MetricsDataPlaneNodeFilterByField:
+      title: Filter by data_plane_node
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: >
+                The IDs to include in the results. Because gateway IDs are only
+                unique within a given control plane, the filter values must be
+                of the form `control_plane_id:field_id` or
+                `control_plane_group_id:field_id` for data plane nodes within a
+                control plane group.
+              type: array
+              items:
+                $ref: '#/components/schemas/ScopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - data_plane_node
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - data_plane_node
+          required:
+            - operator
+            - field
+    MetricsDataPlaneNodeVersionFilterByField:
+      title: Filter by data_plane_node_version
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - data_plane_node_version
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - data_plane_node_version
+          required:
+            - operator
+            - field
+    MetricsGatewayServiceFilterByField:
+      title: Filter by gateway_service
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: >
+                The IDs to include in the results. Because gateway IDs are only
+                unique within a given control plane, the filter values must be
+                of the form `control_plane_id:field_id` or
+                `control_plane_group_id:field_id` for data plane nodes within a
+                control plane group.
+              type: array
+              items:
+                $ref: '#/components/schemas/ScopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - gateway_service
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - gateway_service
+          required:
+            - operator
+            - field
+    MetricsPortalFilterByField:
+      title: Filter by portal
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - portal
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - portal
+          required:
+            - operator
+            - field
+    MetricsPrincipalFilterByField:
+      title: Filter by principal
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - principal
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - principal
+          required:
+            - operator
+            - field
+    MetricsRealmFilterByField:
+      title: Filter by realm
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - realm
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - realm
+          required:
+            - operator
+            - field
+    MetricsResponseSourceFilterByField:
+      title: Filter by response_source
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - response_source
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - response_source
+          required:
+            - operator
+            - field
+    MetricsRouteFilterByField:
+      title: Filter by route
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: >
+                The IDs to include in the results. Because gateway IDs are only
+                unique within a given control plane, the filter values must be
+                of the form `control_plane_id:field_id` or
+                `control_plane_group_id:field_id` for data plane nodes within a
+                control plane group.
+              type: array
+              items:
+                $ref: '#/components/schemas/ScopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - route
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - route
+          required:
+            - operator
+            - field
+    MetricsStatusCodeFilterByField:
+      title: Filter by status_code
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The codes to include in the results.
+              type: array
+              items:
+                type: integer
+                minimum: 0
+                maximum: 999
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - status_code
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - status_code
+          required:
+            - operator
+            - field
+    MetricsStatusCodeGroupedFilterByField:
+      title: Filter by status_code_grouped
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The code groups to include in the results.
+              type: array
+              items:
+                type: string
+                pattern: ^\d[xX][xX]$
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - status_code_grouped
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - status_code_grouped
+          required:
+            - operator
+            - field
+    MetricsUpstreamStatusCodeFilterByField:
+      title: Filter by upstream_status_code
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The codes to include in the results.
+              type: array
+              items:
+                type: integer
+                minimum: 0
+                maximum: 999
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - upstream_status_code
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - upstream_status_code
+          required:
+            - operator
+            - field
+    MetricsUpstreamStatusCodeGroupedFilterByField:
+      title: Filter by upstream_status_code_grouped
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The code groups to include in the results.
+              type: array
+              items:
+                type: string
+                pattern: ^\d[xX][xX]$
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - upstream_status_code_grouped
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - upstream_status_code_grouped
+          required:
+            - operator
+            - field
     AdvancedFilters:
       type: array
       description: A list of filters to apply to the query.
@@ -92332,6 +94411,27 @@ components:
             type: string
             enum:
               - api
+              - api_package
+              - api_product
+              - api_product_version
+              - application
+              - consumer
+              - control_plane
+              - control_plane_group
+              - country_code
+              - data_plane_node
+              - data_plane_node_version
+              - gateway_service
+              - portal
+              - principal
+              - realm
+              - response_source
+              - route
+              - status_code
+              - status_code_grouped
+              - upstream_status_code
+              - upstream_status_code_grouped
+            x-speakeasy-unknown-values: allow
           operator:
             type: string
             enum:
@@ -92481,6 +94581,258 @@ components:
           - llm_embeddings_tokens
           - llm_embeddings_cost
         x-speakeasy-unknown-values: allow
+    MetricsAiPluginFilterByField:
+      title: Filter by ai_plugin
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_plugin
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_plugin
+          required:
+            - operator
+            - field
+    MetricsAiProviderFilterByField:
+      title: Filter by ai_provider
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_provider
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_provider
+          required:
+            - operator
+            - field
+    MetricsAiRequestModelFilterByField:
+      title: Filter by ai_request_model
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_request_model
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_request_model
+          required:
+            - operator
+            - field
+    MetricsAiResponseModelFilterByField:
+      title: Filter by ai_response_model
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_response_model
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_response_model
+          required:
+            - operator
+            - field
+    MetricsLlmCacheStatusFilterByField:
+      title: Filter by llm_cache_status
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - llm_cache_status
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - llm_cache_status
+          required:
+            - operator
+            - field
+    MetricsLlmEmbeddingsModelFilterByField:
+      title: Filter by llm_embeddings_model
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - llm_embeddings_model
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - llm_embeddings_model
+          required:
+            - operator
+            - field
+    MetricsLlmEmbeddingsProviderFilterByField:
+      title: Filter by llm_embeddings_provider
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - llm_embeddings_provider
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - llm_embeddings_provider
+          required:
+            - operator
+            - field
     LLMFilters:
       type: array
       description: A list of filters to apply to the query.
@@ -92491,6 +94843,23 @@ components:
             type: string
             enum:
               - ai_plugin
+              - ai_provider
+              - ai_request_model
+              - ai_response_model
+              - application
+              - consumer
+              - control_plane
+              - control_plane_group
+              - gateway_service
+              - llm_cache_status
+              - llm_embeddings_model
+              - llm_embeddings_provider
+              - principal
+              - realm
+              - route
+              - status_code
+              - status_code_grouped
+            x-speakeasy-unknown-values: allow
           operator:
             type: string
             enum:
@@ -92545,6 +94914,294 @@ components:
           - upstream_latency_p95
           - upstream_latency_p99
         x-speakeasy-unknown-values: allow
+    MetricsA2aContextIdFilterByField:
+      title: Filter by a2a_context_id
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - a2a_context_id
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - a2a_context_id
+          required:
+            - operator
+            - field
+    MetricsA2aErrorFilterByField:
+      title: Filter by a2a_error
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - a2a_error
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - a2a_error
+          required:
+            - operator
+            - field
+    MetricsA2aMethodFilterByField:
+      title: Filter by a2a_method
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - a2a_method
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - a2a_method
+          required:
+            - operator
+            - field
+    MetricsA2aTaskIdFilterByField:
+      title: Filter by a2a_task_id
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - a2a_task_id
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - a2a_task_id
+          required:
+            - operator
+            - field
+    MetricsMcpErrorFilterByField:
+      title: Filter by mcp_error
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - mcp_error
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - mcp_error
+          required:
+            - operator
+            - field
+    MetricsMcpMethodFilterByField:
+      title: Filter by mcp_method
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - mcp_method
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - mcp_method
+          required:
+            - operator
+            - field
+    MetricsMcpSessionIdFilterByField:
+      title: Filter by mcp_session_id
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - mcp_session_id
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - mcp_session_id
+          required:
+            - operator
+            - field
+    MetricsMcpToolNameFilterByField:
+      title: Filter by mcp_tool_name
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - mcp_tool_name
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - mcp_tool_name
+          required:
+            - operator
+            - field
     AgenticFilters:
       type: array
       description: A list of filters to apply to the query.
@@ -92555,6 +95212,35 @@ components:
             type: string
             enum:
               - a2a_context_id
+              - a2a_error
+              - a2a_method
+              - a2a_task_id
+              - api
+              - api_package
+              - api_product
+              - api_product_version
+              - application
+              - consumer
+              - control_plane
+              - control_plane_group
+              - country_code
+              - data_plane_node
+              - data_plane_node_version
+              - gateway_service
+              - mcp_error
+              - mcp_method
+              - mcp_session_id
+              - mcp_tool_name
+              - portal
+              - principal
+              - realm
+              - response_source
+              - route
+              - status_code
+              - status_code_grouped
+              - upstream_status_code
+              - upstream_status_code_grouped
+            x-speakeasy-unknown-values: allow
           operator:
             type: string
             enum:
@@ -92879,6 +95565,42 @@ components:
           type: string
           enum:
             - a2a_context_id
+            - a2a_error
+            - a2a_method
+            - a2a_task_id
+            - ai_plugin
+            - ai_provider
+            - ai_request_model
+            - ai_response_model
+            - api
+            - api_package
+            - api_product
+            - api_product_version
+            - application
+            - consumer
+            - control_plane
+            - control_plane_group
+            - country_code
+            - data_plane_node
+            - data_plane_node_version
+            - gateway_service
+            - llm_cache_status
+            - llm_embeddings_model
+            - llm_embeddings_provider
+            - mcp_error
+            - mcp_method
+            - mcp_session_id
+            - mcp_tool_name
+            - portal
+            - principal
+            - realm
+            - response_source
+            - route
+            - status_code
+            - status_code_grouped
+            - upstream_status_code
+            - upstream_status_code_grouped
+          x-speakeasy-unknown-values: allow
         operator:
           type: string
           enum:

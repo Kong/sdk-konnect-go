@@ -61,6 +61,7 @@ func (s *PartialLinks) ListPartialLinkInWorkspace(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-partial-link-in-workspace",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -269,6 +270,7 @@ func (s *PartialLinks) ListPartialLink(ctx context.Context, request operations.L
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-partial-link",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

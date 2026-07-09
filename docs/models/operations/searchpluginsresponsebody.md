@@ -1,4 +1,4 @@
-# SearchPluginResponseBody
+# SearchPluginsResponseBody
 
 A successful response searching Plugins
 

@@ -10,7 +10,7 @@ import (
 type AIGatewayConsumerGroup struct {
 	// The display name for this consumer group instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this consumer group, used as a stable human-readable reference.
+	// A user-defined unique identifier for this consumer group, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// List of policy references.
 	Policies []string `json:"policies,omitempty"`

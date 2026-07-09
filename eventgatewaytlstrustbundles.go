@@ -67,6 +67,7 @@ func (s *EventGatewayTLSTrustBundles) ListEventGatewayTLSTrustBundles(ctx contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-event-gateway-tls-trust-bundles",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -324,6 +325,7 @@ func (s *EventGatewayTLSTrustBundles) CreateEventGatewayTLSTrustBundle(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-event-gateway-tls-trust-bundle",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateTLSTrustBundleRequest", "json", `request:"mediaType=application/json"`)
@@ -605,6 +607,7 @@ func (s *EventGatewayTLSTrustBundles) GetEventGatewayTLSTrustBundle(ctx context.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-event-gateway-tls-trust-bundle",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -874,6 +877,7 @@ func (s *EventGatewayTLSTrustBundles) UpdateEventGatewayTLSTrustBundle(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-event-gateway-tls-trust-bundle",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateTLSTrustBundleRequest", "json", `request:"mediaType=application/json"`)
@@ -1155,6 +1159,7 @@ func (s *EventGatewayTLSTrustBundles) DeleteEventGatewayTLSTrustBundle(ctx conte
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-event-gateway-tls-trust-bundle",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

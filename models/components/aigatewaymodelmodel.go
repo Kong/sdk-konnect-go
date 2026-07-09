@@ -65,7 +65,7 @@ func (e *AIGatewayModelModelCapabilities) IsExact() bool {
 type AIGatewayModelModel struct {
 	// The display name for this model instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the model is enabled.
 	Enabled *bool `default:"true" json:"enabled"`

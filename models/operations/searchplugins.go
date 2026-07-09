@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-type SearchPluginRequest struct {
+type SearchPluginsRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Number of resources to be returned.
@@ -21,54 +21,54 @@ type SearchPluginRequest struct {
 	Filter *components.PluginSearchFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (s SearchPluginRequest) MarshalJSON() ([]byte, error) {
+func (s SearchPluginsRequest) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(s, "", false)
 }
 
-func (s *SearchPluginRequest) UnmarshalJSON(data []byte) error {
+func (s *SearchPluginsRequest) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (s *SearchPluginRequest) GetControlPlaneID() string {
+func (s *SearchPluginsRequest) GetControlPlaneID() string {
 	if s == nil {
 		return ""
 	}
 	return s.ControlPlaneID
 }
 
-func (s *SearchPluginRequest) GetSize() *int64 {
+func (s *SearchPluginsRequest) GetSize() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.Size
 }
 
-func (s *SearchPluginRequest) GetOffset() *string {
+func (s *SearchPluginsRequest) GetOffset() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Offset
 }
 
-func (s *SearchPluginRequest) GetTags() *string {
+func (s *SearchPluginsRequest) GetTags() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Tags
 }
 
-func (s *SearchPluginRequest) GetFilter() *components.PluginSearchFilter {
+func (s *SearchPluginsRequest) GetFilter() *components.PluginSearchFilter {
 	if s == nil {
 		return nil
 	}
 	return s.Filter
 }
 
-// SearchPluginResponseBody - A successful response searching Plugins
-type SearchPluginResponseBody struct {
+// SearchPluginsResponseBody - A successful response searching Plugins
+type SearchPluginsResponseBody struct {
 	Data []components.Plugin `json:"data,omitempty"`
 	// URI to the next page (may be null)
 	Next *string `json:"next,omitempty"`
@@ -76,28 +76,28 @@ type SearchPluginResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (s *SearchPluginResponseBody) GetData() []components.Plugin {
+func (s *SearchPluginsResponseBody) GetData() []components.Plugin {
 	if s == nil {
 		return nil
 	}
 	return s.Data
 }
 
-func (s *SearchPluginResponseBody) GetNext() *string {
+func (s *SearchPluginsResponseBody) GetNext() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Next
 }
 
-func (s *SearchPluginResponseBody) GetOffset() *string {
+func (s *SearchPluginsResponseBody) GetOffset() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Offset
 }
 
-type SearchPluginResponse struct {
+type SearchPluginsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// HTTP response status code for this operation
@@ -105,31 +105,31 @@ type SearchPluginResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A successful response searching Plugins
-	Object *SearchPluginResponseBody
+	Object *SearchPluginsResponseBody
 }
 
-func (s *SearchPluginResponse) GetContentType() string {
+func (s *SearchPluginsResponse) GetContentType() string {
 	if s == nil {
 		return ""
 	}
 	return s.ContentType
 }
 
-func (s *SearchPluginResponse) GetStatusCode() int {
+func (s *SearchPluginsResponse) GetStatusCode() int {
 	if s == nil {
 		return 0
 	}
 	return s.StatusCode
 }
 
-func (s *SearchPluginResponse) GetRawResponse() *http.Response {
+func (s *SearchPluginsResponse) GetRawResponse() *http.Response {
 	if s == nil {
 		return nil
 	}
 	return s.RawResponse
 }
 
-func (s *SearchPluginResponse) GetObject() *SearchPluginResponseBody {
+func (s *SearchPluginsResponse) GetObject() *SearchPluginsResponseBody {
 	if s == nil {
 		return nil
 	}

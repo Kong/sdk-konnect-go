@@ -99,16 +99,22 @@ const (
 func (e CatalogIntegrationResourceTypeIntegrationDataSchemaDefinition) ToPointer() *CatalogIntegrationResourceTypeIntegrationDataSchemaDefinition {
 	return &e
 }
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *CatalogIntegrationResourceTypeIntegrationDataSchemaDefinition) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "string", "number", "boolean":
-			return true
-		}
+func (e *CatalogIntegrationResourceTypeIntegrationDataSchemaDefinition) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
 	}
-	return false
+	switch v {
+	case "string":
+		fallthrough
+	case "number":
+		fallthrough
+	case "boolean":
+		*e = CatalogIntegrationResourceTypeIntegrationDataSchemaDefinition(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CatalogIntegrationResourceTypeIntegrationDataSchemaDefinition: %v", v)
+	}
 }
 
 // CatalogIntegrationResourceTypeIntegrationDataSimpleSchema - Defines the schema to validate incoming integration_data values for a resource type, on resource

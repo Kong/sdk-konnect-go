@@ -77,11 +77,6 @@ func (in *RouteJSON) DeepCopyInto(out *RouteJSON) {
 		*out = new(bool)
 		**out = **in
 	}
-	if in.Protocols != nil {
-		in, out := &in.Protocols, &out.Protocols
-		*out = make([]RouteJSONProtocols, len(*in))
-		copy(*out, *in)
-	}
 	if in.RegexPriority != nil {
 		in, out := &in.RegexPriority, &out.RegexPriority
 		*out = new(int64)

@@ -33,7 +33,7 @@ func (e *CreateAIGatewayConsumerRequestType) IsExact() bool {
 type CreateAIGatewayConsumerRequest struct {
 	// The display name for this consumer instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this consumer, used as a stable human-readable reference.
+	// A user-defined unique identifier for this consumer, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// The type of the consumer.
 	Type CreateAIGatewayConsumerRequestType `json:"type"`

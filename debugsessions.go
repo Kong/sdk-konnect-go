@@ -64,6 +64,7 @@ func (s *DebugSessions) ListDebugSessions(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-debug-sessions",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -342,6 +343,7 @@ func (s *DebugSessions) CreateDebugSession(ctx context.Context, controlPlaneID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-debug-session",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DebugSession", "json", `request:"mediaType=application/json"`)
@@ -644,6 +646,7 @@ func (s *DebugSessions) GetDebugSession(ctx context.Context, controlPlaneID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-debug-session",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -897,6 +900,7 @@ func (s *DebugSessions) DeleteDebugSession(ctx context.Context, controlPlaneID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-debug-session",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1131,6 +1135,7 @@ func (s *DebugSessions) StopDebugSession(ctx context.Context, controlPlaneID str
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "stop-debug-session",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

@@ -33,6 +33,7 @@ func (e *HashiCorpVaultType) UnmarshalJSON(data []byte) error {
 
 type HashiCorpVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`

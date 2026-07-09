@@ -125,7 +125,7 @@ func (c *CreateAIGatewayAgentRequestConfig) GetLogging() *CreateAIGatewayAgentRe
 type CreateAIGatewayAgentRequest struct {
 	// The display name for this agent.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this agent, used as a stable human-readable reference.
+	// A user-defined unique identifier for this agent, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the Agent is enabled.
 	Enabled *bool `default:"true" json:"enabled"`

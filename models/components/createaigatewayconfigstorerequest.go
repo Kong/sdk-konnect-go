@@ -5,7 +5,7 @@ package components
 type CreateAIGatewayConfigStoreRequest struct {
 	// The display name of the Config Store.
 	DisplayName *string `json:"display_name,omitempty"`
-	// The name of the Config Store.
+	// The name of the Config Store. This value is immutable after creation.
 	Name string `json:"name"`
 }
 

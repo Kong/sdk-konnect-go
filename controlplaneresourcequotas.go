@@ -64,6 +64,7 @@ func (s *ControlPlaneResourceQuotas) ListControlPlaneDefaultResourceQuotas(ctx c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-control-plane-default-resource-quotas",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -375,6 +376,7 @@ func (s *ControlPlaneResourceQuotas) ListControlPlaneResourceQuota(ctx context.C
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-control-plane-resource-quota",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -686,6 +688,7 @@ func (s *ControlPlaneResourceQuotas) CreateControlPlaneResourceQuota(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-control-plane-resource-quota",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -1008,6 +1011,7 @@ func (s *ControlPlaneResourceQuotas) GetControlPlaneResourceQuota(ctx context.Co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-control-plane-resource-quota",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1324,6 +1328,7 @@ func (s *ControlPlaneResourceQuotas) UpdateControlPlaneResourceQuota(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-control-plane-resource-quota",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PatchControlPlaneResourceQuota", "json", `request:"mediaType=application/json"`)
@@ -1646,6 +1651,7 @@ func (s *ControlPlaneResourceQuotas) DeleteControlPlaneResourceQuota(ctx context
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-control-plane-resource-quota",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

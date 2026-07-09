@@ -64,6 +64,7 @@ func (s *Meters) CreateMeter(ctx context.Context, request components.CreateMeter
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-meter",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -338,6 +339,7 @@ func (s *Meters) ListMeters(ctx context.Context, request operations.ListMetersRe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-meters",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -613,6 +615,7 @@ func (s *Meters) GetMeter(ctx context.Context, meterID string, opts ...operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-meter",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -909,6 +912,7 @@ func (s *Meters) UpdateMeter(ctx context.Context, meterID string, updateMeterReq
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-meter",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateMeterRequest", "json", `request:"mediaType=application/json"`)
@@ -1208,6 +1212,7 @@ func (s *Meters) DeleteMeter(ctx context.Context, meterID string, opts ...operat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-meter",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1496,6 +1501,7 @@ func (s *Meters) QueryMeter(ctx context.Context, meterID string, meterQueryReque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "query-meter",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "MeterQueryRequest", "json", `request:"mediaType=application/json"`)

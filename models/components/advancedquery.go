@@ -47,6 +47,7 @@ const (
 	AdvancedQueryDimensionsDataPlaneNodeVersion      AdvancedQueryDimensions = "data_plane_node_version"
 	AdvancedQueryDimensionsGatewayService            AdvancedQueryDimensions = "gateway_service"
 	AdvancedQueryDimensionsPortal                    AdvancedQueryDimensions = "portal"
+	AdvancedQueryDimensionsPrincipal                 AdvancedQueryDimensions = "principal"
 	AdvancedQueryDimensionsRealm                     AdvancedQueryDimensions = "realm"
 	AdvancedQueryDimensionsResponseSource            AdvancedQueryDimensions = "response_source"
 	AdvancedQueryDimensionsRoute                     AdvancedQueryDimensions = "route"
@@ -65,7 +66,7 @@ func (e AdvancedQueryDimensions) ToPointer() *AdvancedQueryDimensions {
 func (e *AdvancedQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "portal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
+		case "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}

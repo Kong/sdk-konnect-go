@@ -27,6 +27,7 @@ Depending on the protocol, one of the following attributes must be set:
 
 ### Available Operations
 
+* [SearchRoutesInWorkspace](#searchroutesinworkspace) - Search Routes in a workspace
 * [ListRouteInWorkspace](#listrouteinworkspace) - List all Routes in a workspace
 * [CreateRouteInWorkspace](#createrouteinworkspace) - Create a new Route in a workspace
 * [DeleteRouteInWorkspace](#deleterouteinworkspace) - Delete a Route in a workspace
@@ -47,6 +48,69 @@ Depending on the protocol, one of the following attributes must be set:
 * [DeleteRouteWithService](#deleteroutewithservice) - Delete a a Route associated with a Service
 * [GetRouteWithService](#getroutewithservice) - Get a Route associated with a Service
 * [UpsertRouteWithService](#upsertroutewithservice) - Upsert a Route associated with a Service
+
+## SearchRoutesInWorkspace
+
+Search Routes in a workspace
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="search-routes-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/search" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Routes.SearchRoutesInWorkspace(ctx, operations.SearchRoutesInWorkspaceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |
+| `request`                                                                                              | [operations.SearchRoutesInWorkspaceRequest](../../models/operations/searchroutesinworkspacerequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `opts`                                                                                                 | [][operations.Option](../../models/operations/option.md)                                               | :heavy_minus_sign:                                                                                     | The options for this request.                                                                          |
+
+### Response
+
+**[*operations.SearchRoutesInWorkspaceResponse](../../models/operations/searchroutesinworkspaceresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListRouteInWorkspace
 

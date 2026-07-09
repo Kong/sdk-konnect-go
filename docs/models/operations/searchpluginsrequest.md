@@ -1,4 +1,4 @@
-# SearchPluginRequest
+# SearchPluginsRequest
 
 
 ## Fields

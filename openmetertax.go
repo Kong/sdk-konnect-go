@@ -65,6 +65,7 @@ func (s *OpenMeterTax) CreateTaxCode(ctx context.Context, request components.Cre
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-tax-code",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -345,6 +346,7 @@ func (s *OpenMeterTax) ListTaxCodes(ctx context.Context, page *components.PagePa
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-tax-codes",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -621,6 +623,7 @@ func (s *OpenMeterTax) GetTaxCode(ctx context.Context, taxCodeID string, opts ..
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-tax-code",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -915,6 +918,7 @@ func (s *OpenMeterTax) UpsertTaxCode(ctx context.Context, taxCodeID string, upse
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-tax-code",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpsertTaxCodeRequest", "json", `request:"mediaType=application/json"`)
@@ -1236,6 +1240,7 @@ func (s *OpenMeterTax) DeleteTaxCode(ctx context.Context, taxCodeID string, opts
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-tax-code",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

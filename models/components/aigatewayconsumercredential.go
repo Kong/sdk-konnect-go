@@ -35,7 +35,7 @@ func (e *AIGatewayConsumerCredentialType) UnmarshalJSON(data []byte) error {
 type AIGatewayConsumerCredential struct {
 	// The display name for this credential instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this credential, used as a stable human-readable reference.
+	// A user-defined unique identifier for this credential, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//

@@ -10,7 +10,7 @@ import (
 type AIGatewayPolicy struct {
 	// The display name for this policy instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this policy instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this policy instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// The type of the Policy. This is equivalent to the Kong 3 plugin name.
 	// Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'openid-connect'.

@@ -62,6 +62,7 @@ func (s *AIManager) ListVirtualKeys(ctx context.Context, request operations.List
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-virtual-keys",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

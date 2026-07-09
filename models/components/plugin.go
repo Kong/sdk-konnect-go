@@ -100,28 +100,28 @@ func (p *Partials) GetPath() *string {
 	return p.Path
 }
 
-// Protocols - A string representing a protocol, such as HTTP or HTTPS.
-type Protocols string
+// PluginProtocols - A string representing a protocol, such as HTTP or HTTPS.
+type PluginProtocols string
 
 const (
-	ProtocolsGrpc           Protocols = "grpc"
-	ProtocolsGrpcs          Protocols = "grpcs"
-	ProtocolsHTTP           Protocols = "http"
-	ProtocolsHTTPS          Protocols = "https"
-	ProtocolsTCP            Protocols = "tcp"
-	ProtocolsTLS            Protocols = "tls"
-	ProtocolsTLSPassthrough Protocols = "tls_passthrough"
-	ProtocolsUDP            Protocols = "udp"
-	ProtocolsWs             Protocols = "ws"
-	ProtocolsWss            Protocols = "wss"
+	PluginProtocolsGrpc           PluginProtocols = "grpc"
+	PluginProtocolsGrpcs          PluginProtocols = "grpcs"
+	PluginProtocolsHTTP           PluginProtocols = "http"
+	PluginProtocolsHTTPS          PluginProtocols = "https"
+	PluginProtocolsTCP            PluginProtocols = "tcp"
+	PluginProtocolsTLS            PluginProtocols = "tls"
+	PluginProtocolsTLSPassthrough PluginProtocols = "tls_passthrough"
+	PluginProtocolsUDP            PluginProtocols = "udp"
+	PluginProtocolsWs             PluginProtocols = "ws"
+	PluginProtocolsWss            PluginProtocols = "wss"
 )
 
-func (e Protocols) ToPointer() *Protocols {
+func (e PluginProtocols) ToPointer() *PluginProtocols {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Protocols) IsExact() bool {
+func (e *PluginProtocols) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "grpc", "grpcs", "http", "https", "tcp", "tls", "tls_passthrough", "udp", "ws", "wss":
@@ -185,7 +185,7 @@ type Plugin struct {
 	// A list of partials to be used by the plugin.
 	Partials []Partials `json:"partials,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
-	Protocols []Protocols `json:"protocols,omitempty"`
+	Protocols []PluginProtocols `json:"protocols,omitempty"`
 	// If set, the plugin will only activate when receiving requests via the specified route. Leave unset for the plugin to activate regardless of the Route being used.
 	Route *PluginRoute `json:"route,omitempty"`
 	// If set, the plugin will only activate when receiving requests via one of the routes belonging to the specified Service. Leave unset for the plugin to activate regardless of the Service being matched.
@@ -305,7 +305,7 @@ func (p *Plugin) GetPartials() []Partials {
 	return p.Partials
 }
 
-func (p *Plugin) GetProtocols() []Protocols {
+func (p *Plugin) GetProtocols() []PluginProtocols {
 	if p == nil {
 		return nil
 	}

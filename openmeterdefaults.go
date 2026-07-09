@@ -65,6 +65,7 @@ func (s *OpenMeterDefaults) GetOrganizationDefaultTaxCodes(ctx context.Context, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-organization-default-tax-codes",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -354,6 +355,7 @@ func (s *OpenMeterDefaults) UpdateOrganizationDefaultTaxCodes(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-organization-default-tax-codes",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)

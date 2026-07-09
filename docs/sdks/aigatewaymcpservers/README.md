@@ -119,12 +119,12 @@ func main() {
                 URL: "https://mcp.internal.kongair.com",
                 ToolsCacheTTLSeconds: 55656,
             },
-            Access: components.CreateAIGatewayMCPServerBaseACLPropertiesOauthAccessToken(
+            Access: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerBaseACLPropertiesOauthAccessToken(
                 components.AIGatewayMCPServerBaseACLPropertiesOauth{
                     ACLAttributeType: components.AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeTypeOauthAccessToken,
                     AccessTokenClaimField: "<value>",
                 },
-            ),
+            )),
             DisplayName: "Kong Air Flights",
             Name: "kongair-flights",
             AdditionalProperties: map[string]any{
@@ -298,12 +298,12 @@ func main() {
                     URL: "https://mcp.internal.kongair.com",
                     ToolsCacheTTLSeconds: 793952,
                 },
-                Access: components.CreateAIGatewayMCPServerBaseACLPropertiesOauthAccessToken(
+                Access: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerBaseACLPropertiesOauthAccessToken(
                     components.AIGatewayMCPServerBaseACLPropertiesOauth{
                         ACLAttributeType: components.AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeTypeOauthAccessToken,
                         AccessTokenClaimField: "<value>",
                     },
-                ),
+                )),
                 DisplayName: "Kong Air Flights",
                 Name: "kongair-flights",
                 AdditionalProperties: map[string]any{

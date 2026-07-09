@@ -112,7 +112,7 @@ func (a *AIGatewayIdentityProviderKeyAuthConfig) GetAdditionalProperties() map[s
 type AIGatewayIdentityProviderKeyAuth struct {
 	// The display name for this identity provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this identity provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this identity provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//

@@ -11,6 +11,9 @@ import (
 
 // ServicesSDK is a generated interface.
 type ServicesSDK interface {
+	// SearchServicesInWorkspace - Search Services in a workspace
+	// Search Services in a workspace
+	SearchServicesInWorkspace(ctx context.Context, request operations.SearchServicesInWorkspaceRequest, opts ...operations.Option) (*operations.SearchServicesInWorkspaceResponse, error)
 	// ListServiceInWorkspace - List all Services in a workspace
 	// List all Services in a workspace
 	ListServiceInWorkspace(ctx context.Context, request operations.ListServiceInWorkspaceRequest, opts ...operations.Option) (*operations.ListServiceInWorkspaceResponse, error)

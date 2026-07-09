@@ -35,6 +35,7 @@ func (e *HashiCorpVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
 
 type AIGatewayVaultHashiCorpVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
@@ -293,6 +294,7 @@ func (c *ConjurVaultConjurVaultConfig) GetLogin() string {
 
 type AIGatewayVaultConjurVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
@@ -565,6 +567,7 @@ func (a *AzureKeyVaultAzureKeyVaultConfig) GetType() *AzureKeyVaultAIGatewayVaul
 
 type AIGatewayVaultAzureKeyVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
@@ -763,6 +766,7 @@ func (g *GoogleSecretManagerVaultGoogleSecretManagerVaultConfig) GetProjectID() 
 
 type AIGatewayVaultGoogleSecretManagerVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
@@ -1002,6 +1006,7 @@ func (a *AwsSecretsManagerVaultAwsSecretsManagerVaultConfig) GetStsEndpointURL()
 
 type AIGatewayVaultAwsSecretsManagerVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
@@ -1164,6 +1169,7 @@ func (e *EnvironmentVariableVaultEnvironmentVariableVaultConfig) GetPrefix() *st
 
 type AIGatewayVaultEnvironmentVariableVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
@@ -1314,6 +1320,7 @@ func (k *KonnectConfigStoreVaultAIGatewayVaultConfig) GetConfigStoreID() string 
 
 type AIGatewayVaultKonnectConfigStoreVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`

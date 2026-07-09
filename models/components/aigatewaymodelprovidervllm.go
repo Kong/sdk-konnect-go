@@ -61,7 +61,7 @@ type AIGatewayModelProviderVllm struct {
 	Type AIGatewayModelProviderVllmType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//

@@ -63,6 +63,7 @@ func (s *MCPResources) ListMcpResources(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-mcp-resources",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -334,6 +335,7 @@ func (s *MCPResources) CreateMcpResource(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-mcp-resource",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -633,6 +635,7 @@ func (s *MCPResources) GetMcpResource(ctx context.Context, resourceID string, op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-mcp-resource",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -925,6 +928,7 @@ func (s *MCPResources) DeleteMcpResource(ctx context.Context, resourceID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-mcp-resource",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1199,6 +1203,7 @@ func (s *MCPResources) UpdateMcpResource(ctx context.Context, resourceID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-mcp-resource",
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "json", `request:"mediaType=application/json"`)
