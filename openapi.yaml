@@ -14905,6 +14905,31 @@ paths:
       tags:
         - Application Registrations
   '/v3/portals/{portalId}/applications':
+    post:
+      operationId: create-application
+      summary: Create Application
+      description: 'Creates a new application for this portal. The application must be assigned to a developer or a team. An application can be registered for various APIs, issuing credentials for API access. If using DCR, an application will be linked to an Identity Provider''s application by its `client_id`.'
+      parameters:
+        - $ref: '#/components/parameters/PortalId'
+      requestBody:
+        $ref: '#/components/requestBodies/CreateApplication'
+      responses:
+        '201':
+          $ref: '#/components/responses/GetApplication'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Applications
+      x-terraform-id-to-object:
+        auth_strategy_id: auth_strategy.id
     get:
       operationId: list-applications
       summary: List Applications
@@ -15066,6 +15091,37 @@ paths:
     parameters:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/ApplicationId'
+    post:
+      operationId: create-application-registration
+      summary: Create Registration
+      description: Creates a new registration for this application to access a specific API. Registrations created through the portal management API will respect the auto-approve settings of the portal and/or API publication. API publications that do not use auto-approve must be manually approved by an administrator after creation.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateApplicationRegistration'
+      responses:
+        '201':
+          $ref: '#/components/responses/GetApplicationRegistration'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ConflictError'
+      tags:
+        - Application Registrations
+      x-terraform-id-to-object:
+        api_id: api.id
     get:
       operationId: list-registrations-by-application
       summary: List Registrations by Application
@@ -15620,6 +15676,33 @@ paths:
   '/v3/portals/{portalId}/developers':
     parameters:
       - $ref: '#/components/parameters/PortalId'
+    post:
+      operationId: create-developer
+      summary: Create Developer Account
+      description: Creates a new developer account in the specified portal. SAML login is currently not supported.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateDeveloper'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateDeveloperResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ConflictError'
+      tags:
+        - Portal Developers
     get:
       operationId: list-portal-developers
       summary: List Developers
@@ -28091,6 +28174,40 @@ components:
       required:
         - data
       title: ReplacePortalImageAsset
+    CreateDeveloperRequest:
+      description: Request body for creating a developer in a portal.
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        full_name:
+          type: string
+          maxLength: 255
+        status:
+          description: 'When omitted, the portal''s `auto_approve_developers` setting determines the initial status. Set this property to override the portal default with any valid developer status.'
+          type: string
+          example: approved
+          enum:
+            - approved
+            - pending
+            - revoked
+            - rejected
+          title: DeveloperStatus
+          x-speakeasy-unknown-values: allow
+        send_invitation_email:
+          description: 'When true, sends an invitation email to the developer. Default is false; no emails are sent unless explicitly requested.'
+          type: boolean
+          default: false
+      example:
+        email: developer@example.com
+        full_name: Developer Name
+      additionalProperties: false
+      required:
+        - email
+        - full_name
+      title: CreateDeveloperRequest
     UpdateDeveloperRequest:
       type: object
       properties:
@@ -28632,6 +28749,57 @@ components:
         - name
         - content
       title: CreatePortalSnippetRequest
+    CreateApplicationRequest:
+      type: object
+      properties:
+        name:
+          description: The name of the application.
+          type: string
+          maxLength: 255
+        description:
+          description: A description of the application.
+          type: string
+          maxLength: 255
+        labels:
+          $ref: '#/components/schemas/LabelsUpdate'
+        dcr_client_id:
+          description: |
+            If using a DCR auth strategy, set this property to link the portal application to an existing
+            client from the DCR provider, instead of having Konnect create a new client.
+
+            This allows importing existing clients from an Identity Provider into Konnect, allowing
+            them to be controlled through DCR flows in the portal and use existing client secrets
+            for API access.
+
+            The value must be a valid client ID in the DCR provider associated with the auth strategy.
+            For some DCR providers, if the client ID is invalid, the application may still be created but will not function properly.
+
+            Note: For AzureAD auth strategies, the client ID must resolve to an accessible Microsoft Entra
+            application using the configured DCR provider credentials. Otherwise, application creation fails.
+          type: string
+          maxLength: 255
+        client_id:
+          $ref: '#/components/schemas/ApplicationClientId'
+        auth_strategy_id:
+          description: The ID of the authentication strategy the application will use when making requests to registered APIs.
+          type: string
+          format: uuid
+        owner:
+          $ref: '#/components/schemas/ApplicationOwner'
+      example:
+        name: Portal Application
+        description: A portal application provisioned for a developer by a Portal Admin.
+        labels:
+          env: production
+        auth_strategy_id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        owner:
+          id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+          type: developer
+      additionalProperties: false
+      required:
+        - name
+        - owner
+      title: CreateApplicationRequest
     UpdateApplicationRequest:
       type: object
       properties:
@@ -28994,6 +29162,27 @@ components:
         - registration_count
         - labels
       title: Key Auth Application
+    CreateApplicationRegistrationRequest:
+      type: object
+      properties:
+        api_id:
+          description: The ID of the API the application is registering for.
+          type: string
+          format: uuid
+        status:
+          description: The status of the application registration. It must be a valid status value for a registration creation.
+          type: string
+          example: approved
+          enum:
+            - approved
+            - pending
+          x-speakeasy-unknown-values: allow
+      example:
+        api_id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+      additionalProperties: false
+      required:
+        - api_id
+      title: CreateApplicationRegistrationRequest
     ApplicationRegistration:
       description: A application's registration for a specific version of an API.
       type: object
@@ -30984,6 +31173,12 @@ components:
         - name
         - credential_type
         - key_names
+    ApplicationClientId:
+      description: |
+        An identifier to correlate the application with an external system.
+        Cannot be set when using Dynamic Client Registration.
+      type: string
+      maxLength: 255
     ApiKeyCredentialListItem:
       description: API key credential returned when listing credentials.
       type: object
@@ -56704,6 +56899,27 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdatePortalSnippetRequest'
+    CreateDeveloper:
+      description: Create a developer for a portal.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateDeveloperRequest'
+    CreateApplication:
+      description: Create an application for a portal.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateApplicationRequest'
+    CreateApplicationRegistration:
+      description: Create an application registration for a portal application.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateApplicationRegistrationRequest'
     UpdateApplicationRegistration:
       description: Update an application registration.
       required: true
@@ -59950,6 +60166,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/AssignedPortalRoleCollectionResponse'
+    CreateDeveloperResponse:
+      description: Details about the created developer in a portal.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PortalDeveloper'
     GetDeveloper:
       description: Details about a developer in a portal.
       content:
