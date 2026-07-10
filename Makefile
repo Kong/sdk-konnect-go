@@ -140,17 +140,31 @@ generate.deepcopy: controller-gen
 		$(shell git ls-files docs/models/components/upstream*.md) \
 		$(shell git ls-files docs/models/components/healthchecks*.md)
 
+.PHONY: generate.sdk.speakeasy
+generate.sdk.speakeasy: speakeasy
+	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
+
 # NOTE: SDK generation consists of adding the kubebuilder code marker and generating
 #       DeepCopy() for the types that need it and then using speakeasy to generate
 #       the final sdk code.
 # NOTE: add more types that need to have DeepCopy() generated.
 .PHONY: generate.sdk
-generate.sdk: speakeasy
-	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
+generate.sdk:
+	$(MAKE) generate.sdk.speakeasy
 	git add --update .
 	$(MAKE) generate.deepcopy
 	$(MAKE) _generate.omitempty
 	go mod tidy
+
+# NOTE: Use this when there are breaking changes in the generated SDK code
+#       that require the interfaces and mocks to be regenerated.
+.PHONY: generate.sdk.from-scratch
+generate.sdk.from-scratch:
+	$(MAKE) remove.interfaces
+	$(MAKE) remove.mocks
+	$(MAKE) generate.sdk
+	$(MAKE) generate.interfaces
+	$(MAKE) generate.mocks
 
 .PHONY: test
 test: test.unit test.integration
@@ -183,16 +197,27 @@ _generate.ifacemaker:
 
 TYPES_TO_MOCK := $(shell grep -B 20 'rootSDK.*\*SDK' *.go | grep 'type.*struct' | awk '{print $$2}' | sort -u)
 
+.PHONY: remove.interfaces
+remove.interfaces:
+	@echo "Removing existing interfaces (to prevent breakage on breaking changes)..."
+	rm -f *_i.go
+
 .PHONY: generate.interfaces
 generate.interfaces: ifacemaker
+	$(MAKE) remove.interfaces
 	@$(foreach s, $(TYPES_TO_MOCK), \
 		rm -f $(shell echo $(s) | tr 'A-Z' 'a-z')_i.go; \
 		$(MAKE) _generate.ifacemaker STRUCT=$(s) || exit 1;)
 
+.PHONY: remove.mocks
+remove.mocks:
+	@echo "Removing existing mocks (to prevent breakage on breaking changes) and generating new ones..."
+	rm -f test/mocks/zz_generated*.go
+
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks
 generate.mocks: mockery
-	rm -f test/mocks/zz_generated*.go
+	$(MAKE) remove.mocks
 	GODEBUG=gotypesalias=0 $(MOCKERY)
 
 # TYPES_TO_TEST_FIELDS is a list of types in models/components/
