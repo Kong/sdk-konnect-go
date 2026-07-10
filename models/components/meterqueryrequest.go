@@ -60,7 +60,7 @@ type MeterQueryRequest struct {
 	// The value is the name of the time zone as defined in the IANA Time Zone Database
 	// (http://www.iana.org/time-zones). The time zone is used to determine the start
 	// and end of the time buckets. If not specified, the UTC timezone will be used.
-	TimeZone *string `default:"UTC" json:"time_zone"`
+	TimeZone *string `json:"time_zone,omitempty"`
 	// The dimensions to group the results by.
 	GroupByDimensions []string `json:"group_by_dimensions,omitempty"`
 	// Filters to apply to the query.

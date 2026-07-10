@@ -387,6 +387,7 @@ func main() {
         From: types.MustNewTimeFromString("2023-01-01T00:00:00Z"),
         To: types.MustNewTimeFromString("2023-01-02T00:00:00Z"),
         Granularity: components.MeterQueryRequestGranularityP1D.ToPointer(),
+        TimeZone: sdkkonnectgo.Pointer("UTC"),
     })
     if err != nil {
         log.Fatal(err)

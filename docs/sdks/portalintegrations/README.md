@@ -114,6 +114,14 @@ func main() {
                 L: sdkkonnectgo.Pointer("myNewName"),
             },
         },
+        EqualWeb: &components.EqualWebIntegration{
+            Enabled: false,
+            Type: components.EqualWebIntegrationTypeAccessibility,
+            ConfigData: components.EqualWebIntegrationConfigData{
+                SiteKey: "asd7890asdhlkas87ohjasd98yohasd9",
+                WidgetConfig: &components.EqualWebIntegrationWidgetConfig{},
+            },
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -188,6 +196,12 @@ func main() {
             ConfigData: &components.GoogleAnalytics4IntegrationConfigProperties{
                 ID: sdkkonnectgo.Pointer("G-XXXXXXX"),
                 L: sdkkonnectgo.Pointer("myNewName"),
+            },
+        },
+        EqualWeb: &components.UpdateEqualWebIntegration{
+            ConfigData: &components.EqualWebIntegrationConfigProperties{
+                SiteKey: sdkkonnectgo.Pointer("asd7890asdhlkas87ohjasd98yohasd9"),
+                WidgetConfig: &components.WidgetConfig{},
             },
         },
     })

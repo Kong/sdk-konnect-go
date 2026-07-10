@@ -89,7 +89,7 @@ type Addon struct {
 	// version number.
 	Key string `json:"key"`
 	// Version of the add-on. Incremented when the add-on is updated.
-	Version *int64 `default:"1" json:"version"`
+	Version int64 `json:"version"`
 	// The InstanceType of the add-ons. Can be "single" or "multiple".
 	InstanceType TheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple `json:"instance_type"`
 	// Fiat or custom currency code.
@@ -180,9 +180,9 @@ func (a *Addon) GetKey() string {
 	return a.Key
 }
 
-func (a *Addon) GetVersion() *int64 {
+func (a *Addon) GetVersion() int64 {
 	if a == nil {
-		return nil
+		return 0
 	}
 	return a.Version
 }

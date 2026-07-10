@@ -146,6 +146,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -183,6 +185,8 @@ func main() {
         OidcTeamMappingEnabled: sdkkonnectgo.Pointer(true),
         KonnectMappingEnabled: sdkkonnectgo.Pointer(true),
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -231,6 +235,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -277,6 +283,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -323,6 +331,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -369,6 +379,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -415,6 +427,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -461,6 +475,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -507,6 +523,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -553,6 +571,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -599,6 +619,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -645,6 +667,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -691,6 +715,8 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -1133,7 +1159,11 @@ func main() {
                     "email",
                     "profile",
                 },
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -1978,7 +2008,11 @@ func main() {
                         "email",
                         "profile",
                     },
-                    ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                    ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                        Name: sdkkonnectgo.Pointer("name"),
+                        Email: sdkkonnectgo.Pointer("email"),
+                        Groups: sdkkonnectgo.Pointer("groups"),
+                    },
                 },
             )),
         },

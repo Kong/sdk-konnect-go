@@ -111,6 +111,7 @@ func main() {
         VirtualClusterID: "78114908-b42c-4c6b-a88b-3866f4ad4fb1",
         EventGatewayConsumePolicyCreate: sdkkonnectgo.Pointer(components.CreateEventGatewayConsumePolicyCreateDecrypt(
             components.EventGatewayDecryptPolicy{
+                Enabled: sdkkonnectgo.Pointer(true),
                 Config: components.EventGatewayDecryptPolicyConfig{
                     FailureMode: components.EncryptionFailureModeError,
                     KeySources: []components.EventGatewayKeySource{
@@ -249,6 +250,7 @@ func main() {
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         EventGatewayConsumePolicyUpdate: sdkkonnectgo.Pointer(components.CreateEventGatewayConsumePolicyUpdateDecrypt(
             components.EventGatewayDecryptPolicy{
+                Enabled: sdkkonnectgo.Pointer(true),
                 Config: components.EventGatewayDecryptPolicyConfig{
                     FailureMode: components.EncryptionFailureModeError,
                     KeySources: []components.EventGatewayKeySource{},

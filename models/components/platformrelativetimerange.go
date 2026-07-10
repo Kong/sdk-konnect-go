@@ -66,9 +66,9 @@ func (e *PlatformRelativeTimeRangeTimeRange) IsExact() bool {
 
 // PlatformRelativeTimeRange - A duration representing a relative-to-now span of time for platform queries.
 type PlatformRelativeTimeRange struct {
-	Tz        *string                             `default:"Etc/UTC" json:"tz"`
-	Type      PlatformRelativeTimeRangeType       `json:"type"`
-	TimeRange *PlatformRelativeTimeRangeTimeRange `default:"30d" json:"time_range"`
+	Tz        *string                            `json:"tz,omitempty"`
+	Type      PlatformRelativeTimeRangeType      `json:"type"`
+	TimeRange PlatformRelativeTimeRangeTimeRange `json:"time_range"`
 }
 
 func (p PlatformRelativeTimeRange) MarshalJSON() ([]byte, error) {
@@ -76,7 +76,7 @@ func (p PlatformRelativeTimeRange) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PlatformRelativeTimeRange) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "time_range"}); err != nil {
 		return err
 	}
 	return nil
@@ -96,9 +96,9 @@ func (p *PlatformRelativeTimeRange) GetType() PlatformRelativeTimeRangeType {
 	return p.Type
 }
 
-func (p *PlatformRelativeTimeRange) GetTimeRange() *PlatformRelativeTimeRangeTimeRange {
+func (p *PlatformRelativeTimeRange) GetTimeRange() PlatformRelativeTimeRangeTimeRange {
 	if p == nil {
-		return nil
+		return PlatformRelativeTimeRangeTimeRange("")
 	}
 	return p.TimeRange
 }

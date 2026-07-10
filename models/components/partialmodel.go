@@ -32,7 +32,7 @@ func (e *PartialModelParamLocation) IsExact() bool {
 
 type PartialModelAuth struct {
 	// If enabled, the authorization header or parameter can be overridden in the request by the value configured in the plugin.
-	AllowOverride *bool `default:"false" json:"allow_override"`
+	AllowOverride *bool `json:"allow_override,omitempty"`
 	// Set this if you are using an AWS provider (Bedrock) and you are authenticating using static IAM User credentials. Setting this will override the AWS_ACCESS_KEY_ID environment variable for this plugin instance.
 	AwsAccessKeyID *string `json:"aws_access_key_id,omitempty"`
 	// Set this if you are using an AWS provider (Bedrock) and you are authenticating using static IAM User credentials. Setting this will override the AWS_SECRET_ACCESS_KEY environment variable for this plugin instance.
@@ -44,7 +44,7 @@ type PartialModelAuth struct {
 	// If azure_use_managed_identity is set to true, and you need to use a different user-assigned identity for this LLM instance, set the tenant ID.
 	AzureTenantID *string `json:"azure_tenant_id,omitempty"`
 	// Set true to use the Azure Cloud Managed Identity (or user-assigned identity) to authenticate with Azure-provider models.
-	AzureUseManagedIdentity *bool `default:"false" json:"azure_use_managed_identity"`
+	AzureUseManagedIdentity *bool `json:"azure_use_managed_identity,omitempty"`
 	// Custom metadata URL for GCP authentication. Useful for restricted network environments or custom GCP endpoints. If null, Kong will use the default Google metadata endpoint.
 	GcpMetadataURL *string `json:"gcp_metadata_url,omitempty"`
 	// Custom OAuth token URL for GCP authentication. Useful for restricted network environments or custom GCP endpoints. If null, Kong will use the default Google OAuth token endpoint.
@@ -52,7 +52,7 @@ type PartialModelAuth struct {
 	// Set this field to the full JSON of the GCP service account to authenticate, if required. If null (and gcp_use_service_account is true), Kong will attempt to read from environment variable `GCP_SERVICE_ACCOUNT`.
 	GcpServiceAccountJSON *string `json:"gcp_service_account_json,omitempty"`
 	// Use service account auth for GCP-based providers and models.
-	GcpUseServiceAccount *bool `default:"false" json:"gcp_use_service_account"`
+	GcpUseServiceAccount *bool `json:"gcp_use_service_account,omitempty"`
 	// If AI model requires authentication via Authorization or API key header, specify its name here.
 	HeaderName *string `json:"header_name,omitempty"`
 	// Specify the full auth header value for 'header_name', for example 'Bearer key' or just 'key'.
@@ -190,9 +190,9 @@ func (p *PartialModelAuth) GetParamValue() *string {
 
 type Logging struct {
 	// If enabled, will log the request and response body into the Kong log plugin(s) output.Furthermore if Opentelemetry instrumentation is enabled the traces will contain this data as well.
-	LogPayloads *bool `default:"false" json:"log_payloads"`
+	LogPayloads *bool `json:"log_payloads,omitempty"`
 	// If enabled and supported by the driver, will add model usage and token metrics into the Kong log plugin(s) output.
-	LogStatistics *bool `default:"false" json:"log_statistics"`
+	LogStatistics *bool `json:"log_statistics,omitempty"`
 }
 
 func (l Logging) MarshalJSON() ([]byte, error) {
@@ -234,7 +234,7 @@ type PartialModelBedrock struct {
 	// AWS role arn used for calling batch API. Try to get the value from request if ommited.
 	BatchRoleArn *string `json:"batch_role_arn,omitempty"`
 	// If using AWS providers (Bedrock), set to true to normalize the embeddings.
-	EmbeddingsNormalize *bool `default:"false" json:"embeddings_normalize"`
+	EmbeddingsNormalize *bool `json:"embeddings_normalize,omitempty"`
 	// Force the client's performance configuration 'latency' for all requests. Leave empty to let the consumer select the performance configuration.
 	PerformanceConfigLatency *string `json:"performance_config_latency,omitempty"`
 	// S3 URI (s3://bucket/prefix) where Bedrock will store generated video files. Required for video generation.
@@ -343,7 +343,7 @@ func (e *EmbeddingInputType) IsExact() bool {
 
 type Cohere struct {
 	// The purpose of the input text to calculate embedding vectors.
-	EmbeddingInputType *EmbeddingInputType `default:"classification" json:"embedding_input_type"`
+	EmbeddingInputType *EmbeddingInputType `json:"embedding_input_type,omitempty"`
 	// Wait for the model if it is not ready
 	WaitForModel *bool `json:"wait_for_model,omitempty"`
 }
@@ -377,7 +377,7 @@ type Dashscope struct {
 	// Two Dashscope endpoints are available, and the international endpoint will be used when this is set to `true`.
 	// It is recommended to set this to `true` when using international version of dashscope.
 	//
-	International *bool `default:"true" json:"international"`
+	International *bool `json:"international,omitempty"`
 }
 
 func (d Dashscope) MarshalJSON() ([]byte, error) {
@@ -555,7 +555,7 @@ type PartialModelOptions struct {
 	// Defines the schema/API version, if using Anthropic provider.
 	AnthropicVersion *string `json:"anthropic_version,omitempty"`
 	// 'api-version' for Azure OpenAI instances.
-	AzureAPIVersion *string `default:"2023-05-15" json:"azure_api_version"`
+	AzureAPIVersion *string `json:"azure_api_version,omitempty"`
 	// Deployment ID for Azure OpenAI instances.
 	AzureDeploymentID *string `json:"azure_deployment_id,omitempty"`
 	// Instance name for Azure OpenAI hosted models.
@@ -882,7 +882,7 @@ type PartialModelConfig struct {
 	// The model's operation implementation, for this provider.
 	RouteType RouteType `json:"route_type"`
 	// The weight this target gets within the upstream loadbalancer (1-65535). Only used by ai-proxy-advanced.
-	Weight *int64 `default:"100" json:"weight"`
+	Weight *int64 `json:"weight,omitempty"`
 }
 
 func (p PartialModelConfig) MarshalJSON() ([]byte, error) {

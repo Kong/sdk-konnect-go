@@ -32,7 +32,7 @@ func (e *ParamLocation) IsExact() bool {
 
 type Auth struct {
 	// If enabled, the authorization header or parameter can be overridden in the request by the value configured in the plugin.
-	AllowOverride *bool `default:"false" json:"allow_override"`
+	AllowOverride *bool `json:"allow_override,omitempty"`
 	// Set this if you are using an AWS provider (Bedrock) and you are authenticating using static IAM User credentials. Setting this will override the AWS_ACCESS_KEY_ID environment variable for this plugin instance.
 	AwsAccessKeyID *string `json:"aws_access_key_id,omitempty"`
 	// Set this if you are using an AWS provider (Bedrock) and you are authenticating using static IAM User credentials. Setting this will override the AWS_SECRET_ACCESS_KEY environment variable for this plugin instance.
@@ -44,7 +44,7 @@ type Auth struct {
 	// If azure_use_managed_identity is set to true, and you need to use a different user-assigned identity for this LLM instance, set the tenant ID.
 	AzureTenantID *string `json:"azure_tenant_id,omitempty"`
 	// Set true to use the Azure Cloud Managed Identity (or user-assigned identity) to authenticate with Azure-provider models.
-	AzureUseManagedIdentity *bool `default:"false" json:"azure_use_managed_identity"`
+	AzureUseManagedIdentity *bool `json:"azure_use_managed_identity,omitempty"`
 	// Custom metadata URL for GCP authentication. Useful for restricted network environments or custom GCP endpoints. If null, Kong will use the default Google metadata endpoint.
 	GcpMetadataURL *string `json:"gcp_metadata_url,omitempty"`
 	// Custom OAuth token URL for GCP authentication. Useful for restricted network environments or custom GCP endpoints. If null, Kong will use the default Google OAuth token endpoint.
@@ -52,7 +52,7 @@ type Auth struct {
 	// Set this field to the full JSON of the GCP service account to authenticate, if required. If null (and gcp_use_service_account is true), Kong will attempt to read from environment variable `GCP_SERVICE_ACCOUNT`.
 	GcpServiceAccountJSON *string `json:"gcp_service_account_json,omitempty"`
 	// Use service account auth for GCP-based providers and models.
-	GcpUseServiceAccount *bool `default:"false" json:"gcp_use_service_account"`
+	GcpUseServiceAccount *bool `json:"gcp_use_service_account,omitempty"`
 	// If AI model requires authentication via Authorization or API key header, specify its name here.
 	HeaderName *string `json:"header_name,omitempty"`
 	// Specify the full auth header value for 'header_name', for example 'Bearer key' or just 'key'.
@@ -190,7 +190,7 @@ func (a *Auth) GetParamValue() *string {
 
 type Azure struct {
 	// 'api-version' for Azure OpenAI instances.
-	APIVersion *string `default:"2023-05-15" json:"api_version"`
+	APIVersion *string `json:"api_version,omitempty"`
 	// Deployment ID for Azure OpenAI instances.
 	DeploymentID *string `json:"deployment_id,omitempty"`
 	// Instance name for Azure OpenAI hosted models.
@@ -243,7 +243,7 @@ type Bedrock struct {
 	// AWS role arn used for calling batch API. Try to get the value from request if ommited.
 	BatchRoleArn *string `json:"batch_role_arn,omitempty"`
 	// If using AWS providers (Bedrock), set to true to normalize the embeddings.
-	EmbeddingsNormalize *bool `default:"false" json:"embeddings_normalize"`
+	EmbeddingsNormalize *bool `json:"embeddings_normalize,omitempty"`
 	// Force the client's performance configuration 'latency' for all requests. Leave empty to let the consumer select the performance configuration.
 	PerformanceConfigLatency *string `json:"performance_config_latency,omitempty"`
 	// S3 URI (s3://bucket/prefix) where Bedrock will store generated video files. Required for video generation.

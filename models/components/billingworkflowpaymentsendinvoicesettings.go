@@ -40,7 +40,7 @@ type BillingWorkflowPaymentSendInvoiceSettings struct {
 	CollectionMethod BillingWorkflowPaymentSendInvoiceSettingsCollectionMethod `json:"collection_method"`
 	// The period after which the invoice is due. With some payment solutions it's only
 	// applicable for manual collection method.
-	DueAfter *string `default:"P30D" json:"due_after"`
+	DueAfter *string `json:"due_after,omitempty"`
 }
 
 func (b BillingWorkflowPaymentSendInvoiceSettings) MarshalJSON() ([]byte, error) {

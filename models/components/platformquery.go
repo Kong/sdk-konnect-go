@@ -76,8 +76,6 @@ type PlatformQuery struct {
 	// If granularity is not specified and "time" is in the dimensions list, a default will be chosen based on the time range requested.
 	//
 	// Different relative times support different granularities:
-	//
-	//
 	//   - 24h                                          => daily
 	//   - 7d, current_week, previous_week              => daily, weekly
 	//   - 30d, current_month, previous_month           => daily, weekly, monthly
@@ -87,8 +85,6 @@ type PlatformQuery struct {
 	// For absolute time ranges, daily will be used.
 	//
 	// Granularity values:
-	//
-	//
 	//   - `daily`: Groups data into 24-hour buckets.
 	//   - `weekly`: Groups data into 7-day buckets.
 	//   - `monthly`: Groups data into calendar month buckets.
@@ -97,7 +93,7 @@ type PlatformQuery struct {
 	// The time range to query for platform data.
 	TimeRange *PlatformTimeRange `json:"time_range,omitempty"`
 	// Maximum number of group_by buckets to return. Defaults to 50, capped at 1000. Only applies when a group_by dimension is requested.
-	Limit *float64 `default:"50" json:"limit"`
+	Limit *float64 `json:"limit,omitempty"`
 }
 
 func (p PlatformQuery) MarshalJSON() ([]byte, error) {

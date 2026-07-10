@@ -41,7 +41,7 @@ type VirtualClusterNamespaceTopicSelectorExactList struct {
 	// * warn - log in the Event Gateway logs. Additionally, it sets knep_namespace_topic_conflict to 1.
 	// * ignore - do not do anything. It does not cause knep_namespace_topic_conflict metric to be set to 1.
 	//
-	Conflict *VirtualClusterNamespaceTopicSelectorExactListConflict `default:"warn" json:"conflict"`
+	Conflict *VirtualClusterNamespaceTopicSelectorExactListConflict `json:"conflict,omitempty"`
 }
 
 func (v VirtualClusterNamespaceTopicSelectorExactList) MarshalJSON() ([]byte, error) {

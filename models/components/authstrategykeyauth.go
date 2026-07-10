@@ -90,7 +90,7 @@ func (a *AuthStrategyKeyAuthTTL) GetUnit() AuthStrategyKeyAuthUnit {
 type AuthStrategyKeyAuth struct {
 	// The Application Auth Strategy ID.
 	ID             string                            `json:"id"`
-	Name           *string                           `default:"name" json:"name"`
+	Name           string                            `json:"name"`
 	CredentialType AuthStrategyKeyAuthCredentialType `json:"credential_type"`
 	KeyNames       []string                          `json:"key_names"`
 	// Default maximum Time-To-Live for keys created under this strategy.
@@ -102,7 +102,7 @@ func (a AuthStrategyKeyAuth) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AuthStrategyKeyAuth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "credential_type", "key_names"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "credential_type", "key_names"}); err != nil {
 		return err
 	}
 	return nil
@@ -115,9 +115,9 @@ func (a *AuthStrategyKeyAuth) GetID() string {
 	return a.ID
 }
 
-func (a *AuthStrategyKeyAuth) GetName() *string {
+func (a *AuthStrategyKeyAuth) GetName() string {
 	if a == nil {
-		return nil
+		return ""
 	}
 	return a.Name
 }

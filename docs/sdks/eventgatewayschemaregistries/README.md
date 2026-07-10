@@ -106,6 +106,7 @@ func main() {
             Config: components.SchemaRegistryConfluentConfig{
                 SchemaType: components.SchemaTypeAvro,
                 Endpoint: "https://broken-tuber.net/",
+                TimeoutSeconds: sdkkonnectgo.Pointer[int64](10),
                 Authentication: sdkkonnectgo.Pointer(components.CreateSchemaRegistryAuthenticationSchemeBasic(
                     components.SchemaRegistryAuthenticationBasic{
                         Username: "Stanley71",
@@ -240,6 +241,7 @@ func main() {
                 Config: components.SchemaRegistryConfluentConfigSensitiveDataAware{
                     SchemaType: components.SchemaRegistryConfluentConfigSensitiveDataAwareSchemaTypeAvro,
                     Endpoint: "https://polished-caption.info/",
+                    TimeoutSeconds: sdkkonnectgo.Pointer[int64](10),
                     Authentication: sdkkonnectgo.Pointer(components.CreateSchemaRegistryAuthenticationSensitiveDataAwareSchemeBasic(
                         components.SchemaRegistryAuthenticationBasicSensitiveDataAware{
                             Username: "Kelton_Lind-Spencer42",

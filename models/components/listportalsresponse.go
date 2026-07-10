@@ -68,9 +68,9 @@ type ListPortalsResponsePortal struct {
 	// A description of the portal.
 	Description *string `json:"description"`
 	// Whether the portal supports developer authentication. If disabled, developers cannot register for accounts or create applications.
-	AuthenticationEnabled *bool `default:"true" json:"authentication_enabled"`
+	AuthenticationEnabled bool `json:"authentication_enabled"`
 	// Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.
-	RbacEnabled *bool `default:"false" json:"rbac_enabled"`
+	RbacEnabled bool `json:"rbac_enabled"`
 	// Whether ip allow list is enabled for the portal.
 	SiprEnabled *bool `default:"false" json:"sipr_enabled"`
 	// The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
@@ -80,9 +80,9 @@ type ListPortalsResponsePortal struct {
 	// The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.
 	DefaultApplicationAuthStrategyID *string `json:"default_application_auth_strategy_id"`
 	// Whether developer account registrations will be automatically approved, or if they will be set to pending until approved by an admin.
-	AutoApproveDevelopers *bool `default:"false" json:"auto_approve_developers"`
+	AutoApproveDevelopers bool `json:"auto_approve_developers"`
 	// Whether requests from applications to register for APIs will be automatically approved, or if they will be set to pending until approved by an admin.
-	AutoApproveApplications *bool `default:"false" json:"auto_approve_applications"`
+	AutoApproveApplications bool `json:"auto_approve_applications"`
 	// The domain assigned to the portal by Konnect. This is the default place to access the portal and its API if not using a `custom_domain``.
 	DefaultDomain string `json:"default_domain"`
 	// The canonical domain of the developer portal
@@ -93,7 +93,7 @@ type ListPortalsResponsePortal struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// When enabled, portal registration notifications include the registering developer's identifying information (such as name and email).
-	NotificationsDeveloperPiiVisibilityEnabled *bool `default:"false" json:"notifications_developer_pii_visibility_enabled"`
+	NotificationsDeveloperPiiVisibilityEnabled *bool `json:"notifications_developer_pii_visibility_enabled,omitempty"`
 }
 
 func (l ListPortalsResponsePortal) MarshalJSON() ([]byte, error) {
@@ -149,16 +149,16 @@ func (l *ListPortalsResponsePortal) GetDescription() *string {
 	return l.Description
 }
 
-func (l *ListPortalsResponsePortal) GetAuthenticationEnabled() *bool {
+func (l *ListPortalsResponsePortal) GetAuthenticationEnabled() bool {
 	if l == nil {
-		return nil
+		return false
 	}
 	return l.AuthenticationEnabled
 }
 
-func (l *ListPortalsResponsePortal) GetRbacEnabled() *bool {
+func (l *ListPortalsResponsePortal) GetRbacEnabled() bool {
 	if l == nil {
-		return nil
+		return false
 	}
 	return l.RbacEnabled
 }
@@ -191,16 +191,16 @@ func (l *ListPortalsResponsePortal) GetDefaultApplicationAuthStrategyID() *strin
 	return l.DefaultApplicationAuthStrategyID
 }
 
-func (l *ListPortalsResponsePortal) GetAutoApproveDevelopers() *bool {
+func (l *ListPortalsResponsePortal) GetAutoApproveDevelopers() bool {
 	if l == nil {
-		return nil
+		return false
 	}
 	return l.AutoApproveDevelopers
 }
 
-func (l *ListPortalsResponsePortal) GetAutoApproveApplications() *bool {
+func (l *ListPortalsResponsePortal) GetAutoApproveApplications() bool {
 	if l == nil {
-		return nil
+		return false
 	}
 	return l.AutoApproveApplications
 }

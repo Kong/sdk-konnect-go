@@ -39,6 +39,7 @@ custom := components.AgenticFiltersField("custom_value")
 | `AgenticFiltersFieldMcpSessionID`              | mcp_session_id                                 |
 | `AgenticFiltersFieldMcpToolName`               | mcp_tool_name                                  |
 | `AgenticFiltersFieldPortal`                    | portal                                         |
+| `AgenticFiltersFieldPrincipal`                 | principal                                      |
 | `AgenticFiltersFieldRealm`                     | realm                                          |
 | `AgenticFiltersFieldResponseSource`            | response_source                                |
 | `AgenticFiltersFieldRoute`                     | route                                          |

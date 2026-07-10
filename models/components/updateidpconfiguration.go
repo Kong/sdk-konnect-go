@@ -3,25 +3,10 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type UpdateIDPConfigurationClaimMappings struct {
-	Name   *string `default:"name" json:"name"`
-	Email  *string `default:"email" json:"email"`
-	Groups *string `default:"groups" json:"groups"`
-}
-
-func (u UpdateIDPConfigurationClaimMappings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateIDPConfigurationClaimMappings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Name   *string `json:"name,omitempty"`
+	Email  *string `json:"email,omitempty"`
+	Groups *string `json:"groups,omitempty"`
 }
 
 func (u *UpdateIDPConfigurationClaimMappings) GetName() *string {

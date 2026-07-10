@@ -38,7 +38,7 @@ type CustomCertificate struct {
 	CustomPrivateKey string `json:"custom_private_key"`
 	// Advanced option. If true, the custom certificate is served exactly as provided, without attempting to bundle against a public trust store. Required for certificates issued by an internal/private CA.
 	//
-	SkipCaCheck *bool `default:"false" json:"skip_ca_check"`
+	SkipCaCheck *bool `json:"skip_ca_check,omitempty"`
 }
 
 func (c CustomCertificate) MarshalJSON() ([]byte, error) {

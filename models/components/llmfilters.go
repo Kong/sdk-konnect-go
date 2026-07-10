@@ -22,6 +22,7 @@ const (
 	LLMFiltersFieldLlmCacheStatus        LLMFiltersField = "llm_cache_status"
 	LLMFiltersFieldLlmEmbeddingsModel    LLMFiltersField = "llm_embeddings_model"
 	LLMFiltersFieldLlmEmbeddingsProvider LLMFiltersField = "llm_embeddings_provider"
+	LLMFiltersFieldPrincipal             LLMFiltersField = "principal"
 	LLMFiltersFieldRealm                 LLMFiltersField = "realm"
 	LLMFiltersFieldRoute                 LLMFiltersField = "route"
 	LLMFiltersFieldStatusCode            LLMFiltersField = "status_code"
@@ -36,7 +37,7 @@ func (e LLMFiltersField) ToPointer() *LLMFiltersField {
 func (e *LLMFiltersField) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "application", "consumer", "control_plane", "control_plane_group", "gateway_service", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "realm", "route", "status_code", "status_code_grouped":
+		case "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "application", "consumer", "control_plane", "control_plane_group", "gateway_service", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "principal", "realm", "route", "status_code", "status_code_grouped":
 			return true
 		}
 	}

@@ -454,7 +454,7 @@ type TaxIDCollection struct {
 	// Enable tax ID collection during checkout.
 	//
 	// Defaults to false.
-	Enabled *bool `default:"false" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Whether tax ID collection is required.
 	//
 	// Defaults to "never".

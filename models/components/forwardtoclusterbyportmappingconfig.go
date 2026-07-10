@@ -67,9 +67,9 @@ type ForwardToClusterByPortMappingConfig struct {
 	// then we will use 4 ports: 9092 (bootstrap), 9093 (id=1), 9094 (id=2), 9095 (id=3)
 	// With `none` we will use 3 ports: 9092 (id=1), 9093 (id=2), 9094 (id=3).
 	//
-	BootstrapPort *BootstrapPort `default:"at_start" json:"bootstrap_port"`
+	BootstrapPort *BootstrapPort `json:"bootstrap_port,omitempty"`
 	// The lowest broker node ID in the cluster.
-	MinBrokerID *int64 `default:"0" json:"min_broker_id"`
+	MinBrokerID *int64 `json:"min_broker_id,omitempty"`
 }
 
 func (f ForwardToClusterByPortMappingConfig) MarshalJSON() ([]byte, error) {

@@ -41,7 +41,7 @@ type EventGatewayModifyHeadersPolicyCreate struct {
 	// A human-readable description of the policy.
 	Description *string `default:"" json:"description"`
 	// Whether the policy is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -54,7 +54,7 @@ type EventGatewayModifyHeadersPolicyCreate struct {
 	// When the policy is applied as a child policy of schema_validation, the expression can also reference
 	// `record.value` fields.
 	//
-	Condition *string `default:"" json:"condition"`
+	Condition *string `json:"condition,omitempty"`
 	// The unique identifier of the parent schema validation policy, if any.
 	ParentPolicyID *string `json:"parent_policy_id,omitempty"`
 }

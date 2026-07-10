@@ -48,6 +48,7 @@ const (
 	DimensionsDataPlaneNodeVersion      Dimensions = "data_plane_node_version"
 	DimensionsGatewayService            Dimensions = "gateway_service"
 	DimensionsPortal                    Dimensions = "portal"
+	DimensionsPrincipal                 Dimensions = "principal"
 	DimensionsRealm                     Dimensions = "realm"
 	DimensionsResponseSource            Dimensions = "response_source"
 	DimensionsRoute                     Dimensions = "route"
@@ -66,7 +67,7 @@ func (e Dimensions) ToPointer() *Dimensions {
 func (e *Dimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "portal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
+		case "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}
@@ -89,8 +90,6 @@ type AdvancedQuery struct {
 	// If granularity is not specified and "time" is in the dimensions list, a default will be chosen based on the time range requested.
 	//
 	// Different relative times support different granularities:
-	//
-	//
 	//   - 15m => tenSecondly, thirtySecondly, minutely
 	//   - 1h  => tenSecondly, thirtySecondly, minutely, fiveMinutely, tenMinutely
 	//   - 6h  => thirtySecondly, minutely, fiveMinutely, tenMinutely, thirtyMinutely, hourly
@@ -100,8 +99,6 @@ type AdvancedQuery struct {
 	//   - 30d => hourly, twoHourly, twelveHourly, daily, weekly
 	//
 	// For special time ranges:
-	//
-	//
 	//   - current_week, previous_week   => thirtyMinutely, hourly, twoHourly, twelveHourly, daily
 	//   - current_month, previous_month => hourly, twoHourly, twelveHourly, daily, weekly
 	//

@@ -65,9 +65,9 @@ func (e *MetricsRelativeTimeRangeDtoV2TimeRange) IsExact() bool {
 
 // MetricsRelativeTimeRangeDtoV2 - A duration representing a relative-to-now span of time. Generally the start time is floored to the requested granularity. Eg 7d from now, with 1day granularity initiated at 2024-01-08T17:11:00+05:00 will query for the time range from 2024-01-01T00:00:00+05:00 to 2024-01-08T17:11:00+05:00. The exact start and end timestamps are returned in the result query in the meta.start and meta.end fields. If the granularity for the previous query was 1hour, it would query a time range from 2024-01-01T17:00:00+05:00 to 2024-01-08T17:11:00+05:00.
 type MetricsRelativeTimeRangeDtoV2 struct {
-	Tz        *string                                 `default:"Etc/UTC" json:"tz"`
-	Type      MetricsRelativeTimeRangeDtoV2Type       `json:"type"`
-	TimeRange *MetricsRelativeTimeRangeDtoV2TimeRange `default:"1h" json:"time_range"`
+	Tz        *string                                `json:"tz,omitempty"`
+	Type      MetricsRelativeTimeRangeDtoV2Type      `json:"type"`
+	TimeRange MetricsRelativeTimeRangeDtoV2TimeRange `json:"time_range"`
 }
 
 func (m MetricsRelativeTimeRangeDtoV2) MarshalJSON() ([]byte, error) {
@@ -75,7 +75,7 @@ func (m MetricsRelativeTimeRangeDtoV2) MarshalJSON() ([]byte, error) {
 }
 
 func (m *MetricsRelativeTimeRangeDtoV2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"type", "time_range"}); err != nil {
 		return err
 	}
 	return nil
@@ -95,9 +95,9 @@ func (m *MetricsRelativeTimeRangeDtoV2) GetType() MetricsRelativeTimeRangeDtoV2T
 	return m.Type
 }
 
-func (m *MetricsRelativeTimeRangeDtoV2) GetTimeRange() *MetricsRelativeTimeRangeDtoV2TimeRange {
+func (m *MetricsRelativeTimeRangeDtoV2) GetTimeRange() MetricsRelativeTimeRangeDtoV2TimeRange {
 	if m == nil {
-		return nil
+		return MetricsRelativeTimeRangeDtoV2TimeRange("")
 	}
 	return m.TimeRange
 }

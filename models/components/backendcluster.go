@@ -20,7 +20,7 @@ type BackendCluster struct {
 	// If true, virtual clusters can have allow anonymous authentication and use this backend cluster.
 	// This setting is not recommended for production use as it may create privilege escalation vulnerabilities.
 	//
-	InsecureAllowAnonymousVirtualClusterAuth *bool `default:"false" json:"insecure_allow_anonymous_virtual_cluster_auth"`
+	InsecureAllowAnonymousVirtualClusterAuth *bool `json:"insecure_allow_anonymous_virtual_cluster_auth,omitempty"`
 	// A list of cluster bootstrap servers in the format address:port.
 	BootstrapServers []string          `json:"bootstrap_servers"`
 	TLS              BackendClusterTLS `json:"tls"`

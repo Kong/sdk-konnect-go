@@ -66,11 +66,12 @@ func (a *AppAuthStrategyOpenIDConnectResponseConfigs) GetOpenidConnect() AppAuth
 type AppAuthStrategyOpenIDConnectResponseProviderType string
 
 const (
-	AppAuthStrategyOpenIDConnectResponseProviderTypeAuth0   AppAuthStrategyOpenIDConnectResponseProviderType = "auth0"
-	AppAuthStrategyOpenIDConnectResponseProviderTypeAzureAd AppAuthStrategyOpenIDConnectResponseProviderType = "azureAd"
-	AppAuthStrategyOpenIDConnectResponseProviderTypeCurity  AppAuthStrategyOpenIDConnectResponseProviderType = "curity"
-	AppAuthStrategyOpenIDConnectResponseProviderTypeOkta    AppAuthStrategyOpenIDConnectResponseProviderType = "okta"
-	AppAuthStrategyOpenIDConnectResponseProviderTypeHTTP    AppAuthStrategyOpenIDConnectResponseProviderType = "http"
+	AppAuthStrategyOpenIDConnectResponseProviderTypeAuth0        AppAuthStrategyOpenIDConnectResponseProviderType = "auth0"
+	AppAuthStrategyOpenIDConnectResponseProviderTypeAzureAd      AppAuthStrategyOpenIDConnectResponseProviderType = "azureAd"
+	AppAuthStrategyOpenIDConnectResponseProviderTypeCurity       AppAuthStrategyOpenIDConnectResponseProviderType = "curity"
+	AppAuthStrategyOpenIDConnectResponseProviderTypeOkta         AppAuthStrategyOpenIDConnectResponseProviderType = "okta"
+	AppAuthStrategyOpenIDConnectResponseProviderTypeHTTP         AppAuthStrategyOpenIDConnectResponseProviderType = "http"
+	AppAuthStrategyOpenIDConnectResponseProviderTypeKongIdentity AppAuthStrategyOpenIDConnectResponseProviderType = "kongIdentity"
 )
 
 func (e AppAuthStrategyOpenIDConnectResponseProviderType) ToPointer() *AppAuthStrategyOpenIDConnectResponseProviderType {
@@ -81,7 +82,7 @@ func (e AppAuthStrategyOpenIDConnectResponseProviderType) ToPointer() *AppAuthSt
 func (e *AppAuthStrategyOpenIDConnectResponseProviderType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "auth0", "azureAd", "curity", "okta", "http":
+		case "auth0", "azureAd", "curity", "okta", "http", "kongIdentity":
 			return true
 		}
 	}
@@ -312,11 +313,12 @@ func (a *AppAuthStrategyKeyAuthResponseConfigs) GetKeyAuth() AppAuthStrategyConf
 type AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType string
 
 const (
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAuth0   AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "auth0"
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAzureAd AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "azureAd"
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeCurity  AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "curity"
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeOkta    AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "okta"
-	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeHTTP    AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "http"
+	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAuth0        AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "auth0"
+	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAzureAd      AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "azureAd"
+	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeCurity       AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "curity"
+	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeOkta         AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "okta"
+	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeHTTP         AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "http"
+	AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeKongIdentity AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType = "kongIdentity"
 )
 
 func (e AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType) ToPointer() *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType {
@@ -327,7 +329,7 @@ func (e AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType)
 func (e *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "auth0", "azureAd", "curity", "okta", "http":
+		case "auth0", "azureAd", "curity", "okta", "http", "kongIdentity":
 			return true
 		}
 	}
@@ -412,7 +414,7 @@ type AppAuthStrategyKeyAuthResponse struct {
 	// Indicates whether this auth strategy supports multiple credentials.
 	// Always `true` for KEY_AUTH.
 	//
-	SupportsMultipleCredentials *bool `default:"true" json:"supports_multiple_credentials"`
+	SupportsMultipleCredentials *bool `json:"supports_multiple_credentials,omitempty"`
 }
 
 func (a AppAuthStrategyKeyAuthResponse) MarshalJSON() ([]byte, error) {

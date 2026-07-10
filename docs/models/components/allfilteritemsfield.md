@@ -46,6 +46,7 @@ custom := components.AllFilterItemsField("custom_value")
 | `AllFilterItemsFieldMcpSessionID`              | mcp_session_id                                 |
 | `AllFilterItemsFieldMcpToolName`               | mcp_tool_name                                  |
 | `AllFilterItemsFieldPortal`                    | portal                                         |
+| `AllFilterItemsFieldPrincipal`                 | principal                                      |
 | `AllFilterItemsFieldRealm`                     | realm                                          |
 | `AllFilterItemsFieldResponseSource`            | response_source                                |
 | `AllFilterItemsFieldRoute`                     | route                                          |

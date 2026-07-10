@@ -383,18 +383,7 @@ type CreateBillingProfileRequestWorkflowCollectionSettings struct {
 	//
 	// This is useful, in case of multiple subscriptions having slightly different
 	// billing periods.
-	Interval *string `default:"PT1H" json:"interval"`
-}
-
-func (c CreateBillingProfileRequestWorkflowCollectionSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateBillingProfileRequestWorkflowCollectionSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Interval *string `json:"interval,omitempty"`
 }
 
 func (c *CreateBillingProfileRequestWorkflowCollectionSettings) GetAlignment() *CreateBillingProfileRequestAlignment {
@@ -425,14 +414,39 @@ func (c *CreateBillingProfileRequestWorkflowCollectionSettings) GetInterval() *s
 	return c.Interval
 }
 
+// CreateBillingProfileRequestSubscriptionEndProrationMode - Controls how subscription-ending shortened service periods are billed.
+type CreateBillingProfileRequestSubscriptionEndProrationMode string
+
+const (
+	CreateBillingProfileRequestSubscriptionEndProrationModeBillFullPeriod   CreateBillingProfileRequestSubscriptionEndProrationMode = "bill_full_period"
+	CreateBillingProfileRequestSubscriptionEndProrationModeBillActualPeriod CreateBillingProfileRequestSubscriptionEndProrationMode = "bill_actual_period"
+)
+
+func (e CreateBillingProfileRequestSubscriptionEndProrationMode) ToPointer() *CreateBillingProfileRequestSubscriptionEndProrationMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CreateBillingProfileRequestSubscriptionEndProrationMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "bill_full_period", "bill_actual_period":
+			return true
+		}
+	}
+	return false
+}
+
 // CreateBillingProfileRequestWorkflowInvoiceSettings - The invoicing settings for this workflow
 type CreateBillingProfileRequestWorkflowInvoiceSettings struct {
 	// Whether to automatically issue the invoice after the draftPeriod has passed.
-	AutoAdvance *bool `default:"true" json:"auto_advance"`
+	AutoAdvance *bool `json:"auto_advance,omitempty"`
 	// The period for the invoice to be kept in draft status for manual reviews.
-	DraftPeriod *string `default:"P0D" json:"draft_period"`
+	DraftPeriod *string `json:"draft_period,omitempty"`
 	// Should progressive billing be allowed for this workflow?
-	ProgressiveBilling *bool `default:"true" json:"progressive_billing"`
+	ProgressiveBilling *bool `json:"progressive_billing,omitempty"`
+	// Controls how subscription-ending shortened service periods are billed.
+	SubscriptionEndProrationMode *CreateBillingProfileRequestSubscriptionEndProrationMode `default:"bill_actual_period" json:"subscription_end_proration_mode"`
 }
 
 func (c CreateBillingProfileRequestWorkflowInvoiceSettings) MarshalJSON() ([]byte, error) {
@@ -465,6 +479,13 @@ func (c *CreateBillingProfileRequestWorkflowInvoiceSettings) GetProgressiveBilli
 		return nil
 	}
 	return c.ProgressiveBilling
+}
+
+func (c *CreateBillingProfileRequestWorkflowInvoiceSettings) GetSubscriptionEndProrationMode() *CreateBillingProfileRequestSubscriptionEndProrationMode {
+	if c == nil {
+		return nil
+	}
+	return c.SubscriptionEndProrationMode
 }
 
 type CreateBillingProfileRequestPaymentType string
@@ -627,6 +648,11 @@ func (c *CreateBillingProfileRequestTaxCode) GetID() string {
 }
 
 // CreateBillingProfileRequestDefaultTaxConfig - Default tax configuration to apply to the invoices for line items.
+//
+// Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
+// config is deprecated and can no longer be added or changed: the organization
+// default tax code is used instead. Existing tax-code values may still be removed,
+// and `behavior` remains fully supported.
 type CreateBillingProfileRequestDefaultTaxConfig struct {
 	// Tax behavior.
 	//
@@ -692,25 +718,19 @@ func (c *CreateBillingProfileRequestDefaultTaxConfig) GetTaxCode() *CreateBillin
 type CreateBillingProfileRequestWorkflowTaxSettings struct {
 	// Enable automatic tax calculation when tax is supported by the app. For example,
 	// with Stripe Invoicing when enabled, tax is calculated via Stripe Tax.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Enforce tax calculation when tax is supported by the app. When enabled, the
 	// billing system will not allow to create an invoice without tax calculation.
 	// Enforcement is different per apps, for example, Stripe app requires customer to
 	// have a tax location when starting a paid subscription.
-	Enforced *bool `default:"false" json:"enforced"`
+	Enforced *bool `json:"enforced,omitempty"`
 	// Default tax configuration to apply to the invoices for line items.
+	//
+	// Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
+	// config is deprecated and can no longer be added or changed: the organization
+	// default tax code is used instead. Existing tax-code values may still be removed,
+	// and `behavior` remains fully supported.
 	DefaultTaxConfig *CreateBillingProfileRequestDefaultTaxConfig `json:"default_tax_config,omitempty"`
-}
-
-func (c CreateBillingProfileRequestWorkflowTaxSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateBillingProfileRequestWorkflowTaxSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (c *CreateBillingProfileRequestWorkflowTaxSettings) GetEnabled() *bool {

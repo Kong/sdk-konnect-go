@@ -21,7 +21,7 @@ type EventGatewayPolicy struct {
 	// A human-readable description of the policy.
 	Description *string `default:"" json:"description"`
 	// Whether the policy is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -38,7 +38,7 @@ type EventGatewayPolicy struct {
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
 	// A string containing the boolean expression that determines whether the policy is applied.
-	Condition *string `default:"" json:"condition"`
+	Condition *string `json:"condition,omitempty"`
 }
 
 func (e EventGatewayPolicy) MarshalJSON() ([]byte, error) {

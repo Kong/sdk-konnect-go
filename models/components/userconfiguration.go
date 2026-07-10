@@ -3,29 +3,14 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UserConfiguration - Properties of an event.
 type UserConfiguration struct {
 	EventID                string                `json:"event_id"`
 	EventTitle             string                `json:"event_title"`
 	EventDescription       string                `json:"event_description"`
 	EventNamespace         NotificationNamespace `json:"event_namespace"`
-	EventSubscriptionCount *int64                `default:"0" json:"event_subscription_count"`
+	EventSubscriptionCount int64                 `json:"event_subscription_count"`
 	DefaultSubscription    []DefaultSubscription `json:"default_subscription"`
-}
-
-func (u UserConfiguration) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserConfiguration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UserConfiguration) GetEventID() string {
@@ -56,9 +41,9 @@ func (u *UserConfiguration) GetEventNamespace() NotificationNamespace {
 	return u.EventNamespace
 }
 
-func (u *UserConfiguration) GetEventSubscriptionCount() *int64 {
+func (u *UserConfiguration) GetEventSubscriptionCount() int64 {
 	if u == nil {
-		return nil
+		return 0
 	}
 	return u.EventSubscriptionCount
 }

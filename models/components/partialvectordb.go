@@ -56,29 +56,29 @@ func (e *SslVersion) IsExact() bool {
 
 type Pgvector struct {
 	// the database of the pgvector database
-	Database *string `default:"kong-pgvector" json:"database"`
+	Database *string `json:"database,omitempty"`
 	// the host of the pgvector database
-	Host *string `default:"127.0.0.1" json:"host"`
+	Host *string `json:"host,omitempty"`
 	// the password of the pgvector database
 	Password *string `json:"password,omitempty"`
 	// the port of the pgvector database
-	Port *int64 `default:"5432" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 	// whether to use ssl for the pgvector database
-	Ssl *bool `default:"false" json:"ssl"`
+	Ssl *bool `json:"ssl,omitempty"`
 	// the path of ssl cert to use for the pgvector database
 	SslCert *string `json:"ssl_cert,omitempty"`
 	// the path of ssl cert key to use for the pgvector database
 	SslCertKey *string `json:"ssl_cert_key,omitempty"`
 	// whether ssl is required for the pgvector database
-	SslRequired *bool `default:"false" json:"ssl_required"`
+	SslRequired *bool `json:"ssl_required,omitempty"`
 	// whether to verify ssl for the pgvector database
-	SslVerify *bool `default:"true" json:"ssl_verify"`
+	SslVerify *bool `json:"ssl_verify,omitempty"`
 	// the ssl version to use for the pgvector database
-	SslVersion *SslVersion `default:"tlsv1_2" json:"ssl_version"`
+	SslVersion *SslVersion `json:"ssl_version,omitempty"`
 	// the timeout of the pgvector database
-	Timeout *float64 `default:"5000" json:"timeout"`
+	Timeout *float64 `json:"timeout,omitempty"`
 	// the user of the pgvector database
-	User *string `default:"postgres" json:"user"`
+	User *string `json:"user,omitempty"`
 }
 
 func (p Pgvector) MarshalJSON() ([]byte, error) {
@@ -211,7 +211,7 @@ type PartialVectordbCloudAuthentication struct {
 	// The name of the AWS Elasticache cluster when `auth_provider` is set to `aws`.
 	AwsCacheName *string `json:"aws_cache_name,omitempty"`
 	// This flag specifies whether the cluster is serverless when auth_provider is set to `aws`.
-	AwsIsServerless *bool `default:"true" json:"aws_is_serverless"`
+	AwsIsServerless *bool `json:"aws_is_serverless,omitempty"`
 	// The region of the AWS ElastiCache cluster when `auth_provider` is set to `aws`.
 	AwsRegion *string `json:"aws_region,omitempty"`
 	// The session name for the temporary credentials when assuming the IAM role.
@@ -325,9 +325,9 @@ func (p *PartialVectordbCloudAuthentication) GetGcpServiceAccountJSON() *string 
 
 type PartialVectordbClusterNodes struct {
 	// A string representing a host name, such as example.com.
-	IP *string `default:"127.0.0.1" json:"ip"`
+	IP *string `json:"ip,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `default:"6379" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 }
 
 func (p PartialVectordbClusterNodes) MarshalJSON() ([]byte, error) {
@@ -357,9 +357,9 @@ func (p *PartialVectordbClusterNodes) GetPort() *int64 {
 
 type PartialVectordbSentinelNodes struct {
 	// A string representing a host name, such as example.com.
-	Host *string `default:"127.0.0.1" json:"host"`
+	Host *string `json:"host,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `default:"6379" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 }
 
 func (p PartialVectordbSentinelNodes) MarshalJSON() ([]byte, error) {
@@ -415,29 +415,29 @@ type Redis struct {
 	// Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
 	CloudAuthentication *PartialVectordbCloudAuthentication `json:"cloud_authentication,omitempty"`
 	// Maximum retry attempts for redirection.
-	ClusterMaxRedirections *int64 `default:"5" json:"cluster_max_redirections"`
+	ClusterMaxRedirections *int64 `json:"cluster_max_redirections,omitempty"`
 	// Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
 	ClusterNodes []PartialVectordbClusterNodes `json:"cluster_nodes,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ConnectTimeout *int64 `default:"2000" json:"connect_timeout"`
+	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
 	// If the connection to Redis is proxied (e.g. Envoy), set it `true`. Set the `host` and `port` to point to the proxy address.
-	ConnectionIsProxied *bool `default:"false" json:"connection_is_proxied"`
+	ConnectionIsProxied *bool `json:"connection_is_proxied,omitempty"`
 	// Database to use for the Redis connection when using the `redis` strategy
-	Database *int64 `default:"0" json:"database"`
+	Database *int64 `json:"database,omitempty"`
 	// A string representing a host name, such as example.com.
-	Host *string `default:"127.0.0.1" json:"host"`
+	Host *string `json:"host,omitempty"`
 	// Limits the total number of opened connections for a pool. If the connection pool is full, connection queues above the limit go into the backlog queue. If the backlog queue is full, subsequent connect operations fail and return `nil`. Queued operations (subject to set timeouts) resume once the number of connections in the pool is less than `keepalive_pool_size`. If latency is high or throughput is low, try increasing this value. Empirically, this value is larger than `keepalive_pool_size`.
 	KeepaliveBacklog *int64 `json:"keepalive_backlog,omitempty"`
 	// The size limit for every cosocket connection pool associated with every remote server, per worker process. If neither `keepalive_pool_size` nor `keepalive_backlog` is specified, no pool is created. If `keepalive_pool_size` isn't specified but `keepalive_backlog` is specified, then the pool uses the default value. Try to increase (e.g. 512) this value if latency is high or throughput is low.
-	KeepalivePoolSize *int64 `default:"256" json:"keepalive_pool_size"`
+	KeepalivePoolSize *int64 `json:"keepalive_pool_size,omitempty"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
 	Password *string `json:"password,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `default:"6379" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
+	ReadTimeout *int64 `json:"read_timeout,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	SendTimeout *int64 `default:"2000" json:"send_timeout"`
+	SendTimeout *int64 `json:"send_timeout,omitempty"`
 	// Sentinel master to use for Redis connections. Defining this value implies using Redis Sentinel.
 	SentinelMaster *string `json:"sentinel_master,omitempty"`
 	// Sentinel node addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Sentinel. The minimum length of the array is 1 element.
@@ -451,9 +451,9 @@ type Redis struct {
 	// A string representing an SNI (server name indication) value for TLS.
 	ServerName *string `json:"server_name,omitempty"`
 	// If set to true, uses SSL to connect to Redis.
-	Ssl *bool `default:"false" json:"ssl"`
+	Ssl *bool `json:"ssl,omitempty"`
 	// If set to true, verifies the validity of the server SSL certificate. If setting this parameter, also configure `lua_ssl_trusted_certificate` in `kong.conf` to specify the CA (or server) certificate used by your Redis server. You may also need to configure `lua_ssl_verify_depth` accordingly.
-	SslVerify *bool `default:"true" json:"ssl_verify"`
+	SslVerify *bool `json:"ssl_verify,omitempty"`
 	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. This requires Redis v6.0.0+. To be compatible with Redis v5.x.y, you can set it to `default`.
 	Username *string `json:"username,omitempty"`
 }
