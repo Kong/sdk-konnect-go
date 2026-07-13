@@ -4,3 +4,15 @@ updates:
   directory: /
   schedule:
     interval: daily
+  groups:
+     codeql:
+        # Define patterns to include dependencies in the group (based on dependency name)
+        applies-to: version-updates # Applies the group rule to version updates
+        patterns:
+          - "github/codeql-action/*"
+     # Specify a name for the group, which will be used in pull request titles and branch names.
+     actions:
+        # Define patterns to include dependencies in the group (based on dependency name).
+        applies-to: version-updates # Applies the group rule to version updates.
+        patterns:
+          - "actions/*"
