@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateNetworkRequest - Request schema for creating a network.
 type CreateNetworkRequest struct {
 	// Human-readable name of the network.
@@ -19,18 +15,7 @@ type CreateNetworkRequest struct {
 	// CIDR block for the network. Must not overlap with reserved blocks for the target region. Query the Resource Availability endpoint for valid CIDR ranges per region and provider.
 	CidrBlock string `json:"cidr_block"`
 	// Initial state for creating a network.
-	State *NetworkCreateState `default:"initializing" json:"state"`
-}
-
-func (c CreateNetworkRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateNetworkRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	State *NetworkCreateState `json:"state,omitempty"`
 }
 
 func (c *CreateNetworkRequest) GetName() string {

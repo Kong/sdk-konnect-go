@@ -18,8 +18,6 @@ Depending on the protocol, one of the following attributes must be set:
 - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
 - `ws`: At least one of `hosts`, `headers`, or `paths`
 - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-
-
   <br>
   A route can't have both `tls` and `tls_passthrough` protocols at same time.
   <br><br>
@@ -133,15 +131,22 @@ func main() {
                 "foo.example.com",
                 "foo.example.us",
             },
+            HTTPSRedirectStatusCode: components.HTTPSRedirectStatusCodeFourHundredAndTwentySix.ToPointer(),
             ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
             Name: sdkkonnectgo.Pointer("example-route"),
+            PathHandling: components.PathHandlingV0.ToPointer(),
             Paths: []string{
                 "/v1",
                 "/v2",
             },
+            PreserveHost: sdkkonnectgo.Pointer(false),
+            RegexPriority: sdkkonnectgo.Pointer[int64](0),
+            RequestBuffering: sdkkonnectgo.Pointer(true),
+            ResponseBuffering: sdkkonnectgo.Pointer(true),
             Service: &components.RouteJSONService{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
             },
+            StripPath: sdkkonnectgo.Pointer(true),
         },
     ))
     if err != nil {
@@ -186,15 +191,22 @@ func main() {
                 "foo.example.com",
                 "foo.example.us",
             },
+            HTTPSRedirectStatusCode: components.HTTPSRedirectStatusCodeFourHundredAndTwentySix.ToPointer(),
             ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
             Name: sdkkonnectgo.Pointer("example-route"),
+            PathHandling: components.PathHandlingV0.ToPointer(),
             Paths: []string{
                 "/v1",
                 "/v2",
             },
+            PreserveHost: sdkkonnectgo.Pointer(false),
+            RegexPriority: sdkkonnectgo.Pointer[int64](0),
+            RequestBuffering: sdkkonnectgo.Pointer(true),
+            ResponseBuffering: sdkkonnectgo.Pointer(true),
             Service: &components.RouteJSONService{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
             },
+            StripPath: sdkkonnectgo.Pointer(true),
         },
     ))
     if err != nil {
@@ -239,15 +251,22 @@ func main() {
                 "foo.example.com",
                 "foo.example.us",
             },
+            HTTPSRedirectStatusCode: components.HTTPSRedirectStatusCodeFourHundredAndTwentySix.ToPointer(),
             ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
             Name: sdkkonnectgo.Pointer("example-route"),
+            PathHandling: components.PathHandlingV0.ToPointer(),
             Paths: []string{
                 "/v1",
                 "/v2",
             },
+            PreserveHost: sdkkonnectgo.Pointer(false),
+            RegexPriority: sdkkonnectgo.Pointer[int64](0),
+            RequestBuffering: sdkkonnectgo.Pointer(true),
+            ResponseBuffering: sdkkonnectgo.Pointer(true),
             Service: &components.RouteJSONService{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
             },
+            StripPath: sdkkonnectgo.Pointer(true),
         },
     ))
     if err != nil {
@@ -439,15 +458,22 @@ func main() {
                     "foo.example.com",
                     "foo.example.us",
                 },
+                HTTPSRedirectStatusCode: components.HTTPSRedirectStatusCodeFourHundredAndTwentySix.ToPointer(),
                 ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
                 Name: sdkkonnectgo.Pointer("example-route"),
+                PathHandling: components.PathHandlingV0.ToPointer(),
                 Paths: []string{
                     "/v1",
                     "/v2",
                 },
+                PreserveHost: sdkkonnectgo.Pointer(false),
+                RegexPriority: sdkkonnectgo.Pointer[int64](0),
+                RequestBuffering: sdkkonnectgo.Pointer(true),
+                ResponseBuffering: sdkkonnectgo.Pointer(true),
                 Service: &components.RouteJSONService{
                     ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
                 },
+                StripPath: sdkkonnectgo.Pointer(true),
             },
         ),
     })
@@ -497,15 +523,22 @@ func main() {
                     "foo.example.com",
                     "foo.example.us",
                 },
+                HTTPSRedirectStatusCode: components.HTTPSRedirectStatusCodeFourHundredAndTwentySix.ToPointer(),
                 ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
                 Name: sdkkonnectgo.Pointer("example-route"),
+                PathHandling: components.PathHandlingV0.ToPointer(),
                 Paths: []string{
                     "/v1",
                     "/v2",
                 },
+                PreserveHost: sdkkonnectgo.Pointer(false),
+                RegexPriority: sdkkonnectgo.Pointer[int64](0),
+                RequestBuffering: sdkkonnectgo.Pointer(true),
+                ResponseBuffering: sdkkonnectgo.Pointer(true),
                 Service: &components.RouteJSONService{
                     ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
                 },
+                StripPath: sdkkonnectgo.Pointer(true),
             },
         ),
     })
@@ -555,15 +588,22 @@ func main() {
                     "foo.example.com",
                     "foo.example.us",
                 },
+                HTTPSRedirectStatusCode: components.HTTPSRedirectStatusCodeFourHundredAndTwentySix.ToPointer(),
                 ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
                 Name: sdkkonnectgo.Pointer("example-route"),
+                PathHandling: components.PathHandlingV0.ToPointer(),
                 Paths: []string{
                     "/v1",
                     "/v2",
                 },
+                PreserveHost: sdkkonnectgo.Pointer(false),
+                RegexPriority: sdkkonnectgo.Pointer[int64](0),
+                RequestBuffering: sdkkonnectgo.Pointer(true),
+                ResponseBuffering: sdkkonnectgo.Pointer(true),
                 Service: &components.RouteJSONService{
                     ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
                 },
+                StripPath: sdkkonnectgo.Pointer(true),
             },
         ),
     })

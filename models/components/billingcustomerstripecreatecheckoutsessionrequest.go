@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // BillingAddressCollection - Whether to collect the customer's billing address.
 //
 // Defaults to auto, which only collects the address when necessary for tax
@@ -113,26 +109,15 @@ type CustomerUpdate struct {
 	// Whether to save the billing address to customer.address.
 	//
 	// Defaults to "never".
-	Address *Address `default:"never" json:"address"`
+	Address *Address `json:"address,omitempty"`
 	// Whether to save the customer name to customer.name.
 	//
 	// Defaults to "never".
-	Name *BillingCustomerStripeCreateCheckoutSessionRequestName `default:"never" json:"name"`
+	Name *BillingCustomerStripeCreateCheckoutSessionRequestName `json:"name,omitempty"`
 	// Whether to save shipping information to customer.shipping.
 	//
 	// Defaults to "never".
-	Shipping *Shipping `default:"never" json:"shipping"`
-}
-
-func (c CustomerUpdate) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CustomerUpdate) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Shipping *Shipping `json:"shipping,omitempty"`
 }
 
 func (c *CustomerUpdate) GetAddress() *Address {
@@ -454,22 +439,11 @@ type TaxIDCollection struct {
 	// Enable tax ID collection during checkout.
 	//
 	// Defaults to false.
-	Enabled *bool `default:"false" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Whether tax ID collection is required.
 	//
 	// Defaults to "never".
-	Required *Required `default:"never" json:"required"`
-}
-
-func (t TaxIDCollection) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(t, "", false)
-}
-
-func (t *TaxIDCollection) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Required *Required `json:"required,omitempty"`
 }
 
 func (t *TaxIDCollection) GetEnabled() *bool {
@@ -495,7 +469,7 @@ type StripeOptions struct {
 	//
 	// Defaults to auto, which only collects the address when necessary for tax
 	// calculation.
-	BillingAddressCollection *BillingAddressCollection `default:"auto" json:"billing_address_collection"`
+	BillingAddressCollection *BillingAddressCollection `json:"billing_address_collection,omitempty"`
 	// URL to redirect customers who cancel the checkout session.
 	//
 	// Not allowed when ui_mode is "embedded".
@@ -540,7 +514,7 @@ type StripeOptions struct {
 	//
 	// "hosted" displays a Stripe-hosted page. "embedded" integrates directly into your
 	// app. Defaults to "hosted".
-	UIMode *UIMode `default:"hosted" json:"ui_mode"`
+	UIMode *UIMode `json:"ui_mode,omitempty"`
 	// List of payment method types to enable (e.g., "card", "us_bank_account").
 	//
 	// If not specified, Stripe enables all relevant payment methods.
@@ -552,17 +526,6 @@ type StripeOptions struct {
 	RedirectOnCompletion *RedirectOnCompletion `json:"redirect_on_completion,omitempty"`
 	// Configuration for collecting tax IDs during checkout.
 	TaxIDCollection *TaxIDCollection `json:"tax_id_collection,omitempty"`
-}
-
-func (s StripeOptions) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
-}
-
-func (s *StripeOptions) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (s *StripeOptions) GetBillingAddressCollection() *BillingAddressCollection {

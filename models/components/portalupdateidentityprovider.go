@@ -77,19 +77,8 @@ type PortalUpdateIdentityProvider struct {
 	// Indicates whether the identity provider is enabled.
 	// Only one identity provider can be active at a time, such as SAML or OIDC.
 	//
-	Enabled *bool                               `default:"false" json:"enabled"`
+	Enabled *bool                               `json:"enabled,omitempty"`
 	Config  *PortalUpdateIdentityProviderConfig `json:"config,omitempty"`
-}
-
-func (p PortalUpdateIdentityProvider) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalUpdateIdentityProvider) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (p *PortalUpdateIdentityProvider) GetEnabled() *bool {

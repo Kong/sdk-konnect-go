@@ -8,6 +8,7 @@ import (
 )
 
 type RemoveRoleFromPortalTeamRequest struct {
+	// ID of the assigned role.
 	RoleID string `pathParam:"style=simple,explode=false,name=roleId"`
 	// ID of the portal.
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`

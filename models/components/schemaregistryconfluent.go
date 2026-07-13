@@ -12,7 +12,7 @@ type SchemaRegistryConfluent struct {
 	// The unique name of the schema registry.
 	Name string `json:"name"`
 	// A human-readable description of the virtual cluster.
-	Description *string `default:"" json:"description"`
+	Description *string `json:"description,omitempty"`
 	// The type of the schema registry.
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"confluent" json:"type"`

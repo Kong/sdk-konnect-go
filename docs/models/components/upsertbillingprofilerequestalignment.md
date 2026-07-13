@@ -5,16 +5,16 @@ The alignment for collecting the pending line items into an invoice.
 
 ## Supported Types
 
-### UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription
+### BillingWorkflowCollectionAlignmentSubscription
 
 ```go
-upsertBillingProfileRequestAlignment := components.CreateUpsertBillingProfileRequestAlignmentSubscription(components.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription{/* values here */})
+upsertBillingProfileRequestAlignment := components.CreateUpsertBillingProfileRequestAlignmentSubscription(components.BillingWorkflowCollectionAlignmentSubscription{/* values here */})
 ```
 
-### UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored
+### BillingWorkflowCollectionAlignmentAnchored
 
 ```go
-upsertBillingProfileRequestAlignment := components.CreateUpsertBillingProfileRequestAlignmentAnchored(components.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored{/* values here */})
+upsertBillingProfileRequestAlignment := components.CreateUpsertBillingProfileRequestAlignmentAnchored(components.BillingWorkflowCollectionAlignmentAnchored{/* values here */})
 ```
 
 ## Union Discrimination
@@ -24,8 +24,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 ```go
 switch upsertBillingProfileRequestAlignment.Type {
 	case components.UpsertBillingProfileRequestAlignmentTypeSubscription:
-		// upsertBillingProfileRequestAlignment.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription is populated
+		// upsertBillingProfileRequestAlignment.BillingWorkflowCollectionAlignmentSubscription is populated
 	case components.UpsertBillingProfileRequestAlignmentTypeAnchored:
-		// upsertBillingProfileRequestAlignment.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored is populated
+		// upsertBillingProfileRequestAlignment.BillingWorkflowCollectionAlignmentAnchored is populated
 }
 ```

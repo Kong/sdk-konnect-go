@@ -107,10 +107,17 @@ func main() {
     )
 
     res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Service{
+        ConnectTimeout: sdkkonnectgo.Pointer[int64](60000),
+        Enabled: sdkkonnectgo.Pointer(true),
         Host: "example.internal",
         ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
         Name: sdkkonnectgo.Pointer("example-service"),
         Path: sdkkonnectgo.Pointer("/"),
+        Port: sdkkonnectgo.Pointer[int64](80),
+        Protocol: components.ProtocolHTTP.ToPointer(),
+        ReadTimeout: sdkkonnectgo.Pointer[int64](60000),
+        Retries: sdkkonnectgo.Pointer[int64](5),
+        WriteTimeout: sdkkonnectgo.Pointer[int64](60000),
     })
     if err != nil {
         log.Fatal(err)
@@ -143,10 +150,17 @@ func main() {
     )
 
     res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Service{
+        ConnectTimeout: sdkkonnectgo.Pointer[int64](60000),
+        Enabled: sdkkonnectgo.Pointer(true),
         Host: "example.internal",
         ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
         Name: sdkkonnectgo.Pointer("example-service"),
         Path: sdkkonnectgo.Pointer("/"),
+        Port: sdkkonnectgo.Pointer[int64](80),
+        Protocol: components.ProtocolHTTP.ToPointer(),
+        ReadTimeout: sdkkonnectgo.Pointer[int64](60000),
+        Retries: sdkkonnectgo.Pointer[int64](5),
+        WriteTimeout: sdkkonnectgo.Pointer[int64](60000),
     })
     if err != nil {
         log.Fatal(err)
@@ -179,10 +193,17 @@ func main() {
     )
 
     res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Service{
+        ConnectTimeout: sdkkonnectgo.Pointer[int64](60000),
+        Enabled: sdkkonnectgo.Pointer(true),
         Host: "example.internal",
         ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
         Name: sdkkonnectgo.Pointer("example-service"),
         Path: sdkkonnectgo.Pointer("/"),
+        Port: sdkkonnectgo.Pointer[int64](80),
+        Protocol: components.ProtocolHTTP.ToPointer(),
+        ReadTimeout: sdkkonnectgo.Pointer[int64](60000),
+        Retries: sdkkonnectgo.Pointer[int64](5),
+        WriteTimeout: sdkkonnectgo.Pointer[int64](60000),
     })
     if err != nil {
         log.Fatal(err)
@@ -356,10 +377,17 @@ func main() {
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Service: components.Service{
+            ConnectTimeout: sdkkonnectgo.Pointer[int64](60000),
+            Enabled: sdkkonnectgo.Pointer(true),
             Host: "example.internal",
             ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
             Name: sdkkonnectgo.Pointer("example-service"),
             Path: sdkkonnectgo.Pointer("/"),
+            Port: sdkkonnectgo.Pointer[int64](80),
+            Protocol: components.ProtocolHTTP.ToPointer(),
+            ReadTimeout: sdkkonnectgo.Pointer[int64](60000),
+            Retries: sdkkonnectgo.Pointer[int64](5),
+            WriteTimeout: sdkkonnectgo.Pointer[int64](60000),
         },
     })
     if err != nil {
@@ -397,10 +425,17 @@ func main() {
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Service: components.Service{
+            ConnectTimeout: sdkkonnectgo.Pointer[int64](60000),
+            Enabled: sdkkonnectgo.Pointer(true),
             Host: "example.internal",
             ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
             Name: sdkkonnectgo.Pointer("example-service"),
             Path: sdkkonnectgo.Pointer("/"),
+            Port: sdkkonnectgo.Pointer[int64](80),
+            Protocol: components.ProtocolHTTP.ToPointer(),
+            ReadTimeout: sdkkonnectgo.Pointer[int64](60000),
+            Retries: sdkkonnectgo.Pointer[int64](5),
+            WriteTimeout: sdkkonnectgo.Pointer[int64](60000),
         },
     })
     if err != nil {
@@ -438,10 +473,17 @@ func main() {
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Service: components.Service{
+            ConnectTimeout: sdkkonnectgo.Pointer[int64](60000),
+            Enabled: sdkkonnectgo.Pointer(true),
             Host: "example.internal",
             ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
             Name: sdkkonnectgo.Pointer("example-service"),
             Path: sdkkonnectgo.Pointer("/"),
+            Port: sdkkonnectgo.Pointer[int64](80),
+            Protocol: components.ProtocolHTTP.ToPointer(),
+            ReadTimeout: sdkkonnectgo.Pointer[int64](60000),
+            Retries: sdkkonnectgo.Pointer[int64](5),
+            WriteTimeout: sdkkonnectgo.Pointer[int64](60000),
         },
     })
     if err != nil {

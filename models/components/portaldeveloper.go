@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// PortalDeveloper - Details about the created developer in a portal.
 type PortalDeveloper struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`

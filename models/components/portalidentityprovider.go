@@ -82,7 +82,7 @@ type PortalIdentityProvider struct {
 	// Indicates whether the identity provider is enabled.
 	// Only one identity provider can be active at a time, such as SAML or OIDC.
 	//
-	Enabled *bool                         `default:"false" json:"enabled"`
+	Enabled *bool                         `json:"enabled,omitempty"`
 	Config  *PortalIdentityProviderConfig `json:"config,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt *time.Time `json:"created_at,omitempty"`

@@ -671,6 +671,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -710,6 +712,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -749,6 +753,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -788,6 +794,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -827,6 +835,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -866,6 +876,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -905,6 +917,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -944,6 +958,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -983,6 +999,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -1022,6 +1040,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -1061,6 +1081,8 @@ func main() {
         ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.Pointer("name"),
+            Email: sdkkonnectgo.Pointer("email"),
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
@@ -2972,7 +2994,11 @@ func main() {
                     "email",
                     "profile",
                 },
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -3704,7 +3730,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -3752,7 +3782,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -3800,7 +3834,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -3848,7 +3886,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -3896,7 +3938,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -3944,7 +3990,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -3992,7 +4042,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4040,7 +4094,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4088,7 +4146,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4136,7 +4198,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4184,7 +4250,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4232,7 +4302,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4280,7 +4354,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4328,7 +4406,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4376,7 +4458,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4424,7 +4510,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4472,7 +4562,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4565,7 +4659,11 @@ func main() {
                     "email",
                     "profile",
                 },
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })
@@ -4658,7 +4756,11 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.Pointer("name"),
+                    Email: sdkkonnectgo.Pointer("email"),
+                    Groups: sdkkonnectgo.Pointer("groups"),
+                },
             },
         )),
     })

@@ -22,7 +22,7 @@ type APIPublicationListItem struct {
 	// Public API publications do not require authentication to view and retrieve information about them.
 	// Private API publications require authentication to retrieve information about them.
 	//
-	Visibility *APIPublicationVisibility `default:"private" json:"visibility"`
+	Visibility APIPublicationVisibility `json:"visibility"`
 	// The auth strategy the API enforces for applications in the portal.
 	// Omitting this property means the portal's default application auth strategy will be used.
 	// Setting to null means the API will not require application authentication.
@@ -76,9 +76,9 @@ func (a *APIPublicationListItem) GetEntityType() EntityType {
 	return a.EntityType
 }
 
-func (a *APIPublicationListItem) GetVisibility() *APIPublicationVisibility {
+func (a *APIPublicationListItem) GetVisibility() APIPublicationVisibility {
 	if a == nil {
-		return nil
+		return APIPublicationVisibility("")
 	}
 	return a.Visibility
 }

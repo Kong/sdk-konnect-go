@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreatePlanRequest - Plan create request.
 type CreatePlanRequest struct {
 	// Display name of the resource.
@@ -31,21 +27,10 @@ type CreatePlanRequest struct {
 	// The billing cadence for subscriptions using this plan.
 	BillingCadence string `json:"billing_cadence"`
 	// Whether pro-rating is enabled for this plan.
-	ProRatingEnabled *bool `default:"true" json:"pro_rating_enabled"`
+	ProRatingEnabled *bool `json:"pro_rating_enabled,omitempty"`
 	// The plan phases define the pricing ramp for a subscription. A phase switch
 	// occurs only at the end of a billing period. At least one phase is required.
 	Phases []BillingPlanPhase `json:"phases"`
-}
-
-func (c CreatePlanRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreatePlanRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (c *CreatePlanRequest) GetName() string {

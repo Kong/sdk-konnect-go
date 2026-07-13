@@ -22,7 +22,7 @@ type APIDocumentResponse struct {
 	//
 	Slug string `json:"slug"`
 	// If `status=published` the document will be visible in your live portal
-	Status *APIDocumentStatus `default:"unpublished" json:"status"`
+	Status APIDocumentStatus `json:"status"`
 	// API Documents may be rendered as a tree of files.
 	//
 	// Specify the `id` of another API Document as the `parent_document_id` to add some heirarchy do your documents.
@@ -73,9 +73,9 @@ func (a *APIDocumentResponse) GetSlug() string {
 	return a.Slug
 }
 
-func (a *APIDocumentResponse) GetStatus() *APIDocumentStatus {
+func (a *APIDocumentResponse) GetStatus() APIDocumentStatus {
 	if a == nil {
-		return nil
+		return APIDocumentStatus("")
 	}
 	return a.Status
 }

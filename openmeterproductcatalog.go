@@ -33,12 +33,12 @@ func newOpenMeterProductCatalog(rootSDK *SDK, sdkConfig config.SDKConfiguration,
 	}
 }
 
-// ListOpenmeterAddons - List add-ons
+// ListProductCatalogAddons - List add-ons
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // List all add-ons.
-func (s *OpenMeterProductCatalog) ListOpenmeterAddons(ctx context.Context, request operations.ListOpenmeterAddonsRequest, opts ...operations.Option) (*operations.ListOpenmeterAddonsResponse, error) {
+func (s *OpenMeterProductCatalog) ListProductCatalogAddons(ctx context.Context, request operations.ListProductCatalogAddonsRequest, opts ...operations.Option) (*operations.ListProductCatalogAddonsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -67,7 +67,7 @@ func (s *OpenMeterProductCatalog) ListOpenmeterAddons(ctx context.Context, reque
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "list-openmeter-addons",
+		OperationID:      "list-product-catalog-addons",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -193,7 +193,7 @@ func (s *OpenMeterProductCatalog) ListOpenmeterAddons(ctx context.Context, reque
 		}
 	}
 
-	res := &operations.ListOpenmeterAddonsResponse{
+	res := &operations.ListProductCatalogAddonsResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -308,12 +308,12 @@ func (s *OpenMeterProductCatalog) ListOpenmeterAddons(ctx context.Context, reque
 
 }
 
-// CreateOpenmeterAddon - Create add-on
+// CreateProductCatalogAddon - Create add-on
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Create a new add-on.
-func (s *OpenMeterProductCatalog) CreateOpenmeterAddon(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateOpenmeterAddonResponse, error) {
+func (s *OpenMeterProductCatalog) CreateProductCatalogAddon(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateProductCatalogAddonResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -342,7 +342,7 @@ func (s *OpenMeterProductCatalog) CreateOpenmeterAddon(ctx context.Context, requ
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "create-openmeter-addon",
+		OperationID:      "create-product-catalog-addon",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -471,7 +471,7 @@ func (s *OpenMeterProductCatalog) CreateOpenmeterAddon(ctx context.Context, requ
 		}
 	}
 
-	res := &operations.CreateOpenmeterAddonResponse{
+	res := &operations.CreateProductCatalogAddonResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -586,13 +586,13 @@ func (s *OpenMeterProductCatalog) CreateOpenmeterAddon(ctx context.Context, requ
 
 }
 
-// UpdateOpenmeterAddon - Update add-on
+// UpdateProductCatalogAddon - Update add-on
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Update an add-on by id.
-func (s *OpenMeterProductCatalog) UpdateOpenmeterAddon(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateOpenmeterAddonResponse, error) {
-	request := operations.UpdateOpenmeterAddonRequest{
+func (s *OpenMeterProductCatalog) UpdateProductCatalogAddon(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateProductCatalogAddonResponse, error) {
+	request := operations.UpdateProductCatalogAddonRequest{
 		AddonID:            addonID,
 		UpsertAddonRequest: upsertAddonRequest,
 	}
@@ -625,7 +625,7 @@ func (s *OpenMeterProductCatalog) UpdateOpenmeterAddon(ctx context.Context, addo
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "update-openmeter-addon",
+		OperationID:      "update-product-catalog-addon",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -754,7 +754,7 @@ func (s *OpenMeterProductCatalog) UpdateOpenmeterAddon(ctx context.Context, addo
 		}
 	}
 
-	res := &operations.UpdateOpenmeterAddonResponse{
+	res := &operations.UpdateProductCatalogAddonResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -911,13 +911,13 @@ func (s *OpenMeterProductCatalog) UpdateOpenmeterAddon(ctx context.Context, addo
 
 }
 
-// GetOpenmeterAddon - Get add-on
+// GetProductCatalogAddon - Get add-on
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Get add-on by id.
-func (s *OpenMeterProductCatalog) GetOpenmeterAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetOpenmeterAddonResponse, error) {
-	request := operations.GetOpenmeterAddonRequest{
+func (s *OpenMeterProductCatalog) GetProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetProductCatalogAddonResponse, error) {
+	request := operations.GetProductCatalogAddonRequest{
 		AddonID: addonID,
 	}
 
@@ -949,7 +949,7 @@ func (s *OpenMeterProductCatalog) GetOpenmeterAddon(ctx context.Context, addonID
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "get-openmeter-addon",
+		OperationID:      "get-product-catalog-addon",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -1071,7 +1071,7 @@ func (s *OpenMeterProductCatalog) GetOpenmeterAddon(ctx context.Context, addonID
 		}
 	}
 
-	res := &operations.GetOpenmeterAddonResponse{
+	res := &operations.GetProductCatalogAddonResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -1228,13 +1228,13 @@ func (s *OpenMeterProductCatalog) GetOpenmeterAddon(ctx context.Context, addonID
 
 }
 
-// DeleteOpenmeterAddon - Soft delete add-on
+// DeleteProductCatalogAddon - Soft delete add-on
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Soft delete add-on by id.
-func (s *OpenMeterProductCatalog) DeleteOpenmeterAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.DeleteOpenmeterAddonResponse, error) {
-	request := operations.DeleteOpenmeterAddonRequest{
+func (s *OpenMeterProductCatalog) DeleteProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.DeleteProductCatalogAddonResponse, error) {
+	request := operations.DeleteProductCatalogAddonRequest{
 		AddonID: addonID,
 	}
 
@@ -1266,7 +1266,7 @@ func (s *OpenMeterProductCatalog) DeleteOpenmeterAddon(ctx context.Context, addo
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "delete-openmeter-addon",
+		OperationID:      "delete-product-catalog-addon",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -1388,7 +1388,7 @@ func (s *OpenMeterProductCatalog) DeleteOpenmeterAddon(ctx context.Context, addo
 		}
 	}
 
-	res := &operations.DeleteOpenmeterAddonResponse{
+	res := &operations.DeleteProductCatalogAddonResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -1505,13 +1505,13 @@ func (s *OpenMeterProductCatalog) DeleteOpenmeterAddon(ctx context.Context, addo
 
 }
 
-// ArchiveOpenmeterAddon - Archive add-on version
+// ArchiveProductCatalogAddon - Archive add-on version
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Archive an add-on version.
-func (s *OpenMeterProductCatalog) ArchiveOpenmeterAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.ArchiveOpenmeterAddonResponse, error) {
-	request := operations.ArchiveOpenmeterAddonRequest{
+func (s *OpenMeterProductCatalog) ArchiveProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.ArchiveProductCatalogAddonResponse, error) {
+	request := operations.ArchiveProductCatalogAddonRequest{
 		AddonID: addonID,
 	}
 
@@ -1543,7 +1543,7 @@ func (s *OpenMeterProductCatalog) ArchiveOpenmeterAddon(ctx context.Context, add
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "archive-openmeter-addon",
+		OperationID:      "archive-product-catalog-addon",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -1665,7 +1665,7 @@ func (s *OpenMeterProductCatalog) ArchiveOpenmeterAddon(ctx context.Context, add
 		}
 	}
 
-	res := &operations.ArchiveOpenmeterAddonResponse{
+	res := &operations.ArchiveProductCatalogAddonResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -1801,13 +1801,13 @@ func (s *OpenMeterProductCatalog) ArchiveOpenmeterAddon(ctx context.Context, add
 
 }
 
-// PublishAddon - Publish add-on version
+// PublishProductCatalogAddon - Publish add-on version
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Publish an add-on version.
-func (s *OpenMeterProductCatalog) PublishAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.PublishAddonResponse, error) {
-	request := operations.PublishAddonRequest{
+func (s *OpenMeterProductCatalog) PublishProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.PublishProductCatalogAddonResponse, error) {
+	request := operations.PublishProductCatalogAddonRequest{
 		AddonID: addonID,
 	}
 
@@ -1839,7 +1839,7 @@ func (s *OpenMeterProductCatalog) PublishAddon(ctx context.Context, addonID stri
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "publish-addon",
+		OperationID:      "publish-product-catalog-addon",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -1961,7 +1961,7 @@ func (s *OpenMeterProductCatalog) PublishAddon(ctx context.Context, addonID stri
 		}
 	}
 
-	res := &operations.PublishAddonResponse{
+	res := &operations.PublishProductCatalogAddonResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,

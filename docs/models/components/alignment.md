@@ -23,9 +23,9 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch alignment.Type {
-	case components.AlignmentUnionTypeSubscription:
+	case components.AlignmentTypeSubscription:
 		// alignment.BillingWorkflowCollectionAlignmentSubscription is populated
-	case components.AlignmentUnionTypeAnchored:
+	case components.AlignmentTypeAnchored:
 		// alignment.BillingWorkflowCollectionAlignmentAnchored is populated
 }
 ```

@@ -18,10 +18,11 @@ custom := components.AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponse
 
 ## Values
 
-| Name                                                                             | Value                                                                            |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAuth0`   | auth0                                                                            |
-| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAzureAd` | azureAd                                                                          |
-| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeCurity`  | curity                                                                           |
-| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeOkta`    | okta                                                                             |
-| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeHTTP`    | http                                                                             |
+| Name                                                                                  | Value                                                                                 |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAuth0`        | auth0                                                                                 |
+| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeAzureAd`      | azureAd                                                                               |
+| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeCurity`       | curity                                                                                |
+| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeOkta`         | okta                                                                                  |
+| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeHTTP`         | http                                                                                  |
+| `AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseProviderTypeKongIdentity` | kongIdentity                                                                          |

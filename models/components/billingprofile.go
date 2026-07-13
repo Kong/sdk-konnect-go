@@ -157,151 +157,11 @@ func (s *Supplier) GetAddresses() *Addresses {
 	return s.Addresses
 }
 
-// BillingWorkflowCollectionAlignmentAnchoredAlignmentType - The type of alignment.
-type BillingWorkflowCollectionAlignmentAnchoredAlignmentType string
-
-const (
-	BillingWorkflowCollectionAlignmentAnchoredAlignmentTypeAnchored BillingWorkflowCollectionAlignmentAnchoredAlignmentType = "anchored"
-)
-
-func (e BillingWorkflowCollectionAlignmentAnchoredAlignmentType) ToPointer() *BillingWorkflowCollectionAlignmentAnchoredAlignmentType {
-	return &e
-}
-func (e *BillingWorkflowCollectionAlignmentAnchoredAlignmentType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "anchored":
-		*e = BillingWorkflowCollectionAlignmentAnchoredAlignmentType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BillingWorkflowCollectionAlignmentAnchoredAlignmentType: %v", v)
-	}
-}
-
-// RecurringPeriod - The recurring period for the alignment.
-type RecurringPeriod struct {
-	// A date-time anchor to base the recurring period on.
-	Anchor time.Time `json:"anchor"`
-	// The interval duration in ISO 8601 format.
-	Interval string `json:"interval"`
-}
-
-func (r RecurringPeriod) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RecurringPeriod) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"anchor", "interval"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (r *RecurringPeriod) GetAnchor() time.Time {
-	if r == nil {
-		return time.Time{}
-	}
-	return r.Anchor
-}
-
-func (r *RecurringPeriod) GetInterval() string {
-	if r == nil {
-		return ""
-	}
-	return r.Interval
-}
-
-// BillingWorkflowCollectionAlignmentAnchored specifies the alignment for
-// collecting the pending line items into an invoice.
-type BillingWorkflowCollectionAlignmentAnchored struct {
-	// The type of alignment.
-	Type BillingWorkflowCollectionAlignmentAnchoredAlignmentType `json:"type"`
-	// The recurring period for the alignment.
-	RecurringPeriod RecurringPeriod `json:"recurring_period"`
-}
-
-func (b BillingWorkflowCollectionAlignmentAnchored) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *BillingWorkflowCollectionAlignmentAnchored) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type", "recurring_period"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (b *BillingWorkflowCollectionAlignmentAnchored) GetType() BillingWorkflowCollectionAlignmentAnchoredAlignmentType {
-	if b == nil {
-		return BillingWorkflowCollectionAlignmentAnchoredAlignmentType("")
-	}
-	return b.Type
-}
-
-func (b *BillingWorkflowCollectionAlignmentAnchored) GetRecurringPeriod() RecurringPeriod {
-	if b == nil {
-		return RecurringPeriod{}
-	}
-	return b.RecurringPeriod
-}
-
-// AlignmentType - The type of alignment.
 type AlignmentType string
 
 const (
 	AlignmentTypeSubscription AlignmentType = "subscription"
-)
-
-func (e AlignmentType) ToPointer() *AlignmentType {
-	return &e
-}
-func (e *AlignmentType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "subscription":
-		*e = AlignmentType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AlignmentType: %v", v)
-	}
-}
-
-// BillingWorkflowCollectionAlignmentSubscription specifies the alignment for
-// collecting the pending line items into an invoice.
-type BillingWorkflowCollectionAlignmentSubscription struct {
-	// The type of alignment.
-	Type AlignmentType `json:"type"`
-}
-
-func (b BillingWorkflowCollectionAlignmentSubscription) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *BillingWorkflowCollectionAlignmentSubscription) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (b *BillingWorkflowCollectionAlignmentSubscription) GetType() AlignmentType {
-	if b == nil {
-		return AlignmentType("")
-	}
-	return b.Type
-}
-
-type AlignmentUnionType string
-
-const (
-	AlignmentUnionTypeSubscription AlignmentUnionType = "subscription"
-	AlignmentUnionTypeAnchored     AlignmentUnionType = "anchored"
+	AlignmentTypeAnchored     AlignmentType = "anchored"
 )
 
 // Alignment - The alignment for collecting the pending line items into an invoice.
@@ -309,13 +169,13 @@ type Alignment struct {
 	BillingWorkflowCollectionAlignmentSubscription *BillingWorkflowCollectionAlignmentSubscription `queryParam:"inline" union:"member"`
 	BillingWorkflowCollectionAlignmentAnchored     *BillingWorkflowCollectionAlignmentAnchored     `queryParam:"inline" union:"member"`
 
-	Type AlignmentUnionType
+	Type AlignmentType
 }
 
 func CreateAlignmentSubscription(subscription BillingWorkflowCollectionAlignmentSubscription) Alignment {
-	typ := AlignmentUnionTypeSubscription
+	typ := AlignmentTypeSubscription
 
-	typStr := AlignmentType(typ)
+	typStr := BillingWorkflowCollectionAlignmentSubscriptionType(typ)
 	subscription.Type = typStr
 
 	return Alignment{
@@ -325,9 +185,9 @@ func CreateAlignmentSubscription(subscription BillingWorkflowCollectionAlignment
 }
 
 func CreateAlignmentAnchored(anchored BillingWorkflowCollectionAlignmentAnchored) Alignment {
-	typ := AlignmentUnionTypeAnchored
+	typ := AlignmentTypeAnchored
 
-	typStr := BillingWorkflowCollectionAlignmentAnchoredAlignmentType(typ)
+	typStr := BillingWorkflowCollectionAlignmentAnchoredType(typ)
 	anchored.Type = typStr
 
 	return Alignment{
@@ -355,7 +215,7 @@ func (u *Alignment) UnmarshalJSON(data []byte) error {
 		}
 
 		u.BillingWorkflowCollectionAlignmentSubscription = billingWorkflowCollectionAlignmentSubscription
-		u.Type = AlignmentUnionTypeSubscription
+		u.Type = AlignmentTypeSubscription
 		return nil
 	case "anchored":
 		billingWorkflowCollectionAlignmentAnchored := new(BillingWorkflowCollectionAlignmentAnchored)
@@ -364,7 +224,7 @@ func (u *Alignment) UnmarshalJSON(data []byte) error {
 		}
 
 		u.BillingWorkflowCollectionAlignmentAnchored = billingWorkflowCollectionAlignmentAnchored
-		u.Type = AlignmentUnionTypeAnchored
+		u.Type = AlignmentTypeAnchored
 		return nil
 	}
 
@@ -392,18 +252,7 @@ type WorkflowCollectionSettings struct {
 	//
 	// This is useful, in case of multiple subscriptions having slightly different
 	// billing periods.
-	Interval *string `default:"PT1H" json:"interval"`
-}
-
-func (w WorkflowCollectionSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(w, "", false)
-}
-
-func (w *WorkflowCollectionSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Interval *string `json:"interval,omitempty"`
 }
 
 func (w *WorkflowCollectionSettings) GetAlignment() *Alignment {
@@ -434,25 +283,39 @@ func (w *WorkflowCollectionSettings) GetInterval() *string {
 	return w.Interval
 }
 
+// SubscriptionEndProrationMode - Controls how subscription-ending shortened service periods are billed.
+type SubscriptionEndProrationMode string
+
+const (
+	SubscriptionEndProrationModeBillFullPeriod   SubscriptionEndProrationMode = "bill_full_period"
+	SubscriptionEndProrationModeBillActualPeriod SubscriptionEndProrationMode = "bill_actual_period"
+)
+
+func (e SubscriptionEndProrationMode) ToPointer() *SubscriptionEndProrationMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *SubscriptionEndProrationMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "bill_full_period", "bill_actual_period":
+			return true
+		}
+	}
+	return false
+}
+
 // WorkflowInvoiceSettings - The invoicing settings for this workflow
 type WorkflowInvoiceSettings struct {
 	// Whether to automatically issue the invoice after the draftPeriod has passed.
-	AutoAdvance *bool `default:"true" json:"auto_advance"`
+	AutoAdvance *bool `json:"auto_advance,omitempty"`
 	// The period for the invoice to be kept in draft status for manual reviews.
-	DraftPeriod *string `default:"P0D" json:"draft_period"`
+	DraftPeriod *string `json:"draft_period,omitempty"`
 	// Should progressive billing be allowed for this workflow?
-	ProgressiveBilling *bool `default:"true" json:"progressive_billing"`
-}
-
-func (w WorkflowInvoiceSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(w, "", false)
-}
-
-func (w *WorkflowInvoiceSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	ProgressiveBilling *bool `json:"progressive_billing,omitempty"`
+	// Controls how subscription-ending shortened service periods are billed.
+	SubscriptionEndProrationMode *SubscriptionEndProrationMode `json:"subscription_end_proration_mode,omitempty"`
 }
 
 func (w *WorkflowInvoiceSettings) GetAutoAdvance() *bool {
@@ -474,6 +337,13 @@ func (w *WorkflowInvoiceSettings) GetProgressiveBilling() *bool {
 		return nil
 	}
 	return w.ProgressiveBilling
+}
+
+func (w *WorkflowInvoiceSettings) GetSubscriptionEndProrationMode() *SubscriptionEndProrationMode {
+	if w == nil {
+		return nil
+	}
+	return w.SubscriptionEndProrationMode
 }
 
 type PaymentType string
@@ -562,23 +432,23 @@ func (u Payment) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type Payment: all fields are null")
 }
 
-// TaxBehavior - Tax behavior.
+// BillingProfileTaxBehavior - Tax behavior.
 //
 // If not specified the billing profile is used to determine the tax behavior. If
 // not specified in the billing profile, the provider's default behavior is used.
-type TaxBehavior string
+type BillingProfileTaxBehavior string
 
 const (
-	TaxBehaviorInclusive TaxBehavior = "inclusive"
-	TaxBehaviorExclusive TaxBehavior = "exclusive"
+	BillingProfileTaxBehaviorInclusive BillingProfileTaxBehavior = "inclusive"
+	BillingProfileTaxBehaviorExclusive BillingProfileTaxBehavior = "exclusive"
 )
 
-func (e TaxBehavior) ToPointer() *TaxBehavior {
+func (e BillingProfileTaxBehavior) ToPointer() *BillingProfileTaxBehavior {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *TaxBehavior) IsExact() bool {
+func (e *BillingProfileTaxBehavior) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "inclusive", "exclusive":
@@ -588,68 +458,73 @@ func (e *TaxBehavior) IsExact() bool {
 	return false
 }
 
-// StripeTaxConfig - Stripe tax config.
+// BillingProfileStripeTaxConfig - Stripe tax config.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type StripeTaxConfig struct {
+type BillingProfileStripeTaxConfig struct {
 	// Product [tax code](https://docs.stripe.com/tax/tax-codes).
 	Code string `json:"code"`
 }
 
-func (s *StripeTaxConfig) GetCode() string {
-	if s == nil {
+func (b *BillingProfileStripeTaxConfig) GetCode() string {
+	if b == nil {
 		return ""
 	}
-	return s.Code
+	return b.Code
 }
 
-// ExternalInvoicingTaxConfig - External invoicing tax config.
+// BillingProfileExternalInvoicingTaxConfig - External invoicing tax config.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type ExternalInvoicingTaxConfig struct {
+type BillingProfileExternalInvoicingTaxConfig struct {
 	// The tax code should be interpreted by the external invoicing provider.
 	Code string `json:"code"`
 }
 
-func (e *ExternalInvoicingTaxConfig) GetCode() string {
-	if e == nil {
+func (b *BillingProfileExternalInvoicingTaxConfig) GetCode() string {
+	if b == nil {
 		return ""
 	}
-	return e.Code
+	return b.Code
 }
 
-// TaxCode - Tax code reference.
+// BillingProfileTaxCode - Tax code reference.
 //
 // When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
 // precedence. When `stripe.code` is also provided, `tax_code` still wins and
 // `stripe.code` is ignored.
-type TaxCode struct {
+type BillingProfileTaxCode struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
 }
 
-func (t *TaxCode) GetID() string {
-	if t == nil {
+func (b *BillingProfileTaxCode) GetID() string {
+	if b == nil {
 		return ""
 	}
-	return t.ID
+	return b.ID
 }
 
 // DefaultTaxConfig - Default tax configuration to apply to the invoices for line items.
+//
+// Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
+// config is deprecated and can no longer be added or changed: the organization
+// default tax code is used instead. Existing tax-code values may still be removed,
+// and `behavior` remains fully supported.
 type DefaultTaxConfig struct {
 	// Tax behavior.
 	//
 	// If not specified the billing profile is used to determine the tax behavior. If
 	// not specified in the billing profile, the provider's default behavior is used.
-	Behavior *TaxBehavior `json:"behavior,omitempty"`
+	Behavior *BillingProfileTaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Stripe *StripeTaxConfig `json:"stripe,omitempty"`
+	Stripe *BillingProfileStripeTaxConfig `json:"stripe,omitempty"`
 	// External invoicing tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	ExternalInvoicing *ExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
+	ExternalInvoicing *BillingProfileExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
 	// Tax code ID.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -659,24 +534,24 @@ type DefaultTaxConfig struct {
 	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
 	// precedence. When `stripe.code` is also provided, `tax_code` still wins and
 	// `stripe.code` is ignored.
-	TaxCode *TaxCode `json:"tax_code,omitempty"`
+	TaxCode *BillingProfileTaxCode `json:"tax_code,omitempty"`
 }
 
-func (d *DefaultTaxConfig) GetBehavior() *TaxBehavior {
+func (d *DefaultTaxConfig) GetBehavior() *BillingProfileTaxBehavior {
 	if d == nil {
 		return nil
 	}
 	return d.Behavior
 }
 
-func (d *DefaultTaxConfig) GetStripe() *StripeTaxConfig {
+func (d *DefaultTaxConfig) GetStripe() *BillingProfileStripeTaxConfig {
 	if d == nil {
 		return nil
 	}
 	return d.Stripe
 }
 
-func (d *DefaultTaxConfig) GetExternalInvoicing() *ExternalInvoicingTaxConfig {
+func (d *DefaultTaxConfig) GetExternalInvoicing() *BillingProfileExternalInvoicingTaxConfig {
 	if d == nil {
 		return nil
 	}
@@ -690,7 +565,7 @@ func (d *DefaultTaxConfig) GetTaxCodeID() *string {
 	return d.TaxCodeID
 }
 
-func (d *DefaultTaxConfig) GetTaxCode() *TaxCode {
+func (d *DefaultTaxConfig) GetTaxCode() *BillingProfileTaxCode {
 	if d == nil {
 		return nil
 	}
@@ -701,25 +576,19 @@ func (d *DefaultTaxConfig) GetTaxCode() *TaxCode {
 type WorkflowTaxSettings struct {
 	// Enable automatic tax calculation when tax is supported by the app. For example,
 	// with Stripe Invoicing when enabled, tax is calculated via Stripe Tax.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Enforce tax calculation when tax is supported by the app. When enabled, the
 	// billing system will not allow to create an invoice without tax calculation.
 	// Enforcement is different per apps, for example, Stripe app requires customer to
 	// have a tax location when starting a paid subscription.
-	Enforced *bool `default:"false" json:"enforced"`
+	Enforced *bool `json:"enforced,omitempty"`
 	// Default tax configuration to apply to the invoices for line items.
+	//
+	// Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
+	// config is deprecated and can no longer be added or changed: the organization
+	// default tax code is used instead. Existing tax-code values may still be removed,
+	// and `behavior` remains fully supported.
 	DefaultTaxConfig *DefaultTaxConfig `json:"default_tax_config,omitempty"`
-}
-
-func (w WorkflowTaxSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(w, "", false)
-}
-
-func (w *WorkflowTaxSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (w *WorkflowTaxSettings) GetEnabled() *bool {

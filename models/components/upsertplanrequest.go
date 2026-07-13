@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpsertPlanRequest - Plan upsert request.
 type UpsertPlanRequest struct {
 	// Display name of the resource.
@@ -23,21 +19,10 @@ type UpsertPlanRequest struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// Whether pro-rating is enabled for this plan.
-	ProRatingEnabled *bool `default:"true" json:"pro_rating_enabled"`
+	ProRatingEnabled *bool `json:"pro_rating_enabled,omitempty"`
 	// The plan phases define the pricing ramp for a subscription. A phase switch
 	// occurs only at the end of a billing period. At least one phase is required.
 	Phases []BillingPlanPhase `json:"phases"`
-}
-
-func (u UpsertPlanRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpsertPlanRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UpsertPlanRequest) GetName() string {

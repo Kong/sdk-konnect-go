@@ -19,7 +19,7 @@ type TLSTrustBundle struct {
 	// The unique name of the TLS trust bundle.
 	Name string `json:"name"`
 	// A human-readable description of the TLS trust bundle.
-	Description *string              `default:"" json:"description"`
+	Description *string              `json:"description,omitempty"`
 	Config      TLSTrustBundleConfig `json:"config"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
