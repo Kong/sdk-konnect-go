@@ -31,26 +31,26 @@ func (e *AIGatewayIdentityProviderOpenIDConnectType) UnmarshalJSON(data []byte) 
 	}
 }
 
-type AuthMethods string
+type AIGatewayIdentityProviderOpenIDConnectAuthMethods string
 
 const (
-	AuthMethodsAuthorizationCode AuthMethods = "authorization_code"
-	AuthMethodsBearer            AuthMethods = "bearer"
-	AuthMethodsClientCredentials AuthMethods = "client_credentials"
-	AuthMethodsIntrospection     AuthMethods = "introspection"
-	AuthMethodsKongOauth2        AuthMethods = "kong_oauth2"
-	AuthMethodsPassword          AuthMethods = "password"
-	AuthMethodsRefreshToken      AuthMethods = "refresh_token"
-	AuthMethodsSession           AuthMethods = "session"
-	AuthMethodsUserinfo          AuthMethods = "userinfo"
+	AIGatewayIdentityProviderOpenIDConnectAuthMethodsAuthorizationCode AIGatewayIdentityProviderOpenIDConnectAuthMethods = "authorization_code"
+	AIGatewayIdentityProviderOpenIDConnectAuthMethodsBearer            AIGatewayIdentityProviderOpenIDConnectAuthMethods = "bearer"
+	AIGatewayIdentityProviderOpenIDConnectAuthMethodsClientCredentials AIGatewayIdentityProviderOpenIDConnectAuthMethods = "client_credentials"
+	AIGatewayIdentityProviderOpenIDConnectAuthMethodsIntrospection     AIGatewayIdentityProviderOpenIDConnectAuthMethods = "introspection"
+	AIGatewayIdentityProviderOpenIDConnectAuthMethodsKongOauth2        AIGatewayIdentityProviderOpenIDConnectAuthMethods = "kong_oauth2"
+	AIGatewayIdentityProviderOpenIDConnectAuthMethodsPassword          AIGatewayIdentityProviderOpenIDConnectAuthMethods = "password"
+	AIGatewayIdentityProviderOpenIDConnectAuthMethodsRefreshToken      AIGatewayIdentityProviderOpenIDConnectAuthMethods = "refresh_token"
+	AIGatewayIdentityProviderOpenIDConnectAuthMethodsSession           AIGatewayIdentityProviderOpenIDConnectAuthMethods = "session"
+	AIGatewayIdentityProviderOpenIDConnectAuthMethodsUserinfo          AIGatewayIdentityProviderOpenIDConnectAuthMethods = "userinfo"
 )
 
-func (e AuthMethods) ToPointer() *AuthMethods {
+func (e AIGatewayIdentityProviderOpenIDConnectAuthMethods) ToPointer() *AIGatewayIdentityProviderOpenIDConnectAuthMethods {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AuthMethods) IsExact() bool {
+func (e *AIGatewayIdentityProviderOpenIDConnectAuthMethods) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "authorization_code", "bearer", "client_credentials", "introspection", "kong_oauth2", "password", "refresh_token", "session", "userinfo":
@@ -65,15 +65,13 @@ func (e *AuthMethods) IsExact() bool {
 // See: https://developer.konghq.com/plugins/openid-connect/reference/ for the list of properties
 type AIGatewayIdentityProviderOpenIDConnectConfig struct {
 	// Types of credentials/grants to enable.
-	AuthMethods []AuthMethods `json:"auth_methods,omitempty"`
+	AuthMethods []AIGatewayIdentityProviderOpenIDConnectAuthMethods `json:"auth_methods,omitempty"`
 	// An array of strings representing the client id for the OpenID Connect provider.
 	// When multiple values are provided, the client ID and secrets pairs correspond based on their locations in the array.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
 	ClientID []string `json:"client_id,omitempty"`
 	// An array of strings representing the client secret for the OpenID Connect provider.
 	// When multiple values are provided, the client ID and secrets pairs correspond based on their locations in the array.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
 	ClientSecret []string `json:"client_secret,omitempty"`
 	// An array containing an array of string paths representing the location of the claim in a nested object.
@@ -103,7 +101,7 @@ func (a *AIGatewayIdentityProviderOpenIDConnectConfig) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (a *AIGatewayIdentityProviderOpenIDConnectConfig) GetAuthMethods() []AuthMethods {
+func (a *AIGatewayIdentityProviderOpenIDConnectConfig) GetAuthMethods() []AIGatewayIdentityProviderOpenIDConnectAuthMethods {
 	if a == nil {
 		return nil
 	}

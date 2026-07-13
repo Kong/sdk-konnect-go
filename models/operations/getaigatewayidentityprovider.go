@@ -67,16 +67,16 @@ func (g *GetAiGatewayIdentityProviderResponse) GetAIGatewayIdentityProvider() *c
 	return g.AIGatewayIdentityProvider
 }
 
-func (g *GetAiGatewayIdentityProviderResponse) GetAIGatewayIdentityProviderKeyAuth() *components.AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderKeyAuthConfig {
+func (g *GetAiGatewayIdentityProviderResponse) GetAIGatewayIdentityProviderKeyAuth() *components.AIGatewayIdentityProviderKeyAuthResponse {
 	if v := g.GetAIGatewayIdentityProvider(); v != nil {
-		return v.AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderKeyAuthConfig
+		return v.AIGatewayIdentityProviderKeyAuthResponse
 	}
 	return nil
 }
 
-func (g *GetAiGatewayIdentityProviderResponse) GetAIGatewayIdentityProviderOpenidConnect() *components.AIGatewayIdentityProviderOpenIDConnectAIGatewayIdentityProviderOpenIDConnectConfig {
+func (g *GetAiGatewayIdentityProviderResponse) GetAIGatewayIdentityProviderOpenidConnect() *components.AIGatewayIdentityProviderOpenIDConnectResponse {
 	if v := g.GetAIGatewayIdentityProvider(); v != nil {
-		return v.AIGatewayIdentityProviderOpenIDConnectAIGatewayIdentityProviderOpenIDConnectConfig
+		return v.AIGatewayIdentityProviderOpenIDConnectResponse
 	}
 	return nil
 }

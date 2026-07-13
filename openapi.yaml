@@ -9053,8 +9053,6 @@ paths:
           $ref: '#/components/responses/NotFound'
   /v3/portals/{portalId}/applications:
     post:
-      x-unstable: true
-      x-internal: true
       x-terraform-id-to-object:
         auth_strategy_id: auth_strategy.id
       summary: Create Application
@@ -9386,8 +9384,6 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/ApplicationId'
     post:
-      x-unstable: true
-      x-internal: true
       x-terraform-id-to-object:
         api_id: api.id
       summary: Create Registration
@@ -10019,8 +10015,6 @@ paths:
     parameters:
       - $ref: '#/components/parameters/PortalId'
     post:
-      x-internal: true
-      x-unstable: true
       summary: Create Developer Account
       operationId: create-developer
       description: >-
@@ -21964,6 +21958,81 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
       tags:
         - AI Gateway Consumers
+  /v1/ai-gateways/{gatewayId}/consumers/{consumerIdOrName}/consumer-groups:
+    parameters:
+      - $ref: '#/components/parameters/AIGatewayId'
+      - $ref: '#/components/parameters/AIGatewayConsumerIdOrName'
+    get:
+      x-internal: true
+      x-unstable: true
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayConsumerConsumerGroups#read
+        terraform-datasource: null
+      operationId: list-ai-gateway-consumer-groups-for-consumer
+      summary: List Consumer Groups a Consumer belongs to
+      description: List AI Gateway Consumer Groups an Consumer belongs to
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListAIGatewayConsumerGroupsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Consumers
+    put:
+      x-internal: true
+      x-unstable: true
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayConsumerConsumerGroups#create,update
+        terraform-datasource: null
+      operationId: update-ai-gateway-consumer-groups-for-consumer
+      summary: Updates Consumer Groups a Consumer belongs to
+      description: Updates AI Gateway Consumer Groups a Consumer belongs to
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                consumer_groups:
+                  type: array
+                  items:
+                    type: string
+                    description: Consumer Group names
+      responses:
+        '201':
+          description: Consumer Group names added to the consumer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumer_groups:
+                    type: array
+                    items:
+                      type: string
+                      description: Consumer Group names
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Consumers
   /v1/ai-gateways/{gatewayId}/consumers/{consumerId}/credentials:
     parameters:
       - $ref: '#/components/parameters/AIGatewayId'
@@ -23270,6 +23339,49 @@ paths:
           $ref: '#/components/responses/NotAvailable'
       tags:
         - Routes
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/Workspace'
+  /v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/search:
+    get:
+      x-unstable: true
+      x-internal: true
+      operationId: search-plugins-in-workspace
+      summary: Search Plugins in a workspace
+      description: Search Plugins in a workspace
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+        - $ref: '#/components/parameters/PluginSearchFilter'
+      responses:
+        '200':
+          description: A successful response searching Plugins
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plugin'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
+      tags:
+        - Plugins
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
       - $ref: '#/components/parameters/Workspace'
@@ -41228,6 +41340,10 @@ components:
                 type: array
                 items:
                   type: object
+                  x-property-annotations:
+                    config_sync:
+                      - x-internal
+                      - x-unstable
                   properties:
                     id:
                       type: string
@@ -41245,6 +41361,30 @@ components:
                       type: integer
                     config_hash:
                       type: string
+                    config_sync:
+                      type: object
+                      properties:
+                        state:
+                          type: string
+                          description: >-
+                            Config sync state. One of `STATE_UNSPECIFIED`,
+                            `STATE_IN_SYNC`, `STATE_PENDING`, or
+                            `STATE_RESILIENCY`.
+                        hash:
+                          type: string
+                        version_id:
+                          type: string
+                        resiliency:
+                          type: object
+                          properties:
+                            fallback_hash:
+                              type: string
+                            activated_at:
+                              type: integer
+                            latest_config_errors:
+                              type: array
+                              items:
+                                $ref: '#/components/schemas/NodeError'
                     compatibility_status:
                       type: object
                       properties:
@@ -41293,6 +41433,10 @@ components:
             properties:
               item:
                 type: object
+                x-property-annotations:
+                  config_sync:
+                    - x-internal
+                    - x-unstable
                 properties:
                   id:
                     type: string
@@ -41310,6 +41454,30 @@ components:
                     type: integer
                   config_hash:
                     type: string
+                  config_sync:
+                    type: object
+                    properties:
+                      state:
+                        type: string
+                        description: >-
+                          Config sync state. One of `STATE_UNSPECIFIED`,
+                          `STATE_IN_SYNC`, `STATE_PENDING`, or
+                          `STATE_RESILIENCY`.
+                      hash:
+                        type: string
+                      version_id:
+                        type: string
+                      resiliency:
+                        type: object
+                        properties:
+                          fallback_hash:
+                            type: string
+                          activated_at:
+                            type: integer
+                          latest_config_errors:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/NodeError'
                   compatibility_status:
                     type: object
                     properties:
@@ -91533,9 +91701,6 @@ components:
 
                 When multiple values are provided, the client ID and secrets
                 pairs correspond based on their locations in the array.
-
-                This field is
-                [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
               items:
                 type: string
             client_secret:
@@ -91547,9 +91712,6 @@ components:
 
                 When multiple values are provided, the client ID and secrets
                 pairs correspond based on their locations in the array.
-
-                This field is
-                [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
               items:
                 type: string
             consumer_claims:
@@ -93003,25 +93165,234 @@ components:
       x-internal: true
       x-unstable: true
       oneOf:
-        - $ref: '#/components/schemas/AIGatewayIdentityProviderKeyAuth'
-        - $ref: '#/components/schemas/AIGatewayIdentityProviderOpenIDConnect'
+        - $ref: '#/components/schemas/AIGatewayIdentityProviderKeyAuthResponse'
+        - $ref: '#/components/schemas/AIGatewayIdentityProviderOpenIDConnectResponse'
       discriminator:
         propertyName: type
         mapping:
-          key-auth: '#/components/schemas/AIGatewayIdentityProviderKeyAuth'
-          openid-connect: '#/components/schemas/AIGatewayIdentityProviderOpenIDConnect'
+          key-auth: '#/components/schemas/AIGatewayIdentityProviderKeyAuthResponse'
+          openid-connect: '#/components/schemas/AIGatewayIdentityProviderOpenIDConnectResponse'
+    AIGatewayIdentityProviderKeyAuthResponse:
       type: object
+      x-internal: true
+      x-unstable: true
+      description: Configuration for an identity provider.
       required:
+        - display_name
+        - name
+        - type
         - id
         - created_at
         - updated_at
       properties:
+        display_name:
+          type: string
+          minLength: 1
+          maxLength: 256
+          description: The display name for this identity provider instance.
+          example: Okta AI SE
+        name:
+          x-internal: true
+          x-unstable: true
+          description: >-
+            A user-defined unique identifier for this identity provider
+            instance, used as a stable human-readable reference. This value is
+            immutable after creation.
+          example: okta-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        type:
+          type: string
+          enum:
+            - key-auth
+        config:
+          type: object
+          additionalProperties: true
+          description: >
+            Configuration for the Kong Key auth identity provider.
+
+            For advanced use cases, additional config properties can be sent in
+            the request body.
+
+            See: https://developer.konghq.com/plugins/key-auth/reference/ for
+            the list of properties
+          properties:
+            hide_credentials:
+              type: boolean
+              description: >
+                An optional boolean value telling the plugin to show or hide the
+                credential from the upstream service.
+
+                If true, the plugin strips the credential from the request.
+              default: true
+            key_in_body:
+              type: boolean
+              description: >
+                If enabled, reads the request body.
+
+                Supported MIME types: application/www-form-urlencoded,
+                application/json, and multipart/form-data.
+              default: false
+            key_in_header:
+              type: boolean
+              description: >
+                If enabled (default), the plugin reads the request header and
+                tries to find the key in it.
+              default: true
+            key_in_query:
+              type: boolean
+              description: >
+                If enabled (default), the plugin reads the query parameter in
+                the request and tries to find the key in it.
+              default: true
+            key_names:
+              type: array
+              description: >
+                An array of strings containing the names of the keys to look for
+                in the request.
+              items:
+                type: string
+              default:
+                - apikey
         id:
           $ref: '#/components/schemas/UUID'
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
+      title: AIGatewayIdentityProviderKeyAuthConfig
+    AIGatewayIdentityProviderOpenIDConnectResponse:
+      type: object
+      x-internal: true
+      x-unstable: true
+      description: Configuration for an identity provider.
+      required:
+        - display_name
+        - name
+        - type
+        - id
+        - created_at
+        - updated_at
+      properties:
+        display_name:
+          type: string
+          minLength: 1
+          maxLength: 256
+          description: The display name for this identity provider instance.
+          example: Okta AI SE
+        name:
+          x-internal: true
+          x-unstable: true
+          description: >-
+            A user-defined unique identifier for this identity provider
+            instance, used as a stable human-readable reference. This value is
+            immutable after creation.
+          example: okta-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        type:
+          type: string
+          enum:
+            - openid-connect
+        config:
+          type: object
+          additionalProperties: true
+          description: >
+            Configuration for the OpenID Connect identity provider.
+
+            For advanced use cases, additional config properties can be sent in
+            the request body.
+
+            See: https://developer.konghq.com/plugins/openid-connect/reference/
+            for the list of properties
+          properties:
+            auth_methods:
+              type: array
+              description: Types of credentials/grants to enable.
+              items:
+                type: string
+                enum:
+                  - authorization_code
+                  - bearer
+                  - client_credentials
+                  - introspection
+                  - kong_oauth2
+                  - password
+                  - refresh_token
+                  - session
+                  - userinfo
+                x-speakeasy-unknown-values: allow
+              default:
+                - bearer
+                - client_credentials
+            client_id:
+              type: array
+              description: >
+                An array of strings representing the client id for the OpenID
+                Connect provider.
+
+                When multiple values are provided, the client ID and secrets
+                pairs correspond based on their locations in the array.
+              items:
+                type: string
+            client_secret:
+              type: array
+              writeOnly: true
+              description: >
+                An array of strings representing the client secret for the
+                OpenID Connect provider.
+
+                When multiple values are provided, the client ID and secrets
+                pairs correspond based on their locations in the array.
+              items:
+                type: string
+            consumer_claims:
+              type: array
+              description: >
+                An array containing an array of string paths representing the
+                location of the claim in a nested object.
+
+                For example, to map to user.info.id, set [ "user", "info", "id"
+                ].
+              items:
+                type: array
+                items:
+                  type: string
+            consumer_optional:
+              type: boolean
+              description: |
+                Do not terminate the request if consumer mapping fails.
+              default: false
+            issuer:
+              type: string
+              description: URL that identifies the OpenID Provider
+              example: https://dev-123456.okta.com
+            scopes:
+              type: array
+              description: |
+                This field is referenceable.
+              items:
+                type: string
+              default:
+                - openid
+            ssl_verify:
+              type: boolean
+              default: true
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      title: AIGatewayIdentityProviderOpenIDConnectConfig
     PublicLabels:
       title: PublicLabels
       type: object

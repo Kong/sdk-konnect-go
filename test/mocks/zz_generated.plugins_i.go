@@ -3543,6 +3543,89 @@ func (_c *MockPluginsSDK_SearchPlugins_Call) RunAndReturn(run func(ctx context.C
 	return _c
 }
 
+// SearchPluginsInWorkspace provides a mock function for the type MockPluginsSDK
+func (_mock *MockPluginsSDK) SearchPluginsInWorkspace(ctx context.Context, request operations.SearchPluginsInWorkspaceRequest, opts ...operations.Option) (*operations.SearchPluginsInWorkspaceResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for SearchPluginsInWorkspace")
+	}
+
+	var r0 *operations.SearchPluginsInWorkspaceResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchPluginsInWorkspaceRequest, ...operations.Option) (*operations.SearchPluginsInWorkspaceResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.SearchPluginsInWorkspaceRequest, ...operations.Option) *operations.SearchPluginsInWorkspaceResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.SearchPluginsInWorkspaceResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.SearchPluginsInWorkspaceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPluginsSDK_SearchPluginsInWorkspace_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SearchPluginsInWorkspace'
+type MockPluginsSDK_SearchPluginsInWorkspace_Call struct {
+	*mock.Call
+}
+
+// SearchPluginsInWorkspace is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.SearchPluginsInWorkspaceRequest
+//   - opts ...operations.Option
+func (_e *MockPluginsSDK_Expecter) SearchPluginsInWorkspace(ctx any, request any, opts ...any) *MockPluginsSDK_SearchPluginsInWorkspace_Call {
+	return &MockPluginsSDK_SearchPluginsInWorkspace_Call{Call: _e.mock.On("SearchPluginsInWorkspace",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPluginsSDK_SearchPluginsInWorkspace_Call) Run(run func(ctx context.Context, request operations.SearchPluginsInWorkspaceRequest, opts ...operations.Option)) *MockPluginsSDK_SearchPluginsInWorkspace_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.SearchPluginsInWorkspaceRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.SearchPluginsInWorkspaceRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPluginsSDK_SearchPluginsInWorkspace_Call) Return(searchPluginsInWorkspaceResponse *operations.SearchPluginsInWorkspaceResponse, err error) *MockPluginsSDK_SearchPluginsInWorkspace_Call {
+	_c.Call.Return(searchPluginsInWorkspaceResponse, err)
+	return _c
+}
+
+func (_c *MockPluginsSDK_SearchPluginsInWorkspace_Call) RunAndReturn(run func(ctx context.Context, request operations.SearchPluginsInWorkspaceRequest, opts ...operations.Option) (*operations.SearchPluginsInWorkspaceResponse, error)) *MockPluginsSDK_SearchPluginsInWorkspace_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertPlugin provides a mock function for the type MockPluginsSDK
 func (_mock *MockPluginsSDK) UpsertPlugin(ctx context.Context, request operations.UpsertPluginRequest, opts ...operations.Option) (*operations.UpsertPluginResponse, error) {
 	var tmpRet mock.Arguments

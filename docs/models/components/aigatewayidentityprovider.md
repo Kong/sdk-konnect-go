@@ -3,16 +3,16 @@
 
 ## Supported Types
 
-### AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderKeyAuthConfig
+### AIGatewayIdentityProviderKeyAuthResponse
 
 ```go
-aiGatewayIdentityProvider := components.CreateAIGatewayIdentityProviderKeyAuth(components.AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderKeyAuthConfig{/* values here */})
+aiGatewayIdentityProvider := components.CreateAIGatewayIdentityProviderKeyAuth(components.AIGatewayIdentityProviderKeyAuthResponse{/* values here */})
 ```
 
-### AIGatewayIdentityProviderOpenIDConnectAIGatewayIdentityProviderOpenIDConnectConfig
+### AIGatewayIdentityProviderOpenIDConnectResponse
 
 ```go
-aiGatewayIdentityProvider := components.CreateAIGatewayIdentityProviderOpenidConnect(components.AIGatewayIdentityProviderOpenIDConnectAIGatewayIdentityProviderOpenIDConnectConfig{/* values here */})
+aiGatewayIdentityProvider := components.CreateAIGatewayIdentityProviderOpenidConnect(components.AIGatewayIdentityProviderOpenIDConnectResponse{/* values here */})
 ```
 
 ## Union Discrimination
@@ -22,8 +22,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 ```go
 switch aiGatewayIdentityProvider.Type {
 	case components.AIGatewayIdentityProviderTypeKeyAuth:
-		// aiGatewayIdentityProvider.AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderKeyAuthConfig is populated
+		// aiGatewayIdentityProvider.AIGatewayIdentityProviderKeyAuthResponse is populated
 	case components.AIGatewayIdentityProviderTypeOpenidConnect:
-		// aiGatewayIdentityProvider.AIGatewayIdentityProviderOpenIDConnectAIGatewayIdentityProviderOpenIDConnectConfig is populated
+		// aiGatewayIdentityProvider.AIGatewayIdentityProviderOpenIDConnectResponse is populated
 }
 ```

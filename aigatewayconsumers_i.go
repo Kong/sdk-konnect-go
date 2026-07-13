@@ -26,6 +26,12 @@ type AIGatewayConsumersSDK interface {
 	// DeleteAiGatewayConsumer - Delete an AI Gateway Consumer
 	// Removes a specific AI Gateway consumer.
 	DeleteAiGatewayConsumer(ctx context.Context, gatewayID string, consumerIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayConsumerResponse, error)
+	// ListAiGatewayConsumerGroupsForConsumer - List Consumer Groups a Consumer belongs to
+	// List AI Gateway Consumer Groups an Consumer belongs to
+	ListAiGatewayConsumerGroupsForConsumer(ctx context.Context, request operations.ListAiGatewayConsumerGroupsForConsumerRequest, opts ...operations.Option) (*operations.ListAiGatewayConsumerGroupsForConsumerResponse, error)
+	// UpdateAiGatewayConsumerGroupsForConsumer - Updates Consumer Groups a Consumer belongs to
+	// Updates AI Gateway Consumer Groups a Consumer belongs to
+	UpdateAiGatewayConsumerGroupsForConsumer(ctx context.Context, request operations.UpdateAiGatewayConsumerGroupsForConsumerRequest, opts ...operations.Option) (*operations.UpdateAiGatewayConsumerGroupsForConsumerResponse, error)
 	// ListAiGatewayConsumerCredentials - List AI Gateway Consumer Credentials
 	// Returns a list of all credentials for an AI Gateway consumer.
 	ListAiGatewayConsumerCredentials(ctx context.Context, request operations.ListAiGatewayConsumerCredentialsRequest, opts ...operations.Option) (*operations.ListAiGatewayConsumerCredentialsResponse, error)

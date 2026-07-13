@@ -114,9 +114,9 @@ func main() {
     if res.AIGatewayIdentityProvider != nil {
         switch res.AIGatewayIdentityProvider.Type {
             case components.AIGatewayIdentityProviderTypeKeyAuth:
-                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderKeyAuthConfig is populated
+                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderKeyAuthResponse is populated
             case components.AIGatewayIdentityProviderTypeOpenidConnect:
-                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderOpenIDConnectAIGatewayIdentityProviderOpenIDConnectConfig is populated
+                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderOpenIDConnectResponse is populated
         }
 
     }
@@ -180,9 +180,9 @@ func main() {
     if res.AIGatewayIdentityProvider != nil {
         switch res.AIGatewayIdentityProvider.Type {
             case components.AIGatewayIdentityProviderTypeKeyAuth:
-                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderKeyAuthConfig is populated
+                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderKeyAuthResponse is populated
             case components.AIGatewayIdentityProviderTypeOpenidConnect:
-                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderOpenIDConnectAIGatewayIdentityProviderOpenIDConnectConfig is populated
+                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderOpenIDConnectResponse is populated
         }
 
     }
@@ -256,9 +256,9 @@ func main() {
     if res.AIGatewayIdentityProvider != nil {
         switch res.AIGatewayIdentityProvider.Type {
             case components.AIGatewayIdentityProviderTypeKeyAuth:
-                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderKeyAuthAIGatewayIdentityProviderKeyAuthConfig is populated
+                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderKeyAuthResponse is populated
             case components.AIGatewayIdentityProviderTypeOpenidConnect:
-                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderOpenIDConnectAIGatewayIdentityProviderOpenIDConnectConfig is populated
+                // res.AIGatewayIdentityProvider.AIGatewayIdentityProviderOpenIDConnectResponse is populated
         }
 
     }

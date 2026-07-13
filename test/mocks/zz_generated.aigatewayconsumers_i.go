@@ -638,6 +638,89 @@ func (_c *MockAIGatewayConsumersSDK_ListAiGatewayConsumerCredentials_Call) RunAn
 	return _c
 }
 
+// ListAiGatewayConsumerGroupsForConsumer provides a mock function for the type MockAIGatewayConsumersSDK
+func (_mock *MockAIGatewayConsumersSDK) ListAiGatewayConsumerGroupsForConsumer(ctx context.Context, request operations.ListAiGatewayConsumerGroupsForConsumerRequest, opts ...operations.Option) (*operations.ListAiGatewayConsumerGroupsForConsumerResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListAiGatewayConsumerGroupsForConsumer")
+	}
+
+	var r0 *operations.ListAiGatewayConsumerGroupsForConsumerResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAiGatewayConsumerGroupsForConsumerRequest, ...operations.Option) (*operations.ListAiGatewayConsumerGroupsForConsumerResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAiGatewayConsumerGroupsForConsumerRequest, ...operations.Option) *operations.ListAiGatewayConsumerGroupsForConsumerResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListAiGatewayConsumerGroupsForConsumerResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListAiGatewayConsumerGroupsForConsumerRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAiGatewayConsumerGroupsForConsumer'
+type MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call struct {
+	*mock.Call
+}
+
+// ListAiGatewayConsumerGroupsForConsumer is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListAiGatewayConsumerGroupsForConsumerRequest
+//   - opts ...operations.Option
+func (_e *MockAIGatewayConsumersSDK_Expecter) ListAiGatewayConsumerGroupsForConsumer(ctx any, request any, opts ...any) *MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call {
+	return &MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call{Call: _e.mock.On("ListAiGatewayConsumerGroupsForConsumer",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call) Run(run func(ctx context.Context, request operations.ListAiGatewayConsumerGroupsForConsumerRequest, opts ...operations.Option)) *MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListAiGatewayConsumerGroupsForConsumerRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListAiGatewayConsumerGroupsForConsumerRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call) Return(listAiGatewayConsumerGroupsForConsumerResponse *operations.ListAiGatewayConsumerGroupsForConsumerResponse, err error) *MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call {
+	_c.Call.Return(listAiGatewayConsumerGroupsForConsumerResponse, err)
+	return _c
+}
+
+func (_c *MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.ListAiGatewayConsumerGroupsForConsumerRequest, opts ...operations.Option) (*operations.ListAiGatewayConsumerGroupsForConsumerResponse, error)) *MockAIGatewayConsumersSDK_ListAiGatewayConsumerGroupsForConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListAiGatewayConsumers provides a mock function for the type MockAIGatewayConsumersSDK
 func (_mock *MockAIGatewayConsumersSDK) ListAiGatewayConsumers(ctx context.Context, request operations.ListAiGatewayConsumersRequest, opts ...operations.Option) (*operations.ListAiGatewayConsumersResponse, error) {
 	var tmpRet mock.Arguments
@@ -800,6 +883,89 @@ func (_c *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumer_Call) Return(updateA
 }
 
 func (_c *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateAiGatewayConsumerRequest, opts ...operations.Option) (*operations.UpdateAiGatewayConsumerResponse, error)) *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumer_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateAiGatewayConsumerGroupsForConsumer provides a mock function for the type MockAIGatewayConsumersSDK
+func (_mock *MockAIGatewayConsumersSDK) UpdateAiGatewayConsumerGroupsForConsumer(ctx context.Context, request operations.UpdateAiGatewayConsumerGroupsForConsumerRequest, opts ...operations.Option) (*operations.UpdateAiGatewayConsumerGroupsForConsumerResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateAiGatewayConsumerGroupsForConsumer")
+	}
+
+	var r0 *operations.UpdateAiGatewayConsumerGroupsForConsumerResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateAiGatewayConsumerGroupsForConsumerRequest, ...operations.Option) (*operations.UpdateAiGatewayConsumerGroupsForConsumerResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateAiGatewayConsumerGroupsForConsumerRequest, ...operations.Option) *operations.UpdateAiGatewayConsumerGroupsForConsumerResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateAiGatewayConsumerGroupsForConsumerResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpdateAiGatewayConsumerGroupsForConsumerRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAiGatewayConsumerGroupsForConsumer'
+type MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call struct {
+	*mock.Call
+}
+
+// UpdateAiGatewayConsumerGroupsForConsumer is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpdateAiGatewayConsumerGroupsForConsumerRequest
+//   - opts ...operations.Option
+func (_e *MockAIGatewayConsumersSDK_Expecter) UpdateAiGatewayConsumerGroupsForConsumer(ctx any, request any, opts ...any) *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call {
+	return &MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call{Call: _e.mock.On("UpdateAiGatewayConsumerGroupsForConsumer",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call) Run(run func(ctx context.Context, request operations.UpdateAiGatewayConsumerGroupsForConsumerRequest, opts ...operations.Option)) *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpdateAiGatewayConsumerGroupsForConsumerRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpdateAiGatewayConsumerGroupsForConsumerRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call) Return(updateAiGatewayConsumerGroupsForConsumerResponse *operations.UpdateAiGatewayConsumerGroupsForConsumerResponse, err error) *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call {
+	_c.Call.Return(updateAiGatewayConsumerGroupsForConsumerResponse, err)
+	return _c
+}
+
+func (_c *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateAiGatewayConsumerGroupsForConsumerRequest, opts ...operations.Option) (*operations.UpdateAiGatewayConsumerGroupsForConsumerResponse, error)) *MockAIGatewayConsumersSDK_UpdateAiGatewayConsumerGroupsForConsumer_Call {
 	_c.Call.Return(run)
 	return _c
 }
