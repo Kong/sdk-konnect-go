@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   analyze:
-    timeout-minutes: ${{ fromJSON(vars.GHA_DEFAULT_TIMEOUT || 10) }}
+    timeout-minutes: 20
     name: analyze
     runs-on: ubuntu-latest
     permissions:
