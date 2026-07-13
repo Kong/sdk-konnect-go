@@ -15217,6 +15217,53 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Application Registrations
+  '/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}/consumer':
+    parameters:
+      - $ref: '#/components/parameters/PortalId'
+      - $ref: '#/components/parameters/ApplicationId'
+      - $ref: '#/components/parameters/RegistrationId'
+    put:
+      operationId: update-application-registration-consumer
+      summary: Update application consumer mapping
+      description: |-
+        Associates an existing Gateway Consumer with the application in the Gateway context resolved from the specified registration.
+        The consumer must already exist and be accessible within the API's Gateway context.
+        If multiple registrations of the same application target APIs implemented in the same Gateway context, they share the same effective consumer mapping.
+        Updating the consumer mapping for one registration updates the mapping for all registrations that resolve to the same Gateway context.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateRegistrationConsumerRequest'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Application Registrations
+    delete:
+      operationId: delete-application-registration-consumer
+      summary: Delete application consumer mapping
+      description: Removes the Gateway Consumer mapping associated with the application in the Gateway context resolved from the specified registration.
+      responses:
+        '204':
+          description: No Content
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Application Registrations
   '/v3/portals/{portalId}/assets/favicon':
     parameters:
       - $ref: '#/components/parameters/PortalId'
@@ -26102,10 +26149,24 @@ components:
         - status
         - errors
       title: VerifyDcrProviderResponse
+    AuthStrategyPrincipals:
+      description: |
+        Application principal settings for this auth strategy. Runtime effect applies to V3 API Catalog (ACE) portals and
+        applications; stored values may be set for any auth strategy in the organization.
+      type: object
+      properties:
+        enabled:
+          description: Whether application principals are enabled for this auth strategy.
+          type: boolean
+          default: false
+      additionalProperties: false
+      required:
+        - enabled
+      title: AuthStrategyPrincipals
     AppAuthStrategyConfigKeyAuth:
       description: |
-        The most basic mode to configure an Application Auth Strategy for an API Product Version. 
-        Using this mode will allow developers to generate API keys that will authenticate their application requests. 
+        The most basic mode to configure an Application Auth Strategy for an API Product Version.
+        Using this mode will allow developers to generate API keys that will authenticate their application requests.
         Once authenticated, an application will be granted access to any Product Version it is registered for that is configured for Key Auth.
       type: object
       properties:
@@ -26172,9 +26233,9 @@ components:
       title: PartialAppAuthStrategyConfigKeyAuth
     PartialAppAuthStrategyConfigOpenIDConnect:
       description: |
-        A more advanced mode to configure an API Product Version’s Application Auth Strategy. 
-        Using this mode will allow developers to use API credentials issued from an external IdP that will authenticate their application requests. 
-        Once authenticated, an application will be granted access to any Product Version it is registered for that is configured for the same Auth Strategy. 
+        A more advanced mode to configure an API Product Version’s Application Auth Strategy.
+        Using this mode will allow developers to use API credentials issued from an external IdP that will authenticate their application requests.
+        Once authenticated, an application will be granted access to any Product Version it is registered for that is configured for the same Auth Strategy.
         An OIDC strategy may be used in conjunction with a DCR provider to automatically create the IdP application.
       type: object
       properties:
@@ -26204,9 +26265,9 @@ components:
       title: PartialAppAuthStrategyConfigOpenIDConnect
     AppAuthStrategyConfigOpenIDConnect:
       description: |
-        A more advanced mode to configure an API Product Version’s Application Auth Strategy. 
-        Using this mode will allow developers to use API credentials issued from an external IdP that will authenticate their application requests. 
-        Once authenticated, an application will be granted access to any Product Version it is registered for that is configured for the same Auth Strategy. 
+        A more advanced mode to configure an API Product Version’s Application Auth Strategy.
+        Using this mode will allow developers to use API credentials issued from an external IdP that will authenticate their application requests.
+        Once authenticated, an application will be granted access to any Product Version it is registered for that is configured for the same Auth Strategy.
         An OIDC strategy may be used in conjunction with a DCR provider to automatically create the IdP application.
       type: object
       properties:
@@ -26262,6 +26323,8 @@ components:
             - key-auth
         labels:
           $ref: '#/components/schemas/Labels'
+        principals:
+          $ref: '#/components/schemas/AuthStrategyPrincipals'
       additionalProperties: false
       required:
         - name
@@ -26334,6 +26397,8 @@ components:
           type: boolean
           default: true
           readOnly: true
+        principals:
+          $ref: '#/components/schemas/AuthStrategyPrincipals'
       additionalProperties: false
       required:
         - id
@@ -26374,6 +26439,8 @@ components:
           nullable: true
         labels:
           $ref: '#/components/schemas/Labels'
+        principals:
+          $ref: '#/components/schemas/AuthStrategyPrincipals'
       additionalProperties: false
       required:
         - name
@@ -26446,6 +26513,8 @@ components:
             - `false` when not supported for Client Credentials strategies
           type: boolean
           readOnly: true
+        principals:
+          $ref: '#/components/schemas/AuthStrategyPrincipals'
       additionalProperties: false
       required:
         - id
@@ -26510,6 +26579,8 @@ components:
           oneOf:
             - $ref: '#/components/schemas/UpdateAppAuthStrategyRequestOpenIdConnect'
             - $ref: '#/components/schemas/UpdateAppAuthStrategyRequestKeyAuth'
+        principals:
+          $ref: '#/components/schemas/AuthStrategyPrincipals'
       additionalProperties: false
       title: UpdateAppAuthStrategyRequest
     UpdateAppAuthStrategyRequestOpenIdConnect:
@@ -29229,6 +29300,24 @@ components:
           required:
             - id
             - name
+        consumer:
+          description: Details about the consumer associated with this application registration.
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              $ref: '#/components/schemas/UUID'
+            custom_id:
+              description: The custom ID of the associated consumer.
+              type: string
+            username:
+              description: The username of the associated consumer.
+              type: string
+            control_plane_id:
+              $ref: '#/components/schemas/UUID'
+          required:
+            - id
+            - control_plane_id
       example:
         id: c300cc33-2d33-4754-b086-a98e0fcd36fb
         status: approved
@@ -29273,6 +29362,20 @@ components:
         status: rejected
       additionalProperties: false
       title: UpdateApplicationRegistrationRequest
+    UpdateRegistrationConsumerRequest:
+      type: object
+      properties:
+        id:
+          description: The ID of the existing Gateway Consumer to associate with the application.
+          type: string
+          format: uuid
+          nullable: false
+      example:
+        id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+      additionalProperties: false
+      required:
+        - id
+      title: UpdateRegistrationConsumerRequest
     PortalFilterParameters:
       type: object
       properties:
@@ -56927,6 +57030,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateApplicationRegistrationRequest'
+    UpdateRegistrationConsumerRequest:
+      description: Update the consumer of an application registration.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateRegistrationConsumerRequest'
     UpdateApplication:
       description: Update an application.
       required: true
@@ -61718,13 +61828,14 @@ tags:
   - name: DCR Providers
     description: |
       Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
-      For instance, they will be able to perform dynamic client registration (DCR) with the provider. 
+      For instance, they will be able to perform dynamic client registration (DCR) with the provider.
       The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
   - name: App Auth Strategies
     description: |
-      Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version. 
-      Called “Auth Strategy” for short in the context of portals/applications. 
+      Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version.
+      Called “Auth Strategy” for short in the context of portals/applications.
       The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
+      The optional `principals` property controls application-principal behavior for V3 API Catalog portals and applications. It defaults to disabled when omitted.
   - name: API
   - name: API Documentation
   - name: API Specification
