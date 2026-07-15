@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.15.0 and generator version 2.914.0
+// Generated from OpenAPI doc version 3.15.0 and generator version 2.918.1
 
 import (
 	"context"
@@ -91,6 +91,7 @@ type SDK struct {
 	// Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version.
 	// Called “Auth Strategy” for short in the context of portals/applications.
 	// The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
+	// The optional `principals` property controls application-principal behavior for V3 API Catalog portals and applications. It defaults to disabled when omitted.
 	//
 	AppAuthStrategies       *AppAuthStrategies
 	API                     *API
@@ -595,7 +596,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.2.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.2.0 2.914.0 3.15.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.2.0 2.918.1 3.15.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),

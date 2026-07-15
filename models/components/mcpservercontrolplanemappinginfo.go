@@ -14,6 +14,8 @@ type MCPServerControlPlaneMappingInfo struct {
 	McpServerID string `json:"mcp_server_id"`
 	// The unique identifier for the Control Plane.
 	ControlPlaneID string `json:"control_plane_id"`
+	// Whether the MCP Server deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
+	Mode MCPServerControlPlaneMappingMode `json:"mode"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -50,6 +52,13 @@ func (m *MCPServerControlPlaneMappingInfo) GetControlPlaneID() string {
 		return ""
 	}
 	return m.ControlPlaneID
+}
+
+func (m *MCPServerControlPlaneMappingInfo) GetMode() MCPServerControlPlaneMappingMode {
+	if m == nil {
+		return MCPServerControlPlaneMappingMode("")
+	}
+	return m.Mode
 }
 
 func (m *MCPServerControlPlaneMappingInfo) GetCreatedAt() time.Time {

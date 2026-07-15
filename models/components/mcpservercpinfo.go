@@ -7,6 +7,29 @@ import (
 	"time"
 )
 
+// MCPServerCPInfoMode - The deployment mode of the MCP server on the associated Control Plane.
+type MCPServerCPInfoMode string
+
+const (
+	MCPServerCPInfoModeBasic    MCPServerCPInfoMode = "basic"
+	MCPServerCPInfoModeAdvanced MCPServerCPInfoMode = "advanced"
+)
+
+func (e MCPServerCPInfoMode) ToPointer() *MCPServerCPInfoMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *MCPServerCPInfoMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "basic", "advanced":
+			return true
+		}
+	}
+	return false
+}
+
 type MCPServerCPInfo struct {
 	// The unique identifier for the MCP server.
 	ID string `json:"id"`
@@ -22,6 +45,9 @@ type MCPServerCPInfo struct {
 	ControlPlaneID *string `json:"control_plane_id,omitempty"`
 	// The MCP resource ID associated with the MCP server.
 	ResourceID *string `json:"resource_id,omitempty"`
+	// The deployment mode of the MCP server on the associated Control Plane.
+	//
+	Mode *MCPServerCPInfoMode `json:"mode,omitempty"`
 	// The version of the MCP server.
 	Version string `json:"version"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -90,6 +116,13 @@ func (m *MCPServerCPInfo) GetResourceID() *string {
 		return nil
 	}
 	return m.ResourceID
+}
+
+func (m *MCPServerCPInfo) GetMode() *MCPServerCPInfoMode {
+	if m == nil {
+		return nil
+	}
+	return m.Mode
 }
 
 func (m *MCPServerCPInfo) GetVersion() string {

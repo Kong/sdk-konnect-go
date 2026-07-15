@@ -102,8 +102,8 @@ type AIGatewayModelModelConfigOutput struct {
 	Logging           *AIGatewayModelModelConfigLogging           `json:"logging,omitempty"`
 	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64                         `default:"8388608" json:"max_request_body_size"`
-	Model              AIGatewayModelModelConfigModel `json:"model"`
+	MaxRequestBodySize *int64                          `default:"8388608" json:"max_request_body_size"`
+	Model              *AIGatewayModelModelConfigModel `json:"model,omitempty"`
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfigOutput `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
@@ -115,7 +115,7 @@ func (a AIGatewayModelModelConfigOutput) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayModelModelConfigOutput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route", "model"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route"}); err != nil {
 		return err
 	}
 	return nil
@@ -149,9 +149,9 @@ func (a *AIGatewayModelModelConfigOutput) GetMaxRequestBodySize() *int64 {
 	return a.MaxRequestBodySize
 }
 
-func (a *AIGatewayModelModelConfigOutput) GetModel() AIGatewayModelModelConfigModel {
+func (a *AIGatewayModelModelConfigOutput) GetModel() *AIGatewayModelModelConfigModel {
 	if a == nil {
-		return AIGatewayModelModelConfigModel{}
+		return nil
 	}
 	return a.Model
 }
@@ -227,8 +227,8 @@ type AIGatewayModelModelConfig struct {
 	Logging           *AIGatewayModelModelConfigLogging           `json:"logging,omitempty"`
 	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64                         `default:"8388608" json:"max_request_body_size"`
-	Model              AIGatewayModelModelConfigModel `json:"model"`
+	MaxRequestBodySize *int64                          `default:"8388608" json:"max_request_body_size"`
+	Model              *AIGatewayModelModelConfigModel `json:"model,omitempty"`
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfig `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
@@ -240,7 +240,7 @@ func (a AIGatewayModelModelConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayModelModelConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route", "model"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route"}); err != nil {
 		return err
 	}
 	return nil
@@ -274,9 +274,9 @@ func (a *AIGatewayModelModelConfig) GetMaxRequestBodySize() *int64 {
 	return a.MaxRequestBodySize
 }
 
-func (a *AIGatewayModelModelConfig) GetModel() AIGatewayModelModelConfigModel {
+func (a *AIGatewayModelModelConfig) GetModel() *AIGatewayModelModelConfigModel {
 	if a == nil {
-		return AIGatewayModelModelConfigModel{}
+		return nil
 	}
 	return a.Model
 }

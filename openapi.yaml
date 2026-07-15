@@ -163,7 +163,7 @@ tags:
       be authorized to manage.
 
       For instance, they will be able to perform dynamic client registration
-      (DCR) with the provider. 
+      (DCR) with the provider.
 
       The DCR provider provides credentials to each DCR-enabled application in
       Konnect that can be used to access Product Versions that the app is
@@ -172,12 +172,16 @@ tags:
     description: >
       Application Auth Strategies are sets of plugin configurations that
       represent how the gateway will perform authentication and authorization
-      for a Product Version. 
+      for a Product Version.
 
-      Called “Auth Strategy” for short in the context of portals/applications. 
+      Called “Auth Strategy” for short in the context of portals/applications.
 
       The plugins are synced to any Gateway Service that is currently linked or
       becomes linked to the Product Version.
+
+      The optional `principals` property controls application-principal behavior
+      for V3 API Catalog portals and applications. It defaults to disabled when
+      omitted.
   - name: API
   - name: API Documentation
   - name: API Specification
@@ -9531,8 +9535,6 @@ paths:
       - $ref: '#/components/parameters/ApplicationId'
       - $ref: '#/components/parameters/RegistrationId'
     put:
-      x-internal: true
-      x-unstable: true
       summary: Update application consumer mapping
       description: >-
         Associates an existing Gateway Consumer with the application in the
@@ -9568,8 +9570,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
     delete:
-      x-internal: true
-      x-unstable: true
       summary: Delete application consumer mapping
       description: >-
         Removes the Gateway Consumer mapping associated with the application in
@@ -20777,6 +20777,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MCPServerControlPlaneMappingInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Control Plane Mappings
+    patch:
+      x-unstable: true
+      x-internal: true
+      operationId: patch-mcp-server-control-plane-mapping
+      summary: Patch MCP Server Control Plane Mapping
+      description: Update a mapping between an MCP Server and a Control Plane.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchMCPServerControlPlaneMappingRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PatchMCPServerControlPlaneMappingResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -35230,7 +35255,7 @@ components:
           enabled:
             $ref: '#/components/schemas/BooleanFieldFilter'
           scope:
-            $ref: '#/components/schemas/PluginScopeEqualsFilter'
+            $ref: '#/components/schemas/PluginScopeFilter'
           route:
             $ref: '#/components/schemas/StringFieldEqualsFilter'
           service:
@@ -40685,6 +40710,12 @@ components:
             $ref: '#/components/schemas/ListMCPServerControlPlaneMappingResponse'
     CreateMCPServerControlPlaneMappingResponse:
       description: Details of MCP Server - Control Plane mapping creation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServerControlPlaneMappingInfo'
+    PatchMCPServerControlPlaneMappingResponse:
+      description: Details of MCP Server - Control Plane mapping after update.
       content:
         application/json:
           schema:
@@ -48954,7 +48985,6 @@ components:
             type: string
     AuthStrategyPrincipals:
       title: AuthStrategyPrincipals
-      x-feature-flag: tdx-6623-application-principals
       description: >
         Application principal settings for this auth strategy. Runtime effect
         applies to V3 API Catalog (ACE) portals and
@@ -48974,10 +49004,10 @@ components:
       title: AppAuthStrategyConfigKeyAuth
       description: >
         The most basic mode to configure an Application Auth Strategy for an API
-        Product Version. 
+        Product Version.
 
         Using this mode will allow developers to generate API keys that will
-        authenticate their application requests. 
+        authenticate their application requests.
 
         Once authenticated, an application will be granted access to any Product
         Version it is registered for that is configured for Key Auth.
@@ -49053,14 +49083,14 @@ components:
       title: PartialAppAuthStrategyConfigOpenIDConnect
       description: >
         A more advanced mode to configure an API Product Version’s Application
-        Auth Strategy. 
+        Auth Strategy.
 
         Using this mode will allow developers to use API credentials issued from
-        an external IdP that will authenticate their application requests. 
+        an external IdP that will authenticate their application requests.
 
         Once authenticated, an application will be granted access to any Product
         Version it is registered for that is configured for the same Auth
-        Strategy. 
+        Strategy.
 
         An OIDC strategy may be used in conjunction with a DCR provider to
         automatically create the IdP application.
@@ -49093,14 +49123,14 @@ components:
       title: AppAuthStrategyConfigOpenIDConnect
       description: >
         A more advanced mode to configure an API Product Version’s Application
-        Auth Strategy. 
+        Auth Strategy.
 
         Using this mode will allow developers to use API credentials issued from
-        an external IdP that will authenticate their application requests. 
+        an external IdP that will authenticate their application requests.
 
         Once authenticated, an application will be granted access to any Product
         Version it is registered for that is configured for the same Auth
-        Strategy. 
+        Strategy.
 
         An OIDC strategy may be used in conjunction with a DCR provider to
         automatically create the IdP application.
@@ -49139,10 +49169,6 @@ components:
       description: Request for creating a Key Auth Application Auth Strategy
       type: object
       additionalProperties: false
-      x-property-annotations:
-        principals:
-          - x-internal
-          - x-unstable
       required:
         - name
         - display_name
@@ -49177,10 +49203,6 @@ components:
         Strategy
       type: object
       additionalProperties: false
-      x-property-annotations:
-        principals:
-          - x-internal
-          - x-unstable
       required:
         - id
         - name
@@ -49261,10 +49283,6 @@ components:
       description: Payload for creating an OIDC Application Auth Strategy
       type: object
       additionalProperties: false
-      x-property-annotations:
-        principals:
-          - x-internal
-          - x-unstable
       required:
         - name
         - display_name
@@ -49301,10 +49319,6 @@ components:
       description: Response payload from creating an OIDC Application Auth Strategy
       type: object
       additionalProperties: false
-      x-property-annotations:
-        principals:
-          - x-internal
-          - x-unstable
       required:
         - id
         - name
@@ -49424,10 +49438,6 @@ components:
       description: Request body for updating an Application Auth Strategy
       type: object
       additionalProperties: false
-      x-property-annotations:
-        principals:
-          - x-internal
-          - x-unstable
       properties:
         name:
           $ref: '#/components/schemas/AuthStrategyName'
@@ -52942,9 +52952,6 @@ components:
       type: object
       x-property-annotations:
         additional_data:
-          - x-internal
-          - x-unstable
-        consumer:
           - x-internal
           - x-unstable
       required:
@@ -82808,6 +82815,13 @@ components:
           format: uuid
           nullable: true
           description: The MCP resource ID associated with the MCP server.
+        mode:
+          allOf:
+            - $ref: '#/components/schemas/MCPServerControlPlaneMappingMode'
+          nullable: false
+          description: >
+            The deployment mode of the MCP server on the associated Control
+            Plane.
         version:
           type: string
           description: The version of the MCP server.
@@ -83473,12 +83487,23 @@ components:
             $ref: '#/components/schemas/MCPServerMCPResourceMapping'
         meta:
           $ref: '#/components/schemas/CursorMeta'
+    MCPServerControlPlaneMappingMode:
+      type: string
+      enum:
+        - basic
+        - advanced
+      description: >-
+        Whether the MCP Server deployment on this Control Plane is managed by
+        Konnect defaults ('basic') or configured directly via Kong Operator
+        custom resources ('advanced').
+      x-speakeasy-unknown-values: allow
     MCPServerControlPlaneMappingInfo:
       type: object
       required:
         - id
         - mcp_server_id
         - control_plane_id
+        - mode
         - created_at
         - updated_at
       properties:
@@ -83494,6 +83519,8 @@ components:
           type: string
           format: uuid
           description: The unique identifier for the Control Plane.
+        mode:
+          $ref: '#/components/schemas/MCPServerControlPlaneMappingMode'
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
@@ -83519,6 +83546,13 @@ components:
           type: string
           format: uuid
           description: The unique identifier for the Control Plane.
+        mode:
+          $ref: '#/components/schemas/MCPServerControlPlaneMappingMode'
+    PatchMCPServerControlPlaneMappingRequest:
+      type: object
+      properties:
+        mode:
+          $ref: '#/components/schemas/MCPServerControlPlaneMappingMode'
     MCPServerRuntime:
       title: MCPServerRuntime
       type: object
@@ -84201,7 +84235,6 @@ components:
       additionalProperties: false
       required:
         - route
-        - model
       properties:
         route:
           $ref: '#/components/schemas/AIGatewayRouteConfig'
@@ -84253,6 +84286,8 @@ components:
                 Display the model name selected in the X-Kong-LLM-Model response
                 header
               default: true
+          default:
+            name_header: true
         balancer:
           $ref: '#/components/schemas/AIGatewayModelBalancerConfig'
         proxy:
@@ -84263,7 +84298,6 @@ components:
       additionalProperties: false
       required:
         - route
-        - model
       properties:
         route:
           $ref: '#/components/schemas/AIGatewayRouteConfig'
@@ -84998,20 +85032,22 @@ components:
       oneOf:
         - $ref: '#/components/schemas/AIGatewayAzureEmbeddingsModelConfig'
         - $ref: '#/components/schemas/AIGatewayBedrockEmbeddingsModelConfig'
-        - $ref: '#/components/schemas/AIGatewayDatabricksEmbeddingsModelConfig'
         - $ref: '#/components/schemas/AIGatewayGeminiEmbeddingsModelConfig'
         - $ref: '#/components/schemas/AIGatewayHuggingfaceEmbeddingsModelConfig'
-        - $ref: '#/components/schemas/AIGatewayVercelEmbeddingsModelConfig'
+        - $ref: '#/components/schemas/AIGatewayMistralEmbeddingsModelConfig'
+        - $ref: '#/components/schemas/AIGatewayOllamaEmbeddingsModelConfig'
+        - $ref: '#/components/schemas/AIGatewayOpenaiEmbeddingsModelConfig'
         - $ref: '#/components/schemas/AIGatewayVertexEmbeddingsModelConfig'
       discriminator:
         propertyName: type
         mapping:
           azure: '#/components/schemas/AIGatewayAzureEmbeddingsModelConfig'
           bedrock: '#/components/schemas/AIGatewayBedrockEmbeddingsModelConfig'
-          databricks: '#/components/schemas/AIGatewayDatabricksEmbeddingsModelConfig'
           gemini: '#/components/schemas/AIGatewayGeminiEmbeddingsModelConfig'
           huggingface: '#/components/schemas/AIGatewayHuggingfaceEmbeddingsModelConfig'
-          vercel: '#/components/schemas/AIGatewayVercelEmbeddingsModelConfig'
+          mistral: '#/components/schemas/AIGatewayMistralEmbeddingsModelConfig'
+          ollama: '#/components/schemas/AIGatewayOllamaEmbeddingsModelConfig'
+          openai: '#/components/schemas/AIGatewayOpenaiEmbeddingsModelConfig'
           vertex: '#/components/schemas/AIGatewayVertexEmbeddingsModelConfig'
     AIGatewayAzureEmbeddingsModelConfig:
       type: object
@@ -85073,27 +85109,6 @@ components:
           type: string
           description: S3 URI for storing video generation outputs.
       description: AWS Bedrock-specific configuration for a model.
-    AIGatewayDatabricksEmbeddingsModelConfig:
-      type: object
-      x-internal: true
-      x-unstable: true
-      additionalProperties: false
-      required:
-        - upstream_url
-        - type
-        - workspace_instance_id
-      properties:
-        upstream_url:
-          type: string
-          description: The URL of the embeddings model.
-        type:
-          type: string
-          enum:
-            - databricks
-        workspace_instance_id:
-          type: string
-          description: The Databricks workspace instance ID.
-      description: Databricks-specific configuration for a model.
     AIGatewayGeminiEmbeddingsModelConfig:
       type: object
       x-internal: true
@@ -85138,7 +85153,32 @@ components:
           default: false
           description: Whether to wait for the model to load if it is not ready.
       description: Hugging Face-specific configuration for a model.
-    AIGatewayVercelEmbeddingsModelConfig:
+    AIGatewayMistralEmbeddingsModelConfig:
+      type: object
+      x-internal: true
+      x-unstable: true
+      additionalProperties: false
+      required:
+        - upstream_url
+        - type
+        - format
+      properties:
+        upstream_url:
+          type: string
+          description: The URL of the embeddings model.
+        type:
+          type: string
+          enum:
+            - mistral
+        format:
+          description: The request format to use when communicating with the Mistral model.
+          type: string
+          enum:
+            - ollama
+            - openai
+          x-speakeasy-unknown-values: allow
+      description: Mistral-specific configuration for a model.
+    AIGatewayOllamaEmbeddingsModelConfig:
       type: object
       x-internal: true
       x-unstable: true
@@ -85153,8 +85193,25 @@ components:
         type:
           type: string
           enum:
-            - vercel
-      description: Vercel AI Gateway-specific configuration for a model.
+            - ollama
+      description: Ollama-specific configuration for a model.
+    AIGatewayOpenaiEmbeddingsModelConfig:
+      type: object
+      x-internal: true
+      x-unstable: true
+      additionalProperties: false
+      required:
+        - upstream_url
+        - type
+      properties:
+        upstream_url:
+          type: string
+          description: The URL of the embeddings model.
+        type:
+          type: string
+          enum:
+            - openai
+      description: Openai-specific configuration for a model.
     AIGatewayVertexEmbeddingsModelConfig:
       type: object
       x-internal: true
@@ -86725,9 +86782,7 @@ components:
       description: List of policy references.
       items:
         type: string
-        description: >-
-          Reference to a policy instance. This is either the policy ID or the
-          policy name.
+        description: Reference to a policy instance by name.
     AIGatewayVaultConfigBaseProperties:
       type: object
       x-internal: true
@@ -91540,9 +91595,7 @@ components:
             for more details.
     AIGatewayIdentityProviderReference:
       type: string
-      description: >-
-        Reference to a provider instance. This is either the identity provider
-        ID or the identity provider name.
+      description: Reference to a identity provider instance by name.
       example: okta-ai-se
     AIGatewayIdentityProviderKeyAuth:
       type: object
@@ -91673,6 +91726,8 @@ components:
 
             See: https://developer.konghq.com/plugins/openid-connect/reference/
             for the list of properties
+          required:
+            - cache_tokens_salt
           properties:
             auth_methods:
               type: array
@@ -91746,12 +91801,15 @@ components:
             ssl_verify:
               type: boolean
               default: true
+            cache_tokens_salt:
+              type: string
+              description: >
+                Salt used for generating the cache key that is used for caching
+                the token endpoint requests.
       title: AIGatewayIdentityProviderOpenIDConnectConfig
     AIGatewayModelProviderReference:
       type: string
-      description: >-
-        Reference to a model provider instance. This is either the model
-        provider ID or the model provider name.
+      description: Reference to a model provider instance by name.
       example: azure-ai-se
     AIGatewayModelProviderAnthropic:
       type: object
@@ -93172,227 +93230,35 @@ components:
         mapping:
           key-auth: '#/components/schemas/AIGatewayIdentityProviderKeyAuthResponse'
           openid-connect: '#/components/schemas/AIGatewayIdentityProviderOpenIDConnectResponse'
+    AIGatewayIdentityProviderResponseProperties:
+      type: object
+      x-internal: true
+      x-unstable: true
+      required:
+        - id
+        - created_at
+        - updated_at
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
     AIGatewayIdentityProviderKeyAuthResponse:
-      type: object
+      title: AIGatewayIdentityProviderKeyAuthResponse
       x-internal: true
       x-unstable: true
-      description: Configuration for an identity provider.
-      required:
-        - display_name
-        - name
-        - type
-        - id
-        - created_at
-        - updated_at
-      properties:
-        display_name:
-          type: string
-          minLength: 1
-          maxLength: 256
-          description: The display name for this identity provider instance.
-          example: Okta AI SE
-        name:
-          x-internal: true
-          x-unstable: true
-          description: >-
-            A user-defined unique identifier for this identity provider
-            instance, used as a stable human-readable reference. This value is
-            immutable after creation.
-          example: okta-ai-se
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
-        labels:
-          $ref: '#/components/schemas/PublicLabels'
-        managed_by:
-          $ref: '#/components/schemas/ManagedBy'
-        type:
-          type: string
-          enum:
-            - key-auth
-        config:
-          type: object
-          additionalProperties: true
-          description: >
-            Configuration for the Kong Key auth identity provider.
-
-            For advanced use cases, additional config properties can be sent in
-            the request body.
-
-            See: https://developer.konghq.com/plugins/key-auth/reference/ for
-            the list of properties
-          properties:
-            hide_credentials:
-              type: boolean
-              description: >
-                An optional boolean value telling the plugin to show or hide the
-                credential from the upstream service.
-
-                If true, the plugin strips the credential from the request.
-              default: true
-            key_in_body:
-              type: boolean
-              description: >
-                If enabled, reads the request body.
-
-                Supported MIME types: application/www-form-urlencoded,
-                application/json, and multipart/form-data.
-              default: false
-            key_in_header:
-              type: boolean
-              description: >
-                If enabled (default), the plugin reads the request header and
-                tries to find the key in it.
-              default: true
-            key_in_query:
-              type: boolean
-              description: >
-                If enabled (default), the plugin reads the query parameter in
-                the request and tries to find the key in it.
-              default: true
-            key_names:
-              type: array
-              description: >
-                An array of strings containing the names of the keys to look for
-                in the request.
-              items:
-                type: string
-              default:
-                - apikey
-        id:
-          $ref: '#/components/schemas/UUID'
-        created_at:
-          $ref: '#/components/schemas/CreatedAt'
-        updated_at:
-          $ref: '#/components/schemas/UpdatedAt'
-      title: AIGatewayIdentityProviderKeyAuthConfig
+      allOf:
+        - $ref: '#/components/schemas/AIGatewayIdentityProviderKeyAuth'
+        - $ref: '#/components/schemas/AIGatewayIdentityProviderResponseProperties'
     AIGatewayIdentityProviderOpenIDConnectResponse:
-      type: object
+      title: AIGatewayIdentityProviderOpenIDConnectResponse
       x-internal: true
       x-unstable: true
-      description: Configuration for an identity provider.
-      required:
-        - display_name
-        - name
-        - type
-        - id
-        - created_at
-        - updated_at
-      properties:
-        display_name:
-          type: string
-          minLength: 1
-          maxLength: 256
-          description: The display name for this identity provider instance.
-          example: Okta AI SE
-        name:
-          x-internal: true
-          x-unstable: true
-          description: >-
-            A user-defined unique identifier for this identity provider
-            instance, used as a stable human-readable reference. This value is
-            immutable after creation.
-          example: okta-ai-se
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
-        labels:
-          $ref: '#/components/schemas/PublicLabels'
-        managed_by:
-          $ref: '#/components/schemas/ManagedBy'
-        type:
-          type: string
-          enum:
-            - openid-connect
-        config:
-          type: object
-          additionalProperties: true
-          description: >
-            Configuration for the OpenID Connect identity provider.
-
-            For advanced use cases, additional config properties can be sent in
-            the request body.
-
-            See: https://developer.konghq.com/plugins/openid-connect/reference/
-            for the list of properties
-          properties:
-            auth_methods:
-              type: array
-              description: Types of credentials/grants to enable.
-              items:
-                type: string
-                enum:
-                  - authorization_code
-                  - bearer
-                  - client_credentials
-                  - introspection
-                  - kong_oauth2
-                  - password
-                  - refresh_token
-                  - session
-                  - userinfo
-                x-speakeasy-unknown-values: allow
-              default:
-                - bearer
-                - client_credentials
-            client_id:
-              type: array
-              description: >
-                An array of strings representing the client id for the OpenID
-                Connect provider.
-
-                When multiple values are provided, the client ID and secrets
-                pairs correspond based on their locations in the array.
-              items:
-                type: string
-            client_secret:
-              type: array
-              writeOnly: true
-              description: >
-                An array of strings representing the client secret for the
-                OpenID Connect provider.
-
-                When multiple values are provided, the client ID and secrets
-                pairs correspond based on their locations in the array.
-              items:
-                type: string
-            consumer_claims:
-              type: array
-              description: >
-                An array containing an array of string paths representing the
-                location of the claim in a nested object.
-
-                For example, to map to user.info.id, set [ "user", "info", "id"
-                ].
-              items:
-                type: array
-                items:
-                  type: string
-            consumer_optional:
-              type: boolean
-              description: |
-                Do not terminate the request if consumer mapping fails.
-              default: false
-            issuer:
-              type: string
-              description: URL that identifies the OpenID Provider
-              example: https://dev-123456.okta.com
-            scopes:
-              type: array
-              description: |
-                This field is referenceable.
-              items:
-                type: string
-              default:
-                - openid
-            ssl_verify:
-              type: boolean
-              default: true
-        id:
-          $ref: '#/components/schemas/UUID'
-        created_at:
-          $ref: '#/components/schemas/CreatedAt'
-        updated_at:
-          $ref: '#/components/schemas/UpdatedAt'
-      title: AIGatewayIdentityProviderOpenIDConnectConfig
+      allOf:
+        - $ref: '#/components/schemas/AIGatewayIdentityProviderOpenIDConnect'
+        - $ref: '#/components/schemas/AIGatewayIdentityProviderResponseProperties'
     PublicLabels:
       title: PublicLabels
       type: object
@@ -95985,12 +95851,22 @@ components:
       required:
         - field
         - operator
-    PluginScopeEqualsFilter:
-      description: Filters on the given plugin scope value by exact match.
+    PluginScopeFilter:
+      description: Filters on the given plugin scope value.
       additionalProperties: false
+      oneOf:
+        - $ref: '#/components/schemas/PluginScopeEqualsFilter'
+        - $ref: '#/components/schemas/PluginScopeOrEqualsFilter'
+    PluginScopeEqualsFilter:
+      description: Filters on the given plugin scope value with an exact match
+      additionalProperties: false
+      required:
+        - eq
+      type: object
       properties:
         eq:
           type: string
+          example: service
           enum:
             - route
             - service
@@ -95998,6 +95874,18 @@ components:
             - consumer_group
             - global
           x-speakeasy-unknown-values: allow
+    PluginScopeOrEqualsFilter:
+      description: >-
+        Filters on the given plugin scope values with an exact match for any of
+        the values
+      additionalProperties: false
+      required:
+        - oeq
+      type: object
+      properties:
+        oeq:
+          type: string
+          example: global,service
     DataPlaneClientCertificate:
       x-speakeasy-entity: GatewayDataPlaneClientCertificate
       type: object

@@ -3,7 +3,7 @@
 ## Overview
 
 Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
-For instance, they will be able to perform dynamic client registration (DCR) with the provider. 
+For instance, they will be able to perform dynamic client registration (DCR) with the provider.
 The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
 
 

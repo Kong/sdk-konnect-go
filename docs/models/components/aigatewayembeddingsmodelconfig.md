@@ -17,12 +17,6 @@ aiGatewayEmbeddingsModelConfig := components.CreateAIGatewayEmbeddingsModelConfi
 aiGatewayEmbeddingsModelConfig := components.CreateAIGatewayEmbeddingsModelConfigBedrock(components.AIGatewayBedrockEmbeddingsModelConfig{/* values here */})
 ```
 
-### AIGatewayDatabricksEmbeddingsModelConfig
-
-```go
-aiGatewayEmbeddingsModelConfig := components.CreateAIGatewayEmbeddingsModelConfigDatabricks(components.AIGatewayDatabricksEmbeddingsModelConfig{/* values here */})
-```
-
 ### AIGatewayGeminiEmbeddingsModelConfig
 
 ```go
@@ -35,10 +29,22 @@ aiGatewayEmbeddingsModelConfig := components.CreateAIGatewayEmbeddingsModelConfi
 aiGatewayEmbeddingsModelConfig := components.CreateAIGatewayEmbeddingsModelConfigHuggingface(components.AIGatewayHuggingfaceEmbeddingsModelConfig{/* values here */})
 ```
 
-### AIGatewayVercelEmbeddingsModelConfig
+### AIGatewayMistralEmbeddingsModelConfig
 
 ```go
-aiGatewayEmbeddingsModelConfig := components.CreateAIGatewayEmbeddingsModelConfigVercel(components.AIGatewayVercelEmbeddingsModelConfig{/* values here */})
+aiGatewayEmbeddingsModelConfig := components.CreateAIGatewayEmbeddingsModelConfigMistral(components.AIGatewayMistralEmbeddingsModelConfig{/* values here */})
+```
+
+### AIGatewayOllamaEmbeddingsModelConfig
+
+```go
+aiGatewayEmbeddingsModelConfig := components.CreateAIGatewayEmbeddingsModelConfigOllama(components.AIGatewayOllamaEmbeddingsModelConfig{/* values here */})
+```
+
+### AIGatewayOpenaiEmbeddingsModelConfig
+
+```go
+aiGatewayEmbeddingsModelConfig := components.CreateAIGatewayEmbeddingsModelConfigOpenai(components.AIGatewayOpenaiEmbeddingsModelConfig{/* values here */})
 ```
 
 ### AIGatewayVertexEmbeddingsModelConfig
@@ -57,14 +63,16 @@ switch aiGatewayEmbeddingsModelConfig.Type {
 		// aiGatewayEmbeddingsModelConfig.AIGatewayAzureEmbeddingsModelConfig is populated
 	case components.AIGatewayEmbeddingsModelConfigTypeBedrock:
 		// aiGatewayEmbeddingsModelConfig.AIGatewayBedrockEmbeddingsModelConfig is populated
-	case components.AIGatewayEmbeddingsModelConfigTypeDatabricks:
-		// aiGatewayEmbeddingsModelConfig.AIGatewayDatabricksEmbeddingsModelConfig is populated
 	case components.AIGatewayEmbeddingsModelConfigTypeGemini:
 		// aiGatewayEmbeddingsModelConfig.AIGatewayGeminiEmbeddingsModelConfig is populated
 	case components.AIGatewayEmbeddingsModelConfigTypeHuggingface:
 		// aiGatewayEmbeddingsModelConfig.AIGatewayHuggingfaceEmbeddingsModelConfig is populated
-	case components.AIGatewayEmbeddingsModelConfigTypeVercel:
-		// aiGatewayEmbeddingsModelConfig.AIGatewayVercelEmbeddingsModelConfig is populated
+	case components.AIGatewayEmbeddingsModelConfigTypeMistral:
+		// aiGatewayEmbeddingsModelConfig.AIGatewayMistralEmbeddingsModelConfig is populated
+	case components.AIGatewayEmbeddingsModelConfigTypeOllama:
+		// aiGatewayEmbeddingsModelConfig.AIGatewayOllamaEmbeddingsModelConfig is populated
+	case components.AIGatewayEmbeddingsModelConfigTypeOpenai:
+		// aiGatewayEmbeddingsModelConfig.AIGatewayOpenaiEmbeddingsModelConfig is populated
 	case components.AIGatewayEmbeddingsModelConfigTypeVertex:
 		// aiGatewayEmbeddingsModelConfig.AIGatewayVertexEmbeddingsModelConfig is populated
 }

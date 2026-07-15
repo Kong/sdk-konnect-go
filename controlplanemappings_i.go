@@ -20,6 +20,9 @@ type ControlPlaneMappingsSDK interface {
 	// GetControlPlaneMapping - Get a mapping between an MCP Server and a CP
 	// Retrieve a mapping by its ID.
 	GetControlPlaneMapping(ctx context.Context, mcpServerID string, mappingID string, opts ...operations.Option) (*operations.GetControlPlaneMappingResponse, error)
+	// PatchMcpServerControlPlaneMapping - Patch MCP Server Control Plane Mapping
+	// Update a mapping between an MCP Server and a Control Plane.
+	PatchMcpServerControlPlaneMapping(ctx context.Context, request operations.PatchMcpServerControlPlaneMappingRequest, opts ...operations.Option) (*operations.PatchMcpServerControlPlaneMappingResponse, error)
 	// DeleteMcpServerControlPlaneMapping - Delete MCP Server Control Plane Mapping
 	// Delete a mapping between an MCP Server and a Control Plane.
 	DeleteMcpServerControlPlaneMapping(ctx context.Context, mcpServerID string, mappingID string, opts ...operations.Option) (*operations.DeleteMcpServerControlPlaneMappingResponse, error)

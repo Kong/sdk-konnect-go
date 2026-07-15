@@ -129,7 +129,7 @@ func main() {
                         Algorithm: components.AIGatewayModelBalancerLowestUsageConfigAlgorithmLowestUsage,
                     },
                 )),
-                Model: components.AIGatewayModelAPIConfigModel{},
+                Model: &components.AIGatewayModelAPIConfigModel{},
             },
             Capabilities: []components.Capabilities{
                 components.CapabilitiesFiles,
@@ -305,7 +305,7 @@ func main() {
                             Algorithm: components.AIGatewayModelBalancerLowestUsageConfigAlgorithmLowestUsage,
                         },
                     )),
-                    Model: components.AIGatewayModelAPIConfigModel{},
+                    Model: &components.AIGatewayModelAPIConfigModel{},
                 },
                 Capabilities: []components.Capabilities{
                     components.CapabilitiesFiles,

@@ -67,7 +67,7 @@ type Embeddings struct {
 	// When enabled, request-level auth parameters (such as API keys or bearer tokens) will override the static values defined for the provider.
 	//
 	AllowAuthOverride *bool `default:"false" json:"allow_auth_override"`
-	// Reference to a model provider instance. This is either the model provider ID or the model provider name.
+	// Reference to a model provider instance by name.
 	Provider string `json:"provider"`
 	// The name of the embeddings model.
 	Name string `json:"name"`
@@ -122,10 +122,6 @@ func (e *Embeddings) GetConfigBedrock() *AIGatewayBedrockEmbeddingsModelConfig {
 	return e.GetConfig().AIGatewayBedrockEmbeddingsModelConfig
 }
 
-func (e *Embeddings) GetConfigDatabricks() *AIGatewayDatabricksEmbeddingsModelConfig {
-	return e.GetConfig().AIGatewayDatabricksEmbeddingsModelConfig
-}
-
 func (e *Embeddings) GetConfigGemini() *AIGatewayGeminiEmbeddingsModelConfig {
 	return e.GetConfig().AIGatewayGeminiEmbeddingsModelConfig
 }
@@ -134,8 +130,16 @@ func (e *Embeddings) GetConfigHuggingface() *AIGatewayHuggingfaceEmbeddingsModel
 	return e.GetConfig().AIGatewayHuggingfaceEmbeddingsModelConfig
 }
 
-func (e *Embeddings) GetConfigVercel() *AIGatewayVercelEmbeddingsModelConfig {
-	return e.GetConfig().AIGatewayVercelEmbeddingsModelConfig
+func (e *Embeddings) GetConfigMistral() *AIGatewayMistralEmbeddingsModelConfig {
+	return e.GetConfig().AIGatewayMistralEmbeddingsModelConfig
+}
+
+func (e *Embeddings) GetConfigOllama() *AIGatewayOllamaEmbeddingsModelConfig {
+	return e.GetConfig().AIGatewayOllamaEmbeddingsModelConfig
+}
+
+func (e *Embeddings) GetConfigOpenai() *AIGatewayOpenaiEmbeddingsModelConfig {
+	return e.GetConfig().AIGatewayOpenaiEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigVertex() *AIGatewayVertexEmbeddingsModelConfig {

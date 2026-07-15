@@ -94,6 +94,13 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Workspace: "team-payments",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Filter: &components.PluginSearchFilter{
+            Scope: sdkkonnectgo.Pointer(components.CreatePluginScopeFilterPluginScopeEqualsFilter(
+                components.PluginScopeEqualsFilter{
+                    Eq: components.EqService,
+                },
+            )),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -156,6 +163,13 @@ func main() {
     res, err := s.Plugins.SearchPlugins(ctx, operations.SearchPluginsRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Filter: &components.PluginSearchFilter{
+            Scope: sdkkonnectgo.Pointer(components.CreatePluginScopeFilterPluginScopeEqualsFilter(
+                components.PluginScopeEqualsFilter{
+                    Eq: components.EqService,
+                },
+            )),
+        },
     })
     if err != nil {
         log.Fatal(err)

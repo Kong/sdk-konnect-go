@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type Eq string
 
 const (
@@ -27,14 +31,25 @@ func (e *Eq) IsExact() bool {
 	return false
 }
 
-// PluginScopeEqualsFilter - Filters on the given plugin scope value by exact match.
+// PluginScopeEqualsFilter - Filters on the given plugin scope value with an exact match
 type PluginScopeEqualsFilter struct {
-	Eq *Eq `queryParam:"name=eq"`
+	Eq Eq `queryParam:"name=eq"`
 }
 
-func (p *PluginScopeEqualsFilter) GetEq() *Eq {
+func (p PluginScopeEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PluginScopeEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (p *PluginScopeEqualsFilter) GetEq() Eq {
 	if p == nil {
-		return nil
+		return Eq("")
 	}
 	return p.Eq
 }

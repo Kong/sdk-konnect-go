@@ -97,8 +97,8 @@ type AIGatewayModelAPIConfigOutput struct {
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfigOutput `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
-	Proxy *AIGatewayProxyConfigOutput  `json:"proxy,omitempty"`
-	Model AIGatewayModelAPIConfigModel `json:"model"`
+	Proxy *AIGatewayProxyConfigOutput   `json:"proxy,omitempty"`
+	Model *AIGatewayModelAPIConfigModel `json:"model,omitempty"`
 }
 
 func (a AIGatewayModelAPIConfigOutput) MarshalJSON() ([]byte, error) {
@@ -106,7 +106,7 @@ func (a AIGatewayModelAPIConfigOutput) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayModelAPIConfigOutput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route", "model"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route"}); err != nil {
 		return err
 	}
 	return nil
@@ -203,9 +203,9 @@ func (a *AIGatewayModelAPIConfigOutput) GetProxy() *AIGatewayProxyConfigOutput {
 	return a.Proxy
 }
 
-func (a *AIGatewayModelAPIConfigOutput) GetModel() AIGatewayModelAPIConfigModel {
+func (a *AIGatewayModelAPIConfigOutput) GetModel() *AIGatewayModelAPIConfigModel {
 	if a == nil {
-		return AIGatewayModelAPIConfigModel{}
+		return nil
 	}
 	return a.Model
 }
@@ -222,8 +222,8 @@ type AIGatewayModelAPIConfig struct {
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfig `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
-	Proxy *AIGatewayProxyConfig        `json:"proxy,omitempty"`
-	Model AIGatewayModelAPIConfigModel `json:"model"`
+	Proxy *AIGatewayProxyConfig         `json:"proxy,omitempty"`
+	Model *AIGatewayModelAPIConfigModel `json:"model,omitempty"`
 }
 
 func (a AIGatewayModelAPIConfig) MarshalJSON() ([]byte, error) {
@@ -231,7 +231,7 @@ func (a AIGatewayModelAPIConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayModelAPIConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route", "model"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route"}); err != nil {
 		return err
 	}
 	return nil
@@ -328,9 +328,9 @@ func (a *AIGatewayModelAPIConfig) GetProxy() *AIGatewayProxyConfig {
 	return a.Proxy
 }
 
-func (a *AIGatewayModelAPIConfig) GetModel() AIGatewayModelAPIConfigModel {
+func (a *AIGatewayModelAPIConfig) GetModel() *AIGatewayModelAPIConfigModel {
 	if a == nil {
-		return AIGatewayModelAPIConfigModel{}
+		return nil
 	}
 	return a.Model
 }

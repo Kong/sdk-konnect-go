@@ -7,6 +7,7 @@
 * [ListControlPlaneMappings](#listcontrolplanemappings) - Get a list of CPs mapped to MCP Server
 * [CreateMcpServerControlPlaneMapping](#createmcpservercontrolplanemapping) - Create MCP Server CP Mapping
 * [GetControlPlaneMapping](#getcontrolplanemapping) - Get a mapping between an MCP Server and a CP
+* [PatchMcpServerControlPlaneMapping](#patchmcpservercontrolplanemapping) - Patch MCP Server Control Plane Mapping
 * [DeleteMcpServerControlPlaneMapping](#deletemcpservercontrolplanemapping) - Delete MCP Server Control Plane Mapping
 
 ## ListControlPlaneMappings
@@ -185,6 +186,69 @@ func main() {
 ### Response
 
 **[*operations.GetControlPlaneMappingResponse](../../models/operations/getcontrolplanemappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## PatchMcpServerControlPlaneMapping
+
+Update a mapping between an MCP Server and a Control Plane.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="patch-mcp-server-control-plane-mapping" method="patch" path="/v1/mcp-servers/{mcpServerId}/control-plane-mappings/{mappingId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ControlPlaneMappings.PatchMcpServerControlPlaneMapping(ctx, operations.PatchMcpServerControlPlaneMappingRequest{
+        McpServerID: "1fcda8ef-10c5-4856-a107-54895723bc0f",
+        MappingID: "1b7d7ac5-1b4e-4d99-9906-a42b9fa8eba6",
+        PatchMCPServerControlPlaneMappingRequest: components.PatchMCPServerControlPlaneMappingRequest{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.MCPServerControlPlaneMappingInfo != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                                      | :heavy_check_mark:                                                                                                         | The context to use for the request.                                                                                        |
+| `request`                                                                                                                  | [operations.PatchMcpServerControlPlaneMappingRequest](../../models/operations/patchmcpservercontrolplanemappingrequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
+| `opts`                                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                                   | :heavy_minus_sign:                                                                                                         | The options for this request.                                                                                              |
+
+### Response
+
+**[*operations.PatchMcpServerControlPlaneMappingResponse](../../models/operations/patchmcpservercontrolplanemappingresponse.md), error**
 
 ### Errors
 

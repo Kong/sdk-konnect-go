@@ -1,6 +1,6 @@
-# AIGatewayVercelEmbeddingsModelConfig
+# AIGatewayOpenaiEmbeddingsModelConfig
 
-Vercel AI Gateway-specific configuration for a model.
+Openai-specific configuration for a model.
 
 
 ## Fields
@@ -8,4 +8,4 @@ Vercel AI Gateway-specific configuration for a model.
 | Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
 | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `UpstreamURL`                                                                                                              | `string`                                                                                                                   | :heavy_check_mark:                                                                                                         | The URL of the embeddings model.                                                                                           |
-| `Type`                                                                                                                     | [components.AIGatewayVercelEmbeddingsModelConfigType](../../models/components/aigatewayvercelembeddingsmodelconfigtype.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `Type`                                                                                                                     | [components.AIGatewayOpenaiEmbeddingsModelConfigType](../../models/components/aigatewayopenaiembeddingsmodelconfigtype.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |

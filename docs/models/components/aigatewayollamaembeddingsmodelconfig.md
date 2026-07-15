@@ -1,0 +1,11 @@
+# AIGatewayOllamaEmbeddingsModelConfig
+
+Ollama-specific configuration for a model.
+
+
+## Fields
+
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `UpstreamURL`                                                                                                              | `string`                                                                                                                   | :heavy_check_mark:                                                                                                         | The URL of the embeddings model.                                                                                           |
+| `Type`                                                                                                                     | [components.AIGatewayOllamaEmbeddingsModelConfigType](../../models/components/aigatewayollamaembeddingsmodelconfigtype.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |

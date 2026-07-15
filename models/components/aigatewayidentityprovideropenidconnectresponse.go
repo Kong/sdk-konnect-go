@@ -82,8 +82,11 @@ type AIGatewayIdentityProviderOpenIDConnectResponseConfig struct {
 	Issuer *string `json:"issuer,omitempty"`
 	// This field is referenceable.
 	//
-	Scopes               []string       `json:"scopes,omitempty"`
-	SslVerify            *bool          `default:"true" json:"ssl_verify"`
+	Scopes    []string `json:"scopes,omitempty"`
+	SslVerify *bool    `default:"true" json:"ssl_verify"`
+	// Salt used for generating the cache key that is used for caching the token endpoint requests.
+	//
+	CacheTokensSalt      string         `json:"cache_tokens_salt"`
 	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
 }
 
@@ -92,7 +95,7 @@ func (a AIGatewayIdentityProviderOpenIDConnectResponseConfig) MarshalJSON() ([]b
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"cache_tokens_salt"}); err != nil {
 		return err
 	}
 	return nil
@@ -145,6 +148,13 @@ func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetSslVerify() *b
 		return nil
 	}
 	return a.SslVerify
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetCacheTokensSalt() string {
+	if a == nil {
+		return ""
+	}
+	return a.CacheTokensSalt
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetAdditionalProperties() map[string]any {

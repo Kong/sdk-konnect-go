@@ -388,3 +388,86 @@ func (_c *MockControlPlaneMappingsSDK_ListControlPlaneMappings_Call) RunAndRetur
 	_c.Call.Return(run)
 	return _c
 }
+
+// PatchMcpServerControlPlaneMapping provides a mock function for the type MockControlPlaneMappingsSDK
+func (_mock *MockControlPlaneMappingsSDK) PatchMcpServerControlPlaneMapping(ctx context.Context, request operations.PatchMcpServerControlPlaneMappingRequest, opts ...operations.Option) (*operations.PatchMcpServerControlPlaneMappingResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for PatchMcpServerControlPlaneMapping")
+	}
+
+	var r0 *operations.PatchMcpServerControlPlaneMappingResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.PatchMcpServerControlPlaneMappingRequest, ...operations.Option) (*operations.PatchMcpServerControlPlaneMappingResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.PatchMcpServerControlPlaneMappingRequest, ...operations.Option) *operations.PatchMcpServerControlPlaneMappingResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.PatchMcpServerControlPlaneMappingResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.PatchMcpServerControlPlaneMappingRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PatchMcpServerControlPlaneMapping'
+type MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call struct {
+	*mock.Call
+}
+
+// PatchMcpServerControlPlaneMapping is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.PatchMcpServerControlPlaneMappingRequest
+//   - opts ...operations.Option
+func (_e *MockControlPlaneMappingsSDK_Expecter) PatchMcpServerControlPlaneMapping(ctx any, request any, opts ...any) *MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call {
+	return &MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call{Call: _e.mock.On("PatchMcpServerControlPlaneMapping",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call) Run(run func(ctx context.Context, request operations.PatchMcpServerControlPlaneMappingRequest, opts ...operations.Option)) *MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.PatchMcpServerControlPlaneMappingRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.PatchMcpServerControlPlaneMappingRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call) Return(patchMcpServerControlPlaneMappingResponse *operations.PatchMcpServerControlPlaneMappingResponse, err error) *MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call {
+	_c.Call.Return(patchMcpServerControlPlaneMappingResponse, err)
+	return _c
+}
+
+func (_c *MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call) RunAndReturn(run func(ctx context.Context, request operations.PatchMcpServerControlPlaneMappingRequest, opts ...operations.Option) (*operations.PatchMcpServerControlPlaneMappingResponse, error)) *MockControlPlaneMappingsSDK_PatchMcpServerControlPlaneMapping_Call {
+	_c.Call.Return(run)
+	return _c
+}

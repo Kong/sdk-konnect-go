@@ -1,4 +1,4 @@
-# AIGatewayVercelEmbeddingsModelConfigType
+# AIGatewayOpenaiEmbeddingsModelConfigType
 
 ## Example Usage
 
@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.AIGatewayVercelEmbeddingsModelConfigTypeVercel
+value := components.AIGatewayOpenaiEmbeddingsModelConfigTypeOpenai
 ```
 
 
@@ -15,4 +15,4 @@ value := components.AIGatewayVercelEmbeddingsModelConfigTypeVercel
 
 | Name                                             | Value                                            |
 | ------------------------------------------------ | ------------------------------------------------ |
-| `AIGatewayVercelEmbeddingsModelConfigTypeVercel` | vercel                                           |
+| `AIGatewayOpenaiEmbeddingsModelConfigTypeOpenai` | openai                                           |

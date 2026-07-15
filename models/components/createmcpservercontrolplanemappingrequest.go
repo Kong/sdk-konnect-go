@@ -5,6 +5,8 @@ package components
 type CreateMCPServerControlPlaneMappingRequest struct {
 	// The unique identifier for the Control Plane.
 	ControlPlaneID string `json:"control_plane_id"`
+	// Whether the MCP Server deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
+	Mode *MCPServerControlPlaneMappingMode `json:"mode,omitempty"`
 }
 
 func (c *CreateMCPServerControlPlaneMappingRequest) GetControlPlaneID() string {
@@ -12,4 +14,11 @@ func (c *CreateMCPServerControlPlaneMappingRequest) GetControlPlaneID() string {
 		return ""
 	}
 	return c.ControlPlaneID
+}
+
+func (c *CreateMCPServerControlPlaneMappingRequest) GetMode() *MCPServerControlPlaneMappingMode {
+	if c == nil {
+		return nil
+	}
+	return c.Mode
 }
