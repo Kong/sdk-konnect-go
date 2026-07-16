@@ -9,6 +9,8 @@ type UpdatePortalIntegrations struct {
 	GoogleTagManager *UpdateGoogleTagManagerIntegration `json:"google_tag_manager,omitempty"`
 	// Partially update Google Analytics 4 integration configuration
 	GoogleAnalytics4 *UpdateGoogleAnalytics4Integration `json:"google_analytics_4,omitempty"`
+	// Partially update EqualWeb integration configuration
+	EqualWeb *UpdateEqualWebIntegration `json:"equal_web,omitempty"`
 }
 
 func (u *UpdatePortalIntegrations) GetGoogleTagManager() *UpdateGoogleTagManagerIntegration {
@@ -23,4 +25,11 @@ func (u *UpdatePortalIntegrations) GetGoogleAnalytics4() *UpdateGoogleAnalytics4
 		return nil
 	}
 	return u.GoogleAnalytics4
+}
+
+func (u *UpdatePortalIntegrations) GetEqualWeb() *UpdateEqualWebIntegration {
+	if u == nil {
+		return nil
+	}
+	return u.EqualWeb
 }

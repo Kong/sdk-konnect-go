@@ -70,6 +70,46 @@ func (a *ApplicationRegistrationApplication) GetName() string {
 	return a.Name
 }
 
+// ApplicationRegistrationConsumer - Details about the consumer associated with this application registration.
+type ApplicationRegistrationConsumer struct {
+	// Contains a unique identifier used for this resource.
+	ID string `json:"id"`
+	// The custom ID of the associated consumer.
+	CustomID *string `json:"custom_id,omitempty"`
+	// The username of the associated consumer.
+	Username *string `json:"username,omitempty"`
+	// Contains a unique identifier used for this resource.
+	ControlPlaneID string `json:"control_plane_id"`
+}
+
+func (a *ApplicationRegistrationConsumer) GetID() string {
+	if a == nil {
+		return ""
+	}
+	return a.ID
+}
+
+func (a *ApplicationRegistrationConsumer) GetCustomID() *string {
+	if a == nil {
+		return nil
+	}
+	return a.CustomID
+}
+
+func (a *ApplicationRegistrationConsumer) GetUsername() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Username
+}
+
+func (a *ApplicationRegistrationConsumer) GetControlPlaneID() string {
+	if a == nil {
+		return ""
+	}
+	return a.ControlPlaneID
+}
+
 // ApplicationRegistration - A application's registration for a specific version of an API.
 type ApplicationRegistration struct {
 	// Contains a unique identifier used for this resource.
@@ -85,6 +125,8 @@ type ApplicationRegistration struct {
 	API ApplicationRegistrationAPI `json:"api"`
 	// Details about the application the registration is part of.
 	Application ApplicationRegistrationApplication `json:"application"`
+	// Details about the consumer associated with this application registration.
+	Consumer *ApplicationRegistrationConsumer `json:"consumer,omitempty"`
 }
 
 func (a ApplicationRegistration) MarshalJSON() ([]byte, error) {
@@ -138,4 +180,11 @@ func (a *ApplicationRegistration) GetApplication() ApplicationRegistrationApplic
 		return ApplicationRegistrationApplication{}
 	}
 	return a.Application
+}
+
+func (a *ApplicationRegistration) GetConsumer() *ApplicationRegistrationConsumer {
+	if a == nil {
+		return nil
+	}
+	return a.Consumer
 }

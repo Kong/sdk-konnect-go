@@ -75,6 +75,13 @@ func (c *CreateDcrProviderResponse) GetCreateDcrProviderResponseOkta() *componen
 	return nil
 }
 
+func (c *CreateDcrProviderResponse) GetCreateDcrProviderResponseKongIdentity() *components.DCRProviderKongIdentity {
+	if v := c.GetCreateDcrProviderResponse(); v != nil {
+		return v.DCRProviderKongIdentity
+	}
+	return nil
+}
+
 func (c *CreateDcrProviderResponse) GetCreateDcrProviderResponseHTTP() *components.DCRProviderHTTP {
 	if v := c.GetCreateDcrProviderResponse(); v != nil {
 		return v.DCRProviderHTTP

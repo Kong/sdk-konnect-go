@@ -30,6 +30,7 @@ custom := components.LLMFiltersField("custom_value")
 | `LLMFiltersFieldLlmCacheStatus`        | llm_cache_status                       |
 | `LLMFiltersFieldLlmEmbeddingsModel`    | llm_embeddings_model                   |
 | `LLMFiltersFieldLlmEmbeddingsProvider` | llm_embeddings_provider                |
+| `LLMFiltersFieldPrincipal`             | principal                              |
 | `LLMFiltersFieldRealm`                 | realm                                  |
 | `LLMFiltersFieldRoute`                 | route                                  |
 | `LLMFiltersFieldStatusCode`            | status_code                            |
