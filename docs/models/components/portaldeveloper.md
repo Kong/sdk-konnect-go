@@ -1,5 +1,7 @@
 # PortalDeveloper
 
+Details about the created developer in a portal.
+
 
 ## Fields
 

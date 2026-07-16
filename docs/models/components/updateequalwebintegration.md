@@ -1,0 +1,12 @@
+# UpdateEqualWebIntegration
+
+Partially update EqualWeb integration configuration
+
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `Enabled`                                                                                                         | `*bool`                                                                                                           | :heavy_minus_sign:                                                                                                | Whether the integration is enabled                                                                                |
+| `Type`                                                                                                            | [*components.UpdateEqualWebIntegrationType](../../models/components/updateequalwebintegrationtype.md)             | :heavy_minus_sign:                                                                                                | The type of the integration for categorization                                                                    |
+| `ConfigData`                                                                                                      | [*components.EqualWebIntegrationConfigProperties](../../models/components/equalwebintegrationconfigproperties.md) | :heavy_minus_sign:                                                                                                | Configuration data for the Equalweb integration                                                                   |

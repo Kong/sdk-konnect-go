@@ -937,7 +937,7 @@ func (s *OpenMeterSubscriptions) GetSubscription(ctx context.Context, subscripti
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
-// List the addons of a subscription.
+// List the add-ons of a subscription.
 func (s *OpenMeterSubscriptions) ListSubscriptionAddons(ctx context.Context, request operations.ListSubscriptionAddonsRequest, opts ...operations.Option) (*operations.ListSubscriptionAddonsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{

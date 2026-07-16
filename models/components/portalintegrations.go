@@ -9,6 +9,8 @@ type PortalIntegrations struct {
 	GoogleTagManager *GoogleTagManagerIntegration `json:"google_tag_manager,omitempty"`
 	// Google Analytics integration configuration
 	GoogleAnalytics4 *GoogleAnalytics4Integration `json:"google_analytics_4,omitempty"`
+	// Equalweb integration configuration
+	EqualWeb *EqualWebIntegration `json:"equal_web,omitempty"`
 }
 
 func (p *PortalIntegrations) GetGoogleTagManager() *GoogleTagManagerIntegration {
@@ -23,4 +25,11 @@ func (p *PortalIntegrations) GetGoogleAnalytics4() *GoogleAnalytics4Integration 
 		return nil
 	}
 	return p.GoogleAnalytics4
+}
+
+func (p *PortalIntegrations) GetEqualWeb() *EqualWebIntegration {
+	if p == nil {
+		return nil
+	}
+	return p.EqualWeb
 }

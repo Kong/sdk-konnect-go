@@ -214,45 +214,45 @@ func (u IntegrationInstanceDisplayName) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type IntegrationInstanceDisplayName: all fields are null")
 }
 
-type ConfigType string
+type CatalogResourceRefFilterParametersConfigType string
 
 const (
-	ConfigTypeCatalogResourceConfigFieldFilter ConfigType = "CatalogResourceConfigFieldFilter"
+	CatalogResourceRefFilterParametersConfigTypeCatalogResourceConfigFieldFilter CatalogResourceRefFilterParametersConfigType = "CatalogResourceConfigFieldFilter"
 )
 
-type Config struct {
+type CatalogResourceRefFilterParametersConfig struct {
 	CatalogResourceConfigFieldFilter *CatalogResourceConfigFieldFilter `queryParam:"inline" union:"member"`
 
-	Type ConfigType
+	Type CatalogResourceRefFilterParametersConfigType
 }
 
-func CreateConfigCatalogResourceConfigFieldFilter(catalogResourceConfigFieldFilter CatalogResourceConfigFieldFilter) Config {
-	typ := ConfigTypeCatalogResourceConfigFieldFilter
+func CreateCatalogResourceRefFilterParametersConfigCatalogResourceConfigFieldFilter(catalogResourceConfigFieldFilter CatalogResourceConfigFieldFilter) CatalogResourceRefFilterParametersConfig {
+	typ := CatalogResourceRefFilterParametersConfigTypeCatalogResourceConfigFieldFilter
 
-	return Config{
+	return CatalogResourceRefFilterParametersConfig{
 		CatalogResourceConfigFieldFilter: &catalogResourceConfigFieldFilter,
 		Type:                             typ,
 	}
 }
 
-func (u *Config) UnmarshalJSON(data []byte) error {
+func (u *CatalogResourceRefFilterParametersConfig) UnmarshalJSON(data []byte) error {
 
 	var catalogResourceConfigFieldFilter CatalogResourceConfigFieldFilter = CatalogResourceConfigFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &catalogResourceConfigFieldFilter, "", true, nil); err == nil {
 		u.CatalogResourceConfigFieldFilter = &catalogResourceConfigFieldFilter
-		u.Type = ConfigTypeCatalogResourceConfigFieldFilter
+		u.Type = CatalogResourceRefFilterParametersConfigTypeCatalogResourceConfigFieldFilter
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Config", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CatalogResourceRefFilterParametersConfig", string(data))
 }
 
-func (u Config) MarshalJSON() ([]byte, error) {
+func (u CatalogResourceRefFilterParametersConfig) MarshalJSON() ([]byte, error) {
 	if u.CatalogResourceConfigFieldFilter != nil {
 		return utils.MarshalJSON(u.CatalogResourceConfigFieldFilter, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Config: all fields are null")
+	return nil, errors.New("could not marshal union type CatalogResourceRefFilterParametersConfig: all fields are null")
 }
 
 type IntegrationDataType string
@@ -307,9 +307,9 @@ type CatalogResourceRefFilterParameters struct {
 	IntegrationInstanceName        *IntegrationInstanceName        `queryParam:"name=integration.instance.name"`
 	IntegrationInstanceDisplayName *IntegrationInstanceDisplayName `queryParam:"name=integration.instance.display_name"`
 	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
-	Type            *StringFieldFilterExact `queryParam:"name=type"`
-	Config          *Config                 `queryParam:"name=config"`
-	IntegrationData *IntegrationData        `queryParam:"name=integration_data"`
+	Type            *StringFieldFilterExact                   `queryParam:"name=type"`
+	Config          *CatalogResourceRefFilterParametersConfig `queryParam:"name=config"`
+	IntegrationData *IntegrationData                          `queryParam:"name=integration_data"`
 	// Filter by a numeric value.
 	ServiceAssociations *NumericFieldFilter `queryParam:"name=service_associations"`
 	// Filters on the given datetime (RFC-3339) field value.
@@ -374,7 +374,7 @@ func (c *CatalogResourceRefFilterParameters) GetType() *StringFieldFilterExact {
 	return c.Type
 }
 
-func (c *CatalogResourceRefFilterParameters) GetConfig() *Config {
+func (c *CatalogResourceRefFilterParameters) GetConfig() *CatalogResourceRefFilterParametersConfig {
 	if c == nil {
 		return nil
 	}

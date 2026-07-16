@@ -3,35 +3,35 @@
 
 package components
 
-type CompatibilityStatus struct {
+type ListNodesCompatibilityStatus struct {
 	State  *string                  `json:"state,omitempty"`
 	Issues []NodeCompatibilityIssue `json:"issues,omitempty"`
 }
 
-func (c *CompatibilityStatus) GetState() *string {
-	if c == nil {
+func (l *ListNodesCompatibilityStatus) GetState() *string {
+	if l == nil {
 		return nil
 	}
-	return c.State
+	return l.State
 }
 
-func (c *CompatibilityStatus) GetIssues() []NodeCompatibilityIssue {
-	if c == nil {
+func (l *ListNodesCompatibilityStatus) GetIssues() []NodeCompatibilityIssue {
+	if l == nil {
 		return nil
 	}
-	return c.Issues
+	return l.Issues
 }
 
 type ListNodesItems struct {
-	ID                  *string              `json:"id,omitempty"`
-	Version             *string              `json:"version,omitempty"`
-	Hostname            *string              `json:"hostname,omitempty"`
-	LastPing            *int64               `json:"last_ping,omitempty"`
-	Type                *string              `json:"type,omitempty"`
-	CreatedAt           *int64               `json:"created_at,omitempty"`
-	UpdatedAt           *int64               `json:"updated_at,omitempty"`
-	ConfigHash          *string              `json:"config_hash,omitempty"`
-	CompatibilityStatus *CompatibilityStatus `json:"compatibility_status,omitempty"`
+	ID                  *string                       `json:"id,omitempty"`
+	Version             *string                       `json:"version,omitempty"`
+	Hostname            *string                       `json:"hostname,omitempty"`
+	LastPing            *int64                        `json:"last_ping,omitempty"`
+	Type                *string                       `json:"type,omitempty"`
+	CreatedAt           *int64                        `json:"created_at,omitempty"`
+	UpdatedAt           *int64                        `json:"updated_at,omitempty"`
+	ConfigHash          *string                       `json:"config_hash,omitempty"`
+	CompatibilityStatus *ListNodesCompatibilityStatus `json:"compatibility_status,omitempty"`
 }
 
 func (l *ListNodesItems) GetID() *string {
@@ -90,7 +90,7 @@ func (l *ListNodesItems) GetConfigHash() *string {
 	return l.ConfigHash
 }
 
-func (l *ListNodesItems) GetCompatibilityStatus() *CompatibilityStatus {
+func (l *ListNodesItems) GetCompatibilityStatus() *ListNodesCompatibilityStatus {
 	if l == nil {
 		return nil
 	}

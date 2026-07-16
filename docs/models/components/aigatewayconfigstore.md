@@ -1,0 +1,15 @@
+# AIGatewayConfigStore
+
+**Pre-release Feature**
+This feature is currently in beta and is subject to change.
+
+
+## Fields
+
+| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `DisplayName`                                                         | `*string`                                                             | :heavy_minus_sign:                                                    | The display name of the Config Store.                                 | my-config-store                                                       |
+| `Name`                                                                | `string`                                                              | :heavy_check_mark:                                                    | The name of the Config Store. This value is immutable after creation. | my-config-store                                                       |
+| `ID`                                                                  | `string`                                                              | :heavy_check_mark:                                                    | Contains a unique identifier used for this resource.                  | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                  |
+| `CreatedAt`                                                           | [time.Time](https://pkg.go.dev/time#Time)                             | :heavy_check_mark:                                                    | An ISO-8601 timestamp representation of entity creation date.         | 2022-11-04T20:10:06.927Z                                              |
+| `UpdatedAt`                                                           | [time.Time](https://pkg.go.dev/time#Time)                             | :heavy_check_mark:                                                    | An ISO-8601 timestamp representation of entity update date.           | 2022-11-04T20:10:06.927Z                                              |
