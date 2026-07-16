@@ -18,10 +18,11 @@ custom := components.AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProvider
 
 ## Values
 
-| Name                                                                     | Value                                                                    |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAuth0`   | auth0                                                                    |
-| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAzureAd` | azureAd                                                                  |
-| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeCurity`  | curity                                                                   |
-| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeOkta`    | okta                                                                     |
-| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeHTTP`    | http                                                                     |
+| Name                                                                          | Value                                                                         |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAuth0`        | auth0                                                                         |
+| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAzureAd`      | azureAd                                                                       |
+| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeCurity`       | curity                                                                        |
+| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeOkta`         | okta                                                                          |
+| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeHTTP`         | http                                                                          |
+| `AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeKongIdentity` | kongIdentity                                                                  |

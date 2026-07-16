@@ -11,48 +11,48 @@ import (
 
 // OpenMeterProductCatalogSDK is a generated interface.
 type OpenMeterProductCatalogSDK interface {
-	// ListOpenmeterAddons - List add-ons
+	// ListProductCatalogAddons - List add-ons
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// List all add-ons.
-	ListOpenmeterAddons(ctx context.Context, request operations.ListOpenmeterAddonsRequest, opts ...operations.Option) (*operations.ListOpenmeterAddonsResponse, error)
-	// CreateOpenmeterAddon - Create add-on
+	ListProductCatalogAddons(ctx context.Context, request operations.ListProductCatalogAddonsRequest, opts ...operations.Option) (*operations.ListProductCatalogAddonsResponse, error)
+	// CreateProductCatalogAddon - Create add-on
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Create a new add-on.
-	CreateOpenmeterAddon(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateOpenmeterAddonResponse, error)
-	// UpdateOpenmeterAddon - Update add-on
+	CreateProductCatalogAddon(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateProductCatalogAddonResponse, error)
+	// UpdateProductCatalogAddon - Update add-on
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Update an add-on by id.
-	UpdateOpenmeterAddon(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateOpenmeterAddonResponse, error)
-	// GetOpenmeterAddon - Get add-on
+	UpdateProductCatalogAddon(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateProductCatalogAddonResponse, error)
+	// GetProductCatalogAddon - Get add-on
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Get add-on by id.
-	GetOpenmeterAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetOpenmeterAddonResponse, error)
-	// DeleteOpenmeterAddon - Soft delete add-on
+	GetProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetProductCatalogAddonResponse, error)
+	// DeleteProductCatalogAddon - Soft delete add-on
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Soft delete add-on by id.
-	DeleteOpenmeterAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.DeleteOpenmeterAddonResponse, error)
-	// ArchiveOpenmeterAddon - Archive add-on version
+	DeleteProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.DeleteProductCatalogAddonResponse, error)
+	// ArchiveProductCatalogAddon - Archive add-on version
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Archive an add-on version.
-	ArchiveOpenmeterAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.ArchiveOpenmeterAddonResponse, error)
-	// PublishAddon - Publish add-on version
+	ArchiveProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.ArchiveProductCatalogAddonResponse, error)
+	// PublishProductCatalogAddon - Publish add-on version
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Publish an add-on version.
-	PublishAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.PublishAddonResponse, error)
+	PublishProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.PublishProductCatalogAddonResponse, error)
 	// ListPlans - List plans
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.

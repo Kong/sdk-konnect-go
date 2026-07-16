@@ -49,8 +49,8 @@ func main() {
     res, err := s.IntegrationInstanceAuthCredentials.CreateIntegrationInstanceAuthCredential(ctx, "3f51fa25-310a-421d-bd1a-007f859021a3", components.CreateCreateIntegrationInstanceAuthCredentialMultiKeyAuth(
         components.MultiKeyAuth{
             Config: components.CreateMultiKeyAuthCredentialConfig{
-                Headers: []components.Headers{
-                    components.Headers{
+                Headers: []components.MultiKeyAuthHeaders{
+                    components.MultiKeyAuthHeaders{
                         Name: "x-api-key",
                         Key: "9f2a3b4c8d6e7f00112233445566778899aabbccddeeff001122334455667788",
                     },

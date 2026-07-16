@@ -31,6 +31,7 @@ custom := components.Dimensions("custom_value")
 | `DimensionsDataPlaneNodeVersion`      | data_plane_node_version               |
 | `DimensionsGatewayService`            | gateway_service                       |
 | `DimensionsPortal`                    | portal                                |
+| `DimensionsPrincipal`                 | principal                             |
 | `DimensionsRealm`                     | realm                                 |
 | `DimensionsResponseSource`            | response_source                       |
 | `DimensionsRoute`                     | route                                 |

@@ -183,16 +183,23 @@ _generate.ifacemaker:
 
 TYPES_TO_MOCK := $(shell grep -B 20 'rootSDK.*\*SDK' *.go | grep 'type.*struct' | awk '{print $$2}' | sort -u)
 
-.PHONY: generate.interfaces
-generate.interfaces: ifacemaker
+.PHONY: remove.interfaces
+remove.interfaces:
 	@$(foreach s, $(TYPES_TO_MOCK), \
-		rm -f $(shell echo $(s) | tr 'A-Z' 'a-z')_i.go; \
+		rm -f $(shell echo $(s) | tr 'A-Z' 'a-z')_i.go; )
+
+.PHONY: generate.interfaces
+generate.interfaces: ifacemaker remove.interfaces
+	@$(foreach s, $(TYPES_TO_MOCK), \
 		$(MAKE) _generate.ifacemaker STRUCT=$(s) || exit 1;)
+
+.PHONY: remove.mocks
+remove.mocks:
+	rm -f test/mocks/zz_generated*.go
 
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks
-generate.mocks: mockery
-	rm -f test/mocks/zz_generated*.go
+generate.mocks: mockery remove.mocks
 	GODEBUG=gotypesalias=0 $(MOCKERY)
 
 # TYPES_TO_TEST_FIELDS is a list of types in models/components/
@@ -229,9 +236,12 @@ empty :=
 space := $(empty) $(empty)
 TYPES_TO_TEST_FIELDS_COMMA := $(subst $(space),$(comma),$(strip $(TYPES_TO_TEST_FIELDS)))
 
-.PHONY: generate.field_tests
-generate.field_tests:
+.PHONY: remove.field_tests
+remove.field_tests:
 	rm -rf test/fields/*
+
+.PHONY: generate.field_tests
+generate.field_tests: remove.field_tests
 	go run ./scripts/gentests/ \
 		-types=$(TYPES_TO_TEST_FIELDS_COMMA)
 

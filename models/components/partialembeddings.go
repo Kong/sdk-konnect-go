@@ -30,7 +30,7 @@ func (e *ParamLocation) IsExact() bool {
 	return false
 }
 
-type Auth struct {
+type PartialEmbeddingsAuth struct {
 	// If enabled, the authorization header or parameter can be overridden in the request by the value configured in the plugin.
 	AllowOverride *bool `default:"false" json:"allow_override"`
 	// Set this if you are using an AWS provider (Bedrock) and you are authenticating using static IAM User credentials. Setting this will override the AWS_ACCESS_KEY_ID environment variable for this plugin instance.
@@ -65,127 +65,127 @@ type Auth struct {
 	ParamValue *string `json:"param_value,omitempty"`
 }
 
-func (a Auth) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
+func (p PartialEmbeddingsAuth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
 }
 
-func (a *Auth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+func (p *PartialEmbeddingsAuth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *Auth) GetAllowOverride() *bool {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetAllowOverride() *bool {
+	if p == nil {
 		return nil
 	}
-	return a.AllowOverride
+	return p.AllowOverride
 }
 
-func (a *Auth) GetAwsAccessKeyID() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetAwsAccessKeyID() *string {
+	if p == nil {
 		return nil
 	}
-	return a.AwsAccessKeyID
+	return p.AwsAccessKeyID
 }
 
-func (a *Auth) GetAwsSecretAccessKey() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetAwsSecretAccessKey() *string {
+	if p == nil {
 		return nil
 	}
-	return a.AwsSecretAccessKey
+	return p.AwsSecretAccessKey
 }
 
-func (a *Auth) GetAzureClientID() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetAzureClientID() *string {
+	if p == nil {
 		return nil
 	}
-	return a.AzureClientID
+	return p.AzureClientID
 }
 
-func (a *Auth) GetAzureClientSecret() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetAzureClientSecret() *string {
+	if p == nil {
 		return nil
 	}
-	return a.AzureClientSecret
+	return p.AzureClientSecret
 }
 
-func (a *Auth) GetAzureTenantID() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetAzureTenantID() *string {
+	if p == nil {
 		return nil
 	}
-	return a.AzureTenantID
+	return p.AzureTenantID
 }
 
-func (a *Auth) GetAzureUseManagedIdentity() *bool {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetAzureUseManagedIdentity() *bool {
+	if p == nil {
 		return nil
 	}
-	return a.AzureUseManagedIdentity
+	return p.AzureUseManagedIdentity
 }
 
-func (a *Auth) GetGcpMetadataURL() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetGcpMetadataURL() *string {
+	if p == nil {
 		return nil
 	}
-	return a.GcpMetadataURL
+	return p.GcpMetadataURL
 }
 
-func (a *Auth) GetGcpOauthTokenURL() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetGcpOauthTokenURL() *string {
+	if p == nil {
 		return nil
 	}
-	return a.GcpOauthTokenURL
+	return p.GcpOauthTokenURL
 }
 
-func (a *Auth) GetGcpServiceAccountJSON() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetGcpServiceAccountJSON() *string {
+	if p == nil {
 		return nil
 	}
-	return a.GcpServiceAccountJSON
+	return p.GcpServiceAccountJSON
 }
 
-func (a *Auth) GetGcpUseServiceAccount() *bool {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetGcpUseServiceAccount() *bool {
+	if p == nil {
 		return nil
 	}
-	return a.GcpUseServiceAccount
+	return p.GcpUseServiceAccount
 }
 
-func (a *Auth) GetHeaderName() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetHeaderName() *string {
+	if p == nil {
 		return nil
 	}
-	return a.HeaderName
+	return p.HeaderName
 }
 
-func (a *Auth) GetHeaderValue() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetHeaderValue() *string {
+	if p == nil {
 		return nil
 	}
-	return a.HeaderValue
+	return p.HeaderValue
 }
 
-func (a *Auth) GetParamLocation() *ParamLocation {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetParamLocation() *ParamLocation {
+	if p == nil {
 		return nil
 	}
-	return a.ParamLocation
+	return p.ParamLocation
 }
 
-func (a *Auth) GetParamName() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetParamName() *string {
+	if p == nil {
 		return nil
 	}
-	return a.ParamName
+	return p.ParamName
 }
 
-func (a *Auth) GetParamValue() *string {
-	if a == nil {
+func (p *PartialEmbeddingsAuth) GetParamValue() *string {
+	if p == nil {
 		return nil
 	}
-	return a.ParamValue
+	return p.ParamValue
 }
 
 type Azure struct {
@@ -523,7 +523,7 @@ func (p *PartialEmbeddingsModel) GetProvider() PartialEmbeddingsProvider {
 }
 
 type PartialEmbeddingsConfig struct {
-	Auth  *Auth                  `json:"auth,omitempty"`
+	Auth  *PartialEmbeddingsAuth `json:"auth,omitempty"`
 	Model PartialEmbeddingsModel `json:"model"`
 }
 
@@ -538,7 +538,7 @@ func (p *PartialEmbeddingsConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (p *PartialEmbeddingsConfig) GetAuth() *Auth {
+func (p *PartialEmbeddingsConfig) GetAuth() *PartialEmbeddingsAuth {
 	if p == nil {
 		return nil
 	}

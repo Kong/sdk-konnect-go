@@ -39,89 +39,6 @@ func (_m *MockOpenMeterProductCatalogSDK) EXPECT() *MockOpenMeterProductCatalogS
 	return &MockOpenMeterProductCatalogSDK_Expecter{mock: &_m.Mock}
 }
 
-// ArchiveOpenmeterAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
-func (_mock *MockOpenMeterProductCatalogSDK) ArchiveOpenmeterAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.ArchiveOpenmeterAddonResponse, error) {
-	var tmpRet mock.Arguments
-	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, addonID, opts)
-	} else {
-		tmpRet = _mock.Called(ctx, addonID)
-	}
-	ret := tmpRet
-
-	if len(ret) == 0 {
-		panic("no return value specified for ArchiveOpenmeterAddon")
-	}
-
-	var r0 *operations.ArchiveOpenmeterAddonResponse
-	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.ArchiveOpenmeterAddonResponse, error)); ok {
-		return returnFunc(ctx, addonID, opts...)
-	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.ArchiveOpenmeterAddonResponse); ok {
-		r0 = returnFunc(ctx, addonID, opts...)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.ArchiveOpenmeterAddonResponse)
-		}
-	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, addonID, opts...)
-	} else {
-		r1 = ret.Error(1)
-	}
-	return r0, r1
-}
-
-// MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ArchiveOpenmeterAddon'
-type MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call struct {
-	*mock.Call
-}
-
-// ArchiveOpenmeterAddon is a helper method to define mock.On call
-//   - ctx context.Context
-//   - addonID string
-//   - opts ...operations.Option
-func (_e *MockOpenMeterProductCatalogSDK_Expecter) ArchiveOpenmeterAddon(ctx any, addonID any, opts ...any) *MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call {
-	return &MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call{Call: _e.mock.On("ArchiveOpenmeterAddon",
-		append([]any{ctx, addonID}, opts...)...)}
-}
-
-func (_c *MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call) Run(run func(ctx context.Context, addonID string, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		var arg0 context.Context
-		if args[0] != nil {
-			arg0 = args[0].(context.Context)
-		}
-		var arg1 string
-		if args[1] != nil {
-			arg1 = args[1].(string)
-		}
-		var arg2 []operations.Option
-		var variadicArgs []operations.Option
-		if len(args) > 2 {
-			variadicArgs = args[2].([]operations.Option)
-		}
-		arg2 = variadicArgs
-		run(
-			arg0,
-			arg1,
-			arg2...,
-		)
-	})
-	return _c
-}
-
-func (_c *MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call) Return(archiveOpenmeterAddonResponse *operations.ArchiveOpenmeterAddonResponse, err error) *MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call {
-	_c.Call.Return(archiveOpenmeterAddonResponse, err)
-	return _c
-}
-
-func (_c *MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, opts ...operations.Option) (*operations.ArchiveOpenmeterAddonResponse, error)) *MockOpenMeterProductCatalogSDK_ArchiveOpenmeterAddon_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
 // ArchivePlan provides a mock function for the type MockOpenMeterProductCatalogSDK
 func (_mock *MockOpenMeterProductCatalogSDK) ArchivePlan(ctx context.Context, planID string, opts ...operations.Option) (*operations.ArchivePlanResponse, error) {
 	var tmpRet mock.Arguments
@@ -205,63 +122,63 @@ func (_c *MockOpenMeterProductCatalogSDK_ArchivePlan_Call) RunAndReturn(run func
 	return _c
 }
 
-// CreateOpenmeterAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
-func (_mock *MockOpenMeterProductCatalogSDK) CreateOpenmeterAddon(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateOpenmeterAddonResponse, error) {
+// ArchiveProductCatalogAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
+func (_mock *MockOpenMeterProductCatalogSDK) ArchiveProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.ArchiveProductCatalogAddonResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, request, opts)
+		tmpRet = _mock.Called(ctx, addonID, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, request)
+		tmpRet = _mock.Called(ctx, addonID)
 	}
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateOpenmeterAddon")
+		panic("no return value specified for ArchiveProductCatalogAddon")
 	}
 
-	var r0 *operations.CreateOpenmeterAddonResponse
+	var r0 *operations.ArchiveProductCatalogAddonResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateAddonRequest1, ...operations.Option) (*operations.CreateOpenmeterAddonResponse, error)); ok {
-		return returnFunc(ctx, request, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.ArchiveProductCatalogAddonResponse, error)); ok {
+		return returnFunc(ctx, addonID, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateAddonRequest1, ...operations.Option) *operations.CreateOpenmeterAddonResponse); ok {
-		r0 = returnFunc(ctx, request, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.ArchiveProductCatalogAddonResponse); ok {
+		r0 = returnFunc(ctx, addonID, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.CreateOpenmeterAddonResponse)
+			r0 = ret.Get(0).(*operations.ArchiveProductCatalogAddonResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, components.CreateAddonRequest1, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, request, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, addonID, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
 	return r0, r1
 }
 
-// MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOpenmeterAddon'
-type MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call struct {
+// MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ArchiveProductCatalogAddon'
+type MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call struct {
 	*mock.Call
 }
 
-// CreateOpenmeterAddon is a helper method to define mock.On call
+// ArchiveProductCatalogAddon is a helper method to define mock.On call
 //   - ctx context.Context
-//   - request components.CreateAddonRequest1
+//   - addonID string
 //   - opts ...operations.Option
-func (_e *MockOpenMeterProductCatalogSDK_Expecter) CreateOpenmeterAddon(ctx any, request any, opts ...any) *MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call {
-	return &MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call{Call: _e.mock.On("CreateOpenmeterAddon",
-		append([]any{ctx, request}, opts...)...)}
+func (_e *MockOpenMeterProductCatalogSDK_Expecter) ArchiveProductCatalogAddon(ctx any, addonID any, opts ...any) *MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call {
+	return &MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call{Call: _e.mock.On("ArchiveProductCatalogAddon",
+		append([]any{ctx, addonID}, opts...)...)}
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call) Run(run func(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call) Run(run func(ctx context.Context, addonID string, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 components.CreateAddonRequest1
+		var arg1 string
 		if args[1] != nil {
-			arg1 = args[1].(components.CreateAddonRequest1)
+			arg1 = args[1].(string)
 		}
 		var arg2 []operations.Option
 		var variadicArgs []operations.Option
@@ -278,12 +195,12 @@ func (_c *MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call) Run(run func
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call) Return(createOpenmeterAddonResponse *operations.CreateOpenmeterAddonResponse, err error) *MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call {
-	_c.Call.Return(createOpenmeterAddonResponse, err)
+func (_c *MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call) Return(archiveProductCatalogAddonResponse *operations.ArchiveProductCatalogAddonResponse, err error) *MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call {
+	_c.Call.Return(archiveProductCatalogAddonResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call) RunAndReturn(run func(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateOpenmeterAddonResponse, error)) *MockOpenMeterProductCatalogSDK_CreateOpenmeterAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, opts ...operations.Option) (*operations.ArchiveProductCatalogAddonResponse, error)) *MockOpenMeterProductCatalogSDK_ArchiveProductCatalogAddon_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -460,63 +377,63 @@ func (_c *MockOpenMeterProductCatalogSDK_CreatePlanAddon_Call) RunAndReturn(run 
 	return _c
 }
 
-// DeleteOpenmeterAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
-func (_mock *MockOpenMeterProductCatalogSDK) DeleteOpenmeterAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.DeleteOpenmeterAddonResponse, error) {
+// CreateProductCatalogAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
+func (_mock *MockOpenMeterProductCatalogSDK) CreateProductCatalogAddon(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateProductCatalogAddonResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, addonID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, addonID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteOpenmeterAddon")
+		panic("no return value specified for CreateProductCatalogAddon")
 	}
 
-	var r0 *operations.DeleteOpenmeterAddonResponse
+	var r0 *operations.CreateProductCatalogAddonResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteOpenmeterAddonResponse, error)); ok {
-		return returnFunc(ctx, addonID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateAddonRequest1, ...operations.Option) (*operations.CreateProductCatalogAddonResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteOpenmeterAddonResponse); ok {
-		r0 = returnFunc(ctx, addonID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateAddonRequest1, ...operations.Option) *operations.CreateProductCatalogAddonResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.DeleteOpenmeterAddonResponse)
+			r0 = ret.Get(0).(*operations.CreateProductCatalogAddonResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, addonID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.CreateAddonRequest1, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
 	return r0, r1
 }
 
-// MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOpenmeterAddon'
-type MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call struct {
+// MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateProductCatalogAddon'
+type MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call struct {
 	*mock.Call
 }
 
-// DeleteOpenmeterAddon is a helper method to define mock.On call
+// CreateProductCatalogAddon is a helper method to define mock.On call
 //   - ctx context.Context
-//   - addonID string
+//   - request components.CreateAddonRequest1
 //   - opts ...operations.Option
-func (_e *MockOpenMeterProductCatalogSDK_Expecter) DeleteOpenmeterAddon(ctx any, addonID any, opts ...any) *MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call {
-	return &MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call{Call: _e.mock.On("DeleteOpenmeterAddon",
-		append([]any{ctx, addonID}, opts...)...)}
+func (_e *MockOpenMeterProductCatalogSDK_Expecter) CreateProductCatalogAddon(ctx any, request any, opts ...any) *MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call {
+	return &MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call{Call: _e.mock.On("CreateProductCatalogAddon",
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call) Run(run func(ctx context.Context, addonID string, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call) Run(run func(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 components.CreateAddonRequest1
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(components.CreateAddonRequest1)
 		}
 		var arg2 []operations.Option
 		var variadicArgs []operations.Option
@@ -533,12 +450,12 @@ func (_c *MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call) Run(run func
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call) Return(deleteOpenmeterAddonResponse *operations.DeleteOpenmeterAddonResponse, err error) *MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call {
-	_c.Call.Return(deleteOpenmeterAddonResponse, err)
+func (_c *MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call) Return(createProductCatalogAddonResponse *operations.CreateProductCatalogAddonResponse, err error) *MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call {
+	_c.Call.Return(createProductCatalogAddonResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, opts ...operations.Option) (*operations.DeleteOpenmeterAddonResponse, error)) *MockOpenMeterProductCatalogSDK_DeleteOpenmeterAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call) RunAndReturn(run func(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateProductCatalogAddonResponse, error)) *MockOpenMeterProductCatalogSDK_CreateProductCatalogAddon_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -715,8 +632,8 @@ func (_c *MockOpenMeterProductCatalogSDK_DeletePlanAddon_Call) RunAndReturn(run 
 	return _c
 }
 
-// GetOpenmeterAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
-func (_mock *MockOpenMeterProductCatalogSDK) GetOpenmeterAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetOpenmeterAddonResponse, error) {
+// DeleteProductCatalogAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
+func (_mock *MockOpenMeterProductCatalogSDK) DeleteProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.DeleteProductCatalogAddonResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
 		tmpRet = _mock.Called(ctx, addonID, opts)
@@ -726,19 +643,19 @@ func (_mock *MockOpenMeterProductCatalogSDK) GetOpenmeterAddon(ctx context.Conte
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetOpenmeterAddon")
+		panic("no return value specified for DeleteProductCatalogAddon")
 	}
 
-	var r0 *operations.GetOpenmeterAddonResponse
+	var r0 *operations.DeleteProductCatalogAddonResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetOpenmeterAddonResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteProductCatalogAddonResponse, error)); ok {
 		return returnFunc(ctx, addonID, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetOpenmeterAddonResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteProductCatalogAddonResponse); ok {
 		r0 = returnFunc(ctx, addonID, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.GetOpenmeterAddonResponse)
+			r0 = ret.Get(0).(*operations.DeleteProductCatalogAddonResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
@@ -749,21 +666,21 @@ func (_mock *MockOpenMeterProductCatalogSDK) GetOpenmeterAddon(ctx context.Conte
 	return r0, r1
 }
 
-// MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOpenmeterAddon'
-type MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call struct {
+// MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProductCatalogAddon'
+type MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call struct {
 	*mock.Call
 }
 
-// GetOpenmeterAddon is a helper method to define mock.On call
+// DeleteProductCatalogAddon is a helper method to define mock.On call
 //   - ctx context.Context
 //   - addonID string
 //   - opts ...operations.Option
-func (_e *MockOpenMeterProductCatalogSDK_Expecter) GetOpenmeterAddon(ctx any, addonID any, opts ...any) *MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call {
-	return &MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call{Call: _e.mock.On("GetOpenmeterAddon",
+func (_e *MockOpenMeterProductCatalogSDK_Expecter) DeleteProductCatalogAddon(ctx any, addonID any, opts ...any) *MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call {
+	return &MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call{Call: _e.mock.On("DeleteProductCatalogAddon",
 		append([]any{ctx, addonID}, opts...)...)}
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call) Run(run func(ctx context.Context, addonID string, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call) Run(run func(ctx context.Context, addonID string, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -788,12 +705,12 @@ func (_c *MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call) Run(run func(ct
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call) Return(getOpenmeterAddonResponse *operations.GetOpenmeterAddonResponse, err error) *MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call {
-	_c.Call.Return(getOpenmeterAddonResponse, err)
+func (_c *MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call) Return(deleteProductCatalogAddonResponse *operations.DeleteProductCatalogAddonResponse, err error) *MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call {
+	_c.Call.Return(deleteProductCatalogAddonResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetOpenmeterAddonResponse, error)) *MockOpenMeterProductCatalogSDK_GetOpenmeterAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, opts ...operations.Option) (*operations.DeleteProductCatalogAddonResponse, error)) *MockOpenMeterProductCatalogSDK_DeleteProductCatalogAddon_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -970,63 +887,63 @@ func (_c *MockOpenMeterProductCatalogSDK_GetPlanAddon_Call) RunAndReturn(run fun
 	return _c
 }
 
-// ListOpenmeterAddons provides a mock function for the type MockOpenMeterProductCatalogSDK
-func (_mock *MockOpenMeterProductCatalogSDK) ListOpenmeterAddons(ctx context.Context, request operations.ListOpenmeterAddonsRequest, opts ...operations.Option) (*operations.ListOpenmeterAddonsResponse, error) {
+// GetProductCatalogAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
+func (_mock *MockOpenMeterProductCatalogSDK) GetProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetProductCatalogAddonResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, request, opts)
+		tmpRet = _mock.Called(ctx, addonID, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, request)
+		tmpRet = _mock.Called(ctx, addonID)
 	}
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListOpenmeterAddons")
+		panic("no return value specified for GetProductCatalogAddon")
 	}
 
-	var r0 *operations.ListOpenmeterAddonsResponse
+	var r0 *operations.GetProductCatalogAddonResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListOpenmeterAddonsRequest, ...operations.Option) (*operations.ListOpenmeterAddonsResponse, error)); ok {
-		return returnFunc(ctx, request, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetProductCatalogAddonResponse, error)); ok {
+		return returnFunc(ctx, addonID, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListOpenmeterAddonsRequest, ...operations.Option) *operations.ListOpenmeterAddonsResponse); ok {
-		r0 = returnFunc(ctx, request, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetProductCatalogAddonResponse); ok {
+		r0 = returnFunc(ctx, addonID, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.ListOpenmeterAddonsResponse)
+			r0 = ret.Get(0).(*operations.GetProductCatalogAddonResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListOpenmeterAddonsRequest, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, request, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, addonID, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
 	return r0, r1
 }
 
-// MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOpenmeterAddons'
-type MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call struct {
+// MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProductCatalogAddon'
+type MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call struct {
 	*mock.Call
 }
 
-// ListOpenmeterAddons is a helper method to define mock.On call
+// GetProductCatalogAddon is a helper method to define mock.On call
 //   - ctx context.Context
-//   - request operations.ListOpenmeterAddonsRequest
+//   - addonID string
 //   - opts ...operations.Option
-func (_e *MockOpenMeterProductCatalogSDK_Expecter) ListOpenmeterAddons(ctx any, request any, opts ...any) *MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call {
-	return &MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call{Call: _e.mock.On("ListOpenmeterAddons",
-		append([]any{ctx, request}, opts...)...)}
+func (_e *MockOpenMeterProductCatalogSDK_Expecter) GetProductCatalogAddon(ctx any, addonID any, opts ...any) *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call {
+	return &MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call{Call: _e.mock.On("GetProductCatalogAddon",
+		append([]any{ctx, addonID}, opts...)...)}
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call) Run(run func(ctx context.Context, request operations.ListOpenmeterAddonsRequest, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call {
+func (_c *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call) Run(run func(ctx context.Context, addonID string, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 operations.ListOpenmeterAddonsRequest
+		var arg1 string
 		if args[1] != nil {
-			arg1 = args[1].(operations.ListOpenmeterAddonsRequest)
+			arg1 = args[1].(string)
 		}
 		var arg2 []operations.Option
 		var variadicArgs []operations.Option
@@ -1043,12 +960,12 @@ func (_c *MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call) Run(run func(
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call) Return(listOpenmeterAddonsResponse *operations.ListOpenmeterAddonsResponse, err error) *MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call {
-	_c.Call.Return(listOpenmeterAddonsResponse, err)
+func (_c *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call) Return(getProductCatalogAddonResponse *operations.GetProductCatalogAddonResponse, err error) *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call {
+	_c.Call.Return(getProductCatalogAddonResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call) RunAndReturn(run func(ctx context.Context, request operations.ListOpenmeterAddonsRequest, opts ...operations.Option) (*operations.ListOpenmeterAddonsResponse, error)) *MockOpenMeterProductCatalogSDK_ListOpenmeterAddons_Call {
+func (_c *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetProductCatalogAddonResponse, error)) *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1225,63 +1142,63 @@ func (_c *MockOpenMeterProductCatalogSDK_ListPlans_Call) RunAndReturn(run func(c
 	return _c
 }
 
-// PublishAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
-func (_mock *MockOpenMeterProductCatalogSDK) PublishAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.PublishAddonResponse, error) {
+// ListProductCatalogAddons provides a mock function for the type MockOpenMeterProductCatalogSDK
+func (_mock *MockOpenMeterProductCatalogSDK) ListProductCatalogAddons(ctx context.Context, request operations.ListProductCatalogAddonsRequest, opts ...operations.Option) (*operations.ListProductCatalogAddonsResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, addonID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, addonID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for PublishAddon")
+		panic("no return value specified for ListProductCatalogAddons")
 	}
 
-	var r0 *operations.PublishAddonResponse
+	var r0 *operations.ListProductCatalogAddonsResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.PublishAddonResponse, error)); ok {
-		return returnFunc(ctx, addonID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListProductCatalogAddonsRequest, ...operations.Option) (*operations.ListProductCatalogAddonsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.PublishAddonResponse); ok {
-		r0 = returnFunc(ctx, addonID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListProductCatalogAddonsRequest, ...operations.Option) *operations.ListProductCatalogAddonsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.PublishAddonResponse)
+			r0 = ret.Get(0).(*operations.ListProductCatalogAddonsResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, addonID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListProductCatalogAddonsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
 	return r0, r1
 }
 
-// MockOpenMeterProductCatalogSDK_PublishAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PublishAddon'
-type MockOpenMeterProductCatalogSDK_PublishAddon_Call struct {
+// MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProductCatalogAddons'
+type MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call struct {
 	*mock.Call
 }
 
-// PublishAddon is a helper method to define mock.On call
+// ListProductCatalogAddons is a helper method to define mock.On call
 //   - ctx context.Context
-//   - addonID string
+//   - request operations.ListProductCatalogAddonsRequest
 //   - opts ...operations.Option
-func (_e *MockOpenMeterProductCatalogSDK_Expecter) PublishAddon(ctx any, addonID any, opts ...any) *MockOpenMeterProductCatalogSDK_PublishAddon_Call {
-	return &MockOpenMeterProductCatalogSDK_PublishAddon_Call{Call: _e.mock.On("PublishAddon",
-		append([]any{ctx, addonID}, opts...)...)}
+func (_e *MockOpenMeterProductCatalogSDK_Expecter) ListProductCatalogAddons(ctx any, request any, opts ...any) *MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call {
+	return &MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call{Call: _e.mock.On("ListProductCatalogAddons",
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_PublishAddon_Call) Run(run func(ctx context.Context, addonID string, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_PublishAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call) Run(run func(ctx context.Context, request operations.ListProductCatalogAddonsRequest, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.ListProductCatalogAddonsRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.ListProductCatalogAddonsRequest)
 		}
 		var arg2 []operations.Option
 		var variadicArgs []operations.Option
@@ -1298,12 +1215,12 @@ func (_c *MockOpenMeterProductCatalogSDK_PublishAddon_Call) Run(run func(ctx con
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_PublishAddon_Call) Return(publishAddonResponse *operations.PublishAddonResponse, err error) *MockOpenMeterProductCatalogSDK_PublishAddon_Call {
-	_c.Call.Return(publishAddonResponse, err)
+func (_c *MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call) Return(listProductCatalogAddonsResponse *operations.ListProductCatalogAddonsResponse, err error) *MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call {
+	_c.Call.Return(listProductCatalogAddonsResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_PublishAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, opts ...operations.Option) (*operations.PublishAddonResponse, error)) *MockOpenMeterProductCatalogSDK_PublishAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call) RunAndReturn(run func(ctx context.Context, request operations.ListProductCatalogAddonsRequest, opts ...operations.Option) (*operations.ListProductCatalogAddonsResponse, error)) *MockOpenMeterProductCatalogSDK_ListProductCatalogAddons_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1391,56 +1308,55 @@ func (_c *MockOpenMeterProductCatalogSDK_PublishPlan_Call) RunAndReturn(run func
 	return _c
 }
 
-// UpdateOpenmeterAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
-func (_mock *MockOpenMeterProductCatalogSDK) UpdateOpenmeterAddon(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateOpenmeterAddonResponse, error) {
+// PublishProductCatalogAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
+func (_mock *MockOpenMeterProductCatalogSDK) PublishProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.PublishProductCatalogAddonResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, addonID, upsertAddonRequest, opts)
+		tmpRet = _mock.Called(ctx, addonID, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, addonID, upsertAddonRequest)
+		tmpRet = _mock.Called(ctx, addonID)
 	}
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateOpenmeterAddon")
+		panic("no return value specified for PublishProductCatalogAddon")
 	}
 
-	var r0 *operations.UpdateOpenmeterAddonResponse
+	var r0 *operations.PublishProductCatalogAddonResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpsertAddonRequest, ...operations.Option) (*operations.UpdateOpenmeterAddonResponse, error)); ok {
-		return returnFunc(ctx, addonID, upsertAddonRequest, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.PublishProductCatalogAddonResponse, error)); ok {
+		return returnFunc(ctx, addonID, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpsertAddonRequest, ...operations.Option) *operations.UpdateOpenmeterAddonResponse); ok {
-		r0 = returnFunc(ctx, addonID, upsertAddonRequest, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.PublishProductCatalogAddonResponse); ok {
+		r0 = returnFunc(ctx, addonID, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.UpdateOpenmeterAddonResponse)
+			r0 = ret.Get(0).(*operations.PublishProductCatalogAddonResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpsertAddonRequest, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, addonID, upsertAddonRequest, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, addonID, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
 	return r0, r1
 }
 
-// MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOpenmeterAddon'
-type MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call struct {
+// MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PublishProductCatalogAddon'
+type MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call struct {
 	*mock.Call
 }
 
-// UpdateOpenmeterAddon is a helper method to define mock.On call
+// PublishProductCatalogAddon is a helper method to define mock.On call
 //   - ctx context.Context
 //   - addonID string
-//   - upsertAddonRequest components.UpsertAddonRequest
 //   - opts ...operations.Option
-func (_e *MockOpenMeterProductCatalogSDK_Expecter) UpdateOpenmeterAddon(ctx any, addonID any, upsertAddonRequest any, opts ...any) *MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call {
-	return &MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call{Call: _e.mock.On("UpdateOpenmeterAddon",
-		append([]any{ctx, addonID, upsertAddonRequest}, opts...)...)}
+func (_e *MockOpenMeterProductCatalogSDK_Expecter) PublishProductCatalogAddon(ctx any, addonID any, opts ...any) *MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call {
+	return &MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call{Call: _e.mock.On("PublishProductCatalogAddon",
+		append([]any{ctx, addonID}, opts...)...)}
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call) Run(run func(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call) Run(run func(ctx context.Context, addonID string, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -1450,32 +1366,27 @@ func (_c *MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call) Run(run func
 		if args[1] != nil {
 			arg1 = args[1].(string)
 		}
-		var arg2 components.UpsertAddonRequest
-		if args[2] != nil {
-			arg2 = args[2].(components.UpsertAddonRequest)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call) Return(updateOpenmeterAddonResponse *operations.UpdateOpenmeterAddonResponse, err error) *MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call {
-	_c.Call.Return(updateOpenmeterAddonResponse, err)
+func (_c *MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call) Return(publishProductCatalogAddonResponse *operations.PublishProductCatalogAddonResponse, err error) *MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call {
+	_c.Call.Return(publishProductCatalogAddonResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateOpenmeterAddonResponse, error)) *MockOpenMeterProductCatalogSDK_UpdateOpenmeterAddon_Call {
+func (_c *MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, opts ...operations.Option) (*operations.PublishProductCatalogAddonResponse, error)) *MockOpenMeterProductCatalogSDK_PublishProductCatalogAddon_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1648,6 +1559,95 @@ func (_c *MockOpenMeterProductCatalogSDK_UpdatePlanAddon_Call) Return(updatePlan
 }
 
 func (_c *MockOpenMeterProductCatalogSDK_UpdatePlanAddon_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdatePlanAddonRequest, opts ...operations.Option) (*operations.UpdatePlanAddonResponse, error)) *MockOpenMeterProductCatalogSDK_UpdatePlanAddon_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateProductCatalogAddon provides a mock function for the type MockOpenMeterProductCatalogSDK
+func (_mock *MockOpenMeterProductCatalogSDK) UpdateProductCatalogAddon(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateProductCatalogAddonResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, addonID, upsertAddonRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, addonID, upsertAddonRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateProductCatalogAddon")
+	}
+
+	var r0 *operations.UpdateProductCatalogAddonResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpsertAddonRequest, ...operations.Option) (*operations.UpdateProductCatalogAddonResponse, error)); ok {
+		return returnFunc(ctx, addonID, upsertAddonRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpsertAddonRequest, ...operations.Option) *operations.UpdateProductCatalogAddonResponse); ok {
+		r0 = returnFunc(ctx, addonID, upsertAddonRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateProductCatalogAddonResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpsertAddonRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, addonID, upsertAddonRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateProductCatalogAddon'
+type MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call struct {
+	*mock.Call
+}
+
+// UpdateProductCatalogAddon is a helper method to define mock.On call
+//   - ctx context.Context
+//   - addonID string
+//   - upsertAddonRequest components.UpsertAddonRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterProductCatalogSDK_Expecter) UpdateProductCatalogAddon(ctx any, addonID any, upsertAddonRequest any, opts ...any) *MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call {
+	return &MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call{Call: _e.mock.On("UpdateProductCatalogAddon",
+		append([]any{ctx, addonID, upsertAddonRequest}, opts...)...)}
+}
+
+func (_c *MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call) Run(run func(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.UpsertAddonRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.UpsertAddonRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call) Return(updateProductCatalogAddonResponse *operations.UpdateProductCatalogAddonResponse, err error) *MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call {
+	_c.Call.Return(updateProductCatalogAddonResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateProductCatalogAddonResponse, error)) *MockOpenMeterProductCatalogSDK_UpdateProductCatalogAddon_Call {
 	_c.Call.Return(run)
 	return _c
 }

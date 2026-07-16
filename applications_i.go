@@ -5,6 +5,7 @@ package sdkkonnectgo
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
@@ -13,6 +14,9 @@ type ApplicationsSDK interface {
 	// GetApplicationUnscoped - Get an Application
 	// Returns the configuration of a single application in any portal. If an application is linked to a DCR Provider, the `dcr_provider.id` and `client_id` can be used to correlate it. An application manages a set of credentials and registrations for specific APIs.
 	GetApplicationUnscoped(ctx context.Context, applicationID string, opts ...operations.Option) (*operations.GetApplicationUnscopedResponse, error)
+	// CreateApplication - Create Application
+	// Creates a new application for this portal. The application must be assigned to a developer or a team. An application can be registered for various APIs, issuing credentials for API access. If using DCR, an application will be linked to an Identity Provider's application by its `client_id`.
+	CreateApplication(ctx context.Context, portalID string, createApplicationRequest components.CreateApplicationRequest, opts ...operations.Option) (*operations.CreateApplicationResponse, error)
 	// ListApplications - List Applications
 	// Lists applications in this portal. Each application can be registered for various APIs, issuing credentials for API access. If using DCR, an application will be linked to an Identity Provider's application by its `client_id`.
 	ListApplications(ctx context.Context, request operations.ListApplicationsRequest, opts ...operations.Option) (*operations.ListApplicationsResponse, error)

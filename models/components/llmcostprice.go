@@ -30,26 +30,26 @@ func (l *LLMCostPriceProvider) GetName() string {
 	return l.Name
 }
 
-// Model - The model.
-type Model struct {
+// LLMCostPriceModel - The model.
+type LLMCostPriceModel struct {
 	// Identifier of the model, e.g., "gpt-4", "claude-3-5-sonnet".
 	ID string `json:"id"`
 	// Name of the model, e.g., "GPT-4", "Claude 3.5 Sonnet".
 	Name string `json:"name"`
 }
 
-func (m *Model) GetID() string {
-	if m == nil {
+func (l *LLMCostPriceModel) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return m.ID
+	return l.ID
 }
 
-func (m *Model) GetName() string {
-	if m == nil {
+func (l *LLMCostPriceModel) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return m.Name
+	return l.Name
 }
 
 // Pricing - Token pricing data.
@@ -132,7 +132,7 @@ type LLMCostPrice struct {
 	// Provider of the model.
 	Provider LLMCostPriceProvider `json:"provider"`
 	// The model.
-	Model Model `json:"model"`
+	Model LLMCostPriceModel `json:"model"`
 	// Token pricing data.
 	Pricing Pricing `json:"pricing"`
 	// Currency code (currently always "USD").
@@ -174,9 +174,9 @@ func (l *LLMCostPrice) GetProvider() LLMCostPriceProvider {
 	return l.Provider
 }
 
-func (l *LLMCostPrice) GetModel() Model {
+func (l *LLMCostPrice) GetModel() LLMCostPriceModel {
 	if l == nil {
-		return Model{}
+		return LLMCostPriceModel{}
 	}
 	return l.Model
 }

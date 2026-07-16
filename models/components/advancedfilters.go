@@ -23,6 +23,7 @@ const (
 	FieldDataPlaneNodeVersion      Field = "data_plane_node_version"
 	FieldGatewayService            Field = "gateway_service"
 	FieldPortal                    Field = "portal"
+	FieldPrincipal                 Field = "principal"
 	FieldRealm                     Field = "realm"
 	FieldResponseSource            Field = "response_source"
 	FieldRoute                     Field = "route"
@@ -40,7 +41,7 @@ func (e Field) ToPointer() *Field {
 func (e *Field) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "portal", "realm", "response_source", "route", "status_code", "status_code_grouped", "upstream_status_code", "upstream_status_code_grouped":
+		case "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}

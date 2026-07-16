@@ -8,6 +8,35 @@ import (
 	"time"
 )
 
+// BillingSubscriptionCreateSettlementMode - Settlement mode for billing.
+//
+// Values:
+//
+// - `credit_then_invoice`: Credits are applied first, then any remainder is
+// invoiced.
+// - `credit_only`: Usage is settled exclusively against credits.
+type BillingSubscriptionCreateSettlementMode string
+
+const (
+	BillingSubscriptionCreateSettlementModeCreditThenInvoice BillingSubscriptionCreateSettlementMode = "credit_then_invoice"
+	BillingSubscriptionCreateSettlementModeCreditOnly        BillingSubscriptionCreateSettlementMode = "credit_only"
+)
+
+func (e BillingSubscriptionCreateSettlementMode) ToPointer() *BillingSubscriptionCreateSettlementMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *BillingSubscriptionCreateSettlementMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "credit_then_invoice", "credit_only":
+			return true
+		}
+	}
+	return false
+}
+
 // BillingSubscriptionCreateCustomer - The customer to create the subscription for.
 type BillingSubscriptionCreateCustomer struct {
 	// The ID of the customer to create the subscription for.
@@ -82,6 +111,14 @@ type BillingSubscriptionCreate struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+	// Settlement mode for billing.
+	//
+	// Values:
+	//
+	// - `credit_then_invoice`: Credits are applied first, then any remainder is
+	// invoiced.
+	// - `credit_only`: Usage is settled exclusively against credits.
+	SettlementMode *BillingSubscriptionCreateSettlementMode `json:"settlement_mode,omitempty"`
 	// The customer to create the subscription for.
 	Customer BillingSubscriptionCreateCustomer `json:"customer"`
 	// The plan reference of the subscription.
@@ -115,6 +152,13 @@ func (b *BillingSubscriptionCreate) GetLabels() map[string]string {
 		return nil
 	}
 	return b.Labels
+}
+
+func (b *BillingSubscriptionCreate) GetSettlementMode() *BillingSubscriptionCreateSettlementMode {
+	if b == nil {
+		return nil
+	}
+	return b.SettlementMode
 }
 
 func (b *BillingSubscriptionCreate) GetCustomer() BillingSubscriptionCreateCustomer {
