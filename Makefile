@@ -160,11 +160,13 @@ generate.sdk:
 #       that require the interfaces and mocks to be regenerated.
 .PHONY: generate.sdk.from-scratch
 generate.sdk.from-scratch:
+	$(MAKE) remove.field_tests
 	$(MAKE) remove.interfaces
 	$(MAKE) remove.mocks
 	$(MAKE) generate.sdk
 	$(MAKE) generate.interfaces
 	$(MAKE) generate.mocks
+	$(MAKE) generate.field_tests
 
 .PHONY: test
 test: test.unit test.integration
