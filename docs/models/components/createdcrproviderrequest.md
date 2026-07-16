@@ -35,6 +35,12 @@ createDcrProviderRequest := components.CreateCreateDcrProviderRequestOkta(compon
 createDcrProviderRequest := components.CreateCreateDcrProviderRequestHTTP(components.CreateDcrProviderRequestHTTP{/* values here */})
 ```
 
+### CreateDcrProviderRequestKongIdentity
+
+```go
+createDcrProviderRequest := components.CreateCreateDcrProviderRequestKongIdentity(components.CreateDcrProviderRequestKongIdentity{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -51,5 +57,7 @@ switch createDcrProviderRequest.Type {
 		// createDcrProviderRequest.CreateDcrProviderRequestOkta is populated
 	case components.CreateDcrProviderRequestTypeHTTP:
 		// createDcrProviderRequest.CreateDcrProviderRequestHTTP is populated
+	case components.CreateDcrProviderRequestTypeKongIdentity:
+		// createDcrProviderRequest.CreateDcrProviderRequestKongIdentity is populated
 }
 ```

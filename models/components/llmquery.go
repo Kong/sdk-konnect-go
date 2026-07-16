@@ -48,6 +48,7 @@ const (
 	LLMQueryDimensionsLlmEmbeddingsProvider LLMQueryDimensions = "llm_embeddings_provider"
 	LLMQueryDimensionsLlmEmbeddingsModel    LLMQueryDimensions = "llm_embeddings_model"
 	LLMQueryDimensionsTime                  LLMQueryDimensions = "time"
+	LLMQueryDimensionsPrincipal             LLMQueryDimensions = "principal"
 	LLMQueryDimensionsRealm                 LLMQueryDimensions = "realm"
 	LLMQueryDimensionsStatusCode            LLMQueryDimensions = "status_code"
 	LLMQueryDimensionsStatusCodeGrouped     LLMQueryDimensions = "status_code_grouped"
@@ -62,7 +63,7 @@ func (e LLMQueryDimensions) ToPointer() *LLMQueryDimensions {
 func (e *LLMQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "control_plane", "control_plane_group", "gateway_service", "consumer", "application", "route", "ai_provider", "ai_response_model", "ai_request_model", "llm_cache_status", "llm_embeddings_provider", "llm_embeddings_model", "time", "realm", "status_code", "status_code_grouped", "ai_plugin":
+		case "control_plane", "control_plane_group", "gateway_service", "consumer", "application", "route", "ai_provider", "ai_response_model", "ai_request_model", "llm_cache_status", "llm_embeddings_provider", "llm_embeddings_model", "time", "principal", "realm", "status_code", "status_code_grouped", "ai_plugin":
 			return true
 		}
 	}
@@ -85,8 +86,6 @@ type LLMQuery struct {
 	// If granularity is not specified and "time" is in the dimensions list, a default will be chosen based on the time range requested.
 	//
 	// Different relative times support different granularities:
-	//
-	//
 	//   - 15m => tenSecondly, thirtySecondly, minutely
 	//   - 1h  => tenSecondly, thirtySecondly, minutely, fiveMinutely, tenMinutely
 	//   - 6h  => thirtySecondly, minutely, fiveMinutely, tenMinutely, thirtyMinutely, hourly
@@ -96,8 +95,6 @@ type LLMQuery struct {
 	//   - 30d => hourly, twoHourly, twelveHourly, daily, weekly
 	//
 	// For special time ranges:
-	//
-	//
 	//   - current_week, previous_week   => thirtyMinutely, hourly, twoHourly, twelveHourly, daily
 	//   - current_month, previous_month => hourly, twoHourly, twelveHourly, daily, weekly
 	//

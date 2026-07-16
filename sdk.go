@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.15.0 and generator version 2.913.3
+// Generated from OpenAPI doc version 3.15.0 and generator version 2.918.3
 
 import (
 	"context"
@@ -189,7 +189,6 @@ type SDK struct {
 	// To set up and view a list of all the integrations we support please view our [documentation](https://developer.konghq.com/service-catalog/integrations/).
 	//
 	CatalogIntegrations *CatalogIntegrations
-	MCPServers          *MCPServers
 	// Operations related to notifications
 	Notifications *Notifications
 	// Resource mappings represent the link between a resource and a service.
@@ -204,6 +203,7 @@ type SDK struct {
 	// Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version.
 	// Called “Auth Strategy” for short in the context of portals/applications.
 	// The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
+	// The optional `principals` property controls application-principal behavior for V3 API Catalog portals and applications. It defaults to disabled when omitted.
 	//
 	AppAuthStrategies *AppAuthStrategies
 	CloudGateways     *CloudGateways
@@ -274,8 +274,6 @@ type SDK struct {
 	// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
 	// - `ws`: At least one of `hosts`, `headers`, or `paths`
 	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-	//
-	//
 	//   <br>
 	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
 	//   <br><br>
@@ -350,6 +348,8 @@ type SDK struct {
 	OpenMeterCustomers *OpenMeterCustomers
 	// Entitlements are used to control access to features for customers.
 	OpenMeterEntitlements *OpenMeterEntitlements
+	// Organization-level default configuration.
+	OpenMeterDefaults *OpenMeterDefaults
 	// Metering events are used to track usage of your product or service. Events are processed asynchronously by the meters, so they may not be immediately available for querying.
 	MeteringEvents *MeteringEvents
 	// Features represent product capabilities backed by meters, with optional per-unit cost configuration.
@@ -358,12 +358,14 @@ type SDK struct {
 	OpenMeterLLMCost *OpenMeterLLMCost
 	// Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.
 	Meters *Meters
-	// Billing manages the billing profiles, currencies, cost bases, and invoices for customers.
-	OpenMeterBilling *OpenMeterBilling
+	// Billing settings manages the billing profiles and invoices for customers.
+	OpenMeterBillingSettings *OpenMeterBillingSettings
 	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterSubscriptions *OpenMeterSubscriptions
-	ImpersonationSettings  *ImpersonationSettings
-	Me                     *Me
+	// Tax codes are used to calculate taxes for customers.
+	OpenMeterTax          *OpenMeterTax
+	ImpersonationSettings *ImpersonationSettings
+	Me                    *Me
 	// APIs related to Konnect Developer Portal developer team roles.
 	PortalTeamRoles *PortalTeamRoles
 	// APIs related to configuration of Konnect Developer Portals.
@@ -482,7 +484,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.41.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.41.0 2.913.3 3.15.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.41.0 2.918.3 3.15.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -526,7 +528,6 @@ func New(opts ...SDKOption) *SDK {
 	sdk.IntegrationInstanceAuthCredentials = newIntegrationInstanceAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResources = newCatalogResources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -588,12 +589,14 @@ func New(opts ...SDKOption) *SDK {
 	sdk.OpenMeterApps = newOpenMeterApps(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterCustomers = newOpenMeterCustomers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterEntitlements = newOpenMeterEntitlements(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterDefaults = newOpenMeterDefaults(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MeteringEvents = newMeteringEvents(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterFeatures = newOpenMeterFeatures(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterLLMCost = newOpenMeterLLMCost(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Meters = newMeters(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.OpenMeterBilling = newOpenMeterBilling(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterBillingSettings = newOpenMeterBillingSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterSubscriptions = newOpenMeterSubscriptions(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterTax = newOpenMeterTax(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ImpersonationSettings = newImpersonationSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Me = newMe(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamRoles = newPortalTeamRoles(sdk, sdk.sdkConfiguration, sdk.hooks)

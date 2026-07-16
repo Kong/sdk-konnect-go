@@ -3,7 +3,7 @@
 ## Overview
 
 Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
-For instance, they will be able to perform dynamic client registration (DCR) with the provider. 
+For instance, they will be able to perform dynamic client registration (DCR) with the provider.
 The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
 
 
@@ -66,6 +66,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -120,6 +122,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -172,6 +176,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -225,6 +231,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -278,6 +286,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -331,6 +341,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -384,6 +396,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -437,6 +451,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -490,6 +506,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -542,6 +560,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -595,6 +615,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -648,6 +670,8 @@ func main() {
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
             case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
             case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
@@ -778,6 +802,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -821,6 +847,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -864,6 +892,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -907,6 +937,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -950,6 +982,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -1023,6 +1057,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -1070,6 +1106,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -1117,6 +1155,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -1164,6 +1204,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -1211,6 +1253,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -1257,6 +1301,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -1304,6 +1350,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -1351,6 +1399,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
@@ -1398,6 +1448,8 @@ func main() {
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
             case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
             case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
