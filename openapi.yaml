@@ -4861,6 +4861,220 @@ paths:
           $ref: '#/components/responses/Forbidden'
       tags:
         - Catalog Integrations
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    get:
+      operationId: list-mcp-servers-by-control-plane
+      summary: List MCP Servers by Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns an array of MCP server objects for the specified control plane.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/MCPServerCommonFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListMCPServersCPInfoResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: get-mcp-server-by-control-plane
+      summary: Get MCP Server by Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieves an MCP server by its ID within a specific control plane context.
+      responses:
+        '200':
+          description: A response to retrieving a single MCP server within a control plane context.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerCPInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/code':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: get-mcp-server-code
+      summary: Get generated Python code for the MCP Server
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Generates MCP server Python code from the OpenAPI specifications associated with the MCP server.
+      responses:
+        '200':
+          description: Generated Python code for the MCP server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerCodeResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/kong-entities':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: get-mcp-server-kong-entities
+      summary: Get Kong entities for the MCP Server Gateway
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieves Kong entities (Routes, Services, Plugins) for the Gateway in front of the MCP Server.
+      parameters:
+        - name: runtime_version
+          in: query
+          description: Kong Gateway runtime version to generate entities for
+          required: false
+          schema:
+            type: string
+            example: 3.13.0.0
+      responses:
+        '200':
+          description: Kong entities for the MCP server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KongEntitiesResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/runtime-config':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: get-mcp-server-runtime-config
+      summary: Get MCP Server Runtime Configuration
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns the runtime configuration for a deployed MCP server.
+      responses:
+        '200':
+          $ref: '#/components/responses/MCPServerRuntimeResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Server Runtime
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/status':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    post:
+      operationId: post-mcp-server-status
+      summary: Report MCP Server deployment status
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Reports the current deployment status of an MCP server, including replica counts and per-version pod statuses.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MCPServerStatusRequest'
+      responses:
+        '204':
+          description: Status accepted.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/signals':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    get:
+      operationId: get-mcp-server-signals
+      summary: Get MCP Server Signals
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Client-initiated signals fetch with long-polling capabilities.
+        The client supplies `capabilities` as a deepObject query parameter:
+
+
+          - Keys are capability names (e.g. `mcp`)
+          - Values contain the capability request fields (`version`)
+
+        Example:
+
+
+          GET /mcp-cp/{controlPlaneId}/signals?capabilities[mcp][version]=5
+
+        The CP responds with a JSON payload containing zero or more signals that the client should process.
+        If no signals are available, the CP responds with HTTP 304 Not Modified.
+      parameters:
+        - $ref: '#/components/parameters/MCPCapabilities'
+      responses:
+        '200':
+          $ref: '#/components/responses/MCPServerSignalsResponse'
+        '304':
+          description: No signals available (client is up to date)
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - MCP Servers
   /v1/notifications/configurations:
     get:
       operationId: list-user-configurations
@@ -22023,6 +22237,39 @@ components:
       name: list_consumers
       schema:
         type: boolean
+    MCPCapabilities:
+      name: capabilities
+      in: query
+      style: deepObject
+      explode: true
+      description: |
+        Capability requests as a deepObject map.
+        - Keys are capability names (e.g. `mcp`).
+        - Values contain the capability request fields (`version`).
+      schema:
+        $ref: '#/components/schemas/MCPCapabilitiesMap'
+      example:
+        mcp:
+          version: '5'
+    MCPServerCommonFilter:
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/StringFieldContainsFilter'
+      in: query
+      name: filter
+      description: Filter documents returned in the response.
+      required: false
+      style: deepObject
+    mcpServerId:
+      name: mcpServerId
+      in: path
+      required: true
+      description: The ID of the MCP server.
+      schema:
+        type: string
+        format: uuid
     MTLSAuthId:
       description: ID of the MTLS-auth credential to lookup
       example: ''
@@ -60120,6 +60367,326 @@ components:
         maxLength: 63
       maxProperties: 5
       title: ManagedBy
+    MCPServerPodsStatus:
+      type: object
+      properties:
+        ready:
+          description: Number of pods in the ready state.
+          type: integer
+          example: 2
+          minimum: 0
+        starting:
+          description: Number of pods in the starting state.
+          type: integer
+          example: 0
+          minimum: 0
+        failing:
+          description: Number of pods in the failing state.
+          type: integer
+          example: 0
+          minimum: 0
+      required:
+        - ready
+        - starting
+        - failing
+    MCPServerVersionStatus:
+      type: object
+      properties:
+        version:
+          description: The version identifier of the MCP server deployment.
+          type: string
+          example: v1
+        desired_replicas:
+          description: The desired number of replicas for this version.
+          type: integer
+          example: 2
+          minimum: 0
+        created_replicas:
+          description: The number of replicas that have been created for this version.
+          type: integer
+          example: 2
+          minimum: 0
+        pods_status:
+          $ref: '#/components/schemas/MCPServerPodsStatus'
+      required:
+        - version
+        - desired_replicas
+        - created_replicas
+        - pods_status
+    MCPServerStatusRequest:
+      description: |
+        List of per-version deployment statuses for the MCP server.
+      type: array
+      items:
+        $ref: '#/components/schemas/MCPServerVersionStatus'
+    MCPServerInfo:
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the MCP server.
+          type: string
+          format: uuid
+        name:
+          description: The name of the MCP server.
+          type: string
+          maxLength: 256
+          minLength: 1
+        description:
+          description: A description of the MCP server.
+          type: string
+          maxLength: 1024
+        labels:
+          description: Labels for the MCP server.
+          type: object
+          additionalProperties:
+            type: string
+        deployed_at:
+          description: The timestamp when the MCP server was deployed.
+          type: string
+          format: date-time
+        control_plane_id:
+          description: The control plane ID associated with the MCP server.
+          type: string
+          format: uuid
+          nullable: true
+        resource_id:
+          description: The MCP resource ID associated with the MCP server.
+          type: string
+          format: uuid
+          nullable: true
+        mode:
+          description: |
+            The deployment mode of the MCP server on the associated Control Plane.
+          allOf:
+            - $ref: '#/components/schemas/MCPServerControlPlaneMappingMode'
+          nullable: false
+        version:
+          description: The version of the MCP server.
+          type: string
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - name
+        - created_at
+        - updated_at
+        - version
+    ContainerSpec:
+      type: object
+      properties:
+        image:
+          description: The container image to use.
+          type: string
+    MCPServerCPInfo:
+      allOf:
+        - $ref: '#/components/schemas/MCPServerInfo'
+        - type: object
+          properties:
+            container:
+              allOf:
+                - $ref: '#/components/schemas/ContainerSpec'
+                - description: Configuration for the main container.
+            init_container:
+              allOf:
+                - $ref: '#/components/schemas/ContainerSpec'
+                - description: Configuration for the init container.
+    ListMCPServersCPInfoResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServerCPInfo'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
+    KongEntitiesResponse:
+      type: object
+      properties:
+        routes:
+          type: array
+          items:
+            $ref: '#/components/schemas/KongRoute'
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/KongService'
+      required:
+        - routes
+        - services
+    KongService:
+      type: object
+      properties:
+        id:
+          description: Service ID
+          type: string
+          format: uuid
+        name:
+          description: Service name
+          type: string
+          example: mcp-test-service
+        protocol:
+          description: The protocol used to communicate with the Service.
+          type: string
+          example: https
+        host:
+          description: Service host
+          type: string
+          example: mcp-test-service.svc.cluster.local
+        port:
+          description: Service port
+          type: integer
+          example: 80
+          maximum: 65535
+          minimum: 1
+        path:
+          description: Service path
+          type: string
+          example: /
+      required:
+        - name
+        - protocol
+        - host
+        - port
+        - path
+    KongRoute:
+      type: object
+      properties:
+        id:
+          description: Route ID
+          type: string
+          format: uuid
+        name:
+          description: Route name
+          type: string
+          example: mcp-test-route-jsonrpc
+        service:
+          description: Reference to the service
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+        paths:
+          description: Request paths
+          type: array
+          items:
+            type: string
+          example:
+            - /mcp/test-service
+        methods:
+          description: HTTP methods
+          type: array
+          items:
+            type: string
+          example:
+            - POST
+      required:
+        - name
+        - paths
+        - methods
+    MCPServerCodeResponse:
+      type: object
+      properties:
+        code:
+          description: Generated Python code for the MCP server implementation
+          type: string
+          example: print("Hello MCP")
+      required:
+        - code
+    MCPCapabilitiesMap:
+      description: |
+        Map of capability name -> capability request fields.
+
+        Example:
+          {
+            "mcp": { "version": "v1", "offset": "5" }
+          }
+      type: object
+      properties:
+        mcp:
+          $ref: '#/components/schemas/MCPCapabilityRequest'
+    MCPCapabilityRequest:
+      type: object
+      properties:
+        version:
+          description: 'The version of the capability schema (e.g., v1).'
+          type: string
+        offset:
+          description: The version of the control plane known by the client.
+          type: string
+      additionalProperties: false
+      required:
+        - version
+    MCPServerSignalV1:
+      description: |
+        Signal notifying the client that the MCP control plane config has changed.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - mcp
+        version:
+          description: The current version of the MCP control plane.
+          type: string
+        offset:
+          description: The offset for the MCP signal.
+          type: string
+      example:
+        type: mcp
+        version: v1
+        offset: '6'
+      additionalProperties: false
+      required:
+        - type
+        - version
+        - offset
+    MCPServerSignal:
+      description: A single signal envelope containing exactly one typed capability signal.
+      discriminator:
+        propertyName: type
+        mapping:
+          mcp: '#/components/schemas/MCPServerSignalV1'
+      oneOf:
+        - $ref: '#/components/schemas/MCPServerSignalV1'
+    MCPServerSignals:
+      description: The MCP server signals response.
+      type: object
+      properties:
+        signals:
+          description: A list of signals for the MCP server.
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServerSignal'
+      required:
+        - signals
+    MCPServerControlPlaneMappingMode:
+      description: Whether the MCP Server deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
+      type: string
+      enum:
+        - basic
+        - advanced
+      x-speakeasy-unknown-values: allow
+    MCPServerRuntime:
+      type: object
+      properties:
+        init_container:
+          allOf:
+            - $ref: '#/components/schemas/ContainerSpec'
+            - description: Configuration for the init container.
+        runtime_container:
+          allOf:
+            - $ref: '#/components/schemas/ContainerSpec'
+            - description: Configuration for the main container.
+      required:
+        - init_container
+        - runtime_container
+      title: MCPServerRuntime
     AdvancedQuery:
       description: A query targeting the API usage analytics datasource.
       type: object
@@ -72986,6 +73553,24 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/TooManyRequestsError'
+    MCPServerSignalsResponse:
+      description: The MCP server signals response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServerSignals'
+    ListMCPServersCPInfoResponse:
+      description: A response to listing MCP servers with CP info.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListMCPServersCPInfoResponse'
+    MCPServerRuntimeResponse:
+      description: A response containing the MCP server runtime configuration
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServerRuntime'
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
@@ -73690,6 +74275,8 @@ tags:
     description: MCP Servers that expose tools for AI Gateway integrations.
   - name: AI Gateway Model Providers
     description: Model providers that define the backend AI service connections for the AI Gateway.
+  - name: MCP Servers
+  - name: MCP Server Runtime
   - name: Dashboards
   - description: DP Nodes
     name: DP Nodes
