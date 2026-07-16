@@ -223,7 +223,7 @@ func main() {
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
-List the addons of a subscription.
+List the add-ons of a subscription.
 
 ### Example Usage
 

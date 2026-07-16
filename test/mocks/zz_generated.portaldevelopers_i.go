@@ -7,6 +7,7 @@ package mocks
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -36,6 +37,95 @@ type MockPortalDevelopersSDK_Expecter struct {
 
 func (_m *MockPortalDevelopersSDK) EXPECT() *MockPortalDevelopersSDK_Expecter {
 	return &MockPortalDevelopersSDK_Expecter{mock: &_m.Mock}
+}
+
+// CreateDeveloper provides a mock function for the type MockPortalDevelopersSDK
+func (_mock *MockPortalDevelopersSDK) CreateDeveloper(ctx context.Context, portalID string, createDeveloperRequest components.CreateDeveloperRequest, opts ...operations.Option) (*operations.CreateDeveloperResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, portalID, createDeveloperRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, portalID, createDeveloperRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateDeveloper")
+	}
+
+	var r0 *operations.CreateDeveloperResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateDeveloperRequest, ...operations.Option) (*operations.CreateDeveloperResponse, error)); ok {
+		return returnFunc(ctx, portalID, createDeveloperRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateDeveloperRequest, ...operations.Option) *operations.CreateDeveloperResponse); ok {
+		r0 = returnFunc(ctx, portalID, createDeveloperRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateDeveloperResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateDeveloperRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, portalID, createDeveloperRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPortalDevelopersSDK_CreateDeveloper_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateDeveloper'
+type MockPortalDevelopersSDK_CreateDeveloper_Call struct {
+	*mock.Call
+}
+
+// CreateDeveloper is a helper method to define mock.On call
+//   - ctx context.Context
+//   - portalID string
+//   - createDeveloperRequest components.CreateDeveloperRequest
+//   - opts ...operations.Option
+func (_e *MockPortalDevelopersSDK_Expecter) CreateDeveloper(ctx any, portalID any, createDeveloperRequest any, opts ...any) *MockPortalDevelopersSDK_CreateDeveloper_Call {
+	return &MockPortalDevelopersSDK_CreateDeveloper_Call{Call: _e.mock.On("CreateDeveloper",
+		append([]any{ctx, portalID, createDeveloperRequest}, opts...)...)}
+}
+
+func (_c *MockPortalDevelopersSDK_CreateDeveloper_Call) Run(run func(ctx context.Context, portalID string, createDeveloperRequest components.CreateDeveloperRequest, opts ...operations.Option)) *MockPortalDevelopersSDK_CreateDeveloper_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.CreateDeveloperRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.CreateDeveloperRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPortalDevelopersSDK_CreateDeveloper_Call) Return(createDeveloperResponse *operations.CreateDeveloperResponse, err error) *MockPortalDevelopersSDK_CreateDeveloper_Call {
+	_c.Call.Return(createDeveloperResponse, err)
+	return _c
+}
+
+func (_c *MockPortalDevelopersSDK_CreateDeveloper_Call) RunAndReturn(run func(ctx context.Context, portalID string, createDeveloperRequest components.CreateDeveloperRequest, opts ...operations.Option) (*operations.CreateDeveloperResponse, error)) *MockPortalDevelopersSDK_CreateDeveloper_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // DeleteDeveloper provides a mock function for the type MockPortalDevelopersSDK

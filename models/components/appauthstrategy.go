@@ -66,11 +66,12 @@ func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyConfigs) GetOpenidCo
 type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType string
 
 const (
-	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAuth0   AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "auth0"
-	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAzureAd AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "azureAd"
-	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeCurity  AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "curity"
-	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeOkta    AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "okta"
-	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeHTTP    AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "http"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAuth0        AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "auth0"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAzureAd      AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "azureAd"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeCurity       AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "curity"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeOkta         AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "okta"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeHTTP         AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "http"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeKongIdentity AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "kongIdentity"
 )
 
 func (e AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType) ToPointer() *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType {
@@ -81,7 +82,7 @@ func (e AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType) ToPoint
 func (e *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "auth0", "azureAd", "curity", "okta", "http":
+		case "auth0", "azureAd", "curity", "okta", "http", "kongIdentity":
 			return true
 		}
 	}
@@ -168,6 +169,10 @@ type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse st
 	// - `false` when not supported for Client Credentials strategies
 	//
 	SupportsMultipleCredentials *bool `json:"supports_multiple_credentials,omitempty"`
+	// Application principal settings for this auth strategy. Runtime effect applies to V3 API Catalog (ACE) portals and
+	// applications; stored values may be set for any auth strategy in the organization.
+	//
+	Principals *AuthStrategyPrincipals `json:"principals,omitempty"`
 }
 
 func (a AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse) MarshalJSON() ([]byte, error) {
@@ -258,6 +263,13 @@ func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectRespons
 	return a.SupportsMultipleCredentials
 }
 
+func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse) GetPrincipals() *AuthStrategyPrincipals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
+}
+
 type AppAuthStrategyKeyAuthResponseAppAuthStrategyStrategyType string
 
 const (
@@ -312,11 +324,12 @@ func (a *AppAuthStrategyKeyAuthResponseAppAuthStrategyConfigs) GetKeyAuth() AppA
 type AppAuthStrategyKeyAuthResponseProviderType string
 
 const (
-	AppAuthStrategyKeyAuthResponseProviderTypeAuth0   AppAuthStrategyKeyAuthResponseProviderType = "auth0"
-	AppAuthStrategyKeyAuthResponseProviderTypeAzureAd AppAuthStrategyKeyAuthResponseProviderType = "azureAd"
-	AppAuthStrategyKeyAuthResponseProviderTypeCurity  AppAuthStrategyKeyAuthResponseProviderType = "curity"
-	AppAuthStrategyKeyAuthResponseProviderTypeOkta    AppAuthStrategyKeyAuthResponseProviderType = "okta"
-	AppAuthStrategyKeyAuthResponseProviderTypeHTTP    AppAuthStrategyKeyAuthResponseProviderType = "http"
+	AppAuthStrategyKeyAuthResponseProviderTypeAuth0        AppAuthStrategyKeyAuthResponseProviderType = "auth0"
+	AppAuthStrategyKeyAuthResponseProviderTypeAzureAd      AppAuthStrategyKeyAuthResponseProviderType = "azureAd"
+	AppAuthStrategyKeyAuthResponseProviderTypeCurity       AppAuthStrategyKeyAuthResponseProviderType = "curity"
+	AppAuthStrategyKeyAuthResponseProviderTypeOkta         AppAuthStrategyKeyAuthResponseProviderType = "okta"
+	AppAuthStrategyKeyAuthResponseProviderTypeHTTP         AppAuthStrategyKeyAuthResponseProviderType = "http"
+	AppAuthStrategyKeyAuthResponseProviderTypeKongIdentity AppAuthStrategyKeyAuthResponseProviderType = "kongIdentity"
 )
 
 func (e AppAuthStrategyKeyAuthResponseProviderType) ToPointer() *AppAuthStrategyKeyAuthResponseProviderType {
@@ -327,7 +340,7 @@ func (e AppAuthStrategyKeyAuthResponseProviderType) ToPointer() *AppAuthStrategy
 func (e *AppAuthStrategyKeyAuthResponseProviderType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "auth0", "azureAd", "curity", "okta", "http":
+		case "auth0", "azureAd", "curity", "okta", "http", "kongIdentity":
 			return true
 		}
 	}
@@ -413,6 +426,10 @@ type AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse struct {
 	// Always `true` for KEY_AUTH.
 	//
 	SupportsMultipleCredentials *bool `default:"true" json:"supports_multiple_credentials"`
+	// Application principal settings for this auth strategy. Runtime effect applies to V3 API Catalog (ACE) portals and
+	// applications; stored values may be set for any auth strategy in the organization.
+	//
+	Principals *AuthStrategyPrincipals `json:"principals,omitempty"`
 }
 
 func (a AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse) MarshalJSON() ([]byte, error) {
@@ -501,6 +518,13 @@ func (a *AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse) GetSuppor
 		return nil
 	}
 	return a.SupportsMultipleCredentials
+}
+
+func (a *AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse) GetPrincipals() *AuthStrategyPrincipals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
 }
 
 type AppAuthStrategyType string

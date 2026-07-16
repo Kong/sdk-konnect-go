@@ -16,8 +16,8 @@ type PortalCustomizationSDK interface {
 	GetPortalCustomization(ctx context.Context, portalID string, opts ...operations.Option) (*operations.GetPortalCustomizationResponse, error)
 	// ReplacePortalCustomization - Replace Customization
 	// Replace the portal customization options.
-	ReplacePortalCustomization(ctx context.Context, portalID string, portalCustomizationV3 *components.PortalCustomizationV3, opts ...operations.Option) (*operations.ReplacePortalCustomizationResponse, error)
+	ReplacePortalCustomization(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option) (*operations.ReplacePortalCustomizationResponse, error)
 	// UpdatePortalCustomization - Update Customization
 	// Update the portal customization options, merging properties.
-	UpdatePortalCustomization(ctx context.Context, portalID string, portalCustomizationV3 *components.PortalCustomizationV3, opts ...operations.Option) (*operations.UpdatePortalCustomizationResponse, error)
+	UpdatePortalCustomization(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option) (*operations.UpdatePortalCustomizationResponse, error)
 }

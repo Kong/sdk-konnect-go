@@ -48,4 +48,74 @@ type OpenMeterCustomersSDK interface {
 	// Only returns URL if the customer billing profile is linked to a stripe app and
 	// customer.
 	CreateCustomerStripePortalSession(ctx context.Context, customerID string, billingCustomerStripeCreateCustomerPortalSessionRequest components.BillingCustomerStripeCreateCustomerPortalSessionRequest, opts ...operations.Option) (*operations.CreateCustomerStripePortalSessionResponse, error)
+	// ListCustomerCharges - List customer charges
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// List customer charges.
+	//
+	// Returns the customer's charges that are represented as either flat fee or
+	// usage-based charges.
+	ListCustomerCharges(ctx context.Context, request operations.ListCustomerChargesRequest, opts ...operations.Option) (*operations.ListCustomerChargesResponse, error)
+	// CreateCustomerCharges - Create customer charge
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Create customer charge.
+	CreateCustomerCharges(ctx context.Context, customerID string, createChargeRequest components.CreateChargeRequest, opts ...operations.Option) (*operations.CreateCustomerChargesResponse, error)
+	// CreateCreditAdjustment - Create a credit adjustment
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// A credit adjustment can be used to make manual adjustments to a customer's
+	// credit balance.
+	//
+	// Supported use-cases:
+	//
+	// - Usage correction
+	CreateCreditAdjustment(ctx context.Context, customerID string, createCreditAdjustmentRequest components.CreateCreditAdjustmentRequest, opts ...operations.Option) (*operations.CreateCreditAdjustmentResponse, error)
+	// GetCustomerCreditBalance - Get a customer's credit balance
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Get a credit balance.
+	GetCustomerCreditBalance(ctx context.Context, request operations.GetCustomerCreditBalanceRequest, opts ...operations.Option) (*operations.GetCustomerCreditBalanceResponse, error)
+	// CreateCreditGrant - Create a new credit grant
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Create a new credit grant. A credit grant represents an allocation of prepaid
+	// credits to a customer.
+	CreateCreditGrant(ctx context.Context, customerID string, createCreditGrantRequest components.CreateCreditGrantRequest, opts ...operations.Option) (*operations.CreateCreditGrantResponse, error)
+	// ListCreditGrants - List credit grants
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// List credit grants.
+	ListCreditGrants(ctx context.Context, request operations.ListCreditGrantsRequest, opts ...operations.Option) (*operations.ListCreditGrantsResponse, error)
+	// GetCreditGrant - Get a credit grant
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Get a credit grant.
+	GetCreditGrant(ctx context.Context, customerID string, creditGrantID string, opts ...operations.Option) (*operations.GetCreditGrantResponse, error)
+	// UpdateCreditGrantExternalSettlement - Update credit grant external settlement status
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Update the payment settlement status of an externally funded credit grant.
+	//
+	// Use this endpoint to synchronize the payment state of an external payment with
+	// the system so that revenue recognition and credit availability work as expected.
+	UpdateCreditGrantExternalSettlement(ctx context.Context, request operations.UpdateCreditGrantExternalSettlementRequest, opts ...operations.Option) (*operations.UpdateCreditGrantExternalSettlementResponse, error)
+	// ListCreditTransactions - List credit transactions
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// List credit transactions for a customer.
+	//
+	// Returns an immutable, chronological record of credit movements: funded credits
+	// and consumed credits. Transactions are returned in reverse chronological order
+	// by default.
+	ListCreditTransactions(ctx context.Context, request operations.ListCreditTransactionsRequest, opts ...operations.Option) (*operations.ListCreditTransactionsResponse, error)
 }

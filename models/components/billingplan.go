@@ -39,6 +39,35 @@ func (e *BillingPlanStatus) IsExact() bool {
 	return false
 }
 
+// BillingPlanSettlementMode - Settlement mode for plan.
+//
+// Values:
+//
+// - `credit_then_invoice`: Credits are applied first, then any remainder is
+// invoiced.
+// - `credit_only`: Usage is settled exclusively against credits.
+type BillingPlanSettlementMode string
+
+const (
+	BillingPlanSettlementModeCreditThenInvoice BillingPlanSettlementMode = "credit_then_invoice"
+	BillingPlanSettlementModeCreditOnly        BillingPlanSettlementMode = "credit_only"
+)
+
+func (e BillingPlanSettlementMode) ToPointer() *BillingPlanSettlementMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *BillingPlanSettlementMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "credit_then_invoice", "credit_only":
+			return true
+		}
+	}
+	return false
+}
+
 // BillingPlan - Plans provide a template for subscriptions.
 type BillingPlan struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
@@ -92,6 +121,14 @@ type BillingPlan struct {
 	// The plan phases define the pricing ramp for a subscription. A phase switch
 	// occurs only at the end of a billing period. At least one phase is required.
 	Phases []BillingPlanPhase `json:"phases"`
+	// Settlement mode for plan.
+	//
+	// Values:
+	//
+	// - `credit_then_invoice`: Credits are applied first, then any remainder is
+	// invoiced.
+	// - `credit_only`: Usage is settled exclusively against credits.
+	SettlementMode *BillingPlanSettlementMode `default:"credit_then_invoice" json:"settlement_mode"`
 	// List of validation errors in `draft` state that prevent the plan from being
 	// published.
 	ValidationErrors []ProductCatalogValidationError `json:"validation_errors,omitempty"`
@@ -218,6 +255,13 @@ func (b *BillingPlan) GetPhases() []BillingPlanPhase {
 		return []BillingPlanPhase{}
 	}
 	return b.Phases
+}
+
+func (b *BillingPlan) GetSettlementMode() *BillingPlanSettlementMode {
+	if b == nil {
+		return nil
+	}
+	return b.SettlementMode
 }
 
 func (b *BillingPlan) GetValidationErrors() []ProductCatalogValidationError {

@@ -1,21 +1,13 @@
 # Config
 
+Configuration for the agent. The structure varies depending on the agent type.
 
-## Supported Types
 
-### CatalogResourceConfigFieldFilter
+## Fields
 
-```go
-config := components.CreateConfigCatalogResourceConfigFieldFilter(components.CatalogResourceConfigFieldFilter{/* values here */})
-```
-
-## Union Discrimination
-
-Use the `Type` field to determine which variant is active, then access the corresponding field:
-
-```go
-switch config.Type {
-	case components.ConfigTypeCatalogResourceConfigFieldFilter:
-		// config.CatalogResourceConfigFieldFilter is populated
-}
-```
+| Field                                                                                                                                                                         | Type                                                                                                                                                                          | Required                                                                                                                                                                      | Description                                                                                                                                                                   | Example                                                                                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `URL`                                                                                                                                                                         | `string`                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                            | Helper field to set protocol, host, port and path of the upstream A2A Agent using a URL.<br/>This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}<br/> | https://booking-agent.internal.kongair.com                                                                                                                                    |
+| `Route`                                                                                                                                                                       | [*components.AIGatewayRouteConfig](../../models/components/aigatewayrouteconfig.md)                                                                                           | :heavy_minus_sign:                                                                                                                                                            | **Pre-release Feature**<br/>This feature is currently in beta and is subject to change.<br/><br/>Configuration for an AI Gateway route.                                       |                                                                                                                                                                               |
+| `MaxRequestBodySize`                                                                                                                                                          | `*int64`                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                            | Maximum size of request body to parse. Set to 0 for unlimited.                                                                                                                |                                                                                                                                                                               |
+| `Logging`                                                                                                                                                                     | [*components.AIGatewayAgentLogging](../../models/components/aigatewayagentlogging.md)                                                                                         | :heavy_minus_sign:                                                                                                                                                            | **Pre-release Feature**<br/>This feature is currently in beta and is subject to change.<br/><br/>Configuration for AI Gateway logging.                                        |                                                                                                                                                                               |

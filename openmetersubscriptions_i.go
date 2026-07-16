@@ -21,7 +21,7 @@ type OpenMeterSubscriptionsSDK interface {
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
-	// List the addons of a subscription.
+	// List the add-ons of a subscription.
 	ListSubscriptionAddons(ctx context.Context, request operations.ListSubscriptionAddonsRequest, opts ...operations.Option) (*operations.ListSubscriptionAddonsResponse, error)
 	// GetSubscriptionAddon - Get add-on association for subscription
 	// **Pre-release Endpoint**

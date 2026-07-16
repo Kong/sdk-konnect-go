@@ -434,6 +434,29 @@ func (w *WorkflowCollectionSettings) GetInterval() *string {
 	return w.Interval
 }
 
+// SubscriptionEndProrationMode - Controls how subscription-ending shortened service periods are billed.
+type SubscriptionEndProrationMode string
+
+const (
+	SubscriptionEndProrationModeBillFullPeriod   SubscriptionEndProrationMode = "bill_full_period"
+	SubscriptionEndProrationModeBillActualPeriod SubscriptionEndProrationMode = "bill_actual_period"
+)
+
+func (e SubscriptionEndProrationMode) ToPointer() *SubscriptionEndProrationMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *SubscriptionEndProrationMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "bill_full_period", "bill_actual_period":
+			return true
+		}
+	}
+	return false
+}
+
 // WorkflowInvoiceSettings - The invoicing settings for this workflow
 type WorkflowInvoiceSettings struct {
 	// Whether to automatically issue the invoice after the draftPeriod has passed.
@@ -442,6 +465,8 @@ type WorkflowInvoiceSettings struct {
 	DraftPeriod *string `default:"P0D" json:"draft_period"`
 	// Should progressive billing be allowed for this workflow?
 	ProgressiveBilling *bool `default:"true" json:"progressive_billing"`
+	// Controls how subscription-ending shortened service periods are billed.
+	SubscriptionEndProrationMode *SubscriptionEndProrationMode `default:"bill_actual_period" json:"subscription_end_proration_mode"`
 }
 
 func (w WorkflowInvoiceSettings) MarshalJSON() ([]byte, error) {
@@ -474,6 +499,13 @@ func (w *WorkflowInvoiceSettings) GetProgressiveBilling() *bool {
 		return nil
 	}
 	return w.ProgressiveBilling
+}
+
+func (w *WorkflowInvoiceSettings) GetSubscriptionEndProrationMode() *SubscriptionEndProrationMode {
+	if w == nil {
+		return nil
+	}
+	return w.SubscriptionEndProrationMode
 }
 
 type PaymentType string
@@ -562,23 +594,23 @@ func (u Payment) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type Payment: all fields are null")
 }
 
-// TaxBehavior - Tax behavior.
+// BillingProfileTaxBehavior - Tax behavior.
 //
 // If not specified the billing profile is used to determine the tax behavior. If
 // not specified in the billing profile, the provider's default behavior is used.
-type TaxBehavior string
+type BillingProfileTaxBehavior string
 
 const (
-	TaxBehaviorInclusive TaxBehavior = "inclusive"
-	TaxBehaviorExclusive TaxBehavior = "exclusive"
+	BillingProfileTaxBehaviorInclusive BillingProfileTaxBehavior = "inclusive"
+	BillingProfileTaxBehaviorExclusive BillingProfileTaxBehavior = "exclusive"
 )
 
-func (e TaxBehavior) ToPointer() *TaxBehavior {
+func (e BillingProfileTaxBehavior) ToPointer() *BillingProfileTaxBehavior {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *TaxBehavior) IsExact() bool {
+func (e *BillingProfileTaxBehavior) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "inclusive", "exclusive":
@@ -588,68 +620,73 @@ func (e *TaxBehavior) IsExact() bool {
 	return false
 }
 
-// StripeTaxConfig - Stripe tax config.
+// BillingProfileStripeTaxConfig - Stripe tax config.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type StripeTaxConfig struct {
+type BillingProfileStripeTaxConfig struct {
 	// Product [tax code](https://docs.stripe.com/tax/tax-codes).
 	Code string `json:"code"`
 }
 
-func (s *StripeTaxConfig) GetCode() string {
-	if s == nil {
+func (b *BillingProfileStripeTaxConfig) GetCode() string {
+	if b == nil {
 		return ""
 	}
-	return s.Code
+	return b.Code
 }
 
-// ExternalInvoicingTaxConfig - External invoicing tax config.
+// BillingProfileExternalInvoicingTaxConfig - External invoicing tax config.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type ExternalInvoicingTaxConfig struct {
+type BillingProfileExternalInvoicingTaxConfig struct {
 	// The tax code should be interpreted by the external invoicing provider.
 	Code string `json:"code"`
 }
 
-func (e *ExternalInvoicingTaxConfig) GetCode() string {
-	if e == nil {
+func (b *BillingProfileExternalInvoicingTaxConfig) GetCode() string {
+	if b == nil {
 		return ""
 	}
-	return e.Code
+	return b.Code
 }
 
-// TaxCode - Tax code reference.
+// BillingProfileTaxCode - Tax code reference.
 //
 // When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
 // precedence. When `stripe.code` is also provided, `tax_code` still wins and
 // `stripe.code` is ignored.
-type TaxCode struct {
+type BillingProfileTaxCode struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
 }
 
-func (t *TaxCode) GetID() string {
-	if t == nil {
+func (b *BillingProfileTaxCode) GetID() string {
+	if b == nil {
 		return ""
 	}
-	return t.ID
+	return b.ID
 }
 
 // DefaultTaxConfig - Default tax configuration to apply to the invoices for line items.
+//
+// Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
+// config is deprecated and can no longer be added or changed: the organization
+// default tax code is used instead. Existing tax-code values may still be removed,
+// and `behavior` remains fully supported.
 type DefaultTaxConfig struct {
 	// Tax behavior.
 	//
 	// If not specified the billing profile is used to determine the tax behavior. If
 	// not specified in the billing profile, the provider's default behavior is used.
-	Behavior *TaxBehavior `json:"behavior,omitempty"`
+	Behavior *BillingProfileTaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Stripe *StripeTaxConfig `json:"stripe,omitempty"`
+	Stripe *BillingProfileStripeTaxConfig `json:"stripe,omitempty"`
 	// External invoicing tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	ExternalInvoicing *ExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
+	ExternalInvoicing *BillingProfileExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
 	// Tax code ID.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -659,24 +696,24 @@ type DefaultTaxConfig struct {
 	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
 	// precedence. When `stripe.code` is also provided, `tax_code` still wins and
 	// `stripe.code` is ignored.
-	TaxCode *TaxCode `json:"tax_code,omitempty"`
+	TaxCode *BillingProfileTaxCode `json:"tax_code,omitempty"`
 }
 
-func (d *DefaultTaxConfig) GetBehavior() *TaxBehavior {
+func (d *DefaultTaxConfig) GetBehavior() *BillingProfileTaxBehavior {
 	if d == nil {
 		return nil
 	}
 	return d.Behavior
 }
 
-func (d *DefaultTaxConfig) GetStripe() *StripeTaxConfig {
+func (d *DefaultTaxConfig) GetStripe() *BillingProfileStripeTaxConfig {
 	if d == nil {
 		return nil
 	}
 	return d.Stripe
 }
 
-func (d *DefaultTaxConfig) GetExternalInvoicing() *ExternalInvoicingTaxConfig {
+func (d *DefaultTaxConfig) GetExternalInvoicing() *BillingProfileExternalInvoicingTaxConfig {
 	if d == nil {
 		return nil
 	}
@@ -690,7 +727,7 @@ func (d *DefaultTaxConfig) GetTaxCodeID() *string {
 	return d.TaxCodeID
 }
 
-func (d *DefaultTaxConfig) GetTaxCode() *TaxCode {
+func (d *DefaultTaxConfig) GetTaxCode() *BillingProfileTaxCode {
 	if d == nil {
 		return nil
 	}
@@ -708,6 +745,11 @@ type WorkflowTaxSettings struct {
 	// have a tax location when starting a paid subscription.
 	Enforced *bool `default:"false" json:"enforced"`
 	// Default tax configuration to apply to the invoices for line items.
+	//
+	// Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
+	// config is deprecated and can no longer be added or changed: the organization
+	// default tax code is used instead. Existing tax-code values may still be removed,
+	// and `behavior` remains fully supported.
 	DefaultTaxConfig *DefaultTaxConfig `json:"default_tax_config,omitempty"`
 }
 

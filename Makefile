@@ -160,11 +160,13 @@ generate.sdk:
 #       that require the interfaces and mocks to be regenerated.
 .PHONY: generate.sdk.from-scratch
 generate.sdk.from-scratch:
+	$(MAKE) remove.field_tests
 	$(MAKE) remove.interfaces
 	$(MAKE) remove.mocks
 	$(MAKE) generate.sdk
 	$(MAKE) generate.interfaces
 	$(MAKE) generate.mocks
+	$(MAKE) generate.field_tests
 
 .PHONY: test
 test: test.unit test.integration
@@ -200,13 +202,12 @@ TYPES_TO_MOCK := $(shell grep -B 20 'rootSDK.*\*SDK' *.go | grep 'type.*struct' 
 .PHONY: remove.interfaces
 remove.interfaces:
 	@echo "Removing existing interfaces (to prevent breakage on breaking changes)..."
-	rm -f *_i.go
+	@$(foreach s, $(TYPES_TO_MOCK), \
+		rm -f $(shell echo $(s) | tr 'A-Z' 'a-z')_i.go; )
 
 .PHONY: generate.interfaces
-generate.interfaces: ifacemaker
-	$(MAKE) remove.interfaces
+generate.interfaces: ifacemaker remove.interfaces
 	@$(foreach s, $(TYPES_TO_MOCK), \
-		rm -f $(shell echo $(s) | tr 'A-Z' 'a-z')_i.go; \
 		$(MAKE) _generate.ifacemaker STRUCT=$(s) || exit 1;)
 
 .PHONY: remove.mocks
@@ -216,8 +217,7 @@ remove.mocks:
 
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks
-generate.mocks: mockery
-	$(MAKE) remove.mocks
+generate.mocks: mockery remove.mocks
 	GODEBUG=gotypesalias=0 $(MOCKERY)
 
 # TYPES_TO_TEST_FIELDS is a list of types in models/components/
@@ -254,9 +254,12 @@ empty :=
 space := $(empty) $(empty)
 TYPES_TO_TEST_FIELDS_COMMA := $(subst $(space),$(comma),$(strip $(TYPES_TO_TEST_FIELDS)))
 
-.PHONY: generate.field_tests
-generate.field_tests:
+.PHONY: remove.field_tests
+remove.field_tests:
 	rm -rf test/fields/*
+
+.PHONY: generate.field_tests
+generate.field_tests: remove.field_tests
 	go run ./scripts/gentests/ \
 		-types=$(TYPES_TO_TEST_FIELDS_COMMA)
 

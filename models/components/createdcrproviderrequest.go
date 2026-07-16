@@ -13,20 +13,22 @@ import (
 type CreateDcrProviderRequestType string
 
 const (
-	CreateDcrProviderRequestTypeAuth0   CreateDcrProviderRequestType = "auth0"
-	CreateDcrProviderRequestTypeAzureAd CreateDcrProviderRequestType = "azureAd"
-	CreateDcrProviderRequestTypeCurity  CreateDcrProviderRequestType = "curity"
-	CreateDcrProviderRequestTypeOkta    CreateDcrProviderRequestType = "okta"
-	CreateDcrProviderRequestTypeHTTP    CreateDcrProviderRequestType = "http"
+	CreateDcrProviderRequestTypeAuth0        CreateDcrProviderRequestType = "auth0"
+	CreateDcrProviderRequestTypeAzureAd      CreateDcrProviderRequestType = "azureAd"
+	CreateDcrProviderRequestTypeCurity       CreateDcrProviderRequestType = "curity"
+	CreateDcrProviderRequestTypeOkta         CreateDcrProviderRequestType = "okta"
+	CreateDcrProviderRequestTypeHTTP         CreateDcrProviderRequestType = "http"
+	CreateDcrProviderRequestTypeKongIdentity CreateDcrProviderRequestType = "kongIdentity"
 )
 
 // CreateDcrProviderRequest - Request body for creating a DCR provider. The provider_type cannot be updated after creation.
 type CreateDcrProviderRequest struct {
-	CreateDcrProviderRequestAuth0   *CreateDcrProviderRequestAuth0   `queryParam:"inline" union:"member"`
-	CreateDcrProviderRequestAzureAd *CreateDcrProviderRequestAzureAd `queryParam:"inline" union:"member"`
-	CreateDcrProviderRequestCurity  *CreateDcrProviderRequestCurity  `queryParam:"inline" union:"member"`
-	CreateDcrProviderRequestOkta    *CreateDcrProviderRequestOkta    `queryParam:"inline" union:"member"`
-	CreateDcrProviderRequestHTTP    *CreateDcrProviderRequestHTTP    `queryParam:"inline" union:"member"`
+	CreateDcrProviderRequestAuth0        *CreateDcrProviderRequestAuth0        `queryParam:"inline" union:"member"`
+	CreateDcrProviderRequestAzureAd      *CreateDcrProviderRequestAzureAd      `queryParam:"inline" union:"member"`
+	CreateDcrProviderRequestCurity       *CreateDcrProviderRequestCurity       `queryParam:"inline" union:"member"`
+	CreateDcrProviderRequestOkta         *CreateDcrProviderRequestOkta         `queryParam:"inline" union:"member"`
+	CreateDcrProviderRequestHTTP         *CreateDcrProviderRequestHTTP         `queryParam:"inline" union:"member"`
+	CreateDcrProviderRequestKongIdentity *CreateDcrProviderRequestKongIdentity `queryParam:"inline" union:"member"`
 
 	Type CreateDcrProviderRequestType
 }
@@ -91,6 +93,18 @@ func CreateCreateDcrProviderRequestHTTP(http CreateDcrProviderRequestHTTP) Creat
 	}
 }
 
+func CreateCreateDcrProviderRequestKongIdentity(kongIdentity CreateDcrProviderRequestKongIdentity) CreateDcrProviderRequest {
+	typ := CreateDcrProviderRequestTypeKongIdentity
+
+	typStr := CreateDcrProviderRequestKongIdentityProviderType(typ)
+	kongIdentity.ProviderType = typStr
+
+	return CreateDcrProviderRequest{
+		CreateDcrProviderRequestKongIdentity: &kongIdentity,
+		Type:                                 typ,
+	}
+}
+
 func (u *CreateDcrProviderRequest) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -148,6 +162,15 @@ func (u *CreateDcrProviderRequest) UnmarshalJSON(data []byte) error {
 		u.CreateDcrProviderRequestHTTP = createDcrProviderRequestHTTP
 		u.Type = CreateDcrProviderRequestTypeHTTP
 		return nil
+	case "kongIdentity":
+		createDcrProviderRequestKongIdentity := new(CreateDcrProviderRequestKongIdentity)
+		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestKongIdentity, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == kongIdentity) type CreateDcrProviderRequestKongIdentity within CreateDcrProviderRequest: %w", string(data), err)
+		}
+
+		u.CreateDcrProviderRequestKongIdentity = createDcrProviderRequestKongIdentity
+		u.Type = CreateDcrProviderRequestTypeKongIdentity
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDcrProviderRequest", string(data))
@@ -172,6 +195,10 @@ func (u CreateDcrProviderRequest) MarshalJSON() ([]byte, error) {
 
 	if u.CreateDcrProviderRequestHTTP != nil {
 		return utils.MarshalJSON(u.CreateDcrProviderRequestHTTP, "", true)
+	}
+
+	if u.CreateDcrProviderRequestKongIdentity != nil {
+		return utils.MarshalJSON(u.CreateDcrProviderRequestKongIdentity, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateDcrProviderRequest: all fields are null")
