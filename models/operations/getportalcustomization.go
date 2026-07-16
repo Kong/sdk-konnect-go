@@ -28,7 +28,7 @@ type GetPortalCustomizationResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// The current customization options for a portal.
-	PortalCustomizationV3 *components.PortalCustomizationV3
+	PortalCustomization *components.PortalCustomization
 }
 
 func (g *GetPortalCustomizationResponse) GetContentType() string {
@@ -52,9 +52,9 @@ func (g *GetPortalCustomizationResponse) GetRawResponse() *http.Response {
 	return g.RawResponse
 }
 
-func (g *GetPortalCustomizationResponse) GetPortalCustomizationV3() *components.PortalCustomizationV3 {
+func (g *GetPortalCustomizationResponse) GetPortalCustomization() *components.PortalCustomization {
 	if g == nil {
 		return nil
 	}
-	return g.PortalCustomizationV3
+	return g.PortalCustomization
 }

@@ -56,6 +56,7 @@ const (
 	AgenticQueryDimensionsMcpSessionID              AgenticQueryDimensions = "mcp_session_id"
 	AgenticQueryDimensionsMcpToolName               AgenticQueryDimensions = "mcp_tool_name"
 	AgenticQueryDimensionsPortal                    AgenticQueryDimensions = "portal"
+	AgenticQueryDimensionsPrincipal                 AgenticQueryDimensions = "principal"
 	AgenticQueryDimensionsRealm                     AgenticQueryDimensions = "realm"
 	AgenticQueryDimensionsResponseSource            AgenticQueryDimensions = "response_source"
 	AgenticQueryDimensionsRoute                     AgenticQueryDimensions = "route"
@@ -74,7 +75,7 @@ func (e AgenticQueryDimensions) ToPointer() *AgenticQueryDimensions {
 func (e *AgenticQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "portal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
+		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}
@@ -97,8 +98,6 @@ type AgenticQuery struct {
 	// If granularity is not specified and "time" is in the dimensions list, a default will be chosen based on the time range requested.
 	//
 	// Different relative times support different granularities:
-	//
-	//
 	//   - 15m => tenSecondly, thirtySecondly, minutely
 	//   - 1h  => tenSecondly, thirtySecondly, minutely, fiveMinutely, tenMinutely
 	//   - 6h  => thirtySecondly, minutely, fiveMinutely, tenMinutely, thirtyMinutely, hourly
@@ -108,8 +107,6 @@ type AgenticQuery struct {
 	//   - 30d => hourly, twoHourly, twelveHourly, daily, weekly
 	//
 	// For special time ranges:
-	//
-	//
 	//   - current_week, previous_week   => thirtyMinutely, hourly, twoHourly, twelveHourly, daily
 	//   - current_month, previous_month => hourly, twoHourly, twelveHourly, daily, weekly
 	//

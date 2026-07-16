@@ -2,6 +2,11 @@
 
 Default tax configuration to apply to the invoices for line items.
 
+Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
+config is deprecated and can no longer be added or changed: the organization
+default tax code is used instead. Existing tax-code values may still be removed,
+and `behavior` remains fully supported.
+
 
 ## Fields
 

@@ -12,7 +12,16 @@ type ListSubscriptionAddonsRequest struct {
 	SubscriptionID string `pathParam:"style=simple,explode=false,name=subscriptionId"`
 	// Determines which page of the collection to retrieve.
 	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
-	Sort *string                         `queryParam:"style=form,explode=false,name=sort"`
+	// Sort subscription addons returned in the response. Supported sort attributes
+	// are:
+	//
+	// - `id`
+	// - `created_at` (default)
+	// - `updated_at`
+	//
+	// The `asc` suffix is optional as the default sort order is ascending. The `desc`
+	// suffix is used to specify a descending order.
+	Sort *string `queryParam:"style=form,explode=false,name=sort"`
 }
 
 func (l *ListSubscriptionAddonsRequest) GetSubscriptionID() string {

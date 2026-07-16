@@ -78,6 +78,10 @@ type AppAuthStrategyOpenIDConnectRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+	// Application principal settings for this auth strategy. Runtime effect applies to V3 API Catalog (ACE) portals and
+	// applications; stored values may be set for any auth strategy in the organization.
+	//
+	Principals *AuthStrategyPrincipals `json:"principals,omitempty"`
 }
 
 func (a AppAuthStrategyOpenIDConnectRequest) MarshalJSON() ([]byte, error) {
@@ -131,6 +135,13 @@ func (a *AppAuthStrategyOpenIDConnectRequest) GetLabels() map[string]string {
 		return nil
 	}
 	return a.Labels
+}
+
+func (a *AppAuthStrategyOpenIDConnectRequest) GetPrincipals() *AuthStrategyPrincipals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
 }
 
 type StrategyType string
@@ -199,6 +210,10 @@ type AppAuthStrategyKeyAuthRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+	// Application principal settings for this auth strategy. Runtime effect applies to V3 API Catalog (ACE) portals and
+	// applications; stored values may be set for any auth strategy in the organization.
+	//
+	Principals *AuthStrategyPrincipals `json:"principals,omitempty"`
 }
 
 func (a AppAuthStrategyKeyAuthRequest) MarshalJSON() ([]byte, error) {
@@ -245,6 +260,13 @@ func (a *AppAuthStrategyKeyAuthRequest) GetLabels() map[string]string {
 		return nil
 	}
 	return a.Labels
+}
+
+func (a *AppAuthStrategyKeyAuthRequest) GetPrincipals() *AuthStrategyPrincipals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
 }
 
 type CreateAppAuthStrategyRequestType string

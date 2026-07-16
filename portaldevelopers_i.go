@@ -5,11 +5,15 @@ package sdkkonnectgo
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // PortalDevelopersSDK is a generated interface.
 type PortalDevelopersSDK interface {
+	// CreateDeveloper - Create Developer Account
+	// Creates a new developer account in the specified portal. SAML login is currently not supported.
+	CreateDeveloper(ctx context.Context, portalID string, createDeveloperRequest components.CreateDeveloperRequest, opts ...operations.Option) (*operations.CreateDeveloperResponse, error)
 	// ListPortalDevelopers - List Developers
 	// Lists the developers that have registered for this portal. Each developer can be registered to one portal and must be approved to login unless using the developer auto-approve setting.
 	ListPortalDevelopers(ctx context.Context, request operations.ListPortalDevelopersRequest, opts ...operations.Option) (*operations.ListPortalDevelopersResponse, error)

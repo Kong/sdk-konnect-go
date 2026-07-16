@@ -7,6 +7,7 @@ APIs related to Konnect Developer Portal Applications.
 ### Available Operations
 
 * [GetApplicationUnscoped](#getapplicationunscoped) - Get an Application
+* [CreateApplication](#createapplication) - Create Application
 * [ListApplications](#listapplications) - List Applications
 * [GetApplication](#getapplication) - Get an Application by Portal
 * [UpdateApplication](#updateapplication) - Update Application
@@ -149,6 +150,81 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreateApplication
+
+Creates a new application for this portal. The application must be assigned to a developer or a team. An application can be registered for various APIs, issuing credentials for API access. If using DCR, an application will be linked to an Identity Provider's application by its `client_id`.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-application" method="post" path="/v3/portals/{portalId}/applications" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.CreateApplication(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreateApplicationRequest{
+        Name: "Portal Application",
+        Description: sdkkonnectgo.Pointer("A portal application provisioned for a developer by a Portal Admin."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("production"),
+        },
+        AuthStrategyID: sdkkonnectgo.Pointer("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+        Owner: components.ApplicationOwner{
+            Type: components.ApplicationOwnerTypeDeveloper,
+            ID: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationResponse != nil {
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                                                                             | Type                                                                                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                           | Example                                                                                                                                                                                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                                                                                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                                                                                                    | The context to use for the request.                                                                                                                                                                                                                                                                   |                                                                                                                                                                                                                                                                                                       |
+| `portalID`                                                                                                                                                                                                                                                                                            | `string`                                                                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                                                                    | ID of the portal.                                                                                                                                                                                                                                                                                     | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                                                                                                                                                                                                  |
+| `createApplicationRequest`                                                                                                                                                                                                                                                                            | [components.CreateApplicationRequest](../../models/components/createapplicationrequest.md)                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                                                                    | Create an application for a portal.                                                                                                                                                                                                                                                                   | {<br/>"name": "Portal Application",<br/>"description": "A portal application provisioned for a developer by a Portal Admin.",<br/>"labels": {<br/>"env": "production"<br/>},<br/>"auth_strategy_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",<br/>"owner": {<br/>"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7",<br/>"type": "developer"<br/>}<br/>} |
+| `opts`                                                                                                                                                                                                                                                                                                | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                                    | The options for this request.                                                                                                                                                                                                                                                                         |                                                                                                                                                                                                                                                                                                       |
+
+### Response
+
+**[*operations.CreateApplicationResponse](../../models/operations/createapplicationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListApplications

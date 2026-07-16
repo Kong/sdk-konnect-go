@@ -1,6 +1,6 @@
 # ListEventsParamsFilterStringFieldNEQFilter
 
-Filter events by source.
+Filter events by ID.
 
 
 ## Fields

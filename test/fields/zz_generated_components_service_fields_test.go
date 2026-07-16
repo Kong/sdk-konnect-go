@@ -22,7 +22,7 @@ func TestComponentsServiceFieldTypes(t *testing.T) {
 	var _ *string = value.Name
 	var _ *string = value.Path
 	var _ *int64 = value.Port
-	var _ *components.Protocol = value.Protocol
+	var _ *components.ServiceProtocol = value.Protocol
 	var _ *int64 = value.ReadTimeout
 	var _ *int64 = value.Retries
 	var _ []string = value.Tags

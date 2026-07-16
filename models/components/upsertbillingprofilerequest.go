@@ -425,6 +425,29 @@ func (u *UpsertBillingProfileRequestWorkflowCollectionSettings) GetInterval() *s
 	return u.Interval
 }
 
+// UpsertBillingProfileRequestSubscriptionEndProrationMode - Controls how subscription-ending shortened service periods are billed.
+type UpsertBillingProfileRequestSubscriptionEndProrationMode string
+
+const (
+	UpsertBillingProfileRequestSubscriptionEndProrationModeBillFullPeriod   UpsertBillingProfileRequestSubscriptionEndProrationMode = "bill_full_period"
+	UpsertBillingProfileRequestSubscriptionEndProrationModeBillActualPeriod UpsertBillingProfileRequestSubscriptionEndProrationMode = "bill_actual_period"
+)
+
+func (e UpsertBillingProfileRequestSubscriptionEndProrationMode) ToPointer() *UpsertBillingProfileRequestSubscriptionEndProrationMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpsertBillingProfileRequestSubscriptionEndProrationMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "bill_full_period", "bill_actual_period":
+			return true
+		}
+	}
+	return false
+}
+
 // UpsertBillingProfileRequestWorkflowInvoiceSettings - The invoicing settings for this workflow
 type UpsertBillingProfileRequestWorkflowInvoiceSettings struct {
 	// Whether to automatically issue the invoice after the draftPeriod has passed.
@@ -433,6 +456,8 @@ type UpsertBillingProfileRequestWorkflowInvoiceSettings struct {
 	DraftPeriod *string `default:"P0D" json:"draft_period"`
 	// Should progressive billing be allowed for this workflow?
 	ProgressiveBilling *bool `default:"true" json:"progressive_billing"`
+	// Controls how subscription-ending shortened service periods are billed.
+	SubscriptionEndProrationMode *UpsertBillingProfileRequestSubscriptionEndProrationMode `default:"bill_actual_period" json:"subscription_end_proration_mode"`
 }
 
 func (u UpsertBillingProfileRequestWorkflowInvoiceSettings) MarshalJSON() ([]byte, error) {
@@ -465,6 +490,13 @@ func (u *UpsertBillingProfileRequestWorkflowInvoiceSettings) GetProgressiveBilli
 		return nil
 	}
 	return u.ProgressiveBilling
+}
+
+func (u *UpsertBillingProfileRequestWorkflowInvoiceSettings) GetSubscriptionEndProrationMode() *UpsertBillingProfileRequestSubscriptionEndProrationMode {
+	if u == nil {
+		return nil
+	}
+	return u.SubscriptionEndProrationMode
 }
 
 type UpsertBillingProfileRequestPaymentType string
@@ -627,6 +659,11 @@ func (u *UpsertBillingProfileRequestTaxCode) GetID() string {
 }
 
 // UpsertBillingProfileRequestDefaultTaxConfig - Default tax configuration to apply to the invoices for line items.
+//
+// Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
+// config is deprecated and can no longer be added or changed: the organization
+// default tax code is used instead. Existing tax-code values may still be removed,
+// and `behavior` remains fully supported.
 type UpsertBillingProfileRequestDefaultTaxConfig struct {
 	// Tax behavior.
 	//
@@ -699,6 +736,11 @@ type UpsertBillingProfileRequestWorkflowTaxSettings struct {
 	// have a tax location when starting a paid subscription.
 	Enforced *bool `default:"false" json:"enforced"`
 	// Default tax configuration to apply to the invoices for line items.
+	//
+	// Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
+	// config is deprecated and can no longer be added or changed: the organization
+	// default tax code is used instead. Existing tax-code values may still be removed,
+	// and `behavior` remains fully supported.
 	DefaultTaxConfig *UpsertBillingProfileRequestDefaultTaxConfig `json:"default_tax_config,omitempty"`
 }
 

@@ -33,6 +33,35 @@ func (e *BillingSubscriptionStatus) IsExact() bool {
 	return false
 }
 
+// BillingSubscriptionSettlementMode - Settlement mode for billing.
+//
+// Values:
+//
+// - `credit_then_invoice`: Credits are applied first, then any remainder is
+// invoiced.
+// - `credit_only`: Usage is settled exclusively against credits.
+type BillingSubscriptionSettlementMode string
+
+const (
+	BillingSubscriptionSettlementModeCreditThenInvoice BillingSubscriptionSettlementMode = "credit_then_invoice"
+	BillingSubscriptionSettlementModeCreditOnly        BillingSubscriptionSettlementMode = "credit_only"
+)
+
+func (e BillingSubscriptionSettlementMode) ToPointer() *BillingSubscriptionSettlementMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *BillingSubscriptionSettlementMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "credit_then_invoice", "credit_only":
+			return true
+		}
+	}
+	return false
+}
+
 // BillingSubscription - Subscription.
 type BillingSubscription struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
@@ -62,6 +91,14 @@ type BillingSubscription struct {
 	BillingAnchor time.Time `json:"billing_anchor"`
 	// The status of the subscription.
 	Status BillingSubscriptionStatus `json:"status"`
+	// Settlement mode for billing.
+	//
+	// Values:
+	//
+	// - `credit_then_invoice`: Credits are applied first, then any remainder is
+	// invoiced.
+	// - `credit_only`: Usage is settled exclusively against credits.
+	SettlementMode *BillingSubscriptionSettlementMode `json:"settlement_mode,omitempty"`
 }
 
 func (b BillingSubscription) MarshalJSON() ([]byte, error) {
@@ -136,4 +173,11 @@ func (b *BillingSubscription) GetStatus() BillingSubscriptionStatus {
 		return BillingSubscriptionStatus("")
 	}
 	return b.Status
+}
+
+func (b *BillingSubscription) GetSettlementMode() *BillingSubscriptionSettlementMode {
+	if b == nil {
+		return nil
+	}
+	return b.SettlementMode
 }

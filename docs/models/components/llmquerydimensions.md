@@ -31,6 +31,7 @@ custom := components.LLMQueryDimensions("custom_value")
 | `LLMQueryDimensionsLlmEmbeddingsProvider` | llm_embeddings_provider                   |
 | `LLMQueryDimensionsLlmEmbeddingsModel`    | llm_embeddings_model                      |
 | `LLMQueryDimensionsTime`                  | time                                      |
+| `LLMQueryDimensionsPrincipal`             | principal                                 |
 | `LLMQueryDimensionsRealm`                 | realm                                     |
 | `LLMQueryDimensionsStatusCode`            | status_code                               |
 | `LLMQueryDimensionsStatusCodeGrouped`     | status_code_grouped                       |
