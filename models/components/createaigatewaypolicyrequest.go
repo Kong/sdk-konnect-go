@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateAIGatewayPolicyRequest - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type CreateAIGatewayPolicyRequest struct {
@@ -23,9 +19,9 @@ type CreateAIGatewayPolicyRequest struct {
 	//
 	Type string `json:"type"`
 	// Whether the policy is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Whether the policy is globally applied to all resources.
-	Global *bool `default:"false" json:"global"`
+	Global *bool `json:"global,omitempty"`
 	// Configuration for the policy. This is equivalent to the Kong 3 plugin configuration.
 	// Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
 	//
@@ -42,17 +38,6 @@ type CreateAIGatewayPolicyRequest struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
-}
-
-func (c CreateAIGatewayPolicyRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateAIGatewayPolicyRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (c *CreateAIGatewayPolicyRequest) GetDisplayName() string {

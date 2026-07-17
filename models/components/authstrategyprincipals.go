@@ -11,7 +11,7 @@ import (
 // applications; stored values may be set for any auth strategy in the organization.
 type AuthStrategyPrincipals struct {
 	// Whether application principals are enabled for this auth strategy.
-	Enabled *bool `default:"false" json:"enabled"`
+	Enabled bool `json:"enabled"`
 }
 
 func (a AuthStrategyPrincipals) MarshalJSON() ([]byte, error) {
@@ -19,15 +19,15 @@ func (a AuthStrategyPrincipals) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AuthStrategyPrincipals) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"enabled"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AuthStrategyPrincipals) GetEnabled() *bool {
+func (a *AuthStrategyPrincipals) GetEnabled() bool {
 	if a == nil {
-		return nil
+		return false
 	}
 	return a.Enabled
 }

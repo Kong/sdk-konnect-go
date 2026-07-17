@@ -17,7 +17,7 @@ type SchemaRegistry struct {
 	// The unique name of the schema registry.
 	Name string `json:"name"`
 	// A human-readable description of the virtual cluster.
-	Description *string `default:"" json:"description"`
+	Description *string `json:"description,omitempty"`
 	// The type of the schema registry.
 	Type string `json:"type"`
 	// The configuration of the schema registry.

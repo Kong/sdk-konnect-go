@@ -47,7 +47,7 @@ type AIGatewayBedrockEmbeddingsModelConfig struct {
 	// S3 bucket prefix for batch inference jobs.
 	BatchBucketPrefix *string `json:"batch_bucket_prefix,omitempty"`
 	// Whether to normalize embedding vectors in the response.
-	EmbeddingsNormalize *bool `default:"false" json:"embeddings_normalize"`
+	EmbeddingsNormalize *bool `json:"embeddings_normalize,omitempty"`
 	// Latency performance configuration for the model invocation.
 	PerformanceConfigLatency *string `json:"performance_config_latency,omitempty"`
 	// S3 URI for storing video generation outputs.

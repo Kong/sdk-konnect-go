@@ -111,8 +111,11 @@ func main() {
         ListenerID: "3407fe24-3af9-43d2-92df-f7396e794e62",
         EventGatewayListenerPolicyCreate: components.CreateEventGatewayListenerPolicyCreateTLSServer(
             components.EventGatewayTLSListenerPolicy{
+                Description: sdkkonnectgo.Pointer(""),
+                Enabled: sdkkonnectgo.Pointer(true),
                 Config: components.EventGatewayTLSListenerPolicyConfig{
                     Certificates: []components.TLSCertificate{},
+                    AllowPlaintext: sdkkonnectgo.Pointer(false),
                 },
             },
         ),
@@ -242,6 +245,8 @@ func main() {
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         EventGatewayListenerPolicyUpdate: components.CreateEventGatewayListenerPolicyUpdateForwardToVirtualCluster(
             components.ForwardToVirtualClusterPolicy{
+                Description: sdkkonnectgo.Pointer(""),
+                Enabled: sdkkonnectgo.Pointer(true),
                 Config: components.CreateForwardToVirtualClusterPolicyConfigPortMapping(
                     components.ForwardToClusterByPortMappingConfig{
                         Destination: components.CreateVirtualClusterReferenceVirtualClusterReferenceByName(
@@ -250,6 +255,8 @@ func main() {
                             },
                         ),
                         AdvertisedHost: "<value>",
+                        BootstrapPort: components.BootstrapPortAtStart.ToPointer(),
+                        MinBrokerID: sdkkonnectgo.Pointer[int64](0),
                     },
                 ),
             },

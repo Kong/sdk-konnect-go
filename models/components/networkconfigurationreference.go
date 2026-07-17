@@ -18,7 +18,7 @@ type NetworkConfigurationReference struct {
 	// - `public` — data planes are accessible from the public internet
 	// - `private+public` — equivalent to `public`; data planes are accessible from the public internet (default)
 	//
-	APIAccess *APIAccess `default:"private+public" json:"api_access"`
+	APIAccess *APIAccess `json:"api_access,omitempty"`
 	// Object that describes where data-planes will be deployed to, along with how many instances.
 	DataplaneGroupConfig []ConfigurationDataPlaneGroupConfig `json:"dataplane_group_config"`
 	// List of data-plane groups that describe where data-planes will be deployed to, along with how many
@@ -30,7 +30,7 @@ type NetworkConfigurationReference struct {
 	//
 	// Kind of the Cloud Gateway deployment. If serverless.v1 is specified, the following fields
 	// should be omitted (will be ignored if provided): autoscale, cloud_gateway_network_id, version.
-	Kind *ConfigurationKind `default:"dedicated.v0" json:"kind"`
+	Kind *ConfigurationKind `json:"kind,omitempty"`
 	// Positive, monotonically increasing version integer, to serialize configuration changes.
 	//
 	EntityVersion float64 `json:"entity_version"`

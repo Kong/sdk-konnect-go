@@ -36,7 +36,7 @@ func (e *ForwardToClusterBySNIConfigType) IsExact() bool {
 //
 // **Requires a minimum runtime version of `1.1`**.
 type BrokerHostFormat struct {
-	Type *ForwardToClusterBySNIConfigType `default:"per_cluster_suffix" json:"type"`
+	Type ForwardToClusterBySNIConfigType `json:"type"`
 }
 
 func (b BrokerHostFormat) MarshalJSON() ([]byte, error) {
@@ -44,15 +44,15 @@ func (b BrokerHostFormat) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BrokerHostFormat) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (b *BrokerHostFormat) GetType() *ForwardToClusterBySNIConfigType {
+func (b *BrokerHostFormat) GetType() ForwardToClusterBySNIConfigType {
 	if b == nil {
-		return nil
+		return ForwardToClusterBySNIConfigType("")
 	}
 	return b.Type
 }

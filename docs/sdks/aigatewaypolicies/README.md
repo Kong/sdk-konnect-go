@@ -111,6 +111,8 @@ func main() {
         DisplayName: "My Cool AI PII Sanitizer Policy",
         Name: "ai-pii-sanitizer-1234",
         Type: "ai-sanitizer",
+        Enabled: sdkkonnectgo.Pointer(true),
+        Global: sdkkonnectgo.Pointer(false),
         Config: map[string]any{
             "anonymize": []any{
                 "phone",
@@ -258,6 +260,8 @@ func main() {
             DisplayName: "My Cool AI PII Sanitizer Policy",
             Name: "ai-pii-sanitizer-1234",
             Type: "ai-sanitizer",
+            Enabled: sdkkonnectgo.Pointer(true),
+            Global: sdkkonnectgo.Pointer(false),
             Config: map[string]any{
                 "anonymize": []any{
                     "phone",

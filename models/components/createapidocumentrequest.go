@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type CreateAPIDocumentRequest struct {
 	// Raw markdown content to display in your Portal
 	Content string `json:"content"`
@@ -18,23 +14,12 @@ type CreateAPIDocumentRequest struct {
 	//
 	Slug *string `json:"slug,omitempty"`
 	// If `status=published` the document will be visible in your live portal
-	Status *APIDocumentStatus `default:"unpublished" json:"status"`
+	Status *APIDocumentStatus `json:"status,omitempty"`
 	// API Documents may be rendered as a tree of files.
 	//
 	// Specify the `id` of another API Document as the `parent_document_id` to add some heirarchy do your documents.
 	//
 	ParentDocumentID *string `json:"parent_document_id,omitempty"`
-}
-
-func (c CreateAPIDocumentRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateAPIDocumentRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (c *CreateAPIDocumentRequest) GetContent() string {

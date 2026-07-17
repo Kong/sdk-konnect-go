@@ -148,6 +148,7 @@ func main() {
                         Amount: "902.15",
                     },
                 ),
+                PaymentTerm: components.PaymentTermInArrears.ToPointer(),
                 TaxConfig: &components.TaxConfig{
                     Code: components.TaxCodeReference{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",
@@ -156,6 +157,7 @@ func main() {
                 Entitlement: sdkkonnectgo.Pointer(components.CreateEntitlementTemplateMetered(
                     components.BillingRateCardMeteredEntitlement{
                         Type: components.BillingRateCardMeteredEntitlementTypeMetered,
+                        IsSoftLimit: sdkkonnectgo.Pointer(false),
                     },
                 )),
             },
@@ -245,6 +247,7 @@ func main() {
                         },
                     },
                 ),
+                PaymentTerm: components.PaymentTermInArrears.ToPointer(),
                 TaxConfig: &components.TaxConfig{
                     Code: components.TaxCodeReference{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",

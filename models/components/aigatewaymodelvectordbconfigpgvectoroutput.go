@@ -81,17 +81,17 @@ func (e *Version) IsExact() bool {
 
 type Ssl struct {
 	// whether to use ssl for the pgvector database
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// the path of ssl cert to use for the pgvector database
 	Cert *string `json:"cert,omitempty"`
 	// the path of ssl cert key to use for the pgvector database
 	CertKey *string `json:"cert_key,omitempty"`
 	// whether ssl is required for the pgvector database
-	Required *bool `default:"true" json:"required"`
+	Required *bool `json:"required,omitempty"`
 	// whether to verify ssl for the pgvector database
-	Verify *bool `default:"true" json:"verify"`
+	Verify *bool `json:"verify,omitempty"`
 	// the ssl version to use for the pgvector database
-	Version *Version `default:"tlsv1_2" json:"version"`
+	Version *Version `json:"version,omitempty"`
 }
 
 func (s Ssl) MarshalJSON() ([]byte, error) {
@@ -158,18 +158,18 @@ type AIGatewayModelVectorDBConfigPgVectorOutput struct {
 	// the default similarity threshold for accepting semantic search results (float). Higher threshold means more results are considered similar.
 	Threshold *float64 `json:"threshold,omitempty"`
 	// the database of the pgvector database
-	Database *string `default:"kong-pgvector" json:"database"`
+	Database *string `json:"database,omitempty"`
 	// the host of the pgvector database
-	Host *string `default:"127.0.0.1" json:"host"`
+	Host *string `json:"host,omitempty"`
 	// the port of the pgvector database
-	Port *int64 `default:"5432" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 	Ssl  *Ssl   `json:"ssl,omitempty"`
 	// the timeout of the pgvector database
-	Timeout *float64 `default:"5000" json:"timeout"`
+	Timeout *float64 `json:"timeout,omitempty"`
 	// the user of the pgvector database
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	User *string `default:"postgres" json:"user"`
+	User *string `json:"user,omitempty"`
 }
 
 func (a AIGatewayModelVectorDBConfigPgVectorOutput) MarshalJSON() ([]byte, error) {
@@ -264,22 +264,22 @@ type AIGatewayModelVectorDBConfigPgVector struct {
 	// the default similarity threshold for accepting semantic search results (float). Higher threshold means more results are considered similar.
 	Threshold *float64 `json:"threshold,omitempty"`
 	// the database of the pgvector database
-	Database *string `default:"kong-pgvector" json:"database"`
+	Database *string `json:"database,omitempty"`
 	// the host of the pgvector database
-	Host *string `default:"127.0.0.1" json:"host"`
+	Host *string `json:"host,omitempty"`
 	// the password of the pgvector database
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
 	Password *string `json:"password,omitempty"`
 	// the port of the pgvector database
-	Port *int64 `default:"5432" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 	Ssl  *Ssl   `json:"ssl,omitempty"`
 	// the timeout of the pgvector database
-	Timeout *float64 `default:"5000" json:"timeout"`
+	Timeout *float64 `json:"timeout,omitempty"`
 	// the user of the pgvector database
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	User *string `default:"postgres" json:"user"`
+	User *string `json:"user,omitempty"`
 }
 
 func (a AIGatewayModelVectorDBConfigPgVector) MarshalJSON() ([]byte, error) {

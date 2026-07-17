@@ -116,8 +116,8 @@ func main() {
         Workflow: components.CreateBillingProfileRequestWorkflow{
             Collection: &components.CreateBillingProfileRequestWorkflowCollectionSettings{
                 Alignment: sdkkonnectgo.Pointer(components.CreateCreateBillingProfileRequestAlignmentSubscription(
-                    components.AlignmentBillingWorkflowCollectionAlignmentSubscription{
-                        Type: components.BillingWorkflowCollectionAlignmentSubscriptionAlignmentTypeSubscription,
+                    components.BillingWorkflowCollectionAlignmentSubscription{
+                        Type: components.BillingWorkflowCollectionAlignmentSubscriptionTypeSubscription,
                     },
                 )),
                 Interval: sdkkonnectgo.Pointer("P1D"),
@@ -281,8 +281,8 @@ func main() {
         Workflow: components.UpsertBillingProfileRequestWorkflow{
             Collection: &components.UpsertBillingProfileRequestWorkflowCollectionSettings{
                 Alignment: sdkkonnectgo.Pointer(components.CreateUpsertBillingProfileRequestAlignmentSubscription(
-                    components.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription{
-                        Type: components.BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestTypeSubscription,
+                    components.BillingWorkflowCollectionAlignmentSubscription{
+                        Type: components.BillingWorkflowCollectionAlignmentSubscriptionTypeSubscription,
                     },
                 )),
                 Interval: sdkkonnectgo.Pointer("P1D"),

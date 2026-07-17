@@ -42,7 +42,7 @@ type AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt struct {
 	// Header name used to send the fetched access token to the upstream MCP server. The value should
 	// include the header name and the token prefix if needed.
 	//
-	AccessTokenHeader *string `default:"Authorization" json:"access_token_header"`
+	AccessTokenHeader *string `json:"access_token_header,omitempty"`
 	// Header name used to send the fetched ID token to the upstream MCP server. The value should
 	// include the header name and the token prefix if needed. Leave empty to omit the ID token
 	// when fetching the tools list.

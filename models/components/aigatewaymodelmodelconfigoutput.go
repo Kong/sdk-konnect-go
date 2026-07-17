@@ -12,8 +12,8 @@ import (
 //
 // Configuration for AI Gateway logging.
 type AIGatewayModelModelConfigLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
+	Payloads   *bool `json:"payloads,omitempty"`
+	Statistics *bool `json:"statistics,omitempty"`
 }
 
 func (a AIGatewayModelModelConfigLogging) MarshalJSON() ([]byte, error) {
@@ -77,7 +77,7 @@ type AIGatewayModelModelConfigModel struct {
 	// This feature is currently in beta and is subject to change.
 	//
 	// Display the model name selected in the X-Kong-LLM-Model response header
-	NameHeader *bool `default:"true" json:"name_header"`
+	NameHeader *bool `json:"name_header,omitempty"`
 }
 
 func (a AIGatewayModelModelConfigModel) MarshalJSON() ([]byte, error) {
@@ -117,9 +117,9 @@ type AIGatewayModelModelConfigOutput struct {
 	//
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayModelModelConfigLogging           `json:"logging,omitempty"`
-	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `default:"allow" json:"response_streaming"`
+	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `json:"response_streaming,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	MaxRequestBodySize *int64 `json:"max_request_body_size,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	Model *AIGatewayModelModelConfigModel `json:"model,omitempty"`
@@ -253,9 +253,9 @@ type AIGatewayModelModelConfig struct {
 	//
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayModelModelConfigLogging           `json:"logging,omitempty"`
-	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `default:"allow" json:"response_streaming"`
+	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `json:"response_streaming,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	MaxRequestBodySize *int64 `json:"max_request_body_size,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	Model *AIGatewayModelModelConfigModel `json:"model,omitempty"`

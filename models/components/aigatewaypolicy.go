@@ -24,9 +24,9 @@ type AIGatewayPolicy struct {
 	//
 	Type string `json:"type"`
 	// Whether the policy is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Whether the policy is globally applied to all resources.
-	Global *bool `default:"false" json:"global"`
+	Global *bool `json:"global,omitempty"`
 	// Configuration for the policy. This is equivalent to the Kong 3 plugin configuration.
 	// Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
 	//

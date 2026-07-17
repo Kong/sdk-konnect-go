@@ -40,7 +40,7 @@ type BooleanConfigFieldSchema struct {
 	// Optional brief description of the configuration field.
 	Description *string `json:"description,omitempty"`
 	// Denotes whether the config field is a required value.
-	Required *bool `default:"false" json:"required"`
+	Required *bool `json:"required,omitempty"`
 	// Defines the condition under which this configuration field is allowed to be modified.
 	// When specified, the platform will restrict updates to this field unless the integration
 	// meets the given condition.

@@ -22,7 +22,7 @@ type APIPackagePublicationResponse struct {
 	// Public API publications do not require authentication to view and retrieve information about them.
 	// Private API publications require authentication to retrieve information about them.
 	//
-	Visibility *APIPublicationVisibility `default:"private" json:"visibility"`
+	Visibility APIPublicationVisibility `json:"visibility"`
 	// Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
 	Warnings []string `json:"warnings,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -56,9 +56,9 @@ func (a *APIPackagePublicationResponse) GetAuthStrategyIds() []string {
 	return a.AuthStrategyIds
 }
 
-func (a *APIPackagePublicationResponse) GetVisibility() *APIPublicationVisibility {
+func (a *APIPackagePublicationResponse) GetVisibility() APIPublicationVisibility {
 	if a == nil {
-		return nil
+		return APIPublicationVisibility("")
 	}
 	return a.Visibility
 }

@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type PortalCustomizationMode string
 
 const (
@@ -97,30 +93,19 @@ func (m *Menu) GetFooterBottom() []PortalMenuItem {
 
 type SpecRenderer struct {
 	// Enable in-browser testing for your APIs. All linked gateways must have the CORS plugin configured.
-	TryItUI *bool `default:"true" json:"try_it_ui"`
+	TryItUI *bool `json:"try_it_ui,omitempty"`
 	// Enables users to open API specifications in Insomnia to explore and send requests with the native client. Only public API specifications are supported.
-	TryItInsomnia *bool `default:"true" json:"try_it_insomnia"`
+	TryItInsomnia *bool `json:"try_it_insomnia,omitempty"`
 	// Display the full spec on a single, scrollable page. If disabled, documentation, endpoints, and schemas appear on separate pages.
-	InfiniteScroll *bool `default:"true" json:"infinite_scroll"`
+	InfiniteScroll *bool `json:"infinite_scroll,omitempty"`
 	// Control whether schemas are visible in your API specs. When enabled, schemas appear in the side navigation below the endpoints.
-	ShowSchemas *bool `default:"true" json:"show_schemas"`
+	ShowSchemas *bool `json:"show_schemas,omitempty"`
 	// Manage visibility of internal endpoints and models.
-	HideInternal *bool `default:"false" json:"hide_internal"`
+	HideInternal *bool `json:"hide_internal,omitempty"`
 	// Manage visibility of deprecated endpoints and models.
-	HideDeprecated *bool `default:"false" json:"hide_deprecated"`
+	HideDeprecated *bool `json:"hide_deprecated,omitempty"`
 	// Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
-	AllowCustomServerUrls *bool `default:"true" json:"allow_custom_server_urls"`
-}
-
-func (s SpecRenderer) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
-}
-
-func (s *SpecRenderer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	AllowCustomServerUrls *bool `json:"allow_custom_server_urls,omitempty"`
 }
 
 func (s *SpecRenderer) GetTryItUI() *bool {

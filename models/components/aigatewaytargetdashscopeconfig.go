@@ -55,7 +55,7 @@ type AIGatewayTargetDashscopeConfig struct {
 	UpstreamURL *string                            `json:"upstream_url,omitempty"`
 	Type        AIGatewayTargetDashscopeConfigType `json:"type"`
 	// Whether to use the international DashScope endpoint.
-	International *bool `default:"true" json:"international"`
+	International *bool `json:"international,omitempty"`
 }
 
 func (a AIGatewayTargetDashscopeConfig) MarshalJSON() ([]byte, error) {

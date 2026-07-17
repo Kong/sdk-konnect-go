@@ -263,28 +263,17 @@ type SubscriptionAddonRateCardUnitConfig struct {
 	//
 	// Defaults to none (no rounding). Entitlement checks always use the precise
 	// (unrounded) value.
-	Rounding *SubscriptionAddonRateCardRoundingMode `default:"none" json:"rounding"`
+	Rounding *SubscriptionAddonRateCardRoundingMode `json:"rounding,omitempty"`
 	// The number of decimal places to retain after rounding.
 	//
 	// Only meaningful when rounding is not "none". Defaults to 0 (round to whole
 	// numbers).
-	Precision *int64 `default:"0" json:"precision"`
+	Precision *int64 `json:"precision,omitempty"`
 	// A human-readable label for the converted unit shown on invoices and in the
 	// customer portal (e.g., "GB", "hours", "M tokens").
 	//
 	// Optional. When omitted, no unit label is rendered.
 	DisplayUnit *string `json:"display_unit,omitempty"`
-}
-
-func (s SubscriptionAddonRateCardUnitConfig) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
-}
-
-func (s *SubscriptionAddonRateCardUnitConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (s *SubscriptionAddonRateCardUnitConfig) GetOperation() SubscriptionAddonRateCardConversionOperation {
@@ -567,7 +556,7 @@ type RateCard struct {
 	UnitConfig *SubscriptionAddonRateCardUnitConfig `json:"unit_config,omitempty"`
 	// The payment term of the rate card. In advance payment term can only be used for
 	// flat prices.
-	PaymentTerm *SubscriptionAddonRateCardPaymentTerm `default:"in_arrears" json:"payment_term"`
+	PaymentTerm *SubscriptionAddonRateCardPaymentTerm `json:"payment_term,omitempty"`
 	// Spend commitments for this rate card. Only applicable to usage-based prices
 	// (unit, graduated, volume).
 	Commitments *SubscriptionAddonRateCardCommitments `json:"commitments,omitempty"`
@@ -578,17 +567,6 @@ type RateCard struct {
 	// The entitlement template granted to subscribers of a plan or addon containing
 	// this rate card. Requires `feature` to be set.
 	Entitlement *SubscriptionAddonRateCardEntitlementTemplate `json:"entitlement,omitempty"`
-}
-
-func (r RateCard) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RateCard) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (r *RateCard) GetName() string {

@@ -1482,7 +1482,6 @@ func (s *MCPServers) PostMcpServerStatus(ctx context.Context, request operations
 //
 // Client-initiated signals fetch with long-polling capabilities.
 // The client supplies `capabilities` as a deepObject query parameter:
-//
 //   - Keys are capability names (e.g. `mcp`)
 //   - Values contain the capability request fields (`version`)
 //

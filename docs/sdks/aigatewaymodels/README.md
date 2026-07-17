@@ -111,6 +111,7 @@ func main() {
         components.AIGatewayModelAPI{
             DisplayName: "My GPT 5 model",
             Name: "my-gpt-5-model",
+            Enabled: sdkkonnectgo.Pointer(true),
             Formats: []components.AIGatewayModelFormat{
                 components.AIGatewayModelFormat{
                     Type: components.AIGatewayModelFormatTypeOpenai.ToPointer(),
@@ -129,10 +130,26 @@ func main() {
                     Hosts: []string{
                         "foo.example.com",
                     },
+                    HTTPSRedirectStatusCode: sdkkonnectgo.Pointer[int64](426),
+                    PreserveHost: sdkkonnectgo.Pointer(false),
+                    RegexPriority: sdkkonnectgo.Pointer[int64](0),
+                    RequestBuffering: sdkkonnectgo.Pointer(true),
+                    ResponseBuffering: sdkkonnectgo.Pointer(true),
+                    StripPath: sdkkonnectgo.Pointer(true),
                 },
+                ResponseStreaming: components.ResponseStreamingAllow.ToPointer(),
+                MaxRequestBodySize: sdkkonnectgo.Pointer[int64](8388608),
                 Balancer: sdkkonnectgo.Pointer(components.CreateAIGatewayModelBalancerConfigLowestUsage(
                     components.AIGatewayModelBalancerLowestUsageConfig{
+                        ConnectTimeout: sdkkonnectgo.Pointer[int64](60000),
+                        FailTimeout: sdkkonnectgo.Pointer[int64](10000),
+                        MaxFails: sdkkonnectgo.Pointer[int64](0),
+                        ReadTimeout: sdkkonnectgo.Pointer[int64](60000),
+                        Retries: sdkkonnectgo.Pointer[int64](5),
+                        Slots: sdkkonnectgo.Pointer[int64](10000),
+                        WriteTimeout: sdkkonnectgo.Pointer[int64](60000),
                         Algorithm: components.AIGatewayModelBalancerLowestUsageConfigAlgorithmLowestUsage,
+                        TokensCountStrategy: components.TokensCountStrategyTotalTokens,
                     },
                 )),
             },
@@ -286,10 +303,13 @@ func main() {
             components.AIGatewayModelAPI{
                 DisplayName: "My GPT 5 model",
                 Name: "my-gpt-5-model",
+                Enabled: sdkkonnectgo.Pointer(true),
                 Formats: []components.AIGatewayModelFormat{},
                 Targets: []components.AIGatewayTarget{
                     components.AIGatewayTarget{
                         Name: "gpt-5-model",
+                        Weight: sdkkonnectgo.Pointer[int64](100),
+                        AllowAuthOverride: sdkkonnectgo.Pointer(false),
                         Provider: "azure-ai-se",
                         Config: components.CreateAIGatewayTargetConfigOpenai(
                             components.AIGatewayTargetOpenaiConfig{
@@ -310,10 +330,26 @@ func main() {
                         Hosts: []string{
                             "foo.example.com",
                         },
+                        HTTPSRedirectStatusCode: sdkkonnectgo.Pointer[int64](426),
+                        PreserveHost: sdkkonnectgo.Pointer(false),
+                        RegexPriority: sdkkonnectgo.Pointer[int64](0),
+                        RequestBuffering: sdkkonnectgo.Pointer(true),
+                        ResponseBuffering: sdkkonnectgo.Pointer(true),
+                        StripPath: sdkkonnectgo.Pointer(true),
                     },
+                    ResponseStreaming: components.ResponseStreamingAllow.ToPointer(),
+                    MaxRequestBodySize: sdkkonnectgo.Pointer[int64](8388608),
                     Balancer: sdkkonnectgo.Pointer(components.CreateAIGatewayModelBalancerConfigLowestUsage(
                         components.AIGatewayModelBalancerLowestUsageConfig{
+                            ConnectTimeout: sdkkonnectgo.Pointer[int64](60000),
+                            FailTimeout: sdkkonnectgo.Pointer[int64](10000),
+                            MaxFails: sdkkonnectgo.Pointer[int64](0),
+                            ReadTimeout: sdkkonnectgo.Pointer[int64](60000),
+                            Retries: sdkkonnectgo.Pointer[int64](5),
+                            Slots: sdkkonnectgo.Pointer[int64](10000),
+                            WriteTimeout: sdkkonnectgo.Pointer[int64](60000),
                             Algorithm: components.AIGatewayModelBalancerLowestUsageConfigAlgorithmLowestUsage,
+                            TokensCountStrategy: components.TokensCountStrategyTotalTokens,
                         },
                     )),
                 },

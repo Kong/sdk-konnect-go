@@ -12,8 +12,8 @@ import (
 //
 // Configuration for AI Gateway logging.
 type AIGatewayModelAPIConfigLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
+	Payloads   *bool `json:"payloads,omitempty"`
+	Statistics *bool `json:"statistics,omitempty"`
 }
 
 func (a AIGatewayModelAPIConfigLogging) MarshalJSON() ([]byte, error) {
@@ -105,9 +105,9 @@ type AIGatewayModelAPIConfigOutput struct {
 	//
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayModelAPIConfigLogging `json:"logging,omitempty"`
-	ResponseStreaming *ResponseStreaming              `default:"allow" json:"response_streaming"`
+	ResponseStreaming *ResponseStreaming              `json:"response_streaming,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	MaxRequestBodySize *int64 `json:"max_request_body_size,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -241,9 +241,9 @@ type AIGatewayModelAPIConfig struct {
 	//
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayModelAPIConfigLogging `json:"logging,omitempty"`
-	ResponseStreaming *ResponseStreaming              `default:"allow" json:"response_streaming"`
+	ResponseStreaming *ResponseStreaming              `json:"response_streaming,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	MaxRequestBodySize *int64 `json:"max_request_body_size,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//

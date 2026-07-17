@@ -125,6 +125,7 @@ func main() {
         components.MeteringEvent{
             ID: "5c10fade-1c9e-4d6c-8275-c52c36731d3c",
             Source: "service-name",
+            Specversion: "1.0",
             Type: "prompt",
             Subject: "customer-id",
             Time: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),

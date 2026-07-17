@@ -263,28 +263,17 @@ type UnitConfig struct {
 	//
 	// Defaults to none (no rounding). Entitlement checks always use the precise
 	// (unrounded) value.
-	Rounding *RoundingMode `default:"none" json:"rounding"`
+	Rounding *RoundingMode `json:"rounding,omitempty"`
 	// The number of decimal places to retain after rounding.
 	//
 	// Only meaningful when rounding is not "none". Defaults to 0 (round to whole
 	// numbers).
-	Precision *int64 `default:"0" json:"precision"`
+	Precision *int64 `json:"precision,omitempty"`
 	// A human-readable label for the converted unit shown on invoices and in the
 	// customer portal (e.g., "GB", "hours", "M tokens").
 	//
 	// Optional. When omitted, no unit label is rendered.
 	DisplayUnit *string `json:"display_unit,omitempty"`
-}
-
-func (u UnitConfig) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UnitConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UnitConfig) GetOperation() ConversionOperation {
@@ -567,7 +556,7 @@ type BillingRateCard struct {
 	UnitConfig *UnitConfig `json:"unit_config,omitempty"`
 	// The payment term of the rate card. In advance payment term can only be used for
 	// flat prices.
-	PaymentTerm *PaymentTerm `default:"in_arrears" json:"payment_term"`
+	PaymentTerm *PaymentTerm `json:"payment_term,omitempty"`
 	// Spend commitments for this rate card. Only applicable to usage-based prices
 	// (unit, graduated, volume).
 	Commitments *Commitments `json:"commitments,omitempty"`
@@ -578,17 +567,6 @@ type BillingRateCard struct {
 	// The entitlement template granted to subscribers of a plan or addon containing
 	// this rate card. Requires `feature` to be set.
 	Entitlement *EntitlementTemplate `json:"entitlement,omitempty"`
-}
-
-func (b BillingRateCard) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *BillingRateCard) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (b *BillingRateCard) GetName() string {

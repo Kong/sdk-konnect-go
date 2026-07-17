@@ -8,7 +8,6 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"time"
 )
 
 // UpsertBillingProfileRequestTaxID - The entity's legal identification used for tax purposes. They may have other
@@ -148,146 +147,6 @@ func (u *UpsertBillingProfileRequestSupplier) GetAddresses() *UpsertBillingProfi
 	return u.Addresses
 }
 
-// BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType - The type of alignment.
-type BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType string
-
-const (
-	BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestTypeAnchored BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType = "anchored"
-)
-
-func (e BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType) ToPointer() *BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType {
-	return &e
-}
-func (e *BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "anchored":
-		*e = BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType: %v", v)
-	}
-}
-
-// BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod - The recurring period for the alignment.
-type BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod struct {
-	// A date-time anchor to base the recurring period on.
-	Anchor time.Time `json:"anchor"`
-	// The interval duration in ISO 8601 format.
-	Interval string `json:"interval"`
-}
-
-func (b BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"anchor", "interval"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (b *BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod) GetAnchor() time.Time {
-	if b == nil {
-		return time.Time{}
-	}
-	return b.Anchor
-}
-
-func (b *BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod) GetInterval() string {
-	if b == nil {
-		return ""
-	}
-	return b.Interval
-}
-
-// UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored - BillingWorkflowCollectionAlignmentAnchored specifies the alignment for
-// collecting the pending line items into an invoice.
-type UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored struct {
-	// The type of alignment.
-	Type BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType `json:"type"`
-	// The recurring period for the alignment.
-	RecurringPeriod BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod `json:"recurring_period"`
-}
-
-func (u UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "recurring_period"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (u *UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored) GetType() BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType {
-	if u == nil {
-		return BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType("")
-	}
-	return u.Type
-}
-
-func (u *UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored) GetRecurringPeriod() BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod {
-	if u == nil {
-		return BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod{}
-	}
-	return u.RecurringPeriod
-}
-
-// BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType - The type of alignment.
-type BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType string
-
-const (
-	BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestTypeSubscription BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType = "subscription"
-)
-
-func (e BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType) ToPointer() *BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType {
-	return &e
-}
-func (e *BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "subscription":
-		*e = BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType: %v", v)
-	}
-}
-
-// UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription - BillingWorkflowCollectionAlignmentSubscription specifies the alignment for
-// collecting the pending line items into an invoice.
-type UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription struct {
-	// The type of alignment.
-	Type BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType `json:"type"`
-}
-
-func (u UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (u *UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription) GetType() BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType {
-	if u == nil {
-		return BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType("")
-	}
-	return u.Type
-}
-
 type UpsertBillingProfileRequestAlignmentType string
 
 const (
@@ -297,32 +156,32 @@ const (
 
 // UpsertBillingProfileRequestAlignment - The alignment for collecting the pending line items into an invoice.
 type UpsertBillingProfileRequestAlignment struct {
-	UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription *UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription `queryParam:"inline" union:"member"`
-	UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored     *UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored     `queryParam:"inline" union:"member"`
+	BillingWorkflowCollectionAlignmentSubscription *BillingWorkflowCollectionAlignmentSubscription `queryParam:"inline" union:"member"`
+	BillingWorkflowCollectionAlignmentAnchored     *BillingWorkflowCollectionAlignmentAnchored     `queryParam:"inline" union:"member"`
 
 	Type UpsertBillingProfileRequestAlignmentType
 }
 
-func CreateUpsertBillingProfileRequestAlignmentSubscription(subscription UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription) UpsertBillingProfileRequestAlignment {
+func CreateUpsertBillingProfileRequestAlignmentSubscription(subscription BillingWorkflowCollectionAlignmentSubscription) UpsertBillingProfileRequestAlignment {
 	typ := UpsertBillingProfileRequestAlignmentTypeSubscription
 
-	typStr := BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType(typ)
+	typStr := BillingWorkflowCollectionAlignmentSubscriptionType(typ)
 	subscription.Type = typStr
 
 	return UpsertBillingProfileRequestAlignment{
-		UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription: &subscription,
+		BillingWorkflowCollectionAlignmentSubscription: &subscription,
 		Type: typ,
 	}
 }
 
-func CreateUpsertBillingProfileRequestAlignmentAnchored(anchored UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored) UpsertBillingProfileRequestAlignment {
+func CreateUpsertBillingProfileRequestAlignmentAnchored(anchored BillingWorkflowCollectionAlignmentAnchored) UpsertBillingProfileRequestAlignment {
 	typ := UpsertBillingProfileRequestAlignmentTypeAnchored
 
-	typStr := BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType(typ)
+	typStr := BillingWorkflowCollectionAlignmentAnchoredType(typ)
 	anchored.Type = typStr
 
 	return UpsertBillingProfileRequestAlignment{
-		UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored: &anchored,
+		BillingWorkflowCollectionAlignmentAnchored: &anchored,
 		Type: typ,
 	}
 }
@@ -340,21 +199,21 @@ func (u *UpsertBillingProfileRequestAlignment) UnmarshalJSON(data []byte) error 
 
 	switch dis.Type {
 	case "subscription":
-		upsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription := new(UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription)
-		if err := utils.UnmarshalJSON(data, &upsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == subscription) type UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription within UpsertBillingProfileRequestAlignment: %w", string(data), err)
+		billingWorkflowCollectionAlignmentSubscription := new(BillingWorkflowCollectionAlignmentSubscription)
+		if err := utils.UnmarshalJSON(data, &billingWorkflowCollectionAlignmentSubscription, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == subscription) type BillingWorkflowCollectionAlignmentSubscription within UpsertBillingProfileRequestAlignment: %w", string(data), err)
 		}
 
-		u.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription = upsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription
+		u.BillingWorkflowCollectionAlignmentSubscription = billingWorkflowCollectionAlignmentSubscription
 		u.Type = UpsertBillingProfileRequestAlignmentTypeSubscription
 		return nil
 	case "anchored":
-		upsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored := new(UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored)
-		if err := utils.UnmarshalJSON(data, &upsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == anchored) type UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored within UpsertBillingProfileRequestAlignment: %w", string(data), err)
+		billingWorkflowCollectionAlignmentAnchored := new(BillingWorkflowCollectionAlignmentAnchored)
+		if err := utils.UnmarshalJSON(data, &billingWorkflowCollectionAlignmentAnchored, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == anchored) type BillingWorkflowCollectionAlignmentAnchored within UpsertBillingProfileRequestAlignment: %w", string(data), err)
 		}
 
-		u.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored = upsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored
+		u.BillingWorkflowCollectionAlignmentAnchored = billingWorkflowCollectionAlignmentAnchored
 		u.Type = UpsertBillingProfileRequestAlignmentTypeAnchored
 		return nil
 	}
@@ -363,12 +222,12 @@ func (u *UpsertBillingProfileRequestAlignment) UnmarshalJSON(data []byte) error 
 }
 
 func (u UpsertBillingProfileRequestAlignment) MarshalJSON() ([]byte, error) {
-	if u.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription != nil {
-		return utils.MarshalJSON(u.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription, "", true)
+	if u.BillingWorkflowCollectionAlignmentSubscription != nil {
+		return utils.MarshalJSON(u.BillingWorkflowCollectionAlignmentSubscription, "", true)
 	}
 
-	if u.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored != nil {
-		return utils.MarshalJSON(u.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored, "", true)
+	if u.BillingWorkflowCollectionAlignmentAnchored != nil {
+		return utils.MarshalJSON(u.BillingWorkflowCollectionAlignmentAnchored, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpsertBillingProfileRequestAlignment: all fields are null")
@@ -383,18 +242,7 @@ type UpsertBillingProfileRequestWorkflowCollectionSettings struct {
 	//
 	// This is useful, in case of multiple subscriptions having slightly different
 	// billing periods.
-	Interval *string `default:"PT1H" json:"interval"`
-}
-
-func (u UpsertBillingProfileRequestWorkflowCollectionSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpsertBillingProfileRequestWorkflowCollectionSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Interval *string `json:"interval,omitempty"`
 }
 
 func (u *UpsertBillingProfileRequestWorkflowCollectionSettings) GetAlignment() *UpsertBillingProfileRequestAlignment {
@@ -404,16 +252,16 @@ func (u *UpsertBillingProfileRequestWorkflowCollectionSettings) GetAlignment() *
 	return u.Alignment
 }
 
-func (u *UpsertBillingProfileRequestWorkflowCollectionSettings) GetAlignmentSubscription() *UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription {
+func (u *UpsertBillingProfileRequestWorkflowCollectionSettings) GetAlignmentSubscription() *BillingWorkflowCollectionAlignmentSubscription {
 	if v := u.GetAlignment(); v != nil {
-		return v.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription
+		return v.BillingWorkflowCollectionAlignmentSubscription
 	}
 	return nil
 }
 
-func (u *UpsertBillingProfileRequestWorkflowCollectionSettings) GetAlignmentAnchored() *UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored {
+func (u *UpsertBillingProfileRequestWorkflowCollectionSettings) GetAlignmentAnchored() *BillingWorkflowCollectionAlignmentAnchored {
 	if v := u.GetAlignment(); v != nil {
-		return v.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored
+		return v.BillingWorkflowCollectionAlignmentAnchored
 	}
 	return nil
 }
@@ -451,24 +299,13 @@ func (e *UpsertBillingProfileRequestSubscriptionEndProrationMode) IsExact() bool
 // UpsertBillingProfileRequestWorkflowInvoiceSettings - The invoicing settings for this workflow
 type UpsertBillingProfileRequestWorkflowInvoiceSettings struct {
 	// Whether to automatically issue the invoice after the draftPeriod has passed.
-	AutoAdvance *bool `default:"true" json:"auto_advance"`
+	AutoAdvance *bool `json:"auto_advance,omitempty"`
 	// The period for the invoice to be kept in draft status for manual reviews.
-	DraftPeriod *string `default:"P0D" json:"draft_period"`
+	DraftPeriod *string `json:"draft_period,omitempty"`
 	// Should progressive billing be allowed for this workflow?
-	ProgressiveBilling *bool `default:"true" json:"progressive_billing"`
+	ProgressiveBilling *bool `json:"progressive_billing,omitempty"`
 	// Controls how subscription-ending shortened service periods are billed.
-	SubscriptionEndProrationMode *UpsertBillingProfileRequestSubscriptionEndProrationMode `default:"bill_actual_period" json:"subscription_end_proration_mode"`
-}
-
-func (u UpsertBillingProfileRequestWorkflowInvoiceSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpsertBillingProfileRequestWorkflowInvoiceSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	SubscriptionEndProrationMode *UpsertBillingProfileRequestSubscriptionEndProrationMode `json:"subscription_end_proration_mode,omitempty"`
 }
 
 func (u *UpsertBillingProfileRequestWorkflowInvoiceSettings) GetAutoAdvance() *bool {
@@ -729,12 +566,12 @@ func (u *UpsertBillingProfileRequestDefaultTaxConfig) GetTaxCode() *UpsertBillin
 type UpsertBillingProfileRequestWorkflowTaxSettings struct {
 	// Enable automatic tax calculation when tax is supported by the app. For example,
 	// with Stripe Invoicing when enabled, tax is calculated via Stripe Tax.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Enforce tax calculation when tax is supported by the app. When enabled, the
 	// billing system will not allow to create an invoice without tax calculation.
 	// Enforcement is different per apps, for example, Stripe app requires customer to
 	// have a tax location when starting a paid subscription.
-	Enforced *bool `default:"false" json:"enforced"`
+	Enforced *bool `json:"enforced,omitempty"`
 	// Default tax configuration to apply to the invoices for line items.
 	//
 	// Setting a tax code (`stripe.code` / `taxCodeId`) on a profile's default tax
@@ -742,17 +579,6 @@ type UpsertBillingProfileRequestWorkflowTaxSettings struct {
 	// default tax code is used instead. Existing tax-code values may still be removed,
 	// and `behavior` remains fully supported.
 	DefaultTaxConfig *UpsertBillingProfileRequestDefaultTaxConfig `json:"default_tax_config,omitempty"`
-}
-
-func (u UpsertBillingProfileRequestWorkflowTaxSettings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpsertBillingProfileRequestWorkflowTaxSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UpsertBillingProfileRequestWorkflowTaxSettings) GetEnabled() *bool {

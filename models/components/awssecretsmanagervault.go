@@ -43,17 +43,17 @@ type AwsSecretsManagerVaultConfig struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The ARN of the role to assume when retrieving secrets from AWS Secrets Manager.
 	//
 	AssumeRoleArn *string `json:"assume_role_arn,omitempty"`
@@ -65,7 +65,7 @@ type AwsSecretsManagerVaultConfig struct {
 	// The AWS region where your vault is located.
 	Region *string `json:"region,omitempty"`
 	// The session name used when assuming a role.
-	RoleSessionName *string `default:"KongVault" json:"role_session_name"`
+	RoleSessionName string `json:"role_session_name"`
 	// A custom STS endpoint URL used for IAM role assumption.
 	// Overrides the default https://sts.amazonaws.com or regional variant https://sts.<region>.amazonaws.com.
 	// Include the full http/https scheme. Only specify this if using a private VPC endpoint for STS.
@@ -78,7 +78,7 @@ func (a AwsSecretsManagerVaultConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AwsSecretsManagerVaultConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"role_session_name"}); err != nil {
 		return err
 	}
 	return nil
@@ -133,9 +133,9 @@ func (a *AwsSecretsManagerVaultConfig) GetRegion() *string {
 	return a.Region
 }
 
-func (a *AwsSecretsManagerVaultConfig) GetRoleSessionName() *string {
+func (a *AwsSecretsManagerVaultConfig) GetRoleSessionName() string {
 	if a == nil {
-		return nil
+		return ""
 	}
 	return a.RoleSessionName
 }

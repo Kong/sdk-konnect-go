@@ -12,14 +12,14 @@ type AIGatewayTarget struct {
 	// The name of the model defined in the upstream provider that will be executed.
 	Name string `json:"name"`
 	// The weight this target gets within the upstream load balancer
-	Weight *int64 `default:"100" json:"weight"`
+	Weight *int64 `json:"weight,omitempty"`
 	// The semantic description of the target, required if using semantic load balancing.
 	// Specially, setting this to 'CATCHALL' will indicate such target to be used when no other targets match the semantic threshold.
 	//
 	SemanticDescription *string `json:"semantic_description,omitempty"`
 	// When enabled, request-level auth parameters (such as API keys or bearer tokens) will override the static values defined for the provider.
 	//
-	AllowAuthOverride *bool `default:"false" json:"allow_auth_override"`
+	AllowAuthOverride *bool `json:"allow_auth_override,omitempty"`
 	// Reference to a model provider instance by name.
 	Provider string `json:"provider"`
 	// **Pre-release Feature**

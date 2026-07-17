@@ -57,7 +57,7 @@ type AIGatewayTargetKimiConfig struct {
 	// When `true`, requests are sent to `api.moonshot.ai` (international).
 	// When `false`, requests are sent to `api.moonshot.cn` (mainland China).
 	//
-	International *bool `default:"true" json:"international"`
+	International *bool `json:"international,omitempty"`
 }
 
 func (a AIGatewayTargetKimiConfig) MarshalJSON() ([]byte, error) {

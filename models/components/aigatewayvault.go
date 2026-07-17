@@ -220,17 +220,17 @@ type ConjurVaultConjurVaultConfig struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The CyberArk Secrets Manager organization account name.
 	//
 	Account string `json:"account"`
@@ -469,20 +469,20 @@ type AzureKeyVaultAzureKeyVaultConfig struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The prefix for the credentials stored in the Azure Key Vault.
 	//
-	CredentialsPrefix *string `default:"AZURE" json:"credentials_prefix"`
+	CredentialsPrefix *string `json:"credentials_prefix,omitempty"`
 	// The URI from which the vault is reachable.
 	// This value can be found in your Azure Key Vault Dashboard under the Vault URI entry.
 	//
@@ -498,8 +498,8 @@ type AzureKeyVaultAzureKeyVaultConfig struct {
 	// The DirectoryId and TenantId are the same: both refer to the GUID representing your Azure Active Directory tenant.
 	// Microsoft documentation and products may use either term depending on context.
 	//
-	TenantID *string                                `json:"tenant_id,omitempty"`
-	Type     *AzureKeyVaultAIGatewayVaultConfigType `default:"secrets" json:"type"`
+	TenantID *string                               `json:"tenant_id,omitempty"`
+	Type     AzureKeyVaultAIGatewayVaultConfigType `json:"type"`
 }
 
 func (a AzureKeyVaultAzureKeyVaultConfig) MarshalJSON() ([]byte, error) {
@@ -507,7 +507,7 @@ func (a AzureKeyVaultAzureKeyVaultConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AzureKeyVaultAzureKeyVaultConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"vault_uri", "location"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"vault_uri", "location", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -576,9 +576,9 @@ func (a *AzureKeyVaultAzureKeyVaultConfig) GetTenantID() *string {
 	return a.TenantID
 }
 
-func (a *AzureKeyVaultAzureKeyVaultConfig) GetType() *AzureKeyVaultAIGatewayVaultConfigType {
+func (a *AzureKeyVaultAzureKeyVaultConfig) GetType() AzureKeyVaultAIGatewayVaultConfigType {
 	if a == nil {
-		return nil
+		return AzureKeyVaultAIGatewayVaultConfigType("")
 	}
 	return a.Type
 }
@@ -727,17 +727,17 @@ type GoogleSecretManagerVaultGoogleSecretManagerVaultConfig struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The project ID from your Google API Console.
 	// You can find it by visiting your Google API Console and selecting “Manage all projects” in the projects list.
 	//
@@ -934,17 +934,17 @@ type AwsSecretsManagerVaultAwsSecretsManagerVaultConfig struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The ARN of the role to assume when retrieving secrets from AWS Secrets Manager.
 	//
 	AssumeRoleArn *string `json:"assume_role_arn,omitempty"`
@@ -956,7 +956,7 @@ type AwsSecretsManagerVaultAwsSecretsManagerVaultConfig struct {
 	// The AWS region where your vault is located.
 	Region *string `json:"region,omitempty"`
 	// The session name used when assuming a role.
-	RoleSessionName *string `default:"KongVault" json:"role_session_name"`
+	RoleSessionName string `json:"role_session_name"`
 	// A custom STS endpoint URL used for IAM role assumption.
 	// Overrides the default https://sts.amazonaws.com or regional variant https://sts.<region>.amazonaws.com.
 	// Include the full http/https scheme. Only specify this if using a private VPC endpoint for STS.
@@ -969,7 +969,7 @@ func (a AwsSecretsManagerVaultAwsSecretsManagerVaultConfig) MarshalJSON() ([]byt
 }
 
 func (a *AwsSecretsManagerVaultAwsSecretsManagerVaultConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"role_session_name"}); err != nil {
 		return err
 	}
 	return nil
@@ -1024,9 +1024,9 @@ func (a *AwsSecretsManagerVaultAwsSecretsManagerVaultConfig) GetRegion() *string
 	return a.Region
 }
 
-func (a *AwsSecretsManagerVaultAwsSecretsManagerVaultConfig) GetRoleSessionName() *string {
+func (a *AwsSecretsManagerVaultAwsSecretsManagerVaultConfig) GetRoleSessionName() string {
 	if a == nil {
-		return nil
+		return ""
 	}
 	return a.RoleSessionName
 }

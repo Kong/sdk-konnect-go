@@ -3,28 +3,13 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // PortalAuthenticationSettingsUpdateRequestPortalClaimMappings - Deprecated. Use the [Identity Provider API](https://developer.konghq.com/api/konnect/portal-management/v3/#/operations/update-portal-identity-provider) instead.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type PortalAuthenticationSettingsUpdateRequestPortalClaimMappings struct {
-	Name   *string `default:"name" json:"name"`
-	Email  *string `default:"email" json:"email"`
-	Groups *string `default:"groups" json:"groups"`
-}
-
-func (p PortalAuthenticationSettingsUpdateRequestPortalClaimMappings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalAuthenticationSettingsUpdateRequestPortalClaimMappings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Name   *string `json:"name,omitempty"`
+	Email  *string `json:"email,omitempty"`
+	Groups *string `json:"groups,omitempty"`
 }
 
 func (p *PortalAuthenticationSettingsUpdateRequestPortalClaimMappings) GetName() *string {

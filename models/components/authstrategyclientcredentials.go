@@ -33,7 +33,7 @@ func (e *CredentialType) IsExact() bool {
 type AuthStrategyClientCredentials struct {
 	// The Application Auth Strategy ID.
 	ID             string         `json:"id"`
-	Name           *string        `default:"name" json:"name"`
+	Name           string         `json:"name"`
 	CredentialType CredentialType `json:"credential_type"`
 	AuthMethods    []string       `json:"auth_methods"`
 	// Possible developer selectable scopes for an application. Only present when using DCR Provider that supports it.
@@ -45,7 +45,7 @@ func (a AuthStrategyClientCredentials) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AuthStrategyClientCredentials) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "credential_type", "auth_methods"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "credential_type", "auth_methods"}); err != nil {
 		return err
 	}
 	return nil
@@ -58,9 +58,9 @@ func (a *AuthStrategyClientCredentials) GetID() string {
 	return a.ID
 }
 
-func (a *AuthStrategyClientCredentials) GetName() *string {
+func (a *AuthStrategyClientCredentials) GetName() string {
 	if a == nil {
-		return nil
+		return ""
 	}
 	return a.Name
 }

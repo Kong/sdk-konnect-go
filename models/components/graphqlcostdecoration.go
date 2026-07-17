@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type GraphQLCostDecorationService struct {
 	ID *string `json:"id,omitempty"`
 }
@@ -20,26 +16,15 @@ func (g *GraphQLCostDecorationService) GetID() *string {
 
 type GraphQLCostDecoration struct {
 	AddArguments []string `json:"add_arguments,omitempty"`
-	AddConstant  *float64 `default:"1" json:"add_constant"`
+	AddConstant  *float64 `json:"add_constant,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID           *string                       `json:"id,omitempty"`
 	MulArguments []string                      `json:"mul_arguments,omitempty"`
-	MulConstant  *float64                      `default:"1" json:"mul_constant"`
+	MulConstant  *float64                      `json:"mul_constant,omitempty"`
 	Service      *GraphQLCostDecorationService `json:"service,omitempty"`
 	TypePath     string                        `json:"type_path"`
-}
-
-func (g GraphQLCostDecoration) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GraphQLCostDecoration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (g *GraphQLCostDecoration) GetAddArguments() []string {

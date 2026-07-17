@@ -66,22 +66,22 @@ func (e *Algorithm) UnmarshalJSON(data []byte) error {
 // AIGatewayModelBalancerConsistentHashingConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelBalancerConsistentHashingConfig struct {
-	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
+	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.
-	FailTimeout *int64 `default:"10000" json:"fail_timeout"`
+	FailTimeout *int64 `json:"fail_timeout,omitempty"`
 	// Specifies in which cases an upstream response should be failover to the next target. Each option in the array is equivalent to the function of https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_next_upstream
 	FailoverCriteria []FailoverCriteria `json:"failover_criteria,omitempty"`
 	// Number of unsuccessful attempts to communicate with a target that should occur in the duration defined by `fail_timeout` before the target is considered unavailable. The zero value disables the circuit breaker. What is considered an unsuccessful attempt is defined by `failover_criteria`. Note the cases of `error`, `timeout` and `invalid_header` are always considered unsuccessful attempts, while the cases of `http_403` and `http_404` are never considered unsuccessful attempts.
-	MaxFails    *int64 `default:"0" json:"max_fails"`
-	ReadTimeout *int64 `default:"60000" json:"read_timeout"`
+	MaxFails    *int64 `json:"max_fails,omitempty"`
+	ReadTimeout *int64 `json:"read_timeout,omitempty"`
 	// The number of retries to execute upon failure to proxy.
-	Retries *int64 `default:"5" json:"retries"`
+	Retries *int64 `json:"retries,omitempty"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64    `default:"10000" json:"slots"`
-	WriteTimeout *int64    `default:"60000" json:"write_timeout"`
+	Slots        *int64    `json:"slots,omitempty"`
+	WriteTimeout *int64    `json:"write_timeout,omitempty"`
 	Algorithm    Algorithm `json:"algorithm"`
 	// The header to use for consistent-hashing.
-	HashOnHeader *string `default:"X-Kong-LLM-Request-ID" json:"hash_on_header"`
+	HashOnHeader *string `json:"hash_on_header,omitempty"`
 }
 
 func (a AIGatewayModelBalancerConsistentHashingConfig) MarshalJSON() ([]byte, error) {

@@ -125,9 +125,9 @@ func (u AIGatewayRedisCloudConfigurationCloudAuthentication) MarshalJSON() ([]by
 
 type Nodes struct {
 	// A string representing a host name, such as example.com.
-	IP *string `default:"127.0.0.1" json:"ip"`
+	IP *string `json:"ip,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `default:"6379" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 }
 
 func (n Nodes) MarshalJSON() ([]byte, error) {
@@ -158,7 +158,7 @@ func (n *Nodes) GetPort() *int64 {
 // Cluster configuration for the Redis connection.
 type Cluster struct {
 	// Maximum retry attempts for redirection.
-	MaxRedirections *int64 `default:"5" json:"max_redirections"`
+	MaxRedirections *int64 `json:"max_redirections,omitempty"`
 	// Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
 	Nodes []Nodes `json:"nodes,omitempty"`
 }
@@ -193,7 +193,7 @@ type Keepalive struct {
 	// Limits the total number of opened connections for a pool. If the connection pool is full, connection queues above the limit go into the backlog queue. If the backlog queue is full, subsequent connect operations fail and return `nil`. Queued operations (subject to set timeouts) resume once the number of connections in the pool is less than `pool_size`. If latency is high or throughput is low, try increasing this value. Empirically, this value is larger than `pool_size`.
 	Backlog *int64 `json:"backlog,omitempty"`
 	// The size limit for every cosocket connection pool associated with every remote server, per worker process. If neither `pool_size` nor `backlog` is specified, no pool is created. If `pool_size` isn't specified but `backlog` is specified, then the pool uses the default value. Try to increase (e.g. 512) this value if latency is high or throughput is low.
-	PoolSize *int64 `default:"256" json:"pool_size"`
+	PoolSize *int64 `json:"pool_size,omitempty"`
 }
 
 func (k Keepalive) MarshalJSON() ([]byte, error) {
@@ -288,9 +288,9 @@ func (u Port) MarshalJSON() ([]byte, error) {
 
 type AIGatewayRedisCloudConfigurationNodes struct {
 	// A string representing a host name, such as example.com.
-	Host *string `default:"127.0.0.1" json:"host"`
+	Host *string `json:"host,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `default:"6379" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 }
 
 func (a AIGatewayRedisCloudConfigurationNodes) MarshalJSON() ([]byte, error) {
@@ -416,15 +416,15 @@ type AIGatewayRedisCloudConfigurationOutput struct {
 	// Cluster configuration for the Redis connection.
 	Cluster *Cluster `json:"cluster,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ConnectTimeout *int64 `default:"2000" json:"connect_timeout"`
+	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
 	// If the connection to Redis is proxied (e.g. Envoy), set it `true`. Set the `host` and `port` to point to the proxy address.
-	ConnectionIsProxied *bool `default:"false" json:"connection_is_proxied"`
+	ConnectionIsProxied *bool `json:"connection_is_proxied,omitempty"`
 	// Database to use for the Redis connection when using the `redis` strategy
-	Database *int64 `default:"0" json:"database"`
+	Database *int64 `json:"database,omitempty"`
 	// A string representing a host name, such as example.com.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	Host *string `default:"127.0.0.1" json:"host"`
+	Host *string `json:"host,omitempty"`
 	// Keepalive configuration for the Redis connection.
 	Keepalive *Keepalive `json:"keepalive,omitempty"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
@@ -436,9 +436,9 @@ type AIGatewayRedisCloudConfigurationOutput struct {
 	//
 	Port *Port `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
+	ReadTimeout *int64 `json:"read_timeout,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	SendTimeout *int64 `default:"2000" json:"send_timeout"`
+	SendTimeout *int64 `json:"send_timeout,omitempty"`
 	// Configuration for Redis Sentinel.
 	Sentinel *Sentinel `json:"sentinel,omitempty"`
 	// A string representing an SNI (server name indication) value for TLS.
@@ -446,9 +446,9 @@ type AIGatewayRedisCloudConfigurationOutput struct {
 	//
 	ServerName *string `json:"server_name,omitempty"`
 	// If set to true, uses SSL to connect to Redis.
-	Ssl *bool `default:"true" json:"ssl"`
+	Ssl *bool `json:"ssl,omitempty"`
 	// If set to true, verifies the validity of the server SSL certificate. If setting this parameter, also configure `lua_ssl_trusted_certificate` in `kong.conf` to specify the CA (or server) certificate used by your Redis server. You may also need to configure `lua_ssl_verify_depth` accordingly.
-	SslVerify *bool `default:"true" json:"ssl_verify"`
+	SslVerify *bool `json:"ssl_verify,omitempty"`
 	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. This requires Redis v6.0.0+. To be compatible with Redis v5.x.y, you can set it to `default`.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -722,15 +722,15 @@ type AIGatewayRedisCloudConfiguration struct {
 	// Cluster configuration for the Redis connection.
 	Cluster *Cluster `json:"cluster,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ConnectTimeout *int64 `default:"2000" json:"connect_timeout"`
+	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
 	// If the connection to Redis is proxied (e.g. Envoy), set it `true`. Set the `host` and `port` to point to the proxy address.
-	ConnectionIsProxied *bool `default:"false" json:"connection_is_proxied"`
+	ConnectionIsProxied *bool `json:"connection_is_proxied,omitempty"`
 	// Database to use for the Redis connection when using the `redis` strategy
-	Database *int64 `default:"0" json:"database"`
+	Database *int64 `json:"database,omitempty"`
 	// A string representing a host name, such as example.com.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	Host *string `default:"127.0.0.1" json:"host"`
+	Host *string `json:"host,omitempty"`
 	// Keepalive configuration for the Redis connection.
 	Keepalive *Keepalive `json:"keepalive,omitempty"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
@@ -742,9 +742,9 @@ type AIGatewayRedisCloudConfiguration struct {
 	//
 	Port *Port `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
+	ReadTimeout *int64 `json:"read_timeout,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	SendTimeout *int64 `default:"2000" json:"send_timeout"`
+	SendTimeout *int64 `json:"send_timeout,omitempty"`
 	// Configuration for Redis Sentinel.
 	Sentinel *Sentinel `json:"sentinel,omitempty"`
 	// A string representing an SNI (server name indication) value for TLS.
@@ -752,9 +752,9 @@ type AIGatewayRedisCloudConfiguration struct {
 	//
 	ServerName *string `json:"server_name,omitempty"`
 	// If set to true, uses SSL to connect to Redis.
-	Ssl *bool `default:"true" json:"ssl"`
+	Ssl *bool `json:"ssl,omitempty"`
 	// If set to true, verifies the validity of the server SSL certificate. If setting this parameter, also configure `lua_ssl_trusted_certificate` in `kong.conf` to specify the CA (or server) certificate used by your Redis server. You may also need to configure `lua_ssl_verify_depth` accordingly.
-	SslVerify *bool `default:"true" json:"ssl_verify"`
+	SslVerify *bool `json:"ssl_verify,omitempty"`
 	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. This requires Redis v6.0.0+. To be compatible with Redis v5.x.y, you can set it to `default`.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//

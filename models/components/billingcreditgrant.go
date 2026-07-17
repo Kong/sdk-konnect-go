@@ -95,26 +95,15 @@ type BillingCreditGrantPurchase struct {
 	// `funding_method=none` instead.
 	//
 	// Defaults to 1.0.
-	PerUnitCostBasis *string `default:"1.0" json:"per_unit_cost_basis"`
+	PerUnitCostBasis *string `json:"per_unit_cost_basis,omitempty"`
 	// The purchase amount. Calculated from `per_unit_cost_basis` and credit `amount`.
 	Amount string `json:"amount"`
 	// Controls when credits become available for consumption.
 	//
 	// Defaults to `on_creation`.
-	AvailabilityPolicy *BillingCreditGrantCreditAvailabilityPolicy `default:"on_creation" json:"availability_policy"`
+	AvailabilityPolicy *BillingCreditGrantCreditAvailabilityPolicy `json:"availability_policy,omitempty"`
 	// Current payment settlement status.
 	SettlementStatus *BillingCreditGrantCreditPurchasePaymentSettlementStatus `json:"settlement_status,omitempty"`
-}
-
-func (b BillingCreditGrantPurchase) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *BillingCreditGrantPurchase) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (b *BillingCreditGrantPurchase) GetCurrency() string {
@@ -321,7 +310,7 @@ type BillingCreditGrant struct {
 	// Filters for the credit grant.
 	Filters *BillingCreditGrantFilters `json:"filters,omitempty"`
 	// Draw-down priority of the grant. Lower values have higher priority.
-	Priority *int64 `default:"10" json:"priority"`
+	Priority *int64 `json:"priority,omitempty"`
 	// The timestamp when the credit grant becomes effective.
 	//
 	// Defaults to the current date and time.
