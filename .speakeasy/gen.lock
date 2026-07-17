@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 518d9057980983e76cfee92927add7aa
+  docChecksum: fc2db2a669b808c4225b06ef398772c7
   docVersion: 3.15.0
   speakeasyVersion: 1.790.2
   generationVersion: 2.918.3
   releaseVersion: 0.44.0
   configChecksum: 2ba49973a1b5fae7f2f769b27acb9d73
 persistentEdits:
-  generation_id: d2969fe0-fe07-4325-b639-b52550dcd677
-  pristine_commit_hash: 3cd074d59399174274e517c5b2b73b6ed141afb7
-  pristine_tree_hash: 0d44ecce8e1e3e2144b16dc9090afcac907ec2b5
+  generation_id: b52c0d33-c953-4523-8dd8-3daa36598726
+  pristine_commit_hash: 76cdd0d3e3135585413fb4d080971775a9dcc969
+  pristine_tree_hash: 289cace37b6240800cd9e06a6aef531f72a14bec
 features:
   go:
     acceptHeaders: 2.81.2
@@ -18217,8 +18217,8 @@ trackedFiles:
     pristine_git_object: dbf7c3bd8dae859c22ac25dce3484a3406846dc1
   docs/sdks/portals/README.md:
     id: 1bf28fe28b95
-    last_write_checksum: sha1:e8a1f4e9cdf517c1f412a5fbac354a44233d9e8b
-    pristine_git_object: dcc5fd3f31dda117bab8758535dee713775ddc43
+    last_write_checksum: sha1:d5bcf5212fcb65344f3b8f15cc1b640c70ee7c4f
+    pristine_git_object: 9964d316327ffa6bcf4f37e319d27148709a0103
   docs/sdks/portalsipallowlist/README.md:
     id: eb1984eb99c1
     last_write_checksum: sha1:705cb5bb23e73cda47231dfc9a0a81153e112626
@@ -23217,8 +23217,8 @@ trackedFiles:
     pristine_git_object: 73d7952ee259dc240ee9fec219616a5cae1a1293
   models/components/updateportal.go:
     id: 23cc6ded3e89
-    last_write_checksum: sha1:ebfd9f824329df27387baa2aeed33782ad9cfcde
-    pristine_git_object: 1f620416209f4a0054ed774d78215efcf8d34c4e
+    last_write_checksum: sha1:c7e3adf0af61a1ffbd6e457d5c3a6dc5e17904f9
+    pristine_git_object: 1357907ad7a76fb2da23abb3c44c068f12127e1a
   models/components/updateportalauditlogwebhook.go:
     id: 767325cbf5aa
     last_write_checksum: sha1:7134cafc6df0d830eca4bd6026558419e8105ec5
@@ -46285,7 +46285,7 @@ examples:
         path:
           portalId: "efe853b6-a55c-4929-9b80-c39a22b01c7a"
       requestBody:
-        application/json: {"authentication_enabled": true, "rbac_enabled": false, "sipr_enabled": true, "auto_approve_developers": false, "auto_approve_applications": false, "labels": {"env": "test"}, "notifications_developer_pii_visibility_enabled": false}
+        application/json: {"sipr_enabled": true, "labels": {"env": "test"}}
       responses:
         "200":
           application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": "<value>", "display_name": "Sophia23", "description": null, "authentication_enabled": true, "rbac_enabled": false, "sipr_enabled": true, "default_api_visibility": "public", "default_page_visibility": "private", "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "default_domain": "animated-bathrobe.name", "canonical_domain": "inferior-offset.name", "labels": {"env": "test"}, "notifications_developer_pii_visibility_enabled": false}
