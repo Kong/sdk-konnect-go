@@ -52276,9 +52276,6 @@ components:
             payloads:
               type: boolean
               default: false
-            statistics:
-              type: boolean
-              default: true
         response_streaming:
           type: string
           default: allow
@@ -52341,9 +52338,6 @@ components:
             payloads:
               type: boolean
               default: false
-            statistics:
-              type: boolean
-              default: true
         response_streaming:
           type: string
           default: allow
@@ -56263,7 +56257,7 @@ components:
         type:
           description: |
             The type of the Policy. This is equivalent to the Kong 3 plugin name.
-            Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'openid-connect'.
+            Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'rate-limiting'.
             Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
           type: string
           example: ai-sanitizer
@@ -56322,7 +56316,7 @@ components:
         type:
           description: |
             The type of the Policy. This is equivalent to the Kong 3 plugin name.
-            Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'openid-connect'.
+            Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'rate-limiting'.
             Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
           type: string
           example: ai-sanitizer
@@ -56381,7 +56375,7 @@ components:
         type:
           description: |
             The type of the Policy. This is equivalent to the Kong 3 plugin name.
-            Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'openid-connect'.
+            Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'rate-limiting'.
             Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
           type: string
           example: ai-sanitizer
@@ -56493,9 +56487,6 @@ components:
                 payloads:
                   type: boolean
                   default: false
-                statistics:
-                  type: boolean
-                  default: true
                 max_payload_size:
                   description: Maximum size in bytes for logged request/response payloads. Payloads exceeding this size will be truncated.
                   type: integer
@@ -56581,9 +56572,6 @@ components:
                 payloads:
                   type: boolean
                   default: false
-                statistics:
-                  type: boolean
-                  default: true
                 max_payload_size:
                   description: Maximum size in bytes for logged request/response payloads. Payloads exceeding this size will be truncated.
                   type: integer
@@ -56669,9 +56657,6 @@ components:
                 payloads:
                   type: boolean
                   default: false
-                statistics:
-                  type: boolean
-                  default: true
                 max_payload_size:
                   description: Maximum size in bytes for logged request/response payloads. Payloads exceeding this size will be truncated.
                   type: integer
@@ -57983,9 +57968,6 @@ components:
         payloads:
           type: boolean
           default: false
-        statistics:
-          type: boolean
-          default: true
       additionalProperties: false
     AIGatewayMCPServerNoUpstreamConfig:
       description: |-
@@ -58009,9 +57991,6 @@ components:
             payloads:
               type: boolean
               default: false
-            statistics:
-              type: boolean
-              default: true
             audits:
               type: boolean
               default: false
@@ -58044,9 +58023,6 @@ components:
             payloads:
               type: boolean
               default: false
-            statistics:
-              type: boolean
-              default: true
             audits:
               type: boolean
               default: false
@@ -58086,9 +58062,6 @@ components:
             payloads:
               type: boolean
               default: false
-            statistics:
-              type: boolean
-              default: true
             audits:
               type: boolean
               default: false
@@ -58130,9 +58103,6 @@ components:
             payloads:
               type: boolean
               default: false
-            statistics:
-              type: boolean
-              default: true
             audits:
               type: boolean
               default: false
@@ -58176,9 +58146,6 @@ components:
             payloads:
               type: boolean
               default: false
-            statistics:
-              type: boolean
-              default: true
             audits:
               type: boolean
               default: false
@@ -58897,6 +58864,13 @@ components:
                 type: array
                 items:
                   type: string
+            consumer_groups_claim:
+              description: |
+                The claim used for consumer groups mapping. 
+                If multiple values are set, it means the claim is inside a nested object of the token payload.
+              type: array
+              items:
+                type: string
             consumer_optional:
               description: |
                 Do not terminate the request if consumer mapping fails.
