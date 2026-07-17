@@ -12,9 +12,8 @@ import (
 //
 // Configuration for AI Gateway logging.
 type AIGatewayMCPServerWithUpstreamConfigLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
-	Audits     *bool `default:"false" json:"audits"`
+	Payloads *bool `default:"false" json:"payloads"`
+	Audits   *bool `default:"false" json:"audits"`
 }
 
 func (a AIGatewayMCPServerWithUpstreamConfigLogging) MarshalJSON() ([]byte, error) {
@@ -33,13 +32,6 @@ func (a *AIGatewayMCPServerWithUpstreamConfigLogging) GetPayloads() *bool {
 		return nil
 	}
 	return a.Payloads
-}
-
-func (a *AIGatewayMCPServerWithUpstreamConfigLogging) GetStatistics() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Statistics
 }
 
 func (a *AIGatewayMCPServerWithUpstreamConfigLogging) GetAudits() *bool {

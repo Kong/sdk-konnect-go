@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 21ebecdd93b41b966ab421feeec9664c
+  docChecksum: 518d9057980983e76cfee92927add7aa
   docVersion: 3.15.0
   speakeasyVersion: 1.790.2
   generationVersion: 2.918.3
-  releaseVersion: 0.43.0
-  configChecksum: 4e67ed84a0e86b4cc30a88e3f8c8049a
+  releaseVersion: 0.44.0
+  configChecksum: 2ba49973a1b5fae7f2f769b27acb9d73
 persistentEdits:
-  generation_id: 17214765-f5cb-4029-b591-8e47fb8752f4
-  pristine_commit_hash: 8ad87df89212e517fb3f56282ad221764d2a7def
-  pristine_tree_hash: 4356ff06c5636bda8503b9676d8ea924db249a74
+  generation_id: d2969fe0-fe07-4325-b639-b52550dcd677
+  pristine_commit_hash: 3cd074d59399174274e517c5b2b73b6ed141afb7
+  pristine_tree_hash: 0d44ecce8e1e3e2144b16dc9090afcac907ec2b5
 features:
   go:
     acceptHeaders: 2.81.2
@@ -501,8 +501,8 @@ trackedFiles:
     pristine_git_object: 3e7e4caaf657e179c19e174388466de3467bfdbd
   docs/models/components/aigatewayagentlogging.md:
     id: 62a337ca6dbf
-    last_write_checksum: sha1:4c6b56c9f4f739672dc43ff9e6ea5ad04f1e2f38
-    pristine_git_object: 50ba68967e2ba88ad39300f4e75b8d0b6fa8a783
+    last_write_checksum: sha1:e67d0cdf869fba55178128829174aec3b769901a
+    pristine_git_object: 962bca49cf029b3c6a26883c0b2b2b74f0cec2b1
   docs/models/components/aigatewayallowacl.md:
     id: 4f95cef962ae
     last_write_checksum: sha1:c8fe219192cbeda12d46c2ad1d88dc80a09c0cd9
@@ -653,16 +653,16 @@ trackedFiles:
     pristine_git_object: b7e006eaa92506c4295bf64b83be1046231d71af
   docs/models/components/aigatewayidentityprovideropenidconnectconfig.md:
     id: 07794f6a3d3c
-    last_write_checksum: sha1:08f23ea0685fd120847c0cd5a03c98217b5677e1
-    pristine_git_object: d89a62f6f41e32b3f0fe1fea5be02ec6412627a2
+    last_write_checksum: sha1:1d593f3f662014223e5dfa09b1599e4d509c4e26
+    pristine_git_object: a2681a4eb77c2bf3649a8d36dc4206d42e097f52
   docs/models/components/aigatewayidentityprovideropenidconnectresponse.md:
     id: 4e9f1b8cacef
     last_write_checksum: sha1:9fc7986398a2accf8fcbb50a5769356d0eef467e
     pristine_git_object: 901a5f55330958b48e7c0d6841997b35fae49d41
   docs/models/components/aigatewayidentityprovideropenidconnectresponseconfig.md:
     id: 8259926ca3f9
-    last_write_checksum: sha1:b61012ec9b40d07b010e5549fbdffc96198b85ec
-    pristine_git_object: 54e3c52026917d4faf5660fade52f235e9f3a9da
+    last_write_checksum: sha1:79a455c04b735979d7de4190f76c3d440659eb74
+    pristine_git_object: ef274b8fe43b91f157e1b7d1e0702f43441842f4
   docs/models/components/aigatewayidentityprovideropenidconnectresponsetype.md:
     id: f1c9bafb55b5
     last_write_checksum: sha1:77d58166dbada1458425229d02757b4c91066360
@@ -765,8 +765,8 @@ trackedFiles:
     pristine_git_object: 908ea584b893b91872b35e5e8bad1d076abe534b
   docs/models/components/aigatewaymcpservernoupstreamconfiglogging.md:
     id: 271afcf03e34
-    last_write_checksum: sha1:4a5011636dee55b5db96aa69f38eda10ab0a839d
-    pristine_git_object: afbf1324919ab7bfdb82f103460f9c20fdf77aba
+    last_write_checksum: sha1:4adbeb19ce8eaf961788b498fde28cedb443eb5d
+    pristine_git_object: 831b1615e7837f2cdc658101b9e468a221219236
   docs/models/components/aigatewaymcpservernoupstreamconfigoutput.md:
     id: 4edf06111f64
     last_write_checksum: sha1:3cc66a41f4d236b523d1e14d8d742ab4ddb4ba1c
@@ -809,8 +809,8 @@ trackedFiles:
     pristine_git_object: eb400315f137a7ba1bd911334c0b313aa9ef5390
   docs/models/components/aigatewaymcpserverupstreamserverconfiglogging.md:
     id: df270937fb02
-    last_write_checksum: sha1:a71818e5469f3b203530f09b0c16515a600bae07
-    pristine_git_object: 0194c7b15934444b087856a33883101b0cbf21d8
+    last_write_checksum: sha1:34732e29b5c96649c1819e817249ab56cddb0913
+    pristine_git_object: 02300d984c76c69e2fe16906cf4c71996bc6188c
   docs/models/components/aigatewaymcpserverupstreamserverconfigoutput.md:
     id: 05ee2e315b25
     last_write_checksum: sha1:4a4805435341cef9471a40450dc3bc878e7d7db1
@@ -877,8 +877,8 @@ trackedFiles:
     pristine_git_object: 081039d5945d3ddfa05efa9135056d03e8396554
   docs/models/components/aigatewaymcpserverwithupstreamconfiglogging.md:
     id: f46e604aac12
-    last_write_checksum: sha1:e21a2b6ce501c21dbd233284142cf8638e6afe6b
-    pristine_git_object: 0d2aff120e61fc576ec6c836e7dee69d372aa6a8
+    last_write_checksum: sha1:ea025e02e52c3fda9f7e62235992a2e67867e685
+    pristine_git_object: 2b86c9cf83772e7ee194bdb84fea99be097f4ba4
   docs/models/components/aigatewaymcpserverwithupstreamconfigoutput.md:
     id: 0452dcc13ede
     last_write_checksum: sha1:609d80dc2773c0473552e6c4c005e5fca976d866
@@ -889,8 +889,8 @@ trackedFiles:
     pristine_git_object: 76230841d78492bbf1e4b83f9a419a890ce2b3ea
   docs/models/components/aigatewaymcpserverwithupstreamnoproxyconfiglogging.md:
     id: 7d2dc7fcfdc8
-    last_write_checksum: sha1:f098570b4e5994c9a6222820daa7eefae48e9cbd
-    pristine_git_object: 3e42502eb3bc0c724c2694e000c9852e38fe725d
+    last_write_checksum: sha1:e7b7038f739120bc0032ab0bd5bbb820a1f106f2
+    pristine_git_object: 85feba6e978b118a67a3f04e0fb7f3e1ca1a3809
   docs/models/components/aigatewaymcpserverwithupstreamnoproxyconfignoserverconfig.md:
     id: 2524a9b6d8f6
     last_write_checksum: sha1:d634a87730165c85c678d5e7cf5b0ed4bd138dca
@@ -981,8 +981,8 @@ trackedFiles:
     pristine_git_object: 05b9f265dea0a1ec4052497f2a3b7f6858d14a04
   docs/models/components/aigatewaymodelapiconfiglogging.md:
     id: 11b5c6ec2759
-    last_write_checksum: sha1:779cb71851ca20d3f95c628e168c8f38c63b051c
-    pristine_git_object: 44e1c58abab217bbc20b153d220652af0bdd20d8
+    last_write_checksum: sha1:824a426246fa67046d877fb990b2cdda579e287d
+    pristine_git_object: a3e2f1263c494e1b0ef3f37cb44b07631c7f4c57
   docs/models/components/aigatewaymodelapiconfigoutput.md:
     id: 8c8f185e65fa
     last_write_checksum: sha1:8eec67fe4f7d9a66cee41c6fc0317ff23a95e346
@@ -1109,8 +1109,8 @@ trackedFiles:
     pristine_git_object: 3acd68763e4e679c82c8761ed04886884b0deb8a
   docs/models/components/aigatewaymodelmodelconfiglogging.md:
     id: 92b833d07dec
-    last_write_checksum: sha1:790db868f6b53caa814be871b0c609b89e995c86
-    pristine_git_object: bee99d2d1fca041b9472a303dd4f9c70600e355f
+    last_write_checksum: sha1:599e6cc18a6380c20f35ab9f2b78402c85d52bf7
+    pristine_git_object: ebef5272504602230bed7b0c36cd8b437685a514
   docs/models/components/aigatewaymodelmodelconfigmodel.md:
     id: 65e92093df9e
     last_write_checksum: sha1:ae9f34678c450a778c351dfab8e2c162a7f0d1a0
@@ -1765,8 +1765,8 @@ trackedFiles:
     pristine_git_object: 886c97b31f2d71720a65e9f64c9494fd9ad91c37
   docs/models/components/aigatewaypolicy.md:
     id: 40dbf9b59a1f
-    last_write_checksum: sha1:fa2518969684ba1b32a8c3ff7378d6bc7fef1373
-    pristine_git_object: 8709878d92126a120f89f55d135c71a93f4eca2e
+    last_write_checksum: sha1:121b33901508b0e51b118cccea2c62d603638d2b
+    pristine_git_object: 8845530c13e54fcb8c3ac80f1dd4b66868b3f586
   docs/models/components/aigatewayproxyconfig.md:
     id: dd7237da2360
     last_write_checksum: sha1:7d81e960b4ec9a1143e48845792efaf277cb6840
@@ -4221,8 +4221,8 @@ trackedFiles:
     pristine_git_object: dedcb0c8930bd0da36c8e66776927a1115a408fa
   docs/models/components/createaigatewayagentrequestlogging.md:
     id: ce78f1d15eb4
-    last_write_checksum: sha1:a84eb96b0f849fa661ee6164537937972610c15f
-    pristine_git_object: 74e27148825ae18758bf13def6f25f08f2970922
+    last_write_checksum: sha1:850a22820bbddb417e78c8ac97b6d28f8965bc2b
+    pristine_git_object: d21ec724707bceb7aba0b6b8266f5eb5aa8e455c
   docs/models/components/createaigatewayagentrequesttype.md:
     id: 1c3e179e1ba4
     last_write_checksum: sha1:da34cad3362e133cbcb87c88581cbfee182e91ca
@@ -4277,8 +4277,8 @@ trackedFiles:
     pristine_git_object: 3aa85b7aff654d5eebf1148d29f2edd7c2766ebc
   docs/models/components/createaigatewaypolicyrequest.md:
     id: c29576093438
-    last_write_checksum: sha1:7993881e1af514d58ed0392b7dc035862487db11
-    pristine_git_object: 325aa8efe6750146ab21b908f937136b1b0a8131
+    last_write_checksum: sha1:f38b7201cfdf12e37aabf7db56f9a06a953f209a
+    pristine_git_object: 2614352352890685acd23049baf454a3af93a8fe
   docs/models/components/createaigatewayrequest.md:
     id: 9b68548ff9bb
     last_write_checksum: sha1:7968a5ae09070b15b6ee6f7e5a319ded358427bb
@@ -7493,8 +7493,8 @@ trackedFiles:
     pristine_git_object: 9788604c0db9fa1bb8b210bd7b4da8373becb94a
   docs/models/components/logging.md:
     id: e4dd29fbf9d6
-    last_write_checksum: sha1:c3cfea69d08e009f987c6fb08fd7632e75c9b799
-    pristine_git_object: ab04d1496f201286b764da3f6236089b1bd5dcad
+    last_write_checksum: sha1:86edb0277f3671d6e528f8f7f94f0195149e21a9
+    pristine_git_object: f7b63d551b13d21aee4ecdbd9d70117246d054c9
   docs/models/components/maintainer.md:
     id: b3db33ce705a
     last_write_checksum: sha1:a5877bc401f8e843c3eff3008ba17ee5ac0a755b
@@ -10329,8 +10329,8 @@ trackedFiles:
     pristine_git_object: d86392e54a6106711d8f4bd55898147d552bb7ec
   docs/models/components/updateaigatewayagentrequestlogging.md:
     id: 3cb8c6fa44b1
-    last_write_checksum: sha1:f066e733e0c1d4007966663aadc54ac5caf3ced0
-    pristine_git_object: eef4d58c9c833ff496b8780f4b873fb779ab30b6
+    last_write_checksum: sha1:3a6afc13ec396c6a3e6fec0c96b5dcb9d1ee7fc8
+    pristine_git_object: 2f12cd8760ce4d84827a8bdca945d29cc77a1dda
   docs/models/components/updateaigatewayagentrequesttype.md:
     id: 7e697e15bc52
     last_write_checksum: sha1:b68127890c9c3c5417a56ca2bab3ca1d7badde9f
@@ -10373,8 +10373,8 @@ trackedFiles:
     pristine_git_object: f7b8da4627bcfde88288f4904ee5cbf3315543ee
   docs/models/components/updateaigatewaypolicyrequest.md:
     id: 957496de7a2d
-    last_write_checksum: sha1:ed5613f2014c33b9ffde9253fbbe0e6830f654fc
-    pristine_git_object: 60e286d73fdff0471a39d3888447e3858cee37e8
+    last_write_checksum: sha1:161befc5e3cf91cf322720d39ceba4c46309e7ef
+    pristine_git_object: 20257a25a9185f6685478d0931d65133fd145cd2
   docs/models/components/updateaigatewayrequest.md:
     id: 32e06392a418
     last_write_checksum: sha1:9a5a80b3cb96153f5e7856606a68b3e82a5416f6
@@ -18625,8 +18625,8 @@ trackedFiles:
     pristine_git_object: ba257afab469f27c8cade19090dd8e2237f650da
   models/components/aigatewayagent.go:
     id: 522814abbfdb
-    last_write_checksum: sha1:6302336b2541ae7f27f90359c19bbac42779cf8b
-    pristine_git_object: f953d7b8d11b126dd9b560e73bbea5f3699b233e
+    last_write_checksum: sha1:1ec28dc4464b1cb295e44263712fe83831811f8b
+    pristine_git_object: ea10821d377ef6876250dab7d0778918961cabdf
   models/components/aigatewayagentaccess.go:
     id: ea8bda6e64d9
     last_write_checksum: sha1:86c74859bd8bea3842c88643c41b717d36b1e367
@@ -18729,12 +18729,12 @@ trackedFiles:
     pristine_git_object: e1291c33476842682803c1507654df883ba6ad99
   models/components/aigatewayidentityprovideropenidconnect.go:
     id: 8afcbed6ac80
-    last_write_checksum: sha1:8ac1931119beaa512488377a9415f5eece453648
-    pristine_git_object: 2b2eb7dd0d580ffc7089a8f7191a8ac1905ece12
+    last_write_checksum: sha1:90e1e0c1ebc427346dd806281bb777fecd204a06
+    pristine_git_object: 68cba09a01c0da481e442f39d18fb7af1da5f2a2
   models/components/aigatewayidentityprovideropenidconnectresponse.go:
     id: df563b042376
-    last_write_checksum: sha1:a442da3a2c4aef9e0245931dfed63b8effeaf1e5
-    pristine_git_object: 0d21d159fc0e6d10511a685f5c07f3f5f7608594
+    last_write_checksum: sha1:3a7b9f9660e89d8ffb08ba6afb0d28b8ca49238c
+    pristine_git_object: 757682b1739b374260cf2bc735014e1e81bf23f4
   models/components/aigatewaymcpacls.go:
     id: 60d6353c4fd4
     last_write_checksum: sha1:8039905f0e4d1fcb8dfe740b89d23fded96164e8
@@ -18773,8 +18773,8 @@ trackedFiles:
     pristine_git_object: 641f94c0fe028460d63ffc1223f12ccf76063549
   models/components/aigatewaymcpservernoupstreamconfigoutput.go:
     id: 1c36a2c722dc
-    last_write_checksum: sha1:4fb98c21c438dc0ea2a6c184c5eac849e5ddef92
-    pristine_git_object: 0e1149cbb1637b8da090df541d7adf5383235ece
+    last_write_checksum: sha1:821c02fd46daff0d15addc77b80ba78945e710bb
+    pristine_git_object: 6f7a0d0473eb019a5a81d67b7d2b0c1cfa9b43c3
   models/components/aigatewaymcpserverpassthroughlistener.go:
     id: 0602dbea1cce
     last_write_checksum: sha1:f00240d95fdc55612c0bba97301c381ed38b62e6
@@ -18789,8 +18789,8 @@ trackedFiles:
     pristine_git_object: bd2baa9da1e3137874d58ae2bd48669047241ed0
   models/components/aigatewaymcpserverupstreamserverconfigoutput.go:
     id: 295bea546afe
-    last_write_checksum: sha1:49d05abb85430432f8de57cfaaaa185ade155f96
-    pristine_git_object: bda061d1e939669c7abcbd82d7b7e17282b271d8
+    last_write_checksum: sha1:29e601a1e33d6b343351315d34688558656bf987
+    pristine_git_object: 3b03486d2f85013f27f8fd7200bfd7d73b2653a9
   models/components/aigatewaymcpserverupstreamserverserverconfigoutput.go:
     id: a62f5abf3218
     last_write_checksum: sha1:812e35273f87b9615f26b7bdb91b9145f24f543b
@@ -18813,16 +18813,16 @@ trackedFiles:
     pristine_git_object: 7ffad30476f8faa28f33785cd180d4b622c51d40
   models/components/aigatewaymcpserverwithupstreamconfigoutput.go:
     id: a0e1c2438ccc
-    last_write_checksum: sha1:13b82e5ad25a3dcc91eaf25fe2f9a8b331d7c7a5
-    pristine_git_object: a01e4b9a3233f090fd1a8affbc5261eb133b91ba
+    last_write_checksum: sha1:f2f8ec973deaf13902e22d44959219fbc56acf73
+    pristine_git_object: 4ee7f9c580b426f7e09fc0d490077ca4f271f85b
   models/components/aigatewaymcpserverwithupstreamnoproxyconfignoserverconfig.go:
     id: 22d79e58d28d
-    last_write_checksum: sha1:246c0721bb68101b2d4d99767687b07d25d439ae
-    pristine_git_object: 6e7f136ba029682668637f61e4e028e78c9eed2b
+    last_write_checksum: sha1:f2ae096f6098a653d4a2325b4fc526cc950d0644
+    pristine_git_object: 0149234abc9c0846f3a56bef2e94595c5c2fb3bf
   models/components/aigatewaymcpserverwithupstreamnoproxyconfigoutput.go:
     id: 7c5740907471
-    last_write_checksum: sha1:34feaccd2c258de20b5d14f2a928c6bd1d1575c4
-    pristine_git_object: a6f58f02b2c0d97d71556314868a4f6974c5db9e
+    last_write_checksum: sha1:33cdcb9da78ea5c3cc3c6a1972dd4a0de4ed9062
+    pristine_git_object: d9186d06219cfb443f55fa4b544a71c63e617bde
   models/components/aigatewaymcptoolannotations.go:
     id: 02dc353165e5
     last_write_checksum: sha1:66b7ed7bf6655306b7913025700d16d08c64ffb6
@@ -18857,8 +18857,8 @@ trackedFiles:
     pristine_git_object: 8ed6e22626f83ec3ecd9eb97aecc704c86949341
   models/components/aigatewaymodelapiconfigoutput.go:
     id: c9ee57aba817
-    last_write_checksum: sha1:5259c9f31605763a59adb96f939fa659de7d6c0d
-    pristine_git_object: c10e031d4f5e047646fa952c5cf7a65bd00caa0f
+    last_write_checksum: sha1:d8404f56e1d4eb074734a367ba116e539644515a
+    pristine_git_object: 6818fcdadaebc1360c5e60c5b21968dced1ae431
   models/components/aigatewaymodelbalancerconfig.go:
     id: b05d83dcf94c
     last_write_checksum: sha1:fd786694bb6147d38b441d534826be6ea70f13f3
@@ -18905,8 +18905,8 @@ trackedFiles:
     pristine_git_object: 1fc25383e5472f6ad893657acf409ba5ef709ddf
   models/components/aigatewaymodelmodelconfigoutput.go:
     id: 471b3f424ffc
-    last_write_checksum: sha1:582dade9b4393277c4b012bd2dcd2d17e59858ff
-    pristine_git_object: dae1a062ade8fefd0847221ebbbcea420eac86ec
+    last_write_checksum: sha1:e686c5b87533b9137ae8d75abbc82c193f2d27e8
+    pristine_git_object: ed5a1208bec876f6b45e3d7477f1840574544d23
   models/components/aigatewaymodelprovider.go:
     id: f5040e64830d
     last_write_checksum: sha1:59cada05a77cea5d6922208c67ddfe655cf1430f
@@ -19029,8 +19029,8 @@ trackedFiles:
     pristine_git_object: d4a9afdb56303c2ce68ec9eb61e5b09246c8b524
   models/components/aigatewaypolicy.go:
     id: 54ebf737426a
-    last_write_checksum: sha1:f9c78e7e7a17559393249a3a0348f693500c04af
-    pristine_git_object: f31f6356223977ae9f04aa6dd53e2e2617caa94a
+    last_write_checksum: sha1:d6c51a32b80d3c247c75822f9bc5029ef74d0d59
+    pristine_git_object: d45fa438b66f40da8151d9ba46a2c781e39bdc05
   models/components/aigatewayproxyconfigoutput.go:
     id: 7379999d01de
     last_write_checksum: sha1:983c5f665c61aa1c4b5e4f5e11121cd9784ad2ef
@@ -20101,8 +20101,8 @@ trackedFiles:
     pristine_git_object: 1e335b02054cecb292ee537ef6b9e0b1116f85bf
   models/components/createaigatewayagentrequest.go:
     id: 9bdb9bb7f4b0
-    last_write_checksum: sha1:bd4250e4f42566441e36fd100c1a1282c3be9692
-    pristine_git_object: daed687e784d36b701eb31de7a620b186582be2e
+    last_write_checksum: sha1:08b837d9c352f119e8d2003b339b2ed66726c7d6
+    pristine_git_object: ec106e32074982b3323adbda3af64be59230c7d5
   models/components/createaigatewayconfigstorerequest.go:
     id: 9939c69284bb
     last_write_checksum: sha1:7c74a285f9cd73e52a63c109abc4e76609397954
@@ -20145,8 +20145,8 @@ trackedFiles:
     pristine_git_object: 962aec15f766f6c3b7a155188cfa1cd9df62cb35
   models/components/createaigatewaypolicyrequest.go:
     id: f39085fb66eb
-    last_write_checksum: sha1:d2079b7192e0ee2e386769f069857c8373ac308e
-    pristine_git_object: 57b86a13781bf37c87a4d032488271968f39d18d
+    last_write_checksum: sha1:a960012499660ed4020734fea2dfb5e3fece1d5e
+    pristine_git_object: bb3bcc4d580a65c993c9923dabd8bca305212075
   models/components/createaigatewayrequest.go:
     id: 16e635de0793
     last_write_checksum: sha1:90ffde55bcb84a8d6455c44dee975207c18eebf0
@@ -23021,8 +23021,8 @@ trackedFiles:
     pristine_git_object: 6748e3cca152ee056dbfe539a0e01586c36c31c5
   models/components/updateaigatewayagentrequest.go:
     id: 0b8d1c1702ff
-    last_write_checksum: sha1:1dc2e5d7a6935dc9a548f55cd627daa0758ff641
-    pristine_git_object: 82cb2042de8d1e2fd88375759497e3e8cee4b901
+    last_write_checksum: sha1:94b5c515e0c906c4956e8c937c3e399044ead7d8
+    pristine_git_object: c62ea367d76cc94268c9592a094ffa842e83034f
   models/components/updateaigatewayconfigstorerequest.go:
     id: 41bae8a2fccd
     last_write_checksum: sha1:09c61eeb5c286e53e7b004fb0647ff200dc4a182
@@ -23057,8 +23057,8 @@ trackedFiles:
     pristine_git_object: cea4979cc84b545c6499b9cf2cc70a1f0832093e
   models/components/updateaigatewaypolicyrequest.go:
     id: b89de4710d67
-    last_write_checksum: sha1:998de12a7d85c878780cdc183a368d9952be0976
-    pristine_git_object: 9446b5563d5ec436c250431e940dec32d1823e70
+    last_write_checksum: sha1:8118533161d7e43aaa66e7658c066cc7fc8276a6
+    pristine_git_object: cd0d68395ca31ca232cb50b12150cf6fd195bdbf
   models/components/updateaigatewayrequest.go:
     id: 775f21b3fc3d
     last_write_checksum: sha1:ff793d9922cd795fcf4d4bfc73527e0f4bd5d07f
@@ -26977,8 +26977,8 @@ trackedFiles:
     pristine_git_object: 329751b1a4c05e1c8157838d580ba52c429a49c1
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:1551f91cfba282be58ff7d3b2898ee85f47480dd
-    pristine_git_object: 9c7281565c47aa68404d1c3b099eb48cfa8b9c60
+    last_write_checksum: sha1:cd6217735c8545163774ac04ca3bdc62bece09ed
+    pristine_git_object: 1469eb10c4953cc38fcf69c6b3804d3b265bc943
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:5301c70482baed727f2523a333bbec05c92775cc
@@ -55825,10 +55825,10 @@ examples:
         path:
           gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
       requestBody:
-        application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "statistics": true, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}}
+        application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}}
       responses:
         "201":
-          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "statistics": true, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 674960, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_symbols", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
         "401":
@@ -55849,7 +55849,7 @@ examples:
           agentIdOrName: "my-entity-name"
       responses:
         "200":
-          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "statistics": true, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -55865,10 +55865,10 @@ examples:
           gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
           agentIdOrName: "my-entity-name"
       requestBody:
-        application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "statistics": true, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}}
+        application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}}
       responses:
         "200":
-          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "statistics": true, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}}, "config": {"url": "https://booking-agent.internal.kongair.com", "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 854600, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_items", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
         "401":
