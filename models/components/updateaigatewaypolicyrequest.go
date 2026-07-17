@@ -18,7 +18,7 @@ type UpdateAIGatewayPolicyRequest struct {
 	// A user-defined unique identifier for this policy instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// The type of the Policy. This is equivalent to the Kong 3 plugin name.
-	// Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'openid-connect'.
+	// Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'rate-limiting'.
 	// Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
 	//
 	Type string `json:"type"`

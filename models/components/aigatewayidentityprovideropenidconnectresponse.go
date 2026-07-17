@@ -76,6 +76,10 @@ type AIGatewayIdentityProviderOpenIDConnectResponseConfig struct {
 	// For example, to map to user.info.id, set [ "user", "info", "id" ].
 	//
 	ConsumerClaims [][]string `json:"consumer_claims,omitempty"`
+	// The claim used for consumer groups mapping.
+	// If multiple values are set, it means the claim is inside a nested object of the token payload.
+	//
+	ConsumerGroupsClaim []string `json:"consumer_groups_claim,omitempty"`
 	// Do not terminate the request if consumer mapping fails.
 	//
 	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
@@ -121,6 +125,13 @@ func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerClaims
 		return nil
 	}
 	return a.ConsumerClaims
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerGroupsClaim() []string {
+	if a == nil {
+		return nil
+	}
+	return a.ConsumerGroupsClaim
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerOptional() *bool {

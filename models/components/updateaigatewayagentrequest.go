@@ -35,8 +35,7 @@ func (e *UpdateAIGatewayAgentRequestType) IsExact() bool {
 //
 // Configuration for AI Gateway logging.
 type UpdateAIGatewayAgentRequestLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
+	Payloads *bool `default:"false" json:"payloads"`
 	// Maximum size in bytes for logged request/response payloads. Payloads exceeding this size will be truncated.
 	MaxPayloadSize *int64 `default:"1048576" json:"max_payload_size"`
 }
@@ -57,13 +56,6 @@ func (u *UpdateAIGatewayAgentRequestLogging) GetPayloads() *bool {
 		return nil
 	}
 	return u.Payloads
-}
-
-func (u *UpdateAIGatewayAgentRequestLogging) GetStatistics() *bool {
-	if u == nil {
-		return nil
-	}
-	return u.Statistics
 }
 
 func (u *UpdateAIGatewayAgentRequestLogging) GetMaxPayloadSize() *int64 {

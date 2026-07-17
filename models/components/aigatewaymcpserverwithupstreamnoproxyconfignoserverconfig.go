@@ -12,9 +12,8 @@ import (
 //
 // Configuration for AI Gateway logging.
 type Logging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
-	Audits     *bool `default:"false" json:"audits"`
+	Payloads *bool `default:"false" json:"payloads"`
+	Audits   *bool `default:"false" json:"audits"`
 }
 
 func (l Logging) MarshalJSON() ([]byte, error) {
@@ -33,13 +32,6 @@ func (l *Logging) GetPayloads() *bool {
 		return nil
 	}
 	return l.Payloads
-}
-
-func (l *Logging) GetStatistics() *bool {
-	if l == nil {
-		return nil
-	}
-	return l.Statistics
 }
 
 func (l *Logging) GetAudits() *bool {
