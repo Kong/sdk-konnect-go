@@ -42,7 +42,7 @@ type MeteringEvent struct {
 	// Identifies the context in which an event happened.
 	Source string `json:"source"`
 	// The version of the CloudEvents specification which the event uses.
-	Specversion *string `default:"1.0" json:"specversion"`
+	Specversion string `json:"specversion"`
 	// Contains a value describing the type of event related to the originating
 	// occurrence.
 	Type string `json:"type"`
@@ -65,7 +65,7 @@ func (m MeteringEvent) MarshalJSON() ([]byte, error) {
 }
 
 func (m *MeteringEvent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"id", "source", "type", "subject"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"id", "source", "specversion", "type", "subject"}); err != nil {
 		return err
 	}
 	return nil
@@ -85,9 +85,9 @@ func (m *MeteringEvent) GetSource() string {
 	return m.Source
 }
 
-func (m *MeteringEvent) GetSpecversion() *string {
+func (m *MeteringEvent) GetSpecversion() string {
 	if m == nil {
-		return nil
+		return ""
 	}
 	return m.Specversion
 }

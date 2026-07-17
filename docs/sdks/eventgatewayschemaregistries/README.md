@@ -103,9 +103,11 @@ func main() {
     res, err := s.EventGatewaySchemaRegistries.CreateEventGatewaySchemaRegistry(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", sdkkonnectgo.Pointer(components.CreateSchemaRegistryCreateConfluent(
         components.SchemaRegistryConfluent{
             Name: "<value>",
+            Description: sdkkonnectgo.Pointer(""),
             Config: components.SchemaRegistryConfluentConfig{
                 SchemaType: components.SchemaTypeAvro,
                 Endpoint: "https://broken-tuber.net/",
+                TimeoutSeconds: sdkkonnectgo.Pointer[int64](10),
                 Authentication: sdkkonnectgo.Pointer(components.CreateSchemaRegistryAuthenticationSchemeBasic(
                     components.SchemaRegistryAuthenticationBasic{
                         Username: "Stanley71",
@@ -237,9 +239,11 @@ func main() {
         SchemaRegistryUpdate: sdkkonnectgo.Pointer(components.CreateSchemaRegistryUpdateConfluent(
             components.SchemaRegistryConfluentSensitiveDataAware{
                 Name: "<value>",
+                Description: sdkkonnectgo.Pointer(""),
                 Config: components.SchemaRegistryConfluentConfigSensitiveDataAware{
                     SchemaType: components.SchemaRegistryConfluentConfigSensitiveDataAwareSchemaTypeAvro,
                     Endpoint: "https://polished-caption.info/",
+                    TimeoutSeconds: sdkkonnectgo.Pointer[int64](10),
                     Authentication: sdkkonnectgo.Pointer(components.CreateSchemaRegistryAuthenticationSensitiveDataAwareSchemeBasic(
                         components.SchemaRegistryAuthenticationBasicSensitiveDataAware{
                             Username: "Kelton_Lind-Spencer42",

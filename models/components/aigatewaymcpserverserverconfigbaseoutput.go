@@ -62,14 +62,14 @@ type AIGatewayMCPServerServerConfigBaseSession struct {
 	// The configuration for client-side session storage.
 	Client *Client `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
-	Managed *bool `default:"true" json:"managed"`
+	Managed *bool `json:"managed,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Config for connecting to a Cloud Provider's Redis instance.
 	Redis *AIGatewayRedisCloudConfigurationOutput `json:"redis,omitempty"`
 	// The time-to-live (TTL) for each session in seconds.
-	SessionTTL *int64 `default:"86400" json:"session_ttl"`
+	SessionTTL *int64 `json:"session_ttl,omitempty"`
 	// The strategy for the session. If the value is 'client', the session is encrypted into MCP session id assigned to the client. If the value is not 'client', the session is stored in the configured database.
 	Strategy *Strategy `json:"strategy,omitempty"`
 }
@@ -126,7 +126,7 @@ func (a *AIGatewayMCPServerServerConfigBaseSession) GetStrategy() *Strategy {
 // Server-side configuration for the MCP Server.
 type AIGatewayMCPServerServerConfigBaseOutput struct {
 	// Whether to forward the client request headers to the upstream server when calling the tools.
-	ForwardClientHeaders *bool `default:"true" json:"forward_client_headers"`
+	ForwardClientHeaders *bool `json:"forward_client_headers,omitempty"`
 	// Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes.
 	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 	//
@@ -134,7 +134,7 @@ type AIGatewayMCPServerServerConfigBaseOutput struct {
 	// The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
 	Tag *string `json:"tag,omitempty"`
 	// The timeout for calling the tools in milliseconds.
-	Timeout *int64 `default:"10000" json:"timeout"`
+	Timeout *int64 `json:"timeout,omitempty"`
 }
 
 func (a AIGatewayMCPServerServerConfigBaseOutput) MarshalJSON() ([]byte, error) {
@@ -182,14 +182,14 @@ type Session struct {
 	// The configuration for client-side session storage.
 	Client *Client `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
-	Managed *bool `default:"true" json:"managed"`
+	Managed *bool `json:"managed,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Config for connecting to a Cloud Provider's Redis instance.
 	Redis *AIGatewayRedisCloudConfiguration `json:"redis,omitempty"`
 	// The time-to-live (TTL) for each session in seconds.
-	SessionTTL *int64 `default:"86400" json:"session_ttl"`
+	SessionTTL *int64 `json:"session_ttl,omitempty"`
 	// The strategy for the session. If the value is 'client', the session is encrypted into MCP session id assigned to the client. If the value is not 'client', the session is stored in the configured database.
 	Strategy *Strategy `json:"strategy,omitempty"`
 }
@@ -246,7 +246,7 @@ func (s *Session) GetStrategy() *Strategy {
 // Server-side configuration for the MCP Server.
 type AIGatewayMCPServerServerConfigBase struct {
 	// Whether to forward the client request headers to the upstream server when calling the tools.
-	ForwardClientHeaders *bool `default:"true" json:"forward_client_headers"`
+	ForwardClientHeaders *bool `json:"forward_client_headers,omitempty"`
 	// Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes.
 	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 	//
@@ -254,7 +254,7 @@ type AIGatewayMCPServerServerConfigBase struct {
 	// The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
 	Tag *string `json:"tag,omitempty"`
 	// The timeout for calling the tools in milliseconds.
-	Timeout *int64 `default:"10000" json:"timeout"`
+	Timeout *int64 `json:"timeout,omitempty"`
 }
 
 func (a AIGatewayMCPServerServerConfigBase) MarshalJSON() ([]byte, error) {

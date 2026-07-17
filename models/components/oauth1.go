@@ -119,7 +119,7 @@ type OAuthConfig1 struct {
 	Scope []string `json:"scope"`
 	// A string used to separate multiple scopes in the `scope` parameter.
 	//
-	ScopeDelimiter *string `default:" " json:"scope_delimiter"`
+	ScopeDelimiter *string `json:"scope_delimiter,omitempty"`
 	// Number of seconds before the refresh token grant can no longer be used to mint
 	// a new access token. Once expired clients must re-authenticate to restart the
 	// window interval.

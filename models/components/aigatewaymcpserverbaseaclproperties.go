@@ -30,7 +30,7 @@ func CreateAIGatewayMCPServerBaseACLPropertiesConsumer(consumer AIGatewayMCPServ
 	typ := AIGatewayMCPServerBaseACLPropertiesTypeConsumer
 
 	typStr := ACLAttributeType(typ)
-	consumer.ACLAttributeType = &typStr
+	consumer.ACLAttributeType = typStr
 
 	return AIGatewayMCPServerBaseACLProperties{
 		AIGatewayMCPServerBaseACLPropertiesConsumer: &consumer,

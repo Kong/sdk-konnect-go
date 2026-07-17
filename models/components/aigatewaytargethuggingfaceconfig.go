@@ -55,9 +55,9 @@ type AIGatewayTargetHuggingfaceConfig struct {
 	UpstreamURL *string                              `json:"upstream_url,omitempty"`
 	Type        AIGatewayTargetHuggingfaceConfigType `json:"type"`
 	// Whether to use the Hugging Face inference cache.
-	UseCache *bool `default:"false" json:"use_cache"`
+	UseCache *bool `json:"use_cache,omitempty"`
 	// Whether to wait for the model to load if it is not ready.
-	WaitForModel *bool `default:"false" json:"wait_for_model"`
+	WaitForModel *bool `json:"wait_for_model,omitempty"`
 }
 
 func (a AIGatewayTargetHuggingfaceConfig) MarshalJSON() ([]byte, error) {

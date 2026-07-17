@@ -15,17 +15,17 @@ type BackendCluster struct {
 	// The unique name of the backend cluster.
 	Name string `json:"name"`
 	// A human-readable description of the backend cluster.
-	Description    *string                                              `default:"" json:"description"`
+	Description    *string                                              `json:"description,omitempty"`
 	Authentication BackendClusterAuthenticationSensitiveDataAwareScheme `json:"authentication"`
 	// If true, virtual clusters can have allow anonymous authentication and use this backend cluster.
 	// This setting is not recommended for production use as it may create privilege escalation vulnerabilities.
 	//
-	InsecureAllowAnonymousVirtualClusterAuth *bool `default:"false" json:"insecure_allow_anonymous_virtual_cluster_auth"`
+	InsecureAllowAnonymousVirtualClusterAuth *bool `json:"insecure_allow_anonymous_virtual_cluster_auth,omitempty"`
 	// A list of cluster bootstrap servers in the format address:port.
 	BootstrapServers []string          `json:"bootstrap_servers"`
 	TLS              BackendClusterTLS `json:"tls"`
 	// The interval at which metadata is updated in seconds.
-	MetadataUpdateIntervalSeconds *int64 `default:"60" json:"metadata_update_interval_seconds"`
+	MetadataUpdateIntervalSeconds *int64 `json:"metadata_update_interval_seconds,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".

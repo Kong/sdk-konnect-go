@@ -89,29 +89,29 @@ type HashiCorpVaultOauth2ConfigOutput struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The hostname of your HashiCorp vault.
 	Host string `json:"host"`
 	// The port number of your HashiCorp vault.
 	Port int64 `json:"port"`
 	// The mount point.
-	Mount *string `default:"secret" json:"mount"`
+	Mount string `json:"mount"`
 	// The secrets engine version.
-	Kv *HashiCorpVaultOauth2ConfigKv `default:"v1" json:"kv"`
+	Kv *HashiCorpVaultOauth2ConfigKv `json:"kv,omitempty"`
 	// The protocol to connect with.
-	Protocol *HashiCorpVaultOauth2ConfigProtocol `default:"https" json:"protocol"`
+	Protocol *HashiCorpVaultOauth2ConfigProtocol `json:"protocol,omitempty"`
 	// Whether to verify the TLS certificate of the vault when connecting.
-	SslVerify *bool `default:"true" json:"ssl_verify"`
+	SslVerify *bool `json:"ssl_verify,omitempty"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
 	Namespace  *string                              `json:"namespace,omitempty"`
 	AuthMethod HashiCorpVaultOauth2ConfigAuthMethod `json:"auth_method"`
@@ -133,7 +133,7 @@ func (h HashiCorpVaultOauth2ConfigOutput) MarshalJSON() ([]byte, error) {
 }
 
 func (h *HashiCorpVaultOauth2ConfigOutput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"host", "port", "auth_method", "role", "token_endpoint", "client_id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"host", "port", "mount", "auth_method", "role", "token_endpoint", "client_id"}); err != nil {
 		return err
 	}
 	return nil
@@ -181,9 +181,9 @@ func (h *HashiCorpVaultOauth2ConfigOutput) GetPort() int64 {
 	return h.Port
 }
 
-func (h *HashiCorpVaultOauth2ConfigOutput) GetMount() *string {
+func (h *HashiCorpVaultOauth2ConfigOutput) GetMount() string {
 	if h == nil {
-		return nil
+		return ""
 	}
 	return h.Mount
 }
@@ -265,29 +265,29 @@ type HashiCorpVaultOauth2Config struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The hostname of your HashiCorp vault.
 	Host string `json:"host"`
 	// The port number of your HashiCorp vault.
 	Port int64 `json:"port"`
 	// The mount point.
-	Mount *string `default:"secret" json:"mount"`
+	Mount string `json:"mount"`
 	// The secrets engine version.
-	Kv *HashiCorpVaultOauth2ConfigKv `default:"v1" json:"kv"`
+	Kv *HashiCorpVaultOauth2ConfigKv `json:"kv,omitempty"`
 	// The protocol to connect with.
-	Protocol *HashiCorpVaultOauth2ConfigProtocol `default:"https" json:"protocol"`
+	Protocol *HashiCorpVaultOauth2ConfigProtocol `json:"protocol,omitempty"`
 	// Whether to verify the TLS certificate of the vault when connecting.
-	SslVerify *bool `default:"true" json:"ssl_verify"`
+	SslVerify *bool `json:"ssl_verify,omitempty"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
 	Namespace  *string                              `json:"namespace,omitempty"`
 	AuthMethod HashiCorpVaultOauth2ConfigAuthMethod `json:"auth_method"`
@@ -311,7 +311,7 @@ func (h HashiCorpVaultOauth2Config) MarshalJSON() ([]byte, error) {
 }
 
 func (h *HashiCorpVaultOauth2Config) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"host", "port", "auth_method", "role", "token_endpoint", "client_id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"host", "port", "mount", "auth_method", "role", "token_endpoint", "client_id"}); err != nil {
 		return err
 	}
 	return nil
@@ -359,9 +359,9 @@ func (h *HashiCorpVaultOauth2Config) GetPort() int64 {
 	return h.Port
 }
 
-func (h *HashiCorpVaultOauth2Config) GetMount() *string {
+func (h *HashiCorpVaultOauth2Config) GetMount() string {
 	if h == nil {
-		return nil
+		return ""
 	}
 	return h.Mount
 }

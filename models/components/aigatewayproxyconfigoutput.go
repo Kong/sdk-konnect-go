@@ -132,7 +132,7 @@ type AIGatewayProxyConfigOutput struct {
 	// HTTPS proxy server to route TLS outbound requests through.
 	HTTPSProxy *HTTPSProxy `json:"https_proxy,omitempty"`
 	// The proxy scheme to use when connecting to the proxy server.
-	ProxyScheme *ProxyScheme `default:"http" json:"proxy_scheme"`
+	ProxyScheme *ProxyScheme `json:"proxy_scheme,omitempty"`
 	// Credentials used to authenticate to the proxy server.
 	Auth *AIGatewayProxyConfigAuth `json:"auth,omitempty"`
 	// Comma-separated list of hosts that should not be proxied.
@@ -229,7 +229,7 @@ type AIGatewayProxyConfig struct {
 	// HTTPS proxy server to route TLS outbound requests through.
 	HTTPSProxy *HTTPSProxy `json:"https_proxy,omitempty"`
 	// The proxy scheme to use when connecting to the proxy server.
-	ProxyScheme *ProxyScheme `default:"http" json:"proxy_scheme"`
+	ProxyScheme *ProxyScheme `json:"proxy_scheme,omitempty"`
 	// Credentials used to authenticate to the proxy server.
 	Auth *Auth `json:"auth,omitempty"`
 	// Comma-separated list of hosts that should not be proxied.

@@ -89,36 +89,36 @@ type HashiCorpVaultGcpGCEConfig struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The hostname of your HashiCorp vault.
 	Host string `json:"host"`
 	// The port number of your HashiCorp vault.
 	Port int64 `json:"port"`
 	// The mount point.
-	Mount *string `default:"secret" json:"mount"`
+	Mount string `json:"mount"`
 	// The secrets engine version.
-	Kv *HashiCorpVaultGcpGCEConfigKv `default:"v1" json:"kv"`
+	Kv *HashiCorpVaultGcpGCEConfigKv `json:"kv,omitempty"`
 	// The protocol to connect with.
-	Protocol *HashiCorpVaultGcpGCEConfigProtocol `default:"https" json:"protocol"`
+	Protocol *HashiCorpVaultGcpGCEConfigProtocol `json:"protocol,omitempty"`
 	// Whether to verify the TLS certificate of the vault when connecting.
-	SslVerify *bool `default:"true" json:"ssl_verify"`
+	SslVerify *bool `json:"ssl_verify,omitempty"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
 	Namespace  *string                              `json:"namespace,omitempty"`
 	AuthMethod HashiCorpVaultGcpGCEConfigAuthMethod `json:"auth_method"`
 	// The role to use for GCP GCE auth.
 	Role string `json:"role"`
 	// The login path for GCP auth in HashiCorp Vault.
-	LoginPath *string `default:"/v1/auth/gcp/login" json:"login_path"`
+	LoginPath *string `json:"login_path,omitempty"`
 }
 
 func (h HashiCorpVaultGcpGCEConfig) MarshalJSON() ([]byte, error) {
@@ -126,7 +126,7 @@ func (h HashiCorpVaultGcpGCEConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (h *HashiCorpVaultGcpGCEConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"host", "port", "auth_method", "role"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"host", "port", "mount", "auth_method", "role"}); err != nil {
 		return err
 	}
 	return nil
@@ -174,9 +174,9 @@ func (h *HashiCorpVaultGcpGCEConfig) GetPort() int64 {
 	return h.Port
 }
 
-func (h *HashiCorpVaultGcpGCEConfig) GetMount() *string {
+func (h *HashiCorpVaultGcpGCEConfig) GetMount() string {
 	if h == nil {
-		return nil
+		return ""
 	}
 	return h.Mount
 }

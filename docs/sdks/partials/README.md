@@ -100,10 +100,14 @@ func main() {
     res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisCe(
         components.PartialRedisCe{
             Config: components.PartialRedisCeConfig{
+                Database: sdkkonnectgo.Pointer[int64](0),
                 Host: sdkkonnectgo.Pointer("localhost"),
                 Password: sdkkonnectgo.Pointer("password"),
+                Port: sdkkonnectgo.Pointer[int64](6379),
                 ServerName: sdkkonnectgo.Pointer("redis"),
+                Ssl: sdkkonnectgo.Pointer(false),
                 SslVerify: sdkkonnectgo.Pointer(false),
+                Timeout: sdkkonnectgo.Pointer[int64](2000),
                 Username: sdkkonnectgo.Pointer("username"),
             },
         },
@@ -153,13 +157,18 @@ func main() {
     res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisEe(
         components.PartialRedisEe{
             Config: components.PartialRedisEeConfig{
+                ClusterMaxRedirections: sdkkonnectgo.Pointer[int64](5),
                 ClusterNodes: []components.ClusterNodes{
                     components.ClusterNodes{
                         IP: sdkkonnectgo.Pointer("192.168.1.10"),
                         Port: sdkkonnectgo.Pointer[int64](6380),
                     },
                 },
+                ConnectTimeout: sdkkonnectgo.Pointer[int64](2000),
+                ConnectionIsProxied: sdkkonnectgo.Pointer(false),
+                Database: sdkkonnectgo.Pointer[int64](0),
                 Host: sdkkonnectgo.Pointer("localhost"),
+                KeepalivePoolSize: sdkkonnectgo.Pointer[int64](256),
                 Password: sdkkonnectgo.Pointer("password"),
                 Port: sdkkonnectgo.Pointer(components.CreatePartialRedisEePortInteger(
                     6379,
@@ -173,6 +182,7 @@ func main() {
                     },
                 },
                 ServerName: sdkkonnectgo.Pointer("redis-ee"),
+                Ssl: sdkkonnectgo.Pointer(false),
                 SslVerify: sdkkonnectgo.Pointer(false),
                 Username: sdkkonnectgo.Pointer("username"),
             },
@@ -223,10 +233,14 @@ func main() {
     res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisCe(
         components.PartialRedisCe{
             Config: components.PartialRedisCeConfig{
+                Database: sdkkonnectgo.Pointer[int64](0),
                 Host: sdkkonnectgo.Pointer("localhost"),
                 Password: sdkkonnectgo.Pointer("password"),
+                Port: sdkkonnectgo.Pointer[int64](6379),
                 ServerName: sdkkonnectgo.Pointer("redis"),
+                Ssl: sdkkonnectgo.Pointer(false),
                 SslVerify: sdkkonnectgo.Pointer(false),
+                Timeout: sdkkonnectgo.Pointer[int64](2000),
                 Username: sdkkonnectgo.Pointer("username"),
             },
         },
@@ -429,13 +443,18 @@ func main() {
         Partial: components.CreatePartialRedisEe(
             components.PartialRedisEe{
                 Config: components.PartialRedisEeConfig{
+                    ClusterMaxRedirections: sdkkonnectgo.Pointer[int64](5),
                     ClusterNodes: []components.ClusterNodes{
                         components.ClusterNodes{
                             IP: sdkkonnectgo.Pointer("192.168.1.10"),
                             Port: sdkkonnectgo.Pointer[int64](6380),
                         },
                     },
+                    ConnectTimeout: sdkkonnectgo.Pointer[int64](2000),
+                    ConnectionIsProxied: sdkkonnectgo.Pointer(false),
+                    Database: sdkkonnectgo.Pointer[int64](0),
                     Host: sdkkonnectgo.Pointer("localhost"),
+                    KeepalivePoolSize: sdkkonnectgo.Pointer[int64](256),
                     Password: sdkkonnectgo.Pointer("password"),
                     Port: sdkkonnectgo.Pointer(components.CreatePartialRedisEePortInteger(
                         6379,
@@ -449,6 +468,7 @@ func main() {
                         },
                     },
                     ServerName: sdkkonnectgo.Pointer("redis-ee"),
+                    Ssl: sdkkonnectgo.Pointer(false),
                     SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
@@ -504,10 +524,14 @@ func main() {
         Partial: components.CreatePartialRedisCe(
             components.PartialRedisCe{
                 Config: components.PartialRedisCeConfig{
+                    Database: sdkkonnectgo.Pointer[int64](0),
                     Host: sdkkonnectgo.Pointer("localhost"),
                     Password: sdkkonnectgo.Pointer("password"),
+                    Port: sdkkonnectgo.Pointer[int64](6379),
                     ServerName: sdkkonnectgo.Pointer("redis"),
+                    Ssl: sdkkonnectgo.Pointer(false),
                     SslVerify: sdkkonnectgo.Pointer(false),
+                    Timeout: sdkkonnectgo.Pointer[int64](2000),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
             },
@@ -562,10 +586,14 @@ func main() {
         Partial: components.CreatePartialRedisCe(
             components.PartialRedisCe{
                 Config: components.PartialRedisCeConfig{
+                    Database: sdkkonnectgo.Pointer[int64](0),
                     Host: sdkkonnectgo.Pointer("localhost"),
                     Password: sdkkonnectgo.Pointer("password"),
+                    Port: sdkkonnectgo.Pointer[int64](6379),
                     ServerName: sdkkonnectgo.Pointer("redis"),
+                    Ssl: sdkkonnectgo.Pointer(false),
                     SslVerify: sdkkonnectgo.Pointer(false),
+                    Timeout: sdkkonnectgo.Pointer[int64](2000),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
             },

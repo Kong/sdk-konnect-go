@@ -111,6 +111,8 @@ func main() {
         VirtualClusterID: "3930057d-34a7-48a1-a438-70f200e65244",
         EventGatewayClusterPolicyModify: sdkkonnectgo.Pointer(components.CreateEventGatewayClusterPolicyModifyAcls(
             components.EventGatewayACLsPolicy{
+                Description: sdkkonnectgo.Pointer(""),
+                Enabled: sdkkonnectgo.Pointer(true),
                 Config: components.EventGatewayACLPolicyConfig{
                     Rules: []components.EventGatewayACLRule{
                         components.EventGatewayACLRule{
@@ -260,6 +262,8 @@ func main() {
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         EventGatewayClusterPolicyModify: sdkkonnectgo.Pointer(components.CreateEventGatewayClusterPolicyModifyAcls(
             components.EventGatewayACLsPolicy{
+                Description: sdkkonnectgo.Pointer(""),
+                Enabled: sdkkonnectgo.Pointer(true),
                 Config: components.EventGatewayACLPolicyConfig{
                     Rules: []components.EventGatewayACLRule{},
                 },

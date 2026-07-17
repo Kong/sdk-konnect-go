@@ -38,7 +38,7 @@ type SchemaRegistryConfluentConfig struct {
 	Endpoint string `json:"endpoint"`
 	// Total time in seconds from establishing connection to receive a response from schema registry.
 	//
-	TimeoutSeconds *int64 `default:"10" json:"timeout_seconds"`
+	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
 	// The authentication configuration for the schema registry.
 	Authentication *SchemaRegistryAuthenticationScheme `json:"authentication,omitempty"`
 }

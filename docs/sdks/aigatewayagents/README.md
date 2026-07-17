@@ -110,6 +110,7 @@ func main() {
     res, err := s.AIGatewayAgents.CreateAiGatewayAgent(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateAIGatewayAgentRequest{
         DisplayName: "Kong Air Flight Booking Agent",
         Name: "kongair-flight-booking-agent",
+        Enabled: sdkkonnectgo.Pointer(true),
         Type: components.CreateAIGatewayAgentRequestTypeA2a,
         Access: &components.AIGatewayAgentAccess{
             Acls: sdkkonnectgo.Pointer(components.CreateAIGatewayACLSAIGatewayAllowACL(
@@ -276,6 +277,7 @@ func main() {
         UpdateAIGatewayAgentRequest: components.UpdateAIGatewayAgentRequest{
             DisplayName: "Kong Air Flight Booking Agent",
             Name: "kongair-flight-booking-agent",
+            Enabled: sdkkonnectgo.Pointer(true),
             Type: components.UpdateAIGatewayAgentRequestTypeA2a,
             Access: &components.AIGatewayAgentAccess{
                 Acls: sdkkonnectgo.Pointer(components.CreateAIGatewayACLSAIGatewayAllowACL(

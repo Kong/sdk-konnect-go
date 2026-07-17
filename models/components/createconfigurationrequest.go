@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateConfigurationRequest - Describes the desired state of a control plane's Cloud Gateway deployment. Submitting
 // this request replaces the current configuration; Kong reconciles running data plane groups
 // to match. Use `kind: dedicated.v0` for Dedicated Cloud Gateways or `kind: serverless.v1`
@@ -32,24 +28,13 @@ type CreateConfigurationRequest struct {
 	//
 	// Kind of the Cloud Gateway deployment. If serverless.v1 is specified, the following fields
 	// should be omitted (will be ignored if provided): autoscale, cloud_gateway_network_id, version.
-	Kind *ConfigurationKind `default:"dedicated.v0" json:"kind"`
+	Kind *ConfigurationKind `json:"kind,omitempty"`
 	// Controls how data planes in a configuration are exposed. Supported values:
 	// - `private` — data planes are accessible only within the VPC network; no public internet exposure
 	// - `public` — data planes are accessible from the public internet
 	// - `private+public` — equivalent to `public`; data planes are accessible from the public internet (default)
 	//
-	APIAccess *APIAccess `default:"private+public" json:"api_access"`
-}
-
-func (c CreateConfigurationRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateConfigurationRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	APIAccess *APIAccess `json:"api_access,omitempty"`
 }
 
 func (c *CreateConfigurationRequest) GetControlPlaneID() string {

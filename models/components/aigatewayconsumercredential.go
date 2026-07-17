@@ -55,7 +55,7 @@ type AIGatewayConsumerCredential struct {
 	ManagedBy map[string]string               `json:"managed_by,omitempty"`
 	Type      AIGatewayConsumerCredentialType `json:"type"`
 	// The API Key's time-to-live in seconds. A value of 0 means the API Key never expires.
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.

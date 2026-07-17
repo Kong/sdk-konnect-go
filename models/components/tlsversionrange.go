@@ -56,9 +56,9 @@ func (e *Max) IsExact() bool {
 // TLSVersionRange - A range of TLS versions.
 type TLSVersionRange struct {
 	// Minimum TLS version to use.
-	Min *Min `default:"TLSv1.2" json:"min"`
+	Min *Min `json:"min,omitempty"`
 	// Maximum TLS version to use.
-	Max *Max `default:"TLSv1.3" json:"max"`
+	Max *Max `json:"max,omitempty"`
 }
 
 func (t TLSVersionRange) MarshalJSON() ([]byte, error) {

@@ -57,7 +57,7 @@ type AIGatewayTargetAzureConfig struct {
 	// The Azure deployment ID for the model.
 	DeploymentID string `json:"deployment_id"`
 	// The Azure OpenAI API version to use.
-	APIVersion *string `default:"2023-05-15" json:"api_version"`
+	APIVersion *string `json:"api_version,omitempty"`
 }
 
 func (a AIGatewayTargetAzureConfig) MarshalJSON() ([]byte, error) {

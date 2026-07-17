@@ -62,14 +62,14 @@ type AIGatewayMCPServerUpstreamServerServerConfigSessionOutput struct {
 	// The configuration for client-side session storage.
 	Client *AIGatewayMCPServerUpstreamServerServerConfigClient `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
-	Managed *bool `default:"true" json:"managed"`
+	Managed *bool `json:"managed,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Config for connecting to a Cloud Provider's Redis instance.
 	Redis *AIGatewayRedisCloudConfigurationOutput `json:"redis,omitempty"`
 	// The time-to-live (TTL) for each session in seconds.
-	SessionTTL *int64 `default:"86400" json:"session_ttl"`
+	SessionTTL *int64 `json:"session_ttl,omitempty"`
 	// The strategy for the session. If the value is 'client', the session is encrypted into MCP session id assigned to the client. If the value is not 'client', the session is stored in the configured database.
 	Strategy *AIGatewayMCPServerUpstreamServerServerConfigStrategy `json:"strategy,omitempty"`
 }
@@ -123,7 +123,7 @@ func (a *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput) GetStrategy(
 // AIGatewayMCPServerUpstreamServerServerConfigOutput - Server-side configuration specific to `upstream-server` mode.
 type AIGatewayMCPServerUpstreamServerServerConfigOutput struct {
 	// Whether to forward the client request headers to the upstream server when calling the tools.
-	ForwardClientHeaders *bool `default:"true" json:"forward_client_headers"`
+	ForwardClientHeaders *bool `json:"forward_client_headers,omitempty"`
 	// Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes.
 	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 	//
@@ -131,12 +131,12 @@ type AIGatewayMCPServerUpstreamServerServerConfigOutput struct {
 	// The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
 	Tag *string `json:"tag,omitempty"`
 	// The timeout for calling the tools in milliseconds.
-	Timeout *int64 `default:"10000" json:"timeout"`
+	Timeout *int64 `json:"timeout,omitempty"`
 	// If enabled, the original upstream tool names are preserved as-is when Kong acts as an MCP server.
 	// If disabled (`false`), the service name will be prepended to the MCP tool names to avoid name
 	// collisions when multiple services are used.
 	//
-	PreserveUpstreamToolNames *bool `default:"false" json:"preserve_upstream_tool_names"`
+	PreserveUpstreamToolNames *bool `json:"preserve_upstream_tool_names,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -217,14 +217,14 @@ type AIGatewayMCPServerUpstreamServerServerConfigSession struct {
 	// The configuration for client-side session storage.
 	Client *AIGatewayMCPServerUpstreamServerServerConfigClient `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
-	Managed *bool `default:"true" json:"managed"`
+	Managed *bool `json:"managed,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Config for connecting to a Cloud Provider's Redis instance.
 	Redis *AIGatewayRedisCloudConfiguration `json:"redis,omitempty"`
 	// The time-to-live (TTL) for each session in seconds.
-	SessionTTL *int64 `default:"86400" json:"session_ttl"`
+	SessionTTL *int64 `json:"session_ttl,omitempty"`
 	// The strategy for the session. If the value is 'client', the session is encrypted into MCP session id assigned to the client. If the value is not 'client', the session is stored in the configured database.
 	Strategy *AIGatewayMCPServerUpstreamServerServerConfigStrategy `json:"strategy,omitempty"`
 }
@@ -278,7 +278,7 @@ func (a *AIGatewayMCPServerUpstreamServerServerConfigSession) GetStrategy() *AIG
 // AIGatewayMCPServerUpstreamServerServerConfig - Server-side configuration specific to `upstream-server` mode.
 type AIGatewayMCPServerUpstreamServerServerConfig struct {
 	// Whether to forward the client request headers to the upstream server when calling the tools.
-	ForwardClientHeaders *bool `default:"true" json:"forward_client_headers"`
+	ForwardClientHeaders *bool `json:"forward_client_headers,omitempty"`
 	// Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes.
 	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 	//
@@ -286,12 +286,12 @@ type AIGatewayMCPServerUpstreamServerServerConfig struct {
 	// The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
 	Tag *string `json:"tag,omitempty"`
 	// The timeout for calling the tools in milliseconds.
-	Timeout *int64 `default:"10000" json:"timeout"`
+	Timeout *int64 `json:"timeout,omitempty"`
 	// If enabled, the original upstream tool names are preserved as-is when Kong acts as an MCP server.
 	// If disabled (`false`), the service name will be prepended to the MCP tool names to avoid name
 	// collisions when multiple services are used.
 	//
-	PreserveUpstreamToolNames *bool `default:"false" json:"preserve_upstream_tool_names"`
+	PreserveUpstreamToolNames *bool `json:"preserve_upstream_tool_names,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//

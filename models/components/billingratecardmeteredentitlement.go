@@ -39,7 +39,7 @@ type BillingRateCardMeteredEntitlement struct {
 	Type BillingRateCardMeteredEntitlementType `json:"type"`
 	// If soft limit is true, the subject can use the feature even if the entitlement
 	// is exhausted; access remains granted.
-	IsSoftLimit *bool `default:"false" json:"is_soft_limit"`
+	IsSoftLimit *bool `json:"is_soft_limit,omitempty"`
 	// The amount of usage granted each usage period, in the feature's unit. Usage is
 	// counted against this allowance and the balance resets every usage period. When
 	// `is_soft_limit` is true the subject keeps access after the limit is reached;

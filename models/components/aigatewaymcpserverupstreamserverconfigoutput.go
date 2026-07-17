@@ -12,9 +12,9 @@ import (
 //
 // Configuration for AI Gateway logging.
 type AIGatewayMCPServerUpstreamServerConfigLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
-	Audits     *bool `default:"false" json:"audits"`
+	Payloads   *bool `json:"payloads,omitempty"`
+	Statistics *bool `json:"statistics,omitempty"`
+	Audits     *bool `json:"audits,omitempty"`
 }
 
 func (a AIGatewayMCPServerUpstreamServerConfigLogging) MarshalJSON() ([]byte, error) {
@@ -65,7 +65,7 @@ type AIGatewayMCPServerUpstreamServerConfigOutput struct {
 	// Configuration for AI Gateway logging.
 	Logging *AIGatewayMCPServerUpstreamServerConfigLogging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	MaxRequestBodySize *int64 `json:"max_request_body_size,omitempty"`
 	// Server-side configuration specific to `upstream-server` mode.
 	Server *AIGatewayMCPServerUpstreamServerServerConfigOutput `json:"server,omitempty"`
 	// Helper field to set protocol, host, port and path of the upstream service using a URL.
@@ -147,7 +147,7 @@ type AIGatewayMCPServerUpstreamServerConfig struct {
 	// Configuration for AI Gateway logging.
 	Logging *AIGatewayMCPServerUpstreamServerConfigLogging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	MaxRequestBodySize *int64 `json:"max_request_body_size,omitempty"`
 	// Server-side configuration specific to `upstream-server` mode.
 	Server *AIGatewayMCPServerUpstreamServerServerConfig `json:"server,omitempty"`
 	// Helper field to set protocol, host, port and path of the upstream service using a URL.

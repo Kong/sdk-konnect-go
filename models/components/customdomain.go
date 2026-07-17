@@ -79,7 +79,7 @@ type CustomDomain struct {
 	// This feature is currently in beta and is subject to change.
 	//
 	// Kind of the custom domain based on Cloud Gateway deployment.
-	Kind *CustomDomainKind `default:"dedicated.v0" json:"kind"`
+	Kind *CustomDomainKind `json:"kind,omitempty"`
 }
 
 func (c CustomDomain) MarshalJSON() ([]byte, error) {

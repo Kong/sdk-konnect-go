@@ -90,7 +90,7 @@ type EventGatewayTLSListenerPolicyConfig struct {
 	Versions *TLSVersionRange `json:"versions,omitempty"`
 	// If false, only TLS connections are allowed. If true, both TLS and plaintext connections are allowed.
 	//
-	AllowPlaintext *bool `default:"false" json:"allow_plaintext"`
+	AllowPlaintext *bool `json:"allow_plaintext,omitempty"`
 	// Configures mutual TLS (mTLS) client certificate verification. When set, the gateway
 	// requests or requires clients to present a certificate during the TLS handshake.
 	//

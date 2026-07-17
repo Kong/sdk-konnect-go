@@ -81,13 +81,13 @@ type AIGatewayIdentityProviderOpenIDConnectConfig struct {
 	ConsumerClaims [][]string `json:"consumer_claims,omitempty"`
 	// Do not terminate the request if consumer mapping fails.
 	//
-	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
+	ConsumerOptional *bool `json:"consumer_optional,omitempty"`
 	// URL that identifies the OpenID Provider
 	Issuer *string `json:"issuer,omitempty"`
 	// This field is referenceable.
 	//
 	Scopes    []string `json:"scopes,omitempty"`
-	SslVerify *bool    `default:"true" json:"ssl_verify"`
+	SslVerify *bool    `json:"ssl_verify,omitempty"`
 	// Salt used for generating the cache key that is used for caching the token endpoint requests.
 	//
 	CacheTokensSalt      string         `json:"cache_tokens_salt"`

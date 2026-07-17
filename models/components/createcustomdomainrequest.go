@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateCustomDomainRequest - Request schema for creating a custom domain in the global API.
 type CreateCustomDomainRequest struct {
 	// ID of the Konnect control plane. Can be retrieved from the Control Planes API or the Konnect UI.
@@ -26,18 +22,7 @@ type CreateCustomDomainRequest struct {
 	// This feature is currently in beta and is subject to change.
 	//
 	// Kind of the custom domain based on Cloud Gateway deployment.
-	Kind *CustomDomainKind `default:"dedicated.v0" json:"kind"`
-}
-
-func (c CreateCustomDomainRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateCustomDomainRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Kind *CustomDomainKind `json:"kind,omitempty"`
 }
 
 func (c *CreateCustomDomainRequest) GetControlPlaneID() string {

@@ -3,33 +3,18 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateTLSTrustBundleRequest - The request schema for creating a TLS trust bundle.
 type CreateTLSTrustBundleRequest struct {
 	// The unique name of the TLS trust bundle.
 	Name string `json:"name"`
 	// A human-readable description of the TLS trust bundle.
-	Description *string              `default:"" json:"description"`
+	Description *string              `json:"description,omitempty"`
 	Config      TLSTrustBundleConfig `json:"config"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
-}
-
-func (c CreateTLSTrustBundleRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateTLSTrustBundleRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (c *CreateTLSTrustBundleRequest) GetName() string {

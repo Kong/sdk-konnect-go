@@ -43,17 +43,17 @@ type GoogleSecretManagerVaultConfig struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The project ID from your Google API Console.
 	// You can find it by visiting your Google API Console and selecting “Manage all projects” in the projects list.
 	//

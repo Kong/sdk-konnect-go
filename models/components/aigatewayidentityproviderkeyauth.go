@@ -39,17 +39,17 @@ type AIGatewayIdentityProviderKeyAuthConfig struct {
 	// An optional boolean value telling the plugin to show or hide the credential from the upstream service.
 	// If true, the plugin strips the credential from the request.
 	//
-	HideCredentials *bool `default:"true" json:"hide_credentials"`
+	HideCredentials *bool `json:"hide_credentials,omitempty"`
 	// If enabled, reads the request body.
 	// Supported MIME types: application/www-form-urlencoded, application/json, and multipart/form-data.
 	//
-	KeyInBody *bool `default:"false" json:"key_in_body"`
+	KeyInBody *bool `json:"key_in_body,omitempty"`
 	// If enabled (default), the plugin reads the request header and tries to find the key in it.
 	//
-	KeyInHeader *bool `default:"true" json:"key_in_header"`
+	KeyInHeader *bool `json:"key_in_header,omitempty"`
 	// If enabled (default), the plugin reads the query parameter in the request and tries to find the key in it.
 	//
-	KeyInQuery *bool `default:"true" json:"key_in_query"`
+	KeyInQuery *bool `json:"key_in_query,omitempty"`
 	// An array of strings containing the names of the keys to look for in the request.
 	//
 	KeyNames             []string       `json:"key_names,omitempty"`

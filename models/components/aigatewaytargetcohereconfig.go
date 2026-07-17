@@ -107,11 +107,11 @@ type AIGatewayTargetCohereConfig struct {
 	// Cohere API version. `v1` uses the legacy `/v1/chat` endpoint; `v2` (default)
 	// uses `/v2/chat` and supports tool calling.
 	//
-	APIVersion *APIVersion `default:"v2" json:"api_version"`
+	APIVersion *APIVersion `json:"api_version,omitempty"`
 	// The intended downstream use of the embeddings to improve model quality.
-	EmbeddingInputType *EmbeddingInputType `default:"classification" json:"embedding_input_type"`
+	EmbeddingInputType *EmbeddingInputType `json:"embedding_input_type,omitempty"`
 	// Whether to wait for the model to be ready before sending the request.
-	WaitForModel *bool `default:"false" json:"wait_for_model"`
+	WaitForModel *bool `json:"wait_for_model,omitempty"`
 }
 
 func (a AIGatewayTargetCohereConfig) MarshalJSON() ([]byte, error) {

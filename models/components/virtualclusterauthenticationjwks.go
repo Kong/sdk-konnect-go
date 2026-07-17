@@ -12,9 +12,9 @@ type VirtualClusterAuthenticationJWKS struct {
 	// URL for JWKS endpoint.
 	Endpoint string `json:"endpoint"`
 	// Total time from establishing connection to receive a response from JWKS endpoint.
-	Timeout *string `default:"10s" json:"timeout"`
+	Timeout *string `json:"timeout,omitempty"`
 	// Duration after which the gateway will fetch and cache JWKS.
-	CacheExpiration *string `default:"1h" json:"cache_expiration"`
+	CacheExpiration *string `json:"cache_expiration,omitempty"`
 }
 
 func (v VirtualClusterAuthenticationJWKS) MarshalJSON() ([]byte, error) {

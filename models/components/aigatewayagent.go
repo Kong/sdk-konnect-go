@@ -36,21 +36,10 @@ func (e *Type) IsExact() bool {
 //
 // Configuration for AI Gateway logging.
 type AIGatewayAgentLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
+	Payloads   *bool `json:"payloads,omitempty"`
+	Statistics *bool `json:"statistics,omitempty"`
 	// Maximum size in bytes for logged request/response payloads. Payloads exceeding this size will be truncated.
-	MaxPayloadSize *int64 `default:"1048576" json:"max_payload_size"`
-}
-
-func (a AIGatewayAgentLogging) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayAgentLogging) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	MaxPayloadSize *int64 `json:"max_payload_size,omitempty"`
 }
 
 func (a *AIGatewayAgentLogging) GetPayloads() *bool {
@@ -86,23 +75,12 @@ type Config struct {
 	// Configuration for an AI Gateway route.
 	Route *AIGatewayRouteConfig `json:"route,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
-	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	MaxRequestBodySize *int64 `json:"max_request_body_size,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Configuration for AI Gateway logging.
 	Logging *AIGatewayAgentLogging `json:"logging,omitempty"`
-}
-
-func (c Config) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *Config) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (c *Config) GetURL() string {
@@ -144,7 +122,7 @@ type AIGatewayAgent struct {
 	// A user-defined unique identifier for this agent, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the Agent is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// The type of the agent.
 	Type Type `json:"type"`
 	// List of policy references.

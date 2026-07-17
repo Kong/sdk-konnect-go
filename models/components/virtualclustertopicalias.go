@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // VirtualClusterTopicAlias - A topic alias maps an alias name to a namespace-visible topic name.
 // Clients can produce to, consume from, and discover the topic under the alias name.
 // The original topic name remains accessible.
@@ -20,23 +16,12 @@ type VirtualClusterTopicAlias struct {
 	// CEL expression evaluated against the connection's auth context.
 	// If omitted or empty, the alias is active for all connections.
 	//
-	Condition *string `default:"" json:"condition"`
+	Condition *string `json:"condition,omitempty"`
 	// How to handle conflicts where an alias shadows a physical topic.
 	// * warn - activate the alias but log a warning and set the conflict metric to 1.
 	// * ignore - activate the alias silently.
 	//
-	Conflict *VirtualClusterTopicAliasConflict `default:"warn" json:"conflict"`
-}
-
-func (v VirtualClusterTopicAlias) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(v, "", false)
-}
-
-func (v *VirtualClusterTopicAlias) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &v, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Conflict *VirtualClusterTopicAliasConflict `json:"conflict,omitempty"`
 }
 
 func (v *VirtualClusterTopicAlias) GetAlias() string {

@@ -44,6 +44,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
+        Status: components.APIDocumentStatusUnpublished.ToPointer(),
         ParentDocumentID: nil,
     })
     if err != nil {
@@ -80,6 +81,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
+        Status: components.APIDocumentStatusUnpublished.ToPointer(),
         ParentDocumentID: nil,
     })
     if err != nil {
@@ -116,6 +118,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
+        Status: components.APIDocumentStatusUnpublished.ToPointer(),
         ParentDocumentID: nil,
     })
     if err != nil {
@@ -152,6 +155,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
+        Status: components.APIDocumentStatusUnpublished.ToPointer(),
         ParentDocumentID: nil,
     })
     if err != nil {
@@ -188,6 +192,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
+        Status: components.APIDocumentStatusUnpublished.ToPointer(),
         ParentDocumentID: nil,
     })
     if err != nil {
@@ -297,6 +302,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
+        Status: components.APIDocumentStatusUnpublished.ToPointer(),
         ParentDocumentID: nil,
     })
     if err != nil {
@@ -333,6 +339,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
+        Status: components.APIDocumentStatusUnpublished.ToPointer(),
         ParentDocumentID: nil,
     })
     if err != nil {
@@ -519,6 +526,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
+            Status: components.APIDocumentStatusUnpublished.ToPointer(),
             ParentDocumentID: nil,
         },
     })
@@ -559,6 +567,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
+            Status: components.APIDocumentStatusUnpublished.ToPointer(),
             ParentDocumentID: nil,
         },
     })
@@ -599,6 +608,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
+            Status: components.APIDocumentStatusUnpublished.ToPointer(),
             ParentDocumentID: nil,
         },
     })
@@ -639,6 +649,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
+            Status: components.APIDocumentStatusUnpublished.ToPointer(),
             ParentDocumentID: nil,
         },
     })
@@ -679,6 +690,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
+            Status: components.APIDocumentStatusUnpublished.ToPointer(),
             ParentDocumentID: nil,
         },
     })
@@ -719,6 +731,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
+            Status: components.APIDocumentStatusUnpublished.ToPointer(),
             ParentDocumentID: nil,
         },
     })
@@ -759,6 +772,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
+            Status: components.APIDocumentStatusUnpublished.ToPointer(),
             ParentDocumentID: nil,
         },
     })
@@ -881,6 +895,7 @@ func main() {
         DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
         APIDocument: components.APIDocument{
             Content: sdkkonnectgo.Pointer("# Updated API Document Header"),
+            Status: components.APIDocumentStatusUnpublished.ToPointer(),
         },
     })
     if err != nil {

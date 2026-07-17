@@ -37,7 +37,7 @@ func (e *ACLAttributeType) UnmarshalJSON(data []byte) error {
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerBaseACLPropertiesConsumer struct {
 	// The type of attributes that ACL is evaluated with.
-	ACLAttributeType *ACLAttributeType `default:"consumer" json:"acl_attribute_type"`
+	ACLAttributeType ACLAttributeType `json:"acl_attribute_type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -55,15 +55,15 @@ func (a AIGatewayMCPServerBaseACLPropertiesConsumer) MarshalJSON() ([]byte, erro
 }
 
 func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"acl_attribute_type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetACLAttributeType() *ACLAttributeType {
+func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetACLAttributeType() ACLAttributeType {
 	if a == nil {
-		return nil
+		return ACLAttributeType("")
 	}
 	return a.ACLAttributeType
 }

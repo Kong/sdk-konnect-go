@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // TargetWithoutParentsUpstream - The unique identifier or the name of the upstream for which to update the target.
 type TargetWithoutParentsUpstream struct {
 	ID *string `json:"id,omitempty"`
@@ -24,7 +20,7 @@ type TargetWithoutParents struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *float64 `json:"created_at,omitempty"`
 	// Whether to use this target only as backup or not.
-	Failover *bool `default:"false" json:"failover"`
+	Failover *bool `json:"failover,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// An optional set of strings associated with the Target for grouping and filtering.
@@ -36,18 +32,7 @@ type TargetWithoutParents struct {
 	// The unique identifier or the name of the upstream for which to update the target.
 	Upstream *TargetWithoutParentsUpstream `json:"upstream,omitempty"`
 	// The weight this target gets within the upstream loadbalancer (`0`-`65535`). If the hostname resolves to an SRV record, the `weight` value will be overridden by the value from the DNS record.
-	Weight *int64 `default:"100" json:"weight"`
-}
-
-func (t TargetWithoutParents) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(t, "", false)
-}
-
-func (t *TargetWithoutParents) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Weight *int64 `json:"weight,omitempty"`
 }
 
 func (t *TargetWithoutParents) GetCreatedAt() *float64 {

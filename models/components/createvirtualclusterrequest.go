@@ -3,16 +3,12 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateVirtualClusterRequest - The request schema for creating a virtual cluster.
 type CreateVirtualClusterRequest struct {
 	// The name of the virtual cluster.
 	Name string `json:"name"`
 	// A human-readable description of the virtual cluster.
-	Description *string `default:"" json:"description"`
+	Description *string `json:"description,omitempty"`
 	// The backend cluster associated with the virtual cluster.
 	//
 	// Either `id` or `name` must be provided. Following changes to the backend cluster name won't affect the
@@ -38,8 +34,6 @@ type CreateVirtualClusterRequest struct {
 	TopicAliases []VirtualClusterTopicAlias `json:"topic_aliases,omitempty"`
 	// Configures whether or not ACL policies are enforced on the gateway.
 	// - `enforce_on_gateway` means the gateway enforces its own ACL policies for this virtual cluster
-	//
-	//
 	//   and does not forward ACL-related commands to the backend cluster.
 	//   Note that if there are no ACL policies configured, all access is denied.
 	// - `passthrough` tells the gateway to forward all ACL-related commands.
@@ -53,17 +47,6 @@ type CreateVirtualClusterRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
-}
-
-func (c CreateVirtualClusterRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateVirtualClusterRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (c *CreateVirtualClusterRequest) GetName() string {

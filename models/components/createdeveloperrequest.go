@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateDeveloperRequestDeveloperStatus - When omitted, the portal's `auto_approve_developers` setting determines the initial status. Set this property to override the portal default with any valid developer status.
 type CreateDeveloperRequestDeveloperStatus string
 
@@ -39,18 +35,7 @@ type CreateDeveloperRequest struct {
 	// When omitted, the portal's `auto_approve_developers` setting determines the initial status. Set this property to override the portal default with any valid developer status.
 	Status *CreateDeveloperRequestDeveloperStatus `json:"status,omitempty"`
 	// When true, sends an invitation email to the developer. Default is false; no emails are sent unless explicitly requested.
-	SendInvitationEmail *bool `default:"false" json:"send_invitation_email"`
-}
-
-func (c CreateDeveloperRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateDeveloperRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	SendInvitationEmail *bool `json:"send_invitation_email,omitempty"`
 }
 
 func (c *CreateDeveloperRequest) GetEmail() string {

@@ -66,20 +66,20 @@ type AzureKeyVaultConfig struct {
 	// Time-to-live (in seconds) for caching failed secret lookups.
 	// A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
 	//
-	NegTTL *int64 `default:"0" json:"neg_ttl"`
+	NegTTL *int64 `json:"neg_ttl,omitempty"`
 	// Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
 	// Useful if the vault is unreachable or the secret is deleted but not yet replaced.
 	// Kong continues to retry for resurrect_ttl seconds before giving up.
 	// The default is ~3 years to support uninterrupted service during outages.
 	//
-	ResurrectTTL *int64 `default:"100000000" json:"resurrect_ttl"`
+	ResurrectTTL *int64 `json:"resurrect_ttl,omitempty"`
 	// Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
 	// For non-zero values, use a minimum of 60 seconds.
 	//
-	TTL *int64 `default:"0" json:"ttl"`
+	TTL *int64 `json:"ttl,omitempty"`
 	// The prefix for the credentials stored in the Azure Key Vault.
 	//
-	CredentialsPrefix *string `default:"AZURE" json:"credentials_prefix"`
+	CredentialsPrefix *string `json:"credentials_prefix,omitempty"`
 	// The URI from which the vault is reachable.
 	// This value can be found in your Azure Key Vault Dashboard under the Vault URI entry.
 	//
@@ -95,8 +95,8 @@ type AzureKeyVaultConfig struct {
 	// The DirectoryId and TenantId are the same: both refer to the GUID representing your Azure Active Directory tenant.
 	// Microsoft documentation and products may use either term depending on context.
 	//
-	TenantID *string                  `json:"tenant_id,omitempty"`
-	Type     *AzureKeyVaultConfigType `default:"secrets" json:"type"`
+	TenantID *string                 `json:"tenant_id,omitempty"`
+	Type     AzureKeyVaultConfigType `json:"type"`
 }
 
 func (a AzureKeyVaultConfig) MarshalJSON() ([]byte, error) {
@@ -104,7 +104,7 @@ func (a AzureKeyVaultConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AzureKeyVaultConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"vault_uri", "location"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"vault_uri", "location", "type"}); err != nil {
 		return err
 	}
 	return nil
@@ -173,9 +173,9 @@ func (a *AzureKeyVaultConfig) GetTenantID() *string {
 	return a.TenantID
 }
 
-func (a *AzureKeyVaultConfig) GetType() *AzureKeyVaultConfigType {
+func (a *AzureKeyVaultConfig) GetType() AzureKeyVaultConfigType {
 	if a == nil {
-		return nil
+		return AzureKeyVaultConfigType("")
 	}
 	return a.Type
 }

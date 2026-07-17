@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // APIPackagePublication - An API Package publication in a portal
 type APIPackagePublication struct {
 	// Whether the application registration auto approval on this portal for the api is enabled. If set to false, fallbacks on portal's auto_approve_applications value.
@@ -21,18 +17,7 @@ type APIPackagePublication struct {
 	// Public API publications do not require authentication to view and retrieve information about them.
 	// Private API publications require authentication to retrieve information about them.
 	//
-	Visibility *APIPublicationVisibility `default:"private" json:"visibility"`
-}
-
-func (a APIPackagePublication) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *APIPackagePublication) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Visibility *APIPublicationVisibility `json:"visibility,omitempty"`
 }
 
 func (a *APIPackagePublication) GetAutoApproveRegistrations() *bool {

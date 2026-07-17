@@ -112,6 +112,9 @@ func main() {
             Name: "my-awesome-vault",
             Type: components.GoogleSecretManagerVaultTypeGcp,
             Config: components.GoogleSecretManagerVaultConfig{
+                NegTTL: sdkkonnectgo.Pointer[int64](0),
+                ResurrectTTL: sdkkonnectgo.Pointer[int64](100000000),
+                TTL: sdkkonnectgo.Pointer[int64](0),
                 ProjectID: "<id>",
             },
         },

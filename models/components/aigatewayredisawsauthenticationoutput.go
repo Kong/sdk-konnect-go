@@ -51,7 +51,7 @@ type AIGatewayRedisAWSAuthenticationOutput struct {
 	//
 	CacheName *string `json:"cache_name,omitempty"`
 	// This flag specifies whether the cluster is serverless.
-	IsServerless *bool `default:"true" json:"is_serverless"`
+	IsServerless *bool `json:"is_serverless,omitempty"`
 	// The region of the AWS ElastiCache cluster.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -141,7 +141,7 @@ type AIGatewayRedisAWSAuthentication struct {
 	//
 	CacheName *string `json:"cache_name,omitempty"`
 	// This flag specifies whether the cluster is serverless.
-	IsServerless *bool `default:"true" json:"is_serverless"`
+	IsServerless *bool `json:"is_serverless,omitempty"`
 	// The region of the AWS ElastiCache cluster.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//

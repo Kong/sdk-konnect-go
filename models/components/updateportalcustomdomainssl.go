@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type UpdatePortalCustomDomainSSL struct {
 	// Custom certificate to be used for the SSL termination.
 	CustomCertificate *string `json:"custom_certificate,omitempty"`
@@ -14,18 +10,7 @@ type UpdatePortalCustomDomainSSL struct {
 	CustomPrivateKey *string `json:"custom_private_key,omitempty"`
 	// Advanced option. If true, the custom certificate is served exactly as provided, without attempting to bundle against a public trust store. Required for certificates issued by an internal/private CA.
 	//
-	SkipCaCheck *bool `default:"false" json:"skip_ca_check"`
-}
-
-func (u UpdatePortalCustomDomainSSL) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdatePortalCustomDomainSSL) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	SkipCaCheck *bool `json:"skip_ca_check,omitempty"`
 }
 
 func (u *UpdatePortalCustomDomainSSL) GetCustomCertificate() *string {

@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type JWTWithoutParentsAlgorithm string
 
 const (
@@ -62,7 +58,7 @@ func (j *JWTWithoutParentsConsumer) GetID() *string {
 }
 
 type JWTWithoutParents struct {
-	Algorithm *JWTWithoutParentsAlgorithm `default:"HS256" json:"algorithm"`
+	Algorithm *JWTWithoutParentsAlgorithm `json:"algorithm,omitempty"`
 	Consumer  *JWTWithoutParentsConsumer  `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
@@ -73,17 +69,6 @@ type JWTWithoutParents struct {
 	Secret       *string `json:"secret,omitempty"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
-}
-
-func (j JWTWithoutParents) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(j, "", false)
-}
-
-func (j *JWTWithoutParents) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &j, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (j *JWTWithoutParents) GetAlgorithm() *JWTWithoutParentsAlgorithm {

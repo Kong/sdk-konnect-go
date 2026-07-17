@@ -71,22 +71,11 @@ type Purchase struct {
 	// `funding_method=none` instead.
 	//
 	// Defaults to 1.0.
-	PerUnitCostBasis *string `default:"1.0" json:"per_unit_cost_basis"`
+	PerUnitCostBasis *string `json:"per_unit_cost_basis,omitempty"`
 	// Controls when credits become available for consumption.
 	//
 	// Defaults to `on_creation`.
-	AvailabilityPolicy *CreditAvailabilityPolicy `default:"on_creation" json:"availability_policy"`
-}
-
-func (p Purchase) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Purchase) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	AvailabilityPolicy *CreditAvailabilityPolicy `json:"availability_policy,omitempty"`
 }
 
 func (p *Purchase) GetCurrency() string {
@@ -206,7 +195,7 @@ type CreateCreditGrantRequest struct {
 	// Filters for the credit grant.
 	Filters *CreateCreditGrantFilters `json:"filters,omitempty"`
 	// Draw-down priority of the grant. Lower values have higher priority.
-	Priority *int64 `default:"10" json:"priority"`
+	Priority *int64 `json:"priority,omitempty"`
 	// The timestamp when the credit grant becomes effective.
 	//
 	// Defaults to the current date and time.

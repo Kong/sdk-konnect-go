@@ -13,7 +13,7 @@ type VirtualCluster struct {
 	// The unique identifier of the virtual cluster.
 	ID string `json:"id"`
 	// A human-readable description of the virtual cluster.
-	Description *string `default:"" json:"description"`
+	Description *string `json:"description,omitempty"`
 	// The backend cluster associated with the virtual cluster.
 	Destination BackendClusterReference `json:"destination"`
 	// How to handle authentication from clients.
@@ -40,8 +40,6 @@ type VirtualCluster struct {
 	DNSLabel string `json:"dns_label"`
 	// Configures whether or not ACL policies are enforced on the gateway.
 	// - `enforce_on_gateway` means the gateway enforces its own ACL policies for this virtual cluster
-	//
-	//
 	//   and does not forward ACL-related commands to the backend cluster.
 	//   Note that if there are no ACL policies configured, all access is denied.
 	// - `passthrough` tells the gateway to forward all ACL-related commands.

@@ -17,23 +17,23 @@ type AIGatewayRouteConfig struct {
 	// A list of domain names that match this route. Note that the hosts value is case sensitive.
 	Hosts []string `json:"hosts,omitempty"`
 	// The status code Kong responds with when all properties of a route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the route is configured to only accept the `https` protocol.
-	HTTPSRedirectStatusCode *int64 `default:"426" json:"https_redirect_status_code"`
+	HTTPSRedirectStatusCode *int64 `json:"https_redirect_status_code,omitempty"`
 	// A list of HTTP methods that match this route.
 	Methods []string `json:"methods,omitempty"`
 	// A list of paths that match this route.
 	Paths []string `json:"paths,omitempty"`
 	// When matching a route via one of the `hosts` domain names, use the request `Host` header in the upstream request headers. If set to `false`, the upstream `Host` header will be that of the service's `host`.
-	PreserveHost *bool `default:"false" json:"preserve_host"`
+	PreserveHost *bool `json:"preserve_host,omitempty"`
 	// An array of the protocols this route should allow. See the [route Object](#route-object) section for a list of accepted protocols. When set to only `https`, HTTP requests are answered with an upgrade error. When set to only `http`, HTTPS requests are answered with an error.
 	Protocols []string `json:"protocols,omitempty"`
 	// A number used to choose which route resolves a given request when several routes match it using regexes simultaneously. When two routes match the path and have the same `regex_priority`, the older one (lowest `created_at`) is used. Note that the priority for non-regex routes is different (longer non-regex routes are matched before shorter ones).
-	RegexPriority *int64 `default:"0" json:"regex_priority"`
+	RegexPriority *int64 `json:"regex_priority,omitempty"`
 	// Whether to enable request body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that receive data with chunked transfer encoding.
-	RequestBuffering *bool `default:"true" json:"request_buffering"`
+	RequestBuffering *bool `json:"request_buffering,omitempty"`
 	// Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.
-	ResponseBuffering *bool `default:"true" json:"response_buffering"`
+	ResponseBuffering *bool `json:"response_buffering,omitempty"`
 	// When matching a route via one of the `paths`, strip the matching prefix from the upstream request URL.
-	StripPath *bool `default:"true" json:"strip_path"`
+	StripPath *bool `json:"strip_path,omitempty"`
 	// An optional set of strings associated with the route for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 }

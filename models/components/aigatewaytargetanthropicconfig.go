@@ -55,7 +55,7 @@ type AIGatewayTargetAnthropicConfig struct {
 	UpstreamURL *string                            `json:"upstream_url,omitempty"`
 	Type        AIGatewayTargetAnthropicConfigType `json:"type"`
 	// The Anthropic API version to use.
-	Version *string `default:"2023-06-01" json:"version"`
+	Version *string `json:"version,omitempty"`
 }
 
 func (a AIGatewayTargetAnthropicConfig) MarshalJSON() ([]byte, error) {

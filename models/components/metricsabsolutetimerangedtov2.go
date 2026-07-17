@@ -35,7 +35,7 @@ func (e *MetricsAbsoluteTimeRangeDtoV2Type) UnmarshalJSON(data []byte) error {
 
 // MetricsAbsoluteTimeRangeDtoV2 - A duration representing an exact start and end time.
 type MetricsAbsoluteTimeRangeDtoV2 struct {
-	Tz    *string                           `default:"Etc/UTC" json:"tz"`
+	Tz    *string                           `json:"tz,omitempty"`
 	Type  MetricsAbsoluteTimeRangeDtoV2Type `json:"type"`
 	Start *time.Time                        `json:"start,omitempty"`
 	End   *time.Time                        `json:"end,omitempty"`
