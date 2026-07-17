@@ -12,8 +12,7 @@ import (
 //
 // Configuration for AI Gateway logging.
 type AIGatewayModelAPIConfigLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
+	Payloads *bool `default:"false" json:"payloads"`
 }
 
 func (a AIGatewayModelAPIConfigLogging) MarshalJSON() ([]byte, error) {
@@ -32,13 +31,6 @@ func (a *AIGatewayModelAPIConfigLogging) GetPayloads() *bool {
 		return nil
 	}
 	return a.Payloads
-}
-
-func (a *AIGatewayModelAPIConfigLogging) GetStatistics() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Statistics
 }
 
 type ResponseStreaming string
