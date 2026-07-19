@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: bf0b7ead10445d31cf66c98ee5fb4363
+  docChecksum: eee3f6d0f907b3adbc36c4a493310ac4
   docVersion: 3.15.0
   speakeasyVersion: 1.790.2
   generationVersion: 2.918.3
   releaseVersion: 0.44.0
   configChecksum: 2ba49973a1b5fae7f2f769b27acb9d73
 persistentEdits:
-  generation_id: 4c75e0b6-2bdf-4ad4-acac-65cf7e426b6b
-  pristine_commit_hash: f0ace47b63d22291bfb20929b0e47784dd6ae089
-  pristine_tree_hash: ac0cc4df3effbd1bca56c98440eeec067aa13254
+  generation_id: 4e693eba-d095-41b6-ae0b-8645b59e5cad
+  pristine_commit_hash: 2669ad9898de2e6516e3e234b6c0567a0619953e
+  pristine_tree_hash: fd7e9a1c5f2d634a7f9fedd1fed195468627d946
 features:
   go:
     acceptHeaders: 2.81.2
@@ -18205,8 +18205,8 @@ trackedFiles:
     pristine_git_object: 321baea8bd61371afd40b632f3bd9d2f0c006021
   docs/sdks/portalemails/README.md:
     id: afc91dd1d562
-    last_write_checksum: sha1:c66b27bd7e2cc36e30ac7b0291946ad1afa590a4
-    pristine_git_object: a2237ad64d922e59cdfc9b133dbabcb696c638bd
+    last_write_checksum: sha1:8ffbaf6f9d5ea49c6e980d2c5f3a6108369d4889
+    pristine_git_object: 0c1014623d42cc66a46352717f9e7d4d75bedb2f
   docs/sdks/portalintegrations/README.md:
     id: 597163fc698e
     last_write_checksum: sha1:6cfb97ca61ac6be52ff089918d43dffb05a84fc5
@@ -22185,8 +22185,8 @@ trackedFiles:
     pristine_git_object: c0e5a1580548fc395a94579558b917790bcda908
   models/components/patchcustomportalemailtemplatepayload.go:
     id: 34614769245b
-    last_write_checksum: sha1:0430b017145d0f7669c3fa75c5392894d455152b
-    pristine_git_object: 54546131247b875a75ca2a928d0e2cd188014cc1
+    last_write_checksum: sha1:27336583b00e63600e2c0b87fcd71a892b76e56b
+    pristine_git_object: 7063ee32d2b3935a7a23285c9cbd84f037e586d2
   models/components/patchgatewayrequest.go:
     id: 1c2aaf507822
     last_write_checksum: sha1:6d01d1e336e1b9800816944c9be3000bb881bde7
@@ -49961,7 +49961,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
           templateName: "account-access-approved"
       requestBody:
-        application/json: {"enabled": true}
+        application/json: {}
       responses:
         "200":
           application/json: {"label": "App registration approved", "name": "app-registration-approved", "default_content": {"subject": "<value>", "title": "<value>", "body": "<value>"}, "variables": [], "enabled": true, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
