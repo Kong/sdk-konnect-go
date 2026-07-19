@@ -7,6 +7,7 @@ sources:
         overlays:
             - location: ./.speakeasy/overlays/update-portal-patch-defaults.yaml
             - location: ./.speakeasy/overlays/update-portal-audit-log-webhook-patch-defaults.yaml
+            - location: ./.speakeasy/overlays/patch-custom-portal-email-template-defaults.yaml
         registry:
             location: registry.speakeasyapi.dev/kong/kong/konnect
 targets:
