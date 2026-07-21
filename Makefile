@@ -67,6 +67,8 @@ UPDATE_PORTAL_AUDIT_LOG_WEBHOOK_OVERLAY = \
 	$(SPEAKEASY_DIR)/overlays/update-portal-audit-log-webhook-patch-defaults.yaml
 PATCH_CUSTOM_PORTAL_EMAIL_TEMPLATE_OVERLAY = \
 	$(SPEAKEASY_DIR)/overlays/patch-custom-portal-email-template-defaults.yaml
+UPDATE_PORTAL_IDENTITY_PROVIDER_OVERLAY = \
+	$(SPEAKEASY_DIR)/overlays/update-portal-identity-provider-defaults.yaml
 KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
 
 
@@ -162,9 +164,15 @@ validate.patch-custom-portal-email-template-overlay: speakeasy
 	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) \
 		--overlay $(PATCH_CUSTOM_PORTAL_EMAIL_TEMPLATE_OVERLAY) --out /dev/null
 
+.PHONY: validate.update-portal-identity-provider-overlay
+validate.update-portal-identity-provider-overlay: speakeasy
+	speakeasy overlay validate --overlay $(UPDATE_PORTAL_IDENTITY_PROVIDER_OVERLAY)
+	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) \
+		--overlay $(UPDATE_PORTAL_IDENTITY_PROVIDER_OVERLAY) --out /dev/null
+
 .PHONY: generate.sdk.speakeasy
 generate.sdk.speakeasy: validate.update-portal-overlay validate.update-portal-audit-log-webhook-overlay \
-	validate.patch-custom-portal-email-template-overlay
+	validate.patch-custom-portal-email-template-overlay validate.update-portal-identity-provider-overlay
 	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
 
 # NOTE: SDK generation consists of adding the kubebuilder code marker and generating
