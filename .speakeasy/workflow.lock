@@ -13,7 +13,7 @@ targets:
         sourceRevisionDigest: sha256:c639a509989846db09eb72fa0384d9d4cc7717a96710ef0075f7e4f85d3e5bed
         sourceBlobDigest: sha256:1d37bad2d56ec14c07aa336eab140bce5c3865b8072372dbd43c751527fa0e1d
         codeSamplesNamespace: konnect-go-code-samples
-        codeSamplesRevisionDigest: sha256:a4f8eb51f29a9f90b599586ad2e57a47982dad751364a782d2fd48093a3cd967
+        codeSamplesRevisionDigest: sha256:af58757d41e3745b41c51b3e64ff288ab72703aa0f4c99fc53ea21414d7778d5
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: 1.790.2
@@ -26,6 +26,7 @@ workflow:
                 - location: ./.speakeasy/overlays/update-portal-audit-log-webhook-patch-defaults.yaml
                 - location: ./.speakeasy/overlays/patch-custom-portal-email-template-defaults.yaml
                 - location: ./.speakeasy/overlays/update-portal-identity-provider-defaults.yaml
+                - location: ./.speakeasy/overlays/update-dcr-config-http-defaults.yaml
             registry:
                 location: registry.speakeasyapi.dev/kong/kong/konnect
     targets:
