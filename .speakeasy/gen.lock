@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: eee3f6d0f907b3adbc36c4a493310ac4
+  docChecksum: 64f2f5bae64142f391bcf9d57fb04656
   docVersion: 3.15.0
   speakeasyVersion: 1.790.2
   generationVersion: 2.918.3
   releaseVersion: 0.44.0
   configChecksum: 2ba49973a1b5fae7f2f769b27acb9d73
 persistentEdits:
-  generation_id: 4e693eba-d095-41b6-ae0b-8645b59e5cad
-  pristine_commit_hash: 2669ad9898de2e6516e3e234b6c0567a0619953e
-  pristine_tree_hash: fd7e9a1c5f2d634a7f9fedd1fed195468627d946
+  generation_id: 20634bf1-5401-4188-b3bc-43b49124ccdf
+  pristine_commit_hash: b6018e2f0d2a734adc6cc83c19ba63affd12ee48
+  pristine_tree_hash: 3c2b8b2b1ada22f4c2293c30e4f915475cab4cc4
 features:
   go:
     acceptHeaders: 2.81.2
@@ -22461,8 +22461,8 @@ trackedFiles:
     pristine_git_object: 255d61b2c5e04371ae03a1b6db2159a7f6b4e814
   models/components/portalupdateidentityprovider.go:
     id: 10c09f6b460e
-    last_write_checksum: sha1:4aa0daab8a35d7f51e35ce5b0723d69e08ae51da
-    pristine_git_object: 01b5686abb25f6efa6ff06b1163fd44b4e7dee6f
+    last_write_checksum: sha1:8f07301dbc1852f84483c30bbb1f87cc1a60367c
+    pristine_git_object: 080c578f726275c48e718b7934ab2b62c15a75f1
   models/components/portalupdateteamrequest.go:
     id: 3a1e1924129b
     last_write_checksum: sha1:e9573b62218417df892e5c0538881acdb0b8da96
@@ -23189,8 +23189,8 @@ trackedFiles:
     pristine_git_object: 45c30a40478310d97d07d19650b0bd8c8d6a6edb
   models/components/updateidentityprovider.go:
     id: 58b0695daf0a
-    last_write_checksum: sha1:25f78cc444465e47234a065c027da15272afa5f2
-    pristine_git_object: 55fdab304b5256afdcf6c5e8b59ea7cb323f69dd
+    last_write_checksum: sha1:863183bd1fddd293fadaffa9b63e3a76672d793d
+    pristine_git_object: 787e646660f5bcf0e19bbea734b9d4db82e5f42e
   models/components/updateidpconfiguration.go:
     id: 175bc054ea23
     last_write_checksum: sha1:186e851d08d6f48f7d4f8ae397ccb84e085fd8c1
