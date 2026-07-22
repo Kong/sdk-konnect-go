@@ -45,6 +45,10 @@ const (
 	PlatformQueryDimensionsPluginName           PlatformQueryDimensions = "plugin_name"
 	PlatformQueryDimensionsPluginScope          PlatformQueryDimensions = "plugin_scope"
 	PlatformQueryDimensionsDataPlaneNodeVersion PlatformQueryDimensions = "data_plane_node_version"
+	PlatformQueryDimensionsEnv                  PlatformQueryDimensions = "env"
+	PlatformQueryDimensionsTeam                 PlatformQueryDimensions = "team"
+	PlatformQueryDimensionsRegion               PlatformQueryDimensions = "region"
+	PlatformQueryDimensionsHostname             PlatformQueryDimensions = "hostname"
 )
 
 func (e PlatformQueryDimensions) ToPointer() *PlatformQueryDimensions {
@@ -55,7 +59,7 @@ func (e PlatformQueryDimensions) ToPointer() *PlatformQueryDimensions {
 func (e *PlatformQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "time", "control_plane", "gateway_service", "realm", "route", "consumer", "plugin", "plugin_name", "plugin_scope", "data_plane_node_version":
+		case "time", "control_plane", "gateway_service", "realm", "route", "consumer", "plugin", "plugin_name", "plugin_scope", "data_plane_node_version", "env", "team", "region", "hostname":
 			return true
 		}
 	}

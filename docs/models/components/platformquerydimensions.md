@@ -28,3 +28,7 @@ custom := components.PlatformQueryDimensions("custom_value")
 | `PlatformQueryDimensionsPluginName`           | plugin_name                                   |
 | `PlatformQueryDimensionsPluginScope`          | plugin_scope                                  |
 | `PlatformQueryDimensionsDataPlaneNodeVersion` | data_plane_node_version                       |
+| `PlatformQueryDimensionsEnv`                  | env                                           |
+| `PlatformQueryDimensionsTeam`                 | team                                          |
+| `PlatformQueryDimensionsRegion`               | region                                        |
+| `PlatformQueryDimensionsHostname`             | hostname                                      |
