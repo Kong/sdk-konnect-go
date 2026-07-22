@@ -13,12 +13,16 @@ type PlatformFilterField string
 const (
 	PlatformFilterFieldControlPlane         PlatformFilterField = "control_plane"
 	PlatformFilterFieldDataPlaneNodeVersion PlatformFilterField = "data_plane_node_version"
+	PlatformFilterFieldEnv                  PlatformFilterField = "env"
 	PlatformFilterFieldGatewayService       PlatformFilterField = "gateway_service"
+	PlatformFilterFieldHostname             PlatformFilterField = "hostname"
 	PlatformFilterFieldPlugin               PlatformFilterField = "plugin"
 	PlatformFilterFieldPluginName           PlatformFilterField = "plugin_name"
 	PlatformFilterFieldPluginScope          PlatformFilterField = "plugin_scope"
 	PlatformFilterFieldRealm                PlatformFilterField = "realm"
+	PlatformFilterFieldRegion               PlatformFilterField = "region"
 	PlatformFilterFieldRoute                PlatformFilterField = "route"
+	PlatformFilterFieldTeam                 PlatformFilterField = "team"
 )
 
 func (e PlatformFilterField) ToPointer() *PlatformFilterField {
@@ -29,7 +33,7 @@ func (e PlatformFilterField) ToPointer() *PlatformFilterField {
 func (e *PlatformFilterField) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "control_plane", "data_plane_node_version", "gateway_service", "plugin", "plugin_name", "plugin_scope", "realm", "route":
+		case "control_plane", "data_plane_node_version", "env", "gateway_service", "hostname", "plugin", "plugin_name", "plugin_scope", "realm", "region", "route", "team":
 			return true
 		}
 	}

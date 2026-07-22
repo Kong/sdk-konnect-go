@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 518d9057980983e76cfee92927add7aa
+  docChecksum: 8e8ef19ed7c8ccf2b50b0669c95e1232
   docVersion: 3.15.0
-  speakeasyVersion: 1.790.2
-  generationVersion: 2.918.3
-  releaseVersion: 0.44.0
-  configChecksum: 2ba49973a1b5fae7f2f769b27acb9d73
+  speakeasyVersion: 1.790.3
+  generationVersion: 2.918.4
+  releaseVersion: 0.45.0
+  configChecksum: d878560669bddad148c9b15d2a108468
 persistentEdits:
-  generation_id: d2969fe0-fe07-4325-b639-b52550dcd677
-  pristine_commit_hash: 3cd074d59399174274e517c5b2b73b6ed141afb7
-  pristine_tree_hash: 0d44ecce8e1e3e2144b16dc9090afcac907ec2b5
+  generation_id: 00dbf4fd-de74-4048-8d9d-96ebed01ec54
+  pristine_commit_hash: 1e9cb5a52280c4e98bd0f2e7ccf880ce245a27f4
+  pristine_tree_hash: 516ae45a0ec90172982ae4993f16ae4b5a22e87a
 features:
   go:
     acceptHeaders: 2.81.2
@@ -485,8 +485,8 @@ trackedFiles:
     pristine_git_object: 798229dc9e2efed5d699e771b252f68275b07fb6
   docs/models/components/aigateway.md:
     id: 8d67bcd072a8
-    last_write_checksum: sha1:96a7f09ed7f274102caf04524d3d311fa5ae2926
-    pristine_git_object: 3a5cf7b6ac1b28109cc9cb02a38d6f59b8040b26
+    last_write_checksum: sha1:0fe6249f0d597109d68cc8a7a04515381937e4c1
+    pristine_git_object: 2316da1ee32f78342234a54cec368862486d5dda
   docs/models/components/aigatewayacls.md:
     id: 715d036eaad0
     last_write_checksum: sha1:7520903ef57f3c9f370daea5a9066d4f97941836
@@ -2077,8 +2077,8 @@ trackedFiles:
     pristine_git_object: 209aca87e97182d4e7283aac51f8e302c5f01261
   docs/models/components/allfilteritemsfield.md:
     id: 8ce3133daa4d
-    last_write_checksum: sha1:d4e8b4ea6ee9e8f8937c5726685f326b59aa08d0
-    pristine_git_object: d923b5d0d0e4147c1484802e470766c4b11bfbdd
+    last_write_checksum: sha1:b5fd71265479f8f14451ceb7d29ba28e1ee4bb1c
+    pristine_git_object: 777687843ba8a7e90689e3d30bec4ce49cee89ed
   docs/models/components/allfilteritemsoperator.md:
     id: ebf70c7afbcb
     last_write_checksum: sha1:a158d39a65d2f2647e1c5df30a5a122403ae0496
@@ -8309,8 +8309,8 @@ trackedFiles:
     pristine_git_object: 99f80357d294b1f01d4abd453e27cf5c3ed1f0c1
   docs/models/components/platformfilterfield.md:
     id: 54446a812cc1
-    last_write_checksum: sha1:2e890261c49790f7fc7078bf429151c03b46e28c
-    pristine_git_object: 28d7f76394314935b27c91edeccd215ff1bc8486
+    last_write_checksum: sha1:458081591761c5d67350a70fc044bc87b7ea4289
+    pristine_git_object: c0f0a80622ad5d89ec1f73c5de0b05d24719eafe
   docs/models/components/platformfilteroperator.md:
     id: a1742bb6ba12
     last_write_checksum: sha1:63071168c9cbde9916c7ed33451491f760c31bb1
@@ -8333,8 +8333,8 @@ trackedFiles:
     pristine_git_object: 2caaffba9683c547b7a6d1ea0ceca5778096450e
   docs/models/components/platformquerydimensions.md:
     id: 7b3d84080b6d
-    last_write_checksum: sha1:ea98e9daafcbbbc6883f9fe55a2dd649b025d3e0
-    pristine_git_object: 15945dce2ae9c041fbab179ae640857a40d31695
+    last_write_checksum: sha1:0a600a5ba1bdc5103ca1e52ee970d482785191ef
+    pristine_git_object: 20af1128916550640ea4ad869977444dd3f2f2b0
   docs/models/components/platformrelativetimerange.md:
     id: 06beda5c760b
     last_write_checksum: sha1:f3c87795b59845151059e3cf0f2ec10bf2f931a8
@@ -18617,8 +18617,8 @@ trackedFiles:
     pristine_git_object: c48c53712a74a65bc85e1585e0b74c440413429e
   models/components/aigateway.go:
     id: 1a92a1d57ddb
-    last_write_checksum: sha1:5abfee103d4ec5508b4d21b2d1b9fb594e3f00f3
-    pristine_git_object: 63b7fcc2a4b42d3bf36367b3cb47f75b09c3b8e0
+    last_write_checksum: sha1:5188ea8b4caee9e4d2db98754f98caccaa2717c4
+    pristine_git_object: 0cb485e38bfce96f5d5429b1c5cd3a008c309be5
   models/components/aigatewayacls.go:
     id: c7ffa4321de7
     last_write_checksum: sha1:b16204ae42958b59d7b370a2db60c07ce70a63c9
@@ -19153,8 +19153,8 @@ trackedFiles:
     pristine_git_object: 68d38b5549b11ce817f7cc91c5efdaa150fe500b
   models/components/allfilteritems.go:
     id: e01d8d3ed65a
-    last_write_checksum: sha1:d07eb60a41717689feedd9850e40d4c40d5fc72e
-    pristine_git_object: 80224790e1beb6af5c5d4c6aba673d05106e85d3
+    last_write_checksum: sha1:0b314e2e16e9663d0c6ceca34ef32b055fc9ae54
+    pristine_git_object: e57029a7e044aa4e646b08393b1f7aa8a45d8d6c
   models/components/apiaccess.go:
     id: 69d6d88e6429
     last_write_checksum: sha1:daa6ae2b6b936faad1aed5e5e54d4747fb4f271b
@@ -22261,8 +22261,8 @@ trackedFiles:
     pristine_git_object: 152db00d55df8839ae56f4e7aea1ab67d14ed5b3
   models/components/platformfilter.go:
     id: a50e32890c64
-    last_write_checksum: sha1:e7a25ef5a908b4fd14d6423a73b71396fa371c60
-    pristine_git_object: 5ac574ff22b65c136b11fb42b23e6df79686738a
+    last_write_checksum: sha1:1f8783e068846ac084785d2036c0d4f9f3377c50
+    pristine_git_object: b972967aa5a7d61d89e9581678b5787a3727fea7
   models/components/platformgranularity.go:
     id: 94d64eaaf39b
     last_write_checksum: sha1:b43f320f6aa56f768604139ce4850bce3fda7b98
@@ -22273,8 +22273,8 @@ trackedFiles:
     pristine_git_object: 3035a99ae8464cf58ba1d703060877d371a7566c
   models/components/platformquery.go:
     id: 5aac7089dc86
-    last_write_checksum: sha1:9328f72e17b86cc342810083a0d2a5f7d2b0fc7e
-    pristine_git_object: aaf728a6930c2277fd860f45d6e90cd145495a2f
+    last_write_checksum: sha1:c7b54a9c4e1327b15b198ac43b35cd50e6ada041
+    pristine_git_object: e86a10c39a11ee3d55077eea00e1712640b62204
   models/components/platformrelativetimerange.go:
     id: d2cecfa9bdb5
     last_write_checksum: sha1:a8a9d4e0fccd58e41597c44fc9b4a85d523749c0
@@ -26977,8 +26977,8 @@ trackedFiles:
     pristine_git_object: 329751b1a4c05e1c8157838d580ba52c429a49c1
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:cd6217735c8545163774ac04ca3bdc62bece09ed
-    pristine_git_object: 1469eb10c4953cc38fcf69c6b3804d3b265bc943
+    last_write_checksum: sha1:7b5ceba8c06ea4f904e1ff54d240678a89d29832
+    pristine_git_object: 07f53d81f23100beaf3470dca084e8f22afc16eb
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:5301c70482baed727f2523a333bbec05c92775cc

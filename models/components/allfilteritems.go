@@ -25,7 +25,9 @@ const (
 	AllFilterItemsFieldCountryCode               AllFilterItemsField = "country_code"
 	AllFilterItemsFieldDataPlaneNode             AllFilterItemsField = "data_plane_node"
 	AllFilterItemsFieldDataPlaneNodeVersion      AllFilterItemsField = "data_plane_node_version"
+	AllFilterItemsFieldEnv                       AllFilterItemsField = "env"
 	AllFilterItemsFieldGatewayService            AllFilterItemsField = "gateway_service"
+	AllFilterItemsFieldHostname                  AllFilterItemsField = "hostname"
 	AllFilterItemsFieldLlmCacheStatus            AllFilterItemsField = "llm_cache_status"
 	AllFilterItemsFieldLlmEmbeddingsModel        AllFilterItemsField = "llm_embeddings_model"
 	AllFilterItemsFieldLlmEmbeddingsProvider     AllFilterItemsField = "llm_embeddings_provider"
@@ -36,10 +38,12 @@ const (
 	AllFilterItemsFieldPortal                    AllFilterItemsField = "portal"
 	AllFilterItemsFieldPrincipal                 AllFilterItemsField = "principal"
 	AllFilterItemsFieldRealm                     AllFilterItemsField = "realm"
+	AllFilterItemsFieldRegion                    AllFilterItemsField = "region"
 	AllFilterItemsFieldResponseSource            AllFilterItemsField = "response_source"
 	AllFilterItemsFieldRoute                     AllFilterItemsField = "route"
 	AllFilterItemsFieldStatusCode                AllFilterItemsField = "status_code"
 	AllFilterItemsFieldStatusCodeGrouped         AllFilterItemsField = "status_code_grouped"
+	AllFilterItemsFieldTeam                      AllFilterItemsField = "team"
 	AllFilterItemsFieldUpstreamStatusCode        AllFilterItemsField = "upstream_status_code"
 	AllFilterItemsFieldUpstreamStatusCodeGrouped AllFilterItemsField = "upstream_status_code_grouped"
 )
@@ -52,7 +56,7 @@ func (e AllFilterItemsField) ToPointer() *AllFilterItemsField {
 func (e *AllFilterItemsField) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "upstream_status_code", "upstream_status_code_grouped":
+		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "env", "gateway_service", "hostname", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "portal", "principal", "realm", "region", "response_source", "route", "status_code", "status_code_grouped", "team", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}
