@@ -119,7 +119,7 @@ func main() {
             Targets: []components.AIGatewayTarget{},
             Type: components.AIGatewayModelAPITypeAPI,
             Config: components.AIGatewayModelAPIConfig{
-                Route: components.AIGatewayRouteConfig{
+                Route: components.AIGatewayModelRouteConfig{
                     Headers: map[string]any{
                         "version": []any{
                             "v1",
@@ -300,7 +300,7 @@ func main() {
                 },
                 Type: components.AIGatewayModelAPITypeAPI,
                 Config: components.AIGatewayModelAPIConfig{
-                    Route: components.AIGatewayRouteConfig{
+                    Route: components.AIGatewayModelRouteConfig{
                         Headers: map[string]any{
                             "version": []any{
                                 "v1",
