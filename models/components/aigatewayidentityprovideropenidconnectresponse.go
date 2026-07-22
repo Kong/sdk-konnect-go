@@ -80,6 +80,9 @@ type AIGatewayIdentityProviderOpenIDConnectResponseConfig struct {
 	// If multiple values are set, it means the claim is inside a nested object of the token payload.
 	//
 	ConsumerGroupsClaim []string `json:"consumer_groups_claim,omitempty"`
+	// Do not terminate the request if consumer groups mapping fails.
+	//
+	ConsumerGroupsOptional *bool `default:"false" json:"consumer_groups_optional"`
 	// Do not terminate the request if consumer mapping fails.
 	//
 	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
@@ -132,6 +135,13 @@ func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerGroups
 		return nil
 	}
 	return a.ConsumerGroupsClaim
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerGroupsOptional() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.ConsumerGroupsOptional
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerOptional() *bool {
