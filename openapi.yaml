@@ -52263,19 +52263,9 @@ components:
       type: object
       properties:
         route:
-          $ref: '#/components/schemas/AIGatewayRouteConfig'
+          $ref: '#/components/schemas/AIGatewayModelRouteConfig'
         logging:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            Configuration for AI Gateway logging.
-          type: object
-          additionalProperties: false
-          properties:
-            payloads:
-              type: boolean
-              default: false
+          $ref: '#/components/schemas/AIGatewayLoggingConfig'
         response_streaming:
           type: string
           default: allow
@@ -52297,14 +52287,6 @@ components:
             name_header: true
           additionalProperties: false
           properties:
-            alias:
-              description: |-
-                **Pre-release Feature**
-                This feature is currently in beta and is subject to change.
-
-                An alias for the model, used to select the target virtual model when passed in the "model" parameter of the request body.
-                When not set, this defaults to the AI Gateway model's name.
-              type: string
             name_header:
               description: |-
                 **Pre-release Feature**
@@ -52325,19 +52307,9 @@ components:
       type: object
       properties:
         route:
-          $ref: '#/components/schemas/AIGatewayRouteConfig'
+          $ref: '#/components/schemas/AIGatewayModelRouteConfig'
         logging:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            Configuration for AI Gateway logging.
-          type: object
-          additionalProperties: false
-          properties:
-            payloads:
-              type: boolean
-              default: false
+          $ref: '#/components/schemas/AIGatewayLoggingConfig'
         response_streaming:
           type: string
           default: allow
@@ -52354,24 +52326,116 @@ components:
           $ref: '#/components/schemas/AIGatewayModelBalancerConfig'
         proxy:
           $ref: '#/components/schemas/AIGatewayProxyConfig'
-        model:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-          type: object
-          additionalProperties: false
-          properties:
-            alias:
-              description: |-
-                **Pre-release Feature**
-                This feature is currently in beta and is subject to change.
-
-                An alias for the model, used to select the target virtual model when passed in the "model" parameter of the request body.
-                When not set, this defaults to the AI Gateway model's name.
-              type: string
       additionalProperties: false
       required:
         - route
+    AIGatewayModelRouteConfig:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Configuration for an AI Gateway route.
+      type: object
+      properties:
+        headers:
+          description: 'One or more lists of values indexed by header name that will cause this route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.'
+          type: object
+          example:
+            version:
+              - v1
+              - v2
+          additionalProperties: true
+        hosts:
+          description: A list of domain names that match this route. Note that the hosts value is case sensitive.
+          type: array
+          items:
+            type: string
+            example: foo.example.com
+        https_redirect_status_code:
+          description: 'The status code Kong responds with when all properties of a route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the route is configured to only accept the `https` protocol.'
+          type: integer
+          default: 426
+        methods:
+          description: A list of HTTP methods that match this route.
+          type: array
+          items:
+            type: string
+        paths:
+          description: A list of paths that match this route.
+          type: array
+          items:
+            type: string
+        preserve_host:
+          description: 'When matching a route via one of the `hosts` domain names, use the request `Host` header in the upstream request headers. If set to `false`, the upstream `Host` header will be that of the service''s `host`.'
+          type: boolean
+          default: false
+        protocols:
+          description: 'An array of the protocols this route should allow. See the [route Object](#route-object) section for a list of accepted protocols. When set to only `https`, HTTP requests are answered with an upgrade error. When set to only `http`, HTTPS requests are answered with an error.'
+          type: array
+          items:
+            type: string
+          default:
+            - http
+            - https
+        regex_priority:
+          description: 'A number used to choose which route resolves a given request when several routes match it using regexes simultaneously. When two routes match the path and have the same `regex_priority`, the older one (lowest `created_at`) is used. Note that the priority for non-regex routes is different (longer non-regex routes are matched before shorter ones).'
+          type: integer
+          default: 0
+        request_buffering:
+          description: 'Whether to enable request body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that receive data with chunked transfer encoding.'
+          type: boolean
+          default: true
+        response_buffering:
+          description: 'Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.'
+          type: boolean
+          default: true
+        strip_path:
+          description: 'When matching a route via one of the `paths`, strip the matching prefix from the upstream request URL.'
+          type: boolean
+          default: true
+        tags:
+          description: An optional set of strings associated with the route for grouping and filtering.
+          type: array
+          items:
+            type: string
+        model:
+          description: |
+            Configuration for routing requests to a specific model.
+          type: object
+          oneOf:
+            - title: AIGatewayModelRouteConfigBody
+              properties:
+                body:
+                  description: |
+                    Value indexed by property name that will cause this route to match if present in the request body.
+                  type: object
+                  example:
+                    model:
+                      - '@azure/claude-sonnet-5'
+                  additionalProperties: true
+                  maxProperties: 1
+            - title: AIGatewayModelRouteConfigHeaders
+              properties:
+                headers:
+                  description: |
+                    Value indexed by property name that will cause this route to match if present in the request headers.
+                  type: object
+                  example:
+                    model:
+                      - '@azure/claude-sonnet-5'
+                  additionalProperties: true
+                  maxProperties: 1
+            - title: AIGatewayModelRouteConfigPathAliases
+              properties:
+                path_aliases:
+                  description: |
+                    Value that will cause this route to match if present in the request path.
+                  type: array
+                  items:
+                    type: string
+                    example: '@azure/claude-sonnet-5'
+                  maxItems: 1
+      additionalProperties: false
     AIGatewayModelBalancerConfig:
       description: |-
         **Pre-release Feature**
@@ -53486,6 +53550,7 @@ components:
             - gemini
             - huggingface
             - openai
+            - vertex
           x-speakeasy-unknown-values: allow
       additionalProperties: false
     AIGatewayTarget:
@@ -58871,6 +58936,11 @@ components:
               type: array
               items:
                 type: string
+            consumer_groups_optional:
+              description: |
+                Do not terminate the request if consumer groups mapping fails.
+              type: boolean
+              default: false
             consumer_optional:
               description: |
                 Do not terminate the request if consumer mapping fails.
