@@ -7,32 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayModelModelConfigLogging - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for AI Gateway logging.
-type AIGatewayModelModelConfigLogging struct {
-	Payloads *bool `default:"false" json:"payloads"`
-}
-
-func (a AIGatewayModelModelConfigLogging) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayModelModelConfigLogging) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayModelModelConfigLogging) GetPayloads() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Payloads
-}
-
 type AIGatewayModelModelConfigResponseStreaming string
 
 const (
@@ -62,12 +36,6 @@ type AIGatewayModelModelConfigModel struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
-	// An alias for the model, used to select the target virtual model when passed in the "model" parameter of the request body.
-	// When not set, this defaults to the AI Gateway model's name.
-	Alias *string `json:"alias,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Display the model name selected in the X-Kong-LLM-Model response header
 	NameHeader *bool `default:"true" json:"name_header"`
 }
@@ -83,13 +51,6 @@ func (a *AIGatewayModelModelConfigModel) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelModelConfigModel) GetAlias() *string {
-	if a == nil {
-		return nil
-	}
-	return a.Alias
-}
-
 func (a *AIGatewayModelModelConfigModel) GetNameHeader() *bool {
 	if a == nil {
 		return nil
@@ -103,12 +64,12 @@ type AIGatewayModelModelConfigOutput struct {
 	// This feature is currently in beta and is subject to change.
 	//
 	// Configuration for an AI Gateway route.
-	Route AIGatewayRouteConfig `json:"route"`
+	Route AIGatewayModelRouteConfig `json:"route"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Configuration for AI Gateway logging.
-	Logging           *AIGatewayModelModelConfigLogging           `json:"logging,omitempty"`
+	Logging           *AIGatewayLoggingConfig                     `json:"logging,omitempty"`
 	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
@@ -135,14 +96,14 @@ func (a *AIGatewayModelModelConfigOutput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelModelConfigOutput) GetRoute() AIGatewayRouteConfig {
+func (a *AIGatewayModelModelConfigOutput) GetRoute() AIGatewayModelRouteConfig {
 	if a == nil {
-		return AIGatewayRouteConfig{}
+		return AIGatewayModelRouteConfig{}
 	}
 	return a.Route
 }
 
-func (a *AIGatewayModelModelConfigOutput) GetLogging() *AIGatewayModelModelConfigLogging {
+func (a *AIGatewayModelModelConfigOutput) GetLogging() *AIGatewayLoggingConfig {
 	if a == nil {
 		return nil
 	}
@@ -239,12 +200,12 @@ type AIGatewayModelModelConfig struct {
 	// This feature is currently in beta and is subject to change.
 	//
 	// Configuration for an AI Gateway route.
-	Route AIGatewayRouteConfig `json:"route"`
+	Route AIGatewayModelRouteConfig `json:"route"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Configuration for AI Gateway logging.
-	Logging           *AIGatewayModelModelConfigLogging           `json:"logging,omitempty"`
+	Logging           *AIGatewayLoggingConfig                     `json:"logging,omitempty"`
 	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
@@ -271,14 +232,14 @@ func (a *AIGatewayModelModelConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelModelConfig) GetRoute() AIGatewayRouteConfig {
+func (a *AIGatewayModelModelConfig) GetRoute() AIGatewayModelRouteConfig {
 	if a == nil {
-		return AIGatewayRouteConfig{}
+		return AIGatewayModelRouteConfig{}
 	}
 	return a.Route
 }
 
-func (a *AIGatewayModelModelConfig) GetLogging() *AIGatewayModelModelConfigLogging {
+func (a *AIGatewayModelModelConfig) GetLogging() *AIGatewayLoggingConfig {
 	if a == nil {
 		return nil
 	}

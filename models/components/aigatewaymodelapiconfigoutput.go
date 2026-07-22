@@ -7,32 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayModelAPIConfigLogging - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for AI Gateway logging.
-type AIGatewayModelAPIConfigLogging struct {
-	Payloads *bool `default:"false" json:"payloads"`
-}
-
-func (a AIGatewayModelAPIConfigLogging) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayModelAPIConfigLogging) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayModelAPIConfigLogging) GetPayloads() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Payloads
-}
-
 type ResponseStreaming string
 
 const (
@@ -56,48 +30,19 @@ func (e *ResponseStreaming) IsExact() bool {
 	return false
 }
 
-// Model - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-type Model struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// An alias for the model, used to select the target virtual model when passed in the "model" parameter of the request body.
-	// When not set, this defaults to the AI Gateway model's name.
-	Alias *string `json:"alias,omitempty"`
-}
-
-func (m Model) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(m, "", false)
-}
-
-func (m *Model) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *Model) GetAlias() *string {
-	if m == nil {
-		return nil
-	}
-	return m.Alias
-}
-
 // AIGatewayModelAPIConfigOutput - Routing, logging, and load balancing configuration for the model.
 type AIGatewayModelAPIConfigOutput struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Configuration for an AI Gateway route.
-	Route AIGatewayRouteConfig `json:"route"`
+	Route AIGatewayModelRouteConfig `json:"route"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Configuration for AI Gateway logging.
-	Logging           *AIGatewayModelAPIConfigLogging `json:"logging,omitempty"`
-	ResponseStreaming *ResponseStreaming              `default:"allow" json:"response_streaming"`
+	Logging           *AIGatewayLoggingConfig `json:"logging,omitempty"`
+	ResponseStreaming *ResponseStreaming      `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
 	// **Pre-release Feature**
@@ -107,9 +52,6 @@ type AIGatewayModelAPIConfigOutput struct {
 	Balancer *AIGatewayModelBalancerConfigOutput `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
 	Proxy *AIGatewayProxyConfigOutput `json:"proxy,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Model *Model `json:"model,omitempty"`
 }
 
 func (a AIGatewayModelAPIConfigOutput) MarshalJSON() ([]byte, error) {
@@ -123,14 +65,14 @@ func (a *AIGatewayModelAPIConfigOutput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelAPIConfigOutput) GetRoute() AIGatewayRouteConfig {
+func (a *AIGatewayModelAPIConfigOutput) GetRoute() AIGatewayModelRouteConfig {
 	if a == nil {
-		return AIGatewayRouteConfig{}
+		return AIGatewayModelRouteConfig{}
 	}
 	return a.Route
 }
 
-func (a *AIGatewayModelAPIConfigOutput) GetLogging() *AIGatewayModelAPIConfigLogging {
+func (a *AIGatewayModelAPIConfigOutput) GetLogging() *AIGatewayLoggingConfig {
 	if a == nil {
 		return nil
 	}
@@ -214,26 +156,19 @@ func (a *AIGatewayModelAPIConfigOutput) GetProxy() *AIGatewayProxyConfigOutput {
 	return a.Proxy
 }
 
-func (a *AIGatewayModelAPIConfigOutput) GetModel() *Model {
-	if a == nil {
-		return nil
-	}
-	return a.Model
-}
-
 // AIGatewayModelAPIConfig - Routing, logging, and load balancing configuration for the model.
 type AIGatewayModelAPIConfig struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Configuration for an AI Gateway route.
-	Route AIGatewayRouteConfig `json:"route"`
+	Route AIGatewayModelRouteConfig `json:"route"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// Configuration for AI Gateway logging.
-	Logging           *AIGatewayModelAPIConfigLogging `json:"logging,omitempty"`
-	ResponseStreaming *ResponseStreaming              `default:"allow" json:"response_streaming"`
+	Logging           *AIGatewayLoggingConfig `json:"logging,omitempty"`
+	ResponseStreaming *ResponseStreaming      `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
 	// **Pre-release Feature**
@@ -243,9 +178,6 @@ type AIGatewayModelAPIConfig struct {
 	Balancer *AIGatewayModelBalancerConfig `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
 	Proxy *AIGatewayProxyConfig `json:"proxy,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Model *Model `json:"model,omitempty"`
 }
 
 func (a AIGatewayModelAPIConfig) MarshalJSON() ([]byte, error) {
@@ -259,14 +191,14 @@ func (a *AIGatewayModelAPIConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelAPIConfig) GetRoute() AIGatewayRouteConfig {
+func (a *AIGatewayModelAPIConfig) GetRoute() AIGatewayModelRouteConfig {
 	if a == nil {
-		return AIGatewayRouteConfig{}
+		return AIGatewayModelRouteConfig{}
 	}
 	return a.Route
 }
 
-func (a *AIGatewayModelAPIConfig) GetLogging() *AIGatewayModelAPIConfigLogging {
+func (a *AIGatewayModelAPIConfig) GetLogging() *AIGatewayLoggingConfig {
 	if a == nil {
 		return nil
 	}
@@ -348,11 +280,4 @@ func (a *AIGatewayModelAPIConfig) GetProxy() *AIGatewayProxyConfig {
 		return nil
 	}
 	return a.Proxy
-}
-
-func (a *AIGatewayModelAPIConfig) GetModel() *Model {
-	if a == nil {
-		return nil
-	}
-	return a.Model
 }
