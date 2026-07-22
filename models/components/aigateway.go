@@ -52,12 +52,12 @@ type AIGateway struct {
 	ID string `json:"id"`
 	// Object containing AI Gateway access endpoints.
 	Endpoints Endpoints `json:"endpoints"`
-	// The hash of the latest configuration for the gateway. Every change to an entity
-	// under this gateway will result in a new config_hash being generated.
-	// The config hash can be used to verify if the config hash of an AI Gateway
-	// node is up to date with the AI Gateway. The config hash will be the same if they are in sync.
+	// The version identification of the latest configuration of the gateway.
+	// Any change to an entity under this gateway can result in a new version.
+	// The config_version is generated in the control plane and used to verify if
+	// an AI Gateway node configuration is up to date.
 	//
-	ConfigHash *string `json:"config_hash,omitempty"`
+	ConfigVersion *string `json:"config_version,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -125,11 +125,11 @@ func (a *AIGateway) GetEndpoints() Endpoints {
 	return a.Endpoints
 }
 
-func (a *AIGateway) GetConfigHash() *string {
+func (a *AIGateway) GetConfigVersion() *string {
 	if a == nil {
 		return nil
 	}
-	return a.ConfigHash
+	return a.ConfigVersion
 }
 
 func (a *AIGateway) GetCreatedAt() time.Time {

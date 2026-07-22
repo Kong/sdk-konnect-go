@@ -22,9 +22,13 @@ custom := components.PlatformFilterField("custom_value")
 | ----------------------------------------- | ----------------------------------------- |
 | `PlatformFilterFieldControlPlane`         | control_plane                             |
 | `PlatformFilterFieldDataPlaneNodeVersion` | data_plane_node_version                   |
+| `PlatformFilterFieldEnv`                  | env                                       |
 | `PlatformFilterFieldGatewayService`       | gateway_service                           |
+| `PlatformFilterFieldHostname`             | hostname                                  |
 | `PlatformFilterFieldPlugin`               | plugin                                    |
 | `PlatformFilterFieldPluginName`           | plugin_name                               |
 | `PlatformFilterFieldPluginScope`          | plugin_scope                              |
 | `PlatformFilterFieldRealm`                | realm                                     |
+| `PlatformFilterFieldRegion`               | region                                    |
 | `PlatformFilterFieldRoute`                | route                                     |
+| `PlatformFilterFieldTeam`                 | team                                      |

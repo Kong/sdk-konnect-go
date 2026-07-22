@@ -51766,12 +51766,12 @@ components:
           required:
             - configuration
             - telemetry
-        config_hash:
+        config_version:
           description: |
-            The hash of the latest configuration for the gateway. Every change to an entity
-            under this gateway will result in a new config_hash being generated.
-            The config hash can be used to verify if the config hash of an AI Gateway
-            node is up to date with the AI Gateway. The config hash will be the same if they are in sync.
+            The version identification of the latest configuration of the gateway.
+            Any change to an entity under this gateway can result in a new version.
+            The config_version is generated in the control plane and used to verify if
+            an AI Gateway node configuration is up to date.
           type: string
           readOnly: true
         created_at:
@@ -60892,6 +60892,10 @@ components:
               - plugin_name
               - plugin_scope
               - data_plane_node_version
+              - env
+              - team
+              - region
+              - hostname
             x-speakeasy-unknown-values: allow
           maxItems: 2
         filters:
@@ -62800,12 +62804,16 @@ components:
           enum:
             - control_plane
             - data_plane_node_version
+            - env
             - gateway_service
+            - hostname
             - plugin
             - plugin_name
             - plugin_scope
             - realm
+            - region
             - route
+            - team
           x-speakeasy-unknown-values: allow
         operator:
           type: string
@@ -63052,6 +63060,150 @@ components:
         - $ref: '#/components/schemas/TopNChart'
         - $ref: '#/components/schemas/SingleValueChart'
         - $ref: '#/components/schemas/ChoroplethMapChart'
+    MetricsEnvFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - env
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - env
+          required:
+            - operator
+            - field
+      title: Filter by env
+    MetricsHostnameFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - hostname
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - hostname
+          required:
+            - operator
+            - field
+      title: Filter by hostname
+    MetricsRegionFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - region
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - region
+          required:
+            - operator
+            - field
+      title: Filter by region
+    MetricsTeamFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - team
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - team
+          required:
+            - operator
+            - field
+      title: Filter by team
     AllFilterItems:
       type: object
       properties:
@@ -63077,7 +63229,9 @@ components:
             - country_code
             - data_plane_node
             - data_plane_node_version
+            - env
             - gateway_service
+            - hostname
             - llm_cache_status
             - llm_embeddings_model
             - llm_embeddings_provider
@@ -63088,10 +63242,12 @@ components:
             - portal
             - principal
             - realm
+            - region
             - response_source
             - route
             - status_code
             - status_code_grouped
+            - team
             - upstream_status_code
             - upstream_status_code_grouped
           x-speakeasy-unknown-values: allow

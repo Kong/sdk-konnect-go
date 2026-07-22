@@ -37,7 +37,9 @@ custom := components.AllFilterItemsField("custom_value")
 | `AllFilterItemsFieldCountryCode`               | country_code                                   |
 | `AllFilterItemsFieldDataPlaneNode`             | data_plane_node                                |
 | `AllFilterItemsFieldDataPlaneNodeVersion`      | data_plane_node_version                        |
+| `AllFilterItemsFieldEnv`                       | env                                            |
 | `AllFilterItemsFieldGatewayService`            | gateway_service                                |
+| `AllFilterItemsFieldHostname`                  | hostname                                       |
 | `AllFilterItemsFieldLlmCacheStatus`            | llm_cache_status                               |
 | `AllFilterItemsFieldLlmEmbeddingsModel`        | llm_embeddings_model                           |
 | `AllFilterItemsFieldLlmEmbeddingsProvider`     | llm_embeddings_provider                        |
@@ -48,9 +50,11 @@ custom := components.AllFilterItemsField("custom_value")
 | `AllFilterItemsFieldPortal`                    | portal                                         |
 | `AllFilterItemsFieldPrincipal`                 | principal                                      |
 | `AllFilterItemsFieldRealm`                     | realm                                          |
+| `AllFilterItemsFieldRegion`                    | region                                         |
 | `AllFilterItemsFieldResponseSource`            | response_source                                |
 | `AllFilterItemsFieldRoute`                     | route                                          |
 | `AllFilterItemsFieldStatusCode`                | status_code                                    |
 | `AllFilterItemsFieldStatusCodeGrouped`         | status_code_grouped                            |
+| `AllFilterItemsFieldTeam`                      | team                                           |
 | `AllFilterItemsFieldUpstreamStatusCode`        | upstream_status_code                           |
 | `AllFilterItemsFieldUpstreamStatusCodeGrouped` | upstream_status_code_grouped                   |
