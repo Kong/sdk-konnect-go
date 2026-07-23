@@ -111,6 +111,8 @@ type AdvancedQuery struct {
 	Granularity *Granularity `json:"granularity,omitempty"`
 	// The time range to query.
 	TimeRange *TimeRange `json:"time_range,omitempty"`
+	// Limits the number of distinct metric groups to return.
+	Limit *float64 `default:"50" json:"limit"`
 }
 
 func (a AdvancedQuery) MarshalJSON() ([]byte, error) {
@@ -178,4 +180,11 @@ func (a *AdvancedQuery) GetTimeRangeAbsolute() *MetricsAbsoluteTimeRangeDtoV2 {
 		return v.MetricsAbsoluteTimeRangeDtoV2
 	}
 	return nil
+}
+
+func (a *AdvancedQuery) GetLimit() *float64 {
+	if a == nil {
+		return nil
+	}
+	return a.Limit
 }

@@ -100,7 +100,7 @@ type PlatformQuery struct {
 	Granularity *PlatformGranularity `json:"granularity,omitempty"`
 	// The time range to query for platform data.
 	TimeRange *PlatformTimeRange `json:"time_range,omitempty"`
-	// Maximum number of group_by buckets to return. Defaults to 50, capped at 1000. Only applies when a group_by dimension is requested.
+	// Limits the number of distinct metric groups to return.
 	Limit *float64 `default:"50" json:"limit"`
 }
 

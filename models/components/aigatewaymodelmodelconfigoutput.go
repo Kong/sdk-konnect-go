@@ -30,9 +30,9 @@ func (e *AIGatewayModelModelConfigResponseStreaming) IsExact() bool {
 	return false
 }
 
-// AIGatewayModelModelConfigModel - **Pre-release Feature**
+// Model - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
-type AIGatewayModelModelConfigModel struct {
+type Model struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -40,22 +40,22 @@ type AIGatewayModelModelConfigModel struct {
 	NameHeader *bool `default:"true" json:"name_header"`
 }
 
-func (a AIGatewayModelModelConfigModel) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
+func (m Model) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
 }
 
-func (a *AIGatewayModelModelConfigModel) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+func (m *Model) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayModelModelConfigModel) GetNameHeader() *bool {
-	if a == nil {
+func (m *Model) GetNameHeader() *bool {
+	if m == nil {
 		return nil
 	}
-	return a.NameHeader
+	return m.NameHeader
 }
 
 // AIGatewayModelModelConfigOutput - Routing, logging, and load balancing configuration for the model.
@@ -75,7 +75,7 @@ type AIGatewayModelModelConfigOutput struct {
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
-	Model *AIGatewayModelModelConfigModel `json:"model,omitempty"`
+	Model *Model `json:"model,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -124,7 +124,7 @@ func (a *AIGatewayModelModelConfigOutput) GetMaxRequestBodySize() *int64 {
 	return a.MaxRequestBodySize
 }
 
-func (a *AIGatewayModelModelConfigOutput) GetModel() *AIGatewayModelModelConfigModel {
+func (a *AIGatewayModelModelConfigOutput) GetModel() *Model {
 	if a == nil {
 		return nil
 	}
@@ -211,7 +211,7 @@ type AIGatewayModelModelConfig struct {
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
-	Model *AIGatewayModelModelConfigModel `json:"model,omitempty"`
+	Model *Model `json:"model,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -260,7 +260,7 @@ func (a *AIGatewayModelModelConfig) GetMaxRequestBodySize() *int64 {
 	return a.MaxRequestBodySize
 }
 
-func (a *AIGatewayModelModelConfig) GetModel() *AIGatewayModelModelConfigModel {
+func (a *AIGatewayModelModelConfig) GetModel() *Model {
 	if a == nil {
 		return nil
 	}
