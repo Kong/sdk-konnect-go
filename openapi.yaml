@@ -52399,43 +52399,68 @@ components:
           items:
             type: string
         model:
-          description: |
-            Configuration for routing requests to a specific model.
-          type: object
-          oneOf:
-            - title: AIGatewayModelRouteConfigBody
-              properties:
-                body:
-                  description: |
-                    Value indexed by property name that will cause this route to match if present in the request body.
-                  type: object
-                  example:
-                    model:
-                      - '@azure/claude-sonnet-5'
-                  additionalProperties: true
-                  maxProperties: 1
-            - title: AIGatewayModelRouteConfigHeaders
-              properties:
-                headers:
-                  description: |
-                    Value indexed by property name that will cause this route to match if present in the request headers.
-                  type: object
-                  example:
-                    model:
-                      - '@azure/claude-sonnet-5'
-                  additionalProperties: true
-                  maxProperties: 1
-            - title: AIGatewayModelRouteConfigPathAliases
-              properties:
-                path_aliases:
-                  description: |
-                    Value that will cause this route to match if present in the request path.
-                  type: array
-                  items:
-                    type: string
-                    example: '@azure/claude-sonnet-5'
-                  maxItems: 1
+          $ref: '#/components/schemas/AIGatewayModelAliasConfig'
       additionalProperties: false
+    AIGatewayModelAliasConfig:
+      description: Configuration for routing to this model using an alias.
+      oneOf:
+        - $ref: '#/components/schemas/AIGatewayModelAliasConfigBody'
+        - $ref: '#/components/schemas/AIGatewayModelAliasConfigHeaders'
+        - $ref: '#/components/schemas/AIGatewayModelAliasConfigPath'
+      title: AIGatewayModelAliasConfig
+    AIGatewayModelAliasConfigBody:
+      description: |
+        Configuration for routing requests to a specific model using a request body property.
+      type: object
+      properties:
+        body:
+          description: |
+            Value indexed by property name that will cause this route to match if present in the request body.
+          type: object
+          example:
+            model:
+              - '@azure/claude-sonnet-5'
+          additionalProperties: true
+          maxProperties: 1
+      additionalProperties: false
+      required:
+        - body
+      title: AIGatewayModelAliasConfigBody
+    AIGatewayModelAliasConfigHeaders:
+      description: |
+        Configuration for routing requests to a specific model using a header.
+      type: object
+      properties:
+        headers:
+          description: |
+            Value indexed by property name that will cause this route to match if present in the request headers.
+          type: object
+          example:
+            model:
+              - '@azure/claude-sonnet-5'
+          additionalProperties: true
+          maxProperties: 1
+      additionalProperties: false
+      required:
+        - headers
+      title: AIGatewayModelAliasConfigHeaders
+    AIGatewayModelAliasConfigPath:
+      description: |
+        Configuration for routing requests to a specific model using a path alias.
+      type: object
+      properties:
+        path_aliases:
+          description: |
+            Value that will cause this route to match if present in the request path.
+          type: array
+          items:
+            type: string
+            example: '@azure/claude-sonnet-5'
+          maxItems: 1
+      additionalProperties: false
+      required:
+        - path_aliases
+      title: AIGatewayModelAliasConfigPath
     AIGatewayModelBalancerConfig:
       description: |-
         **Pre-release Feature**
@@ -60779,6 +60804,11 @@ components:
           $ref: '#/components/schemas/Granularity'
         time_range:
           $ref: '#/components/schemas/TimeRange'
+        limit:
+          description: Limits the number of distinct metric groups to return.
+          type: number
+          default: 50
+          maximum: 1000
       example:
         datasource: api_usage
         time_range:
@@ -60842,6 +60872,11 @@ components:
           $ref: '#/components/schemas/Granularity'
         time_range:
           $ref: '#/components/schemas/TimeRange'
+        limit:
+          description: Limits the number of distinct metric groups to return.
+          type: number
+          default: 50
+          maximum: 1000
       example:
         datasource: llm_usage
         time_range:
@@ -60916,6 +60951,11 @@ components:
           $ref: '#/components/schemas/Granularity'
         time_range:
           $ref: '#/components/schemas/TimeRange'
+        limit:
+          description: Limits the number of distinct metric groups to return.
+          type: number
+          default: 50
+          maximum: 1000
       example:
         datasource: agentic_usage
         time_range:
@@ -60975,9 +61015,8 @@ components:
         time_range:
           $ref: '#/components/schemas/PlatformTimeRange'
         limit:
-          description: 'Maximum number of group_by buckets to return. Defaults to 50, capped at 1000. Only applies when a group_by dimension is requested.'
+          description: Limits the number of distinct metric groups to return.
           type: number
-          example: 25
           default: 50
           maximum: 1000
       example:
