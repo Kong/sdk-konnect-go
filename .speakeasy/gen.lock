@@ -18197,7 +18197,7 @@ trackedFiles:
     pristine_git_object: 5d73c15205bc114e329c0db42b745a0ed6c36245
   docs/sdks/portalauditlogs/README.md:
     id: 924e6cb9415f
-    last_write_checksum: sha1:c6a69c5ce1815c2d511428ccf9f38e95d542e402
+    last_write_checksum: sha1:e96c836623ea2dc7f4e69a6d421b632bd6a0d84a
     pristine_git_object: f188f3add549c13c154bef0bdcf5ab90eac06c51
   docs/sdks/portalauthsettings/README.md:
     id: 8110c26781ad
@@ -18217,7 +18217,7 @@ trackedFiles:
     pristine_git_object: 321baea8bd61371afd40b632f3bd9d2f0c006021
   docs/sdks/portalemails/README.md:
     id: afc91dd1d562
-    last_write_checksum: sha1:c66b27bd7e2cc36e30ac7b0291946ad1afa590a4
+    last_write_checksum: sha1:8ffbaf6f9d5ea49c6e980d2c5f3a6108369d4889
     pristine_git_object: a2237ad64d922e59cdfc9b133dbabcb696c638bd
   docs/sdks/portalintegrations/README.md:
     id: 597163fc698e
@@ -18229,7 +18229,7 @@ trackedFiles:
     pristine_git_object: dbf7c3bd8dae859c22ac25dce3484a3406846dc1
   docs/sdks/portals/README.md:
     id: 1bf28fe28b95
-    last_write_checksum: sha1:e8a1f4e9cdf517c1f412a5fbac354a44233d9e8b
+    last_write_checksum: sha1:d5bcf5212fcb65344f3b8f15cc1b640c70ee7c4f
     pristine_git_object: dcc5fd3f31dda117bab8758535dee713775ddc43
   docs/sdks/portalsipallowlist/README.md:
     id: eb1984eb99c1
@@ -18377,7 +18377,7 @@ trackedFiles:
     pristine_git_object: 44e1b290e55c2c4a471c777b5966b85fcbbee60d
   go.mod:
     id: c47645c391ad
-    last_write_checksum: sha1:32723a428710f6ed858724d17c04433e8b2f17dc
+    last_write_checksum: sha1:a8f25f453bfe5f1d3c3941a38e0091964daa8aef
     pristine_git_object: 1609184818319ae2c14407e0b02fa9e325c3644c
   graphqlcostdecorations.go:
     id: fd81fca74e5a
@@ -19981,11 +19981,11 @@ trackedFiles:
     pristine_git_object: 9170f21612950eecff5b80894cb2b36d1da30410
   models/components/chart.go:
     id: 423ff591212c
-    last_write_checksum: sha1:ae5e21d7819480813717fb83666c0ef10adb9742
+    last_write_checksum: sha1:ad48fb8e26d127e979fcc8e4d961b63a96250f78
     pristine_git_object: 4b293ef287b7d1c6485566294ab8ee207a6708d3
   models/components/charttile.go:
     id: 8f57713ab332
-    last_write_checksum: sha1:505ed88d337c7d51efc71559f1d08e40e5a0f08a
+    last_write_checksum: sha1:27895b80a69276188f4dc2145a93a450fc99044b
     pristine_git_object: 18950ed434dc402cadf05a93b7ce0cd6cd8d2b68
   models/components/choroplethmapchart.go:
     id: 45448d9f654d
@@ -22221,7 +22221,7 @@ trackedFiles:
     pristine_git_object: c0e5a1580548fc395a94579558b917790bcda908
   models/components/patchcustomportalemailtemplatepayload.go:
     id: 34614769245b
-    last_write_checksum: sha1:0430b017145d0f7669c3fa75c5392894d455152b
+    last_write_checksum: sha1:27336583b00e63600e2c0b87fcd71a892b76e56b
     pristine_git_object: 54546131247b875a75ca2a928d0e2cd188014cc1
   models/components/patchgatewayrequest.go:
     id: 1c2aaf507822
@@ -22497,7 +22497,7 @@ trackedFiles:
     pristine_git_object: 255d61b2c5e04371ae03a1b6db2159a7f6b4e814
   models/components/portalupdateidentityprovider.go:
     id: 10c09f6b460e
-    last_write_checksum: sha1:4aa0daab8a35d7f51e35ce5b0723d69e08ae51da
+    last_write_checksum: sha1:8f07301dbc1852f84483c30bbb1f87cc1a60367c
     pristine_git_object: 01b5686abb25f6efa6ff06b1163fd44b4e7dee6f
   models/components/portalupdateteamrequest.go:
     id: 3a1e1924129b
@@ -23177,7 +23177,7 @@ trackedFiles:
     pristine_git_object: 4ab3e4a8c4bf29d65ff990d1c95b3ceb6e34ed97
   models/components/updatedcrconfighttpinrequest.go:
     id: 96a5398152c1
-    last_write_checksum: sha1:69ca5d9c2c12de3a64eacfcce13523212dda239c
+    last_write_checksum: sha1:e3ab55d64e08bb5130fc88e55f0a38a64f5cd3b9
     pristine_git_object: 764d8b85059f7d2801a8f2328e7a0b28a5ad2580
   models/components/updatedcrconfigoktainrequest.go:
     id: 673c9dc8d020
@@ -23225,7 +23225,7 @@ trackedFiles:
     pristine_git_object: 45c30a40478310d97d07d19650b0bd8c8d6a6edb
   models/components/updateidentityprovider.go:
     id: 58b0695daf0a
-    last_write_checksum: sha1:25f78cc444465e47234a065c027da15272afa5f2
+    last_write_checksum: sha1:863183bd1fddd293fadaffa9b63e3a76672d793d
     pristine_git_object: 55fdab304b5256afdcf6c5e8b59ea7cb323f69dd
   models/components/updateidpconfiguration.go:
     id: 175bc054ea23
@@ -23253,11 +23253,11 @@ trackedFiles:
     pristine_git_object: 73d7952ee259dc240ee9fec219616a5cae1a1293
   models/components/updateportal.go:
     id: 23cc6ded3e89
-    last_write_checksum: sha1:ebfd9f824329df27387baa2aeed33782ad9cfcde
+    last_write_checksum: sha1:c7e3adf0af61a1ffbd6e457d5c3a6dc5e17904f9
     pristine_git_object: 1f620416209f4a0054ed774d78215efcf8d34c4e
   models/components/updateportalauditlogwebhook.go:
     id: 767325cbf5aa
-    last_write_checksum: sha1:7134cafc6df0d830eca4bd6026558419e8105ec5
+    last_write_checksum: sha1:e6904aed584931625b44a21e7c69318d689dd8ed
     pristine_git_object: c9190b7d387495b863176a7e35f107f298553b82
   models/components/updateportalcustomdomainrequest.go:
     id: 9842568bcb5a
@@ -46321,7 +46321,7 @@ examples:
         path:
           portalId: "efe853b6-a55c-4929-9b80-c39a22b01c7a"
       requestBody:
-        application/json: {"authentication_enabled": true, "rbac_enabled": false, "sipr_enabled": true, "auto_approve_developers": false, "auto_approve_applications": false, "labels": {"env": "test"}, "notifications_developer_pii_visibility_enabled": false}
+        application/json: {"sipr_enabled": true, "labels": {"env": "test"}}
       responses:
         "200":
           application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": "<value>", "display_name": "Sophia23", "description": null, "authentication_enabled": true, "rbac_enabled": false, "sipr_enabled": true, "default_api_visibility": "public", "default_page_visibility": "private", "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "default_domain": "animated-bathrobe.name", "canonical_domain": "inferior-offset.name", "labels": {"env": "test"}, "notifications_developer_pii_visibility_enabled": false}
@@ -49997,7 +49997,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
           templateName: "account-access-approved"
       requestBody:
-        application/json: {"enabled": true}
+        application/json: {}
       responses:
         "200":
           application/json: {"label": "App registration approved", "name": "app-registration-approved", "default_content": {"subject": "<value>", "title": "<value>", "body": "<value>"}, "variables": [], "enabled": true, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
