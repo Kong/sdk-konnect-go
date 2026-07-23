@@ -107,6 +107,8 @@ type LLMQuery struct {
 	Granularity *Granularity `json:"granularity,omitempty"`
 	// The time range to query.
 	TimeRange *TimeRange `json:"time_range,omitempty"`
+	// Limits the number of distinct metric groups to return.
+	Limit *float64 `default:"50" json:"limit"`
 }
 
 func (l LLMQuery) MarshalJSON() ([]byte, error) {
@@ -174,4 +176,11 @@ func (l *LLMQuery) GetTimeRangeAbsolute() *MetricsAbsoluteTimeRangeDtoV2 {
 		return v.MetricsAbsoluteTimeRangeDtoV2
 	}
 	return nil
+}
+
+func (l *LLMQuery) GetLimit() *float64 {
+	if l == nil {
+		return nil
+	}
+	return l.Limit
 }
