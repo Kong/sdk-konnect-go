@@ -119,6 +119,8 @@ type AgenticQuery struct {
 	Granularity *Granularity `json:"granularity,omitempty"`
 	// The time range to query.
 	TimeRange *TimeRange `json:"time_range,omitempty"`
+	// Limits the number of distinct metric groups to return.
+	Limit *float64 `default:"50" json:"limit"`
 }
 
 func (a AgenticQuery) MarshalJSON() ([]byte, error) {
@@ -186,4 +188,11 @@ func (a *AgenticQuery) GetTimeRangeAbsolute() *MetricsAbsoluteTimeRangeDtoV2 {
 		return v.MetricsAbsoluteTimeRangeDtoV2
 	}
 	return nil
+}
+
+func (a *AgenticQuery) GetLimit() *float64 {
+	if a == nil {
+		return nil
+	}
+	return a.Limit
 }

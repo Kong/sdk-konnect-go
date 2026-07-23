@@ -1,8 +1,11 @@
-# AIGatewayModelRouteConfigHeaders
+# AIGatewayModelAliasConfigHeaders
+
+Configuration for routing requests to a specific model using a header.
+
 
 
 ## Fields
 
 | Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `Headers`                                                                                              | map[string]`any`                                                                                       | :heavy_minus_sign:                                                                                     | Value indexed by property name that will cause this route to match if present in the request headers.<br/> | {<br/>"model": [<br/>"@azure/claude-sonnet-5"<br/>]<br/>}                                              |
+| `Headers`                                                                                              | map[string]`any`                                                                                       | :heavy_check_mark:                                                                                     | Value indexed by property name that will cause this route to match if present in the request headers.<br/> | {<br/>"model": [<br/>"@azure/claude-sonnet-5"<br/>]<br/>}                                              |

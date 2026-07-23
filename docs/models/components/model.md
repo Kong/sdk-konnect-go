@@ -1,40 +1,11 @@
 # Model
 
-Configuration for routing requests to a specific model.
+**Pre-release Feature**
+This feature is currently in beta and is subject to change.
 
 
+## Fields
 
-## Supported Types
-
-### AIGatewayModelRouteConfigBody
-
-```go
-model := components.CreateModelAIGatewayModelRouteConfigBody(components.AIGatewayModelRouteConfigBody{/* values here */})
-```
-
-### AIGatewayModelRouteConfigHeaders
-
-```go
-model := components.CreateModelAIGatewayModelRouteConfigHeaders(components.AIGatewayModelRouteConfigHeaders{/* values here */})
-```
-
-### AIGatewayModelRouteConfigPathAliases
-
-```go
-model := components.CreateModelAIGatewayModelRouteConfigPathAliases(components.AIGatewayModelRouteConfigPathAliases{/* values here */})
-```
-
-## Union Discrimination
-
-Use the `Type` field to determine which variant is active, then access the corresponding field:
-
-```go
-switch model.Type {
-	case components.ModelTypeAIGatewayModelRouteConfigBody:
-		// model.AIGatewayModelRouteConfigBody is populated
-	case components.ModelTypeAIGatewayModelRouteConfigHeaders:
-		// model.AIGatewayModelRouteConfigHeaders is populated
-	case components.ModelTypeAIGatewayModelRouteConfigPathAliases:
-		// model.AIGatewayModelRouteConfigPathAliases is populated
-}
-```
+| Field                                                                                                                                                        | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `NameHeader`                                                                                                                                                 | `*bool`                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                           | **Pre-release Feature**<br/>This feature is currently in beta and is subject to change.<br/><br/>Display the model name selected in the X-Kong-LLM-Model response header |

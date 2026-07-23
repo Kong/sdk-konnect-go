@@ -4,168 +4,8 @@
 package components
 
 import (
-	"errors"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelRouteConfigPathAliases struct {
-	// Value that will cause this route to match if present in the request path.
-	//
-	PathAliases []string `json:"path_aliases,omitempty"`
-}
-
-func (a AIGatewayModelRouteConfigPathAliases) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayModelRouteConfigPathAliases) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayModelRouteConfigPathAliases) GetPathAliases() []string {
-	if a == nil {
-		return nil
-	}
-	return a.PathAliases
-}
-
-type AIGatewayModelRouteConfigHeaders struct {
-	// Value indexed by property name that will cause this route to match if present in the request headers.
-	//
-	Headers map[string]any `json:"headers,omitempty"`
-}
-
-func (a AIGatewayModelRouteConfigHeaders) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayModelRouteConfigHeaders) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayModelRouteConfigHeaders) GetHeaders() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.Headers
-}
-
-type AIGatewayModelRouteConfigBody struct {
-	// Value indexed by property name that will cause this route to match if present in the request body.
-	//
-	Body map[string]any `json:"body,omitempty"`
-}
-
-func (a AIGatewayModelRouteConfigBody) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayModelRouteConfigBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayModelRouteConfigBody) GetBody() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.Body
-}
-
-type ModelType string
-
-const (
-	ModelTypeAIGatewayModelRouteConfigBody        ModelType = "AIGatewayModelRouteConfigBody"
-	ModelTypeAIGatewayModelRouteConfigHeaders     ModelType = "AIGatewayModelRouteConfigHeaders"
-	ModelTypeAIGatewayModelRouteConfigPathAliases ModelType = "AIGatewayModelRouteConfigPathAliases"
-)
-
-// Model - Configuration for routing requests to a specific model.
-type Model struct {
-	AIGatewayModelRouteConfigBody        *AIGatewayModelRouteConfigBody        `queryParam:"inline" union:"member"`
-	AIGatewayModelRouteConfigHeaders     *AIGatewayModelRouteConfigHeaders     `queryParam:"inline" union:"member"`
-	AIGatewayModelRouteConfigPathAliases *AIGatewayModelRouteConfigPathAliases `queryParam:"inline" union:"member"`
-
-	Type ModelType
-}
-
-func CreateModelAIGatewayModelRouteConfigBody(aiGatewayModelRouteConfigBody AIGatewayModelRouteConfigBody) Model {
-	typ := ModelTypeAIGatewayModelRouteConfigBody
-
-	return Model{
-		AIGatewayModelRouteConfigBody: &aiGatewayModelRouteConfigBody,
-		Type:                          typ,
-	}
-}
-
-func CreateModelAIGatewayModelRouteConfigHeaders(aiGatewayModelRouteConfigHeaders AIGatewayModelRouteConfigHeaders) Model {
-	typ := ModelTypeAIGatewayModelRouteConfigHeaders
-
-	return Model{
-		AIGatewayModelRouteConfigHeaders: &aiGatewayModelRouteConfigHeaders,
-		Type:                             typ,
-	}
-}
-
-func CreateModelAIGatewayModelRouteConfigPathAliases(aiGatewayModelRouteConfigPathAliases AIGatewayModelRouteConfigPathAliases) Model {
-	typ := ModelTypeAIGatewayModelRouteConfigPathAliases
-
-	return Model{
-		AIGatewayModelRouteConfigPathAliases: &aiGatewayModelRouteConfigPathAliases,
-		Type:                                 typ,
-	}
-}
-
-func (u *Model) UnmarshalJSON(data []byte) error {
-
-	var aiGatewayModelRouteConfigBody AIGatewayModelRouteConfigBody = AIGatewayModelRouteConfigBody{}
-	if err := utils.UnmarshalJSON(data, &aiGatewayModelRouteConfigBody, "", true, nil); err == nil {
-		u.AIGatewayModelRouteConfigBody = &aiGatewayModelRouteConfigBody
-		u.Type = ModelTypeAIGatewayModelRouteConfigBody
-		return nil
-	}
-
-	var aiGatewayModelRouteConfigHeaders AIGatewayModelRouteConfigHeaders = AIGatewayModelRouteConfigHeaders{}
-	if err := utils.UnmarshalJSON(data, &aiGatewayModelRouteConfigHeaders, "", true, nil); err == nil {
-		u.AIGatewayModelRouteConfigHeaders = &aiGatewayModelRouteConfigHeaders
-		u.Type = ModelTypeAIGatewayModelRouteConfigHeaders
-		return nil
-	}
-
-	var aiGatewayModelRouteConfigPathAliases AIGatewayModelRouteConfigPathAliases = AIGatewayModelRouteConfigPathAliases{}
-	if err := utils.UnmarshalJSON(data, &aiGatewayModelRouteConfigPathAliases, "", true, nil); err == nil {
-		u.AIGatewayModelRouteConfigPathAliases = &aiGatewayModelRouteConfigPathAliases
-		u.Type = ModelTypeAIGatewayModelRouteConfigPathAliases
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Model", string(data))
-}
-
-func (u Model) MarshalJSON() ([]byte, error) {
-	if u.AIGatewayModelRouteConfigBody != nil {
-		return utils.MarshalJSON(u.AIGatewayModelRouteConfigBody, "", true)
-	}
-
-	if u.AIGatewayModelRouteConfigHeaders != nil {
-		return utils.MarshalJSON(u.AIGatewayModelRouteConfigHeaders, "", true)
-	}
-
-	if u.AIGatewayModelRouteConfigPathAliases != nil {
-		return utils.MarshalJSON(u.AIGatewayModelRouteConfigPathAliases, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type Model: all fields are null")
-}
 
 // AIGatewayModelRouteConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
@@ -196,9 +36,8 @@ type AIGatewayModelRouteConfig struct {
 	StripPath *bool `default:"true" json:"strip_path"`
 	// An optional set of strings associated with the route for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
-	// Configuration for routing requests to a specific model.
-	//
-	Model *Model `json:"model,omitempty"`
+	// Configuration for routing to this model using an alias.
+	Model *AIGatewayModelAliasConfig `json:"model,omitempty"`
 }
 
 func (a AIGatewayModelRouteConfig) MarshalJSON() ([]byte, error) {
@@ -296,7 +135,7 @@ func (a *AIGatewayModelRouteConfig) GetTags() []string {
 	return a.Tags
 }
 
-func (a *AIGatewayModelRouteConfig) GetModel() *Model {
+func (a *AIGatewayModelRouteConfig) GetModel() *AIGatewayModelAliasConfig {
 	if a == nil {
 		return nil
 	}
