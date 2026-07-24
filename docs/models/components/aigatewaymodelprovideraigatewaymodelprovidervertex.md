@@ -3,7 +3,7 @@
 **Pre-release Feature**
 This feature is currently in beta and is subject to change.
 
-Config for GCP model provider.
+Config for Vertex model provider.
 
 
 ## Fields

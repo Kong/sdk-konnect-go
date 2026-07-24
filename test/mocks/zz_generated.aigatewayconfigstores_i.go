@@ -128,6 +128,89 @@ func (_c *MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStore_Call) RunAndRe
 	return _c
 }
 
+// CreateAiGatewayConfigStoreSecret provides a mock function for the type MockAIGatewayConfigStoresSDK
+func (_mock *MockAIGatewayConfigStoresSDK) CreateAiGatewayConfigStoreSecret(ctx context.Context, request operations.CreateAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.CreateAiGatewayConfigStoreSecretResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateAiGatewayConfigStoreSecret")
+	}
+
+	var r0 *operations.CreateAiGatewayConfigStoreSecretResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateAiGatewayConfigStoreSecretRequest, ...operations.Option) (*operations.CreateAiGatewayConfigStoreSecretResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateAiGatewayConfigStoreSecretRequest, ...operations.Option) *operations.CreateAiGatewayConfigStoreSecretResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateAiGatewayConfigStoreSecretResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateAiGatewayConfigStoreSecretRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAiGatewayConfigStoreSecret'
+type MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call struct {
+	*mock.Call
+}
+
+// CreateAiGatewayConfigStoreSecret is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreateAiGatewayConfigStoreSecretRequest
+//   - opts ...operations.Option
+func (_e *MockAIGatewayConfigStoresSDK_Expecter) CreateAiGatewayConfigStoreSecret(ctx any, request any, opts ...any) *MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call {
+	return &MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call{Call: _e.mock.On("CreateAiGatewayConfigStoreSecret",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call) Run(run func(ctx context.Context, request operations.CreateAiGatewayConfigStoreSecretRequest, opts ...operations.Option)) *MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreateAiGatewayConfigStoreSecretRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreateAiGatewayConfigStoreSecretRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call) Return(createAiGatewayConfigStoreSecretResponse *operations.CreateAiGatewayConfigStoreSecretResponse, err error) *MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call {
+	_c.Call.Return(createAiGatewayConfigStoreSecretResponse, err)
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.CreateAiGatewayConfigStoreSecretResponse, error)) *MockAIGatewayConfigStoresSDK_CreateAiGatewayConfigStoreSecret_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteAiGatewayConfigStore provides a mock function for the type MockAIGatewayConfigStoresSDK
 func (_mock *MockAIGatewayConfigStoresSDK) DeleteAiGatewayConfigStore(ctx context.Context, request operations.DeleteAiGatewayConfigStoreRequest, opts ...operations.Option) (*operations.DeleteAiGatewayConfigStoreResponse, error) {
 	var tmpRet mock.Arguments
@@ -207,6 +290,89 @@ func (_c *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStore_Call) Return(d
 }
 
 func (_c *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStore_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteAiGatewayConfigStoreRequest, opts ...operations.Option) (*operations.DeleteAiGatewayConfigStoreResponse, error)) *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStore_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteAiGatewayConfigStoreSecret provides a mock function for the type MockAIGatewayConfigStoresSDK
+func (_mock *MockAIGatewayConfigStoresSDK) DeleteAiGatewayConfigStoreSecret(ctx context.Context, request operations.DeleteAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.DeleteAiGatewayConfigStoreSecretResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteAiGatewayConfigStoreSecret")
+	}
+
+	var r0 *operations.DeleteAiGatewayConfigStoreSecretResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteAiGatewayConfigStoreSecretRequest, ...operations.Option) (*operations.DeleteAiGatewayConfigStoreSecretResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteAiGatewayConfigStoreSecretRequest, ...operations.Option) *operations.DeleteAiGatewayConfigStoreSecretResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteAiGatewayConfigStoreSecretResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteAiGatewayConfigStoreSecretRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAiGatewayConfigStoreSecret'
+type MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call struct {
+	*mock.Call
+}
+
+// DeleteAiGatewayConfigStoreSecret is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeleteAiGatewayConfigStoreSecretRequest
+//   - opts ...operations.Option
+func (_e *MockAIGatewayConfigStoresSDK_Expecter) DeleteAiGatewayConfigStoreSecret(ctx any, request any, opts ...any) *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call {
+	return &MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call{Call: _e.mock.On("DeleteAiGatewayConfigStoreSecret",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call) Run(run func(ctx context.Context, request operations.DeleteAiGatewayConfigStoreSecretRequest, opts ...operations.Option)) *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeleteAiGatewayConfigStoreSecretRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeleteAiGatewayConfigStoreSecretRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call) Return(deleteAiGatewayConfigStoreSecretResponse *operations.DeleteAiGatewayConfigStoreSecretResponse, err error) *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call {
+	_c.Call.Return(deleteAiGatewayConfigStoreSecretResponse, err)
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.DeleteAiGatewayConfigStoreSecretResponse, error)) *MockAIGatewayConfigStoresSDK_DeleteAiGatewayConfigStoreSecret_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -296,6 +462,172 @@ func (_c *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStore_Call) Return(getA
 }
 
 func (_c *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStore_Call) RunAndReturn(run func(ctx context.Context, gatewayID string, configStoreIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayConfigStoreResponse, error)) *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStore_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAiGatewayConfigStoreSecret provides a mock function for the type MockAIGatewayConfigStoresSDK
+func (_mock *MockAIGatewayConfigStoresSDK) GetAiGatewayConfigStoreSecret(ctx context.Context, request operations.GetAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.GetAiGatewayConfigStoreSecretResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAiGatewayConfigStoreSecret")
+	}
+
+	var r0 *operations.GetAiGatewayConfigStoreSecretResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetAiGatewayConfigStoreSecretRequest, ...operations.Option) (*operations.GetAiGatewayConfigStoreSecretResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetAiGatewayConfigStoreSecretRequest, ...operations.Option) *operations.GetAiGatewayConfigStoreSecretResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetAiGatewayConfigStoreSecretResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetAiGatewayConfigStoreSecretRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAiGatewayConfigStoreSecret'
+type MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call struct {
+	*mock.Call
+}
+
+// GetAiGatewayConfigStoreSecret is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetAiGatewayConfigStoreSecretRequest
+//   - opts ...operations.Option
+func (_e *MockAIGatewayConfigStoresSDK_Expecter) GetAiGatewayConfigStoreSecret(ctx any, request any, opts ...any) *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call {
+	return &MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call{Call: _e.mock.On("GetAiGatewayConfigStoreSecret",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call) Run(run func(ctx context.Context, request operations.GetAiGatewayConfigStoreSecretRequest, opts ...operations.Option)) *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetAiGatewayConfigStoreSecretRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetAiGatewayConfigStoreSecretRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call) Return(getAiGatewayConfigStoreSecretResponse *operations.GetAiGatewayConfigStoreSecretResponse, err error) *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call {
+	_c.Call.Return(getAiGatewayConfigStoreSecretResponse, err)
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call) RunAndReturn(run func(ctx context.Context, request operations.GetAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.GetAiGatewayConfigStoreSecretResponse, error)) *MockAIGatewayConfigStoresSDK_GetAiGatewayConfigStoreSecret_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListAiGatewayConfigStoreSecrets provides a mock function for the type MockAIGatewayConfigStoresSDK
+func (_mock *MockAIGatewayConfigStoresSDK) ListAiGatewayConfigStoreSecrets(ctx context.Context, request operations.ListAiGatewayConfigStoreSecretsRequest, opts ...operations.Option) (*operations.ListAiGatewayConfigStoreSecretsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListAiGatewayConfigStoreSecrets")
+	}
+
+	var r0 *operations.ListAiGatewayConfigStoreSecretsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAiGatewayConfigStoreSecretsRequest, ...operations.Option) (*operations.ListAiGatewayConfigStoreSecretsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAiGatewayConfigStoreSecretsRequest, ...operations.Option) *operations.ListAiGatewayConfigStoreSecretsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListAiGatewayConfigStoreSecretsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListAiGatewayConfigStoreSecretsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAiGatewayConfigStoreSecrets'
+type MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call struct {
+	*mock.Call
+}
+
+// ListAiGatewayConfigStoreSecrets is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListAiGatewayConfigStoreSecretsRequest
+//   - opts ...operations.Option
+func (_e *MockAIGatewayConfigStoresSDK_Expecter) ListAiGatewayConfigStoreSecrets(ctx any, request any, opts ...any) *MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call {
+	return &MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call{Call: _e.mock.On("ListAiGatewayConfigStoreSecrets",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call) Run(run func(ctx context.Context, request operations.ListAiGatewayConfigStoreSecretsRequest, opts ...operations.Option)) *MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListAiGatewayConfigStoreSecretsRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListAiGatewayConfigStoreSecretsRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call) Return(listAiGatewayConfigStoreSecretsResponse *operations.ListAiGatewayConfigStoreSecretsResponse, err error) *MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call {
+	_c.Call.Return(listAiGatewayConfigStoreSecretsResponse, err)
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call) RunAndReturn(run func(ctx context.Context, request operations.ListAiGatewayConfigStoreSecretsRequest, opts ...operations.Option) (*operations.ListAiGatewayConfigStoreSecretsResponse, error)) *MockAIGatewayConfigStoresSDK_ListAiGatewayConfigStoreSecrets_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -462,6 +794,89 @@ func (_c *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStore_Call) Return(u
 }
 
 func (_c *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStore_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateAiGatewayConfigStoreRequest, opts ...operations.Option) (*operations.UpdateAiGatewayConfigStoreResponse, error)) *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStore_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateAiGatewayConfigStoreSecret provides a mock function for the type MockAIGatewayConfigStoresSDK
+func (_mock *MockAIGatewayConfigStoresSDK) UpdateAiGatewayConfigStoreSecret(ctx context.Context, request operations.UpdateAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.UpdateAiGatewayConfigStoreSecretResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateAiGatewayConfigStoreSecret")
+	}
+
+	var r0 *operations.UpdateAiGatewayConfigStoreSecretResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateAiGatewayConfigStoreSecretRequest, ...operations.Option) (*operations.UpdateAiGatewayConfigStoreSecretResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateAiGatewayConfigStoreSecretRequest, ...operations.Option) *operations.UpdateAiGatewayConfigStoreSecretResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateAiGatewayConfigStoreSecretResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpdateAiGatewayConfigStoreSecretRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAiGatewayConfigStoreSecret'
+type MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call struct {
+	*mock.Call
+}
+
+// UpdateAiGatewayConfigStoreSecret is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpdateAiGatewayConfigStoreSecretRequest
+//   - opts ...operations.Option
+func (_e *MockAIGatewayConfigStoresSDK_Expecter) UpdateAiGatewayConfigStoreSecret(ctx any, request any, opts ...any) *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call {
+	return &MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call{Call: _e.mock.On("UpdateAiGatewayConfigStoreSecret",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call) Run(run func(ctx context.Context, request operations.UpdateAiGatewayConfigStoreSecretRequest, opts ...operations.Option)) *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpdateAiGatewayConfigStoreSecretRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpdateAiGatewayConfigStoreSecretRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call) Return(updateAiGatewayConfigStoreSecretResponse *operations.UpdateAiGatewayConfigStoreSecretResponse, err error) *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call {
+	_c.Call.Return(updateAiGatewayConfigStoreSecretResponse, err)
+	return _c
+}
+
+func (_c *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.UpdateAiGatewayConfigStoreSecretResponse, error)) *MockAIGatewayConfigStoresSDK_UpdateAiGatewayConfigStoreSecret_Call {
 	_c.Call.Return(run)
 	return _c
 }

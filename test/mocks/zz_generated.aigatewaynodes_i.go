@@ -38,6 +38,89 @@ func (_m *MockAIGatewayNodesSDK) EXPECT() *MockAIGatewayNodesSDK_Expecter {
 	return &MockAIGatewayNodesSDK_Expecter{mock: &_m.Mock}
 }
 
+// GetAiGatewayExpectedConfigVersion provides a mock function for the type MockAIGatewayNodesSDK
+func (_mock *MockAIGatewayNodesSDK) GetAiGatewayExpectedConfigVersion(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.GetAiGatewayExpectedConfigVersionResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, gatewayID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, gatewayID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAiGatewayExpectedConfigVersion")
+	}
+
+	var r0 *operations.GetAiGatewayExpectedConfigVersionResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetAiGatewayExpectedConfigVersionResponse, error)); ok {
+		return returnFunc(ctx, gatewayID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetAiGatewayExpectedConfigVersionResponse); ok {
+		r0 = returnFunc(ctx, gatewayID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetAiGatewayExpectedConfigVersionResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, gatewayID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAiGatewayExpectedConfigVersion'
+type MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call struct {
+	*mock.Call
+}
+
+// GetAiGatewayExpectedConfigVersion is a helper method to define mock.On call
+//   - ctx context.Context
+//   - gatewayID string
+//   - opts ...operations.Option
+func (_e *MockAIGatewayNodesSDK_Expecter) GetAiGatewayExpectedConfigVersion(ctx any, gatewayID any, opts ...any) *MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call {
+	return &MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call{Call: _e.mock.On("GetAiGatewayExpectedConfigVersion",
+		append([]any{ctx, gatewayID}, opts...)...)}
+}
+
+func (_c *MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call) Run(run func(ctx context.Context, gatewayID string, opts ...operations.Option)) *MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call) Return(getAiGatewayExpectedConfigVersionResponse *operations.GetAiGatewayExpectedConfigVersionResponse, err error) *MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call {
+	_c.Call.Return(getAiGatewayExpectedConfigVersionResponse, err)
+	return _c
+}
+
+func (_c *MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call) RunAndReturn(run func(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.GetAiGatewayExpectedConfigVersionResponse, error)) *MockAIGatewayNodesSDK_GetAiGatewayExpectedConfigVersion_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetAiGatewayNode provides a mock function for the type MockAIGatewayNodesSDK
 func (_mock *MockAIGatewayNodesSDK) GetAiGatewayNode(ctx context.Context, gatewayID string, dataPlaneNodeID string, opts ...operations.Option) (*operations.GetAiGatewayNodeResponse, error) {
 	var tmpRet mock.Arguments

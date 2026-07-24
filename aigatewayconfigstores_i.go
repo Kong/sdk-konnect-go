@@ -41,4 +41,34 @@ type AIGatewayConfigStoresSDK interface {
 	//
 	// Removes a specific AI Gateway Config Store.
 	DeleteAiGatewayConfigStore(ctx context.Context, request operations.DeleteAiGatewayConfigStoreRequest, opts ...operations.Option) (*operations.DeleteAiGatewayConfigStoreResponse, error)
+	// ListAiGatewayConfigStoreSecrets - List AI Gateway Config Store Secrets
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Returns a collection of all secrets for an AI Gateway Config Store.
+	ListAiGatewayConfigStoreSecrets(ctx context.Context, request operations.ListAiGatewayConfigStoreSecretsRequest, opts ...operations.Option) (*operations.ListAiGatewayConfigStoreSecretsResponse, error)
+	// CreateAiGatewayConfigStoreSecret - Create an AI Gateway Config Store Secret
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Creates a secret for an AI Gateway Config Store.
+	CreateAiGatewayConfigStoreSecret(ctx context.Context, request operations.CreateAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.CreateAiGatewayConfigStoreSecretResponse, error)
+	// GetAiGatewayConfigStoreSecret - Get an AI Gateway Config Store Secret
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Returns the secret entity for the Config Store. Secret values once stored cannot be retrieved.
+	GetAiGatewayConfigStoreSecret(ctx context.Context, request operations.GetAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.GetAiGatewayConfigStoreSecretResponse, error)
+	// UpdateAiGatewayConfigStoreSecret - Update an AI Gateway Config Store Secret
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Updates a secret for an AI Gateway Config Store.
+	UpdateAiGatewayConfigStoreSecret(ctx context.Context, request operations.UpdateAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.UpdateAiGatewayConfigStoreSecretResponse, error)
+	// DeleteAiGatewayConfigStoreSecret - Delete an AI Gateway Config Store Secret
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Removes a secret from an AI Gateway Config Store.
+	DeleteAiGatewayConfigStoreSecret(ctx context.Context, request operations.DeleteAiGatewayConfigStoreSecretRequest, opts ...operations.Option) (*operations.DeleteAiGatewayConfigStoreSecretResponse, error)
 }

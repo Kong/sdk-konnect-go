@@ -10,6 +10,12 @@ import (
 
 // AIGatewayNodesSDK is a generated interface.
 type AIGatewayNodesSDK interface {
+	// GetAiGatewayExpectedConfigVersion - Get the Expected Config Version
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Retrieve the expected config version for this AI Gateway. The expected config version can be used to verify if the config version of a data plane node is up to date with the AI Gateway. The config version will be the same if they are in sync.
+	GetAiGatewayExpectedConfigVersion(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.GetAiGatewayExpectedConfigVersionResponse, error)
 	// ListAiGatewayNodes - List Nodes
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.

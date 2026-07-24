@@ -46,7 +46,7 @@ type GcpEnvironment struct {
 	// The endpoint ID for the model.
 	// This must be set when running a target model on Gemini on Vertex Model Garden.
 	//
-	EndpointID string `json:"endpoint_id"`
+	EndpointID *string `json:"endpoint_id,omitempty"`
 }
 
 func (g GcpEnvironment) MarshalJSON() ([]byte, error) {
@@ -54,7 +54,7 @@ func (g GcpEnvironment) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GcpEnvironment) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"api_endpoint", "location_id", "project_id", "endpoint_id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"api_endpoint", "location_id", "project_id"}); err != nil {
 		return err
 	}
 	return nil
@@ -81,9 +81,9 @@ func (g *GcpEnvironment) GetProjectID() string {
 	return g.ProjectID
 }
 
-func (g *GcpEnvironment) GetEndpointID() string {
+func (g *GcpEnvironment) GetEndpointID() *string {
 	if g == nil {
-		return ""
+		return nil
 	}
 	return g.EndpointID
 }
