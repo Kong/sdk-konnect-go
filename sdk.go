@@ -59,16 +59,17 @@ type SDK struct {
 	// API related to the management of Konnect AI Gateway resources.
 	AIGateways *AIGateways
 	// AI Agents registered with the AI Gateway.
-	AIGatewayAgents             *AIGatewayAgents
-	AIGatewayConfigStores       *AIGatewayConfigStores
-	AIGatewayConfigStoreSecrets *AIGatewayConfigStoreSecrets
+	AIGatewayAgents *AIGatewayAgents
+	// API related to the management of AI Gateway Config Stores.
+	AIGatewayConfigStores *AIGatewayConfigStores
 	// Consumer groups for applying rate-limiting and access policies to AI Gateway traffic.
 	AIGatewayConsumerGroups *AIGatewayConsumerGroups
 	// Individual consumers with credentials and group memberships for AI Gateway access control.
 	AIGatewayConsumers *AIGatewayConsumers
 	// API related to the management of AI Gateway DataPlane Certificates.
 	AIGatewayDataPlaneCertificates *AIGatewayDataPlaneCertificates
-	AIGatewayDataPlane             *AIGatewayDataPlane
+	// API related to the management of AI Gateway nodes.
+	AIGatewayNodes *AIGatewayNodes
 	// Identity providers for authenticating users and accessing AI Gateway resources.
 	AIGatewayIdentityProviders *AIGatewayIdentityProviders
 	// MCP Servers that expose tools for AI Gateway integrations.
@@ -77,8 +78,6 @@ type SDK struct {
 	AIGatewayModelProviders *AIGatewayModelProviders
 	// Models that define routing, capabilities, and backend targets for the AI Gateway.
 	AIGatewayModels *AIGatewayModels
-	// API related to the management of AI Gateway nodes.
-	AIGatewayNodes *AIGatewayNodes
 	// Policies that control security, rate-limiting, and guardrail behavior for the AI Gateway.
 	AIGatewayPolicies *AIGatewayPolicies
 	// API related to the management of AI Gateway vaults for storing secrets.
@@ -513,9 +512,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.47.0",
+		SDKVersion: "0.48.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.47.0 2.918.4 3.15.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.48.0 2.918.4 3.15.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -539,16 +538,14 @@ func New(opts ...SDKOption) *SDK {
 	sdk.AIGateways = newAIGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayAgents = newAIGatewayAgents(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConfigStores = newAIGatewayConfigStores(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.AIGatewayConfigStoreSecrets = newAIGatewayConfigStoreSecrets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConsumerGroups = newAIGatewayConsumerGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConsumers = newAIGatewayConsumers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayDataPlaneCertificates = newAIGatewayDataPlaneCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.AIGatewayDataPlane = newAIGatewayDataPlane(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayNodes = newAIGatewayNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayIdentityProviders = newAIGatewayIdentityProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayMCPServers = newAIGatewayMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayModelProviders = newAIGatewayModelProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayModels = newAIGatewayModels(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.AIGatewayNodes = newAIGatewayNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayPolicies = newAIGatewayPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayVaults = newAIGatewayVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)

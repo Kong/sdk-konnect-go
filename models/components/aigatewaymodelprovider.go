@@ -37,13 +37,13 @@ func (e *AIGatewayModelProviderVertexAIGatewayModelProviderType) UnmarshalJSON(d
 type AIGatewayModelProviderVertexAuthOutputType string
 
 const (
-	AIGatewayModelProviderVertexAuthOutputTypeBasic AIGatewayModelProviderVertexAuthOutputType = "basic"
-	AIGatewayModelProviderVertexAuthOutputTypeGcp   AIGatewayModelProviderVertexAuthOutputType = "gcp"
+	AIGatewayModelProviderVertexAuthOutputTypeBasic  AIGatewayModelProviderVertexAuthOutputType = "basic"
+	AIGatewayModelProviderVertexAuthOutputTypeVertex AIGatewayModelProviderVertexAuthOutputType = "vertex"
 )
 
 type AIGatewayModelProviderVertexAuthOutput struct {
-	AIGatewayModelProviderConfigAuthBasicOutput *AIGatewayModelProviderConfigAuthBasicOutput `queryParam:"inline" union:"member"`
-	AIGatewayModelProviderConfigAuthGCPOutput   *AIGatewayModelProviderConfigAuthGCPOutput   `queryParam:"inline" union:"member"`
+	AIGatewayModelProviderConfigAuthBasicOutput  *AIGatewayModelProviderConfigAuthBasicOutput  `queryParam:"inline" union:"member"`
+	AIGatewayModelProviderConfigAuthVertexOutput *AIGatewayModelProviderConfigAuthVertexOutput `queryParam:"inline" union:"member"`
 
 	Type AIGatewayModelProviderVertexAuthOutputType
 }
@@ -60,14 +60,14 @@ func CreateAIGatewayModelProviderVertexAuthOutputBasic(basic AIGatewayModelProvi
 	}
 }
 
-func CreateAIGatewayModelProviderVertexAuthOutputGcp(gcp AIGatewayModelProviderConfigAuthGCPOutput) AIGatewayModelProviderVertexAuthOutput {
-	typ := AIGatewayModelProviderVertexAuthOutputTypeGcp
+func CreateAIGatewayModelProviderVertexAuthOutputVertex(vertex AIGatewayModelProviderConfigAuthVertexOutput) AIGatewayModelProviderVertexAuthOutput {
+	typ := AIGatewayModelProviderVertexAuthOutputTypeVertex
 
-	typStr := AIGatewayModelProviderConfigAuthGCPType(typ)
-	gcp.Type = typStr
+	typStr := AIGatewayModelProviderConfigAuthVertexType(typ)
+	vertex.Type = typStr
 
 	return AIGatewayModelProviderVertexAuthOutput{
-		AIGatewayModelProviderConfigAuthGCPOutput: &gcp,
+		AIGatewayModelProviderConfigAuthVertexOutput: &vertex,
 		Type: typ,
 	}
 }
@@ -93,14 +93,14 @@ func (u *AIGatewayModelProviderVertexAuthOutput) UnmarshalJSON(data []byte) erro
 		u.AIGatewayModelProviderConfigAuthBasicOutput = aiGatewayModelProviderConfigAuthBasicOutput
 		u.Type = AIGatewayModelProviderVertexAuthOutputTypeBasic
 		return nil
-	case "gcp":
-		aiGatewayModelProviderConfigAuthGCPOutput := new(AIGatewayModelProviderConfigAuthGCPOutput)
-		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderConfigAuthGCPOutput, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == gcp) type AIGatewayModelProviderConfigAuthGCPOutput within AIGatewayModelProviderVertexAuthOutput: %w", string(data), err)
+	case "vertex":
+		aiGatewayModelProviderConfigAuthVertexOutput := new(AIGatewayModelProviderConfigAuthVertexOutput)
+		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderConfigAuthVertexOutput, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vertex) type AIGatewayModelProviderConfigAuthVertexOutput within AIGatewayModelProviderVertexAuthOutput: %w", string(data), err)
 		}
 
-		u.AIGatewayModelProviderConfigAuthGCPOutput = aiGatewayModelProviderConfigAuthGCPOutput
-		u.Type = AIGatewayModelProviderVertexAuthOutputTypeGcp
+		u.AIGatewayModelProviderConfigAuthVertexOutput = aiGatewayModelProviderConfigAuthVertexOutput
+		u.Type = AIGatewayModelProviderVertexAuthOutputTypeVertex
 		return nil
 	}
 
@@ -112,8 +112,8 @@ func (u AIGatewayModelProviderVertexAuthOutput) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthBasicOutput, "", true)
 	}
 
-	if u.AIGatewayModelProviderConfigAuthGCPOutput != nil {
-		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthGCPOutput, "", true)
+	if u.AIGatewayModelProviderConfigAuthVertexOutput != nil {
+		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthVertexOutput, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AIGatewayModelProviderVertexAuthOutput: all fields are null")
@@ -145,14 +145,14 @@ func (a *AIGatewayModelProviderVertexConfigOutput) GetAuthBasic() *AIGatewayMode
 	return a.GetAuth().AIGatewayModelProviderConfigAuthBasicOutput
 }
 
-func (a *AIGatewayModelProviderVertexConfigOutput) GetAuthGcp() *AIGatewayModelProviderConfigAuthGCPOutput {
-	return a.GetAuth().AIGatewayModelProviderConfigAuthGCPOutput
+func (a *AIGatewayModelProviderVertexConfigOutput) GetAuthVertex() *AIGatewayModelProviderConfigAuthVertexOutput {
+	return a.GetAuth().AIGatewayModelProviderConfigAuthVertexOutput
 }
 
 // AIGatewayModelProviderAIGatewayModelProviderVertex - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 //
-// Config for GCP model provider.
+// Config for Vertex model provider.
 type AIGatewayModelProviderAIGatewayModelProviderVertex struct {
 	Type AIGatewayModelProviderVertexAIGatewayModelProviderType `json:"type"`
 	// The display name for this model provider instance.

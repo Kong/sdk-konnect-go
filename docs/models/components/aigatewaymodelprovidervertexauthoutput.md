@@ -9,10 +9,10 @@
 aiGatewayModelProviderVertexAuthOutput := components.CreateAIGatewayModelProviderVertexAuthOutputBasic(components.AIGatewayModelProviderConfigAuthBasicOutput{/* values here */})
 ```
 
-### AIGatewayModelProviderConfigAuthGCPOutput
+### AIGatewayModelProviderConfigAuthVertexOutput
 
 ```go
-aiGatewayModelProviderVertexAuthOutput := components.CreateAIGatewayModelProviderVertexAuthOutputGcp(components.AIGatewayModelProviderConfigAuthGCPOutput{/* values here */})
+aiGatewayModelProviderVertexAuthOutput := components.CreateAIGatewayModelProviderVertexAuthOutputVertex(components.AIGatewayModelProviderConfigAuthVertexOutput{/* values here */})
 ```
 
 ## Union Discrimination
@@ -23,7 +23,7 @@ Use the `Type` field to determine which variant is active, then access the corre
 switch aiGatewayModelProviderVertexAuthOutput.Type {
 	case components.AIGatewayModelProviderVertexAuthOutputTypeBasic:
 		// aiGatewayModelProviderVertexAuthOutput.AIGatewayModelProviderConfigAuthBasicOutput is populated
-	case components.AIGatewayModelProviderVertexAuthOutputTypeGcp:
-		// aiGatewayModelProviderVertexAuthOutput.AIGatewayModelProviderConfigAuthGCPOutput is populated
+	case components.AIGatewayModelProviderVertexAuthOutputTypeVertex:
+		// aiGatewayModelProviderVertexAuthOutput.AIGatewayModelProviderConfigAuthVertexOutput is populated
 }
 ```
