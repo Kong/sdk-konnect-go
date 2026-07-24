@@ -128,8 +128,8 @@ type AIGatewayMCPServerUpstreamServerServerConfigOutput struct {
 	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 	//
 	Session *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput `json:"session,omitempty"`
-	// The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
-	Tag *string `json:"tag,omitempty"`
+	// The label of the MCP server. This is used to filter the exported MCP tools.
+	Label *string `json:"label,omitempty"`
 	// The timeout for calling the tools in milliseconds.
 	Timeout *int64 `default:"10000" json:"timeout"`
 	// If enabled, the original upstream tool names are preserved as-is when Kong acts as an MCP server.
@@ -169,11 +169,11 @@ func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetSession() *AIGat
 	return a.Session
 }
 
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetTag() *string {
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetLabel() *string {
 	if a == nil {
 		return nil
 	}
-	return a.Tag
+	return a.Label
 }
 
 func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetTimeout() *int64 {
@@ -283,8 +283,8 @@ type AIGatewayMCPServerUpstreamServerServerConfig struct {
 	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 	//
 	Session *AIGatewayMCPServerUpstreamServerServerConfigSession `json:"session,omitempty"`
-	// The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
-	Tag *string `json:"tag,omitempty"`
+	// The label of the MCP server. This is used to filter the exported MCP tools.
+	Label *string `json:"label,omitempty"`
 	// The timeout for calling the tools in milliseconds.
 	Timeout *int64 `default:"10000" json:"timeout"`
 	// If enabled, the original upstream tool names are preserved as-is when Kong acts as an MCP server.
@@ -324,11 +324,11 @@ func (a *AIGatewayMCPServerUpstreamServerServerConfig) GetSession() *AIGatewayMC
 	return a.Session
 }
 
-func (a *AIGatewayMCPServerUpstreamServerServerConfig) GetTag() *string {
+func (a *AIGatewayMCPServerUpstreamServerServerConfig) GetLabel() *string {
 	if a == nil {
 		return nil
 	}
-	return a.Tag
+	return a.Label
 }
 
 func (a *AIGatewayMCPServerUpstreamServerServerConfig) GetTimeout() *int64 {

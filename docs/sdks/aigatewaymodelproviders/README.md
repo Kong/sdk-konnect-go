@@ -113,9 +113,9 @@ func main() {
             DisplayName: "Azure AI SE",
             Name: "azure-ai-se",
             Config: components.AIGatewayModelProviderVertexConfig{
-                Auth: components.CreateAIGatewayModelProviderVertexAuthGcp(
-                    components.AIGatewayModelProviderConfigAuthGCP{
-                        Type: components.AIGatewayModelProviderConfigAuthGCPTypeGcp,
+                Auth: components.CreateAIGatewayModelProviderVertexAuthVertex(
+                    components.AIGatewayModelProviderConfigAuthVertex{
+                        Type: components.AIGatewayModelProviderConfigAuthVertexTypeVertex,
                     },
                 ),
             },
