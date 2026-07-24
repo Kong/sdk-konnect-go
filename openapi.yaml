@@ -500,7 +500,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
-        - AI Gateway Config Store Secrets
+        - AI Gateway Config Stores
     post:
       x-speakeasy-entity-operation:
         terraform-resource: AIGatewayConfigStoreSecret#create
@@ -534,7 +534,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
-        - AI Gateway Config Store Secrets
+        - AI Gateway Config Stores
   '/v1/ai-gateways/{gatewayId}/config-stores/{configStoreIdOrName}/secrets/{key}':
     parameters:
       - $ref: '#/components/parameters/AIGatewayId'
@@ -570,7 +570,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
-        - AI Gateway Config Store Secrets
+        - AI Gateway Config Stores
     put:
       x-speakeasy-entity-operation:
         terraform-resource: AIGatewayConfigStoreSecret#update
@@ -602,7 +602,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
-        - AI Gateway Config Store Secrets
+        - AI Gateway Config Stores
     delete:
       x-speakeasy-entity-operation:
         terraform-resource: AIGatewayConfigStoreSecret#delete
@@ -628,7 +628,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
-        - AI Gateway Config Store Secrets
+        - AI Gateway Config Stores
   '/v1/ai-gateways/{gatewayId}/consumer-groups':
     parameters:
       - $ref: '#/components/parameters/AIGatewayId'
@@ -1339,7 +1339,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
-        - AI Gateway DataPlane
+        - AI Gateway Nodes
     parameters:
       - $ref: '#/components/parameters/AIGatewayId'
   '/v1/ai-gateways/{gatewayId}/identity':
@@ -17357,6 +17357,7 @@ paths:
         - Application Registrations
   '/v3/portals/{portalId}/applications':
     post:
+      x-speakeasy-entity-operation: PortalApplication#create
       operationId: create-application
       summary: Create Application
       description: 'Creates a new application for this portal. The application must be assigned to a developer or a team. An application can be registered for various APIs, issuing credentials for API access. If using DCR, an application will be linked to an Identity Provider''s application by its `client_id`.'
@@ -17419,6 +17420,9 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/ApplicationId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalApplication#read
+        terraform-datasource: null
       operationId: get-application
       summary: Get an Application by Portal
       description: 'Returns the configuration of a single application in this portal. If an application is linked to a DCR Provider, the `dcr_provider.id` and `client_id` can be used to correlate it. An application manages a set of credentials and registrations for specific APIs.'
@@ -17434,6 +17438,7 @@ paths:
       tags:
         - Applications
     patch:
+      x-speakeasy-entity-operation: PortalApplication#update
       operationId: update-application
       summary: Update Application
       description: Updates an application.
@@ -17457,6 +17462,7 @@ paths:
       tags:
         - Applications
     delete:
+      x-speakeasy-entity-operation: PortalApplication#delete
       operationId: delete-application
       summary: Delete Application by Portal
       description: 'Delete a single application in this portal, along with its registrations and credentials.'
@@ -17543,6 +17549,7 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/ApplicationId'
     post:
+      x-speakeasy-entity-operation: PortalApplicationRegistration#create
       operationId: create-application-registration
       summary: Create Registration
       description: Creates a new registration for this application to access a specific API. Registrations created through the portal management API will respect the auto-approve settings of the portal and/or API publication. API publications that do not use auto-approve must be manually approved by an administrator after creation.
@@ -17614,6 +17621,9 @@ paths:
       - $ref: '#/components/parameters/ApplicationId'
       - $ref: '#/components/parameters/RegistrationId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalApplicationRegistration#read
+        terraform-datasource: null
       operationId: get-application-registration
       summary: Get a Registration
       description: Returns information about an application's registration status for a particular API.
@@ -17629,6 +17639,7 @@ paths:
       tags:
         - Application Registrations
     patch:
+      x-speakeasy-entity-operation: PortalApplicationRegistration#update
       operationId: update-application-registration
       summary: Update Registration
       description: 'Updates the status of a particular application registration to an API. Approved application registrations will allow API traffic to the corresponding API. Revoked, rejected, or pending will not allow API traffic.'
@@ -17652,6 +17663,7 @@ paths:
       tags:
         - Application Registrations
     delete:
+      x-speakeasy-entity-operation: PortalApplicationRegistration#delete
       operationId: delete-application-registration
       summary: Delete Registration
       description: |-
@@ -18175,6 +18187,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/PortalId'
     post:
+      x-speakeasy-entity-operation: PortalDeveloper#create
       operationId: create-developer
       summary: Create Developer Account
       description: Creates a new developer account in the specified portal. SAML login is currently not supported.
@@ -18245,6 +18258,9 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/DeveloperId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalDeveloper#read
+        terraform-datasource: null
       operationId: get-developer
       summary: Get a Developer
       description: 'Returns information about a single developer in this portal. Each developer manages a set applications, providing them credentials to access registered APIs. Developer registration access can be limited to specific APIs using RBAC.'
@@ -18260,6 +18276,7 @@ paths:
       tags:
         - Portal Developers
     patch:
+      x-speakeasy-entity-operation: PortalDeveloper#update
       operationId: update-developer
       summary: Update Developer
       description: 'Updates the status of a particular developer. Approved developers have access to login to the portal. Revoked, rejected, or pending are not allowed to login. Even if a developer''s status is no longer approved, they will still be able to using any existing credentials generated while they were approved, until each application registration is revoked or deleted.'
@@ -18283,6 +18300,7 @@ paths:
       tags:
         - Portal Developers
     delete:
+      x-speakeasy-entity-operation: PortalDeveloper#delete
       operationId: delete-developer
       summary: Delete Developer
       description: 'Deletes a developer, which will discontinue their ability to login, view any non-public resources, and delete all applications owned by them. All credentials issued to the developer will no longer provide access to any APIs. A deleted developer''s unique email must be re-registered and approved to gain access again.'
@@ -54444,7 +54462,6 @@ components:
             - api_endpoint
             - location_id
             - project_id
-            - endpoint_id
       required:
         - type
     AIGatewayTargetVllmConfig:
@@ -58315,8 +58332,8 @@ components:
                 - client
                 - redis
               x-speakeasy-unknown-values: allow
-        tag:
-          description: The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
+        label:
+          description: The label of the MCP server. This is used to filter the exported MCP tools.
           type: string
         timeout:
           description: The timeout for calling the tools in milliseconds.
@@ -58372,8 +58389,8 @@ components:
                 - client
                 - redis
               x-speakeasy-unknown-values: allow
-        tag:
-          description: The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
+        label:
+          description: The label of the MCP server. This is used to filter the exported MCP tools.
           type: string
         timeout:
           description: The timeout for calling the tools in milliseconds.
@@ -59952,57 +59969,6 @@ components:
         - display_name
         - name
         - config
-    AIGatewayModelProviderVertex:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-
-        Config for GCP model provider.
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-            - vertex
-        display_name:
-          description: The display name for this model provider instance.
-          type: string
-          example: Azure AI SE
-          maxLength: 256
-          minLength: 1
-        name:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
-          example: azure-ai-se
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
-        labels:
-          $ref: '#/components/schemas/PublicLabels'
-        managed_by:
-          $ref: '#/components/schemas/ManagedBy'
-        config:
-          type: object
-          additionalProperties: false
-          properties:
-            auth:
-              discriminator:
-                propertyName: type
-                mapping:
-                  basic: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
-                  gcp: '#/components/schemas/AIGatewayModelProviderConfigAuthGCP'
-              oneOf:
-                - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
-                - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthGCP'
-          required:
-            - auth
-      required:
-        - type
-        - display_name
-        - name
-        - config
     AIGatewayModelProviderConfigAuthGCP:
       description: |-
         **Pre-release Feature**
@@ -60041,6 +60007,86 @@ components:
       required:
         - type
       title: AIGatewayModelProviderConfigAuthGCP
+    AIGatewayModelProviderVertex:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Config for Vertex model provider.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - vertex
+        display_name:
+          description: The display name for this model provider instance.
+          type: string
+          example: Azure AI SE
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
+          example: azure-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        config:
+          type: object
+          additionalProperties: false
+          properties:
+            auth:
+              discriminator:
+                propertyName: type
+                mapping:
+                  basic: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
+                  vertex: '#/components/schemas/AIGatewayModelProviderConfigAuthVertex'
+              oneOf:
+                - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
+                - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthVertex'
+          required:
+            - auth
+      required:
+        - type
+        - display_name
+        - name
+        - config
+    AIGatewayModelProviderConfigAuthVertex:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Configuration for Vertex model provider.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - vertex
+        use_gcp_service_account:
+          description: Use the Google Cloud Service Account (or user-assigned identity) to authenticate with Vertex-provider models.
+          type: boolean
+          default: true
+          enum:
+            - true
+        service_account_json:
+          description: |
+            Full JSON string of the GCP service account to authenticate. If not set, the service account JSON will be from the environment variable GCP_SERVICE_ACCOUNT.
+            This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+          type: string
+          writeOnly: true
+          x-referenceable: true
+      additionalProperties: false
+      required:
+        - type
+      title: AIGatewayModelProviderConfigAuthVertex
     CreateAIGatewayConfigStoreRequest:
       description: |-
         **Pre-release Feature**
@@ -74496,6 +74542,8 @@ tags:
     description: API related to the management of AI Gateway DataPlane Certificates.
   - name: AI Gateway Nodes
     description: API related to the management of AI Gateway nodes.
+  - name: AI Gateway Config Stores
+    description: API related to the management of AI Gateway Config Stores.
   - name: AI Gateway Vaults
     description: API related to the management of AI Gateway vaults for storing secrets.
   - name: AI Gateway Agents
