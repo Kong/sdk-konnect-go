@@ -8,6 +8,32 @@ import (
 	"time"
 )
 
+type PortalAuditLogReplayJobStatus string
+
+const (
+	PortalAuditLogReplayJobStatusUnconfigured PortalAuditLogReplayJobStatus = "unconfigured"
+	PortalAuditLogReplayJobStatusAccepted     PortalAuditLogReplayJobStatus = "accepted"
+	PortalAuditLogReplayJobStatusPending      PortalAuditLogReplayJobStatus = "pending"
+	PortalAuditLogReplayJobStatusRunning      PortalAuditLogReplayJobStatus = "running"
+	PortalAuditLogReplayJobStatusCompleted    PortalAuditLogReplayJobStatus = "completed"
+	PortalAuditLogReplayJobStatusFailed       PortalAuditLogReplayJobStatus = "failed"
+)
+
+func (e PortalAuditLogReplayJobStatus) ToPointer() *PortalAuditLogReplayJobStatus {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PortalAuditLogReplayJobStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "unconfigured", "accepted", "pending", "running", "completed", "failed":
+			return true
+		}
+	}
+	return false
+}
+
 // PortalAuditLogReplayJob - Response from fetching or updating an portal audit log replay job
 type PortalAuditLogReplayJob struct {
 	// The start of a date-time range. Initial value is 0001-01-01T00:00:0Z.
