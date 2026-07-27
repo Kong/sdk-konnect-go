@@ -39813,6 +39813,7 @@ components:
             type: string
             example: 'someObject.someArray[1].fieldName'
       maxItems: 50
+      minItems: 1
     EventGatewayParsedRecordFieldPathsExpression:
       description: |
         This expression should evaluate to an array of exact field paths,
