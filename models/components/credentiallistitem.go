@@ -4,7 +4,6 @@
 package components
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
@@ -13,8 +12,8 @@ import (
 type CredentialListItemType string
 
 const (
-	CredentialListItemTypeAPIKey       CredentialListItemType = "api_key"
-	CredentialListItemTypeClientSecret CredentialListItemType = "client_secret"
+	CredentialListItemTypeAPIKeyCredentialListItem       CredentialListItemType = "ApiKeyCredentialListItem"
+	CredentialListItemTypeClientSecretCredentialListItem CredentialListItemType = "ClientSecretCredentialListItem"
 )
 
 type CredentialListItem struct {
@@ -24,59 +23,37 @@ type CredentialListItem struct {
 	Type CredentialListItemType
 }
 
-func CreateCredentialListItemAPIKey(apiKey APIKeyCredentialListItem) CredentialListItem {
-	typ := CredentialListItemTypeAPIKey
-
-	typStr := APIKeyCredentialListItemType(typ)
-	apiKey.Type = typStr
+func CreateCredentialListItemAPIKeyCredentialListItem(apiKeyCredentialListItem APIKeyCredentialListItem) CredentialListItem {
+	typ := CredentialListItemTypeAPIKeyCredentialListItem
 
 	return CredentialListItem{
-		APIKeyCredentialListItem: &apiKey,
+		APIKeyCredentialListItem: &apiKeyCredentialListItem,
 		Type:                     typ,
 	}
 }
 
-func CreateCredentialListItemClientSecret(clientSecret ClientSecretCredentialListItem) CredentialListItem {
-	typ := CredentialListItemTypeClientSecret
-
-	typStr := ClientSecretCredentialListItemType(typ)
-	clientSecret.Type = typStr
+func CreateCredentialListItemClientSecretCredentialListItem(clientSecretCredentialListItem ClientSecretCredentialListItem) CredentialListItem {
+	typ := CredentialListItemTypeClientSecretCredentialListItem
 
 	return CredentialListItem{
-		ClientSecretCredentialListItem: &clientSecret,
+		ClientSecretCredentialListItem: &clientSecretCredentialListItem,
 		Type:                           typ,
 	}
 }
 
 func (u *CredentialListItem) UnmarshalJSON(data []byte) error {
 
-	type discriminator struct {
-		Type string `json:"type"`
-	}
-
-	dis := new(discriminator)
-	if err := json.Unmarshal(data, &dis); err != nil {
-		return fmt.Errorf("could not unmarshal discriminator: %w", err)
-	}
-
-	switch dis.Type {
-	case "api_key":
-		apiKeyCredentialListItem := new(APIKeyCredentialListItem)
-		if err := utils.UnmarshalJSON(data, &apiKeyCredentialListItem, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == api_key) type APIKeyCredentialListItem within CredentialListItem: %w", string(data), err)
-		}
-
-		u.APIKeyCredentialListItem = apiKeyCredentialListItem
-		u.Type = CredentialListItemTypeAPIKey
+	var apiKeyCredentialListItem APIKeyCredentialListItem = APIKeyCredentialListItem{}
+	if err := utils.UnmarshalJSON(data, &apiKeyCredentialListItem, "", true, nil); err == nil {
+		u.APIKeyCredentialListItem = &apiKeyCredentialListItem
+		u.Type = CredentialListItemTypeAPIKeyCredentialListItem
 		return nil
-	case "client_secret":
-		clientSecretCredentialListItem := new(ClientSecretCredentialListItem)
-		if err := utils.UnmarshalJSON(data, &clientSecretCredentialListItem, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == client_secret) type ClientSecretCredentialListItem within CredentialListItem: %w", string(data), err)
-		}
+	}
 
-		u.ClientSecretCredentialListItem = clientSecretCredentialListItem
-		u.Type = CredentialListItemTypeClientSecret
+	var clientSecretCredentialListItem ClientSecretCredentialListItem = ClientSecretCredentialListItem{}
+	if err := utils.UnmarshalJSON(data, &clientSecretCredentialListItem, "", true, nil); err == nil {
+		u.ClientSecretCredentialListItem = &clientSecretCredentialListItem
+		u.Type = CredentialListItemTypeClientSecretCredentialListItem
 		return nil
 	}
 
