@@ -7,6 +7,52 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// DefaultAPIVisibility - The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
+type DefaultAPIVisibility string
+
+const (
+	DefaultAPIVisibilityPublic  DefaultAPIVisibility = "public"
+	DefaultAPIVisibilityPrivate DefaultAPIVisibility = "private"
+)
+
+func (e DefaultAPIVisibility) ToPointer() *DefaultAPIVisibility {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *DefaultAPIVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}
+
+// DefaultPageVisibility - The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
+type DefaultPageVisibility string
+
+const (
+	DefaultPageVisibilityPublic  DefaultPageVisibility = "public"
+	DefaultPageVisibilityPrivate DefaultPageVisibility = "private"
+)
+
+func (e DefaultPageVisibility) ToPointer() *DefaultPageVisibility {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *DefaultPageVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}
+
 // CreatePortal - Create a portal.
 type CreatePortal struct {
 	// The name of the portal, used to distinguish it from other portals. Name must be unique.
@@ -21,10 +67,10 @@ type CreatePortal struct {
 	RbacEnabled *bool `default:"false" json:"rbac_enabled"`
 	// Whether ip allow list is enabled for the portal.
 	SiprEnabled *bool `default:"false" json:"sipr_enabled"`
-	// The default visibility of APIs in the portal.
-	DefaultAPIVisibility *PortalDefaultAPIVisibility `json:"default_api_visibility,omitempty"`
-	// The default visibility of pages in the portal.
-	DefaultPageVisibility *PortalDefaultPageVisibility `json:"default_page_visibility,omitempty"`
+	// The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
+	DefaultAPIVisibility *DefaultAPIVisibility `json:"default_api_visibility,omitempty"`
+	// The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
+	DefaultPageVisibility *DefaultPageVisibility `json:"default_page_visibility,omitempty"`
 	// The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.
 	DefaultApplicationAuthStrategyID *string `json:"default_application_auth_strategy_id,omitempty"`
 	// Whether developer account registrations will be automatically approved, or if they will be set to pending until approved by an admin.
@@ -95,14 +141,14 @@ func (c *CreatePortal) GetSiprEnabled() *bool {
 	return c.SiprEnabled
 }
 
-func (c *CreatePortal) GetDefaultAPIVisibility() *PortalDefaultAPIVisibility {
+func (c *CreatePortal) GetDefaultAPIVisibility() *DefaultAPIVisibility {
 	if c == nil {
 		return nil
 	}
 	return c.DefaultAPIVisibility
 }
 
-func (c *CreatePortal) GetDefaultPageVisibility() *PortalDefaultPageVisibility {
+func (c *CreatePortal) GetDefaultPageVisibility() *DefaultPageVisibility {
 	if c == nil {
 		return nil
 	}

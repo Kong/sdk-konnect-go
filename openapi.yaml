@@ -17357,6 +17357,7 @@ paths:
         - Application Registrations
   '/v3/portals/{portalId}/applications':
     post:
+      x-speakeasy-entity-operation: PortalApplication#create
       operationId: create-application
       summary: Create Application
       description: 'Creates a new application for this portal. The application must be assigned to a developer or a team. An application can be registered for various APIs, issuing credentials for API access. If using DCR, an application will be linked to an Identity Provider''s application by its `client_id`.'
@@ -17419,6 +17420,9 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/ApplicationId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalApplication#read
+        terraform-datasource: null
       operationId: get-application
       summary: Get an Application by Portal
       description: 'Returns the configuration of a single application in this portal. If an application is linked to a DCR Provider, the `dcr_provider.id` and `client_id` can be used to correlate it. An application manages a set of credentials and registrations for specific APIs.'
@@ -17434,6 +17438,7 @@ paths:
       tags:
         - Applications
     patch:
+      x-speakeasy-entity-operation: PortalApplication#update
       operationId: update-application
       summary: Update Application
       description: Updates an application.
@@ -17457,6 +17462,7 @@ paths:
       tags:
         - Applications
     delete:
+      x-speakeasy-entity-operation: PortalApplication#delete
       operationId: delete-application
       summary: Delete Application by Portal
       description: 'Delete a single application in this portal, along with its registrations and credentials.'
@@ -17543,6 +17549,7 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/ApplicationId'
     post:
+      x-speakeasy-entity-operation: PortalApplicationRegistration#create
       operationId: create-application-registration
       summary: Create Registration
       description: Creates a new registration for this application to access a specific API. Registrations created through the portal management API will respect the auto-approve settings of the portal and/or API publication. API publications that do not use auto-approve must be manually approved by an administrator after creation.
@@ -17614,6 +17621,9 @@ paths:
       - $ref: '#/components/parameters/ApplicationId'
       - $ref: '#/components/parameters/RegistrationId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalApplicationRegistration#read
+        terraform-datasource: null
       operationId: get-application-registration
       summary: Get a Registration
       description: Returns information about an application's registration status for a particular API.
@@ -17629,6 +17639,7 @@ paths:
       tags:
         - Application Registrations
     patch:
+      x-speakeasy-entity-operation: PortalApplicationRegistration#update
       operationId: update-application-registration
       summary: Update Registration
       description: 'Updates the status of a particular application registration to an API. Approved application registrations will allow API traffic to the corresponding API. Revoked, rejected, or pending will not allow API traffic.'
@@ -17652,6 +17663,7 @@ paths:
       tags:
         - Application Registrations
     delete:
+      x-speakeasy-entity-operation: PortalApplicationRegistration#delete
       operationId: delete-application-registration
       summary: Delete Registration
       description: |-
@@ -18175,6 +18187,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/PortalId'
     post:
+      x-speakeasy-entity-operation: PortalDeveloper#create
       operationId: create-developer
       summary: Create Developer Account
       description: Creates a new developer account in the specified portal. SAML login is currently not supported.
@@ -18245,6 +18258,9 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/DeveloperId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalDeveloper#read
+        terraform-datasource: null
       operationId: get-developer
       summary: Get a Developer
       description: 'Returns information about a single developer in this portal. Each developer manages a set applications, providing them credentials to access registered APIs. Developer registration access can be limited to specific APIs using RBAC.'
@@ -18260,6 +18276,7 @@ paths:
       tags:
         - Portal Developers
     patch:
+      x-speakeasy-entity-operation: PortalDeveloper#update
       operationId: update-developer
       summary: Update Developer
       description: 'Updates the status of a particular developer. Approved developers have access to login to the portal. Revoked, rejected, or pending are not allowed to login. Even if a developer''s status is no longer approved, they will still be able to using any existing credentials generated while they were approved, until each application registration is revoked or deleted.'
@@ -18283,6 +18300,7 @@ paths:
       tags:
         - Portal Developers
     delete:
+      x-speakeasy-entity-operation: PortalDeveloper#delete
       operationId: delete-developer
       summary: Delete Developer
       description: 'Deletes a developer, which will discontinue their ability to login, view any non-public resources, and delete all applications owned by them. All credentials issued to the developer will no longer provide access to any APIs. A deleted developer''s unique email must be re-registered and approved to gain access again.'
@@ -21893,7 +21911,6 @@ components:
       required: true
       x-speakeasy-match: id
     EmailDomain:
-      x-go-name: EmailDomainPathParam
       name: emailDomain
       in: path
       required: true
@@ -21901,7 +21918,6 @@ components:
       schema:
         type: string
     EmailTemplateName:
-      x-go-name: EmailTemplateNamePathParam
       name: templateName
       description: Name of the email template.
       in: path
@@ -24357,8 +24373,7 @@ components:
           readOnly: true
           x-speakeasy-unknown-values: allow
         konnect_token:
-          description: The Konnect token used to authenticate with Konnect.
-          type: string
+          $ref: '#/components/schemas/KonnectToken'
         revoked_by:
           $ref: '#/components/schemas/RevokedBy'
         created_at:
@@ -24538,6 +24553,9 @@ components:
         - created_at
         - updated_at
         - expires_at
+    KonnectToken:
+      description: The Konnect token used to authenticate with Konnect.
+      type: string
     ControlPlaneId:
       description: ID of the Konnect control plane. Can be retrieved from the Control Planes API or the Konnect UI.
       type: string
@@ -30870,7 +30888,6 @@ components:
             - revoked
             - rejected
           title: DeveloperStatus
-          x-go-name: PortalDeveloperStatus
           x-speakeasy-unknown-values: allow
         send_invitation_email:
           description: 'When true, sends an invitation email to the developer. Default is false; no emails are sent unless explicitly requested.'
@@ -31022,44 +31039,6 @@ components:
         - revoked
         - rejected
       title: DeveloperStatus
-      x-go-name: PortalDeveloperStatus
-      x-speakeasy-unknown-values: allow
-    PortalDefaultApiVisibility:
-      description: The default visibility of APIs in the portal.
-      type: string
-      enum:
-        - public
-        - private
-      title: PortalDefaultApiVisibility
-      x-speakeasy-unknown-values: allow
-    PortalDefaultPageVisibility:
-      description: The default visibility of pages in the portal.
-      type: string
-      enum:
-        - public
-        - private
-      title: PortalDefaultPageVisibility
-      x-speakeasy-unknown-values: allow
-    PortalAuditLogReplayJobStatus:
-      type: string
-      enum:
-        - unconfigured
-        - accepted
-        - pending
-        - running
-        - completed
-        - failed
-      readOnly: true
-      title: PortalAuditLogReplayJobStatus
-      x-speakeasy-unknown-values: allow
-    PortalAuditLogWebhookState:
-      description: Current status of a webhook. `active` indicates the webhook is sending or ready to send requests. `inactive` indicates the webhook has been turned off due to failed attempts.
-      type: string
-      example: active
-      enum:
-        - active
-        - inactive
-      title: PortalAuditLogWebhookState
       x-speakeasy-unknown-values: allow
     MovePageRequestPayload:
       description: move page request payload
@@ -32740,6 +32719,7 @@ components:
         name: IDM - Developers
         description: The Identity Management (IDM) API team.
         can_own_applications: false
+      additionalProperties: false
       title: PortalUpdateTeamRequest
     PortalCreateTeamRequest:
       x-speakeasy-entity: PortalTeam
@@ -32750,10 +32730,12 @@ components:
           type: string
           example: IDM - Developers
           pattern: '^[\w \W]+$'
+          writeOnly: true
         description:
           type: string
           example: The Identity Management (IDM) team.
           maxLength: 250
+          writeOnly: true
         can_own_applications:
           description: Whether the team is allowed to own applications
           type: boolean
@@ -32763,6 +32745,7 @@ components:
         name: IDM - Developers
         description: The Identity Management (IDM) team.
         can_own_applications: false
+      additionalProperties: false
       required:
         - name
       title: PortalCreateTeamRequest
@@ -32805,6 +32788,12 @@ components:
         created_at: '1992-02-07T17:46:57.52Z'
         updated_at: '2022-08-31T17:00:00.52Z'
         can_own_applications: false
+      required:
+        - id
+        - name
+        - description
+        - created_at
+        - updated_at
       title: PortalTeamResponse
     PortalTeamGroupMappingResponse:
       description: A paginated list of portal team group mappings.
@@ -33932,7 +33921,6 @@ components:
           enum:
             - api_key
           readOnly: true
-          x-go-type-skip-optional-pointer: true
         id:
           $ref: '#/components/schemas/UUID'
         display_name:
@@ -33967,7 +33955,6 @@ components:
           enum:
             - client_secret
           readOnly: true
-          x-go-type-skip-optional-pointer: true
         id:
           description: Credential identifier
           type: string
@@ -34001,9 +33988,6 @@ components:
       type: object
       discriminator:
         propertyName: type
-        mapping:
-          api_key: '#/components/schemas/ApiKeyCredentialListItem'
-          client_secret: '#/components/schemas/ClientSecretCredentialListItem'
       oneOf:
         - $ref: '#/components/schemas/ApiKeyCredentialListItem'
         - $ref: '#/components/schemas/ClientSecretCredentialListItem'
@@ -52657,46 +52641,8 @@ components:
     AIGatewayModelAliasConfig:
       description: Configuration for routing to this model using an alias.
       oneOf:
-        - $ref: '#/components/schemas/AIGatewayModelAliasConfigBody'
-        - $ref: '#/components/schemas/AIGatewayModelAliasConfigHeaders'
         - $ref: '#/components/schemas/AIGatewayModelAliasConfigPath'
       title: AIGatewayModelAliasConfig
-    AIGatewayModelAliasConfigBody:
-      description: |
-        Configuration for routing requests to a specific model using a request body property.
-      type: object
-      properties:
-        body:
-          description: |
-            Value indexed by property name that will cause this route to match if present in the request body.
-          type: object
-          example:
-            model:
-              - '@azure/claude-sonnet-5'
-          additionalProperties: true
-          maxProperties: 1
-      additionalProperties: false
-      required:
-        - body
-      title: AIGatewayModelAliasConfigBody
-    AIGatewayModelAliasConfigHeaders:
-      description: |
-        Configuration for routing requests to a specific model using a header.
-      type: object
-      properties:
-        headers:
-          description: |
-            Value indexed by property name that will cause this route to match if present in the request headers.
-          type: object
-          example:
-            model:
-              - '@azure/claude-sonnet-5'
-          additionalProperties: true
-          maxProperties: 1
-      additionalProperties: false
-      required:
-        - headers
-      title: AIGatewayModelAliasConfigHeaders
     AIGatewayModelAliasConfigPath:
       description: |
         Configuration for routing requests to a specific model using a path alias.
@@ -68994,9 +68940,19 @@ components:
                 example: true
                 default: false
               default_api_visibility:
-                $ref: '#/components/schemas/PortalDefaultApiVisibility'
+                description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
+                type: string
+                enum:
+                  - public
+                  - private
+                x-speakeasy-unknown-values: allow
               default_page_visibility:
-                $ref: '#/components/schemas/PortalDefaultPageVisibility'
+                description: 'The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.'
+                type: string
+                enum:
+                  - public
+                  - private
+                x-speakeasy-unknown-values: allow
               default_application_auth_strategy_id:
                 description: 'The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.'
                 type: string
@@ -69076,9 +69032,19 @@ components:
                 example: true
                 default: false
               default_api_visibility:
-                $ref: '#/components/schemas/PortalDefaultApiVisibility'
+                description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
+                type: string
+                enum:
+                  - public
+                  - private
+                x-speakeasy-unknown-values: allow
               default_page_visibility:
-                $ref: '#/components/schemas/PortalDefaultPageVisibility'
+                description: 'The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.'
+                type: string
+                enum:
+                  - public
+                  - private
+                x-speakeasy-unknown-values: allow
               default_application_auth_strategy_id:
                 description: 'The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.'
                 type: string
@@ -69112,7 +69078,6 @@ components:
             additionalProperties: false
             title: Portal
     UpdateDeveloper:
-      x-go-name: UpdateDeveloperRequestBody
       description: Update a developer.
       required: true
       content:
@@ -69120,7 +69085,6 @@ components:
           schema:
             $ref: '#/components/schemas/UpdateDeveloperRequest'
     ReplacePortalImageAsset:
-      x-go-name: ReplacePortalImageAssetRequestBody
       description: Update an image asset for the portal.
       required: true
       content:
@@ -69198,7 +69162,6 @@ components:
           schema:
             $ref: '#/components/schemas/CreateApplicationRegistrationRequest'
     UpdateApplicationRegistration:
-      x-go-name: UpdateApplicationRegistrationRequestBody
       description: Update an application registration.
       required: true
       content:
@@ -69206,7 +69169,6 @@ components:
           schema:
             $ref: '#/components/schemas/UpdateApplicationRegistrationRequest'
     UpdateRegistrationConsumerRequest:
-      x-go-name: UpdateRegistrationConsumerRequestBody
       description: Update the consumer of an application registration.
       required: true
       content:
@@ -72416,7 +72378,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PortalIdpTeamGroupMapping'
-      x-go-name: PortalIdpTeamGroupMappingResponse
     PortalIdpTeamGroupMappingCollection:
       description: A paginated collection of team group mappings.
       content:
@@ -72471,7 +72432,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PortalDeveloper'
-      x-go-name: UpdateDeveloperResponse
     ListDevelopers:
       description: A paginated list of developers in a portal.
       content:
@@ -72502,7 +72462,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PortalCustomDomain'
-      x-go-name: PortalCustomDomainResponse
     ListPortalsResponse:
       description: A paginated list of portals in the current region of an organization.
       content:
@@ -72554,9 +72513,19 @@ components:
                       example: true
                       default: false
                     default_api_visibility:
-                      $ref: '#/components/schemas/PortalDefaultApiVisibility'
+                      description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
+                      type: string
+                      enum:
+                        - public
+                        - private
+                      x-speakeasy-unknown-values: allow
                     default_page_visibility:
-                      $ref: '#/components/schemas/PortalDefaultPageVisibility'
+                      description: 'The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.'
+                      type: string
+                      enum:
+                        - public
+                        - private
+                      x-speakeasy-unknown-values: allow
                     default_application_auth_strategy_id:
                       description: 'The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.'
                       type: string
@@ -72654,9 +72623,19 @@ components:
                 example: true
                 default: false
               default_api_visibility:
-                $ref: '#/components/schemas/PortalDefaultApiVisibility'
+                description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
+                type: string
+                enum:
+                  - public
+                  - private
+                x-speakeasy-unknown-values: allow
               default_page_visibility:
-                $ref: '#/components/schemas/PortalDefaultPageVisibility'
+                description: 'The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.'
+                type: string
+                enum:
+                  - public
+                  - private
+                x-speakeasy-unknown-values: allow
               default_application_auth_strategy_id:
                 description: 'The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.'
                 type: string
@@ -72814,7 +72793,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateApplicationRegistrationResponse'
-      x-go-name: UpdateApplicationRegistrationApiResponse
     PortalAuditLogWebhook:
       description: Portal audit log webhook response
       content:
@@ -72839,7 +72817,15 @@ components:
             type: object
             properties:
               webhook_status:
-                $ref: '#/components/schemas/PortalAuditLogWebhookState'
+                description: |-
+                  Current status of a webhook. `active` indicates the webhook is sending or ready to send requests.
+                  `inactive` indicates the webhook has been turned off due to failed attempts.
+                type: string
+                example: active
+                enum:
+                  - active
+                  - inactive
+                x-speakeasy-unknown-values: allow
               webhook_enabled:
                 description: |-
                   Configured status of a webhook. `enabled` indicates the client will accept requests.
@@ -72877,7 +72863,16 @@ components:
                 format: date-time
                 example: '2017-07-21T17:32:28Z'
               status:
-                $ref: '#/components/schemas/PortalAuditLogReplayJobStatus'
+                type: string
+                enum:
+                  - unconfigured
+                  - accepted
+                  - pending
+                  - running
+                  - completed
+                  - failed
+                readOnly: true
+                x-speakeasy-unknown-values: allow
               updated_at:
                 description: 'Timestamp when this job was last updated. Initial value is 0001-01-01T00:00:0Z.'
                 type: string
@@ -72907,7 +72902,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EmailTemplate'
-      x-go-name: EmailTemplateResponse
     EmailTemplateVariables:
       description: Successful response of usable variables for use in portal email templates.
       content:
@@ -72944,7 +72938,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/DefaultEmailTemplate'
-      x-go-name: DefaultEmailTemplateResponse
     PatchEmailTemplateResponse:
       description: Modifying an email template.
       content:

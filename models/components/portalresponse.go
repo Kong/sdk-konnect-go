@@ -8,6 +8,52 @@ import (
 	"time"
 )
 
+// PortalResponseDefaultAPIVisibility - The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
+type PortalResponseDefaultAPIVisibility string
+
+const (
+	PortalResponseDefaultAPIVisibilityPublic  PortalResponseDefaultAPIVisibility = "public"
+	PortalResponseDefaultAPIVisibilityPrivate PortalResponseDefaultAPIVisibility = "private"
+)
+
+func (e PortalResponseDefaultAPIVisibility) ToPointer() *PortalResponseDefaultAPIVisibility {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PortalResponseDefaultAPIVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}
+
+// PortalResponseDefaultPageVisibility - The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
+type PortalResponseDefaultPageVisibility string
+
+const (
+	PortalResponseDefaultPageVisibilityPublic  PortalResponseDefaultPageVisibility = "public"
+	PortalResponseDefaultPageVisibilityPrivate PortalResponseDefaultPageVisibility = "private"
+)
+
+func (e PortalResponseDefaultPageVisibility) ToPointer() *PortalResponseDefaultPageVisibility {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PortalResponseDefaultPageVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}
+
 // PortalResponse - Details about a portal.
 type PortalResponse struct {
 	// Contains a unique identifier used for this resource.
@@ -28,10 +74,10 @@ type PortalResponse struct {
 	RbacEnabled *bool `default:"false" json:"rbac_enabled"`
 	// Whether ip allow list is enabled for the portal.
 	SiprEnabled *bool `default:"false" json:"sipr_enabled"`
-	// The default visibility of APIs in the portal.
-	DefaultAPIVisibility PortalDefaultAPIVisibility `json:"default_api_visibility"`
-	// The default visibility of pages in the portal.
-	DefaultPageVisibility PortalDefaultPageVisibility `json:"default_page_visibility"`
+	// The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
+	DefaultAPIVisibility PortalResponseDefaultAPIVisibility `json:"default_api_visibility"`
+	// The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
+	DefaultPageVisibility PortalResponseDefaultPageVisibility `json:"default_page_visibility"`
 	// The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.
 	DefaultApplicationAuthStrategyID *string `json:"default_application_auth_strategy_id"`
 	// Whether developer account registrations will be automatically approved, or if they will be set to pending until approved by an admin.
@@ -125,16 +171,16 @@ func (p *PortalResponse) GetSiprEnabled() *bool {
 	return p.SiprEnabled
 }
 
-func (p *PortalResponse) GetDefaultAPIVisibility() PortalDefaultAPIVisibility {
+func (p *PortalResponse) GetDefaultAPIVisibility() PortalResponseDefaultAPIVisibility {
 	if p == nil {
-		return PortalDefaultAPIVisibility("")
+		return PortalResponseDefaultAPIVisibility("")
 	}
 	return p.DefaultAPIVisibility
 }
 
-func (p *PortalResponse) GetDefaultPageVisibility() PortalDefaultPageVisibility {
+func (p *PortalResponse) GetDefaultPageVisibility() PortalResponseDefaultPageVisibility {
 	if p == nil {
-		return PortalDefaultPageVisibility("")
+		return PortalResponseDefaultPageVisibility("")
 	}
 	return p.DefaultPageVisibility
 }

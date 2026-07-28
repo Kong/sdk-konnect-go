@@ -8,10 +8,35 @@ import (
 	"time"
 )
 
+// WebhookStatus - Current status of a webhook. `active` indicates the webhook is sending or ready to send requests.
+// `inactive` indicates the webhook has been turned off due to failed attempts.
+type WebhookStatus string
+
+const (
+	WebhookStatusActive   WebhookStatus = "active"
+	WebhookStatusInactive WebhookStatus = "inactive"
+)
+
+func (e WebhookStatus) ToPointer() *WebhookStatus {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *WebhookStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "active", "inactive":
+			return true
+		}
+	}
+	return false
+}
+
 // PortalAuditLogWebhookStatus - Get response for portal audit log webhook status
 type PortalAuditLogWebhookStatus struct {
-	// Current status of a webhook. `active` indicates the webhook is sending or ready to send requests. `inactive` indicates the webhook has been turned off due to failed attempts.
-	WebhookStatus *PortalAuditLogWebhookState `json:"webhook_status,omitempty"`
+	// Current status of a webhook. `active` indicates the webhook is sending or ready to send requests.
+	// `inactive` indicates the webhook has been turned off due to failed attempts.
+	WebhookStatus *WebhookStatus `json:"webhook_status,omitempty"`
 	// Configured status of a webhook. `enabled` indicates the client will accept requests.
 	// `disabled` indicates the client will not accept requests.
 	WebhookEnabled *bool `json:"webhook_enabled,omitempty"`
@@ -34,7 +59,7 @@ func (p *PortalAuditLogWebhookStatus) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (p *PortalAuditLogWebhookStatus) GetWebhookStatus() *PortalAuditLogWebhookState {
+func (p *PortalAuditLogWebhookStatus) GetWebhookStatus() *WebhookStatus {
 	if p == nil {
 		return nil
 	}
