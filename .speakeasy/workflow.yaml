@@ -1,5 +1,5 @@
 workflowVersion: 1.0.0
-speakeasyVersion: 1.790.2
+speakeasyVersion: 1.791.0
 sources:
     konnect:
         inputs:
