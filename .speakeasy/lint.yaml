@@ -1,0 +1,12 @@
+lintVersion: 2.0.0
+defaultRuleset: kongRuleset
+rulesets:
+  kongRuleset:
+    rulesets:
+      - speakeasy-generation
+    rules:
+      - id: custom-no-not-schemas
+        severity: error
+customRules:
+  paths:
+    - .speakeasy/rules/*.ts

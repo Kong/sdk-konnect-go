@@ -144,6 +144,10 @@ generate.deepcopy: controller-gen
 generate.sdk.speakeasy: speakeasy
 	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
 
+.PHONY: lint.sdk
+lint.sdk: speakeasy
+	speakeasy lint openapi --schema openapi.yaml --ruleset kongRuleset --non-interactive
+
 # NOTE: SDK generation consists of adding the kubebuilder code marker and generating
 #       DeepCopy() for the types that need it and then using speakeasy to generate
 #       the final sdk code.
@@ -155,6 +159,7 @@ generate.sdk:
 	$(MAKE) generate.deepcopy
 	$(MAKE) _generate.omitempty
 	go mod tidy
+	$(MAKE) lint.sdk
 
 # NOTE: Use this when there are breaking changes in the generated SDK code
 #       that require the interfaces and mocks to be regenerated.
