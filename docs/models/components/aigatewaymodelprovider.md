@@ -120,6 +120,12 @@ aiGatewayModelProvider := components.CreateAIGatewayModelProviderXai(components.
 aiGatewayModelProvider := components.CreateAIGatewayModelProviderVertex(components.AIGatewayModelProviderAIGatewayModelProviderVertex{/* values here */})
 ```
 
+### AIGatewayModelProviderAIGatewayModelProviderSagemaker
+
+```go
+aiGatewayModelProvider := components.CreateAIGatewayModelProviderSagemaker(components.AIGatewayModelProviderAIGatewayModelProviderSagemaker{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -164,5 +170,7 @@ switch aiGatewayModelProvider.Type {
 		// aiGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
 	case components.AIGatewayModelProviderTypeVertex:
 		// aiGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVertex is populated
+	case components.AIGatewayModelProviderTypeSagemaker:
+		// aiGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
 }
 ```

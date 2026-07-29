@@ -32,6 +32,7 @@ const (
 	UpdateAIGatewayModelProviderRequestTypeVllm        UpdateAIGatewayModelProviderRequestType = "vllm"
 	UpdateAIGatewayModelProviderRequestTypeXai         UpdateAIGatewayModelProviderRequestType = "xai"
 	UpdateAIGatewayModelProviderRequestTypeVertex      UpdateAIGatewayModelProviderRequestType = "vertex"
+	UpdateAIGatewayModelProviderRequestTypeSagemaker   UpdateAIGatewayModelProviderRequestType = "sagemaker"
 )
 
 // UpdateAIGatewayModelProviderRequest - **Pre-release Feature**
@@ -56,6 +57,7 @@ type UpdateAIGatewayModelProviderRequest struct {
 	AIGatewayModelProviderVllm        *AIGatewayModelProviderVllm        `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderXai         *AIGatewayModelProviderXai         `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderVertex      *AIGatewayModelProviderVertex      `queryParam:"inline" union:"member"`
+	AIGatewayModelProviderSagemaker   *AIGatewayModelProviderSagemaker   `queryParam:"inline" union:"member"`
 
 	Type UpdateAIGatewayModelProviderRequestType
 }
@@ -288,6 +290,18 @@ func CreateUpdateAIGatewayModelProviderRequestVertex(vertex AIGatewayModelProvid
 	}
 }
 
+func CreateUpdateAIGatewayModelProviderRequestSagemaker(sagemaker AIGatewayModelProviderSagemaker) UpdateAIGatewayModelProviderRequest {
+	typ := UpdateAIGatewayModelProviderRequestTypeSagemaker
+
+	typStr := AIGatewayModelProviderSagemakerType(typ)
+	sagemaker.Type = typStr
+
+	return UpdateAIGatewayModelProviderRequest{
+		AIGatewayModelProviderSagemaker: &sagemaker,
+		Type:                            typ,
+	}
+}
+
 func (u *UpdateAIGatewayModelProviderRequest) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -471,6 +485,15 @@ func (u *UpdateAIGatewayModelProviderRequest) UnmarshalJSON(data []byte) error {
 		u.AIGatewayModelProviderVertex = aiGatewayModelProviderVertex
 		u.Type = UpdateAIGatewayModelProviderRequestTypeVertex
 		return nil
+	case "sagemaker":
+		aiGatewayModelProviderSagemaker := new(AIGatewayModelProviderSagemaker)
+		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderSagemaker, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == sagemaker) type AIGatewayModelProviderSagemaker within UpdateAIGatewayModelProviderRequest: %w", string(data), err)
+		}
+
+		u.AIGatewayModelProviderSagemaker = aiGatewayModelProviderSagemaker
+		u.Type = UpdateAIGatewayModelProviderRequestTypeSagemaker
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateAIGatewayModelProviderRequest", string(data))
@@ -551,6 +574,10 @@ func (u UpdateAIGatewayModelProviderRequest) MarshalJSON() ([]byte, error) {
 
 	if u.AIGatewayModelProviderVertex != nil {
 		return utils.MarshalJSON(u.AIGatewayModelProviderVertex, "", true)
+	}
+
+	if u.AIGatewayModelProviderSagemaker != nil {
+		return utils.MarshalJSON(u.AIGatewayModelProviderSagemaker, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateAIGatewayModelProviderRequest: all fields are null")

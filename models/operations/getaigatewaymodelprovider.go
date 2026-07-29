@@ -200,3 +200,10 @@ func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderVertex() *c
 	}
 	return nil
 }
+
+func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderSagemaker() *components.AIGatewayModelProviderAIGatewayModelProviderSagemaker {
+	if v := g.GetAIGatewayModelProvider(); v != nil {
+		return v.AIGatewayModelProviderAIGatewayModelProviderSagemaker
+	}
+	return nil
+}
