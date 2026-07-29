@@ -164,6 +164,8 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
             case components.AIGatewayModelProviderTypeVertex:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVertex is populated
+            case components.AIGatewayModelProviderTypeSagemaker:
+                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
         }
 
     }
@@ -267,6 +269,8 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
             case components.AIGatewayModelProviderTypeVertex:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVertex is populated
+            case components.AIGatewayModelProviderTypeSagemaker:
+                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
         }
 
     }
@@ -385,6 +389,8 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
             case components.AIGatewayModelProviderTypeVertex:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVertex is populated
+            case components.AIGatewayModelProviderTypeSagemaker:
+                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
         }
 
     }

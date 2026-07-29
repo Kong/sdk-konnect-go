@@ -104,6 +104,10 @@ func (c *CreateAiGatewayModelProviderRequest) GetCreateAIGatewayModelProviderReq
 	return c.GetCreateAIGatewayModelProviderRequest().AIGatewayModelProviderVertex
 }
 
+func (c *CreateAiGatewayModelProviderRequest) GetCreateAIGatewayModelProviderRequestSagemaker() *components.AIGatewayModelProviderSagemaker {
+	return c.GetCreateAIGatewayModelProviderRequest().AIGatewayModelProviderSagemaker
+}
+
 type CreateAiGatewayModelProviderResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -272,6 +276,13 @@ func (c *CreateAiGatewayModelProviderResponse) GetAIGatewayModelProviderXai() *c
 func (c *CreateAiGatewayModelProviderResponse) GetAIGatewayModelProviderVertex() *components.AIGatewayModelProviderAIGatewayModelProviderVertex {
 	if v := c.GetAIGatewayModelProvider(); v != nil {
 		return v.AIGatewayModelProviderAIGatewayModelProviderVertex
+	}
+	return nil
+}
+
+func (c *CreateAiGatewayModelProviderResponse) GetAIGatewayModelProviderSagemaker() *components.AIGatewayModelProviderAIGatewayModelProviderSagemaker {
+	if v := c.GetAIGatewayModelProvider(); v != nil {
+		return v.AIGatewayModelProviderAIGatewayModelProviderSagemaker
 	}
 	return nil
 }
