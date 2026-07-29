@@ -52641,8 +52641,46 @@ components:
     AIGatewayModelAliasConfig:
       description: Configuration for routing to this model using an alias.
       oneOf:
+        - $ref: '#/components/schemas/AIGatewayModelAliasConfigBody'
+        - $ref: '#/components/schemas/AIGatewayModelAliasConfigHeaders'
         - $ref: '#/components/schemas/AIGatewayModelAliasConfigPath'
       title: AIGatewayModelAliasConfig
+    AIGatewayModelAliasConfigBody:
+      description: |
+        Configuration for routing requests to a specific model using a request body property.
+      type: object
+      properties:
+        body:
+          description: |
+            Value indexed by property name that will cause this route to match if present in the request body.
+          type: object
+          example:
+            model:
+              - '@azure/claude-sonnet-5'
+          additionalProperties: true
+          maxProperties: 1
+      additionalProperties: false
+      required:
+        - body
+      title: AIGatewayModelAliasConfigBody
+    AIGatewayModelAliasConfigHeaders:
+      description: |
+        Configuration for routing requests to a specific model using a header.
+      type: object
+      properties:
+        headers:
+          description: |
+            Value indexed by property name that will cause this route to match if present in the request headers.
+          type: object
+          example:
+            model:
+              - '@azure/claude-sonnet-5'
+          additionalProperties: true
+          maxProperties: 1
+      additionalProperties: false
+      required:
+        - headers
+      title: AIGatewayModelAliasConfigHeaders
     AIGatewayModelAliasConfigPath:
       description: |
         Configuration for routing requests to a specific model using a path alias.
@@ -53839,6 +53877,7 @@ components:
           vertex: '#/components/schemas/AIGatewayTargetVertexConfig'
           vllm: '#/components/schemas/AIGatewayTargetVllmConfig'
           xai: '#/components/schemas/AIGatewayTargetXaiConfig'
+          sagemaker: '#/components/schemas/AIGatewayTargetSagemakerConfig'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayTargetAnthropicConfig'
         - $ref: '#/components/schemas/AIGatewayTargetAzureConfig'
@@ -53859,6 +53898,7 @@ components:
         - $ref: '#/components/schemas/AIGatewayTargetVertexConfig'
         - $ref: '#/components/schemas/AIGatewayTargetVllmConfig'
         - $ref: '#/components/schemas/AIGatewayTargetXaiConfig'
+        - $ref: '#/components/schemas/AIGatewayTargetSagemakerConfig'
     AIGatewayTargetAnthropicConfig:
       description: |-
         **Pre-release Feature**
@@ -54722,6 +54762,89 @@ components:
           type: string
           enum:
             - xai
+      required:
+        - type
+    AIGatewayTargetSagemakerConfig:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        AWS SageMaker-specific configuration for a model.
+      type: object
+      properties:
+        embeddings_dimensions:
+          description: The number of dimensions for embedding outputs.
+          type: integer
+        max_tokens:
+          description: The maximum number of tokens to generate in the response.
+          type: integer
+        input_cost:
+          description: Cost per input token for billing and cost tracking.
+          type: number
+        output_cost:
+          description: Cost per output token for billing and cost tracking.
+          type: number
+        temperature:
+          description: Controls randomness in the model output. Higher values produce more varied responses.
+          type: number
+        top_k:
+          description: Limits the number of highest-probability tokens considered during generation.
+          type: integer
+        top_p:
+          description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
+          type: number
+        upstream_url:
+          description: The upstream URL for the model endpoint.
+          type: string
+          format: uri
+        type:
+          type: string
+          enum:
+            - sagemaker
+        aws:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+          type: object
+          additionalProperties: false
+          not:
+            anyOf:
+              - required:
+                  - assume_role_arn
+                not:
+                  required:
+                    - role_session_name
+              - required:
+                  - role_session_name
+                not:
+                  required:
+                    - assume_role_arn
+          properties:
+            region:
+              description: Overrides the AWS_REGION environment variable for SageMaker requests.
+              type: string
+            assume_role_arn:
+              description: Assume a different IAM role after authenticating; mutually required with role_session_name.
+              type: string
+            role_session_name:
+              description: Session identifier for the assumed role; mutually required with assume_role_arn.
+              type: string
+            sts_endpoint_url:
+              description: Overrides the STS endpoint when assuming a role.
+              type: string
+        target:
+          type: object
+          additionalProperties: false
+          properties:
+            model:
+              description: Sets the X-Amzn-SageMaker-Target-Model header (multi-model endpoints).
+              type: string
+            variant:
+              description: Sets the X-Amzn-SageMaker-Target-Variant header (A/B variant testing).
+              type: string
+            container_hostname:
+              description: Sets the X-Amzn-SageMaker-Target-Container-Hostname header (multi-container).
+              type: string
       required:
         - type
     GCPModelConfig:
@@ -60239,6 +60362,89 @@ components:
         - display_name
         - name
         - config
+    AIGatewayModelProviderSagemaker:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Config for Sagemaker model provider.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - sagemaker
+        display_name:
+          description: The display name for this model provider instance.
+          type: string
+          example: Azure AI SE
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
+          example: azure-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        config:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+          type: object
+          additionalProperties: false
+          properties:
+            auth:
+              discriminator:
+                propertyName: type
+                mapping:
+                  basic: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
+                  sagemaker: '#/components/schemas/AIGatewayModelProviderConfigAuthSagemaker'
+              oneOf:
+                - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
+                - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthSagemaker'
+          required:
+            - auth
+      required:
+        - type
+        - display_name
+        - name
+        - config
+    AIGatewayModelProviderConfigAuthSagemaker:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Auth configuration for Sagemaker model provider.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - sagemaker
+        aws:
+          type: object
+          additionalProperties: false
+          properties:
+            access_key_id:
+              description: static IAM user credential; overrides AWS_ACCESS_KEY_ID env var
+              type: string
+            secret_access_key:
+              description: static IAM user credential; overrides AWS_SECRET_ACCESS_KEY env var
+              type: string
+            session_token:
+              description: static IAM user credential; overrides AWS_SESSION_TOKEN env var
+              type: string
+      additionalProperties: false
+      required:
+        - type
+      title: AIGatewayModelProviderConfigAuthSagemaker
     AIGatewayModelProviderConfigAuthVertex:
       description: |-
         **Pre-release Feature**
@@ -60424,6 +60630,7 @@ components:
           vllm: '#/components/schemas/AIGatewayModelProviderVllm'
           xai: '#/components/schemas/AIGatewayModelProviderXai'
           vertex: '#/components/schemas/AIGatewayModelProviderVertex'
+          sagemaker: '#/components/schemas/AIGatewayModelProviderSagemaker'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayModelProviderAnthropic'
         - $ref: '#/components/schemas/AIGatewayModelProviderAzure'
@@ -60444,6 +60651,7 @@ components:
         - $ref: '#/components/schemas/AIGatewayModelProviderVllm'
         - $ref: '#/components/schemas/AIGatewayModelProviderXai'
         - $ref: '#/components/schemas/AIGatewayModelProviderVertex'
+        - $ref: '#/components/schemas/AIGatewayModelProviderSagemaker'
     UpdateAIGatewayModelProviderRequest:
       description: |-
         **Pre-release Feature**
@@ -60470,6 +60678,7 @@ components:
           vllm: '#/components/schemas/AIGatewayModelProviderVllm'
           xai: '#/components/schemas/AIGatewayModelProviderXai'
           vertex: '#/components/schemas/AIGatewayModelProviderVertex'
+          sagemaker: '#/components/schemas/AIGatewayModelProviderSagemaker'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayModelProviderAnthropic'
         - $ref: '#/components/schemas/AIGatewayModelProviderAzure'
@@ -60490,6 +60699,7 @@ components:
         - $ref: '#/components/schemas/AIGatewayModelProviderVllm'
         - $ref: '#/components/schemas/AIGatewayModelProviderXai'
         - $ref: '#/components/schemas/AIGatewayModelProviderVertex'
+        - $ref: '#/components/schemas/AIGatewayModelProviderSagemaker'
     AIGatewayModelProvider:
       description: |-
         **Pre-release Feature**
@@ -60524,6 +60734,7 @@ components:
           vllm: '#/components/schemas/AIGatewayModelProviderVllm'
           xai: '#/components/schemas/AIGatewayModelProviderXai'
           vertex: '#/components/schemas/AIGatewayModelProviderVertex'
+          sagemaker: '#/components/schemas/AIGatewayModelProviderSagemaker'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayModelProviderAnthropic'
         - $ref: '#/components/schemas/AIGatewayModelProviderAzure'
@@ -60544,6 +60755,7 @@ components:
         - $ref: '#/components/schemas/AIGatewayModelProviderVllm'
         - $ref: '#/components/schemas/AIGatewayModelProviderXai'
         - $ref: '#/components/schemas/AIGatewayModelProviderVertex'
+        - $ref: '#/components/schemas/AIGatewayModelProviderSagemaker'
       required:
         - id
         - created_at
