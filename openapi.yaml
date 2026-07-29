@@ -54807,18 +54807,6 @@ components:
             This feature is currently in beta and is subject to change.
           type: object
           additionalProperties: false
-          not:
-            anyOf:
-              - required:
-                  - assume_role_arn
-                not:
-                  required:
-                    - role_session_name
-              - required:
-                  - role_session_name
-                not:
-                  required:
-                    - assume_role_arn
           properties:
             region:
               description: Overrides the AWS_REGION environment variable for SageMaker requests.
