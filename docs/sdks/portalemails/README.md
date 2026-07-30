@@ -810,7 +810,9 @@ func main() {
     res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         TemplateName: components.EmailTemplateNameAccountAccessApproved,
-        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{
+            Enabled: sdkkonnectgo.Pointer(true),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -846,7 +848,9 @@ func main() {
     res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         TemplateName: components.EmailTemplateNameConfirmEmailAddress,
-        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{
+            Enabled: sdkkonnectgo.Pointer(true),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -882,7 +886,9 @@ func main() {
     res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         TemplateName: components.EmailTemplateNameAccountAccessApproved,
-        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{
+            Enabled: sdkkonnectgo.Pointer(true),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -918,7 +924,9 @@ func main() {
     res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         TemplateName: components.EmailTemplateNameAccountAccessApproved,
-        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{
+            Enabled: sdkkonnectgo.Pointer(true),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -954,7 +962,9 @@ func main() {
     res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         TemplateName: components.EmailTemplateNameResetPassword,
-        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{
+            Enabled: sdkkonnectgo.Pointer(true),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -997,6 +1007,7 @@ func main() {
                 Body: sdkkonnectgo.Pointer("Hello {{ developer_fullname }},\\n\\your registration has been **revoked**."),
                 ButtonLabel: sdkkonnectgo.Pointer("Acknowledge"),
             },
+            Enabled: sdkkonnectgo.Pointer(true),
         },
     })
     if err != nil {
