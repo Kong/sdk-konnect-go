@@ -11,6 +11,256 @@ import (
 	"time"
 )
 
+type AIGatewayModelProviderSagemakerAIGatewayModelProviderType string
+
+const (
+	AIGatewayModelProviderSagemakerAIGatewayModelProviderTypeSagemaker AIGatewayModelProviderSagemakerAIGatewayModelProviderType = "sagemaker"
+)
+
+func (e AIGatewayModelProviderSagemakerAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderSagemakerAIGatewayModelProviderType {
+	return &e
+}
+func (e *AIGatewayModelProviderSagemakerAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sagemaker":
+		*e = AIGatewayModelProviderSagemakerAIGatewayModelProviderType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelProviderSagemakerAIGatewayModelProviderType: %v", v)
+	}
+}
+
+type AIGatewayModelProviderSagemakerAuthOutputType string
+
+const (
+	AIGatewayModelProviderSagemakerAuthOutputTypeBasic     AIGatewayModelProviderSagemakerAuthOutputType = "basic"
+	AIGatewayModelProviderSagemakerAuthOutputTypeSagemaker AIGatewayModelProviderSagemakerAuthOutputType = "sagemaker"
+)
+
+type AIGatewayModelProviderSagemakerAuthOutput struct {
+	AIGatewayModelProviderConfigAuthBasicOutput *AIGatewayModelProviderConfigAuthBasicOutput `queryParam:"inline" union:"member"`
+	AIGatewayModelProviderConfigAuthSagemaker   *AIGatewayModelProviderConfigAuthSagemaker   `queryParam:"inline" union:"member"`
+
+	Type AIGatewayModelProviderSagemakerAuthOutputType
+}
+
+func CreateAIGatewayModelProviderSagemakerAuthOutputBasic(basic AIGatewayModelProviderConfigAuthBasicOutput) AIGatewayModelProviderSagemakerAuthOutput {
+	typ := AIGatewayModelProviderSagemakerAuthOutputTypeBasic
+
+	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
+	basic.Type = typStr
+
+	return AIGatewayModelProviderSagemakerAuthOutput{
+		AIGatewayModelProviderConfigAuthBasicOutput: &basic,
+		Type: typ,
+	}
+}
+
+func CreateAIGatewayModelProviderSagemakerAuthOutputSagemaker(sagemaker AIGatewayModelProviderConfigAuthSagemaker) AIGatewayModelProviderSagemakerAuthOutput {
+	typ := AIGatewayModelProviderSagemakerAuthOutputTypeSagemaker
+
+	typStr := AIGatewayModelProviderConfigAuthSagemakerType(typ)
+	sagemaker.Type = typStr
+
+	return AIGatewayModelProviderSagemakerAuthOutput{
+		AIGatewayModelProviderConfigAuthSagemaker: &sagemaker,
+		Type: typ,
+	}
+}
+
+func (u *AIGatewayModelProviderSagemakerAuthOutput) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "basic":
+		aiGatewayModelProviderConfigAuthBasicOutput := new(AIGatewayModelProviderConfigAuthBasicOutput)
+		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderConfigAuthBasicOutput, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == basic) type AIGatewayModelProviderConfigAuthBasicOutput within AIGatewayModelProviderSagemakerAuthOutput: %w", string(data), err)
+		}
+
+		u.AIGatewayModelProviderConfigAuthBasicOutput = aiGatewayModelProviderConfigAuthBasicOutput
+		u.Type = AIGatewayModelProviderSagemakerAuthOutputTypeBasic
+		return nil
+	case "sagemaker":
+		aiGatewayModelProviderConfigAuthSagemaker := new(AIGatewayModelProviderConfigAuthSagemaker)
+		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderConfigAuthSagemaker, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == sagemaker) type AIGatewayModelProviderConfigAuthSagemaker within AIGatewayModelProviderSagemakerAuthOutput: %w", string(data), err)
+		}
+
+		u.AIGatewayModelProviderConfigAuthSagemaker = aiGatewayModelProviderConfigAuthSagemaker
+		u.Type = AIGatewayModelProviderSagemakerAuthOutputTypeSagemaker
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayModelProviderSagemakerAuthOutput", string(data))
+}
+
+func (u AIGatewayModelProviderSagemakerAuthOutput) MarshalJSON() ([]byte, error) {
+	if u.AIGatewayModelProviderConfigAuthBasicOutput != nil {
+		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthBasicOutput, "", true)
+	}
+
+	if u.AIGatewayModelProviderConfigAuthSagemaker != nil {
+		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthSagemaker, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type AIGatewayModelProviderSagemakerAuthOutput: all fields are null")
+}
+
+// AIGatewayModelProviderSagemakerConfigOutput - **Pre-release Feature**
+// This feature is currently in beta and is subject to change.
+type AIGatewayModelProviderSagemakerConfigOutput struct {
+	Auth AIGatewayModelProviderSagemakerAuthOutput `json:"auth"`
+}
+
+func (a AIGatewayModelProviderSagemakerConfigOutput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayModelProviderSagemakerConfigOutput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"auth"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayModelProviderSagemakerConfigOutput) GetAuth() AIGatewayModelProviderSagemakerAuthOutput {
+	if a == nil {
+		return AIGatewayModelProviderSagemakerAuthOutput{}
+	}
+	return a.Auth
+}
+
+func (a *AIGatewayModelProviderSagemakerConfigOutput) GetAuthBasic() *AIGatewayModelProviderConfigAuthBasicOutput {
+	return a.GetAuth().AIGatewayModelProviderConfigAuthBasicOutput
+}
+
+func (a *AIGatewayModelProviderSagemakerConfigOutput) GetAuthSagemaker() *AIGatewayModelProviderConfigAuthSagemaker {
+	return a.GetAuth().AIGatewayModelProviderConfigAuthSagemaker
+}
+
+// AIGatewayModelProviderAIGatewayModelProviderSagemaker - **Pre-release Feature**
+// This feature is currently in beta and is subject to change.
+//
+// Config for Sagemaker model provider.
+type AIGatewayModelProviderAIGatewayModelProviderSagemaker struct {
+	Type AIGatewayModelProviderSagemakerAIGatewayModelProviderType `json:"type"`
+	// The display name for this model provider instance.
+	DisplayName string `json:"display_name"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
+	Name string `json:"name"`
+	// Public labels store information about an entity that can be used for filtering a list of objects.
+	//
+	// Public labels are intended to store **PUBLIC** metadata.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
+	Labels map[string]string `json:"labels,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	Config AIGatewayModelProviderSagemakerConfigOutput `json:"config"`
+	// Contains a unique identifier used for this resource.
+	ID string `json:"id"`
+	// An ISO-8601 timestamp representation of entity creation date.
+	CreatedAt time.Time `json:"created_at"`
+	// An ISO-8601 timestamp representation of entity update date.
+	UpdatedAt time.Time `json:"updated_at"`
+}
+
+func (a AIGatewayModelProviderAIGatewayModelProviderSagemaker) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "display_name", "name", "config", "id", "created_at", "updated_at"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetType() AIGatewayModelProviderSagemakerAIGatewayModelProviderType {
+	if a == nil {
+		return AIGatewayModelProviderSagemakerAIGatewayModelProviderType("")
+	}
+	return a.Type
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetDisplayName() string {
+	if a == nil {
+		return ""
+	}
+	return a.DisplayName
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetName() string {
+	if a == nil {
+		return ""
+	}
+	return a.Name
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetLabels() map[string]string {
+	if a == nil {
+		return nil
+	}
+	return a.Labels
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetManagedBy() map[string]string {
+	if a == nil {
+		return nil
+	}
+	return a.ManagedBy
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetConfig() AIGatewayModelProviderSagemakerConfigOutput {
+	if a == nil {
+		return AIGatewayModelProviderSagemakerConfigOutput{}
+	}
+	return a.Config
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetID() string {
+	if a == nil {
+		return ""
+	}
+	return a.ID
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetCreatedAt() time.Time {
+	if a == nil {
+		return time.Time{}
+	}
+	return a.CreatedAt
+}
+
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetUpdatedAt() time.Time {
+	if a == nil {
+		return time.Time{}
+	}
+	return a.UpdatedAt
+}
+
 type AIGatewayModelProviderVertexAIGatewayModelProviderType string
 
 const (
@@ -3386,6 +3636,7 @@ const (
 	AIGatewayModelProviderTypeVllm        AIGatewayModelProviderType = "vllm"
 	AIGatewayModelProviderTypeXai         AIGatewayModelProviderType = "xai"
 	AIGatewayModelProviderTypeVertex      AIGatewayModelProviderType = "vertex"
+	AIGatewayModelProviderTypeSagemaker   AIGatewayModelProviderType = "sagemaker"
 )
 
 // AIGatewayModelProvider - **Pre-release Feature**
@@ -3410,6 +3661,7 @@ type AIGatewayModelProvider struct {
 	AIGatewayModelProviderAIGatewayModelProviderVllm        *AIGatewayModelProviderAIGatewayModelProviderVllm        `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderAIGatewayModelProviderXai         *AIGatewayModelProviderAIGatewayModelProviderXai         `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderAIGatewayModelProviderVertex      *AIGatewayModelProviderAIGatewayModelProviderVertex      `queryParam:"inline" union:"member"`
+	AIGatewayModelProviderAIGatewayModelProviderSagemaker   *AIGatewayModelProviderAIGatewayModelProviderSagemaker   `queryParam:"inline" union:"member"`
 
 	Type AIGatewayModelProviderType
 }
@@ -3642,6 +3894,18 @@ func CreateAIGatewayModelProviderVertex(vertex AIGatewayModelProviderAIGatewayMo
 	}
 }
 
+func CreateAIGatewayModelProviderSagemaker(sagemaker AIGatewayModelProviderAIGatewayModelProviderSagemaker) AIGatewayModelProvider {
+	typ := AIGatewayModelProviderTypeSagemaker
+
+	typStr := AIGatewayModelProviderSagemakerAIGatewayModelProviderType(typ)
+	sagemaker.Type = typStr
+
+	return AIGatewayModelProvider{
+		AIGatewayModelProviderAIGatewayModelProviderSagemaker: &sagemaker,
+		Type: typ,
+	}
+}
+
 func (u *AIGatewayModelProvider) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -3825,6 +4089,15 @@ func (u *AIGatewayModelProvider) UnmarshalJSON(data []byte) error {
 		u.AIGatewayModelProviderAIGatewayModelProviderVertex = aiGatewayModelProviderAIGatewayModelProviderVertex
 		u.Type = AIGatewayModelProviderTypeVertex
 		return nil
+	case "sagemaker":
+		aiGatewayModelProviderAIGatewayModelProviderSagemaker := new(AIGatewayModelProviderAIGatewayModelProviderSagemaker)
+		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderAIGatewayModelProviderSagemaker, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == sagemaker) type AIGatewayModelProviderAIGatewayModelProviderSagemaker within AIGatewayModelProvider: %w", string(data), err)
+		}
+
+		u.AIGatewayModelProviderAIGatewayModelProviderSagemaker = aiGatewayModelProviderAIGatewayModelProviderSagemaker
+		u.Type = AIGatewayModelProviderTypeSagemaker
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayModelProvider", string(data))
@@ -3905,6 +4178,10 @@ func (u AIGatewayModelProvider) MarshalJSON() ([]byte, error) {
 
 	if u.AIGatewayModelProviderAIGatewayModelProviderVertex != nil {
 		return utils.MarshalJSON(u.AIGatewayModelProviderAIGatewayModelProviderVertex, "", true)
+	}
+
+	if u.AIGatewayModelProviderAIGatewayModelProviderSagemaker != nil {
+		return utils.MarshalJSON(u.AIGatewayModelProviderAIGatewayModelProviderSagemaker, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AIGatewayModelProvider: all fields are null")

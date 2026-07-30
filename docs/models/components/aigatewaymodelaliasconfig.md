@@ -5,6 +5,18 @@ Configuration for routing to this model using an alias.
 
 ## Supported Types
 
+### AIGatewayModelAliasConfigBody
+
+```go
+aiGatewayModelAliasConfig := components.CreateAIGatewayModelAliasConfigAIGatewayModelAliasConfigBody(components.AIGatewayModelAliasConfigBody{/* values here */})
+```
+
+### AIGatewayModelAliasConfigHeaders
+
+```go
+aiGatewayModelAliasConfig := components.CreateAIGatewayModelAliasConfigAIGatewayModelAliasConfigHeaders(components.AIGatewayModelAliasConfigHeaders{/* values here */})
+```
+
 ### AIGatewayModelAliasConfigPath
 
 ```go
@@ -17,6 +29,10 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch aiGatewayModelAliasConfig.Type {
+	case components.AIGatewayModelAliasConfigTypeAIGatewayModelAliasConfigBody:
+		// aiGatewayModelAliasConfig.AIGatewayModelAliasConfigBody is populated
+	case components.AIGatewayModelAliasConfigTypeAIGatewayModelAliasConfigHeaders:
+		// aiGatewayModelAliasConfig.AIGatewayModelAliasConfigHeaders is populated
 	case components.AIGatewayModelAliasConfigTypeAIGatewayModelAliasConfigPath:
 		// aiGatewayModelAliasConfig.AIGatewayModelAliasConfigPath is populated
 }

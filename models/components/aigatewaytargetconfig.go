@@ -32,6 +32,7 @@ const (
 	AIGatewayTargetConfigTypeVertex      AIGatewayTargetConfigType = "vertex"
 	AIGatewayTargetConfigTypeVllm        AIGatewayTargetConfigType = "vllm"
 	AIGatewayTargetConfigTypeXai         AIGatewayTargetConfigType = "xai"
+	AIGatewayTargetConfigTypeSagemaker   AIGatewayTargetConfigType = "sagemaker"
 )
 
 // AIGatewayTargetConfig - **Pre-release Feature**
@@ -58,6 +59,7 @@ type AIGatewayTargetConfig struct {
 	AIGatewayTargetVertexConfig      *AIGatewayTargetVertexConfig      `queryParam:"inline" union:"member"`
 	AIGatewayTargetVllmConfig        *AIGatewayTargetVllmConfig        `queryParam:"inline" union:"member"`
 	AIGatewayTargetXaiConfig         *AIGatewayTargetXaiConfig         `queryParam:"inline" union:"member"`
+	AIGatewayTargetSagemakerConfig   *AIGatewayTargetSagemakerConfig   `queryParam:"inline" union:"member"`
 
 	Type AIGatewayTargetConfigType
 }
@@ -290,6 +292,18 @@ func CreateAIGatewayTargetConfigXai(xai AIGatewayTargetXaiConfig) AIGatewayTarge
 	}
 }
 
+func CreateAIGatewayTargetConfigSagemaker(sagemaker AIGatewayTargetSagemakerConfig) AIGatewayTargetConfig {
+	typ := AIGatewayTargetConfigTypeSagemaker
+
+	typStr := AIGatewayTargetSagemakerConfigType(typ)
+	sagemaker.Type = typStr
+
+	return AIGatewayTargetConfig{
+		AIGatewayTargetSagemakerConfig: &sagemaker,
+		Type:                           typ,
+	}
+}
+
 func (u *AIGatewayTargetConfig) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -473,6 +487,15 @@ func (u *AIGatewayTargetConfig) UnmarshalJSON(data []byte) error {
 		u.AIGatewayTargetXaiConfig = aiGatewayTargetXaiConfig
 		u.Type = AIGatewayTargetConfigTypeXai
 		return nil
+	case "sagemaker":
+		aiGatewayTargetSagemakerConfig := new(AIGatewayTargetSagemakerConfig)
+		if err := utils.UnmarshalJSON(data, &aiGatewayTargetSagemakerConfig, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == sagemaker) type AIGatewayTargetSagemakerConfig within AIGatewayTargetConfig: %w", string(data), err)
+		}
+
+		u.AIGatewayTargetSagemakerConfig = aiGatewayTargetSagemakerConfig
+		u.Type = AIGatewayTargetConfigTypeSagemaker
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayTargetConfig", string(data))
@@ -553,6 +576,10 @@ func (u AIGatewayTargetConfig) MarshalJSON() ([]byte, error) {
 
 	if u.AIGatewayTargetXaiConfig != nil {
 		return utils.MarshalJSON(u.AIGatewayTargetXaiConfig, "", true)
+	}
+
+	if u.AIGatewayTargetSagemakerConfig != nil {
+		return utils.MarshalJSON(u.AIGatewayTargetSagemakerConfig, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AIGatewayTargetConfig: all fields are null")

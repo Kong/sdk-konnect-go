@@ -122,6 +122,12 @@ aiGatewayTargetConfig := components.CreateAIGatewayTargetConfigVllm(components.A
 aiGatewayTargetConfig := components.CreateAIGatewayTargetConfigXai(components.AIGatewayTargetXaiConfig{/* values here */})
 ```
 
+### AIGatewayTargetSagemakerConfig
+
+```go
+aiGatewayTargetConfig := components.CreateAIGatewayTargetConfigSagemaker(components.AIGatewayTargetSagemakerConfig{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -166,5 +172,7 @@ switch aiGatewayTargetConfig.Type {
 		// aiGatewayTargetConfig.AIGatewayTargetVllmConfig is populated
 	case components.AIGatewayTargetConfigTypeXai:
 		// aiGatewayTargetConfig.AIGatewayTargetXaiConfig is populated
+	case components.AIGatewayTargetConfigTypeSagemaker:
+		// aiGatewayTargetConfig.AIGatewayTargetSagemakerConfig is populated
 }
 ```

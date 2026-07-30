@@ -157,3 +157,7 @@ func (a *AIGatewayTarget) GetConfigVllm() *AIGatewayTargetVllmConfig {
 func (a *AIGatewayTarget) GetConfigXai() *AIGatewayTargetXaiConfig {
 	return a.GetConfig().AIGatewayTargetXaiConfig
 }
+
+func (a *AIGatewayTarget) GetConfigSagemaker() *AIGatewayTargetSagemakerConfig {
+	return a.GetConfig().AIGatewayTargetSagemakerConfig
+}
