@@ -1,0 +1,16 @@
+# AIGatewayAzureEmbeddingsModelConfig
+
+**Pre-release Feature**
+This feature is currently in beta and is subject to change.
+
+Azure-specific configuration for a model.
+
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `UpstreamURL`                                                                                                            | `*string`                                                                                                                | :heavy_minus_sign:                                                                                                       | The URL of the embeddings model.                                                                                         |
+| `Type`                                                                                                                   | [components.AIGatewayAzureEmbeddingsModelConfigType](../../models/components/aigatewayazureembeddingsmodelconfigtype.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `DeploymentID`                                                                                                           | `string`                                                                                                                 | :heavy_check_mark:                                                                                                       | The Azure deployment ID for the model.                                                                                   |
+| `APIVersion`                                                                                                             | `*string`                                                                                                                | :heavy_minus_sign:                                                                                                       | The Azure OpenAI API version to use.                                                                                     |

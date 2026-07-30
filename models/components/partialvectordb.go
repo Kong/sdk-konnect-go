@@ -7,20 +7,20 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// DistanceMetric - the distance metric to use for vector searches
-type DistanceMetric string
+// PartialVectordbDistanceMetric - the distance metric to use for vector searches
+type PartialVectordbDistanceMetric string
 
 const (
-	DistanceMetricCosine    DistanceMetric = "cosine"
-	DistanceMetricEuclidean DistanceMetric = "euclidean"
+	PartialVectordbDistanceMetricCosine    PartialVectordbDistanceMetric = "cosine"
+	PartialVectordbDistanceMetricEuclidean PartialVectordbDistanceMetric = "euclidean"
 )
 
-func (e DistanceMetric) ToPointer() *DistanceMetric {
+func (e PartialVectordbDistanceMetric) ToPointer() *PartialVectordbDistanceMetric {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *DistanceMetric) IsExact() bool {
+func (e *PartialVectordbDistanceMetric) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "cosine", "euclidean":
@@ -650,9 +650,9 @@ type PartialVectordbConfig struct {
 	// the desired dimensionality for the vectors
 	Dimensions int64 `json:"dimensions"`
 	// the distance metric to use for vector searches
-	DistanceMetric DistanceMetric `json:"distance_metric"`
-	Pgvector       *Pgvector      `json:"pgvector,omitempty"`
-	Redis          *Redis         `json:"redis,omitempty"`
+	DistanceMetric PartialVectordbDistanceMetric `json:"distance_metric"`
+	Pgvector       *Pgvector                     `json:"pgvector,omitempty"`
+	Redis          *Redis                        `json:"redis,omitempty"`
 	// which vector database driver to use
 	Strategy PartialVectordbStrategy `json:"strategy"`
 	// the default similarity threshold for accepting semantic search results (float). Higher threshold means more results are considered similar.
@@ -677,9 +677,9 @@ func (p *PartialVectordbConfig) GetDimensions() int64 {
 	return p.Dimensions
 }
 
-func (p *PartialVectordbConfig) GetDistanceMetric() DistanceMetric {
+func (p *PartialVectordbConfig) GetDistanceMetric() PartialVectordbDistanceMetric {
 	if p == nil {
-		return DistanceMetric("")
+		return PartialVectordbDistanceMetric("")
 	}
 	return p.DistanceMetric
 }
