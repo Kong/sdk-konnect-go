@@ -71,6 +71,8 @@ UPDATE_PORTAL_IDENTITY_PROVIDER_OVERLAY = \
 	$(SPEAKEASY_DIR)/overlays/update-portal-identity-provider-defaults.yaml
 UPDATE_DCR_CONFIG_HTTP_OVERLAY = \
 	$(SPEAKEASY_DIR)/overlays/update-dcr-config-http-defaults.yaml
+BACKEND_CLUSTER_TLS_OVERLAY = \
+	$(SPEAKEASY_DIR)/overlays/backend-cluster-tls-defaults.yaml
 KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
 
 
@@ -183,10 +185,16 @@ validate.update-dcr-config-http-overlay: speakeasy
 	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) \
 		--overlay $(UPDATE_DCR_CONFIG_HTTP_OVERLAY) --out /dev/null
 
+.PHONY: validate.backend-cluster-tls-overlay
+validate.backend-cluster-tls-overlay: speakeasy
+	speakeasy overlay validate --overlay $(BACKEND_CLUSTER_TLS_OVERLAY)
+	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) \
+		--overlay $(BACKEND_CLUSTER_TLS_OVERLAY) --out /dev/null
+
 .PHONY: generate.sdk.speakeasy
 generate.sdk.speakeasy: validate.update-portal-overlay validate.update-portal-audit-log-webhook-overlay \
 	validate.patch-custom-portal-email-template-overlay validate.update-portal-identity-provider-overlay \
-	validate.update-dcr-config-http-overlay
+	validate.update-dcr-config-http-overlay validate.backend-cluster-tls-overlay
 	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
 
 .PHONY: lint.sdk
