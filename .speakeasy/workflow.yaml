@@ -1,5 +1,5 @@
 workflowVersion: 1.0.0
-speakeasyVersion: 1.790.2
+speakeasyVersion: 1.791.0
 sources:
     konnect:
         inputs:
@@ -10,6 +10,7 @@ sources:
             - location: ./.speakeasy/overlays/patch-custom-portal-email-template-defaults.yaml
             - location: ./.speakeasy/overlays/update-portal-identity-provider-defaults.yaml
             - location: ./.speakeasy/overlays/update-dcr-config-http-defaults.yaml
+            - location: ./.speakeasy/overlays/backend-cluster-tls-defaults.yaml
         registry:
             location: registry.speakeasyapi.dev/kong/kong/konnect
 targets:
