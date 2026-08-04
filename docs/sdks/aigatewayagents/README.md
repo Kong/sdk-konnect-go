@@ -119,6 +119,9 @@ func main() {
                     },
                 },
             )),
+            IdentityProviders: []string{
+                "okta-ai-se",
+            },
         },
         Config: components.CreateAIGatewayAgentRequestConfig{
             URL: "https://booking-agent.internal.kongair.com",
@@ -285,6 +288,9 @@ func main() {
                         },
                     },
                 )),
+                IdentityProviders: []string{
+                    "okta-ai-se",
+                },
             },
             Config: components.UpdateAIGatewayAgentRequestConfig{
                 URL: "https://booking-agent.internal.kongair.com",
