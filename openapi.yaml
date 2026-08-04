@@ -23455,6 +23455,21 @@ components:
         - page
       title: PaginatedMeta
       x-speakeasy-terraform-ignore: true
+    ManagedBy:
+      description: |
+        Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+
+        Keys must be 1–63 characters long and start with an alphanumeric character.
+      type: object
+      example:
+        owner: terraform
+      additionalProperties:
+        type: string
+        pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
+        minLength: 1
+        maxLength: 63
+      maxProperties: 5
+      title: ManagedBy
     BaseError:
       description: standard error
       type: object
@@ -52636,68 +52651,89 @@ components:
           items:
             type: string
         model:
-          $ref: '#/components/schemas/AIGatewayModelAliasConfig'
+          $ref: '#/components/schemas/AIGatewayModelSelectorConfig'
       additionalProperties: false
-    AIGatewayModelAliasConfig:
-      description: Configuration for routing to this model using an alias.
+    AIGatewayModelSelectorConfig:
+      description: |
+        Configuration for overriding routing to this model using a selector.
+        When not set, a default model selector will be created using the model's name and format.
       oneOf:
-        - $ref: '#/components/schemas/AIGatewayModelAliasConfigBody'
-        - $ref: '#/components/schemas/AIGatewayModelAliasConfigHeaders'
-        - $ref: '#/components/schemas/AIGatewayModelAliasConfigPath'
-      title: AIGatewayModelAliasConfig
-    AIGatewayModelAliasConfigBody:
+        - $ref: '#/components/schemas/AIGatewayModelSelectorConfigBody'
+        - $ref: '#/components/schemas/AIGatewayModelSelectorConfigHeaders'
+        - $ref: '#/components/schemas/AIGatewayModelSelectorConfigPath'
+      title: AIGatewayModelSelectorConfig
+    AIGatewayModelSelectorConfigBody:
       description: |
         Configuration for routing requests to a specific model using a request body property.
       type: object
       properties:
-        body:
+        body_param:
+          description: The body property name to match for routing.
+          type: string
+          example: model
+        values:
           description: |
-            Value indexed by property name that will cause this route to match if present in the request body.
-          type: object
+            The list of values that are matched against the body property value.
+            If the body property value matches any of the specified values, the request will be routed to the corresponding model.
+          type: array
+          items:
+            type: string
           example:
-            model:
-              - '@azure/claude-sonnet-5'
-          additionalProperties: true
-          maxProperties: 1
+            - gpt-3.5-turbo
+          maxItems: 1
       additionalProperties: false
       required:
-        - body
-      title: AIGatewayModelAliasConfigBody
-    AIGatewayModelAliasConfigHeaders:
+        - body_param
+        - values
+      title: AIGatewayModelSelectorConfigBody
+    AIGatewayModelSelectorConfigHeaders:
       description: |
         Configuration for routing requests to a specific model using a header.
       type: object
       properties:
-        headers:
+        header_param:
+          description: The header property name to match for routing.
+          type: string
+          example: x-model
+        values:
           description: |
-            Value indexed by property name that will cause this route to match if present in the request headers.
-          type: object
-          example:
-            model:
-              - '@azure/claude-sonnet-5'
-          additionalProperties: true
-          maxProperties: 1
-      additionalProperties: false
-      required:
-        - headers
-      title: AIGatewayModelAliasConfigHeaders
-    AIGatewayModelAliasConfigPath:
-      description: |
-        Configuration for routing requests to a specific model using a path alias.
-      type: object
-      properties:
-        path_aliases:
-          description: |
-            Value that will cause this route to match if present in the request path.
+            The list of values that are matched against the header property value.
+            If the header property value matches any of the specified values, the request will be routed to the corresponding model.
           type: array
           items:
             type: string
-            example: '@azure/claude-sonnet-5'
+          example:
+            - '@azure/claude-sonnet-5'
           maxItems: 1
       additionalProperties: false
       required:
-        - path_aliases
-      title: AIGatewayModelAliasConfigPath
+        - header_param
+        - values
+      title: AIGatewayModelSelectorConfigHeaders
+    AIGatewayModelSelectorConfigPath:
+      description: |
+        Configuration for routing requests to a specific model using a path selector.
+      type: object
+      properties:
+        path_param:
+          description: The path param name to match for routing.
+          type: string
+          example: x-model
+        values:
+          description: |
+            The list of values that are matched against the path param value.
+            If the path param value matches any of the specified values, the request will be routed to the corresponding model.
+          type: array
+          items:
+            type: string
+          example:
+            - '@azure/claude-sonnet-5'
+          maxItems: 1
+      additionalProperties: false
+      required:
+        - path_param
+        - values
+      title: AIGatewayModelSelectorConfigPath
     AIGatewayModelBalancerConfig:
       description: |-
         **Pre-release Feature**
@@ -54907,6 +54943,14 @@ components:
       properties:
         acls:
           $ref: '#/components/schemas/AIGatewayACLS'
+        identity_providers:
+          description: |
+            List of identity providers for granting access to the agent.
+            At most 1 identity provider of each identity provider type can be referenced.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayIdentityProviderReference'
+          maxItems: 1
       additionalProperties: false
     AIGatewayModelAccess:
       description: |-
@@ -60848,21 +60892,6 @@ components:
               example: 'kong:trace:1234567890'
             detail:
               example: Too Many Requests
-    ManagedBy:
-      description: |
-        Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-
-        Keys must be 1–63 characters long and start with an alphanumeric character.
-      type: object
-      example:
-        owner: terraform
-      additionalProperties:
-        type: string
-        pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
-        minLength: 1
-        maxLength: 63
-      maxProperties: 5
-      title: ManagedBy
     MCPServerPodsStatus:
       type: object
       properties:
@@ -75069,7 +75098,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.5.1
+    version: 0.7.0
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.0.1
@@ -75087,7 +75116,7 @@ x-input-schemas:
     version: 3.15.0
     path: src/konnect/definitions/control-planes-config/v2/openapi.yaml
   - title: Konnect Control Planes
-    version: 2.0.3
+    version: 2.1.0
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
     version: 1.2.0
