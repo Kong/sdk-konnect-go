@@ -13,6 +13,10 @@ type AIGatewayAgentAccess struct {
 	//
 	// Access control rules. Configure exactly one of `allow` or `deny`.
 	Acls *AIGatewayACLS `json:"acls,omitempty"`
+	// List of identity providers for granting access to the agent.
+	// At most 1 identity provider of each identity provider type can be referenced.
+	//
+	IdentityProviders []string `json:"identity_providers,omitempty"`
 }
 
 func (a *AIGatewayAgentAccess) GetAcls() *AIGatewayACLS {
@@ -20,4 +24,11 @@ func (a *AIGatewayAgentAccess) GetAcls() *AIGatewayACLS {
 		return nil
 	}
 	return a.Acls
+}
+
+func (a *AIGatewayAgentAccess) GetIdentityProviders() []string {
+	if a == nil {
+		return nil
+	}
+	return a.IdentityProviders
 }

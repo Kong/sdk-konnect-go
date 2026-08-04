@@ -36,8 +36,10 @@ type AIGatewayModelRouteConfig struct {
 	StripPath *bool `default:"true" json:"strip_path"`
 	// An optional set of strings associated with the route for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
-	// Configuration for routing to this model using an alias.
-	Model *AIGatewayModelAliasConfig `json:"model,omitempty"`
+	// Configuration for overriding routing to this model using a selector.
+	// When not set, a default model selector will be created using the model's name and format.
+	//
+	Model *AIGatewayModelSelectorConfig `json:"model,omitempty"`
 }
 
 func (a AIGatewayModelRouteConfig) MarshalJSON() ([]byte, error) {
@@ -135,7 +137,7 @@ func (a *AIGatewayModelRouteConfig) GetTags() []string {
 	return a.Tags
 }
 
-func (a *AIGatewayModelRouteConfig) GetModel() *AIGatewayModelAliasConfig {
+func (a *AIGatewayModelRouteConfig) GetModel() *AIGatewayModelSelectorConfig {
 	if a == nil {
 		return nil
 	}
