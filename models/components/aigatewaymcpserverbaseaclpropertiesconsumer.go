@@ -9,27 +9,27 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// ACLAttributeType - The type of attributes that ACL is evaluated with.
-type ACLAttributeType string
+// AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType - The type of attributes that ACL is evaluated with.
+type AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType string
 
 const (
-	ACLAttributeTypeConsumer ACLAttributeType = "consumer"
+	AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeTypeConsumer AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType = "consumer"
 )
 
-func (e ACLAttributeType) ToPointer() *ACLAttributeType {
+func (e AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType) ToPointer() *AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType {
 	return &e
 }
-func (e *ACLAttributeType) UnmarshalJSON(data []byte) error {
+func (e *AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "consumer":
-		*e = ACLAttributeType(v)
+		*e = AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ACLAttributeType: %v", v)
+		return fmt.Errorf("invalid value for AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType: %v", v)
 	}
 }
 
@@ -37,7 +37,7 @@ func (e *ACLAttributeType) UnmarshalJSON(data []byte) error {
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerBaseACLPropertiesConsumer struct {
 	// The type of attributes that ACL is evaluated with.
-	ACLAttributeType *ACLAttributeType `default:"consumer" json:"acl_attribute_type"`
+	ACLAttributeType *AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType `default:"consumer" json:"acl_attribute_type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -61,7 +61,7 @@ func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) UnmarshalJSON(data []byte)
 	return nil
 }
 
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetACLAttributeType() *ACLAttributeType {
+func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetACLAttributeType() *AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType {
 	if a == nil {
 		return nil
 	}
