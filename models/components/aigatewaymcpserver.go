@@ -239,7 +239,7 @@ type AIGatewayMCPServerAIGatewayMCPServerPassthroughListener struct {
 	Tools []AIGatewayMCPToolBase `json:"tools,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
-	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
+	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -304,23 +304,23 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetTools() []A
 	return a.Tools
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccess() *AIGatewayMCPServerBaseACLProperties {
+func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccess() *AIGatewayMCPServerListenerAccess {
 	if a == nil {
 		return nil
 	}
 	return a.Access
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
+func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccessConsumer() *AIGatewayMCPServerListenerConsumer {
 	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
+		return v.AIGatewayMCPServerListenerConsumer
 	}
 	return nil
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
+func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccessOauthAccessToken() *AIGatewayMCPServerListenerOauth {
 	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesOauth
+		return v.AIGatewayMCPServerListenerOauth
 	}
 	return nil
 }
@@ -431,7 +431,7 @@ type AIGatewayMCPServerAIGatewayMCPServerListener struct {
 	Tools []AIGatewayMCPToolBase `json:"tools,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
-	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
+	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -496,23 +496,23 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetTools() []AIGatewayMCP
 	return a.Tools
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccess() *AIGatewayMCPServerBaseACLProperties {
+func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccess() *AIGatewayMCPServerListenerAccess {
 	if a == nil {
 		return nil
 	}
 	return a.Access
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
+func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccessConsumer() *AIGatewayMCPServerListenerConsumer {
 	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
+		return v.AIGatewayMCPServerListenerConsumer
 	}
 	return nil
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
+func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccessOauthAccessToken() *AIGatewayMCPServerListenerOauth {
 	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesOauth
+		return v.AIGatewayMCPServerListenerOauth
 	}
 	return nil
 }
@@ -623,7 +623,7 @@ type AIGatewayMCPServerAIGatewayMCPServerConversionListener struct {
 	Tools []AIGatewayMCPConversionTool `json:"tools,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
-	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
+	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -688,23 +688,23 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetTools() []AI
 	return a.Tools
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccess() *AIGatewayMCPServerBaseACLProperties {
+func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccess() *AIGatewayMCPServerListenerAccess {
 	if a == nil {
 		return nil
 	}
 	return a.Access
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
+func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccessConsumer() *AIGatewayMCPServerListenerConsumer {
 	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
+		return v.AIGatewayMCPServerListenerConsumer
 	}
 	return nil
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
+func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccessOauthAccessToken() *AIGatewayMCPServerListenerOauth {
 	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesOauth
+		return v.AIGatewayMCPServerListenerOauth
 	}
 	return nil
 }
