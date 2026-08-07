@@ -12023,6 +12023,9 @@ paths:
         - Dashboards
   /v2/dcr-providers:
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: DcrProvider#create
+        terraform-datasource: null
       operationId: create-dcr-provider
       summary: Create DCR provider
       description: Creates a DCR provider.
@@ -12079,6 +12082,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/DcrProviderId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: DcrProvider#read
+        terraform-datasource: null
       operationId: get-dcr-provider
       summary: Get a DCR provider
       description: Returns a DCR provider.
@@ -12094,6 +12100,9 @@ paths:
       tags:
         - DCR Providers
     patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: DcrProvider#update
+        terraform-datasource: null
       operationId: update-dcr-provider
       summary: Update DCR provider
       description: Updates a DCR provider.
@@ -12113,6 +12122,9 @@ paths:
       tags:
         - DCR Providers
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: DcrProvider#delete
+        terraform-datasource: null
       operationId: delete-dcr-provider
       summary: Delete DCR provider
       description: Deletes a DCR provider.
@@ -21033,6 +21045,7 @@ paths:
       tags:
         - Roles
     post:
+      x-speakeasy-entity-operation: UserRole#create
       operationId: users-assign-role
       summary: Assign Role
       description: Assigns a role to a user. Returns 409 if role is already assigned.
@@ -21075,6 +21088,9 @@ paths:
           example: 8350205f-a305-4e39-abe9-bc082a80091a
         x-speakeasy-match: id
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: UserRole#read
+        terraform-datasource: null
       operationId: get-user-role
       summary: Get User Role
       description: Returns the assigned role for the specified ID.
@@ -21094,6 +21110,7 @@ paths:
       tags:
         - Roles
     delete:
+      x-speakeasy-entity-operation: UserRole#delete
       operationId: users-remove-role
       summary: Remove Role
       description: Removes an assigned role from a user. Returns 404 if the requested user or assigned role were not found.
@@ -25222,6 +25239,7 @@ components:
         - `ready`: The network is fully provisioned and available for data plane groups.
         - `terminating`: The network is being deleted and is no longer accepting new resources.
         - `terminated`: The network has been fully deleted and is no longer available.
+      type: string
       enum:
         - created
         - initializing
@@ -28432,8 +28450,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - auth0
+          const: auth0
         dcr_config:
           $ref: '#/components/schemas/DcrConfigAuth0InResponse'
       required:
@@ -28446,8 +28463,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - azureAd
+          const: azureAd
         dcr_config:
           $ref: '#/components/schemas/DcrConfigAzureAdInResponse'
       required:
@@ -28460,8 +28476,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - curity
+          const: curity
         dcr_config:
           $ref: '#/components/schemas/DcrConfigCurityInResponse'
       required:
@@ -28474,8 +28489,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - kongIdentity
+          const: kongIdentity
         dcr_config:
           $ref: '#/components/schemas/DcrConfigKongIdentityInResponse'
       required:
@@ -28488,8 +28502,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - okta
+          const: okta
         dcr_config:
           $ref: '#/components/schemas/DcrConfigOktaInResponse'
       required:
@@ -28502,8 +28515,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - http
+          const: http
         dcr_config:
           $ref: '#/components/schemas/DcrConfigHttpInResponse'
       required:
@@ -28560,8 +28572,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - auth0
+          const: auth0
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigAuth0InRequest'
         name:
@@ -28586,8 +28597,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - azureAd
+          const: azureAd
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigAzureAdInRequest'
         name:
@@ -28612,8 +28622,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - curity
+          const: curity
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigCurityInRequest'
         name:
@@ -28638,8 +28647,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - okta
+          const: okta
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigOktaInRequest'
         name:
@@ -28664,8 +28672,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - kongIdentity
+          const: kongIdentity
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigKongIdentityInRequest'
         name:
@@ -28689,8 +28696,7 @@ components:
       properties:
         provider_type:
           type: string
-          enum:
-            - http
+          const: http
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigHttpInRequest'
         name:
@@ -29021,6 +29027,7 @@ components:
             - id
             - name
             - provider_type
+          x-speakeasy-terraform-ignore: true
         labels:
           $ref: '#/components/schemas/Labels'
         created_at:
@@ -29137,6 +29144,7 @@ components:
             - id
             - name
             - provider_type
+          x-speakeasy-terraform-ignore: true
         labels:
           $ref: '#/components/schemas/Labels'
         created_at:
@@ -51875,7 +51883,7 @@ components:
       example: my-entity-name
       maxLength: 256
       minLength: 1
-      pattern: '^[A-Za-z0-9._-]{1,256}$'
+      pattern: '^[A-Za-z0-9._:-]{1,256}$'
     AIGatewayProxyURL:
       description: Proxy URL associated with reaching the data-planes connected to a control-plane.
       type: object
@@ -51912,9 +51920,11 @@ components:
           minLength: 1
         name:
           description: The name for this AI Gateway. This value is immutable after creation.
+          type: string
           example: my-ai-gateway
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+          maxLength: 256
+          minLength: 1
+          pattern: '^[0-9a-z-]+$'
         description:
           description: The description of the AI Gateway.
           type: string
@@ -51946,9 +51956,11 @@ components:
           minLength: 1
         name:
           description: The name for this AI Gateway. This value is immutable after creation.
+          type: string
           example: my-ai-gateway
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+          maxLength: 256
+          minLength: 1
+          pattern: '^[0-9a-z-]+$'
         description:
           description: The description of the AI Gateway.
           type: string
@@ -51980,9 +51992,11 @@ components:
           minLength: 1
         name:
           description: The name for this AI Gateway. This value is immutable after creation.
+          type: string
           example: my-ai-gateway
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+          maxLength: 256
+          minLength: 1
+          pattern: '^[0-9a-z-]+$'
         description:
           description: The description of the AI Gateway.
           type: string
@@ -52716,9 +52730,10 @@ components:
       type: object
       properties:
         path_param:
-          description: The path param name to match for routing.
+          description: |
+            The name of the regex capture group defined in the route path for routing.
           type: string
-          example: x-model
+          example: model_name
         values:
           description: |
             The list of values that are matched against the path param value.
@@ -57642,7 +57657,7 @@ components:
           items:
             $ref: '#/components/schemas/AIGatewayMCPConversionTool'
         access:
-          $ref: '#/components/schemas/AIGatewayMCPServerBaseACLProperties'
+          $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
         display_name:
           description: The display name for the MCP Server.
           type: string
@@ -57693,7 +57708,7 @@ components:
           items:
             $ref: '#/components/schemas/AIGatewayMCPToolBase'
         access:
-          $ref: '#/components/schemas/AIGatewayMCPServerBaseACLProperties'
+          $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
         display_name:
           description: The display name for the MCP Server.
           type: string
@@ -57744,7 +57759,7 @@ components:
           items:
             $ref: '#/components/schemas/AIGatewayMCPToolBase'
         access:
-          $ref: '#/components/schemas/AIGatewayMCPServerBaseACLProperties'
+          $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
         display_name:
           description: The display name for the MCP Server.
           type: string
@@ -57973,6 +57988,147 @@ components:
         - acl_attribute_type
         - access_token_claim_field
       title: AIGatewayMCPServerBaseACLPropertiesOauth
+    AIGatewayMCPServerListenerAccess:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      default:
+        acl_attribute_type: consumer
+      discriminator:
+        propertyName: acl_attribute_type
+        mapping:
+          consumer: '#/components/schemas/AIGatewayMCPServerListenerConsumer'
+          oauth_access_token: '#/components/schemas/AIGatewayMCPServerListenerOauth'
+      oneOf:
+        - $ref: '#/components/schemas/AIGatewayMCPServerListenerConsumer'
+        - $ref: '#/components/schemas/AIGatewayMCPServerListenerOauth'
+    AIGatewayMCPServerListenerConsumer:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Identity provider and OAuth 2.0 Protected Resource Metadata configuration
+        for granting access to an MCP server.
+      type: object
+      properties:
+        acl_attribute_type:
+          description: The type of attributes that ACL is evaluated with.
+          type: string
+          default: consumer
+          enum:
+            - consumer
+        acls:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            Access control rules for allowing or denying consumer groups.
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayMCPACLs'
+        default_tool_acls:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            Default access control rules for allowing or denying consumer groups to tools.
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayMCPACLs'
+        identity_providers:
+          description: |
+            List of identity providers for granting access to the MCP server.
+            At most 1 identity provider of each identity provider type can be referenced.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayIdentityProviderReference'
+          maxItems: 1
+        metadata:
+          description: OAuth 2.0 Protected Resource Metadata advertised for this MCP server.
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayMCPServerProtectedResourceMetadata'
+      required:
+        - acl_attribute_type
+      title: AIGatewayMCPServerBaseACLPropertiesConsumer
+    AIGatewayMCPServerListenerOauth:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Identity provider and OAuth 2.0 Protected Resource Metadata configuration
+        for granting access to an MCP server.
+      type: object
+      properties:
+        acl_attribute_type:
+          description: The type of attributes that ACL is evaluated with.
+          type: string
+          enum:
+            - oauth_access_token
+        access_token_claim_field:
+          description: |
+            The claim in the OAuth2 access token to use as the subject for ACL evaluation when `acl_attribute_type` is set to `oauth_access_token`.
+            Nested claim can be fetched by using a jq filter starts with dot, e.g., “.user.email”: https://jqlang.org/manual/#object-identifier-index
+          type: string
+        acls:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            Access control rules for allowing or denying consumer groups.
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayMCPACLs'
+        default_tool_acls:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            Default access control rules for allowing or denying consumer groups to tools.
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayMCPACLs'
+        identity_providers:
+          description: |
+            List of identity providers for granting access to the MCP server.
+            At most 1 identity provider of each identity provider type can be referenced.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayIdentityProviderReference'
+          maxItems: 1
+        metadata:
+          description: OAuth 2.0 Protected Resource Metadata advertised for this MCP server.
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayMCPServerProtectedResourceMetadata'
+      required:
+        - acl_attribute_type
+        - access_token_claim_field
+      title: AIGatewayMCPServerBaseACLPropertiesOauth
+    AIGatewayMCPServerProtectedResourceMetadata:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        OAuth 2.0 Protected Resource Metadata (RFC 9728) advertised for this MCP
+        server, allowing clients to discover the authorization servers that
+        protect it.
+      type: object
+      properties:
+        discovery_endpoint:
+          description: The URL where the protected resource metadata is served.
+          type: string
+        endpoint:
+          description: The protected resource endpoint the metadata describes.
+          type: string
+        authorization_servers:
+          description: List of authorization server issuer URLs that can issue tokens for this resource.
+          type: array
+          items:
+            type: string
+        resource:
+          description: The protected resource's identifier (resource URI).
+          type: string
+        scopes_supported:
+          description: List of OAuth scopes supported by the protected resource.
+          type: array
+          items:
+            type: string
+      title: AIGatewayMCPServerProtectedResourceMetadata
     AIGatewayRedisAWSAuthentication:
       description: |-
         **Pre-release Feature**
@@ -61490,6 +61646,30 @@ components:
       additionalProperties: false
       required:
         - datasource
+    PlatformTabularQuery:
+      description: A query targeting tabular platform usage analytics data.
+      type: object
+      properties:
+        datasource:
+          type: string
+          enum:
+            - platform_usage
+        entity:
+          type: string
+        columns:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        filters:
+          $ref: '#/components/schemas/PlatformFilters'
+        cursor:
+          type: string
+        page_size:
+          type: integer
+      additionalProperties: false
+      required:
+        - datasource
     Tile:
       discriminator:
         propertyName: type
@@ -61498,7 +61678,7 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ChartTile'
     ChartTile:
-      description: A tile that queries data and renders a chart.
+      description: A tile that queries data and renders a visualization.
       type: object
       properties:
         layout:
@@ -61560,39 +61740,54 @@ components:
             - chart
         definition:
           description: |
-            The tile's definition, which consists of a query to fetch data and a chart to render the data.
-            Note that some charts expect certain types of queries to render properly.  The documentation for the individual chart types has more information.
-          type: object
-          additionalProperties: false
-          properties:
-            query:
-              discriminator:
-                propertyName: datasource
-                mapping:
-                  api_usage: '#/components/schemas/AdvancedQuery'
-                  llm_usage: '#/components/schemas/LLMQuery'
-                  agentic_usage: '#/components/schemas/AgenticQuery'
-                  platform_usage: '#/components/schemas/PlatformQuery'
-              oneOf:
-                - $ref: '#/components/schemas/AdvancedQuery'
-                - $ref: '#/components/schemas/LLMQuery'
-                - $ref: '#/components/schemas/AgenticQuery'
-                - $ref: '#/components/schemas/PlatformQuery'
-            chart:
-              $ref: '#/components/schemas/Chart'
-          required:
-            - query
-            - chart
+            The tile's definition, which consists of a query to fetch data and a visualization to render the data.
+            Charts and tables expect certain query types to render properly. The documentation for the individual visualization types has more information.
+          oneOf:
+            - $ref: '#/components/schemas/ChartTileDefinition'
+            - $ref: '#/components/schemas/TableChartTileDefinition'
       additionalProperties: false
       required:
         - layout
         - type
         - definition
+    ChartTileDefinition:
+      type: object
+      properties:
+        query:
+          discriminator:
+            propertyName: datasource
+            mapping:
+              api_usage: '#/components/schemas/AdvancedQuery'
+              llm_usage: '#/components/schemas/LLMQuery'
+              agentic_usage: '#/components/schemas/AgenticQuery'
+              platform_usage: '#/components/schemas/PlatformQuery'
+          oneOf:
+            - $ref: '#/components/schemas/AdvancedQuery'
+            - $ref: '#/components/schemas/LLMQuery'
+            - $ref: '#/components/schemas/AgenticQuery'
+            - $ref: '#/components/schemas/PlatformQuery'
+        chart:
+          $ref: '#/components/schemas/Chart'
+      additionalProperties: false
+      required:
+        - query
+        - chart
+    TableChartTileDefinition:
+      type: object
+      properties:
+        query:
+          $ref: '#/components/schemas/PlatformTabularQuery'
+        chart:
+          $ref: '#/components/schemas/TableChart'
+      additionalProperties: false
+      required:
+        - query
+        - chart
     Dashboard:
       description: |
         A JSON object describing a dashboard.
 
-        A dashboard is an array of tiles.  All tiles are of type 'chart', which query data and render a chart displaying that data.
+        A dashboard is an array of tiles.  All tiles are of type 'chart', which query data and render a visualization, either a chart or table.
 
         Dashboards have 6 columns and as many rows as necessary to display their tiles.
       type: object
@@ -63625,6 +63820,22 @@ components:
         - $ref: '#/components/schemas/TopNChart'
         - $ref: '#/components/schemas/SingleValueChart'
         - $ref: '#/components/schemas/ChoroplethMapChart'
+    TableChart:
+      description: A table that displays tabular platform usage data.
+      type: object
+      properties:
+        chart_title:
+          description: 'The title of the chart, which is displayed in the tile''s header.'
+          type: string
+          nullable: false
+        type:
+          type: string
+          enum:
+            - table
+      additionalProperties: false
+      required:
+        - type
+      title: Table chart
     MetricsEnvFilterByField:
       oneOf:
         - title: Multiselect filters
@@ -75098,19 +75309,19 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.7.0
+    version: 0.8.1
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
-    version: 2.0.1
+    version: 2.1.0
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.3.0
+    version: 3.3.2
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
-    version: 2.1.0
+    version: 2.1.1
     path: src/konnect/definitions/application-auth-strategies/v2/openapi.yaml
   - title: Konnect Cloud Gateways
-    version: 2.0.2
+    version: 2.1.0
     path: src/konnect/definitions/cloud-gateways/v2/openapi.yaml
   - title: Konnect Control Planes Configuration
     version: 3.15.0
@@ -75122,7 +75333,7 @@ x-input-schemas:
     version: 1.2.0
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.4.0
+    version: 3.4.2
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect MCP Servers
     version: 1.21.0
@@ -75134,7 +75345,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.9.4
+    version: 3.9.6
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2
