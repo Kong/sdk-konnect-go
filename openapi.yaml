@@ -53674,7 +53674,7 @@ components:
               example: '{vault://hcv/redis/port}'
           x-go-type: types.Referenceable
           x-go-type-import:
-            path: github.com/kong/koko/internal/server/public/openapi/controlplanesconfig/types
+            path: github.com/kong-konnect/koko-private/internal/server/public/openapi/controlplanesconfig/types
             name: types
           x-referenceable: true
         read_timeout:
@@ -58347,7 +58347,7 @@ components:
               example: '{vault://hcv/redis/port}'
           x-go-type: types.Referenceable
           x-go-type-import:
-            path: github.com/kong/koko/internal/server/public/openapi/controlplanesconfig/types
+            path: github.com/kong-konnect/koko-private/internal/server/public/openapi/controlplanesconfig/types
             name: types
           x-referenceable: true
         read_timeout:
@@ -61389,6 +61389,7 @@ components:
               - api_product
               - api_product_version
               - application
+              - cache_status
               - consumer
               - control_plane
               - control_plane_group
@@ -61534,6 +61535,7 @@ components:
               - api_product
               - api_product_version
               - application
+              - cache_status
               - consumer
               - control_plane
               - control_plane_group
@@ -61739,17 +61741,19 @@ components:
           enum:
             - chart
         definition:
-          description: |
-            The tile's definition, which consists of a query to fetch data and a visualization to render the data.
-            Charts and tables expect certain query types to render properly. The documentation for the individual visualization types has more information.
-          oneOf:
-            - $ref: '#/components/schemas/ChartTileDefinition'
-            - $ref: '#/components/schemas/TableChartTileDefinition'
+          $ref: '#/components/schemas/AnyChartTileDefinition'
       additionalProperties: false
       required:
         - layout
         - type
         - definition
+    AnyChartTileDefinition:
+      description: |
+        The tile's definition, which consists of a query to fetch data and a visualization to render the data.
+        Charts and tables expect certain query types to render properly. The documentation for the individual visualization types has more information.
+      oneOf:
+        - $ref: '#/components/schemas/ChartTileDefinition'
+        - $ref: '#/components/schemas/TableChartTileDefinition'
     ChartTileDefinition:
       type: object
       properties:
@@ -61879,11 +61883,13 @@ components:
           $ref: '#/components/schemas/DateTimeFieldFilter'
       title: Dashboard Filter Parameters
     AdvancedMetrics:
-      description: 'List of aggregated metrics to collect across the requested time span. If no metrics are specified, request_count will be computed by default.'
+      description: |
+        List of aggregated metrics to collect across the requested time span. If no metrics are specified, request_count will be computed by default.
       type: array
       items:
         type: string
         enum:
+          - cache_hit_rate
           - error_rate
           - kong_internal_latency_average
           - kong_internal_latency_p50
@@ -62113,6 +62119,42 @@ components:
             - operator
             - field
       title: Filter by application
+    MetricsCacheStatusFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - cache_status
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - cache_status
+          required:
+            - operator
+            - field
+      title: Filter by cache_status
     ScopedUuid:
       type: string
       pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
@@ -62712,6 +62754,7 @@ components:
               - api_product
               - api_product_version
               - application
+              - cache_status
               - consumer
               - control_plane
               - control_plane_group
@@ -63159,13 +63202,15 @@ components:
           - field
           - operator
     AgenticMetrics:
-      description: List of aggregated metrics to collect across the requested time span.
+      description: |
+        List of aggregated metrics to collect across the requested time span.
       type: array
       items:
         type: string
         enum:
           - a2a_latency_average
           - a2a_response_size_sum
+          - cache_hit_rate
           - error_rate
           - kong_internal_latency_average
           - kong_internal_latency_p50
@@ -63505,6 +63550,7 @@ components:
               - api_product
               - api_product_version
               - application
+              - cache_status
               - consumer
               - control_plane
               - control_plane_group
@@ -63999,6 +64045,7 @@ components:
             - api_product
             - api_product_version
             - application
+            - cache_status
             - consumer
             - control_plane
             - control_plane_group
@@ -75309,10 +75356,10 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.8.1
+    version: 0.9.0
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
-    version: 2.1.0
+    version: 2.2.0
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
     version: 3.3.2
@@ -75345,7 +75392,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.9.6
+    version: 3.9.7
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2
