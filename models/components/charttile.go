@@ -135,227 +135,72 @@ func (e *ChartTileType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type QueryType string
+type ChartTileDefinition1Type string
 
 const (
-	QueryTypeAPIUsage      QueryType = "api_usage"
-	QueryTypeLlmUsage      QueryType = "llm_usage"
-	QueryTypeAgenticUsage  QueryType = "agentic_usage"
-	QueryTypePlatformUsage QueryType = "platform_usage"
+	ChartTileDefinition1TypeChartTileDefinition      ChartTileDefinition1Type = "ChartTileDefinition"
+	ChartTileDefinition1TypeTableChartTileDefinition ChartTileDefinition1Type = "TableChartTileDefinition"
 )
 
-type Query struct {
-	AdvancedQuery *AdvancedQuery `queryParam:"inline" union:"member"`
-	LLMQuery      *LLMQuery      `queryParam:"inline" union:"member"`
-	AgenticQuery  *AgenticQuery  `queryParam:"inline" union:"member"`
-	PlatformQuery *PlatformQuery `queryParam:"inline" union:"member"`
+// ChartTileDefinition1 - The tile's definition, which consists of a query to fetch data and a visualization to render the data.
+// Charts and tables expect certain query types to render properly. The documentation for the individual visualization types has more information.
+type ChartTileDefinition1 struct {
+	ChartTileDefinition      *ChartTileDefinition      `queryParam:"inline" union:"member"`
+	TableChartTileDefinition *TableChartTileDefinition `queryParam:"inline" union:"member"`
 
-	Type QueryType
+	Type ChartTileDefinition1Type
 }
 
-func CreateQueryAPIUsage(apiUsage AdvancedQuery) Query {
-	typ := QueryTypeAPIUsage
+func CreateChartTileDefinition1ChartTileDefinition(chartTileDefinition ChartTileDefinition) ChartTileDefinition1 {
+	typ := ChartTileDefinition1TypeChartTileDefinition
 
-	typStr := Datasource(typ)
-	apiUsage.Datasource = typStr
-
-	return Query{
-		AdvancedQuery: &apiUsage,
-		Type:          typ,
+	return ChartTileDefinition1{
+		ChartTileDefinition: &chartTileDefinition,
+		Type:                typ,
 	}
 }
 
-func CreateQueryLlmUsage(llmUsage LLMQuery) Query {
-	typ := QueryTypeLlmUsage
+func CreateChartTileDefinition1TableChartTileDefinition(tableChartTileDefinition TableChartTileDefinition) ChartTileDefinition1 {
+	typ := ChartTileDefinition1TypeTableChartTileDefinition
 
-	typStr := LLMQueryDatasource(typ)
-	llmUsage.Datasource = typStr
-
-	return Query{
-		LLMQuery: &llmUsage,
-		Type:     typ,
+	return ChartTileDefinition1{
+		TableChartTileDefinition: &tableChartTileDefinition,
+		Type:                     typ,
 	}
 }
 
-func CreateQueryAgenticUsage(agenticUsage AgenticQuery) Query {
-	typ := QueryTypeAgenticUsage
+func (u *ChartTileDefinition1) UnmarshalJSON(data []byte) error {
 
-	typStr := AgenticQueryDatasource(typ)
-	agenticUsage.Datasource = typStr
-
-	return Query{
-		AgenticQuery: &agenticUsage,
-		Type:         typ,
-	}
-}
-
-func CreateQueryPlatformUsage(platformUsage PlatformQuery) Query {
-	typ := QueryTypePlatformUsage
-
-	typStr := PlatformQueryDatasource(typ)
-	platformUsage.Datasource = typStr
-
-	return Query{
-		PlatformQuery: &platformUsage,
-		Type:          typ,
-	}
-}
-
-func (u *Query) UnmarshalJSON(data []byte) error {
-
-	type discriminator struct {
-		Datasource string `json:"datasource"`
-	}
-
-	dis := new(discriminator)
-	if err := json.Unmarshal(data, &dis); err != nil {
-		return fmt.Errorf("could not unmarshal discriminator: %w", err)
-	}
-
-	switch dis.Datasource {
-	case "api_usage":
-		advancedQuery := new(AdvancedQuery)
-		if err := utils.UnmarshalJSON(data, &advancedQuery, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Datasource == api_usage) type AdvancedQuery within Query: %w", string(data), err)
-		}
-
-		u.AdvancedQuery = advancedQuery
-		u.Type = QueryTypeAPIUsage
-		return nil
-	case "llm_usage":
-		llmQuery := new(LLMQuery)
-		if err := utils.UnmarshalJSON(data, &llmQuery, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Datasource == llm_usage) type LLMQuery within Query: %w", string(data), err)
-		}
-
-		u.LLMQuery = llmQuery
-		u.Type = QueryTypeLlmUsage
-		return nil
-	case "agentic_usage":
-		agenticQuery := new(AgenticQuery)
-		if err := utils.UnmarshalJSON(data, &agenticQuery, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Datasource == agentic_usage) type AgenticQuery within Query: %w", string(data), err)
-		}
-
-		u.AgenticQuery = agenticQuery
-		u.Type = QueryTypeAgenticUsage
-		return nil
-	case "platform_usage":
-		platformQuery := new(PlatformQuery)
-		if err := utils.UnmarshalJSON(data, &platformQuery, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Datasource == platform_usage) type PlatformQuery within Query: %w", string(data), err)
-		}
-
-		u.PlatformQuery = platformQuery
-		u.Type = QueryTypePlatformUsage
+	var chartTileDefinition ChartTileDefinition = ChartTileDefinition{}
+	if err := utils.UnmarshalJSON(data, &chartTileDefinition, "", true, nil); err == nil {
+		u.ChartTileDefinition = &chartTileDefinition
+		u.Type = ChartTileDefinition1TypeChartTileDefinition
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Query", string(data))
-}
-
-func (u Query) MarshalJSON() ([]byte, error) {
-	if u.AdvancedQuery != nil {
-		return utils.MarshalJSON(u.AdvancedQuery, "", true)
+	var tableChartTileDefinition TableChartTileDefinition = TableChartTileDefinition{}
+	if err := utils.UnmarshalJSON(data, &tableChartTileDefinition, "", true, nil); err == nil {
+		u.TableChartTileDefinition = &tableChartTileDefinition
+		u.Type = ChartTileDefinition1TypeTableChartTileDefinition
+		return nil
 	}
 
-	if u.LLMQuery != nil {
-		return utils.MarshalJSON(u.LLMQuery, "", true)
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ChartTileDefinition1", string(data))
+}
+
+func (u ChartTileDefinition1) MarshalJSON() ([]byte, error) {
+	if u.ChartTileDefinition != nil {
+		return utils.MarshalJSON(u.ChartTileDefinition, "", true)
 	}
 
-	if u.AgenticQuery != nil {
-		return utils.MarshalJSON(u.AgenticQuery, "", true)
+	if u.TableChartTileDefinition != nil {
+		return utils.MarshalJSON(u.TableChartTileDefinition, "", true)
 	}
 
-	if u.PlatformQuery != nil {
-		return utils.MarshalJSON(u.PlatformQuery, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type Query: all fields are null")
+	return nil, errors.New("could not marshal union type ChartTileDefinition1: all fields are null")
 }
 
-// ChartTileDefinition - The tile's definition, which consists of a query to fetch data and a chart to render the data.
-// Note that some charts expect certain types of queries to render properly.  The documentation for the individual chart types has more information.
-type ChartTileDefinition struct {
-	Query Query `json:"query"`
-	// The type of chart to render.
-	Chart Chart `json:"chart"`
-}
-
-func (c ChartTileDefinition) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *ChartTileDefinition) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"query", "chart"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (c *ChartTileDefinition) GetQuery() Query {
-	if c == nil {
-		return Query{}
-	}
-	return c.Query
-}
-
-func (c *ChartTileDefinition) GetQueryAPIUsage() *AdvancedQuery {
-	return c.GetQuery().AdvancedQuery
-}
-
-func (c *ChartTileDefinition) GetQueryLlmUsage() *LLMQuery {
-	return c.GetQuery().LLMQuery
-}
-
-func (c *ChartTileDefinition) GetQueryAgenticUsage() *AgenticQuery {
-	return c.GetQuery().AgenticQuery
-}
-
-func (c *ChartTileDefinition) GetQueryPlatformUsage() *PlatformQuery {
-	return c.GetQuery().PlatformQuery
-}
-
-func (c *ChartTileDefinition) GetChart() Chart {
-	if c == nil {
-		return Chart{}
-	}
-	return c.Chart
-}
-
-func (c *ChartTileDefinition) GetChartDonut() *DonutChart {
-	return c.GetChart().DonutChart
-}
-
-func (c *ChartTileDefinition) GetChartTimeseriesLine() *TimeseriesChart {
-	return c.GetChart().TimeseriesChart
-}
-
-func (c *ChartTileDefinition) GetChartTimeseriesBar() *TimeseriesChart {
-	return c.GetChart().TimeseriesChart
-}
-
-func (c *ChartTileDefinition) GetChartHorizontalBar() *BarChart {
-	return c.GetChart().BarChart
-}
-
-func (c *ChartTileDefinition) GetChartVerticalBar() *BarChart {
-	return c.GetChart().BarChart
-}
-
-func (c *ChartTileDefinition) GetChartTopN() *TopNChart {
-	return c.GetChart().TopNChart
-}
-
-func (c *ChartTileDefinition) GetChartSingleValue() *SingleValueChart {
-	return c.GetChart().SingleValueChart
-}
-
-func (c *ChartTileDefinition) GetChartChoroplethMap() *ChoroplethMapChart {
-	return c.GetChart().ChoroplethMapChart
-}
-
-// ChartTile - A tile that queries data and renders a chart.
+// ChartTile - A tile that queries data and renders a visualization.
 type ChartTile struct {
 	// Information about how the tile is placed on the dashboard.
 	//
@@ -366,10 +211,10 @@ type ChartTile struct {
 	Layout Layout `json:"layout"`
 	// The type of tile.  Chart tiles must have type 'chart'.
 	Type ChartTileType `json:"type"`
-	// The tile's definition, which consists of a query to fetch data and a chart to render the data.
-	// Note that some charts expect certain types of queries to render properly.  The documentation for the individual chart types has more information.
+	// The tile's definition, which consists of a query to fetch data and a visualization to render the data.
+	// Charts and tables expect certain query types to render properly. The documentation for the individual visualization types has more information.
 	//
-	Definition ChartTileDefinition `json:"definition"`
+	Definition ChartTileDefinition1 `json:"definition"`
 }
 
 func (c ChartTile) MarshalJSON() ([]byte, error) {
@@ -397,9 +242,9 @@ func (c *ChartTile) GetType() ChartTileType {
 	return c.Type
 }
 
-func (c *ChartTile) GetDefinition() ChartTileDefinition {
+func (c *ChartTile) GetDefinition() ChartTileDefinition1 {
 	if c == nil {
-		return ChartTileDefinition{}
+		return ChartTileDefinition1{}
 	}
 	return c.Definition
 }
