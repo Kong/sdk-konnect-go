@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.AdvancedMetricsErrorRate
+value := components.AdvancedMetricsCacheHitRate
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.AdvancedMetrics("custom_value")
@@ -18,6 +18,7 @@ custom := components.AdvancedMetrics("custom_value")
 
 | Name                                        | Value                                       |
 | ------------------------------------------- | ------------------------------------------- |
+| `AdvancedMetricsCacheHitRate`               | cache_hit_rate                              |
 | `AdvancedMetricsErrorRate`                  | error_rate                                  |
 | `AdvancedMetricsKongInternalLatencyAverage` | kong_internal_latency_average               |
 | `AdvancedMetricsKongInternalLatencyP50`     | kong_internal_latency_p50                   |

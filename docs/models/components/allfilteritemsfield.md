@@ -31,6 +31,7 @@ custom := components.AllFilterItemsField("custom_value")
 | `AllFilterItemsFieldAPIProduct`                | api_product                                    |
 | `AllFilterItemsFieldAPIProductVersion`         | api_product_version                            |
 | `AllFilterItemsFieldApplication`               | application                                    |
+| `AllFilterItemsFieldCacheStatus`               | cache_status                                   |
 | `AllFilterItemsFieldConsumer`                  | consumer                                       |
 | `AllFilterItemsFieldControlPlane`              | control_plane                                  |
 | `AllFilterItemsFieldControlPlaneGroup`         | control_plane_group                            |

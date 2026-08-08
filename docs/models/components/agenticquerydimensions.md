@@ -27,6 +27,7 @@ custom := components.AgenticQueryDimensions("custom_value")
 | `AgenticQueryDimensionsAPIProduct`                | api_product                                       |
 | `AgenticQueryDimensionsAPIProductVersion`         | api_product_version                               |
 | `AgenticQueryDimensionsApplication`               | application                                       |
+| `AgenticQueryDimensionsCacheStatus`               | cache_status                                      |
 | `AgenticQueryDimensionsConsumer`                  | consumer                                          |
 | `AgenticQueryDimensionsControlPlane`              | control_plane                                     |
 | `AgenticQueryDimensionsControlPlaneGroup`         | control_plane_group                               |
