@@ -23,6 +23,7 @@ custom := components.Field("custom_value")
 | `FieldAPIProduct`                | api_product                      |
 | `FieldAPIProductVersion`         | api_product_version              |
 | `FieldApplication`               | application                      |
+| `FieldCacheStatus`               | cache_status                     |
 | `FieldConsumer`                  | consumer                         |
 | `FieldControlPlane`              | control_plane                    |
 | `FieldControlPlaneGroup`         | control_plane_group              |
