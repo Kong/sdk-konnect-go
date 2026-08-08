@@ -27,6 +27,7 @@ custom := components.AgenticFiltersField("custom_value")
 | `AgenticFiltersFieldAPIProduct`                | api_product                                    |
 | `AgenticFiltersFieldAPIProductVersion`         | api_product_version                            |
 | `AgenticFiltersFieldApplication`               | application                                    |
+| `AgenticFiltersFieldCacheStatus`               | cache_status                                   |
 | `AgenticFiltersFieldConsumer`                  | consumer                                       |
 | `AgenticFiltersFieldControlPlane`              | control_plane                                  |
 | `AgenticFiltersFieldControlPlaneGroup`         | control_plane_group                            |

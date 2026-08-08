@@ -23,6 +23,7 @@ custom := components.Dimensions("custom_value")
 | `DimensionsAPIProduct`                | api_product                           |
 | `DimensionsAPIProductVersion`         | api_product_version                   |
 | `DimensionsApplication`               | application                           |
+| `DimensionsCacheStatus`               | cache_status                          |
 | `DimensionsConsumer`                  | consumer                              |
 | `DimensionsControlPlane`              | control_plane                         |
 | `DimensionsControlPlaneGroup`         | control_plane_group                   |

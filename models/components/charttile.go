@@ -5,7 +5,6 @@ package components
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
@@ -135,71 +134,6 @@ func (e *ChartTileType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ChartTileDefinition1Type string
-
-const (
-	ChartTileDefinition1TypeChartTileDefinition      ChartTileDefinition1Type = "ChartTileDefinition"
-	ChartTileDefinition1TypeTableChartTileDefinition ChartTileDefinition1Type = "TableChartTileDefinition"
-)
-
-// ChartTileDefinition1 - The tile's definition, which consists of a query to fetch data and a visualization to render the data.
-// Charts and tables expect certain query types to render properly. The documentation for the individual visualization types has more information.
-type ChartTileDefinition1 struct {
-	ChartTileDefinition      *ChartTileDefinition      `queryParam:"inline" union:"member"`
-	TableChartTileDefinition *TableChartTileDefinition `queryParam:"inline" union:"member"`
-
-	Type ChartTileDefinition1Type
-}
-
-func CreateChartTileDefinition1ChartTileDefinition(chartTileDefinition ChartTileDefinition) ChartTileDefinition1 {
-	typ := ChartTileDefinition1TypeChartTileDefinition
-
-	return ChartTileDefinition1{
-		ChartTileDefinition: &chartTileDefinition,
-		Type:                typ,
-	}
-}
-
-func CreateChartTileDefinition1TableChartTileDefinition(tableChartTileDefinition TableChartTileDefinition) ChartTileDefinition1 {
-	typ := ChartTileDefinition1TypeTableChartTileDefinition
-
-	return ChartTileDefinition1{
-		TableChartTileDefinition: &tableChartTileDefinition,
-		Type:                     typ,
-	}
-}
-
-func (u *ChartTileDefinition1) UnmarshalJSON(data []byte) error {
-
-	var chartTileDefinition ChartTileDefinition = ChartTileDefinition{}
-	if err := utils.UnmarshalJSON(data, &chartTileDefinition, "", true, nil); err == nil {
-		u.ChartTileDefinition = &chartTileDefinition
-		u.Type = ChartTileDefinition1TypeChartTileDefinition
-		return nil
-	}
-
-	var tableChartTileDefinition TableChartTileDefinition = TableChartTileDefinition{}
-	if err := utils.UnmarshalJSON(data, &tableChartTileDefinition, "", true, nil); err == nil {
-		u.TableChartTileDefinition = &tableChartTileDefinition
-		u.Type = ChartTileDefinition1TypeTableChartTileDefinition
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ChartTileDefinition1", string(data))
-}
-
-func (u ChartTileDefinition1) MarshalJSON() ([]byte, error) {
-	if u.ChartTileDefinition != nil {
-		return utils.MarshalJSON(u.ChartTileDefinition, "", true)
-	}
-
-	if u.TableChartTileDefinition != nil {
-		return utils.MarshalJSON(u.TableChartTileDefinition, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type ChartTileDefinition1: all fields are null")
-}
-
 // ChartTile - A tile that queries data and renders a visualization.
 type ChartTile struct {
 	// Information about how the tile is placed on the dashboard.
@@ -214,7 +148,7 @@ type ChartTile struct {
 	// The tile's definition, which consists of a query to fetch data and a visualization to render the data.
 	// Charts and tables expect certain query types to render properly. The documentation for the individual visualization types has more information.
 	//
-	Definition ChartTileDefinition1 `json:"definition"`
+	Definition AnyChartTileDefinition `json:"definition"`
 }
 
 func (c ChartTile) MarshalJSON() ([]byte, error) {
@@ -242,9 +176,9 @@ func (c *ChartTile) GetType() ChartTileType {
 	return c.Type
 }
 
-func (c *ChartTile) GetDefinition() ChartTileDefinition1 {
+func (c *ChartTile) GetDefinition() AnyChartTileDefinition {
 	if c == nil {
-		return ChartTileDefinition1{}
+		return AnyChartTileDefinition{}
 	}
 	return c.Definition
 }

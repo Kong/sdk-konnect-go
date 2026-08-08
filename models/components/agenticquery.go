@@ -44,6 +44,7 @@ const (
 	AgenticQueryDimensionsAPIProduct                AgenticQueryDimensions = "api_product"
 	AgenticQueryDimensionsAPIProductVersion         AgenticQueryDimensions = "api_product_version"
 	AgenticQueryDimensionsApplication               AgenticQueryDimensions = "application"
+	AgenticQueryDimensionsCacheStatus               AgenticQueryDimensions = "cache_status"
 	AgenticQueryDimensionsConsumer                  AgenticQueryDimensions = "consumer"
 	AgenticQueryDimensionsControlPlane              AgenticQueryDimensions = "control_plane"
 	AgenticQueryDimensionsControlPlaneGroup         AgenticQueryDimensions = "control_plane_group"
@@ -75,7 +76,7 @@ func (e AgenticQueryDimensions) ToPointer() *AgenticQueryDimensions {
 func (e *AgenticQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
+		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}
@@ -86,6 +87,7 @@ func (e *AgenticQueryDimensions) IsExact() bool {
 type AgenticQuery struct {
 	Datasource AgenticQueryDatasource `json:"datasource"`
 	// List of aggregated metrics to collect across the requested time span.
+	//
 	Metrics []AgenticMetrics `json:"metrics,omitempty"`
 	// List of attributes or entity types to group by.
 	Dimensions []AgenticQueryDimensions `json:"dimensions,omitempty"`
