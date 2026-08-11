@@ -1,41 +1,16 @@
 # AIGatewayModelSelectorConfig
 
 Configuration for overriding routing to this model using a selector.
-When not set, a default model selector will be created using the model's name and format.
+When no selector location is set, the format default selector is used.
+When values are not set, the model name is used as the selector value.
 
 
 
-## Supported Types
+## Fields
 
-### AIGatewayModelSelectorConfigBody
-
-```go
-aiGatewayModelSelectorConfig := components.CreateAIGatewayModelSelectorConfigAIGatewayModelSelectorConfigBody(components.AIGatewayModelSelectorConfigBody{/* values here */})
-```
-
-### AIGatewayModelSelectorConfigHeaders
-
-```go
-aiGatewayModelSelectorConfig := components.CreateAIGatewayModelSelectorConfigAIGatewayModelSelectorConfigHeaders(components.AIGatewayModelSelectorConfigHeaders{/* values here */})
-```
-
-### AIGatewayModelSelectorConfigPath
-
-```go
-aiGatewayModelSelectorConfig := components.CreateAIGatewayModelSelectorConfigAIGatewayModelSelectorConfigPath(components.AIGatewayModelSelectorConfigPath{/* values here */})
-```
-
-## Union Discrimination
-
-Use the `Type` field to determine which variant is active, then access the corresponding field:
-
-```go
-switch aiGatewayModelSelectorConfig.Type {
-	case components.AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigBody:
-		// aiGatewayModelSelectorConfig.AIGatewayModelSelectorConfigBody is populated
-	case components.AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigHeaders:
-		// aiGatewayModelSelectorConfig.AIGatewayModelSelectorConfigHeaders is populated
-	case components.AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigPath:
-		// aiGatewayModelSelectorConfig.AIGatewayModelSelectorConfigPath is populated
-}
-```
+| Field                                                                                                                                         | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   | Example                                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `BodyParam`                                                                                                                                   | `*string`                                                                                                                                     | :heavy_minus_sign:                                                                                                                            | The body property name to match for routing.                                                                                                  | model                                                                                                                                         |
+| `HeaderParam`                                                                                                                                 | `*string`                                                                                                                                     | :heavy_minus_sign:                                                                                                                            | The header property name to match for routing.                                                                                                | x-model                                                                                                                                       |
+| `PathParam`                                                                                                                                   | `*string`                                                                                                                                     | :heavy_minus_sign:                                                                                                                            | The name of the regex capture group defined in the route path for routing.<br/>                                                               | model_name                                                                                                                                    |
+| `Values`                                                                                                                                      | []`string`                                                                                                                                    | :heavy_minus_sign:                                                                                                                            | An optional model alias. When omitted, the model name is used.<br/>When no selector location is configured, the format default selector is used.<br/> |                                                                                                                                               |

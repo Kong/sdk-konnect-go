@@ -4,94 +4,61 @@
 package components
 
 import (
-	"errors"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayModelSelectorConfigType string
-
-const (
-	AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigBody    AIGatewayModelSelectorConfigType = "AIGatewayModelSelectorConfigBody"
-	AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigHeaders AIGatewayModelSelectorConfigType = "AIGatewayModelSelectorConfigHeaders"
-	AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigPath    AIGatewayModelSelectorConfigType = "AIGatewayModelSelectorConfigPath"
-)
-
 // AIGatewayModelSelectorConfig - Configuration for overriding routing to this model using a selector.
-// When not set, a default model selector will be created using the model's name and format.
+// When no selector location is set, the format default selector is used.
+// When values are not set, the model name is used as the selector value.
 type AIGatewayModelSelectorConfig struct {
-	AIGatewayModelSelectorConfigBody    *AIGatewayModelSelectorConfigBody    `queryParam:"inline" union:"member"`
-	AIGatewayModelSelectorConfigHeaders *AIGatewayModelSelectorConfigHeaders `queryParam:"inline" union:"member"`
-	AIGatewayModelSelectorConfigPath    *AIGatewayModelSelectorConfigPath    `queryParam:"inline" union:"member"`
-
-	Type AIGatewayModelSelectorConfigType
+	// The body property name to match for routing.
+	BodyParam *string `json:"body_param,omitempty"`
+	// The header property name to match for routing.
+	HeaderParam *string `json:"header_param,omitempty"`
+	// The name of the regex capture group defined in the route path for routing.
+	//
+	PathParam *string `json:"path_param,omitempty"`
+	// An optional model alias. When omitted, the model name is used.
+	// When no selector location is configured, the format default selector is used.
+	//
+	Values []string `json:"values,omitempty"`
 }
 
-func CreateAIGatewayModelSelectorConfigAIGatewayModelSelectorConfigBody(aiGatewayModelSelectorConfigBody AIGatewayModelSelectorConfigBody) AIGatewayModelSelectorConfig {
-	typ := AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigBody
+func (a AIGatewayModelSelectorConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
 
-	return AIGatewayModelSelectorConfig{
-		AIGatewayModelSelectorConfigBody: &aiGatewayModelSelectorConfigBody,
-		Type:                             typ,
+func (a *AIGatewayModelSelectorConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
 	}
+	return nil
 }
 
-func CreateAIGatewayModelSelectorConfigAIGatewayModelSelectorConfigHeaders(aiGatewayModelSelectorConfigHeaders AIGatewayModelSelectorConfigHeaders) AIGatewayModelSelectorConfig {
-	typ := AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigHeaders
-
-	return AIGatewayModelSelectorConfig{
-		AIGatewayModelSelectorConfigHeaders: &aiGatewayModelSelectorConfigHeaders,
-		Type:                                typ,
-	}
-}
-
-func CreateAIGatewayModelSelectorConfigAIGatewayModelSelectorConfigPath(aiGatewayModelSelectorConfigPath AIGatewayModelSelectorConfigPath) AIGatewayModelSelectorConfig {
-	typ := AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigPath
-
-	return AIGatewayModelSelectorConfig{
-		AIGatewayModelSelectorConfigPath: &aiGatewayModelSelectorConfigPath,
-		Type:                             typ,
-	}
-}
-
-func (u *AIGatewayModelSelectorConfig) UnmarshalJSON(data []byte) error {
-
-	var aiGatewayModelSelectorConfigBody AIGatewayModelSelectorConfigBody = AIGatewayModelSelectorConfigBody{}
-	if err := utils.UnmarshalJSON(data, &aiGatewayModelSelectorConfigBody, "", true, nil); err == nil {
-		u.AIGatewayModelSelectorConfigBody = &aiGatewayModelSelectorConfigBody
-		u.Type = AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigBody
+func (a *AIGatewayModelSelectorConfig) GetBodyParam() *string {
+	if a == nil {
 		return nil
 	}
-
-	var aiGatewayModelSelectorConfigHeaders AIGatewayModelSelectorConfigHeaders = AIGatewayModelSelectorConfigHeaders{}
-	if err := utils.UnmarshalJSON(data, &aiGatewayModelSelectorConfigHeaders, "", true, nil); err == nil {
-		u.AIGatewayModelSelectorConfigHeaders = &aiGatewayModelSelectorConfigHeaders
-		u.Type = AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigHeaders
-		return nil
-	}
-
-	var aiGatewayModelSelectorConfigPath AIGatewayModelSelectorConfigPath = AIGatewayModelSelectorConfigPath{}
-	if err := utils.UnmarshalJSON(data, &aiGatewayModelSelectorConfigPath, "", true, nil); err == nil {
-		u.AIGatewayModelSelectorConfigPath = &aiGatewayModelSelectorConfigPath
-		u.Type = AIGatewayModelSelectorConfigTypeAIGatewayModelSelectorConfigPath
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayModelSelectorConfig", string(data))
+	return a.BodyParam
 }
 
-func (u AIGatewayModelSelectorConfig) MarshalJSON() ([]byte, error) {
-	if u.AIGatewayModelSelectorConfigBody != nil {
-		return utils.MarshalJSON(u.AIGatewayModelSelectorConfigBody, "", true)
+func (a *AIGatewayModelSelectorConfig) GetHeaderParam() *string {
+	if a == nil {
+		return nil
 	}
+	return a.HeaderParam
+}
 
-	if u.AIGatewayModelSelectorConfigHeaders != nil {
-		return utils.MarshalJSON(u.AIGatewayModelSelectorConfigHeaders, "", true)
+func (a *AIGatewayModelSelectorConfig) GetPathParam() *string {
+	if a == nil {
+		return nil
 	}
+	return a.PathParam
+}
 
-	if u.AIGatewayModelSelectorConfigPath != nil {
-		return utils.MarshalJSON(u.AIGatewayModelSelectorConfigPath, "", true)
+func (a *AIGatewayModelSelectorConfig) GetValues() []string {
+	if a == nil {
+		return nil
 	}
-
-	return nil, errors.New("could not marshal union type AIGatewayModelSelectorConfig: all fields are null")
+	return a.Values
 }
