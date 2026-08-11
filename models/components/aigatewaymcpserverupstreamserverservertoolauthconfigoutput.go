@@ -31,9 +31,6 @@ type AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput struct {
 func CreateAIGatewayMCPServerUpstreamServerServerToolAuthConfigOutputJwt(jwt AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt) AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput {
 	typ := AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutputTypeJwt
 
-	typStr := AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType(typ)
-	jwt.Type = typStr
-
 	return AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput{
 		AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt: &jwt,
 		Type: typ,
@@ -42,9 +39,6 @@ func CreateAIGatewayMCPServerUpstreamServerServerToolAuthConfigOutputJwt(jwt AIG
 
 func CreateAIGatewayMCPServerUpstreamServerServerToolAuthConfigOutputCredentials(credentials AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput) AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput {
 	typ := AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutputTypeCredentials
-
-	typStr := AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType(typ)
-	credentials.Type = typStr
 
 	return AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput{
 		AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput: &credentials,

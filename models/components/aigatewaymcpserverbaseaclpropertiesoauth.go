@@ -4,40 +4,15 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-// AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType - The type of attributes that ACL is evaluated with.
-type AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType string
-
-const (
-	AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeTypeOauthAccessToken AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType = "oauth_access_token"
-)
-
-func (e AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType) ToPointer() *AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType {
-	return &e
-}
-func (e *AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "oauth_access_token":
-		*e = AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerBaseACLPropertiesOauth - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerBaseACLPropertiesOauth struct {
 	// The type of attributes that ACL is evaluated with.
-	ACLAttributeType AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType `json:"acl_attribute_type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	aclAttributeType string `const:"oauth_access_token" json:"acl_attribute_type"`
 	// The claim in the OAuth2 access token to use as the subject for ACL evaluation when `acl_attribute_type` is set to `oauth_access_token`.
 	// Nested claim can be fetched by using a jq filter starts with dot, e.g., “.user.email”: https://jqlang.org/manual/#object-identifier-index
 	//
@@ -65,11 +40,8 @@ func (a *AIGatewayMCPServerBaseACLPropertiesOauth) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetACLAttributeType() AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType {
-	if a == nil {
-		return AIGatewayMCPServerBaseACLPropertiesOauthACLAttributeType("")
-	}
-	return a.ACLAttributeType
+func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetACLAttributeType() string {
+	return "oauth_access_token"
 }
 
 func (a *AIGatewayMCPServerBaseACLPropertiesOauth) GetAccessTokenClaimField() string {

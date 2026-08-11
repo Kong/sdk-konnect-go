@@ -4,40 +4,16 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderConfigAuthGCPType string
-
-const (
-	AIGatewayModelProviderConfigAuthGCPTypeGcp AIGatewayModelProviderConfigAuthGCPType = "gcp"
-)
-
-func (e AIGatewayModelProviderConfigAuthGCPType) ToPointer() *AIGatewayModelProviderConfigAuthGCPType {
-	return &e
-}
-func (e *AIGatewayModelProviderConfigAuthGCPType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gcp":
-		*e = AIGatewayModelProviderConfigAuthGCPType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderConfigAuthGCPType: %v", v)
-	}
-}
 
 // AIGatewayModelProviderConfigAuthGCPOutput - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 //
 // Configuration for GCP model provider.
 type AIGatewayModelProviderConfigAuthGCPOutput struct {
-	Type AIGatewayModelProviderConfigAuthGCPType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"gcp" json:"type"`
 	// Custom metadata URL for GCP authentication. Useful for restricted network environments or custom GCP endpoints. If not set, Kong will use the default Google metadata endpoint.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -61,11 +37,8 @@ func (a *AIGatewayModelProviderConfigAuthGCPOutput) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (a *AIGatewayModelProviderConfigAuthGCPOutput) GetType() AIGatewayModelProviderConfigAuthGCPType {
-	if a == nil {
-		return AIGatewayModelProviderConfigAuthGCPType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderConfigAuthGCPOutput) GetType() string {
+	return "gcp"
 }
 
 func (a *AIGatewayModelProviderConfigAuthGCPOutput) GetMetadataURL() *string {
@@ -83,74 +56,6 @@ func (a *AIGatewayModelProviderConfigAuthGCPOutput) GetOauthTokenURL() *string {
 }
 
 func (a *AIGatewayModelProviderConfigAuthGCPOutput) GetUseGcpServiceAccount() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.UseGcpServiceAccount
-}
-
-// AIGatewayModelProviderConfigAuthGCP - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for GCP model provider.
-type AIGatewayModelProviderConfigAuthGCP struct {
-	Type AIGatewayModelProviderConfigAuthGCPType `json:"type"`
-	// Full JSON string of the GCP service account to authenticate. If not set (and gcp_use_service_account is true), the service account JSON will be from the environment variable GCP_SERVICE_ACCOUNT.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	ServiceAccountJSON *string `json:"service_account_json,omitempty"`
-	// Custom metadata URL for GCP authentication. Useful for restricted network environments or custom GCP endpoints. If not set, Kong will use the default Google metadata endpoint.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	MetadataURL *string `json:"metadata_url,omitempty"`
-	// Custom OAuth token URL for GCP authentication. Useful for restricted network environments or custom GCP endpoints. If not set, Kong will use the default Google OAuth token endpoint.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	OauthTokenURL *string `json:"oauth_token_url,omitempty"`
-	// Use service account auth for GCP-based providers and models.
-	UseGcpServiceAccount *bool `json:"use_gcp_service_account,omitempty"`
-}
-
-func (a AIGatewayModelProviderConfigAuthGCP) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayModelProviderConfigAuthGCP) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayModelProviderConfigAuthGCP) GetType() AIGatewayModelProviderConfigAuthGCPType {
-	if a == nil {
-		return AIGatewayModelProviderConfigAuthGCPType("")
-	}
-	return a.Type
-}
-
-func (a *AIGatewayModelProviderConfigAuthGCP) GetServiceAccountJSON() *string {
-	if a == nil {
-		return nil
-	}
-	return a.ServiceAccountJSON
-}
-
-func (a *AIGatewayModelProviderConfigAuthGCP) GetMetadataURL() *string {
-	if a == nil {
-		return nil
-	}
-	return a.MetadataURL
-}
-
-func (a *AIGatewayModelProviderConfigAuthGCP) GetOauthTokenURL() *string {
-	if a == nil {
-		return nil
-	}
-	return a.OauthTokenURL
-}
-
-func (a *AIGatewayModelProviderConfigAuthGCP) GetUseGcpServiceAccount() *bool {
 	if a == nil {
 		return nil
 	}

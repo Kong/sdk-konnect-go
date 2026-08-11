@@ -12,7 +12,7 @@ import (
 type AzureKeyVaultType string
 
 const (
-	AzureKeyVaultTypeAzure AzureKeyVaultType = "azure"
+	AzureKeyVaultTypeSecrets AzureKeyVaultType = "secrets"
 )
 
 func (e AzureKeyVaultType) ToPointer() *AzureKeyVaultType {
@@ -24,34 +24,11 @@ func (e *AzureKeyVaultType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "azure":
+	case "secrets":
 		*e = AzureKeyVaultType(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for AzureKeyVaultType: %v", v)
-	}
-}
-
-type AzureKeyVaultConfigType string
-
-const (
-	AzureKeyVaultConfigTypeSecrets AzureKeyVaultConfigType = "secrets"
-)
-
-func (e AzureKeyVaultConfigType) ToPointer() *AzureKeyVaultConfigType {
-	return &e
-}
-func (e *AzureKeyVaultConfigType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "secrets":
-		*e = AzureKeyVaultConfigType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AzureKeyVaultConfigType: %v", v)
 	}
 }
 
@@ -95,8 +72,8 @@ type AzureKeyVaultConfig struct {
 	// The DirectoryId and TenantId are the same: both refer to the GUID representing your Azure Active Directory tenant.
 	// Microsoft documentation and products may use either term depending on context.
 	//
-	TenantID *string                  `json:"tenant_id,omitempty"`
-	Type     *AzureKeyVaultConfigType `default:"secrets" json:"type"`
+	TenantID *string            `json:"tenant_id,omitempty"`
+	Type     *AzureKeyVaultType `default:"secrets" json:"type"`
 }
 
 func (a AzureKeyVaultConfig) MarshalJSON() ([]byte, error) {
@@ -173,7 +150,7 @@ func (a *AzureKeyVaultConfig) GetTenantID() *string {
 	return a.TenantID
 }
 
-func (a *AzureKeyVaultConfig) GetType() *AzureKeyVaultConfigType {
+func (a *AzureKeyVaultConfig) GetType() *AzureKeyVaultType {
 	if a == nil {
 		return nil
 	}
@@ -191,7 +168,7 @@ type AzureKeyVault struct {
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -204,7 +181,8 @@ type AzureKeyVault struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	Type      AzureKeyVaultType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"azure" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	Config AzureKeyVaultConfig `json:"config"`
@@ -249,11 +227,8 @@ func (a *AzureKeyVault) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AzureKeyVault) GetType() AzureKeyVaultType {
-	if a == nil {
-		return AzureKeyVaultType("")
-	}
-	return a.Type
+func (a *AzureKeyVault) GetType() string {
+	return "azure"
 }
 
 func (a *AzureKeyVault) GetConfig() AzureKeyVaultConfig {

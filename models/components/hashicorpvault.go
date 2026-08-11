@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type HashiCorpVaultType string
-
-const (
-	HashiCorpVaultTypeHcv HashiCorpVaultType = "hcv"
-)
-
-func (e HashiCorpVaultType) ToPointer() *HashiCorpVaultType {
-	return &e
-}
-func (e *HashiCorpVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "hcv":
-		*e = HashiCorpVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultType: %v", v)
-	}
-}
 
 // HashiCorpVault - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
@@ -43,7 +18,7 @@ type HashiCorpVault struct {
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -55,8 +30,9 @@ type HashiCorpVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string  `json:"managed_by,omitempty"`
-	Type      HashiCorpVaultType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"hcv" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -103,11 +79,8 @@ func (h *HashiCorpVault) GetManagedBy() map[string]string {
 	return h.ManagedBy
 }
 
-func (h *HashiCorpVault) GetType() HashiCorpVaultType {
-	if h == nil {
-		return HashiCorpVaultType("")
-	}
-	return h.Type
+func (h *HashiCorpVault) GetType() string {
+	return "hcv"
 }
 
 func (h *HashiCorpVault) GetConfig() HashiCorpVaultConfig {

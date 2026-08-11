@@ -4,8 +4,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -38,29 +36,6 @@ func (e *AIGatewayModelBalancerLowestUsageConfigFailoverCriteria) IsExact() bool
 		}
 	}
 	return false
-}
-
-type AIGatewayModelBalancerLowestUsageConfigAlgorithm string
-
-const (
-	AIGatewayModelBalancerLowestUsageConfigAlgorithmLowestUsage AIGatewayModelBalancerLowestUsageConfigAlgorithm = "lowest-usage"
-)
-
-func (e AIGatewayModelBalancerLowestUsageConfigAlgorithm) ToPointer() *AIGatewayModelBalancerLowestUsageConfigAlgorithm {
-	return &e
-}
-func (e *AIGatewayModelBalancerLowestUsageConfigAlgorithm) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "lowest-usage":
-		*e = AIGatewayModelBalancerLowestUsageConfigAlgorithm(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelBalancerLowestUsageConfigAlgorithm: %v", v)
-	}
 }
 
 // TokensCountStrategy - Methodology to use for token usage calculation.
@@ -103,9 +78,10 @@ type AIGatewayModelBalancerLowestUsageConfig struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64                                           `default:"10000" json:"slots"`
-	WriteTimeout *int64                                           `default:"60000" json:"write_timeout"`
-	Algorithm    AIGatewayModelBalancerLowestUsageConfigAlgorithm `json:"algorithm"`
+	Slots        *int64 `default:"10000" json:"slots"`
+	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	algorithm string `const:"lowest-usage" json:"algorithm"`
 	// Methodology to use for token usage calculation.
 	TokensCountStrategy *TokensCountStrategy `default:"total-tokens" json:"tokens_count_strategy"`
 }
@@ -177,11 +153,8 @@ func (a *AIGatewayModelBalancerLowestUsageConfig) GetWriteTimeout() *int64 {
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerLowestUsageConfig) GetAlgorithm() AIGatewayModelBalancerLowestUsageConfigAlgorithm {
-	if a == nil {
-		return AIGatewayModelBalancerLowestUsageConfigAlgorithm("")
-	}
-	return a.Algorithm
+func (a *AIGatewayModelBalancerLowestUsageConfig) GetAlgorithm() string {
+	return "lowest-usage"
 }
 
 func (a *AIGatewayModelBalancerLowestUsageConfig) GetTokensCountStrategy() *TokensCountStrategy {

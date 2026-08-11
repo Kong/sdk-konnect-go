@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType string
-
-const (
-	AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsTypeCredentials AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType = "credentials"
-)
-
-func (e AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType) ToPointer() *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType {
-	return &e
-}
-func (e *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "credentials":
-		*e = AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
@@ -47,8 +22,9 @@ type AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput struct {
 	// include the header name and the token prefix if needed. Leave empty to omit the ID token
 	// when fetching the tools list.
 	//
-	IDTokenHeader *string                                                         `json:"id_token_header,omitempty"`
-	Type          AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType `json:"type"`
+	IDTokenHeader *string `json:"id_token_header,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"credentials" json:"type"`
 	// The token endpoint URL for fetching the OAuth 2.0 access token using client-credentials.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -91,11 +67,8 @@ func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput) GetI
 	return a.IDTokenHeader
 }
 
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput) GetType() AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType {
-	if a == nil {
-		return AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput) GetType() string {
+	return "credentials"
 }
 
 func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput) GetTokenEndpoint() string {
@@ -114,97 +87,3 @@ func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput) GetC
 
 // #region class-body-aigatewaymcpserverupstreamservertooloauth2configcredentialsoutput
 // #endregion class-body-aigatewaymcpserverupstreamservertooloauth2configcredentialsoutput
-
-// AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-type AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials struct {
-	// The scopes for the OAuth 2.0 client-credentials.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	Scope *string `json:"scope,omitempty"`
-	// Header name used to send the fetched access token to the upstream MCP server. The value should
-	// include the header name and the token prefix if needed.
-	//
-	AccessTokenHeader *string `default:"Authorization" json:"access_token_header"`
-	// Header name used to send the fetched ID token to the upstream MCP server. The value should
-	// include the header name and the token prefix if needed. Leave empty to omit the ID token
-	// when fetching the tools list.
-	//
-	IDTokenHeader *string                                                         `json:"id_token_header,omitempty"`
-	Type          AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType `json:"type"`
-	// The token endpoint URL for fetching the OAuth 2.0 access token using client-credentials.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	TokenEndpoint string `json:"token_endpoint"`
-	// The client ID for the OAuth 2.0 client-credentials.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	ClientID string `json:"client_id"`
-	// The client secret for the OAuth 2.0 client-credentials.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	ClientSecret *string `json:"client_secret,omitempty"`
-}
-
-func (a AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "token_endpoint", "client_id"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetScope() *string {
-	if a == nil {
-		return nil
-	}
-	return a.Scope
-}
-
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetAccessTokenHeader() *string {
-	if a == nil {
-		return nil
-	}
-	return a.AccessTokenHeader
-}
-
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetIDTokenHeader() *string {
-	if a == nil {
-		return nil
-	}
-	return a.IDTokenHeader
-}
-
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetType() AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType {
-	if a == nil {
-		return AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType("")
-	}
-	return a.Type
-}
-
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetTokenEndpoint() string {
-	if a == nil {
-		return ""
-	}
-	return a.TokenEndpoint
-}
-
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetClientID() string {
-	if a == nil {
-		return ""
-	}
-	return a.ClientID
-}
-
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) GetClientSecret() *string {
-	if a == nil {
-		return nil
-	}
-	return a.ClientSecret
-}
-
-// #region class-body-aigatewaymcpserverupstreamservertooloauth2configcredentials
-// #endregion class-body-aigatewaymcpserverupstreamservertooloauth2configcredentials

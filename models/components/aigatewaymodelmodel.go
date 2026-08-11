@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelModelType string
-
-const (
-	AIGatewayModelModelTypeModel AIGatewayModelModelType = "model"
-)
-
-func (e AIGatewayModelModelType) ToPointer() *AIGatewayModelModelType {
-	return &e
-}
-func (e *AIGatewayModelModelType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "model":
-		*e = AIGatewayModelModelType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelModelType: %v", v)
-	}
-}
 
 type AIGatewayModelModelCapabilities string
 
@@ -95,8 +70,9 @@ type AIGatewayModelModel struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string       `json:"managed_by,omitempty"`
-	Type      AIGatewayModelModelType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"model" json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelModelConfig `json:"config"`
 	// List of AI capabilities enabled for this model.
@@ -177,11 +153,8 @@ func (a *AIGatewayModelModel) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayModelModel) GetType() AIGatewayModelModelType {
-	if a == nil {
-		return AIGatewayModelModelType("")
-	}
-	return a.Type
+func (a *AIGatewayModelModel) GetType() string {
+	return "model"
 }
 
 func (a *AIGatewayModelModel) GetConfig() AIGatewayModelModelConfig {

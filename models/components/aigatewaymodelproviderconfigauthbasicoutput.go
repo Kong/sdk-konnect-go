@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderConfigAuthBasicType string
-
-const (
-	AIGatewayModelProviderConfigAuthBasicTypeBasic AIGatewayModelProviderConfigAuthBasicType = "basic"
-)
-
-func (e AIGatewayModelProviderConfigAuthBasicType) ToPointer() *AIGatewayModelProviderConfigAuthBasicType {
-	return &e
-}
-func (e *AIGatewayModelProviderConfigAuthBasicType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "basic":
-		*e = AIGatewayModelProviderConfigAuthBasicType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderConfigAuthBasicType: %v", v)
-	}
-}
 
 type AIGatewayModelProviderConfigAuthBasicHeaders struct {
 	// The name of the header used for authentication.
@@ -118,7 +93,8 @@ func (a *AIGatewayModelProviderConfigAuthBasicParams) GetLocation() *Location {
 //
 // Basic auth config for an upstream model provider.
 type AIGatewayModelProviderConfigAuthBasicOutput struct {
-	Type    AIGatewayModelProviderConfigAuthBasicType      `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_   string                                         `const:"basic" json:"type"`
 	Headers []AIGatewayModelProviderConfigAuthBasicHeaders `json:"headers,omitempty"`
 	Params  []AIGatewayModelProviderConfigAuthBasicParams  `json:"params,omitempty"`
 }
@@ -134,11 +110,8 @@ func (a *AIGatewayModelProviderConfigAuthBasicOutput) UnmarshalJSON(data []byte)
 	return nil
 }
 
-func (a *AIGatewayModelProviderConfigAuthBasicOutput) GetType() AIGatewayModelProviderConfigAuthBasicType {
-	if a == nil {
-		return AIGatewayModelProviderConfigAuthBasicType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderConfigAuthBasicOutput) GetType() string {
+	return "basic"
 }
 
 func (a *AIGatewayModelProviderConfigAuthBasicOutput) GetHeaders() []AIGatewayModelProviderConfigAuthBasicHeaders {
@@ -239,9 +212,10 @@ func (p *Params) GetLocation() *Location {
 //
 // Basic auth config for an upstream model provider.
 type AIGatewayModelProviderConfigAuthBasic struct {
-	Type    AIGatewayModelProviderConfigAuthBasicType `json:"type"`
-	Headers []Headers                                 `json:"headers,omitempty"`
-	Params  []Params                                  `json:"params,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_   string    `const:"basic" json:"type"`
+	Headers []Headers `json:"headers,omitempty"`
+	Params  []Params  `json:"params,omitempty"`
 }
 
 func (a AIGatewayModelProviderConfigAuthBasic) MarshalJSON() ([]byte, error) {
@@ -255,11 +229,8 @@ func (a *AIGatewayModelProviderConfigAuthBasic) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (a *AIGatewayModelProviderConfigAuthBasic) GetType() AIGatewayModelProviderConfigAuthBasicType {
-	if a == nil {
-		return AIGatewayModelProviderConfigAuthBasicType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderConfigAuthBasic) GetType() string {
+	return "basic"
 }
 
 func (a *AIGatewayModelProviderConfigAuthBasic) GetHeaders() []Headers {

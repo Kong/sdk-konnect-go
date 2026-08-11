@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderAnthropicType string
-
-const (
-	AIGatewayModelProviderAnthropicTypeAnthropic AIGatewayModelProviderAnthropicType = "anthropic"
-)
-
-func (e AIGatewayModelProviderAnthropicType) ToPointer() *AIGatewayModelProviderAnthropicType {
-	return &e
-}
-func (e *AIGatewayModelProviderAnthropicType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "anthropic":
-		*e = AIGatewayModelProviderAnthropicType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderAnthropicType: %v", v)
-	}
-}
 
 // AIGatewayModelProviderAnthropicConfig - Configuration for the model provider.
 type AIGatewayModelProviderAnthropicConfig struct {
@@ -62,7 +37,8 @@ func (a *AIGatewayModelProviderAnthropicConfig) GetAuth() AIGatewayModelProvider
 // AIGatewayModelProviderAnthropic - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAnthropic struct {
-	Type AIGatewayModelProviderAnthropicType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"anthropic" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -97,11 +73,8 @@ func (a *AIGatewayModelProviderAnthropic) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderAnthropic) GetType() AIGatewayModelProviderAnthropicType {
-	if a == nil {
-		return AIGatewayModelProviderAnthropicType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAnthropic) GetType() string {
+	return "anthropic"
 }
 
 func (a *AIGatewayModelProviderAnthropic) GetDisplayName() string {

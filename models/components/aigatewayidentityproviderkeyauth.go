@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayIdentityProviderKeyAuthType string
-
-const (
-	AIGatewayIdentityProviderKeyAuthTypeKeyAuth AIGatewayIdentityProviderKeyAuthType = "key-auth"
-)
-
-func (e AIGatewayIdentityProviderKeyAuthType) ToPointer() *AIGatewayIdentityProviderKeyAuthType {
-	return &e
-}
-func (e *AIGatewayIdentityProviderKeyAuthType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "key-auth":
-		*e = AIGatewayIdentityProviderKeyAuthType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayIdentityProviderKeyAuthType: %v", v)
-	}
-}
 
 // AIGatewayIdentityProviderKeyAuthConfig - Configuration for the Kong Key auth identity provider.
 // For advanced use cases, additional config properties can be sent in the request body.
@@ -132,8 +107,9 @@ type AIGatewayIdentityProviderKeyAuth struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                    `json:"managed_by,omitempty"`
-	Type      AIGatewayIdentityProviderKeyAuthType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"key-auth" json:"type"`
 	// Configuration for the Kong Key auth identity provider.
 	// For advanced use cases, additional config properties can be sent in the request body.
 	// See: https://developer.konghq.com/plugins/key-auth/reference/ for the list of properties
@@ -180,11 +156,8 @@ func (a *AIGatewayIdentityProviderKeyAuth) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayIdentityProviderKeyAuth) GetType() AIGatewayIdentityProviderKeyAuthType {
-	if a == nil {
-		return AIGatewayIdentityProviderKeyAuthType("")
-	}
-	return a.Type
+func (a *AIGatewayIdentityProviderKeyAuth) GetType() string {
+	return "key-auth"
 }
 
 func (a *AIGatewayIdentityProviderKeyAuth) GetConfig() *AIGatewayIdentityProviderKeyAuthConfig {

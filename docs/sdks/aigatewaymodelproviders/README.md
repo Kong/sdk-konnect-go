@@ -109,14 +109,11 @@ func main() {
 
     res, err := s.AIGatewayModelProviders.CreateAiGatewayModelProvider(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayModelProviderRequestVertex(
         components.AIGatewayModelProviderVertex{
-            Type: components.AIGatewayModelProviderVertexTypeVertex,
             DisplayName: "Azure AI SE",
             Name: "azure-ai-se",
             Config: components.AIGatewayModelProviderVertexConfig{
                 Auth: components.CreateAIGatewayModelProviderVertexAuthVertex(
-                    components.AIGatewayModelProviderConfigAuthVertex{
-                        Type: components.AIGatewayModelProviderConfigAuthVertexTypeVertex,
-                    },
+                    components.AIGatewayModelProviderConfigAuthVertex{},
                 ),
             },
         },
@@ -335,13 +332,10 @@ func main() {
         ModelProviderIDOrName: "my-entity-name",
         UpdateAIGatewayModelProviderRequest: components.CreateUpdateAIGatewayModelProviderRequestDeepseek(
             components.AIGatewayModelProviderDeepseek{
-                Type: components.AIGatewayModelProviderDeepseekTypeDeepseek,
                 DisplayName: "Azure AI SE",
                 Name: "azure-ai-se",
                 Config: components.AIGatewayModelProviderDeepseekConfig{
-                    Auth: components.AIGatewayModelProviderConfigAuthBasic{
-                        Type: components.AIGatewayModelProviderConfigAuthBasicTypeBasic,
-                    },
+                    Auth: components.AIGatewayModelProviderConfigAuthBasic{},
                 },
             },
         ),

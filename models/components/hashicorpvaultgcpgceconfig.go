@@ -4,8 +4,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -55,29 +53,6 @@ func (e *HashiCorpVaultGcpGCEConfigProtocol) IsExact() bool {
 	return false
 }
 
-type HashiCorpVaultGcpGCEConfigAuthMethod string
-
-const (
-	HashiCorpVaultGcpGCEConfigAuthMethodGcpGce HashiCorpVaultGcpGCEConfigAuthMethod = "gcp_gce"
-)
-
-func (e HashiCorpVaultGcpGCEConfigAuthMethod) ToPointer() *HashiCorpVaultGcpGCEConfigAuthMethod {
-	return &e
-}
-func (e *HashiCorpVaultGcpGCEConfigAuthMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gcp_gce":
-		*e = HashiCorpVaultGcpGCEConfigAuthMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultGcpGCEConfigAuthMethod: %v", v)
-	}
-}
-
 // HashiCorpVaultGcpGCEConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type HashiCorpVaultGcpGCEConfig struct {
@@ -113,8 +88,9 @@ type HashiCorpVaultGcpGCEConfig struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                              `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultGcpGCEConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"gcp_gce" json:"auth_method"`
 	// The role to use for GCP GCE auth.
 	Role string `json:"role"`
 	// The login path for GCP auth in HashiCorp Vault.
@@ -209,11 +185,8 @@ func (h *HashiCorpVaultGcpGCEConfig) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultGcpGCEConfig) GetAuthMethod() HashiCorpVaultGcpGCEConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultGcpGCEConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultGcpGCEConfig) GetAuthMethod() string {
+	return "gcp_gce"
 }
 
 func (h *HashiCorpVaultGcpGCEConfig) GetRole() string {

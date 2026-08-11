@@ -7,9 +7,9 @@ package components
 //
 // If you pass the same `name` and `description` of an existing team in the request, a team with the same `name` and `description` will be created. The two teams will have different `team_id` values to differentiate them.
 type CreateTeam struct {
-	// A name for the team being created.
+	// The name of the team.
 	Name string `json:"name"`
-	// The description of the new team.
+	// The description of the team.
 	Description *string `json:"description,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//

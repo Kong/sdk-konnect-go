@@ -12,10 +12,12 @@ var ListTeamsServerList = []string{
 	"https://global.api.konghq.com/",
 }
 
-// ListTeamsQueryParamFilter - Filter teams returned in the response.
+// ListTeamsQueryParamFilter - Filter teams returned in the response. Supports filtering by label value using
+// dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`.
 type ListTeamsQueryParamFilter struct {
 	// Filter using **one** of the following operators: `eq`, `contains`
-	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
+	Name   *components.LegacyStringFieldFilter           `queryParam:"name=name"`
+	Labels map[string]components.LegacyStringFieldFilter `queryParam:"name=labels"`
 }
 
 func (l *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
@@ -25,12 +27,20 @@ func (l *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilte
 	return l.Name
 }
 
+func (l *ListTeamsQueryParamFilter) GetLabels() map[string]components.LegacyStringFieldFilter {
+	if l == nil {
+		return nil
+	}
+	return l.Labels
+}
+
 type ListTeamsRequest struct {
 	// The maximum number of items to include per page. The last page of a collection may include fewer items.
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
-	// Filter teams returned in the response.
+	// Filter teams returned in the response. Supports filtering by label value using
+	// dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`.
 	Filter *ListTeamsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 

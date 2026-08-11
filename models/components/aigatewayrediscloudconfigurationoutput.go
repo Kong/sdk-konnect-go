@@ -30,9 +30,6 @@ type AIGatewayRedisCloudConfigurationCloudAuthentication struct {
 func CreateAIGatewayRedisCloudConfigurationCloudAuthenticationAws(aws AIGatewayRedisAWSAuthenticationOutput) AIGatewayRedisCloudConfigurationCloudAuthentication {
 	typ := AIGatewayRedisCloudConfigurationCloudAuthenticationTypeAws
 
-	typStr := AIGatewayRedisAWSAuthenticationType(typ)
-	aws.Type = typStr
-
 	return AIGatewayRedisCloudConfigurationCloudAuthentication{
 		AIGatewayRedisAWSAuthenticationOutput: &aws,
 		Type:                                  typ,
@@ -42,9 +39,6 @@ func CreateAIGatewayRedisCloudConfigurationCloudAuthenticationAws(aws AIGatewayR
 func CreateAIGatewayRedisCloudConfigurationCloudAuthenticationAzure(azure AIGatewayRedisAzureAuthenticationOutput) AIGatewayRedisCloudConfigurationCloudAuthentication {
 	typ := AIGatewayRedisCloudConfigurationCloudAuthenticationTypeAzure
 
-	typStr := AIGatewayRedisAzureAuthenticationType(typ)
-	azure.Type = typStr
-
 	return AIGatewayRedisCloudConfigurationCloudAuthentication{
 		AIGatewayRedisAzureAuthenticationOutput: &azure,
 		Type:                                    typ,
@@ -53,9 +47,6 @@ func CreateAIGatewayRedisCloudConfigurationCloudAuthenticationAzure(azure AIGate
 
 func CreateAIGatewayRedisCloudConfigurationCloudAuthenticationGcp(gcp AIGatewayRedisGCPAuthenticationOutput) AIGatewayRedisCloudConfigurationCloudAuthentication {
 	typ := AIGatewayRedisCloudConfigurationCloudAuthenticationTypeGcp
-
-	typStr := AIGatewayRedisGCPAuthenticationType(typ)
-	gcp.Type = typStr
 
 	return AIGatewayRedisCloudConfigurationCloudAuthentication{
 		AIGatewayRedisGCPAuthenticationOutput: &gcp,
@@ -619,9 +610,6 @@ type CloudAuthentication struct {
 func CreateCloudAuthenticationAws(aws AIGatewayRedisAWSAuthentication) CloudAuthentication {
 	typ := CloudAuthenticationTypeAws
 
-	typStr := AIGatewayRedisAWSAuthenticationType(typ)
-	aws.Type = typStr
-
 	return CloudAuthentication{
 		AIGatewayRedisAWSAuthentication: &aws,
 		Type:                            typ,
@@ -631,9 +619,6 @@ func CreateCloudAuthenticationAws(aws AIGatewayRedisAWSAuthentication) CloudAuth
 func CreateCloudAuthenticationAzure(azure AIGatewayRedisAzureAuthentication) CloudAuthentication {
 	typ := CloudAuthenticationTypeAzure
 
-	typStr := AIGatewayRedisAzureAuthenticationType(typ)
-	azure.Type = typStr
-
 	return CloudAuthentication{
 		AIGatewayRedisAzureAuthentication: &azure,
 		Type:                              typ,
@@ -642,9 +627,6 @@ func CreateCloudAuthenticationAzure(azure AIGatewayRedisAzureAuthentication) Clo
 
 func CreateCloudAuthenticationGcp(gcp AIGatewayRedisGCPAuthentication) CloudAuthentication {
 	typ := CloudAuthenticationTypeGcp
-
-	typStr := AIGatewayRedisGCPAuthenticationType(typ)
-	gcp.Type = typStr
 
 	return CloudAuthentication{
 		AIGatewayRedisGCPAuthentication: &gcp,

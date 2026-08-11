@@ -4,8 +4,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -40,29 +38,6 @@ func (e *AIGatewayModelBalancerRoundRobinConfigFailoverCriteria) IsExact() bool 
 	return false
 }
 
-type AIGatewayModelBalancerRoundRobinConfigAlgorithm string
-
-const (
-	AIGatewayModelBalancerRoundRobinConfigAlgorithmRoundRobin AIGatewayModelBalancerRoundRobinConfigAlgorithm = "round-robin"
-)
-
-func (e AIGatewayModelBalancerRoundRobinConfigAlgorithm) ToPointer() *AIGatewayModelBalancerRoundRobinConfigAlgorithm {
-	return &e
-}
-func (e *AIGatewayModelBalancerRoundRobinConfigAlgorithm) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "round-robin":
-		*e = AIGatewayModelBalancerRoundRobinConfigAlgorithm(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelBalancerRoundRobinConfigAlgorithm: %v", v)
-	}
-}
-
 // AIGatewayModelBalancerRoundRobinConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelBalancerRoundRobinConfig struct {
@@ -77,9 +52,10 @@ type AIGatewayModelBalancerRoundRobinConfig struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64                                          `default:"10000" json:"slots"`
-	WriteTimeout *int64                                          `default:"60000" json:"write_timeout"`
-	Algorithm    AIGatewayModelBalancerRoundRobinConfigAlgorithm `json:"algorithm"`
+	Slots        *int64 `default:"10000" json:"slots"`
+	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	algorithm string `const:"round-robin" json:"algorithm"`
 }
 
 func (a AIGatewayModelBalancerRoundRobinConfig) MarshalJSON() ([]byte, error) {
@@ -149,9 +125,6 @@ func (a *AIGatewayModelBalancerRoundRobinConfig) GetWriteTimeout() *int64 {
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerRoundRobinConfig) GetAlgorithm() AIGatewayModelBalancerRoundRobinConfigAlgorithm {
-	if a == nil {
-		return AIGatewayModelBalancerRoundRobinConfigAlgorithm("")
-	}
-	return a.Algorithm
+func (a *AIGatewayModelBalancerRoundRobinConfig) GetAlgorithm() string {
+	return "round-robin"
 }

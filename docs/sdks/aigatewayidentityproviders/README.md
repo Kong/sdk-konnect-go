@@ -111,7 +111,6 @@ func main() {
         components.AIGatewayIdentityProviderKeyAuth{
             DisplayName: "Okta AI SE",
             Name: "okta-ai-se",
-            Type: components.AIGatewayIdentityProviderKeyAuthTypeKeyAuth,
         },
     ))
     if err != nil {
@@ -258,7 +257,6 @@ func main() {
             components.AIGatewayIdentityProviderKeyAuth{
                 DisplayName: "Okta AI SE",
                 Name: "okta-ai-se",
-                Type: components.AIGatewayIdentityProviderKeyAuthTypeKeyAuth,
             },
         ),
     })

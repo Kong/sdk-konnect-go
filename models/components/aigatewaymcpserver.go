@@ -11,33 +11,11 @@ import (
 	"time"
 )
 
-type AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType string
-
-const (
-	AIGatewayMCPServerUpstreamServerAIGatewayMCPServerTypeUpstreamServer AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType = "upstream-server"
-)
-
-func (e AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType) ToPointer() *AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType {
-	return &e
-}
-func (e *AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "upstream-server":
-		*e = AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType: %v", v)
-	}
-}
-
 // AIGatewayMCPServerAIGatewayMCPServerUpstreamServer - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerAIGatewayMCPServerUpstreamServer struct {
-	Type AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"upstream-server" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -91,11 +69,8 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) UnmarshalJSON(data 
 	return nil
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetType() AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType {
-	if a == nil {
-		return AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetType() string {
+	return "upstream-server"
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetConfig() AIGatewayMCPServerUpstreamServerConfigOutput {
@@ -203,33 +178,11 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetAdditionalProper
 	return a.AdditionalProperties
 }
 
-type AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType string
-
-const (
-	AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerTypePassthroughListener AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType = "passthrough-listener"
-)
-
-func (e AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType) ToPointer() *AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType {
-	return &e
-}
-func (e *AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "passthrough-listener":
-		*e = AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType: %v", v)
-	}
-}
-
 // AIGatewayMCPServerAIGatewayMCPServerPassthroughListener - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerAIGatewayMCPServerPassthroughListener struct {
-	Type AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"passthrough-listener" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -283,11 +236,8 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) UnmarshalJSON(
 	return nil
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetType() AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType {
-	if a == nil {
-		return AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetType() string {
+	return "passthrough-listener"
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetConfig() AIGatewayMCPServerWithUpstreamConfigOutput {
@@ -395,33 +345,11 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAdditionalP
 	return a.AdditionalProperties
 }
 
-type AIGatewayMCPServerListenerAIGatewayMCPServerType string
-
-const (
-	AIGatewayMCPServerListenerAIGatewayMCPServerTypeListener AIGatewayMCPServerListenerAIGatewayMCPServerType = "listener"
-)
-
-func (e AIGatewayMCPServerListenerAIGatewayMCPServerType) ToPointer() *AIGatewayMCPServerListenerAIGatewayMCPServerType {
-	return &e
-}
-func (e *AIGatewayMCPServerListenerAIGatewayMCPServerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "listener":
-		*e = AIGatewayMCPServerListenerAIGatewayMCPServerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerListenerAIGatewayMCPServerType: %v", v)
-	}
-}
-
 // AIGatewayMCPServerAIGatewayMCPServerListener - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerAIGatewayMCPServerListener struct {
-	Type AIGatewayMCPServerListenerAIGatewayMCPServerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"listener" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -475,11 +403,8 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerListener) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetType() AIGatewayMCPServerListenerAIGatewayMCPServerType {
-	if a == nil {
-		return AIGatewayMCPServerListenerAIGatewayMCPServerType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetType() string {
+	return "listener"
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetConfig() AIGatewayMCPServerNoUpstreamConfigOutput {
@@ -587,33 +512,11 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAdditionalProperties()
 	return a.AdditionalProperties
 }
 
-type AIGatewayMCPServerConversionListenerAIGatewayMCPServerType string
-
-const (
-	AIGatewayMCPServerConversionListenerAIGatewayMCPServerTypeConversionListener AIGatewayMCPServerConversionListenerAIGatewayMCPServerType = "conversion-listener"
-)
-
-func (e AIGatewayMCPServerConversionListenerAIGatewayMCPServerType) ToPointer() *AIGatewayMCPServerConversionListenerAIGatewayMCPServerType {
-	return &e
-}
-func (e *AIGatewayMCPServerConversionListenerAIGatewayMCPServerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "conversion-listener":
-		*e = AIGatewayMCPServerConversionListenerAIGatewayMCPServerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerConversionListenerAIGatewayMCPServerType: %v", v)
-	}
-}
-
 // AIGatewayMCPServerAIGatewayMCPServerConversionListener - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerAIGatewayMCPServerConversionListener struct {
-	Type AIGatewayMCPServerConversionListenerAIGatewayMCPServerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"conversion-listener" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -667,11 +570,8 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) UnmarshalJSON(d
 	return nil
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetType() AIGatewayMCPServerConversionListenerAIGatewayMCPServerType {
-	if a == nil {
-		return AIGatewayMCPServerConversionListenerAIGatewayMCPServerType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetType() string {
+	return "conversion-listener"
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigOutput {
@@ -779,33 +679,11 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAdditionalPr
 	return a.AdditionalProperties
 }
 
-type AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType string
-
-const (
-	AIGatewayMCPServerConversionOnlyAIGatewayMCPServerTypeConversionOnly AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType = "conversion-only"
-)
-
-func (e AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType) ToPointer() *AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType {
-	return &e
-}
-func (e *AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "conversion-only":
-		*e = AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType: %v", v)
-	}
-}
-
 // AIGatewayMCPServerAIGatewayMCPServerConversionOnly - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerAIGatewayMCPServerConversionOnly struct {
-	Type AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"conversion-only" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -856,11 +734,8 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) UnmarshalJSON(data 
 	return nil
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetType() AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType {
-	if a == nil {
-		return AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetType() string {
+	return "conversion-only"
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig {
@@ -972,9 +847,6 @@ type AIGatewayMCPServer struct {
 func CreateAIGatewayMCPServerConversionOnly(conversionOnly AIGatewayMCPServerAIGatewayMCPServerConversionOnly) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeConversionOnly
 
-	typStr := AIGatewayMCPServerConversionOnlyAIGatewayMCPServerType(typ)
-	conversionOnly.Type = typStr
-
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerAIGatewayMCPServerConversionOnly: &conversionOnly,
 		Type: typ,
@@ -983,9 +855,6 @@ func CreateAIGatewayMCPServerConversionOnly(conversionOnly AIGatewayMCPServerAIG
 
 func CreateAIGatewayMCPServerConversionListener(conversionListener AIGatewayMCPServerAIGatewayMCPServerConversionListener) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeConversionListener
-
-	typStr := AIGatewayMCPServerConversionListenerAIGatewayMCPServerType(typ)
-	conversionListener.Type = typStr
 
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerAIGatewayMCPServerConversionListener: &conversionListener,
@@ -996,9 +865,6 @@ func CreateAIGatewayMCPServerConversionListener(conversionListener AIGatewayMCPS
 func CreateAIGatewayMCPServerListener(listener AIGatewayMCPServerAIGatewayMCPServerListener) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeListener
 
-	typStr := AIGatewayMCPServerListenerAIGatewayMCPServerType(typ)
-	listener.Type = typStr
-
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerAIGatewayMCPServerListener: &listener,
 		Type: typ,
@@ -1008,9 +874,6 @@ func CreateAIGatewayMCPServerListener(listener AIGatewayMCPServerAIGatewayMCPSer
 func CreateAIGatewayMCPServerPassthroughListener(passthroughListener AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypePassthroughListener
 
-	typStr := AIGatewayMCPServerPassthroughListenerAIGatewayMCPServerType(typ)
-	passthroughListener.Type = typStr
-
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerAIGatewayMCPServerPassthroughListener: &passthroughListener,
 		Type: typ,
@@ -1019,9 +882,6 @@ func CreateAIGatewayMCPServerPassthroughListener(passthroughListener AIGatewayMC
 
 func CreateAIGatewayMCPServerUpstreamServer(upstreamServer AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeUpstreamServer
-
-	typStr := AIGatewayMCPServerUpstreamServerAIGatewayMCPServerType(typ)
-	upstreamServer.Type = typStr
 
 	return AIGatewayMCPServer{
 		AIGatewayMCPServerAIGatewayMCPServerUpstreamServer: &upstreamServer,
