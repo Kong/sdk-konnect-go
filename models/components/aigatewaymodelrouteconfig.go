@@ -37,7 +37,8 @@ type AIGatewayModelRouteConfig struct {
 	// An optional set of strings associated with the route for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// Configuration for overriding routing to this model using a selector.
-	// When not set, a default model selector will be created using the model's name and format.
+	// When no selector location is set, the format default selector is used.
+	// When values are not set, the model name is used as the selector value.
 	//
 	Model *AIGatewayModelSelectorConfig `json:"model,omitempty"`
 }
