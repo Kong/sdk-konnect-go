@@ -52663,85 +52663,38 @@ components:
     AIGatewayModelSelectorConfig:
       description: |
         Configuration for overriding routing to this model using a selector.
-        When not set, a default model selector will be created using the model's name and format.
-      oneOf:
-        - $ref: '#/components/schemas/AIGatewayModelSelectorConfigBody'
-        - $ref: '#/components/schemas/AIGatewayModelSelectorConfigHeaders'
-        - $ref: '#/components/schemas/AIGatewayModelSelectorConfigPath'
-      title: AIGatewayModelSelectorConfig
-    AIGatewayModelSelectorConfigBody:
-      description: |
-        Configuration for routing requests to a specific model using a request body property.
+        When no selector location is set, the format default selector is used.
+        When values are not set, the model name is used as the selector value.
       type: object
       properties:
         body_param:
           description: The body property name to match for routing.
           type: string
           example: model
-        values:
-          description: |
-            The list of values that are matched against the body property value.
-            If the body property value matches any of the specified values, the request will be routed to the corresponding model.
-          type: array
-          items:
-            type: string
-          example:
-            - gpt-3.5-turbo
-          maxItems: 1
-      additionalProperties: false
-      required:
-        - body_param
-        - values
-      title: AIGatewayModelSelectorConfigBody
-    AIGatewayModelSelectorConfigHeaders:
-      description: |
-        Configuration for routing requests to a specific model using a header.
-      type: object
-      properties:
+          minLength: 1
         header_param:
           description: The header property name to match for routing.
           type: string
           example: x-model
-        values:
-          description: |
-            The list of values that are matched against the header property value.
-            If the header property value matches any of the specified values, the request will be routed to the corresponding model.
-          type: array
-          items:
-            type: string
-          example:
-            - '@azure/claude-sonnet-5'
-          maxItems: 1
-      additionalProperties: false
-      required:
-        - header_param
-        - values
-      title: AIGatewayModelSelectorConfigHeaders
-    AIGatewayModelSelectorConfigPath:
-      description: |
-        Configuration for routing requests to a specific model using a path selector.
-      type: object
-      properties:
+          minLength: 1
         path_param:
           description: |
             The name of the regex capture group defined in the route path for routing.
           type: string
           example: model_name
+          minLength: 1
         values:
           description: |
-            The list of values that are matched against the path param value.
-            If the path param value matches any of the specified values, the request will be routed to the corresponding model.
+            An optional model alias. When omitted, the model name is used.
+            When no selector location is configured, the format default selector is used.
           type: array
           items:
             type: string
-          example:
-            - '@azure/claude-sonnet-5'
+            minLength: 1
           maxItems: 1
+          minItems: 1
       additionalProperties: false
-      required:
-        - path_param
-        - values
-      title: AIGatewayModelSelectorConfigPath
+      title: AIGatewayModelSelectorConfig
     AIGatewayModelBalancerConfig:
       description: |-
         **Pre-release Feature**
@@ -76208,7 +76161,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.10.2
+    version: 0.10.3
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.2.1
