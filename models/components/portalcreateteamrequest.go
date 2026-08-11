@@ -9,7 +9,9 @@ import (
 
 // PortalCreateTeamRequest - Details about a team to create.
 type PortalCreateTeamRequest struct {
-	Name        string  `json:"name"`
+	// The name of the team.
+	Name string `json:"name"`
+	// The description of the team.
 	Description *string `json:"description,omitempty"`
 	// Whether the team is allowed to own applications
 	CanOwnApplications *bool `default:"false" json:"can_own_applications"`

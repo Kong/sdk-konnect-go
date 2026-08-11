@@ -4,34 +4,9 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
-
-type AIGatewayIdentityProviderOpenIDConnectResponseType string
-
-const (
-	AIGatewayIdentityProviderOpenIDConnectResponseTypeOpenidConnect AIGatewayIdentityProviderOpenIDConnectResponseType = "openid-connect"
-)
-
-func (e AIGatewayIdentityProviderOpenIDConnectResponseType) ToPointer() *AIGatewayIdentityProviderOpenIDConnectResponseType {
-	return &e
-}
-func (e *AIGatewayIdentityProviderOpenIDConnectResponseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "openid-connect":
-		*e = AIGatewayIdentityProviderOpenIDConnectResponseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayIdentityProviderOpenIDConnectResponseType: %v", v)
-	}
-}
 
 type AuthMethods string
 
@@ -62,6 +37,121 @@ func (e *AuthMethods) IsExact() bool {
 	return false
 }
 
+type ClientAlg string
+
+const (
+	ClientAlgHs256 ClientAlg = "HS256"
+	ClientAlgHs384 ClientAlg = "HS384"
+	ClientAlgHs512 ClientAlg = "HS512"
+	ClientAlgRs256 ClientAlg = "RS256"
+	ClientAlgRs384 ClientAlg = "RS384"
+	ClientAlgRs512 ClientAlg = "RS512"
+	ClientAlgEs256 ClientAlg = "ES256"
+	ClientAlgEs384 ClientAlg = "ES384"
+	ClientAlgEs512 ClientAlg = "ES512"
+	ClientAlgPs256 ClientAlg = "PS256"
+	ClientAlgPs384 ClientAlg = "PS384"
+	ClientAlgPs512 ClientAlg = "PS512"
+	ClientAlgEdDsa ClientAlg = "EdDSA"
+)
+
+func (e ClientAlg) ToPointer() *ClientAlg {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ClientAlg) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "HS256", "HS384", "HS512", "RS256", "RS384", "RS512", "ES256", "ES384", "ES512", "PS256", "PS384", "PS512", "EdDSA":
+			return true
+		}
+	}
+	return false
+}
+
+type ClientAuth string
+
+const (
+	ClientAuthClientSecretBasic       ClientAuth = "client_secret_basic"
+	ClientAuthClientSecretPost        ClientAuth = "client_secret_post"
+	ClientAuthClientSecretJwt         ClientAuth = "client_secret_jwt"
+	ClientAuthPrivateKeyJwt           ClientAuth = "private_key_jwt"
+	ClientAuthTLSClientAuth           ClientAuth = "tls_client_auth"
+	ClientAuthSelfSignedTLSClientAuth ClientAuth = "self_signed_tls_client_auth"
+	ClientAuthNone                    ClientAuth = "none"
+)
+
+func (e ClientAuth) ToPointer() *ClientAuth {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ClientAuth) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "client_secret_basic", "client_secret_post", "client_secret_jwt", "private_key_jwt", "tls_client_auth", "self_signed_tls_client_auth", "none":
+			return true
+		}
+	}
+	return false
+}
+
+type ConsumerBy string
+
+const (
+	ConsumerByID       ConsumerBy = "id"
+	ConsumerByUsername ConsumerBy = "username"
+	ConsumerByCustomID ConsumerBy = "custom_id"
+)
+
+func (e ConsumerBy) ToPointer() *ConsumerBy {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ConsumerBy) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "id", "username", "custom_id":
+			return true
+		}
+	}
+	return false
+}
+
+type UpstreamHeaders struct {
+	// The name of the header.
+	Header string `json:"header"`
+	// The path of the header value.
+	Path []string `json:"path"`
+}
+
+func (u UpstreamHeaders) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpstreamHeaders) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"header", "path"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (u *UpstreamHeaders) GetHeader() string {
+	if u == nil {
+		return ""
+	}
+	return u.Header
+}
+
+func (u *UpstreamHeaders) GetPath() []string {
+	if u == nil {
+		return []string{}
+	}
+	return u.Path
+}
+
 // AIGatewayIdentityProviderOpenIDConnectResponseConfig - Configuration for the OpenID Connect identity provider.
 // For advanced use cases, additional config properties can be sent in the request body.
 // See: https://developer.konghq.com/plugins/openid-connect/reference/ for the list of properties
@@ -72,6 +162,10 @@ type AIGatewayIdentityProviderOpenIDConnectResponseConfig struct {
 	// When multiple values are provided, the client ID and secrets pairs correspond based on their locations in the array.
 	//
 	ClientID []string `json:"client_id,omitempty"`
+	// Algorithm to use for `client_secret_jwt` or `private_key_jwt` authentication.
+	ClientAlg []ClientAlg `json:"client_alg,omitempty"`
+	// Client authentication methods used with the identity provider.
+	ClientAuth []ClientAuth `json:"client_auth,omitempty"`
 	// An array containing an array of string paths representing the location of the claim in a nested object.
 	// For example, to map to user.info.id, set [ "user", "info", "id" ].
 	//
@@ -83,15 +177,47 @@ type AIGatewayIdentityProviderOpenIDConnectResponseConfig struct {
 	// Do not terminate the request if consumer groups mapping fails.
 	//
 	ConsumerGroupsOptional *bool `default:"false" json:"consumer_groups_optional"`
+	// Consumer fields used when mapping a token claim to a Kong consumer.
+	ConsumerBy []ConsumerBy `json:"consumer_by,omitempty"`
 	// Do not terminate the request if consumer mapping fails.
 	//
 	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
+	// Claim path used to derive virtual credentials when consumer mapping is not used.
+	CredentialClaim []string `json:"credential_claim,omitempty"`
 	// URL that identifies the OpenID Provider
 	Issuer *string `json:"issuer,omitempty"`
+	// Overrides the introspection endpoint returned by discovery.
+	IntrospectionEndpoint *string `json:"introspection_endpoint,omitempty"`
+	// mTLS alias for the introspection endpoint.
+	MtlsIntrospectionEndpoint *string `json:"mtls_introspection_endpoint,omitempty"`
+	// Cache introspection endpoint requests.
+	CacheIntrospection *bool `default:"true" json:"cache_introspection"`
+	// Overrides the JWKS endpoint returned by discovery.
+	JwksEndpoint *string `json:"jwks_endpoint,omitempty"`
+	// Leeway, in seconds, for validating token time claims.
+	Leeway *int64 `default:"0" json:"leeway"`
 	// This field is referenceable.
 	//
-	Scopes    []string `json:"scopes,omitempty"`
-	SslVerify *bool    `default:"true" json:"ssl_verify"`
+	Scopes []string `json:"scopes,omitempty"`
+	// Audiences required in the access token or introspection response.
+	AudienceRequired []string `json:"audience_required,omitempty"`
+	SslVerify        *bool    `default:"true" json:"ssl_verify"`
+	// Remove credentials used for authentication before proxying the request upstream.
+	HideCredentials *bool `default:"true" json:"hide_credentials"`
+	// Reuse HTTP client connections for identity provider requests.
+	Keepalive *bool `default:"true" json:"keepalive"`
+	// Network I/O timeout, in milliseconds, for identity provider requests.
+	Timeout *int64 `default:"10000" json:"timeout"`
+	// HTTP version used for identity provider requests.
+	HTTPVersion *float64 `default:"1.1" json:"http_version"`
+	// HTTP proxy used for identity provider requests.
+	HTTPProxy *string `json:"http_proxy,omitempty"`
+	// HTTPS proxy used for identity provider requests.
+	HTTPSProxy *string `json:"https_proxy,omitempty"`
+	// Comma-separated hosts that bypass the configured proxies.
+	NoProxy *string `json:"no_proxy,omitempty"`
+	// Map token claims to upstream headers using path-based access.
+	UpstreamHeaders []UpstreamHeaders `json:"upstream_headers,omitempty"`
 	// Salt used for generating the cache key that is used for caching the token endpoint requests.
 	//
 	CacheTokensSalt      string         `json:"cache_tokens_salt"`
@@ -123,6 +249,20 @@ func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetClientID() []s
 	return a.ClientID
 }
 
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetClientAlg() []ClientAlg {
+	if a == nil {
+		return nil
+	}
+	return a.ClientAlg
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetClientAuth() []ClientAuth {
+	if a == nil {
+		return nil
+	}
+	return a.ClientAuth
+}
+
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerClaims() [][]string {
 	if a == nil {
 		return nil
@@ -144,11 +284,25 @@ func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerGroups
 	return a.ConsumerGroupsOptional
 }
 
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerBy() []ConsumerBy {
+	if a == nil {
+		return nil
+	}
+	return a.ConsumerBy
+}
+
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetConsumerOptional() *bool {
 	if a == nil {
 		return nil
 	}
 	return a.ConsumerOptional
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetCredentialClaim() []string {
+	if a == nil {
+		return nil
+	}
+	return a.CredentialClaim
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetIssuer() *string {
@@ -158,6 +312,41 @@ func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetIssuer() *stri
 	return a.Issuer
 }
 
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetIntrospectionEndpoint() *string {
+	if a == nil {
+		return nil
+	}
+	return a.IntrospectionEndpoint
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetMtlsIntrospectionEndpoint() *string {
+	if a == nil {
+		return nil
+	}
+	return a.MtlsIntrospectionEndpoint
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetCacheIntrospection() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.CacheIntrospection
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetJwksEndpoint() *string {
+	if a == nil {
+		return nil
+	}
+	return a.JwksEndpoint
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetLeeway() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.Leeway
+}
+
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetScopes() []string {
 	if a == nil {
 		return nil
@@ -165,11 +354,74 @@ func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetScopes() []str
 	return a.Scopes
 }
 
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetAudienceRequired() []string {
+	if a == nil {
+		return nil
+	}
+	return a.AudienceRequired
+}
+
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetSslVerify() *bool {
 	if a == nil {
 		return nil
 	}
 	return a.SslVerify
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetHideCredentials() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.HideCredentials
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetKeepalive() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.Keepalive
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetTimeout() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.Timeout
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetHTTPVersion() *float64 {
+	if a == nil {
+		return nil
+	}
+	return a.HTTPVersion
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetHTTPProxy() *string {
+	if a == nil {
+		return nil
+	}
+	return a.HTTPProxy
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetHTTPSProxy() *string {
+	if a == nil {
+		return nil
+	}
+	return a.HTTPSProxy
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetNoProxy() *string {
+	if a == nil {
+		return nil
+	}
+	return a.NoProxy
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetUpstreamHeaders() []UpstreamHeaders {
+	if a == nil {
+		return nil
+	}
+	return a.UpstreamHeaders
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectResponseConfig) GetCacheTokensSalt() string {
@@ -207,8 +459,9 @@ type AIGatewayIdentityProviderOpenIDConnectResponse struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                                  `json:"managed_by,omitempty"`
-	Type      AIGatewayIdentityProviderOpenIDConnectResponseType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"openid-connect" json:"type"`
 	// Configuration for the OpenID Connect identity provider.
 	// For advanced use cases, additional config properties can be sent in the request body.
 	// See: https://developer.konghq.com/plugins/openid-connect/reference/ for the list of properties
@@ -261,11 +514,8 @@ func (a *AIGatewayIdentityProviderOpenIDConnectResponse) GetManagedBy() map[stri
 	return a.ManagedBy
 }
 
-func (a *AIGatewayIdentityProviderOpenIDConnectResponse) GetType() AIGatewayIdentityProviderOpenIDConnectResponseType {
-	if a == nil {
-		return AIGatewayIdentityProviderOpenIDConnectResponseType("")
-	}
-	return a.Type
+func (a *AIGatewayIdentityProviderOpenIDConnectResponse) GetType() string {
+	return "openid-connect"
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectResponse) GetConfig() *AIGatewayIdentityProviderOpenIDConnectResponseConfig {

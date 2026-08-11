@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderHuggingfaceType string
-
-const (
-	AIGatewayModelProviderHuggingfaceTypeHuggingface AIGatewayModelProviderHuggingfaceType = "huggingface"
-)
-
-func (e AIGatewayModelProviderHuggingfaceType) ToPointer() *AIGatewayModelProviderHuggingfaceType {
-	return &e
-}
-func (e *AIGatewayModelProviderHuggingfaceType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "huggingface":
-		*e = AIGatewayModelProviderHuggingfaceType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderHuggingfaceType: %v", v)
-	}
-}
 
 // AIGatewayModelProviderHuggingfaceConfig - Configuration for the model provider.
 type AIGatewayModelProviderHuggingfaceConfig struct {
@@ -62,7 +37,8 @@ func (a *AIGatewayModelProviderHuggingfaceConfig) GetAuth() AIGatewayModelProvid
 // AIGatewayModelProviderHuggingface - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderHuggingface struct {
-	Type AIGatewayModelProviderHuggingfaceType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"huggingface" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -97,11 +73,8 @@ func (a *AIGatewayModelProviderHuggingface) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderHuggingface) GetType() AIGatewayModelProviderHuggingfaceType {
-	if a == nil {
-		return AIGatewayModelProviderHuggingfaceType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderHuggingface) GetType() string {
+	return "huggingface"
 }
 
 func (a *AIGatewayModelProviderHuggingface) GetDisplayName() string {

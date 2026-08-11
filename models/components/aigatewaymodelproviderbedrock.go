@@ -10,29 +10,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayModelProviderBedrockType string
-
-const (
-	AIGatewayModelProviderBedrockTypeBedrock AIGatewayModelProviderBedrockType = "bedrock"
-)
-
-func (e AIGatewayModelProviderBedrockType) ToPointer() *AIGatewayModelProviderBedrockType {
-	return &e
-}
-func (e *AIGatewayModelProviderBedrockType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bedrock":
-		*e = AIGatewayModelProviderBedrockType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderBedrockType: %v", v)
-	}
-}
-
 type AIGatewayModelProviderBedrockAuthType string
 
 const (
@@ -50,9 +27,6 @@ type AIGatewayModelProviderBedrockAuth struct {
 func CreateAIGatewayModelProviderBedrockAuthBasic(basic AIGatewayModelProviderConfigAuthBasic) AIGatewayModelProviderBedrockAuth {
 	typ := AIGatewayModelProviderBedrockAuthTypeBasic
 
-	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
-	basic.Type = typStr
-
 	return AIGatewayModelProviderBedrockAuth{
 		AIGatewayModelProviderConfigAuthBasic: &basic,
 		Type:                                  typ,
@@ -61,9 +35,6 @@ func CreateAIGatewayModelProviderBedrockAuthBasic(basic AIGatewayModelProviderCo
 
 func CreateAIGatewayModelProviderBedrockAuthAws(aws AIGatewayModelProviderConfigAuthAWS) AIGatewayModelProviderBedrockAuth {
 	typ := AIGatewayModelProviderBedrockAuthTypeAws
-
-	typStr := AIGatewayModelProviderConfigAuthAWSType(typ)
-	aws.Type = typStr
 
 	return AIGatewayModelProviderBedrockAuth{
 		AIGatewayModelProviderConfigAuthAWS: &aws,
@@ -153,7 +124,8 @@ func (a *AIGatewayModelProviderBedrockConfig) GetAuthAws() *AIGatewayModelProvid
 //
 // Config for AWS model provider.
 type AIGatewayModelProviderBedrock struct {
-	Type AIGatewayModelProviderBedrockType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"bedrock" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -187,11 +159,8 @@ func (a *AIGatewayModelProviderBedrock) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderBedrock) GetType() AIGatewayModelProviderBedrockType {
-	if a == nil {
-		return AIGatewayModelProviderBedrockType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderBedrock) GetType() string {
+	return "bedrock"
 }
 
 func (a *AIGatewayModelProviderBedrock) GetDisplayName() string {

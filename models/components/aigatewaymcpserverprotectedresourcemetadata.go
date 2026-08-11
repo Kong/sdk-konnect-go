@@ -14,9 +14,9 @@ import (
 // server, allowing clients to discover the authorization servers that
 // protect it.
 type AIGatewayMCPServerProtectedResourceMetadata struct {
-	// The URL where the protected resource metadata is served.
+	// The authorization server metadata discovery URL.
 	DiscoveryEndpoint *string `json:"discovery_endpoint,omitempty"`
-	// The protected resource endpoint the metadata describes.
+	// The URL path where the OAuth 2.0 Protected Resource Metadata is served.
 	Endpoint *string `json:"endpoint,omitempty"`
 	// List of authorization server issuer URLs that can issue tokens for this resource.
 	AuthorizationServers []string `json:"authorization_servers,omitempty"`

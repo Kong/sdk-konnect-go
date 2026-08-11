@@ -41,9 +41,6 @@ type CreateAIGatewayVaultRequest struct {
 func CreateCreateAIGatewayVaultRequestKonnect(konnect KonnectConfigStoreVault) CreateAIGatewayVaultRequest {
 	typ := CreateAIGatewayVaultRequestTypeKonnect
 
-	typStr := KonnectConfigStoreVaultType(typ)
-	konnect.Type = typStr
-
 	return CreateAIGatewayVaultRequest{
 		KonnectConfigStoreVault: &konnect,
 		Type:                    typ,
@@ -52,9 +49,6 @@ func CreateCreateAIGatewayVaultRequestKonnect(konnect KonnectConfigStoreVault) C
 
 func CreateCreateAIGatewayVaultRequestEnv(env EnvironmentVariableVault) CreateAIGatewayVaultRequest {
 	typ := CreateAIGatewayVaultRequestTypeEnv
-
-	typStr := EnvironmentVariableVaultType(typ)
-	env.Type = typStr
 
 	return CreateAIGatewayVaultRequest{
 		EnvironmentVariableVault: &env,
@@ -65,9 +59,6 @@ func CreateCreateAIGatewayVaultRequestEnv(env EnvironmentVariableVault) CreateAI
 func CreateCreateAIGatewayVaultRequestAws(aws AwsSecretsManagerVault) CreateAIGatewayVaultRequest {
 	typ := CreateAIGatewayVaultRequestTypeAws
 
-	typStr := AwsSecretsManagerVaultType(typ)
-	aws.Type = typStr
-
 	return CreateAIGatewayVaultRequest{
 		AwsSecretsManagerVault: &aws,
 		Type:                   typ,
@@ -76,9 +67,6 @@ func CreateCreateAIGatewayVaultRequestAws(aws AwsSecretsManagerVault) CreateAIGa
 
 func CreateCreateAIGatewayVaultRequestGcp(gcp GoogleSecretManagerVault) CreateAIGatewayVaultRequest {
 	typ := CreateAIGatewayVaultRequestTypeGcp
-
-	typStr := GoogleSecretManagerVaultType(typ)
-	gcp.Type = typStr
 
 	return CreateAIGatewayVaultRequest{
 		GoogleSecretManagerVault: &gcp,
@@ -89,9 +77,6 @@ func CreateCreateAIGatewayVaultRequestGcp(gcp GoogleSecretManagerVault) CreateAI
 func CreateCreateAIGatewayVaultRequestAzure(azure AzureKeyVault) CreateAIGatewayVaultRequest {
 	typ := CreateAIGatewayVaultRequestTypeAzure
 
-	typStr := AzureKeyVaultType(typ)
-	azure.Type = typStr
-
 	return CreateAIGatewayVaultRequest{
 		AzureKeyVault: &azure,
 		Type:          typ,
@@ -101,9 +86,6 @@ func CreateCreateAIGatewayVaultRequestAzure(azure AzureKeyVault) CreateAIGateway
 func CreateCreateAIGatewayVaultRequestConjur(conjur ConjurVault) CreateAIGatewayVaultRequest {
 	typ := CreateAIGatewayVaultRequestTypeConjur
 
-	typStr := ConjurVaultType(typ)
-	conjur.Type = typStr
-
 	return CreateAIGatewayVaultRequest{
 		ConjurVault: &conjur,
 		Type:        typ,
@@ -112,9 +94,6 @@ func CreateCreateAIGatewayVaultRequestConjur(conjur ConjurVault) CreateAIGateway
 
 func CreateCreateAIGatewayVaultRequestHcv(hcv HashiCorpVault) CreateAIGatewayVaultRequest {
 	typ := CreateAIGatewayVaultRequestTypeHcv
-
-	typStr := HashiCorpVaultType(typ)
-	hcv.Type = typStr
 
 	return CreateAIGatewayVaultRequest{
 		HashiCorpVault: &hcv,

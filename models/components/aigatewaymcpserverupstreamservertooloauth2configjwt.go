@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType string
-
-const (
-	AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtTypeJwt AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType = "jwt"
-)
-
-func (e AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType) ToPointer() *AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType {
-	return &e
-}
-func (e *AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "jwt":
-		*e = AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
@@ -47,8 +22,9 @@ type AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt struct {
 	// include the header name and the token prefix if needed. Leave empty to omit the ID token
 	// when fetching the tools list.
 	//
-	IDTokenHeader *string                                                 `json:"id_token_header,omitempty"`
-	Type          AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType `json:"type"`
+	IDTokenHeader *string `json:"id_token_header,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"jwt" json:"type"`
 }
 
 func (a AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt) MarshalJSON() ([]byte, error) {
@@ -83,11 +59,8 @@ func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt) GetIDTokenHeader()
 	return a.IDTokenHeader
 }
 
-func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt) GetType() AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType {
-	if a == nil {
-		return AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt) GetType() string {
+	return "jwt"
 }
 
 // #region class-body-aigatewaymcpserverupstreamservertooloauth2configjwt

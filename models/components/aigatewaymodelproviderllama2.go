@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderLlama2Type string
-
-const (
-	AIGatewayModelProviderLlama2TypeLlama2 AIGatewayModelProviderLlama2Type = "llama2"
-)
-
-func (e AIGatewayModelProviderLlama2Type) ToPointer() *AIGatewayModelProviderLlama2Type {
-	return &e
-}
-func (e *AIGatewayModelProviderLlama2Type) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "llama2":
-		*e = AIGatewayModelProviderLlama2Type(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderLlama2Type: %v", v)
-	}
-}
 
 // AIGatewayModelProviderLlama2Config - Configuration for the model provider.
 type AIGatewayModelProviderLlama2Config struct {
@@ -65,7 +40,8 @@ func (a *AIGatewayModelProviderLlama2Config) GetAuth() AIGatewayModelProviderCon
 // AIGatewayModelProviderLlama2 - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderLlama2 struct {
-	Type AIGatewayModelProviderLlama2Type `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"llama2" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -100,11 +76,8 @@ func (a *AIGatewayModelProviderLlama2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderLlama2) GetType() AIGatewayModelProviderLlama2Type {
-	if a == nil {
-		return AIGatewayModelProviderLlama2Type("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderLlama2) GetType() string {
+	return "llama2"
 }
 
 func (a *AIGatewayModelProviderLlama2) GetDisplayName() string {

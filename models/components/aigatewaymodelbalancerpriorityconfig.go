@@ -4,8 +4,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -40,29 +38,6 @@ func (e *AIGatewayModelBalancerPriorityConfigFailoverCriteria) IsExact() bool {
 	return false
 }
 
-type AIGatewayModelBalancerPriorityConfigAlgorithm string
-
-const (
-	AIGatewayModelBalancerPriorityConfigAlgorithmPriority AIGatewayModelBalancerPriorityConfigAlgorithm = "priority"
-)
-
-func (e AIGatewayModelBalancerPriorityConfigAlgorithm) ToPointer() *AIGatewayModelBalancerPriorityConfigAlgorithm {
-	return &e
-}
-func (e *AIGatewayModelBalancerPriorityConfigAlgorithm) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "priority":
-		*e = AIGatewayModelBalancerPriorityConfigAlgorithm(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelBalancerPriorityConfigAlgorithm: %v", v)
-	}
-}
-
 // AIGatewayModelBalancerPriorityConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelBalancerPriorityConfig struct {
@@ -77,9 +52,10 @@ type AIGatewayModelBalancerPriorityConfig struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64                                        `default:"10000" json:"slots"`
-	WriteTimeout *int64                                        `default:"60000" json:"write_timeout"`
-	Algorithm    AIGatewayModelBalancerPriorityConfigAlgorithm `json:"algorithm"`
+	Slots        *int64 `default:"10000" json:"slots"`
+	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	algorithm string `const:"priority" json:"algorithm"`
 }
 
 func (a AIGatewayModelBalancerPriorityConfig) MarshalJSON() ([]byte, error) {
@@ -149,9 +125,6 @@ func (a *AIGatewayModelBalancerPriorityConfig) GetWriteTimeout() *int64 {
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerPriorityConfig) GetAlgorithm() AIGatewayModelBalancerPriorityConfigAlgorithm {
-	if a == nil {
-		return AIGatewayModelBalancerPriorityConfigAlgorithm("")
-	}
-	return a.Algorithm
+func (a *AIGatewayModelBalancerPriorityConfig) GetAlgorithm() string {
+	return "priority"
 }

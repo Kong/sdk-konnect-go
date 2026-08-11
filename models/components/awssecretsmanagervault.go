@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AwsSecretsManagerVaultType string
-
-const (
-	AwsSecretsManagerVaultTypeAws AwsSecretsManagerVaultType = "aws"
-)
-
-func (e AwsSecretsManagerVaultType) ToPointer() *AwsSecretsManagerVaultType {
-	return &e
-}
-func (e *AwsSecretsManagerVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "aws":
-		*e = AwsSecretsManagerVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AwsSecretsManagerVaultType: %v", v)
-	}
-}
 
 // AwsSecretsManagerVaultConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
@@ -158,7 +133,7 @@ type AwsSecretsManagerVault struct {
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -170,8 +145,9 @@ type AwsSecretsManagerVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string          `json:"managed_by,omitempty"`
-	Type      AwsSecretsManagerVaultType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"aws" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	Config AwsSecretsManagerVaultConfig `json:"config"`
@@ -216,11 +192,8 @@ func (a *AwsSecretsManagerVault) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AwsSecretsManagerVault) GetType() AwsSecretsManagerVaultType {
-	if a == nil {
-		return AwsSecretsManagerVaultType("")
-	}
-	return a.Type
+func (a *AwsSecretsManagerVault) GetType() string {
+	return "aws"
 }
 
 func (a *AwsSecretsManagerVault) GetConfig() AwsSecretsManagerVaultConfig {

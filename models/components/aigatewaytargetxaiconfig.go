@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayTargetXaiConfigType string
-
-const (
-	AIGatewayTargetXaiConfigTypeXai AIGatewayTargetXaiConfigType = "xai"
-)
-
-func (e AIGatewayTargetXaiConfigType) ToPointer() *AIGatewayTargetXaiConfigType {
-	return &e
-}
-func (e *AIGatewayTargetXaiConfigType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "xai":
-		*e = AIGatewayTargetXaiConfigType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayTargetXaiConfigType: %v", v)
-	}
-}
 
 // AIGatewayTargetXaiConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
@@ -45,6 +20,16 @@ type AIGatewayTargetXaiConfig struct {
 	InputCost *float64 `json:"input_cost,omitempty"`
 	// Cost per output token for billing and cost tracking.
 	OutputCost *float64 `json:"output_cost,omitempty"`
+	// Cost per cache-read (cached) prompt token for billing and cost tracking.
+	CacheReadCost *float64 `json:"cache_read_cost,omitempty"`
+	// Cost per cache-write prompt token for billing and cost tracking.
+	CacheWriteCost *float64 `json:"cache_write_cost,omitempty"`
+	// Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+	CacheWriteCostList []AIGatewayCacheWriteCost `json:"cache_write_cost_list,omitempty"`
+	// Above an input-token threshold, scale input and output pricing by the corresponding factor.
+	ContextWindowFactor []AIGatewayContextWindowFactor `json:"context_window_factor,omitempty"`
+	// Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+	ServiceTierFactor []AIGatewayServiceTierFactor `json:"service_tier_factor,omitempty"`
 	// Controls randomness in the model output. Higher values produce more varied responses.
 	Temperature *float64 `json:"temperature,omitempty"`
 	// Limits the number of highest-probability tokens considered during generation.
@@ -52,8 +37,9 @@ type AIGatewayTargetXaiConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string                      `json:"upstream_url,omitempty"`
-	Type        AIGatewayTargetXaiConfigType `json:"type"`
+	UpstreamURL *string `json:"upstream_url,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"xai" json:"type"`
 }
 
 func (a AIGatewayTargetXaiConfig) MarshalJSON() ([]byte, error) {
@@ -95,6 +81,41 @@ func (a *AIGatewayTargetXaiConfig) GetOutputCost() *float64 {
 	return a.OutputCost
 }
 
+func (a *AIGatewayTargetXaiConfig) GetCacheReadCost() *float64 {
+	if a == nil {
+		return nil
+	}
+	return a.CacheReadCost
+}
+
+func (a *AIGatewayTargetXaiConfig) GetCacheWriteCost() *float64 {
+	if a == nil {
+		return nil
+	}
+	return a.CacheWriteCost
+}
+
+func (a *AIGatewayTargetXaiConfig) GetCacheWriteCostList() []AIGatewayCacheWriteCost {
+	if a == nil {
+		return nil
+	}
+	return a.CacheWriteCostList
+}
+
+func (a *AIGatewayTargetXaiConfig) GetContextWindowFactor() []AIGatewayContextWindowFactor {
+	if a == nil {
+		return nil
+	}
+	return a.ContextWindowFactor
+}
+
+func (a *AIGatewayTargetXaiConfig) GetServiceTierFactor() []AIGatewayServiceTierFactor {
+	if a == nil {
+		return nil
+	}
+	return a.ServiceTierFactor
+}
+
 func (a *AIGatewayTargetXaiConfig) GetTemperature() *float64 {
 	if a == nil {
 		return nil
@@ -123,9 +144,6 @@ func (a *AIGatewayTargetXaiConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetXaiConfig) GetType() AIGatewayTargetXaiConfigType {
-	if a == nil {
-		return AIGatewayTargetXaiConfigType("")
-	}
-	return a.Type
+func (a *AIGatewayTargetXaiConfig) GetType() string {
+	return "xai"
 }

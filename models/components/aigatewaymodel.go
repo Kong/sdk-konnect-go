@@ -11,29 +11,6 @@ import (
 	"time"
 )
 
-type AIGatewayModelModelAIGatewayModelType string
-
-const (
-	AIGatewayModelModelAIGatewayModelTypeModel AIGatewayModelModelAIGatewayModelType = "model"
-)
-
-func (e AIGatewayModelModelAIGatewayModelType) ToPointer() *AIGatewayModelModelAIGatewayModelType {
-	return &e
-}
-func (e *AIGatewayModelModelAIGatewayModelType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "model":
-		*e = AIGatewayModelModelAIGatewayModelType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelModelAIGatewayModelType: %v", v)
-	}
-}
-
 type AIGatewayModelModelAIGatewayModelCapabilities string
 
 const (
@@ -97,8 +74,9 @@ type AIGatewayModelAIGatewayModelModel struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                     `json:"managed_by,omitempty"`
-	Type      AIGatewayModelModelAIGatewayModelType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"model" json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelModelConfigOutput `json:"config"`
 	// List of AI capabilities enabled for this model.
@@ -185,11 +163,8 @@ func (a *AIGatewayModelAIGatewayModelModel) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayModelAIGatewayModelModel) GetType() AIGatewayModelModelAIGatewayModelType {
-	if a == nil {
-		return AIGatewayModelModelAIGatewayModelType("")
-	}
-	return a.Type
+func (a *AIGatewayModelAIGatewayModelModel) GetType() string {
+	return "model"
 }
 
 func (a *AIGatewayModelAIGatewayModelModel) GetConfig() AIGatewayModelModelConfigOutput {
@@ -225,29 +200,6 @@ func (a *AIGatewayModelAIGatewayModelModel) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-type AIGatewayModelAPIAIGatewayModelType string
-
-const (
-	AIGatewayModelAPIAIGatewayModelTypeAPI AIGatewayModelAPIAIGatewayModelType = "api"
-)
-
-func (e AIGatewayModelAPIAIGatewayModelType) ToPointer() *AIGatewayModelAPIAIGatewayModelType {
-	return &e
-}
-func (e *AIGatewayModelAPIAIGatewayModelType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "api":
-		*e = AIGatewayModelAPIAIGatewayModelType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelAPIAIGatewayModelType: %v", v)
-	}
 }
 
 type AIGatewayModelAPICapabilities string
@@ -305,8 +257,9 @@ type AIGatewayModelAIGatewayModelAPI struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                   `json:"managed_by,omitempty"`
-	Type      AIGatewayModelAPIAIGatewayModelType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"api" json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelAPIConfigOutput `json:"config"`
 	// List of AI capabilities enabled for this API model.
@@ -393,11 +346,8 @@ func (a *AIGatewayModelAIGatewayModelAPI) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayModelAIGatewayModelAPI) GetType() AIGatewayModelAPIAIGatewayModelType {
-	if a == nil {
-		return AIGatewayModelAPIAIGatewayModelType("")
-	}
-	return a.Type
+func (a *AIGatewayModelAIGatewayModelAPI) GetType() string {
+	return "api"
 }
 
 func (a *AIGatewayModelAIGatewayModelAPI) GetConfig() AIGatewayModelAPIConfigOutput {
@@ -456,9 +406,6 @@ type AIGatewayModel struct {
 func CreateAIGatewayModelAPI(api AIGatewayModelAIGatewayModelAPI) AIGatewayModel {
 	typ := AIGatewayModelTypeAPI
 
-	typStr := AIGatewayModelAPIAIGatewayModelType(typ)
-	api.Type = typStr
-
 	return AIGatewayModel{
 		AIGatewayModelAIGatewayModelAPI: &api,
 		Type:                            typ,
@@ -467,9 +414,6 @@ func CreateAIGatewayModelAPI(api AIGatewayModelAIGatewayModelAPI) AIGatewayModel
 
 func CreateAIGatewayModelModel(model AIGatewayModelAIGatewayModelModel) AIGatewayModel {
 	typ := AIGatewayModelTypeModel
-
-	typStr := AIGatewayModelModelAIGatewayModelType(typ)
-	model.Type = typStr
 
 	return AIGatewayModel{
 		AIGatewayModelAIGatewayModelModel: &model,

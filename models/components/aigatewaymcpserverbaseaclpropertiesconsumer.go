@@ -4,40 +4,16 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/types"
 )
-
-// AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType - The type of attributes that ACL is evaluated with.
-type AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType string
-
-const (
-	AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeTypeConsumer AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType = "consumer"
-)
-
-func (e AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType) ToPointer() *AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType {
-	return &e
-}
-func (e *AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "consumer":
-		*e = AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerBaseACLPropertiesConsumer - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerBaseACLPropertiesConsumer struct {
 	// The type of attributes that ACL is evaluated with.
-	ACLAttributeType *AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType `default:"consumer" json:"acl_attribute_type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	aclAttributeType *string `const:"consumer" json:"acl_attribute_type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -61,11 +37,8 @@ func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) UnmarshalJSON(data []byte)
 	return nil
 }
 
-func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetACLAttributeType() *AIGatewayMCPServerBaseACLPropertiesConsumerACLAttributeType {
-	if a == nil {
-		return nil
-	}
-	return a.ACLAttributeType
+func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetACLAttributeType() *string {
+	return types.Pointer("consumer")
 }
 
 func (a *AIGatewayMCPServerBaseACLPropertiesConsumer) GetAcls() *AIGatewayMCPACLs {

@@ -117,7 +117,6 @@ func main() {
                 },
             },
             Targets: []components.AIGatewayTarget{},
-            Type: components.AIGatewayModelAPITypeAPI,
             Config: components.AIGatewayModelAPIConfig{
                 Route: components.AIGatewayModelRouteConfig{
                     Headers: map[string]any{
@@ -131,9 +130,7 @@ func main() {
                     },
                 },
                 Balancer: sdkkonnectgo.Pointer(components.CreateAIGatewayModelBalancerConfigLowestUsage(
-                    components.AIGatewayModelBalancerLowestUsageConfig{
-                        Algorithm: components.AIGatewayModelBalancerLowestUsageConfigAlgorithmLowestUsage,
-                    },
+                    components.AIGatewayModelBalancerLowestUsageConfig{},
                 )),
             },
             Capabilities: []components.Capabilities{
@@ -292,13 +289,10 @@ func main() {
                         Name: "gpt-5-model",
                         Provider: "azure-ai-se",
                         Config: components.CreateAIGatewayTargetConfigOpenai(
-                            components.AIGatewayTargetOpenaiConfig{
-                                Type: components.AIGatewayTargetOpenaiConfigTypeOpenai,
-                            },
+                            components.AIGatewayTargetOpenaiConfig{},
                         ),
                     },
                 },
-                Type: components.AIGatewayModelAPITypeAPI,
                 Config: components.AIGatewayModelAPIConfig{
                     Route: components.AIGatewayModelRouteConfig{
                         Headers: map[string]any{
@@ -312,9 +306,7 @@ func main() {
                         },
                     },
                     Balancer: sdkkonnectgo.Pointer(components.CreateAIGatewayModelBalancerConfigLowestUsage(
-                        components.AIGatewayModelBalancerLowestUsageConfig{
-                            Algorithm: components.AIGatewayModelBalancerLowestUsageConfigAlgorithmLowestUsage,
-                        },
+                        components.AIGatewayModelBalancerLowestUsageConfig{},
                     )),
                 },
                 Capabilities: []components.Capabilities{

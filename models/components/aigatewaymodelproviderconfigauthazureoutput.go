@@ -4,40 +4,16 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderConfigAuthAzureType string
-
-const (
-	AIGatewayModelProviderConfigAuthAzureTypeAzure AIGatewayModelProviderConfigAuthAzureType = "azure"
-)
-
-func (e AIGatewayModelProviderConfigAuthAzureType) ToPointer() *AIGatewayModelProviderConfigAuthAzureType {
-	return &e
-}
-func (e *AIGatewayModelProviderConfigAuthAzureType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "azure":
-		*e = AIGatewayModelProviderConfigAuthAzureType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderConfigAuthAzureType: %v", v)
-	}
-}
 
 // AIGatewayModelProviderConfigAuthAzureOutput - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 //
 // Configuration for Azure model provider.
 type AIGatewayModelProviderConfigAuthAzureOutput struct {
-	Type AIGatewayModelProviderConfigAuthAzureType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"azure" json:"type"`
 	// If azure_use_managed_identity is set to true, and you need to use a different user-assigned identity for this LLM instance, set the client ID.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -61,11 +37,8 @@ func (a *AIGatewayModelProviderConfigAuthAzureOutput) UnmarshalJSON(data []byte)
 	return nil
 }
 
-func (a *AIGatewayModelProviderConfigAuthAzureOutput) GetType() AIGatewayModelProviderConfigAuthAzureType {
-	if a == nil {
-		return AIGatewayModelProviderConfigAuthAzureType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderConfigAuthAzureOutput) GetType() string {
+	return "azure"
 }
 
 func (a *AIGatewayModelProviderConfigAuthAzureOutput) GetClientID() *string {
@@ -83,74 +56,6 @@ func (a *AIGatewayModelProviderConfigAuthAzureOutput) GetTenantID() *string {
 }
 
 func (a *AIGatewayModelProviderConfigAuthAzureOutput) GetUseManagedIdentity() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.UseManagedIdentity
-}
-
-// AIGatewayModelProviderConfigAuthAzure - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for Azure model provider.
-type AIGatewayModelProviderConfigAuthAzure struct {
-	Type AIGatewayModelProviderConfigAuthAzureType `json:"type"`
-	// If azure_use_managed_identity is set to true, and you need to use a different user-assigned identity for this LLM instance, set the client ID.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	ClientID *string `json:"client_id,omitempty"`
-	// If azure_use_managed_identity is set to true, and you need to use a different user-assigned identity for this LLM instance, set the client secret.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	ClientSecret *string `json:"client_secret,omitempty"`
-	// If azure_use_managed_identity is set to true, and you need to use a different user-assigned identity for this LLM instance, set the tenant ID.
-	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-	//
-	TenantID *string `json:"tenant_id,omitempty"`
-	// Set true to use the Azure Cloud Managed Identity (or user-assigned identity) to authenticate with Azure-provider models.
-	UseManagedIdentity *bool `json:"use_managed_identity,omitempty"`
-}
-
-func (a AIGatewayModelProviderConfigAuthAzure) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayModelProviderConfigAuthAzure) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayModelProviderConfigAuthAzure) GetType() AIGatewayModelProviderConfigAuthAzureType {
-	if a == nil {
-		return AIGatewayModelProviderConfigAuthAzureType("")
-	}
-	return a.Type
-}
-
-func (a *AIGatewayModelProviderConfigAuthAzure) GetClientID() *string {
-	if a == nil {
-		return nil
-	}
-	return a.ClientID
-}
-
-func (a *AIGatewayModelProviderConfigAuthAzure) GetClientSecret() *string {
-	if a == nil {
-		return nil
-	}
-	return a.ClientSecret
-}
-
-func (a *AIGatewayModelProviderConfigAuthAzure) GetTenantID() *string {
-	if a == nil {
-		return nil
-	}
-	return a.TenantID
-}
-
-func (a *AIGatewayModelProviderConfigAuthAzure) GetUseManagedIdentity() *bool {
 	if a == nil {
 		return nil
 	}

@@ -4,34 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-// AIGatewayMCPServerListenerOauthACLAttributeType - The type of attributes that ACL is evaluated with.
-type AIGatewayMCPServerListenerOauthACLAttributeType string
-
-const (
-	AIGatewayMCPServerListenerOauthACLAttributeTypeOauthAccessToken AIGatewayMCPServerListenerOauthACLAttributeType = "oauth_access_token"
-)
-
-func (e AIGatewayMCPServerListenerOauthACLAttributeType) ToPointer() *AIGatewayMCPServerListenerOauthACLAttributeType {
-	return &e
-}
-func (e *AIGatewayMCPServerListenerOauthACLAttributeType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "oauth_access_token":
-		*e = AIGatewayMCPServerListenerOauthACLAttributeType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerListenerOauthACLAttributeType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerListenerOauth - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
@@ -40,7 +14,8 @@ func (e *AIGatewayMCPServerListenerOauthACLAttributeType) UnmarshalJSON(data []b
 // for granting access to an MCP server.
 type AIGatewayMCPServerListenerOauth struct {
 	// The type of attributes that ACL is evaluated with.
-	ACLAttributeType AIGatewayMCPServerListenerOauthACLAttributeType `json:"acl_attribute_type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	aclAttributeType string `const:"oauth_access_token" json:"acl_attribute_type"`
 	// The claim in the OAuth2 access token to use as the subject for ACL evaluation when `acl_attribute_type` is set to `oauth_access_token`.
 	// Nested claim can be fetched by using a jq filter starts with dot, e.g., “.user.email”: https://jqlang.org/manual/#object-identifier-index
 	//
@@ -74,11 +49,8 @@ func (a *AIGatewayMCPServerListenerOauth) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPServerListenerOauth) GetACLAttributeType() AIGatewayMCPServerListenerOauthACLAttributeType {
-	if a == nil {
-		return AIGatewayMCPServerListenerOauthACLAttributeType("")
-	}
-	return a.ACLAttributeType
+func (a *AIGatewayMCPServerListenerOauth) GetACLAttributeType() string {
+	return "oauth_access_token"
 }
 
 func (a *AIGatewayMCPServerListenerOauth) GetAccessTokenClaimField() string {

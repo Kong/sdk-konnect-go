@@ -10,29 +10,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayModelProviderSagemakerType string
-
-const (
-	AIGatewayModelProviderSagemakerTypeSagemaker AIGatewayModelProviderSagemakerType = "sagemaker"
-)
-
-func (e AIGatewayModelProviderSagemakerType) ToPointer() *AIGatewayModelProviderSagemakerType {
-	return &e
-}
-func (e *AIGatewayModelProviderSagemakerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "sagemaker":
-		*e = AIGatewayModelProviderSagemakerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderSagemakerType: %v", v)
-	}
-}
-
 type AIGatewayModelProviderSagemakerAuthType string
 
 const (
@@ -49,9 +26,6 @@ type AIGatewayModelProviderSagemakerAuth struct {
 
 func CreateAIGatewayModelProviderSagemakerAuthBasic(basic AIGatewayModelProviderConfigAuthBasic) AIGatewayModelProviderSagemakerAuth {
 	typ := AIGatewayModelProviderSagemakerAuthTypeBasic
-
-	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
-	basic.Type = typStr
 
 	return AIGatewayModelProviderSagemakerAuth{
 		AIGatewayModelProviderConfigAuthBasic: &basic,
@@ -155,7 +129,8 @@ func (a *AIGatewayModelProviderSagemakerConfig) GetAuthSagemaker() *AIGatewayMod
 //
 // Config for Sagemaker model provider.
 type AIGatewayModelProviderSagemaker struct {
-	Type AIGatewayModelProviderSagemakerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"sagemaker" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -191,11 +166,8 @@ func (a *AIGatewayModelProviderSagemaker) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderSagemaker) GetType() AIGatewayModelProviderSagemakerType {
-	if a == nil {
-		return AIGatewayModelProviderSagemakerType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderSagemaker) GetType() string {
+	return "sagemaker"
 }
 
 func (a *AIGatewayModelProviderSagemaker) GetDisplayName() string {

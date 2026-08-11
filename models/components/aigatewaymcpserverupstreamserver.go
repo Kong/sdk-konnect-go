@@ -4,38 +4,14 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayMCPServerUpstreamServerType string
-
-const (
-	AIGatewayMCPServerUpstreamServerTypeUpstreamServer AIGatewayMCPServerUpstreamServerType = "upstream-server"
-)
-
-func (e AIGatewayMCPServerUpstreamServerType) ToPointer() *AIGatewayMCPServerUpstreamServerType {
-	return &e
-}
-func (e *AIGatewayMCPServerUpstreamServerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "upstream-server":
-		*e = AIGatewayMCPServerUpstreamServerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerUpstreamServerType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerUpstreamServer - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerUpstreamServer struct {
-	Type AIGatewayMCPServerUpstreamServerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"upstream-server" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -83,11 +59,8 @@ func (a *AIGatewayMCPServerUpstreamServer) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPServerUpstreamServer) GetType() AIGatewayMCPServerUpstreamServerType {
-	if a == nil {
-		return AIGatewayMCPServerUpstreamServerType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerUpstreamServer) GetType() string {
+	return "upstream-server"
 }
 
 func (a *AIGatewayMCPServerUpstreamServer) GetConfig() AIGatewayMCPServerUpstreamServerConfig {
