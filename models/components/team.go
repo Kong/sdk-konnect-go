@@ -14,7 +14,7 @@ type Team struct {
 	ID *string `json:"id,omitempty"`
 	// The name of the team.
 	Name *string `json:"name,omitempty"`
-	// The team description in Konnect.
+	// The description of the team.
 	Description *string `json:"description,omitempty"`
 	// Returns True if a user belongs to a `system_team`. System teams are teams that can manage Konnect objects, like "Organization Admin", or "Service"
 	SystemTeam *bool `default:"false" json:"system_team"`

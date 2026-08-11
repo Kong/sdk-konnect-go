@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderXaiType string
-
-const (
-	AIGatewayModelProviderXaiTypeXai AIGatewayModelProviderXaiType = "xai"
-)
-
-func (e AIGatewayModelProviderXaiType) ToPointer() *AIGatewayModelProviderXaiType {
-	return &e
-}
-func (e *AIGatewayModelProviderXaiType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "xai":
-		*e = AIGatewayModelProviderXaiType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderXaiType: %v", v)
-	}
-}
 
 // AIGatewayModelProviderXaiConfig - Configuration for the model provider.
 type AIGatewayModelProviderXaiConfig struct {
@@ -62,7 +37,8 @@ func (a *AIGatewayModelProviderXaiConfig) GetAuth() AIGatewayModelProviderConfig
 // AIGatewayModelProviderXai - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderXai struct {
-	Type AIGatewayModelProviderXaiType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"xai" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -97,11 +73,8 @@ func (a *AIGatewayModelProviderXai) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderXai) GetType() AIGatewayModelProviderXaiType {
-	if a == nil {
-		return AIGatewayModelProviderXaiType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderXai) GetType() string {
+	return "xai"
 }
 
 func (a *AIGatewayModelProviderXai) GetDisplayName() string {

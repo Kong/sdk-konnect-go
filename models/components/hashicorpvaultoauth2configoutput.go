@@ -4,8 +4,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -55,29 +53,6 @@ func (e *HashiCorpVaultOauth2ConfigProtocol) IsExact() bool {
 	return false
 }
 
-type HashiCorpVaultOauth2ConfigAuthMethod string
-
-const (
-	HashiCorpVaultOauth2ConfigAuthMethodJwt HashiCorpVaultOauth2ConfigAuthMethod = "jwt"
-)
-
-func (e HashiCorpVaultOauth2ConfigAuthMethod) ToPointer() *HashiCorpVaultOauth2ConfigAuthMethod {
-	return &e
-}
-func (e *HashiCorpVaultOauth2ConfigAuthMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "jwt":
-		*e = HashiCorpVaultOauth2ConfigAuthMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultOauth2ConfigAuthMethod: %v", v)
-	}
-}
-
 // HashiCorpVaultOauth2ConfigOutput - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type HashiCorpVaultOauth2ConfigOutput struct {
@@ -113,8 +88,9 @@ type HashiCorpVaultOauth2ConfigOutput struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                              `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultOauth2ConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"jwt" json:"auth_method"`
 	// The configured role name in HashiCorp Vault for JWT auth.
 	// When creating the role in HashiCorp Vault, make sure that the `role_type` is `jwt`
 	// and the `token_policies` have permissions to read the secrets.
@@ -216,11 +192,8 @@ func (h *HashiCorpVaultOauth2ConfigOutput) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultOauth2ConfigOutput) GetAuthMethod() HashiCorpVaultOauth2ConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultOauth2ConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultOauth2ConfigOutput) GetAuthMethod() string {
+	return "jwt"
 }
 
 func (h *HashiCorpVaultOauth2ConfigOutput) GetRole() string {
@@ -289,8 +262,9 @@ type HashiCorpVaultOauth2Config struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                              `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultOauth2ConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"jwt" json:"auth_method"`
 	// The configured role name in HashiCorp Vault for JWT auth.
 	// When creating the role in HashiCorp Vault, make sure that the `role_type` is `jwt`
 	// and the `token_policies` have permissions to read the secrets.
@@ -394,11 +368,8 @@ func (h *HashiCorpVaultOauth2Config) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultOauth2Config) GetAuthMethod() HashiCorpVaultOauth2ConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultOauth2ConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultOauth2Config) GetAuthMethod() string {
+	return "jwt"
 }
 
 func (h *HashiCorpVaultOauth2Config) GetRole() string {

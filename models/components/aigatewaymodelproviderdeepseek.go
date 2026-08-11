@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderDeepseekType string
-
-const (
-	AIGatewayModelProviderDeepseekTypeDeepseek AIGatewayModelProviderDeepseekType = "deepseek"
-)
-
-func (e AIGatewayModelProviderDeepseekType) ToPointer() *AIGatewayModelProviderDeepseekType {
-	return &e
-}
-func (e *AIGatewayModelProviderDeepseekType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "deepseek":
-		*e = AIGatewayModelProviderDeepseekType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderDeepseekType: %v", v)
-	}
-}
 
 // AIGatewayModelProviderDeepseekConfig - Configuration for the model provider.
 type AIGatewayModelProviderDeepseekConfig struct {
@@ -62,7 +37,8 @@ func (a *AIGatewayModelProviderDeepseekConfig) GetAuth() AIGatewayModelProviderC
 // AIGatewayModelProviderDeepseek - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderDeepseek struct {
-	Type AIGatewayModelProviderDeepseekType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"deepseek" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -97,11 +73,8 @@ func (a *AIGatewayModelProviderDeepseek) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderDeepseek) GetType() AIGatewayModelProviderDeepseekType {
-	if a == nil {
-		return AIGatewayModelProviderDeepseekType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderDeepseek) GetType() string {
+	return "deepseek"
 }
 
 func (a *AIGatewayModelProviderDeepseek) GetDisplayName() string {

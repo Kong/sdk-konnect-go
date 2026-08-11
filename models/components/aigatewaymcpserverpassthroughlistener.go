@@ -4,38 +4,14 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayMCPServerPassthroughListenerType string
-
-const (
-	AIGatewayMCPServerPassthroughListenerTypePassthroughListener AIGatewayMCPServerPassthroughListenerType = "passthrough-listener"
-)
-
-func (e AIGatewayMCPServerPassthroughListenerType) ToPointer() *AIGatewayMCPServerPassthroughListenerType {
-	return &e
-}
-func (e *AIGatewayMCPServerPassthroughListenerType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "passthrough-listener":
-		*e = AIGatewayMCPServerPassthroughListenerType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerPassthroughListenerType: %v", v)
-	}
-}
 
 // AIGatewayMCPServerPassthroughListener - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerPassthroughListener struct {
-	Type AIGatewayMCPServerPassthroughListenerType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"passthrough-listener" json:"type"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -83,11 +59,8 @@ func (a *AIGatewayMCPServerPassthroughListener) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (a *AIGatewayMCPServerPassthroughListener) GetType() AIGatewayMCPServerPassthroughListenerType {
-	if a == nil {
-		return AIGatewayMCPServerPassthroughListenerType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerPassthroughListener) GetType() string {
+	return "passthrough-listener"
 }
 
 func (a *AIGatewayMCPServerPassthroughListener) GetConfig() AIGatewayMCPServerWithUpstreamConfig {

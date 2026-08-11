@@ -4,34 +4,9 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
-
-type AIGatewayIdentityProviderKeyAuthResponseType string
-
-const (
-	AIGatewayIdentityProviderKeyAuthResponseTypeKeyAuth AIGatewayIdentityProviderKeyAuthResponseType = "key-auth"
-)
-
-func (e AIGatewayIdentityProviderKeyAuthResponseType) ToPointer() *AIGatewayIdentityProviderKeyAuthResponseType {
-	return &e
-}
-func (e *AIGatewayIdentityProviderKeyAuthResponseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "key-auth":
-		*e = AIGatewayIdentityProviderKeyAuthResponseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayIdentityProviderKeyAuthResponseType: %v", v)
-	}
-}
 
 // AIGatewayIdentityProviderKeyAuthResponseConfig - Configuration for the Kong Key auth identity provider.
 // For advanced use cases, additional config properties can be sent in the request body.
@@ -131,8 +106,9 @@ type AIGatewayIdentityProviderKeyAuthResponse struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                            `json:"managed_by,omitempty"`
-	Type      AIGatewayIdentityProviderKeyAuthResponseType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"key-auth" json:"type"`
 	// Configuration for the Kong Key auth identity provider.
 	// For advanced use cases, additional config properties can be sent in the request body.
 	// See: https://developer.konghq.com/plugins/key-auth/reference/ for the list of properties
@@ -185,11 +161,8 @@ func (a *AIGatewayIdentityProviderKeyAuthResponse) GetManagedBy() map[string]str
 	return a.ManagedBy
 }
 
-func (a *AIGatewayIdentityProviderKeyAuthResponse) GetType() AIGatewayIdentityProviderKeyAuthResponseType {
-	if a == nil {
-		return AIGatewayIdentityProviderKeyAuthResponseType("")
-	}
-	return a.Type
+func (a *AIGatewayIdentityProviderKeyAuthResponse) GetType() string {
+	return "key-auth"
 }
 
 func (a *AIGatewayIdentityProviderKeyAuthResponse) GetConfig() *AIGatewayIdentityProviderKeyAuthResponseConfig {

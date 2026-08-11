@@ -11,29 +11,6 @@ import (
 	"time"
 )
 
-type AIGatewayModelProviderSagemakerAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderSagemakerAIGatewayModelProviderTypeSagemaker AIGatewayModelProviderSagemakerAIGatewayModelProviderType = "sagemaker"
-)
-
-func (e AIGatewayModelProviderSagemakerAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderSagemakerAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderSagemakerAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "sagemaker":
-		*e = AIGatewayModelProviderSagemakerAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderSagemakerAIGatewayModelProviderType: %v", v)
-	}
-}
-
 type AIGatewayModelProviderSagemakerAuthOutputType string
 
 const (
@@ -50,9 +27,6 @@ type AIGatewayModelProviderSagemakerAuthOutput struct {
 
 func CreateAIGatewayModelProviderSagemakerAuthOutputBasic(basic AIGatewayModelProviderConfigAuthBasicOutput) AIGatewayModelProviderSagemakerAuthOutput {
 	typ := AIGatewayModelProviderSagemakerAuthOutputTypeBasic
-
-	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
-	basic.Type = typStr
 
 	return AIGatewayModelProviderSagemakerAuthOutput{
 		AIGatewayModelProviderConfigAuthBasicOutput: &basic,
@@ -156,7 +130,8 @@ func (a *AIGatewayModelProviderSagemakerConfigOutput) GetAuthSagemaker() *AIGate
 //
 // Config for Sagemaker model provider.
 type AIGatewayModelProviderAIGatewayModelProviderSagemaker struct {
-	Type AIGatewayModelProviderSagemakerAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"sagemaker" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -198,11 +173,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) UnmarshalJSON(da
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetType() AIGatewayModelProviderSagemakerAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderSagemakerAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetType() string {
+	return "sagemaker"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetDisplayName() string {
@@ -261,29 +233,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetUpdatedAt() t
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderVertexAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderVertexAIGatewayModelProviderTypeVertex AIGatewayModelProviderVertexAIGatewayModelProviderType = "vertex"
-)
-
-func (e AIGatewayModelProviderVertexAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderVertexAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderVertexAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "vertex":
-		*e = AIGatewayModelProviderVertexAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderVertexAIGatewayModelProviderType: %v", v)
-	}
-}
-
 type AIGatewayModelProviderVertexAuthOutputType string
 
 const (
@@ -301,9 +250,6 @@ type AIGatewayModelProviderVertexAuthOutput struct {
 func CreateAIGatewayModelProviderVertexAuthOutputBasic(basic AIGatewayModelProviderConfigAuthBasicOutput) AIGatewayModelProviderVertexAuthOutput {
 	typ := AIGatewayModelProviderVertexAuthOutputTypeBasic
 
-	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
-	basic.Type = typStr
-
 	return AIGatewayModelProviderVertexAuthOutput{
 		AIGatewayModelProviderConfigAuthBasicOutput: &basic,
 		Type: typ,
@@ -312,9 +258,6 @@ func CreateAIGatewayModelProviderVertexAuthOutputBasic(basic AIGatewayModelProvi
 
 func CreateAIGatewayModelProviderVertexAuthOutputVertex(vertex AIGatewayModelProviderConfigAuthVertexOutput) AIGatewayModelProviderVertexAuthOutput {
 	typ := AIGatewayModelProviderVertexAuthOutputTypeVertex
-
-	typStr := AIGatewayModelProviderConfigAuthVertexType(typ)
-	vertex.Type = typStr
 
 	return AIGatewayModelProviderVertexAuthOutput{
 		AIGatewayModelProviderConfigAuthVertexOutput: &vertex,
@@ -404,7 +347,8 @@ func (a *AIGatewayModelProviderVertexConfigOutput) GetAuthVertex() *AIGatewayMod
 //
 // Config for Vertex model provider.
 type AIGatewayModelProviderAIGatewayModelProviderVertex struct {
-	Type AIGatewayModelProviderVertexAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"vertex" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -444,11 +388,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) UnmarshalJSON(data 
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetType() AIGatewayModelProviderVertexAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderVertexAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetType() string {
+	return "vertex"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetDisplayName() string {
@@ -507,29 +448,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetUpdatedAt() time
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderXaiAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderXaiAIGatewayModelProviderTypeXai AIGatewayModelProviderXaiAIGatewayModelProviderType = "xai"
-)
-
-func (e AIGatewayModelProviderXaiAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderXaiAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderXaiAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "xai":
-		*e = AIGatewayModelProviderXaiAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderXaiAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderXaiConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderXaiConfigOutput struct {
 	// **Pre-release Feature**
@@ -560,7 +478,8 @@ func (a *AIGatewayModelProviderXaiConfigOutput) GetAuth() AIGatewayModelProvider
 // AIGatewayModelProviderAIGatewayModelProviderXai - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderXai struct {
-	Type AIGatewayModelProviderXaiAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"xai" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -601,11 +520,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderXai) UnmarshalJSON(data []b
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderXai) GetType() AIGatewayModelProviderXaiAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderXaiAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderXai) GetType() string {
+	return "xai"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderXai) GetDisplayName() string {
@@ -664,29 +580,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderXai) GetUpdatedAt() time.Ti
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderVllmAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderVllmAIGatewayModelProviderTypeVllm AIGatewayModelProviderVllmAIGatewayModelProviderType = "vllm"
-)
-
-func (e AIGatewayModelProviderVllmAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderVllmAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderVllmAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "vllm":
-		*e = AIGatewayModelProviderVllmAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderVllmAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderVllmConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderVllmConfigOutput struct {
 	// **Pre-release Feature**
@@ -717,7 +610,8 @@ func (a *AIGatewayModelProviderVllmConfigOutput) GetAuth() AIGatewayModelProvide
 // AIGatewayModelProviderAIGatewayModelProviderVllm - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderVllm struct {
-	Type AIGatewayModelProviderVllmAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"vllm" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -758,11 +652,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderVllm) UnmarshalJSON(data []
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderVllm) GetType() AIGatewayModelProviderVllmAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderVllmAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderVllm) GetType() string {
+	return "vllm"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderVllm) GetDisplayName() string {
@@ -821,29 +712,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderVllm) GetUpdatedAt() time.T
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderVercelAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderVercelAIGatewayModelProviderTypeVercel AIGatewayModelProviderVercelAIGatewayModelProviderType = "vercel"
-)
-
-func (e AIGatewayModelProviderVercelAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderVercelAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderVercelAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "vercel":
-		*e = AIGatewayModelProviderVercelAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderVercelAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderVercelConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderVercelConfigOutput struct {
 	// **Pre-release Feature**
@@ -874,7 +742,8 @@ func (a *AIGatewayModelProviderVercelConfigOutput) GetAuth() AIGatewayModelProvi
 // AIGatewayModelProviderAIGatewayModelProviderVercel - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderVercel struct {
-	Type AIGatewayModelProviderVercelAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"vercel" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -915,11 +784,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderVercel) UnmarshalJSON(data 
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderVercel) GetType() AIGatewayModelProviderVercelAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderVercelAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderVercel) GetType() string {
+	return "vercel"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderVercel) GetDisplayName() string {
@@ -978,29 +844,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderVercel) GetUpdatedAt() time
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderOpenaiAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderOpenaiAIGatewayModelProviderTypeOpenai AIGatewayModelProviderOpenaiAIGatewayModelProviderType = "openai"
-)
-
-func (e AIGatewayModelProviderOpenaiAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderOpenaiAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderOpenaiAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "openai":
-		*e = AIGatewayModelProviderOpenaiAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderOpenaiAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderOpenaiConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderOpenaiConfigOutput struct {
 	// **Pre-release Feature**
@@ -1031,7 +874,8 @@ func (a *AIGatewayModelProviderOpenaiConfigOutput) GetAuth() AIGatewayModelProvi
 // AIGatewayModelProviderAIGatewayModelProviderOpenai - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderOpenai struct {
-	Type AIGatewayModelProviderOpenaiAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"openai" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -1072,11 +916,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderOpenai) UnmarshalJSON(data 
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderOpenai) GetType() AIGatewayModelProviderOpenaiAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderOpenaiAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderOpenai) GetType() string {
+	return "openai"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderOpenai) GetDisplayName() string {
@@ -1135,29 +976,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderOpenai) GetUpdatedAt() time
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderOllamaAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderOllamaAIGatewayModelProviderTypeOllama AIGatewayModelProviderOllamaAIGatewayModelProviderType = "ollama"
-)
-
-func (e AIGatewayModelProviderOllamaAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderOllamaAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderOllamaAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "ollama":
-		*e = AIGatewayModelProviderOllamaAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderOllamaAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderOllamaConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderOllamaConfigOutput struct {
 	// **Pre-release Feature**
@@ -1188,7 +1006,8 @@ func (a *AIGatewayModelProviderOllamaConfigOutput) GetAuth() AIGatewayModelProvi
 // AIGatewayModelProviderAIGatewayModelProviderOllama - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderOllama struct {
-	Type AIGatewayModelProviderOllamaAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"ollama" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -1229,11 +1048,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderOllama) UnmarshalJSON(data 
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderOllama) GetType() AIGatewayModelProviderOllamaAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderOllamaAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderOllama) GetType() string {
+	return "ollama"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderOllama) GetDisplayName() string {
@@ -1292,29 +1108,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderOllama) GetUpdatedAt() time
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderMistralAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderMistralAIGatewayModelProviderTypeMistral AIGatewayModelProviderMistralAIGatewayModelProviderType = "mistral"
-)
-
-func (e AIGatewayModelProviderMistralAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderMistralAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderMistralAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "mistral":
-		*e = AIGatewayModelProviderMistralAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderMistralAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderMistralConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderMistralConfigOutput struct {
 	// **Pre-release Feature**
@@ -1345,7 +1138,8 @@ func (a *AIGatewayModelProviderMistralConfigOutput) GetAuth() AIGatewayModelProv
 // AIGatewayModelProviderAIGatewayModelProviderMistral - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderMistral struct {
-	Type AIGatewayModelProviderMistralAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"mistral" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -1386,11 +1180,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderMistral) UnmarshalJSON(data
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderMistral) GetType() AIGatewayModelProviderMistralAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderMistralAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderMistral) GetType() string {
+	return "mistral"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderMistral) GetDisplayName() string {
@@ -1449,29 +1240,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderMistral) GetUpdatedAt() tim
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderLlama2AIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderLlama2AIGatewayModelProviderTypeLlama2 AIGatewayModelProviderLlama2AIGatewayModelProviderType = "llama2"
-)
-
-func (e AIGatewayModelProviderLlama2AIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderLlama2AIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderLlama2AIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "llama2":
-		*e = AIGatewayModelProviderLlama2AIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderLlama2AIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderLlama2ConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderLlama2ConfigOutput struct {
 	// **Pre-release Feature**
@@ -1505,7 +1273,8 @@ func (a *AIGatewayModelProviderLlama2ConfigOutput) GetAuth() AIGatewayModelProvi
 // AIGatewayModelProviderAIGatewayModelProviderLlama2 - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderLlama2 struct {
-	Type AIGatewayModelProviderLlama2AIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"llama2" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -1546,11 +1315,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderLlama2) UnmarshalJSON(data 
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderLlama2) GetType() AIGatewayModelProviderLlama2AIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderLlama2AIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderLlama2) GetType() string {
+	return "llama2"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderLlama2) GetDisplayName() string {
@@ -1612,29 +1378,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderLlama2) GetUpdatedAt() time
 // #region class-body-aigatewaymodelprovideraigatewaymodelproviderllama2
 // #endregion class-body-aigatewaymodelprovideraigatewaymodelproviderllama2
 
-type AIGatewayModelProviderKimiAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderKimiAIGatewayModelProviderTypeKimi AIGatewayModelProviderKimiAIGatewayModelProviderType = "kimi"
-)
-
-func (e AIGatewayModelProviderKimiAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderKimiAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderKimiAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "kimi":
-		*e = AIGatewayModelProviderKimiAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderKimiAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderKimiConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderKimiConfigOutput struct {
 	// **Pre-release Feature**
@@ -1665,7 +1408,8 @@ func (a *AIGatewayModelProviderKimiConfigOutput) GetAuth() AIGatewayModelProvide
 // AIGatewayModelProviderAIGatewayModelProviderKimi - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderKimi struct {
-	Type AIGatewayModelProviderKimiAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"kimi" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -1706,11 +1450,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderKimi) UnmarshalJSON(data []
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderKimi) GetType() AIGatewayModelProviderKimiAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderKimiAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderKimi) GetType() string {
+	return "kimi"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderKimi) GetDisplayName() string {
@@ -1769,29 +1510,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderKimi) GetUpdatedAt() time.T
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderHuggingfaceAIGatewayModelProviderTypeHuggingface AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType = "huggingface"
-)
-
-func (e AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "huggingface":
-		*e = AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderHuggingfaceConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderHuggingfaceConfigOutput struct {
 	// **Pre-release Feature**
@@ -1822,7 +1540,8 @@ func (a *AIGatewayModelProviderHuggingfaceConfigOutput) GetAuth() AIGatewayModel
 // AIGatewayModelProviderAIGatewayModelProviderHuggingface - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderHuggingface struct {
-	Type AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"huggingface" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -1863,11 +1582,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderHuggingface) UnmarshalJSON(
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderHuggingface) GetType() AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderHuggingface) GetType() string {
+	return "huggingface"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderHuggingface) GetDisplayName() string {
@@ -1926,29 +1642,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderHuggingface) GetUpdatedAt()
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderGeminiAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderGeminiAIGatewayModelProviderTypeGemini AIGatewayModelProviderGeminiAIGatewayModelProviderType = "gemini"
-)
-
-func (e AIGatewayModelProviderGeminiAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderGeminiAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderGeminiAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gemini":
-		*e = AIGatewayModelProviderGeminiAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderGeminiAIGatewayModelProviderType: %v", v)
-	}
-}
-
 type AIGatewayModelProviderGeminiAuthOutputType string
 
 const (
@@ -1966,9 +1659,6 @@ type AIGatewayModelProviderGeminiAuthOutput struct {
 func CreateAIGatewayModelProviderGeminiAuthOutputBasic(basic AIGatewayModelProviderConfigAuthBasicOutput) AIGatewayModelProviderGeminiAuthOutput {
 	typ := AIGatewayModelProviderGeminiAuthOutputTypeBasic
 
-	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
-	basic.Type = typStr
-
 	return AIGatewayModelProviderGeminiAuthOutput{
 		AIGatewayModelProviderConfigAuthBasicOutput: &basic,
 		Type: typ,
@@ -1977,9 +1667,6 @@ func CreateAIGatewayModelProviderGeminiAuthOutputBasic(basic AIGatewayModelProvi
 
 func CreateAIGatewayModelProviderGeminiAuthOutputGcp(gcp AIGatewayModelProviderConfigAuthGCPOutput) AIGatewayModelProviderGeminiAuthOutput {
 	typ := AIGatewayModelProviderGeminiAuthOutputTypeGcp
-
-	typStr := AIGatewayModelProviderConfigAuthGCPType(typ)
-	gcp.Type = typStr
 
 	return AIGatewayModelProviderGeminiAuthOutput{
 		AIGatewayModelProviderConfigAuthGCPOutput: &gcp,
@@ -2069,7 +1756,8 @@ func (a *AIGatewayModelProviderGeminiConfigOutput) GetAuthGcp() *AIGatewayModelP
 //
 // Config for GCP model provider.
 type AIGatewayModelProviderAIGatewayModelProviderGemini struct {
-	Type AIGatewayModelProviderGeminiAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"gemini" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -2109,11 +1797,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderGemini) UnmarshalJSON(data 
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderGemini) GetType() AIGatewayModelProviderGeminiAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderGeminiAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderGemini) GetType() string {
+	return "gemini"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderGemini) GetDisplayName() string {
@@ -2172,29 +1857,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderGemini) GetUpdatedAt() time
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderDeepseekAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderDeepseekAIGatewayModelProviderTypeDeepseek AIGatewayModelProviderDeepseekAIGatewayModelProviderType = "deepseek"
-)
-
-func (e AIGatewayModelProviderDeepseekAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderDeepseekAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderDeepseekAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "deepseek":
-		*e = AIGatewayModelProviderDeepseekAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderDeepseekAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderDeepseekConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderDeepseekConfigOutput struct {
 	// **Pre-release Feature**
@@ -2225,7 +1887,8 @@ func (a *AIGatewayModelProviderDeepseekConfigOutput) GetAuth() AIGatewayModelPro
 // AIGatewayModelProviderAIGatewayModelProviderDeepseek - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderDeepseek struct {
-	Type AIGatewayModelProviderDeepseekAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"deepseek" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -2266,11 +1929,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderDeepseek) UnmarshalJSON(dat
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderDeepseek) GetType() AIGatewayModelProviderDeepseekAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderDeepseekAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderDeepseek) GetType() string {
+	return "deepseek"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderDeepseek) GetDisplayName() string {
@@ -2329,29 +1989,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderDeepseek) GetUpdatedAt() ti
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderDatabricksAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderDatabricksAIGatewayModelProviderTypeDatabricks AIGatewayModelProviderDatabricksAIGatewayModelProviderType = "databricks"
-)
-
-func (e AIGatewayModelProviderDatabricksAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderDatabricksAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderDatabricksAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "databricks":
-		*e = AIGatewayModelProviderDatabricksAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderDatabricksAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderDatabricksConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderDatabricksConfigOutput struct {
 	// **Pre-release Feature**
@@ -2382,7 +2019,8 @@ func (a *AIGatewayModelProviderDatabricksConfigOutput) GetAuth() AIGatewayModelP
 // AIGatewayModelProviderAIGatewayModelProviderDatabricks - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderDatabricks struct {
-	Type AIGatewayModelProviderDatabricksAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"databricks" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -2423,11 +2061,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderDatabricks) UnmarshalJSON(d
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderDatabricks) GetType() AIGatewayModelProviderDatabricksAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderDatabricksAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderDatabricks) GetType() string {
+	return "databricks"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderDatabricks) GetDisplayName() string {
@@ -2486,29 +2121,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderDatabricks) GetUpdatedAt() 
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderDashscopeAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderDashscopeAIGatewayModelProviderTypeDashscope AIGatewayModelProviderDashscopeAIGatewayModelProviderType = "dashscope"
-)
-
-func (e AIGatewayModelProviderDashscopeAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderDashscopeAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderDashscopeAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "dashscope":
-		*e = AIGatewayModelProviderDashscopeAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderDashscopeAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderDashscopeConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderDashscopeConfigOutput struct {
 	// **Pre-release Feature**
@@ -2539,7 +2151,8 @@ func (a *AIGatewayModelProviderDashscopeConfigOutput) GetAuth() AIGatewayModelPr
 // AIGatewayModelProviderAIGatewayModelProviderDashscope - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderDashscope struct {
-	Type AIGatewayModelProviderDashscopeAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"dashscope" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -2580,11 +2193,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderDashscope) UnmarshalJSON(da
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderDashscope) GetType() AIGatewayModelProviderDashscopeAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderDashscopeAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderDashscope) GetType() string {
+	return "dashscope"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderDashscope) GetDisplayName() string {
@@ -2643,29 +2253,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderDashscope) GetUpdatedAt() t
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderCohereAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderCohereAIGatewayModelProviderTypeCohere AIGatewayModelProviderCohereAIGatewayModelProviderType = "cohere"
-)
-
-func (e AIGatewayModelProviderCohereAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderCohereAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderCohereAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "cohere":
-		*e = AIGatewayModelProviderCohereAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderCohereAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderCohereConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderCohereConfigOutput struct {
 	// **Pre-release Feature**
@@ -2696,7 +2283,8 @@ func (a *AIGatewayModelProviderCohereConfigOutput) GetAuth() AIGatewayModelProvi
 // AIGatewayModelProviderAIGatewayModelProviderCohere - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderCohere struct {
-	Type AIGatewayModelProviderCohereAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"cohere" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -2737,11 +2325,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderCohere) UnmarshalJSON(data 
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderCohere) GetType() AIGatewayModelProviderCohereAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderCohereAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderCohere) GetType() string {
+	return "cohere"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderCohere) GetDisplayName() string {
@@ -2800,29 +2385,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderCohere) GetUpdatedAt() time
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderCerebrasAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderCerebrasAIGatewayModelProviderTypeCerebras AIGatewayModelProviderCerebrasAIGatewayModelProviderType = "cerebras"
-)
-
-func (e AIGatewayModelProviderCerebrasAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderCerebrasAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderCerebrasAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "cerebras":
-		*e = AIGatewayModelProviderCerebrasAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderCerebrasAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderCerebrasConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderCerebrasConfigOutput struct {
 	// **Pre-release Feature**
@@ -2853,7 +2415,8 @@ func (a *AIGatewayModelProviderCerebrasConfigOutput) GetAuth() AIGatewayModelPro
 // AIGatewayModelProviderAIGatewayModelProviderCerebras - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderCerebras struct {
-	Type AIGatewayModelProviderCerebrasAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"cerebras" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -2894,11 +2457,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderCerebras) UnmarshalJSON(dat
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderCerebras) GetType() AIGatewayModelProviderCerebrasAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderCerebrasAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderCerebras) GetType() string {
+	return "cerebras"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderCerebras) GetDisplayName() string {
@@ -2957,29 +2517,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderCerebras) GetUpdatedAt() ti
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderBedrockAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderBedrockAIGatewayModelProviderTypeBedrock AIGatewayModelProviderBedrockAIGatewayModelProviderType = "bedrock"
-)
-
-func (e AIGatewayModelProviderBedrockAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderBedrockAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderBedrockAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bedrock":
-		*e = AIGatewayModelProviderBedrockAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderBedrockAIGatewayModelProviderType: %v", v)
-	}
-}
-
 type AIGatewayModelProviderBedrockAuthOutputType string
 
 const (
@@ -2997,9 +2534,6 @@ type AIGatewayModelProviderBedrockAuthOutput struct {
 func CreateAIGatewayModelProviderBedrockAuthOutputBasic(basic AIGatewayModelProviderConfigAuthBasicOutput) AIGatewayModelProviderBedrockAuthOutput {
 	typ := AIGatewayModelProviderBedrockAuthOutputTypeBasic
 
-	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
-	basic.Type = typStr
-
 	return AIGatewayModelProviderBedrockAuthOutput{
 		AIGatewayModelProviderConfigAuthBasicOutput: &basic,
 		Type: typ,
@@ -3008,9 +2542,6 @@ func CreateAIGatewayModelProviderBedrockAuthOutputBasic(basic AIGatewayModelProv
 
 func CreateAIGatewayModelProviderBedrockAuthOutputAws(aws AIGatewayModelProviderConfigAuthAWSOutput) AIGatewayModelProviderBedrockAuthOutput {
 	typ := AIGatewayModelProviderBedrockAuthOutputTypeAws
-
-	typStr := AIGatewayModelProviderConfigAuthAWSType(typ)
-	aws.Type = typStr
 
 	return AIGatewayModelProviderBedrockAuthOutput{
 		AIGatewayModelProviderConfigAuthAWSOutput: &aws,
@@ -3100,7 +2631,8 @@ func (a *AIGatewayModelProviderBedrockConfigOutput) GetAuthAws() *AIGatewayModel
 //
 // Config for AWS model provider.
 type AIGatewayModelProviderAIGatewayModelProviderBedrock struct {
-	Type AIGatewayModelProviderBedrockAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"bedrock" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -3140,11 +2672,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderBedrock) UnmarshalJSON(data
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderBedrock) GetType() AIGatewayModelProviderBedrockAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderBedrockAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderBedrock) GetType() string {
+	return "bedrock"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderBedrock) GetDisplayName() string {
@@ -3203,29 +2732,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderBedrock) GetUpdatedAt() tim
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderAzureAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderAzureAIGatewayModelProviderTypeAzure AIGatewayModelProviderAzureAIGatewayModelProviderType = "azure"
-)
-
-func (e AIGatewayModelProviderAzureAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderAzureAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderAzureAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "azure":
-		*e = AIGatewayModelProviderAzureAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderAzureAIGatewayModelProviderType: %v", v)
-	}
-}
-
 type AIGatewayModelProviderAzureAuthOutputType string
 
 const (
@@ -3243,9 +2749,6 @@ type AIGatewayModelProviderAzureAuthOutput struct {
 func CreateAIGatewayModelProviderAzureAuthOutputBasic(basic AIGatewayModelProviderConfigAuthBasicOutput) AIGatewayModelProviderAzureAuthOutput {
 	typ := AIGatewayModelProviderAzureAuthOutputTypeBasic
 
-	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
-	basic.Type = typStr
-
 	return AIGatewayModelProviderAzureAuthOutput{
 		AIGatewayModelProviderConfigAuthBasicOutput: &basic,
 		Type: typ,
@@ -3254,9 +2757,6 @@ func CreateAIGatewayModelProviderAzureAuthOutputBasic(basic AIGatewayModelProvid
 
 func CreateAIGatewayModelProviderAzureAuthOutputAzure(azure AIGatewayModelProviderConfigAuthAzureOutput) AIGatewayModelProviderAzureAuthOutput {
 	typ := AIGatewayModelProviderAzureAuthOutputTypeAzure
-
-	typStr := AIGatewayModelProviderConfigAuthAzureType(typ)
-	azure.Type = typStr
 
 	return AIGatewayModelProviderAzureAuthOutput{
 		AIGatewayModelProviderConfigAuthAzureOutput: &azure,
@@ -3354,7 +2854,8 @@ func (a *AIGatewayModelProviderAzureConfigOutput) GetInstance() string {
 //
 // Config for Azure model provider.
 type AIGatewayModelProviderAIGatewayModelProviderAzure struct {
-	Type AIGatewayModelProviderAzureAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"azure" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -3394,11 +2895,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderAzure) UnmarshalJSON(data [
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderAzure) GetType() AIGatewayModelProviderAzureAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderAzureAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderAzure) GetType() string {
+	return "azure"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderAzure) GetDisplayName() string {
@@ -3457,29 +2955,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderAzure) GetUpdatedAt() time.
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderAnthropicAIGatewayModelProviderType string
-
-const (
-	AIGatewayModelProviderAnthropicAIGatewayModelProviderTypeAnthropic AIGatewayModelProviderAnthropicAIGatewayModelProviderType = "anthropic"
-)
-
-func (e AIGatewayModelProviderAnthropicAIGatewayModelProviderType) ToPointer() *AIGatewayModelProviderAnthropicAIGatewayModelProviderType {
-	return &e
-}
-func (e *AIGatewayModelProviderAnthropicAIGatewayModelProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "anthropic":
-		*e = AIGatewayModelProviderAnthropicAIGatewayModelProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderAnthropicAIGatewayModelProviderType: %v", v)
-	}
-}
-
 // AIGatewayModelProviderAnthropicConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderAnthropicConfigOutput struct {
 	// **Pre-release Feature**
@@ -3510,7 +2985,8 @@ func (a *AIGatewayModelProviderAnthropicConfigOutput) GetAuth() AIGatewayModelPr
 // AIGatewayModelProviderAIGatewayModelProviderAnthropic - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderAIGatewayModelProviderAnthropic struct {
-	Type AIGatewayModelProviderAnthropicAIGatewayModelProviderType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"anthropic" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -3551,11 +3027,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderAnthropic) UnmarshalJSON(da
 	return nil
 }
 
-func (a *AIGatewayModelProviderAIGatewayModelProviderAnthropic) GetType() AIGatewayModelProviderAnthropicAIGatewayModelProviderType {
-	if a == nil {
-		return AIGatewayModelProviderAnthropicAIGatewayModelProviderType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderAIGatewayModelProviderAnthropic) GetType() string {
+	return "anthropic"
 }
 
 func (a *AIGatewayModelProviderAIGatewayModelProviderAnthropic) GetDisplayName() string {
@@ -3669,9 +3142,6 @@ type AIGatewayModelProvider struct {
 func CreateAIGatewayModelProviderAnthropic(anthropic AIGatewayModelProviderAIGatewayModelProviderAnthropic) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeAnthropic
 
-	typStr := AIGatewayModelProviderAnthropicAIGatewayModelProviderType(typ)
-	anthropic.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderAnthropic: &anthropic,
 		Type: typ,
@@ -3680,9 +3150,6 @@ func CreateAIGatewayModelProviderAnthropic(anthropic AIGatewayModelProviderAIGat
 
 func CreateAIGatewayModelProviderAzure(azure AIGatewayModelProviderAIGatewayModelProviderAzure) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeAzure
-
-	typStr := AIGatewayModelProviderAzureAIGatewayModelProviderType(typ)
-	azure.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderAzure: &azure,
@@ -3693,9 +3160,6 @@ func CreateAIGatewayModelProviderAzure(azure AIGatewayModelProviderAIGatewayMode
 func CreateAIGatewayModelProviderBedrock(bedrock AIGatewayModelProviderAIGatewayModelProviderBedrock) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeBedrock
 
-	typStr := AIGatewayModelProviderBedrockAIGatewayModelProviderType(typ)
-	bedrock.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderBedrock: &bedrock,
 		Type: typ,
@@ -3704,9 +3168,6 @@ func CreateAIGatewayModelProviderBedrock(bedrock AIGatewayModelProviderAIGateway
 
 func CreateAIGatewayModelProviderCerebras(cerebras AIGatewayModelProviderAIGatewayModelProviderCerebras) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeCerebras
-
-	typStr := AIGatewayModelProviderCerebrasAIGatewayModelProviderType(typ)
-	cerebras.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderCerebras: &cerebras,
@@ -3717,9 +3178,6 @@ func CreateAIGatewayModelProviderCerebras(cerebras AIGatewayModelProviderAIGatew
 func CreateAIGatewayModelProviderCohere(cohere AIGatewayModelProviderAIGatewayModelProviderCohere) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeCohere
 
-	typStr := AIGatewayModelProviderCohereAIGatewayModelProviderType(typ)
-	cohere.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderCohere: &cohere,
 		Type: typ,
@@ -3728,9 +3186,6 @@ func CreateAIGatewayModelProviderCohere(cohere AIGatewayModelProviderAIGatewayMo
 
 func CreateAIGatewayModelProviderDashscope(dashscope AIGatewayModelProviderAIGatewayModelProviderDashscope) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeDashscope
-
-	typStr := AIGatewayModelProviderDashscopeAIGatewayModelProviderType(typ)
-	dashscope.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderDashscope: &dashscope,
@@ -3741,9 +3196,6 @@ func CreateAIGatewayModelProviderDashscope(dashscope AIGatewayModelProviderAIGat
 func CreateAIGatewayModelProviderDatabricks(databricks AIGatewayModelProviderAIGatewayModelProviderDatabricks) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeDatabricks
 
-	typStr := AIGatewayModelProviderDatabricksAIGatewayModelProviderType(typ)
-	databricks.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderDatabricks: &databricks,
 		Type: typ,
@@ -3752,9 +3204,6 @@ func CreateAIGatewayModelProviderDatabricks(databricks AIGatewayModelProviderAIG
 
 func CreateAIGatewayModelProviderDeepseek(deepseek AIGatewayModelProviderAIGatewayModelProviderDeepseek) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeDeepseek
-
-	typStr := AIGatewayModelProviderDeepseekAIGatewayModelProviderType(typ)
-	deepseek.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderDeepseek: &deepseek,
@@ -3765,9 +3214,6 @@ func CreateAIGatewayModelProviderDeepseek(deepseek AIGatewayModelProviderAIGatew
 func CreateAIGatewayModelProviderGemini(gemini AIGatewayModelProviderAIGatewayModelProviderGemini) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeGemini
 
-	typStr := AIGatewayModelProviderGeminiAIGatewayModelProviderType(typ)
-	gemini.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderGemini: &gemini,
 		Type: typ,
@@ -3776,9 +3222,6 @@ func CreateAIGatewayModelProviderGemini(gemini AIGatewayModelProviderAIGatewayMo
 
 func CreateAIGatewayModelProviderHuggingface(huggingface AIGatewayModelProviderAIGatewayModelProviderHuggingface) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeHuggingface
-
-	typStr := AIGatewayModelProviderHuggingfaceAIGatewayModelProviderType(typ)
-	huggingface.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderHuggingface: &huggingface,
@@ -3789,9 +3232,6 @@ func CreateAIGatewayModelProviderHuggingface(huggingface AIGatewayModelProviderA
 func CreateAIGatewayModelProviderKimi(kimi AIGatewayModelProviderAIGatewayModelProviderKimi) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeKimi
 
-	typStr := AIGatewayModelProviderKimiAIGatewayModelProviderType(typ)
-	kimi.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderKimi: &kimi,
 		Type: typ,
@@ -3800,9 +3240,6 @@ func CreateAIGatewayModelProviderKimi(kimi AIGatewayModelProviderAIGatewayModelP
 
 func CreateAIGatewayModelProviderLlama2(llama2 AIGatewayModelProviderAIGatewayModelProviderLlama2) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeLlama2
-
-	typStr := AIGatewayModelProviderLlama2AIGatewayModelProviderType(typ)
-	llama2.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderLlama2: &llama2,
@@ -3813,9 +3250,6 @@ func CreateAIGatewayModelProviderLlama2(llama2 AIGatewayModelProviderAIGatewayMo
 func CreateAIGatewayModelProviderMistral(mistral AIGatewayModelProviderAIGatewayModelProviderMistral) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeMistral
 
-	typStr := AIGatewayModelProviderMistralAIGatewayModelProviderType(typ)
-	mistral.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderMistral: &mistral,
 		Type: typ,
@@ -3824,9 +3258,6 @@ func CreateAIGatewayModelProviderMistral(mistral AIGatewayModelProviderAIGateway
 
 func CreateAIGatewayModelProviderOllama(ollama AIGatewayModelProviderAIGatewayModelProviderOllama) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeOllama
-
-	typStr := AIGatewayModelProviderOllamaAIGatewayModelProviderType(typ)
-	ollama.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderOllama: &ollama,
@@ -3837,9 +3268,6 @@ func CreateAIGatewayModelProviderOllama(ollama AIGatewayModelProviderAIGatewayMo
 func CreateAIGatewayModelProviderOpenai(openai AIGatewayModelProviderAIGatewayModelProviderOpenai) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeOpenai
 
-	typStr := AIGatewayModelProviderOpenaiAIGatewayModelProviderType(typ)
-	openai.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderOpenai: &openai,
 		Type: typ,
@@ -3848,9 +3276,6 @@ func CreateAIGatewayModelProviderOpenai(openai AIGatewayModelProviderAIGatewayMo
 
 func CreateAIGatewayModelProviderVercel(vercel AIGatewayModelProviderAIGatewayModelProviderVercel) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeVercel
-
-	typStr := AIGatewayModelProviderVercelAIGatewayModelProviderType(typ)
-	vercel.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderVercel: &vercel,
@@ -3861,9 +3286,6 @@ func CreateAIGatewayModelProviderVercel(vercel AIGatewayModelProviderAIGatewayMo
 func CreateAIGatewayModelProviderVllm(vllm AIGatewayModelProviderAIGatewayModelProviderVllm) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeVllm
 
-	typStr := AIGatewayModelProviderVllmAIGatewayModelProviderType(typ)
-	vllm.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderVllm: &vllm,
 		Type: typ,
@@ -3872,9 +3294,6 @@ func CreateAIGatewayModelProviderVllm(vllm AIGatewayModelProviderAIGatewayModelP
 
 func CreateAIGatewayModelProviderXai(xai AIGatewayModelProviderAIGatewayModelProviderXai) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeXai
-
-	typStr := AIGatewayModelProviderXaiAIGatewayModelProviderType(typ)
-	xai.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderXai: &xai,
@@ -3885,9 +3304,6 @@ func CreateAIGatewayModelProviderXai(xai AIGatewayModelProviderAIGatewayModelPro
 func CreateAIGatewayModelProviderVertex(vertex AIGatewayModelProviderAIGatewayModelProviderVertex) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeVertex
 
-	typStr := AIGatewayModelProviderVertexAIGatewayModelProviderType(typ)
-	vertex.Type = typStr
-
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderVertex: &vertex,
 		Type: typ,
@@ -3896,9 +3312,6 @@ func CreateAIGatewayModelProviderVertex(vertex AIGatewayModelProviderAIGatewayMo
 
 func CreateAIGatewayModelProviderSagemaker(sagemaker AIGatewayModelProviderAIGatewayModelProviderSagemaker) AIGatewayModelProvider {
 	typ := AIGatewayModelProviderTypeSagemaker
-
-	typStr := AIGatewayModelProviderSagemakerAIGatewayModelProviderType(typ)
-	sagemaker.Type = typStr
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderSagemaker: &sagemaker,

@@ -4,8 +4,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -55,29 +53,6 @@ func (e *HashiCorpVaultAzureConfigProtocol) IsExact() bool {
 	return false
 }
 
-type HashiCorpVaultAzureConfigAuthMethod string
-
-const (
-	HashiCorpVaultAzureConfigAuthMethodAzure HashiCorpVaultAzureConfigAuthMethod = "azure"
-)
-
-func (e HashiCorpVaultAzureConfigAuthMethod) ToPointer() *HashiCorpVaultAzureConfigAuthMethod {
-	return &e
-}
-func (e *HashiCorpVaultAzureConfigAuthMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "azure":
-		*e = HashiCorpVaultAzureConfigAuthMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultAzureConfigAuthMethod: %v", v)
-	}
-}
-
 // HashiCorpVaultAzureConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type HashiCorpVaultAzureConfig struct {
@@ -113,8 +88,9 @@ type HashiCorpVaultAzureConfig struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                             `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultAzureConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"azure" json:"auth_method"`
 	// The role to use for Azure auth.
 	Role string `json:"role"`
 	// The login path for Azure auth in HashiCorp Vault
@@ -209,11 +185,8 @@ func (h *HashiCorpVaultAzureConfig) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultAzureConfig) GetAuthMethod() HashiCorpVaultAzureConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultAzureConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultAzureConfig) GetAuthMethod() string {
+	return "azure"
 }
 
 func (h *HashiCorpVaultAzureConfig) GetRole() string {

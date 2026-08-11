@@ -120,7 +120,7 @@ paths:
         - AI Gateways
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGateway#create,update'
+        terraform-resource: AIGateway#update
         terraform-datasource: null
       operationId: update-ai-gateway
       summary: Update an AI Gateway
@@ -265,7 +265,7 @@ paths:
         - AI Gateway Agents
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayAgent#create,update'
+        terraform-resource: AIGatewayAgent#update
         terraform-datasource: null
       operationId: update-ai-gateway-agent
       summary: Update an AI Gateway Agent
@@ -408,7 +408,7 @@ paths:
         - AI Gateway Config Stores
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayConfigStore#create,update'
+        terraform-resource: AIGatewayConfigStore#update
         terraform-datasource: null
       operationId: update-ai-gateway-config-store
       summary: Update an AI Gateway Config Store
@@ -718,7 +718,7 @@ paths:
         - AI Gateway Consumer Groups
     post:
       x-speakeasy-entity-operation:
-        terraform-resource: AIGatewayConsumerGroupConsumers#add
+        terraform-resource: AIGatewayConsumerGroupMember#create
         terraform-datasource: null
       operationId: add-ai-gateway-consumer-to-consumer-group
       summary: Add a Consumer to a Consumer Group
@@ -754,9 +754,7 @@ paths:
       - $ref: '#/components/parameters/AIGatewayConsumerGroupId'
       - $ref: '#/components/parameters/AIGatewayConsumerIdOrName'
     delete:
-      x-speakeasy-entity-operation:
-        terraform-resource: AIGatewayConsumerGroupConsumers#remove
-        terraform-datasource: null
+      x-speakeasy-entity-operation: AIGatewayConsumerGroupMember#delete
       operationId: remove-ai-gateway-consumer-from-consumer-group
       summary: Remove a Consumer from a Consumer Group
       description: |-
@@ -807,7 +805,7 @@ paths:
         - AI Gateway Consumer Groups
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayConsumerGroup#create,update'
+        terraform-resource: AIGatewayConsumerGroup#update
         terraform-datasource: null
       operationId: update-ai-gateway-consumer-group
       summary: Update an AI Gateway Consumer Group
@@ -1063,7 +1061,7 @@ paths:
         - AI Gateway Consumers
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayConsumer#create,update'
+        terraform-resource: AIGatewayConsumer#update
         terraform-datasource: null
       operationId: update-ai-gateway-consumer
       summary: Update an AI Gateway Consumer
@@ -1122,9 +1120,6 @@ paths:
       - $ref: '#/components/parameters/AIGatewayId'
       - $ref: '#/components/parameters/AIGatewayConsumerIdOrName'
     get:
-      x-speakeasy-entity-operation:
-        terraform-resource: AIGatewayConsumerConsumerGroups#read
-        terraform-datasource: null
       operationId: list-ai-gateway-consumer-groups-for-consumer
       summary: List Consumer Groups a Consumer belongs to
       description: |-
@@ -1149,9 +1144,6 @@ paths:
       tags:
         - AI Gateway Consumers
     put:
-      x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayConsumerConsumerGroups#create,update'
-        terraform-datasource: null
       operationId: update-ai-gateway-consumer-groups-for-consumer
       summary: Updates Consumer Groups a Consumer belongs to
       description: |-
@@ -1200,9 +1192,6 @@ paths:
     parameters:
       - $ref: '#/components/parameters/AIGatewayId'
     get:
-      x-speakeasy-entity-operation:
-        terraform-resource: AIGatewayDataPlaneCertificate#read
-        terraform-datasource: null
       operationId: list-ai-gateway-data-plane-certificates
       summary: List AI Gateway DataPlane Certificates
       description: |-
@@ -1317,9 +1306,6 @@ paths:
         - AI Gateway DataPlane Certificates
   '/v1/ai-gateways/{gatewayId}/expected-config-version':
     get:
-      x-speakeasy-entity-operation:
-        terraform-resource: AIGatewayExpectedConfigVersion#read
-        terraform-datasource: null
       operationId: get-ai-gateway-expected-config-version
       summary: Get the Expected Config Version
       description: |-
@@ -1431,7 +1417,7 @@ paths:
         - AI Gateway Identity Providers
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayIdentityProvider#create,update'
+        terraform-resource: AIGatewayIdentityProvider#update
         terraform-datasource: null
       operationId: update-ai-gateway-identity-provider
       summary: Update an AI Gateway Identity Provider
@@ -1580,7 +1566,7 @@ paths:
         - AI Gateway MCP Servers
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayMCPServer#create,update'
+        terraform-resource: AIGatewayMCPServer#update
         terraform-datasource: null
       operationId: update-ai-gateway-mcp-server
       summary: Update an MCP Server
@@ -1723,7 +1709,7 @@ paths:
         - AI Gateway Model Providers
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayModelProvider#create,update'
+        terraform-resource: AIGatewayModelProvider#update
         terraform-datasource: null
       operationId: update-ai-gateway-model-provider
       summary: Update an AI Gateway Model Provider
@@ -1872,7 +1858,7 @@ paths:
         - AI Gateway Models
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayModel#create,update'
+        terraform-resource: AIGatewayModel#update
         terraform-datasource: null
       operationId: update-ai-gateway-model
       summary: Update an AI Gateway Model
@@ -1958,9 +1944,6 @@ paths:
       - $ref: '#/components/parameters/AIGatewayId'
       - $ref: '#/components/parameters/AIGatewayDataPlaneNodeId'
     get:
-      x-speakeasy-entity-operation:
-        terraform-resource: AIGatewayNode#read
-        terraform-datasource: null
       operationId: get-ai-gateway-node
       summary: Get a Node
       description: |-
@@ -2072,7 +2055,7 @@ paths:
         - AI Gateway Policies
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayPolicy#create,update'
+        terraform-resource: AIGatewayPolicy#update
         terraform-datasource: null
       operationId: update-ai-gateway-policy
       summary: Update an AI Gateway Policy
@@ -2219,7 +2202,7 @@ paths:
         - AI Gateway Vaults
     put:
       x-speakeasy-entity-operation:
-        terraform-resource: 'AIGatewayVault#create,update'
+        terraform-resource: AIGatewayVault#update
         terraform-datasource: null
       operationId: update-ai-gateway-vault
       summary: Update an AI Gateway Vault
@@ -20303,13 +20286,19 @@ paths:
         - $ref: '#/components/parameters/PageNumber'
         - name: filter
           in: query
-          description: Filter teams returned in the response.
+          description: |-
+            Filter teams returned in the response. Supports filtering by label value using
+            dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`.
           required: false
           schema:
             type: object
             properties:
               name:
                 $ref: '#/components/schemas/LegacyStringFieldFilter'
+              labels:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/LegacyStringFieldFilter'
           style: deepObject
       responses:
         '200':
@@ -24115,13 +24104,9 @@ components:
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           readOnly: true
         name:
-          description: The name of the team.
-          type: string
-          example: IDM - Developers
-          maxLength: 250
-          pattern: '^[\w \W]+$'
+          $ref: '#/components/schemas/TeamName'
         description:
-          description: The team description in Konnect.
+          description: The description of the team.
           type: string
           example: The developers for the IDM API.
           maxLength: 250
@@ -24488,6 +24473,12 @@ components:
           description: The field contains the provided value.
           type: string
       additionalProperties: false
+    TeamName:
+      description: The name of the team.
+      type: string
+      example: IDM - Developers
+      maxLength: 250
+      pattern: '^[\w \W]+$'
     LabelsUpdate:
       description: |
         Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types. 
@@ -32725,11 +32716,14 @@ components:
       type: object
       properties:
         name:
+          description: The name of the team.
           type: string
           example: IDM - Developers
+          maxLength: 250
           pattern: '^[\w \W]+$'
           writeOnly: true
         description:
+          description: The description of the team.
           type: string
           example: The Identity Management (IDM) API team.
           maxLength: 250
@@ -32750,11 +32744,14 @@ components:
       type: object
       properties:
         name:
+          description: The name of the team.
           type: string
           example: IDM - Developers
+          maxLength: 250
           pattern: '^[\w \W]+$'
           writeOnly: true
         description:
+          description: The description of the team.
           type: string
           example: The Identity Management (IDM) team.
           maxLength: 250
@@ -32782,11 +32779,9 @@ components:
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           readOnly: true
         name:
-          type: string
-          example: IDM - Developers
-          maxLength: 250
-          pattern: '^[\w \W]+$'
+          $ref: '#/components/schemas/TeamName'
         description:
+          description: The description of the team.
           type: string
           example: The developers for the IDM API.
           maxLength: 250
@@ -52372,8 +52367,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - model
+          const: model
         config:
           $ref: '#/components/schemas/AIGatewayModelModelConfig'
         capabilities:
@@ -52449,8 +52443,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - api
+          const: api
         config:
           $ref: '#/components/schemas/AIGatewayModelAPIConfig'
         capabilities:
@@ -52841,8 +52834,7 @@ components:
           minimum: 1
         algorithm:
           type: string
-          enum:
-            - consistent-hashing
+          const: consistent-hashing
         hash_on_header:
           description: The header to use for consistent-hashing.
           type: string
@@ -52918,8 +52910,7 @@ components:
           minimum: 1
         algorithm:
           type: string
-          enum:
-            - least-connections
+          const: least-connections
       additionalProperties: false
       required:
         - algorithm
@@ -52991,8 +52982,7 @@ components:
           minimum: 1
         algorithm:
           type: string
-          enum:
-            - lowest-latency
+          const: lowest-latency
         latency_strategy:
           description: 'What metrics to use for latency. Available values are: `tpot` (time-per-output-token) and `e2e`.'
           type: string
@@ -53073,8 +53063,7 @@ components:
           minimum: 1
         algorithm:
           type: string
-          enum:
-            - lowest-usage
+          const: lowest-usage
         tokens_count_strategy:
           description: Methodology to use for token usage calculation.
           type: string
@@ -53158,8 +53147,7 @@ components:
           minimum: 1
         algorithm:
           type: string
-          enum:
-            - priority
+          const: priority
       additionalProperties: false
       required:
         - algorithm
@@ -53231,8 +53219,7 @@ components:
           minimum: 1
         algorithm:
           type: string
-          enum:
-            - round-robin
+          const: round-robin
       additionalProperties: false
       required:
         - algorithm
@@ -53304,8 +53291,7 @@ components:
           minimum: 1
         algorithm:
           type: string
-          enum:
-            - semantic
+          const: semantic
         embeddings:
           description: Embeddings model configuration for this model.
           type: object
@@ -53373,8 +53359,7 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - azure
+          const: azure
         deployment_id:
           description: The Azure deployment ID for the model.
           type: string
@@ -53399,8 +53384,7 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - bedrock
+          const: bedrock
         region:
           description: |
             The AWS region for the model.
@@ -53435,8 +53419,7 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - gemini
+          const: gemini
         gcp_environment:
           $ref: '#/components/schemas/GCPModelConfig'
       additionalProperties: false
@@ -53455,8 +53438,7 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - huggingface
+          const: huggingface
         use_cache:
           description: Whether to use the Hugging Face inference cache.
           type: boolean
@@ -53497,8 +53479,7 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - ollama
+          const: ollama
       additionalProperties: false
       required:
         - type
@@ -53515,8 +53496,7 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - openai
+          const: openai
       additionalProperties: false
       required:
         - type
@@ -53533,8 +53513,7 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - vertex
+          const: vertex
         gcp_environment:
           $ref: '#/components/schemas/GCPModelConfig'
       additionalProperties: false
@@ -53564,8 +53543,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - redis
+          const: redis
         dimensions:
           description: the desired dimensionality for the vectors
           type: integer
@@ -53767,8 +53745,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - pgvector
+          const: pgvector
         dimensions:
           description: the desired dimensionality for the vectors
           type: integer
@@ -53950,6 +53927,71 @@ components:
         - $ref: '#/components/schemas/AIGatewayTargetVllmConfig'
         - $ref: '#/components/schemas/AIGatewayTargetXaiConfig'
         - $ref: '#/components/schemas/AIGatewayTargetSagemakerConfig'
+    AIGatewayCacheWriteCost:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        ttl:
+          description: 'Cache TTL this price applies to, e.g. "5m" or "1h".'
+          type: string
+          pattern: '^[0-9]+\.?[0-9]*[hm]$'
+        cost:
+          description: Cost per cache-write prompt token for this TTL.
+          type: number
+          minimum: 0
+      additionalProperties: false
+      required:
+        - ttl
+        - cost
+      title: AIGatewayCacheWriteCost
+    AIGatewayContextWindowFactor:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        above:
+          description: 'Input-token threshold above which the factors apply, e.g. "128k" or "1m".'
+          type: string
+          pattern: '^[0-9]+\.?[0-9]*[km]$'
+        input_factor:
+          description: Multiplier applied to input pricing above the threshold.
+          type: number
+          exclusiveMinimum: true
+          minimum: 0
+        output_factor:
+          description: Multiplier applied to output pricing above the threshold.
+          type: number
+          exclusiveMinimum: true
+          minimum: 0
+      additionalProperties: false
+      required:
+        - above
+        - input_factor
+        - output_factor
+      title: AIGatewayContextWindowFactor
+    AIGatewayServiceTierFactor:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        tier:
+          description: 'Matched case-insensitively as a substring of the vendor''s reported service tier (e.g. "priority", "flex", "throughput"). When more than one entry matches, the longest (most specific) tier wins; array order does not matter.'
+          type: string
+          minLength: 1
+        factor:
+          description: Multiplier applied to the whole request for this service tier.
+          type: number
+          exclusiveMinimum: true
+          minimum: 0
+      additionalProperties: false
+      required:
+        - tier
+        - factor
+      title: AIGatewayServiceTierFactor
     AIGatewayTargetAnthropicConfig:
       description: |-
         **Pre-release Feature**
@@ -53970,6 +54012,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -53985,8 +54048,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - anthropic
+          const: anthropic
         version:
           description: The Anthropic API version to use.
           type: string
@@ -54013,6 +54075,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54028,8 +54111,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - azure
+          const: azure
         deployment_id:
           description: The Azure deployment ID for the model.
           type: string
@@ -54060,6 +54142,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54075,8 +54178,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - bedrock
+          const: bedrock
         region:
           description: |
             The AWS region for the model.
@@ -54117,6 +54219,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54132,8 +54255,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - cerebras
+          const: cerebras
       required:
         - type
     AIGatewayTargetCohereConfig:
@@ -54156,6 +54278,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54171,8 +54314,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - cohere
+          const: cohere
         api_version:
           description: |
             Cohere API version. `v1` uses the legacy `/v1/chat` endpoint; `v2` (default)
@@ -54220,6 +54362,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54235,8 +54398,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - dashscope
+          const: dashscope
         international:
           description: Whether to use the international DashScope endpoint.
           type: boolean
@@ -54263,6 +54425,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54278,8 +54461,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - databricks
+          const: databricks
         workspace_instance_id:
           description: The Databricks workspace instance ID.
           type: string
@@ -54306,6 +54488,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54321,8 +54524,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - deepseek
+          const: deepseek
       required:
         - type
     AIGatewayTargetGeminiConfig:
@@ -54345,6 +54547,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54360,8 +54583,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - gemini
+          const: gemini
         gcp_environment:
           $ref: '#/components/schemas/GCPModelConfig'
       required:
@@ -54386,6 +54608,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54401,8 +54644,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - huggingface
+          const: huggingface
         use_cache:
           description: Whether to use the Hugging Face inference cache.
           type: boolean
@@ -54433,6 +54675,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54448,8 +54711,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - kimi
+          const: kimi
         international:
           description: |
             When `true`, requests are sent to `api.moonshot.ai` (international).
@@ -54478,6 +54740,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54493,8 +54776,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - llama2
+          const: llama2
         format:
           description: The request format to use when communicating with the Llama2 model.
           type: string
@@ -54527,6 +54809,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54542,8 +54845,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - mistral
+          const: mistral
         format:
           description: The request format to use when communicating with the Mistral model.
           type: string
@@ -54574,6 +54876,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54589,8 +54912,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - ollama
+          const: ollama
       required:
         - type
     AIGatewayTargetOpenaiConfig:
@@ -54613,6 +54935,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54628,8 +54971,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - openai
+          const: openai
       required:
         - type
     AIGatewayTargetVercelConfig:
@@ -54652,6 +54994,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54667,8 +55030,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - vercel
+          const: vercel
       required:
         - type
     AIGatewayTargetVertexConfig:
@@ -54691,6 +55053,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54706,8 +55089,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - vertex
+          const: vertex
         gcp_environment:
           description: |-
             **Pre-release Feature**
@@ -54756,6 +55138,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54771,8 +55174,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - vllm
+          const: vllm
       required:
         - type
         - upstream_url
@@ -54796,6 +55198,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54811,8 +55234,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - xai
+          const: xai
       required:
         - type
     AIGatewayTargetSagemakerConfig:
@@ -54835,6 +55257,27 @@ components:
         output_cost:
           description: Cost per output token for billing and cost tracking.
           type: number
+        cache_read_cost:
+          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost:
+          description: Cost per cache-write prompt token for billing and cost tracking.
+          type: number
+        cache_write_cost_list:
+          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
+        context_window_factor:
+          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
+        service_tier_factor:
+          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
@@ -54850,8 +55293,7 @@ components:
           format: uri
         type:
           type: string
-          enum:
-            - sagemaker
+          const: sagemaker
         aws:
           description: |-
             **Pre-release Feature**
@@ -55073,6 +55515,7 @@ components:
           description: The description of the Vault.
           type: string
           example: This vault is used to retrieve redis database access credentials
+          default: ''
           maxLength: 1024
         labels:
           $ref: '#/components/schemas/PublicLabels'
@@ -55080,8 +55523,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - konnect
+          const: konnect
         config:
           type: object
           additionalProperties: false
@@ -55118,6 +55560,7 @@ components:
           description: The description of the Vault.
           type: string
           example: This vault is used to retrieve redis database access credentials
+          default: ''
           maxLength: 1024
         labels:
           $ref: '#/components/schemas/PublicLabels'
@@ -55125,8 +55568,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - env
+          const: env
         config:
           description: |-
             **Pre-release Feature**
@@ -55182,6 +55624,7 @@ components:
           description: The description of the Vault.
           type: string
           example: This vault is used to retrieve redis database access credentials
+          default: ''
           maxLength: 1024
         labels:
           $ref: '#/components/schemas/PublicLabels'
@@ -55189,8 +55632,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - aws
+          const: aws
         config:
           description: |-
             **Pre-release Feature**
@@ -55308,6 +55750,7 @@ components:
           description: The description of the Vault.
           type: string
           example: This vault is used to retrieve redis database access credentials
+          default: ''
           maxLength: 1024
         labels:
           $ref: '#/components/schemas/PublicLabels'
@@ -55315,8 +55758,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - gcp
+          const: gcp
         config:
           description: |-
             **Pre-release Feature**
@@ -55396,6 +55838,7 @@ components:
           description: The description of the Vault.
           type: string
           example: This vault is used to retrieve redis database access credentials
+          default: ''
           maxLength: 1024
         labels:
           $ref: '#/components/schemas/PublicLabels'
@@ -55403,8 +55846,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - azure
+          const: azure
         config:
           description: |-
             **Pre-release Feature**
@@ -55538,6 +55980,7 @@ components:
           description: The description of the Vault.
           type: string
           example: This vault is used to retrieve redis database access credentials
+          default: ''
           maxLength: 1024
         labels:
           $ref: '#/components/schemas/PublicLabels'
@@ -55545,8 +55988,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - conjur
+          const: conjur
         config:
           description: |-
             **Pre-release Feature**
@@ -55654,6 +56096,7 @@ components:
           description: The description of the Vault.
           type: string
           example: This vault is used to retrieve redis database access credentials
+          default: ''
           maxLength: 1024
         labels:
           $ref: '#/components/schemas/PublicLabels'
@@ -55661,8 +56104,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - hcv
+          const: hcv
         config:
           $ref: '#/components/schemas/HashiCorpVaultConfig'
       required:
@@ -55767,8 +56209,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - token
+          const: token
         token:
           description: The token string to be used for authentication.
           type: string
@@ -55845,8 +56286,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - cert
+          const: cert
         cert:
           description: The client certificate.
           type: string
@@ -55938,8 +56378,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - jwt
+          const: jwt
         role:
           description: |
             The configured role name in HashiCorp Vault for JWT auth.
@@ -56035,8 +56474,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - approle
+          const: approle
         path:
           description: |
             Path for enabling the AppRole auth method. Single leading/trailing slashes are trimmed.
@@ -56134,8 +56572,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - kubernetes
+          const: kubernetes
         role:
           description: |
             Role assigned to the Kubernetes service account.
@@ -56222,8 +56659,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - gcp_iam
+          const: gcp_iam
         role:
           description: The role to use for GCP IAM auth.
           type: string
@@ -56310,8 +56746,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - gcp_gce
+          const: gcp_gce
         role:
           description: The role to use for GCP GCE auth.
           type: string
@@ -56392,8 +56827,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - azure
+          const: azure
         role:
           description: The role to use for Azure auth.
           type: string
@@ -56474,8 +56908,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - aws_ec2
+          const: aws_ec2
         role:
           description: The role to use for AWS EC2 auth.
           type: string
@@ -56560,8 +56993,7 @@ components:
           type: string
         auth_method:
           type: string
-          enum:
-            - aws_iam
+          const: aws_iam
         role:
           description: The role to use for AWS IAM auth.
           type: string
@@ -57598,8 +58030,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - conversion-only
+          const: conversion-only
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig'
         tools:
@@ -57647,8 +58078,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - conversion-listener
+          const: conversion-listener
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfig'
         tools:
@@ -57698,8 +58128,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - listener
+          const: listener
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerNoUpstreamConfig'
         tools:
@@ -57749,8 +58178,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - passthrough-listener
+          const: passthrough-listener
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamConfig'
         tools:
@@ -57800,8 +58228,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - upstream-server
+          const: upstream-server
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerConfig'
         tools:
@@ -57931,8 +58358,7 @@ components:
           description: The type of attributes that ACL is evaluated with.
           type: string
           default: consumer
-          enum:
-            - consumer
+          const: consumer
         acls:
           description: |-
             **Pre-release Feature**
@@ -57961,8 +58387,7 @@ components:
         acl_attribute_type:
           description: The type of attributes that ACL is evaluated with.
           type: string
-          enum:
-            - oauth_access_token
+          const: oauth_access_token
         access_token_claim_field:
           description: |
             The claim in the OAuth2 access token to use as the subject for ACL evaluation when `acl_attribute_type` is set to `oauth_access_token`.
@@ -58015,8 +58440,7 @@ components:
           description: The type of attributes that ACL is evaluated with.
           type: string
           default: consumer
-          enum:
-            - consumer
+          const: consumer
         acls:
           description: |-
             **Pre-release Feature**
@@ -58060,8 +58484,7 @@ components:
         acl_attribute_type:
           description: The type of attributes that ACL is evaluated with.
           type: string
-          enum:
-            - oauth_access_token
+          const: oauth_access_token
         access_token_claim_field:
           description: |
             The claim in the OAuth2 access token to use as the subject for ACL evaluation when `acl_attribute_type` is set to `oauth_access_token`.
@@ -58110,10 +58533,10 @@ components:
       type: object
       properties:
         discovery_endpoint:
-          description: The URL where the protected resource metadata is served.
+          description: The authorization server metadata discovery URL.
           type: string
         endpoint:
-          description: The protected resource endpoint the metadata describes.
+          description: The URL path where the OAuth 2.0 Protected Resource Metadata is served.
           type: string
         authorization_servers:
           description: List of authorization server issuer URLs that can issue tokens for this resource.
@@ -58139,8 +58562,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - aws
+          const: aws
         access_key_id:
           description: |
             AWS Access Key ID to be used for authentication.
@@ -58196,8 +58618,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - azure
+          const: azure
         client_id:
           description: |
             Azure Client ID.
@@ -58231,8 +58652,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - gcp
+          const: gcp
         service_account_json:
           description: |
             GCP Service Account JSON.
@@ -58938,8 +59358,7 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - jwt
+          const: jwt
       additionalProperties: false
       required:
         - type
@@ -58969,8 +59388,7 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - credentials
+          const: credentials
         token_endpoint:
           description: |
             The token endpoint URL for fetching the OAuth 2.0 access token using client-credentials.
@@ -59336,8 +59754,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - key-auth
+          const: key-auth
         config:
           description: |
             Configuration for the Kong Key auth identity provider.
@@ -59410,8 +59827,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          enum:
-            - openid-connect
+          const: openid-connect
         config:
           description: |
             Configuration for the OpenID Connect identity provider.
@@ -59454,6 +59870,40 @@ components:
               items:
                 type: string
               writeOnly: true
+            client_alg:
+              description: Algorithm to use for `client_secret_jwt` or `private_key_jwt` authentication.
+              type: array
+              items:
+                type: string
+                enum:
+                  - HS256
+                  - HS384
+                  - HS512
+                  - RS256
+                  - RS384
+                  - RS512
+                  - ES256
+                  - ES384
+                  - ES512
+                  - PS256
+                  - PS384
+                  - PS512
+                  - EdDSA
+                x-speakeasy-unknown-values: allow
+            client_auth:
+              description: Client authentication methods used with the identity provider.
+              type: array
+              items:
+                type: string
+                enum:
+                  - client_secret_basic
+                  - client_secret_post
+                  - client_secret_jwt
+                  - private_key_jwt
+                  - tls_client_auth
+                  - self_signed_tls_client_auth
+                  - none
+                x-speakeasy-unknown-values: allow
             consumer_claims:
               description: |
                 An array containing an array of string paths representing the location of the claim in a nested object.
@@ -59475,15 +59925,57 @@ components:
                 Do not terminate the request if consumer groups mapping fails.
               type: boolean
               default: false
+            consumer_by:
+              description: Consumer fields used when mapping a token claim to a Kong consumer.
+              type: array
+              items:
+                type: string
+                enum:
+                  - id
+                  - username
+                  - custom_id
+                x-speakeasy-unknown-values: allow
+              default:
+                - username
+                - custom_id
             consumer_optional:
               description: |
                 Do not terminate the request if consumer mapping fails.
               type: boolean
               default: false
+            credential_claim:
+              description: Claim path used to derive virtual credentials when consumer mapping is not used.
+              type: array
+              items:
+                type: string
+              default:
+                - sub
             issuer:
               description: URL that identifies the OpenID Provider
               type: string
               example: 'https://dev-123456.okta.com'
+            introspection_endpoint:
+              description: Overrides the introspection endpoint returned by discovery.
+              type: string
+              format: uri
+              x-referenceable: true
+            mtls_introspection_endpoint:
+              description: mTLS alias for the introspection endpoint.
+              type: string
+              format: uri
+            cache_introspection:
+              description: Cache introspection endpoint requests.
+              type: boolean
+              default: true
+            jwks_endpoint:
+              description: Overrides the JWKS endpoint returned by discovery.
+              type: string
+              format: uri
+            leeway:
+              description: 'Leeway, in seconds, for validating token time claims.'
+              type: integer
+              default: 0
+              minimum: 0
             scopes:
               description: |
                 This field is referenceable.
@@ -59492,9 +59984,72 @@ components:
                 type: string
               default:
                 - openid
+            audience_required:
+              description: Audiences required in the access token or introspection response.
+              type: array
+              items:
+                type: string
             ssl_verify:
               type: boolean
               default: true
+            hide_credentials:
+              description: Remove credentials used for authentication before proxying the request upstream.
+              type: boolean
+              default: true
+            keepalive:
+              description: Reuse HTTP client connections for identity provider requests.
+              type: boolean
+              default: true
+            timeout:
+              description: 'Network I/O timeout, in milliseconds, for identity provider requests.'
+              type: integer
+              default: 10000
+              minimum: 0
+            http_version:
+              description: HTTP version used for identity provider requests.
+              type: number
+              default: 1.1
+              enum:
+                - 1
+                - 1.1
+              x-speakeasy-unknown-values: allow
+            http_proxy:
+              description: HTTP proxy used for identity provider requests.
+              type: string
+              format: uri
+            http_proxy_authorization:
+              description: Authorization header value sent to the HTTP proxy.
+              type: string
+              writeOnly: true
+            https_proxy:
+              description: HTTPS proxy used for identity provider requests.
+              type: string
+              format: uri
+            https_proxy_authorization:
+              description: Authorization header value sent to the HTTPS proxy.
+              type: string
+              writeOnly: true
+            no_proxy:
+              description: Comma-separated hosts that bypass the configured proxies.
+              type: string
+            upstream_headers:
+              description: Map token claims to upstream headers using path-based access.
+              type: array
+              items:
+                type: object
+                required:
+                  - header
+                  - path
+                properties:
+                  header:
+                    description: The name of the header.
+                    type: string
+                  path:
+                    description: The path of the header value.
+                    type: array
+                    items:
+                      type: string
+                    minItems: 1
             cache_tokens_salt:
               description: |
                 Salt used for generating the cache key that is used for caching the token endpoint requests.
@@ -59518,8 +60073,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - anthropic
+          const: anthropic
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59561,8 +60115,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - cerebras
+          const: cerebras
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59604,8 +60157,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - cohere
+          const: cohere
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59647,8 +60199,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - dashscope
+          const: dashscope
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59690,8 +60241,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - databricks
+          const: databricks
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59733,8 +60283,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - deepseek
+          const: deepseek
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59776,8 +60325,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - huggingface
+          const: huggingface
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59819,8 +60367,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - kimi
+          const: kimi
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59862,8 +60409,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - llama2
+          const: llama2
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59905,8 +60451,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - mistral
+          const: mistral
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59948,8 +60493,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - ollama
+          const: ollama
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -59991,8 +60535,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - openai
+          const: openai
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -60034,8 +60577,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - vercel
+          const: vercel
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -60077,8 +60619,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - vllm
+          const: vllm
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -60120,8 +60661,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - xai
+          const: xai
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -60165,8 +60705,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - basic
+          const: basic
         headers:
           type: array
           items:
@@ -60188,6 +60727,7 @@ components:
                 type: string
                 writeOnly: true
                 x-referenceable: true
+                x-speakeasy-terraform-plan-only: true
           maxItems: 1
         params:
           type: array
@@ -60208,6 +60748,7 @@ components:
                 type: string
                 writeOnly: true
                 x-referenceable: true
+                x-speakeasy-terraform-plan-only: true
               location:
                 description: 'Specify whether the param name and value options go in a query string, or the POST form/JSON body.'
                 type: string
@@ -60230,8 +60771,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - bedrock
+          const: bedrock
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -60281,8 +60821,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - aws
+          const: aws
         access_key_id:
           description: |
             The access key id for authenticating with static IAM User credentials.
@@ -60327,8 +60866,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - azure
+          const: azure
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -60382,8 +60920,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - azure
+          const: azure
         client_id:
           description: |
             If azure_use_managed_identity is set to true, and you need to use a different user-assigned identity for this LLM instance, set the client ID.
@@ -60420,8 +60957,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - gemini
+          const: gemini
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -60471,8 +61007,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - gcp
+          const: gcp
         service_account_json:
           description: |
             Full JSON string of the GCP service account to authenticate. If not set (and gcp_use_service_account is true), the service account JSON will be from the environment variable GCP_SERVICE_ACCOUNT.
@@ -60509,8 +61044,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - vertex
+          const: vertex
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -60560,8 +61094,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - sagemaker
+          const: sagemaker
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -60643,8 +61176,7 @@ components:
       properties:
         type:
           type: string
-          enum:
-            - vertex
+          const: vertex
         use_gcp_service_account:
           description: Use the Google Cloud Service Account (or user-assigned identity) to authenticate with Vertex-provider models.
           type: boolean
@@ -60984,12 +61516,72 @@ components:
       oneOf:
         - $ref: '#/components/schemas/AIGatewayIdentityProviderKeyAuthResponse'
         - $ref: '#/components/schemas/AIGatewayIdentityProviderOpenIDConnectResponse'
-    AIGatewayIdentityProviderResponseProperties:
+    AIGatewayIdentityProviderKeyAuthResponse:
       description: |-
         **Pre-release Feature**
         This feature is currently in beta and is subject to change.
       type: object
       properties:
+        display_name:
+          description: The display name for this identity provider instance.
+          type: string
+          example: Okta AI SE
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this identity provider instance, used as a stable human-readable reference. This value is immutable after creation.
+          example: okta-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        type:
+          type: string
+          const: key-auth
+        config:
+          description: |
+            Configuration for the Kong Key auth identity provider.
+            For advanced use cases, additional config properties can be sent in the request body.
+            See: https://developer.konghq.com/plugins/key-auth/reference/ for the list of properties
+          type: object
+          additionalProperties: true
+          properties:
+            hide_credentials:
+              description: |
+                An optional boolean value telling the plugin to show or hide the credential from the upstream service.
+                If true, the plugin strips the credential from the request.
+              type: boolean
+              default: true
+            key_in_body:
+              description: |
+                If enabled, reads the request body.
+                Supported MIME types: application/www-form-urlencoded, application/json, and multipart/form-data.
+              type: boolean
+              default: false
+            key_in_header:
+              description: |
+                If enabled (default), the plugin reads the request header and tries to find the key in it.
+              type: boolean
+              default: true
+            key_in_query:
+              description: |
+                If enabled (default), the plugin reads the query parameter in the request and tries to find the key in it.
+              type: boolean
+              default: true
+            key_names:
+              description: |
+                An array of strings containing the names of the keys to look for in the request.
+              type: array
+              items:
+                type: string
+              default:
+                - apikey
         id:
           $ref: '#/components/schemas/UUID'
         created_at:
@@ -60997,25 +61589,283 @@ components:
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
       required:
+        - display_name
+        - name
+        - type
         - id
         - created_at
         - updated_at
-    AIGatewayIdentityProviderKeyAuthResponse:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-      allOf:
-        - $ref: '#/components/schemas/AIGatewayIdentityProviderKeyAuth'
-        - $ref: '#/components/schemas/AIGatewayIdentityProviderResponseProperties'
-      title: AIGatewayIdentityProviderKeyAuthResponse
+      title: AIGatewayIdentityProviderKeyAuthConfig
     AIGatewayIdentityProviderOpenIDConnectResponse:
       description: |-
         **Pre-release Feature**
         This feature is currently in beta and is subject to change.
-      allOf:
-        - $ref: '#/components/schemas/AIGatewayIdentityProviderOpenIDConnect'
-        - $ref: '#/components/schemas/AIGatewayIdentityProviderResponseProperties'
-      title: AIGatewayIdentityProviderOpenIDConnectResponse
+      type: object
+      properties:
+        display_name:
+          description: The display name for this identity provider instance.
+          type: string
+          example: Okta AI SE
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this identity provider instance, used as a stable human-readable reference. This value is immutable after creation.
+          example: okta-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        type:
+          type: string
+          const: openid-connect
+        config:
+          description: |
+            Configuration for the OpenID Connect identity provider.
+            For advanced use cases, additional config properties can be sent in the request body.
+            See: https://developer.konghq.com/plugins/openid-connect/reference/ for the list of properties
+          type: object
+          additionalProperties: true
+          properties:
+            auth_methods:
+              description: Types of credentials/grants to enable.
+              type: array
+              items:
+                type: string
+                enum:
+                  - authorization_code
+                  - bearer
+                  - client_credentials
+                  - introspection
+                  - kong_oauth2
+                  - password
+                  - refresh_token
+                  - session
+                  - userinfo
+                x-speakeasy-unknown-values: allow
+              default:
+                - bearer
+                - client_credentials
+            client_id:
+              description: |
+                An array of strings representing the client id for the OpenID Connect provider.
+                When multiple values are provided, the client ID and secrets pairs correspond based on their locations in the array.
+              type: array
+              items:
+                type: string
+            client_secret:
+              description: |
+                An array of strings representing the client secret for the OpenID Connect provider.
+                When multiple values are provided, the client ID and secrets pairs correspond based on their locations in the array.
+              type: array
+              items:
+                type: string
+              writeOnly: true
+            client_alg:
+              description: Algorithm to use for `client_secret_jwt` or `private_key_jwt` authentication.
+              type: array
+              items:
+                type: string
+                enum:
+                  - HS256
+                  - HS384
+                  - HS512
+                  - RS256
+                  - RS384
+                  - RS512
+                  - ES256
+                  - ES384
+                  - ES512
+                  - PS256
+                  - PS384
+                  - PS512
+                  - EdDSA
+                x-speakeasy-unknown-values: allow
+            client_auth:
+              description: Client authentication methods used with the identity provider.
+              type: array
+              items:
+                type: string
+                enum:
+                  - client_secret_basic
+                  - client_secret_post
+                  - client_secret_jwt
+                  - private_key_jwt
+                  - tls_client_auth
+                  - self_signed_tls_client_auth
+                  - none
+                x-speakeasy-unknown-values: allow
+            consumer_claims:
+              description: |
+                An array containing an array of string paths representing the location of the claim in a nested object.
+                For example, to map to user.info.id, set [ "user", "info", "id" ].
+              type: array
+              items:
+                type: array
+                items:
+                  type: string
+            consumer_groups_claim:
+              description: |
+                The claim used for consumer groups mapping. 
+                If multiple values are set, it means the claim is inside a nested object of the token payload.
+              type: array
+              items:
+                type: string
+            consumer_groups_optional:
+              description: |
+                Do not terminate the request if consumer groups mapping fails.
+              type: boolean
+              default: false
+            consumer_by:
+              description: Consumer fields used when mapping a token claim to a Kong consumer.
+              type: array
+              items:
+                type: string
+                enum:
+                  - id
+                  - username
+                  - custom_id
+                x-speakeasy-unknown-values: allow
+              default:
+                - username
+                - custom_id
+            consumer_optional:
+              description: |
+                Do not terminate the request if consumer mapping fails.
+              type: boolean
+              default: false
+            credential_claim:
+              description: Claim path used to derive virtual credentials when consumer mapping is not used.
+              type: array
+              items:
+                type: string
+              default:
+                - sub
+            issuer:
+              description: URL that identifies the OpenID Provider
+              type: string
+              example: 'https://dev-123456.okta.com'
+            introspection_endpoint:
+              description: Overrides the introspection endpoint returned by discovery.
+              type: string
+              format: uri
+              x-referenceable: true
+            mtls_introspection_endpoint:
+              description: mTLS alias for the introspection endpoint.
+              type: string
+              format: uri
+            cache_introspection:
+              description: Cache introspection endpoint requests.
+              type: boolean
+              default: true
+            jwks_endpoint:
+              description: Overrides the JWKS endpoint returned by discovery.
+              type: string
+              format: uri
+            leeway:
+              description: 'Leeway, in seconds, for validating token time claims.'
+              type: integer
+              default: 0
+              minimum: 0
+            scopes:
+              description: |
+                This field is referenceable.
+              type: array
+              items:
+                type: string
+              default:
+                - openid
+            audience_required:
+              description: Audiences required in the access token or introspection response.
+              type: array
+              items:
+                type: string
+            ssl_verify:
+              type: boolean
+              default: true
+            hide_credentials:
+              description: Remove credentials used for authentication before proxying the request upstream.
+              type: boolean
+              default: true
+            keepalive:
+              description: Reuse HTTP client connections for identity provider requests.
+              type: boolean
+              default: true
+            timeout:
+              description: 'Network I/O timeout, in milliseconds, for identity provider requests.'
+              type: integer
+              default: 10000
+              minimum: 0
+            http_version:
+              description: HTTP version used for identity provider requests.
+              type: number
+              default: 1.1
+              enum:
+                - 1
+                - 1.1
+              x-speakeasy-unknown-values: allow
+            http_proxy:
+              description: HTTP proxy used for identity provider requests.
+              type: string
+              format: uri
+            http_proxy_authorization:
+              description: Authorization header value sent to the HTTP proxy.
+              type: string
+              writeOnly: true
+            https_proxy:
+              description: HTTPS proxy used for identity provider requests.
+              type: string
+              format: uri
+            https_proxy_authorization:
+              description: Authorization header value sent to the HTTPS proxy.
+              type: string
+              writeOnly: true
+            no_proxy:
+              description: Comma-separated hosts that bypass the configured proxies.
+              type: string
+            upstream_headers:
+              description: Map token claims to upstream headers using path-based access.
+              type: array
+              items:
+                type: object
+                required:
+                  - header
+                  - path
+                properties:
+                  header:
+                    description: The name of the header.
+                    type: string
+                  path:
+                    description: The path of the header value.
+                    type: array
+                    items:
+                      type: string
+                    minItems: 1
+            cache_tokens_salt:
+              description: |
+                Salt used for generating the cache key that is used for caching the token endpoint requests.
+              type: string
+          required:
+            - cache_tokens_salt
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - display_name
+        - name
+        - type
+        - id
+        - created_at
+        - updated_at
+      title: AIGatewayIdentityProviderOpenIDConnectConfig
     PublicLabels:
       description: |
         Public labels store information about an entity that can be used for filtering a list of objects.
@@ -68436,13 +69286,14 @@ components:
             type: object
             properties:
               name:
-                description: A name for the team being created.
+                description: The name of the team.
                 type: string
                 example: IDM - Developers
+                maxLength: 250
                 pattern: '^[\w \W]+$'
                 writeOnly: true
               description:
-                description: The description of the new team.
+                description: The description of the team.
                 type: string
                 example: The Identity Management (IDM) team.
                 maxLength: 250
@@ -68463,6 +69314,7 @@ components:
                 description: The name of the team.
                 type: string
                 example: IDM - Developers
+                maxLength: 250
                 pattern: '^[\w \W]+$'
                 writeOnly: true
               description:
@@ -75356,13 +76208,13 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.9.0
+    version: 0.10.2
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
-    version: 2.2.0
+    version: 2.2.1
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.3.2
+    version: 3.3.3
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
     version: 2.1.1
@@ -75380,10 +76232,10 @@ x-input-schemas:
     version: 1.2.0
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.4.2
+    version: 3.4.3
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect MCP Servers
-    version: 1.21.0
+    version: 1.22.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.1.0
@@ -75392,7 +76244,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.9.7
+    version: 3.9.8
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2

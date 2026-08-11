@@ -4,33 +4,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelProviderVllmType string
-
-const (
-	AIGatewayModelProviderVllmTypeVllm AIGatewayModelProviderVllmType = "vllm"
-)
-
-func (e AIGatewayModelProviderVllmType) ToPointer() *AIGatewayModelProviderVllmType {
-	return &e
-}
-func (e *AIGatewayModelProviderVllmType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "vllm":
-		*e = AIGatewayModelProviderVllmType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelProviderVllmType: %v", v)
-	}
-}
 
 // AIGatewayModelProviderVllmConfig - Configuration for the model provider.
 type AIGatewayModelProviderVllmConfig struct {
@@ -62,7 +37,8 @@ func (a *AIGatewayModelProviderVllmConfig) GetAuth() AIGatewayModelProviderConfi
 // AIGatewayModelProviderVllm - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderVllm struct {
-	Type AIGatewayModelProviderVllmType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"vllm" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -97,11 +73,8 @@ func (a *AIGatewayModelProviderVllm) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderVllm) GetType() AIGatewayModelProviderVllmType {
-	if a == nil {
-		return AIGatewayModelProviderVllmType("")
-	}
-	return a.Type
+func (a *AIGatewayModelProviderVllm) GetType() string {
+	return "vllm"
 }
 
 func (a *AIGatewayModelProviderVllm) GetDisplayName() string {
