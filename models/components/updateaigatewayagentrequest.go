@@ -74,8 +74,15 @@ type UpdateAIGatewayAgentRequestConfig struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfig `json:"upstream,omitempty"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
 	// Configuration for an AI Gateway route.
 	Route *AIGatewayRouteConfig `json:"route,omitempty"`
+	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
+	Proxy *AIGatewayProxyConfig `json:"proxy,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
 	// **Pre-release Feature**
@@ -103,11 +110,25 @@ func (u *UpdateAIGatewayAgentRequestConfig) GetURL() string {
 	return u.URL
 }
 
+func (u *UpdateAIGatewayAgentRequestConfig) GetUpstream() *AIGatewayUpstreamConfig {
+	if u == nil {
+		return nil
+	}
+	return u.Upstream
+}
+
 func (u *UpdateAIGatewayAgentRequestConfig) GetRoute() *AIGatewayRouteConfig {
 	if u == nil {
 		return nil
 	}
 	return u.Route
+}
+
+func (u *UpdateAIGatewayAgentRequestConfig) GetProxy() *AIGatewayProxyConfig {
+	if u == nil {
+		return nil
+	}
+	return u.Proxy
 }
 
 func (u *UpdateAIGatewayAgentRequestConfig) GetMaxRequestBodySize() *int64 {

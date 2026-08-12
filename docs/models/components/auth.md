@@ -1,11 +1,26 @@
 # Auth
 
-Credentials used to authenticate to the proxy server.
+**Pre-release Feature**
+This feature is currently in beta and is subject to change.
+
+Authentication to use when proxying to the upstream service.
 
 
-## Fields
+## Supported Types
 
-| Field                                                                                                                                                                            | Type                                                                                                                                                                             | Required                                                                                                                                                                         | Description                                                                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Username`                                                                                                                                                                       | `*string`                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                               | The username to use for proxy authentication.<br/>This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).<br/> |
-| `Password`                                                                                                                                                                       | `*string`                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                               | The password to use for proxy authentication.<br/>This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).<br/> |
+### AIGatewayUpstreamAuthAWS
+
+```go
+auth := components.CreateAuthAws(components.AIGatewayUpstreamAuthAWS{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch auth.Type {
+	case components.AuthUnionTypeAws:
+		// auth.AIGatewayUpstreamAuthAWS is populated
+}
+```
