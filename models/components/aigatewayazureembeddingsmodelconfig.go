@@ -7,6 +7,32 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefix - The API path prefix for the Azure AI Foundry endpoint, selecting the model's
+// API surface. `/openai/v1` targets the OpenAI-compatible surface; `/anthropic/v1`
+// targets the Anthropic surface. Applies when the Azure provider's `service` is
+// `azure-foundry`.
+type AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefix string
+
+const (
+	AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefixRootOpenaiV1    AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefix = "/openai/v1"
+	AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefixRootAnthropicV1 AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefix = "/anthropic/v1"
+)
+
+func (e AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefix) ToPointer() *AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefix {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefix) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "/openai/v1", "/anthropic/v1":
+			return true
+		}
+	}
+	return false
+}
+
 // AIGatewayAzureEmbeddingsModelConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 //
@@ -16,10 +42,18 @@ type AIGatewayAzureEmbeddingsModelConfig struct {
 	UpstreamURL *string `json:"upstream_url,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"azure" json:"type"`
-	// The Azure deployment ID for the model.
+	// The Azure deployment ID for the model. Applies when the Azure provider's
+	// `service` is `azure-openai`; not used for `azure-foundry`.
+	//
 	DeploymentID string `json:"deployment_id"`
 	// The Azure OpenAI API version to use.
 	APIVersion *string `default:"2023-05-15" json:"api_version"`
+	// The API path prefix for the Azure AI Foundry endpoint, selecting the model's
+	// API surface. `/openai/v1` targets the OpenAI-compatible surface; `/anthropic/v1`
+	// targets the Anthropic surface. Applies when the Azure provider's `service` is
+	// `azure-foundry`.
+	//
+	FoundryPathPrefix *AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefix `default:"/openai/v1" json:"foundry_path_prefix"`
 }
 
 func (a AIGatewayAzureEmbeddingsModelConfig) MarshalJSON() ([]byte, error) {
@@ -56,4 +90,11 @@ func (a *AIGatewayAzureEmbeddingsModelConfig) GetAPIVersion() *string {
 		return nil
 	}
 	return a.APIVersion
+}
+
+func (a *AIGatewayAzureEmbeddingsModelConfig) GetFoundryPathPrefix() *AIGatewayAzureEmbeddingsModelConfigFoundryPathPrefix {
+	if a == nil {
+		return nil
+	}
+	return a.FoundryPathPrefix
 }

@@ -22,6 +22,11 @@ type AIGatewayModelProviderConfigAuthAWS struct {
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
 	SecretAccessKey *string `json:"secret_access_key,omitempty"`
+	// The session token for authenticating with temporary IAM credentials (issued by AWS STS, Vault, or SSO/SAML).
+	// It is sent to AWS as the `X-Amz-Security-Token` header. Because temporary credentials are short-lived, reference this from a secrets backend so it is refreshed before it expires.
+	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+	//
+	SessionToken *string `json:"session_token,omitempty"`
 	// The ARN of the IAM role to assume for generating authentication tokens.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -63,6 +68,13 @@ func (a *AIGatewayModelProviderConfigAuthAWS) GetSecretAccessKey() *string {
 		return nil
 	}
 	return a.SecretAccessKey
+}
+
+func (a *AIGatewayModelProviderConfigAuthAWS) GetSessionToken() *string {
+	if a == nil {
+		return nil
+	}
+	return a.SessionToken
 }
 
 func (a *AIGatewayModelProviderConfigAuthAWS) GetAssumeRoleArn() *string {
