@@ -20288,7 +20288,8 @@ paths:
           in: query
           description: |-
             Filter teams returned in the response. Supports filtering by label value using
-            dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`.
+            dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`, where `<op>` is one of
+            `eq`, `contains`, or `exists`.
           required: false
           schema:
             type: object
@@ -20298,11 +20299,11 @@ paths:
               labels:
                 type: object
                 additionalProperties:
-                  $ref: '#/components/schemas/LegacyStringFieldFilter'
+                  $ref: '#/components/schemas/LegacyStringFieldFilterWithExists'
           style: deepObject
       responses:
         '200':
-          $ref: '#/components/responses/TeamCollection'
+          $ref: '#/components/responses/TeamCollectionResponse'
         '400':
           $ref: '#/components/responses/IdentityBadRequest'
         '404':
@@ -24110,6 +24111,8 @@ components:
           type: string
           example: The developers for the IDM API.
           maxLength: 250
+          minLength: 1
+          nullable: true
         system_team:
           description: 'Returns True if a user belongs to a `system_team`. System teams are teams that can manage Konnect objects, like "Organization Admin", or "Service"'
           type: boolean
@@ -24140,6 +24143,18 @@ components:
         created_at: '1992-02-07T17:46:57.52Z'
         updated_at: '2022-08-31T17:00:00.52Z'
       title: Team
+    TeamResponse:
+      allOf:
+        - $ref: '#/components/schemas/Team'
+        - type: object
+          required:
+            - id
+            - name
+            - description
+            - system_team
+            - labels
+            - created_at
+            - updated_at
     TeamMapping:
       description: A team assignment is a mapping of an IdP group to a Konnect Team.
       type: object
@@ -24473,11 +24488,29 @@ components:
           description: The field contains the provided value.
           type: string
       additionalProperties: false
+    StringFieldExistsFilter:
+      description: Filters on whether the given field exists.
+      type: object
+      properties:
+        exists:
+          type: boolean
+      additionalProperties: false
+      deprecated: true
+      required:
+        - exists
+      title: StringFieldExistsFilter
+    LegacyStringFieldFilterWithExists:
+      description: 'Filter a string value field by exact match, partial contains, or existence.'
+      oneOf:
+        - $ref: '#/components/schemas/LegacyStringFieldFilter'
+        - $ref: '#/components/schemas/StringFieldExistsFilter'
+      title: StringFieldFilterWithExists
     TeamName:
       description: The name of the team.
       type: string
       example: IDM - Developers
       maxLength: 250
+      minLength: 1
       pattern: '^[\w \W]+$'
     LabelsUpdate:
       description: |
@@ -32720,6 +32753,7 @@ components:
           type: string
           example: IDM - Developers
           maxLength: 250
+          minLength: 1
           pattern: '^[\w \W]+$'
           writeOnly: true
         description:
@@ -32727,6 +32761,7 @@ components:
           type: string
           example: The Identity Management (IDM) API team.
           maxLength: 250
+          minLength: 1
           writeOnly: true
         can_own_applications:
           description: Whether the team is allowed to own applications.
@@ -32748,6 +32783,7 @@ components:
           type: string
           example: IDM - Developers
           maxLength: 250
+          minLength: 1
           pattern: '^[\w \W]+$'
           writeOnly: true
         description:
@@ -32755,6 +32791,7 @@ components:
           type: string
           example: The Identity Management (IDM) team.
           maxLength: 250
+          minLength: 1
           writeOnly: true
         can_own_applications:
           description: Whether the team is allowed to own applications
@@ -32785,6 +32822,7 @@ components:
           type: string
           example: The developers for the IDM API.
           maxLength: 250
+          minLength: 1
         created_at:
           type: string
           format: date-time
@@ -53314,12 +53352,26 @@ components:
           type: string
           const: azure
         deployment_id:
-          description: The Azure deployment ID for the model.
+          description: |
+            The Azure deployment ID for the model. Applies when the Azure provider's
+            `service` is `azure-openai`; not used for `azure-foundry`.
           type: string
         api_version:
           description: The Azure OpenAI API version to use.
           type: string
           default: '2023-05-15'
+        foundry_path_prefix:
+          description: |
+            The API path prefix for the Azure AI Foundry endpoint, selecting the model's
+            API surface. `/openai/v1` targets the OpenAI-compatible surface; `/anthropic/v1`
+            targets the Anthropic surface. Applies when the Azure provider's `service` is
+            `azure-foundry`.
+          type: string
+          default: /openai/v1
+          enum:
+            - /openai/v1
+            - /anthropic/v1
+          x-speakeasy-unknown-values: allow
       additionalProperties: false
       required:
         - type
@@ -54066,12 +54118,26 @@ components:
           type: string
           const: azure
         deployment_id:
-          description: The Azure deployment ID for the model.
+          description: |
+            The Azure deployment ID for the model. Applies when the Azure provider's
+            `service` is `azure-openai`; not used for `azure-foundry`.
           type: string
         api_version:
           description: The Azure OpenAI API version to use.
           type: string
           default: '2023-05-15'
+        foundry_path_prefix:
+          description: |
+            The API path prefix for the Azure AI Foundry endpoint, selecting the model's
+            API surface. `/openai/v1` targets the OpenAI-compatible surface; `/anthropic/v1`
+            targets the Anthropic surface. Applies when the Azure provider's `service` is
+            `azure-foundry`.
+          type: string
+          default: /openai/v1
+          enum:
+            - /openai/v1
+            - /anthropic/v1
+          x-speakeasy-unknown-values: allow
       required:
         - type
         - deployment_id
@@ -60788,6 +60854,14 @@ components:
           type: string
           writeOnly: true
           x-referenceable: true
+        session_token:
+          description: |
+            The session token for authenticating with temporary IAM credentials (issued by AWS STS, Vault, or SSO/SAML).
+            It is sent to AWS as the `X-Amz-Security-Token` header. Because temporary credentials are short-lived, reference this from a secrets backend so it is refreshed before it expires.
+            This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+          type: string
+          writeOnly: true
+          x-referenceable: true
         assume_role_arn:
           description: |
             The ARN of the IAM role to assume for generating authentication tokens.
@@ -60852,12 +60926,40 @@ components:
               oneOf:
                 - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
                 - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthAzure'
+            service:
+              description: |
+                Selects the Azure backend for this provider instance. Use `azure-openai`
+                for Azure OpenAI deployments or `azure-foundry` for Azure AI Foundry.
+              type: string
+              default: azure-openai
+              enum:
+                - azure-openai
+                - azure-foundry
+              x-speakeasy-unknown-values: allow
             instance:
+              description: |
+                The Azure OpenAI instance name. Required when `service` is `azure-openai`.
               type: string
               example: kong-az-east
+            foundry:
+              description: |
+                Endpoint configuration for Azure AI Foundry hosted models. Required when
+                `service` is `azure-foundry`.
+              type: object
+              additionalProperties: false
+              properties:
+                resource:
+                  description: The Azure AI Foundry resource name.
+                  type: string
+                  example: kong-foundry-east
+                domain:
+                  description: The domain for Azure AI Foundry hosted models.
+                  type: string
+                  default: services.ai.azure.com
+              required:
+                - resource
           required:
             - auth
-            - instance
       required:
         - type
         - display_name
@@ -65286,6 +65388,99 @@ components:
       required:
         - cert
         - key
+    CertificateRequest:
+      description: 'A certificate object represents a public certificate, and can be optionally paired with the corresponding private key. These objects are used by Kong to handle SSL/TLS termination for encrypted requests, or for use as a trusted CA store when validating peer certificate of client/service. Certificates are optionally associated with SNI objects to tie a cert/key pair to one or more hostnames. If intermediate certificates are required in addition to the main certificate, they should be concatenated together into one string according to the following order: main certificate on the top, followed by any intermediates.'
+      example:
+        cert: |-
+          -----BEGIN CERTIFICATE-----
+          certificate-content
+          -----END CERTIFICATE-----
+        id: b2f34145-0343-41a4-9602-4c69dec2f269
+        key: |-
+          -----BEGIN PRIVATE KEY-----
+          private-key-content
+          -----END PRIVATE KEY-----
+      allOf:
+        - additionalProperties: false
+          properties:
+            cert:
+              description: 'PEM-encoded public certificate chain of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
+              type: string
+              x-referenceable: true
+            cert_alt:
+              description: 'PEM-encoded public certificate chain of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
+              type: string
+              nullable: true
+              x-referenceable: true
+            created_at:
+              description: Unix epoch when the resource was created.
+              type: integer
+              nullable: true
+            description:
+              description: 'User-defined entity description. Konnect only field, not synced to the Gateway.'
+              type: string
+              nullable: true
+            id:
+              description: A string representing a UUID (universally unique identifier).
+              type: string
+              nullable: true
+            key:
+              description: 'PEM-encoded private key of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
+              type: string
+              x-encrypted: true
+              x-referenceable: true
+            key_alt:
+              description: 'PEM-encoded private key of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
+              type: string
+              nullable: true
+              x-encrypted: true
+              x-referenceable: true
+            managed_by:
+              description: |-
+                Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+
+                Keys must be 1–63 characters long and start with an alphanumeric character.
+              type: object
+              additionalProperties:
+                maxLength: 63
+                minLength: 1
+                pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
+                type: string
+              maxProperties: 5
+            snis:
+              type: array
+              items:
+                description: 'A string representing a wildcard host name, such as *.example.com.'
+                type: string
+              nullable: true
+            tags:
+              description: An optional set of strings associated with the Certificate for grouping and filtering.
+              type: array
+              items:
+                description: A string representing a tag.
+                type: string
+              nullable: true
+            updated_at:
+              description: Unix epoch when the resource was last updated.
+              type: integer
+              nullable: true
+            vault:
+              description: 'Shorthand that expands into cert and key; when both vault and cert/key are provided, the vault expansion takes precedence.'
+              type: string
+              nullable: true
+              writeOnly: true
+            vault_alt:
+              description: 'Shorthand that expands into cert_alt and key_alt; when both vault_alt and cert_alt/key_alt are provided, the vault_alt expansion takes precedence.'
+              type: string
+              nullable: true
+              writeOnly: true
+          type: object
+        - anyOf:
+            - required:
+                - vault
+            - required:
+                - cert
+                - key
     Consumer:
       description: 'The Consumer object represents a consumer - or a user - of a Service. You can either rely on Kong as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong and your existing primary datastore.'
       type: object
@@ -65372,7 +65567,7 @@ components:
           type: string
           nullable: true
         name:
-          description: The name to associate with the given custom plugin.
+          description: The name to associate with the given custom plugin. Consider using a distinct prefix for custom plugins to avoid naming conflicts with new bundled plugins in future Kong releases.
           type: string
         schema:
           description: The schema for the given custom plugin.
@@ -69046,92 +69241,6 @@ components:
       required:
         - name
         - prefix
-    CertificateRequest:
-      description: 'A certificate object represents a public certificate, and can be optionally paired with the corresponding private key. These objects are used by Kong to handle SSL/TLS termination for encrypted requests, or for use as a trusted CA store when validating peer certificate of client/service. Certificates are optionally associated with SNI objects to tie a cert/key pair to one or more hostnames. If intermediate certificates are required in addition to the main certificate, they should be concatenated together into one string according to the following order: main certificate on the top, followed by any intermediates.'
-      example:
-        cert: |-
-          -----BEGIN CERTIFICATE-----
-          certificate-content
-          -----END CERTIFICATE-----
-        id: b2f34145-0343-41a4-9602-4c69dec2f269
-        key: |-
-          -----BEGIN PRIVATE KEY-----
-          private-key-content
-          -----END PRIVATE KEY-----
-      allOf:
-        - additionalProperties: false
-          properties:
-            cert:
-              description: 'PEM-encoded public certificate chain of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
-              type: string
-              x-referenceable: true
-            cert_alt:
-              description: 'PEM-encoded public certificate chain of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
-              type: string
-              nullable: true
-              x-referenceable: true
-            created_at:
-              description: Unix epoch when the resource was created.
-              type: integer
-              nullable: true
-            description:
-              description: 'User-defined entity description. Konnect only field, not synced to the Gateway.'
-              type: string
-              nullable: true
-            id:
-              description: A string representing a UUID (universally unique identifier).
-              type: string
-              nullable: true
-            key:
-              description: 'PEM-encoded private key of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
-              type: string
-              x-encrypted: true
-              x-referenceable: true
-            key_alt:
-              description: 'PEM-encoded private key of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
-              type: string
-              nullable: true
-              x-encrypted: true
-              x-referenceable: true
-            managed_by:
-              description: 'Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.'
-              type: object
-              additionalProperties: true
-              nullable: true
-            snis:
-              type: array
-              items:
-                description: 'A string representing a wildcard host name, such as *.example.com.'
-                type: string
-              nullable: true
-            tags:
-              description: An optional set of strings associated with the Certificate for grouping and filtering.
-              type: array
-              items:
-                description: A string representing a tag.
-                type: string
-              nullable: true
-            updated_at:
-              description: Unix epoch when the resource was last updated.
-              type: integer
-              nullable: true
-            vault:
-              description: 'Shorthand that expands into cert and key; when both vault and cert/key are provided, the vault expansion takes precedence.'
-              type: string
-              nullable: true
-              writeOnly: true
-            vault_alt:
-              description: 'Shorthand that expands into cert_alt and key_alt; when both vault_alt and cert_alt/key_alt are provided, the vault_alt expansion takes precedence.'
-              type: string
-              nullable: true
-              writeOnly: true
-          type: object
-        - anyOf:
-            - required:
-                - vault
-            - required:
-                - cert
-                - key
     KonnectCPLegacyBaseError:
       description: standard error
       type: object
@@ -69243,6 +69352,7 @@ components:
                 type: string
                 example: IDM - Developers
                 maxLength: 250
+                minLength: 1
                 pattern: '^[\w \W]+$'
                 writeOnly: true
               description:
@@ -69250,6 +69360,7 @@ components:
                 type: string
                 example: The Identity Management (IDM) team.
                 maxLength: 250
+                minLength: 1
                 writeOnly: true
               labels:
                 $ref: '#/components/schemas/Labels'
@@ -69268,6 +69379,7 @@ components:
                 type: string
                 example: IDM - Developers
                 maxLength: 250
+                minLength: 1
                 pattern: '^[\w \W]+$'
                 writeOnly: true
               description:
@@ -69275,6 +69387,7 @@ components:
                 type: string
                 example: The Identity Management (IDM) API team.
                 maxLength: 250
+                minLength: 1
                 writeOnly: true
               labels:
                 $ref: '#/components/schemas/LabelsUpdate'
@@ -71414,7 +71527,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Team'
+            $ref: '#/components/schemas/TeamResponse'
     TeamCollection:
       description: A paginated list response for a collection of users.
       content:
@@ -71428,6 +71541,20 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Team'
+            title: Team Collection Response
+    TeamCollectionResponse:
+      description: A paginated list response for a collection of teams.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamResponse'
             title: Team Collection Response
     TeamMappingCollection:
       description: A paginated list response for a collection of team mappings.
@@ -76161,7 +76288,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.10.3
+    version: 0.10.5
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.2.1
@@ -76185,10 +76312,10 @@ x-input-schemas:
     version: 1.2.0
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.4.3
+    version: 3.4.6
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect MCP Servers
-    version: 1.22.0
+    version: 1.23.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.1.0
@@ -76197,7 +76324,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.9.8
+    version: 3.9.9
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2
