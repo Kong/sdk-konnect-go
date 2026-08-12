@@ -99,26 +99,26 @@ func (e *ProxyScheme) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// AIGatewayProxyConfigAuth - Credentials used to authenticate to the proxy server.
-type AIGatewayProxyConfigAuth struct {
+// AIGatewayProxyConfigAuthOutput - Credentials used to authenticate to the proxy server.
+type AIGatewayProxyConfigAuthOutput struct {
 	// The username to use for proxy authentication.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
 	Username *string `json:"username,omitempty"`
 }
 
-func (a AIGatewayProxyConfigAuth) MarshalJSON() ([]byte, error) {
+func (a AIGatewayProxyConfigAuthOutput) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(a, "", false)
 }
 
-func (a *AIGatewayProxyConfigAuth) UnmarshalJSON(data []byte) error {
+func (a *AIGatewayProxyConfigAuthOutput) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayProxyConfigAuth) GetUsername() *string {
+func (a *AIGatewayProxyConfigAuthOutput) GetUsername() *string {
 	if a == nil {
 		return nil
 	}
@@ -134,7 +134,7 @@ type AIGatewayProxyConfigOutput struct {
 	// The proxy scheme to use when connecting to the proxy server.
 	ProxyScheme *ProxyScheme `default:"http" json:"proxy_scheme"`
 	// Credentials used to authenticate to the proxy server.
-	Auth *AIGatewayProxyConfigAuth `json:"auth,omitempty"`
+	Auth *AIGatewayProxyConfigAuthOutput `json:"auth,omitempty"`
 	// Comma-separated list of hosts that should not be proxied.
 	NoProxy *string `json:"no_proxy,omitempty"`
 }
@@ -171,7 +171,7 @@ func (a *AIGatewayProxyConfigOutput) GetProxyScheme() *ProxyScheme {
 	return a.ProxyScheme
 }
 
-func (a *AIGatewayProxyConfigOutput) GetAuth() *AIGatewayProxyConfigAuth {
+func (a *AIGatewayProxyConfigOutput) GetAuth() *AIGatewayProxyConfigAuthOutput {
 	if a == nil {
 		return nil
 	}
@@ -185,8 +185,8 @@ func (a *AIGatewayProxyConfigOutput) GetNoProxy() *string {
 	return a.NoProxy
 }
 
-// Auth - Credentials used to authenticate to the proxy server.
-type Auth struct {
+// AIGatewayProxyConfigAuth - Credentials used to authenticate to the proxy server.
+type AIGatewayProxyConfigAuth struct {
 	// The username to use for proxy authentication.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -197,25 +197,25 @@ type Auth struct {
 	Password *string `json:"password,omitempty"`
 }
 
-func (a Auth) MarshalJSON() ([]byte, error) {
+func (a AIGatewayProxyConfigAuth) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(a, "", false)
 }
 
-func (a *Auth) UnmarshalJSON(data []byte) error {
+func (a *AIGatewayProxyConfigAuth) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *Auth) GetUsername() *string {
+func (a *AIGatewayProxyConfigAuth) GetUsername() *string {
 	if a == nil {
 		return nil
 	}
 	return a.Username
 }
 
-func (a *Auth) GetPassword() *string {
+func (a *AIGatewayProxyConfigAuth) GetPassword() *string {
 	if a == nil {
 		return nil
 	}
@@ -231,7 +231,7 @@ type AIGatewayProxyConfig struct {
 	// The proxy scheme to use when connecting to the proxy server.
 	ProxyScheme *ProxyScheme `default:"http" json:"proxy_scheme"`
 	// Credentials used to authenticate to the proxy server.
-	Auth *Auth `json:"auth,omitempty"`
+	Auth *AIGatewayProxyConfigAuth `json:"auth,omitempty"`
 	// Comma-separated list of hosts that should not be proxied.
 	NoProxy *string `json:"no_proxy,omitempty"`
 }
@@ -268,7 +268,7 @@ func (a *AIGatewayProxyConfig) GetProxyScheme() *ProxyScheme {
 	return a.ProxyScheme
 }
 
-func (a *AIGatewayProxyConfig) GetAuth() *Auth {
+func (a *AIGatewayProxyConfig) GetAuth() *AIGatewayProxyConfigAuth {
 	if a == nil {
 		return nil
 	}
