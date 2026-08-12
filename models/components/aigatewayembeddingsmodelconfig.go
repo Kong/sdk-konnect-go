@@ -43,6 +43,9 @@ type AIGatewayEmbeddingsModelConfig struct {
 func CreateAIGatewayEmbeddingsModelConfigAzure(azure AIGatewayAzureEmbeddingsModelConfig) AIGatewayEmbeddingsModelConfig {
 	typ := AIGatewayEmbeddingsModelConfigTypeAzure
 
+	typStr := AIGatewayAzureEmbeddingsModelConfigType(typ)
+	azure.Type = typStr
+
 	return AIGatewayEmbeddingsModelConfig{
 		AIGatewayAzureEmbeddingsModelConfig: &azure,
 		Type:                                typ,
