@@ -51917,6 +51917,20 @@ components:
       maxLength: 256
       minLength: 1
       pattern: '^[A-Za-z0-9._:-]{1,256}$'
+    AIGatewayVaultName:
+      description: An immutable user-defined identifier for this resource.
+      type: string
+      example: my-awesome-vault
+      maxLength: 255
+      minLength: 2
+      pattern: '^[a-z][a-z0-9-]*[a-z0-9]+$'
+    AIGatewayConfigStoreName:
+      description: An immutable user-defined identifier for this resource.
+      type: string
+      example: my-config-store
+      maxLength: 255
+      minLength: 2
+      pattern: '^[a-z][a-z0-9-]*[a-z0-9]+$'
     AIGatewayProxyURL:
       description: Proxy URL associated with reaching the data-planes connected to a control-plane.
       type: object
@@ -55529,7 +55543,7 @@ components:
             The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
           example: my-awesome-vault
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - $ref: '#/components/schemas/AIGatewayVaultName'
         description:
           description: The description of the Vault.
           type: string
@@ -55574,7 +55588,7 @@ components:
             The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
           example: my-awesome-vault
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - $ref: '#/components/schemas/AIGatewayVaultName'
         description:
           description: The description of the Vault.
           type: string
@@ -55638,7 +55652,7 @@ components:
             The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
           example: my-awesome-vault
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - $ref: '#/components/schemas/AIGatewayVaultName'
         description:
           description: The description of the Vault.
           type: string
@@ -55764,7 +55778,7 @@ components:
             The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
           example: my-awesome-vault
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - $ref: '#/components/schemas/AIGatewayVaultName'
         description:
           description: The description of the Vault.
           type: string
@@ -55852,7 +55866,7 @@ components:
             The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
           example: my-awesome-vault
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - $ref: '#/components/schemas/AIGatewayVaultName'
         description:
           description: The description of the Vault.
           type: string
@@ -55994,7 +56008,7 @@ components:
             The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
           example: my-awesome-vault
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - $ref: '#/components/schemas/AIGatewayVaultName'
         description:
           description: The description of the Vault.
           type: string
@@ -56110,7 +56124,7 @@ components:
             The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
           example: my-awesome-vault
           allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+            - $ref: '#/components/schemas/AIGatewayVaultName'
         description:
           description: The description of the Vault.
           type: string
@@ -61263,11 +61277,9 @@ components:
           pattern: '^[a-zA-Z0-9.\-_~]*$'
         name:
           description: The name of the Config Store. This value is immutable after creation.
-          type: string
           example: my-config-store
-          maxLength: 256
-          minLength: 1
-          pattern: '^[a-zA-Z0-9.\-_~]*$'
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayConfigStoreName'
       additionalProperties: false
       required:
         - name
@@ -61300,11 +61312,9 @@ components:
           pattern: '^[a-zA-Z0-9.\-_~]*$'
         name:
           description: The name of the Config Store. This value is immutable after creation.
-          type: string
           example: my-config-store
-          maxLength: 256
-          minLength: 1
-          pattern: '^[a-zA-Z0-9.\-_~]*$'
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayConfigStoreName'
         id:
           $ref: '#/components/schemas/UUID'
         created_at:
@@ -76288,7 +76298,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.10.5
+    version: 0.11.0
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.2.1
