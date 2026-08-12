@@ -7,6 +7,32 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// FoundryPathPrefix - The API path prefix for the Azure AI Foundry endpoint, selecting the model's
+// API surface. `/openai/v1` targets the OpenAI-compatible surface; `/anthropic/v1`
+// targets the Anthropic surface. Applies when the Azure provider's `service` is
+// `azure-foundry`.
+type FoundryPathPrefix string
+
+const (
+	FoundryPathPrefixRootOpenaiV1    FoundryPathPrefix = "/openai/v1"
+	FoundryPathPrefixRootAnthropicV1 FoundryPathPrefix = "/anthropic/v1"
+)
+
+func (e FoundryPathPrefix) ToPointer() *FoundryPathPrefix {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *FoundryPathPrefix) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "/openai/v1", "/anthropic/v1":
+			return true
+		}
+	}
+	return false
+}
+
 // AIGatewayTargetAzureConfig - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 //
@@ -40,10 +66,18 @@ type AIGatewayTargetAzureConfig struct {
 	UpstreamURL *string `json:"upstream_url,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"azure" json:"type"`
-	// The Azure deployment ID for the model.
+	// The Azure deployment ID for the model. Applies when the Azure provider's
+	// `service` is `azure-openai`; not used for `azure-foundry`.
+	//
 	DeploymentID string `json:"deployment_id"`
 	// The Azure OpenAI API version to use.
 	APIVersion *string `default:"2023-05-15" json:"api_version"`
+	// The API path prefix for the Azure AI Foundry endpoint, selecting the model's
+	// API surface. `/openai/v1` targets the OpenAI-compatible surface; `/anthropic/v1`
+	// targets the Anthropic surface. Applies when the Azure provider's `service` is
+	// `azure-foundry`.
+	//
+	FoundryPathPrefix *FoundryPathPrefix `default:"/openai/v1" json:"foundry_path_prefix"`
 }
 
 func (a AIGatewayTargetAzureConfig) MarshalJSON() ([]byte, error) {
@@ -164,4 +198,11 @@ func (a *AIGatewayTargetAzureConfig) GetAPIVersion() *string {
 		return nil
 	}
 	return a.APIVersion
+}
+
+func (a *AIGatewayTargetAzureConfig) GetFoundryPathPrefix() *FoundryPathPrefix {
+	if a == nil {
+		return nil
+	}
+	return a.FoundryPathPrefix
 }

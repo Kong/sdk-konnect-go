@@ -2811,9 +2811,77 @@ func (u AIGatewayModelProviderAzureAuthOutput) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type AIGatewayModelProviderAzureAuthOutput: all fields are null")
 }
 
+// AIGatewayModelProviderAzureAIGatewayModelProviderService - Selects the Azure backend for this provider instance. Use `azure-openai`
+// for Azure OpenAI deployments or `azure-foundry` for Azure AI Foundry.
+type AIGatewayModelProviderAzureAIGatewayModelProviderService string
+
+const (
+	AIGatewayModelProviderAzureAIGatewayModelProviderServiceAzureOpenai  AIGatewayModelProviderAzureAIGatewayModelProviderService = "azure-openai"
+	AIGatewayModelProviderAzureAIGatewayModelProviderServiceAzureFoundry AIGatewayModelProviderAzureAIGatewayModelProviderService = "azure-foundry"
+)
+
+func (e AIGatewayModelProviderAzureAIGatewayModelProviderService) ToPointer() *AIGatewayModelProviderAzureAIGatewayModelProviderService {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AIGatewayModelProviderAzureAIGatewayModelProviderService) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "azure-openai", "azure-foundry":
+			return true
+		}
+	}
+	return false
+}
+
+// AIGatewayModelProviderAzureFoundry - Endpoint configuration for Azure AI Foundry hosted models. Required when
+// `service` is `azure-foundry`.
+type AIGatewayModelProviderAzureFoundry struct {
+	// The Azure AI Foundry resource name.
+	Resource string `json:"resource"`
+	// The domain for Azure AI Foundry hosted models.
+	Domain *string `default:"services.ai.azure.com" json:"domain"`
+}
+
+func (a AIGatewayModelProviderAzureFoundry) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayModelProviderAzureFoundry) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"resource"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayModelProviderAzureFoundry) GetResource() string {
+	if a == nil {
+		return ""
+	}
+	return a.Resource
+}
+
+func (a *AIGatewayModelProviderAzureFoundry) GetDomain() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Domain
+}
+
 type AIGatewayModelProviderAzureConfigOutput struct {
-	Auth     AIGatewayModelProviderAzureAuthOutput `json:"auth"`
-	Instance string                                `json:"instance"`
+	Auth AIGatewayModelProviderAzureAuthOutput `json:"auth"`
+	// Selects the Azure backend for this provider instance. Use `azure-openai`
+	// for Azure OpenAI deployments or `azure-foundry` for Azure AI Foundry.
+	//
+	Service *AIGatewayModelProviderAzureAIGatewayModelProviderService `default:"azure-openai" json:"service"`
+	// The Azure OpenAI instance name. Required when `service` is `azure-openai`.
+	//
+	Instance *string `json:"instance,omitempty"`
+	// Endpoint configuration for Azure AI Foundry hosted models. Required when
+	// `service` is `azure-foundry`.
+	//
+	Foundry *AIGatewayModelProviderAzureFoundry `json:"foundry,omitempty"`
 }
 
 func (a AIGatewayModelProviderAzureConfigOutput) MarshalJSON() ([]byte, error) {
@@ -2821,7 +2889,7 @@ func (a AIGatewayModelProviderAzureConfigOutput) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayModelProviderAzureConfigOutput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"auth", "instance"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"auth"}); err != nil {
 		return err
 	}
 	return nil
@@ -2842,11 +2910,25 @@ func (a *AIGatewayModelProviderAzureConfigOutput) GetAuthAzure() *AIGatewayModel
 	return a.GetAuth().AIGatewayModelProviderConfigAuthAzureOutput
 }
 
-func (a *AIGatewayModelProviderAzureConfigOutput) GetInstance() string {
+func (a *AIGatewayModelProviderAzureConfigOutput) GetService() *AIGatewayModelProviderAzureAIGatewayModelProviderService {
 	if a == nil {
-		return ""
+		return nil
+	}
+	return a.Service
+}
+
+func (a *AIGatewayModelProviderAzureConfigOutput) GetInstance() *string {
+	if a == nil {
+		return nil
 	}
 	return a.Instance
+}
+
+func (a *AIGatewayModelProviderAzureConfigOutput) GetFoundry() *AIGatewayModelProviderAzureFoundry {
+	if a == nil {
+		return nil
+	}
+	return a.Foundry
 }
 
 // AIGatewayModelProviderAIGatewayModelProviderAzure - **Pre-release Feature**
