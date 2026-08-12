@@ -13,11 +13,12 @@ var ListTeamsServerList = []string{
 }
 
 // ListTeamsQueryParamFilter - Filter teams returned in the response. Supports filtering by label value using
-// dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`.
+// dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`, where `<op>` is one of
+// `eq`, `contains`, or `exists`.
 type ListTeamsQueryParamFilter struct {
 	// Filter using **one** of the following operators: `eq`, `contains`
-	Name   *components.LegacyStringFieldFilter           `queryParam:"name=name"`
-	Labels map[string]components.LegacyStringFieldFilter `queryParam:"name=labels"`
+	Name   *components.LegacyStringFieldFilter                     `queryParam:"name=name"`
+	Labels map[string]components.LegacyStringFieldFilterWithExists `queryParam:"name=labels"`
 }
 
 func (l *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
@@ -27,7 +28,7 @@ func (l *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilte
 	return l.Name
 }
 
-func (l *ListTeamsQueryParamFilter) GetLabels() map[string]components.LegacyStringFieldFilter {
+func (l *ListTeamsQueryParamFilter) GetLabels() map[string]components.LegacyStringFieldFilterWithExists {
 	if l == nil {
 		return nil
 	}
@@ -40,7 +41,8 @@ type ListTeamsRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Filter teams returned in the response. Supports filtering by label value using
-	// dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`.
+	// dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`, where `<op>` is one of
+	// `eq`, `contains`, or `exists`.
 	Filter *ListTeamsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
@@ -72,8 +74,8 @@ type ListTeamsResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A paginated list response for a collection of users.
-	TeamCollection *components.TeamCollection
+	// A paginated list response for a collection of teams.
+	TeamCollectionResponse *components.TeamCollectionResponse
 
 	Next func() (*ListTeamsResponse, error)
 }
@@ -99,9 +101,9 @@ func (l *ListTeamsResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListTeamsResponse) GetTeamCollection() *components.TeamCollection {
+func (l *ListTeamsResponse) GetTeamCollectionResponse() *components.TeamCollectionResponse {
 	if l == nil {
 		return nil
 	}
-	return l.TeamCollection
+	return l.TeamCollectionResponse
 }

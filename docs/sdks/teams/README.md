@@ -44,7 +44,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.TeamCollection != nil {
+    if res.TeamCollectionResponse != nil {
         for {
             // handle items
 
@@ -118,7 +118,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -155,7 +155,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -193,7 +193,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -230,7 +230,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -267,7 +267,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -304,7 +304,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -341,7 +341,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -378,7 +378,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -415,7 +415,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -452,7 +452,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -489,7 +489,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -526,7 +526,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -563,7 +563,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -600,7 +600,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -637,7 +637,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -693,7 +693,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -755,7 +755,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -792,7 +792,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -829,7 +829,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -866,7 +866,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -903,7 +903,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -940,7 +940,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -977,7 +977,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -1014,7 +1014,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -1051,7 +1051,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -1088,7 +1088,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -1125,7 +1125,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -1162,7 +1162,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
@@ -1199,7 +1199,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Team != nil {
+    if res.TeamResponse != nil {
         // handle response
     }
 }
