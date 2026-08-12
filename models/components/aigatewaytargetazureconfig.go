@@ -69,7 +69,7 @@ type AIGatewayTargetAzureConfig struct {
 	// The Azure deployment ID for the model. Applies when the Azure provider's
 	// `service` is `azure-openai`; not used for `azure-foundry`.
 	//
-	DeploymentID string `json:"deployment_id"`
+	DeploymentID *string `json:"deployment_id,omitempty"`
 	// The Azure OpenAI API version to use.
 	APIVersion *string `default:"2023-05-15" json:"api_version"`
 	// The API path prefix for the Azure AI Foundry endpoint, selecting the model's
@@ -85,7 +85,7 @@ func (a AIGatewayTargetAzureConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayTargetAzureConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "deployment_id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
@@ -186,9 +186,9 @@ func (a *AIGatewayTargetAzureConfig) GetType() string {
 	return "azure"
 }
 
-func (a *AIGatewayTargetAzureConfig) GetDeploymentID() string {
+func (a *AIGatewayTargetAzureConfig) GetDeploymentID() *string {
 	if a == nil {
-		return ""
+		return nil
 	}
 	return a.DeploymentID
 }
