@@ -123,8 +123,16 @@ func main() {
                 "okta-ai-se",
             },
         },
-        Config: components.CreateAIGatewayAgentRequestConfig{
+        Config: components.Config{
             URL: "https://booking-agent.internal.kongair.com",
+            Upstream: &components.AIGatewayUpstreamConfig{
+                Auth: sdkkonnectgo.Pointer(components.CreateAuthAws(
+                    components.AIGatewayUpstreamAuthAWS{
+                        AccessKeyID: sdkkonnectgo.Pointer("AKIAIOSFODNN7EXAMPLE"),
+                        Region: sdkkonnectgo.Pointer("us-east-1"),
+                    },
+                )),
+            },
             Route: &components.AIGatewayRouteConfig{
                 Headers: map[string]any{
                     "version": []any{
@@ -294,6 +302,14 @@ func main() {
             },
             Config: components.UpdateAIGatewayAgentRequestConfig{
                 URL: "https://booking-agent.internal.kongair.com",
+                Upstream: &components.AIGatewayUpstreamConfig{
+                    Auth: sdkkonnectgo.Pointer(components.CreateAuthAws(
+                        components.AIGatewayUpstreamAuthAWS{
+                            AccessKeyID: sdkkonnectgo.Pointer("AKIAIOSFODNN7EXAMPLE"),
+                            Region: sdkkonnectgo.Pointer("us-east-1"),
+                        },
+                    )),
+                },
                 Route: &components.AIGatewayRouteConfig{
                     Headers: map[string]any{
                         "version": []any{

@@ -688,7 +688,7 @@ type AIGatewayMCPServerAIGatewayMCPServerConversionOnly struct {
 	// This feature is currently in beta and is subject to change.
 	//
 	// Routing, logging, and request body size limits for the MCP Server.
-	Config AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig `json:"config"`
+	Config AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
 	Tools []AIGatewayMCPConversionTool `json:"tools,omitempty"`
 	// The display name for the MCP Server.
@@ -738,9 +738,9 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetType() string {
 	return "conversion-only"
 }
 
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig {
+func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput {
 	if a == nil {
-		return AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig{}
+		return AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput{}
 	}
 	return a.Config
 }

@@ -66,8 +66,8 @@ func (a *AIGatewayAgentLogging) GetMaxPayloadSize() *int64 {
 	return a.MaxPayloadSize
 }
 
-// Config - Configuration for the agent. The structure varies depending on the agent type.
-type Config struct {
+// AIGatewayAgentConfig - Configuration for the agent. The structure varies depending on the agent type.
+type AIGatewayAgentConfig struct {
 	// Helper field to set protocol, host, port and path of the upstream A2A Agent using a URL.
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
@@ -75,8 +75,15 @@ type Config struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfigOutput `json:"upstream,omitempty"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
 	// Configuration for an AI Gateway route.
 	Route *AIGatewayRouteConfig `json:"route,omitempty"`
+	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
+	Proxy *AIGatewayProxyConfigOutput `json:"proxy,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
 	// **Pre-release Feature**
@@ -86,43 +93,57 @@ type Config struct {
 	Logging *AIGatewayAgentLogging `json:"logging,omitempty"`
 }
 
-func (c Config) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (a AIGatewayAgentConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
 }
 
-func (c *Config) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+func (a *AIGatewayAgentConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *Config) GetURL() string {
-	if c == nil {
+func (a *AIGatewayAgentConfig) GetURL() string {
+	if a == nil {
 		return ""
 	}
-	return c.URL
+	return a.URL
 }
 
-func (c *Config) GetRoute() *AIGatewayRouteConfig {
-	if c == nil {
+func (a *AIGatewayAgentConfig) GetUpstream() *AIGatewayUpstreamConfigOutput {
+	if a == nil {
 		return nil
 	}
-	return c.Route
+	return a.Upstream
 }
 
-func (c *Config) GetMaxRequestBodySize() *int64 {
-	if c == nil {
+func (a *AIGatewayAgentConfig) GetRoute() *AIGatewayRouteConfig {
+	if a == nil {
 		return nil
 	}
-	return c.MaxRequestBodySize
+	return a.Route
 }
 
-func (c *Config) GetLogging() *AIGatewayAgentLogging {
-	if c == nil {
+func (a *AIGatewayAgentConfig) GetProxy() *AIGatewayProxyConfigOutput {
+	if a == nil {
 		return nil
 	}
-	return c.Logging
+	return a.Proxy
+}
+
+func (a *AIGatewayAgentConfig) GetMaxRequestBodySize() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.MaxRequestBodySize
+}
+
+func (a *AIGatewayAgentConfig) GetLogging() *AIGatewayAgentLogging {
+	if a == nil {
+		return nil
+	}
+	return a.Logging
 }
 
 // AIGatewayAgent - **Pre-release Feature**
@@ -147,7 +168,7 @@ type AIGatewayAgent struct {
 	// Access control configuration for an agent.
 	Access *AIGatewayAgentAccess `json:"access,omitempty"`
 	// Configuration for the agent. The structure varies depending on the agent type.
-	Config Config `json:"config"`
+	Config AIGatewayAgentConfig `json:"config"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -222,9 +243,9 @@ func (a *AIGatewayAgent) GetAccess() *AIGatewayAgentAccess {
 	return a.Access
 }
 
-func (a *AIGatewayAgent) GetConfig() Config {
+func (a *AIGatewayAgent) GetConfig() AIGatewayAgentConfig {
 	if a == nil {
-		return Config{}
+		return AIGatewayAgentConfig{}
 	}
 	return a.Config
 }

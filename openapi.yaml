@@ -57392,8 +57392,12 @@ components:
               type: string
               format: uri
               example: 'https://booking-agent.internal.kongair.com'
+            upstream:
+              $ref: '#/components/schemas/AIGatewayUpstreamConfig'
             route:
               $ref: '#/components/schemas/AIGatewayRouteConfig'
+            proxy:
+              $ref: '#/components/schemas/AIGatewayProxyConfig'
             max_request_body_size:
               description: Maximum size of request body to parse. Set to 0 for unlimited.
               type: integer
@@ -57477,8 +57481,12 @@ components:
               type: string
               format: uri
               example: 'https://booking-agent.internal.kongair.com'
+            upstream:
+              $ref: '#/components/schemas/AIGatewayUpstreamConfig'
             route:
               $ref: '#/components/schemas/AIGatewayRouteConfig'
+            proxy:
+              $ref: '#/components/schemas/AIGatewayProxyConfig'
             max_request_body_size:
               description: Maximum size of request body to parse. Set to 0 for unlimited.
               type: integer
@@ -57562,8 +57570,12 @@ components:
               type: string
               format: uri
               example: 'https://booking-agent.internal.kongair.com'
+            upstream:
+              $ref: '#/components/schemas/AIGatewayUpstreamConfig'
             route:
               $ref: '#/components/schemas/AIGatewayRouteConfig'
+            proxy:
+              $ref: '#/components/schemas/AIGatewayProxyConfig'
             max_request_body_size:
               description: Maximum size of request body to parse. Set to 0 for unlimited.
               type: integer
@@ -59089,6 +59101,8 @@ components:
           type: string
           format: uri
           example: 'https://mcp.internal.kongair.com'
+        upstream:
+          $ref: '#/components/schemas/AIGatewayUpstreamConfig'
       additionalProperties: false
       required:
         - url
@@ -59130,6 +59144,8 @@ components:
           type: string
           format: uri
           example: 'https://mcp.internal.kongair.com'
+        upstream:
+          $ref: '#/components/schemas/AIGatewayUpstreamConfig'
       additionalProperties: false
       required:
         - url
@@ -59171,6 +59187,8 @@ components:
           type: string
           format: uri
           example: 'https://mcp.internal.kongair.com'
+        upstream:
+          $ref: '#/components/schemas/AIGatewayUpstreamConfig'
         proxy:
           $ref: '#/components/schemas/AIGatewayProxyConfig'
       additionalProperties: false
@@ -59214,6 +59232,8 @@ components:
           type: string
           format: uri
           example: 'https://mcp.internal.kongair.com'
+        upstream:
+          $ref: '#/components/schemas/AIGatewayUpstreamConfig'
         tools_cache_ttl_seconds:
           description: |
             The time-to-live (TTL) for the upstream tools cache in seconds. Set to `0` to refresh on
@@ -60897,6 +60917,86 @@ components:
       required:
         - type
       title: AIGatewayModelProviderConfigAuthAWS
+    AIGatewayUpstreamConfig:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Configuration applied when proxying to the upstream service, including authentication.
+      type: object
+      properties:
+        auth:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            Authentication to use when proxying to the upstream service.
+          discriminator:
+            propertyName: type
+            mapping:
+              aws: '#/components/schemas/AIGatewayUpstreamAuthAWS'
+          oneOf:
+            - $ref: '#/components/schemas/AIGatewayUpstreamAuthAWS'
+      additionalProperties: false
+    AIGatewayUpstreamAuthAWS:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        AWS IAM (SigV4) authentication for the upstream service.
+      type: object
+      properties:
+        type:
+          type: string
+          const: aws
+        access_key_id:
+          description: |
+            The access key id for authenticating with static IAM User credentials.
+            This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+          type: string
+          x-referenceable: true
+        secret_access_key:
+          description: |
+            The secret access key for authenticating with static IAM User credentials.
+            This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+          type: string
+          writeOnly: true
+          x-referenceable: true
+        session_token:
+          description: |
+            The session token for authenticating with temporary IAM credentials.
+            This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+          type: string
+          writeOnly: true
+          x-referenceable: true
+        region:
+          description: |
+            The AWS region of the upstream service. Overrides the region inferred from the environment.
+          type: string
+        assume_role_arn:
+          description: |
+            The ARN of the IAM role to assume for generating authentication tokens.
+            This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+          type: string
+          x-referenceable: true
+        role_session_name:
+          description: |
+            The session name for the temporary credentials when assuming the IAM role.
+            This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+          type: string
+          x-referenceable: true
+        sts_endpoint_url:
+          description: |
+            The STS endpoint URL to use for generating authentication tokens.
+            If not specified, the default AWS STS endpoint will be used.
+          type: string
+      example:
+        type: aws
+        region: us-east-1
+        access_key_id: AKIAIOSFODNN7EXAMPLE
+      required:
+        - type
+      title: AIGatewayUpstreamAuthAWS
     AIGatewayModelProviderAzure:
       description: |-
         **Pre-release Feature**
@@ -76298,13 +76398,13 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.11.0
+    version: 0.11.1
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.2.1
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.3.3
+    version: 3.3.4
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
     version: 2.1.1
