@@ -64,6 +64,11 @@ type AIGatewayMCPServerUpstreamServerConfigOutput struct {
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfigOutput `json:"upstream,omitempty"`
 	// The time-to-live (TTL) for the upstream tools cache in seconds. Set to `0` to refresh on
 	// every client call.
 	//
@@ -116,6 +121,13 @@ func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetURL() string {
 	return a.URL
 }
 
+func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetUpstream() *AIGatewayUpstreamConfigOutput {
+	if a == nil {
+		return nil
+	}
+	return a.Upstream
+}
+
 func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetToolsCacheTTLSeconds() int64 {
 	if a == nil {
 		return 0
@@ -146,6 +158,11 @@ type AIGatewayMCPServerUpstreamServerConfig struct {
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfig `json:"upstream,omitempty"`
 	// The time-to-live (TTL) for the upstream tools cache in seconds. Set to `0` to refresh on
 	// every client call.
 	//
@@ -196,6 +213,13 @@ func (a *AIGatewayMCPServerUpstreamServerConfig) GetURL() string {
 		return ""
 	}
 	return a.URL
+}
+
+func (a *AIGatewayMCPServerUpstreamServerConfig) GetUpstream() *AIGatewayUpstreamConfig {
+	if a == nil {
+		return nil
+	}
+	return a.Upstream
 }
 
 func (a *AIGatewayMCPServerUpstreamServerConfig) GetToolsCacheTTLSeconds() int64 {

@@ -67,6 +67,11 @@ type AIGatewayMCPServerWithUpstreamConfigOutput struct {
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfigOutput `json:"upstream,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
 	Proxy *AIGatewayProxyConfigOutput `json:"proxy,omitempty"`
 }
@@ -117,6 +122,13 @@ func (a *AIGatewayMCPServerWithUpstreamConfigOutput) GetURL() string {
 	return a.URL
 }
 
+func (a *AIGatewayMCPServerWithUpstreamConfigOutput) GetUpstream() *AIGatewayUpstreamConfigOutput {
+	if a == nil {
+		return nil
+	}
+	return a.Upstream
+}
+
 func (a *AIGatewayMCPServerWithUpstreamConfigOutput) GetProxy() *AIGatewayProxyConfigOutput {
 	if a == nil {
 		return nil
@@ -150,6 +162,11 @@ type AIGatewayMCPServerWithUpstreamConfig struct {
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfig `json:"upstream,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
 	Proxy *AIGatewayProxyConfig `json:"proxy,omitempty"`
 }
@@ -198,6 +215,13 @@ func (a *AIGatewayMCPServerWithUpstreamConfig) GetURL() string {
 		return ""
 	}
 	return a.URL
+}
+
+func (a *AIGatewayMCPServerWithUpstreamConfig) GetUpstream() *AIGatewayUpstreamConfig {
+	if a == nil {
+		return nil
+	}
+	return a.Upstream
 }
 
 func (a *AIGatewayMCPServerWithUpstreamConfig) GetProxy() *AIGatewayProxyConfig {
