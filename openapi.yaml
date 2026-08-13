@@ -53946,7 +53946,7 @@ components:
           type: string
           pattern: '^[0-9]+\.?[0-9]*[hm]$'
         cost:
-          description: Cost per cache-write prompt token for this TTL.
+          description: Cost per 1M cache-write prompt tokens for this TTL.
           type: number
           minimum: 0
       additionalProperties: false
@@ -54015,16 +54015,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54078,16 +54078,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54158,16 +54158,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54235,16 +54235,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54294,16 +54294,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54378,16 +54378,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54441,16 +54441,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54504,16 +54504,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54563,16 +54563,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54624,16 +54624,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54691,16 +54691,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54756,16 +54756,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54825,16 +54825,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54892,16 +54892,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -54951,16 +54951,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -55010,16 +55010,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -55069,16 +55069,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -55154,16 +55154,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -55214,16 +55214,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -55273,16 +55273,16 @@ components:
           description: The maximum number of tokens to generate in the response.
           type: integer
         input_cost:
-          description: Cost per input token for billing and cost tracking.
+          description: Cost per 1M input tokens for billing and cost tracking.
           type: number
         output_cost:
-          description: Cost per output token for billing and cost tracking.
+          description: Cost per 1M output tokens for billing and cost tracking.
           type: number
         cache_read_cost:
-          description: Cost per cache-read (cached) prompt token for billing and cost tracking.
+          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost:
-          description: Cost per cache-write prompt token for billing and cost tracking.
+          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
@@ -59956,7 +59956,7 @@ components:
                   type: string
             consumer_groups_claim:
               description: |
-                The claim used for consumer groups mapping. 
+                The claim used for consumer groups mapping.
                 If multiple values are set, it means the claim is inside a nested object of the token payload.
               type: array
               items:
@@ -61864,7 +61864,7 @@ components:
                   type: string
             consumer_groups_claim:
               description: |
-                The claim used for consumer groups mapping. 
+                The claim used for consumer groups mapping.
                 If multiple values are set, it means the claim is inside a nested object of the token payload.
               type: array
               items:
@@ -76386,7 +76386,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.11.2
+    version: 0.11.3
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.2.1
