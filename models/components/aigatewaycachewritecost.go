@@ -12,7 +12,7 @@ import (
 type AIGatewayCacheWriteCost struct {
 	// Cache TTL this price applies to, e.g. "5m" or "1h".
 	TTL string `json:"ttl"`
-	// Cost per cache-write prompt token for this TTL.
+	// Cost per 1M cache-write prompt tokens for this TTL.
 	Cost float64 `json:"cost"`
 }
 
