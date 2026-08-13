@@ -16,13 +16,13 @@ type AIGatewayTargetGeminiConfig struct {
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`
 	// The maximum number of tokens to generate in the response.
 	MaxTokens *int64 `json:"max_tokens,omitempty"`
-	// Cost per input token for billing and cost tracking.
+	// Cost per 1M input tokens for billing and cost tracking.
 	InputCost *float64 `json:"input_cost,omitempty"`
-	// Cost per output token for billing and cost tracking.
+	// Cost per 1M output tokens for billing and cost tracking.
 	OutputCost *float64 `json:"output_cost,omitempty"`
-	// Cost per cache-read (cached) prompt token for billing and cost tracking.
+	// Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
 	CacheReadCost *float64 `json:"cache_read_cost,omitempty"`
-	// Cost per cache-write prompt token for billing and cost tracking.
+	// Cost per 1M cache-write prompt tokens for billing and cost tracking.
 	CacheWriteCost *float64 `json:"cache_write_cost,omitempty"`
 	// Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
 	CacheWriteCostList []AIGatewayCacheWriteCost `json:"cache_write_cost_list,omitempty"`
