@@ -8,6 +8,51 @@ import (
 	"time"
 )
 
+// Principals - Authenticate against Kong Identity instead of local credentials.
+// Mutually exclusive with identity realms.
+type Principals struct {
+	// When true, authenticate against Kong Identity instead of local credentials.
+	Enabled *bool `default:"false" json:"enabled"`
+	// The Kong Identity directory instance to authenticate against.
+	Directory *string `default:"default" json:"directory"`
+	// When true (default), reject the request if no matching principal is found in Kong Identity.
+	// When false, allow the request to continue unauthenticated instead.
+	//
+	ErrorOnMiss *bool `default:"true" json:"error_on_miss"`
+}
+
+func (p Principals) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Principals) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (p *Principals) GetEnabled() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.Enabled
+}
+
+func (p *Principals) GetDirectory() *string {
+	if p == nil {
+		return nil
+	}
+	return p.Directory
+}
+
+func (p *Principals) GetErrorOnMiss() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.ErrorOnMiss
+}
+
 // AIGatewayIdentityProviderKeyAuthResponseConfig - Configuration for the Kong Key auth identity provider.
 // For advanced use cases, additional config properties can be sent in the request body.
 // See: https://developer.konghq.com/plugins/key-auth/reference/ for the list of properties
@@ -28,7 +73,11 @@ type AIGatewayIdentityProviderKeyAuthResponseConfig struct {
 	KeyInQuery *bool `default:"true" json:"key_in_query"`
 	// An array of strings containing the names of the keys to look for in the request.
 	//
-	KeyNames             []string       `json:"key_names,omitempty"`
+	KeyNames []string `json:"key_names,omitempty"`
+	// Authenticate against Kong Identity instead of local credentials.
+	// Mutually exclusive with identity realms.
+	//
+	Principals           *Principals    `json:"principals,omitempty"`
 	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
 }
 
@@ -76,6 +125,13 @@ func (a *AIGatewayIdentityProviderKeyAuthResponseConfig) GetKeyNames() []string 
 		return nil
 	}
 	return a.KeyNames
+}
+
+func (a *AIGatewayIdentityProviderKeyAuthResponseConfig) GetPrincipals() *Principals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
 }
 
 func (a *AIGatewayIdentityProviderKeyAuthResponseConfig) GetAdditionalProperties() map[string]any {

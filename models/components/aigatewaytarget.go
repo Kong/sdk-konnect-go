@@ -146,10 +146,6 @@ func (a *AIGatewayTarget) GetConfigVercel() *AIGatewayTargetVercelConfig {
 	return a.GetConfig().AIGatewayTargetVercelConfig
 }
 
-func (a *AIGatewayTarget) GetConfigVertex() *AIGatewayTargetVertexConfig {
-	return a.GetConfig().AIGatewayTargetVertexConfig
-}
-
 func (a *AIGatewayTarget) GetConfigVllm() *AIGatewayTargetVllmConfig {
 	return a.GetConfig().AIGatewayTargetVllmConfig
 }

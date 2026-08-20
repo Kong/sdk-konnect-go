@@ -104,12 +104,6 @@ aiGatewayTargetConfig := components.CreateAIGatewayTargetConfigOpenai(components
 aiGatewayTargetConfig := components.CreateAIGatewayTargetConfigVercel(components.AIGatewayTargetVercelConfig{/* values here */})
 ```
 
-### AIGatewayTargetVertexConfig
-
-```go
-aiGatewayTargetConfig := components.CreateAIGatewayTargetConfigVertex(components.AIGatewayTargetVertexConfig{/* values here */})
-```
-
 ### AIGatewayTargetVllmConfig
 
 ```go
@@ -166,8 +160,6 @@ switch aiGatewayTargetConfig.Type {
 		// aiGatewayTargetConfig.AIGatewayTargetOpenaiConfig is populated
 	case components.AIGatewayTargetConfigTypeVercel:
 		// aiGatewayTargetConfig.AIGatewayTargetVercelConfig is populated
-	case components.AIGatewayTargetConfigTypeVertex:
-		// aiGatewayTargetConfig.AIGatewayTargetVertexConfig is populated
 	case components.AIGatewayTargetConfigTypeVllm:
 		// aiGatewayTargetConfig.AIGatewayTargetVllmConfig is populated
 	case components.AIGatewayTargetConfigTypeXai:

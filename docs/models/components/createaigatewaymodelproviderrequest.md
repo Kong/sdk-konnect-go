@@ -114,12 +114,6 @@ createAIGatewayModelProviderRequest := components.CreateCreateAIGatewayModelProv
 createAIGatewayModelProviderRequest := components.CreateCreateAIGatewayModelProviderRequestXai(components.AIGatewayModelProviderXai{/* values here */})
 ```
 
-### AIGatewayModelProviderVertex
-
-```go
-createAIGatewayModelProviderRequest := components.CreateCreateAIGatewayModelProviderRequestVertex(components.AIGatewayModelProviderVertex{/* values here */})
-```
-
 ### AIGatewayModelProviderSagemaker
 
 ```go
@@ -168,8 +162,6 @@ switch createAIGatewayModelProviderRequest.Type {
 		// createAIGatewayModelProviderRequest.AIGatewayModelProviderVllm is populated
 	case components.CreateAIGatewayModelProviderRequestTypeXai:
 		// createAIGatewayModelProviderRequest.AIGatewayModelProviderXai is populated
-	case components.CreateAIGatewayModelProviderRequestTypeVertex:
-		// createAIGatewayModelProviderRequest.AIGatewayModelProviderVertex is populated
 	case components.CreateAIGatewayModelProviderRequestTypeSagemaker:
 		// createAIGatewayModelProviderRequest.AIGatewayModelProviderSagemaker is populated
 }

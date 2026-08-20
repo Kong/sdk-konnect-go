@@ -24,6 +24,7 @@ const (
 	AllFilterItemsFieldControlPlane              AllFilterItemsField = "control_plane"
 	AllFilterItemsFieldControlPlaneGroup         AllFilterItemsField = "control_plane_group"
 	AllFilterItemsFieldCountryCode               AllFilterItemsField = "country_code"
+	AllFilterItemsFieldDataPlaneGroup            AllFilterItemsField = "data_plane_group"
 	AllFilterItemsFieldDataPlaneNode             AllFilterItemsField = "data_plane_node"
 	AllFilterItemsFieldDataPlaneNodeVersion      AllFilterItemsField = "data_plane_node_version"
 	AllFilterItemsFieldEnv                       AllFilterItemsField = "env"
@@ -32,12 +33,16 @@ const (
 	AllFilterItemsFieldLlmCacheStatus            AllFilterItemsField = "llm_cache_status"
 	AllFilterItemsFieldLlmEmbeddingsModel        AllFilterItemsField = "llm_embeddings_model"
 	AllFilterItemsFieldLlmEmbeddingsProvider     AllFilterItemsField = "llm_embeddings_provider"
+	AllFilterItemsFieldManagedCache              AllFilterItemsField = "managed_cache"
 	AllFilterItemsFieldMcpError                  AllFilterItemsField = "mcp_error"
 	AllFilterItemsFieldMcpMethod                 AllFilterItemsField = "mcp_method"
 	AllFilterItemsFieldMcpSessionID              AllFilterItemsField = "mcp_session_id"
 	AllFilterItemsFieldMcpToolName               AllFilterItemsField = "mcp_tool_name"
+	AllFilterItemsFieldNetwork                   AllFilterItemsField = "network"
 	AllFilterItemsFieldPortal                    AllFilterItemsField = "portal"
 	AllFilterItemsFieldPrincipal                 AllFilterItemsField = "principal"
+	AllFilterItemsFieldProvider                  AllFilterItemsField = "provider"
+	AllFilterItemsFieldProviderRegion            AllFilterItemsField = "provider_region"
 	AllFilterItemsFieldRealm                     AllFilterItemsField = "realm"
 	AllFilterItemsFieldRegion                    AllFilterItemsField = "region"
 	AllFilterItemsFieldResponseSource            AllFilterItemsField = "response_source"
@@ -57,7 +62,7 @@ func (e AllFilterItemsField) ToPointer() *AllFilterItemsField {
 func (e *AllFilterItemsField) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "env", "gateway_service", "hostname", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "portal", "principal", "realm", "region", "response_source", "route", "status_code", "status_code_grouped", "team", "upstream_status_code", "upstream_status_code_grouped":
+		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_group", "data_plane_node", "data_plane_node_version", "env", "gateway_service", "hostname", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "managed_cache", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "network", "portal", "principal", "provider", "provider_region", "realm", "region", "response_source", "route", "status_code", "status_code_grouped", "team", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}

@@ -233,221 +233,6 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetUpdatedAt() t
 	return a.UpdatedAt
 }
 
-type AIGatewayModelProviderVertexAuthOutputType string
-
-const (
-	AIGatewayModelProviderVertexAuthOutputTypeBasic  AIGatewayModelProviderVertexAuthOutputType = "basic"
-	AIGatewayModelProviderVertexAuthOutputTypeVertex AIGatewayModelProviderVertexAuthOutputType = "vertex"
-)
-
-type AIGatewayModelProviderVertexAuthOutput struct {
-	AIGatewayModelProviderConfigAuthBasicOutput  *AIGatewayModelProviderConfigAuthBasicOutput  `queryParam:"inline" union:"member"`
-	AIGatewayModelProviderConfigAuthVertexOutput *AIGatewayModelProviderConfigAuthVertexOutput `queryParam:"inline" union:"member"`
-
-	Type AIGatewayModelProviderVertexAuthOutputType
-}
-
-func CreateAIGatewayModelProviderVertexAuthOutputBasic(basic AIGatewayModelProviderConfigAuthBasicOutput) AIGatewayModelProviderVertexAuthOutput {
-	typ := AIGatewayModelProviderVertexAuthOutputTypeBasic
-
-	return AIGatewayModelProviderVertexAuthOutput{
-		AIGatewayModelProviderConfigAuthBasicOutput: &basic,
-		Type: typ,
-	}
-}
-
-func CreateAIGatewayModelProviderVertexAuthOutputVertex(vertex AIGatewayModelProviderConfigAuthVertexOutput) AIGatewayModelProviderVertexAuthOutput {
-	typ := AIGatewayModelProviderVertexAuthOutputTypeVertex
-
-	return AIGatewayModelProviderVertexAuthOutput{
-		AIGatewayModelProviderConfigAuthVertexOutput: &vertex,
-		Type: typ,
-	}
-}
-
-func (u *AIGatewayModelProviderVertexAuthOutput) UnmarshalJSON(data []byte) error {
-
-	type discriminator struct {
-		Type string `json:"type"`
-	}
-
-	dis := new(discriminator)
-	if err := json.Unmarshal(data, &dis); err != nil {
-		return fmt.Errorf("could not unmarshal discriminator: %w", err)
-	}
-
-	switch dis.Type {
-	case "basic":
-		aiGatewayModelProviderConfigAuthBasicOutput := new(AIGatewayModelProviderConfigAuthBasicOutput)
-		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderConfigAuthBasicOutput, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == basic) type AIGatewayModelProviderConfigAuthBasicOutput within AIGatewayModelProviderVertexAuthOutput: %w", string(data), err)
-		}
-
-		u.AIGatewayModelProviderConfigAuthBasicOutput = aiGatewayModelProviderConfigAuthBasicOutput
-		u.Type = AIGatewayModelProviderVertexAuthOutputTypeBasic
-		return nil
-	case "vertex":
-		aiGatewayModelProviderConfigAuthVertexOutput := new(AIGatewayModelProviderConfigAuthVertexOutput)
-		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderConfigAuthVertexOutput, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vertex) type AIGatewayModelProviderConfigAuthVertexOutput within AIGatewayModelProviderVertexAuthOutput: %w", string(data), err)
-		}
-
-		u.AIGatewayModelProviderConfigAuthVertexOutput = aiGatewayModelProviderConfigAuthVertexOutput
-		u.Type = AIGatewayModelProviderVertexAuthOutputTypeVertex
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayModelProviderVertexAuthOutput", string(data))
-}
-
-func (u AIGatewayModelProviderVertexAuthOutput) MarshalJSON() ([]byte, error) {
-	if u.AIGatewayModelProviderConfigAuthBasicOutput != nil {
-		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthBasicOutput, "", true)
-	}
-
-	if u.AIGatewayModelProviderConfigAuthVertexOutput != nil {
-		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthVertexOutput, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type AIGatewayModelProviderVertexAuthOutput: all fields are null")
-}
-
-type AIGatewayModelProviderVertexConfigOutput struct {
-	Auth AIGatewayModelProviderVertexAuthOutput `json:"auth"`
-}
-
-func (a AIGatewayModelProviderVertexConfigOutput) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayModelProviderVertexConfigOutput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"auth"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayModelProviderVertexConfigOutput) GetAuth() AIGatewayModelProviderVertexAuthOutput {
-	if a == nil {
-		return AIGatewayModelProviderVertexAuthOutput{}
-	}
-	return a.Auth
-}
-
-func (a *AIGatewayModelProviderVertexConfigOutput) GetAuthBasic() *AIGatewayModelProviderConfigAuthBasicOutput {
-	return a.GetAuth().AIGatewayModelProviderConfigAuthBasicOutput
-}
-
-func (a *AIGatewayModelProviderVertexConfigOutput) GetAuthVertex() *AIGatewayModelProviderConfigAuthVertexOutput {
-	return a.GetAuth().AIGatewayModelProviderConfigAuthVertexOutput
-}
-
-// AIGatewayModelProviderAIGatewayModelProviderVertex - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Config for Vertex model provider.
-type AIGatewayModelProviderAIGatewayModelProviderVertex struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"vertex" json:"type"`
-	// The display name for this model provider instance.
-	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
-	Name string `json:"name"`
-	// Public labels store information about an entity that can be used for filtering a list of objects.
-	//
-	// Public labels are intended to store **PUBLIC** metadata.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels,omitempty"`
-	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
-	//
-	ManagedBy map[string]string                        `json:"managed_by,omitempty"`
-	Config    AIGatewayModelProviderVertexConfigOutput `json:"config"`
-	// Contains a unique identifier used for this resource.
-	ID string `json:"id"`
-	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
-	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt time.Time `json:"updated_at"`
-}
-
-func (a AIGatewayModelProviderAIGatewayModelProviderVertex) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "display_name", "name", "config", "id", "created_at", "updated_at"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetType() string {
-	return "vertex"
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetDisplayName() string {
-	if a == nil {
-		return ""
-	}
-	return a.DisplayName
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetName() string {
-	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetLabels() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.Labels
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetManagedBy() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.ManagedBy
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetConfig() AIGatewayModelProviderVertexConfigOutput {
-	if a == nil {
-		return AIGatewayModelProviderVertexConfigOutput{}
-	}
-	return a.Config
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetID() string {
-	if a == nil {
-		return ""
-	}
-	return a.ID
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetCreatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.CreatedAt
-}
-
-func (a *AIGatewayModelProviderAIGatewayModelProviderVertex) GetUpdatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.UpdatedAt
-}
-
 // AIGatewayModelProviderXaiConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderXaiConfigOutput struct {
 	// **Pre-release Feature**
@@ -3190,7 +2975,6 @@ const (
 	AIGatewayModelProviderTypeVercel      AIGatewayModelProviderType = "vercel"
 	AIGatewayModelProviderTypeVllm        AIGatewayModelProviderType = "vllm"
 	AIGatewayModelProviderTypeXai         AIGatewayModelProviderType = "xai"
-	AIGatewayModelProviderTypeVertex      AIGatewayModelProviderType = "vertex"
 	AIGatewayModelProviderTypeSagemaker   AIGatewayModelProviderType = "sagemaker"
 )
 
@@ -3215,7 +2999,6 @@ type AIGatewayModelProvider struct {
 	AIGatewayModelProviderAIGatewayModelProviderVercel      *AIGatewayModelProviderAIGatewayModelProviderVercel      `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderAIGatewayModelProviderVllm        *AIGatewayModelProviderAIGatewayModelProviderVllm        `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderAIGatewayModelProviderXai         *AIGatewayModelProviderAIGatewayModelProviderXai         `queryParam:"inline" union:"member"`
-	AIGatewayModelProviderAIGatewayModelProviderVertex      *AIGatewayModelProviderAIGatewayModelProviderVertex      `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderAIGatewayModelProviderSagemaker   *AIGatewayModelProviderAIGatewayModelProviderSagemaker   `queryParam:"inline" union:"member"`
 
 	Type AIGatewayModelProviderType
@@ -3379,15 +3162,6 @@ func CreateAIGatewayModelProviderXai(xai AIGatewayModelProviderAIGatewayModelPro
 
 	return AIGatewayModelProvider{
 		AIGatewayModelProviderAIGatewayModelProviderXai: &xai,
-		Type: typ,
-	}
-}
-
-func CreateAIGatewayModelProviderVertex(vertex AIGatewayModelProviderAIGatewayModelProviderVertex) AIGatewayModelProvider {
-	typ := AIGatewayModelProviderTypeVertex
-
-	return AIGatewayModelProvider{
-		AIGatewayModelProviderAIGatewayModelProviderVertex: &vertex,
 		Type: typ,
 	}
 }
@@ -3575,15 +3349,6 @@ func (u *AIGatewayModelProvider) UnmarshalJSON(data []byte) error {
 		u.AIGatewayModelProviderAIGatewayModelProviderXai = aiGatewayModelProviderAIGatewayModelProviderXai
 		u.Type = AIGatewayModelProviderTypeXai
 		return nil
-	case "vertex":
-		aiGatewayModelProviderAIGatewayModelProviderVertex := new(AIGatewayModelProviderAIGatewayModelProviderVertex)
-		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderAIGatewayModelProviderVertex, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vertex) type AIGatewayModelProviderAIGatewayModelProviderVertex within AIGatewayModelProvider: %w", string(data), err)
-		}
-
-		u.AIGatewayModelProviderAIGatewayModelProviderVertex = aiGatewayModelProviderAIGatewayModelProviderVertex
-		u.Type = AIGatewayModelProviderTypeVertex
-		return nil
 	case "sagemaker":
 		aiGatewayModelProviderAIGatewayModelProviderSagemaker := new(AIGatewayModelProviderAIGatewayModelProviderSagemaker)
 		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderAIGatewayModelProviderSagemaker, "", true, nil); err != nil {
@@ -3669,10 +3434,6 @@ func (u AIGatewayModelProvider) MarshalJSON() ([]byte, error) {
 
 	if u.AIGatewayModelProviderAIGatewayModelProviderXai != nil {
 		return utils.MarshalJSON(u.AIGatewayModelProviderAIGatewayModelProviderXai, "", true)
-	}
-
-	if u.AIGatewayModelProviderAIGatewayModelProviderVertex != nil {
-		return utils.MarshalJSON(u.AIGatewayModelProviderAIGatewayModelProviderVertex, "", true)
 	}
 
 	if u.AIGatewayModelProviderAIGatewayModelProviderSagemaker != nil {

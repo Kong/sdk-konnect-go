@@ -121,10 +121,6 @@ func (e *Embeddings) GetConfigOpenai() *AIGatewayOpenaiEmbeddingsModelConfig {
 	return e.GetConfig().AIGatewayOpenaiEmbeddingsModelConfig
 }
 
-func (e *Embeddings) GetConfigVertex() *AIGatewayVertexEmbeddingsModelConfig {
-	return e.GetConfig().AIGatewayVertexEmbeddingsModelConfig
-}
-
 // AIGatewayModelBalancerSemanticConfigOutput - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayModelBalancerSemanticConfigOutput struct {

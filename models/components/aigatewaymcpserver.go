@@ -357,6 +357,12 @@ type AIGatewayMCPServerAIGatewayMCPServerListener struct {
 	Config AIGatewayMCPServerNoUpstreamConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
 	Tools []AIGatewayMCPToolBase `json:"tools,omitempty"`
+	// The explicit list of source MCP Servers whose tools this listener exposes.
+	// Each entry is the immutable `name` of a `conversion-only` (toolset) or
+	// `upstream-server` (third-party MCP server) MCP Server in the same AI Gateway.
+	// All of the referenced source's tools are exposed.
+	//
+	Sources []string `json:"sources"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
@@ -397,7 +403,7 @@ func (a AIGatewayMCPServerAIGatewayMCPServerListener) MarshalJSON() ([]byte, err
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerListener) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "sources", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -419,6 +425,13 @@ func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetTools() []AIGatewayMCP
 		return nil
 	}
 	return a.Tools
+}
+
+func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetSources() []string {
+	if a == nil {
+		return []string{}
+	}
+	return a.Sources
 }
 
 func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccess() *AIGatewayMCPServerListenerAccess {

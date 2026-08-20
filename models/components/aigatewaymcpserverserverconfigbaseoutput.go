@@ -131,8 +131,6 @@ type AIGatewayMCPServerServerConfigBaseOutput struct {
 	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 	//
 	Session *AIGatewayMCPServerServerConfigBaseSession `json:"session,omitempty"`
-	// The label of the MCP server. This is used to filter the exported MCP tools.
-	Label *string `json:"label,omitempty"`
 	// The timeout for calling the tools in milliseconds.
 	Timeout *int64 `default:"10000" json:"timeout"`
 }
@@ -160,13 +158,6 @@ func (a *AIGatewayMCPServerServerConfigBaseOutput) GetSession() *AIGatewayMCPSer
 		return nil
 	}
 	return a.Session
-}
-
-func (a *AIGatewayMCPServerServerConfigBaseOutput) GetLabel() *string {
-	if a == nil {
-		return nil
-	}
-	return a.Label
 }
 
 func (a *AIGatewayMCPServerServerConfigBaseOutput) GetTimeout() *int64 {
@@ -251,8 +242,6 @@ type AIGatewayMCPServerServerConfigBase struct {
 	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 	//
 	Session *Session `json:"session,omitempty"`
-	// The label of the MCP server. This is used to filter the exported MCP tools.
-	Label *string `json:"label,omitempty"`
 	// The timeout for calling the tools in milliseconds.
 	Timeout *int64 `default:"10000" json:"timeout"`
 }
@@ -280,13 +269,6 @@ func (a *AIGatewayMCPServerServerConfigBase) GetSession() *Session {
 		return nil
 	}
 	return a.Session
-}
-
-func (a *AIGatewayMCPServerServerConfigBase) GetLabel() *string {
-	if a == nil {
-		return nil
-	}
-	return a.Label
 }
 
 func (a *AIGatewayMCPServerServerConfigBase) GetTimeout() *int64 {

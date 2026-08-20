@@ -194,13 +194,6 @@ func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderXai() *comp
 	return nil
 }
 
-func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderVertex() *components.AIGatewayModelProviderAIGatewayModelProviderVertex {
-	if v := g.GetAIGatewayModelProvider(); v != nil {
-		return v.AIGatewayModelProviderAIGatewayModelProviderVertex
-	}
-	return nil
-}
-
 func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderSagemaker() *components.AIGatewayModelProviderAIGatewayModelProviderSagemaker {
 	if v := g.GetAIGatewayModelProvider(); v != nil {
 		return v.AIGatewayModelProviderAIGatewayModelProviderSagemaker

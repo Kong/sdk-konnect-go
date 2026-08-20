@@ -107,13 +107,15 @@ func main() {
         }),
     )
 
-    res, err := s.AIGatewayModelProviders.CreateAiGatewayModelProvider(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayModelProviderRequestVertex(
-        components.AIGatewayModelProviderVertex{
+    res, err := s.AIGatewayModelProviders.CreateAiGatewayModelProvider(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayModelProviderRequestSagemaker(
+        components.AIGatewayModelProviderSagemaker{
             DisplayName: "Azure AI SE",
             Name: "azure-ai-se",
-            Config: components.AIGatewayModelProviderVertexConfig{
-                Auth: components.CreateAIGatewayModelProviderVertexAuthVertex(
-                    components.AIGatewayModelProviderConfigAuthVertex{},
+            Config: components.AIGatewayModelProviderSagemakerConfig{
+                Auth: components.CreateAIGatewayModelProviderSagemakerAuthSagemaker(
+                    components.AIGatewayModelProviderConfigAuthSagemaker{
+                        Type: components.AIGatewayModelProviderConfigAuthSagemakerTypeSagemaker,
+                    },
                 ),
             },
         },
@@ -159,8 +161,6 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVllm is populated
             case components.AIGatewayModelProviderTypeXai:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
-            case components.AIGatewayModelProviderTypeVertex:
-                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVertex is populated
             case components.AIGatewayModelProviderTypeSagemaker:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
         }
@@ -264,8 +264,6 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVllm is populated
             case components.AIGatewayModelProviderTypeXai:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
-            case components.AIGatewayModelProviderTypeVertex:
-                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVertex is populated
             case components.AIGatewayModelProviderTypeSagemaker:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
         }
@@ -381,8 +379,6 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVllm is populated
             case components.AIGatewayModelProviderTypeXai:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
-            case components.AIGatewayModelProviderTypeVertex:
-                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderVertex is populated
             case components.AIGatewayModelProviderTypeSagemaker:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
         }
