@@ -13,17 +13,19 @@ import (
 type QueryType string
 
 const (
-	QueryTypeAPIUsage      QueryType = "api_usage"
-	QueryTypeLlmUsage      QueryType = "llm_usage"
-	QueryTypeAgenticUsage  QueryType = "agentic_usage"
-	QueryTypePlatformUsage QueryType = "platform_usage"
+	QueryTypeAPIUsage          QueryType = "api_usage"
+	QueryTypeLlmUsage          QueryType = "llm_usage"
+	QueryTypeAgenticUsage      QueryType = "agentic_usage"
+	QueryTypePlatformUsage     QueryType = "platform_usage"
+	QueryTypeManagedCacheUsage QueryType = "managed_cache_usage"
 )
 
 type Query struct {
-	AdvancedQuery *AdvancedQuery `queryParam:"inline" union:"member"`
-	LLMQuery      *LLMQuery      `queryParam:"inline" union:"member"`
-	AgenticQuery  *AgenticQuery  `queryParam:"inline" union:"member"`
-	PlatformQuery *PlatformQuery `queryParam:"inline" union:"member"`
+	AdvancedQuery          *AdvancedQuery          `queryParam:"inline" union:"member"`
+	LLMQuery               *LLMQuery               `queryParam:"inline" union:"member"`
+	AgenticQuery           *AgenticQuery           `queryParam:"inline" union:"member"`
+	PlatformQuery          *PlatformQuery          `queryParam:"inline" union:"member"`
+	ManagedCacheUsageQuery *ManagedCacheUsageQuery `queryParam:"inline" union:"member"`
 
 	Type QueryType
 }
@@ -76,6 +78,18 @@ func CreateQueryPlatformUsage(platformUsage PlatformQuery) Query {
 	}
 }
 
+func CreateQueryManagedCacheUsage(managedCacheUsage ManagedCacheUsageQuery) Query {
+	typ := QueryTypeManagedCacheUsage
+
+	typStr := ManagedCacheUsageQueryDatasource(typ)
+	managedCacheUsage.Datasource = typStr
+
+	return Query{
+		ManagedCacheUsageQuery: &managedCacheUsage,
+		Type:                   typ,
+	}
+}
+
 func (u *Query) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -124,6 +138,15 @@ func (u *Query) UnmarshalJSON(data []byte) error {
 		u.PlatformQuery = platformQuery
 		u.Type = QueryTypePlatformUsage
 		return nil
+	case "managed_cache_usage":
+		managedCacheUsageQuery := new(ManagedCacheUsageQuery)
+		if err := utils.UnmarshalJSON(data, &managedCacheUsageQuery, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Datasource == managed_cache_usage) type ManagedCacheUsageQuery within Query: %w", string(data), err)
+		}
+
+		u.ManagedCacheUsageQuery = managedCacheUsageQuery
+		u.Type = QueryTypeManagedCacheUsage
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Query", string(data))
@@ -144,6 +167,10 @@ func (u Query) MarshalJSON() ([]byte, error) {
 
 	if u.PlatformQuery != nil {
 		return utils.MarshalJSON(u.PlatformQuery, "", true)
+	}
+
+	if u.ManagedCacheUsageQuery != nil {
+		return utils.MarshalJSON(u.ManagedCacheUsageQuery, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type Query: all fields are null")
@@ -187,6 +214,10 @@ func (c *ChartTileDefinition) GetQueryAgenticUsage() *AgenticQuery {
 
 func (c *ChartTileDefinition) GetQueryPlatformUsage() *PlatformQuery {
 	return c.GetQuery().PlatformQuery
+}
+
+func (c *ChartTileDefinition) GetQueryManagedCacheUsage() *ManagedCacheUsageQuery {
+	return c.GetQuery().ManagedCacheUsageQuery
 }
 
 func (c *ChartTileDefinition) GetChart() Chart {

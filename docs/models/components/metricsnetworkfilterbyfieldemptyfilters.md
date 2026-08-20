@@ -1,0 +1,9 @@
+# MetricsNetworkFilterByFieldEmptyFilters
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `Operator`                                                                                                   | [components.RequestsFilterTypeEmpty](../../models/components/requestsfiltertypeempty.md)                     | :heavy_check_mark:                                                                                           | The type of filter to apply.                                                                                 |
+| `Field`                                                                                                      | [components.MetricsNetworkFilterByField2Field](../../models/components/metricsnetworkfilterbyfield2field.md) | :heavy_check_mark:                                                                                           | The field to filter.                                                                                         |

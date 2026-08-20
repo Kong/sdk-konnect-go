@@ -100,10 +100,6 @@ func (c *CreateAiGatewayModelProviderRequest) GetCreateAIGatewayModelProviderReq
 	return c.GetCreateAIGatewayModelProviderRequest().AIGatewayModelProviderXai
 }
 
-func (c *CreateAiGatewayModelProviderRequest) GetCreateAIGatewayModelProviderRequestVertex() *components.AIGatewayModelProviderVertex {
-	return c.GetCreateAIGatewayModelProviderRequest().AIGatewayModelProviderVertex
-}
-
 func (c *CreateAiGatewayModelProviderRequest) GetCreateAIGatewayModelProviderRequestSagemaker() *components.AIGatewayModelProviderSagemaker {
 	return c.GetCreateAIGatewayModelProviderRequest().AIGatewayModelProviderSagemaker
 }
@@ -269,13 +265,6 @@ func (c *CreateAiGatewayModelProviderResponse) GetAIGatewayModelProviderVllm() *
 func (c *CreateAiGatewayModelProviderResponse) GetAIGatewayModelProviderXai() *components.AIGatewayModelProviderAIGatewayModelProviderXai {
 	if v := c.GetAIGatewayModelProvider(); v != nil {
 		return v.AIGatewayModelProviderAIGatewayModelProviderXai
-	}
-	return nil
-}
-
-func (c *CreateAiGatewayModelProviderResponse) GetAIGatewayModelProviderVertex() *components.AIGatewayModelProviderAIGatewayModelProviderVertex {
-	if v := c.GetAIGatewayModelProvider(); v != nil {
-		return v.AIGatewayModelProviderAIGatewayModelProviderVertex
 	}
 	return nil
 }

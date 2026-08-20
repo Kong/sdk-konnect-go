@@ -7,6 +7,51 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// AIGatewayIdentityProviderKeyAuthPrincipals - Authenticate against Kong Identity instead of local credentials.
+// Mutually exclusive with identity realms.
+type AIGatewayIdentityProviderKeyAuthPrincipals struct {
+	// When true, authenticate against Kong Identity instead of local credentials.
+	Enabled *bool `default:"false" json:"enabled"`
+	// The Kong Identity directory instance to authenticate against.
+	Directory *string `default:"default" json:"directory"`
+	// When true (default), reject the request if no matching principal is found in Kong Identity.
+	// When false, allow the request to continue unauthenticated instead.
+	//
+	ErrorOnMiss *bool `default:"true" json:"error_on_miss"`
+}
+
+func (a AIGatewayIdentityProviderKeyAuthPrincipals) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayIdentityProviderKeyAuthPrincipals) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayIdentityProviderKeyAuthPrincipals) GetEnabled() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.Enabled
+}
+
+func (a *AIGatewayIdentityProviderKeyAuthPrincipals) GetDirectory() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Directory
+}
+
+func (a *AIGatewayIdentityProviderKeyAuthPrincipals) GetErrorOnMiss() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.ErrorOnMiss
+}
+
 // AIGatewayIdentityProviderKeyAuthConfig - Configuration for the Kong Key auth identity provider.
 // For advanced use cases, additional config properties can be sent in the request body.
 // See: https://developer.konghq.com/plugins/key-auth/reference/ for the list of properties
@@ -27,8 +72,12 @@ type AIGatewayIdentityProviderKeyAuthConfig struct {
 	KeyInQuery *bool `default:"true" json:"key_in_query"`
 	// An array of strings containing the names of the keys to look for in the request.
 	//
-	KeyNames             []string       `json:"key_names,omitempty"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
+	KeyNames []string `json:"key_names,omitempty"`
+	// Authenticate against Kong Identity instead of local credentials.
+	// Mutually exclusive with identity realms.
+	//
+	Principals           *AIGatewayIdentityProviderKeyAuthPrincipals `json:"principals,omitempty"`
+	AdditionalProperties map[string]any                              `additionalProperties:"true" json:"-"`
 }
 
 func (a AIGatewayIdentityProviderKeyAuthConfig) MarshalJSON() ([]byte, error) {
@@ -75,6 +124,13 @@ func (a *AIGatewayIdentityProviderKeyAuthConfig) GetKeyNames() []string {
 		return nil
 	}
 	return a.KeyNames
+}
+
+func (a *AIGatewayIdentityProviderKeyAuthConfig) GetPrincipals() *AIGatewayIdentityProviderKeyAuthPrincipals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
 }
 
 func (a *AIGatewayIdentityProviderKeyAuthConfig) GetAdditionalProperties() map[string]any {

@@ -36,6 +36,7 @@ custom := components.AllFilterItemsField("custom_value")
 | `AllFilterItemsFieldControlPlane`              | control_plane                                  |
 | `AllFilterItemsFieldControlPlaneGroup`         | control_plane_group                            |
 | `AllFilterItemsFieldCountryCode`               | country_code                                   |
+| `AllFilterItemsFieldDataPlaneGroup`            | data_plane_group                               |
 | `AllFilterItemsFieldDataPlaneNode`             | data_plane_node                                |
 | `AllFilterItemsFieldDataPlaneNodeVersion`      | data_plane_node_version                        |
 | `AllFilterItemsFieldEnv`                       | env                                            |
@@ -44,12 +45,16 @@ custom := components.AllFilterItemsField("custom_value")
 | `AllFilterItemsFieldLlmCacheStatus`            | llm_cache_status                               |
 | `AllFilterItemsFieldLlmEmbeddingsModel`        | llm_embeddings_model                           |
 | `AllFilterItemsFieldLlmEmbeddingsProvider`     | llm_embeddings_provider                        |
+| `AllFilterItemsFieldManagedCache`              | managed_cache                                  |
 | `AllFilterItemsFieldMcpError`                  | mcp_error                                      |
 | `AllFilterItemsFieldMcpMethod`                 | mcp_method                                     |
 | `AllFilterItemsFieldMcpSessionID`              | mcp_session_id                                 |
 | `AllFilterItemsFieldMcpToolName`               | mcp_tool_name                                  |
+| `AllFilterItemsFieldNetwork`                   | network                                        |
 | `AllFilterItemsFieldPortal`                    | portal                                         |
 | `AllFilterItemsFieldPrincipal`                 | principal                                      |
+| `AllFilterItemsFieldProvider`                  | provider                                       |
+| `AllFilterItemsFieldProviderRegion`            | provider_region                                |
 | `AllFilterItemsFieldRealm`                     | realm                                          |
 | `AllFilterItemsFieldRegion`                    | region                                         |
 | `AllFilterItemsFieldResponseSource`            | response_source                                |
