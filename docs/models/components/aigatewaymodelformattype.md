@@ -26,4 +26,3 @@ custom := components.AIGatewayModelFormatType("custom_value")
 | `AIGatewayModelFormatTypeGemini`      | gemini                                |
 | `AIGatewayModelFormatTypeHuggingface` | huggingface                           |
 | `AIGatewayModelFormatTypeOpenai`      | openai                                |
-| `AIGatewayModelFormatTypeVertex`      | vertex                                |

@@ -151,6 +151,93 @@ func (a *AIGatewayIdentityProviderOpenIDConnectUpstreamHeaders) GetPath() []stri
 	return a.Path
 }
 
+// AIGatewayIdentityProviderOpenIDConnectPrincipals - Map a request to a Kong Identity principal after token verification.
+type AIGatewayIdentityProviderOpenIDConnectPrincipals struct {
+	// When true, look up a Kong Identity principal after token verification.
+	Enabled *bool `default:"false" json:"enabled"`
+	// The Kong Identity directory instance to look up against.
+	Directory *string `default:"default" json:"directory"`
+	// Custom identity name for a custom Kong Identity lookup. When absent and principal_claim is set,
+	// a lookup is performed using principal_claim as the claim name instead of the default sub claim.
+	//
+	PrincipalBy *string `json:"principal_by,omitempty"`
+	// Token claim used for the Kong Identity lookup. If multiple values are set, the claim is inside a
+	// nested object of the token payload. Used together with, or instead of, principal_by.
+	//
+	PrincipalClaim []string `json:"principal_claim,omitempty"`
+	// If a consumer is attached to the matched principal, load it and set it in the request context,
+	// overriding consumer_by.
+	//
+	MatchConsumer *bool `default:"true" json:"match_consumer"`
+	// If consumer groups are attached to the matched principal, load them, overriding consumer_groups_claim.
+	//
+	MatchConsumerGroups *bool `default:"true" json:"match_consumer_groups"`
+	// When true (default), reject the request if no principal is matched in Kong Identity after token
+	// verification. When false, the request continues without an authenticated principal set.
+	//
+	ErrorOnMiss *bool `default:"true" json:"error_on_miss"`
+}
+
+func (a AIGatewayIdentityProviderOpenIDConnectPrincipals) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectPrincipals) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectPrincipals) GetEnabled() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.Enabled
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectPrincipals) GetDirectory() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Directory
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectPrincipals) GetPrincipalBy() *string {
+	if a == nil {
+		return nil
+	}
+	return a.PrincipalBy
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectPrincipals) GetPrincipalClaim() []string {
+	if a == nil {
+		return nil
+	}
+	return a.PrincipalClaim
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectPrincipals) GetMatchConsumer() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.MatchConsumer
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectPrincipals) GetMatchConsumerGroups() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.MatchConsumerGroups
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectPrincipals) GetErrorOnMiss() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.ErrorOnMiss
+}
+
 // AIGatewayIdentityProviderOpenIDConnectConfig - Configuration for the OpenID Connect identity provider.
 // For advanced use cases, additional config properties can be sent in the request body.
 // See: https://developer.konghq.com/plugins/openid-connect/reference/ for the list of properties
@@ -227,8 +314,10 @@ type AIGatewayIdentityProviderOpenIDConnectConfig struct {
 	UpstreamHeaders []AIGatewayIdentityProviderOpenIDConnectUpstreamHeaders `json:"upstream_headers,omitempty"`
 	// Salt used for generating the cache key that is used for caching the token endpoint requests.
 	//
-	CacheTokensSalt      string         `json:"cache_tokens_salt"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
+	CacheTokensSalt string `json:"cache_tokens_salt"`
+	// Map a request to a Kong Identity principal after token verification.
+	Principals           *AIGatewayIdentityProviderOpenIDConnectPrincipals `json:"principals,omitempty"`
+	AdditionalProperties map[string]any                                    `additionalProperties:"true" json:"-"`
 }
 
 func (a AIGatewayIdentityProviderOpenIDConnectConfig) MarshalJSON() ([]byte, error) {
@@ -457,6 +546,13 @@ func (a *AIGatewayIdentityProviderOpenIDConnectConfig) GetCacheTokensSalt() stri
 		return ""
 	}
 	return a.CacheTokensSalt
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectConfig) GetPrincipals() *AIGatewayIdentityProviderOpenIDConnectPrincipals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectConfig) GetAdditionalProperties() map[string]any {
