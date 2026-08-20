@@ -11830,8 +11830,8 @@ paths:
       summary: Get a Data Plane Node Record
       description: Retrieve a specific data plane node record associated to this control plane. A data plane node record contains all the metadata information of the Kong Gateway dataplane.
       parameters:
-        - $ref: '#/components/parameters/pagination-size'
-        - $ref: '#/components/parameters/pagination-tags-filter'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
       responses:
         '200':
           $ref: '#/components/responses/get-node'
@@ -22431,22 +22431,6 @@ components:
         type: integer
         example: 10
       x-speakeasy-terraform-ignore: true
-    pagination-size:
-      description: Number of resources to be returned.
-      in: query
-      name: size
-      schema:
-        type: integer
-        default: 100
-        maximum: 1000
-        minimum: 1
-    pagination-tags-filter:
-      description: 'A list of tags to filter the list of resources on. Multiple tags can be concatenated using '','' to mean AND or using ''/'' to mean OR.'
-      example: 'tag1,tag2'
-      in: query
-      name: tags
-      schema:
-        type: string
     PaginationOffset:
       allowEmptyValue: true
       description: Offset from which to return the next set of resources. Use the value of the 'offset' field from the response of a list operation as input here to paginate through all the resources
@@ -53341,7 +53325,6 @@ components:
           mistral: '#/components/schemas/AIGatewayMistralEmbeddingsModelConfig'
           ollama: '#/components/schemas/AIGatewayOllamaEmbeddingsModelConfig'
           openai: '#/components/schemas/AIGatewayOpenaiEmbeddingsModelConfig'
-          vertex: '#/components/schemas/AIGatewayVertexEmbeddingsModelConfig'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayAzureEmbeddingsModelConfig'
         - $ref: '#/components/schemas/AIGatewayBedrockEmbeddingsModelConfig'
@@ -53350,7 +53333,6 @@ components:
         - $ref: '#/components/schemas/AIGatewayMistralEmbeddingsModelConfig'
         - $ref: '#/components/schemas/AIGatewayOllamaEmbeddingsModelConfig'
         - $ref: '#/components/schemas/AIGatewayOpenaiEmbeddingsModelConfig'
-        - $ref: '#/components/schemas/AIGatewayVertexEmbeddingsModelConfig'
     AIGatewayAzureEmbeddingsModelConfig:
       description: |-
         **Pre-release Feature**
@@ -53505,25 +53487,6 @@ components:
         type:
           type: string
           const: openai
-      additionalProperties: false
-      required:
-        - type
-    AIGatewayVertexEmbeddingsModelConfig:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-
-        Google Vertex-specific configuration for a model.
-      type: object
-      properties:
-        upstream_url:
-          description: The URL of the embeddings model.
-          type: string
-        type:
-          type: string
-          const: vertex
-        gcp_environment:
-          $ref: '#/components/schemas/GCPModelConfig'
       additionalProperties: false
       required:
         - type
@@ -53848,7 +53811,6 @@ components:
             - gemini
             - huggingface
             - openai
-            - vertex
           x-speakeasy-unknown-values: allow
       additionalProperties: false
     AIGatewayTarget:
@@ -53910,7 +53872,6 @@ components:
           ollama: '#/components/schemas/AIGatewayTargetOllamaConfig'
           openai: '#/components/schemas/AIGatewayTargetOpenaiConfig'
           vercel: '#/components/schemas/AIGatewayTargetVercelConfig'
-          vertex: '#/components/schemas/AIGatewayTargetVertexConfig'
           vllm: '#/components/schemas/AIGatewayTargetVllmConfig'
           xai: '#/components/schemas/AIGatewayTargetXaiConfig'
           sagemaker: '#/components/schemas/AIGatewayTargetSagemakerConfig'
@@ -53931,7 +53892,6 @@ components:
         - $ref: '#/components/schemas/AIGatewayTargetOllamaConfig'
         - $ref: '#/components/schemas/AIGatewayTargetOpenaiConfig'
         - $ref: '#/components/schemas/AIGatewayTargetVercelConfig'
-        - $ref: '#/components/schemas/AIGatewayTargetVertexConfig'
         - $ref: '#/components/schemas/AIGatewayTargetVllmConfig'
         - $ref: '#/components/schemas/AIGatewayTargetXaiConfig'
         - $ref: '#/components/schemas/AIGatewayTargetSagemakerConfig'
@@ -55052,91 +55012,6 @@ components:
         type:
           type: string
           const: vercel
-      required:
-        - type
-    AIGatewayTargetVertexConfig:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-
-        Google Vertex-specific configuration for a model.
-      type: object
-      properties:
-        embeddings_dimensions:
-          description: The number of dimensions for embedding outputs.
-          type: integer
-        max_tokens:
-          description: The maximum number of tokens to generate in the response.
-          type: integer
-        input_cost:
-          description: Cost per 1M input tokens for billing and cost tracking.
-          type: number
-        output_cost:
-          description: Cost per 1M output tokens for billing and cost tracking.
-          type: number
-        cache_read_cost:
-          description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
-          type: number
-        cache_write_cost:
-          description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
-          type: number
-        cache_write_cost_list:
-          description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
-          type: array
-          items:
-            $ref: '#/components/schemas/AIGatewayCacheWriteCost'
-        context_window_factor:
-          description: 'Above an input-token threshold, scale input and output pricing by the corresponding factor.'
-          type: array
-          items:
-            $ref: '#/components/schemas/AIGatewayContextWindowFactor'
-        service_tier_factor:
-          description: Multiplier applied to the whole request for a service tier. The default factor is 1.0 when no tier matches.
-          type: array
-          items:
-            $ref: '#/components/schemas/AIGatewayServiceTierFactor'
-        temperature:
-          description: Controls randomness in the model output. Higher values produce more varied responses.
-          type: number
-        top_k:
-          description: Limits the number of highest-probability tokens considered during generation.
-          type: integer
-        top_p:
-          description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
-          type: number
-        upstream_url:
-          description: The upstream URL for the model endpoint.
-          type: string
-          format: uri
-        type:
-          type: string
-          const: vertex
-        gcp_environment:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            Configuration for a model hosted on Google Cloud Project.
-          type: object
-          properties:
-            api_endpoint:
-              description: The custom API endpoint for the Gemini model.
-              type: string
-            location_id:
-              description: The Google Cloud location ID for the model endpoint.
-              type: string
-            project_id:
-              description: The Google Cloud project ID for the model endpoint.
-              type: string
-            endpoint_id:
-              description: |
-                The endpoint ID for the model.
-                This must be set when running a target model on Gemini on Vertex Model Garden.
-              type: string
-          required:
-            - api_endpoint
-            - location_id
-            - project_id
       required:
         - type
     AIGatewayTargetVllmConfig:
@@ -58169,6 +58044,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayMCPToolBase'
+        sources:
+          description: |
+            The explicit list of source MCP Servers whose tools this listener exposes.
+            Each entry is the immutable `name` of a `conversion-only` (toolset) or
+            `upstream-server` (third-party MCP server) MCP Server in the same AI Gateway.
+            All of the referenced source's tools are exposed.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+          example:
+            - kongair-flights
+            - github-mcp
+          minItems: 1
         access:
           $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
         display_name:
@@ -58201,6 +58089,7 @@ components:
       required:
         - type
         - config
+        - sources
         - display_name
         - name
     AIGatewayMCPServerPassthroughListener:
@@ -59285,9 +59174,6 @@ components:
                 - client
                 - redis
               x-speakeasy-unknown-values: allow
-        label:
-          description: The label of the MCP server. This is used to filter the exported MCP tools.
-          type: string
         timeout:
           description: The timeout for calling the tools in milliseconds.
           type: integer
@@ -59342,9 +59228,6 @@ components:
                 - client
                 - redis
               x-speakeasy-unknown-values: allow
-        label:
-          description: The label of the MCP server. This is used to filter the exported MCP tools.
-          type: string
         timeout:
           description: The timeout for calling the tools in milliseconds.
           type: integer
@@ -59834,6 +59717,27 @@ components:
                 type: string
               default:
                 - apikey
+            principals:
+              description: |
+                Authenticate against Kong Identity instead of local credentials.
+                Mutually exclusive with identity realms.
+              type: object
+              properties:
+                enabled:
+                  description: 'When true, authenticate against Kong Identity instead of local credentials.'
+                  type: boolean
+                  default: false
+                directory:
+                  description: The Kong Identity directory instance to authenticate against.
+                  type: string
+                  default: default
+                  pattern: '^[a-zA-Z0-9_-]+$'
+                error_on_miss:
+                  description: |
+                    When true (default), reject the request if no matching principal is found in Kong Identity.
+                    When false, allow the request to continue unauthenticated instead.
+                  type: boolean
+                  default: true
       required:
         - display_name
         - name
@@ -60095,6 +59999,51 @@ components:
               description: |
                 Salt used for generating the cache key that is used for caching the token endpoint requests.
               type: string
+            principals:
+              description: Map a request to a Kong Identity principal after token verification.
+              type: object
+              properties:
+                enabled:
+                  description: 'When true, look up a Kong Identity principal after token verification.'
+                  type: boolean
+                  default: false
+                directory:
+                  description: The Kong Identity directory instance to look up against.
+                  type: string
+                  default: default
+                  pattern: '^[a-zA-Z0-9_-]+$'
+                principal_by:
+                  description: |
+                    Custom identity name for a custom Kong Identity lookup. When absent and principal_claim is set,
+                    a lookup is performed using principal_claim as the claim name instead of the default sub claim.
+                  type: string
+                  minLength: 1
+                principal_claim:
+                  description: |
+                    Token claim used for the Kong Identity lookup. If multiple values are set, the claim is inside a
+                    nested object of the token payload. Used together with, or instead of, principal_by.
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                  minItems: 1
+                match_consumer:
+                  description: |
+                    If a consumer is attached to the matched principal, load it and set it in the request context,
+                    overriding consumer_by.
+                  type: boolean
+                  default: true
+                match_consumer_groups:
+                  description: |
+                    If consumer groups are attached to the matched principal, load them, overriding consumer_groups_claim.
+                  type: boolean
+                  default: true
+                error_on_miss:
+                  description: |
+                    When true (default), reject the request if no principal is matched in Kong Identity after token
+                    verification. When false, the request continues without an authenticated principal set.
+                  type: boolean
+                  default: true
           required:
             - cache_tokens_salt
       required:
@@ -61191,56 +61140,6 @@ components:
       required:
         - type
       title: AIGatewayModelProviderConfigAuthGCP
-    AIGatewayModelProviderVertex:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-
-        Config for Vertex model provider.
-      type: object
-      properties:
-        type:
-          type: string
-          const: vertex
-        display_name:
-          description: The display name for this model provider instance.
-          type: string
-          example: Azure AI SE
-          maxLength: 256
-          minLength: 1
-        name:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
-          example: azure-ai-se
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
-        labels:
-          $ref: '#/components/schemas/PublicLabels'
-        managed_by:
-          $ref: '#/components/schemas/ManagedBy'
-        config:
-          type: object
-          additionalProperties: false
-          properties:
-            auth:
-              discriminator:
-                propertyName: type
-                mapping:
-                  basic: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
-                  vertex: '#/components/schemas/AIGatewayModelProviderConfigAuthVertex'
-              oneOf:
-                - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
-                - $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthVertex'
-          required:
-            - auth
-      required:
-        - type
-        - display_name
-        - name
-        - config
     AIGatewayModelProviderSagemaker:
       description: |-
         **Pre-release Feature**
@@ -61323,34 +61222,6 @@ components:
       required:
         - type
       title: AIGatewayModelProviderConfigAuthSagemaker
-    AIGatewayModelProviderConfigAuthVertex:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-
-        Configuration for Vertex model provider.
-      type: object
-      properties:
-        type:
-          type: string
-          const: vertex
-        use_gcp_service_account:
-          description: Use the Google Cloud Service Account (or user-assigned identity) to authenticate with Vertex-provider models.
-          type: boolean
-          default: true
-          enum:
-            - true
-        service_account_json:
-          description: |
-            Full JSON string of the GCP service account to authenticate. If not set, the service account JSON will be from the environment variable GCP_SERVICE_ACCOUNT.
-            This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-          type: string
-          writeOnly: true
-          x-referenceable: true
-      additionalProperties: false
-      required:
-        - type
-      title: AIGatewayModelProviderConfigAuthVertex
     CreateAIGatewayConfigStoreRequest:
       description: |-
         **Pre-release Feature**
@@ -61502,7 +61373,6 @@ components:
           vercel: '#/components/schemas/AIGatewayModelProviderVercel'
           vllm: '#/components/schemas/AIGatewayModelProviderVllm'
           xai: '#/components/schemas/AIGatewayModelProviderXai'
-          vertex: '#/components/schemas/AIGatewayModelProviderVertex'
           sagemaker: '#/components/schemas/AIGatewayModelProviderSagemaker'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayModelProviderAnthropic'
@@ -61523,7 +61393,6 @@ components:
         - $ref: '#/components/schemas/AIGatewayModelProviderVercel'
         - $ref: '#/components/schemas/AIGatewayModelProviderVllm'
         - $ref: '#/components/schemas/AIGatewayModelProviderXai'
-        - $ref: '#/components/schemas/AIGatewayModelProviderVertex'
         - $ref: '#/components/schemas/AIGatewayModelProviderSagemaker'
     UpdateAIGatewayModelProviderRequest:
       description: |-
@@ -61550,7 +61419,6 @@ components:
           vercel: '#/components/schemas/AIGatewayModelProviderVercel'
           vllm: '#/components/schemas/AIGatewayModelProviderVllm'
           xai: '#/components/schemas/AIGatewayModelProviderXai'
-          vertex: '#/components/schemas/AIGatewayModelProviderVertex'
           sagemaker: '#/components/schemas/AIGatewayModelProviderSagemaker'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayModelProviderAnthropic'
@@ -61571,7 +61439,6 @@ components:
         - $ref: '#/components/schemas/AIGatewayModelProviderVercel'
         - $ref: '#/components/schemas/AIGatewayModelProviderVllm'
         - $ref: '#/components/schemas/AIGatewayModelProviderXai'
-        - $ref: '#/components/schemas/AIGatewayModelProviderVertex'
         - $ref: '#/components/schemas/AIGatewayModelProviderSagemaker'
     AIGatewayModelProvider:
       description: |-
@@ -61606,7 +61473,6 @@ components:
           vercel: '#/components/schemas/AIGatewayModelProviderVercel'
           vllm: '#/components/schemas/AIGatewayModelProviderVllm'
           xai: '#/components/schemas/AIGatewayModelProviderXai'
-          vertex: '#/components/schemas/AIGatewayModelProviderVertex'
           sagemaker: '#/components/schemas/AIGatewayModelProviderSagemaker'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayModelProviderAnthropic'
@@ -61627,7 +61493,6 @@ components:
         - $ref: '#/components/schemas/AIGatewayModelProviderVercel'
         - $ref: '#/components/schemas/AIGatewayModelProviderVllm'
         - $ref: '#/components/schemas/AIGatewayModelProviderXai'
-        - $ref: '#/components/schemas/AIGatewayModelProviderVertex'
         - $ref: '#/components/schemas/AIGatewayModelProviderSagemaker'
       required:
         - id
@@ -61735,6 +61600,27 @@ components:
                 type: string
               default:
                 - apikey
+            principals:
+              description: |
+                Authenticate against Kong Identity instead of local credentials.
+                Mutually exclusive with identity realms.
+              type: object
+              properties:
+                enabled:
+                  description: 'When true, authenticate against Kong Identity instead of local credentials.'
+                  type: boolean
+                  default: false
+                directory:
+                  description: The Kong Identity directory instance to authenticate against.
+                  type: string
+                  default: default
+                  pattern: '^[a-zA-Z0-9_-]+$'
+                error_on_miss:
+                  description: |
+                    When true (default), reject the request if no matching principal is found in Kong Identity.
+                    When false, allow the request to continue unauthenticated instead.
+                  type: boolean
+                  default: true
         id:
           $ref: '#/components/schemas/UUID'
         created_at:
@@ -62003,6 +61889,51 @@ components:
               description: |
                 Salt used for generating the cache key that is used for caching the token endpoint requests.
               type: string
+            principals:
+              description: Map a request to a Kong Identity principal after token verification.
+              type: object
+              properties:
+                enabled:
+                  description: 'When true, look up a Kong Identity principal after token verification.'
+                  type: boolean
+                  default: false
+                directory:
+                  description: The Kong Identity directory instance to look up against.
+                  type: string
+                  default: default
+                  pattern: '^[a-zA-Z0-9_-]+$'
+                principal_by:
+                  description: |
+                    Custom identity name for a custom Kong Identity lookup. When absent and principal_claim is set,
+                    a lookup is performed using principal_claim as the claim name instead of the default sub claim.
+                  type: string
+                  minLength: 1
+                principal_claim:
+                  description: |
+                    Token claim used for the Kong Identity lookup. If multiple values are set, the claim is inside a
+                    nested object of the token payload. Used together with, or instead of, principal_by.
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                  minItems: 1
+                match_consumer:
+                  description: |
+                    If a consumer is attached to the matched principal, load it and set it in the request context,
+                    overriding consumer_by.
+                  type: boolean
+                  default: true
+                match_consumer_groups:
+                  description: |
+                    If consumer groups are attached to the matched principal, load them, overriding consumer_groups_claim.
+                  type: boolean
+                  default: true
+                error_on_miss:
+                  description: |
+                    When true (default), reject the request if no principal is matched in Kong Identity after token
+                    verification. When false, the request continues without an authenticated principal set.
+                  type: boolean
+                  default: true
           required:
             - cache_tokens_salt
         id:
@@ -62593,6 +62524,65 @@ components:
       additionalProperties: false
       required:
         - datasource
+    ManagedCacheUsageQuery:
+      description: |
+        A query targeting the managed cache usage analytics datasource.
+
+        Note: this datasource only retains data for the last 7 days.
+      type: object
+      properties:
+        datasource:
+          type: string
+          enum:
+            - managed_cache_usage
+        metrics:
+          $ref: '#/components/schemas/ManagedCacheUsageMetrics'
+        dimensions:
+          description: List of attributes or entity types to group by.
+          type: array
+          items:
+            type: string
+            enum:
+              - control_plane
+              - data_plane_group
+              - managed_cache
+              - network
+              - provider
+              - provider_region
+              - time
+            x-speakeasy-unknown-values: allow
+          maxItems: 2
+        filters:
+          $ref: '#/components/schemas/ManagedCacheUsageFilters'
+        granularity:
+          $ref: '#/components/schemas/Granularity'
+        time_range:
+          $ref: '#/components/schemas/TimeRange'
+        limit:
+          description: Limits the number of distinct metric groups to return.
+          type: number
+          default: 50
+          maximum: 1000
+      example:
+        datasource: managed_cache_usage
+        time_range:
+          type: relative
+          time_range: 24h
+          tz: EST
+        dimensions:
+          - time
+          - provider
+        filters:
+          - operator: in
+            field: control_plane
+            value:
+              - d5ac5d88-efed-4e10-9dfe-0b0a6646c219
+        granularity: hourly
+        metrics:
+          - cache_memory_utilization_max
+      additionalProperties: false
+      required:
+        - datasource
     PlatformQuery:
       description: A query targeting the platform usage analytics datasource.
       type: object
@@ -62768,11 +62758,13 @@ components:
               llm_usage: '#/components/schemas/LLMQuery'
               agentic_usage: '#/components/schemas/AgenticQuery'
               platform_usage: '#/components/schemas/PlatformQuery'
+              managed_cache_usage: '#/components/schemas/ManagedCacheUsageQuery'
           oneOf:
             - $ref: '#/components/schemas/AdvancedQuery'
             - $ref: '#/components/schemas/LLMQuery'
             - $ref: '#/components/schemas/AgenticQuery'
             - $ref: '#/components/schemas/PlatformQuery'
+            - $ref: '#/components/schemas/ManagedCacheUsageQuery'
         chart:
           $ref: '#/components/schemas/Chart'
       additionalProperties: false
@@ -64719,6 +64711,219 @@ components:
       oneOf:
         - $ref: '#/components/schemas/PlatformRelativeTimeRange'
         - $ref: '#/components/schemas/MetricsAbsoluteTimeRangeDtoV2'
+    ManagedCacheUsageMetrics:
+      description: List of aggregated metrics to collect across the requested time span.
+      type: array
+      items:
+        type: string
+        enum:
+          - cache_eviction_rate
+          - cache_expiration_rate
+          - cache_items_average
+          - cache_memory_utilization_max
+        x-speakeasy-unknown-values: allow
+      default:
+        - cache_memory_utilization_max
+    MetricsDataPlaneGroupFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - data_plane_group
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - data_plane_group
+          required:
+            - operator
+            - field
+      title: Filter by data_plane_group
+    MetricsManagedCacheFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - managed_cache
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - managed_cache
+          required:
+            - operator
+            - field
+      title: Filter by managed_cache
+    MetricsNetworkFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - network
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - network
+          required:
+            - operator
+            - field
+      title: Filter by network
+    MetricsProviderFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - provider
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - provider
+          required:
+            - operator
+            - field
+      title: Filter by provider
+    MetricsProviderRegionFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The values to include in the results.
+              type: array
+              items:
+                type: string
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - provider_region
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - provider_region
+          required:
+            - operator
+            - field
+      title: Filter by provider_region
+    ManagedCacheUsageFilters:
+      description: A list of filters to apply to the query.
+      type: array
+      items:
+        discriminator:
+          propertyName: field
+          mapping:
+            control_plane: '#/components/schemas/MetricsControlPlaneFilterByField'
+            data_plane_group: '#/components/schemas/MetricsDataPlaneGroupFilterByField'
+            managed_cache: '#/components/schemas/MetricsManagedCacheFilterByField'
+            network: '#/components/schemas/MetricsNetworkFilterByField'
+            provider: '#/components/schemas/MetricsProviderFilterByField'
+            provider_region: '#/components/schemas/MetricsProviderRegionFilterByField'
+        oneOf:
+          - $ref: '#/components/schemas/MetricsControlPlaneFilterByField'
+          - $ref: '#/components/schemas/MetricsDataPlaneGroupFilterByField'
+          - $ref: '#/components/schemas/MetricsManagedCacheFilterByField'
+          - $ref: '#/components/schemas/MetricsNetworkFilterByField'
+          - $ref: '#/components/schemas/MetricsProviderFilterByField'
+          - $ref: '#/components/schemas/MetricsProviderRegionFilterByField'
     DonutChart:
       description: |
         A chart that can display one-dimensional data in a hollow, segmented circle.  To use this chart, ensure that
@@ -65053,6 +65258,7 @@ components:
             - control_plane
             - control_plane_group
             - country_code
+            - data_plane_group
             - data_plane_node
             - data_plane_node_version
             - env
@@ -65061,12 +65267,16 @@ components:
             - llm_cache_status
             - llm_embeddings_model
             - llm_embeddings_provider
+            - managed_cache
             - mcp_error
             - mcp_method
             - mcp_session_id
             - mcp_tool_name
+            - network
             - portal
             - principal
+            - provider
+            - provider_region
             - realm
             - region
             - response_source
@@ -76386,10 +76596,10 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.11.3
+    version: 0.14.0
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
-    version: 2.2.1
+    version: 2.2.2
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
     version: 3.4.0
@@ -76410,10 +76620,10 @@ x-input-schemas:
     version: 1.2.0
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.4.6
+    version: 3.5.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect MCP Servers
-    version: 1.24.0
+    version: 1.31.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.1.0
@@ -76422,7 +76632,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.9.9
+    version: 3.9.12
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2
