@@ -2035,6 +2035,8 @@ paths:
       responses:
         '204':
           description: MCP Server deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -5558,6 +5560,62 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - MCP Server Runtime
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/skills':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: list-mcp-server-skills-by-control-plane
+      summary: List Skills by Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Separate control-plane-scoped list endpoint for KO to enumerate skills at deploy time.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/SkillFilter'
+        - $ref: '#/components/parameters/SkillSort'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListSkillsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Skills
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/skills/{skillId}/contents':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+      - $ref: '#/components/parameters/skillId'
+    get:
+      operationId: get-mcp-server-skill-contents-by-control-plane
+      summary: Get Skill Contents by Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        KO-only endpoint that redirects to a presigned S3 URL for the skill's SKILL.md file.
+      responses:
+        '302':
+          description: Found. The `Location` header contains a presigned S3 URL for the skill's content.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Skills
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/status':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -23284,6 +23342,40 @@ components:
       required: true
       schema:
         type: string
+    SkillFilter:
+      name: filter
+      in: query
+      required: false
+      description: Filter skills returned in the response.
+      style: deepObject
+      schema:
+        type: object
+        properties:
+          id:
+            $ref: '#/components/schemas/UuidFieldFilter'
+          display_name:
+            $ref: '#/components/schemas/StringFieldFilter'
+    skillId:
+      name: skillId
+      in: path
+      required: true
+      description: The ID of the skill.
+      schema:
+        type: string
+        format: uuid
+    SkillSort:
+      name: sort
+      required: false
+      in: query
+      description: |
+        Sorts a collection of skills. Supported sort attributes are:
+          - `display_name`
+          - `created_at`
+          - `updated_at`
+
+        Default sort is `display_name` in ascending order.
+      schema:
+        $ref: '#/components/schemas/SortQuery'
     SNIId:
       description: ID of the SNI to lookup
       example: 64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f
@@ -63404,6 +63496,107 @@ components:
         - init_container
         - runtime_container
       title: MCPServerRuntime
+    ListSkillsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Skill'
+        meta:
+          $ref: '#/components/schemas/PaginatedMeta'
+      required:
+        - data
+        - meta
+    SkillFrontmatter:
+      type: object
+      properties:
+        name:
+          description: The machine name declared in the frontmatter.
+          type: string
+          maxLength: 64
+          pattern: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
+        description:
+          description: A description of the skill declared in the frontmatter.
+          type: string
+          maxLength: 1024
+          minLength: 1
+        license:
+          description: License name or reference to a bundled license file.
+          type: string
+        compatibility:
+          description: 'Compatibility information for the skill, indicating environment requirements such as intended product, system packages, and network access.'
+          type: string
+          maxLength: 500
+        metadata:
+          description: Arbitrary key-value metadata for the skill.
+          type: object
+          additionalProperties:
+            type: string
+        allowed_tools:
+          description: Space-separated list of pre-approved tools the skill is permitted to use.
+          type: string
+      required:
+        - name
+        - description
+    Skill:
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the skill.
+          type: string
+          format: uuid
+        context_interface_id:
+          description: The ID of the Context Interface this skill belongs to.
+          type: string
+          format: uuid
+        name:
+          description: The machine name of the skill.
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
+        display_name:
+          description: The human-readable display name of the skill.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the skill.
+          type: string
+          maxLength: 1024
+        frontmatter:
+          $ref: '#/components/schemas/SkillFrontmatter'
+        labels:
+          $ref: '#/components/schemas/Labels'
+        source_type:
+          description: The source type of the skill content.
+          type: string
+          enum:
+            - raw
+        status:
+          description: The current validation status of the skill.
+          type: string
+          enum:
+            - valid
+            - invalid
+          x-speakeasy-unknown-values: allow
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - context_interface_id
+        - name
+        - display_name
+        - description
+        - frontmatter
+        - labels
+        - source_type
+        - status
+        - created_at
+        - updated_at
     AdvancedQuery:
       description: A query targeting the API usage analytics datasource.
       type: object
@@ -76968,6 +77161,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/MCPServerRuntime'
+    ListSkillsResponse:
+      description: A response to listing skills.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListSkillsResponse'
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
@@ -77678,6 +77877,7 @@ tags:
     description: MCP Servers that expose tools for AI Gateway integrations.
   - name: AI Gateway Model Providers
     description: Model providers that define the backend AI service connections for the AI Gateway.
+  - name: Skills
   - name: MCP Servers
   - name: MCP Server Runtime
   - name: Dashboards
@@ -77804,13 +78004,13 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.16.0
+    version: 0.17.0
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.2.2
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.4.0
+    version: 3.4.2
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
     version: 2.1.1
@@ -77831,7 +78031,7 @@ x-input-schemas:
     version: 3.5.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect MCP Servers
-    version: 1.31.0
+    version: 1.34.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.1.0
