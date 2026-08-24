@@ -566,6 +566,8 @@ func (a *AIGatewayIdentityProviderOpenIDConnectConfig) GetAdditionalProperties()
 // This feature is currently in beta and is subject to change.
 //
 // Configuration for an identity provider.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type AIGatewayIdentityProviderOpenIDConnect struct {
 	// The display name for this identity provider instance.
 	DisplayName string `json:"display_name"`

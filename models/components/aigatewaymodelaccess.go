@@ -20,7 +20,15 @@ type AIGatewayModelAccess struct {
 	// List of identity providers for granting access to the model.
 	// At most 1 identity provider of each identity provider type can be referenced.
 	//
+	// Deprecated: use `auth_strategies` instead. The two are mutually exclusive.
+	//
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	IdentityProviders []string `json:"identity_providers,omitempty"`
+	// List of auth strategies for granting access to the model.
+	// At most 1 auth strategy of each auth strategy type can be referenced.
+	//
+	AuthStrategies []string `json:"auth_strategies,omitempty"`
 }
 
 func (a AIGatewayModelAccess) MarshalJSON() ([]byte, error) {
@@ -46,4 +54,11 @@ func (a *AIGatewayModelAccess) GetIdentityProviders() []string {
 		return nil
 	}
 	return a.IdentityProviders
+}
+
+func (a *AIGatewayModelAccess) GetAuthStrategies() []string {
+	if a == nil {
+		return nil
+	}
+	return a.AuthStrategies
 }

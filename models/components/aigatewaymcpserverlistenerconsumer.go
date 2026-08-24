@@ -11,7 +11,7 @@ import (
 // AIGatewayMCPServerListenerConsumer - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 //
-// Identity provider and OAuth 2.0 Protected Resource Metadata configuration
+// Auth strategy and OAuth 2.0 Protected Resource Metadata configuration
 // for granting access to an MCP server.
 type AIGatewayMCPServerListenerConsumer struct {
 	// The type of attributes that ACL is evaluated with.
@@ -30,7 +30,15 @@ type AIGatewayMCPServerListenerConsumer struct {
 	// List of identity providers for granting access to the MCP server.
 	// At most 1 identity provider of each identity provider type can be referenced.
 	//
+	// Deprecated: use `auth_strategies` instead. The two are mutually exclusive.
+	//
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	IdentityProviders []string `json:"identity_providers,omitempty"`
+	// List of auth strategies for granting access to the MCP server.
+	// At most 1 auth strategy of each auth strategy type can be referenced.
+	//
+	AuthStrategies []string `json:"auth_strategies,omitempty"`
 	// OAuth 2.0 Protected Resource Metadata advertised for this MCP server.
 	Metadata *AIGatewayMCPServerProtectedResourceMetadata `json:"metadata,omitempty"`
 }
@@ -69,6 +77,13 @@ func (a *AIGatewayMCPServerListenerConsumer) GetIdentityProviders() []string {
 		return nil
 	}
 	return a.IdentityProviders
+}
+
+func (a *AIGatewayMCPServerListenerConsumer) GetAuthStrategies() []string {
+	if a == nil {
+		return nil
+	}
+	return a.AuthStrategies
 }
 
 func (a *AIGatewayMCPServerListenerConsumer) GetMetadata() *AIGatewayMCPServerProtectedResourceMetadata {
