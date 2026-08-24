@@ -150,6 +150,35 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
       tags:
         - AI Gateways
+    patch:
+      operationId: patch-ai-gateway
+      summary: Patch an AI Gateway
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Partially updates the configuration of an existing AI Gateway. Only the fields included in the request body are changed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchAIGatewayRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PatchAIGatewayResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateways
     delete:
       x-speakeasy-entity-operation:
         terraform-resource: AIGateway#delete
@@ -319,6 +348,153 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
       tags:
         - AI Gateway Agents
+  '/v1/ai-gateways/{gatewayId}/auth-strategies':
+    parameters:
+      - $ref: '#/components/parameters/AIGatewayId'
+    get:
+      operationId: list-ai-gateway-auth-strategies
+      summary: List AI Gateway Auth Strategies
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns a list of auth strategies configured for the AI Gateway.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListAIGatewayAuthStrategiesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Auth Strategies
+    post:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayAuthStrategy#create
+        terraform-datasource: null
+      operationId: create-ai-gateway-auth-strategy
+      summary: Create an AI Gateway Auth Strategy
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Registers a new auth strategy for the AI Gateway.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAIGatewayAuthStrategyRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateAIGatewayAuthStrategyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Auth Strategies
+  '/v1/ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}':
+    parameters:
+      - $ref: '#/components/parameters/AIGatewayId'
+      - $ref: '#/components/parameters/AIGatewayAuthStrategyIdOrName'
+    get:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayAuthStrategy#read
+        terraform-datasource: null
+      operationId: get-ai-gateway-auth-strategy
+      summary: Get an AI Gateway Auth Strategy
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns the details of a specific AI Gateway auth strategy.
+      responses:
+        '200':
+          $ref: '#/components/responses/GetAIGatewayAuthStrategyResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Auth Strategies
+    put:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayAuthStrategy#update
+        terraform-datasource: null
+      operationId: update-ai-gateway-auth-strategy
+      summary: Update an AI Gateway Auth Strategy
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Updates the configuration of an existing AI Gateway auth strategy.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAIGatewayAuthStrategyRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateAIGatewayAuthStrategyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Auth Strategies
+    delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayAuthStrategy#delete
+        terraform-datasource: null
+      operationId: delete-ai-gateway-auth-strategy
+      summary: Delete an AI Gateway Auth Strategy
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Removes a specific AI Gateway auth strategy.
+      responses:
+        '204':
+          description: Auth strategy deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Auth Strategies
   '/v1/ai-gateways/{gatewayId}/ca-certificates':
     parameters:
       - $ref: '#/components/parameters/AIGatewayId'
@@ -1764,6 +1940,8 @@ paths:
         This endpoint is currently in beta and is subject to change.
 
         Returns a list of identity providers configured for the AI Gateway.
+
+        Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies` instead.
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageAfter'
@@ -1778,6 +1956,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      deprecated: true
       tags:
         - AI Gateway Identity Providers
     post:
@@ -1791,6 +1970,8 @@ paths:
         This endpoint is currently in beta and is subject to change.
 
         Registers a new identity provider for the AI Gateway.
+
+        Deprecated: use `POST /ai-gateways/{gatewayId}/auth-strategies` instead.
       requestBody:
         required: true
         content:
@@ -1810,6 +1991,7 @@ paths:
           $ref: '#/components/responses/Conflict'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      deprecated: true
       tags:
         - AI Gateway Identity Providers
   '/v1/ai-gateways/{gatewayId}/identity/{identityProviderIdOrName}':
@@ -1827,6 +2009,8 @@ paths:
         This endpoint is currently in beta and is subject to change.
 
         Returns the details of a specific AI Gateway identity provider.
+
+        Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
       responses:
         '200':
           $ref: '#/components/responses/GetAIGatewayIdentityProviderResponse'
@@ -1838,6 +2022,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      deprecated: true
       tags:
         - AI Gateway Identity Providers
     put:
@@ -1851,6 +2036,8 @@ paths:
         This endpoint is currently in beta and is subject to change.
 
         Updates the configuration of an existing AI Gateway Identity provider.
+
+        Deprecated: use `PUT /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
       requestBody:
         required: true
         content:
@@ -1870,6 +2057,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      deprecated: true
       tags:
         - AI Gateway Identity Providers
     delete:
@@ -1883,6 +2071,8 @@ paths:
         This endpoint is currently in beta and is subject to change.
 
         Removes a specific AI Gateway Identity provider.
+
+        Deprecated: use `DELETE /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
       responses:
         '204':
           description: Identity provider deleted successfully.
@@ -1898,6 +2088,7 @@ paths:
           $ref: '#/components/responses/Conflict'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      deprecated: true
       tags:
         - AI Gateway Identity Providers
   '/v1/ai-gateways/{gatewayId}/mcp-servers':
@@ -2035,6 +2226,8 @@ paths:
       responses:
         '204':
           description: MCP Server deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -5558,6 +5751,62 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - MCP Server Runtime
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/skills':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: list-mcp-server-skills-by-control-plane
+      summary: List Skills by Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Separate control-plane-scoped list endpoint for KO to enumerate skills at deploy time.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/SkillFilter'
+        - $ref: '#/components/parameters/SkillSort'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListSkillsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Skills
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/skills/{skillId}/contents':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+      - $ref: '#/components/parameters/skillId'
+    get:
+      operationId: get-mcp-server-skill-contents-by-control-plane
+      summary: Get Skill Contents by Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        KO-only endpoint that redirects to a presigned S3 URL for the skill's SKILL.md file.
+      responses:
+        '302':
+          description: Found. The `Location` header contains a presigned S3 URL for the skill's content.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Skills
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/status':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -21773,6 +22022,13 @@ components:
       description: The unique ID or name of the AI Gateway agent.
       schema:
         $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+    AIGatewayAuthStrategyIdOrName:
+      name: authStrategyIdOrName
+      in: path
+      required: true
+      description: The unique ID or name of the AI Gateway auth strategy.
+      schema:
+        $ref: '#/components/schemas/AIGatewayEntityIdentifier'
     AIGatewayCACertificateIdOrName:
       name: caCertificateIdOrName
       in: path
@@ -21860,6 +22116,7 @@ components:
       name: identityProviderIdOrName
       in: path
       required: true
+      deprecated: true
       description: The unique ID or name of the AI Gateway Identity provider.
       schema:
         $ref: '#/components/schemas/AIGatewayEntityIdentifier'
@@ -23284,6 +23541,40 @@ components:
       required: true
       schema:
         type: string
+    SkillFilter:
+      name: filter
+      in: query
+      required: false
+      description: Filter skills returned in the response.
+      style: deepObject
+      schema:
+        type: object
+        properties:
+          id:
+            $ref: '#/components/schemas/UuidFieldFilter'
+          display_name:
+            $ref: '#/components/schemas/StringFieldFilter'
+    skillId:
+      name: skillId
+      in: path
+      required: true
+      description: The ID of the skill.
+      schema:
+        type: string
+        format: uuid
+    SkillSort:
+      name: sort
+      required: false
+      in: query
+      description: |
+        Sorts a collection of skills. Supported sort attributes are:
+          - `display_name`
+          - `created_at`
+          - `updated_at`
+
+        Default sort is `display_name` in ascending order.
+      schema:
+        $ref: '#/components/schemas/SortQuery'
     SNIId:
       description: ID of the SNI to lookup
       example: 64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f
@@ -52534,6 +52825,16 @@ components:
         This feature is currently in beta and is subject to change.
       type: object
       properties:
+        deployment_type:
+          description: How this AI Gateway's control plane is deployed. Set at creation time and cannot be changed afterward.
+          type: string
+          example: hybrid
+          default: hybrid
+          enum:
+            - hybrid
+            - managed
+            - serverless
+          x-speakeasy-unknown-values: allow
         display_name:
           description: The display name for this AI Gateway.
           type: string
@@ -52560,7 +52861,7 @@ components:
           format: set
         labels:
           $ref: '#/components/schemas/PublicLabels'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - display_name
         - name
@@ -52596,10 +52897,39 @@ components:
           format: set
         labels:
           $ref: '#/components/schemas/PublicLabels'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - display_name
         - name
+    PatchAIGatewayRequest:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        The request schema for partially updating an AI Gateway.
+      type: object
+      properties:
+        display_name:
+          description: The display name for this AI Gateway.
+          type: string
+          example: My AI Gateway
+          maxLength: 256
+          minLength: 1
+        description:
+          description: The description of the AI Gateway.
+          type: string
+          example: An AI Gateway for my organization.
+          maxLength: 1024
+        proxy_urls:
+          description: Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayProxyURL'
+          format: set
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+      additionalProperties: false
+      title: PatchAIGatewayRequest
     AIGateway:
       description: |-
         **Pre-release Feature**
@@ -52634,6 +52964,17 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         id:
           $ref: '#/components/schemas/UUID'
+        deployment_type:
+          description: How this AI Gateway's control plane is deployed.
+          type: string
+          example: hybrid
+          default: hybrid
+          enum:
+            - hybrid
+            - managed
+            - serverless
+          readOnly: true
+          x-speakeasy-unknown-values: allow
         endpoints:
           description: Object containing AI Gateway access endpoints.
           type: object
@@ -52666,7 +53007,6 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
-      additionalProperties: true
       required:
         - display_name
         - name
@@ -52674,6 +53014,7 @@ components:
         - endpoints
         - created_at
         - updated_at
+        - deployment_type
     CreateAIGatewayCACertificateRequest:
       description: |-
         **Pre-release Feature**
@@ -53675,6 +54016,8 @@ components:
           description: Maximum size of request body to parse. Set to 0 for unlimited.
           type: integer
           default: 8388608
+          maximum: 2147483646
+          minimum: 0
         model:
           description: |-
             **Pre-release Feature**
@@ -53719,6 +54062,8 @@ components:
           description: Maximum size of request body to parse. Set to 0 for unlimited.
           type: integer
           default: 8388608
+          maximum: 2147483646
+          minimum: 0
         balancer:
           $ref: '#/components/schemas/AIGatewayModelBalancerConfig'
         proxy:
@@ -53752,6 +54097,8 @@ components:
           description: 'The status code Kong responds with when all properties of a route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the route is configured to only accept the `https` protocol.'
           type: integer
           default: 426
+          maximum: 599
+          minimum: 100
         methods:
           description: A list of HTTP methods that match this route.
           type: array
@@ -53778,6 +54125,8 @@ components:
           description: 'A number used to choose which route resolves a given request when several routes match it using regexes simultaneously. When two routes match the path and have the same `regex_priority`, the older one (lowest `created_at`) is used. Note that the priority for non-regex routes is different (longer non-regex routes are matched before shorter ones).'
           type: integer
           default: 0
+          maximum: 2147483647
+          minimum: -2147483648
         request_buffering:
           description: 'Whether to enable request body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that receive data with chunked transfer encoding.'
           type: boolean
@@ -54651,6 +55000,8 @@ components:
               description: Maximum retry attempts for redirection.
               type: integer
               default: 5
+              maximum: 2147483646
+              minimum: 0
             nodes:
               description: Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
               type: array
@@ -54682,6 +55033,8 @@ components:
           description: Database to use for the Redis connection when using the `redis` strategy
           type: integer
           default: 0
+          maximum: 2147483646
+          minimum: 0
         host:
           description: |
             A string representing a host name, such as example.com.
@@ -54851,6 +55204,8 @@ components:
           description: the port of the pgvector database
           type: integer
           default: 5432
+          maximum: 65535
+          minimum: 0
         ssl:
           type: object
           additionalProperties: false
@@ -55073,9 +55428,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55109,6 +55468,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55136,9 +55497,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55172,6 +55537,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55216,9 +55583,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55252,6 +55623,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55293,9 +55666,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55329,6 +55706,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55352,9 +55731,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55388,6 +55771,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55436,9 +55821,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55472,6 +55861,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55499,9 +55890,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55535,6 +55930,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55562,9 +55959,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55598,6 +55999,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55621,9 +56024,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55657,6 +56064,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55682,9 +56091,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55718,6 +56131,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55749,9 +56164,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55785,6 +56204,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55814,9 +56235,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55850,6 +56275,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55883,9 +56310,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55919,6 +56350,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -55950,9 +56383,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -55986,6 +56423,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -56009,9 +56448,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -56045,6 +56488,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -56068,9 +56513,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -56104,6 +56553,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -56127,9 +56578,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -56163,6 +56618,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -56187,9 +56644,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -56223,6 +56684,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -56246,9 +56709,13 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         max_tokens:
           description: The maximum number of tokens to generate in the response.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -56282,6 +56749,8 @@ components:
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
+          maximum: 2147483646
+          minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
@@ -56402,9 +56871,20 @@ components:
           description: |
             List of identity providers for granting access to the agent.
             At most 1 identity provider of each identity provider type can be referenced.
+
+            Deprecated: use `auth_strategies` instead. The two are mutually exclusive.
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayIdentityProviderReference'
+          deprecated: true
+          maxItems: 1
+        auth_strategies:
+          description: |
+            List of auth strategies for granting access to the agent.
+            At most 1 auth strategy of each auth strategy type can be referenced.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayAuthStrategyReference'
           maxItems: 1
       additionalProperties: false
     AIGatewayModelAccess:
@@ -56421,9 +56901,19 @@ components:
           description: |
             List of identity providers for granting access to the model.
             At most 1 identity provider of each identity provider type can be referenced.
+
+            Deprecated: use `auth_strategies` instead. The two are mutually exclusive.
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayIdentityProviderReference'
+          deprecated: true
+        auth_strategies:
+          description: |
+            List of auth strategies for granting access to the model.
+            At most 1 auth strategy of each auth strategy type can be referenced.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayAuthStrategyReference'
       additionalProperties: false
     AIGatewayMCPACLs:
       description: |-
@@ -56478,6 +56968,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -56486,12 +56978,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
     KonnectConfigStoreVault:
       description: |-
         **Pre-release Feature**
@@ -56649,6 +57145,8 @@ components:
                 A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
               type: integer
               default: 0
+              maximum: 4294967295
+              minimum: 0
             resurrect_ttl:
               description: |
                 Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -56657,12 +57155,16 @@ components:
                 The default is ~3 years to support uninterrupted service during outages.
               type: integer
               default: 100000000
+              maximum: 4294967295
+              minimum: 0
             ttl:
               description: |
                 Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
                 For non-zero values, use a minimum of 60 seconds.
               type: integer
               default: 0
+              maximum: 4294967295
+              minimum: 0
             assume_role_arn:
               description: |
                 The ARN of the role to assume when retrieving secrets from AWS Secrets Manager.
@@ -56775,6 +57277,8 @@ components:
                 A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
               type: integer
               default: 0
+              maximum: 4294967295
+              minimum: 0
             resurrect_ttl:
               description: |
                 Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -56783,12 +57287,16 @@ components:
                 The default is ~3 years to support uninterrupted service during outages.
               type: integer
               default: 100000000
+              maximum: 4294967295
+              minimum: 0
             ttl:
               description: |
                 Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
                 For non-zero values, use a minimum of 60 seconds.
               type: integer
               default: 0
+              maximum: 4294967295
+              minimum: 0
             project_id:
               description: |
                 The project ID from your Google API Console.
@@ -56863,6 +57371,8 @@ components:
                 A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
               type: integer
               default: 0
+              maximum: 4294967295
+              minimum: 0
             resurrect_ttl:
               description: |
                 Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -56871,12 +57381,16 @@ components:
                 The default is ~3 years to support uninterrupted service during outages.
               type: integer
               default: 100000000
+              maximum: 4294967295
+              minimum: 0
             ttl:
               description: |
                 Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
                 For non-zero values, use a minimum of 60 seconds.
               type: integer
               default: 0
+              maximum: 4294967295
+              minimum: 0
             credentials_prefix:
               description: |
                 The prefix for the credentials stored in the Azure Key Vault.
@@ -57005,6 +57519,8 @@ components:
                 A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
               type: integer
               default: 0
+              maximum: 4294967295
+              minimum: 0
             resurrect_ttl:
               description: |
                 Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57013,12 +57529,16 @@ components:
                 The default is ~3 years to support uninterrupted service during outages.
               type: integer
               default: 100000000
+              maximum: 4294967295
+              minimum: 0
             ttl:
               description: |
                 Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
                 For non-zero values, use a minimum of 60 seconds.
               type: integer
               default: 0
+              maximum: 4294967295
+              minimum: 0
             account:
               description: |
                 The CyberArk Secrets Manager organization account name.
@@ -57158,6 +57678,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57166,12 +57688,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -57235,6 +57761,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57243,12 +57771,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -57327,6 +57859,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57335,12 +57869,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -57423,6 +57961,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57431,12 +57971,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -57521,6 +58065,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57529,12 +58075,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -57608,6 +58158,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57616,12 +58168,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -57695,6 +58251,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57703,12 +58261,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -57776,6 +58338,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57784,12 +58348,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -57857,6 +58425,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57865,12 +58435,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -57942,6 +58516,8 @@ components:
             A value of 0 disables negative caching. Kong will retry fetching the secret after neg_ttl expires.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         resurrect_ttl:
           description: |
             Time (in seconds) that secrets remain in use after expiration (config.ttl ends).
@@ -57950,12 +58526,16 @@ components:
             The default is ~3 years to support uninterrupted service during outages.
           type: integer
           default: 100000000
+          maximum: 4294967295
+          minimum: 0
         ttl:
           description: |
             Time-to-live (in seconds) for a cached secret. A value of 0 disables rotation.
             For non-zero values, use a minimum of 60 seconds.
           type: integer
           default: 0
+          maximum: 4294967295
+          minimum: 0
         host:
           description: The hostname of your HashiCorp vault.
           type: string
@@ -58367,6 +58947,8 @@ components:
               description: Maximum size of request body to parse. Set to 0 for unlimited.
               type: integer
               default: 8388608
+              maximum: 2147483646
+              minimum: 0
             logging:
               description: |-
                 **Pre-release Feature**
@@ -58384,13 +58966,15 @@ components:
                   type: integer
                   example: 524288
                   default: 1048576
+                  maximum: 2147483646
+                  minimum: 0
           required:
             - url
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - display_name
         - name
@@ -58456,6 +59040,8 @@ components:
               description: Maximum size of request body to parse. Set to 0 for unlimited.
               type: integer
               default: 8388608
+              maximum: 2147483646
+              minimum: 0
             logging:
               description: |-
                 **Pre-release Feature**
@@ -58473,13 +59059,15 @@ components:
                   type: integer
                   example: 524288
                   default: 1048576
+                  maximum: 2147483646
+                  minimum: 0
           required:
             - url
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - display_name
         - name
@@ -58545,6 +59133,8 @@ components:
               description: Maximum size of request body to parse. Set to 0 for unlimited.
               type: integer
               default: 8388608
+              maximum: 2147483646
+              minimum: 0
             logging:
               description: |-
                 **Pre-release Feature**
@@ -58562,6 +59152,8 @@ components:
                   type: integer
                   example: 524288
                   default: 1048576
+                  maximum: 2147483646
+                  minimum: 0
           required:
             - url
         labels:
@@ -58574,7 +59166,7 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - display_name
         - name
@@ -58623,7 +59215,7 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - display_name
         - name
@@ -58668,7 +59260,7 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - display_name
         - name
@@ -58719,7 +59311,6 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
-      additionalProperties: true
       required:
         - display_name
         - name
@@ -58945,7 +59536,7 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - display_name
         - name
@@ -58976,7 +59567,7 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - display_name
         - name
@@ -59025,7 +59616,6 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
-      additionalProperties: true
       required:
         - display_name
         - name
@@ -59048,6 +59638,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayMCPConversionTool'
+          minItems: 1
         display_name:
           description: The display name for the MCP Server.
           type: string
@@ -59074,7 +59665,7 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - type
         - config
@@ -59096,6 +59687,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayMCPConversionTool'
+          minItems: 1
         access:
           $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
         display_name:
@@ -59124,7 +59716,7 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - type
         - config
@@ -59141,11 +59733,6 @@ components:
           const: listener
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerNoUpstreamConfig'
-        tools:
-          description: List of tools exposed by this MCP Server.
-          type: array
-          items:
-            $ref: '#/components/schemas/AIGatewayMCPToolBase'
         sources:
           description: |
             The explicit list of source MCP Servers whose tools this listener exposes.
@@ -59187,7 +59774,7 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - type
         - config
@@ -59238,7 +59825,7 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - type
         - config
@@ -59288,7 +59875,7 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
-      additionalProperties: true
+      additionalProperties: false
       required:
         - type
         - config
@@ -59399,6 +59986,7 @@ components:
             Default access control rules for allowing or denying consumer groups to tools.
           allOf:
             - $ref: '#/components/schemas/AIGatewayMCPACLs'
+      additionalProperties: false
       required:
         - acl_attribute_type
       title: AIGatewayMCPServerBaseACLPropertiesConsumer
@@ -59433,6 +60021,7 @@ components:
             Default access control rules for allowing or denying consumer groups to tools.
           allOf:
             - $ref: '#/components/schemas/AIGatewayMCPACLs'
+      additionalProperties: false
       required:
         - acl_attribute_type
         - access_token_claim_field
@@ -59456,7 +60045,7 @@ components:
         **Pre-release Feature**
         This feature is currently in beta and is subject to change.
 
-        Identity provider and OAuth 2.0 Protected Resource Metadata configuration
+        Auth strategy and OAuth 2.0 Protected Resource Metadata configuration
         for granting access to an MCP server.
       type: object
       properties:
@@ -59485,14 +60074,26 @@ components:
           description: |
             List of identity providers for granting access to the MCP server.
             At most 1 identity provider of each identity provider type can be referenced.
+
+            Deprecated: use `auth_strategies` instead. The two are mutually exclusive.
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayIdentityProviderReference'
+          deprecated: true
+          maxItems: 1
+        auth_strategies:
+          description: |
+            List of auth strategies for granting access to the MCP server.
+            At most 1 auth strategy of each auth strategy type can be referenced.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayAuthStrategyReference'
           maxItems: 1
         metadata:
           description: OAuth 2.0 Protected Resource Metadata advertised for this MCP server.
           allOf:
             - $ref: '#/components/schemas/AIGatewayMCPServerProtectedResourceMetadata'
+      additionalProperties: false
       required:
         - acl_attribute_type
       title: AIGatewayMCPServerBaseACLPropertiesConsumer
@@ -59501,7 +60102,7 @@ components:
         **Pre-release Feature**
         This feature is currently in beta and is subject to change.
 
-        Identity provider and OAuth 2.0 Protected Resource Metadata configuration
+        Auth strategy and OAuth 2.0 Protected Resource Metadata configuration
         for granting access to an MCP server.
       type: object
       properties:
@@ -59534,14 +60135,26 @@ components:
           description: |
             List of identity providers for granting access to the MCP server.
             At most 1 identity provider of each identity provider type can be referenced.
+
+            Deprecated: use `auth_strategies` instead. The two are mutually exclusive.
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayIdentityProviderReference'
+          deprecated: true
+          maxItems: 1
+        auth_strategies:
+          description: |
+            List of auth strategies for granting access to the MCP server.
+            At most 1 auth strategy of each auth strategy type can be referenced.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayAuthStrategyReference'
           maxItems: 1
         metadata:
           description: OAuth 2.0 Protected Resource Metadata advertised for this MCP server.
           allOf:
             - $ref: '#/components/schemas/AIGatewayMCPServerProtectedResourceMetadata'
+      additionalProperties: false
       required:
         - acl_attribute_type
         - access_token_claim_field
@@ -59717,6 +60330,8 @@ components:
               description: Maximum retry attempts for redirection.
               type: integer
               default: 5
+              maximum: 2147483646
+              minimum: 0
             nodes:
               description: Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
               type: array
@@ -59748,6 +60363,8 @@ components:
           description: Database to use for the Redis connection when using the `redis` strategy
           type: integer
           default: 0
+          maximum: 2147483646
+          minimum: 0
         host:
           description: |
             A string representing a host name, such as example.com.
@@ -59956,6 +60573,8 @@ components:
           description: 'The status code Kong responds with when all properties of a route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the route is configured to only accept the `https` protocol.'
           type: integer
           default: 426
+          maximum: 599
+          minimum: 100
         methods:
           description: A list of HTTP methods that match this route.
           type: array
@@ -59982,6 +60601,8 @@ components:
           description: 'A number used to choose which route resolves a given request when several routes match it using regexes simultaneously. When two routes match the path and have the same `regex_priority`, the older one (lowest `created_at`) is used. Note that the priority for non-regex routes is different (longer non-regex routes are matched before shorter ones).'
           type: integer
           default: 0
+          maximum: 2147483647
+          minimum: -2147483648
         request_buffering:
           description: 'Whether to enable request body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that receive data with chunked transfer encoding.'
           type: boolean
@@ -60041,6 +60662,8 @@ components:
           description: Maximum size of request body to parse. Set to 0 for unlimited.
           type: integer
           default: 8388608
+          maximum: 2147483646
+          minimum: 0
         server:
           $ref: '#/components/schemas/AIGatewayMCPServerServerConfigBase'
       additionalProperties: false
@@ -60114,6 +60737,8 @@ components:
           description: Maximum size of request body to parse. Set to 0 for unlimited.
           type: integer
           default: 8388608
+          maximum: 2147483646
+          minimum: 0
         server:
           $ref: '#/components/schemas/AIGatewayMCPServerServerConfigBase'
         url:
@@ -60157,6 +60782,8 @@ components:
           description: Maximum size of request body to parse. Set to 0 for unlimited.
           type: integer
           default: 8388608
+          maximum: 2147483646
+          minimum: 0
         server:
           $ref: '#/components/schemas/AIGatewayMCPServerServerConfigBase'
         url:
@@ -60202,6 +60829,8 @@ components:
           description: Maximum size of request body to parse. Set to 0 for unlimited.
           type: integer
           default: 8388608
+          maximum: 2147483646
+          minimum: 0
         server:
           $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerServerConfig'
         url:
@@ -60269,6 +60898,8 @@ components:
               description: The time-to-live (TTL) for each session in seconds.
               type: integer
               default: 86400
+              maximum: 2147483646
+              minimum: 0
             strategy:
               description: 'The strategy for the session. If the value is ''client'', the session is encrypted into MCP session id assigned to the client. If the value is not ''client'', the session is stored in the configured database.'
               type: string
@@ -60280,6 +60911,8 @@ components:
           description: The timeout for calling the tools in milliseconds.
           type: integer
           default: 10000
+          maximum: 2147483646
+          minimum: 0
       additionalProperties: false
     AIGatewayMCPServerUpstreamServerServerConfig:
       description: Server-side configuration specific to `upstream-server` mode.
@@ -60323,6 +60956,8 @@ components:
               description: The time-to-live (TTL) for each session in seconds.
               type: integer
               default: 86400
+              maximum: 2147483646
+              minimum: 0
             strategy:
               description: 'The strategy for the session. If the value is ''client'', the session is encrypted into MCP session id assigned to the client. If the value is not ''client'', the session is stored in the configured database.'
               type: string
@@ -60334,6 +60969,8 @@ components:
           description: The timeout for calling the tools in milliseconds.
           type: integer
           default: 10000
+          maximum: 2147483646
+          minimum: 0
         preserve_upstream_tool_names:
           description: |
             If enabled, the original upstream tool names are preserved as-is when Kong acts as an MCP server.
@@ -60491,21 +61128,330 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          conversion-only: '#/components/schemas/AIGatewayMCPServerConversionOnly'
-          conversion-listener: '#/components/schemas/AIGatewayMCPServerConversionListener'
-          listener: '#/components/schemas/AIGatewayMCPServerListener'
-          passthrough-listener: '#/components/schemas/AIGatewayMCPServerPassthroughListener'
-          upstream-server: '#/components/schemas/AIGatewayMCPServerUpstreamServer'
+          conversion-only: '#/components/schemas/AIGatewayMCPServerConversionOnlyResponse'
+          conversion-listener: '#/components/schemas/AIGatewayMCPServerConversionListenerResponse'
+          listener: '#/components/schemas/AIGatewayMCPServerListenerResponse'
+          passthrough-listener: '#/components/schemas/AIGatewayMCPServerPassthroughListenerResponse'
+          upstream-server: '#/components/schemas/AIGatewayMCPServerUpstreamServerResponse'
       oneOf:
-        - $ref: '#/components/schemas/AIGatewayMCPServerConversionOnly'
-        - $ref: '#/components/schemas/AIGatewayMCPServerConversionListener'
-        - $ref: '#/components/schemas/AIGatewayMCPServerListener'
-        - $ref: '#/components/schemas/AIGatewayMCPServerPassthroughListener'
-        - $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServer'
+        - $ref: '#/components/schemas/AIGatewayMCPServerConversionOnlyResponse'
+        - $ref: '#/components/schemas/AIGatewayMCPServerConversionListenerResponse'
+        - $ref: '#/components/schemas/AIGatewayMCPServerListenerResponse'
+        - $ref: '#/components/schemas/AIGatewayMCPServerPassthroughListenerResponse'
+        - $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerResponse'
       required:
         - id
         - created_at
         - updated_at
+    AIGatewayMCPServerConversionOnlyResponse:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        type:
+          type: string
+          const: conversion-only
+        config:
+          $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig'
+        tools:
+          description: List of tools exposed by this MCP Server.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayMCPConversionTool'
+          minItems: 1
+        display_name:
+          description: The display name for the MCP Server.
+          type: string
+          example: Kong Air Flights
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
+          example: kongair-flights
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        enabled:
+          description: Whether the MCP Server is enabled.
+          type: boolean
+          example: true
+          default: true
+        policies:
+          $ref: '#/components/schemas/AIGatewayPolicyReferences'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - type
+        - config
+        - display_name
+        - name
+        - id
+        - created_at
+        - updated_at
+      title: AIGatewayMCPServerConversionOnlyResponse
+    AIGatewayMCPServerConversionListenerResponse:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        type:
+          type: string
+          const: conversion-listener
+        config:
+          $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfig'
+        tools:
+          description: List of tools exposed by this MCP Server.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayMCPConversionTool'
+          minItems: 1
+        access:
+          $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
+        display_name:
+          description: The display name for the MCP Server.
+          type: string
+          example: Kong Air Flights
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
+          example: kongair-flights
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        enabled:
+          description: Whether the MCP Server is enabled.
+          type: boolean
+          example: true
+          default: true
+        policies:
+          $ref: '#/components/schemas/AIGatewayPolicyReferences'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - type
+        - config
+        - display_name
+        - name
+        - id
+        - created_at
+        - updated_at
+      title: AIGatewayMCPServerConversionListenerResponse
+    AIGatewayMCPServerListenerResponse:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        type:
+          type: string
+          const: listener
+        config:
+          $ref: '#/components/schemas/AIGatewayMCPServerNoUpstreamConfig'
+        sources:
+          description: |
+            The explicit list of source MCP Servers whose tools this listener exposes.
+            Each entry is the immutable `name` of a `conversion-only` (toolset) or
+            `upstream-server` (third-party MCP server) MCP Server in the same AI Gateway.
+            All of the referenced source's tools are exposed.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+          example:
+            - kongair-flights
+            - github-mcp
+          minItems: 1
+        access:
+          $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
+        display_name:
+          description: The display name for the MCP Server.
+          type: string
+          example: Kong Air Flights
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
+          example: kongair-flights
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        enabled:
+          description: Whether the MCP Server is enabled.
+          type: boolean
+          example: true
+          default: true
+        policies:
+          $ref: '#/components/schemas/AIGatewayPolicyReferences'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - type
+        - config
+        - sources
+        - display_name
+        - name
+        - id
+        - created_at
+        - updated_at
+      title: AIGatewayMCPServerListenerResponse
+    AIGatewayMCPServerPassthroughListenerResponse:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        type:
+          type: string
+          const: passthrough-listener
+        config:
+          $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamConfig'
+        tools:
+          description: List of tools exposed by this MCP Server.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayMCPToolBase'
+        access:
+          $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
+        display_name:
+          description: The display name for the MCP Server.
+          type: string
+          example: Kong Air Flights
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
+          example: kongair-flights
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        enabled:
+          description: Whether the MCP Server is enabled.
+          type: boolean
+          example: true
+          default: true
+        policies:
+          $ref: '#/components/schemas/AIGatewayPolicyReferences'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - type
+        - config
+        - display_name
+        - name
+        - id
+        - created_at
+        - updated_at
+      title: AIGatewayMCPServerPassthroughListenerResponse
+    AIGatewayMCPServerUpstreamServerResponse:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        type:
+          type: string
+          const: upstream-server
+        config:
+          $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerConfig'
+        tools:
+          description: List of tools exposed by this MCP Server.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayMCPUpstreamTool'
+        access:
+          $ref: '#/components/schemas/AIGatewayMCPServerBaseACLProperties'
+        display_name:
+          description: The display name for the MCP Server.
+          type: string
+          example: Kong Air Flights
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
+          example: kongair-flights
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        enabled:
+          description: Whether the MCP Server is enabled.
+          type: boolean
+          example: true
+          default: true
+        policies:
+          $ref: '#/components/schemas/AIGatewayPolicyReferences'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - type
+        - config
+        - display_name
+        - name
+        - id
+        - created_at
+        - updated_at
+      title: AIGatewayMCPServerUpstreamServerResponse
     AIGatewayMCPToolBase:
       description: 'A tool exposed by the MCP Server, mapped to a backend HTTP endpoint.'
       type: object
@@ -60751,6 +61697,7 @@ components:
       description: Reference to a identity provider instance by name.
       type: string
       example: okta-ai-se
+      deprecated: true
     AIGatewayIdentityProviderKeyAuth:
       description: |-
         **Pre-release Feature**
@@ -60840,6 +61787,7 @@ components:
                     When false, allow the request to continue unauthenticated instead.
                   type: boolean
                   default: true
+      deprecated: true
       required:
         - display_name
         - name
@@ -61148,11 +62096,418 @@ components:
                   default: true
           required:
             - cache_tokens_salt
+      deprecated: true
       required:
         - display_name
         - name
         - type
       title: AIGatewayIdentityProviderOpenIDConnectConfig
+    AIGatewayAuthStrategyReference:
+      description: Reference to an auth strategy instance by name.
+      type: string
+      example: okta-ai-se
+    AIGatewayAuthStrategyKeyAuth:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Configuration for an auth strategy.
+      type: object
+      properties:
+        display_name:
+          description: The display name for this auth strategy instance.
+          type: string
+          example: Okta AI SE
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this auth strategy instance, used as a stable human-readable reference. This value is immutable after creation.
+          example: okta-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        type:
+          type: string
+          const: key-auth
+        config:
+          description: |
+            Configuration for the key-auth auth strategy.
+            For advanced use cases, additional config properties can be sent in the request body.
+            See: https://developer.konghq.com/plugins/key-auth/reference/ for the list of properties
+          type: object
+          additionalProperties: true
+          properties:
+            hide_credentials:
+              description: |
+                An optional boolean value telling the plugin to show or hide the credential from the upstream service.
+                If true, the plugin strips the credential from the request.
+              type: boolean
+              default: true
+            key_in_body:
+              description: |
+                If enabled, reads the request body.
+                Supported MIME types: application/www-form-urlencoded, application/json, and multipart/form-data.
+              type: boolean
+              default: false
+            key_in_header:
+              description: |
+                If enabled (default), the plugin reads the request header and tries to find the key in it.
+              type: boolean
+              default: true
+            key_in_query:
+              description: |
+                If enabled (default), the plugin reads the query parameter in the request and tries to find the key in it.
+              type: boolean
+              default: true
+            key_names:
+              description: |
+                An array of strings containing the names of the keys to look for in the request.
+              type: array
+              items:
+                type: string
+              default:
+                - apikey
+            principals:
+              description: |
+                Authenticate against Kong Identity instead of local credentials.
+                Mutually exclusive with identity realms.
+              type: object
+              properties:
+                enabled:
+                  description: 'When true, authenticate against Kong Identity instead of local credentials.'
+                  type: boolean
+                  default: false
+                directory:
+                  description: The Kong Identity directory instance to authenticate against.
+                  type: string
+                  default: default
+                  pattern: '^[a-zA-Z0-9_-]+$'
+                error_on_miss:
+                  description: |
+                    When true (default), reject the request if no matching principal is found in Kong Identity.
+                    When false, allow the request to continue unauthenticated instead.
+                  type: boolean
+                  default: true
+      required:
+        - display_name
+        - name
+        - type
+      title: AIGatewayAuthStrategyKeyAuthConfig
+    AIGatewayAuthStrategyOpenIDConnect:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Configuration for an auth strategy.
+      type: object
+      properties:
+        display_name:
+          description: The display name for this auth strategy instance.
+          type: string
+          example: Okta AI SE
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this auth strategy instance, used as a stable human-readable reference. This value is immutable after creation.
+          example: okta-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        type:
+          type: string
+          const: openid-connect
+        config:
+          description: |
+            Configuration for the OpenID Connect auth strategy.
+            For advanced use cases, additional config properties can be sent in the request body.
+            See: https://developer.konghq.com/plugins/openid-connect/reference/ for the list of properties
+          type: object
+          additionalProperties: true
+          properties:
+            auth_methods:
+              description: Types of credentials/grants to enable.
+              type: array
+              items:
+                type: string
+                enum:
+                  - authorization_code
+                  - bearer
+                  - client_credentials
+                  - introspection
+                  - kong_oauth2
+                  - password
+                  - refresh_token
+                  - session
+                  - userinfo
+                x-speakeasy-unknown-values: allow
+              default:
+                - bearer
+                - client_credentials
+            client_id:
+              description: |
+                An array of strings representing the client id for the OpenID Connect provider.
+                When multiple values are provided, the client ID and secrets pairs correspond based on their locations in the array.
+              type: array
+              items:
+                type: string
+            client_secret:
+              description: |
+                An array of strings representing the client secret for the OpenID Connect provider.
+                When multiple values are provided, the client ID and secrets pairs correspond based on their locations in the array.
+              type: array
+              items:
+                type: string
+              writeOnly: true
+            client_alg:
+              description: Algorithm to use for `client_secret_jwt` or `private_key_jwt` authentication.
+              type: array
+              items:
+                type: string
+                enum:
+                  - HS256
+                  - HS384
+                  - HS512
+                  - RS256
+                  - RS384
+                  - RS512
+                  - ES256
+                  - ES384
+                  - ES512
+                  - PS256
+                  - PS384
+                  - PS512
+                  - EdDSA
+                x-speakeasy-unknown-values: allow
+            client_auth:
+              description: Client authentication methods used with the identity provider.
+              type: array
+              items:
+                type: string
+                enum:
+                  - client_secret_basic
+                  - client_secret_post
+                  - client_secret_jwt
+                  - private_key_jwt
+                  - tls_client_auth
+                  - self_signed_tls_client_auth
+                  - none
+                x-speakeasy-unknown-values: allow
+            consumer_claims:
+              description: |
+                An array containing an array of string paths representing the location of the claim in a nested object.
+                For example, to map to user.info.id, set [ "user", "info", "id" ].
+              type: array
+              items:
+                type: array
+                items:
+                  type: string
+            consumer_groups_claim:
+              description: |
+                The claim used for consumer groups mapping.
+                If multiple values are set, it means the claim is inside a nested object of the token payload.
+              type: array
+              items:
+                type: string
+            consumer_groups_optional:
+              description: |
+                Do not terminate the request if consumer groups mapping fails.
+              type: boolean
+              default: false
+            consumer_by:
+              description: Consumer fields used when mapping a token claim to a Kong consumer.
+              type: array
+              items:
+                type: string
+                enum:
+                  - id
+                  - username
+                  - custom_id
+                x-speakeasy-unknown-values: allow
+              default:
+                - username
+                - custom_id
+            consumer_optional:
+              description: |
+                Do not terminate the request if consumer mapping fails.
+              type: boolean
+              default: false
+            credential_claim:
+              description: Claim path used to derive virtual credentials when consumer mapping is not used.
+              type: array
+              items:
+                type: string
+              default:
+                - sub
+            issuer:
+              description: URL that identifies the OpenID Provider
+              type: string
+              example: 'https://dev-123456.okta.com'
+            introspection_endpoint:
+              description: Overrides the introspection endpoint returned by discovery.
+              type: string
+              format: uri
+              x-referenceable: true
+            mtls_introspection_endpoint:
+              description: mTLS alias for the introspection endpoint.
+              type: string
+              format: uri
+            cache_introspection:
+              description: Cache introspection endpoint requests.
+              type: boolean
+              default: true
+            jwks_endpoint:
+              description: Overrides the JWKS endpoint returned by discovery.
+              type: string
+              format: uri
+            leeway:
+              description: 'Leeway, in seconds, for validating token time claims.'
+              type: integer
+              default: 0
+              minimum: 0
+            scopes:
+              description: |
+                This field is referenceable.
+              type: array
+              items:
+                type: string
+              default:
+                - openid
+            audience_required:
+              description: Audiences required in the access token or introspection response.
+              type: array
+              items:
+                type: string
+            ssl_verify:
+              type: boolean
+              default: true
+            hide_credentials:
+              description: Remove credentials used for authentication before proxying the request upstream.
+              type: boolean
+              default: true
+            keepalive:
+              description: Reuse HTTP client connections for identity provider requests.
+              type: boolean
+              default: true
+            timeout:
+              description: 'Network I/O timeout, in milliseconds, for identity provider requests.'
+              type: integer
+              default: 10000
+              minimum: 0
+            http_version:
+              description: HTTP version used for identity provider requests.
+              type: number
+              default: 1.1
+              enum:
+                - 1
+                - 1.1
+              x-speakeasy-unknown-values: allow
+            http_proxy:
+              description: HTTP proxy used for identity provider requests.
+              type: string
+              format: uri
+            http_proxy_authorization:
+              description: Authorization header value sent to the HTTP proxy.
+              type: string
+              writeOnly: true
+            https_proxy:
+              description: HTTPS proxy used for identity provider requests.
+              type: string
+              format: uri
+            https_proxy_authorization:
+              description: Authorization header value sent to the HTTPS proxy.
+              type: string
+              writeOnly: true
+            no_proxy:
+              description: Comma-separated hosts that bypass the configured proxies.
+              type: string
+            upstream_headers:
+              description: Map token claims to upstream headers using path-based access.
+              type: array
+              items:
+                type: object
+                required:
+                  - header
+                  - path
+                properties:
+                  header:
+                    description: The name of the header.
+                    type: string
+                  path:
+                    description: The path of the header value.
+                    type: array
+                    items:
+                      type: string
+                    minItems: 1
+            cache_tokens_salt:
+              description: |
+                Salt used for generating the cache key that is used for caching the token endpoint requests.
+              type: string
+            principals:
+              description: Map a request to a Kong Identity principal after token verification.
+              type: object
+              properties:
+                enabled:
+                  description: 'When true, look up a Kong Identity principal after token verification.'
+                  type: boolean
+                  default: false
+                directory:
+                  description: The Kong Identity directory instance to look up against.
+                  type: string
+                  default: default
+                  pattern: '^[a-zA-Z0-9_-]+$'
+                principal_by:
+                  description: |
+                    Custom identity name for a custom Kong Identity lookup. When absent and principal_claim is set,
+                    a lookup is performed using principal_claim as the claim name instead of the default sub claim.
+                  type: string
+                  minLength: 1
+                principal_claim:
+                  description: |
+                    Token claim used for the Kong Identity lookup. If multiple values are set, the claim is inside a
+                    nested object of the token payload. Used together with, or instead of, principal_by.
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                  minItems: 1
+                match_consumer:
+                  description: |
+                    If a consumer is attached to the matched principal, load it and set it in the request context,
+                    overriding consumer_by.
+                  type: boolean
+                  default: true
+                match_consumer_groups:
+                  description: |
+                    If consumer groups are attached to the matched principal, load them, overriding consumer_groups_claim.
+                  type: boolean
+                  default: true
+                error_on_miss:
+                  description: |
+                    When true (default), reject the request if no principal is matched in Kong Identity after token
+                    verification. When false, the request continues without an authenticated principal set.
+                  type: boolean
+                  default: true
+          required:
+            - cache_tokens_salt
+      required:
+        - display_name
+        - name
+        - type
+      title: AIGatewayAuthStrategyOpenIDConnectConfig
     AIGatewayModelProviderReference:
       description: Reference to a model provider instance by name.
       type: string
@@ -62604,6 +63959,7 @@ components:
       description: |-
         **Pre-release Feature**
         This feature is currently in beta and is subject to change.
+      deprecated: true
       discriminator:
         propertyName: type
         mapping:
@@ -62616,6 +63972,7 @@ components:
       description: |-
         **Pre-release Feature**
         This feature is currently in beta and is subject to change.
+      deprecated: true
       discriminator:
         propertyName: type
         mapping:
@@ -62628,6 +63985,7 @@ components:
       description: |-
         **Pre-release Feature**
         This feature is currently in beta and is subject to change.
+      deprecated: true
       discriminator:
         propertyName: type
         mapping:
@@ -62729,6 +64087,7 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
+      deprecated: true
       required:
         - display_name
         - name
@@ -63044,6 +64403,7 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
+      deprecated: true
       required:
         - display_name
         - name
@@ -63052,6 +64412,458 @@ components:
         - created_at
         - updated_at
       title: AIGatewayIdentityProviderOpenIDConnectConfig
+    CreateAIGatewayAuthStrategyRequest:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      discriminator:
+        propertyName: type
+        mapping:
+          key-auth: '#/components/schemas/AIGatewayAuthStrategyKeyAuth'
+          openid-connect: '#/components/schemas/AIGatewayAuthStrategyOpenIDConnect'
+      oneOf:
+        - $ref: '#/components/schemas/AIGatewayAuthStrategyKeyAuth'
+        - $ref: '#/components/schemas/AIGatewayAuthStrategyOpenIDConnect'
+    UpdateAIGatewayAuthStrategyRequest:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      discriminator:
+        propertyName: type
+        mapping:
+          key-auth: '#/components/schemas/AIGatewayAuthStrategyKeyAuth'
+          openid-connect: '#/components/schemas/AIGatewayAuthStrategyOpenIDConnect'
+      oneOf:
+        - $ref: '#/components/schemas/AIGatewayAuthStrategyKeyAuth'
+        - $ref: '#/components/schemas/AIGatewayAuthStrategyOpenIDConnect'
+    AIGatewayAuthStrategy:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      discriminator:
+        propertyName: type
+        mapping:
+          key-auth: '#/components/schemas/AIGatewayAuthStrategyKeyAuthResponse'
+          openid-connect: '#/components/schemas/AIGatewayAuthStrategyOpenIDConnectResponse'
+      oneOf:
+        - $ref: '#/components/schemas/AIGatewayAuthStrategyKeyAuthResponse'
+        - $ref: '#/components/schemas/AIGatewayAuthStrategyOpenIDConnectResponse'
+    AIGatewayAuthStrategyKeyAuthResponse:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        display_name:
+          description: The display name for this auth strategy instance.
+          type: string
+          example: Okta AI SE
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this auth strategy instance, used as a stable human-readable reference. This value is immutable after creation.
+          example: okta-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        type:
+          type: string
+          const: key-auth
+        config:
+          description: |
+            Configuration for the key-auth auth strategy.
+            For advanced use cases, additional config properties can be sent in the request body.
+            See: https://developer.konghq.com/plugins/key-auth/reference/ for the list of properties
+          type: object
+          additionalProperties: true
+          properties:
+            hide_credentials:
+              description: |
+                An optional boolean value telling the plugin to show or hide the credential from the upstream service.
+                If true, the plugin strips the credential from the request.
+              type: boolean
+              default: true
+            key_in_body:
+              description: |
+                If enabled, reads the request body.
+                Supported MIME types: application/www-form-urlencoded, application/json, and multipart/form-data.
+              type: boolean
+              default: false
+            key_in_header:
+              description: |
+                If enabled (default), the plugin reads the request header and tries to find the key in it.
+              type: boolean
+              default: true
+            key_in_query:
+              description: |
+                If enabled (default), the plugin reads the query parameter in the request and tries to find the key in it.
+              type: boolean
+              default: true
+            key_names:
+              description: |
+                An array of strings containing the names of the keys to look for in the request.
+              type: array
+              items:
+                type: string
+              default:
+                - apikey
+            principals:
+              description: |
+                Authenticate against Kong Identity instead of local credentials.
+                Mutually exclusive with identity realms.
+              type: object
+              properties:
+                enabled:
+                  description: 'When true, authenticate against Kong Identity instead of local credentials.'
+                  type: boolean
+                  default: false
+                directory:
+                  description: The Kong Identity directory instance to authenticate against.
+                  type: string
+                  default: default
+                  pattern: '^[a-zA-Z0-9_-]+$'
+                error_on_miss:
+                  description: |
+                    When true (default), reject the request if no matching principal is found in Kong Identity.
+                    When false, allow the request to continue unauthenticated instead.
+                  type: boolean
+                  default: true
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - display_name
+        - name
+        - type
+        - id
+        - created_at
+        - updated_at
+      title: AIGatewayAuthStrategyKeyAuthConfig
+    AIGatewayAuthStrategyOpenIDConnectResponse:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+      type: object
+      properties:
+        display_name:
+          description: The display name for this auth strategy instance.
+          type: string
+          example: Okta AI SE
+          maxLength: 256
+          minLength: 1
+        name:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            A user-defined unique identifier for this auth strategy instance, used as a stable human-readable reference. This value is immutable after creation.
+          example: okta-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        type:
+          type: string
+          const: openid-connect
+        config:
+          description: |
+            Configuration for the OpenID Connect auth strategy.
+            For advanced use cases, additional config properties can be sent in the request body.
+            See: https://developer.konghq.com/plugins/openid-connect/reference/ for the list of properties
+          type: object
+          additionalProperties: true
+          properties:
+            auth_methods:
+              description: Types of credentials/grants to enable.
+              type: array
+              items:
+                type: string
+                enum:
+                  - authorization_code
+                  - bearer
+                  - client_credentials
+                  - introspection
+                  - kong_oauth2
+                  - password
+                  - refresh_token
+                  - session
+                  - userinfo
+                x-speakeasy-unknown-values: allow
+              default:
+                - bearer
+                - client_credentials
+            client_id:
+              description: |
+                An array of strings representing the client id for the OpenID Connect provider.
+                When multiple values are provided, the client ID and secrets pairs correspond based on their locations in the array.
+              type: array
+              items:
+                type: string
+            client_secret:
+              description: |
+                An array of strings representing the client secret for the OpenID Connect provider.
+                When multiple values are provided, the client ID and secrets pairs correspond based on their locations in the array.
+              type: array
+              items:
+                type: string
+              writeOnly: true
+            client_alg:
+              description: Algorithm to use for `client_secret_jwt` or `private_key_jwt` authentication.
+              type: array
+              items:
+                type: string
+                enum:
+                  - HS256
+                  - HS384
+                  - HS512
+                  - RS256
+                  - RS384
+                  - RS512
+                  - ES256
+                  - ES384
+                  - ES512
+                  - PS256
+                  - PS384
+                  - PS512
+                  - EdDSA
+                x-speakeasy-unknown-values: allow
+            client_auth:
+              description: Client authentication methods used with the identity provider.
+              type: array
+              items:
+                type: string
+                enum:
+                  - client_secret_basic
+                  - client_secret_post
+                  - client_secret_jwt
+                  - private_key_jwt
+                  - tls_client_auth
+                  - self_signed_tls_client_auth
+                  - none
+                x-speakeasy-unknown-values: allow
+            consumer_claims:
+              description: |
+                An array containing an array of string paths representing the location of the claim in a nested object.
+                For example, to map to user.info.id, set [ "user", "info", "id" ].
+              type: array
+              items:
+                type: array
+                items:
+                  type: string
+            consumer_groups_claim:
+              description: |
+                The claim used for consumer groups mapping.
+                If multiple values are set, it means the claim is inside a nested object of the token payload.
+              type: array
+              items:
+                type: string
+            consumer_groups_optional:
+              description: |
+                Do not terminate the request if consumer groups mapping fails.
+              type: boolean
+              default: false
+            consumer_by:
+              description: Consumer fields used when mapping a token claim to a Kong consumer.
+              type: array
+              items:
+                type: string
+                enum:
+                  - id
+                  - username
+                  - custom_id
+                x-speakeasy-unknown-values: allow
+              default:
+                - username
+                - custom_id
+            consumer_optional:
+              description: |
+                Do not terminate the request if consumer mapping fails.
+              type: boolean
+              default: false
+            credential_claim:
+              description: Claim path used to derive virtual credentials when consumer mapping is not used.
+              type: array
+              items:
+                type: string
+              default:
+                - sub
+            issuer:
+              description: URL that identifies the OpenID Provider
+              type: string
+              example: 'https://dev-123456.okta.com'
+            introspection_endpoint:
+              description: Overrides the introspection endpoint returned by discovery.
+              type: string
+              format: uri
+              x-referenceable: true
+            mtls_introspection_endpoint:
+              description: mTLS alias for the introspection endpoint.
+              type: string
+              format: uri
+            cache_introspection:
+              description: Cache introspection endpoint requests.
+              type: boolean
+              default: true
+            jwks_endpoint:
+              description: Overrides the JWKS endpoint returned by discovery.
+              type: string
+              format: uri
+            leeway:
+              description: 'Leeway, in seconds, for validating token time claims.'
+              type: integer
+              default: 0
+              minimum: 0
+            scopes:
+              description: |
+                This field is referenceable.
+              type: array
+              items:
+                type: string
+              default:
+                - openid
+            audience_required:
+              description: Audiences required in the access token or introspection response.
+              type: array
+              items:
+                type: string
+            ssl_verify:
+              type: boolean
+              default: true
+            hide_credentials:
+              description: Remove credentials used for authentication before proxying the request upstream.
+              type: boolean
+              default: true
+            keepalive:
+              description: Reuse HTTP client connections for identity provider requests.
+              type: boolean
+              default: true
+            timeout:
+              description: 'Network I/O timeout, in milliseconds, for identity provider requests.'
+              type: integer
+              default: 10000
+              minimum: 0
+            http_version:
+              description: HTTP version used for identity provider requests.
+              type: number
+              default: 1.1
+              enum:
+                - 1
+                - 1.1
+              x-speakeasy-unknown-values: allow
+            http_proxy:
+              description: HTTP proxy used for identity provider requests.
+              type: string
+              format: uri
+            http_proxy_authorization:
+              description: Authorization header value sent to the HTTP proxy.
+              type: string
+              writeOnly: true
+            https_proxy:
+              description: HTTPS proxy used for identity provider requests.
+              type: string
+              format: uri
+            https_proxy_authorization:
+              description: Authorization header value sent to the HTTPS proxy.
+              type: string
+              writeOnly: true
+            no_proxy:
+              description: Comma-separated hosts that bypass the configured proxies.
+              type: string
+            upstream_headers:
+              description: Map token claims to upstream headers using path-based access.
+              type: array
+              items:
+                type: object
+                required:
+                  - header
+                  - path
+                properties:
+                  header:
+                    description: The name of the header.
+                    type: string
+                  path:
+                    description: The path of the header value.
+                    type: array
+                    items:
+                      type: string
+                    minItems: 1
+            cache_tokens_salt:
+              description: |
+                Salt used for generating the cache key that is used for caching the token endpoint requests.
+              type: string
+            principals:
+              description: Map a request to a Kong Identity principal after token verification.
+              type: object
+              properties:
+                enabled:
+                  description: 'When true, look up a Kong Identity principal after token verification.'
+                  type: boolean
+                  default: false
+                directory:
+                  description: The Kong Identity directory instance to look up against.
+                  type: string
+                  default: default
+                  pattern: '^[a-zA-Z0-9_-]+$'
+                principal_by:
+                  description: |
+                    Custom identity name for a custom Kong Identity lookup. When absent and principal_claim is set,
+                    a lookup is performed using principal_claim as the claim name instead of the default sub claim.
+                  type: string
+                  minLength: 1
+                principal_claim:
+                  description: |
+                    Token claim used for the Kong Identity lookup. If multiple values are set, the claim is inside a
+                    nested object of the token payload. Used together with, or instead of, principal_by.
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                  minItems: 1
+                match_consumer:
+                  description: |
+                    If a consumer is attached to the matched principal, load it and set it in the request context,
+                    overriding consumer_by.
+                  type: boolean
+                  default: true
+                match_consumer_groups:
+                  description: |
+                    If consumer groups are attached to the matched principal, load them, overriding consumer_groups_claim.
+                  type: boolean
+                  default: true
+                error_on_miss:
+                  description: |
+                    When true (default), reject the request if no principal is matched in Kong Identity after token
+                    verification. When false, the request continues without an authenticated principal set.
+                  type: boolean
+                  default: true
+          required:
+            - cache_tokens_salt
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - display_name
+        - name
+        - type
+        - id
+        - created_at
+        - updated_at
+      title: AIGatewayAuthStrategyOpenIDConnectConfig
     PublicLabels:
       description: |
         Public labels store information about an entity that can be used for filtering a list of objects.
@@ -63084,6 +64896,23 @@ components:
               example: 'kong:trace:1234567890'
             detail:
               example: Too Many Requests
+    CursorMetaWithTotal:
+      description: Pagination metadata with exact total. Useful when the collection size is inexpensive to provide.
+      type: object
+      properties:
+        page:
+          allOf:
+            - $ref: '#/components/schemas/CursorMetaPage'
+            - type: object
+              required:
+                - total
+              properties:
+                total:
+                  description: Total number of objects in the collection
+                  type: number
+                  example: 974
+      required:
+        - page
     MCPServerPodsStatus:
       type: object
       properties:
@@ -63404,6 +65233,107 @@ components:
         - init_container
         - runtime_container
       title: MCPServerRuntime
+    ListSkillsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Skill'
+        meta:
+          $ref: '#/components/schemas/PaginatedMeta'
+      required:
+        - data
+        - meta
+    SkillFrontmatter:
+      type: object
+      properties:
+        name:
+          description: The machine name declared in the frontmatter.
+          type: string
+          maxLength: 64
+          pattern: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
+        description:
+          description: A description of the skill declared in the frontmatter.
+          type: string
+          maxLength: 1024
+          minLength: 1
+        license:
+          description: License name or reference to a bundled license file.
+          type: string
+        compatibility:
+          description: 'Compatibility information for the skill, indicating environment requirements such as intended product, system packages, and network access.'
+          type: string
+          maxLength: 500
+        metadata:
+          description: Arbitrary key-value metadata for the skill.
+          type: object
+          additionalProperties:
+            type: string
+        allowed_tools:
+          description: Space-separated list of pre-approved tools the skill is permitted to use.
+          type: string
+      required:
+        - name
+        - description
+    Skill:
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the skill.
+          type: string
+          format: uuid
+        context_interface_id:
+          description: The ID of the Context Interface this skill belongs to.
+          type: string
+          format: uuid
+        name:
+          description: The machine name of the skill.
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
+        display_name:
+          description: The human-readable display name of the skill.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the skill.
+          type: string
+          maxLength: 1024
+        frontmatter:
+          $ref: '#/components/schemas/SkillFrontmatter'
+        labels:
+          $ref: '#/components/schemas/Labels'
+        source_type:
+          description: The source type of the skill content.
+          type: string
+          enum:
+            - raw
+        status:
+          description: The current validation status of the skill.
+          type: string
+          enum:
+            - valid
+            - invalid
+          x-speakeasy-unknown-values: allow
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - context_interface_id
+        - name
+        - display_name
+        - description
+        - frontmatter
+        - labels
+        - source_type
+        - status
+        - created_at
+        - updated_at
     AdvancedQuery:
       description: A query targeting the API usage analytics datasource.
       type: object
@@ -76369,6 +78299,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/AIGateway'
+    PatchAIGatewayResponse:
+      description: AI Gateway updated successfully.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AIGateway'
     CreateAIGatewayModelResponse:
       description: Model created successfully.
       content:
@@ -76546,7 +78482,7 @@ components:
                 items:
                   $ref: '#/components/schemas/AIGatewayDataPlaneNode'
               meta:
-                $ref: '#/components/schemas/CursorMeta'
+                $ref: '#/components/schemas/CursorMetaWithTotal'
             required:
               - data
               - meta
@@ -76944,6 +78880,40 @@ components:
             required:
               - data
               - meta
+    CreateAIGatewayAuthStrategyResponse:
+      description: Auth strategy created successfully.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AIGatewayAuthStrategy'
+    GetAIGatewayAuthStrategyResponse:
+      description: A successful response returning an AI Gateway Auth Strategy.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AIGatewayAuthStrategy'
+    UpdateAIGatewayAuthStrategyResponse:
+      description: Auth strategy updated successfully.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AIGatewayAuthStrategy'
+    ListAIGatewayAuthStrategiesResponse:
+      description: A paginated list of AI Gateway Auth Strategies.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIGatewayAuthStrategy'
+              meta:
+                $ref: '#/components/schemas/CursorMeta'
+            required:
+              - data
+              - meta
     TooManyRequests:
       description: Too Many Requests
       content:
@@ -76968,6 +78938,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/MCPServerRuntime'
+    ListSkillsResponse:
+      description: A response to listing skills.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListSkillsResponse'
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
@@ -77669,7 +79645,9 @@ tags:
   - name: AI Gateway Consumer Groups
     description: Consumer groups for applying rate-limiting and access policies to AI Gateway traffic.
   - name: AI Gateway Identity Providers
-    description: Identity providers for authenticating users and accessing AI Gateway resources.
+    description: Deprecated in favor of AI Gateway Auth Strategies. Identity providers for authenticating users and accessing AI Gateway resources.
+  - name: AI Gateway Auth Strategies
+    description: Auth strategies for authenticating clients accessing AI Gateway resources.
   - name: AI Gateway Models
     description: 'Models that define routing, capabilities, and backend targets for the AI Gateway.'
   - name: AI Gateway Policies
@@ -77678,6 +79656,7 @@ tags:
     description: MCP Servers that expose tools for AI Gateway integrations.
   - name: AI Gateway Model Providers
     description: Model providers that define the backend AI service connections for the AI Gateway.
+  - name: Skills
   - name: MCP Servers
   - name: MCP Server Runtime
   - name: Dashboards
@@ -77804,13 +79783,13 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.16.0
+    version: 0.23.1
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.2.2
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.4.0
+    version: 3.4.2
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
     version: 2.1.1
@@ -77831,7 +79810,7 @@ x-input-schemas:
     version: 3.5.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect MCP Servers
-    version: 1.31.0
+    version: 1.34.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.1.0
