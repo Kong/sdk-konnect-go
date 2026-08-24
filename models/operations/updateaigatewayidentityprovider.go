@@ -12,6 +12,8 @@ type UpdateAiGatewayIdentityProviderRequest struct {
 	// The unique ID of the AI Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
 	// The unique ID or name of the AI Gateway Identity provider.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	IdentityProviderIDOrName               string                                            `pathParam:"style=simple,explode=false,name=identityProviderIdOrName"`
 	UpdateAIGatewayIdentityProviderRequest components.UpdateAIGatewayIdentityProviderRequest `request:"mediaType=application/json"`
 }

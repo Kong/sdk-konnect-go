@@ -119,7 +119,7 @@ func main() {
                     },
                 },
             )),
-            IdentityProviders: []string{
+            AuthStrategies: []string{
                 "okta-ai-se",
             },
         },
@@ -296,7 +296,7 @@ func main() {
                         },
                     },
                 )),
-                IdentityProviders: []string{
+                AuthStrategies: []string{
                     "okta-ai-se",
                 },
             },

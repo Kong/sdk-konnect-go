@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: bf6386baa876e0bb1c5ed89acbc55b35
+  docChecksum: ce6385997260ee8db553b8084cef6395
   docVersion: 3.15.0
-  speakeasyVersion: 1.795.1
+  speakeasyVersion: 1.795.3
   generationVersion: 2.932.9
-  releaseVersion: 0.62.0
-  configChecksum: 15d7e35deadaf320e14ab3e600483bcd
+  releaseVersion: 0.63.0
+  configChecksum: 9d52751deb281df9e03f82b9495bb5bf
 persistentEdits:
-  generation_id: d5d8dcbb-8184-4191-bc33-63a7e4e55daf
-  pristine_commit_hash: e84bb8de96adcd6caa5a5fd3d7e095ce058162d5
-  pristine_tree_hash: 0ec7435aaf5ba8ed5ca54385921d5c39b0c52ce8
+  generation_id: f23af6f2-7724-491f-a558-0b2a2af61a64
+  pristine_commit_hash: a113860672184d493676f2f6780f42e2a314a77a
+  pristine_tree_hash: a0acbfb6bce7addcf1f7435f4259e1fe60733478
 features:
   go:
     acceptHeaders: 2.81.2
@@ -59,6 +59,10 @@ trackedFiles:
     id: 4b029782c90e
     last_write_checksum: sha1:91c761779c09157e30bafa06401c59c8c7ece9d5
     pristine_git_object: 84f61842f5e049df4ed50905e0bdfb888b161462
+  aigatewayauthstrategies.go:
+    id: e0566c2c8fa2
+    last_write_checksum: sha1:33548375d4ecd1aa5e4cf4b736afa17ed45129a4
+    pristine_git_object: f59aaa930908afafea2e60b518deca314cb0fed1
   aigatewaycacertificates.go:
     id: 4861309b57db
     last_write_checksum: sha1:0ced30459ef83a8d71b4df2614845789461da918
@@ -85,12 +89,12 @@ trackedFiles:
     pristine_git_object: 7c73f302b4f04f3106ba5c5fb1514640d3f5dd70
   aigatewayidentityproviders.go:
     id: 7dd00ef8242a
-    last_write_checksum: sha1:e99d05ef5b36aaf211c789f95d5598cd0b3574b5
-    pristine_git_object: 9d3b0a4f326385bf9f8f63a35496cf43d27b0272
+    last_write_checksum: sha1:885bd2d80ccb2063b6ac6456de5d53e63cca2da2
+    pristine_git_object: fd41a33c6baedb89f1a2664008103871fecd8b52
   aigatewaymcpservers.go:
     id: 57c8640f5e67
-    last_write_checksum: sha1:f7a3bbdcfa1e41f62cafdd7aae6cac7e09f9b824
-    pristine_git_object: b8e227d1896c81dd12912baf508df9d551e7bb89
+    last_write_checksum: sha1:dbfa74ba11ed82b5f3f48658a2147028cd9045c3
+    pristine_git_object: 575a18db97c6375785b9329a0ec6479d33c04a24
   aigatewaymodelproviders.go:
     id: 6f77f9392ac3
     last_write_checksum: sha1:89ad5d8d9aa8a900563adf91c4ef75464e076e49
@@ -109,8 +113,8 @@ trackedFiles:
     pristine_git_object: 080ade388f6283a64d2f586d0c705112c21ed671
   aigateways.go:
     id: 9fffa7b957ee
-    last_write_checksum: sha1:51d28025ac2f83229aafabc797070fcbdc652f7c
-    pristine_git_object: 6de914225822d1f1ec4a865f23c010b187c2f944
+    last_write_checksum: sha1:296cb3d2ac72616ba85bb35f2dca0f7741ba6228
+    pristine_git_object: 62861624ac1c011357b084d97a01ddf5044996e0
   aigatewaysnis.go:
     id: 88158f4a5b30
     last_write_checksum: sha1:8bbfe42b499fa9f3dbfef1e5fb456bb336e409cb
@@ -485,20 +489,20 @@ trackedFiles:
     pristine_git_object: 798229dc9e2efed5d699e771b252f68275b07fb6
   docs/models/components/aigateway.md:
     id: 8d67bcd072a8
-    last_write_checksum: sha1:0fe6249f0d597109d68cc8a7a04515381937e4c1
-    pristine_git_object: 2316da1ee32f78342234a54cec368862486d5dda
+    last_write_checksum: sha1:3f67f00a4beb76d19c525cd16da08fc6e893404e
+    pristine_git_object: 35f439b81dd2b9329e143c5651d2af431e6d8074
   docs/models/components/aigatewayacls.md:
     id: 715d036eaad0
     last_write_checksum: sha1:7520903ef57f3c9f370daea5a9066d4f97941836
     pristine_git_object: cefb17ad8a0f36a1783845ce12a1430a7286aace
   docs/models/components/aigatewayagent.md:
     id: a4e91ad77939
-    last_write_checksum: sha1:a955581982428b87d969613fbdb9b24a0943ca60
-    pristine_git_object: a8a0e57b17335483f361ac5b0a953cc79b09ad1b
+    last_write_checksum: sha1:374d3fab9b1caacc7a5a461efeee3e32f60acf13
+    pristine_git_object: e10c5caf763cd078ebea7f605c6a3abdf56f70bd
   docs/models/components/aigatewayagentaccess.md:
     id: 9786aa217eed
-    last_write_checksum: sha1:854d68c0f2e5ca4fba7e9a5710fcc334c5bf526e
-    pristine_git_object: ec0e4180cbdd2c5b2df777bb00cf9fcd9d7c9181
+    last_write_checksum: sha1:8167fb113118ab4c22501e8f1841bf999d1956b6
+    pristine_git_object: 825e0511adede11bf57aad83ae0273a88a51e695
   docs/models/components/aigatewayagentconfig.md:
     id: 20193c645f4e
     last_write_checksum: sha1:4e83a3c1183ce9e1dc2ffbb64ef0284f74986239
@@ -511,6 +515,74 @@ trackedFiles:
     id: 4f95cef962ae
     last_write_checksum: sha1:c8fe219192cbeda12d46c2ad1d88dc80a09c0cd9
     pristine_git_object: 35bfdf93af8f46e83065721d259a6d7e03f44d5f
+  docs/models/components/aigatewayauthstrategy.md:
+    id: 511a9adedab9
+    last_write_checksum: sha1:91508f26081f05733a034d1df62df0f4019f5ccb
+    pristine_git_object: 3ce1444e9c7bdef5e5d38add6a448c2204aa3ec8
+  docs/models/components/aigatewayauthstrategykeyauth.md:
+    id: 46fc018d5eec
+    last_write_checksum: sha1:cff325277aa9db4027c3ad4bbaec4ad2e0188669
+    pristine_git_object: eae4318555c70414eb0738e8456731a6984107b5
+  docs/models/components/aigatewayauthstrategykeyauthconfig.md:
+    id: 73033ff2d9db
+    last_write_checksum: sha1:929545facd1b61a3b739f0f0afd6a71502a57912
+    pristine_git_object: 4715be6a04fbf8898c8da4c24aa2be7498c18db2
+  docs/models/components/aigatewayauthstrategykeyauthprincipals.md:
+    id: 6c9930481d7b
+    last_write_checksum: sha1:13718e7f6c68624dfbaa1f2c20837c0ae6527ef2
+    pristine_git_object: 476bbfefda4a33b736ea9c4967066b3f749e2046
+  docs/models/components/aigatewayauthstrategykeyauthresponse.md:
+    id: 9ba51747f77c
+    last_write_checksum: sha1:4087a5a638de5ead3344fd7e25fac6ed0d44158f
+    pristine_git_object: b30b1c018129b13a857e577aac5512f76b67b714
+  docs/models/components/aigatewayauthstrategykeyauthresponseconfig.md:
+    id: fce1aac13fe9
+    last_write_checksum: sha1:c50cfc7742aeab1f38c4d35f4902dd49b1d37ff8
+    pristine_git_object: 7c4189a90b223b026623e521a1d91f845c7924d3
+  docs/models/components/aigatewayauthstrategyopenidconnect.md:
+    id: 3f57559b4434
+    last_write_checksum: sha1:29305f881fcf6e25b8bef93ac939e95b5ca53d62
+    pristine_git_object: 3968d80dd2251bb1426d850a7f0141ec9c951239
+  docs/models/components/aigatewayauthstrategyopenidconnectauthmethods.md:
+    id: f2c43b78dd18
+    last_write_checksum: sha1:f20317c53db73328a815c4ba447bf2a120ce3b06
+    pristine_git_object: 1b1aa1002aba892e8ab7941311a604264537ebef
+  docs/models/components/aigatewayauthstrategyopenidconnectclientalg.md:
+    id: cef841bc671e
+    last_write_checksum: sha1:6d2747febedf10170dba645f634e63d8547d133c
+    pristine_git_object: d4b54bacd4aebb39ad4ff5402fdd8591c9c84c15
+  docs/models/components/aigatewayauthstrategyopenidconnectclientauth.md:
+    id: 65acaaae76f5
+    last_write_checksum: sha1:8bd273bf1d6445f7d71bf01e9a56d484b817d9da
+    pristine_git_object: 3a742576d81fb513fbd2642a780beda2b7cf9b90
+  docs/models/components/aigatewayauthstrategyopenidconnectconfig.md:
+    id: 2886bd56aadf
+    last_write_checksum: sha1:add83b37a5d9b1ab9cda24849c96f391e8f7c6f7
+    pristine_git_object: 00f420ae7d23d91aff23f7dd4d481707d3c4d5bc
+  docs/models/components/aigatewayauthstrategyopenidconnectconsumerby.md:
+    id: 8ea84600a4e2
+    last_write_checksum: sha1:e1f4cf662d96cdd313321c2d8ea7b39a189a8187
+    pristine_git_object: f0d66e5394216c675be9ceaabe12a43809bc2170
+  docs/models/components/aigatewayauthstrategyopenidconnectprincipals.md:
+    id: d59e661a5cde
+    last_write_checksum: sha1:f6d151947aa9688c8d23ca4636bfe85515b2d5d7
+    pristine_git_object: a1750f3c2efd4d8a511c010f1bbf07fd493e1af9
+  docs/models/components/aigatewayauthstrategyopenidconnectresponse.md:
+    id: b88a3057b9bb
+    last_write_checksum: sha1:5bdbef676a37fa1de2e2c6ee3c93f18e2b9985ba
+    pristine_git_object: dcf1fcceaaf2b2440e61b1d6779e3a86ba0b7928
+  docs/models/components/aigatewayauthstrategyopenidconnectresponseconfig.md:
+    id: 9892e4801c24
+    last_write_checksum: sha1:93c4973a95cf33d63dfd2786e616a75faef95dfc
+    pristine_git_object: 9211580f7ab04353171ee2cffbf4f0e9b97610db
+  docs/models/components/aigatewayauthstrategyopenidconnectresponseprincipals.md:
+    id: 449e4e2286a6
+    last_write_checksum: sha1:8006f07c18d4fa971c3fe62cccbb73454ac3defd
+    pristine_git_object: 1191183813e594cb6c1cd1a6528e3219dfab480a
+  docs/models/components/aigatewayauthstrategyopenidconnectupstreamheaders.md:
+    id: f9a0b3c6599a
+    last_write_checksum: sha1:7cc6282e3062c19dc8c11e721c99d74a750e52d6
+    pristine_git_object: 3bd9828e91224091ffe162ac4625c551677f99a7
   docs/models/components/aigatewayazureembeddingsmodelconfig.md:
     id: e2e54357276d
     last_write_checksum: sha1:72d9dc7e2526c8d6c64ebd79ad8cc49ed4558735
@@ -545,8 +617,8 @@ trackedFiles:
     pristine_git_object: 7b72f9f0ad69fc53c094fca53774951f372a25f5
   docs/models/components/aigatewayconsumer.md:
     id: fedaca325bf4
-    last_write_checksum: sha1:486371962e2ea24acf07c14427ba888db46ce806
-    pristine_git_object: fdaa6dc72051b707715e8563ef4b7d58812c8564
+    last_write_checksum: sha1:14bc769ea712fee883fff921c93bd251ee88398c
+    pristine_git_object: f33de43347c8fd4be5c519cc2b4ac7481b653cf2
   docs/models/components/aigatewayconsumercredential.md:
     id: eb9c0eeeaa98
     last_write_checksum: sha1:a6fc32f255645371a4598940e43096c48f4e582f
@@ -565,8 +637,8 @@ trackedFiles:
     pristine_git_object: 491c3e7978232e492fc6b599b0b6795e8f4c1c16
   docs/models/components/aigatewayconsumergroup.md:
     id: 18684d7eb44e
-    last_write_checksum: sha1:ea9b76c48a0f62ca2fb5567b344b510aad00fb74
-    pristine_git_object: 875593acaedc731314b6d78c8f3ec5622f7abfb2
+    last_write_checksum: sha1:2dc5001c7fd1566a79e391f0122d1291cd07f2d1
+    pristine_git_object: b1a42246edc9f0a51bf6714c50215481857d9037
   docs/models/components/aigatewayconsumertype.md:
     id: a0452cea167c
     last_write_checksum: sha1:0ff47e0acbe70f04a8677bf67f4dfade88fbd406
@@ -625,12 +697,12 @@ trackedFiles:
     pristine_git_object: 7f6eada3bd7d4a66b75b532c95da0249ca4fa6ee
   docs/models/components/aigatewayidentityprovider.md:
     id: a674b202a504
-    last_write_checksum: sha1:860aca70438fe018267a0a000624188a883140d8
-    pristine_git_object: af8bd56c66970393695a75ae81b367f2114ac390
+    last_write_checksum: sha1:c176953531053938b391a75f40307665bb937d38
+    pristine_git_object: 2cf1c649a6f4c7403efe3c5e4d74f418ea22ba8b
   docs/models/components/aigatewayidentityproviderkeyauth.md:
     id: 23d209d2ec92
-    last_write_checksum: sha1:23e572f1c066df97b93b4804e5cdb2ce08aabc63
-    pristine_git_object: 0da7939a63af9e997cb7a1d5ca72e3a7c250283c
+    last_write_checksum: sha1:5a28d76c10eda1dade98c5833fa8f21bf16fcf61
+    pristine_git_object: 516e5107d8ba7988b48cc33ee311e26162037d74
   docs/models/components/aigatewayidentityproviderkeyauthconfig.md:
     id: 1a03f6c07599
     last_write_checksum: sha1:7fae532b883c00801677ff3723822d7fe7da0963
@@ -641,16 +713,20 @@ trackedFiles:
     pristine_git_object: 60e4e122eaa83bd23423de589434110946bcc23e
   docs/models/components/aigatewayidentityproviderkeyauthresponse.md:
     id: 3aba2a14394a
-    last_write_checksum: sha1:644ccca1dd765299ae5ab2fd986dc5489131bfd3
-    pristine_git_object: a8d615d80ba07d92a21a4ef145963d001cba7f31
+    last_write_checksum: sha1:1a4d2c63f95ea3bb8e63cf3108ac791d88723f61
+    pristine_git_object: f0f9db88e8b07338a73d5dc0ecf65e144c92b221
   docs/models/components/aigatewayidentityproviderkeyauthresponseconfig.md:
     id: edb7711cf81f
-    last_write_checksum: sha1:7171e130388620f18293db8c9e51a79d4a444c30
-    pristine_git_object: a417f50d99829d7ce3226ae3834a96557dd65ca1
+    last_write_checksum: sha1:4800a31228442903d537343b43242225bfb787b5
+    pristine_git_object: d2d624aca2831cd5796fbe3b2aca5b3601614c57
+  docs/models/components/aigatewayidentityproviderkeyauthresponseprincipals.md:
+    id: 9c2d5da514dc
+    last_write_checksum: sha1:391eedb1cc04c293f0e3d8213acdb5e3b50fdf10
+    pristine_git_object: e6ba9834e295058b90a2a6313a8a2b334ce16136
   docs/models/components/aigatewayidentityprovideropenidconnect.md:
     id: 128a5946caaa
-    last_write_checksum: sha1:6926692b8bc8e2d74c9abdaf153b54bc4a0d9501
-    pristine_git_object: 5af45f9407cc26fb11b39c4af2ebcb9b9710e7f9
+    last_write_checksum: sha1:ddbf87ddd87ab2616b309d87a00027f9ad6a99d1
+    pristine_git_object: d3e075a8e8efa83998c681d533cca46bf5fd461d
   docs/models/components/aigatewayidentityprovideropenidconnectauthmethods.md:
     id: ae8f37ca24a4
     last_write_checksum: sha1:b23451f8f402a3d8585d34d7a35441fa8de5ec9d
@@ -677,16 +753,36 @@ trackedFiles:
     pristine_git_object: ee3ee692b2a860f37a8d7c48db532a23b448fc9f
   docs/models/components/aigatewayidentityprovideropenidconnectresponse.md:
     id: 4e9f1b8cacef
-    last_write_checksum: sha1:96c317ba6b020faee41be4569dee90bb6fc384a6
-    pristine_git_object: 2e684914f586316484705d124f62833339ca73b3
+    last_write_checksum: sha1:b4ca4615930627271efe0071c8d50df72fd6a793
+    pristine_git_object: 7167bcdd3c14b3324015901b49545e6b6d8d6645
+  docs/models/components/aigatewayidentityprovideropenidconnectresponseauthmethods.md:
+    id: c83580ad1b80
+    last_write_checksum: sha1:02dee3f3dfe50ae325677cd0334304f10c914f50
+    pristine_git_object: 98e62f9334fdf1c7e36a91639de460b45186659c
+  docs/models/components/aigatewayidentityprovideropenidconnectresponseclientalg.md:
+    id: b2079f75bfd5
+    last_write_checksum: sha1:2faabd5382de6cfb059d6a441e852d4ec9766167
+    pristine_git_object: 24803edf0853536106618aa4c3e89fe6aa3a9f2b
+  docs/models/components/aigatewayidentityprovideropenidconnectresponseclientauth.md:
+    id: 0c92f232848e
+    last_write_checksum: sha1:484b7a85e241f46530d6530d5dbf9ebed4db4db0
+    pristine_git_object: 28bed01b61055095f2a20c666cd7a5da77469347
   docs/models/components/aigatewayidentityprovideropenidconnectresponseconfig.md:
     id: 8259926ca3f9
-    last_write_checksum: sha1:fec7486847bcf9a5490adb3df51189b64231f446
-    pristine_git_object: def4bc83fdbec7c21a7ebc6d9570b9b3becfcbc2
+    last_write_checksum: sha1:b4b1a6d5a51624ee4149c37fbeee1e402ed4d95b
+    pristine_git_object: a0f04bf995741871395e653b9b471ea4e0529ca8
+  docs/models/components/aigatewayidentityprovideropenidconnectresponseconsumerby.md:
+    id: b1183e61cb44
+    last_write_checksum: sha1:f38640ee30f4b2f515b6c8be6903bacbae7d8d2e
+    pristine_git_object: 40c9c913396ad39fec0beb7c504063f2601f3d85
   docs/models/components/aigatewayidentityprovideropenidconnectresponseprincipals.md:
     id: 6914e9a52f6b
     last_write_checksum: sha1:a7c4e3270dfdad952e4f5884037e772a11d07075
     pristine_git_object: 8060ea9e52ff820d6a941b200a3d8ba557103af7
+  docs/models/components/aigatewayidentityprovideropenidconnectresponseupstreamheaders.md:
+    id: 4b93399f688c
+    last_write_checksum: sha1:abc6f9db9fb7f08c7fda5fdeec5a067ffa8be326
+    pristine_git_object: 2da04423a59184baa8e9aff05ea766e789bfb6b9
   docs/models/components/aigatewayidentityprovideropenidconnectupstreamheaders.md:
     id: 5097429e5fb6
     last_write_checksum: sha1:0c4591b67e19e1a77788e85ec4128e2c8df20af3
@@ -709,28 +805,8 @@ trackedFiles:
     pristine_git_object: 5168ae10ca3bacde41b249312e3e8472023a5697
   docs/models/components/aigatewaymcpserver.md:
     id: 8268e484ae68
-    last_write_checksum: sha1:8344d1cc943370a82fc0d5b33e35c534756fc0ea
-    pristine_git_object: cc048a6ec0d065e43002be1f066f1937e72e23ee
-  docs/models/components/aigatewaymcpserveraigatewaymcpserverconversionlistener.md:
-    id: a48d3bd71004
-    last_write_checksum: sha1:0bf68f72737d3d735f5eef6d90a8e4d44f5f6731
-    pristine_git_object: 97872751612b5aeaa935466f8d0f04f8467b6625
-  docs/models/components/aigatewaymcpserveraigatewaymcpserverconversiononly.md:
-    id: 4bd8f423b728
-    last_write_checksum: sha1:56f2f3df97947806bb60d17e2c49aecf09acca6e
-    pristine_git_object: dd072b675386ac61ed5f1ef540e7373e84e88ede
-  docs/models/components/aigatewaymcpserveraigatewaymcpserverlistener.md:
-    id: 62fbd2501953
-    last_write_checksum: sha1:6ba57a414d04e360aefceb927ea2998e180e86af
-    pristine_git_object: 005354417ac40b473a5fff5fb26a5245c7493446
-  docs/models/components/aigatewaymcpserveraigatewaymcpserverpassthroughlistener.md:
-    id: e5ed9694465e
-    last_write_checksum: sha1:9e21275c3ddc0096294d6c3d905258f86e630796
-    pristine_git_object: a0527f1f37d239ac95c57f0b434b8d884ef0322a
-  docs/models/components/aigatewaymcpserveraigatewaymcpserverupstreamserver.md:
-    id: 8be1f0fcc3eb
-    last_write_checksum: sha1:23767d4aa56b51585f8b67de3e1e12a3a7158afb
-    pristine_git_object: 86bea88c664f97cc34de68f39bdf57362ab7af29
+    last_write_checksum: sha1:7fa8c249d790b5dc392c388bc735c14739e6891b
+    pristine_git_object: 3288d39a12568ef18a63aac29ac094d7ca346173
   docs/models/components/aigatewaymcpserverbaseaclproperties.md:
     id: 23c876f6a982
     last_write_checksum: sha1:6ab2a021107a762848874f8ffdeb952681043d98
@@ -745,28 +821,40 @@ trackedFiles:
     pristine_git_object: e4223bafba426289b98e39b3bac083eb70f51b81
   docs/models/components/aigatewaymcpserverconversionlistener.md:
     id: 85edb9e55cff
-    last_write_checksum: sha1:1e6589e386642e45a07b651c4a36b38ad1338c97
-    pristine_git_object: b467c6d566f47bd0194ae6707e498a5fdba68e09
+    last_write_checksum: sha1:e7a9aa7faaf83cf533e73096806191ba2c7aa2dd
+    pristine_git_object: 01572acfcd8e1b9a20e4e11be32330d1fb2704e3
+  docs/models/components/aigatewaymcpserverconversionlistenerresponse.md:
+    id: afd8c38a9736
+    last_write_checksum: sha1:824b7df6400f5efe25d2ce9228af0c9b6a345113
+    pristine_git_object: 74e86741f5158fc9624ea005b0c231f448b8a974
   docs/models/components/aigatewaymcpserverconversiononly.md:
     id: 50d617cceca9
-    last_write_checksum: sha1:a90a1e60a1ced6ae35a5d8c70e2844ed881cde5d
-    pristine_git_object: c7780ddf3dec8147a5a807b2cd9173ab7a6e7cfa
+    last_write_checksum: sha1:5825f488bad80c0f0ef2932f253aa4fdbf91d74f
+    pristine_git_object: e3b749afe0efeed81ccbacab3366fe407b70d4eb
+  docs/models/components/aigatewaymcpserverconversiononlyresponse.md:
+    id: 0ee8f40c3589
+    last_write_checksum: sha1:e59e037025a232f5605a9e4e2ced23aeb3b34960
+    pristine_git_object: de5ac4054e8f2aeb0cad92f86db293e83313628b
   docs/models/components/aigatewaymcpserverlistener.md:
     id: a0001278e9c1
-    last_write_checksum: sha1:0d5ca3e13ff7255987c8b4afe031e2cadab0b862
-    pristine_git_object: 63c727f4fa056703bd1077b52d80e53649893c21
+    last_write_checksum: sha1:dac24a1b215ee2a52509961cd86c73c584ade81f
+    pristine_git_object: ba6a7d711f0f1fdfd46a3c4952e25cefe5438bbe
   docs/models/components/aigatewaymcpserverlisteneraccess.md:
     id: 38f250939630
     last_write_checksum: sha1:753b79943ed753cccd0629b6883e8b90ec5d29f1
     pristine_git_object: 3b9c911de62da95a189c38b2885391693cfeaebb
   docs/models/components/aigatewaymcpserverlistenerconsumer.md:
     id: 0a6ca477e11d
-    last_write_checksum: sha1:6c4499f3b93a8e25349f14782dc490989ca1bcfa
-    pristine_git_object: 6917b2c03e68ea3830af00a4a30b88dc398a59f8
+    last_write_checksum: sha1:59c004244a8c4e733f6778ccfbad168e7bb46c83
+    pristine_git_object: d34a274247df3dbcd8f687b17f5dc00bc02c5139
   docs/models/components/aigatewaymcpserverlisteneroauth.md:
     id: 7496d0007d64
-    last_write_checksum: sha1:483c70bdad2d554230ed55840134f14612c33727
-    pristine_git_object: 08956a4d453bc7e2fd484c7d3dfa3a5ed6be5c0d
+    last_write_checksum: sha1:7ed1587b7f562c3269f75ac554559b9c9635071e
+    pristine_git_object: 8b6caffc10126c1a556f7a59f44852b160f5815d
+  docs/models/components/aigatewaymcpserverlistenerresponse.md:
+    id: 6fd57119e3aa
+    last_write_checksum: sha1:24f5df82582bd52c515188ec2fcd4402fc00d3ae
+    pristine_git_object: eaa28d59eefb600f138d15c93e2279874322d008
   docs/models/components/aigatewaymcpservernoupstreamconfig.md:
     id: 39d66c372781
     last_write_checksum: sha1:280d29ccf5f6e1dbfcd0a6cb2a99207f0fdbc6e6
@@ -781,8 +869,12 @@ trackedFiles:
     pristine_git_object: c56f4e8cb67a5f72fe05f7ef6770525f4ab6a596
   docs/models/components/aigatewaymcpserverpassthroughlistener.md:
     id: f2b6422c4178
-    last_write_checksum: sha1:d8b3ee47937b71582877500f88489e563d004f62
-    pristine_git_object: 6346a9902adfdbd61a426c3a7e23dcb3a0e1fb7d
+    last_write_checksum: sha1:157c5674b0f48640f275165cdcdea2b641fa7e04
+    pristine_git_object: 37e25d528f5f7956e9c28536875c60ff32e943ec
+  docs/models/components/aigatewaymcpserverpassthroughlistenerresponse.md:
+    id: b48d954a59b8
+    last_write_checksum: sha1:35343e7079d4cae6060078356119ed2b613048f0
+    pristine_git_object: dcd51201c2128739b100a3e9daab34c7d6bf094e
   docs/models/components/aigatewaymcpserverprotectedresourcemetadata.md:
     id: 0f0af34bb45a
     last_write_checksum: sha1:49414948ae0c5b90170e5d4ab68504ae4666489c
@@ -801,8 +893,8 @@ trackedFiles:
     pristine_git_object: 75bee85c421e5a53e10f598e171f129f561888ba
   docs/models/components/aigatewaymcpserverupstreamserver.md:
     id: 54fef45dfddd
-    last_write_checksum: sha1:ccff149bd45ee2f553d6321850c8ccff414983d3
-    pristine_git_object: 5b4c345133ad0bc5ba24b41fb99d2b4d1b38cb0d
+    last_write_checksum: sha1:017dcc620ebb67ef02a424e84ee376c412e8d9f1
+    pristine_git_object: 5c60388f85fd346b63dec3e2081f3c1860d61ff8
   docs/models/components/aigatewaymcpserverupstreamserverconfig.md:
     id: cef74b628ee8
     last_write_checksum: sha1:0e4d120b00efcb17ed04a3ae9b706497600d3b04
@@ -815,6 +907,10 @@ trackedFiles:
     id: 05ee2e315b25
     last_write_checksum: sha1:f4aace2d8e088a0dcb73c70c7397fd9ee6b0804a
     pristine_git_object: d926cc2929e72a7b50a8c927359bbb9f5e1ab9ee
+  docs/models/components/aigatewaymcpserverupstreamserverresponse.md:
+    id: fe8602841721
+    last_write_checksum: sha1:eaacd8d3601e715e89abc6958f840c06cddcc119
+    pristine_git_object: 23d93c94e81a0b3bf85ae4e0affe99cca43086ce
   docs/models/components/aigatewaymcpserverupstreamserverserverconfig.md:
     id: b3863abba33b
     last_write_checksum: sha1:c7d50021b5107bf300d148c593a5fefd3a00c981
@@ -945,8 +1041,8 @@ trackedFiles:
     pristine_git_object: de23b2a50b8981c6a172cddf07a8a720c9ddf427
   docs/models/components/aigatewaymodelaccess.md:
     id: f7bba0184431
-    last_write_checksum: sha1:13e9137cfc4b88905a3878e99730108acc7e6c4b
-    pristine_git_object: 9c0e8acc277bd7bb75f05bd0351f7a7344a75f83
+    last_write_checksum: sha1:c042eea119b75460f92915f5fa309e1d7debe967
+    pristine_git_object: 116dcd9edb7e82387e8d27b4014e38d5369529cb
   docs/models/components/aigatewaymodelaigatewaymodelapi.md:
     id: 68d17f717e7a
     last_write_checksum: sha1:363078dd99bb12397a6624cc56496127af38b250
@@ -3925,8 +4021,8 @@ trackedFiles:
     pristine_git_object: 06ba46b1c61d2dd644be55a5f7d7f4ae850b6265
   docs/models/components/createaigatewayagentrequest.md:
     id: a29d536fef13
-    last_write_checksum: sha1:e042d887dfe4a98432cc7b0986e75dc45f9569c9
-    pristine_git_object: 49e075947c628c9b2b355b33544c97169b2d78ac
+    last_write_checksum: sha1:89389a62b750f860c4080e8e4e73dec0d2ed4006
+    pristine_git_object: b2d4c57e25bdc085c5ad24ffcce4179832ca0280
   docs/models/components/createaigatewayagentrequestlogging.md:
     id: ce78f1d15eb4
     last_write_checksum: sha1:850a22820bbddb417e78c8ac97b6d28f8965bc2b
@@ -3935,6 +4031,10 @@ trackedFiles:
     id: 1c3e179e1ba4
     last_write_checksum: sha1:da34cad3362e133cbcb87c88581cbfee182e91ca
     pristine_git_object: cbcf8b3409450c0fc854979471b794707ba8deb3
+  docs/models/components/createaigatewayauthstrategyrequest.md:
+    id: 69c8b441457e
+    last_write_checksum: sha1:4d62ce70bb499fa2e6e95603bb7b7e3dce744849
+    pristine_git_object: cddb85fa7c5ed42e5f5659fe9843d2dab4fac6f4
   docs/models/components/createaigatewaycacertificaterequest.md:
     id: c8c2505f118d
     last_write_checksum: sha1:e171d3fd29e7477aefc7ccb376d973fb4d12e959
@@ -3961,12 +4061,12 @@ trackedFiles:
     pristine_git_object: 930703b3b4ddbf35f681efb337160ae6645b26cb
   docs/models/components/createaigatewayconsumergrouprequest.md:
     id: 62f7e2b58d78
-    last_write_checksum: sha1:62176509e227af8f62c3ae79d259f76f234789e8
-    pristine_git_object: 94398e60803c426ba3af21633782d3aa823cd7ee
+    last_write_checksum: sha1:b08de6acd639425b9e14be8493f35bf775ca25f2
+    pristine_git_object: 686e15df584d176af3f972acbeadea294599dd6a
   docs/models/components/createaigatewayconsumerrequest.md:
     id: 661acc7e9102
-    last_write_checksum: sha1:e2738b3a772682cc066cf47e13310afb32fedfe3
-    pristine_git_object: 56d381d9d68d13e14eb7a16ae12c6649008da46b
+    last_write_checksum: sha1:75ad10db55f8b19667a930b111a41dc619af2230
+    pristine_git_object: b6bb8b1dd0e44831f40902a4208ee18487980e81
   docs/models/components/createaigatewayconsumerrequesttype.md:
     id: 8f372b11bf47
     last_write_checksum: sha1:e2683cd5e828e933911ca338fd4c28949a976218
@@ -3977,8 +4077,8 @@ trackedFiles:
     pristine_git_object: 118d120ef0763870bb9d1bc6accd0442fa2be58c
   docs/models/components/createaigatewayidentityproviderrequest.md:
     id: 762ec55f6b94
-    last_write_checksum: sha1:18a661ec98a5c14408daafeb6558d960e3646ec1
-    pristine_git_object: 65b33fdcd832ce0b17c35fc204d7d492cbf58f14
+    last_write_checksum: sha1:233785c557c042be673aad31a79ad6568462cc12
+    pristine_git_object: 76490efa8f6ea8a63933575e926c54d7412aa1bb
   docs/models/components/createaigatewaymcpserverrequest.md:
     id: 23b238c007a0
     last_write_checksum: sha1:7a1b96d38e6ff0cd421c0d5c9838ae725b2491f3
@@ -3997,8 +4097,12 @@ trackedFiles:
     pristine_git_object: 2614352352890685acd23049baf454a3af93a8fe
   docs/models/components/createaigatewayrequest.md:
     id: 9b68548ff9bb
-    last_write_checksum: sha1:7968a5ae09070b15b6ee6f7e5a319ded358427bb
-    pristine_git_object: 07b66a4d589a6807f8623f83daa3e263273133d0
+    last_write_checksum: sha1:0249979ddad1c3b6f5d7d3d59d0fb6d117d4e8b4
+    pristine_git_object: 0924b8e17bf97eb7da2fa9c998fd6cc35dbc9451
+  docs/models/components/createaigatewayrequestdeploymenttype.md:
+    id: cf2ab125ef97
+    last_write_checksum: sha1:e04987d9e60c70e08215f08c0249797e202082c1
+    pristine_git_object: 55dfecb9cc3692fb38324852243ab5459894c11e
   docs/models/components/createaigatewaysniforcertificaterequest.md:
     id: 312b2bd5ab25
     last_write_checksum: sha1:f4d80062310a6404c8f250c330b717437e41c0e7
@@ -4675,6 +4779,10 @@ trackedFiles:
     id: 15fbefd6976c
     last_write_checksum: sha1:5693fd855ac935d1b8862e8b4c9369fba6b81703
     pristine_git_object: 11a43d4903e899deba8812bdcd8fadcbcccaade4
+  docs/models/components/cursormetawithtotal.md:
+    id: 2e79bb9bf79f
+    last_write_checksum: sha1:ae16a66cf32ced3e7c14e4ad2e373ec478915040
+    pristine_git_object: 7bc29dfeffb5b1e66df1aa25776b3aaeed2712d7
   docs/models/components/cursorpageparameters.md:
     id: fea398d3b83b
     last_write_checksum: sha1:36b4b91c9deab136db99a45672ee5debeaefbf58
@@ -5035,6 +5143,10 @@ trackedFiles:
     id: "268857749210"
     last_write_checksum: sha1:7c7980a58e7c62259f094ad2d05389bbb4e54b88
     pristine_git_object: 12135d0ca978862485a65b258342ffb16dfc6ec0
+  docs/models/components/deploymenttype.md:
+    id: bc14bede4c53
+    last_write_checksum: sha1:866d91837348dc33c4dbeff02869e7ef01310da8
+    pristine_git_object: 1c4947b0e03d9126179e59e4259cd01867da7179
   docs/models/components/description.md:
     id: 17fa9bd0cd1e
     last_write_checksum: sha1:958e86803b20683aadc262f24a4b36bef00fdd7c
@@ -6483,6 +6595,10 @@ trackedFiles:
     id: a4382e5f6c77
     last_write_checksum: sha1:eb1ecc651edf8f90a6f215edc4fab8e29c894573
     pristine_git_object: 097460b68a43c5358311285b7a7863b84b03c312
+  docs/models/components/listaigatewayauthstrategiesresponse.md:
+    id: 1a893089b184
+    last_write_checksum: sha1:9ea35f6f9270bd1aa7d7be28adb9a8c4237029b4
+    pristine_git_object: f60670ee4e024df3a80f0cd0f8b7051966335142
   docs/models/components/listaigatewaycacertificatesresponse.md:
     id: 770f294df620
     last_write_checksum: sha1:19bc207fa8717c1464503dd0ecda0ec75c644f21
@@ -6517,8 +6633,8 @@ trackedFiles:
     pristine_git_object: f286882e640f3daeff1d405f642ced0edfd9cfb4
   docs/models/components/listaigatewaydataplanenodesresponse.md:
     id: 58596eb38e3e
-    last_write_checksum: sha1:421ec9533b44858a4fc1c5e07044096577228f2d
-    pristine_git_object: 94fd8d066dd5d14dd7fddde0aff548cf18a9c6c6
+    last_write_checksum: sha1:837a02c88aeb23394511bc94291f76d3dbb85304
+    pristine_git_object: 2d7d6a86656e9ae19387150e6a55f8d01f1dc9a3
   docs/models/components/listaigatewayidentityprovidersresponse.md:
     id: 1c88dd861566
     last_write_checksum: sha1:67f3e542358bbcb1c9586a1a3c99af4a9774eb54
@@ -6977,8 +7093,12 @@ trackedFiles:
     pristine_git_object: 3a908b0c316b3925fdba30013978b3da6c89dcd6
   docs/models/components/listpluginschemas.md:
     id: 71397449d01f
-    last_write_checksum: sha1:b9fa9771fb43ce67cebd6a1c32791b9f0821a20f
-    pristine_git_object: 863b0f2b290375588a1d41bd9bfadcc6669cb589
+    last_write_checksum: sha1:515babe357e59c6cf81e83d63d09e49e2ee53c18
+    pristine_git_object: f848c4cfd353f84a9963cd68a50ec7f9574b58a3
+  docs/models/components/listpluginschemaspage.md:
+    id: 0deda48f63f4
+    last_write_checksum: sha1:47994ee115b328a629ec2f1a381143731cbeac56
+    pristine_git_object: 7f95772d2c5d851f75b638fbafcb2160321f33ca
   docs/models/components/listportalpagesresponse.md:
     id: "053971203197"
     last_write_checksum: sha1:42dafcd3b73b0a506c4acaf6262a9bd5c4e9de62
@@ -7075,6 +7195,10 @@ trackedFiles:
     id: c338d3eaf78e
     last_write_checksum: sha1:b841d3423609b7dee1c8af9f0f1f3c109513da0b
     pristine_git_object: b73f86b3ec78effd4046db4c739e300ca19ca094
+  docs/models/components/listskillsresponse.md:
+    id: c3d0c48b0dbf
+    last_write_checksum: sha1:580191221e28430b5ee646dc1f15ad136d8134d5
+    pristine_git_object: c704263af5d4d6149a4eec9b30e1bdd16c2e0b84
   docs/models/components/listsubscriptionsparamsfilter.md:
     id: 5df0a1902a65
     last_write_checksum: sha1:c0dab4bb7b0429cc40dfeb0d6b1f7dbb01cf04cd
@@ -7761,8 +7885,8 @@ trackedFiles:
     pristine_git_object: 8e1c219a3c01a36437dece5bf36b386cc0f41278
   docs/models/components/page.md:
     id: 945fbeeca940
-    last_write_checksum: sha1:b4398056dd526c9029427fbfb11055f6264d7612
-    pristine_git_object: d9fd799387b5bde132a1ffa3a3c99f6724e13c4b
+    last_write_checksum: sha1:c2a8e47cb3f0af3d733bc0b86ee92c2bcee152a9
+    pristine_git_object: cdb946ef28f0cddd47257e11a9b5a419049e78a8
   docs/models/components/pagemeta.md:
     id: 46e5b13f9172
     last_write_checksum: sha1:373c7d5c2e15dc55848da41cb38937af4dfa2b50
@@ -7955,6 +8079,10 @@ trackedFiles:
     id: 111d2429f4a8
     last_write_checksum: sha1:7998318d1b0e4bf351d01b94eca13cd43dbe1f83
     pristine_git_object: 370bd89875f021d204c594113d724c27372924be
+  docs/models/components/patchaigatewayrequest.md:
+    id: 7819970b7b49
+    last_write_checksum: sha1:5889313c91de3073fc30c4a49de0277d72785c0e
+    pristine_git_object: 0c2cf4115b3687ead400d69b4134e6a76ecb8dd6
   docs/models/components/patchawsprivatednsresolver.md:
     id: 91c619b50877
     last_write_checksum: sha1:f5fb860ba6848a27680c87b8bc24c992dba3154d
@@ -9595,6 +9723,18 @@ trackedFiles:
     id: 04cb96198e16
     last_write_checksum: sha1:2f0ab0aec5f7795cd7bbc483c107af622188ae17
     pristine_git_object: 85301f09de3d4e677951cfe8d4ee6e3d1052f761
+  docs/models/components/skill.md:
+    id: e0796cc343a9
+    last_write_checksum: sha1:677f9395b542e82516148906603972273af64f37
+    pristine_git_object: 9d73649c694db361090467e65ec07c9dbac01ac5
+  docs/models/components/skillfilter.md:
+    id: 1931fcb504b0
+    last_write_checksum: sha1:cfc415cc3e96071a8ab7b4fe06ddb3ca86ea6c36
+    pristine_git_object: a8740d72634275e9f315e1fbb7209a5e9d40818b
+  docs/models/components/skillfrontmatter.md:
+    id: 74ee5c748d55
+    last_write_checksum: sha1:2af89ee1a672631700de71d651877256ba45347d
+    pristine_git_object: faee91defb713e8d0efef34eff0d2ba3aa40d4a5
   docs/models/components/sni.md:
     id: 60977194f193
     last_write_checksum: sha1:000f9aa5ec7ae31755023317caa7546d5be81c42
@@ -9627,6 +9767,10 @@ trackedFiles:
     id: d0f91e9d260d
     last_write_checksum: sha1:e26c8d2026868e6623b1a4419ab0c8a486f95c59
     pristine_git_object: 7ce1f02bd688c9a623e35b427348c42ea8d816d3
+  docs/models/components/sourcetype.md:
+    id: 618ed8957b63
+    last_write_checksum: sha1:be00d45dbdd3ec97b5a706b427ed3bcf4a967252
+    pristine_git_object: 8e812ff2e7e2462d4f2cdce62e4c3aed2cec21de
   docs/models/components/spec.md:
     id: 26cc364d1057
     last_write_checksum: sha1:d943d53111e0a4909967f7c1470c3c2816375947
@@ -9653,8 +9797,8 @@ trackedFiles:
     pristine_git_object: 8dc8925b5f57b359921c209e9b6f2c092cf5996f
   docs/models/components/status.md:
     id: e26b2fe7f53e
-    last_write_checksum: sha1:65fc9d6dc759fbebc0b2876d4b08bcd4af221b9e
-    pristine_git_object: 9f4eafc593b8e6003f0094475b16e8c2d1215560
+    last_write_checksum: sha1:f13ddd43fdb719c0f3ffd5680e2c78b2385fb0b0
+    pristine_git_object: 46cc3936a936206844fc32bd0939e60e1545a543
   docs/models/components/strategy.md:
     id: 2ea7eae54196
     last_write_checksum: sha1:e3be46278dae7fcb374814f62dab8b6e8793f9ad
@@ -10161,8 +10305,8 @@ trackedFiles:
     pristine_git_object: 0dd09ceb54c33b5b80d08b03294b610c21c59f9d
   docs/models/components/updateaigatewayagentrequest.md:
     id: 7ec6a79b62dc
-    last_write_checksum: sha1:0d7848e07b4e71870bc7c728f25d87958cfbfe37
-    pristine_git_object: f0268e9877be4ae586892daa54c0709824bfec9e
+    last_write_checksum: sha1:90d803fca4a0dc7d636dcfbd07a33ef6fd520640
+    pristine_git_object: d6871fe97ad42b55ded6aac147816a14ee9fa06a
   docs/models/components/updateaigatewayagentrequestconfig.md:
     id: 00777c0f4dd7
     last_write_checksum: sha1:f2bc6cc51db1de39542ec43d93e61464f40679d7
@@ -10175,6 +10319,10 @@ trackedFiles:
     id: 7e697e15bc52
     last_write_checksum: sha1:b68127890c9c3c5417a56ca2bab3ca1d7badde9f
     pristine_git_object: f2f8dea40c4c2913e1bde9e9a09d484915ac879b
+  docs/models/components/updateaigatewayauthstrategyrequest.md:
+    id: eba714ecd7fa
+    last_write_checksum: sha1:568803f9360eeec5cbd4b721d5d1da3c5f7fa1d4
+    pristine_git_object: c68e5cbc38ca6bbf7b7b1531dc778cca59317cdd
   docs/models/components/updateaigatewaycacertificaterequest.md:
     id: 8531f9e1cac2
     last_write_checksum: sha1:33278b7260f85edbfebe1505cd10c3d122adb5f4
@@ -10193,20 +10341,20 @@ trackedFiles:
     pristine_git_object: fd331a56bff3c4b50869f27d89a5f3af3c22f7b4
   docs/models/components/updateaigatewayconsumergrouprequest.md:
     id: 53793ec67931
-    last_write_checksum: sha1:0c6e25e139b2752a48f2e75bbadb7c31ab588197
-    pristine_git_object: dee00c454ee210a9367d7fce9baf819cc165864e
+    last_write_checksum: sha1:0fe8e0f64fa6e38b4ffee1f344d343f0d5271372
+    pristine_git_object: 6a16adc3fdd40b072fc1ca7b2240f4c38684e31a
   docs/models/components/updateaigatewayconsumerrequest.md:
     id: 0479aa380493
-    last_write_checksum: sha1:3d4cad2b00ae2f0580ba5b060cc142d683e5402a
-    pristine_git_object: f05d530d7b264fe879033d1407341aa864ecc439
+    last_write_checksum: sha1:a887a51738ae00273f64321aa140fcdbde6ed5c8
+    pristine_git_object: 6a9fbc70d7cd39eeaa693510d6c4bf1a783405db
   docs/models/components/updateaigatewayconsumerrequesttype.md:
     id: 0ad276a9bd8e
     last_write_checksum: sha1:2da871859ee97a9408a1df764c2b4b75d2c60fbe
     pristine_git_object: 54c3fd6aefc99d113d3d996157a5fdfbacf8decf
   docs/models/components/updateaigatewayidentityproviderrequest.md:
     id: 2b5b8c4d2de7
-    last_write_checksum: sha1:1429c7f34db7967ab7517a59c68eea02483f9dd3
-    pristine_git_object: e18ff8a38053dca9916ae9ea5953daf296849a7b
+    last_write_checksum: sha1:80ff038d09caaef4e8842fdb844b73d1e020f86b
+    pristine_git_object: d7c3f11c28d3722a71d215c702dc2b57b52ae558
   docs/models/components/updateaigatewaymcpserverrequest.md:
     id: 94cd76d16119
     last_write_checksum: sha1:4ac7e62a599ce9df74c8e164f0faae7831cc9413
@@ -10225,8 +10373,8 @@ trackedFiles:
     pristine_git_object: 20257a25a9185f6685478d0931d65133fd145cd2
   docs/models/components/updateaigatewayrequest.md:
     id: 32e06392a418
-    last_write_checksum: sha1:9a5a80b3cb96153f5e7856606a68b3e82a5416f6
-    pristine_git_object: f81e6a7bbfc2db72f207ae3e42a8975f1e6fcf17
+    last_write_checksum: sha1:a2d573873c825aafe48fa581e2a1ac843119d34e
+    pristine_git_object: 7a2ae2df2525be5cece38beee3d92be4ac7dc7a9
   docs/models/components/updateaigatewaysniforcertificaterequest.md:
     id: 1157085252a6
     last_write_checksum: sha1:995d4c06e1a9e3b2019e8decf96f6f59a0662280
@@ -10741,8 +10889,12 @@ trackedFiles:
     pristine_git_object: 9384318b5ab424aee741d6d0626c6d434603cc50
   docs/models/components/verifydcrproviderresponse.md:
     id: 3d5fde14bc74
-    last_write_checksum: sha1:a798bc0a8995bc533b9ca6aa82814e8dbe5b585a
-    pristine_git_object: 4a33d25d45bea4e5947c2370586a0b2efd6fe342
+    last_write_checksum: sha1:cbc4ccc89352490ebc88b0a001fa12c6215f9b83
+    pristine_git_object: 41ee4c4e842c2ecff392f8b2b0ec1024ccebe19e
+  docs/models/components/verifydcrproviderresponsestatus.md:
+    id: 6a28c07bb9e7
+    last_write_checksum: sha1:d7d64c3bc78228d2c098ccf31ea762548fd3dd28
+    pristine_git_object: bf32605da1533fb424b9dbf4d263925e205e6175
   docs/models/components/version.md:
     id: 2dfdc559e77f
     last_write_checksum: sha1:221123db0d6c544ee333b0c261def9411de81be1
@@ -11043,6 +11195,14 @@ trackedFiles:
     id: d5e2f560f9de
     last_write_checksum: sha1:6155275731b20c87cf965f56a37cec3bcc682c9c
     pristine_git_object: ac30097fc96b3b45abe5c70fd2e596d67d95a3d5
+  docs/models/operations/createaigatewayauthstrategyrequest.md:
+    id: b9db8602c5ba
+    last_write_checksum: sha1:e27aaf445e9618e5d4d7ba049b700f9963e648ac
+    pristine_git_object: b64acb325644e532040e46f542c5b1f32b1457d3
+  docs/models/operations/createaigatewayauthstrategyresponse.md:
+    id: 8725f4b027d6
+    last_write_checksum: sha1:2939c291141ca0daad9e35cbd604c1a45d2e6958
+    pristine_git_object: 2887ca9e78706614d6703be50c1e1453a5ad5235
   docs/models/operations/createaigatewaycacertificaterequest.md:
     id: 79e140ddb4cc
     last_write_checksum: sha1:891acdcc1bd7fb9eecf97a932bffe9e0bf2b2c48
@@ -11935,6 +12095,14 @@ trackedFiles:
     id: 29413d394953
     last_write_checksum: sha1:eba739d9719ce88461d7f3126b44751694da60b8
     pristine_git_object: 91f86bcf5b516a832d28238a743be3448059b47e
+  docs/models/operations/deleteaigatewayauthstrategyrequest.md:
+    id: 4a727aa2e4ad
+    last_write_checksum: sha1:eceda2afd531ca1393d6d617ba6635f351bf4cca
+    pristine_git_object: c9526460d7370f1b875edfdfbd99343e9f0108ef
+  docs/models/operations/deleteaigatewayauthstrategyresponse.md:
+    id: 830089a2d691
+    last_write_checksum: sha1:f1ff063d3872fd2c436515d64a68d9f39426bb46
+    pristine_git_object: afc264f8bf80613e5735226e879b0067386c4d44
   docs/models/operations/deleteaigatewaycacertificaterequest.md:
     id: 0fedb6ed8503
     last_write_checksum: sha1:2311115e483b2608c2b7a8a901eb10135b026497
@@ -12001,8 +12169,8 @@ trackedFiles:
     pristine_git_object: 638401070b3446a4b3de224980e1996b13d12795
   docs/models/operations/deleteaigatewayidentityproviderrequest.md:
     id: cc4266c50266
-    last_write_checksum: sha1:d5cbadc5476a0278a3209feb4f2a50398041580e
-    pristine_git_object: b67380f7cd9adfb8cbbf139e318d2cbed31d5234
+    last_write_checksum: sha1:99a92d7460046c306e1446f1d3494d2e04ed9ddd
+    pristine_git_object: b121707f77d33e0f144f88fe94ae0515ce9fa179
   docs/models/operations/deleteaigatewayidentityproviderresponse.md:
     id: ab20cd25f6aa
     last_write_checksum: sha1:8972ab74b8ac0d54bd4caef6b61c26f6d7b063fb
@@ -13155,6 +13323,14 @@ trackedFiles:
     id: a572a3888a26
     last_write_checksum: sha1:0e1f16e77bea6331a9a8ab19f6a4f2f79001a4df
     pristine_git_object: e6caeb45717708657531c327f5539841243c6154
+  docs/models/operations/getaigatewayauthstrategyrequest.md:
+    id: d237deb82d5f
+    last_write_checksum: sha1:f36c89f8bd91e145cec66428697ebb380e164b88
+    pristine_git_object: d594a9ac698813c9af1141417e7d438c45e2ff8c
+  docs/models/operations/getaigatewayauthstrategyresponse.md:
+    id: 033ffb89e06c
+    last_write_checksum: sha1:eda51b378514fd7d352635996f743d1c27950c66
+    pristine_git_object: 0a6024e2a0bf688ec1640a4d0d0ca5a54ec44fc5
   docs/models/operations/getaigatewaycacertificaterequest.md:
     id: ab26a7eaab9f
     last_write_checksum: sha1:295461983a9f093ad18356c8eb851090c495dcaf
@@ -13229,8 +13405,8 @@ trackedFiles:
     pristine_git_object: e1306b7c4aca8fed53d1250b1da381c5b9db7dbc
   docs/models/operations/getaigatewayidentityproviderrequest.md:
     id: e2ad81002568
-    last_write_checksum: sha1:8a8c22634ccd7d5d99a697b086fb3177ec6ef5d5
-    pristine_git_object: 14948b93d367514fc48e64d74ca93d389e6cc705
+    last_write_checksum: sha1:49f28a3b8019ce83bc72b69eddd44a439cc7dbf8
+    pristine_git_object: 89ac940dff1d2ff19dba54379bb057b2545a4f0b
   docs/models/operations/getaigatewayidentityproviderresponse.md:
     id: 34c48839fd0a
     last_write_checksum: sha1:c3bdbcbe94f579c9a8fe47f1a170b25181e93d21
@@ -14007,6 +14183,14 @@ trackedFiles:
     id: 70326ea896a2
     last_write_checksum: sha1:d982590f768e388ae6d7d5f2a1eda7fd0ae3967b
     pristine_git_object: 0f09cb849762a99905324089fe65757dae814095
+  docs/models/operations/getmcpserverskillcontentsbycontrolplanerequest.md:
+    id: 9e52120df1c9
+    last_write_checksum: sha1:35de5f9be0a0eca51e12c075f59a44be86133e06
+    pristine_git_object: 16e7291ec6ad3e06af52924d35510a1356f7b8e5
+  docs/models/operations/getmcpserverskillcontentsbycontrolplaneresponse.md:
+    id: f878f16f4963
+    last_write_checksum: sha1:f35387a0ab503b9921db6b4b5b1d893ad14f2289
+    pristine_git_object: ea88f5315a6c937ace012a65b1980aeed1a3490b
   docs/models/operations/getmeterrequest.md:
     id: 3f7eccaa1f79
     last_write_checksum: sha1:88a77faef10a16e50e319c10f670cb4e3efda96d
@@ -14635,6 +14819,14 @@ trackedFiles:
     id: b1c29e91c151
     last_write_checksum: sha1:e79bb220d7ffb56e8e02e31ec1d1ebeaf5a55414
     pristine_git_object: 536fe400e20549daf67ac013a3ae21bbb9c41889
+  docs/models/operations/listaigatewayauthstrategiesrequest.md:
+    id: 53b91717247e
+    last_write_checksum: sha1:ccae8ec616f9e42a212d0d95b6a45736e3752785
+    pristine_git_object: d61ae84b28bb58407b2adba212e698642e2fe209
+  docs/models/operations/listaigatewayauthstrategiesresponse.md:
+    id: d708e6ab5d4c
+    last_write_checksum: sha1:065988fc213c808c88020b38667c38646ee523e0
+    pristine_git_object: 428a865eaa7fc056b31c79f419ed8f6581f7e1df
   docs/models/operations/listaigatewaycacertificatesrequest.md:
     id: feeae9480d60
     last_write_checksum: sha1:7d8e423b725f4266b9dde6038018846db1faef44
@@ -15571,6 +15763,14 @@ trackedFiles:
     id: 34936249811f
     last_write_checksum: sha1:612749a0a98102fcac29f5488d11ae9e4261b276
     pristine_git_object: 11613f1451b08cedabd33b80aeb38b78e052428b
+  docs/models/operations/listmcpserverskillsbycontrolplanerequest.md:
+    id: cafbd448d79f
+    last_write_checksum: sha1:bd257eccf03684c3cbf73e36c0c0d33749f7c413
+    pristine_git_object: 4a74273d3dacb910daacd45643f45680300b52c0
+  docs/models/operations/listmcpserverskillsbycontrolplaneresponse.md:
+    id: cde925e9a695
+    last_write_checksum: sha1:d6fb45ff9d0e06d32ba54b30faebabbeab057221
+    pristine_git_object: fd037bd02630497f4caafca7d79db35adff67b90
   docs/models/operations/listmeteringeventsrequest.md:
     id: f2b38eb9a89f
     last_write_checksum: sha1:7fafbc317f7e748891b50182fe4a7e00fe7b69c1
@@ -16283,6 +16483,14 @@ trackedFiles:
     id: 2ac1bd52a5fb
     last_write_checksum: sha1:a516773e25f71cd6757c32c18c639215312a0ce7
     pristine_git_object: f532166fee15c6492cb2b542a1727b4b39219c8e
+  docs/models/operations/patchaigatewayrequest.md:
+    id: bfc41c461b43
+    last_write_checksum: sha1:a0e4c084dea1b69b90e5ab6a6e518a95478cfbe4
+    pristine_git_object: 2cc364e7bda8a9e672bd5e1d802cccf4dc1fdb28
+  docs/models/operations/patchaigatewayresponse.md:
+    id: 52d22362b564
+    last_write_checksum: sha1:0038c2b7de37aff641d2d70e92fe5ad3fa6a32d9
+    pristine_git_object: 2dde280a1de5288b2d0609e458059a0c2c6bed83
   docs/models/operations/patchapipackagerequest.md:
     id: 7ea189f898d5
     last_write_checksum: sha1:e8c426bc8036ebef1f508e1433ea54440ed5ef8c
@@ -16635,6 +16843,14 @@ trackedFiles:
     id: 9392b6612a52
     last_write_checksum: sha1:79b6bddd4fe32d889d249201263a746a18070490
     pristine_git_object: a5846a59eea24973182bedc0b6b3edcac8c8acec
+  docs/models/operations/updateaigatewayauthstrategyrequest.md:
+    id: 6517eb2f4e1a
+    last_write_checksum: sha1:60bd65480c17aee94ca9853f8d6d751f9b3b46fe
+    pristine_git_object: 0d5884f6f2e5219bfd55f2c41d332cc960accce6
+  docs/models/operations/updateaigatewayauthstrategyresponse.md:
+    id: 8be335255a85
+    last_write_checksum: sha1:2ad9f8e8f08d78621352c8cd78ce8a4fb3dac221
+    pristine_git_object: 738982c59dc7074ea374347c04a3eadb618791c4
   docs/models/operations/updateaigatewaycacertificaterequest.md:
     id: f135098e5690
     last_write_checksum: sha1:b4a5c9db2927794da9cf070f3281387eb9d28214
@@ -16701,8 +16917,8 @@ trackedFiles:
     pristine_git_object: f76f4157096eaf0cae39d79a310eb7375c0ca525
   docs/models/operations/updateaigatewayidentityproviderrequest.md:
     id: fd8c480a5d78
-    last_write_checksum: sha1:6f71ed6a438f6c4daa33bb2704a4f71bf7e1432f
-    pristine_git_object: 4020d9497d00576641369d29f30c6867835e9024
+    last_write_checksum: sha1:a444bdfa3dfaf090081ebc6d4247e175f9e04e91
+    pristine_git_object: be6e73c2b46ab160ff8334eae4ebccad700210c3
   docs/models/operations/updateaigatewayidentityproviderresponse.md:
     id: ad782bf5a806
     last_write_checksum: sha1:89171cd36596b8d2a5c87d640bafb48cf0b3a2fd
@@ -17781,8 +17997,12 @@ trackedFiles:
     pristine_git_object: d3b868d20d7e5921685bf1555effa396119dd894
   docs/sdks/aigatewayagents/README.md:
     id: 44470e3a2cd4
-    last_write_checksum: sha1:a5134b98a6b978e8e30d9794b4f4ccaa2e25b7d1
-    pristine_git_object: b9f79a7ff3e4fe129d5cde294c398d1419d28036
+    last_write_checksum: sha1:dc6c622b3f9f2e571745d2306a8983c4b4ad36bc
+    pristine_git_object: 5539286a8bb7d4be1753a6341c466660230e1035
+  docs/sdks/aigatewayauthstrategies/README.md:
+    id: 4a54416b0c42
+    last_write_checksum: sha1:1b9a153127e2749562042a474f442228151cebb6
+    pristine_git_object: e9133e19a485ca5b55022069df4aaa0fb67e0e63
   docs/sdks/aigatewaycacertificates/README.md:
     id: fa3e7bf28901
     last_write_checksum: sha1:ddfd4af33b462114268066a6a2a366892e1295bb
@@ -17809,12 +18029,12 @@ trackedFiles:
     pristine_git_object: f78b10542331c76b65f26a9a1678e224a9be3a2a
   docs/sdks/aigatewayidentityproviders/README.md:
     id: 9a01f9e02915
-    last_write_checksum: sha1:a7c379faf247e1de94f629de444aa323daa4175b
-    pristine_git_object: 4181f34c59b2f790cb11c3f45940dd6984282979
+    last_write_checksum: sha1:fb8f5929bea4dccc1d3ee0ca4daa8c991e8b6897
+    pristine_git_object: 99d26840709bd719a63fb7fdb50b45fd5cc4b9ce
   docs/sdks/aigatewaymcpservers/README.md:
     id: feddebd26689
-    last_write_checksum: sha1:91ce2b38d59506f42c1f8a1e25bea513824c29b1
-    pristine_git_object: 96dbba2d816ffcdf65befda15243a55d98de567b
+    last_write_checksum: sha1:0ffee1057cecf01f968fa8122950850d41d08717
+    pristine_git_object: 10a81906d12a5e685a26385328d49d2f5b7f0709
   docs/sdks/aigatewaymodelproviders/README.md:
     id: f87e1961d950
     last_write_checksum: sha1:5dbca211eb1509490847806d54c90805f9d981bb
@@ -17833,8 +18053,8 @@ trackedFiles:
     pristine_git_object: 4c66aacb19d0c0d19bfdb10373a4d597674abae1
   docs/sdks/aigateways/README.md:
     id: db76eaab8e9d
-    last_write_checksum: sha1:811e1b4ca7d7f43dc972619e9bee29c487d64dcd
-    pristine_git_object: 5b70f52b492e662a86d1dd1d1c7a9a7855349377
+    last_write_checksum: sha1:596dcfe9abe587185763b1f6f3f025a60a1b8406
+    pristine_git_object: f54b07129e071cf1c6c2809c2d83d0111566f3af
   docs/sdks/aigatewaysnis/README.md:
     id: 4248930abb0b
     last_write_checksum: sha1:9c0a730df73f1debb64b87feeecb3b96254663cf
@@ -18279,6 +18499,10 @@ trackedFiles:
     id: bfab970adeb1
     last_write_checksum: sha1:f19f72a6bc265809cd482c889d5c6bdb766f98ca
     pristine_git_object: c97e548bd0f188f649ae9d4602c81c995919f040
+  docs/sdks/skills/README.md:
+    id: 3a14a5c90791
+    last_write_checksum: sha1:162eaa73855c080d3a3b5372d446c5c5d6a96b05
+    pristine_git_object: 846a2336a49dce3be15f66c3aae095183d23eef3
   docs/sdks/snippets/README.md:
     id: 84aed19b8e5e
     last_write_checksum: sha1:acd09989b319ea0bee65e21c598cfd5651c021ff
@@ -18641,24 +18865,44 @@ trackedFiles:
     pristine_git_object: 2d013e7453f50629a5d0776cbf29d2a6ae1a392c
   models/components/aigateway.go:
     id: 1a92a1d57ddb
-    last_write_checksum: sha1:5188ea8b4caee9e4d2db98754f98caccaa2717c4
-    pristine_git_object: 0cb485e38bfce96f5d5429b1c5cd3a008c309be5
+    last_write_checksum: sha1:1a41731d7a0555e59cc85fae38d4d4e7857a6e18
+    pristine_git_object: fa85ab1a239adc257429f44a1943506b29e4a477
   models/components/aigatewayacls.go:
     id: c7ffa4321de7
     last_write_checksum: sha1:b16204ae42958b59d7b370a2db60c07ce70a63c9
     pristine_git_object: ba257afab469f27c8cade19090dd8e2237f650da
   models/components/aigatewayagent.go:
     id: 522814abbfdb
-    last_write_checksum: sha1:b05d8952d4fad1e96c24c49748e30fca5510bdfd
-    pristine_git_object: ae6bc7a8ef7d77a5770df8d0ac83d6192391f486
+    last_write_checksum: sha1:8e2dc1048b8923d8ee0aaf643204a4062acbef3a
+    pristine_git_object: 28596ccfbac0ff137c7536b5e659c56f095512b1
   models/components/aigatewayagentaccess.go:
     id: ea8bda6e64d9
-    last_write_checksum: sha1:d4d069d99e229a0f461ba0e0a38464a25203010f
-    pristine_git_object: cbb2ebb1f026995891f5da62df493df043b10b91
+    last_write_checksum: sha1:c4f4d6eed819d507810daad43d85455c75a590f0
+    pristine_git_object: a62c7e31b6490c90f02d1aee0aa3152f294c308d
   models/components/aigatewayallowacl.go:
     id: 32d5c6f951d0
     last_write_checksum: sha1:657ecac67ed1898a36ca36a9fdc5379f025f222f
     pristine_git_object: 9d57ba242b860b99e2aa9fc71eb33f012c72034b
+  models/components/aigatewayauthstrategy.go:
+    id: bdc60d9c08c2
+    last_write_checksum: sha1:5bbc66366659011a79fee25f879121a236a16a76
+    pristine_git_object: dbdfd2ab6761ce2cab3c33681f7bbf6b86ca06bf
+  models/components/aigatewayauthstrategykeyauth.go:
+    id: 7a64e04cdea6
+    last_write_checksum: sha1:103f9f3cff9201bf3d99e0111ba20d41a8b3aaa6
+    pristine_git_object: f0e08724cf31d047c4f94dce596d96bab0ea1dfc
+  models/components/aigatewayauthstrategykeyauthresponse.go:
+    id: 682891c8a8e7
+    last_write_checksum: sha1:67c5b48d9dc6ba0a31ddafa021e719adedf124c2
+    pristine_git_object: d9996dc8f881d0ae57ed2eb299f24cf55b046624
+  models/components/aigatewayauthstrategyopenidconnect.go:
+    id: 02aa156932a9
+    last_write_checksum: sha1:0a511563ae2d384cee3ce8f9fad8f54ad942af73
+    pristine_git_object: cc3d4676a6640c83e1980bea06e35efce6121da5
+  models/components/aigatewayauthstrategyopenidconnectresponse.go:
+    id: cae0e7460ed0
+    last_write_checksum: sha1:d55eb03e24ec49ee20b8585a3d73e5c945fb3c97
+    pristine_git_object: ede2c126ccd074308b5b7ec1a99f2b23fcfcbc7f
   models/components/aigatewayazureembeddingsmodelconfig.go:
     id: f5c5519feafb
     last_write_checksum: sha1:f61a0b485409fa7428741fba3b7f10bcc0a0bc1c
@@ -18689,8 +18933,8 @@ trackedFiles:
     pristine_git_object: 2c7f717fbd8fa0ff4c88d4a9f1011545c1a587ca
   models/components/aigatewayconsumer.go:
     id: c32f7aa19cd6
-    last_write_checksum: sha1:c78dd826a19b611854d9c8ad28115a766a9086ee
-    pristine_git_object: 4f808b79124c179030bad43ad3b9b35c05029638
+    last_write_checksum: sha1:05511dcb97ea6939b6e4a340dbd9f11cf3e6aa19
+    pristine_git_object: 907bc0a19ad913cfb2c230a2cb2b3f4727e9a95d
   models/components/aigatewayconsumercredential.go:
     id: 12394ed72abd
     last_write_checksum: sha1:d809ddc3f7b72a884489a2799eb84c4ed6a22ca8
@@ -18701,8 +18945,8 @@ trackedFiles:
     pristine_git_object: 2bc8f1244ba1f74b6a52c470a7f83ab785a495d3
   models/components/aigatewayconsumergroup.go:
     id: 2f1ce7352bee
-    last_write_checksum: sha1:538233d50cab7c878e730216a114669b9d513e57
-    pristine_git_object: 3f2ecfbba0f17fd0aa3afc5f1c4f7c863bc58afc
+    last_write_checksum: sha1:5a479efc944362130a75e85bc59c1f9e91e36ac0
+    pristine_git_object: 640c89bf9291835c784d64ce91d46d826558317a
   models/components/aigatewaycontextwindowfactor.go:
     id: a67cac2b3bed
     last_write_checksum: sha1:94443f6cdc21f483a520f1ab219e645e811958d4
@@ -18757,24 +19001,24 @@ trackedFiles:
     pristine_git_object: 4220e842062b5118af7d3e3891f37583dabee430
   models/components/aigatewayidentityprovider.go:
     id: d303c78505eb
-    last_write_checksum: sha1:de069447a7339af4649eb5fa07e834eb8314f555
-    pristine_git_object: 2764d540b41bdf8e73fb3b9a8cca222e334f10a2
+    last_write_checksum: sha1:816b30a875caba3d5cfd0e8061b28d228f6b2e78
+    pristine_git_object: 846a6a1aa7bb11ebb5604601010cb669025406e9
   models/components/aigatewayidentityproviderkeyauth.go:
     id: 04add5dd4936
-    last_write_checksum: sha1:5d58a8279673df4be6c488d1d09e980cc8987e42
-    pristine_git_object: fa0ea3de02658867ff5e5271a9f695e7e00dd384
+    last_write_checksum: sha1:68e2087c5d01f5aaa0f714af55620eeede4e4e96
+    pristine_git_object: 835c1350a2cc556c347cab658e1011bfaf72f7e2
   models/components/aigatewayidentityproviderkeyauthresponse.go:
     id: ad327670774f
-    last_write_checksum: sha1:e4353504ee378b54e0f3b879e2e3236a5c257d6f
-    pristine_git_object: f5f33f5676f3d2e94189230962863deb36be993d
+    last_write_checksum: sha1:a8d1b773d0d3630a9fa134e3986d455782a04380
+    pristine_git_object: 3b2cf1d74d764d530e68526bba18151f98796193
   models/components/aigatewayidentityprovideropenidconnect.go:
     id: 8afcbed6ac80
-    last_write_checksum: sha1:a82015b46fab5ceadbf1c8de247a715ef4b2eace
-    pristine_git_object: b44672225e76151c95ade1932cadece827cab2a9
+    last_write_checksum: sha1:448b6d3056972086ebe89ee2fbd9e86a5c8f81d1
+    pristine_git_object: b82c20d3faaa722b07bf106079c62fc256b796dc
   models/components/aigatewayidentityprovideropenidconnectresponse.go:
     id: df563b042376
-    last_write_checksum: sha1:244fc6bc1595c9d352a7203e345a03260e6c21c1
-    pristine_git_object: 24e1e53424425025db69eac48bb77e395fecda5d
+    last_write_checksum: sha1:19c4dd26f030666fed442c3e1da4819c49659f69
+    pristine_git_object: 01db2f9c6fa97ce818da7e2c280aa1e55448f616
   models/components/aigatewayloggingconfig.go:
     id: 7aa223605e8f
     last_write_checksum: sha1:b12928bcf3696a7c29a5ec49d01942da3fac0756
@@ -18789,8 +19033,8 @@ trackedFiles:
     pristine_git_object: 31782948ef6e031466462de73592b0758e79d49d
   models/components/aigatewaymcpserver.go:
     id: 173c07635024
-    last_write_checksum: sha1:1652bdc7751824c28e570b87fe81467e772ed6a4
-    pristine_git_object: ecd7c1f7c807204ffa520d1961521403fcf25e8a
+    last_write_checksum: sha1:b0cae2b36d35800019346d6bc158be49b312a236
+    pristine_git_object: 246a526ea911f953941ecc6a21cc16a640cd0ad0
   models/components/aigatewaymcpserverbaseaclproperties.go:
     id: 29125cba5714
     last_write_checksum: sha1:22ce3b3743696dac95e165ac3a14c44c7dddda8e
@@ -18805,36 +19049,52 @@ trackedFiles:
     pristine_git_object: 1f6d845f044159a3778e58270c816c5674bd0f8d
   models/components/aigatewaymcpserverconversionlistener.go:
     id: 98567db88d75
-    last_write_checksum: sha1:cf336380c151203a0793db4d0aac1312fdc712c8
-    pristine_git_object: 355c2bcd53e4acd038aaf4071c66efdfeaf02f4d
+    last_write_checksum: sha1:e8cc8d1f2fad2826d589f7c7b22f144a0ec2469b
+    pristine_git_object: 0524b28b8c5d6a05f003d8cafb74d73d577a34e0
+  models/components/aigatewaymcpserverconversionlistenerresponse.go:
+    id: 10b3f5f4e900
+    last_write_checksum: sha1:3fc7f34aa69e63c3313a796f89d5285ad079e253
+    pristine_git_object: cf252077c93a70487aa94ebdd500ee317c8f7e2f
   models/components/aigatewaymcpserverconversiononly.go:
     id: ecae44fda2e1
-    last_write_checksum: sha1:7829c4d7a92eb9f63a64cbb5e8ff38266ff653dc
-    pristine_git_object: 3f3b33e9a2de2016946a3423ad4680e10407ca83
+    last_write_checksum: sha1:c883999e8807b8a9e664eaba2c3f30bc96bb1a8d
+    pristine_git_object: a2d10d2787628b049293f3af2c1cba8e48cf39c8
+  models/components/aigatewaymcpserverconversiononlyresponse.go:
+    id: 2b1e849fd6e5
+    last_write_checksum: sha1:ae8e4d52197d47b510b34aca024f143c89509de0
+    pristine_git_object: ae72e91efa3dd347d6b405b9bfb828d2f9ac99a1
   models/components/aigatewaymcpserverlistener.go:
     id: b0f82f588f85
-    last_write_checksum: sha1:204f6964db3f6abde23e147a6df8db96a1eab142
-    pristine_git_object: 4ab3cdcb199733e909fde0499805617b97e0c24f
+    last_write_checksum: sha1:7e0f4be9c0ead556bc0f383d48fb4cd9594a2cb7
+    pristine_git_object: d71ab6b1b084873207df70ba055ad4cc04ead357
   models/components/aigatewaymcpserverlisteneraccess.go:
     id: 93ceeaa2908b
     last_write_checksum: sha1:dbbb778f0e2ad225df61a85f64784eca83d2fd23
     pristine_git_object: ebf3bc866c717faea9f96225324563175aa56d23
   models/components/aigatewaymcpserverlistenerconsumer.go:
     id: 60df091de82c
-    last_write_checksum: sha1:72d479716e4bce58fdf35a3f1d151933176e37da
-    pristine_git_object: 7cf551aef45a02cd243be3a39c4961f16a6c2d71
+    last_write_checksum: sha1:ea1968877b1dc155fd9a2f8e034b63cc22e59f18
+    pristine_git_object: a1ae9dbdb4941d3c904ea3a51180e9f84b10833d
   models/components/aigatewaymcpserverlisteneroauth.go:
     id: a9d74fde2fe9
-    last_write_checksum: sha1:42f0e157aed4eb80d60b3e3fd5561f6912321146
-    pristine_git_object: 0cfa337d33616e2c2e9636c07a167417e280d593
+    last_write_checksum: sha1:15493b1073a427edd5af62ffe8b98b45a85fb93a
+    pristine_git_object: a0a9d9b85176424318a30606c2ab6a6950efd0bf
+  models/components/aigatewaymcpserverlistenerresponse.go:
+    id: 4a41bd5619de
+    last_write_checksum: sha1:3edb5a7666774646cb9954ec8f752e66036a7e52
+    pristine_git_object: fc26dc8d43aa5324ed6179c926fc539c79dfee14
   models/components/aigatewaymcpservernoupstreamconfigoutput.go:
     id: 1c36a2c722dc
     last_write_checksum: sha1:821c02fd46daff0d15addc77b80ba78945e710bb
     pristine_git_object: 6f7a0d0473eb019a5a81d67b7d2b0c1cfa9b43c3
   models/components/aigatewaymcpserverpassthroughlistener.go:
     id: 0602dbea1cce
-    last_write_checksum: sha1:3d7454760f17ef7606e4e346aa938c2644da53b3
-    pristine_git_object: 0ec905b55124f34b9f0344a3a49518eef2a9dfd0
+    last_write_checksum: sha1:c1d1a37d6876892d915244769a1e8c35def44849
+    pristine_git_object: fb6a77b6ed15ea055a81f52005c3455e876b172f
+  models/components/aigatewaymcpserverpassthroughlistenerresponse.go:
+    id: e08094d8f48e
+    last_write_checksum: sha1:e5e0dbc372101e67bb8d2adb2d946e7c45ff27e9
+    pristine_git_object: 7aaddc10af3aa264534ec32c3c8f3adcbdd67572
   models/components/aigatewaymcpserverprotectedresourcemetadata.go:
     id: f2d3a2bc9b40
     last_write_checksum: sha1:33ae2d213037d1eb25ea8001c678569ea495046d
@@ -18845,12 +19105,16 @@ trackedFiles:
     pristine_git_object: 0a87192e0e2e3f281b38a3362206c7f6091c95bc
   models/components/aigatewaymcpserverupstreamserver.go:
     id: 03196d647ffc
-    last_write_checksum: sha1:0b536d2230130e8166665fe92eab4acad2870fa8
-    pristine_git_object: 86b0169efdba70efe1da1ee8ae3edcb2f45a7586
+    last_write_checksum: sha1:b9519d87dbbc125911107de344c1073d86751e94
+    pristine_git_object: 91151ec82ccf37c3909b5961e0cc57b214afbbe5
   models/components/aigatewaymcpserverupstreamserverconfigoutput.go:
     id: 295bea546afe
     last_write_checksum: sha1:e62ef48e8a98f71f5372d51d0709033788b70bf5
     pristine_git_object: 9cde0915222081017750111a55b73d5786369305
+  models/components/aigatewaymcpserverupstreamserverresponse.go:
+    id: 3b37c6682923
+    last_write_checksum: sha1:5d95a8fa1e587dc6c9d407ade7656153a587cee9
+    pristine_git_object: 7b45a8a5050bc7a600e94049d57dfec7c64cadc4
   models/components/aigatewaymcpserverupstreamserverserverconfigoutput.go:
     id: a62f5abf3218
     last_write_checksum: sha1:2cb29d608382f1011a2a8b25f44f5f718149da3e
@@ -18913,8 +19177,8 @@ trackedFiles:
     pristine_git_object: 27ca0d51225d89315e41250f87d87c0eb1d78886
   models/components/aigatewaymodelaccess.go:
     id: 1b8e19fcac51
-    last_write_checksum: sha1:83851a1ce022be561bb2a7d2802387524f6f79eb
-    pristine_git_object: 209878dead770886b71a3b658fa03298c423eba0
+    last_write_checksum: sha1:ced42877f19d0fa75999fcbc1088133edb87d0f2
+    pristine_git_object: 746586d866e6cb6c42fb2b6846deff297a9eb74a
   models/components/aigatewaymodelapi.go:
     id: 773e86471e9c
     last_write_checksum: sha1:dba870c4f36640c889362b0e6e82e2f3482e173d
@@ -20069,11 +20333,11 @@ trackedFiles:
     pristine_git_object: 9170f21612950eecff5b80894cb2b36d1da30410
   models/components/chart.go:
     id: 423ff591212c
-    last_write_checksum: sha1:ad48fb8e26d127e979fcc8e4d961b63a96250f78
+    last_write_checksum: sha1:ae5e21d7819480813717fb83666c0ef10adb9742
     pristine_git_object: 4b293ef287b7d1c6485566294ab8ee207a6708d3
   models/components/charttile.go:
     id: 8f57713ab332
-    last_write_checksum: sha1:05d36bea9c3d45af75174a7b6990e438f3b84ae9
+    last_write_checksum: sha1:7409b26d892105ef19e92356c78ffa2d5a9e3b3e
     pristine_git_object: 66a72615091d06bbfcb64aa6d79a25ab76713779
   models/components/charttiledefinition.go:
     id: 823825da0d36
@@ -20229,8 +20493,12 @@ trackedFiles:
     pristine_git_object: 1e335b02054cecb292ee537ef6b9e0b1116f85bf
   models/components/createaigatewayagentrequest.go:
     id: 9bdb9bb7f4b0
-    last_write_checksum: sha1:61d7fd5f692d9b1c0456c1f66d0899f243b88cdb
-    pristine_git_object: 799c49919b261b0664a2c8a6d7b886533f6625b0
+    last_write_checksum: sha1:71b35e38d97ec3d8e5cd3020f3d7b97c99c8e291
+    pristine_git_object: ce8bdaf601f19ada6e3165f2ac940814b83a9471
+  models/components/createaigatewayauthstrategyrequest.go:
+    id: b9f4221a7ba6
+    last_write_checksum: sha1:4c331edef46682cbb6e2e010284441ff004a285b
+    pristine_git_object: 07d8f8bbab0c8bd5e386617048d35cf8c300d05b
   models/components/createaigatewaycacertificaterequest.go:
     id: af1e85b5fdfa
     last_write_checksum: sha1:c06deda6ff9b12ea7230d5b72a9d51d448723c68
@@ -20253,20 +20521,20 @@ trackedFiles:
     pristine_git_object: f0acc9cefb34dade88eeb33ea9cb78d8c25ab9d1
   models/components/createaigatewayconsumergrouprequest.go:
     id: 2372b8f06a28
-    last_write_checksum: sha1:b664336a62016e666071a7521a0e9398b963882a
-    pristine_git_object: aaca6486f18c0378455ec6618d46dd6905b5d84a
+    last_write_checksum: sha1:c476af7ea155e8c2a2c4404e5e287856c35567ef
+    pristine_git_object: 19e2acd3a991cb6da551b6a21c54a7fa72e573ba
   models/components/createaigatewayconsumerrequest.go:
     id: 57da4c807fa3
-    last_write_checksum: sha1:46394b959850702ac450be785709ce1fe251277d
-    pristine_git_object: feae2a962e5b45dce68c8f6ceb1074b62b74cb62
+    last_write_checksum: sha1:b0bffab0b347e3428b75fd16aee4c329e6938772
+    pristine_git_object: f50e748704944462f5d3a6a4e4d3173842c3429c
   models/components/createaigatewaydataplanecertificaterequest.go:
     id: b604d5fb6e19
     last_write_checksum: sha1:6ccd7215cbd75fff98e4ca46afa93d81f54224ac
     pristine_git_object: f28ef7d69b130b1a9473fe8b2cf1d0546e94e246
   models/components/createaigatewayidentityproviderrequest.go:
     id: c8e4bf90a7cc
-    last_write_checksum: sha1:cdce58a755a3e271e5e063945c07610dbee8d346
-    pristine_git_object: b52aee04855dcc8537afc3b6ab9c420cdafc19a5
+    last_write_checksum: sha1:7896f4e229539a05b4ec381ef4bd1cbcd183fa6f
+    pristine_git_object: 52032606d5d36a4a920563d9b83c7327feb88027
   models/components/createaigatewaymcpserverrequest.go:
     id: c475c90e0a10
     last_write_checksum: sha1:03cd7614b3f5bd3ffd4a3f0ebf9dfa7a9e6a6405
@@ -20285,8 +20553,8 @@ trackedFiles:
     pristine_git_object: bb3bcc4d580a65c993c9923dabd8bca305212075
   models/components/createaigatewayrequest.go:
     id: 16e635de0793
-    last_write_checksum: sha1:90ffde55bcb84a8d6455c44dee975207c18eebf0
-    pristine_git_object: a2680be32f5211530b9493bb8f1805c32d85837b
+    last_write_checksum: sha1:85528074301dcd8a8669459df74a0d23444946f0
+    pristine_git_object: 35cda8f59324c44b3ac89c847c95c08a9b1a09ee
   models/components/createaigatewaysniforcertificaterequest.go:
     id: 872e35b657e9
     last_write_checksum: sha1:ed92e684e469399309b699654decc40819bf40d8
@@ -20659,6 +20927,10 @@ trackedFiles:
     id: df1ac7e6df9c
     last_write_checksum: sha1:6e913cd6ce4f48f33a723f4aca4672949be69738
     pristine_git_object: 8b3275af819e1a29a326af5774cf53d76deb8369
+  models/components/cursormetawithtotal.go:
+    id: 0c02b4da1d4a
+    last_write_checksum: sha1:ae3cc636567da34f75a74ccf9a6b613e1d6947be
+    pristine_git_object: 633ce639e95d55fca1323dc9233783d1f7f8430b
   models/components/cursorpageparameters.go:
     id: 5c504ac76802
     last_write_checksum: sha1:fe531427a571ed7f4f8a3c96a629fd1c5aa7898f
@@ -21595,6 +21867,10 @@ trackedFiles:
     id: 41b4318c9028
     last_write_checksum: sha1:967d2dbc19b098609f0435f228a865700ba1447b
     pristine_git_object: 45d794a9fd71dc4ee05b15aa56bf4cbad3e0cf0d
+  models/components/listaigatewayauthstrategiesresponse.go:
+    id: 1ddc78385370
+    last_write_checksum: sha1:1c209d95c5ee1c39c5e6f343ff0b2002fd4e64ec
+    pristine_git_object: 6fc3f5435e4e21aed2e89aa40d0ee18e5e9cfe8c
   models/components/listaigatewaycacertificatesresponse.go:
     id: 607fe823db4b
     last_write_checksum: sha1:b5bbeb03ccee9e0facadb876b9e73dd603592e43
@@ -21629,8 +21905,8 @@ trackedFiles:
     pristine_git_object: bce8d57ec359949fc3e77b1a134a1f7f9d0ded87
   models/components/listaigatewaydataplanenodesresponse.go:
     id: 0dfa6c72dff2
-    last_write_checksum: sha1:f01832f4551f06c57d8e525f0df112851f1bfa7f
-    pristine_git_object: e54b2f4bb21f27f87599388cdb05615926bc3925
+    last_write_checksum: sha1:d6a00f2fa168dfb6f593fe269d74265e99154057
+    pristine_git_object: 0ff600a55b99e1be8372bb3e8df4bfb308dc6ca9
   models/components/listaigatewayidentityprovidersresponse.go:
     id: d32c3af377ce
     last_write_checksum: sha1:bd9c580533679d291cf35df185bc5f57fa41fd95
@@ -21917,8 +22193,8 @@ trackedFiles:
     pristine_git_object: e475af360e6375c5fdbee3958c177379db791463
   models/components/listpluginschemas.go:
     id: 5b6570a476b5
-    last_write_checksum: sha1:49f9d4e9dffbe02f66d699511a98477b8f8c0697
-    pristine_git_object: a577b522c7de3a9372979242325e64c342da25fc
+    last_write_checksum: sha1:a682348358555c85f6c5875995bb816106024b9a
+    pristine_git_object: b1e438f96e3eddd2fb9682125e0e39b5362aa117
   models/components/listportalpagesresponse.go:
     id: e0f95d6e056f
     last_write_checksum: sha1:c42e1e735cf636eaa44877d07a7eca44d97bfaaa
@@ -21983,6 +22259,10 @@ trackedFiles:
     id: 2713b48d0234
     last_write_checksum: sha1:4f5938e8cd09413918f65aaa6869a92d19ecb1bf
     pristine_git_object: 1c417b05facbe68028cbc70b422b6349693376d7
+  models/components/listskillsresponse.go:
+    id: 4334bfcab91b
+    last_write_checksum: sha1:a367b2588f705e826c163e99bc789e5a36be6efa
+    pristine_git_object: 7318df0389c821408c9f249890637339f642e2aa
   models/components/listsubscriptionsparamsfilter.go:
     id: 466663ce60e8
     last_write_checksum: sha1:e21add2fd6cdabbc813fb7cd5811f7e59831b315
@@ -22379,6 +22659,10 @@ trackedFiles:
     id: 95600d554c37
     last_write_checksum: sha1:a5b33cb9dc67f069bfd5359c54ce5e70ea3832b4
     pristine_git_object: c0e5a1580548fc395a94579558b917790bcda908
+  models/components/patchaigatewayrequest.go:
+    id: cca69d847089
+    last_write_checksum: sha1:16826bc097eaeabb035cbd7b9ac223ff1f8e4818
+    pristine_git_object: 5b2048c6613e05337ec815cd2a1801bdcf5a8213
   models/components/patchcustomportalemailtemplatepayload.go:
     id: 34614769245b
     last_write_checksum: sha1:0430b017145d0f7669c3fa75c5392894d455152b
@@ -23003,6 +23287,18 @@ trackedFiles:
     id: 2e0b88a376af
     last_write_checksum: sha1:a69b07f19dd3d33f225f5f6192437433f30a1cb1
     pristine_git_object: 317d788226a7b3860b90e3842847495a3cccc08f
+  models/components/skill.go:
+    id: d6fdbd1c8bf3
+    last_write_checksum: sha1:5ef3eed3433694317fa18d126b7d66b96546655c
+    pristine_git_object: 44601a56e570634dd4cbc849dec065537b5f7188
+  models/components/skillfilter.go:
+    id: 2abf9dcbbfc4
+    last_write_checksum: sha1:84ed0107d1bbbd867b9df29cc657b84a627e9918
+    pristine_git_object: a333058f74b614345e100ea0aa97b1aea1f3b9cb
+  models/components/skillfrontmatter.go:
+    id: 1620d18e8642
+    last_write_checksum: sha1:5c8a82aea00a6d20dad85561d5bb684681ac8e20
+    pristine_git_object: f7853322b863232d4c3ba6ec78a2bd3ff9287836
   models/components/sni.go:
     id: 356dcd49f718
     last_write_checksum: sha1:c72d0c00671d5468fb7cfaff53268a3e4a021479
@@ -23249,8 +23545,12 @@ trackedFiles:
     pristine_git_object: 6748e3cca152ee056dbfe539a0e01586c36c31c5
   models/components/updateaigatewayagentrequest.go:
     id: 0b8d1c1702ff
-    last_write_checksum: sha1:b1929dfdec6d4c2a27fc2f1b4328f79e83b0b2fd
-    pristine_git_object: 713cbfcec7b5e7eb41092b0e9f7ac1c95aa59cd5
+    last_write_checksum: sha1:54c14d9a139f05623c2777c3d9a937dece853f6c
+    pristine_git_object: 265c511f1c78b035a706f422f1a8213e48142f48
+  models/components/updateaigatewayauthstrategyrequest.go:
+    id: 3c629572f1f1
+    last_write_checksum: sha1:2fd85b48401f02887f7aa879cb6ce494c78ecc1d
+    pristine_git_object: fd87b92293e04f9d5cfb12058d1deefc0bbfc763
   models/components/updateaigatewaycacertificaterequest.go:
     id: 606f8bfc5211
     last_write_checksum: sha1:55b52e93a7ee593acb3795175f51a25bbd5b1482
@@ -23269,16 +23569,16 @@ trackedFiles:
     pristine_git_object: 37d06f72aad9255c0cdecc6a9c628b07abbfcf48
   models/components/updateaigatewayconsumergrouprequest.go:
     id: 84898574234f
-    last_write_checksum: sha1:08257e58454c11c70697ab6a074b7fb3e43d4c78
-    pristine_git_object: 3e86e804bbd720e683d57a06e7e37f6b95db3399
+    last_write_checksum: sha1:02eded1152c657b88ccce208eb2693e2fd106b85
+    pristine_git_object: 818366919f0bba1174a132acd7cf700501ff7a85
   models/components/updateaigatewayconsumerrequest.go:
     id: feec7bdfcc22
-    last_write_checksum: sha1:dc3ac4fd6b50866771e5920a51e1a042dbcac1bc
-    pristine_git_object: 5c0945499fd89b607b1d646b18b2cf602c58f739
+    last_write_checksum: sha1:6474974f048368d890dd57dd9f1f33249e67fc78
+    pristine_git_object: 48893274fe4459017717aefba456925e8d3cc2c5
   models/components/updateaigatewayidentityproviderrequest.go:
     id: 1efc8464d0a4
-    last_write_checksum: sha1:d73061a61842ed8c328098a1b325819818ddcf20
-    pristine_git_object: 6c2854caa6369359e1f1073722b4013c988f6594
+    last_write_checksum: sha1:768a505b6647aa734782149007ca5eb89440cf0a
+    pristine_git_object: f17ee9b08d83ad9b416efe2b2b7d491d915cc9be
   models/components/updateaigatewaymcpserverrequest.go:
     id: 9659130c0e0d
     last_write_checksum: sha1:9880ec8873ae6658d9f9f6e9f8626ec27b7c1921
@@ -23297,8 +23597,8 @@ trackedFiles:
     pristine_git_object: cd0d68395ca31ca232cb50b12150cf6fd195bdbf
   models/components/updateaigatewayrequest.go:
     id: 775f21b3fc3d
-    last_write_checksum: sha1:ff793d9922cd795fcf4d4bfc73527e0f4bd5d07f
-    pristine_git_object: 7456ff3bbfb1949cf6b7ea45255786b77e26d476
+    last_write_checksum: sha1:c2b6b6b075389b081e5fa071e1ea00ac4852bc60
+    pristine_git_object: 9a8f21ecf72594856eb1963ba3ebda33bd555828
   models/components/updateaigatewaysniforcertificaterequest.go:
     id: b7c7c76f964d
     last_write_checksum: sha1:e82c4d1ec557ffb39271d2545b77e40a7d672f8a
@@ -23609,8 +23909,8 @@ trackedFiles:
     pristine_git_object: d470b00647d187ce245bf2221c079e891fc4820b
   models/components/verifydcrproviderresponse.go:
     id: ba405160a960
-    last_write_checksum: sha1:e74d8a463984e56727b893a0c4d44919fd6db272
-    pristine_git_object: b92feb36cd154553d2d6c2a597e8683a94176546
+    last_write_checksum: sha1:70caf7ef28570cf3fc19f5da05cc795d5a3cd62a
+    pristine_git_object: 92b880045449a4564766a7dd8505555de6b434bb
   models/components/virtualcluster.go:
     id: 13f04aa879b7
     last_write_checksum: sha1:64404597a60c03be25746401fffc6520dcdec5fb
@@ -23795,6 +24095,10 @@ trackedFiles:
     id: 9929e3e1396e
     last_write_checksum: sha1:44646354b0cc8b9e44a68a914effb3c53c9d0622
     pristine_git_object: a9ccc19934614384f93c84c1f48687434ba5feaa
+  models/operations/createaigatewayauthstrategy.go:
+    id: dbfd0fa05f58
+    last_write_checksum: sha1:521119afd9f91e07c299a795f934a96a35b7e282
+    pristine_git_object: 49770c64a6b520235069b5cf1cfe3e81cc4ab96e
   models/operations/createaigatewaycacertificate.go:
     id: a726ff7e6393
     last_write_checksum: sha1:fd6b115697cd4f8864c9d2078fa314b83aebae3e
@@ -23833,8 +24137,8 @@ trackedFiles:
     pristine_git_object: 88a7432eaaa72f697d0bf746b1296dc0648bd291
   models/operations/createaigatewaymcpserver.go:
     id: 15cea648db31
-    last_write_checksum: sha1:c76d0e1705df7571ab3e317fa280c58d0ba62ca5
-    pristine_git_object: e98911d4c1636797fc98e0cbac503b03b43a8cc6
+    last_write_checksum: sha1:672078b16895e65d5fc5f523813ef4a30b9f5882
+    pristine_git_object: cba856bbe4722af06addb0bd5691428b19ad8e7a
   models/operations/createaigatewaymodel.go:
     id: 3b7936919d70
     last_write_checksum: sha1:d43bb41a1c749273e6e89a231d557607235e7c7f
@@ -24295,6 +24599,10 @@ trackedFiles:
     id: d252cf7cd07b
     last_write_checksum: sha1:865f9238336c5812a47fa4afbbcf2b7f923fc829
     pristine_git_object: 3a7c5954ffa95c11b874d42e0168a6e315d7eb44
+  models/operations/deleteaigatewayauthstrategy.go:
+    id: a1cb29d59ebb
+    last_write_checksum: sha1:94f596a727d17ecf3817ebd45673d6e547bfa8b6
+    pristine_git_object: 0bf653ac26082b730f3650f3b7484ec9e678f9cc
   models/operations/deleteaigatewaycacertificate.go:
     id: 52e0d10f4269
     last_write_checksum: sha1:a50fee7632a24ad21416e574016b8f78e7a4de76
@@ -24329,8 +24637,8 @@ trackedFiles:
     pristine_git_object: b5cc3726ea36354e01ad185603f353a166ca333b
   models/operations/deleteaigatewayidentityprovider.go:
     id: bdc86dbd7075
-    last_write_checksum: sha1:b54ec00d95fd47e96a5c5ddaf3e6f0831ab8e4ce
-    pristine_git_object: e3668659f2c76daad3b39ad3bc28bc24205d1530
+    last_write_checksum: sha1:dba93a9aeb4d15cdf7010ad29dfbcb91227ebac3
+    pristine_git_object: 5904e13f104e97208535f14c0d8ee233af93b7ac
   models/operations/deleteaigatewaymcpserver.go:
     id: 4512c3312151
     last_write_checksum: sha1:b614cdf2997abb1d3d7bad875d238df712a84269
@@ -24899,6 +25207,10 @@ trackedFiles:
     id: 19742975b068
     last_write_checksum: sha1:08e7fb1ee443336becf4f8ae472d97cf85bd0255
     pristine_git_object: 322d79ae693e4338fc2547fd2fc5d6362e10c152
+  models/operations/getaigatewayauthstrategy.go:
+    id: 97e9389c8289
+    last_write_checksum: sha1:22d2a75613a6478a43b60c5967d8740d18a334d6
+    pristine_git_object: b704d4d7c75ab77d19ceb0079cc507c1860afe0f
   models/operations/getaigatewaycacertificate.go:
     id: 9f5baa4a26e8
     last_write_checksum: sha1:c4254bb3531f0d6f79dbfdb590d8d42ca4022b77
@@ -24937,12 +25249,12 @@ trackedFiles:
     pristine_git_object: 9ce625a0fbb7fd03f8b84038ff2142f4c12033fe
   models/operations/getaigatewayidentityprovider.go:
     id: be5b4321ad6f
-    last_write_checksum: sha1:e23fff4eb7c5da3c2af289e2bb87a5efac00c596
-    pristine_git_object: 7cee7dfa042954badb0e6e27a52064466854143b
+    last_write_checksum: sha1:f72cee4478ac1a3f5578fb1a358b5e74be77a7a0
+    pristine_git_object: bee97ff0483ecd967750dec0a9a1864821b6b6fb
   models/operations/getaigatewaymcpserver.go:
     id: 8a9a8eab4d52
-    last_write_checksum: sha1:a0caffdb928320c8510393673539dc9bbcd9e36f
-    pristine_git_object: 7f43060d494f031963a536b82fb2f82a391e8651
+    last_write_checksum: sha1:ae4455f475e6560ccebcb6a36e1a45a491ca298d
+    pristine_git_object: c289520de0b96ad78d34d3e86e6fd47bee859d70
   models/operations/getaigatewaymodel.go:
     id: f9cea549a1e2
     last_write_checksum: sha1:b1e0e1224dbf90beeff4475855dea459ff52bf44
@@ -25327,6 +25639,10 @@ trackedFiles:
     id: 63e9624c953f
     last_write_checksum: sha1:983d8b4ebbcb8cfd7b8d37f0f4a3c40d794595a4
     pristine_git_object: 4919362ef51b8ba7f63378b0e509bfc1cd6aa482
+  models/operations/getmcpserverskillcontentsbycontrolplane.go:
+    id: 0111e1abe746
+    last_write_checksum: sha1:225c05faea23dd42fb5edf5507a4793673776c7c
+    pristine_git_object: 9df89cf28fc380c57f2421b6a44eb9906edf5804
   models/operations/getmeter.go:
     id: b1413a7dba06
     last_write_checksum: sha1:2172a1af54e82336660f9424c9a09dd56440e0c2
@@ -25635,6 +25951,10 @@ trackedFiles:
     id: 2dbe1c048733
     last_write_checksum: sha1:3925dc57503604c1d7764d4571019113910c5e1d
     pristine_git_object: 5e406d930cda8fa72f1e2da4ea99881169249540
+  models/operations/listaigatewayauthstrategies.go:
+    id: 034429fe76c8
+    last_write_checksum: sha1:445cf7758b1560bcb45d81c3eea6c715c81da214
+    pristine_git_object: 5a09e7e1adfb1d60caa72e59fb6beb01c0a3dbd0
   models/operations/listaigatewaycacertificates.go:
     id: ae76b84c37a7
     last_write_checksum: sha1:689f650544525405129ecb191411e282eecccd76
@@ -26059,6 +26379,10 @@ trackedFiles:
     id: 85e41321e837
     last_write_checksum: sha1:bbdad92a1012757d5ea49419bf6d3a5f254d1b38
     pristine_git_object: 617efb32371a78636dd56780b3a737b60d3b1368
+  models/operations/listmcpserverskillsbycontrolplane.go:
+    id: b80170fb1544
+    last_write_checksum: sha1:e64474d55e0805e21b9cf3e1323db30b3ef5a8e2
+    pristine_git_object: 60004b772ba3a8391e2509e48fa4d3404686ac02
   models/operations/listmeteringevents.go:
     id: c0b3fc7e62fa
     last_write_checksum: sha1:f36b3032cffb712f3e9e9a04d7d1bcaa58ec39d3
@@ -26359,6 +26683,10 @@ trackedFiles:
     id: d20dd4db9865
     last_write_checksum: sha1:1ac2fa76af096a7137988f31d03a6a52d8c2e370
     pristine_git_object: 3fa70ba9877d4f8e9fbab92e036a9be56db68894
+  models/operations/patchaigateway.go:
+    id: a4246d74fc31
+    last_write_checksum: sha1:643bd02d06b8dd2381bde4346b32fdd5958ddaf0
+    pristine_git_object: 9dff4eb2819265840244f2e63f5c022cc8d192d2
   models/operations/patchapipackage.go:
     id: a8d1bc622fda
     last_write_checksum: sha1:0f33ca81a2d2fed5745538386522716f4c41c56e
@@ -26539,6 +26867,10 @@ trackedFiles:
     id: 0835dd5257e9
     last_write_checksum: sha1:f2bbfbabfa93afa759b0bdab7d828558f88a29fd
     pristine_git_object: cc4b3fd6bef1cdb625efb27c7bda14cec83ce16a
+  models/operations/updateaigatewayauthstrategy.go:
+    id: 043c76af3e41
+    last_write_checksum: sha1:3c8015bed79c0de49fc0ad10ca0141097014a03d
+    pristine_git_object: 3cdd4a5fc58687c25e29a589245df23a633e898f
   models/operations/updateaigatewaycacertificate.go:
     id: 9948ca4df1a5
     last_write_checksum: sha1:b591b1f5c9d738507c79b67aad2fbc5e81f3e17f
@@ -26569,12 +26901,12 @@ trackedFiles:
     pristine_git_object: 396097fbc99e816a28530258202975aa284e28be
   models/operations/updateaigatewayidentityprovider.go:
     id: 1a891c6fab64
-    last_write_checksum: sha1:62fe3af648f9e67a5012be58b535f5eef92aaa2f
-    pristine_git_object: ee3f8f767278bfbafedd79eb65558a27e53c5b29
+    last_write_checksum: sha1:5cdb44769f8e481347cdbe1ffd9abb2921d0eb48
+    pristine_git_object: 694640f05719a5efccf96d419ae0e230b21c22c9
   models/operations/updateaigatewaymcpserver.go:
     id: f8932d52b603
-    last_write_checksum: sha1:94b8f3c6e4f5169efd5d2508e86c87fa4174b170
-    pristine_git_object: 39cf5105999c895fa3900557840bf4417eca80e4
+    last_write_checksum: sha1:1c89730727cf0634d6052c94443f7d6d9c8a7113
+    pristine_git_object: e65c6af6d100321d8a3c975ab5d2be5142aeef49
   models/operations/updateaigatewaymodel.go:
     id: 2e2e7f89f2c3
     last_write_checksum: sha1:feab4ee4e04d2dedddc05c85c194a95b57e32905
@@ -27301,12 +27633,16 @@ trackedFiles:
     pristine_git_object: 329751b1a4c05e1c8157838d580ba52c429a49c1
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:c97fc3d057c71e14a28c3c55675e86a5f450e7b8
-    pristine_git_object: 34fb668ae6135e010417def32e5e6c2936ceb770
+    last_write_checksum: sha1:052d9a5481c7eec51edfcff7d8bb88b4c68a2ca4
+    pristine_git_object: 1e1c5df2c5389b7035339772dbccb8f13ccd85b0
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:5301c70482baed727f2523a333bbec05c92775cc
     pristine_git_object: c2e2e8ac810f083750e0f484448dced084a0a72e
+  skills.go:
+    id: 65ecddcd9ce6
+    last_write_checksum: sha1:7444f7623fda23182a53d04521a1c34e64b2fadb
+    pristine_git_object: 177349e6aebbe1862f7f834ea804122620eca1aa
   snippets.go:
     id: f12d0f7071cd
     last_write_checksum: sha1:1cb5bbbf5afc0cfff718cb179fdc21719a7d1965
@@ -56050,7 +56386,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"data": [{"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "meta": {"page": {"number": 1, "size": 10, "total": 100}}}
+          application/json: {"data": [{"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "meta": {"page": {"number": 1, "size": 10, "total": 100}}}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -56060,10 +56396,10 @@ examples:
   create-ai-gateway:
     speakeasy-default-create-ai-gateway:
       requestBody:
-        application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}}
+        application/json: {"deployment_type": "hybrid", "display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}}
       responses:
         "201":
-          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 822667, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value 1>", "<value 2>", "<value 3>"], "source": "body"}]}
         "401":
@@ -56081,7 +56417,7 @@ examples:
           gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
       responses:
         "200":
-          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -56099,7 +56435,7 @@ examples:
         application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}}
       responses:
         "200":
-          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 280932, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_length", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
@@ -56149,10 +56485,10 @@ examples:
         path:
           gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
       requestBody:
-        application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "identity_providers": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}}
+        application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "auth_strategies": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}}
       responses:
         "201":
-          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "identity_providers": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "auth_strategies": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 674960, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_symbols", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
         "401":
@@ -56173,7 +56509,7 @@ examples:
           agentIdOrName: "my-entity-name"
       responses:
         "200":
-          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "identity_providers": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "auth_strategies": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -56189,10 +56525,10 @@ examples:
           gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
           agentIdOrName: "my-entity-name"
       requestBody:
-        application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "identity_providers": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}}
+        application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "auth_strategies": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}}
       responses:
         "200":
-          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "identity_providers": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "Kong Air Flight Booking Agent", "name": "kongair-flight-booking-agent", "enabled": true, "type": "a2a", "access": {"acls": {"allow": ["consumer-group-1"]}, "auth_strategies": ["okta-ai-se"]}, "config": {"url": "https://booking-agent.internal.kongair.com", "upstream": {"auth": {"type": "aws", "access_key_id": "AKIAIOSFODNN7EXAMPLE", "region": "us-east-1"}}, "route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "logging": {"payloads": false, "max_payload_size": 524288}}, "labels": {"category": "finance"}, "managed_by": {"owner": "terraform"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 854600, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_items", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
         "401":
@@ -57057,6 +57393,8 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "429":
           application/problem+json: {"status": 429, "title": "Too Many Requests", "type": "https://httpstatuses.com/429", "instance": "kong:trace:1234567890", "detail": "Too Many Requests"}
+        "400":
+          application/problem+json: {"status": 421556, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
   list-ai-gateway-model-providers:
     speakeasy-default-list-ai-gateway-model-providers:
       parameters:
@@ -57257,7 +57595,7 @@ examples:
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
       responses:
         "200":
-          application/json: {"data": [], "meta": {"page": {"next": "/dev", "previous": "/usr/local/bin", "size": 10}}}
+          application/json: {"data": [], "meta": {"page": {"next": "/dev", "previous": "/usr/local/bin", "size": 10, "total": 974}}}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -58332,6 +58670,159 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "429":
           application/problem+json: {"status": 429, "title": "Too Many Requests", "type": "https://httpstatuses.com/429", "instance": "kong:trace:1234567890", "detail": "Too Many Requests"}
+  patch-ai-gateway:
+    speakeasy-default-patch-ai-gateway:
+      parameters:
+        path:
+          gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      requestBody:
+        application/json: {"display_name": "My AI Gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}}
+      responses:
+        "200":
+          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 785707, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "429":
+          application/problem+json: {"status": 429, "title": "Too Many Requests", "type": "https://httpstatuses.com/429", "instance": "kong:trace:1234567890", "detail": "Too Many Requests"}
+  list-ai-gateway-auth-strategies:
+    speakeasy-default-list-ai-gateway-auth-strategies:
+      parameters:
+        path:
+          gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+        query:
+          page[size]: 10
+          page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+      responses:
+        "200":
+          application/json: {"data": [{"display_name": "Okta AI SE", "name": "okta-ai-se", "type": "key-auth", "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "meta": {"page": {"next": "/var", "previous": "/net", "size": 10}}}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "429":
+          application/problem+json: {"status": 429, "title": "Too Many Requests", "type": "https://httpstatuses.com/429", "instance": "kong:trace:1234567890", "detail": "Too Many Requests"}
+  create-ai-gateway-auth-strategy:
+    speakeasy-default-create-ai-gateway-auth-strategy:
+      parameters:
+        path:
+          gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      requestBody:
+        application/json: {"display_name": "Okta AI SE", "name": "okta-ai-se", "type": "openid-connect"}
+      responses:
+        "201":
+          application/json: {"display_name": "Okta AI SE", "name": "okta-ai-se", "type": "openid-connect", "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 218646, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_lowercase", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+        "429":
+          application/problem+json: {"status": 429, "title": "Too Many Requests", "type": "https://httpstatuses.com/429", "instance": "kong:trace:1234567890", "detail": "Too Many Requests"}
+  get-ai-gateway-auth-strategy:
+    speakeasy-default-get-ai-gateway-auth-strategy:
+      parameters:
+        path:
+          gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          authStrategyIdOrName: "my-entity-name"
+      responses:
+        "200":
+          application/json: {"display_name": "Okta AI SE", "name": "okta-ai-se", "type": "key-auth", "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "429":
+          application/problem+json: {"status": 429, "title": "Too Many Requests", "type": "https://httpstatuses.com/429", "instance": "kong:trace:1234567890", "detail": "Too Many Requests"}
+  update-ai-gateway-auth-strategy:
+    speakeasy-default-update-ai-gateway-auth-strategy:
+      parameters:
+        path:
+          gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          authStrategyIdOrName: "my-entity-name"
+      requestBody:
+        application/json: {"display_name": "Okta AI SE", "name": "okta-ai-se", "type": "openid-connect"}
+      responses:
+        "200":
+          application/json: {"display_name": "Okta AI SE", "name": "okta-ai-se", "type": "key-auth", "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 358146, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "429":
+          application/problem+json: {"status": 429, "title": "Too Many Requests", "type": "https://httpstatuses.com/429", "instance": "kong:trace:1234567890", "detail": "Too Many Requests"}
+  delete-ai-gateway-auth-strategy:
+    speakeasy-default-delete-ai-gateway-auth-strategy:
+      parameters:
+        path:
+          gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          authStrategyIdOrName: "my-entity-name"
+      responses:
+        "400":
+          application/problem+json: {"status": 622331, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+        "429":
+          application/problem+json: {"status": 429, "title": "Too Many Requests", "type": "https://httpstatuses.com/429", "instance": "kong:trace:1234567890", "detail": "Too Many Requests"}
+  list-mcp-server-skills-by-control-plane:
+    speakeasy-default-list-mcp-server-skills-by-control-plane:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          mcpServerId: "85bf863b-78d5-4b8f-a114-c9609f990798"
+        query:
+          page[size]: 10
+          page[number]: 1
+          sort: "created_at desc"
+      responses:
+        "200":
+          application/json: {"data": [], "meta": {"page": {"number": 1, "size": 10, "total": 100}}}
+        "400":
+          application/problem+json: {"status": 168340, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value 1>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  get-mcp-server-skill-contents-by-control-plane:
+    speakeasy-default-get-mcp-server-skill-contents-by-control-plane:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          mcpServerId: "5bae9b81-0da6-4ba2-ba78-bb99f822149e"
+          skillId: "8bb561d4-55c6-493f-8f2c-145ac063fea3"
+      responses:
+        "400":
+          application/problem+json: {"status": 484175, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_length", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
 examplesVersion: 1.0.2
 generatedTests: {}
 generatedFiles:

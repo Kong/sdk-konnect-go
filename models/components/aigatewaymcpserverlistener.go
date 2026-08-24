@@ -17,8 +17,6 @@ type AIGatewayMCPServerListener struct {
 	//
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerNoUpstreamConfig `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPToolBase `json:"tools,omitempty"`
 	// The explicit list of source MCP Servers whose tools this listener exposes.
 	// Each entry is the immutable `name` of a `conversion-only` (toolset) or
 	// `upstream-server` (third-party MCP server) MCP Server in the same AI Gateway.
@@ -50,8 +48,7 @@ type AIGatewayMCPServerListener struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy            map[string]string `json:"managed_by,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (a AIGatewayMCPServerListener) MarshalJSON() ([]byte, error) {
@@ -74,13 +71,6 @@ func (a *AIGatewayMCPServerListener) GetConfig() AIGatewayMCPServerNoUpstreamCon
 		return AIGatewayMCPServerNoUpstreamConfig{}
 	}
 	return a.Config
-}
-
-func (a *AIGatewayMCPServerListener) GetTools() []AIGatewayMCPToolBase {
-	if a == nil {
-		return nil
-	}
-	return a.Tools
 }
 
 func (a *AIGatewayMCPServerListener) GetSources() []string {
@@ -151,11 +141,4 @@ func (a *AIGatewayMCPServerListener) GetManagedBy() map[string]string {
 		return nil
 	}
 	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerListener) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
 }

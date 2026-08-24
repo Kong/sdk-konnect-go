@@ -19,6 +19,8 @@ const (
 
 // CreateAIGatewayIdentityProviderRequest - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type CreateAIGatewayIdentityProviderRequest struct {
 	AIGatewayIdentityProviderKeyAuth       *AIGatewayIdentityProviderKeyAuth       `queryParam:"inline" union:"member"`
 	AIGatewayIdentityProviderOpenIDConnect *AIGatewayIdentityProviderOpenIDConnect `queryParam:"inline" union:"member"`

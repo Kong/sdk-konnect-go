@@ -179,8 +179,7 @@ type UpdateAIGatewayAgentRequest struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy            map[string]string `json:"managed_by,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (u UpdateAIGatewayAgentRequest) MarshalJSON() ([]byte, error) {
@@ -255,11 +254,4 @@ func (u *UpdateAIGatewayAgentRequest) GetManagedBy() map[string]string {
 		return nil
 	}
 	return u.ManagedBy
-}
-
-func (u *UpdateAIGatewayAgentRequest) GetAdditionalProperties() map[string]any {
-	if u == nil {
-		return nil
-	}
-	return u.AdditionalProperties
 }

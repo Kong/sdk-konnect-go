@@ -8,6 +8,30 @@ import (
 	"time"
 )
 
+// DeploymentType - How this AI Gateway's control plane is deployed.
+type DeploymentType string
+
+const (
+	DeploymentTypeHybrid     DeploymentType = "hybrid"
+	DeploymentTypeManaged    DeploymentType = "managed"
+	DeploymentTypeServerless DeploymentType = "serverless"
+)
+
+func (e DeploymentType) ToPointer() *DeploymentType {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *DeploymentType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "hybrid", "managed", "serverless":
+			return true
+		}
+	}
+	return false
+}
+
 // Endpoints - Object containing AI Gateway access endpoints.
 type Endpoints struct {
 	// Configuration Endpoint.
@@ -50,6 +74,8 @@ type AIGateway struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
+	// How this AI Gateway's control plane is deployed.
+	DeploymentType *DeploymentType `default:"hybrid" json:"deployment_type"`
 	// Object containing AI Gateway access endpoints.
 	Endpoints Endpoints `json:"endpoints"`
 	// The version identification of the latest configuration of the gateway.
@@ -61,8 +87,7 @@ type AIGateway struct {
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt            time.Time      `json:"updated_at"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (a AIGateway) MarshalJSON() ([]byte, error) {
@@ -118,6 +143,13 @@ func (a *AIGateway) GetID() string {
 	return a.ID
 }
 
+func (a *AIGateway) GetDeploymentType() *DeploymentType {
+	if a == nil {
+		return nil
+	}
+	return a.DeploymentType
+}
+
 func (a *AIGateway) GetEndpoints() Endpoints {
 	if a == nil {
 		return Endpoints{}
@@ -144,11 +176,4 @@ func (a *AIGateway) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-func (a *AIGateway) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
 }

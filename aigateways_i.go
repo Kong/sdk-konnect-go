@@ -35,6 +35,12 @@ type AIGatewaysSDK interface {
 	//
 	// Updates the configuration of an existing AI Gateway.
 	UpdateAiGateway(ctx context.Context, gatewayID string, updateAIGatewayRequest components.UpdateAIGatewayRequest, opts ...operations.Option) (*operations.UpdateAiGatewayResponse, error)
+	// PatchAiGateway - Patch an AI Gateway
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Partially updates the configuration of an existing AI Gateway. Only the fields included in the request body are changed.
+	PatchAiGateway(ctx context.Context, gatewayID string, patchAIGatewayRequest components.PatchAIGatewayRequest, opts ...operations.Option) (*operations.PatchAiGatewayResponse, error)
 	// DeleteAiGateway - Delete an AI Gateway
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.

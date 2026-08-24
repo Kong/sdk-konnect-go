@@ -7,9 +7,35 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// CreateAIGatewayRequestDeploymentType - How this AI Gateway's control plane is deployed. Set at creation time and cannot be changed afterward.
+type CreateAIGatewayRequestDeploymentType string
+
+const (
+	CreateAIGatewayRequestDeploymentTypeHybrid     CreateAIGatewayRequestDeploymentType = "hybrid"
+	CreateAIGatewayRequestDeploymentTypeManaged    CreateAIGatewayRequestDeploymentType = "managed"
+	CreateAIGatewayRequestDeploymentTypeServerless CreateAIGatewayRequestDeploymentType = "serverless"
+)
+
+func (e CreateAIGatewayRequestDeploymentType) ToPointer() *CreateAIGatewayRequestDeploymentType {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CreateAIGatewayRequestDeploymentType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "hybrid", "managed", "serverless":
+			return true
+		}
+	}
+	return false
+}
+
 // CreateAIGatewayRequest - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type CreateAIGatewayRequest struct {
+	// How this AI Gateway's control plane is deployed. Set at creation time and cannot be changed afterward.
+	DeploymentType *CreateAIGatewayRequestDeploymentType `default:"hybrid" json:"deployment_type"`
 	// The display name for this AI Gateway.
 	DisplayName string `json:"display_name"`
 	// The name for this AI Gateway. This value is immutable after creation.
@@ -24,8 +50,7 @@ type CreateAIGatewayRequest struct {
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
-	Labels               map[string]string `json:"labels,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
+	Labels map[string]string `json:"labels,omitempty"`
 }
 
 func (c CreateAIGatewayRequest) MarshalJSON() ([]byte, error) {
@@ -37,6 +62,13 @@ func (c *CreateAIGatewayRequest) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (c *CreateAIGatewayRequest) GetDeploymentType() *CreateAIGatewayRequestDeploymentType {
+	if c == nil {
+		return nil
+	}
+	return c.DeploymentType
 }
 
 func (c *CreateAIGatewayRequest) GetDisplayName() string {
@@ -72,11 +104,4 @@ func (c *CreateAIGatewayRequest) GetLabels() map[string]string {
 		return nil
 	}
 	return c.Labels
-}
-
-func (c *CreateAIGatewayRequest) GetAdditionalProperties() map[string]any {
-	if c == nil {
-		return nil
-	}
-	return c.AdditionalProperties
 }

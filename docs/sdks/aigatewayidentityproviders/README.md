@@ -1,23 +1,30 @@
-# AIGatewayIdentityProviders
+# ~~AIGatewayIdentityProviders~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
-Identity providers for authenticating users and accessing AI Gateway resources.
+Deprecated in favor of AI Gateway Auth Strategies. Identity providers for authenticating users and accessing AI Gateway resources.
 
 ### Available Operations
 
-* [ListAiGatewayIdentityProviders](#listaigatewayidentityproviders) - List AI Gateway Identity Providers
-* [CreateAiGatewayIdentityProvider](#createaigatewayidentityprovider) - Create an AI Gateway Identity Provider
-* [GetAiGatewayIdentityProvider](#getaigatewayidentityprovider) - Get an AI Gateway Identity Provider
-* [UpdateAiGatewayIdentityProvider](#updateaigatewayidentityprovider) - Update an AI Gateway Identity Provider
-* [DeleteAiGatewayIdentityProvider](#deleteaigatewayidentityprovider) - Delete an AI Gateway Identity Provider
+* [~~ListAiGatewayIdentityProviders~~](#listaigatewayidentityproviders) - List AI Gateway Identity Providers :warning: **Deprecated**
+* [~~CreateAiGatewayIdentityProvider~~](#createaigatewayidentityprovider) - Create an AI Gateway Identity Provider :warning: **Deprecated**
+* [~~GetAiGatewayIdentityProvider~~](#getaigatewayidentityprovider) - Get an AI Gateway Identity Provider :warning: **Deprecated**
+* [~~UpdateAiGatewayIdentityProvider~~](#updateaigatewayidentityprovider) - Update an AI Gateway Identity Provider :warning: **Deprecated**
+* [~~DeleteAiGatewayIdentityProvider~~](#deleteaigatewayidentityprovider) - Delete an AI Gateway Identity Provider :warning: **Deprecated**
 
-## ListAiGatewayIdentityProviders
+## ~~ListAiGatewayIdentityProviders~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 Returns a list of identity providers configured for the AI Gateway.
+
+Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies` instead.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -78,12 +85,16 @@ func main() {
 | sdkerrors.TooManyRequestsError | 429                            | application/problem+json       |
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
-## CreateAiGatewayIdentityProvider
+## ~~CreateAiGatewayIdentityProvider~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 Registers a new identity provider for the AI Gateway.
+
+Deprecated: use `POST /ai-gateways/{gatewayId}/auth-strategies` instead.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -152,12 +163,16 @@ func main() {
 | sdkerrors.TooManyRequestsError | 429                            | application/problem+json       |
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
-## GetAiGatewayIdentityProvider
+## ~~GetAiGatewayIdentityProvider~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 Returns the details of a specific AI Gateway identity provider.
+
+Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -199,12 +214,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                  | Type                                                       | Required                                                   | Description                                                | Example                                                    |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `ctx`                                                      | [context.Context](https://pkg.go.dev/context#Context)      | :heavy_check_mark:                                         | The context to use for the request.                        |                                                            |
-| `gatewayID`                                                | `string`                                                   | :heavy_check_mark:                                         | The unique ID of the AI Gateway.                           | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                       |
-| `identityProviderIDOrName`                                 | `string`                                                   | :heavy_check_mark:                                         | The unique ID or name of the AI Gateway Identity provider. | my-entity-name                                             |
-| `opts`                                                     | [][operations.Option](../../models/operations/option.md)   | :heavy_minus_sign:                                         | The options for this request.                              |                                                            |
+| Parameter                                                                                                                                                                           | Type                                                                                                                                                                                | Required                                                                                                                                                                            | Description                                                                                                                                                                         | Example                                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                               | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                               | :heavy_check_mark:                                                                                                                                                                  | The context to use for the request.                                                                                                                                                 |                                                                                                                                                                                     |
+| `gatewayID`                                                                                                                                                                         | `string`                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                  | The unique ID of the AI Gateway.                                                                                                                                                    | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                                                                                                                |
+| `identityProviderIDOrName`                                                                                                                                                          | `string`                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The unique ID or name of the AI Gateway Identity provider. | my-entity-name                                                                                                                                                                      |
+| `opts`                                                                                                                                                                              | [][operations.Option](../../models/operations/option.md)                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                  | The options for this request.                                                                                                                                                       |                                                                                                                                                                                     |
 
 ### Response
 
@@ -220,12 +235,16 @@ func main() {
 | sdkerrors.TooManyRequestsError | 429                            | application/problem+json       |
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
-## UpdateAiGatewayIdentityProvider
+## ~~UpdateAiGatewayIdentityProvider~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing AI Gateway Identity provider.
+
+Deprecated: use `PUT /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -298,12 +317,16 @@ func main() {
 | sdkerrors.TooManyRequestsError | 429                            | application/problem+json       |
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
-## DeleteAiGatewayIdentityProvider
+## ~~DeleteAiGatewayIdentityProvider~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 Removes a specific AI Gateway Identity provider.
+
+Deprecated: use `DELETE /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -339,12 +362,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                  | Type                                                       | Required                                                   | Description                                                | Example                                                    |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `ctx`                                                      | [context.Context](https://pkg.go.dev/context#Context)      | :heavy_check_mark:                                         | The context to use for the request.                        |                                                            |
-| `gatewayID`                                                | `string`                                                   | :heavy_check_mark:                                         | The unique ID of the AI Gateway.                           | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                       |
-| `identityProviderIDOrName`                                 | `string`                                                   | :heavy_check_mark:                                         | The unique ID or name of the AI Gateway Identity provider. | my-entity-name                                             |
-| `opts`                                                     | [][operations.Option](../../models/operations/option.md)   | :heavy_minus_sign:                                         | The options for this request.                              |                                                            |
+| Parameter                                                                                                                                                                           | Type                                                                                                                                                                                | Required                                                                                                                                                                            | Description                                                                                                                                                                         | Example                                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                               | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                               | :heavy_check_mark:                                                                                                                                                                  | The context to use for the request.                                                                                                                                                 |                                                                                                                                                                                     |
+| `gatewayID`                                                                                                                                                                         | `string`                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                  | The unique ID of the AI Gateway.                                                                                                                                                    | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                                                                                                                |
+| `identityProviderIDOrName`                                                                                                                                                          | `string`                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                  | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>The unique ID or name of the AI Gateway Identity provider. | my-entity-name                                                                                                                                                                      |
+| `opts`                                                                                                                                                                              | [][operations.Option](../../models/operations/option.md)                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                  | The options for this request.                                                                                                                                                       |                                                                                                                                                                                     |
 
 ### Response
 
