@@ -1,9 +1,11 @@
-# AIGatewayIdentityProviderKeyAuth
+# ~~AIGatewayIdentityProviderKeyAuth~~
 
 **Pre-release Feature**
 This feature is currently in beta and is subject to change.
 
 Configuration for an identity provider.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 
 ## Fields

@@ -8,832 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"time"
 )
-
-// AIGatewayMCPServerAIGatewayMCPServerUpstreamServer - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-type AIGatewayMCPServerAIGatewayMCPServerUpstreamServer struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"upstream-server" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// Routing, logging, and server configuration for the MCP Server.
-	Config AIGatewayMCPServerUpstreamServerConfigOutput `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPUpstreamTool `json:"tools,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
-	// The display name for the MCP Server.
-	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
-	Name string `json:"name"`
-	// Whether the MCP Server is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
-	// List of policy references.
-	Policies []string `json:"policies,omitempty"`
-	// Public labels store information about an entity that can be used for filtering a list of objects.
-	//
-	// Public labels are intended to store **PUBLIC** metadata.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels,omitempty"`
-	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
-	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	// Contains a unique identifier used for this resource.
-	ID string `json:"id"`
-	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
-	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt            time.Time      `json:"updated_at"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
-}
-
-func (a AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetType() string {
-	return "upstream-server"
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetConfig() AIGatewayMCPServerUpstreamServerConfigOutput {
-	if a == nil {
-		return AIGatewayMCPServerUpstreamServerConfigOutput{}
-	}
-	return a.Config
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetTools() []AIGatewayMCPUpstreamTool {
-	if a == nil {
-		return nil
-	}
-	return a.Tools
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetAccess() *AIGatewayMCPServerBaseACLProperties {
-	if a == nil {
-		return nil
-	}
-	return a.Access
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesOauth
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetDisplayName() string {
-	if a == nil {
-		return ""
-	}
-	return a.DisplayName
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetName() string {
-	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetPolicies() []string {
-	if a == nil {
-		return nil
-	}
-	return a.Policies
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetLabels() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.Labels
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetManagedBy() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetID() string {
-	if a == nil {
-		return ""
-	}
-	return a.ID
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetCreatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.CreatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetUpdatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.UpdatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
-}
-
-// AIGatewayMCPServerAIGatewayMCPServerPassthroughListener - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-type AIGatewayMCPServerAIGatewayMCPServerPassthroughListener struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"passthrough-listener" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// Routing, logging, and server configuration for the MCP Server.
-	Config AIGatewayMCPServerWithUpstreamConfigOutput `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPToolBase `json:"tools,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
-	// The display name for the MCP Server.
-	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
-	Name string `json:"name"`
-	// Whether the MCP Server is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
-	// List of policy references.
-	Policies []string `json:"policies,omitempty"`
-	// Public labels store information about an entity that can be used for filtering a list of objects.
-	//
-	// Public labels are intended to store **PUBLIC** metadata.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels,omitempty"`
-	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
-	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	// Contains a unique identifier used for this resource.
-	ID string `json:"id"`
-	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
-	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt            time.Time      `json:"updated_at"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
-}
-
-func (a AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetType() string {
-	return "passthrough-listener"
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetConfig() AIGatewayMCPServerWithUpstreamConfigOutput {
-	if a == nil {
-		return AIGatewayMCPServerWithUpstreamConfigOutput{}
-	}
-	return a.Config
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetTools() []AIGatewayMCPToolBase {
-	if a == nil {
-		return nil
-	}
-	return a.Tools
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccess() *AIGatewayMCPServerListenerAccess {
-	if a == nil {
-		return nil
-	}
-	return a.Access
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccessConsumer() *AIGatewayMCPServerListenerConsumer {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerListenerConsumer
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAccessOauthAccessToken() *AIGatewayMCPServerListenerOauth {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerListenerOauth
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetDisplayName() string {
-	if a == nil {
-		return ""
-	}
-	return a.DisplayName
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetName() string {
-	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetPolicies() []string {
-	if a == nil {
-		return nil
-	}
-	return a.Policies
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetLabels() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.Labels
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetManagedBy() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetID() string {
-	if a == nil {
-		return ""
-	}
-	return a.ID
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetCreatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.CreatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetUpdatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.UpdatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
-}
-
-// AIGatewayMCPServerAIGatewayMCPServerListener - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-type AIGatewayMCPServerAIGatewayMCPServerListener struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"listener" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// Routing, logging, and server configuration for the MCP Server.
-	Config AIGatewayMCPServerNoUpstreamConfigOutput `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPToolBase `json:"tools,omitempty"`
-	// The explicit list of source MCP Servers whose tools this listener exposes.
-	// Each entry is the immutable `name` of a `conversion-only` (toolset) or
-	// `upstream-server` (third-party MCP server) MCP Server in the same AI Gateway.
-	// All of the referenced source's tools are exposed.
-	//
-	Sources []string `json:"sources"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
-	// The display name for the MCP Server.
-	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
-	Name string `json:"name"`
-	// Whether the MCP Server is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
-	// List of policy references.
-	Policies []string `json:"policies,omitempty"`
-	// Public labels store information about an entity that can be used for filtering a list of objects.
-	//
-	// Public labels are intended to store **PUBLIC** metadata.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels,omitempty"`
-	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
-	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	// Contains a unique identifier used for this resource.
-	ID string `json:"id"`
-	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
-	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt            time.Time      `json:"updated_at"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
-}
-
-func (a AIGatewayMCPServerAIGatewayMCPServerListener) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "sources", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetType() string {
-	return "listener"
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetConfig() AIGatewayMCPServerNoUpstreamConfigOutput {
-	if a == nil {
-		return AIGatewayMCPServerNoUpstreamConfigOutput{}
-	}
-	return a.Config
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetTools() []AIGatewayMCPToolBase {
-	if a == nil {
-		return nil
-	}
-	return a.Tools
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetSources() []string {
-	if a == nil {
-		return []string{}
-	}
-	return a.Sources
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccess() *AIGatewayMCPServerListenerAccess {
-	if a == nil {
-		return nil
-	}
-	return a.Access
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccessConsumer() *AIGatewayMCPServerListenerConsumer {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerListenerConsumer
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAccessOauthAccessToken() *AIGatewayMCPServerListenerOauth {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerListenerOauth
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetDisplayName() string {
-	if a == nil {
-		return ""
-	}
-	return a.DisplayName
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetName() string {
-	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetPolicies() []string {
-	if a == nil {
-		return nil
-	}
-	return a.Policies
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetLabels() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.Labels
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetManagedBy() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetID() string {
-	if a == nil {
-		return ""
-	}
-	return a.ID
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetCreatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.CreatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetUpdatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.UpdatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerListener) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
-}
-
-// AIGatewayMCPServerAIGatewayMCPServerConversionListener - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-type AIGatewayMCPServerAIGatewayMCPServerConversionListener struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"conversion-listener" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// Routing, logging, and server configuration for the MCP Server.
-	Config AIGatewayMCPServerWithUpstreamNoProxyConfigOutput `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPConversionTool `json:"tools,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
-	// The display name for the MCP Server.
-	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
-	Name string `json:"name"`
-	// Whether the MCP Server is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
-	// List of policy references.
-	Policies []string `json:"policies,omitempty"`
-	// Public labels store information about an entity that can be used for filtering a list of objects.
-	//
-	// Public labels are intended to store **PUBLIC** metadata.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels,omitempty"`
-	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
-	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	// Contains a unique identifier used for this resource.
-	ID string `json:"id"`
-	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
-	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt            time.Time      `json:"updated_at"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
-}
-
-func (a AIGatewayMCPServerAIGatewayMCPServerConversionListener) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetType() string {
-	return "conversion-listener"
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigOutput {
-	if a == nil {
-		return AIGatewayMCPServerWithUpstreamNoProxyConfigOutput{}
-	}
-	return a.Config
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetTools() []AIGatewayMCPConversionTool {
-	if a == nil {
-		return nil
-	}
-	return a.Tools
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccess() *AIGatewayMCPServerListenerAccess {
-	if a == nil {
-		return nil
-	}
-	return a.Access
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccessConsumer() *AIGatewayMCPServerListenerConsumer {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerListenerConsumer
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAccessOauthAccessToken() *AIGatewayMCPServerListenerOauth {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerListenerOauth
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetDisplayName() string {
-	if a == nil {
-		return ""
-	}
-	return a.DisplayName
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetName() string {
-	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetPolicies() []string {
-	if a == nil {
-		return nil
-	}
-	return a.Policies
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetLabels() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.Labels
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetManagedBy() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetID() string {
-	if a == nil {
-		return ""
-	}
-	return a.ID
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetCreatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.CreatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetUpdatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.UpdatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionListener) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
-}
-
-// AIGatewayMCPServerAIGatewayMCPServerConversionOnly - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-type AIGatewayMCPServerAIGatewayMCPServerConversionOnly struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"conversion-only" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// Routing, logging, and request body size limits for the MCP Server.
-	Config AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPConversionTool `json:"tools,omitempty"`
-	// The display name for the MCP Server.
-	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
-	Name string `json:"name"`
-	// Whether the MCP Server is enabled.
-	Enabled *bool `default:"true" json:"enabled"`
-	// List of policy references.
-	Policies []string `json:"policies,omitempty"`
-	// Public labels store information about an entity that can be used for filtering a list of objects.
-	//
-	// Public labels are intended to store **PUBLIC** metadata.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels,omitempty"`
-	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
-	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	// Contains a unique identifier used for this resource.
-	ID string `json:"id"`
-	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
-	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt            time.Time      `json:"updated_at"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
-}
-
-func (a AIGatewayMCPServerAIGatewayMCPServerConversionOnly) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetType() string {
-	return "conversion-only"
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput {
-	if a == nil {
-		return AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput{}
-	}
-	return a.Config
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetTools() []AIGatewayMCPConversionTool {
-	if a == nil {
-		return nil
-	}
-	return a.Tools
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetDisplayName() string {
-	if a == nil {
-		return ""
-	}
-	return a.DisplayName
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetName() string {
-	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetPolicies() []string {
-	if a == nil {
-		return nil
-	}
-	return a.Policies
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetLabels() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.Labels
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetManagedBy() map[string]string {
-	if a == nil {
-		return nil
-	}
-	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetID() string {
-	if a == nil {
-		return ""
-	}
-	return a.ID
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetCreatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.CreatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetUpdatedAt() time.Time {
-	if a == nil {
-		return time.Time{}
-	}
-	return a.UpdatedAt
-}
-
-func (a *AIGatewayMCPServerAIGatewayMCPServerConversionOnly) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
-}
 
 type AIGatewayMCPServerType string
 
@@ -848,57 +23,57 @@ const (
 // AIGatewayMCPServer - **Pre-release Feature**
 // This feature is currently in beta and is subject to change.
 type AIGatewayMCPServer struct {
-	AIGatewayMCPServerAIGatewayMCPServerConversionOnly      *AIGatewayMCPServerAIGatewayMCPServerConversionOnly      `queryParam:"inline" union:"member"`
-	AIGatewayMCPServerAIGatewayMCPServerConversionListener  *AIGatewayMCPServerAIGatewayMCPServerConversionListener  `queryParam:"inline" union:"member"`
-	AIGatewayMCPServerAIGatewayMCPServerListener            *AIGatewayMCPServerAIGatewayMCPServerListener            `queryParam:"inline" union:"member"`
-	AIGatewayMCPServerAIGatewayMCPServerPassthroughListener *AIGatewayMCPServerAIGatewayMCPServerPassthroughListener `queryParam:"inline" union:"member"`
-	AIGatewayMCPServerAIGatewayMCPServerUpstreamServer      *AIGatewayMCPServerAIGatewayMCPServerUpstreamServer      `queryParam:"inline" union:"member"`
+	AIGatewayMCPServerConversionOnlyResponse      *AIGatewayMCPServerConversionOnlyResponse      `queryParam:"inline" union:"member"`
+	AIGatewayMCPServerConversionListenerResponse  *AIGatewayMCPServerConversionListenerResponse  `queryParam:"inline" union:"member"`
+	AIGatewayMCPServerListenerResponse            *AIGatewayMCPServerListenerResponse            `queryParam:"inline" union:"member"`
+	AIGatewayMCPServerPassthroughListenerResponse *AIGatewayMCPServerPassthroughListenerResponse `queryParam:"inline" union:"member"`
+	AIGatewayMCPServerUpstreamServerResponse      *AIGatewayMCPServerUpstreamServerResponse      `queryParam:"inline" union:"member"`
 
 	Type AIGatewayMCPServerType
 }
 
-func CreateAIGatewayMCPServerConversionOnly(conversionOnly AIGatewayMCPServerAIGatewayMCPServerConversionOnly) AIGatewayMCPServer {
+func CreateAIGatewayMCPServerConversionOnly(conversionOnly AIGatewayMCPServerConversionOnlyResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeConversionOnly
 
 	return AIGatewayMCPServer{
-		AIGatewayMCPServerAIGatewayMCPServerConversionOnly: &conversionOnly,
-		Type: typ,
+		AIGatewayMCPServerConversionOnlyResponse: &conversionOnly,
+		Type:                                     typ,
 	}
 }
 
-func CreateAIGatewayMCPServerConversionListener(conversionListener AIGatewayMCPServerAIGatewayMCPServerConversionListener) AIGatewayMCPServer {
+func CreateAIGatewayMCPServerConversionListener(conversionListener AIGatewayMCPServerConversionListenerResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeConversionListener
 
 	return AIGatewayMCPServer{
-		AIGatewayMCPServerAIGatewayMCPServerConversionListener: &conversionListener,
+		AIGatewayMCPServerConversionListenerResponse: &conversionListener,
 		Type: typ,
 	}
 }
 
-func CreateAIGatewayMCPServerListener(listener AIGatewayMCPServerAIGatewayMCPServerListener) AIGatewayMCPServer {
+func CreateAIGatewayMCPServerListener(listener AIGatewayMCPServerListenerResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeListener
 
 	return AIGatewayMCPServer{
-		AIGatewayMCPServerAIGatewayMCPServerListener: &listener,
-		Type: typ,
+		AIGatewayMCPServerListenerResponse: &listener,
+		Type:                               typ,
 	}
 }
 
-func CreateAIGatewayMCPServerPassthroughListener(passthroughListener AIGatewayMCPServerAIGatewayMCPServerPassthroughListener) AIGatewayMCPServer {
+func CreateAIGatewayMCPServerPassthroughListener(passthroughListener AIGatewayMCPServerPassthroughListenerResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypePassthroughListener
 
 	return AIGatewayMCPServer{
-		AIGatewayMCPServerAIGatewayMCPServerPassthroughListener: &passthroughListener,
+		AIGatewayMCPServerPassthroughListenerResponse: &passthroughListener,
 		Type: typ,
 	}
 }
 
-func CreateAIGatewayMCPServerUpstreamServer(upstreamServer AIGatewayMCPServerAIGatewayMCPServerUpstreamServer) AIGatewayMCPServer {
+func CreateAIGatewayMCPServerUpstreamServer(upstreamServer AIGatewayMCPServerUpstreamServerResponse) AIGatewayMCPServer {
 	typ := AIGatewayMCPServerTypeUpstreamServer
 
 	return AIGatewayMCPServer{
-		AIGatewayMCPServerAIGatewayMCPServerUpstreamServer: &upstreamServer,
-		Type: typ,
+		AIGatewayMCPServerUpstreamServerResponse: &upstreamServer,
+		Type:                                     typ,
 	}
 }
 
@@ -915,48 +90,48 @@ func (u *AIGatewayMCPServer) UnmarshalJSON(data []byte) error {
 
 	switch dis.Type {
 	case "conversion-only":
-		aiGatewayMCPServerAIGatewayMCPServerConversionOnly := new(AIGatewayMCPServerAIGatewayMCPServerConversionOnly)
-		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerAIGatewayMCPServerConversionOnly, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == conversion-only) type AIGatewayMCPServerAIGatewayMCPServerConversionOnly within AIGatewayMCPServer: %w", string(data), err)
+		aiGatewayMCPServerConversionOnlyResponse := new(AIGatewayMCPServerConversionOnlyResponse)
+		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerConversionOnlyResponse, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == conversion-only) type AIGatewayMCPServerConversionOnlyResponse within AIGatewayMCPServer: %w", string(data), err)
 		}
 
-		u.AIGatewayMCPServerAIGatewayMCPServerConversionOnly = aiGatewayMCPServerAIGatewayMCPServerConversionOnly
+		u.AIGatewayMCPServerConversionOnlyResponse = aiGatewayMCPServerConversionOnlyResponse
 		u.Type = AIGatewayMCPServerTypeConversionOnly
 		return nil
 	case "conversion-listener":
-		aiGatewayMCPServerAIGatewayMCPServerConversionListener := new(AIGatewayMCPServerAIGatewayMCPServerConversionListener)
-		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerAIGatewayMCPServerConversionListener, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == conversion-listener) type AIGatewayMCPServerAIGatewayMCPServerConversionListener within AIGatewayMCPServer: %w", string(data), err)
+		aiGatewayMCPServerConversionListenerResponse := new(AIGatewayMCPServerConversionListenerResponse)
+		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerConversionListenerResponse, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == conversion-listener) type AIGatewayMCPServerConversionListenerResponse within AIGatewayMCPServer: %w", string(data), err)
 		}
 
-		u.AIGatewayMCPServerAIGatewayMCPServerConversionListener = aiGatewayMCPServerAIGatewayMCPServerConversionListener
+		u.AIGatewayMCPServerConversionListenerResponse = aiGatewayMCPServerConversionListenerResponse
 		u.Type = AIGatewayMCPServerTypeConversionListener
 		return nil
 	case "listener":
-		aiGatewayMCPServerAIGatewayMCPServerListener := new(AIGatewayMCPServerAIGatewayMCPServerListener)
-		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerAIGatewayMCPServerListener, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == listener) type AIGatewayMCPServerAIGatewayMCPServerListener within AIGatewayMCPServer: %w", string(data), err)
+		aiGatewayMCPServerListenerResponse := new(AIGatewayMCPServerListenerResponse)
+		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerListenerResponse, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == listener) type AIGatewayMCPServerListenerResponse within AIGatewayMCPServer: %w", string(data), err)
 		}
 
-		u.AIGatewayMCPServerAIGatewayMCPServerListener = aiGatewayMCPServerAIGatewayMCPServerListener
+		u.AIGatewayMCPServerListenerResponse = aiGatewayMCPServerListenerResponse
 		u.Type = AIGatewayMCPServerTypeListener
 		return nil
 	case "passthrough-listener":
-		aiGatewayMCPServerAIGatewayMCPServerPassthroughListener := new(AIGatewayMCPServerAIGatewayMCPServerPassthroughListener)
-		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerAIGatewayMCPServerPassthroughListener, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == passthrough-listener) type AIGatewayMCPServerAIGatewayMCPServerPassthroughListener within AIGatewayMCPServer: %w", string(data), err)
+		aiGatewayMCPServerPassthroughListenerResponse := new(AIGatewayMCPServerPassthroughListenerResponse)
+		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerPassthroughListenerResponse, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == passthrough-listener) type AIGatewayMCPServerPassthroughListenerResponse within AIGatewayMCPServer: %w", string(data), err)
 		}
 
-		u.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener = aiGatewayMCPServerAIGatewayMCPServerPassthroughListener
+		u.AIGatewayMCPServerPassthroughListenerResponse = aiGatewayMCPServerPassthroughListenerResponse
 		u.Type = AIGatewayMCPServerTypePassthroughListener
 		return nil
 	case "upstream-server":
-		aiGatewayMCPServerAIGatewayMCPServerUpstreamServer := new(AIGatewayMCPServerAIGatewayMCPServerUpstreamServer)
-		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerAIGatewayMCPServerUpstreamServer, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == upstream-server) type AIGatewayMCPServerAIGatewayMCPServerUpstreamServer within AIGatewayMCPServer: %w", string(data), err)
+		aiGatewayMCPServerUpstreamServerResponse := new(AIGatewayMCPServerUpstreamServerResponse)
+		if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerUpstreamServerResponse, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == upstream-server) type AIGatewayMCPServerUpstreamServerResponse within AIGatewayMCPServer: %w", string(data), err)
 		}
 
-		u.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer = aiGatewayMCPServerAIGatewayMCPServerUpstreamServer
+		u.AIGatewayMCPServerUpstreamServerResponse = aiGatewayMCPServerUpstreamServerResponse
 		u.Type = AIGatewayMCPServerTypeUpstreamServer
 		return nil
 	}
@@ -965,24 +140,24 @@ func (u *AIGatewayMCPServer) UnmarshalJSON(data []byte) error {
 }
 
 func (u AIGatewayMCPServer) MarshalJSON() ([]byte, error) {
-	if u.AIGatewayMCPServerAIGatewayMCPServerConversionOnly != nil {
-		return utils.MarshalJSON(u.AIGatewayMCPServerAIGatewayMCPServerConversionOnly, "", true)
+	if u.AIGatewayMCPServerConversionOnlyResponse != nil {
+		return utils.MarshalJSON(u.AIGatewayMCPServerConversionOnlyResponse, "", true)
 	}
 
-	if u.AIGatewayMCPServerAIGatewayMCPServerConversionListener != nil {
-		return utils.MarshalJSON(u.AIGatewayMCPServerAIGatewayMCPServerConversionListener, "", true)
+	if u.AIGatewayMCPServerConversionListenerResponse != nil {
+		return utils.MarshalJSON(u.AIGatewayMCPServerConversionListenerResponse, "", true)
 	}
 
-	if u.AIGatewayMCPServerAIGatewayMCPServerListener != nil {
-		return utils.MarshalJSON(u.AIGatewayMCPServerAIGatewayMCPServerListener, "", true)
+	if u.AIGatewayMCPServerListenerResponse != nil {
+		return utils.MarshalJSON(u.AIGatewayMCPServerListenerResponse, "", true)
 	}
 
-	if u.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener != nil {
-		return utils.MarshalJSON(u.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener, "", true)
+	if u.AIGatewayMCPServerPassthroughListenerResponse != nil {
+		return utils.MarshalJSON(u.AIGatewayMCPServerPassthroughListenerResponse, "", true)
 	}
 
-	if u.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer != nil {
-		return utils.MarshalJSON(u.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer, "", true)
+	if u.AIGatewayMCPServerUpstreamServerResponse != nil {
+		return utils.MarshalJSON(u.AIGatewayMCPServerUpstreamServerResponse, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AIGatewayMCPServer: all fields are null")

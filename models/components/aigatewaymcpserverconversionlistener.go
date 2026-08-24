@@ -44,8 +44,7 @@ type AIGatewayMCPServerConversionListener struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy            map[string]string `json:"managed_by,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (a AIGatewayMCPServerConversionListener) MarshalJSON() ([]byte, error) {
@@ -138,11 +137,4 @@ func (a *AIGatewayMCPServerConversionListener) GetManagedBy() map[string]string 
 		return nil
 	}
 	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerConversionListener) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
 }

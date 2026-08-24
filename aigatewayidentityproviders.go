@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-// AIGatewayIdentityProviders - Identity providers for authenticating users and accessing AI Gateway resources.
+// AIGatewayIdentityProviders - Deprecated in favor of AI Gateway Auth Strategies. Identity providers for authenticating users and accessing AI Gateway resources.
 type AIGatewayIdentityProviders struct {
 	rootSDK          *SDK
 	sdkConfiguration config.SDKConfiguration
@@ -37,6 +37,10 @@ func newAIGatewayIdentityProviders(rootSDK *SDK, sdkConfig config.SDKConfigurati
 // This endpoint is currently in beta and is subject to change.
 //
 // Returns a list of identity providers configured for the AI Gateway.
+//
+// Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies` instead.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *AIGatewayIdentityProviders) ListAiGatewayIdentityProviders(ctx context.Context, request operations.ListAiGatewayIdentityProvidersRequest, opts ...operations.Option) (*operations.ListAiGatewayIdentityProvidersResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -333,6 +337,10 @@ func (s *AIGatewayIdentityProviders) ListAiGatewayIdentityProviders(ctx context.
 // This endpoint is currently in beta and is subject to change.
 //
 // Registers a new identity provider for the AI Gateway.
+//
+// Deprecated: use `POST /ai-gateways/{gatewayId}/auth-strategies` instead.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *AIGatewayIdentityProviders) CreateAiGatewayIdentityProvider(ctx context.Context, gatewayID string, createAIGatewayIdentityProviderRequest components.CreateAIGatewayIdentityProviderRequest, opts ...operations.Option) (*operations.CreateAiGatewayIdentityProviderResponse, error) {
 	request := operations.CreateAiGatewayIdentityProviderRequest{
 		GatewayID:                              gatewayID,
@@ -658,6 +666,10 @@ func (s *AIGatewayIdentityProviders) CreateAiGatewayIdentityProvider(ctx context
 // This endpoint is currently in beta and is subject to change.
 //
 // Returns the details of a specific AI Gateway identity provider.
+//
+// Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *AIGatewayIdentityProviders) GetAiGatewayIdentityProvider(ctx context.Context, gatewayID string, identityProviderIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayIdentityProviderResponse, error) {
 	request := operations.GetAiGatewayIdentityProviderRequest{
 		GatewayID:                gatewayID,
@@ -955,6 +967,10 @@ func (s *AIGatewayIdentityProviders) GetAiGatewayIdentityProvider(ctx context.Co
 // This endpoint is currently in beta and is subject to change.
 //
 // Updates the configuration of an existing AI Gateway Identity provider.
+//
+// Deprecated: use `PUT /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *AIGatewayIdentityProviders) UpdateAiGatewayIdentityProvider(ctx context.Context, request operations.UpdateAiGatewayIdentityProviderRequest, opts ...operations.Option) (*operations.UpdateAiGatewayIdentityProviderResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1275,6 +1291,10 @@ func (s *AIGatewayIdentityProviders) UpdateAiGatewayIdentityProvider(ctx context
 // This endpoint is currently in beta and is subject to change.
 //
 // Removes a specific AI Gateway Identity provider.
+//
+// Deprecated: use `DELETE /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *AIGatewayIdentityProviders) DeleteAiGatewayIdentityProvider(ctx context.Context, gatewayID string, identityProviderIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayIdentityProviderResponse, error) {
 	request := operations.DeleteAiGatewayIdentityProviderRequest{
 		GatewayID:                gatewayID,

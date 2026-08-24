@@ -42,21 +42,21 @@ func (i *Items) GetUpdatedAt() *int64 {
 	return i.UpdatedAt
 }
 
-type Page struct {
+type ListPluginSchemasPage struct {
 	TotalCount *int64 `json:"total_count,omitempty"`
 }
 
-func (p *Page) GetTotalCount() *int64 {
-	if p == nil {
+func (l *ListPluginSchemasPage) GetTotalCount() *int64 {
+	if l == nil {
 		return nil
 	}
-	return p.TotalCount
+	return l.TotalCount
 }
 
 // ListPluginSchemas - A paginated list response for a collection of custom plugin schemas.
 type ListPluginSchemas struct {
-	Items []Items `json:"items,omitempty"`
-	Page  *Page   `json:"page,omitempty"`
+	Items []Items                `json:"items,omitempty"`
+	Page  *ListPluginSchemasPage `json:"page,omitempty"`
 }
 
 func (l *ListPluginSchemas) GetItems() []Items {
@@ -66,7 +66,7 @@ func (l *ListPluginSchemas) GetItems() []Items {
 	return l.Items
 }
 
-func (l *ListPluginSchemas) GetPage() *Page {
+func (l *ListPluginSchemas) GetPage() *ListPluginSchemasPage {
 	if l == nil {
 		return nil
 	}

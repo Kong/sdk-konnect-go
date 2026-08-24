@@ -6,34 +6,34 @@ This feature is currently in beta and is subject to change.
 
 ## Supported Types
 
-### AIGatewayMCPServerAIGatewayMCPServerConversionOnly
+### AIGatewayMCPServerConversionOnlyResponse
 
 ```go
-aiGatewayMCPServer := components.CreateAIGatewayMCPServerConversionOnly(components.AIGatewayMCPServerAIGatewayMCPServerConversionOnly{/* values here */})
+aiGatewayMCPServer := components.CreateAIGatewayMCPServerConversionOnly(components.AIGatewayMCPServerConversionOnlyResponse{/* values here */})
 ```
 
-### AIGatewayMCPServerAIGatewayMCPServerConversionListener
+### AIGatewayMCPServerConversionListenerResponse
 
 ```go
-aiGatewayMCPServer := components.CreateAIGatewayMCPServerConversionListener(components.AIGatewayMCPServerAIGatewayMCPServerConversionListener{/* values here */})
+aiGatewayMCPServer := components.CreateAIGatewayMCPServerConversionListener(components.AIGatewayMCPServerConversionListenerResponse{/* values here */})
 ```
 
-### AIGatewayMCPServerAIGatewayMCPServerListener
+### AIGatewayMCPServerListenerResponse
 
 ```go
-aiGatewayMCPServer := components.CreateAIGatewayMCPServerListener(components.AIGatewayMCPServerAIGatewayMCPServerListener{/* values here */})
+aiGatewayMCPServer := components.CreateAIGatewayMCPServerListener(components.AIGatewayMCPServerListenerResponse{/* values here */})
 ```
 
-### AIGatewayMCPServerAIGatewayMCPServerPassthroughListener
+### AIGatewayMCPServerPassthroughListenerResponse
 
 ```go
-aiGatewayMCPServer := components.CreateAIGatewayMCPServerPassthroughListener(components.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener{/* values here */})
+aiGatewayMCPServer := components.CreateAIGatewayMCPServerPassthroughListener(components.AIGatewayMCPServerPassthroughListenerResponse{/* values here */})
 ```
 
-### AIGatewayMCPServerAIGatewayMCPServerUpstreamServer
+### AIGatewayMCPServerUpstreamServerResponse
 
 ```go
-aiGatewayMCPServer := components.CreateAIGatewayMCPServerUpstreamServer(components.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer{/* values here */})
+aiGatewayMCPServer := components.CreateAIGatewayMCPServerUpstreamServer(components.AIGatewayMCPServerUpstreamServerResponse{/* values here */})
 ```
 
 ## Union Discrimination
@@ -43,14 +43,14 @@ Use the `Type` field to determine which variant is active, then access the corre
 ```go
 switch aiGatewayMCPServer.Type {
 	case components.AIGatewayMCPServerTypeConversionOnly:
-		// aiGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionOnly is populated
+		// aiGatewayMCPServer.AIGatewayMCPServerConversionOnlyResponse is populated
 	case components.AIGatewayMCPServerTypeConversionListener:
-		// aiGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionListener is populated
+		// aiGatewayMCPServer.AIGatewayMCPServerConversionListenerResponse is populated
 	case components.AIGatewayMCPServerTypeListener:
-		// aiGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerListener is populated
+		// aiGatewayMCPServer.AIGatewayMCPServerListenerResponse is populated
 	case components.AIGatewayMCPServerTypePassthroughListener:
-		// aiGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener is populated
+		// aiGatewayMCPServer.AIGatewayMCPServerPassthroughListenerResponse is populated
 	case components.AIGatewayMCPServerTypeUpstreamServer:
-		// aiGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer is populated
+		// aiGatewayMCPServer.AIGatewayMCPServerUpstreamServerResponse is populated
 }
 ```

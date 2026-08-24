@@ -6,8 +6,8 @@ package components
 // ListAIGatewayDataPlaneNodesResponse - A successful response listing AI Gateway Data Plane Nodes.
 type ListAIGatewayDataPlaneNodesResponse struct {
 	Data []AIGatewayDataPlaneNode `json:"data"`
-	// Pagination metadata.
-	Meta CursorMeta `json:"meta"`
+	// Pagination metadata with exact total. Useful when the collection size is inexpensive to provide.
+	Meta CursorMetaWithTotal `json:"meta"`
 }
 
 func (l *ListAIGatewayDataPlaneNodesResponse) GetData() []AIGatewayDataPlaneNode {
@@ -17,9 +17,9 @@ func (l *ListAIGatewayDataPlaneNodesResponse) GetData() []AIGatewayDataPlaneNode
 	return l.Data
 }
 
-func (l *ListAIGatewayDataPlaneNodesResponse) GetMeta() CursorMeta {
+func (l *ListAIGatewayDataPlaneNodesResponse) GetMeta() CursorMetaWithTotal {
 	if l == nil {
-		return CursorMeta{}
+		return CursorMetaWithTotal{}
 	}
 	return l.Meta
 }

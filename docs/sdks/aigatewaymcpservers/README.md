@@ -143,15 +143,15 @@ func main() {
     if res.AIGatewayMCPServer != nil {
         switch res.AIGatewayMCPServer.Type {
             case components.AIGatewayMCPServerTypeConversionOnly:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionOnly is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionOnlyResponse is populated
             case components.AIGatewayMCPServerTypeConversionListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionListenerResponse is populated
             case components.AIGatewayMCPServerTypeListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerListenerResponse is populated
             case components.AIGatewayMCPServerTypePassthroughListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerPassthroughListenerResponse is populated
             case components.AIGatewayMCPServerTypeUpstreamServer:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerUpstreamServerResponse is populated
         }
 
     }
@@ -219,15 +219,15 @@ func main() {
     if res.AIGatewayMCPServer != nil {
         switch res.AIGatewayMCPServer.Type {
             case components.AIGatewayMCPServerTypeConversionOnly:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionOnly is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionOnlyResponse is populated
             case components.AIGatewayMCPServerTypeConversionListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionListenerResponse is populated
             case components.AIGatewayMCPServerTypeListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerListenerResponse is populated
             case components.AIGatewayMCPServerTypePassthroughListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerPassthroughListenerResponse is populated
             case components.AIGatewayMCPServerTypeUpstreamServer:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerUpstreamServerResponse is populated
         }
 
     }
@@ -327,15 +327,15 @@ func main() {
     if res.AIGatewayMCPServer != nil {
         switch res.AIGatewayMCPServer.Type {
             case components.AIGatewayMCPServerTypeConversionOnly:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionOnly is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionOnlyResponse is populated
             case components.AIGatewayMCPServerTypeConversionListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionListenerResponse is populated
             case components.AIGatewayMCPServerTypeListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerListenerResponse is populated
             case components.AIGatewayMCPServerTypePassthroughListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerPassthroughListenerResponse is populated
             case components.AIGatewayMCPServerTypeUpstreamServer:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerUpstreamServerResponse is populated
         }
 
     }
@@ -421,6 +421,7 @@ func main() {
 
 | Error Type                     | Status Code                    | Content Type                   |
 | ------------------------------ | ------------------------------ | ------------------------------ |
+| sdkerrors.BadRequestError      | 400                            | application/problem+json       |
 | sdkerrors.UnauthorizedError    | 401                            | application/problem+json       |
 | sdkerrors.ForbiddenError       | 403                            | application/problem+json       |
 | sdkerrors.NotFoundError        | 404                            | application/problem+json       |

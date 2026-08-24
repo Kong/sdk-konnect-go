@@ -60,6 +60,8 @@ type SDK struct {
 	AIGateways *AIGateways
 	// AI Agents registered with the AI Gateway.
 	AIGatewayAgents *AIGatewayAgents
+	// Auth strategies for authenticating clients accessing AI Gateway resources.
+	AIGatewayAuthStrategies *AIGatewayAuthStrategies
 	// API related to the management of AI Gateway CA Certificates.
 	AIGatewayCACertificates *AIGatewayCACertificates
 	// API related to the management of AI Gateway Certificates.
@@ -75,7 +77,7 @@ type SDK struct {
 	AIGatewayDataPlaneCertificates *AIGatewayDataPlaneCertificates
 	// API related to the management of AI Gateway nodes.
 	AIGatewayNodes *AIGatewayNodes
-	// Identity providers for authenticating users and accessing AI Gateway resources.
+	// Deprecated in favor of AI Gateway Auth Strategies. Identity providers for authenticating users and accessing AI Gateway resources.
 	AIGatewayIdentityProviders *AIGatewayIdentityProviders
 	// MCP Servers that expose tools for AI Gateway integrations.
 	AIGatewayMCPServers *AIGatewayMCPServers
@@ -222,6 +224,7 @@ type SDK struct {
 	CatalogIntegrations *CatalogIntegrations
 	MCPServers          *MCPServers
 	MCPServerRuntime    *MCPServerRuntime
+	Skills              *Skills
 	// Operations related to notifications
 	Notifications *Notifications
 	// Resource mappings represent the link between a resource and a service.
@@ -517,9 +520,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.62.0",
+		SDKVersion: "0.63.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.62.0 2.932.9 3.15.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.63.0 2.932.9 3.15.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -542,6 +545,7 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.AIGateways = newAIGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayAgents = newAIGatewayAgents(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayAuthStrategies = newAIGatewayAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayCACertificates = newAIGatewayCACertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayCertificates = newAIGatewayCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewaySNIs = newAIGatewaySNIs(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -581,6 +585,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServerRuntime = newMCPServerRuntime(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Skills = newSkills(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
