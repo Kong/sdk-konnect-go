@@ -6539,13 +6539,16 @@ paths:
       tags:
         - App Auth Strategies
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: ApplicationAuthStrategy#update
+        terraform-datasource: null
       operationId: replace-app-auth-strategy
       summary: Replace App Auth Strategy
       description: Replaces an application auth strategy.
       requestBody:
         $ref: '#/components/requestBodies/CreateAppAuthStrategy'
       responses:
-        '201':
+        '200':
           $ref: '#/components/responses/CreateAppAuthStrategy'
         '400':
           $ref: '#/components/responses/BadRequest'
@@ -6553,12 +6556,11 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
       tags:
         - App Auth Strategies
     patch:
-      x-speakeasy-entity-operation:
-        terraform-resource: ApplicationAuthStrategy#update
-        terraform-datasource: null
       operationId: update-app-auth-strategy
       summary: Update App Auth Strategy
       description: Updates an application auth strategy.
@@ -19506,6 +19508,7 @@ paths:
       tags:
         - Portal Auth Settings
     post:
+      x-speakeasy-entity-operation: PortalIdentityProvider#create
       operationId: create-portal-identity-provider
       summary: Create Identity Provider
       description: |
@@ -19531,6 +19534,9 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/IdentityProviderId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalIdentityProvider#read
+        terraform-datasource: null
       operationId: get-portal-identity-provider
       summary: Get Identity Provider
       description: |
@@ -19550,6 +19556,7 @@ paths:
       tags:
         - Portal Auth Settings
     patch:
+      x-speakeasy-entity-operation: PortalIdentityProvider#update
       operationId: update-portal-identity-provider
       summary: Update Identity Provider
       description: |
@@ -19573,6 +19580,7 @@ paths:
       tags:
         - Portal Auth Settings
     delete:
+      x-speakeasy-entity-operation: PortalIdentityProvider#delete
       operationId: delete-portal-identity-provider
       summary: Delete Identity Provider
       description: |
@@ -19594,7 +19602,7 @@ paths:
   '/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings':
     parameters:
       - $ref: '#/components/parameters/PortalId'
-      - $ref: '#/components/parameters/IdentityProviderId'
+      - $ref: '#/components/parameters/PortalIdentityProviderId'
     get:
       operationId: list-portal-idp-team-group-mappings
       summary: List Team Group Mappings
@@ -19630,6 +19638,7 @@ paths:
       tags:
         - Portal Auth Settings
     post:
+      x-speakeasy-entity-operation: PortalIdentityProviderTeamGroupMapping#create
       operationId: create-portal-idp-team-group-mapping
       summary: Create Team Group Mapping
       description: |
@@ -19654,9 +19663,12 @@ paths:
   '/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings/{mappingId}':
     parameters:
       - $ref: '#/components/parameters/PortalId'
-      - $ref: '#/components/parameters/IdentityProviderId'
+      - $ref: '#/components/parameters/PortalIdentityProviderId'
       - $ref: '#/components/parameters/TeamGroupMappingId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalIdentityProviderTeamGroupMapping#read
+        terraform-datasource: null
       operationId: get-portal-idp-team-group-mapping
       summary: Get Team Group Mapping
       description: Returns the team group mapping for the specified ID.
@@ -19674,6 +19686,7 @@ paths:
       tags:
         - Portal Auth Settings
     delete:
+      x-speakeasy-entity-operation: PortalIdentityProviderTeamGroupMapping#delete
       operationId: delete-portal-idp-team-group-mapping
       summary: Delete Team Group Mapping
       description: |
@@ -23359,6 +23372,15 @@ components:
       in: path
       required: true
       description: ID of the portal.
+    PortalIdentityProviderId:
+      name: id
+      in: path
+      required: true
+      description: ID of the identity provider.
+      schema:
+        type: string
+        format: uuid
+      example: d32d905a-ed33-46a3-a093-d8f536af9a8a
     PrivateDnsFilter:
       name: filter
       description: Filters supported for Private DNS.
@@ -59669,6 +59691,7 @@ components:
       required:
         - type
         - config
+        - tools
         - display_name
         - name
     AIGatewayMCPServerConversionListener:
@@ -59683,7 +59706,10 @@ components:
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfig'
         tools:
-          description: List of tools exposed by this MCP Server.
+          description: |
+            List of tools exposed by this MCP Server. Each tool's `path`, `method`, and `host`
+            describe the backend HTTP operation on the upstream selected by `config.url` — they
+            do not need to match the public MCP Route configured in `config.route`.
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayMCPConversionTool'
@@ -59720,6 +59746,7 @@ components:
       required:
         - type
         - config
+        - tools
         - display_name
         - name
     AIGatewayMCPServerListener:
@@ -59793,10 +59820,12 @@ components:
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamConfig'
         tools:
-          description: List of tools exposed by this MCP Server.
+          description: |
+            Per-tool access-control overrides for tools advertised by the remote MCP Server. Each
+            entry is matched to a remote tool by `name`; only its access-control rules are applied.
           type: array
           items:
-            $ref: '#/components/schemas/AIGatewayMCPToolBase'
+            $ref: '#/components/schemas/AIGatewayMCPPassthroughTool'
         access:
           $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
         display_name:
@@ -59843,12 +59872,11 @@ components:
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerConfig'
         tools:
-          description: List of tools exposed by this MCP Server.
+          description: |
+            List of tools exposed by this MCP Server.
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayMCPUpstreamTool'
-        access:
-          $ref: '#/components/schemas/AIGatewayMCPServerBaseACLProperties'
         display_name:
           description: The display name for the MCP Server.
           type: string
@@ -59881,39 +59909,64 @@ components:
         - config
         - display_name
         - name
+    AIGatewayMCPToolAccess:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Access-control rules for a tool.
+      type: object
+      properties:
+        acls:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            Access control rules for allowing or denying consumer groups access to this tool.
+            When configured, these will override the default access control rules defined on the MCP Server.
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayMCPACLs'
+      additionalProperties: false
+    AIGatewayMCPPassthroughTool:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        A tool exposed by an MCP Server in `passthrough-listener` mode.
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/AIGatewayMCPToolAccess'
+        name:
+          description: Tool identifier used to match remote MCP Server tools for ACL enforcement.
+          type: string
+      additionalProperties: false
+      required:
+        - name
+        - access
+      title: AIGatewayMCPPassthroughTool
     AIGatewayMCPConversionTool:
       description: A tool exposed by an MCP Server in `conversion-only` or `conversion-listener` mode.
       type: object
       properties:
         access:
-          type: object
-          additionalProperties: false
-          properties:
-            acls:
-              description: |-
-                **Pre-release Feature**
-                This feature is currently in beta and is subject to change.
-
-                Access control rules for allowing or denying consumer groups access to this tool.
-                When configured, these will override the default access control rules defined on the MCP Server.
-              allOf:
-                - $ref: '#/components/schemas/AIGatewayMCPACLs'
+          $ref: '#/components/schemas/AIGatewayMCPToolAccess'
         annotations:
           $ref: '#/components/schemas/AIGatewayMCPToolAnnotations'
         description:
           description: A description of what the tool does.
           type: string
           example: Search for available flights
+        name:
+          description: 'The MCP tool name. In upstream-server mode, it also matches the remote MCP Server tool whose metadata this entry overrides.'
+          type: string
         headers:
           $ref: '#/components/schemas/AIGatewayMCPToolHeaders'
         host:
-          description: 'The host of the exported API, which must match the route''s hosts. It should be the route''s host. By default, Kong will extract the host from API configuration. If the configured host is wildcard, this field is required.'
-          type: string
-        name:
-          description: 'Tool identifier. In passthrough-listener mode, used to match remote MCP Server tools for ACL enforcement. In other modes, it is also used as the tool name (overrides annotations.title if present).'
+          description: 'The host used when forwarding the request to the upstream API. By default, Kong will extract the host from API configuration. If the configured host is wildcard, this field is required.'
           type: string
         method:
-          description: 'For conversion-only and conversion-listener modes, the method of the exported API, which must match the route''s methods.'
+          description: The HTTP method used when forwarding the request to the upstream API.
           type: string
           enum:
             - DELETE
@@ -59923,7 +59976,13 @@ components:
             - PUT
           x-speakeasy-unknown-values: allow
         path:
-          description: 'The path of the exported API, which must match the route''s paths. Path not starting with ''/'' are treated as relative path and the route path will be added as the prefix. By default, Kong will extract the path from API configuration.'
+          description: |
+            The path of the exported API. Always treated as relative to the path component of
+            `config.url` and simply concatenated onto it — a leading `/` has no special
+            "absolute path" meaning. If this tool's `host` or `scheme` overrides the source's
+            URL, `path` is instead relative to the root of that overridden host, since there is
+            no URL path from a different host to append to. By default, Kong will extract the
+            path from API configuration.
           type: string
         query:
           $ref: '#/components/schemas/AIGatewayMCPToolQuery'
@@ -59945,87 +60004,6 @@ components:
         - name
         - description
         - method
-    AIGatewayMCPServerBaseACLProperties:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-      default:
-        acl_attribute_type: consumer
-      discriminator:
-        propertyName: acl_attribute_type
-        mapping:
-          consumer: '#/components/schemas/AIGatewayMCPServerBaseACLPropertiesConsumer'
-          oauth_access_token: '#/components/schemas/AIGatewayMCPServerBaseACLPropertiesOauth'
-      oneOf:
-        - $ref: '#/components/schemas/AIGatewayMCPServerBaseACLPropertiesConsumer'
-        - $ref: '#/components/schemas/AIGatewayMCPServerBaseACLPropertiesOauth'
-    AIGatewayMCPServerBaseACLPropertiesConsumer:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-      type: object
-      properties:
-        acl_attribute_type:
-          description: The type of attributes that ACL is evaluated with.
-          type: string
-          default: consumer
-          const: consumer
-        acls:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            Access control rules for allowing or denying consumer groups.
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPACLs'
-        default_tool_acls:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            Default access control rules for allowing or denying consumer groups to tools.
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPACLs'
-      additionalProperties: false
-      required:
-        - acl_attribute_type
-      title: AIGatewayMCPServerBaseACLPropertiesConsumer
-    AIGatewayMCPServerBaseACLPropertiesOauth:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-      type: object
-      properties:
-        acl_attribute_type:
-          description: The type of attributes that ACL is evaluated with.
-          type: string
-          const: oauth_access_token
-        access_token_claim_field:
-          description: |
-            The claim in the OAuth2 access token to use as the subject for ACL evaluation when `acl_attribute_type` is set to `oauth_access_token`.
-            Nested claim can be fetched by using a jq filter starts with dot, e.g., “.user.email”: https://jqlang.org/manual/#object-identifier-index
-          type: string
-        acls:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            Access control rules for allowing or denying consumer groups.
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPACLs'
-        default_tool_acls:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            Default access control rules for allowing or denying consumer groups to tools.
-          allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPACLs'
-      additionalProperties: false
-      required:
-        - acl_attribute_type
-        - access_token_claim_field
-      title: AIGatewayMCPServerBaseACLPropertiesOauth
     AIGatewayMCPServerListenerAccess:
       description: |-
         **Pre-release Feature**
@@ -60059,7 +60037,10 @@ components:
             **Pre-release Feature**
             This feature is currently in beta and is subject to change.
 
-            Access control rules for allowing or denying consumer groups.
+            Server-level access control rules for allowing or denying consumer groups. This is the
+            top-level gate: a caller's consumer group must pass this check before any MCP protocol
+            operation (`initialize`, `tools/list`, `tools/call`) is allowed, and before any tool-level
+            `default_tool_acls` or per-tool `access.acls` check is evaluated.
           allOf:
             - $ref: '#/components/schemas/AIGatewayMCPACLs'
         default_tool_acls:
@@ -60067,7 +60048,10 @@ components:
             **Pre-release Feature**
             This feature is currently in beta and is subject to change.
 
-            Default access control rules for allowing or denying consumer groups to tools.
+            Default per-tool access control rules for allowing or denying consumer groups access to
+            tools. Evaluated only for callers that already passed the server-level `acls` check above.
+            Applies to every tool exposed by this MCP Server unless a specific tool overrides it via
+            that tool's own `access.acls`.
           allOf:
             - $ref: '#/components/schemas/AIGatewayMCPACLs'
         identity_providers:
@@ -60120,7 +60104,11 @@ components:
             **Pre-release Feature**
             This feature is currently in beta and is subject to change.
 
-            Access control rules for allowing or denying consumer groups.
+            Server-level access control rules for allowing or denying callers, evaluated against the
+            value of the configured `access_token_claim_field`. This is the top-level gate: a caller
+            must pass this check before any MCP protocol operation (`initialize`, `tools/list`,
+            `tools/call`) is allowed, and before any tool-level `default_tool_acls` or per-tool
+            `access.acls` check is evaluated.
           allOf:
             - $ref: '#/components/schemas/AIGatewayMCPACLs'
         default_tool_acls:
@@ -60128,7 +60116,11 @@ components:
             **Pre-release Feature**
             This feature is currently in beta and is subject to change.
 
-            Default access control rules for allowing or denying consumer groups to tools.
+            Default per-tool access control rules for allowing or denying callers access to tools,
+            evaluated against the value of the configured `access_token_claim_field`. Evaluated only
+            for callers that already passed the server-level `acls` check above. Applies to every tool
+            exposed by this MCP Server unless a specific tool overrides it via that tool's own
+            `access.acls`.
           allOf:
             - $ref: '#/components/schemas/AIGatewayMCPACLs'
         identity_providers:
@@ -60642,7 +60634,7 @@ components:
       type: object
       properties:
         route:
-          $ref: '#/components/schemas/AIGatewayRouteConfig'
+          $ref: '#/components/schemas/AIGatewayMCPServerRouteWithMatcher'
         logging:
           description: |-
             **Pre-release Feature**
@@ -60676,7 +60668,7 @@ components:
       type: object
       properties:
         route:
-          $ref: '#/components/schemas/AIGatewayRouteConfig'
+          $ref: '#/components/schemas/AIGatewayMCPServerRouteWithMatcher'
         logging:
           description: |-
             **Pre-release Feature**
@@ -60717,7 +60709,7 @@ components:
       type: object
       properties:
         route:
-          $ref: '#/components/schemas/AIGatewayRouteConfig'
+          $ref: '#/components/schemas/AIGatewayMCPServerRouteWithMatcher'
         logging:
           description: |-
             **Pre-release Feature**
@@ -60762,7 +60754,7 @@ components:
       type: object
       properties:
         route:
-          $ref: '#/components/schemas/AIGatewayRouteConfig'
+          $ref: '#/components/schemas/AIGatewayMCPServerRouteWithMatcher'
         logging:
           description: |-
             **Pre-release Feature**
@@ -60800,6 +60792,38 @@ components:
       additionalProperties: false
       required:
         - url
+    AIGatewayMCPServerRouteWithMatcher:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Route configuration for an MCP Server that terminates its own listener. At least one
+        of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
+        incoming requests.
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/AIGatewayRouteConfig'
+        - anyOf:
+            - required:
+                - hosts
+              properties:
+                hosts:
+                  minItems: 1
+            - required:
+                - paths
+              properties:
+                paths:
+                  minItems: 1
+            - required:
+                - methods
+              properties:
+                methods:
+                  minItems: 1
+            - required:
+                - headers
+              properties:
+                headers:
+                  minProperties: 1
     AIGatewayMCPServerUpstreamServerConfig:
       description: |-
         **Pre-release Feature**
@@ -60809,7 +60833,7 @@ components:
       type: object
       properties:
         route:
-          $ref: '#/components/schemas/AIGatewayRouteConfig'
+          $ref: '#/components/schemas/AIGatewayMCPServerRouteWithMatcher'
         logging:
           description: |-
             **Pre-release Feature**
@@ -61196,6 +61220,7 @@ components:
       required:
         - type
         - config
+        - tools
         - display_name
         - name
         - id
@@ -61214,7 +61239,10 @@ components:
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfig'
         tools:
-          description: List of tools exposed by this MCP Server.
+          description: |
+            List of tools exposed by this MCP Server. Each tool's `path`, `method`, and `host`
+            describe the backend HTTP operation on the upstream selected by `config.url` — they
+            do not need to match the public MCP Route configured in `config.route`.
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayMCPConversionTool'
@@ -61257,6 +61285,7 @@ components:
       required:
         - type
         - config
+        - tools
         - display_name
         - name
         - id
@@ -61344,10 +61373,12 @@ components:
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamConfig'
         tools:
-          description: List of tools exposed by this MCP Server.
+          description: |
+            Per-tool access-control overrides for tools advertised by the remote MCP Server. Each
+            entry is matched to a remote tool by `name`; only its access-control rules are applied.
           type: array
           items:
-            $ref: '#/components/schemas/AIGatewayMCPToolBase'
+            $ref: '#/components/schemas/AIGatewayMCPPassthroughTool'
         access:
           $ref: '#/components/schemas/AIGatewayMCPServerListenerAccess'
         display_name:
@@ -61404,12 +61435,11 @@ components:
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerConfig'
         tools:
-          description: List of tools exposed by this MCP Server.
+          description: |
+            List of tools exposed by this MCP Server.
           type: array
           items:
             $ref: '#/components/schemas/AIGatewayMCPUpstreamTool'
-        access:
-          $ref: '#/components/schemas/AIGatewayMCPServerBaseACLProperties'
         display_name:
           description: The display name for the MCP Server.
           type: string
@@ -61452,128 +61482,25 @@ components:
         - created_at
         - updated_at
       title: AIGatewayMCPServerUpstreamServerResponse
-    AIGatewayMCPToolBase:
-      description: 'A tool exposed by the MCP Server, mapped to a backend HTTP endpoint.'
-      type: object
-      properties:
-        access:
-          type: object
-          additionalProperties: false
-          properties:
-            acls:
-              description: |-
-                **Pre-release Feature**
-                This feature is currently in beta and is subject to change.
-
-                Access control rules for allowing or denying consumer groups access to this tool.
-                When configured, these will override the default access control rules defined on the MCP Server.
-              allOf:
-                - $ref: '#/components/schemas/AIGatewayMCPACLs'
-        annotations:
-          $ref: '#/components/schemas/AIGatewayMCPToolAnnotations'
-        description:
-          description: A description of what the tool does.
-          type: string
-          example: Search for available flights
-        headers:
-          $ref: '#/components/schemas/AIGatewayMCPToolHeaders'
-        host:
-          description: 'The host of the exported API, which must match the route''s hosts. It should be the route''s host. By default, Kong will extract the host from API configuration. If the configured host is wildcard, this field is required.'
-          type: string
-        name:
-          description: 'Tool identifier. In passthrough-listener mode, used to match remote MCP Server tools for ACL enforcement. In other modes, it is also used as the tool name (overrides annotations.title if present).'
-          type: string
-        method:
-          description: 'For conversion-only and conversion-listener modes, the method of the exported API, which must match the route''s methods.'
-          type: string
-          enum:
-            - DELETE
-            - GET
-            - PATCH
-            - POST
-            - PUT
-          x-speakeasy-unknown-values: allow
-        path:
-          description: 'The path of the exported API, which must match the route''s paths. Path not starting with ''/'' are treated as relative path and the route path will be added as the prefix. By default, Kong will extract the path from API configuration.'
-          type: string
-        query:
-          $ref: '#/components/schemas/AIGatewayMCPToolQuery'
-        request_body:
-          $ref: '#/components/schemas/AIGatewayMCPToolRequestBody'
-        responses:
-          $ref: '#/components/schemas/AIGatewayMCPToolResponses'
-        scheme:
-          description: 'The scheme of the exported API. By default, Kong will extract the scheme from API configuration. If the configured scheme is not expected, this field can be used to override it.'
-          type: string
-          enum:
-            - http
-            - https
-          x-speakeasy-unknown-values: allow
-        parameters:
-          $ref: '#/components/schemas/AIGatewayMCPToolParameters'
-      additionalProperties: false
-      required:
-        - name
-        - description
     AIGatewayMCPUpstreamTool:
-      description: A tool exposed by an MCP Server in `upstream-server` mode. Extends the base tool with input/output schema overrides for the upstream server's advertised tool.
+      description: |
+        A tool exposed by an MCP Server in `upstream-server` mode. Provides optional metadata
+        overrides (`description`, `annotations`, `input_schema`, `output_schema`) and per-tool
+        ACLs for a tool advertised by the upstream MCP server; any field not overridden here
+        falls back to the remote tool's own definition.
       type: object
       properties:
         access:
-          type: object
-          additionalProperties: false
-          properties:
-            acls:
-              description: |-
-                **Pre-release Feature**
-                This feature is currently in beta and is subject to change.
-
-                Access control rules for allowing or denying consumer groups access to this tool.
-                When configured, these will override the default access control rules defined on the MCP Server.
-              allOf:
-                - $ref: '#/components/schemas/AIGatewayMCPACLs'
+          $ref: '#/components/schemas/AIGatewayMCPToolAccess'
         annotations:
           $ref: '#/components/schemas/AIGatewayMCPToolAnnotations'
         description:
           description: A description of what the tool does.
           type: string
           example: Search for available flights
-        headers:
-          $ref: '#/components/schemas/AIGatewayMCPToolHeaders'
-        host:
-          description: 'The host of the exported API, which must match the route''s hosts. It should be the route''s host. By default, Kong will extract the host from API configuration. If the configured host is wildcard, this field is required.'
-          type: string
         name:
-          description: 'Tool identifier. In passthrough-listener mode, used to match remote MCP Server tools for ACL enforcement. In other modes, it is also used as the tool name (overrides annotations.title if present).'
+          description: 'The MCP tool name. In upstream-server mode, it also matches the remote MCP Server tool whose metadata this entry overrides.'
           type: string
-        method:
-          description: 'When provided, the method of the exported API, which must match the route''s methods.'
-          type: string
-          enum:
-            - DELETE
-            - GET
-            - PATCH
-            - POST
-            - PUT
-          x-speakeasy-unknown-values: allow
-        path:
-          description: 'The path of the exported API, which must match the route''s paths. Path not starting with ''/'' are treated as relative path and the route path will be added as the prefix. By default, Kong will extract the path from API configuration.'
-          type: string
-        query:
-          $ref: '#/components/schemas/AIGatewayMCPToolQuery'
-        request_body:
-          $ref: '#/components/schemas/AIGatewayMCPToolRequestBody'
-        responses:
-          $ref: '#/components/schemas/AIGatewayMCPToolResponses'
-        scheme:
-          description: 'The scheme of the exported API. By default, Kong will extract the scheme from API configuration. If the configured scheme is not expected, this field can be used to override it.'
-          type: string
-          enum:
-            - http
-            - https
-          x-speakeasy-unknown-values: allow
-        parameters:
-          $ref: '#/components/schemas/AIGatewayMCPToolParameters'
         input_schema:
           description: |
             The entire `inputSchema` section for the tool. Overrides the upstream server's `inputSchema`
@@ -61593,7 +61520,6 @@ components:
       additionalProperties: false
       required:
         - name
-        - description
     AIGatewayMCPToolAnnotations:
       description: |-
         **Pre-release Feature**
@@ -79783,16 +79709,16 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 0.23.1
+    version: 0.24.0
     path: src/konnect/definitions/ai-gateways/v1/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.2.2
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.4.2
+    version: 3.4.3
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
-    version: 2.1.1
+    version: 2.1.3
     path: src/konnect/definitions/application-auth-strategies/v2/openapi.yaml
   - title: Konnect Cloud Gateways
     version: 2.1.0
@@ -79819,7 +79745,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.9.12
+    version: 3.9.13
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2
