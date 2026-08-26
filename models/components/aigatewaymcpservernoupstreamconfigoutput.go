@@ -49,8 +49,10 @@ type AIGatewayMCPServerNoUpstreamConfigOutput struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
-	// Configuration for an AI Gateway route.
-	Route *AIGatewayRouteConfig `json:"route,omitempty"`
+	// Route configuration for an MCP Server that terminates its own listener. At least one
+	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
+	// incoming requests.
+	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -76,7 +78,7 @@ func (a *AIGatewayMCPServerNoUpstreamConfigOutput) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (a *AIGatewayMCPServerNoUpstreamConfigOutput) GetRoute() *AIGatewayRouteConfig {
+func (a *AIGatewayMCPServerNoUpstreamConfigOutput) GetRoute() *AIGatewayMCPServerRouteWithMatcher {
 	if a == nil {
 		return nil
 	}
@@ -112,8 +114,10 @@ type AIGatewayMCPServerNoUpstreamConfig struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
-	// Configuration for an AI Gateway route.
-	Route *AIGatewayRouteConfig `json:"route,omitempty"`
+	// Route configuration for an MCP Server that terminates its own listener. At least one
+	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
+	// incoming requests.
+	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -139,7 +143,7 @@ func (a *AIGatewayMCPServerNoUpstreamConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPServerNoUpstreamConfig) GetRoute() *AIGatewayRouteConfig {
+func (a *AIGatewayMCPServerNoUpstreamConfig) GetRoute() *AIGatewayMCPServerRouteWithMatcher {
 	if a == nil {
 		return nil
 	}

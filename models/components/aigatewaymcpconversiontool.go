@@ -7,34 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type Access struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// Access control rules for allowing or denying consumer groups access to this tool.
-	// When configured, these will override the default access control rules defined on the MCP Server.
-	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
-}
-
-func (a Access) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *Access) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *Access) GetAcls() *AIGatewayMCPACLs {
-	if a == nil {
-		return nil
-	}
-	return a.Acls
-}
-
-// AIGatewayMCPConversionToolMethod - For conversion-only and conversion-listener modes, the method of the exported API, which must match the route's methods.
+// AIGatewayMCPConversionToolMethod - The HTTP method used when forwarding the request to the upstream API.
 type AIGatewayMCPConversionToolMethod string
 
 const (
@@ -85,24 +58,34 @@ func (e *Scheme) IsExact() bool {
 
 // AIGatewayMCPConversionTool - A tool exposed by an MCP Server in `conversion-only` or `conversion-listener` mode.
 type AIGatewayMCPConversionTool struct {
-	Access *Access `json:"access,omitempty"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// Access-control rules for a tool.
+	Access *AIGatewayMCPToolAccess `json:"access,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	Annotations *AIGatewayMCPToolAnnotations `json:"annotations,omitempty"`
 	// A description of what the tool does.
 	Description string `json:"description"`
+	// The MCP tool name. In upstream-server mode, it also matches the remote MCP Server tool whose metadata this entry overrides.
+	Name string `json:"name"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
 	// The headers of the exported API. By default, Kong will extract the headers from API configuration. If the configured headers are not exactly matched, this field is required.
 	Headers any `json:"headers,omitempty"`
-	// The host of the exported API, which must match the route's hosts. It should be the route's host. By default, Kong will extract the host from API configuration. If the configured host is wildcard, this field is required.
+	// The host used when forwarding the request to the upstream API. By default, Kong will extract the host from API configuration. If the configured host is wildcard, this field is required.
 	Host *string `json:"host,omitempty"`
-	// Tool identifier. In passthrough-listener mode, used to match remote MCP Server tools for ACL enforcement. In other modes, it is also used as the tool name (overrides annotations.title if present).
-	Name string `json:"name"`
-	// For conversion-only and conversion-listener modes, the method of the exported API, which must match the route's methods.
+	// The HTTP method used when forwarding the request to the upstream API.
 	Method AIGatewayMCPConversionToolMethod `json:"method"`
-	// The path of the exported API, which must match the route's paths. Path not starting with '/' are treated as relative path and the route path will be added as the prefix. By default, Kong will extract the path from API configuration.
+	// The path of the exported API. Always treated as relative to the path component of
+	// `config.url` and simply concatenated onto it — a leading `/` has no special
+	// "absolute path" meaning. If this tool's `host` or `scheme` overrides the source's
+	// URL, `path` is instead relative to the root of that overridden host, since there is
+	// no URL path from a different host to append to. By default, Kong will extract the
+	// path from API configuration.
+	//
 	Path *string `json:"path,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
@@ -137,7 +120,7 @@ func (a *AIGatewayMCPConversionTool) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPConversionTool) GetAccess() *Access {
+func (a *AIGatewayMCPConversionTool) GetAccess() *AIGatewayMCPToolAccess {
 	if a == nil {
 		return nil
 	}
@@ -158,6 +141,13 @@ func (a *AIGatewayMCPConversionTool) GetDescription() string {
 	return a.Description
 }
 
+func (a *AIGatewayMCPConversionTool) GetName() string {
+	if a == nil {
+		return ""
+	}
+	return a.Name
+}
+
 func (a *AIGatewayMCPConversionTool) GetHeaders() any {
 	if a == nil {
 		return nil
@@ -170,13 +160,6 @@ func (a *AIGatewayMCPConversionTool) GetHost() *string {
 		return nil
 	}
 	return a.Host
-}
-
-func (a *AIGatewayMCPConversionTool) GetName() string {
-	if a == nil {
-		return ""
-	}
-	return a.Name
 }
 
 func (a *AIGatewayMCPConversionTool) GetMethod() AIGatewayMCPConversionToolMethod {

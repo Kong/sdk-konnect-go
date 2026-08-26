@@ -9,10 +9,10 @@
 listCursorMeta := components.CreateListCursorMetaCursorMeta(components.CursorMeta{/* values here */})
 ```
 
-### Two
+### ListCursorMeta2
 
 ```go
-listCursorMeta := components.CreateListCursorMetaTwo(components.Two{/* values here */})
+listCursorMeta := components.CreateListCursorMetaListCursorMeta2(components.ListCursorMeta2{/* values here */})
 ```
 
 ## Union Discrimination
@@ -23,7 +23,7 @@ Use the `Type` field to determine which variant is active, then access the corre
 switch listCursorMeta.Type {
 	case components.ListCursorMetaTypeCursorMeta:
 		// listCursorMeta.CursorMeta is populated
-	case components.ListCursorMetaTypeTwo:
-		// listCursorMeta.Two is populated
+	case components.ListCursorMetaTypeListCursorMeta2:
+		// listCursorMeta.ListCursorMeta2 is populated
 }
 ```

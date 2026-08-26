@@ -9,10 +9,10 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// Two
+// ListCursorMeta2
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type Two struct {
+type ListCursorMeta2 struct {
 	// URI to the first page
 	First *string `json:"first,omitempty"`
 	// URI to the last page
@@ -25,62 +25,65 @@ type Two struct {
 	Size float64 `json:"size"`
 }
 
-func (t Two) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(t, "", false)
+func (l ListCursorMeta2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
 }
 
-func (t *Two) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"size"}); err != nil {
+func (l *ListCursorMeta2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"size"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (t *Two) GetFirst() *string {
-	if t == nil {
+func (l *ListCursorMeta2) GetFirst() *string {
+	if l == nil {
 		return nil
 	}
-	return t.First
+	return l.First
 }
 
-func (t *Two) GetLast() *string {
-	if t == nil {
+func (l *ListCursorMeta2) GetLast() *string {
+	if l == nil {
 		return nil
 	}
-	return t.Last
+	return l.Last
 }
 
-func (t *Two) GetNext() *string {
-	if t == nil {
+func (l *ListCursorMeta2) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return t.Next
+	return l.Next
 }
 
-func (t *Two) GetPrevious() *string {
-	if t == nil {
+func (l *ListCursorMeta2) GetPrevious() *string {
+	if l == nil {
 		return nil
 	}
-	return t.Previous
+	return l.Previous
 }
 
-func (t *Two) GetSize() float64 {
-	if t == nil {
+func (l *ListCursorMeta2) GetSize() float64 {
+	if l == nil {
 		return 0.0
 	}
-	return t.Size
+	return l.Size
 }
+
+// #region class-body-listcursormeta2
+// #endregion class-body-listcursormeta2
 
 type ListCursorMetaType string
 
 const (
-	ListCursorMetaTypeCursorMeta ListCursorMetaType = "CursorMeta"
-	ListCursorMetaTypeTwo        ListCursorMetaType = "2"
+	ListCursorMetaTypeCursorMeta      ListCursorMetaType = "CursorMeta"
+	ListCursorMetaTypeListCursorMeta2 ListCursorMetaType = "ListCursorMeta_2"
 )
 
 type ListCursorMeta struct {
-	CursorMeta *CursorMeta `queryParam:"inline" union:"member"`
-	Two        *Two        `queryParam:"inline" union:"member"`
+	CursorMeta      *CursorMeta      `queryParam:"inline" union:"member"`
+	ListCursorMeta2 *ListCursorMeta2 `queryParam:"inline" union:"member"`
 
 	Type ListCursorMetaType
 }
@@ -94,21 +97,21 @@ func CreateListCursorMetaCursorMeta(cursorMeta CursorMeta) ListCursorMeta {
 	}
 }
 
-func CreateListCursorMetaTwo(two Two) ListCursorMeta {
-	typ := ListCursorMetaTypeTwo
+func CreateListCursorMetaListCursorMeta2(listCursorMeta2 ListCursorMeta2) ListCursorMeta {
+	typ := ListCursorMetaTypeListCursorMeta2
 
 	return ListCursorMeta{
-		Two:  &two,
-		Type: typ,
+		ListCursorMeta2: &listCursorMeta2,
+		Type:            typ,
 	}
 }
 
 func (u *ListCursorMeta) UnmarshalJSON(data []byte) error {
 
-	var two Two = Two{}
-	if err := utils.UnmarshalJSON(data, &two, "", true, nil); err == nil {
-		u.Two = &two
-		u.Type = ListCursorMetaTypeTwo
+	var listCursorMeta2 ListCursorMeta2 = ListCursorMeta2{}
+	if err := utils.UnmarshalJSON(data, &listCursorMeta2, "", true, nil); err == nil {
+		u.ListCursorMeta2 = &listCursorMeta2
+		u.Type = ListCursorMetaTypeListCursorMeta2
 		return nil
 	}
 
@@ -127,8 +130,8 @@ func (u ListCursorMeta) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CursorMeta, "", true)
 	}
 
-	if u.Two != nil {
-		return utils.MarshalJSON(u.Two, "", true)
+	if u.ListCursorMeta2 != nil {
+		return utils.MarshalJSON(u.ListCursorMeta2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ListCursorMeta: all fields are null")

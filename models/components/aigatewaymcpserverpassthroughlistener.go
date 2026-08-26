@@ -17,8 +17,10 @@ type AIGatewayMCPServerPassthroughListener struct {
 	//
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamConfig `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPToolBase `json:"tools,omitempty"`
+	// Per-tool access-control overrides for tools advertised by the remote MCP Server. Each
+	// entry is matched to a remote tool by `name`; only its access-control rules are applied.
+	//
+	Tools []AIGatewayMCPPassthroughTool `json:"tools,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
@@ -69,7 +71,7 @@ func (a *AIGatewayMCPServerPassthroughListener) GetConfig() AIGatewayMCPServerWi
 	return a.Config
 }
 
-func (a *AIGatewayMCPServerPassthroughListener) GetTools() []AIGatewayMCPToolBase {
+func (a *AIGatewayMCPServerPassthroughListener) GetTools() []AIGatewayMCPPassthroughTool {
 	if a == nil {
 		return nil
 	}
