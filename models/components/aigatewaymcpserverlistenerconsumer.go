@@ -20,12 +20,18 @@ type AIGatewayMCPServerListenerConsumer struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
-	// Access control rules for allowing or denying consumer groups.
+	// Server-level access control rules for allowing or denying consumer groups. This is the
+	// top-level gate: a caller's consumer group must pass this check before any MCP protocol
+	// operation (`initialize`, `tools/list`, `tools/call`) is allowed, and before any tool-level
+	// `default_tool_acls` or per-tool `access.acls` check is evaluated.
 	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
-	// Default access control rules for allowing or denying consumer groups to tools.
+	// Default per-tool access control rules for allowing or denying consumer groups access to
+	// tools. Evaluated only for callers that already passed the server-level `acls` check above.
+	// Applies to every tool exposed by this MCP Server unless a specific tool overrides it via
+	// that tool's own `access.acls`.
 	DefaultToolAcls *AIGatewayMCPACLs `json:"default_tool_acls,omitempty"`
 	// List of identity providers for granting access to the MCP server.
 	// At most 1 identity provider of each identity provider type can be referenced.

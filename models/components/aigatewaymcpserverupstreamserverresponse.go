@@ -19,10 +19,8 @@ type AIGatewayMCPServerUpstreamServerResponse struct {
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerUpstreamServerConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
+	//
 	Tools []AIGatewayMCPUpstreamTool `json:"tools,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Access *AIGatewayMCPServerBaseACLProperties `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -81,27 +79,6 @@ func (a *AIGatewayMCPServerUpstreamServerResponse) GetTools() []AIGatewayMCPUpst
 		return nil
 	}
 	return a.Tools
-}
-
-func (a *AIGatewayMCPServerUpstreamServerResponse) GetAccess() *AIGatewayMCPServerBaseACLProperties {
-	if a == nil {
-		return nil
-	}
-	return a.Access
-}
-
-func (a *AIGatewayMCPServerUpstreamServerResponse) GetAccessConsumer() *AIGatewayMCPServerBaseACLPropertiesConsumer {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesConsumer
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerUpstreamServerResponse) GetAccessOauthAccessToken() *AIGatewayMCPServerBaseACLPropertiesOauth {
-	if v := a.GetAccess(); v != nil {
-		return v.AIGatewayMCPServerBaseACLPropertiesOauth
-	}
-	return nil
 }
 
 func (a *AIGatewayMCPServerUpstreamServerResponse) GetDisplayName() string {

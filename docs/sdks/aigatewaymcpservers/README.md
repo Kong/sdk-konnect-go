@@ -110,17 +110,19 @@ func main() {
     res, err := s.AIGatewayMCPServers.CreateAiGatewayMcpServer(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayMCPServerRequestUpstreamServer(
         components.AIGatewayMCPServerUpstreamServer{
             Config: components.AIGatewayMCPServerUpstreamServerConfig{
-                Route: &components.AIGatewayRouteConfig{
-                    Headers: map[string]any{
-                        "version": []any{
-                            "v1",
-                            "v2",
+                Route: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerRouteWithMatcherOne(
+                    components.One{
+                        Hosts: []string{
+                            "foo.example.com",
+                        },
+                        Headers: map[string]any{
+                            "version": []any{
+                                "v1",
+                                "v2",
+                            },
                         },
                     },
-                    Hosts: []string{
-                        "foo.example.com",
-                    },
-                },
+                )),
                 Server: &components.AIGatewayMCPServerUpstreamServerServerConfig{
                     Session: &components.AIGatewayMCPServerUpstreamServerServerConfigSession{
                         Redis: &components.AIGatewayRedisCloudConfiguration{
@@ -293,17 +295,19 @@ func main() {
         UpdateAIGatewayMCPServerRequest: components.CreateUpdateAIGatewayMCPServerRequestUpstreamServer(
             components.AIGatewayMCPServerUpstreamServer{
                 Config: components.AIGatewayMCPServerUpstreamServerConfig{
-                    Route: &components.AIGatewayRouteConfig{
-                        Headers: map[string]any{
-                            "version": []any{
-                                "v1",
-                                "v2",
+                    Route: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerRouteWithMatcherOne(
+                        components.One{
+                            Hosts: []string{
+                                "foo.example.com",
+                            },
+                            Headers: map[string]any{
+                                "version": []any{
+                                    "v1",
+                                    "v2",
+                                },
                             },
                         },
-                        Hosts: []string{
-                            "foo.example.com",
-                        },
-                    },
+                    )),
                     Server: &components.AIGatewayMCPServerUpstreamServerServerConfig{
                         Session: &components.AIGatewayMCPServerUpstreamServerServerConfigSession{
                             Redis: &components.AIGatewayRedisCloudConfiguration{
