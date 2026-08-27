@@ -1,4 +1,4 @@
-speakeasyVersion: 1.796.0
+speakeasyVersion: 1.791.0
 sources:
     konnect:
         sourceNamespace: konnect
@@ -13,14 +13,21 @@ targets:
         sourceRevisionDigest: sha256:c639a509989846db09eb72fa0384d9d4cc7717a96710ef0075f7e4f85d3e5bed
         sourceBlobDigest: sha256:1d37bad2d56ec14c07aa336eab140bce5c3865b8072372dbd43c751527fa0e1d
         codeSamplesNamespace: konnect-go-code-samples
-        codeSamplesRevisionDigest: sha256:a61c30a48f9bba294d2f71bbd372f3706fd48c39ba25a5cbc77b567dcebcb090
+        codeSamplesRevisionDigest: sha256:c23e83502275c5ac69ae69c7ceb708490a72d81fb8c910af04c923fb793bd4c5
 workflow:
     workflowVersion: 1.0.0
-    speakeasyVersion: latest
+    speakeasyVersion: 1.791.0
     sources:
         konnect:
             inputs:
                 - location: ./openapi.yaml
+            overlays:
+                - location: ./.speakeasy/overlays/update-portal-patch-defaults.yaml
+                - location: ./.speakeasy/overlays/update-portal-audit-log-webhook-patch-defaults.yaml
+                - location: ./.speakeasy/overlays/patch-custom-portal-email-template-defaults.yaml
+                - location: ./.speakeasy/overlays/update-portal-identity-provider-defaults.yaml
+                - location: ./.speakeasy/overlays/update-dcr-config-http-defaults.yaml
+                - location: ./.speakeasy/overlays/backend-cluster-tls-defaults.yaml
             registry:
                 location: registry.speakeasyapi.dev/kong/kong/konnect
     targets:
