@@ -109,8 +109,8 @@ func main() {
         switch res.EventSubscriptionListResponse.Meta.Type {
             case components.ListCursorMetaTypeCursorMeta:
                 // res.EventSubscriptionListResponse.Meta.CursorMeta is populated
-            case components.ListCursorMetaTypeTwo:
-                // res.EventSubscriptionListResponse.Meta.Two is populated
+            case components.ListCursorMetaTypeListCursorMeta2:
+                // res.EventSubscriptionListResponse.Meta.ListCursorMeta2 is populated
         }
 
     }
@@ -523,8 +523,8 @@ func main() {
         switch res.NotificationListResponse.Meta.Type {
             case components.ListCursorMetaTypeCursorMeta:
                 // res.NotificationListResponse.Meta.CursorMeta is populated
-            case components.ListCursorMetaTypeTwo:
-                // res.NotificationListResponse.Meta.Two is populated
+            case components.ListCursorMetaTypeListCursorMeta2:
+                // res.NotificationListResponse.Meta.ListCursorMeta2 is populated
         }
 
     }

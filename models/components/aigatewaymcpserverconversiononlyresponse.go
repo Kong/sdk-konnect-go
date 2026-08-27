@@ -19,7 +19,7 @@ type AIGatewayMCPServerConversionOnlyResponse struct {
 	// Routing, logging, and request body size limits for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPConversionTool `json:"tools,omitempty"`
+	Tools []AIGatewayMCPConversionTool `json:"tools"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
 	// **Pre-release Feature**
@@ -56,7 +56,7 @@ func (a AIGatewayMCPServerConversionOnlyResponse) MarshalJSON() ([]byte, error) 
 }
 
 func (a *AIGatewayMCPServerConversionOnlyResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "tools", "display_name", "name", "id", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -75,7 +75,7 @@ func (a *AIGatewayMCPServerConversionOnlyResponse) GetConfig() AIGatewayMCPServe
 
 func (a *AIGatewayMCPServerConversionOnlyResponse) GetTools() []AIGatewayMCPConversionTool {
 	if a == nil {
-		return nil
+		return []AIGatewayMCPConversionTool{}
 	}
 	return a.Tools
 }

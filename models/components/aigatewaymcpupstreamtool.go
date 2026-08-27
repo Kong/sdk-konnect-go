@@ -7,123 +7,23 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayMCPUpstreamToolAccess struct {
+// AIGatewayMCPUpstreamTool - A tool exposed by an MCP Server in `upstream-server` mode. Provides optional metadata
+// overrides (`description`, `annotations`, `input_schema`, `output_schema`) and per-tool
+// ACLs for a tool advertised by the upstream MCP server; any field not overridden here
+// falls back to the remote tool's own definition.
+type AIGatewayMCPUpstreamTool struct {
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
-	// Access control rules for allowing or denying consumer groups access to this tool.
-	// When configured, these will override the default access control rules defined on the MCP Server.
-	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
-}
-
-func (a AIGatewayMCPUpstreamToolAccess) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPUpstreamToolAccess) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPUpstreamToolAccess) GetAcls() *AIGatewayMCPACLs {
-	if a == nil {
-		return nil
-	}
-	return a.Acls
-}
-
-// AIGatewayMCPUpstreamToolMethod - When provided, the method of the exported API, which must match the route's methods.
-type AIGatewayMCPUpstreamToolMethod string
-
-const (
-	AIGatewayMCPUpstreamToolMethodDelete AIGatewayMCPUpstreamToolMethod = "DELETE"
-	AIGatewayMCPUpstreamToolMethodGet    AIGatewayMCPUpstreamToolMethod = "GET"
-	AIGatewayMCPUpstreamToolMethodPatch  AIGatewayMCPUpstreamToolMethod = "PATCH"
-	AIGatewayMCPUpstreamToolMethodPost   AIGatewayMCPUpstreamToolMethod = "POST"
-	AIGatewayMCPUpstreamToolMethodPut    AIGatewayMCPUpstreamToolMethod = "PUT"
-)
-
-func (e AIGatewayMCPUpstreamToolMethod) ToPointer() *AIGatewayMCPUpstreamToolMethod {
-	return &e
-}
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AIGatewayMCPUpstreamToolMethod) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "DELETE", "GET", "PATCH", "POST", "PUT":
-			return true
-		}
-	}
-	return false
-}
-
-// AIGatewayMCPUpstreamToolScheme - The scheme of the exported API. By default, Kong will extract the scheme from API configuration. If the configured scheme is not expected, this field can be used to override it.
-type AIGatewayMCPUpstreamToolScheme string
-
-const (
-	AIGatewayMCPUpstreamToolSchemeHTTP  AIGatewayMCPUpstreamToolScheme = "http"
-	AIGatewayMCPUpstreamToolSchemeHTTPS AIGatewayMCPUpstreamToolScheme = "https"
-)
-
-func (e AIGatewayMCPUpstreamToolScheme) ToPointer() *AIGatewayMCPUpstreamToolScheme {
-	return &e
-}
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AIGatewayMCPUpstreamToolScheme) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "http", "https":
-			return true
-		}
-	}
-	return false
-}
-
-// AIGatewayMCPUpstreamTool - A tool exposed by an MCP Server in `upstream-server` mode. Extends the base tool with input/output schema overrides for the upstream server's advertised tool.
-type AIGatewayMCPUpstreamTool struct {
-	Access *AIGatewayMCPUpstreamToolAccess `json:"access,omitempty"`
+	// Access-control rules for a tool.
+	Access *AIGatewayMCPToolAccess `json:"access,omitempty"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	Annotations *AIGatewayMCPToolAnnotations `json:"annotations,omitempty"`
 	// A description of what the tool does.
-	Description string `json:"description"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// The headers of the exported API. By default, Kong will extract the headers from API configuration. If the configured headers are not exactly matched, this field is required.
-	Headers any `json:"headers,omitempty"`
-	// The host of the exported API, which must match the route's hosts. It should be the route's host. By default, Kong will extract the host from API configuration. If the configured host is wildcard, this field is required.
-	Host *string `json:"host,omitempty"`
-	// Tool identifier. In passthrough-listener mode, used to match remote MCP Server tools for ACL enforcement. In other modes, it is also used as the tool name (overrides annotations.title if present).
+	Description *string `json:"description,omitempty"`
+	// The MCP tool name. In upstream-server mode, it also matches the remote MCP Server tool whose metadata this entry overrides.
 	Name string `json:"name"`
-	// When provided, the method of the exported API, which must match the route's methods.
-	Method *AIGatewayMCPUpstreamToolMethod `json:"method,omitempty"`
-	// The path of the exported API, which must match the route's paths. Path not starting with '/' are treated as relative path and the route path will be added as the prefix. By default, Kong will extract the path from API configuration.
-	Path *string `json:"path,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// The query arguments of the exported API. If the generated query arguments are not exactly matched, this field is required.
-	Query any `json:"query,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// The API requestBody specification defined in OpenAPI JSON format. For example, '{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"color":{"type":"array","items":{"type":"string"}}}}}}}'. See https://swagger.io/docs/specification/v3_0/describing-request-body/describing-request-body/ for more details. Note that `$ref` is not supported.
-	RequestBody any `json:"request_body,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
-	// The API responses specification defined in OpenAPI JSON format. This specification will be used to validate the upstream response and map it back to the structuredOutput. For example, '{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"result":{"type":"string"}}}}}}}}'. See https://swagger.io/docs/specification/v3_0/describing-responses/ for more details. Only one non-error (status code < 400) response is supported. Note that `$ref` is not supported.
-	Responses any `json:"responses,omitempty"`
-	// The scheme of the exported API. By default, Kong will extract the scheme from API configuration. If the configured scheme is not expected, this field can be used to override it.
-	Scheme *AIGatewayMCPUpstreamToolScheme `json:"scheme,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Parameters []AIGatewayMCPToolParameter `json:"parameters,omitempty"`
 	// The entire `inputSchema` section for the tool. Overrides the upstream server's `inputSchema`
 	// for the same tool name, if present.
 	//
@@ -139,13 +39,13 @@ func (a AIGatewayMCPUpstreamTool) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayMCPUpstreamTool) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"description", "name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayMCPUpstreamTool) GetAccess() *AIGatewayMCPUpstreamToolAccess {
+func (a *AIGatewayMCPUpstreamTool) GetAccess() *AIGatewayMCPToolAccess {
 	if a == nil {
 		return nil
 	}
@@ -159,25 +59,11 @@ func (a *AIGatewayMCPUpstreamTool) GetAnnotations() *AIGatewayMCPToolAnnotations
 	return a.Annotations
 }
 
-func (a *AIGatewayMCPUpstreamTool) GetDescription() string {
+func (a *AIGatewayMCPUpstreamTool) GetDescription() *string {
 	if a == nil {
-		return ""
+		return nil
 	}
 	return a.Description
-}
-
-func (a *AIGatewayMCPUpstreamTool) GetHeaders() any {
-	if a == nil {
-		return nil
-	}
-	return a.Headers
-}
-
-func (a *AIGatewayMCPUpstreamTool) GetHost() *string {
-	if a == nil {
-		return nil
-	}
-	return a.Host
 }
 
 func (a *AIGatewayMCPUpstreamTool) GetName() string {
@@ -185,55 +71,6 @@ func (a *AIGatewayMCPUpstreamTool) GetName() string {
 		return ""
 	}
 	return a.Name
-}
-
-func (a *AIGatewayMCPUpstreamTool) GetMethod() *AIGatewayMCPUpstreamToolMethod {
-	if a == nil {
-		return nil
-	}
-	return a.Method
-}
-
-func (a *AIGatewayMCPUpstreamTool) GetPath() *string {
-	if a == nil {
-		return nil
-	}
-	return a.Path
-}
-
-func (a *AIGatewayMCPUpstreamTool) GetQuery() any {
-	if a == nil {
-		return nil
-	}
-	return a.Query
-}
-
-func (a *AIGatewayMCPUpstreamTool) GetRequestBody() any {
-	if a == nil {
-		return nil
-	}
-	return a.RequestBody
-}
-
-func (a *AIGatewayMCPUpstreamTool) GetResponses() any {
-	if a == nil {
-		return nil
-	}
-	return a.Responses
-}
-
-func (a *AIGatewayMCPUpstreamTool) GetScheme() *AIGatewayMCPUpstreamToolScheme {
-	if a == nil {
-		return nil
-	}
-	return a.Scheme
-}
-
-func (a *AIGatewayMCPUpstreamTool) GetParameters() []AIGatewayMCPToolParameter {
-	if a == nil {
-		return nil
-	}
-	return a.Parameters
 }
 
 func (a *AIGatewayMCPUpstreamTool) GetInputSchema() any {

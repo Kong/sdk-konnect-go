@@ -17,8 +17,11 @@ type AIGatewayMCPServerConversionListener struct {
 	//
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamNoProxyConfig `json:"config"`
-	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPConversionTool `json:"tools,omitempty"`
+	// List of tools exposed by this MCP Server. Each tool's `path`, `method`, and `host`
+	// describe the backend HTTP operation on the upstream selected by `config.url` — they
+	// do not need to match the public MCP Route configured in `config.route`.
+	//
+	Tools []AIGatewayMCPConversionTool `json:"tools"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
@@ -52,7 +55,7 @@ func (a AIGatewayMCPServerConversionListener) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayMCPServerConversionListener) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "display_name", "name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "tools", "display_name", "name"}); err != nil {
 		return err
 	}
 	return nil
@@ -71,7 +74,7 @@ func (a *AIGatewayMCPServerConversionListener) GetConfig() AIGatewayMCPServerWit
 
 func (a *AIGatewayMCPServerConversionListener) GetTools() []AIGatewayMCPConversionTool {
 	if a == nil {
-		return nil
+		return []AIGatewayMCPConversionTool{}
 	}
 	return a.Tools
 }

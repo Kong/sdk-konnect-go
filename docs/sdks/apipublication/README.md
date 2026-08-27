@@ -289,7 +289,9 @@ func main() {
     res, err := s.APIPublication.PublishAPIToPortal(ctx, operations.PublishAPIToPortalRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIPublication: components.APIPublication{},
+        APIPublication: components.APIPublication{
+            Visibility: components.APIPublicationVisibilityPrivate.ToPointer(),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -325,7 +327,9 @@ func main() {
     res, err := s.APIPublication.PublishAPIToPortal(ctx, operations.PublishAPIToPortalRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIPublication: components.APIPublication{},
+        APIPublication: components.APIPublication{
+            Visibility: components.APIPublicationVisibilityPrivate.ToPointer(),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -361,7 +365,9 @@ func main() {
     res, err := s.APIPublication.PublishAPIToPortal(ctx, operations.PublishAPIToPortalRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIPublication: components.APIPublication{},
+        APIPublication: components.APIPublication{
+            Visibility: components.APIPublicationVisibilityPrivate.ToPointer(),
+        },
     })
     if err != nil {
         log.Fatal(err)
