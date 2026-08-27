@@ -21,8 +21,9 @@ type APIPublicationResponse struct {
 	// The visibility of the API in the portal.
 	// Public API publications do not require authentication to view and retrieve information about them.
 	// Private API publications require authentication to retrieve information about them.
+	// If omitted, this defaults to the target portal's configured default API visibility.
 	//
-	Visibility *APIPublicationVisibility `default:"private" json:"visibility"`
+	Visibility APIPublicationVisibility `json:"visibility"`
 	// Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
 	Warnings []string `json:"warnings,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -56,9 +57,9 @@ func (a *APIPublicationResponse) GetAuthStrategyIds() []string {
 	return a.AuthStrategyIds
 }
 
-func (a *APIPublicationResponse) GetVisibility() *APIPublicationVisibility {
+func (a *APIPublicationResponse) GetVisibility() APIPublicationVisibility {
 	if a == nil {
-		return nil
+		return APIPublicationVisibility("")
 	}
 	return a.Visibility
 }
