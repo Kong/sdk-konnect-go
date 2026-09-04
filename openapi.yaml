@@ -34296,6 +34296,40 @@ components:
       required:
         - title
         - items
+    PortalCustomizationSpecRenderer:
+      description: The spec renderer settings of this portal
+      type: object
+      properties:
+        try_it_ui:
+          description: Enable in-browser testing for your APIs. All linked gateways must have the CORS plugin configured.
+          type: boolean
+          default: true
+        try_it_insomnia:
+          description: Enables users to open API specifications in Insomnia to explore and send requests with the native client. Only public API specifications are supported.
+          type: boolean
+          default: true
+        infinite_scroll:
+          description: 'Display the full spec on a single, scrollable page. If disabled, documentation, endpoints, and schemas appear on separate pages.'
+          type: boolean
+          default: true
+        show_schemas:
+          description: 'Control whether schemas are visible in your API specs. When enabled, schemas appear in the side navigation below the endpoints.'
+          type: boolean
+          default: true
+        hide_internal:
+          description: Manage visibility of internal endpoints and models.
+          type: boolean
+          default: false
+        hide_deprecated:
+          description: Manage visibility of deprecated endpoints and models.
+          type: boolean
+          default: false
+        allow_custom_server_urls:
+          description: Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
+          type: boolean
+          default: true
+      additionalProperties: false
+      title: PortalCustomizationSpecRenderer
     SnippetName:
       description: The unique name of a snippet in a portal.
       type: string
@@ -34353,6 +34387,7 @@ components:
               items:
                 $ref: '#/components/schemas/PortalMenuItem'
         spec_renderer:
+          description: The spec renderer settings of this portal
           type: object
           additionalProperties: false
           properties:
@@ -34384,6 +34419,23 @@ components:
               description: Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
               type: boolean
               default: true
+            try_it_ui_audience:
+              description: |
+                The audience for the Try It UI feature.
+
+                `all` means that the Try It UI will be available to all users, including unauthenticated users.
+
+                `authenticated` means that the Try It UI will only be available to authenticated users.
+
+                `registered` means that the Try It UI will only be available to users who have registered for the API.
+              type: string
+              default: all
+              enum:
+                - all
+                - authenticated
+                - registered
+              x-speakeasy-unknown-values: allow
+          title: PortalCustomizationSpecRenderer
         robots:
           type: string
           nullable: true
