@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.15.0 and generator version 2.932.15
+// Generated from OpenAPI doc version 3.15.0 and generator version 2.935.1
 
 import (
 	"context"
@@ -427,6 +427,7 @@ type SDK struct {
 	PortalTeamMembership *PortalTeamMembership
 	// APIs related to Konnect Developer Portal Emails.
 	PortalEmails *PortalEmails
+	PortalForms  *PortalForms
 	// APIs to configure Konnect Developer Portal integrations.
 	PortalIntegrations *PortalIntegrations
 	// APIs related to Konnect Portal IP Allow List.
@@ -520,10 +521,13 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.64.0",
+		SDKVersion: "0.65.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.64.0 2.932.15 3.15.0 github.com/Kong/sdk-konnect-go",
-			ServerList: ServerList,
+			UserAgent:         "speakeasy-sdk/go 0.65.0 2.935.1 3.15.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.65.0",
+			GenVersion:        "2.935.1",
+			OpenAPIDocVersion: "3.15.0",
+			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),
 	}
@@ -669,6 +673,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.PortalDevelopers = newPortalDevelopers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalEmails = newPortalEmails(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalForms = newPortalForms(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalIntegrations = newPortalIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalsIPAllowList = newPortalsIPAllowList(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalPages = newPortalPages(sdk, sdk.sdkConfiguration, sdk.hooks)

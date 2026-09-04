@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetHuggingfaceConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Hugging Face-specific configuration for a model.
+// AIGatewayTargetHuggingfaceConfig - Hugging Face-specific configuration for a model.
 type AIGatewayTargetHuggingfaceConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

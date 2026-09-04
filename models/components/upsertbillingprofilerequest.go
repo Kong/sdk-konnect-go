@@ -327,7 +327,14 @@ func CreateUpsertBillingProfileRequestAlignmentAnchored(anchored UpsertBillingPr
 	}
 }
 
-func (u *UpsertBillingProfileRequestAlignment) UnmarshalJSON(data []byte) error {
+func (u *UpsertBillingProfileRequestAlignment) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = UpsertBillingProfileRequestAlignment{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -538,7 +545,14 @@ func CreateUpsertBillingProfileRequestPaymentSendInvoice(sendInvoice BillingWork
 	}
 }
 
-func (u *UpsertBillingProfileRequestPayment) UnmarshalJSON(data []byte) error {
+func (u *UpsertBillingProfileRequestPayment) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = UpsertBillingProfileRequestPayment{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		CollectionMethod string `json:"collection_method"`

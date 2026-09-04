@@ -506,10 +506,7 @@ const (
 	AIGatewayMCPServerRouteWithMatcherTypeFour  AIGatewayMCPServerRouteWithMatcherType = "4"
 )
 
-// AIGatewayMCPServerRouteWithMatcher - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Route configuration for an MCP Server that terminates its own listener. At least one
+// AIGatewayMCPServerRouteWithMatcher - Route configuration for an MCP Server that terminates its own listener. At least one
 // of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 // incoming requests.
 type AIGatewayMCPServerRouteWithMatcher struct {
@@ -557,7 +554,14 @@ func CreateAIGatewayMCPServerRouteWithMatcherFour(four Four) AIGatewayMCPServerR
 	}
 }
 
-func (u *AIGatewayMCPServerRouteWithMatcher) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayMCPServerRouteWithMatcher) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayMCPServerRouteWithMatcher{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var one One = One{}
 	if err := utils.UnmarshalJSON(data, &one, "", true, nil); err == nil {

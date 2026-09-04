@@ -147,7 +147,14 @@ func CreatePatchTransitGatewayRequestPatchAWSTransitGatewayAWSTransitGateway(pat
 	}
 }
 
-func (u *PatchTransitGatewayRequest) UnmarshalJSON(data []byte) error {
+func (u *PatchTransitGatewayRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PatchTransitGatewayRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var patchAWSResourceEndpointGatewayAWSResourceEndpointGateway PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway = PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway{}
 	if err := utils.UnmarshalJSON(data, &patchAWSResourceEndpointGatewayAWSResourceEndpointGateway, "", true, nil); err == nil {

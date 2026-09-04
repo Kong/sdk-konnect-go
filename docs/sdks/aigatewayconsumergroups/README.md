@@ -17,9 +17,6 @@ Consumer groups for applying rate-limiting and access policies to AI Gateway tra
 
 ## ListAiGatewayConsumerGroups
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of all consumer groups for the AI Gateway.
 
 ### Example Usage
@@ -82,9 +79,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayConsumerGroup
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Creates a new Consumer Group for the AI Gateway.
 
@@ -155,9 +149,6 @@ func main() {
 
 ## ListAiGatewayConsumersInConsumerGroup
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of all consumers in the given consumer group for the AI Gateway.
 
 ### Example Usage
@@ -221,9 +212,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## AddAiGatewayConsumerToConsumerGroup
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Add a consumer to an AI Gateway Consumer Group.
 
@@ -291,9 +279,6 @@ func main() {
 
 ## RemoveAiGatewayConsumerFromConsumerGroup
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Remove a consumer from an AI Gateway Consumer Group.
 
 ### Example Usage
@@ -357,9 +342,6 @@ func main() {
 
 ## GetAiGatewayConsumerGroup
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway Consumer Group.
 
 ### Example Usage
@@ -418,9 +400,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayConsumerGroup
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing AI Gateway Consumer Group.
 
@@ -494,9 +473,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayConsumerGroup
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a specific AI Gateway Consumer Group.
 

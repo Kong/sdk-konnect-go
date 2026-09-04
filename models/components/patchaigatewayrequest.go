@@ -3,10 +3,7 @@
 
 package components
 
-// PatchAIGatewayRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// The request schema for partially updating an AI Gateway.
+// PatchAIGatewayRequest - The request schema for partially updating an AI Gateway.
 type PatchAIGatewayRequest struct {
 	// The display name for this AI Gateway.
 	DisplayName *string `json:"display_name,omitempty"`

@@ -43,7 +43,14 @@ func CreateTimingDateTime(dateTime time.Time) Timing {
 	}
 }
 
-func (u *Timing) UnmarshalJSON(data []byte) error {
+func (u *Timing) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Timing{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var billingSubscriptionEditTimingEnum BillingSubscriptionEditTimingEnum = BillingSubscriptionEditTimingEnum("")
 	if err := utils.UnmarshalJSON(data, &billingSubscriptionEditTimingEnum, "", true, nil); err == nil {

@@ -101,20 +101,20 @@ func (p *Pricing) GetReasoningPerToken() *string {
 	return p.ReasoningPerToken
 }
 
-// Source - Where this price came from.
-type Source string
+// LLMCostPriceSource - Where this price came from.
+type LLMCostPriceSource string
 
 const (
-	SourceManual Source = "manual"
-	SourceSystem Source = "system"
+	LLMCostPriceSourceManual LLMCostPriceSource = "manual"
+	LLMCostPriceSourceSystem LLMCostPriceSource = "system"
 )
 
-func (e Source) ToPointer() *Source {
+func (e LLMCostPriceSource) ToPointer() *LLMCostPriceSource {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Source) IsExact() bool {
+func (e *LLMCostPriceSource) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "manual", "system":
@@ -138,7 +138,7 @@ type LLMCostPrice struct {
 	// Currency code (currently always "USD").
 	Currency string `json:"currency"`
 	// Where this price came from.
-	Source Source `json:"source"`
+	Source LLMCostPriceSource `json:"source"`
 	// When this price becomes effective.
 	EffectiveFrom time.Time `json:"effective_from"`
 	// When this price expires. Omitted when the price is currently effective.
@@ -195,9 +195,9 @@ func (l *LLMCostPrice) GetCurrency() string {
 	return l.Currency
 }
 
-func (l *LLMCostPrice) GetSource() Source {
+func (l *LLMCostPrice) GetSource() LLMCostPriceSource {
 	if l == nil {
-		return Source("")
+		return LLMCostPriceSource("")
 	}
 	return l.Source
 }

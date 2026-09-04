@@ -42,7 +42,14 @@ func CreatePatchTransitGatewayResponseAwsTransitGatewayResponse(awsTransitGatewa
 	}
 }
 
-func (u *PatchTransitGatewayResponse) UnmarshalJSON(data []byte) error {
+func (u *PatchTransitGatewayResponse) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PatchTransitGatewayResponse{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var awsTransitGatewayResponse AwsTransitGatewayResponse = AwsTransitGatewayResponse{}
 	if err := utils.UnmarshalJSON(data, &awsTransitGatewayResponse, "", true, nil); err == nil {

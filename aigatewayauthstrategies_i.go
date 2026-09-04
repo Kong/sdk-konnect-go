@@ -12,33 +12,18 @@ import (
 // AIGatewayAuthStrategiesSDK is a generated interface.
 type AIGatewayAuthStrategiesSDK interface {
 	// ListAiGatewayAuthStrategies - List AI Gateway Auth Strategies
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns a list of auth strategies configured for the AI Gateway.
 	ListAiGatewayAuthStrategies(ctx context.Context, request operations.ListAiGatewayAuthStrategiesRequest, opts ...operations.Option) (*operations.ListAiGatewayAuthStrategiesResponse, error)
 	// CreateAiGatewayAuthStrategy - Create an AI Gateway Auth Strategy
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Registers a new auth strategy for the AI Gateway.
 	CreateAiGatewayAuthStrategy(ctx context.Context, gatewayID string, createAIGatewayAuthStrategyRequest components.CreateAIGatewayAuthStrategyRequest, opts ...operations.Option) (*operations.CreateAiGatewayAuthStrategyResponse, error)
 	// GetAiGatewayAuthStrategy - Get an AI Gateway Auth Strategy
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns the details of a specific AI Gateway auth strategy.
 	GetAiGatewayAuthStrategy(ctx context.Context, gatewayID string, authStrategyIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayAuthStrategyResponse, error)
 	// UpdateAiGatewayAuthStrategy - Update an AI Gateway Auth Strategy
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Updates the configuration of an existing AI Gateway auth strategy.
 	UpdateAiGatewayAuthStrategy(ctx context.Context, request operations.UpdateAiGatewayAuthStrategyRequest, opts ...operations.Option) (*operations.UpdateAiGatewayAuthStrategyResponse, error)
 	// DeleteAiGatewayAuthStrategy - Delete an AI Gateway Auth Strategy
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Removes a specific AI Gateway auth strategy.
 	DeleteAiGatewayAuthStrategy(ctx context.Context, gatewayID string, authStrategyIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayAuthStrategyResponse, error)
 }

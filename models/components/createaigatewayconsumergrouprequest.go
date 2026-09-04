@@ -3,14 +3,9 @@
 
 package components
 
-// CreateAIGatewayConsumerGroupRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type CreateAIGatewayConsumerGroupRequest struct {
 	// The display name for this consumer group instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this consumer group, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// List of policy references.

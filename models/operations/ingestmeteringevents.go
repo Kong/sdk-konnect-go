@@ -43,7 +43,14 @@ func CreateIngestMeteringEventsRequestBodyArrayOfMeteringEvent(arrayOfMeteringEv
 	}
 }
 
-func (u *IngestMeteringEventsRequestBody) UnmarshalJSON(data []byte) error {
+func (u *IngestMeteringEventsRequestBody) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IngestMeteringEventsRequestBody{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var meteringEvent components.MeteringEvent = components.MeteringEvent{}
 	if err := utils.UnmarshalJSON(data, &meteringEvent, "", true, nil); err == nil {

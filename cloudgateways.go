@@ -9285,6 +9285,7 @@ func (s *CloudGateways) ListProviderAccounts(ctx context.Context, request operat
 	if timeout == nil {
 		timeout = s.sdkConfiguration.Timeout
 	}
+	paginationCtx := ctx
 
 	if timeout != nil {
 		var cancel context.CancelFunc
@@ -9463,7 +9464,7 @@ func (s *CloudGateways) ListProviderAccounts(ctx context.Context, request operat
 		request.PageNumber = &nP
 
 		return s.ListProviderAccounts(
-			ctx,
+			paginationCtx,
 			request,
 			opts...,
 		)

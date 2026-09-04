@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetGeminiConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Google Gemini-specific configuration for a model.
+// AIGatewayTargetGeminiConfig - Google Gemini-specific configuration for a model.
 type AIGatewayTargetGeminiConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`
@@ -40,9 +37,6 @@ type AIGatewayTargetGeminiConfig struct {
 	UpstreamURL *string `json:"upstream_url,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"gemini" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for a model hosted on Google Cloud Project.
 	GcpEnvironment *GCPModelConfig `json:"gcp_environment,omitempty"`
 }

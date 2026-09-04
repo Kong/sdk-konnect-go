@@ -30,7 +30,14 @@ func CreateScoreValueStringFieldFilter(stringFieldFilter StringFieldFilter) Scor
 	}
 }
 
-func (u *ScoreValue) UnmarshalJSON(data []byte) error {
+func (u *ScoreValue) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ScoreValue{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -71,7 +78,14 @@ func CreateScoreRawValueNumericFieldFilter(numericFieldFilter NumericFieldFilter
 	}
 }
 
-func (u *ScoreRawValue) UnmarshalJSON(data []byte) error {
+func (u *ScoreRawValue) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ScoreRawValue{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var numericFieldFilter NumericFieldFilter = NumericFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &numericFieldFilter, "", true, nil); err == nil {

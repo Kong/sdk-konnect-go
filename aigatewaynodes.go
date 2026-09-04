@@ -33,9 +33,6 @@ func newAIGatewayNodes(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *h
 }
 
 // GetAiGatewayExpectedConfigVersion - Get the Expected Config Version
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Retrieve the expected config version for this AI Gateway. The expected config version can be used to verify if the config version of a data plane node is up to date with the AI Gateway. The config version will be the same if they are in sync.
 func (s *AIGatewayNodes) GetAiGatewayExpectedConfigVersion(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.GetAiGatewayExpectedConfigVersionResponse, error) {
 	request := operations.GetAiGatewayExpectedConfigVersionRequest{
@@ -329,9 +326,6 @@ func (s *AIGatewayNodes) GetAiGatewayExpectedConfigVersion(ctx context.Context, 
 }
 
 // ListAiGatewayNodes - List Nodes
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of nodes associated with the specified AI Gateway.
 func (s *AIGatewayNodes) ListAiGatewayNodes(ctx context.Context, request operations.ListAiGatewayNodesRequest, opts ...operations.Option) (*operations.ListAiGatewayNodesResponse, error) {
 	o := operations.Options{}
@@ -625,9 +619,6 @@ func (s *AIGatewayNodes) ListAiGatewayNodes(ctx context.Context, request operati
 }
 
 // GetAiGatewayNode - Get a Node
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns information about a specific node associated with the AI Gateway.
 func (s *AIGatewayNodes) GetAiGatewayNode(ctx context.Context, gatewayID string, dataPlaneNodeID string, opts ...operations.Option) (*operations.GetAiGatewayNodeResponse, error) {
 	request := operations.GetAiGatewayNodeRequest{

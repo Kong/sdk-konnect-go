@@ -3,8 +3,6 @@
 
 package components
 
-// CreateAIGatewayDataPlaneCertificateRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type CreateAIGatewayDataPlaneCertificateRequest struct {
 	// JSON escaped string of the certificate.
 	Cert string `json:"cert"`

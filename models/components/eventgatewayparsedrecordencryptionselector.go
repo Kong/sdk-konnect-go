@@ -42,7 +42,14 @@ func CreateEventGatewayParsedRecordEncryptionSelectorPathsStr(str string) EventG
 	}
 }
 
-func (u *EventGatewayParsedRecordEncryptionSelectorPaths) UnmarshalJSON(data []byte) error {
+func (u *EventGatewayParsedRecordEncryptionSelectorPaths) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EventGatewayParsedRecordEncryptionSelectorPaths{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var arrayOfEventGatewayParsedRecordFieldPathsArray []EventGatewayParsedRecordFieldPathsArray = []EventGatewayParsedRecordFieldPathsArray{}
 	if err := utils.UnmarshalJSON(data, &arrayOfEventGatewayParsedRecordFieldPathsArray, "", true, nil); err == nil {

@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayRedisGCPAuthentication - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// GCP specific configs for connecting to a Cloud Provider's redis instance.
+// AIGatewayRedisGCPAuthentication - GCP specific configs for connecting to a Cloud Provider's redis instance.
 type AIGatewayRedisGCPAuthentication struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"gcp" json:"type"`

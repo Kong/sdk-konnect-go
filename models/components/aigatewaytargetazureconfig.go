@@ -33,10 +33,7 @@ func (e *FoundryPathPrefix) IsExact() bool {
 	return false
 }
 
-// AIGatewayTargetAzureConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Azure-specific configuration for a model.
+// AIGatewayTargetAzureConfig - Azure-specific configuration for a model.
 type AIGatewayTargetAzureConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

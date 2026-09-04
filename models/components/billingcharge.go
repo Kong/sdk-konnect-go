@@ -49,7 +49,14 @@ func CreateBillingChargeUsageBased(usageBased BillingChargeUsageBased) BillingCh
 	}
 }
 
-func (u *BillingCharge) UnmarshalJSON(data []byte) error {
+func (u *BillingCharge) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = BillingCharge{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

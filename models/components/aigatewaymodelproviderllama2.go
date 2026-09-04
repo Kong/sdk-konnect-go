@@ -9,10 +9,8 @@ import (
 
 // AIGatewayModelProviderLlama2Config - Configuration for the model provider.
 type AIGatewayModelProviderLlama2Config struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasic `json:"auth"`
 }
 
@@ -37,16 +35,12 @@ func (a *AIGatewayModelProviderLlama2Config) GetAuth() AIGatewayModelProviderCon
 // #region class-body-aigatewaymodelproviderllama2config
 // #endregion class-body-aigatewaymodelproviderllama2config
 
-// AIGatewayModelProviderLlama2 - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderLlama2 - Configuration for an upstream model provider.
 type AIGatewayModelProviderLlama2 struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"llama2" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.

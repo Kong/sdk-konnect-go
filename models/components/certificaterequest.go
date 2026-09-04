@@ -312,7 +312,14 @@ func CreateCertificateRequestCertificateRequest2(certificateRequest2 Certificate
 	}
 }
 
-func (u *CertificateRequest) UnmarshalJSON(data []byte) error {
+func (u *CertificateRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CertificateRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var certificateRequest2 CertificateRequest2 = CertificateRequest2{}
 	if err := utils.UnmarshalJSON(data, &certificateRequest2, "", true, nil); err == nil {

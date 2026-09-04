@@ -33,9 +33,6 @@ func newAIGatewayDataPlaneCertificates(rootSDK *SDK, sdkConfig config.SDKConfigu
 }
 
 // ListAiGatewayDataPlaneCertificates - List AI Gateway DataPlane Certificates
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of DataPlane certificates that are associated to this AI Gateway. A DataPlane certificate allows DataPlanes configured with the certificate and corresponding private key to establish connection with this AI Gateway.
 func (s *AIGatewayDataPlaneCertificates) ListAiGatewayDataPlaneCertificates(ctx context.Context, request operations.ListAiGatewayDataPlaneCertificatesRequest, opts ...operations.Option) (*operations.ListAiGatewayDataPlaneCertificatesResponse, error) {
 	o := operations.Options{}
@@ -350,9 +347,6 @@ func (s *AIGatewayDataPlaneCertificates) ListAiGatewayDataPlaneCertificates(ctx 
 }
 
 // CreateAiGatewayDataPlaneCertificate - Create New AI Gateway DataPlane Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Create a new DataPlane Certificate for this AI Gateway. A DataPlane certificate allows DataPlanes configured with the certificate and corresponding private key to establish connection with this AI Gateway.
 func (s *AIGatewayDataPlaneCertificates) CreateAiGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, createAIGatewayDataPlaneCertificateRequest *components.CreateAIGatewayDataPlaneCertificateRequest, opts ...operations.Option) (*operations.CreateAiGatewayDataPlaneCertificateResponse, error) {
 	request := operations.CreateAiGatewayDataPlaneCertificateRequest{
@@ -675,9 +669,6 @@ func (s *AIGatewayDataPlaneCertificates) CreateAiGatewayDataPlaneCertificate(ctx
 }
 
 // GetAiGatewayDataPlaneCertificate - Get a DataPlane Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Retrieve a DataPlane certificate associated to this AI Gateway. A DataPlane certificate allows DataPlanes configured with the certificate and corresponding private key to establish connection with this AI Gateway.
 func (s *AIGatewayDataPlaneCertificates) GetAiGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option) (*operations.GetAiGatewayDataPlaneCertificateResponse, error) {
 	request := operations.GetAiGatewayDataPlaneCertificateRequest{
@@ -993,9 +984,6 @@ func (s *AIGatewayDataPlaneCertificates) GetAiGatewayDataPlaneCertificate(ctx co
 }
 
 // DeleteAiGatewayDataPlaneCertificate - Delete AI Gateway DataPlane Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Remove a DataPlane client certificate associated to this AI Gateway. Removing a DataPlane certificate would invalidate any DataPlanes currently connected to this AI Gateway using this certificate.
 func (s *AIGatewayDataPlaneCertificates) DeleteAiGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option) (*operations.DeleteAiGatewayDataPlaneCertificateResponse, error) {
 	request := operations.DeleteAiGatewayDataPlaneCertificateRequest{

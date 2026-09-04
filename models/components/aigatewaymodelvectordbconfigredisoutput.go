@@ -77,7 +77,14 @@ func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationOutputGcp(gcp AIG
 	}
 }
 
-func (u *AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -269,7 +276,14 @@ func CreateAIGatewayModelVectorDBConfigRedisPortStr(str string) AIGatewayModelVe
 	}
 }
 
-func (u *AIGatewayModelVectorDBConfigRedisPort) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelVectorDBConfigRedisPort) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelVectorDBConfigRedisPort{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integer int64 = int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
@@ -420,10 +434,7 @@ func (a *AIGatewayModelVectorDBConfigRedisSentinel) GetUsername() *string {
 	return a.Username
 }
 
-// AIGatewayModelVectorDBConfigRedisOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Config for connecting to a Cloud Provider's Redis instance.
+// AIGatewayModelVectorDBConfigRedisOutput - Config for connecting to a Cloud Provider's Redis instance.
 type AIGatewayModelVectorDBConfigRedisOutput struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"redis" json:"type"`
@@ -690,7 +701,14 @@ func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationGcp(gcp AIGateway
 	}
 }
 
-func (u *AIGatewayModelVectorDBConfigRedisCloudAuthentication) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelVectorDBConfigRedisCloudAuthentication) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelVectorDBConfigRedisCloudAuthentication{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -750,10 +768,7 @@ func (u AIGatewayModelVectorDBConfigRedisCloudAuthentication) MarshalJSON() ([]b
 	return nil, errors.New("could not marshal union type AIGatewayModelVectorDBConfigRedisCloudAuthentication: all fields are null")
 }
 
-// AIGatewayModelVectorDBConfigRedis - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Config for connecting to a Cloud Provider's Redis instance.
+// AIGatewayModelVectorDBConfigRedis - Config for connecting to a Cloud Provider's Redis instance.
 type AIGatewayModelVectorDBConfigRedis struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"redis" json:"type"`

@@ -17,9 +17,6 @@
 
 ## ListAiGatewaySnisForCertificate
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of SNIs associated with a specific AI Gateway certificate.
 
 ### Example Usage
@@ -83,9 +80,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewaySniForCertificate
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Creates a new SNI associated with a specific AI Gateway certificate.
 
@@ -162,9 +156,6 @@ func main() {
 
 ## GetAiGatewaySniForCertificate
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific SNI associated with an AI Gateway certificate.
 
 ### Example Usage
@@ -227,9 +218,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewaySniForCertificate
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates a specific SNI associated with an AI Gateway certificate.
 
@@ -306,9 +294,6 @@ func main() {
 
 ## DeleteAiGatewaySniForCertificate
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Removes a specific SNI associated with an AI Gateway certificate.
 
 ### Example Usage
@@ -372,9 +357,6 @@ func main() {
 
 ## ListAiGatewaySnis
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of SNIs associated with the AI Gateway.
 
 ### Example Usage
@@ -437,9 +419,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewaySni
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Creates a new SNI for the AI Gateway.
 
@@ -513,9 +492,6 @@ func main() {
 
 ## GetAiGatewaySni
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway SNI.
 
 ### Example Usage
@@ -574,9 +550,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewaySni
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates an existing AI Gateway SNI.
 
@@ -652,9 +625,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewaySni
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a specific AI Gateway SNI.
 

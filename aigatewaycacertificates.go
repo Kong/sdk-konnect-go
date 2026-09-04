@@ -33,9 +33,6 @@ func newAIGatewayCACertificates(rootSDK *SDK, sdkConfig config.SDKConfiguration,
 }
 
 // ListAiGatewayCaCertificates - List AI Gateway CA Certificates
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of CA certificates associated with the AI Gateway.
 func (s *AIGatewayCACertificates) ListAiGatewayCaCertificates(ctx context.Context, request operations.ListAiGatewayCaCertificatesRequest, opts ...operations.Option) (*operations.ListAiGatewayCaCertificatesResponse, error) {
 	o := operations.Options{}
@@ -329,9 +326,6 @@ func (s *AIGatewayCACertificates) ListAiGatewayCaCertificates(ctx context.Contex
 }
 
 // CreateAiGatewayCaCertificate - Create an AI Gateway CA Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Creates a new CA certificate for the AI Gateway.
 func (s *AIGatewayCACertificates) CreateAiGatewayCaCertificate(ctx context.Context, gatewayID string, createAIGatewayCACertificateRequest components.CreateAIGatewayCACertificateRequest, opts ...operations.Option) (*operations.CreateAiGatewayCaCertificateResponse, error) {
 	request := operations.CreateAiGatewayCaCertificateRequest{
@@ -675,9 +669,6 @@ func (s *AIGatewayCACertificates) CreateAiGatewayCaCertificate(ctx context.Conte
 }
 
 // GetAiGatewayCaCertificate - Get an AI Gateway CA Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific AI Gateway CA certificate.
 func (s *AIGatewayCACertificates) GetAiGatewayCaCertificate(ctx context.Context, gatewayID string, caCertificateIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayCaCertificateResponse, error) {
 	request := operations.GetAiGatewayCaCertificateRequest{
@@ -972,9 +963,6 @@ func (s *AIGatewayCACertificates) GetAiGatewayCaCertificate(ctx context.Context,
 }
 
 // UpdateAiGatewayCaCertificate - Update an AI Gateway CA Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates an existing AI Gateway CA certificate.
 func (s *AIGatewayCACertificates) UpdateAiGatewayCaCertificate(ctx context.Context, request operations.UpdateAiGatewayCaCertificateRequest, opts ...operations.Option) (*operations.UpdateAiGatewayCaCertificateResponse, error) {
 	o := operations.Options{}
@@ -1292,9 +1280,6 @@ func (s *AIGatewayCACertificates) UpdateAiGatewayCaCertificate(ctx context.Conte
 }
 
 // DeleteAiGatewayCaCertificate - Delete an AI Gateway CA Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific AI Gateway CA certificate.
 func (s *AIGatewayCACertificates) DeleteAiGatewayCaCertificate(ctx context.Context, gatewayID string, caCertificateIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayCaCertificateResponse, error) {
 	request := operations.DeleteAiGatewayCaCertificateRequest{

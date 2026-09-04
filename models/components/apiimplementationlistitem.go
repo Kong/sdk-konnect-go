@@ -42,7 +42,14 @@ func CreateAPIImplementationListItemAPIImplementationListItemControlPlaneEntity(
 	}
 }
 
-func (u *APIImplementationListItem) UnmarshalJSON(data []byte) error {
+func (u *APIImplementationListItem) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = APIImplementationListItem{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var apiImplementationListItemControlPlaneEntity APIImplementationListItemControlPlaneEntity = APIImplementationListItemControlPlaneEntity{}
 	if err := utils.UnmarshalJSON(data, &apiImplementationListItemControlPlaneEntity, "", true, nil); err == nil {

@@ -33,9 +33,6 @@ func newAIGatewayModels(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *
 }
 
 // ListAiGatewayModels - List AI Gateway Models
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of all models registered in the AI Gateway.
 func (s *AIGatewayModels) ListAiGatewayModels(ctx context.Context, request operations.ListAiGatewayModelsRequest, opts ...operations.Option) (*operations.ListAiGatewayModelsResponse, error) {
 	o := operations.Options{}
@@ -329,9 +326,6 @@ func (s *AIGatewayModels) ListAiGatewayModels(ctx context.Context, request opera
 }
 
 // CreateAiGatewayModel - Create an AI Gateway Model
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Registers a new model with routing, capabilities, and target backends.
 func (s *AIGatewayModels) CreateAiGatewayModel(ctx context.Context, gatewayID string, createAIGatewayModelRequest components.CreateAIGatewayModelRequest, opts ...operations.Option) (*operations.CreateAiGatewayModelResponse, error) {
 	request := operations.CreateAiGatewayModelRequest{
@@ -675,9 +669,6 @@ func (s *AIGatewayModels) CreateAiGatewayModel(ctx context.Context, gatewayID st
 }
 
 // GetAiGatewayModel - Get an AI Gateway Model
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific AI Gateway model.
 func (s *AIGatewayModels) GetAiGatewayModel(ctx context.Context, gatewayID string, modelIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayModelResponse, error) {
 	request := operations.GetAiGatewayModelRequest{
@@ -972,9 +963,6 @@ func (s *AIGatewayModels) GetAiGatewayModel(ctx context.Context, gatewayID strin
 }
 
 // UpdateAiGatewayModel - Update an AI Gateway Model
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates the configuration of an existing AI Gateway model.
 func (s *AIGatewayModels) UpdateAiGatewayModel(ctx context.Context, request operations.UpdateAiGatewayModelRequest, opts ...operations.Option) (*operations.UpdateAiGatewayModelResponse, error) {
 	o := operations.Options{}
@@ -1292,9 +1280,6 @@ func (s *AIGatewayModels) UpdateAiGatewayModel(ctx context.Context, request oper
 }
 
 // DeleteAiGatewayModel - Delete an AI Gateway Model
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific AI Gateway model.
 func (s *AIGatewayModels) DeleteAiGatewayModel(ctx context.Context, gatewayID string, modelIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayModelResponse, error) {
 	request := operations.DeleteAiGatewayModelRequest{

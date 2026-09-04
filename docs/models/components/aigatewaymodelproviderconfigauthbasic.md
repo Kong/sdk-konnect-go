@@ -1,9 +1,7 @@
 # AIGatewayModelProviderConfigAuthBasic
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Basic auth config for an upstream model provider.
+
 
 
 ## Fields

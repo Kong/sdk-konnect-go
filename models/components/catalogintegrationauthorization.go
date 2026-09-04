@@ -81,7 +81,14 @@ func CreateCatalogIntegrationAuthorizationGitHubAppInstallationAuth(gitHubAppIns
 	}
 }
 
-func (u *CatalogIntegrationAuthorization) UnmarshalJSON(data []byte) error {
+func (u *CatalogIntegrationAuthorization) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogIntegrationAuthorization{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var oAuth1 OAuth1 = OAuth1{}
 	if err := utils.UnmarshalJSON(data, &oAuth1, "", true, nil); err == nil {

@@ -53,8 +53,6 @@ func (e *HashiCorpVaultAwsIAMConfigProtocol) IsExact() bool {
 	return false
 }
 
-// HashiCorpVaultAwsIAMConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultAwsIAMConfigOutput struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -258,8 +256,6 @@ func (h *HashiCorpVaultAwsIAMConfigOutput) GetRoleSessionName() *string {
 	return h.RoleSessionName
 }
 
-// HashiCorpVaultAwsIAMConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultAwsIAMConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.

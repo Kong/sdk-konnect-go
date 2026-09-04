@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayModelProviderConfigAuthAzureOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for Azure model provider.
+// AIGatewayModelProviderConfigAuthAzureOutput - Configuration for Azure model provider.
 type AIGatewayModelProviderConfigAuthAzureOutput struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"azure" json:"type"`
