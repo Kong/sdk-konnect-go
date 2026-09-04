@@ -562,16 +562,10 @@ func (a *AIGatewayAuthStrategyOpenIDConnectConfig) GetAdditionalProperties() map
 	return a.AdditionalProperties
 }
 
-// AIGatewayAuthStrategyOpenIDConnect - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for an auth strategy.
+// AIGatewayAuthStrategyOpenIDConnect - Configuration for an auth strategy.
 type AIGatewayAuthStrategyOpenIDConnect struct {
 	// The display name for this auth strategy instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this auth strategy instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.

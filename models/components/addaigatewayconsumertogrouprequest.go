@@ -3,8 +3,6 @@
 
 package components
 
-// AddAIGatewayConsumerToGroupRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AddAIGatewayConsumerToGroupRequest struct {
 	// The ID or name of the consumer to add to the group.
 	Consumer string `json:"consumer"`

@@ -3,14 +3,8 @@
 
 package components
 
-// CreateAIGatewayCertificateRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// A certificate holds a PEM-encoded certificate and its matching private key, used to terminate or originate TLS connections.
+// CreateAIGatewayCertificateRequest - A certificate holds a PEM-encoded certificate and its matching private key, used to terminate or originate TLS connections.
 type CreateAIGatewayCertificateRequest struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this certificate, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// PEM-encoded public certificate chain.

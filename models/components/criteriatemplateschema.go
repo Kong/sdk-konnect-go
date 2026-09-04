@@ -206,7 +206,14 @@ func CreateCriteriaTemplateSchemaCriteriaTemplateJSONSchema(criteriaTemplateJSON
 	}
 }
 
-func (u *CriteriaTemplateSchema) UnmarshalJSON(data []byte) error {
+func (u *CriteriaTemplateSchema) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CriteriaTemplateSchema{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var criteriaTemplateSimpleSchema CriteriaTemplateSimpleSchema = CriteriaTemplateSimpleSchema{}
 	if err := utils.UnmarshalJSON(data, &criteriaTemplateSimpleSchema, "", true, nil); err == nil {

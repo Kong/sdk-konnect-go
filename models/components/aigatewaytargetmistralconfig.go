@@ -30,10 +30,7 @@ func (e *AIGatewayTargetMistralConfigFormat) IsExact() bool {
 	return false
 }
 
-// AIGatewayTargetMistralConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Mistral-specific configuration for a model.
+// AIGatewayTargetMistralConfig - Mistral-specific configuration for a model.
 type AIGatewayTargetMistralConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

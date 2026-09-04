@@ -63,9 +63,6 @@ type AIGatewayMCPServerUpstreamServerServerConfigSessionOutput struct {
 	Client *AIGatewayMCPServerUpstreamServerServerConfigClient `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
 	Managed *bool `default:"true" json:"managed"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Config for connecting to a Cloud Provider's Redis instance.
 	Redis *AIGatewayRedisCloudConfigurationOutput `json:"redis,omitempty"`
 	// The time-to-live (TTL) for each session in seconds.
@@ -135,9 +132,6 @@ type AIGatewayMCPServerUpstreamServerServerConfigOutput struct {
 	// collisions when multiple services are used.
 	//
 	PreserveUpstreamToolNames *bool `default:"false" json:"preserve_upstream_tool_names"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an Upstream Server's MCP Server Tools' Authentication.
 	ToolsListAuth *AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput `json:"tools_list_auth,omitempty"`
 }
@@ -209,9 +203,6 @@ type AIGatewayMCPServerUpstreamServerServerConfigSession struct {
 	Client *AIGatewayMCPServerUpstreamServerServerConfigClient `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
 	Managed *bool `default:"true" json:"managed"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Config for connecting to a Cloud Provider's Redis instance.
 	Redis *AIGatewayRedisCloudConfiguration `json:"redis,omitempty"`
 	// The time-to-live (TTL) for each session in seconds.
@@ -281,9 +272,6 @@ type AIGatewayMCPServerUpstreamServerServerConfig struct {
 	// collisions when multiple services are used.
 	//
 	PreserveUpstreamToolNames *bool `default:"false" json:"preserve_upstream_tool_names"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an Upstream Server's MCP Server Tools' Authentication.
 	ToolsListAuth *AIGatewayMCPServerUpstreamServerServerToolAuthConfig `json:"tools_list_auth,omitempty"`
 }

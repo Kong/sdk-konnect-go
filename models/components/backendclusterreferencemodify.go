@@ -45,7 +45,14 @@ func CreateBackendClusterReferenceModifyBackendClusterReferenceByName(backendClu
 	}
 }
 
-func (u *BackendClusterReferenceModify) UnmarshalJSON(data []byte) error {
+func (u *BackendClusterReferenceModify) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = BackendClusterReferenceModify{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var backendClusterReferenceByID BackendClusterReferenceByID = BackendClusterReferenceByID{}
 	if err := utils.UnmarshalJSON(data, &backendClusterReferenceByID, "", true, nil); err == nil {

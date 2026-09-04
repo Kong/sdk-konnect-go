@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayMCPServerListenerOauth - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Auth strategy and OAuth 2.0 Protected Resource Metadata configuration
+// AIGatewayMCPServerListenerOauth - Auth strategy and OAuth 2.0 Protected Resource Metadata configuration
 // for granting access to an MCP server.
 type AIGatewayMCPServerListenerOauth struct {
 	// The type of attributes that ACL is evaluated with.
@@ -20,23 +17,19 @@ type AIGatewayMCPServerListenerOauth struct {
 	// Nested claim can be fetched by using a jq filter starts with dot, e.g., “.user.email”: https://jqlang.org/manual/#object-identifier-index
 	//
 	AccessTokenClaimField string `json:"access_token_claim_field"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Server-level access control rules for allowing or denying callers, evaluated against the
 	// value of the configured `access_token_claim_field`. This is the top-level gate: a caller
 	// must pass this check before any MCP protocol operation (`initialize`, `tools/list`,
 	// `tools/call`) is allowed, and before any tool-level `default_tool_acls` or per-tool
 	// `access.acls` check is evaluated.
-	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
 	//
+	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
 	// Default per-tool access control rules for allowing or denying callers access to tools,
 	// evaluated against the value of the configured `access_token_claim_field`. Evaluated only
 	// for callers that already passed the server-level `acls` check above. Applies to every tool
 	// exposed by this MCP Server unless a specific tool overrides it via that tool's own
 	// `access.acls`.
+	//
 	DefaultToolAcls *AIGatewayMCPACLs `json:"default_tool_acls,omitempty"`
 	// List of identity providers for granting access to the MCP server.
 	// At most 1 identity provider of each identity provider type can be referenced.

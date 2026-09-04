@@ -201,7 +201,14 @@ func CreateNumericFieldFilterNumericFieldGTEFilter(numericFieldGTEFilter Numeric
 	}
 }
 
-func (u *NumericFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *NumericFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = NumericFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var numericFieldEqualsFilter NumericFieldEqualsFilter = NumericFieldEqualsFilter{}
 	if err := utils.UnmarshalJSON(data, &numericFieldEqualsFilter, "", true, nil); err == nil {

@@ -20,9 +20,6 @@ Individual consumers with credentials and group memberships for AI Gateway acces
 
 ## ListAiGatewayConsumers
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of all consumers for the AI Gateway.
 
 ### Example Usage
@@ -85,9 +82,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayConsumer
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Creates a new consumer for the AI Gateway.
 
@@ -160,9 +154,6 @@ func main() {
 
 ## ListAiGatewayConsumerCredentials
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of all credentials for an AI Gateway consumer.
 
 ### Example Usage
@@ -226,9 +217,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayConsumerCredential
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Creates a new credential for an AI Gateway consumer.
 
@@ -306,9 +294,6 @@ func main() {
 
 ## GetAiGatewayConsumerCredential
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific credential for an AI Gateway consumer.
 
 ### Example Usage
@@ -371,9 +356,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayConsumerCredential
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a specific credential for an AI Gateway consumer.
 
@@ -438,9 +420,6 @@ func main() {
 
 ## GetAiGatewayConsumer
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway consumer.
 
 ### Example Usage
@@ -499,9 +478,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayConsumer
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing AI Gateway consumer.
 
@@ -578,9 +554,6 @@ func main() {
 
 ## DeleteAiGatewayConsumer
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Removes a specific AI Gateway consumer.
 
 ### Example Usage
@@ -639,9 +612,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## ListAiGatewayConsumerGroupsForConsumer
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 List AI Gateway Consumer Groups an Consumer belongs to
 
@@ -706,9 +676,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayConsumerGroupsForConsumer
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates AI Gateway Consumer Groups a Consumer belongs to
 

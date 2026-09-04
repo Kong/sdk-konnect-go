@@ -42,7 +42,14 @@ func CreatePersonalAccessTokenCreateRequestPersonalAccessTokenCreateRequestWithT
 	}
 }
 
-func (u *PersonalAccessTokenCreateRequest) UnmarshalJSON(data []byte) error {
+func (u *PersonalAccessTokenCreateRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PersonalAccessTokenCreateRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var personalAccessTokenCreateRequestWithExpiresAt PersonalAccessTokenCreateRequestWithExpiresAt = PersonalAccessTokenCreateRequestWithExpiresAt{}
 	if err := utils.UnmarshalJSON(data, &personalAccessTokenCreateRequestWithExpiresAt, "", true, nil); err == nil {

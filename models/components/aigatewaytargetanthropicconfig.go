@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetAnthropicConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Anthropic-specific configuration for a model.
+// AIGatewayTargetAnthropicConfig - Anthropic-specific configuration for a model.
 type AIGatewayTargetAnthropicConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

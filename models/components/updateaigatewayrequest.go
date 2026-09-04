@@ -3,8 +3,6 @@
 
 package components
 
-// UpdateAIGatewayRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type UpdateAIGatewayRequest struct {
 	// The display name for this AI Gateway.
 	DisplayName string `json:"display_name"`

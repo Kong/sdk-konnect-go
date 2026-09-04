@@ -1,8 +1,5 @@
 # AIGatewayTargetVercelConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Vercel AI Gateway-specific configuration for a model.
 
 

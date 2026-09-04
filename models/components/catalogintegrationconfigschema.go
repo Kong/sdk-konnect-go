@@ -80,7 +80,14 @@ func CreateCatalogIntegrationConfigSchemaBooleanConfigFieldSchema(booleanConfigF
 	}
 }
 
-func (u *CatalogIntegrationConfigSchema) UnmarshalJSON(data []byte) error {
+func (u *CatalogIntegrationConfigSchema) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogIntegrationConfigSchema{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var enumConfigFieldSchema EnumConfigFieldSchema = EnumConfigFieldSchema{}
 	if err := utils.UnmarshalJSON(data, &enumConfigFieldSchema, "", true, nil); err == nil {

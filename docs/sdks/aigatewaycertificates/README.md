@@ -14,9 +14,6 @@ API related to the management of AI Gateway Certificates.
 
 ## ListAiGatewayCertificates
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of certificates associated with the AI Gateway.
 
 ### Example Usage
@@ -79,9 +76,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayCertificate
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Creates a new certificate for the AI Gateway.
 
@@ -156,9 +150,6 @@ func main() {
 
 ## GetAiGatewayCertificate
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway certificate.
 
 ### Example Usage
@@ -217,9 +208,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayCertificate
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates an existing AI Gateway certificate.
 
@@ -296,9 +284,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayCertificate
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a specific AI Gateway certificate.
 

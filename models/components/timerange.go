@@ -49,7 +49,14 @@ func CreateTimeRangeAbsolute(absolute MetricsAbsoluteTimeRangeDtoV2) TimeRange {
 	}
 }
 
-func (u *TimeRange) UnmarshalJSON(data []byte) error {
+func (u *TimeRange) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TimeRange{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

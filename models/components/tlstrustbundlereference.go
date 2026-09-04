@@ -45,7 +45,14 @@ func CreateTLSTrustBundleReferenceTLSTrustBundleReferenceByName(tlsTrustBundleRe
 	}
 }
 
-func (u *TLSTrustBundleReference) UnmarshalJSON(data []byte) error {
+func (u *TLSTrustBundleReference) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TLSTrustBundleReference{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var tlsTrustBundleReferenceByID TLSTrustBundleReferenceByID = TLSTrustBundleReferenceByID{}
 	if err := utils.UnmarshalJSON(data, &tlsTrustBundleReferenceByID, "", true, nil); err == nil {

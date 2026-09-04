@@ -31,7 +31,14 @@ func CreateIntegrationInstanceAuthConfigOauthAuthConfig(oauthAuthConfig OauthAut
 	}
 }
 
-func (u *IntegrationInstanceAuthConfig) UnmarshalJSON(data []byte) error {
+func (u *IntegrationInstanceAuthConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IntegrationInstanceAuthConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var oauthAuthConfig OauthAuthConfig = OauthAuthConfig{}
 	if err := utils.UnmarshalJSON(data, &oauthAuthConfig, "", true, nil); err == nil {

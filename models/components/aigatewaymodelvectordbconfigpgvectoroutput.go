@@ -122,8 +122,6 @@ func (s *Ssl) GetVersion() *Version {
 	return s.Version
 }
 
-// AIGatewayModelVectorDBConfigPgVectorOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayModelVectorDBConfigPgVectorOutput struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"pgvector" json:"type"`
@@ -226,8 +224,6 @@ func (a *AIGatewayModelVectorDBConfigPgVectorOutput) GetUser() *string {
 	return a.User
 }
 
-// AIGatewayModelVectorDBConfigPgVector - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayModelVectorDBConfigPgVector struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"pgvector" json:"type"`

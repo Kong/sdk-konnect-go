@@ -106,7 +106,14 @@ func CreateListCursorMetaListCursorMeta2(listCursorMeta2 ListCursorMeta2) ListCu
 	}
 }
 
-func (u *ListCursorMeta) UnmarshalJSON(data []byte) error {
+func (u *ListCursorMeta) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ListCursorMeta{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var listCursorMeta2 ListCursorMeta2 = ListCursorMeta2{}
 	if err := utils.UnmarshalJSON(data, &listCursorMeta2, "", true, nil); err == nil {

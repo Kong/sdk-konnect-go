@@ -34,10 +34,7 @@ const (
 	AIGatewayTargetConfigTypeSagemaker   AIGatewayTargetConfigType = "sagemaker"
 )
 
-// AIGatewayTargetConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for a target model.
+// AIGatewayTargetConfig - Configuration for a target model.
 type AIGatewayTargetConfig struct {
 	AIGatewayTargetAnthropicConfig   *AIGatewayTargetAnthropicConfig   `queryParam:"inline" union:"member"`
 	AIGatewayTargetAzureConfig       *AIGatewayTargetAzureConfig       `queryParam:"inline" union:"member"`
@@ -233,7 +230,14 @@ func CreateAIGatewayTargetConfigSagemaker(sagemaker AIGatewayTargetSagemakerConf
 	}
 }
 
-func (u *AIGatewayTargetConfig) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayTargetConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayTargetConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

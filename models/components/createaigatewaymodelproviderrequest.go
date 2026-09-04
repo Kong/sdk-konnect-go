@@ -34,8 +34,6 @@ const (
 	CreateAIGatewayModelProviderRequestTypeSagemaker   CreateAIGatewayModelProviderRequestType = "sagemaker"
 )
 
-// CreateAIGatewayModelProviderRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type CreateAIGatewayModelProviderRequest struct {
 	AIGatewayModelProviderAnthropic   *AIGatewayModelProviderAnthropic   `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderAzure       *AIGatewayModelProviderAzure       `queryParam:"inline" union:"member"`
@@ -231,7 +229,14 @@ func CreateCreateAIGatewayModelProviderRequestSagemaker(sagemaker AIGatewayModel
 	}
 }
 
-func (u *CreateAIGatewayModelProviderRequest) UnmarshalJSON(data []byte) error {
+func (u *CreateAIGatewayModelProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreateAIGatewayModelProviderRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

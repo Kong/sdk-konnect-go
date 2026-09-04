@@ -33,9 +33,6 @@ func newAIGatewayIdentityProviders(rootSDK *SDK, sdkConfig config.SDKConfigurati
 }
 
 // ListAiGatewayIdentityProviders - List AI Gateway Identity Providers
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of identity providers configured for the AI Gateway.
 //
 // Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies` instead.
@@ -333,9 +330,6 @@ func (s *AIGatewayIdentityProviders) ListAiGatewayIdentityProviders(ctx context.
 }
 
 // CreateAiGatewayIdentityProvider - Create an AI Gateway Identity Provider
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Registers a new identity provider for the AI Gateway.
 //
 // Deprecated: use `POST /ai-gateways/{gatewayId}/auth-strategies` instead.
@@ -662,9 +656,6 @@ func (s *AIGatewayIdentityProviders) CreateAiGatewayIdentityProvider(ctx context
 }
 
 // GetAiGatewayIdentityProvider - Get an AI Gateway Identity Provider
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific AI Gateway identity provider.
 //
 // Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
@@ -963,9 +954,6 @@ func (s *AIGatewayIdentityProviders) GetAiGatewayIdentityProvider(ctx context.Co
 }
 
 // UpdateAiGatewayIdentityProvider - Update an AI Gateway Identity Provider
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates the configuration of an existing AI Gateway Identity provider.
 //
 // Deprecated: use `PUT /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
@@ -1287,9 +1275,6 @@ func (s *AIGatewayIdentityProviders) UpdateAiGatewayIdentityProvider(ctx context
 }
 
 // DeleteAiGatewayIdentityProvider - Delete an AI Gateway Identity Provider
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific AI Gateway Identity provider.
 //
 // Deprecated: use `DELETE /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.

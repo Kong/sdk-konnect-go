@@ -33,9 +33,6 @@ func newAIGatewayVaults(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *
 }
 
 // ListAiGatewayVaults - List AI Gateway Vaults
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of vaults associated with the AI Gateway.
 func (s *AIGatewayVaults) ListAiGatewayVaults(ctx context.Context, request operations.ListAiGatewayVaultsRequest, opts ...operations.Option) (*operations.ListAiGatewayVaultsResponse, error) {
 	o := operations.Options{}
@@ -329,9 +326,6 @@ func (s *AIGatewayVaults) ListAiGatewayVaults(ctx context.Context, request opera
 }
 
 // CreateAiGatewayVault - Create an AI Gateway Vault
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Registers a new vault for the AI Gateway.
 func (s *AIGatewayVaults) CreateAiGatewayVault(ctx context.Context, gatewayID string, createAIGatewayVaultRequest components.CreateAIGatewayVaultRequest, opts ...operations.Option) (*operations.CreateAiGatewayVaultResponse, error) {
 	request := operations.CreateAiGatewayVaultRequest{
@@ -675,9 +669,6 @@ func (s *AIGatewayVaults) CreateAiGatewayVault(ctx context.Context, gatewayID st
 }
 
 // GetAiGatewayVault - Get an AI Gateway Vault
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific AI Gateway vault.
 func (s *AIGatewayVaults) GetAiGatewayVault(ctx context.Context, gatewayID string, vaultIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayVaultResponse, error) {
 	request := operations.GetAiGatewayVaultRequest{
@@ -972,9 +963,6 @@ func (s *AIGatewayVaults) GetAiGatewayVault(ctx context.Context, gatewayID strin
 }
 
 // UpdateAiGatewayVault - Update an AI Gateway Vault
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates the configuration of an existing AI Gateway vault.
 func (s *AIGatewayVaults) UpdateAiGatewayVault(ctx context.Context, request operations.UpdateAiGatewayVaultRequest, opts ...operations.Option) (*operations.UpdateAiGatewayVaultResponse, error) {
 	o := operations.Options{}
@@ -1292,9 +1280,6 @@ func (s *AIGatewayVaults) UpdateAiGatewayVault(ctx context.Context, request oper
 }
 
 // DeleteAiGatewayVault - Delete an AI Gateway Vault
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific AI Gateway vault.
 func (s *AIGatewayVaults) DeleteAiGatewayVault(ctx context.Context, gatewayID string, vaultIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayVaultResponse, error) {
 	request := operations.DeleteAiGatewayVaultRequest{

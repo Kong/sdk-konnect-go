@@ -59,7 +59,14 @@ func CreateScorecardCriteriaServiceFilterParametersCustomFieldsNumericFieldFilte
 	}
 }
 
-func (u *ScorecardCriteriaServiceFilterParametersCustomFields) UnmarshalJSON(data []byte) error {
+func (u *ScorecardCriteriaServiceFilterParametersCustomFields) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ScorecardCriteriaServiceFilterParametersCustomFields{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -282,7 +289,14 @@ func CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFi
 	}
 }
 
-func (u *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var dateTimeFieldFilterDateTimeFieldEqualsFilter DateTimeFieldFilterDateTimeFieldEqualsFilter = DateTimeFieldFilterDateTimeFieldEqualsFilter{}
 	if err := utils.UnmarshalJSON(data, &dateTimeFieldFilterDateTimeFieldEqualsFilter, "", true, nil); err == nil {
@@ -527,7 +541,14 @@ func CreateScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTime
 	}
 }
 
-func (u *ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter{}
 	if err := utils.UnmarshalJSON(data, &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter, "", true, nil); err == nil {

@@ -7,18 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayGeminiEmbeddingsModelConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Google Gemini-specific configuration for a model.
+// AIGatewayGeminiEmbeddingsModelConfig - Google Gemini-specific configuration for a model.
 type AIGatewayGeminiEmbeddingsModelConfig struct {
 	// The URL of the embeddings model.
 	UpstreamURL *string `json:"upstream_url,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"gemini" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for a model hosted on Google Cloud Project.
 	GcpEnvironment *GCPModelConfig `json:"gcp_environment,omitempty"`
 }

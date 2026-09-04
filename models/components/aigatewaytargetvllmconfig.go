@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetVllmConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Vllm-specific configuration for a model.
+// AIGatewayTargetVllmConfig - Vllm-specific configuration for a model.
 type AIGatewayTargetVllmConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

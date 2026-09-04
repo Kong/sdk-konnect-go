@@ -8,14 +8,8 @@ import (
 	"time"
 )
 
-// AIGatewayCACertificate - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// A CA certificate represents a trusted CA. These objects are used to verify the validity of a client or server certificate.
+// AIGatewayCACertificate - A CA certificate represents a trusted CA. These objects are used to verify the validity of a client or server certificate.
 type AIGatewayCACertificate struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this CA certificate, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// PEM-encoded public certificate of the CA.

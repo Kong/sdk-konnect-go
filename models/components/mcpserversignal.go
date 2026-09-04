@@ -35,7 +35,14 @@ func CreateMCPServerSignalMcp(mcp MCPServerSignalV1) MCPServerSignal {
 	}
 }
 
-func (u *MCPServerSignal) UnmarshalJSON(data []byte) error {
+func (u *MCPServerSignal) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = MCPServerSignal{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

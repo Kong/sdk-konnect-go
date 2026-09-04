@@ -90,7 +90,14 @@ func CreateQueryManagedCacheUsage(managedCacheUsage ManagedCacheUsageQuery) Quer
 	}
 }
 
-func (u *Query) UnmarshalJSON(data []byte) error {
+func (u *Query) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Query{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Datasource string `json:"datasource"`

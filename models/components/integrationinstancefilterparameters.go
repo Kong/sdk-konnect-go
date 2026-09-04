@@ -30,7 +30,14 @@ func CreateIntegrationInstanceFilterParametersIntegrationNameStringFieldFilter(s
 	}
 }
 
-func (u *IntegrationInstanceFilterParametersIntegrationName) UnmarshalJSON(data []byte) error {
+func (u *IntegrationInstanceFilterParametersIntegrationName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IntegrationInstanceFilterParametersIntegrationName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -71,7 +78,14 @@ func CreateIntegrationInstanceFilterParametersIntegrationDisplayNameStringFieldF
 	}
 }
 
-func (u *IntegrationInstanceFilterParametersIntegrationDisplayName) UnmarshalJSON(data []byte) error {
+func (u *IntegrationInstanceFilterParametersIntegrationDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IntegrationInstanceFilterParametersIntegrationDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {

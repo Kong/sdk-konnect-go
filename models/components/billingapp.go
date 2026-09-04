@@ -63,7 +63,14 @@ func CreateBillingAppExternalInvoicing(externalInvoicing BillingAppExternalInvoi
 	}
 }
 
-func (u *BillingApp) UnmarshalJSON(data []byte) error {
+func (u *BillingApp) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = BillingApp{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

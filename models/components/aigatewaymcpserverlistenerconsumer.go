@@ -8,30 +8,23 @@ import (
 	"github.com/Kong/sdk-konnect-go/types"
 )
 
-// AIGatewayMCPServerListenerConsumer - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Auth strategy and OAuth 2.0 Protected Resource Metadata configuration
+// AIGatewayMCPServerListenerConsumer - Auth strategy and OAuth 2.0 Protected Resource Metadata configuration
 // for granting access to an MCP server.
 type AIGatewayMCPServerListenerConsumer struct {
 	// The type of attributes that ACL is evaluated with.
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	aclAttributeType *string `const:"consumer" json:"acl_attribute_type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Server-level access control rules for allowing or denying consumer groups. This is the
 	// top-level gate: a caller's consumer group must pass this check before any MCP protocol
 	// operation (`initialize`, `tools/list`, `tools/call`) is allowed, and before any tool-level
 	// `default_tool_acls` or per-tool `access.acls` check is evaluated.
-	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
 	//
+	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
 	// Default per-tool access control rules for allowing or denying consumer groups access to
 	// tools. Evaluated only for callers that already passed the server-level `acls` check above.
 	// Applies to every tool exposed by this MCP Server unless a specific tool overrides it via
 	// that tool's own `access.acls`.
+	//
 	DefaultToolAcls *AIGatewayMCPACLs `json:"default_tool_acls,omitempty"`
 	// List of identity providers for granting access to the MCP server.
 	// At most 1 identity provider of each identity provider type can be referenced.

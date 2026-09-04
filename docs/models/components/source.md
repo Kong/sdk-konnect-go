@@ -1,6 +1,7 @@
 # Source
 
-Where this price came from.
+The source identity provider/system used to obtain temporary GCP credentials.
+
 
 ## Example Usage
 
@@ -9,10 +10,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.SourceManual
-
-// Open enum: custom values can be created with a direct type cast
-custom := components.Source("custom_value")
+value := components.SourceAwsIam
 ```
 
 
@@ -20,5 +18,4 @@ custom := components.Source("custom_value")
 
 | Name           | Value          |
 | -------------- | -------------- |
-| `SourceManual` | manual         |
-| `SourceSystem` | system         |
+| `SourceAwsIam` | aws_iam        |

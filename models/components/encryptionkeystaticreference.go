@@ -42,7 +42,14 @@ func CreateEncryptionKeyStaticReferenceReferenceByName(referenceByName Reference
 	}
 }
 
-func (u *EncryptionKeyStaticReference) UnmarshalJSON(data []byte) error {
+func (u *EncryptionKeyStaticReference) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EncryptionKeyStaticReference{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var encryptionKeyStaticReferenceByID EncryptionKeyStaticReferenceByID = EncryptionKeyStaticReferenceByID{}
 	if err := utils.UnmarshalJSON(data, &encryptionKeyStaticReferenceByID, "", true, nil); err == nil {

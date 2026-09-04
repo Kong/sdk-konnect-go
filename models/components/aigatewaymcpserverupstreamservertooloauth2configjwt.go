@@ -7,8 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt struct {
 	// The scopes for the OAuth 2.0 client-credentials.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).

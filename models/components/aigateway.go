@@ -54,8 +54,6 @@ func (e *Endpoints) GetTelemetry() string {
 	return e.Telemetry
 }
 
-// AIGateway - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGateway struct {
 	// The display name for this AI Gateway.
 	DisplayName string `json:"display_name"`

@@ -74,7 +74,14 @@ func CreateDcrConfigUpdateDcrConfigHTTPInRequest(updateDcrConfigHTTPInRequest Up
 	}
 }
 
-func (u *DcrConfig) UnmarshalJSON(data []byte) error {
+func (u *DcrConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DcrConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var updateDcrConfigAuth0InRequest UpdateDcrConfigAuth0InRequest = UpdateDcrConfigAuth0InRequest{}
 	if err := utils.UnmarshalJSON(data, &updateDcrConfigAuth0InRequest, "", true, nil); err == nil {

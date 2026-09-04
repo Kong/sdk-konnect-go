@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetBedrockConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// AWS Bedrock-specific configuration for a model.
+// AIGatewayTargetBedrockConfig - AWS Bedrock-specific configuration for a model.
 type AIGatewayTargetBedrockConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

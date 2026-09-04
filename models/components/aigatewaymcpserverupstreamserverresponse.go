@@ -8,14 +8,9 @@ import (
 	"time"
 )
 
-// AIGatewayMCPServerUpstreamServerResponse - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerUpstreamServerResponse struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"upstream-server" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerUpstreamServerConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
@@ -23,9 +18,6 @@ type AIGatewayMCPServerUpstreamServerResponse struct {
 	Tools []AIGatewayMCPUpstreamTool `json:"tools,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.
