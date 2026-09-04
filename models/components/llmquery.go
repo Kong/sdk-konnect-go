@@ -40,6 +40,7 @@ const (
 	LLMQueryDimensionsGatewayService        LLMQueryDimensions = "gateway_service"
 	LLMQueryDimensionsConsumer              LLMQueryDimensions = "consumer"
 	LLMQueryDimensionsApplication           LLMQueryDimensions = "application"
+	LLMQueryDimensionsOidcCredential        LLMQueryDimensions = "oidc_credential"
 	LLMQueryDimensionsRoute                 LLMQueryDimensions = "route"
 	LLMQueryDimensionsAiProvider            LLMQueryDimensions = "ai_provider"
 	LLMQueryDimensionsAiResponseModel       LLMQueryDimensions = "ai_response_model"
@@ -63,7 +64,7 @@ func (e LLMQueryDimensions) ToPointer() *LLMQueryDimensions {
 func (e *LLMQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "control_plane", "control_plane_group", "gateway_service", "consumer", "application", "route", "ai_provider", "ai_response_model", "ai_request_model", "llm_cache_status", "llm_embeddings_provider", "llm_embeddings_model", "time", "principal", "realm", "status_code", "status_code_grouped", "ai_plugin":
+		case "control_plane", "control_plane_group", "gateway_service", "consumer", "application", "oidc_credential", "route", "ai_provider", "ai_response_model", "ai_request_model", "llm_cache_status", "llm_embeddings_provider", "llm_embeddings_model", "time", "principal", "realm", "status_code", "status_code_grouped", "ai_plugin":
 			return true
 		}
 	}

@@ -106,7 +106,14 @@ func CreatePatchPrivateDNSRequestPatchAzurePrivateDNSResolver(patchAzurePrivateD
 	}
 }
 
-func (u *PatchPrivateDNSRequest) UnmarshalJSON(data []byte) error {
+func (u *PatchPrivateDNSRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PatchPrivateDNSRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var patchAwsPrivateDNSResolver PatchAwsPrivateDNSResolver = PatchAwsPrivateDNSResolver{}
 	if err := utils.UnmarshalJSON(data, &patchAwsPrivateDNSResolver, "", true, nil); err == nil {

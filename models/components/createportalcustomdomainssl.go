@@ -109,7 +109,14 @@ func CreateCreatePortalCustomDomainSSLHTTP(http HTTP) CreatePortalCustomDomainSS
 	}
 }
 
-func (u *CreatePortalCustomDomainSSL) UnmarshalJSON(data []byte) error {
+func (u *CreatePortalCustomDomainSSL) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreatePortalCustomDomainSSL{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var customCertificate CustomCertificate = CustomCertificate{}
 	if err := utils.UnmarshalJSON(data, &customCertificate, "", true, nil); err == nil {

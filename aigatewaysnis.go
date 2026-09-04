@@ -32,9 +32,6 @@ func newAIGatewaySNIs(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *ho
 }
 
 // ListAiGatewaySnisForCertificate - List AI Gateway SNIs for a Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of SNIs associated with a specific AI Gateway certificate.
 func (s *AIGatewaySNIs) ListAiGatewaySnisForCertificate(ctx context.Context, request operations.ListAiGatewaySnisForCertificateRequest, opts ...operations.Option) (*operations.ListAiGatewaySnisForCertificateResponse, error) {
 	o := operations.Options{}
@@ -328,9 +325,6 @@ func (s *AIGatewaySNIs) ListAiGatewaySnisForCertificate(ctx context.Context, req
 }
 
 // CreateAiGatewaySniForCertificate - Create an AI Gateway SNI for a Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Creates a new SNI associated with a specific AI Gateway certificate.
 func (s *AIGatewaySNIs) CreateAiGatewaySniForCertificate(ctx context.Context, request operations.CreateAiGatewaySniForCertificateRequest, opts ...operations.Option) (*operations.CreateAiGatewaySniForCertificateResponse, error) {
 	o := operations.Options{}
@@ -669,9 +663,6 @@ func (s *AIGatewaySNIs) CreateAiGatewaySniForCertificate(ctx context.Context, re
 }
 
 // GetAiGatewaySniForCertificate - Get an AI Gateway SNI for a Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific SNI associated with an AI Gateway certificate.
 func (s *AIGatewaySNIs) GetAiGatewaySniForCertificate(ctx context.Context, request operations.GetAiGatewaySniForCertificateRequest, opts ...operations.Option) (*operations.GetAiGatewaySniForCertificateResponse, error) {
 	o := operations.Options{}
@@ -961,9 +952,6 @@ func (s *AIGatewaySNIs) GetAiGatewaySniForCertificate(ctx context.Context, reque
 }
 
 // UpdateAiGatewaySniForCertificate - Update an AI Gateway SNI for a Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates a specific SNI associated with an AI Gateway certificate.
 func (s *AIGatewaySNIs) UpdateAiGatewaySniForCertificate(ctx context.Context, request operations.UpdateAiGatewaySniForCertificateRequest, opts ...operations.Option) (*operations.UpdateAiGatewaySniForCertificateResponse, error) {
 	o := operations.Options{}
@@ -1281,9 +1269,6 @@ func (s *AIGatewaySNIs) UpdateAiGatewaySniForCertificate(ctx context.Context, re
 }
 
 // DeleteAiGatewaySniForCertificate - Delete an AI Gateway SNI for a Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific SNI associated with an AI Gateway certificate.
 func (s *AIGatewaySNIs) DeleteAiGatewaySniForCertificate(ctx context.Context, request operations.DeleteAiGatewaySniForCertificateRequest, opts ...operations.Option) (*operations.DeleteAiGatewaySniForCertificateResponse, error) {
 	o := operations.Options{}
@@ -1554,9 +1539,6 @@ func (s *AIGatewaySNIs) DeleteAiGatewaySniForCertificate(ctx context.Context, re
 }
 
 // ListAiGatewaySnis - List AI Gateway SNIs
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of SNIs associated with the AI Gateway.
 func (s *AIGatewaySNIs) ListAiGatewaySnis(ctx context.Context, request operations.ListAiGatewaySnisRequest, opts ...operations.Option) (*operations.ListAiGatewaySnisResponse, error) {
 	o := operations.Options{}
@@ -1850,9 +1832,6 @@ func (s *AIGatewaySNIs) ListAiGatewaySnis(ctx context.Context, request operation
 }
 
 // CreateAiGatewaySni - Create an AI Gateway SNI
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Creates a new SNI for the AI Gateway.
 func (s *AIGatewaySNIs) CreateAiGatewaySni(ctx context.Context, gatewayID string, createAIGatewaySNIRequest components.CreateAIGatewaySNIRequest, opts ...operations.Option) (*operations.CreateAiGatewaySniResponse, error) {
 	request := operations.CreateAiGatewaySniRequest{
@@ -2196,9 +2175,6 @@ func (s *AIGatewaySNIs) CreateAiGatewaySni(ctx context.Context, gatewayID string
 }
 
 // GetAiGatewaySni - Get an AI Gateway SNI
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific AI Gateway SNI.
 func (s *AIGatewaySNIs) GetAiGatewaySni(ctx context.Context, gatewayID string, sniIDOrName string, opts ...operations.Option) (*operations.GetAiGatewaySniResponse, error) {
 	request := operations.GetAiGatewaySniRequest{
@@ -2493,9 +2469,6 @@ func (s *AIGatewaySNIs) GetAiGatewaySni(ctx context.Context, gatewayID string, s
 }
 
 // UpdateAiGatewaySni - Update an AI Gateway SNI
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates an existing AI Gateway SNI.
 func (s *AIGatewaySNIs) UpdateAiGatewaySni(ctx context.Context, request operations.UpdateAiGatewaySniRequest, opts ...operations.Option) (*operations.UpdateAiGatewaySniResponse, error) {
 	o := operations.Options{}
@@ -2813,9 +2786,6 @@ func (s *AIGatewaySNIs) UpdateAiGatewaySni(ctx context.Context, request operatio
 }
 
 // DeleteAiGatewaySni - Delete an AI Gateway SNI
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific AI Gateway SNI.
 func (s *AIGatewaySNIs) DeleteAiGatewaySni(ctx context.Context, gatewayID string, sniIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewaySniResponse, error) {
 	request := operations.DeleteAiGatewaySniRequest{

@@ -57,10 +57,7 @@ func (e *EmbeddingInputType) IsExact() bool {
 	return false
 }
 
-// AIGatewayTargetCohereConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Cohere-specific configuration for a model.
+// AIGatewayTargetCohereConfig - Cohere-specific configuration for a model.
 type AIGatewayTargetCohereConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

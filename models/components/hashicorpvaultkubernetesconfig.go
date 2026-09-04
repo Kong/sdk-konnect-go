@@ -53,8 +53,6 @@ func (e *HashiCorpVaultKubernetesConfigProtocol) IsExact() bool {
 	return false
 }
 
-// HashiCorpVaultKubernetesConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultKubernetesConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.

@@ -17,8 +17,7 @@ const (
 	CreateAIGatewayIdentityProviderRequestTypeOpenidConnect CreateAIGatewayIdentityProviderRequestType = "openid-connect"
 )
 
-// CreateAIGatewayIdentityProviderRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// CreateAIGatewayIdentityProviderRequest
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type CreateAIGatewayIdentityProviderRequest struct {
@@ -46,7 +45,14 @@ func CreateCreateAIGatewayIdentityProviderRequestOpenidConnect(openidConnect AIG
 	}
 }
 
-func (u *CreateAIGatewayIdentityProviderRequest) UnmarshalJSON(data []byte) error {
+func (u *CreateAIGatewayIdentityProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreateAIGatewayIdentityProviderRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

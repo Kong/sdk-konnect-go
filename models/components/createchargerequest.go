@@ -49,7 +49,14 @@ func CreateCreateChargeRequestUsageBased(usageBased CreateChargeUsageBasedReques
 	}
 }
 
-func (u *CreateChargeRequest) UnmarshalJSON(data []byte) error {
+func (u *CreateChargeRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreateChargeRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

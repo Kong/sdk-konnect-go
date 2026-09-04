@@ -33,9 +33,6 @@ func newAIGatewayAgents(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *
 }
 
 // ListAiGatewayAgents - List AI Gateway Agents
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of all agents registered in the AI Gateway.
 func (s *AIGatewayAgents) ListAiGatewayAgents(ctx context.Context, request operations.ListAiGatewayAgentsRequest, opts ...operations.Option) (*operations.ListAiGatewayAgentsResponse, error) {
 	o := operations.Options{}
@@ -329,9 +326,6 @@ func (s *AIGatewayAgents) ListAiGatewayAgents(ctx context.Context, request opera
 }
 
 // CreateAiGatewayAgent - Create an AI Gateway Agent
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Creates a new agent for the AI Gateway.
 func (s *AIGatewayAgents) CreateAiGatewayAgent(ctx context.Context, gatewayID string, createAIGatewayAgentRequest components.CreateAIGatewayAgentRequest, opts ...operations.Option) (*operations.CreateAiGatewayAgentResponse, error) {
 	request := operations.CreateAiGatewayAgentRequest{
@@ -675,9 +669,6 @@ func (s *AIGatewayAgents) CreateAiGatewayAgent(ctx context.Context, gatewayID st
 }
 
 // GetAiGatewayAgent - Get an AI Gateway Agent
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific AI Gateway agent.
 func (s *AIGatewayAgents) GetAiGatewayAgent(ctx context.Context, gatewayID string, agentIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayAgentResponse, error) {
 	request := operations.GetAiGatewayAgentRequest{
@@ -972,9 +963,6 @@ func (s *AIGatewayAgents) GetAiGatewayAgent(ctx context.Context, gatewayID strin
 }
 
 // UpdateAiGatewayAgent - Update an AI Gateway Agent
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates the configuration of an existing AI Gateway agent.
 func (s *AIGatewayAgents) UpdateAiGatewayAgent(ctx context.Context, request operations.UpdateAiGatewayAgentRequest, opts ...operations.Option) (*operations.UpdateAiGatewayAgentResponse, error) {
 	o := operations.Options{}
@@ -1292,9 +1280,6 @@ func (s *AIGatewayAgents) UpdateAiGatewayAgent(ctx context.Context, request oper
 }
 
 // DeleteAiGatewayAgent - Delete an AI Gateway Agent
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific AI Gateway agent.
 func (s *AIGatewayAgents) DeleteAiGatewayAgent(ctx context.Context, gatewayID string, agentIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayAgentResponse, error) {
 	request := operations.DeleteAiGatewayAgentRequest{

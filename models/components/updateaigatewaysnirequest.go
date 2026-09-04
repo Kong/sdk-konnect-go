@@ -3,10 +3,7 @@
 
 package components
 
-// UpdateAIGatewaySNIRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// An SNI represents a many-to-one mapping of hostnames to a certificate. A certificate can have many hostnames associated with it; when the AI Gateway receives an SSL request, it uses the SNI field in the Client Hello to look up the certificate associated with the SNI.
+// UpdateAIGatewaySNIRequest - An SNI represents a many-to-one mapping of hostnames to a certificate. A certificate can have many hostnames associated with it; when the AI Gateway receives an SSL request, it uses the SNI field in the Client Hello to look up the certificate associated with the SNI.
 type UpdateAIGatewaySNIRequest struct {
 	// The name for this SNI. This value is immutable after creation.
 	Name string `json:"name"`
@@ -26,9 +23,6 @@ type UpdateAIGatewaySNIRequest struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A reference to the certificate with which to associate the SNI hostname, by certificate name. The certificate must have a valid private key to be used by the SNI.
 	Certificate string `json:"certificate"`
 }

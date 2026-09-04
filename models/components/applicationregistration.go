@@ -121,6 +121,9 @@ type ApplicationRegistration struct {
 	// The status of an application registration request. Each registration is linked to a single API, and application credentials will not grant access to the API until the registration is approved.
 	// Pending, revoked, and rejected registrations will not provide access to the API.
 	Status ApplicationRegistrationStatus `json:"status"`
+	// The developer's answers to the `api_registration` form linked to this API, captured when they registered.
+	//
+	AdditionalData map[string]FormResponseEntry `json:"additional_data,omitempty"`
 	// Details about the API the application is registered to.
 	API ApplicationRegistrationAPI `json:"api"`
 	// Details about the application the registration is part of.
@@ -166,6 +169,13 @@ func (a *ApplicationRegistration) GetStatus() ApplicationRegistrationStatus {
 		return ApplicationRegistrationStatus("")
 	}
 	return a.Status
+}
+
+func (a *ApplicationRegistration) GetAdditionalData() map[string]FormResponseEntry {
+	if a == nil {
+		return nil
+	}
+	return a.AdditionalData
 }
 
 func (a *ApplicationRegistration) GetAPI() ApplicationRegistrationAPI {

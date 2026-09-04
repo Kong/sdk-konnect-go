@@ -164,7 +164,14 @@ func CreateMetricsProviderFilterByFieldMetricsProviderFilterByFieldEmptyFilters(
 	}
 }
 
-func (u *MetricsProviderFilterByField) UnmarshalJSON(data []byte) error {
+func (u *MetricsProviderFilterByField) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = MetricsProviderFilterByField{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var metricsProviderFilterByFieldMultiselectFilters MetricsProviderFilterByFieldMultiselectFilters = MetricsProviderFilterByFieldMultiselectFilters{}
 	if err := utils.UnmarshalJSON(data, &metricsProviderFilterByFieldMultiselectFilters, "", true, nil); err == nil {

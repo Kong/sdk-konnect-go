@@ -7,8 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayDenyACL - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayDenyACL struct {
 	// List of Consumer Groups Names, or Authenticated Groups Names that are denied access.
 	Deny []string `json:"deny"`

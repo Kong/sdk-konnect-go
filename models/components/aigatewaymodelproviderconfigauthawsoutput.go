@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayModelProviderConfigAuthAWSOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for AWS model provider.
+// AIGatewayModelProviderConfigAuthAWSOutput - Configuration for AWS model provider.
 type AIGatewayModelProviderConfigAuthAWSOutput struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"aws" json:"type"`

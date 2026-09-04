@@ -51,6 +51,7 @@ custom := components.AllFilterItemsField("custom_value")
 | `AllFilterItemsFieldMcpSessionID`              | mcp_session_id                                 |
 | `AllFilterItemsFieldMcpToolName`               | mcp_tool_name                                  |
 | `AllFilterItemsFieldNetwork`                   | network                                        |
+| `AllFilterItemsFieldOidcCredential`            | oidc_credential                                |
 | `AllFilterItemsFieldPortal`                    | portal                                         |
 | `AllFilterItemsFieldPrincipal`                 | principal                                      |
 | `AllFilterItemsFieldProvider`                  | provider                                       |

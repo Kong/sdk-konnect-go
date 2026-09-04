@@ -221,7 +221,14 @@ func CreatePartialRedisEePortStr(str string) PartialRedisEePort {
 	}
 }
 
-func (u *PartialRedisEePort) UnmarshalJSON(data []byte) error {
+func (u *PartialRedisEePort) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PartialRedisEePort{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integer int64 = int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {

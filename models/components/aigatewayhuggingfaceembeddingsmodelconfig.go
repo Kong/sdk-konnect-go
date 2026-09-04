@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayHuggingfaceEmbeddingsModelConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Hugging Face-specific configuration for a model.
+// AIGatewayHuggingfaceEmbeddingsModelConfig - Hugging Face-specific configuration for a model.
 type AIGatewayHuggingfaceEmbeddingsModelConfig struct {
 	// The URL of the embeddings model.
 	UpstreamURL *string `json:"upstream_url,omitempty"`

@@ -32,22 +32,13 @@ func (e *ResponseStreaming) IsExact() bool {
 
 // AIGatewayModelAPIConfigOutput - Routing, logging, and load balancing configuration for the model.
 type AIGatewayModelAPIConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an AI Gateway route.
 	Route AIGatewayModelRouteConfig `json:"route"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayLoggingConfig `json:"logging,omitempty"`
 	ResponseStreaming *ResponseStreaming      `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfigOutput `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
@@ -158,22 +149,13 @@ func (a *AIGatewayModelAPIConfigOutput) GetProxy() *AIGatewayProxyConfigOutput {
 
 // AIGatewayModelAPIConfig - Routing, logging, and load balancing configuration for the model.
 type AIGatewayModelAPIConfig struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an AI Gateway route.
 	Route AIGatewayModelRouteConfig `json:"route"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayLoggingConfig `json:"logging,omitempty"`
 	ResponseStreaming *ResponseStreaming      `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfig `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.

@@ -30,10 +30,7 @@ func (e *UpdateAIGatewayAgentRequestType) IsExact() bool {
 	return false
 }
 
-// UpdateAIGatewayAgentRequestLogging - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for AI Gateway logging.
+// UpdateAIGatewayAgentRequestLogging - Configuration for AI Gateway logging.
 type UpdateAIGatewayAgentRequestLogging struct {
 	Payloads *bool `default:"false" json:"payloads"`
 	// Maximum size in bytes for logged request/response payloads. Payloads exceeding this size will be truncated.
@@ -71,23 +68,14 @@ type UpdateAIGatewayAgentRequestConfig struct {
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration applied when proxying to the upstream service, including authentication.
 	Upstream *AIGatewayUpstreamConfig `json:"upstream,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an AI Gateway route.
 	Route *AIGatewayRouteConfig `json:"route,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
 	Proxy *AIGatewayProxyConfig `json:"proxy,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for AI Gateway logging.
 	Logging *UpdateAIGatewayAgentRequestLogging `json:"logging,omitempty"`
 }
@@ -145,14 +133,9 @@ func (u *UpdateAIGatewayAgentRequestConfig) GetLogging() *UpdateAIGatewayAgentRe
 	return u.Logging
 }
 
-// UpdateAIGatewayAgentRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type UpdateAIGatewayAgentRequest struct {
 	// The display name for this agent.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this agent, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the Agent is enabled.
@@ -161,9 +144,6 @@ type UpdateAIGatewayAgentRequest struct {
 	Type UpdateAIGatewayAgentRequestType `json:"type"`
 	// List of policy references.
 	Policies []string `json:"policies,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Access control configuration for an agent.
 	Access *AIGatewayAgentAccess `json:"access,omitempty"`
 	// Configuration for the agent. The structure varies depending on the agent type.

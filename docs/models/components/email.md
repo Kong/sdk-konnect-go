@@ -1,0 +1,9 @@
+# Email
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `LocalPart`                                                                                                            | [components.EventGatewayMaskEmailLocalPartStrategy](../../models/components/eventgatewaymaskemaillocalpartstrategy.md) | :heavy_check_mark:                                                                                                     | The strategy used to redact the local part of an email address.                                                        |
+| `Domain`                                                                                                               | [components.EventGatewayMaskEmailDomainStrategy](../../models/components/eventgatewaymaskemaildomainstrategy.md)       | :heavy_check_mark:                                                                                                     | The strategy used to redact the domain of an email address.                                                            |

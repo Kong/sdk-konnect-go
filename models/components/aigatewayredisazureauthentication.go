@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayRedisAzureAuthentication - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Azure specific configs for connecting to a Cloud Provider's redis instance.
+// AIGatewayRedisAzureAuthentication - Azure specific configs for connecting to a Cloud Provider's redis instance.
 type AIGatewayRedisAzureAuthentication struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"azure" json:"type"`

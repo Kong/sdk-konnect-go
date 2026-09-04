@@ -53,8 +53,6 @@ func (e *HashiCorpVaultCertConfigProtocol) IsExact() bool {
 	return false
 }
 
-// HashiCorpVaultCertConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultCertConfigOutput struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -203,8 +201,6 @@ func (h *HashiCorpVaultCertConfigOutput) GetRoleName() *string {
 	return h.RoleName
 }
 
-// HashiCorpVaultCertConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultCertConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.

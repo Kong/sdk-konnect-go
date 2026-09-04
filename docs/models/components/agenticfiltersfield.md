@@ -39,6 +39,7 @@ custom := components.AgenticFiltersField("custom_value")
 | `AgenticFiltersFieldMcpMethod`                 | mcp_method                                     |
 | `AgenticFiltersFieldMcpSessionID`              | mcp_session_id                                 |
 | `AgenticFiltersFieldMcpToolName`               | mcp_tool_name                                  |
+| `AgenticFiltersFieldOidcCredential`            | oidc_credential                                |
 | `AgenticFiltersFieldPortal`                    | portal                                         |
 | `AgenticFiltersFieldPrincipal`                 | principal                                      |
 | `AgenticFiltersFieldRealm`                     | realm                                          |

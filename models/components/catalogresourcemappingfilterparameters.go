@@ -30,7 +30,14 @@ func CreateResourceIDStringFieldFilterExact(stringFieldFilterExact StringFieldFi
 	}
 }
 
-func (u *ResourceID) UnmarshalJSON(data []byte) error {
+func (u *ResourceID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilterExact StringFieldFilterExact = StringFieldFilterExact{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilterExact, "", true, nil); err == nil {
@@ -71,7 +78,14 @@ func CreateResourceNameStringFieldFilter(stringFieldFilter StringFieldFilter) Re
 	}
 }
 
-func (u *ResourceName) UnmarshalJSON(data []byte) error {
+func (u *ResourceName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -112,7 +126,14 @@ func CreateCatalogResourceMappingFilterParametersResourceTypeStringFieldFilter(s
 	}
 }
 
-func (u *CatalogResourceMappingFilterParametersResourceType) UnmarshalJSON(data []byte) error {
+func (u *CatalogResourceMappingFilterParametersResourceType) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogResourceMappingFilterParametersResourceType{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -153,7 +174,14 @@ func CreateResourceConfigCatalogResourceConfigFieldFilter(catalogResourceConfigF
 	}
 }
 
-func (u *ResourceConfig) UnmarshalJSON(data []byte) error {
+func (u *ResourceConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var catalogResourceConfigFieldFilter CatalogResourceConfigFieldFilter = CatalogResourceConfigFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &catalogResourceConfigFieldFilter, "", true, nil); err == nil {
@@ -194,7 +222,14 @@ func CreateResourceIntegrationNameStringFieldFilter(stringFieldFilter StringFiel
 	}
 }
 
-func (u *ResourceIntegrationName) UnmarshalJSON(data []byte) error {
+func (u *ResourceIntegrationName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceIntegrationName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -235,7 +270,14 @@ func CreateResourceIntegrationDisplayNameStringFieldFilter(stringFieldFilter Str
 	}
 }
 
-func (u *ResourceIntegrationDisplayName) UnmarshalJSON(data []byte) error {
+func (u *ResourceIntegrationDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceIntegrationDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -276,7 +318,14 @@ func CreateResourceIntegrationInstanceIDUUIDFieldFilter(uuidFieldFilter UUIDFiel
 	}
 }
 
-func (u *ResourceIntegrationInstanceID) UnmarshalJSON(data []byte) error {
+func (u *ResourceIntegrationInstanceID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceIntegrationInstanceID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var uuidFieldFilter UUIDFieldFilter = UUIDFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &uuidFieldFilter, "", true, nil); err == nil {
@@ -317,7 +366,14 @@ func CreateResourceIntegrationInstanceNameStringFieldFilter(stringFieldFilter St
 	}
 }
 
-func (u *ResourceIntegrationInstanceName) UnmarshalJSON(data []byte) error {
+func (u *ResourceIntegrationInstanceName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceIntegrationInstanceName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -358,7 +414,14 @@ func CreateResourceIntegrationInstanceDisplayNameStringFieldFilter(stringFieldFi
 	}
 }
 
-func (u *ResourceIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) error {
+func (u *ResourceIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceIntegrationInstanceDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -399,7 +462,14 @@ func CreateServiceIDStringFieldFilterExact(stringFieldFilterExact StringFieldFil
 	}
 }
 
-func (u *ServiceID) UnmarshalJSON(data []byte) error {
+func (u *ServiceID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ServiceID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilterExact StringFieldFilterExact = StringFieldFilterExact{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilterExact, "", true, nil); err == nil {
@@ -440,7 +510,14 @@ func CreateServiceNameStringFieldFilter(stringFieldFilter StringFieldFilter) Ser
 	}
 }
 
-func (u *ServiceName) UnmarshalJSON(data []byte) error {
+func (u *ServiceName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ServiceName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -481,7 +558,14 @@ func CreateServiceDisplayNameStringFieldFilter(stringFieldFilter StringFieldFilt
 	}
 }
 
-func (u *ServiceDisplayName) UnmarshalJSON(data []byte) error {
+func (u *ServiceDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ServiceDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {

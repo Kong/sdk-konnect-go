@@ -86,7 +86,14 @@ func CreateCreateTransitGatewayRequestGcpVpcPeeringTransitGateway(gcpVpcPeeringT
 	}
 }
 
-func (u *CreateTransitGatewayRequest) UnmarshalJSON(data []byte) error {
+func (u *CreateTransitGatewayRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreateTransitGatewayRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var awsTransitGateway AWSTransitGateway = AWSTransitGateway{}
 	if err := utils.UnmarshalJSON(data, &awsTransitGateway, "", true, nil); err == nil {

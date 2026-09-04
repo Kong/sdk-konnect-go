@@ -3,8 +3,6 @@
 
 package components
 
-// CreateAIGatewayConfigStoreRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type CreateAIGatewayConfigStoreRequest struct {
 	// The display name of the Config Store.
 	DisplayName *string `json:"display_name,omitempty"`

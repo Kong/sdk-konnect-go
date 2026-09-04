@@ -43,7 +43,14 @@ func CreateAnyChartTileDefinitionTableChartTileDefinition(tableChartTileDefiniti
 	}
 }
 
-func (u *AnyChartTileDefinition) UnmarshalJSON(data []byte) error {
+func (u *AnyChartTileDefinition) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AnyChartTileDefinition{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var chartTileDefinition ChartTileDefinition = ChartTileDefinition{}
 	if err := utils.UnmarshalJSON(data, &chartTileDefinition, "", true, nil); err == nil {

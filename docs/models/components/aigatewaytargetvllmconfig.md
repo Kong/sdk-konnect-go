@@ -1,8 +1,5 @@
 # AIGatewayTargetVllmConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Vllm-specific configuration for a model.
 
 

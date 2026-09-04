@@ -1,8 +1,5 @@
 # AIGatewayTargetOllamaConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Ollama-specific configuration for a model.
 
 

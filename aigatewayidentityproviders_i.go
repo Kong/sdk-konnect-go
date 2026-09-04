@@ -12,9 +12,6 @@ import (
 // AIGatewayIdentityProvidersSDK is a generated interface.
 type AIGatewayIdentityProvidersSDK interface {
 	// ListAiGatewayIdentityProviders - List AI Gateway Identity Providers
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns a list of identity providers configured for the AI Gateway.
 	//
 	// Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies` instead.
@@ -22,9 +19,6 @@ type AIGatewayIdentityProvidersSDK interface {
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	ListAiGatewayIdentityProviders(ctx context.Context, request operations.ListAiGatewayIdentityProvidersRequest, opts ...operations.Option) (*operations.ListAiGatewayIdentityProvidersResponse, error)
 	// CreateAiGatewayIdentityProvider - Create an AI Gateway Identity Provider
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Registers a new identity provider for the AI Gateway.
 	//
 	// Deprecated: use `POST /ai-gateways/{gatewayId}/auth-strategies` instead.
@@ -32,9 +26,6 @@ type AIGatewayIdentityProvidersSDK interface {
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	CreateAiGatewayIdentityProvider(ctx context.Context, gatewayID string, createAIGatewayIdentityProviderRequest components.CreateAIGatewayIdentityProviderRequest, opts ...operations.Option) (*operations.CreateAiGatewayIdentityProviderResponse, error)
 	// GetAiGatewayIdentityProvider - Get an AI Gateway Identity Provider
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns the details of a specific AI Gateway identity provider.
 	//
 	// Deprecated: use `GET /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
@@ -42,9 +33,6 @@ type AIGatewayIdentityProvidersSDK interface {
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	GetAiGatewayIdentityProvider(ctx context.Context, gatewayID string, identityProviderIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayIdentityProviderResponse, error)
 	// UpdateAiGatewayIdentityProvider - Update an AI Gateway Identity Provider
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Updates the configuration of an existing AI Gateway Identity provider.
 	//
 	// Deprecated: use `PUT /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.
@@ -52,9 +40,6 @@ type AIGatewayIdentityProvidersSDK interface {
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	UpdateAiGatewayIdentityProvider(ctx context.Context, request operations.UpdateAiGatewayIdentityProviderRequest, opts ...operations.Option) (*operations.UpdateAiGatewayIdentityProviderResponse, error)
 	// DeleteAiGatewayIdentityProvider - Delete an AI Gateway Identity Provider
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Removes a specific AI Gateway Identity provider.
 	//
 	// Deprecated: use `DELETE /ai-gateways/{gatewayId}/auth-strategies/{authStrategyIdOrName}` instead.

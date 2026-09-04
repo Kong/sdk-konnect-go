@@ -17,8 +17,6 @@ const (
 	AIGatewayMCPServerListenerAccessTypeOauthAccessToken AIGatewayMCPServerListenerAccessType = "oauth_access_token"
 )
 
-// AIGatewayMCPServerListenerAccess - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerListenerAccess struct {
 	AIGatewayMCPServerListenerConsumer *AIGatewayMCPServerListenerConsumer `queryParam:"inline" union:"member"`
 	AIGatewayMCPServerListenerOauth    *AIGatewayMCPServerListenerOauth    `queryParam:"inline" union:"member"`
@@ -44,7 +42,14 @@ func CreateAIGatewayMCPServerListenerAccessOauthAccessToken(oauthAccessToken AIG
 	}
 }
 
-func (u *AIGatewayMCPServerListenerAccess) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayMCPServerListenerAccess) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayMCPServerListenerAccess{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		ACLAttributeType string `json:"acl_attribute_type"`

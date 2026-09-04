@@ -61,8 +61,6 @@ func (e *LatencyStrategy) IsExact() bool {
 	return false
 }
 
-// AIGatewayModelBalancerLowestLatencyConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayModelBalancerLowestLatencyConfig struct {
 	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.

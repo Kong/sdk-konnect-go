@@ -12,63 +12,33 @@ import (
 // AIGatewaySNIsSDK is a generated interface.
 type AIGatewaySNIsSDK interface {
 	// ListAiGatewaySnisForCertificate - List AI Gateway SNIs for a Certificate
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns a list of SNIs associated with a specific AI Gateway certificate.
 	ListAiGatewaySnisForCertificate(ctx context.Context, request operations.ListAiGatewaySnisForCertificateRequest, opts ...operations.Option) (*operations.ListAiGatewaySnisForCertificateResponse, error)
 	// CreateAiGatewaySniForCertificate - Create an AI Gateway SNI for a Certificate
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Creates a new SNI associated with a specific AI Gateway certificate.
 	CreateAiGatewaySniForCertificate(ctx context.Context, request operations.CreateAiGatewaySniForCertificateRequest, opts ...operations.Option) (*operations.CreateAiGatewaySniForCertificateResponse, error)
 	// GetAiGatewaySniForCertificate - Get an AI Gateway SNI for a Certificate
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns the details of a specific SNI associated with an AI Gateway certificate.
 	GetAiGatewaySniForCertificate(ctx context.Context, request operations.GetAiGatewaySniForCertificateRequest, opts ...operations.Option) (*operations.GetAiGatewaySniForCertificateResponse, error)
 	// UpdateAiGatewaySniForCertificate - Update an AI Gateway SNI for a Certificate
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Updates a specific SNI associated with an AI Gateway certificate.
 	UpdateAiGatewaySniForCertificate(ctx context.Context, request operations.UpdateAiGatewaySniForCertificateRequest, opts ...operations.Option) (*operations.UpdateAiGatewaySniForCertificateResponse, error)
 	// DeleteAiGatewaySniForCertificate - Delete an AI Gateway SNI for a Certificate
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Removes a specific SNI associated with an AI Gateway certificate.
 	DeleteAiGatewaySniForCertificate(ctx context.Context, request operations.DeleteAiGatewaySniForCertificateRequest, opts ...operations.Option) (*operations.DeleteAiGatewaySniForCertificateResponse, error)
 	// ListAiGatewaySnis - List AI Gateway SNIs
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns a list of SNIs associated with the AI Gateway.
 	ListAiGatewaySnis(ctx context.Context, request operations.ListAiGatewaySnisRequest, opts ...operations.Option) (*operations.ListAiGatewaySnisResponse, error)
 	// CreateAiGatewaySni - Create an AI Gateway SNI
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Creates a new SNI for the AI Gateway.
 	CreateAiGatewaySni(ctx context.Context, gatewayID string, createAIGatewaySNIRequest components.CreateAIGatewaySNIRequest, opts ...operations.Option) (*operations.CreateAiGatewaySniResponse, error)
 	// GetAiGatewaySni - Get an AI Gateway SNI
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns the details of a specific AI Gateway SNI.
 	GetAiGatewaySni(ctx context.Context, gatewayID string, sniIDOrName string, opts ...operations.Option) (*operations.GetAiGatewaySniResponse, error)
 	// UpdateAiGatewaySni - Update an AI Gateway SNI
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Updates an existing AI Gateway SNI.
 	UpdateAiGatewaySni(ctx context.Context, request operations.UpdateAiGatewaySniRequest, opts ...operations.Option) (*operations.UpdateAiGatewaySniResponse, error)
 	// DeleteAiGatewaySni - Delete an AI Gateway SNI
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Removes a specific AI Gateway SNI.
 	DeleteAiGatewaySni(ctx context.Context, gatewayID string, sniIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewaySniResponse, error)
 }
