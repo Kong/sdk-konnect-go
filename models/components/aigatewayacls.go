@@ -16,10 +16,7 @@ const (
 	AIGatewayACLSTypeAIGatewayDenyACL  AIGatewayACLSType = "AIGatewayDenyACL"
 )
 
-// AIGatewayACLS - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Access control rules. Configure exactly one of `allow` or `deny`.
+// AIGatewayACLS - Access control rules. Configure exactly one of `allow` or `deny`.
 type AIGatewayACLS struct {
 	AIGatewayAllowACL *AIGatewayAllowACL `queryParam:"inline" union:"member"`
 	AIGatewayDenyACL  *AIGatewayDenyACL  `queryParam:"inline" union:"member"`
@@ -45,7 +42,14 @@ func CreateAIGatewayACLSAIGatewayDenyACL(aiGatewayDenyACL AIGatewayDenyACL) AIGa
 	}
 }
 
-func (u *AIGatewayACLS) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayACLS) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayACLS{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var aiGatewayAllowACL AIGatewayAllowACL = AIGatewayAllowACL{}
 	if err := utils.UnmarshalJSON(data, &aiGatewayAllowACL, "", true, nil); err == nil {

@@ -25,10 +25,7 @@ const (
 	HashiCorpVaultConfigOutputTypeAzure      HashiCorpVaultConfigOutputType = "azure"
 )
 
-// HashiCorpVaultConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for an AI Gateway Vault.
+// HashiCorpVaultConfigOutput - Configuration for an AI Gateway Vault.
 type HashiCorpVaultConfigOutput struct {
 	HashiCorpVaultTokenConfigOutput  *HashiCorpVaultTokenConfigOutput  `queryParam:"inline" union:"member"`
 	HashiCorpVaultCertConfigOutput   *HashiCorpVaultCertConfigOutput   `queryParam:"inline" union:"member"`
@@ -134,7 +131,14 @@ func CreateHashiCorpVaultConfigOutputAzure(azure HashiCorpVaultAzureConfig) Hash
 	}
 }
 
-func (u *HashiCorpVaultConfigOutput) UnmarshalJSON(data []byte) error {
+func (u *HashiCorpVaultConfigOutput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = HashiCorpVaultConfigOutput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		AuthMethod string `json:"auth_method"`

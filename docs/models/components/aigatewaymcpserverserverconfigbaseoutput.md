@@ -1,8 +1,5 @@
 # AIGatewayMCPServerServerConfigBaseOutput
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Server-side configuration for the MCP Server.
 
 

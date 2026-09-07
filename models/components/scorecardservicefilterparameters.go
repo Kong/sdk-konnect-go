@@ -58,7 +58,14 @@ func CreateScorecardServiceFilterParametersCustomFieldsNumericFieldFilter(numeri
 	}
 }
 
-func (u *ScorecardServiceFilterParametersCustomFields) UnmarshalJSON(data []byte) error {
+func (u *ScorecardServiceFilterParametersCustomFields) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ScorecardServiceFilterParametersCustomFields{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -121,7 +128,14 @@ func CreateScorecardServiceFilterParametersScoreValueStringFieldFilter(stringFie
 	}
 }
 
-func (u *ScorecardServiceFilterParametersScoreValue) UnmarshalJSON(data []byte) error {
+func (u *ScorecardServiceFilterParametersScoreValue) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ScorecardServiceFilterParametersScoreValue{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -162,7 +176,14 @@ func CreateScorecardServiceFilterParametersScoreRawValueNumericFieldFilter(numer
 	}
 }
 
-func (u *ScorecardServiceFilterParametersScoreRawValue) UnmarshalJSON(data []byte) error {
+func (u *ScorecardServiceFilterParametersScoreRawValue) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ScorecardServiceFilterParametersScoreRawValue{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var numericFieldFilter NumericFieldFilter = NumericFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &numericFieldFilter, "", true, nil); err == nil {

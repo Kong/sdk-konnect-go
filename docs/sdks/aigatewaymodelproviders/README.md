@@ -14,9 +14,6 @@ Model providers that define the backend AI service connections for the AI Gatewa
 
 ## ListAiGatewayModelProviders
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of model providers configured for the AI Gateway.
 
 ### Example Usage
@@ -79,9 +76,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayModelProvider
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Registers a new model provider for the AI Gateway.
 
@@ -195,9 +189,6 @@ func main() {
 
 ## GetAiGatewayModelProvider
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway model provider.
 
 ### Example Usage
@@ -296,9 +287,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayModelProvider
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing AI Gateway model provider.
 
@@ -411,9 +399,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayModelProvider
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a specific AI Gateway model provider.
 

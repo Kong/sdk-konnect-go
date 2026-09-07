@@ -7,14 +7,8 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayModelAccess - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Access control configuration for a model.
+// AIGatewayModelAccess - Access control configuration for a model.
 type AIGatewayModelAccess struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Access control rules. Configure exactly one of `allow` or `deny`.
 	Acls *AIGatewayACLS `json:"acls,omitempty"`
 	// List of identity providers for granting access to the model.

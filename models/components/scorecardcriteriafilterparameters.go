@@ -30,7 +30,14 @@ func CreateEvaluationPassingServicesCountNumericFieldFilter(numericFieldFilter N
 	}
 }
 
-func (u *EvaluationPassingServicesCount) UnmarshalJSON(data []byte) error {
+func (u *EvaluationPassingServicesCount) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EvaluationPassingServicesCount{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var numericFieldFilter NumericFieldFilter = NumericFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &numericFieldFilter, "", true, nil); err == nil {

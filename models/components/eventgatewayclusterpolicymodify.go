@@ -32,7 +32,14 @@ func CreateEventGatewayClusterPolicyModifyAcls(acls EventGatewayACLsPolicy) Even
 	}
 }
 
-func (u *EventGatewayClusterPolicyModify) UnmarshalJSON(data []byte) error {
+func (u *EventGatewayClusterPolicyModify) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EventGatewayClusterPolicyModify{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

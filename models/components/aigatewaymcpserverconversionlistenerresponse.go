@@ -8,29 +8,19 @@ import (
 	"time"
 )
 
-// AIGatewayMCPServerConversionListenerResponse - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerConversionListenerResponse struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"conversion-listener" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamNoProxyConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server. Each tool's `path`, `method`, and `host`
 	// describe the backend HTTP operation on the upstream selected by `config.url` — they
 	// do not need to match the public MCP Route configured in `config.route`.
 	//
-	Tools []AIGatewayMCPConversionTool `json:"tools"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	Tools  []AIGatewayMCPConversionTool      `json:"tools"`
 	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.

@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayModelProviderConfigAuthGCP - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for GCP model provider.
+// AIGatewayModelProviderConfigAuthGCP - Configuration for GCP model provider.
 type AIGatewayModelProviderConfigAuthGCP struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"gcp" json:"type"`
@@ -28,6 +25,9 @@ type AIGatewayModelProviderConfigAuthGCP struct {
 	OauthTokenURL *string `json:"oauth_token_url,omitempty"`
 	// Use service account auth for GCP-based providers and models.
 	UseGcpServiceAccount *bool `json:"use_gcp_service_account,omitempty"`
+	// Config for GCP Workload Identity Federation.
+	//
+	WorkloadIdentityFederation *AuthGCPWorkloadIdentityFederation `json:"workload_identity_federation,omitempty"`
 }
 
 func (a AIGatewayModelProviderConfigAuthGCP) MarshalJSON() ([]byte, error) {
@@ -71,4 +71,18 @@ func (a *AIGatewayModelProviderConfigAuthGCP) GetUseGcpServiceAccount() *bool {
 		return nil
 	}
 	return a.UseGcpServiceAccount
+}
+
+func (a *AIGatewayModelProviderConfigAuthGCP) GetWorkloadIdentityFederation() *AuthGCPWorkloadIdentityFederation {
+	if a == nil {
+		return nil
+	}
+	return a.WorkloadIdentityFederation
+}
+
+func (a *AIGatewayModelProviderConfigAuthGCP) GetWorkloadIdentityFederationAwsIam() *AuthGCPWorkloadIdentityFederationAwsIam {
+	if v := a.GetWorkloadIdentityFederation(); v != nil {
+		return v.AuthGCPWorkloadIdentityFederationAwsIam
+	}
+	return nil
 }

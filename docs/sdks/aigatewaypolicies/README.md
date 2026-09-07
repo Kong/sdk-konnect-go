@@ -14,9 +14,6 @@ Policies that control security, rate-limiting, and guardrail behavior for the AI
 
 ## ListAiGatewayPolicies
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of policies configured for the AI Gateway.
 
 ### Example Usage
@@ -79,9 +76,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayPolicy
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Registers a new policy for the AI Gateway.
 
@@ -161,9 +155,6 @@ func main() {
 
 ## GetAiGatewayPolicy
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway policy.
 
 ### Example Usage
@@ -222,9 +213,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayPolicy
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing AI Gateway policy.
 
@@ -306,9 +294,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayPolicy
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a specific AI Gateway policy.
 

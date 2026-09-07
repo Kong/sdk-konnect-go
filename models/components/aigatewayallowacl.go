@@ -7,8 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayAllowACL - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayAllowACL struct {
 	// List of Consumer Groups Names, or Authenticated Groups Names that are permitted access.
 	Allow []string `json:"allow"`

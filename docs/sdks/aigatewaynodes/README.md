@@ -12,9 +12,6 @@ API related to the management of AI Gateway nodes.
 
 ## GetAiGatewayExpectedConfigVersion
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Retrieve the expected config version for this AI Gateway. The expected config version can be used to verify if the config version of a data plane node is up to date with the AI Gateway. The config version will be the same if they are in sync.
 
 ### Example Usage
@@ -72,9 +69,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## ListAiGatewayNodes
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Returns a list of nodes associated with the specified AI Gateway.
 
@@ -138,9 +132,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## GetAiGatewayNode
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Returns information about a specific node associated with the AI Gateway.
 

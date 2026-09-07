@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetOpenaiConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Openai-specific configuration for a model.
+// AIGatewayTargetOpenaiConfig - Openai-specific configuration for a model.
 type AIGatewayTargetOpenaiConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

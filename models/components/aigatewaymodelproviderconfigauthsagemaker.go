@@ -73,10 +73,7 @@ func (a *Aws) GetSessionToken() *string {
 	return a.SessionToken
 }
 
-// AIGatewayModelProviderConfigAuthSagemaker - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Auth configuration for Sagemaker model provider.
+// AIGatewayModelProviderConfigAuthSagemaker - Auth configuration for Sagemaker model provider.
 type AIGatewayModelProviderConfigAuthSagemaker struct {
 	Type AIGatewayModelProviderConfigAuthSagemakerType `json:"type"`
 	Aws  *Aws                                          `json:"aws,omitempty"`

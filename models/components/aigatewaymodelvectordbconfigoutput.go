@@ -17,10 +17,7 @@ const (
 	AIGatewayModelVectorDBConfigOutputTypeRedis    AIGatewayModelVectorDBConfigOutputType = "redis"
 )
 
-// AIGatewayModelVectorDBConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for the vector database used by the model.
+// AIGatewayModelVectorDBConfigOutput - Configuration for the vector database used by the model.
 type AIGatewayModelVectorDBConfigOutput struct {
 	AIGatewayModelVectorDBConfigPgVectorOutput *AIGatewayModelVectorDBConfigPgVectorOutput `queryParam:"inline" union:"member"`
 	AIGatewayModelVectorDBConfigRedisOutput    *AIGatewayModelVectorDBConfigRedisOutput    `queryParam:"inline" union:"member"`
@@ -46,7 +43,14 @@ func CreateAIGatewayModelVectorDBConfigOutputRedis(redis AIGatewayModelVectorDBC
 	}
 }
 
-func (u *AIGatewayModelVectorDBConfigOutput) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelVectorDBConfigOutput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelVectorDBConfigOutput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

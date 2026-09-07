@@ -56,7 +56,14 @@ func CreateTransitGatewayStateFieldEqualsFilterTransitGatewayStateFieldEqualsCom
 	}
 }
 
-func (u *TransitGatewayStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+func (u *TransitGatewayStateFieldEqualsFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TransitGatewayStateFieldEqualsFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var transitGatewayState TransitGatewayState = TransitGatewayState("")
 	if err := utils.UnmarshalJSON(data, &transitGatewayState, "", true, nil); err == nil {

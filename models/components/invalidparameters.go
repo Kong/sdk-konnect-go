@@ -74,7 +74,14 @@ func CreateInvalidParametersInvalidParameterDependentItem(invalidParameterDepend
 	}
 }
 
-func (u *InvalidParameters) UnmarshalJSON(data []byte) error {
+func (u *InvalidParameters) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = InvalidParameters{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var invalidParameterMinimumLength InvalidParameterMinimumLength = InvalidParameterMinimumLength{}
 	if err := utils.UnmarshalJSON(data, &invalidParameterMinimumLength, "", true, nil); err == nil {

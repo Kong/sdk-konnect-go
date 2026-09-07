@@ -20,8 +20,6 @@ const (
 	UpdateAIGatewayMCPServerRequestTypeUpstreamServer      UpdateAIGatewayMCPServerRequestType = "upstream-server"
 )
 
-// UpdateAIGatewayMCPServerRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type UpdateAIGatewayMCPServerRequest struct {
 	AIGatewayMCPServerConversionOnly      *AIGatewayMCPServerConversionOnly      `queryParam:"inline" union:"member"`
 	AIGatewayMCPServerConversionListener  *AIGatewayMCPServerConversionListener  `queryParam:"inline" union:"member"`
@@ -77,7 +75,14 @@ func CreateUpdateAIGatewayMCPServerRequestUpstreamServer(upstreamServer AIGatewa
 	}
 }
 
-func (u *UpdateAIGatewayMCPServerRequest) UnmarshalJSON(data []byte) error {
+func (u *UpdateAIGatewayMCPServerRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = UpdateAIGatewayMCPServerRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

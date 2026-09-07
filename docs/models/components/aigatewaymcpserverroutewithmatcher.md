@@ -1,11 +1,9 @@
 # AIGatewayMCPServerRouteWithMatcher
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Route configuration for an MCP Server that terminates its own listener. At least one
 of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 incoming requests.
+
 
 
 ## Supported Types

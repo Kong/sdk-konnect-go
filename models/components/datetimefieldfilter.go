@@ -191,7 +191,14 @@ func CreateDateTimeFieldFilterDateTimeFieldGTEFilter(dateTimeFieldGTEFilter Date
 	}
 }
 
-func (u *DateTimeFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *DateTimeFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DateTimeFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var dateTimeFieldEqualsFilter DateTimeFieldEqualsFilter = DateTimeFieldEqualsFilter{}
 	if err := utils.UnmarshalJSON(data, &dateTimeFieldEqualsFilter, "", true, nil); err == nil {

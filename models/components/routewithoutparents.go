@@ -41,7 +41,14 @@ func CreateRouteWithoutParentsRouteExpression(routeExpression RouteExpression) R
 	}
 }
 
-func (u *RouteWithoutParents) UnmarshalJSON(data []byte) error {
+func (u *RouteWithoutParents) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = RouteWithoutParents{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var routeJSON RouteJSON = RouteJSON{}
 	if err := utils.UnmarshalJSON(data, &routeJSON, "", true, nil); err == nil {

@@ -53,8 +53,6 @@ func (e *Protocol) IsExact() bool {
 	return false
 }
 
-// HashiCorpVaultTokenConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultTokenConfigOutput struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -185,8 +183,6 @@ func (h *HashiCorpVaultTokenConfigOutput) GetAuthMethod() string {
 	return "token"
 }
 
-// HashiCorpVaultTokenConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultTokenConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.

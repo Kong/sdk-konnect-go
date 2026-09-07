@@ -1,8 +1,5 @@
 # GCPModelConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Configuration for a model hosted on Google Cloud Project.
 
 

@@ -41,7 +41,14 @@ func CreateRouteRouteExpression(routeExpression RouteExpression) Route {
 	}
 }
 
-func (u *Route) UnmarshalJSON(data []byte) error {
+func (u *Route) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Route{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var routeJSON RouteJSON = RouteJSON{}
 	if err := utils.UnmarshalJSON(data, &routeJSON, "", true, nil); err == nil {

@@ -8,12 +8,7 @@ import (
 	"time"
 )
 
-// AIGatewayConfigStoreSecret - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayConfigStoreSecret struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// The unique key identifying the secret within the Config Store.
 	Key string `json:"key"`
 	// An ISO-8601 timestamp representation of entity creation date.

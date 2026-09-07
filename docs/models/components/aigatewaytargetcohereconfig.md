@@ -1,8 +1,5 @@
 # AIGatewayTargetCohereConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Cohere-specific configuration for a model.
 
 

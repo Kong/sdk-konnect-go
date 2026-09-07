@@ -65,7 +65,14 @@ func CreateEventGatewayProducePolicyCreateEncryptFields(encryptFields EventGatew
 	}
 }
 
-func (u *EventGatewayProducePolicyCreate) UnmarshalJSON(data []byte) error {
+func (u *EventGatewayProducePolicyCreate) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EventGatewayProducePolicyCreate{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

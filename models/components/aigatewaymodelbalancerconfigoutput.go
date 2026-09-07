@@ -22,10 +22,7 @@ const (
 	AIGatewayModelBalancerConfigOutputTypeSemantic          AIGatewayModelBalancerConfigOutputType = "semantic"
 )
 
-// AIGatewayModelBalancerConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for a model's load balancer when multiple target models are configured.
+// AIGatewayModelBalancerConfigOutput - Configuration for a model's load balancer when multiple target models are configured.
 type AIGatewayModelBalancerConfigOutput struct {
 	AIGatewayModelBalancerConsistentHashingConfig *AIGatewayModelBalancerConsistentHashingConfig `queryParam:"inline" union:"member"`
 	AIGatewayModelBalancerLeastConnectionsConfig  *AIGatewayModelBalancerLeastConnectionsConfig  `queryParam:"inline" union:"member"`
@@ -101,7 +98,14 @@ func CreateAIGatewayModelBalancerConfigOutputSemantic(semantic AIGatewayModelBal
 	}
 }
 
-func (u *AIGatewayModelBalancerConfigOutput) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelBalancerConfigOutput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelBalancerConfigOutput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Algorithm string `json:"algorithm"`

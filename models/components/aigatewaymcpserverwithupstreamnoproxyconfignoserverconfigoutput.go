@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// Logging - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for AI Gateway logging.
+// Logging - Configuration for AI Gateway logging.
 type Logging struct {
 	Payloads *bool `default:"false" json:"payloads"`
 	Audits   *bool `default:"false" json:"audits"`
@@ -41,21 +38,13 @@ func (l *Logging) GetAudits() *bool {
 	return l.Audits
 }
 
-// AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Routing, logging, and request body size limits for the MCP Server.
+// AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput - Routing, logging, and request body size limits for the MCP Server.
 type AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Route configuration for an MCP Server that terminates its own listener. At least one
 	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 	// incoming requests.
-	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
 	//
+	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
 	// Configuration for AI Gateway logging.
 	Logging *Logging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
@@ -64,9 +53,6 @@ type AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput struct {
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration applied when proxying to the upstream service, including authentication.
 	Upstream *AIGatewayUpstreamConfigOutput `json:"upstream,omitempty"`
 }
@@ -117,21 +103,13 @@ func (a *AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput) GetUps
 	return a.Upstream
 }
 
-// AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Routing, logging, and request body size limits for the MCP Server.
+// AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig - Routing, logging, and request body size limits for the MCP Server.
 type AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Route configuration for an MCP Server that terminates its own listener. At least one
 	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 	// incoming requests.
-	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
 	//
+	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
 	// Configuration for AI Gateway logging.
 	Logging *Logging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
@@ -140,9 +118,6 @@ type AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig struct {
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration applied when proxying to the upstream service, including authentication.
 	Upstream *AIGatewayUpstreamConfig `json:"upstream,omitempty"`
 }

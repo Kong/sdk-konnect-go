@@ -22,9 +22,6 @@ type AIGatewayTarget struct {
 	AllowAuthOverride *bool `default:"false" json:"allow_auth_override"`
 	// Reference to a model provider instance by name.
 	Provider string `json:"provider"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for a target model.
 	Config AIGatewayTargetConfig `json:"config"`
 }

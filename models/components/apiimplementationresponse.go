@@ -145,7 +145,14 @@ func CreateAPIImplementationResponseAPIImplementationResponseControlPlaneReferen
 	}
 }
 
-func (u *APIImplementationResponse) UnmarshalJSON(data []byte) error {
+func (u *APIImplementationResponse) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = APIImplementationResponse{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var apiImplementationResponseServiceReference APIImplementationResponseServiceReference = APIImplementationResponseServiceReference{}
 	if err := utils.UnmarshalJSON(data, &apiImplementationResponseServiceReference, "", true, nil); err == nil {

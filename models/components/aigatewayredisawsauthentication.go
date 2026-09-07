@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayRedisAWSAuthentication - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// AWS specific configs for connecting to a Cloud Provider's redis instance.
+// AIGatewayRedisAWSAuthentication - AWS specific configs for connecting to a Cloud Provider's redis instance.
 type AIGatewayRedisAWSAuthentication struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"aws" json:"type"`

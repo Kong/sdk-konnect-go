@@ -58,21 +58,13 @@ func (e *Scheme) IsExact() bool {
 
 // AIGatewayMCPConversionTool - A tool exposed by an MCP Server in `conversion-only` or `conversion-listener` mode.
 type AIGatewayMCPConversionTool struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Access-control rules for a tool.
-	Access *AIGatewayMCPToolAccess `json:"access,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	Access      *AIGatewayMCPToolAccess      `json:"access,omitempty"`
 	Annotations *AIGatewayMCPToolAnnotations `json:"annotations,omitempty"`
 	// A description of what the tool does.
 	Description string `json:"description"`
 	// The MCP tool name. In upstream-server mode, it also matches the remote MCP Server tool whose metadata this entry overrides.
 	Name string `json:"name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// The headers of the exported API. By default, Kong will extract the headers from API configuration. If the configured headers are not exactly matched, this field is required.
 	Headers any `json:"headers,omitempty"`
 	// The host used when forwarding the request to the upstream API. By default, Kong will extract the host from API configuration. If the configured host is wildcard, this field is required.
@@ -87,25 +79,14 @@ type AIGatewayMCPConversionTool struct {
 	// path from API configuration.
 	//
 	Path *string `json:"path,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// The query arguments of the exported API. If the generated query arguments are not exactly matched, this field is required.
 	Query any `json:"query,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// The API requestBody specification defined in OpenAPI JSON format. For example, '{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"color":{"type":"array","items":{"type":"string"}}}}}}}'. See https://swagger.io/docs/specification/v3_0/describing-request-body/describing-request-body/ for more details. Note that `$ref` is not supported.
 	RequestBody any `json:"request_body,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// The API responses specification defined in OpenAPI JSON format. This specification will be used to validate the upstream response and map it back to the structuredOutput. For example, '{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"result":{"type":"string"}}}}}}}}'. See https://swagger.io/docs/specification/v3_0/describing-responses/ for more details. Only one non-error (status code < 400) response is supported. Note that `$ref` is not supported.
 	Responses any `json:"responses,omitempty"`
 	// The scheme of the exported API. By default, Kong will extract the scheme from API configuration. If the configured scheme is not expected, this field can be used to override it.
-	Scheme *Scheme `json:"scheme,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	Scheme     *Scheme                     `json:"scheme,omitempty"`
 	Parameters []AIGatewayMCPToolParameter `json:"parameters,omitempty"`
 }
 

@@ -41,7 +41,14 @@ func CreateResourceCreateCatalogResourceMappingResourceByConfig(createCatalogRes
 	}
 }
 
-func (u *Resource) UnmarshalJSON(data []byte) error {
+func (u *Resource) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Resource{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var createCatalogResourceMappingResourceByConfig CreateCatalogResourceMappingResourceByConfig = CreateCatalogResourceMappingResourceByConfig{}
 	if err := utils.UnmarshalJSON(data, &createCatalogResourceMappingResourceByConfig, "", true, nil); err == nil {

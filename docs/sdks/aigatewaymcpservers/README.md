@@ -14,9 +14,6 @@ MCP Servers that expose tools for AI Gateway integrations.
 
 ## ListAiGatewayMcpServers
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of MCP Servers configured for the AI Gateway.
 
 ### Example Usage
@@ -79,9 +76,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayMcpServer
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Registers a new MCP Server for the AI Gateway.
 
@@ -187,9 +181,6 @@ func main() {
 
 ## GetAiGatewayMcpServer
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific MCP Server.
 
 ### Example Usage
@@ -260,9 +251,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayMcpServer
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing MCP Server.
 
@@ -370,9 +358,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayMcpServer
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a specific MCP Server from the AI Gateway.
 

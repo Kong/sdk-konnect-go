@@ -101,7 +101,14 @@ func CreateRawValueAny(anyT any) RawValue {
 	}
 }
 
-func (u *RawValue) UnmarshalJSON(data []byte) error {
+func (u *RawValue) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = RawValue{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var criteriaEvaluationRelationMap CriteriaEvaluationRelationMap = CriteriaEvaluationRelationMap{}
 	if err := utils.UnmarshalJSON(data, &criteriaEvaluationRelationMap, "", true, nil); err == nil {

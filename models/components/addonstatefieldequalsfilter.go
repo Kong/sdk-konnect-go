@@ -42,7 +42,14 @@ func CreateAddOnStateFieldEqualsFilterAddOnStateFieldEqualsComparison(addOnState
 	}
 }
 
-func (u *AddOnStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+func (u *AddOnStateFieldEqualsFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AddOnStateFieldEqualsFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var addOnState AddOnState = AddOnState("")
 	if err := utils.UnmarshalJSON(data, &addOnState, "", true, nil); err == nil {

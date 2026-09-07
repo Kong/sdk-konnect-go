@@ -862,7 +862,14 @@ func CreateDcrProviderResponseHTTP(http DCRProviderHTTPDCRProviderHTTP) DcrProvi
 	}
 }
 
-func (u *DcrProviderResponse) UnmarshalJSON(data []byte) error {
+func (u *DcrProviderResponse) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DcrProviderResponse{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		ProviderType string `json:"provider_type"`

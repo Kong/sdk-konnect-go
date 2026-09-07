@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetCerebrasConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Cerebras-specific configuration for a model.
+// AIGatewayTargetCerebrasConfig - Cerebras-specific configuration for a model.
 type AIGatewayTargetCerebrasConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

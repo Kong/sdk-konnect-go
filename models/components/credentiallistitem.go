@@ -41,7 +41,14 @@ func CreateCredentialListItemClientSecretCredentialListItem(clientSecretCredenti
 	}
 }
 
-func (u *CredentialListItem) UnmarshalJSON(data []byte) error {
+func (u *CredentialListItem) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CredentialListItem{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var apiKeyCredentialListItem APIKeyCredentialListItem = APIKeyCredentialListItem{}
 	if err := utils.UnmarshalJSON(data, &apiKeyCredentialListItem, "", true, nil); err == nil {

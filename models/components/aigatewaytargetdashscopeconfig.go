@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetDashscopeConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Alibaba DashScope-specific configuration for a model.
+// AIGatewayTargetDashscopeConfig - Alibaba DashScope-specific configuration for a model.
 type AIGatewayTargetDashscopeConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

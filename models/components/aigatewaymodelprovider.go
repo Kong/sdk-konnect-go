@@ -46,7 +46,14 @@ func CreateAIGatewayModelProviderSagemakerAuthOutputSagemaker(sagemaker AIGatewa
 	}
 }
 
-func (u *AIGatewayModelProviderSagemakerAuthOutput) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelProviderSagemakerAuthOutput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelProviderSagemakerAuthOutput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -93,8 +100,6 @@ func (u AIGatewayModelProviderSagemakerAuthOutput) MarshalJSON() ([]byte, error)
 	return nil, errors.New("could not marshal union type AIGatewayModelProviderSagemakerAuthOutput: all fields are null")
 }
 
-// AIGatewayModelProviderSagemakerConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayModelProviderSagemakerConfigOutput struct {
 	Auth AIGatewayModelProviderSagemakerAuthOutput `json:"auth"`
 }
@@ -125,18 +130,12 @@ func (a *AIGatewayModelProviderSagemakerConfigOutput) GetAuthSagemaker() *AIGate
 	return a.GetAuth().AIGatewayModelProviderConfigAuthSagemaker
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderSagemaker - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Config for Sagemaker model provider.
+// AIGatewayModelProviderAIGatewayModelProviderSagemaker - Config for Sagemaker model provider.
 type AIGatewayModelProviderAIGatewayModelProviderSagemaker struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"sagemaker" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -150,10 +149,8 @@ type AIGatewayModelProviderAIGatewayModelProviderSagemaker struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Config AIGatewayModelProviderSagemakerConfigOutput `json:"config"`
+	ManagedBy map[string]string                           `json:"managed_by,omitempty"`
+	Config    AIGatewayModelProviderSagemakerConfigOutput `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -235,10 +232,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderSagemaker) GetUpdatedAt() t
 
 // AIGatewayModelProviderXaiConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderXaiConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -260,16 +255,12 @@ func (a *AIGatewayModelProviderXaiConfigOutput) GetAuth() AIGatewayModelProvider
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderXai - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderXai - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderXai struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"xai" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -367,10 +358,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderXai) GetUpdatedAt() time.Ti
 
 // AIGatewayModelProviderVllmConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderVllmConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -392,16 +381,12 @@ func (a *AIGatewayModelProviderVllmConfigOutput) GetAuth() AIGatewayModelProvide
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderVllm - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderVllm - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderVllm struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"vllm" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -499,10 +484,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderVllm) GetUpdatedAt() time.T
 
 // AIGatewayModelProviderVercelConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderVercelConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -524,16 +507,12 @@ func (a *AIGatewayModelProviderVercelConfigOutput) GetAuth() AIGatewayModelProvi
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderVercel - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderVercel - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderVercel struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"vercel" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -631,10 +610,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderVercel) GetUpdatedAt() time
 
 // AIGatewayModelProviderOpenaiConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderOpenaiConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -656,16 +633,12 @@ func (a *AIGatewayModelProviderOpenaiConfigOutput) GetAuth() AIGatewayModelProvi
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderOpenai - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderOpenai - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderOpenai struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"openai" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -763,10 +736,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderOpenai) GetUpdatedAt() time
 
 // AIGatewayModelProviderOllamaConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderOllamaConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -788,16 +759,12 @@ func (a *AIGatewayModelProviderOllamaConfigOutput) GetAuth() AIGatewayModelProvi
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderOllama - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderOllama - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderOllama struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"ollama" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -895,10 +862,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderOllama) GetUpdatedAt() time
 
 // AIGatewayModelProviderMistralConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderMistralConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -920,16 +885,12 @@ func (a *AIGatewayModelProviderMistralConfigOutput) GetAuth() AIGatewayModelProv
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderMistral - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderMistral - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderMistral struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"mistral" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -1027,10 +988,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderMistral) GetUpdatedAt() tim
 
 // AIGatewayModelProviderLlama2ConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderLlama2ConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -1055,16 +1014,12 @@ func (a *AIGatewayModelProviderLlama2ConfigOutput) GetAuth() AIGatewayModelProvi
 // #region class-body-aigatewaymodelproviderllama2configoutput
 // #endregion class-body-aigatewaymodelproviderllama2configoutput
 
-// AIGatewayModelProviderAIGatewayModelProviderLlama2 - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderLlama2 - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderLlama2 struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"llama2" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -1165,10 +1120,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderLlama2) GetUpdatedAt() time
 
 // AIGatewayModelProviderKimiConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderKimiConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -1190,16 +1143,12 @@ func (a *AIGatewayModelProviderKimiConfigOutput) GetAuth() AIGatewayModelProvide
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderKimi - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderKimi - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderKimi struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"kimi" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -1297,10 +1246,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderKimi) GetUpdatedAt() time.T
 
 // AIGatewayModelProviderHuggingfaceConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderHuggingfaceConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -1322,16 +1269,12 @@ func (a *AIGatewayModelProviderHuggingfaceConfigOutput) GetAuth() AIGatewayModel
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderHuggingface - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderHuggingface - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderHuggingface struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"huggingface" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -1459,7 +1402,14 @@ func CreateAIGatewayModelProviderGeminiAuthOutputGcp(gcp AIGatewayModelProviderC
 	}
 }
 
-func (u *AIGatewayModelProviderGeminiAuthOutput) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelProviderGeminiAuthOutput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelProviderGeminiAuthOutput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -1536,18 +1486,12 @@ func (a *AIGatewayModelProviderGeminiConfigOutput) GetAuthGcp() *AIGatewayModelP
 	return a.GetAuth().AIGatewayModelProviderConfigAuthGCPOutput
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderGemini - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Config for GCP model provider.
+// AIGatewayModelProviderAIGatewayModelProviderGemini - Config for GCP model provider.
 type AIGatewayModelProviderAIGatewayModelProviderGemini struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"gemini" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -1644,10 +1588,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderGemini) GetUpdatedAt() time
 
 // AIGatewayModelProviderDeepseekConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderDeepseekConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -1669,16 +1611,12 @@ func (a *AIGatewayModelProviderDeepseekConfigOutput) GetAuth() AIGatewayModelPro
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderDeepseek - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderDeepseek - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderDeepseek struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"deepseek" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -1776,10 +1714,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderDeepseek) GetUpdatedAt() ti
 
 // AIGatewayModelProviderDatabricksConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderDatabricksConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -1801,16 +1737,12 @@ func (a *AIGatewayModelProviderDatabricksConfigOutput) GetAuth() AIGatewayModelP
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderDatabricks - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderDatabricks - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderDatabricks struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"databricks" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -1908,10 +1840,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderDatabricks) GetUpdatedAt() 
 
 // AIGatewayModelProviderDashscopeConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderDashscopeConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -1933,16 +1863,12 @@ func (a *AIGatewayModelProviderDashscopeConfigOutput) GetAuth() AIGatewayModelPr
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderDashscope - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderDashscope - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderDashscope struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"dashscope" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -2040,10 +1966,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderDashscope) GetUpdatedAt() t
 
 // AIGatewayModelProviderCohereConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderCohereConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -2065,16 +1989,12 @@ func (a *AIGatewayModelProviderCohereConfigOutput) GetAuth() AIGatewayModelProvi
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderCohere - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderCohere - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderCohere struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"cohere" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -2172,10 +2092,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderCohere) GetUpdatedAt() time
 
 // AIGatewayModelProviderCerebrasConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderCerebrasConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -2197,16 +2115,12 @@ func (a *AIGatewayModelProviderCerebrasConfigOutput) GetAuth() AIGatewayModelPro
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderCerebras - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderCerebras - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderCerebras struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"cerebras" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -2334,7 +2248,14 @@ func CreateAIGatewayModelProviderBedrockAuthOutputAws(aws AIGatewayModelProvider
 	}
 }
 
-func (u *AIGatewayModelProviderBedrockAuthOutput) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelProviderBedrockAuthOutput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelProviderBedrockAuthOutput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -2411,18 +2332,12 @@ func (a *AIGatewayModelProviderBedrockConfigOutput) GetAuthAws() *AIGatewayModel
 	return a.GetAuth().AIGatewayModelProviderConfigAuthAWSOutput
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderBedrock - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Config for AWS model provider.
+// AIGatewayModelProviderAIGatewayModelProviderBedrock - Config for AWS model provider.
 type AIGatewayModelProviderAIGatewayModelProviderBedrock struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"bedrock" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -2549,7 +2464,14 @@ func CreateAIGatewayModelProviderAzureAuthOutputAzure(azure AIGatewayModelProvid
 	}
 }
 
-func (u *AIGatewayModelProviderAzureAuthOutput) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelProviderAzureAuthOutput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelProviderAzureAuthOutput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -2716,18 +2638,12 @@ func (a *AIGatewayModelProviderAzureConfigOutput) GetFoundry() *AIGatewayModelPr
 	return a.Foundry
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderAzure - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Config for Azure model provider.
+// AIGatewayModelProviderAIGatewayModelProviderAzure - Config for Azure model provider.
 type AIGatewayModelProviderAIGatewayModelProviderAzure struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"azure" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -2824,10 +2740,8 @@ func (a *AIGatewayModelProviderAIGatewayModelProviderAzure) GetUpdatedAt() time.
 
 // AIGatewayModelProviderAnthropicConfigOutput - Configuration for the model provider.
 type AIGatewayModelProviderAnthropicConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasicOutput `json:"auth"`
 }
 
@@ -2849,16 +2763,12 @@ func (a *AIGatewayModelProviderAnthropicConfigOutput) GetAuth() AIGatewayModelPr
 	return a.Auth
 }
 
-// AIGatewayModelProviderAIGatewayModelProviderAnthropic - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderAIGatewayModelProviderAnthropic - Configuration for an upstream model provider.
 type AIGatewayModelProviderAIGatewayModelProviderAnthropic struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"anthropic" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -2978,8 +2888,6 @@ const (
 	AIGatewayModelProviderTypeSagemaker   AIGatewayModelProviderType = "sagemaker"
 )
 
-// AIGatewayModelProvider - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayModelProvider struct {
 	AIGatewayModelProviderAIGatewayModelProviderAnthropic   *AIGatewayModelProviderAIGatewayModelProviderAnthropic   `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderAIGatewayModelProviderAzure       *AIGatewayModelProviderAIGatewayModelProviderAzure       `queryParam:"inline" union:"member"`
@@ -3175,7 +3083,14 @@ func CreateAIGatewayModelProviderSagemaker(sagemaker AIGatewayModelProviderAIGat
 	}
 }
 
-func (u *AIGatewayModelProvider) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelProvider) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelProvider{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

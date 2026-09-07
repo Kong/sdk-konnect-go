@@ -8,8 +8,6 @@ import (
 	"time"
 )
 
-// AIGatewayConfigStore - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayConfigStore struct {
 	// The display name of the Config Store.
 	DisplayName *string `json:"display_name,omitempty"`

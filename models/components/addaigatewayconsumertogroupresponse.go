@@ -5,13 +5,8 @@ package components
 
 // AddAIGatewayConsumerToGroupResponse - Consumer added to consumer group successfully.
 type AddAIGatewayConsumerToGroupResponse struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an AI Gateway Consumer.
-	Consumer AIGatewayConsumer `json:"consumer"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	Consumer      AIGatewayConsumer      `json:"consumer"`
 	ConsumerGroup AIGatewayConsumerGroup `json:"consumer_group"`
 }
 

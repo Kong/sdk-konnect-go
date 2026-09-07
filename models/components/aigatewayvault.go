@@ -11,15 +11,11 @@ import (
 	"time"
 )
 
-// AIGatewayVaultHashiCorpVault - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayVaultHashiCorpVault struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
 	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
+	//
 	Name string `json:"name"`
 	// The description of the Vault.
 	Description *string `default:"" json:"description"`
@@ -37,9 +33,6 @@ type AIGatewayVaultHashiCorpVault struct {
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"hcv" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an AI Gateway Vault.
 	Config HashiCorpVaultConfigOutput `json:"config"`
 	// Contains a unique identifier used for this resource.
@@ -161,8 +154,6 @@ func (a *AIGatewayVaultHashiCorpVault) GetUpdatedAt() time.Time {
 	return a.UpdatedAt
 }
 
-// ConjurVaultConjurVaultConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type ConjurVaultConjurVaultConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -254,15 +245,11 @@ func (c *ConjurVaultConjurVaultConfig) GetLogin() string {
 	return c.Login
 }
 
-// AIGatewayVaultConjurVault - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayVaultConjurVault struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
 	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
+	//
 	Name string `json:"name"`
 	// The description of the Vault.
 	Description *string `default:"" json:"description"`
@@ -279,9 +266,7 @@ type AIGatewayVaultConjurVault struct {
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"conjur" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	type_  string                       `const:"conjur" json:"type"`
 	Config ConjurVaultConjurVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
@@ -385,8 +370,6 @@ func (e *AzureKeyVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// AzureKeyVaultAzureKeyVaultConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AzureKeyVaultAzureKeyVaultConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -510,15 +493,11 @@ func (a *AzureKeyVaultAzureKeyVaultConfig) GetType() *AzureKeyVaultAIGatewayVaul
 	return a.Type
 }
 
-// AIGatewayVaultAzureKeyVault - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayVaultAzureKeyVault struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
 	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
+	//
 	Name string `json:"name"`
 	// The description of the Vault.
 	Description *string `default:"" json:"description"`
@@ -535,9 +514,7 @@ type AIGatewayVaultAzureKeyVault struct {
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"azure" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	type_  string                           `const:"azure" json:"type"`
 	Config AzureKeyVaultAzureKeyVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
@@ -618,8 +595,6 @@ func (a *AIGatewayVaultAzureKeyVault) GetUpdatedAt() time.Time {
 	return a.UpdatedAt
 }
 
-// GoogleSecretManagerVaultGoogleSecretManagerVaultConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type GoogleSecretManagerVaultGoogleSecretManagerVaultConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -692,15 +667,11 @@ func (g *GoogleSecretManagerVaultGoogleSecretManagerVaultConfig) GetProjectID() 
 	return g.ProjectID
 }
 
-// AIGatewayVaultGoogleSecretManagerVault - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayVaultGoogleSecretManagerVault struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
 	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
+	//
 	Name string `json:"name"`
 	// The description of the Vault.
 	Description *string `default:"" json:"description"`
@@ -717,9 +688,7 @@ type AIGatewayVaultGoogleSecretManagerVault struct {
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"gcp" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	type_  string                                                 `const:"gcp" json:"type"`
 	Config GoogleSecretManagerVaultGoogleSecretManagerVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
@@ -800,8 +769,6 @@ func (a *AIGatewayVaultGoogleSecretManagerVault) GetUpdatedAt() time.Time {
 	return a.UpdatedAt
 }
 
-// AwsSecretsManagerVaultAwsSecretsManagerVaultConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AwsSecretsManagerVaultAwsSecretsManagerVaultConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -915,15 +882,11 @@ func (a *AwsSecretsManagerVaultAwsSecretsManagerVaultConfig) GetStsEndpointURL()
 	return a.StsEndpointURL
 }
 
-// AIGatewayVaultAwsSecretsManagerVault - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayVaultAwsSecretsManagerVault struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
 	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
+	//
 	Name string `json:"name"`
 	// The description of the Vault.
 	Description *string `default:"" json:"description"`
@@ -940,9 +903,7 @@ type AIGatewayVaultAwsSecretsManagerVault struct {
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"aws" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	type_  string                                             `const:"aws" json:"type"`
 	Config AwsSecretsManagerVaultAwsSecretsManagerVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
@@ -1023,8 +984,6 @@ func (a *AIGatewayVaultAwsSecretsManagerVault) GetUpdatedAt() time.Time {
 	return a.UpdatedAt
 }
 
-// EnvironmentVariableVaultEnvironmentVariableVaultConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type EnvironmentVariableVaultEnvironmentVariableVaultConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -1061,15 +1020,11 @@ func (e *EnvironmentVariableVaultEnvironmentVariableVaultConfig) GetPrefix() *st
 	return e.Prefix
 }
 
-// AIGatewayVaultEnvironmentVariableVault - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayVaultEnvironmentVariableVault struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
 	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
+	//
 	Name string `json:"name"`
 	// The description of the Vault.
 	Description *string `default:"" json:"description"`
@@ -1086,9 +1041,7 @@ type AIGatewayVaultEnvironmentVariableVault struct {
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"env" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	type_  string                                                 `const:"env" json:"type"`
 	Config EnvironmentVariableVaultEnvironmentVariableVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
@@ -1193,15 +1146,11 @@ func (k *KonnectConfigStoreVaultAIGatewayVaultConfig) GetConfigStoreID() string 
 	return k.ConfigStoreID
 }
 
-// AIGatewayVaultKonnectConfigStoreVault - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayVaultKonnectConfigStoreVault struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
 	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
+	//
 	Name string `json:"name"`
 	// The description of the Vault.
 	Description *string `default:"" json:"description"`
@@ -1311,10 +1260,7 @@ const (
 	AIGatewayVaultTypeHcv     AIGatewayVaultType = "hcv"
 )
 
-// AIGatewayVault - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for an AI Gateway Vault.
+// AIGatewayVault - Configuration for an AI Gateway Vault.
 type AIGatewayVault struct {
 	AIGatewayVaultKonnectConfigStoreVault  *AIGatewayVaultKonnectConfigStoreVault  `queryParam:"inline" union:"member"`
 	AIGatewayVaultEnvironmentVariableVault *AIGatewayVaultEnvironmentVariableVault `queryParam:"inline" union:"member"`
@@ -1390,7 +1336,14 @@ func CreateAIGatewayVaultHcv(hcv AIGatewayVaultHashiCorpVault) AIGatewayVault {
 	}
 }
 
-func (u *AIGatewayVault) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayVault) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayVault{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

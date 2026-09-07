@@ -63,9 +63,6 @@ type AIGatewayMCPServerServerConfigBaseSession struct {
 	Client *Client `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
 	Managed *bool `default:"true" json:"managed"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Config for connecting to a Cloud Provider's Redis instance.
 	Redis *AIGatewayRedisCloudConfigurationOutput `json:"redis,omitempty"`
 	// The time-to-live (TTL) for each session in seconds.
@@ -120,10 +117,7 @@ func (a *AIGatewayMCPServerServerConfigBaseSession) GetStrategy() *Strategy {
 	return a.Strategy
 }
 
-// AIGatewayMCPServerServerConfigBaseOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Server-side configuration for the MCP Server.
+// AIGatewayMCPServerServerConfigBaseOutput - Server-side configuration for the MCP Server.
 type AIGatewayMCPServerServerConfigBaseOutput struct {
 	// Whether to forward the client request headers to the upstream server when calling the tools.
 	ForwardClientHeaders *bool `default:"true" json:"forward_client_headers"`
@@ -174,9 +168,6 @@ type Session struct {
 	Client *Client `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
 	Managed *bool `default:"true" json:"managed"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Config for connecting to a Cloud Provider's Redis instance.
 	Redis *AIGatewayRedisCloudConfiguration `json:"redis,omitempty"`
 	// The time-to-live (TTL) for each session in seconds.
@@ -231,10 +222,7 @@ func (s *Session) GetStrategy() *Strategy {
 	return s.Strategy
 }
 
-// AIGatewayMCPServerServerConfigBase - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Server-side configuration for the MCP Server.
+// AIGatewayMCPServerServerConfigBase - Server-side configuration for the MCP Server.
 type AIGatewayMCPServerServerConfigBase struct {
 	// Whether to forward the client request headers to the upstream server when calling the tools.
 	ForwardClientHeaders *bool `default:"true" json:"forward_client_headers"`

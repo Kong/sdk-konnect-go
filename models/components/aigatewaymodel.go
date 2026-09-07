@@ -45,16 +45,10 @@ func (e *AIGatewayModelModelAIGatewayModelCapabilities) IsExact() bool {
 type AIGatewayModelAIGatewayModelModel struct {
 	// The display name for this model instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the model is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Access control configuration for a model.
 	Access *AIGatewayModelAccess `json:"access,omitempty"`
 	// List of request/response formats supported by this model.
@@ -228,16 +222,10 @@ func (e *AIGatewayModelAPICapabilities) IsExact() bool {
 type AIGatewayModelAIGatewayModelAPI struct {
 	// The display name for this model instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the model is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Access control configuration for a model.
 	Access *AIGatewayModelAccess `json:"access,omitempty"`
 	// List of request/response formats supported by this model.
@@ -392,10 +380,7 @@ const (
 	AIGatewayModelTypeModel AIGatewayModelType = "model"
 )
 
-// AIGatewayModel - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for an AI Gateway model.
+// AIGatewayModel - Configuration for an AI Gateway model.
 type AIGatewayModel struct {
 	AIGatewayModelAIGatewayModelAPI   *AIGatewayModelAIGatewayModelAPI   `queryParam:"inline" union:"member"`
 	AIGatewayModelAIGatewayModelModel *AIGatewayModelAIGatewayModelModel `queryParam:"inline" union:"member"`
@@ -421,7 +406,14 @@ func CreateAIGatewayModelModel(model AIGatewayModelAIGatewayModelModel) AIGatewa
 	}
 }
 
-func (u *AIGatewayModel) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModel) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModel{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

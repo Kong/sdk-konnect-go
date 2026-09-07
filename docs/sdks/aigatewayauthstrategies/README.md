@@ -14,9 +14,6 @@ Auth strategies for authenticating clients accessing AI Gateway resources.
 
 ## ListAiGatewayAuthStrategies
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of auth strategies configured for the AI Gateway.
 
 ### Example Usage
@@ -79,9 +76,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayAuthStrategy
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Registers a new auth strategy for the AI Gateway.
 
@@ -154,9 +148,6 @@ func main() {
 
 ## GetAiGatewayAuthStrategy
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway auth strategy.
 
 ### Example Usage
@@ -221,9 +212,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayAuthStrategy
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing AI Gateway auth strategy.
 
@@ -299,9 +287,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayAuthStrategy
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a specific AI Gateway auth strategy.
 

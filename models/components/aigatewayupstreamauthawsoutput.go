@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayUpstreamAuthAWSOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// AWS IAM (SigV4) authentication for the upstream service.
+// AIGatewayUpstreamAuthAWSOutput - AWS IAM (SigV4) authentication for the upstream service.
 type AIGatewayUpstreamAuthAWSOutput struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"aws" json:"type"`

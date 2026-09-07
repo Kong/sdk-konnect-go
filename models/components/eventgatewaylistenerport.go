@@ -41,7 +41,14 @@ func CreateEventGatewayListenerPortInteger(integer int64) EventGatewayListenerPo
 	}
 }
 
-func (u *EventGatewayListenerPort) UnmarshalJSON(data []byte) error {
+func (u *EventGatewayListenerPort) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EventGatewayListenerPort{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {

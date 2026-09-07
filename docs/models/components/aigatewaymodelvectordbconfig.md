@@ -1,8 +1,5 @@
 # AIGatewayModelVectorDBConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Configuration for the vector database used by the model.
 
 

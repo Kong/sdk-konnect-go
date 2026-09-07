@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayOllamaEmbeddingsModelConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Ollama-specific configuration for a model.
+// AIGatewayOllamaEmbeddingsModelConfig - Ollama-specific configuration for a model.
 type AIGatewayOllamaEmbeddingsModelConfig struct {
 	// The URL of the embeddings model.
 	UpstreamURL *string `json:"upstream_url,omitempty"`

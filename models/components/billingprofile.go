@@ -336,7 +336,14 @@ func CreateAlignmentAnchored(anchored BillingWorkflowCollectionAlignmentAnchored
 	}
 }
 
-func (u *Alignment) UnmarshalJSON(data []byte) error {
+func (u *Alignment) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Alignment{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -547,7 +554,14 @@ func CreatePaymentSendInvoice(sendInvoice BillingWorkflowPaymentSendInvoiceSetti
 	}
 }
 
-func (u *Payment) UnmarshalJSON(data []byte) error {
+func (u *Payment) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Payment{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		CollectionMethod string `json:"collection_method"`

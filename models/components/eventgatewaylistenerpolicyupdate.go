@@ -43,7 +43,14 @@ func CreateEventGatewayListenerPolicyUpdateForwardToVirtualCluster(forwardToVirt
 	}
 }
 
-func (u *EventGatewayListenerPolicyUpdate) UnmarshalJSON(data []byte) error {
+func (u *EventGatewayListenerPolicyUpdate) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EventGatewayListenerPolicyUpdate{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

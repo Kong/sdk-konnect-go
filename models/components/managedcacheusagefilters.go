@@ -86,7 +86,14 @@ func CreateManagedCacheUsageFiltersProviderRegion(providerRegion MetricsProvider
 	}
 }
 
-func (u *ManagedCacheUsageFilters) UnmarshalJSON(data []byte) error {
+func (u *ManagedCacheUsageFilters) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ManagedCacheUsageFilters{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Field string `json:"field"`

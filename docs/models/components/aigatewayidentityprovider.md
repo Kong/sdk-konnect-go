@@ -1,8 +1,5 @@
 # ~~AIGatewayIdentityProvider~~
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 

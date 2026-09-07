@@ -17,8 +17,6 @@ const (
 	CreateAIGatewayAuthStrategyRequestTypeOpenidConnect CreateAIGatewayAuthStrategyRequestType = "openid-connect"
 )
 
-// CreateAIGatewayAuthStrategyRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type CreateAIGatewayAuthStrategyRequest struct {
 	AIGatewayAuthStrategyKeyAuth       *AIGatewayAuthStrategyKeyAuth       `queryParam:"inline" union:"member"`
 	AIGatewayAuthStrategyOpenIDConnect *AIGatewayAuthStrategyOpenIDConnect `queryParam:"inline" union:"member"`
@@ -44,7 +42,14 @@ func CreateCreateAIGatewayAuthStrategyRequestOpenidConnect(openidConnect AIGatew
 	}
 }
 
-func (u *CreateAIGatewayAuthStrategyRequest) UnmarshalJSON(data []byte) error {
+func (u *CreateAIGatewayAuthStrategyRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreateAIGatewayAuthStrategyRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

@@ -64,8 +64,6 @@ func (e *TokensCountStrategy) IsExact() bool {
 	return false
 }
 
-// AIGatewayModelBalancerLowestUsageConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayModelBalancerLowestUsageConfig struct {
 	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.

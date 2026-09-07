@@ -7,23 +7,15 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayMCPServerConversionOnly - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerConversionOnly struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"conversion-only" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Routing, logging, and request body size limits for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig `json:"config"`
 	// List of tools exposed by this MCP Server.
 	Tools []AIGatewayMCPConversionTool `json:"tools"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.

@@ -56,7 +56,14 @@ func CreateCustomDomainStateFieldEqualsFilterCustomDomainStateFieldEqualsCompari
 	}
 }
 
-func (u *CustomDomainStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+func (u *CustomDomainStateFieldEqualsFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CustomDomainStateFieldEqualsFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var customDomainState CustomDomainState = CustomDomainState("")
 	if err := utils.UnmarshalJSON(data, &customDomainState, "", true, nil); err == nil {

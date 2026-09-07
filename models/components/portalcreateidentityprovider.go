@@ -41,7 +41,14 @@ func CreatePortalCreateIdentityProviderConfigPortalSAMLIdentityProviderConfigInp
 	}
 }
 
-func (u *PortalCreateIdentityProviderConfig) UnmarshalJSON(data []byte) error {
+func (u *PortalCreateIdentityProviderConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PortalCreateIdentityProviderConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var oidcIdentityProviderConfig OIDCIdentityProviderConfig = OIDCIdentityProviderConfig{}
 	if err := utils.UnmarshalJSON(data, &oidcIdentityProviderConfig, "", true, nil); err == nil {

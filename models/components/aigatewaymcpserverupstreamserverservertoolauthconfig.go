@@ -17,10 +17,7 @@ const (
 	AIGatewayMCPServerUpstreamServerServerToolAuthConfigTypeCredentials AIGatewayMCPServerUpstreamServerServerToolAuthConfigType = "credentials"
 )
 
-// AIGatewayMCPServerUpstreamServerServerToolAuthConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for an Upstream Server's MCP Server Tools' Authentication.
+// AIGatewayMCPServerUpstreamServerServerToolAuthConfig - Configuration for an Upstream Server's MCP Server Tools' Authentication.
 type AIGatewayMCPServerUpstreamServerServerToolAuthConfig struct {
 	AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt         *AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt         `queryParam:"inline" union:"member"`
 	AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials `queryParam:"inline" union:"member"`
@@ -46,7 +43,14 @@ func CreateAIGatewayMCPServerUpstreamServerServerToolAuthConfigCredentials(crede
 	}
 }
 
-func (u *AIGatewayMCPServerUpstreamServerServerToolAuthConfig) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayMCPServerUpstreamServerServerToolAuthConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayMCPServerUpstreamServerServerToolAuthConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

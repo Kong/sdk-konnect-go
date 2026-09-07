@@ -53,8 +53,6 @@ func (e *HashiCorpVaultOauth2ConfigProtocol) IsExact() bool {
 	return false
 }
 
-// HashiCorpVaultOauth2ConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultOauth2ConfigOutput struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -227,8 +225,6 @@ func (h *HashiCorpVaultOauth2ConfigOutput) GetAudiences() *string {
 // #region class-body-hashicorpvaultoauth2configoutput
 // #endregion class-body-hashicorpvaultoauth2configoutput
 
-// HashiCorpVaultOauth2Config - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultOauth2Config struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.

@@ -47,9 +47,6 @@ type Embeddings struct {
 	Provider string `json:"provider"`
 	// The name of the embeddings model.
 	Name string `json:"name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an embeddings model.
 	Config AIGatewayEmbeddingsModelConfig `json:"config"`
 }
@@ -121,8 +118,6 @@ func (e *Embeddings) GetConfigOpenai() *AIGatewayOpenaiEmbeddingsModelConfig {
 	return e.GetConfig().AIGatewayOpenaiEmbeddingsModelConfig
 }
 
-// AIGatewayModelBalancerSemanticConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayModelBalancerSemanticConfigOutput struct {
 	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.
@@ -141,9 +136,6 @@ type AIGatewayModelBalancerSemanticConfigOutput struct {
 	algorithm string `const:"semantic" json:"algorithm"`
 	// Embeddings model configuration for this model.
 	Embeddings Embeddings `json:"embeddings"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for the vector database used by the model.
 	Vectordb AIGatewayModelVectorDBConfigOutput `json:"vectordb"`
 }
@@ -241,8 +233,6 @@ func (a *AIGatewayModelBalancerSemanticConfigOutput) GetVectordbRedis() *AIGatew
 	return a.GetVectordb().AIGatewayModelVectorDBConfigRedisOutput
 }
 
-// AIGatewayModelBalancerSemanticConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayModelBalancerSemanticConfig struct {
 	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.
@@ -261,9 +251,6 @@ type AIGatewayModelBalancerSemanticConfig struct {
 	algorithm string `const:"semantic" json:"algorithm"`
 	// Embeddings model configuration for this model.
 	Embeddings Embeddings `json:"embeddings"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for the vector database used by the model.
 	Vectordb AIGatewayModelVectorDBConfig `json:"vectordb"`
 }

@@ -43,6 +43,13 @@ type AIGatewayDataPlaneNode struct {
 	// Validation or configuration errors reported by the data plane node.
 	Errors              []AIGatewayDataPlaneNodeError `json:"errors,omitempty"`
 	CompatibilityStatus CompatibilityStatus           `json:"compatibility_status"`
+	// Public labels store information about an entity that can be used for filtering a list of objects.
+	//
+	// Public labels are intended to store **PUBLIC** metadata.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
+	Labels map[string]string `json:"labels,omitempty"`
 }
 
 func (a AIGatewayDataPlaneNode) MarshalJSON() ([]byte, error) {
@@ -124,4 +131,11 @@ func (a *AIGatewayDataPlaneNode) GetCompatibilityStatus() CompatibilityStatus {
 		return CompatibilityStatus{}
 	}
 	return a.CompatibilityStatus
+}
+
+func (a *AIGatewayDataPlaneNode) GetLabels() map[string]string {
+	if a == nil {
+		return nil
+	}
+	return a.Labels
 }

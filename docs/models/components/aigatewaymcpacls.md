@@ -1,8 +1,5 @@
 # AIGatewayMCPACLs
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Access control rules for MCP resources. Configure `allow`, `deny`, or both.
 
 

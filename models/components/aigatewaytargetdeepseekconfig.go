@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetDeepseekConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Deepseek-specific configuration for a model.
+// AIGatewayTargetDeepseekConfig - Deepseek-specific configuration for a model.
 type AIGatewayTargetDeepseekConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

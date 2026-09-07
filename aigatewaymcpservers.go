@@ -33,9 +33,6 @@ func newAIGatewayMCPServers(rootSDK *SDK, sdkConfig config.SDKConfiguration, hoo
 }
 
 // ListAiGatewayMcpServers - List MCP Servers
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of MCP Servers configured for the AI Gateway.
 func (s *AIGatewayMCPServers) ListAiGatewayMcpServers(ctx context.Context, request operations.ListAiGatewayMcpServersRequest, opts ...operations.Option) (*operations.ListAiGatewayMcpServersResponse, error) {
 	o := operations.Options{}
@@ -329,9 +326,6 @@ func (s *AIGatewayMCPServers) ListAiGatewayMcpServers(ctx context.Context, reque
 }
 
 // CreateAiGatewayMcpServer - Create an MCP Server
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Registers a new MCP Server for the AI Gateway.
 func (s *AIGatewayMCPServers) CreateAiGatewayMcpServer(ctx context.Context, gatewayID string, createAIGatewayMCPServerRequest components.CreateAIGatewayMCPServerRequest, opts ...operations.Option) (*operations.CreateAiGatewayMcpServerResponse, error) {
 	request := operations.CreateAiGatewayMcpServerRequest{
@@ -675,9 +669,6 @@ func (s *AIGatewayMCPServers) CreateAiGatewayMcpServer(ctx context.Context, gate
 }
 
 // GetAiGatewayMcpServer - Get an MCP Server
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific MCP Server.
 func (s *AIGatewayMCPServers) GetAiGatewayMcpServer(ctx context.Context, gatewayID string, mcpServerIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayMcpServerResponse, error) {
 	request := operations.GetAiGatewayMcpServerRequest{
@@ -972,9 +963,6 @@ func (s *AIGatewayMCPServers) GetAiGatewayMcpServer(ctx context.Context, gateway
 }
 
 // UpdateAiGatewayMcpServer - Update an MCP Server
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates the configuration of an existing MCP Server.
 func (s *AIGatewayMCPServers) UpdateAiGatewayMcpServer(ctx context.Context, request operations.UpdateAiGatewayMcpServerRequest, opts ...operations.Option) (*operations.UpdateAiGatewayMcpServerResponse, error) {
 	o := operations.Options{}
@@ -1292,9 +1280,6 @@ func (s *AIGatewayMCPServers) UpdateAiGatewayMcpServer(ctx context.Context, requ
 }
 
 // DeleteAiGatewayMcpServer - Delete an MCP Server
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific MCP Server from the AI Gateway.
 func (s *AIGatewayMCPServers) DeleteAiGatewayMcpServer(ctx context.Context, gatewayID string, mcpServerIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayMcpServerResponse, error) {
 	request := operations.DeleteAiGatewayMcpServerRequest{

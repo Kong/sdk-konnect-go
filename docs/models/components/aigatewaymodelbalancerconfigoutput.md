@@ -1,8 +1,5 @@
 # AIGatewayModelBalancerConfigOutput
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Configuration for a model's load balancer when multiple target models are configured.
 
 

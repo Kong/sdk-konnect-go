@@ -7,8 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayCacheWriteCost - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayCacheWriteCost struct {
 	// Cache TTL this price applies to, e.g. "5m" or "1h".
 	TTL string `json:"ttl"`

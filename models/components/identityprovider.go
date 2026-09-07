@@ -42,7 +42,14 @@ func CreateIdentityProviderConfigSAMLIdentityProviderConfig(samlIdentityProvider
 	}
 }
 
-func (u *IdentityProviderConfig) UnmarshalJSON(data []byte) error {
+func (u *IdentityProviderConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IdentityProviderConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var oidcIdentityProviderConfigOutput OIDCIdentityProviderConfigOutput = OIDCIdentityProviderConfigOutput{}
 	if err := utils.UnmarshalJSON(data, &oidcIdentityProviderConfigOutput, "", true, nil); err == nil {

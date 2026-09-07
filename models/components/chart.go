@@ -132,7 +132,14 @@ func CreateChartChoroplethMap(choroplethMap ChoroplethMapChart) Chart {
 	}
 }
 
-func (u *Chart) UnmarshalJSON(data []byte) error {
+func (u *Chart) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Chart{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

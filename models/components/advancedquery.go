@@ -48,6 +48,7 @@ const (
 	DimensionsDataPlaneNode             Dimensions = "data_plane_node"
 	DimensionsDataPlaneNodeVersion      Dimensions = "data_plane_node_version"
 	DimensionsGatewayService            Dimensions = "gateway_service"
+	DimensionsOidcCredential            Dimensions = "oidc_credential"
 	DimensionsPortal                    Dimensions = "portal"
 	DimensionsPrincipal                 Dimensions = "principal"
 	DimensionsRealm                     Dimensions = "realm"
@@ -68,7 +69,7 @@ func (e Dimensions) ToPointer() *Dimensions {
 func (e *Dimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
+		case "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "oidc_credential", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}

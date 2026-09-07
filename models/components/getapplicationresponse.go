@@ -42,7 +42,14 @@ func CreateGetApplicationResponseKeyAuthApplication(keyAuthApplication KeyAuthAp
 	}
 }
 
-func (u *GetApplicationResponse) UnmarshalJSON(data []byte) error {
+func (u *GetApplicationResponse) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = GetApplicationResponse{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var clientCredentialsApplication ClientCredentialsApplication = ClientCredentialsApplication{}
 	if err := utils.UnmarshalJSON(data, &clientCredentialsApplication, "", true, nil); err == nil {

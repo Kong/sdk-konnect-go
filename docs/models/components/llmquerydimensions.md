@@ -23,6 +23,7 @@ custom := components.LLMQueryDimensions("custom_value")
 | `LLMQueryDimensionsGatewayService`        | gateway_service                           |
 | `LLMQueryDimensionsConsumer`              | consumer                                  |
 | `LLMQueryDimensionsApplication`           | application                               |
+| `LLMQueryDimensionsOidcCredential`        | oidc_credential                           |
 | `LLMQueryDimensionsRoute`                 | route                                     |
 | `LLMQueryDimensionsAiProvider`            | ai_provider                               |
 | `LLMQueryDimensionsAiResponseModel`       | ai_response_model                         |

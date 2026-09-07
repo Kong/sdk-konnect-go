@@ -63,7 +63,14 @@ func CreateCreateIntegrationInstanceAuthCredentialCreateAWSRoleDelegationAuthCre
 	}
 }
 
-func (u *CreateIntegrationInstanceAuthCredential) UnmarshalJSON(data []byte) error {
+func (u *CreateIntegrationInstanceAuthCredential) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreateIntegrationInstanceAuthCredential{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var createOAuthCredential CreateOAuthCredential = CreateOAuthCredential{}
 	if err := utils.UnmarshalJSON(data, &createOAuthCredential, "", true, nil); err == nil {

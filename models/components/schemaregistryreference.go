@@ -42,7 +42,14 @@ func CreateSchemaRegistryReferenceSchemaRegistryReferenceByName(schemaRegistryRe
 	}
 }
 
-func (u *SchemaRegistryReference) UnmarshalJSON(data []byte) error {
+func (u *SchemaRegistryReference) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SchemaRegistryReference{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var schemaRegistryReferenceByID SchemaRegistryReferenceByID = SchemaRegistryReferenceByID{}
 	if err := utils.UnmarshalJSON(data, &schemaRegistryReferenceByID, "", true, nil); err == nil {

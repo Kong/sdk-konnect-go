@@ -9,10 +9,8 @@ import (
 
 // AIGatewayModelProviderDashscopeConfig - Configuration for the model provider.
 type AIGatewayModelProviderDashscopeConfig struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Basic auth config for an upstream model provider.
+	//
 	Auth AIGatewayModelProviderConfigAuthBasic `json:"auth"`
 }
 
@@ -34,16 +32,12 @@ func (a *AIGatewayModelProviderDashscopeConfig) GetAuth() AIGatewayModelProvider
 	return a.Auth
 }
 
-// AIGatewayModelProviderDashscope - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
+// AIGatewayModelProviderDashscope - Configuration for an upstream model provider.
 type AIGatewayModelProviderDashscope struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"dashscope" json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.

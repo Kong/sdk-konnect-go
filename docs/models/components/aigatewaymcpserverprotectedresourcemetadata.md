@@ -1,11 +1,9 @@
 # AIGatewayMCPServerProtectedResourceMetadata
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 OAuth 2.0 Protected Resource Metadata (RFC 9728) advertised for this MCP
 server, allowing clients to discover the authorization servers that
 protect it.
+
 
 
 ## Fields

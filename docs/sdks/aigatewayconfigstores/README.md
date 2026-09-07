@@ -19,9 +19,6 @@ API related to the management of AI Gateway Config Stores.
 
 ## ListAiGatewayConfigStores
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of Config Stores associated with the AI Gateway.
 
 ### Example Usage
@@ -84,9 +81,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayConfigStore
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Creates a new Config Store for the AI Gateway.
 
@@ -151,9 +145,6 @@ func main() {
 
 ## GetAiGatewayConfigStore
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway Config Store.
 
 ### Example Usage
@@ -212,9 +203,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayConfigStore
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing AI Gateway Config Store.
 
@@ -288,9 +276,6 @@ func main() {
 
 ## DeleteAiGatewayConfigStore
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Removes a specific AI Gateway Config Store.
 
 ### Example Usage
@@ -353,9 +338,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## ListAiGatewayConfigStoreSecrets
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Returns a collection of all secrets for an AI Gateway Config Store.
 
@@ -421,9 +403,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayConfigStoreSecret
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Creates a secret for an AI Gateway Config Store.
 
@@ -493,9 +472,6 @@ func main() {
 
 ## GetAiGatewayConfigStoreSecret
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the secret entity for the Config Store. Secret values once stored cannot be retrieved.
 
 ### Example Usage
@@ -559,9 +535,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayConfigStoreSecret
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates a secret for an AI Gateway Config Store.
 
@@ -629,9 +602,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayConfigStoreSecret
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a secret from an AI Gateway Config Store.
 

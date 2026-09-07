@@ -42,7 +42,14 @@ func CreateLegacyStringFieldFilterWithExistsStringFieldExistsFilter(stringFieldE
 	}
 }
 
-func (u *LegacyStringFieldFilterWithExists) UnmarshalJSON(data []byte) error {
+func (u *LegacyStringFieldFilterWithExists) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = LegacyStringFieldFilterWithExists{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldExistsFilter StringFieldExistsFilter = StringFieldExistsFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldExistsFilter, "", true, nil); err == nil {

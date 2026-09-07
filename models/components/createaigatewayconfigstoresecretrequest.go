@@ -3,17 +3,9 @@
 
 package components
 
-// CreateAIGatewayConfigStoreSecretRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type CreateAIGatewayConfigStoreSecretRequest struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// The unique key identifying the secret within the Config Store.
 	Key string `json:"key"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// The secret value. Once stored, this value cannot be retrieved.
 	Value string `json:"value"`
 }

@@ -8,14 +8,9 @@ import (
 	"time"
 )
 
-// AIGatewayPolicy - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayPolicy struct {
 	// The display name for this policy instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this policy instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// The type of the Policy. This is equivalent to the Kong 3 plugin name.

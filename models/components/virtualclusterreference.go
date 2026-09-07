@@ -42,7 +42,14 @@ func CreateVirtualClusterReferenceVirtualClusterReferenceByName(virtualClusterRe
 	}
 }
 
-func (u *VirtualClusterReference) UnmarshalJSON(data []byte) error {
+func (u *VirtualClusterReference) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = VirtualClusterReference{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var virtualClusterReferenceByID VirtualClusterReferenceByID = VirtualClusterReferenceByID{}
 	if err := utils.UnmarshalJSON(data, &virtualClusterReferenceByID, "", true, nil); err == nil {

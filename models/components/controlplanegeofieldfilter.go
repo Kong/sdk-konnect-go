@@ -52,7 +52,14 @@ func CreateControlPlaneGeoFieldFilterControlPlaneGeoFieldOrEqualityFilter(contro
 	}
 }
 
-func (u *ControlPlaneGeoFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *ControlPlaneGeoFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ControlPlaneGeoFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var controlPlaneGeoFieldNotEqualsFilter ControlPlaneGeoFieldNotEqualsFilter = ControlPlaneGeoFieldNotEqualsFilter{}
 	if err := utils.UnmarshalJSON(data, &controlPlaneGeoFieldNotEqualsFilter, "", true, nil); err == nil {

@@ -41,7 +41,14 @@ func CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutosc
 	}
 }
 
-func (u *ConfigurationDataPlaneGroupAutoscale) UnmarshalJSON(data []byte) error {
+func (u *ConfigurationDataPlaneGroupAutoscale) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ConfigurationDataPlaneGroupAutoscale{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var configurationDataPlaneGroupAutoscaleStatic ConfigurationDataPlaneGroupAutoscaleStatic = ConfigurationDataPlaneGroupAutoscaleStatic{}
 	if err := utils.UnmarshalJSON(data, &configurationDataPlaneGroupAutoscaleStatic, "", true, nil); err == nil {

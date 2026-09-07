@@ -1,8 +1,5 @@
 # HashiCorpVaultTokenConfigOutput
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 
 ## Fields
 

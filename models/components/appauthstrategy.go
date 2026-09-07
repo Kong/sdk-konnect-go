@@ -566,7 +566,14 @@ func CreateAppAuthStrategyOpenidConnect(openidConnect AppAuthStrategyOpenIDConne
 	}
 }
 
-func (u *AppAuthStrategy) UnmarshalJSON(data []byte) error {
+func (u *AppAuthStrategy) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AppAuthStrategy{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		StrategyType string `json:"strategy_type"`

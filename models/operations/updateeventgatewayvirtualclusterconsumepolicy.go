@@ -82,6 +82,20 @@ func (u *UpdateEventGatewayVirtualClusterConsumePolicyRequest) GetEventGatewayCo
 	return nil
 }
 
+func (u *UpdateEventGatewayVirtualClusterConsumePolicyRequest) GetEventGatewayConsumePolicyUpdateTranscode() *components.EventGatewayParsedRecordTranscodeConsumePolicy {
+	if v := u.GetEventGatewayConsumePolicyUpdate(); v != nil {
+		return v.EventGatewayParsedRecordTranscodeConsumePolicy
+	}
+	return nil
+}
+
+func (u *UpdateEventGatewayVirtualClusterConsumePolicyRequest) GetEventGatewayConsumePolicyUpdateMaskFields() *components.EventGatewayParsedRecordMaskFieldsConsumePolicy {
+	if v := u.GetEventGatewayConsumePolicyUpdate(); v != nil {
+		return v.EventGatewayParsedRecordMaskFieldsConsumePolicy
+	}
+	return nil
+}
+
 type UpdateEventGatewayVirtualClusterConsumePolicyResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

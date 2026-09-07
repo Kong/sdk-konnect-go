@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayLoggingConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for AI Gateway logging.
+// AIGatewayLoggingConfig - Configuration for AI Gateway logging.
 type AIGatewayLoggingConfig struct {
 	Payloads *bool `default:"false" json:"payloads"`
 }

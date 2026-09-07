@@ -1,8 +1,5 @@
 # AIGatewayACLS
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Access control rules. Configure exactly one of `allow` or `deny`.
 
 

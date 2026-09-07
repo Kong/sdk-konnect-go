@@ -15,9 +15,6 @@ API related to the management of Konnect AI Gateway resources.
 
 ## ListAiGateways
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of AI Gateways in the organization.
 
 ### Example Usage
@@ -75,9 +72,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGateway
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Creates a new AI Gateway in the organization.
 
@@ -152,9 +146,6 @@ func main() {
 
 ## GetAiGateway
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway.
 
 ### Example Usage
@@ -212,9 +203,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGateway
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing AI Gateway.
 
@@ -290,9 +278,6 @@ func main() {
 
 ## PatchAiGateway
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Partially updates the configuration of an existing AI Gateway. Only the fields included in the request body are changed.
 
 ### Example Usage
@@ -365,9 +350,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGateway
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Deletes an existing AI Gateway.
 

@@ -30,12 +30,7 @@ func (e *AIGatewayModelModelConfigResponseStreaming) IsExact() bool {
 	return false
 }
 
-// Model - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type Model struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Display the model name selected in the X-Kong-LLM-Model response header
 	NameHeader *bool `default:"true" json:"name_header"`
 }
@@ -60,25 +55,14 @@ func (m *Model) GetNameHeader() *bool {
 
 // AIGatewayModelModelConfigOutput - Routing, logging, and load balancing configuration for the model.
 type AIGatewayModelModelConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an AI Gateway route.
 	Route AIGatewayModelRouteConfig `json:"route"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayLoggingConfig                     `json:"logging,omitempty"`
 	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Model *Model `json:"model,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
+	Model              *Model `json:"model,omitempty"`
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfigOutput `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
@@ -196,25 +180,14 @@ func (a *AIGatewayModelModelConfigOutput) GetProxy() *AIGatewayProxyConfigOutput
 
 // AIGatewayModelModelConfig - Routing, logging, and load balancing configuration for the model.
 type AIGatewayModelModelConfig struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for an AI Gateway route.
 	Route AIGatewayModelRouteConfig `json:"route"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration for AI Gateway logging.
 	Logging           *AIGatewayLoggingConfig                     `json:"logging,omitempty"`
 	ResponseStreaming *AIGatewayModelModelConfigResponseStreaming `default:"allow" json:"response_streaming"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Model *Model `json:"model,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
+	Model              *Model `json:"model,omitempty"`
 	// Configuration for a model's load balancer when multiple target models are configured.
 	Balancer *AIGatewayModelBalancerConfig `json:"balancer,omitempty"`
 	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.

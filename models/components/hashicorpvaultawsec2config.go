@@ -53,8 +53,6 @@ func (e *HashiCorpVaultAwsEc2ConfigProtocol) IsExact() bool {
 	return false
 }
 
-// HashiCorpVaultAwsEc2Config - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type HashiCorpVaultAwsEc2Config struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.

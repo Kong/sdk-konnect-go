@@ -1,8 +1,5 @@
 # AIGatewayTargetCerebrasConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Cerebras-specific configuration for a model.
 
 

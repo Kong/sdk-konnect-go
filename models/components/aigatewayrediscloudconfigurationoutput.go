@@ -54,7 +54,14 @@ func CreateAIGatewayRedisCloudConfigurationCloudAuthenticationGcp(gcp AIGatewayR
 	}
 }
 
-func (u *AIGatewayRedisCloudConfigurationCloudAuthentication) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayRedisCloudConfigurationCloudAuthentication) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayRedisCloudConfigurationCloudAuthentication{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -246,7 +253,14 @@ func CreatePortStr(str string) Port {
 	}
 }
 
-func (u *Port) UnmarshalJSON(data []byte) error {
+func (u *Port) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Port{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integer int64 = int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
@@ -397,10 +411,7 @@ func (s *Sentinel) GetUsername() *string {
 	return s.Username
 }
 
-// AIGatewayRedisCloudConfigurationOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Config for connecting to a Cloud Provider's Redis instance.
+// AIGatewayRedisCloudConfigurationOutput - Config for connecting to a Cloud Provider's Redis instance.
 type AIGatewayRedisCloudConfigurationOutput struct {
 	// Auth related config for connecting to a Cloud Provider's Redis instance.
 	CloudAuthentication *AIGatewayRedisCloudConfigurationCloudAuthentication `json:"cloud_authentication,omitempty"`
@@ -634,7 +645,14 @@ func CreateCloudAuthenticationGcp(gcp AIGatewayRedisGCPAuthentication) CloudAuth
 	}
 }
 
-func (u *CloudAuthentication) UnmarshalJSON(data []byte) error {
+func (u *CloudAuthentication) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CloudAuthentication{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -694,10 +712,7 @@ func (u CloudAuthentication) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CloudAuthentication: all fields are null")
 }
 
-// AIGatewayRedisCloudConfiguration - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Config for connecting to a Cloud Provider's Redis instance.
+// AIGatewayRedisCloudConfiguration - Config for connecting to a Cloud Provider's Redis instance.
 type AIGatewayRedisCloudConfiguration struct {
 	// Auth related config for connecting to a Cloud Provider's Redis instance.
 	CloudAuthentication *CloudAuthentication `json:"cloud_authentication,omitempty"`

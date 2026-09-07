@@ -39,6 +39,7 @@ const (
 	AllFilterItemsFieldMcpSessionID              AllFilterItemsField = "mcp_session_id"
 	AllFilterItemsFieldMcpToolName               AllFilterItemsField = "mcp_tool_name"
 	AllFilterItemsFieldNetwork                   AllFilterItemsField = "network"
+	AllFilterItemsFieldOidcCredential            AllFilterItemsField = "oidc_credential"
 	AllFilterItemsFieldPortal                    AllFilterItemsField = "portal"
 	AllFilterItemsFieldPrincipal                 AllFilterItemsField = "principal"
 	AllFilterItemsFieldProvider                  AllFilterItemsField = "provider"
@@ -62,7 +63,7 @@ func (e AllFilterItemsField) ToPointer() *AllFilterItemsField {
 func (e *AllFilterItemsField) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_group", "data_plane_node", "data_plane_node_version", "env", "gateway_service", "hostname", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "managed_cache", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "network", "portal", "principal", "provider", "provider_region", "realm", "region", "response_source", "route", "status_code", "status_code_grouped", "team", "upstream_status_code", "upstream_status_code_grouped":
+		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_group", "data_plane_node", "data_plane_node_version", "env", "gateway_service", "hostname", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "managed_cache", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "network", "oidc_credential", "portal", "principal", "provider", "provider_region", "realm", "region", "response_source", "route", "status_code", "status_code_grouped", "team", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}

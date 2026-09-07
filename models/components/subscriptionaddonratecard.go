@@ -104,7 +104,14 @@ func CreateSubscriptionAddonRateCardPriceVolume(volume BillingPriceVolume) Subsc
 	}
 }
 
-func (u *SubscriptionAddonRateCardPrice) UnmarshalJSON(data []byte) error {
+func (u *SubscriptionAddonRateCardPrice) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SubscriptionAddonRateCardPrice{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -472,7 +479,14 @@ func CreateSubscriptionAddonRateCardEntitlementTemplateBoolean(boolean BillingRa
 	}
 }
 
-func (u *SubscriptionAddonRateCardEntitlementTemplate) UnmarshalJSON(data []byte) error {
+func (u *SubscriptionAddonRateCardEntitlementTemplate) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SubscriptionAddonRateCardEntitlementTemplate{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

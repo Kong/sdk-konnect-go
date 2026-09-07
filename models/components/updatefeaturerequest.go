@@ -250,7 +250,14 @@ func CreateUpdateFeatureRequestUnitCostLlm(llm UnitCostBillingFeatureLLMUnitCost
 	}
 }
 
-func (u *UpdateFeatureRequestUnitCost) UnmarshalJSON(data []byte) error {
+func (u *UpdateFeatureRequestUnitCost) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = UpdateFeatureRequestUnitCost{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

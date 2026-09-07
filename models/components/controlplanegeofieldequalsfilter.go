@@ -72,7 +72,14 @@ func CreateControlPlaneGeoFieldEqualsFilterControlPlaneGeoFieldEqualsComparison(
 	}
 }
 
-func (u *ControlPlaneGeoFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+func (u *ControlPlaneGeoFieldEqualsFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ControlPlaneGeoFieldEqualsFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var controlPlaneGeoFieldEqualsComparison ControlPlaneGeoFieldEqualsComparison = ControlPlaneGeoFieldEqualsComparison{}
 	if err := utils.UnmarshalJSON(data, &controlPlaneGeoFieldEqualsComparison, "", true, nil); err == nil {

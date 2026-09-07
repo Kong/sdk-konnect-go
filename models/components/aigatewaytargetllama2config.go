@@ -31,10 +31,7 @@ func (e *Format) IsExact() bool {
 	return false
 }
 
-// AIGatewayTargetLlama2Config - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Llama2-specific configuration for a model.
+// AIGatewayTargetLlama2Config - Llama2-specific configuration for a model.
 type AIGatewayTargetLlama2Config struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

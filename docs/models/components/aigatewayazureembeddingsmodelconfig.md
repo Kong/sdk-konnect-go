@@ -1,8 +1,5 @@
 # AIGatewayAzureEmbeddingsModelConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Azure OpenAI-specific configuration for an embeddings model. Azure AI Foundry
 embeddings are not supported.
 

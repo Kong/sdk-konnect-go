@@ -31,8 +31,6 @@ func (e *CreateAIGatewayRequestDeploymentType) IsExact() bool {
 	return false
 }
 
-// CreateAIGatewayRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type CreateAIGatewayRequest struct {
 	// How this AI Gateway's control plane is deployed. Set at creation time and cannot be changed afterward.
 	DeploymentType *CreateAIGatewayRequestDeploymentType `default:"hybrid" json:"deployment_type"`

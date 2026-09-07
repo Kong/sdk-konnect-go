@@ -73,7 +73,14 @@ func CreatePrivateDNSStateFieldEqualsFilterPrivateDNSStateFieldEqualsComparison(
 	}
 }
 
-func (u *PrivateDNSStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+func (u *PrivateDNSStateFieldEqualsFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PrivateDNSStateFieldEqualsFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var privateDNSStateFieldEqualsComparison PrivateDNSStateFieldEqualsComparison = PrivateDNSStateFieldEqualsComparison{}
 	if err := utils.UnmarshalJSON(data, &privateDNSStateFieldEqualsComparison, "", true, nil); err == nil {

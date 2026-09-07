@@ -3,10 +3,7 @@
 
 package components
 
-// CreateAIGatewaySNIForCertificateRequest - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// An SNI represents a many-to-one mapping of hostnames to a certificate. A certificate can have many hostnames associated with it; when the AI Gateway receives an SSL request, it uses the SNI field in the Client Hello to look up the certificate associated with the SNI.
+// CreateAIGatewaySNIForCertificateRequest - An SNI represents a many-to-one mapping of hostnames to a certificate. A certificate can have many hostnames associated with it; when the AI Gateway receives an SSL request, it uses the SNI field in the Client Hello to look up the certificate associated with the SNI.
 type CreateAIGatewaySNIForCertificateRequest struct {
 	// The name for this SNI. This value is immutable after creation.
 	Name string `json:"name"`

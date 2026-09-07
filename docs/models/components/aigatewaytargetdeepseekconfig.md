@@ -1,8 +1,5 @@
 # AIGatewayTargetDeepseekConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Deepseek-specific configuration for a model.
 
 

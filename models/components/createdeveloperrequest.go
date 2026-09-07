@@ -40,6 +40,9 @@ type CreateDeveloperRequest struct {
 	Status *CreateDeveloperRequestDeveloperStatus `json:"status,omitempty"`
 	// When true, sends an invitation email to the developer. Default is false; no emails are sent unless explicitly requested.
 	SendInvitationEmail *bool `default:"false" json:"send_invitation_email"`
+	// The developer's answers to the portal's `developer_registration` form, if it has one, as a map from each field's `name` to its value. Optional. Built-in fields like `full_name` and `email` go in their own top-level properties, not here. Ignored if the portal doesn't have a `developer_registration` form.
+	//
+	AdditionalData map[string]FormResponseInput `json:"additional_data,omitempty"`
 }
 
 func (c CreateDeveloperRequest) MarshalJSON() ([]byte, error) {
@@ -79,4 +82,11 @@ func (c *CreateDeveloperRequest) GetSendInvitationEmail() *bool {
 		return nil
 	}
 	return c.SendInvitationEmail
+}
+
+func (c *CreateDeveloperRequest) GetAdditionalData() map[string]FormResponseInput {
+	if c == nil {
+		return nil
+	}
+	return c.AdditionalData
 }

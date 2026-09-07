@@ -41,7 +41,14 @@ func CreateCriteriaCreateScorecardCriteria(createScorecardCriteria CreateScoreca
 	}
 }
 
-func (u *Criteria) UnmarshalJSON(data []byte) error {
+func (u *Criteria) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Criteria{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var updateScorecardCriteria UpdateScorecardCriteria = UpdateScorecardCriteria{}
 	if err := utils.UnmarshalJSON(data, &updateScorecardCriteria, "", true, nil); err == nil {

@@ -22,10 +22,7 @@ const (
 	AIGatewayEmbeddingsModelConfigTypeOpenai      AIGatewayEmbeddingsModelConfigType = "openai"
 )
 
-// AIGatewayEmbeddingsModelConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for an embeddings model.
+// AIGatewayEmbeddingsModelConfig - Configuration for an embeddings model.
 type AIGatewayEmbeddingsModelConfig struct {
 	AIGatewayAzureEmbeddingsModelConfig       *AIGatewayAzureEmbeddingsModelConfig       `queryParam:"inline" union:"member"`
 	AIGatewayBedrockEmbeddingsModelConfig     *AIGatewayBedrockEmbeddingsModelConfig     `queryParam:"inline" union:"member"`
@@ -107,7 +104,14 @@ func CreateAIGatewayEmbeddingsModelConfigOpenai(openai AIGatewayOpenaiEmbeddings
 	}
 }
 
-func (u *AIGatewayEmbeddingsModelConfig) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayEmbeddingsModelConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayEmbeddingsModelConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

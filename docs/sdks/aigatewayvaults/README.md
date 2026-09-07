@@ -14,9 +14,6 @@ API related to the management of AI Gateway vaults for storing secrets.
 
 ## ListAiGatewayVaults
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of vaults associated with the AI Gateway.
 
 ### Example Usage
@@ -79,9 +76,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## CreateAiGatewayVault
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Registers a new vault for the AI Gateway.
 
@@ -168,9 +162,6 @@ func main() {
 
 ## GetAiGatewayVault
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the details of a specific AI Gateway vault.
 
 ### Example Usage
@@ -245,9 +236,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## UpdateAiGatewayVault
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the configuration of an existing AI Gateway vault.
 
@@ -336,9 +324,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayVault
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Removes a specific AI Gateway vault.
 

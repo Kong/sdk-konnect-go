@@ -33,9 +33,6 @@ func newAIGatewayCertificates(rootSDK *SDK, sdkConfig config.SDKConfiguration, h
 }
 
 // ListAiGatewayCertificates - List AI Gateway Certificates
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of certificates associated with the AI Gateway.
 func (s *AIGatewayCertificates) ListAiGatewayCertificates(ctx context.Context, request operations.ListAiGatewayCertificatesRequest, opts ...operations.Option) (*operations.ListAiGatewayCertificatesResponse, error) {
 	o := operations.Options{}
@@ -329,9 +326,6 @@ func (s *AIGatewayCertificates) ListAiGatewayCertificates(ctx context.Context, r
 }
 
 // CreateAiGatewayCertificate - Create an AI Gateway Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Creates a new certificate for the AI Gateway.
 func (s *AIGatewayCertificates) CreateAiGatewayCertificate(ctx context.Context, gatewayID string, createAIGatewayCertificateRequest components.CreateAIGatewayCertificateRequest, opts ...operations.Option) (*operations.CreateAiGatewayCertificateResponse, error) {
 	request := operations.CreateAiGatewayCertificateRequest{
@@ -675,9 +669,6 @@ func (s *AIGatewayCertificates) CreateAiGatewayCertificate(ctx context.Context, 
 }
 
 // GetAiGatewayCertificate - Get an AI Gateway Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific AI Gateway certificate.
 func (s *AIGatewayCertificates) GetAiGatewayCertificate(ctx context.Context, gatewayID string, certificateIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayCertificateResponse, error) {
 	request := operations.GetAiGatewayCertificateRequest{
@@ -972,9 +963,6 @@ func (s *AIGatewayCertificates) GetAiGatewayCertificate(ctx context.Context, gat
 }
 
 // UpdateAiGatewayCertificate - Update an AI Gateway Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates an existing AI Gateway certificate.
 func (s *AIGatewayCertificates) UpdateAiGatewayCertificate(ctx context.Context, request operations.UpdateAiGatewayCertificateRequest, opts ...operations.Option) (*operations.UpdateAiGatewayCertificateResponse, error) {
 	o := operations.Options{}
@@ -1292,9 +1280,6 @@ func (s *AIGatewayCertificates) UpdateAiGatewayCertificate(ctx context.Context, 
 }
 
 // DeleteAiGatewayCertificate - Delete an AI Gateway Certificate
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific AI Gateway certificate.
 func (s *AIGatewayCertificates) DeleteAiGatewayCertificate(ctx context.Context, gatewayID string, certificateIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayCertificateResponse, error) {
 	request := operations.DeleteAiGatewayCertificateRequest{

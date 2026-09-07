@@ -16,10 +16,7 @@ const (
 	AuthUnionTypeAws AuthUnionType = "aws"
 )
 
-// Auth - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Authentication to use when proxying to the upstream service.
+// Auth - Authentication to use when proxying to the upstream service.
 type Auth struct {
 	AIGatewayUpstreamAuthAWS *AIGatewayUpstreamAuthAWS `queryParam:"inline" union:"member"`
 
@@ -35,7 +32,14 @@ func CreateAuthAws(aws AIGatewayUpstreamAuthAWS) Auth {
 	}
 }
 
-func (u *Auth) UnmarshalJSON(data []byte) error {
+func (u *Auth) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Auth{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -69,14 +73,8 @@ func (u Auth) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type Auth: all fields are null")
 }
 
-// AIGatewayUpstreamConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration applied when proxying to the upstream service, including authentication.
+// AIGatewayUpstreamConfig - Configuration applied when proxying to the upstream service, including authentication.
 type AIGatewayUpstreamConfig struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Authentication to use when proxying to the upstream service.
 	Auth *Auth `json:"auth,omitempty"`
 }

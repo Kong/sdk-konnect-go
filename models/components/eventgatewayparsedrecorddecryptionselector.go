@@ -42,7 +42,14 @@ func CreatePathsStr(str string) Paths {
 	}
 }
 
-func (u *Paths) UnmarshalJSON(data []byte) error {
+func (u *Paths) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Paths{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var arrayOfEventGatewayParsedRecordFieldPathsArray []EventGatewayParsedRecordFieldPathsArray = []EventGatewayParsedRecordFieldPathsArray{}
 	if err := utils.UnmarshalJSON(data, &arrayOfEventGatewayParsedRecordFieldPathsArray, "", true, nil); err == nil {

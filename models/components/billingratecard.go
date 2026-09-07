@@ -104,7 +104,14 @@ func CreatePriceVolume(volume BillingPriceVolume) Price {
 	}
 }
 
-func (u *Price) UnmarshalJSON(data []byte) error {
+func (u *Price) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Price{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -472,7 +479,14 @@ func CreateEntitlementTemplateBoolean(boolean BillingRateCardBooleanEntitlement)
 	}
 }
 
-func (u *EntitlementTemplate) UnmarshalJSON(data []byte) error {
+func (u *EntitlementTemplate) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EntitlementTemplate{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

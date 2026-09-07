@@ -1,8 +1,5 @@
 # Auth
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Authentication to use when proxying to the upstream service.
 
 

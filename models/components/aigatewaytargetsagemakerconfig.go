@@ -7,8 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetSagemakerConfigAws - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayTargetSagemakerConfigAws struct {
 	// Overrides the AWS_REGION environment variable for SageMaker requests.
 	Region *string `json:"region,omitempty"`
@@ -100,10 +98,7 @@ func (a *AIGatewayTargetSagemakerConfigTarget) GetContainerHostname() *string {
 	return a.ContainerHostname
 }
 
-// AIGatewayTargetSagemakerConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// AWS SageMaker-specific configuration for a model.
+// AIGatewayTargetSagemakerConfig - AWS SageMaker-specific configuration for a model.
 type AIGatewayTargetSagemakerConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`
@@ -132,9 +127,7 @@ type AIGatewayTargetSagemakerConfig struct {
 	// The upstream URL for the model endpoint.
 	UpstreamURL *string `json:"upstream_url,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sagemaker" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
+	type_  string                                `const:"sagemaker" json:"type"`
 	Aws    *AIGatewayTargetSagemakerConfigAws    `json:"aws,omitempty"`
 	Target *AIGatewayTargetSagemakerConfigTarget `json:"target,omitempty"`
 }

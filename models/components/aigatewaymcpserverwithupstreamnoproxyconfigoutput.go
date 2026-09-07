@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayMCPServerWithUpstreamNoProxyConfigLogging - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for AI Gateway logging.
+// AIGatewayMCPServerWithUpstreamNoProxyConfigLogging - Configuration for AI Gateway logging.
 type AIGatewayMCPServerWithUpstreamNoProxyConfigLogging struct {
 	Payloads *bool `default:"false" json:"payloads"`
 	Audits   *bool `default:"false" json:"audits"`
@@ -41,37 +38,23 @@ func (a *AIGatewayMCPServerWithUpstreamNoProxyConfigLogging) GetAudits() *bool {
 	return a.Audits
 }
 
-// AIGatewayMCPServerWithUpstreamNoProxyConfigOutput - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Routing, logging, and server configuration for the MCP Server.
+// AIGatewayMCPServerWithUpstreamNoProxyConfigOutput - Routing, logging, and server configuration for the MCP Server.
 type AIGatewayMCPServerWithUpstreamNoProxyConfigOutput struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Route configuration for an MCP Server that terminates its own listener. At least one
 	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 	// incoming requests.
-	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
 	//
+	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
 	// Configuration for AI Gateway logging.
 	Logging *AIGatewayMCPServerWithUpstreamNoProxyConfigLogging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Server-side configuration for the MCP Server.
 	Server *AIGatewayMCPServerServerConfigBaseOutput `json:"server,omitempty"`
 	// Helper field to set protocol, host, port and path of the upstream service using a URL.
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration applied when proxying to the upstream service, including authentication.
 	Upstream *AIGatewayUpstreamConfigOutput `json:"upstream,omitempty"`
 }
@@ -129,37 +112,23 @@ func (a *AIGatewayMCPServerWithUpstreamNoProxyConfigOutput) GetUpstream() *AIGat
 	return a.Upstream
 }
 
-// AIGatewayMCPServerWithUpstreamNoProxyConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Routing, logging, and server configuration for the MCP Server.
+// AIGatewayMCPServerWithUpstreamNoProxyConfig - Routing, logging, and server configuration for the MCP Server.
 type AIGatewayMCPServerWithUpstreamNoProxyConfig struct {
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Route configuration for an MCP Server that terminates its own listener. At least one
 	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 	// incoming requests.
-	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
 	//
+	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
 	// Configuration for AI Gateway logging.
 	Logging *AIGatewayMCPServerWithUpstreamNoProxyConfigLogging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Server-side configuration for the MCP Server.
 	Server *AIGatewayMCPServerServerConfigBase `json:"server,omitempty"`
 	// Helper field to set protocol, host, port and path of the upstream service using a URL.
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Configuration applied when proxying to the upstream service, including authentication.
 	Upstream *AIGatewayUpstreamConfig `json:"upstream,omitempty"`
 }

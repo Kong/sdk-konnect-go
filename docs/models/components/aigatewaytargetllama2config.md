@@ -1,8 +1,5 @@
 # AIGatewayTargetLlama2Config
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Llama2-specific configuration for a model.
 
 

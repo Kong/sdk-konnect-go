@@ -19,6 +19,9 @@ type APIPackagePublication struct {
 	// If omitted, this defaults to the target portal's configured default API visibility.
 	//
 	Visibility *APIPublicationVisibility `json:"visibility,omitempty"`
+	// UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
+	//
+	FormID *string `json:"form_id,omitempty"`
 }
 
 func (a *APIPackagePublication) GetAutoApproveRegistrations() *bool {
@@ -40,4 +43,11 @@ func (a *APIPackagePublication) GetVisibility() *APIPublicationVisibility {
 		return nil
 	}
 	return a.Visibility
+}
+
+func (a *APIPackagePublication) GetFormID() *string {
+	if a == nil {
+		return nil
+	}
+	return a.FormID
 }

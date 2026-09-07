@@ -42,7 +42,14 @@ func CreateAddOnConfigKindFieldEqualsFilterAddOnConfigKindFieldEqualsComparison(
 	}
 }
 
-func (u *AddOnConfigKindFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+func (u *AddOnConfigKindFieldEqualsFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AddOnConfigKindFieldEqualsFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var addOnConfigKindFieldEqualsComparison AddOnConfigKindFieldEqualsComparison = AddOnConfigKindFieldEqualsComparison{}
 	if err := utils.UnmarshalJSON(data, &addOnConfigKindFieldEqualsComparison, "", true, nil); err == nil {

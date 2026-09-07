@@ -7,14 +7,9 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayMCPServerListener - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayMCPServerListener struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"listener" json:"type"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerNoUpstreamConfig `json:"config"`
 	// The explicit list of source MCP Servers whose tools this listener exposes.
@@ -22,15 +17,10 @@ type AIGatewayMCPServerListener struct {
 	// `upstream-server` (third-party MCP server) MCP Server in the same AI Gateway.
 	// All of the referenced source's tools are exposed.
 	//
-	Sources []string `json:"sources"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
+	Sources []string                          `json:"sources"`
+	Access  *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.

@@ -1,8 +1,5 @@
 # AIGatewayTargetXaiConfig
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Xai-specific configuration for a model.
 
 

@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetXaiConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Xai-specific configuration for a model.
+// AIGatewayTargetXaiConfig - Xai-specific configuration for a model.
 type AIGatewayTargetXaiConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

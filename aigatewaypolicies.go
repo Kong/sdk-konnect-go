@@ -33,9 +33,6 @@ func newAIGatewayPolicies(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks
 }
 
 // ListAiGatewayPolicies - List AI Gateway Policies
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns a list of policies configured for the AI Gateway.
 func (s *AIGatewayPolicies) ListAiGatewayPolicies(ctx context.Context, request operations.ListAiGatewayPoliciesRequest, opts ...operations.Option) (*operations.ListAiGatewayPoliciesResponse, error) {
 	o := operations.Options{}
@@ -329,9 +326,6 @@ func (s *AIGatewayPolicies) ListAiGatewayPolicies(ctx context.Context, request o
 }
 
 // CreateAiGatewayPolicy - Create an AI Gateway Policy
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Registers a new policy for the AI Gateway.
 func (s *AIGatewayPolicies) CreateAiGatewayPolicy(ctx context.Context, gatewayID string, createAIGatewayPolicyRequest components.CreateAIGatewayPolicyRequest, opts ...operations.Option) (*operations.CreateAiGatewayPolicyResponse, error) {
 	request := operations.CreateAiGatewayPolicyRequest{
@@ -675,9 +669,6 @@ func (s *AIGatewayPolicies) CreateAiGatewayPolicy(ctx context.Context, gatewayID
 }
 
 // GetAiGatewayPolicy - Get an AI Gateway Policy
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the details of a specific AI Gateway policy.
 func (s *AIGatewayPolicies) GetAiGatewayPolicy(ctx context.Context, gatewayID string, policyIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayPolicyResponse, error) {
 	request := operations.GetAiGatewayPolicyRequest{
@@ -972,9 +963,6 @@ func (s *AIGatewayPolicies) GetAiGatewayPolicy(ctx context.Context, gatewayID st
 }
 
 // UpdateAiGatewayPolicy - Update an AI Gateway Policy
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates the configuration of an existing AI Gateway policy.
 func (s *AIGatewayPolicies) UpdateAiGatewayPolicy(ctx context.Context, request operations.UpdateAiGatewayPolicyRequest, opts ...operations.Option) (*operations.UpdateAiGatewayPolicyResponse, error) {
 	o := operations.Options{}
@@ -1292,9 +1280,6 @@ func (s *AIGatewayPolicies) UpdateAiGatewayPolicy(ctx context.Context, request o
 }
 
 // DeleteAiGatewayPolicy - Delete an AI Gateway Policy
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Removes a specific AI Gateway policy.
 func (s *AIGatewayPolicies) DeleteAiGatewayPolicy(ctx context.Context, gatewayID string, policyIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayPolicyResponse, error) {
 	request := operations.DeleteAiGatewayPolicyRequest{

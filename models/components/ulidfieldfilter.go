@@ -88,7 +88,14 @@ func CreateULIDFieldFilterULIDFieldFilter2(ulidFieldFilter2 ULIDFieldFilter2) UL
 	}
 }
 
-func (u *ULIDFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *ULIDFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ULIDFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {

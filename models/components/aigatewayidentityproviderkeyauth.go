@@ -140,18 +140,12 @@ func (a *AIGatewayIdentityProviderKeyAuthConfig) GetAdditionalProperties() map[s
 	return a.AdditionalProperties
 }
 
-// AIGatewayIdentityProviderKeyAuth - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Configuration for an identity provider.
+// AIGatewayIdentityProviderKeyAuth - Configuration for an identity provider.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type AIGatewayIdentityProviderKeyAuth struct {
 	// The display name for this identity provider instance.
 	DisplayName string `json:"display_name"`
-	// **Pre-release Feature**
-	// This feature is currently in beta and is subject to change.
-	//
 	// A user-defined unique identifier for this identity provider instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.

@@ -113,8 +113,6 @@ func (m *Metadata) GetIsCa() *bool {
 	return m.IsCa
 }
 
-// AIGatewayDataPlaneClientCertificate - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
 type AIGatewayDataPlaneClientCertificate struct {
 	// JSON escaped string of the certificate.
 	Cert string `json:"cert"`

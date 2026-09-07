@@ -90,7 +90,14 @@ func CreateResourceNamesStr(str string) ResourceNames {
 	}
 }
 
-func (u *ResourceNames) UnmarshalJSON(data []byte) error {
+func (u *ResourceNames) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceNames{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var arrayOfEventGatewayACLResourceName []EventGatewayACLResourceName = []EventGatewayACLResourceName{}
 	if err := utils.UnmarshalJSON(data, &arrayOfEventGatewayACLResourceName, "", true, nil); err == nil {

@@ -7,10 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayTargetOllamaConfig - **Pre-release Feature**
-// This feature is currently in beta and is subject to change.
-//
-// Ollama-specific configuration for a model.
+// AIGatewayTargetOllamaConfig - Ollama-specific configuration for a model.
 type AIGatewayTargetOllamaConfig struct {
 	// The number of dimensions for embedding outputs.
 	EmbeddingsDimensions *int64 `json:"embeddings_dimensions,omitempty"`

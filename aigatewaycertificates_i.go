@@ -12,33 +12,18 @@ import (
 // AIGatewayCertificatesSDK is a generated interface.
 type AIGatewayCertificatesSDK interface {
 	// ListAiGatewayCertificates - List AI Gateway Certificates
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns a list of certificates associated with the AI Gateway.
 	ListAiGatewayCertificates(ctx context.Context, request operations.ListAiGatewayCertificatesRequest, opts ...operations.Option) (*operations.ListAiGatewayCertificatesResponse, error)
 	// CreateAiGatewayCertificate - Create an AI Gateway Certificate
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Creates a new certificate for the AI Gateway.
 	CreateAiGatewayCertificate(ctx context.Context, gatewayID string, createAIGatewayCertificateRequest components.CreateAIGatewayCertificateRequest, opts ...operations.Option) (*operations.CreateAiGatewayCertificateResponse, error)
 	// GetAiGatewayCertificate - Get an AI Gateway Certificate
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Returns the details of a specific AI Gateway certificate.
 	GetAiGatewayCertificate(ctx context.Context, gatewayID string, certificateIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayCertificateResponse, error)
 	// UpdateAiGatewayCertificate - Update an AI Gateway Certificate
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Updates an existing AI Gateway certificate.
 	UpdateAiGatewayCertificate(ctx context.Context, request operations.UpdateAiGatewayCertificateRequest, opts ...operations.Option) (*operations.UpdateAiGatewayCertificateResponse, error)
 	// DeleteAiGatewayCertificate - Delete an AI Gateway Certificate
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Removes a specific AI Gateway certificate.
 	DeleteAiGatewayCertificate(ctx context.Context, gatewayID string, certificateIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayCertificateResponse, error)
 }

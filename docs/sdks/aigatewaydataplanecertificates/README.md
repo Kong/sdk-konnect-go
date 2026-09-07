@@ -13,9 +13,6 @@ API related to the management of AI Gateway DataPlane Certificates.
 
 ## ListAiGatewayDataPlaneCertificates
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns a list of DataPlane certificates that are associated to this AI Gateway. A DataPlane certificate allows DataPlanes configured with the certificate and corresponding private key to establish connection with this AI Gateway.
 
 ### Example Usage
@@ -80,9 +77,6 @@ func main() {
 
 ## CreateAiGatewayDataPlaneCertificate
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Create a new DataPlane Certificate for this AI Gateway. A DataPlane certificate allows DataPlanes configured with the certificate and corresponding private key to establish connection with this AI Gateway.
 
 ### Example Usage
@@ -143,9 +137,6 @@ func main() {
 
 ## GetAiGatewayDataPlaneCertificate
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Retrieve a DataPlane certificate associated to this AI Gateway. A DataPlane certificate allows DataPlanes configured with the certificate and corresponding private key to establish connection with this AI Gateway.
 
 ### Example Usage
@@ -205,9 +196,6 @@ func main() {
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |
 
 ## DeleteAiGatewayDataPlaneCertificate
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Remove a DataPlane client certificate associated to this AI Gateway. Removing a DataPlane certificate would invalidate any DataPlanes currently connected to this AI Gateway using this certificate.
 

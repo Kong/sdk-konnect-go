@@ -42,7 +42,14 @@ func CreateAddOnOwnerControlPlaneGroupAddOnOwner(controlPlaneGroupAddOnOwner Con
 	}
 }
 
-func (u *AddOnOwner) UnmarshalJSON(data []byte) error {
+func (u *AddOnOwner) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AddOnOwner{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var controlPlaneAddOnOwner ControlPlaneAddOnOwner = ControlPlaneAddOnOwner{}
 	if err := utils.UnmarshalJSON(data, &controlPlaneAddOnOwner, "", true, nil); err == nil {

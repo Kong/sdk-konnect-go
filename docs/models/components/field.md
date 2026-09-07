@@ -31,6 +31,7 @@ custom := components.Field("custom_value")
 | `FieldDataPlaneNode`             | data_plane_node                  |
 | `FieldDataPlaneNodeVersion`      | data_plane_node_version          |
 | `FieldGatewayService`            | gateway_service                  |
+| `FieldOidcCredential`            | oidc_credential                  |
 | `FieldPortal`                    | portal                           |
 | `FieldPrincipal`                 | principal                        |
 | `FieldRealm`                     | realm                            |

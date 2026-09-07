@@ -1,9 +1,7 @@
 # AIGatewayModelProviderConfigAuthAWS
 
-**Pre-release Feature**
-This feature is currently in beta and is subject to change.
-
 Configuration for AWS model provider.
+
 
 
 ## Fields
