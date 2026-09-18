@@ -30458,6 +30458,16 @@ components:
       minItems: 1
       nullable: true
       title: API Publication Auth Strategy IDs
+    ApiPublicationSpecRenderer:
+      description: Customization settings for the API spec renderer in the portal.
+      type: object
+      properties:
+        try_it_ui_audience:
+          $ref: '#/components/schemas/TryItUIAudience'
+      additionalProperties: false
+      required:
+        - try_it_ui_audience
+      title: ApiPublicationSpecRenderer
     ApiPublicationListItem:
       description: An API publication in a portal
       type: object
@@ -31489,6 +31499,21 @@ components:
         - instance
         - detail
       title: Error
+    TryItUIAudience:
+      description: |
+        The audience for the Try It UI feature.
+
+        `all` means that the Try It UI will be available to all users, including unauthenticated users.
+
+        `authenticated` means that the Try It UI will only be available to authenticated users.
+
+        `registered` means that the Try It UI will only be available to users who have registered for the API.
+      type: string
+      enum:
+        - all
+        - authenticated
+        - registered
+      x-speakeasy-unknown-values: allow
     ImagePNGDataUri:
       description: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
       type: string
@@ -78516,6 +78541,17 @@ components:
                 $ref: '#/components/schemas/CreatedAt'
               updated_at:
                 $ref: '#/components/schemas/UpdatedAt'
+              spec_renderer:
+                description: Customization settings for the API spec renderer in the portal.
+                type: object
+                additionalProperties: false
+                nullable: true
+                properties:
+                  try_it_ui_audience:
+                    $ref: '#/components/schemas/TryItUIAudience'
+                required:
+                  - try_it_ui_audience
+                title: ApiPublicationSpecRenderer
             additionalProperties: false
             required:
               - visibility
@@ -78590,6 +78626,17 @@ components:
                 $ref: '#/components/schemas/CreatedAt'
               updated_at:
                 $ref: '#/components/schemas/UpdatedAt'
+              spec_renderer:
+                description: Customization settings for the API spec renderer in the portal.
+                type: object
+                additionalProperties: false
+                nullable: true
+                properties:
+                  try_it_ui_audience:
+                    $ref: '#/components/schemas/TryItUIAudience'
+                required:
+                  - try_it_ui_audience
+                title: ApiPublicationSpecRenderer
             additionalProperties: false
             required:
               - visibility
@@ -81459,7 +81506,7 @@ x-input-schemas:
     version: 2.3.0
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.6.2
+    version: 3.6.3
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
     version: 2.1.3
