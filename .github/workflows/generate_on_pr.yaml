@@ -1,9 +1,14 @@
 name: Generate SDK
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.sha }}
+  cancel-in-progress: true
+
 on:
   pull_request:
     paths:
       - .speakeasy/gen.yaml
+      - openapi.yaml
     types:
     - opened
     - synchronize
@@ -39,7 +44,7 @@ jobs:
       
       - id: decision
         run: |
-          echo "result=${{ contains(steps.changed-files.outputs.modified_files, '.speakeasy/gen.yaml') }}" >> "$GITHUB_OUTPUT"
+          echo "result=${{ contains(steps.changed-files.outputs.all_changed_files, '.speakeasy/gen.yaml') || contains(steps.changed-files.outputs.all_changed_files, 'openapi.yaml') }}" >> "$GITHUB_OUTPUT"
 
   generate:
     needs:
