@@ -18596,6 +18596,8 @@ paths:
             properties:
               can_own_applications:
                 $ref: '#/components/schemas/BooleanFieldFilter'
+              konnect_managed:
+                $ref: '#/components/schemas/BooleanFieldFilter'
           style: deepObject
       responses:
         '200':
@@ -19797,6 +19799,8 @@ paths:
               name:
                 $ref: '#/components/schemas/StringFieldFilter'
               can_own_applications:
+                $ref: '#/components/schemas/BooleanFieldFilter'
+              konnect_managed:
                 $ref: '#/components/schemas/BooleanFieldFilter'
           style: deepObject
       responses:
@@ -25162,6 +25166,12 @@ components:
       maxLength: 250
       minLength: 1
       pattern: '^[\w \W]+$'
+    KonnectManaged:
+      description: Whether the team's membership is managed by Konnect instead of being synced from an identity provider's team mappings. Set to `false` (default) to let identity provider team mappings keep syncing members into this team. Set to `true` to manage membership directly in Konnect and prevent identity provider team mappings from syncing to this team.
+      type: boolean
+      example: false
+      default: false
+      title: KonnectManaged
     LabelsUpdate:
       description: |
         Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types. 
@@ -33692,10 +33702,13 @@ components:
           description: Whether the team is allowed to own applications.
           type: boolean
           example: true
+        konnect_managed:
+          $ref: '#/components/schemas/KonnectManaged'
       example:
         name: IDM - Developers
         description: The Identity Management (IDM) API team.
         can_own_applications: false
+        konnect_managed: false
       additionalProperties: false
       title: PortalUpdateTeamRequest
     PortalCreateTeamRequest:
@@ -33723,10 +33736,13 @@ components:
           type: boolean
           example: true
           default: false
+        konnect_managed:
+          $ref: '#/components/schemas/KonnectManaged'
       example:
         name: IDM - Developers
         description: The Identity Management (IDM) team.
         can_own_applications: false
+        konnect_managed: false
       additionalProperties: false
       required:
         - name
@@ -33762,6 +33778,8 @@ components:
           description: Whether the team is allowed to own applications.
           type: boolean
           example: false
+        konnect_managed:
+          $ref: '#/components/schemas/KonnectManaged'
       example:
         id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
         name: IDM - Developers
@@ -33769,6 +33787,7 @@ components:
         created_at: '1992-02-07T17:46:57.52Z'
         updated_at: '2022-08-31T17:00:00.52Z'
         can_own_applications: false
+        konnect_managed: false
       required:
         - id
         - name
@@ -81470,7 +81489,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.10.2
+    version: 3.11.0
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2
