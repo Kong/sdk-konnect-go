@@ -228,7 +228,7 @@ remove.mocks:
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks
 generate.mocks: mockery remove.mocks
-	GODEBUG=gotypesalias=0 $(MOCKERY)
+	$(MOCKERY)
 
 # TYPES_TO_TEST_FIELDS is a list of types in models/components/
 # which have field tests generated for them.
