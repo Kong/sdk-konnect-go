@@ -8,6 +8,26 @@ import (
 	"time"
 )
 
+// APIPublicationSpecRenderer - Customization settings for the API spec renderer in the portal.
+type APIPublicationSpecRenderer struct {
+	// The audience for the Try It UI feature.
+	//
+	// `all` means that the Try It UI will be available to all users, including unauthenticated users.
+	//
+	// `authenticated` means that the Try It UI will only be available to authenticated users.
+	//
+	// `registered` means that the Try It UI will only be available to users who have registered for the API.
+	//
+	TryItUIAudience TryItUIAudience `json:"try_it_ui_audience"`
+}
+
+func (a *APIPublicationSpecRenderer) GetTryItUIAudience() TryItUIAudience {
+	if a == nil {
+		return TryItUIAudience("")
+	}
+	return a.TryItUIAudience
+}
+
 // APIPackagePublicationResponse - An API Package publication in a portal
 type APIPackagePublicationResponse struct {
 	// Whether the application registration auto approval on this portal for the api is enabled. If set to false, fallbacks on portal's auto_approve_applications value.
@@ -33,6 +53,8 @@ type APIPackagePublicationResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
+	// Customization settings for the API spec renderer in the portal.
+	SpecRenderer *APIPublicationSpecRenderer `json:"spec_renderer,omitempty"`
 }
 
 func (a APIPackagePublicationResponse) MarshalJSON() ([]byte, error) {
@@ -93,4 +115,11 @@ func (a *APIPackagePublicationResponse) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
+}
+
+func (a *APIPackagePublicationResponse) GetSpecRenderer() *APIPublicationSpecRenderer {
+	if a == nil {
+		return nil
+	}
+	return a.SpecRenderer
 }
