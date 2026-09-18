@@ -34,6 +34,59 @@ func (e *BillingCreditGrantCreditFundingMethod) IsExact() bool {
 	return false
 }
 
+// ResolvedCostBasis - The rate the purchase is settled at in the purchase `currency`. Present once the
+// cost basis is resolved.
+type ResolvedCostBasis struct {
+	// The fiat currency the charge amount is converted into for invoicing.
+	FiatCurrency string `json:"fiat_currency"`
+	// Fiat amount per one unit of the custom currency.
+	Rate string `json:"rate"`
+	// ID of the custom currency's cost basis resource the rate was taken from. Absent
+	// for manual cost bases.
+	CostBasisID *string `json:"cost_basis_id,omitempty"`
+	// When the rate was resolved.
+	ResolvedAt time.Time `json:"resolved_at"`
+}
+
+func (r ResolvedCostBasis) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *ResolvedCostBasis) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (r *ResolvedCostBasis) GetFiatCurrency() string {
+	if r == nil {
+		return ""
+	}
+	return r.FiatCurrency
+}
+
+func (r *ResolvedCostBasis) GetRate() string {
+	if r == nil {
+		return ""
+	}
+	return r.Rate
+}
+
+func (r *ResolvedCostBasis) GetCostBasisID() *string {
+	if r == nil {
+		return nil
+	}
+	return r.CostBasisID
+}
+
+func (r *ResolvedCostBasis) GetResolvedAt() time.Time {
+	if r == nil {
+		return time.Time{}
+	}
+	return r.ResolvedAt
+}
+
 // BillingCreditGrantCreditAvailabilityPolicy - Controls when credits become available for consumption.
 //
 // Defaults to `on_creation`.
@@ -86,18 +139,29 @@ func (e *BillingCreditGrantCreditPurchasePaymentSettlementStatus) IsExact() bool
 
 // BillingCreditGrantPurchase - Present when a funding workflow applies (funding_method is not `none`).
 type BillingCreditGrantPurchase struct {
-	// Currency of the purchase amount.
+	// Fiat currency the purchase is settled in.
+	//
+	// Must equal the grant `currency` for fiat grants and `cost_basis.fiat_currency`
+	// for custom-currency grants.
 	Currency string `json:"currency"`
-	// Cost basis per credit unit used to calculate the purchase amount.
+	// Fiat cost basis per credit unit of a fiat-currency grant.
 	//
-	// If `per_unit_cost_basis` is 0.50 and credit amount is $100.00, the total charge
-	// is $50.00. The value must be greater than 0. If the cost basis is 0, use
-	// `funding_method=none` instead.
+	// If `per_unit_cost_basis` is 0.50 and credit amount is
+	// $100.00, the total
+	// charge is $50.00. The value must be greater than 0. If the
+	// cost basis is 0, use `funding_method=none` instead.
 	//
-	// Defaults to 1.0.
-	PerUnitCostBasis *string `default:"1.0" json:"per_unit_cost_basis"`
-	// The purchase amount. Calculated from `per_unit_cost_basis` and credit `amount`.
-	Amount string `json:"amount"`
+	// Only applies to fiat grants and cannot be combined with `cost_basis`. Defaults
+	// to 1.0 when neither is provided.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	PerUnitCostBasis *string `json:"per_unit_cost_basis,omitempty"`
+	// The rate the purchase is settled at in the purchase `currency`. Present once the
+	// cost basis is resolved.
+	ResolvedCostBasis *ResolvedCostBasis `json:"resolved_cost_basis,omitempty"`
+	// The purchase amount, calculated from the resolved cost basis and credit
+	// `amount`. Present once the cost basis is resolved.
+	Amount *string `json:"amount,omitempty"`
 	// Controls when credits become available for consumption.
 	//
 	// Defaults to `on_creation`.
@@ -131,9 +195,16 @@ func (b *BillingCreditGrantPurchase) GetPerUnitCostBasis() *string {
 	return b.PerUnitCostBasis
 }
 
-func (b *BillingCreditGrantPurchase) GetAmount() string {
+func (b *BillingCreditGrantPurchase) GetResolvedCostBasis() *ResolvedCostBasis {
 	if b == nil {
-		return ""
+		return nil
+	}
+	return b.ResolvedCostBasis
+}
+
+func (b *BillingCreditGrantPurchase) GetAmount() *string {
+	if b == nil {
+		return nil
 	}
 	return b.Amount
 }
@@ -303,7 +374,10 @@ type BillingCreditGrant struct {
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// Funding method of the grant.
 	FundingMethod BillingCreditGrantCreditFundingMethod `json:"funding_method"`
-	// Fiat or custom currency code.
+	// The fiat or custom currency of the granted credits.
+	//
+	// Funded custom-currency grants must define `purchase.cost_basis` to settle in a
+	// fiat currency.
 	Currency string `json:"currency"`
 	// Granted credit amount.
 	Amount string `json:"amount"`
@@ -328,8 +402,9 @@ type BillingCreditGrant struct {
 	EffectiveAt *time.Time `json:"effective_at,omitempty"`
 	// Idempotency key for the credit grant creation request.
 	//
-	// When provided, reusing the same key returns an HTTP 409 Conflict instead of
-	// creating a duplicate grant, which makes create requests safe to retry.
+	// Unique per customer: reusing the same key for the same customer returns an HTTP
+	// 409 Conflict instead of creating a duplicate grant, which makes create requests
+	// safe to retry. The same key may be reused across different customers.
 	Key *string `json:"key,omitempty"`
 	// The timestamp when the credit grant expires.
 	//

@@ -38,8 +38,8 @@ func (e *BillingPriceVolumeType) UnmarshalJSON(data []byte) error {
 // The maximum quantity within a period determines the per-unit price for all units
 // in that period.
 //
-// When UnitConfig is present on the rate card, tier boundaries (up_to_amount) are
-// expressed in converted billing units.
+// When UnitConfig is present on the containing resource, tier boundaries
+// (up_to_amount) are expressed in converted billing units.
 type BillingPriceVolume struct {
 	// The type of the price.
 	Type BillingPriceVolumeType `json:"type"`

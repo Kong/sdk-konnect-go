@@ -1,0 +1,10 @@
+# GetNodeConfigSync
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `State`                                                                                                 | `*string`                                                                                               | :heavy_minus_sign:                                                                                      | Config sync state. One of `STATE_UNSPECIFIED`, `STATE_IN_SYNC`, `STATE_PENDING`, or `STATE_RESILIENCY`. |
+| `VersionID`                                                                                             | `*string`                                                                                               | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `Resiliency`                                                                                            | [*components.GetNodeResiliency](../../models/components/getnoderesiliency.md)                           | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |

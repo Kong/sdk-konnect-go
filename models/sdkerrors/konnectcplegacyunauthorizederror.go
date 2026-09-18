@@ -9,7 +9,9 @@ import (
 
 // KonnectCPLegacyUnauthorizedError - standard error
 type KonnectCPLegacyUnauthorizedError struct {
-	Message any `json:"message,omitempty"`
+	// A short summary of the problem.
+	//
+	Message *string `json:"message,omitempty"`
 }
 
 var _ error = &KonnectCPLegacyUnauthorizedError{}

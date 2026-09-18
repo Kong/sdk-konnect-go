@@ -95,36 +95,6 @@ func (m *Menu) GetFooterBottom() []PortalMenuItem {
 	return m.FooterBottom
 }
 
-// TryItUIAudience - The audience for the Try It UI feature.
-//
-// `all` means that the Try It UI will be available to all users, including unauthenticated users.
-//
-// `authenticated` means that the Try It UI will only be available to authenticated users.
-//
-// `registered` means that the Try It UI will only be available to users who have registered for the API.
-type TryItUIAudience string
-
-const (
-	TryItUIAudienceAll           TryItUIAudience = "all"
-	TryItUIAudienceAuthenticated TryItUIAudience = "authenticated"
-	TryItUIAudienceRegistered    TryItUIAudience = "registered"
-)
-
-func (e TryItUIAudience) ToPointer() *TryItUIAudience {
-	return &e
-}
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *TryItUIAudience) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "all", "authenticated", "registered":
-			return true
-		}
-	}
-	return false
-}
-
 // PortalCustomizationSpecRenderer - The spec renderer settings of this portal
 type PortalCustomizationSpecRenderer struct {
 	// Enable in-browser testing for your APIs. All linked gateways must have the CORS plugin configured.
@@ -141,15 +111,6 @@ type PortalCustomizationSpecRenderer struct {
 	HideDeprecated *bool `default:"false" json:"hide_deprecated"`
 	// Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
 	AllowCustomServerUrls *bool `default:"true" json:"allow_custom_server_urls"`
-	// The audience for the Try It UI feature.
-	//
-	// `all` means that the Try It UI will be available to all users, including unauthenticated users.
-	//
-	// `authenticated` means that the Try It UI will only be available to authenticated users.
-	//
-	// `registered` means that the Try It UI will only be available to users who have registered for the API.
-	//
-	TryItUIAudience *TryItUIAudience `default:"all" json:"try_it_ui_audience"`
 }
 
 func (p PortalCustomizationSpecRenderer) MarshalJSON() ([]byte, error) {
@@ -210,13 +171,6 @@ func (p *PortalCustomizationSpecRenderer) GetAllowCustomServerUrls() *bool {
 		return nil
 	}
 	return p.AllowCustomServerUrls
-}
-
-func (p *PortalCustomizationSpecRenderer) GetTryItUIAudience() *TryItUIAudience {
-	if p == nil {
-		return nil
-	}
-	return p.TryItUIAudience
 }
 
 // PortalCustomization - The custom settings of this portal

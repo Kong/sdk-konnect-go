@@ -19,8 +19,8 @@ const (
 )
 
 type AIGatewayModelProviderSagemakerAuthOutput struct {
-	AIGatewayModelProviderConfigAuthBasicOutput *AIGatewayModelProviderConfigAuthBasicOutput `queryParam:"inline" union:"member"`
-	AIGatewayModelProviderConfigAuthSagemaker   *AIGatewayModelProviderConfigAuthSagemaker   `queryParam:"inline" union:"member"`
+	AIGatewayModelProviderConfigAuthBasicOutput     *AIGatewayModelProviderConfigAuthBasicOutput     `queryParam:"inline" union:"member"`
+	AIGatewayModelProviderConfigAuthSagemakerOutput *AIGatewayModelProviderConfigAuthSagemakerOutput `queryParam:"inline" union:"member"`
 
 	Type AIGatewayModelProviderSagemakerAuthOutputType
 }
@@ -34,14 +34,14 @@ func CreateAIGatewayModelProviderSagemakerAuthOutputBasic(basic AIGatewayModelPr
 	}
 }
 
-func CreateAIGatewayModelProviderSagemakerAuthOutputSagemaker(sagemaker AIGatewayModelProviderConfigAuthSagemaker) AIGatewayModelProviderSagemakerAuthOutput {
+func CreateAIGatewayModelProviderSagemakerAuthOutputSagemaker(sagemaker AIGatewayModelProviderConfigAuthSagemakerOutput) AIGatewayModelProviderSagemakerAuthOutput {
 	typ := AIGatewayModelProviderSagemakerAuthOutputTypeSagemaker
 
 	typStr := AIGatewayModelProviderConfigAuthSagemakerType(typ)
 	sagemaker.Type = typStr
 
 	return AIGatewayModelProviderSagemakerAuthOutput{
-		AIGatewayModelProviderConfigAuthSagemaker: &sagemaker,
+		AIGatewayModelProviderConfigAuthSagemakerOutput: &sagemaker,
 		Type: typ,
 	}
 }
@@ -75,12 +75,12 @@ func (u *AIGatewayModelProviderSagemakerAuthOutput) UnmarshalJSON(data []byte) (
 		u.Type = AIGatewayModelProviderSagemakerAuthOutputTypeBasic
 		return nil
 	case "sagemaker":
-		aiGatewayModelProviderConfigAuthSagemaker := new(AIGatewayModelProviderConfigAuthSagemaker)
-		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderConfigAuthSagemaker, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == sagemaker) type AIGatewayModelProviderConfigAuthSagemaker within AIGatewayModelProviderSagemakerAuthOutput: %w", string(data), err)
+		aiGatewayModelProviderConfigAuthSagemakerOutput := new(AIGatewayModelProviderConfigAuthSagemakerOutput)
+		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderConfigAuthSagemakerOutput, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == sagemaker) type AIGatewayModelProviderConfigAuthSagemakerOutput within AIGatewayModelProviderSagemakerAuthOutput: %w", string(data), err)
 		}
 
-		u.AIGatewayModelProviderConfigAuthSagemaker = aiGatewayModelProviderConfigAuthSagemaker
+		u.AIGatewayModelProviderConfigAuthSagemakerOutput = aiGatewayModelProviderConfigAuthSagemakerOutput
 		u.Type = AIGatewayModelProviderSagemakerAuthOutputTypeSagemaker
 		return nil
 	}
@@ -93,8 +93,8 @@ func (u AIGatewayModelProviderSagemakerAuthOutput) MarshalJSON() ([]byte, error)
 		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthBasicOutput, "", true)
 	}
 
-	if u.AIGatewayModelProviderConfigAuthSagemaker != nil {
-		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthSagemaker, "", true)
+	if u.AIGatewayModelProviderConfigAuthSagemakerOutput != nil {
+		return utils.MarshalJSON(u.AIGatewayModelProviderConfigAuthSagemakerOutput, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AIGatewayModelProviderSagemakerAuthOutput: all fields are null")
@@ -126,8 +126,8 @@ func (a *AIGatewayModelProviderSagemakerConfigOutput) GetAuthBasic() *AIGatewayM
 	return a.GetAuth().AIGatewayModelProviderConfigAuthBasicOutput
 }
 
-func (a *AIGatewayModelProviderSagemakerConfigOutput) GetAuthSagemaker() *AIGatewayModelProviderConfigAuthSagemaker {
-	return a.GetAuth().AIGatewayModelProviderConfigAuthSagemaker
+func (a *AIGatewayModelProviderSagemakerConfigOutput) GetAuthSagemaker() *AIGatewayModelProviderConfigAuthSagemakerOutput {
+	return a.GetAuth().AIGatewayModelProviderConfigAuthSagemakerOutput
 }
 
 // AIGatewayModelProviderAIGatewayModelProviderSagemaker - Config for Sagemaker model provider.

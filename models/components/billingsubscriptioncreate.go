@@ -65,7 +65,11 @@ func (b *BillingSubscriptionCreateCustomer) GetKey() *string {
 	return b.Key
 }
 
-// Plan - The plan reference of the subscription.
+// Plan - A reference to a published plan the subscription is created from.
+//
+// Exactly one of `plan` or `custom_plan` must be provided. Use `plan` to base the
+// subscription on an existing published plan; use `custom_plan` to define the plan
+// inline.
 type Plan struct {
 	// The plan ID of the subscription. Set if subscription is created from a plan.
 	//
@@ -104,7 +108,119 @@ func (p *Plan) GetVersion() *int64 {
 	return p.Version
 }
 
-// BillingSubscriptionCreate - Subscription create request.
+// CustomPlan - An inline plan definition to create the subscription from, without referencing a
+// published plan.
+//
+// Exactly one of `plan` or `custom_plan` must be provided. The subscription is not
+// linked to a persisted plan, so the response omits the `plan` reference.
+type CustomPlan struct {
+	// Display name of the resource.
+	//
+	// Between 1 and 256 characters.
+	Name string `json:"name"`
+	// Optional description of the resource.
+	//
+	// Maximum 1024 characters.
+	Description *string `json:"description,omitempty"`
+	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
+	Labels map[string]string `json:"labels,omitempty"`
+	// The currency code of the plan.
+	Currency string `json:"currency"`
+	// The billing cadence for subscriptions using this plan.
+	BillingCadence string `json:"billing_cadence"`
+	// Whether pro-rating is enabled for this plan.
+	ProRatingEnabled *bool `default:"true" json:"pro_rating_enabled"`
+	// The plan phases define the pricing ramp for a subscription. A phase switch
+	// occurs only at the end of a billing period. At least one phase is required.
+	Phases []BillingPlanPhase `json:"phases"`
+}
+
+func (c CustomPlan) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CustomPlan) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c *CustomPlan) GetName() string {
+	if c == nil {
+		return ""
+	}
+	return c.Name
+}
+
+func (c *CustomPlan) GetDescription() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Description
+}
+
+func (c *CustomPlan) GetLabels() map[string]string {
+	if c == nil {
+		return nil
+	}
+	return c.Labels
+}
+
+func (c *CustomPlan) GetCurrency() string {
+	if c == nil {
+		return ""
+	}
+	return c.Currency
+}
+
+func (c *CustomPlan) GetBillingCadence() string {
+	if c == nil {
+		return ""
+	}
+	return c.BillingCadence
+}
+
+func (c *CustomPlan) GetProRatingEnabled() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.ProRatingEnabled
+}
+
+func (c *CustomPlan) GetPhases() []BillingPlanPhase {
+	if c == nil {
+		return []BillingPlanPhase{}
+	}
+	return c.Phases
+}
+
+// CostBasisMode - Controls how custom-currency cost bases are selected for the subscription.
+type CostBasisMode string
+
+const (
+	CostBasisModeDynamic CostBasisMode = "dynamic"
+	CostBasisModePinned  CostBasisMode = "pinned"
+)
+
+func (e CostBasisMode) ToPointer() *CostBasisMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CostBasisMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "dynamic", "pinned":
+			return true
+		}
+	}
+	return false
+}
+
 type BillingSubscriptionCreate struct {
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
@@ -121,8 +237,18 @@ type BillingSubscriptionCreate struct {
 	SettlementMode *BillingSubscriptionCreateSettlementMode `json:"settlement_mode,omitempty"`
 	// The customer to create the subscription for.
 	Customer BillingSubscriptionCreateCustomer `json:"customer"`
-	// The plan reference of the subscription.
-	Plan Plan `json:"plan"`
+	// A reference to a published plan the subscription is created from.
+	//
+	// Exactly one of `plan` or `custom_plan` must be provided. Use `plan` to base the
+	// subscription on an existing published plan; use `custom_plan` to define the plan
+	// inline.
+	Plan *Plan `json:"plan,omitempty"`
+	// An inline plan definition to create the subscription from, without referencing a
+	// published plan.
+	//
+	// Exactly one of `plan` or `custom_plan` must be provided. The subscription is not
+	// linked to a persisted plan, so the response omits the `plan` reference.
+	CustomPlan *CustomPlan `json:"custom_plan,omitempty"`
 	// A billing anchor is the fixed point in time that determines the subscription's
 	// recurring billing cycle. It affects when charges occur and how prorations are
 	// calculated. Common anchors:
@@ -134,6 +260,8 @@ type BillingSubscriptionCreate struct {
 	// If not provided, the subscription will be created with the subscription's
 	// creation time as the billing anchor.
 	BillingAnchor *time.Time `json:"billing_anchor,omitempty"`
+	// Controls how custom-currency cost bases are selected for the subscription.
+	CostBasisMode *CostBasisMode `default:"dynamic" json:"cost_basis_mode"`
 }
 
 func (b BillingSubscriptionCreate) MarshalJSON() ([]byte, error) {
@@ -168,11 +296,18 @@ func (b *BillingSubscriptionCreate) GetCustomer() BillingSubscriptionCreateCusto
 	return b.Customer
 }
 
-func (b *BillingSubscriptionCreate) GetPlan() Plan {
+func (b *BillingSubscriptionCreate) GetPlan() *Plan {
 	if b == nil {
-		return Plan{}
+		return nil
 	}
 	return b.Plan
+}
+
+func (b *BillingSubscriptionCreate) GetCustomPlan() *CustomPlan {
+	if b == nil {
+		return nil
+	}
+	return b.CustomPlan
 }
 
 func (b *BillingSubscriptionCreate) GetBillingAnchor() *time.Time {
@@ -180,4 +315,11 @@ func (b *BillingSubscriptionCreate) GetBillingAnchor() *time.Time {
 		return nil
 	}
 	return b.BillingAnchor
+}
+
+func (b *BillingSubscriptionCreate) GetCostBasisMode() *CostBasisMode {
+	if b == nil {
+		return nil
+	}
+	return b.CostBasisMode
 }

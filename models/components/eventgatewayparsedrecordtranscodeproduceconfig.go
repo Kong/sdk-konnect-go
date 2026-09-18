@@ -4,92 +4,95 @@
 package components
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
+type EventGatewayParsedRecordTranscodeProduceConfigType string
+
+const (
+	EventGatewayParsedRecordTranscodeProduceConfigTypeJSON EventGatewayParsedRecordTranscodeProduceConfigType = "json"
+	EventGatewayParsedRecordTranscodeProduceConfigTypeAvro EventGatewayParsedRecordTranscodeProduceConfigType = "avro"
 )
 
 // EventGatewayParsedRecordTranscodeProduceConfig - The configuration of the transcode parsed record policy applied to produced records.
 type EventGatewayParsedRecordTranscodeProduceConfig struct {
-	// Describes how to handle a failure in a policy applied to produced records.
-	// * `reject` - rejects the record batch.
-	// * `passthrough` - passes the record silently to the backend cluster even though policy execution failed.
-	// * `mark` - passes the record to the backend cluster but marks it with a `kong/policy-failure-<id>` header whose value is the reason for the policy failure (truncated to 512 characters).
-	//
-	// **Requires a minimum runtime version of `1.2`**.
-	FailureMode ProduceFailureMode `json:"failure_mode"`
-	// The serialization format to convert the record value into.
-	OutputFormat EventGatewayParsedRecordTranscodeOutputFormat `json:"output_format"`
-	// Determines how to look up the schema to use for the transcoded output data.
-	// Leave this unset if the output data schema isn't needed.
-	//
-	SchemaSource *EventGatewayParsedRecordTranscodeSchemaSource `json:"schema_source,omitempty"`
-	// Defines how to record the schema id for the transcoded output data. See the
-	// [Confluent docs](https://docs.confluent.io/platform/current/schema-registry/fundamentals/serdes-develop/index.html#wire-format)
-	// for more about the wire format.
-	//
-	SchemaRefDestination EventGatewayParsedRecordTranscodeSchemaRefDestination `json:"schema_ref_destination"`
+	EventGatewayParsedRecordTranscodeProduceConfigJSON *EventGatewayParsedRecordTranscodeProduceConfigJSON `queryParam:"inline" union:"member"`
+	EventGatewayParsedRecordTranscodeProduceConfigAvro *EventGatewayParsedRecordTranscodeProduceConfigAvro `queryParam:"inline" union:"member"`
+
+	Type EventGatewayParsedRecordTranscodeProduceConfigType
 }
 
-func (e EventGatewayParsedRecordTranscodeProduceConfig) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
-}
+func CreateEventGatewayParsedRecordTranscodeProduceConfigJSON(json EventGatewayParsedRecordTranscodeProduceConfigJSON) EventGatewayParsedRecordTranscodeProduceConfig {
+	typ := EventGatewayParsedRecordTranscodeProduceConfigTypeJSON
 
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"failure_mode", "output_format", "schema_ref_destination"}); err != nil {
-		return err
+	return EventGatewayParsedRecordTranscodeProduceConfig{
+		EventGatewayParsedRecordTranscodeProduceConfigJSON: &json,
+		Type: typ,
 	}
-	return nil
 }
 
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) GetFailureMode() ProduceFailureMode {
-	if e == nil {
-		return ProduceFailureMode("")
+func CreateEventGatewayParsedRecordTranscodeProduceConfigAvro(avro EventGatewayParsedRecordTranscodeProduceConfigAvro) EventGatewayParsedRecordTranscodeProduceConfig {
+	typ := EventGatewayParsedRecordTranscodeProduceConfigTypeAvro
+
+	return EventGatewayParsedRecordTranscodeProduceConfig{
+		EventGatewayParsedRecordTranscodeProduceConfigAvro: &avro,
+		Type: typ,
 	}
-	return e.FailureMode
 }
 
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) GetOutputFormat() EventGatewayParsedRecordTranscodeOutputFormat {
-	if e == nil {
-		return EventGatewayParsedRecordTranscodeOutputFormat("")
+func (u *EventGatewayParsedRecordTranscodeProduceConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EventGatewayParsedRecordTranscodeProduceConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	type discriminator struct {
+		OutputFormat string `json:"output_format"`
 	}
-	return e.OutputFormat
-}
 
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) GetSchemaSource() *EventGatewayParsedRecordTranscodeSchemaSource {
-	if e == nil {
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.OutputFormat {
+	case "json":
+		eventGatewayParsedRecordTranscodeProduceConfigJSON := new(EventGatewayParsedRecordTranscodeProduceConfigJSON)
+		if err := utils.UnmarshalJSON(data, &eventGatewayParsedRecordTranscodeProduceConfigJSON, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (OutputFormat == json) type EventGatewayParsedRecordTranscodeProduceConfigJSON within EventGatewayParsedRecordTranscodeProduceConfig: %w", string(data), err)
+		}
+
+		u.EventGatewayParsedRecordTranscodeProduceConfigJSON = eventGatewayParsedRecordTranscodeProduceConfigJSON
+		u.Type = EventGatewayParsedRecordTranscodeProduceConfigTypeJSON
+		return nil
+	case "avro":
+		eventGatewayParsedRecordTranscodeProduceConfigAvro := new(EventGatewayParsedRecordTranscodeProduceConfigAvro)
+		if err := utils.UnmarshalJSON(data, &eventGatewayParsedRecordTranscodeProduceConfigAvro, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (OutputFormat == avro) type EventGatewayParsedRecordTranscodeProduceConfigAvro within EventGatewayParsedRecordTranscodeProduceConfig: %w", string(data), err)
+		}
+
+		u.EventGatewayParsedRecordTranscodeProduceConfigAvro = eventGatewayParsedRecordTranscodeProduceConfigAvro
+		u.Type = EventGatewayParsedRecordTranscodeProduceConfigTypeAvro
 		return nil
 	}
-	return e.SchemaSource
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EventGatewayParsedRecordTranscodeProduceConfig", string(data))
 }
 
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) GetSchemaSourceReference() *EventGatewayParsedRecordTranscodeSchemaSourceReference {
-	if v := e.GetSchemaSource(); v != nil {
-		return v.EventGatewayParsedRecordTranscodeSchemaSourceReference
+func (u EventGatewayParsedRecordTranscodeProduceConfig) MarshalJSON() ([]byte, error) {
+	if u.EventGatewayParsedRecordTranscodeProduceConfigJSON != nil {
+		return utils.MarshalJSON(u.EventGatewayParsedRecordTranscodeProduceConfigJSON, "", true)
 	}
-	return nil
-}
 
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) GetSchemaSourceInline() *EventGatewayParsedRecordTranscodeSchemaSourceInline {
-	if v := e.GetSchemaSource(); v != nil {
-		return v.EventGatewayParsedRecordTranscodeSchemaSourceInline
+	if u.EventGatewayParsedRecordTranscodeProduceConfigAvro != nil {
+		return utils.MarshalJSON(u.EventGatewayParsedRecordTranscodeProduceConfigAvro, "", true)
 	}
-	return nil
-}
 
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) GetSchemaRefDestination() EventGatewayParsedRecordTranscodeSchemaRefDestination {
-	if e == nil {
-		return EventGatewayParsedRecordTranscodeSchemaRefDestination{}
-	}
-	return e.SchemaRefDestination
-}
-
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) GetSchemaRefDestinationConfluentFormat() *EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat {
-	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat
-}
-
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) GetSchemaRefDestinationRecordHeader() *EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader {
-	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader
-}
-
-func (e *EventGatewayParsedRecordTranscodeProduceConfig) GetSchemaRefDestinationNone() *EventGatewayParsedRecordTranscodeSchemaRefDestinationNone {
-	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationNone
+	return nil, errors.New("could not marshal union type EventGatewayParsedRecordTranscodeProduceConfig: all fields are null")
 }

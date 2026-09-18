@@ -10,6 +10,7 @@ const (
 	ListCreditTransactionsParamsFilterTypeFunded   ListCreditTransactionsParamsFilterType = "funded"
 	ListCreditTransactionsParamsFilterTypeConsumed ListCreditTransactionsParamsFilterType = "consumed"
 	ListCreditTransactionsParamsFilterTypeExpired  ListCreditTransactionsParamsFilterType = "expired"
+	ListCreditTransactionsParamsFilterTypeVoided   ListCreditTransactionsParamsFilterType = "voided"
 )
 
 func (e ListCreditTransactionsParamsFilterType) ToPointer() *ListCreditTransactionsParamsFilterType {
@@ -20,7 +21,7 @@ func (e ListCreditTransactionsParamsFilterType) ToPointer() *ListCreditTransacti
 func (e *ListCreditTransactionsParamsFilterType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "funded", "consumed", "expired":
+		case "funded", "consumed", "expired", "voided":
 			return true
 		}
 	}

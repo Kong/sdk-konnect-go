@@ -9,7 +9,9 @@ import (
 
 // KonnectCPLegacyForbiddenError - standard error
 type KonnectCPLegacyForbiddenError struct {
-	Message any `json:"message,omitempty"`
+	// A short summary of the problem.
+	//
+	Message *string `json:"message,omitempty"`
 }
 
 var _ error = &KonnectCPLegacyForbiddenError{}

@@ -4,6 +4,9 @@
 package components
 
 // Stripe - Used if the customer has a linked Stripe app.
+//
+// Set to `null` to remove the Stripe data of the customer; omit to leave it
+// unchanged.
 type Stripe struct {
 	// The Stripe customer ID used.
 	CustomerID *string `json:"customer_id,omitempty"`
@@ -35,6 +38,9 @@ func (s *Stripe) GetLabels() map[string]string {
 }
 
 // ExternalInvoicing - Used if the customer has a linked external invoicing app.
+//
+// Set to `null` to remove the external invoicing data of the customer; omit to
+// leave it unchanged.
 type ExternalInvoicing struct {
 	// Labels for this external invoicing integration on the customer.
 	Labels map[string]string `json:"labels,omitempty"`
@@ -50,8 +56,14 @@ func (e *ExternalInvoicing) GetLabels() map[string]string {
 // UpsertAppCustomerDataRequest - AppCustomerData upsert request.
 type UpsertAppCustomerDataRequest struct {
 	// Used if the customer has a linked Stripe app.
+	//
+	// Set to `null` to remove the Stripe data of the customer; omit to leave it
+	// unchanged.
 	Stripe *Stripe `json:"stripe,omitempty"`
 	// Used if the customer has a linked external invoicing app.
+	//
+	// Set to `null` to remove the external invoicing data of the customer; omit to
+	// leave it unchanged.
 	ExternalInvoicing *ExternalInvoicing `json:"external_invoicing,omitempty"`
 }
 

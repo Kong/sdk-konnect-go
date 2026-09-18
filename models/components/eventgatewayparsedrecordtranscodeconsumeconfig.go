@@ -4,93 +4,95 @@
 package components
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
+type EventGatewayParsedRecordTranscodeConsumeConfigType string
+
+const (
+	EventGatewayParsedRecordTranscodeConsumeConfigTypeJSON EventGatewayParsedRecordTranscodeConsumeConfigType = "json"
+	EventGatewayParsedRecordTranscodeConsumeConfigTypeAvro EventGatewayParsedRecordTranscodeConsumeConfigType = "avro"
 )
 
 // EventGatewayParsedRecordTranscodeConsumeConfig - The configuration of the transcode parsed record policy applied to consumed records.
 type EventGatewayParsedRecordTranscodeConsumeConfig struct {
-	// Describes how to handle a failure in a policy applied to consumed records.
-	// * `error` - the batch is not delivered to the client. Use sparingly: erroring on a batch causes clients to get stuck on the problematic offset and requires manual intervention to skip it.
-	// * `skip` - the record is not delivered to the client.
-	// * `passthrough` - passes the record to the client even though policy execution failed.
-	// * `mark` - passes the record to the client but marks it with a `kong/policy-failure-<id>` header whose value is the reason for the policy failure (truncated to 512 characters).
-	//
-	// **Requires a minimum runtime version of `1.2`**.
-	FailureMode ConsumeFailureMode `json:"failure_mode"`
-	// The serialization format to convert the record value into.
-	OutputFormat EventGatewayParsedRecordTranscodeOutputFormat `json:"output_format"`
-	// Determines how to look up the schema to use for the transcoded output data.
-	// Leave this unset if the output data schema isn't needed.
-	//
-	SchemaSource *EventGatewayParsedRecordTranscodeSchemaSource `json:"schema_source,omitempty"`
-	// Defines how to record the schema id for the transcoded output data. See the
-	// [Confluent docs](https://docs.confluent.io/platform/current/schema-registry/fundamentals/serdes-develop/index.html#wire-format)
-	// for more about the wire format.
-	//
-	SchemaRefDestination EventGatewayParsedRecordTranscodeSchemaRefDestination `json:"schema_ref_destination"`
+	EventGatewayParsedRecordTranscodeConsumeConfigJSON *EventGatewayParsedRecordTranscodeConsumeConfigJSON `queryParam:"inline" union:"member"`
+	EventGatewayParsedRecordTranscodeConsumeConfigAvro *EventGatewayParsedRecordTranscodeConsumeConfigAvro `queryParam:"inline" union:"member"`
+
+	Type EventGatewayParsedRecordTranscodeConsumeConfigType
 }
 
-func (e EventGatewayParsedRecordTranscodeConsumeConfig) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
-}
+func CreateEventGatewayParsedRecordTranscodeConsumeConfigJSON(json EventGatewayParsedRecordTranscodeConsumeConfigJSON) EventGatewayParsedRecordTranscodeConsumeConfig {
+	typ := EventGatewayParsedRecordTranscodeConsumeConfigTypeJSON
 
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"failure_mode", "output_format", "schema_ref_destination"}); err != nil {
-		return err
+	return EventGatewayParsedRecordTranscodeConsumeConfig{
+		EventGatewayParsedRecordTranscodeConsumeConfigJSON: &json,
+		Type: typ,
 	}
-	return nil
 }
 
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) GetFailureMode() ConsumeFailureMode {
-	if e == nil {
-		return ConsumeFailureMode("")
+func CreateEventGatewayParsedRecordTranscodeConsumeConfigAvro(avro EventGatewayParsedRecordTranscodeConsumeConfigAvro) EventGatewayParsedRecordTranscodeConsumeConfig {
+	typ := EventGatewayParsedRecordTranscodeConsumeConfigTypeAvro
+
+	return EventGatewayParsedRecordTranscodeConsumeConfig{
+		EventGatewayParsedRecordTranscodeConsumeConfigAvro: &avro,
+		Type: typ,
 	}
-	return e.FailureMode
 }
 
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) GetOutputFormat() EventGatewayParsedRecordTranscodeOutputFormat {
-	if e == nil {
-		return EventGatewayParsedRecordTranscodeOutputFormat("")
+func (u *EventGatewayParsedRecordTranscodeConsumeConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EventGatewayParsedRecordTranscodeConsumeConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	type discriminator struct {
+		OutputFormat string `json:"output_format"`
 	}
-	return e.OutputFormat
-}
 
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) GetSchemaSource() *EventGatewayParsedRecordTranscodeSchemaSource {
-	if e == nil {
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.OutputFormat {
+	case "json":
+		eventGatewayParsedRecordTranscodeConsumeConfigJSON := new(EventGatewayParsedRecordTranscodeConsumeConfigJSON)
+		if err := utils.UnmarshalJSON(data, &eventGatewayParsedRecordTranscodeConsumeConfigJSON, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (OutputFormat == json) type EventGatewayParsedRecordTranscodeConsumeConfigJSON within EventGatewayParsedRecordTranscodeConsumeConfig: %w", string(data), err)
+		}
+
+		u.EventGatewayParsedRecordTranscodeConsumeConfigJSON = eventGatewayParsedRecordTranscodeConsumeConfigJSON
+		u.Type = EventGatewayParsedRecordTranscodeConsumeConfigTypeJSON
+		return nil
+	case "avro":
+		eventGatewayParsedRecordTranscodeConsumeConfigAvro := new(EventGatewayParsedRecordTranscodeConsumeConfigAvro)
+		if err := utils.UnmarshalJSON(data, &eventGatewayParsedRecordTranscodeConsumeConfigAvro, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (OutputFormat == avro) type EventGatewayParsedRecordTranscodeConsumeConfigAvro within EventGatewayParsedRecordTranscodeConsumeConfig: %w", string(data), err)
+		}
+
+		u.EventGatewayParsedRecordTranscodeConsumeConfigAvro = eventGatewayParsedRecordTranscodeConsumeConfigAvro
+		u.Type = EventGatewayParsedRecordTranscodeConsumeConfigTypeAvro
 		return nil
 	}
-	return e.SchemaSource
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EventGatewayParsedRecordTranscodeConsumeConfig", string(data))
 }
 
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) GetSchemaSourceReference() *EventGatewayParsedRecordTranscodeSchemaSourceReference {
-	if v := e.GetSchemaSource(); v != nil {
-		return v.EventGatewayParsedRecordTranscodeSchemaSourceReference
+func (u EventGatewayParsedRecordTranscodeConsumeConfig) MarshalJSON() ([]byte, error) {
+	if u.EventGatewayParsedRecordTranscodeConsumeConfigJSON != nil {
+		return utils.MarshalJSON(u.EventGatewayParsedRecordTranscodeConsumeConfigJSON, "", true)
 	}
-	return nil
-}
 
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) GetSchemaSourceInline() *EventGatewayParsedRecordTranscodeSchemaSourceInline {
-	if v := e.GetSchemaSource(); v != nil {
-		return v.EventGatewayParsedRecordTranscodeSchemaSourceInline
+	if u.EventGatewayParsedRecordTranscodeConsumeConfigAvro != nil {
+		return utils.MarshalJSON(u.EventGatewayParsedRecordTranscodeConsumeConfigAvro, "", true)
 	}
-	return nil
-}
 
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) GetSchemaRefDestination() EventGatewayParsedRecordTranscodeSchemaRefDestination {
-	if e == nil {
-		return EventGatewayParsedRecordTranscodeSchemaRefDestination{}
-	}
-	return e.SchemaRefDestination
-}
-
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) GetSchemaRefDestinationConfluentFormat() *EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat {
-	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat
-}
-
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) GetSchemaRefDestinationRecordHeader() *EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader {
-	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader
-}
-
-func (e *EventGatewayParsedRecordTranscodeConsumeConfig) GetSchemaRefDestinationNone() *EventGatewayParsedRecordTranscodeSchemaRefDestinationNone {
-	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationNone
+	return nil, errors.New("could not marshal union type EventGatewayParsedRecordTranscodeConsumeConfig: all fields are null")
 }
