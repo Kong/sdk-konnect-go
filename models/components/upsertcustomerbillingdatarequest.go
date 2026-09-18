@@ -19,6 +19,9 @@ func (u *UpsertCustomerBillingDataRequestBillingProfile) GetID() string {
 }
 
 // UpsertCustomerBillingDataRequestStripe - Used if the customer has a linked Stripe app.
+//
+// Set to `null` to remove the Stripe data of the customer; omit to leave it
+// unchanged.
 type UpsertCustomerBillingDataRequestStripe struct {
 	// The Stripe customer ID used.
 	CustomerID *string `json:"customer_id,omitempty"`
@@ -50,6 +53,9 @@ func (u *UpsertCustomerBillingDataRequestStripe) GetLabels() map[string]string {
 }
 
 // UpsertCustomerBillingDataRequestExternalInvoicing - Used if the customer has a linked external invoicing app.
+//
+// Set to `null` to remove the external invoicing data of the customer; omit to
+// leave it unchanged.
 type UpsertCustomerBillingDataRequestExternalInvoicing struct {
 	// Labels for this external invoicing integration on the customer.
 	Labels map[string]string `json:"labels,omitempty"`
@@ -65,8 +71,14 @@ func (u *UpsertCustomerBillingDataRequestExternalInvoicing) GetLabels() map[stri
 // UpsertCustomerBillingDataRequestAppCustomerData - App customer data.
 type UpsertCustomerBillingDataRequestAppCustomerData struct {
 	// Used if the customer has a linked Stripe app.
+	//
+	// Set to `null` to remove the Stripe data of the customer; omit to leave it
+	// unchanged.
 	Stripe *UpsertCustomerBillingDataRequestStripe `json:"stripe,omitempty"`
 	// Used if the customer has a linked external invoicing app.
+	//
+	// Set to `null` to remove the external invoicing data of the customer; omit to
+	// leave it unchanged.
 	ExternalInvoicing *UpsertCustomerBillingDataRequestExternalInvoicing `json:"external_invoicing,omitempty"`
 }
 

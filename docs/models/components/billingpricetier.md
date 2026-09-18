@@ -3,8 +3,8 @@
 A price tier used in graduated and volume pricing.
 
 At least one price component (flat_price or unit_price) must be set. When
-UnitConfig is present on the rate card, up_to_amount is expressed in converted
-billing units.
+UnitConfig is present on the containing resource, up_to_amount is expressed in
+converted billing units.
 
 
 ## Fields

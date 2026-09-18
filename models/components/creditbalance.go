@@ -8,6 +8,9 @@ type CreditBalance struct {
 	// Fiat or custom currency code.
 	Currency string `json:"currency"`
 	// Credits available after applying currently live charge impacts.
+	//
+	// Always zero for historical balance queries using the `timestamp` parameter
+	// because live charge impacts cannot be reconstructed historically.
 	Live string `json:"live"`
 	// Credits that have been booked on the ledger as of the balance timestamp.
 	Settled string `json:"settled"`

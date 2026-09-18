@@ -1,6 +1,12 @@
 # SettlementMode
 
-Settlement mode of the charge.
+Settlement mode for plan.
+
+Values:
+
+- `credit_then_invoice`: Credits are applied first, then any remainder is
+invoiced.
+- `credit_only`: Usage is settled exclusively against credits.
 
 ## Example Usage
 

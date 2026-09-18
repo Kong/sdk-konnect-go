@@ -5,6 +5,7 @@ package components
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
@@ -32,6 +33,134 @@ func (e *CreditFundingMethod) IsExact() bool {
 		}
 	}
 	return false
+}
+
+type CostBasisType string
+
+const (
+	CostBasisTypeDynamic CostBasisType = "dynamic"
+	CostBasisTypePinned  CostBasisType = "pinned"
+	CostBasisTypeManual  CostBasisType = "manual"
+)
+
+// CostBasis - Defines how custom-currency credits are priced in the purchase `currency`; the
+// resolved rate is exposed through `resolved_cost_basis`.
+//
+// Fiat grants accept only a `manual` cost basis without `fiat_currency`, where
+// `rate` is the fiat cost per credit unit. Custom-currency grants require a cost
+// basis of any type with `fiat_currency` set and equal to the purchase `currency`.
+// A `dynamic` cost basis is resolved at the grant's effective time, so the
+// currency cost basis must be effective by then. Cannot be combined with
+// `per_unit_cost_basis`.
+type CostBasis struct {
+	CreateChargeCostBasisDynamic *CreateChargeCostBasisDynamic `queryParam:"inline" union:"member"`
+	CreateChargeCostBasisPinned  *CreateChargeCostBasisPinned  `queryParam:"inline" union:"member"`
+	CreateChargeCostBasisManual  *CreateChargeCostBasisManual  `queryParam:"inline" union:"member"`
+
+	Type CostBasisType
+}
+
+func CreateCostBasisDynamic(dynamic CreateChargeCostBasisDynamic) CostBasis {
+	typ := CostBasisTypeDynamic
+
+	typStr := CreateChargeCostBasisDynamicType(typ)
+	dynamic.Type = typStr
+
+	return CostBasis{
+		CreateChargeCostBasisDynamic: &dynamic,
+		Type:                         typ,
+	}
+}
+
+func CreateCostBasisPinned(pinned CreateChargeCostBasisPinned) CostBasis {
+	typ := CostBasisTypePinned
+
+	typStr := CreateChargeCostBasisPinnedType(typ)
+	pinned.Type = typStr
+
+	return CostBasis{
+		CreateChargeCostBasisPinned: &pinned,
+		Type:                        typ,
+	}
+}
+
+func CreateCostBasisManual(manual CreateChargeCostBasisManual) CostBasis {
+	typ := CostBasisTypeManual
+
+	typStr := CreateChargeCostBasisManualType(typ)
+	manual.Type = typStr
+
+	return CostBasis{
+		CreateChargeCostBasisManual: &manual,
+		Type:                        typ,
+	}
+}
+
+func (u *CostBasis) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CostBasis{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "dynamic":
+		createChargeCostBasisDynamic := new(CreateChargeCostBasisDynamic)
+		if err := utils.UnmarshalJSON(data, &createChargeCostBasisDynamic, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == dynamic) type CreateChargeCostBasisDynamic within CostBasis: %w", string(data), err)
+		}
+
+		u.CreateChargeCostBasisDynamic = createChargeCostBasisDynamic
+		u.Type = CostBasisTypeDynamic
+		return nil
+	case "pinned":
+		createChargeCostBasisPinned := new(CreateChargeCostBasisPinned)
+		if err := utils.UnmarshalJSON(data, &createChargeCostBasisPinned, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == pinned) type CreateChargeCostBasisPinned within CostBasis: %w", string(data), err)
+		}
+
+		u.CreateChargeCostBasisPinned = createChargeCostBasisPinned
+		u.Type = CostBasisTypePinned
+		return nil
+	case "manual":
+		createChargeCostBasisManual := new(CreateChargeCostBasisManual)
+		if err := utils.UnmarshalJSON(data, &createChargeCostBasisManual, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == manual) type CreateChargeCostBasisManual within CostBasis: %w", string(data), err)
+		}
+
+		u.CreateChargeCostBasisManual = createChargeCostBasisManual
+		u.Type = CostBasisTypeManual
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CostBasis", string(data))
+}
+
+func (u CostBasis) MarshalJSON() ([]byte, error) {
+	if u.CreateChargeCostBasisDynamic != nil {
+		return utils.MarshalJSON(u.CreateChargeCostBasisDynamic, "", true)
+	}
+
+	if u.CreateChargeCostBasisPinned != nil {
+		return utils.MarshalJSON(u.CreateChargeCostBasisPinned, "", true)
+	}
+
+	if u.CreateChargeCostBasisManual != nil {
+		return utils.MarshalJSON(u.CreateChargeCostBasisManual, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CostBasis: all fields are null")
 }
 
 // CreditAvailabilityPolicy - Controls when credits become available for consumption.
@@ -62,16 +191,33 @@ func (e *CreditAvailabilityPolicy) UnmarshalJSON(data []byte) error {
 
 // Purchase - Present when a funding workflow applies (funding_method is not `none`).
 type Purchase struct {
-	// Currency of the purchase amount.
+	// Fiat currency the purchase is settled in.
+	//
+	// Must equal the grant `currency` for fiat grants and `cost_basis.fiat_currency`
+	// for custom-currency grants.
 	Currency string `json:"currency"`
-	// Cost basis per credit unit used to calculate the purchase amount.
+	// Fiat cost basis per credit unit of a fiat-currency grant.
 	//
-	// If `per_unit_cost_basis` is 0.50 and credit amount is $100.00, the total charge
-	// is $50.00. The value must be greater than 0. If the cost basis is 0, use
-	// `funding_method=none` instead.
+	// If `per_unit_cost_basis` is 0.50 and credit amount is
+	// $100.00, the total
+	// charge is $50.00. The value must be greater than 0. If the
+	// cost basis is 0, use `funding_method=none` instead.
 	//
-	// Defaults to 1.0.
-	PerUnitCostBasis *string `default:"1.0" json:"per_unit_cost_basis"`
+	// Only applies to fiat grants and cannot be combined with `cost_basis`. Defaults
+	// to 1.0 when neither is provided.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	PerUnitCostBasis *string `json:"per_unit_cost_basis,omitempty"`
+	// Defines how custom-currency credits are priced in the purchase `currency`; the
+	// resolved rate is exposed through `resolved_cost_basis`.
+	//
+	// Fiat grants accept only a `manual` cost basis without `fiat_currency`, where
+	// `rate` is the fiat cost per credit unit. Custom-currency grants require a cost
+	// basis of any type with `fiat_currency` set and equal to the purchase `currency`.
+	// A `dynamic` cost basis is resolved at the grant's effective time, so the
+	// currency cost basis must be effective by then. Cannot be combined with
+	// `per_unit_cost_basis`.
+	CostBasis *CostBasis `json:"cost_basis,omitempty"`
 	// Controls when credits become available for consumption.
 	//
 	// Defaults to `on_creation`.
@@ -101,6 +247,34 @@ func (p *Purchase) GetPerUnitCostBasis() *string {
 		return nil
 	}
 	return p.PerUnitCostBasis
+}
+
+func (p *Purchase) GetCostBasis() *CostBasis {
+	if p == nil {
+		return nil
+	}
+	return p.CostBasis
+}
+
+func (p *Purchase) GetCostBasisDynamic() *CreateChargeCostBasisDynamic {
+	if v := p.GetCostBasis(); v != nil {
+		return v.CreateChargeCostBasisDynamic
+	}
+	return nil
+}
+
+func (p *Purchase) GetCostBasisPinned() *CreateChargeCostBasisPinned {
+	if v := p.GetCostBasis(); v != nil {
+		return v.CreateChargeCostBasisPinned
+	}
+	return nil
+}
+
+func (p *Purchase) GetCostBasisManual() *CreateChargeCostBasisManual {
+	if v := p.GetCostBasis(); v != nil {
+		return v.CreateChargeCostBasisManual
+	}
+	return nil
 }
 
 func (p *Purchase) GetAvailabilityPolicy() *CreditAvailabilityPolicy {
@@ -190,7 +364,10 @@ type CreateCreditGrantRequest struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Funding method of the grant.
 	FundingMethod CreditFundingMethod `json:"funding_method"`
-	// Fiat or custom currency code.
+	// The fiat or custom currency of the granted credits.
+	//
+	// Funded custom-currency grants must define `purchase.cost_basis` to settle in a
+	// fiat currency.
 	Currency string `json:"currency"`
 	// Granted credit amount.
 	Amount string `json:"amount"`
@@ -217,8 +394,9 @@ type CreateCreditGrantRequest struct {
 	ExpiresAfter *string `json:"expires_after,omitempty"`
 	// Idempotency key for the credit grant creation request.
 	//
-	// When provided, reusing the same key returns an HTTP 409 Conflict instead of
-	// creating a duplicate grant, which makes create requests safe to retry.
+	// Unique per customer: reusing the same key for the same customer returns an HTTP
+	// 409 Conflict instead of creating a duplicate grant, which makes create requests
+	// safe to retry. The same key may be reused across different customers.
 	Key *string `json:"key,omitempty"`
 }
 

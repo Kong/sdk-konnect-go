@@ -88,6 +88,14 @@ func (e *EventGatewayParsedRecordTranscodeConsumePolicy) GetConfig() EventGatewa
 	return e.Config
 }
 
+func (e *EventGatewayParsedRecordTranscodeConsumePolicy) GetConfigJSON() *EventGatewayParsedRecordTranscodeConsumeConfigJSON {
+	return e.GetConfig().EventGatewayParsedRecordTranscodeConsumeConfigJSON
+}
+
+func (e *EventGatewayParsedRecordTranscodeConsumePolicy) GetConfigAvro() *EventGatewayParsedRecordTranscodeConsumeConfigAvro {
+	return e.GetConfig().EventGatewayParsedRecordTranscodeConsumeConfigAvro
+}
+
 func (e *EventGatewayParsedRecordTranscodeConsumePolicy) GetCondition() *string {
 	if e == nil {
 		return nil

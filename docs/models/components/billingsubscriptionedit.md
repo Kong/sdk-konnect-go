@@ -1,0 +1,13 @@
+# BillingSubscriptionEdit
+
+Request for editing a running subscription. Applies an ordered batch of
+customizations to the subscription's phases and items. A later customization
+observes the state produced by earlier ones.
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `Customizations`                                                                                             | [][components.BillingSubscriptionEditOperation](../../models/components/billingsubscriptioneditoperation.md) | :heavy_check_mark:                                                                                           | The ordered batch of customizations to apply to the running subscription.                                    |                                                                                                              |
+| `Timing`                                                                                                     | [*components.BillingSubscriptionEditTiming](../../models/components/billingsubscriptionedittiming.md)        | :heavy_minus_sign:                                                                                           | When the requested changes should take effect. Defaults to immediate.                                        | immediate                                                                                                    |

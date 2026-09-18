@@ -3,6 +3,61 @@
 
 package components
 
+type Resiliency struct {
+	FallbackHash       *string     `json:"fallback_hash,omitempty"`
+	ActivatedAt        *int64      `json:"activated_at,omitempty"`
+	LatestConfigErrors []NodeError `json:"latest_config_errors,omitempty"`
+}
+
+func (r *Resiliency) GetFallbackHash() *string {
+	if r == nil {
+		return nil
+	}
+	return r.FallbackHash
+}
+
+func (r *Resiliency) GetActivatedAt() *int64 {
+	if r == nil {
+		return nil
+	}
+	return r.ActivatedAt
+}
+
+func (r *Resiliency) GetLatestConfigErrors() []NodeError {
+	if r == nil {
+		return nil
+	}
+	return r.LatestConfigErrors
+}
+
+type ConfigSync struct {
+	// Config sync state. One of `STATE_UNSPECIFIED`, `STATE_IN_SYNC`, `STATE_PENDING`, or `STATE_RESILIENCY`.
+	State      *string     `json:"state,omitempty"`
+	VersionID  *string     `json:"version_id,omitempty"`
+	Resiliency *Resiliency `json:"resiliency,omitempty"`
+}
+
+func (c *ConfigSync) GetState() *string {
+	if c == nil {
+		return nil
+	}
+	return c.State
+}
+
+func (c *ConfigSync) GetVersionID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.VersionID
+}
+
+func (c *ConfigSync) GetResiliency() *Resiliency {
+	if c == nil {
+		return nil
+	}
+	return c.Resiliency
+}
+
 type ListNodesCompatibilityStatus struct {
 	State  *string                  `json:"state,omitempty"`
 	Issues []NodeCompatibilityIssue `json:"issues,omitempty"`
@@ -31,6 +86,7 @@ type ListNodesItems struct {
 	CreatedAt           *int64                        `json:"created_at,omitempty"`
 	UpdatedAt           *int64                        `json:"updated_at,omitempty"`
 	ConfigHash          *string                       `json:"config_hash,omitempty"`
+	ConfigSync          *ConfigSync                   `json:"config_sync,omitempty"`
 	CompatibilityStatus *ListNodesCompatibilityStatus `json:"compatibility_status,omitempty"`
 }
 
@@ -88,6 +144,13 @@ func (l *ListNodesItems) GetConfigHash() *string {
 		return nil
 	}
 	return l.ConfigHash
+}
+
+func (l *ListNodesItems) GetConfigSync() *ConfigSync {
+	if l == nil {
+		return nil
+	}
+	return l.ConfigSync
 }
 
 func (l *ListNodesItems) GetCompatibilityStatus() *ListNodesCompatibilityStatus {
