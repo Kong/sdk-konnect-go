@@ -608,23 +608,23 @@ func (u Payment) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type Payment: all fields are null")
 }
 
-// BillingProfileTaxBehavior - Tax behavior.
+// TaxBehavior - Tax behavior.
 //
 // If not specified the billing profile is used to determine the tax behavior. If
 // not specified in the billing profile, the provider's default behavior is used.
-type BillingProfileTaxBehavior string
+type TaxBehavior string
 
 const (
-	BillingProfileTaxBehaviorInclusive BillingProfileTaxBehavior = "inclusive"
-	BillingProfileTaxBehaviorExclusive BillingProfileTaxBehavior = "exclusive"
+	TaxBehaviorInclusive TaxBehavior = "inclusive"
+	TaxBehaviorExclusive TaxBehavior = "exclusive"
 )
 
-func (e BillingProfileTaxBehavior) ToPointer() *BillingProfileTaxBehavior {
+func (e TaxBehavior) ToPointer() *TaxBehavior {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *BillingProfileTaxBehavior) IsExact() bool {
+func (e *TaxBehavior) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "inclusive", "exclusive":
@@ -634,34 +634,34 @@ func (e *BillingProfileTaxBehavior) IsExact() bool {
 	return false
 }
 
-// BillingProfileStripeTaxConfig - Stripe tax config.
+// StripeTaxConfig - Stripe tax config.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type BillingProfileStripeTaxConfig struct {
+type StripeTaxConfig struct {
 	// Product [tax code](https://docs.stripe.com/tax/tax-codes).
 	Code string `json:"code"`
 }
 
-func (b *BillingProfileStripeTaxConfig) GetCode() string {
-	if b == nil {
+func (s *StripeTaxConfig) GetCode() string {
+	if s == nil {
 		return ""
 	}
-	return b.Code
+	return s.Code
 }
 
-// BillingProfileExternalInvoicingTaxConfig - External invoicing tax config.
+// ExternalInvoicingTaxConfig - External invoicing tax config.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type BillingProfileExternalInvoicingTaxConfig struct {
+type ExternalInvoicingTaxConfig struct {
 	// The tax code should be interpreted by the external invoicing provider.
 	Code string `json:"code"`
 }
 
-func (b *BillingProfileExternalInvoicingTaxConfig) GetCode() string {
-	if b == nil {
+func (e *ExternalInvoicingTaxConfig) GetCode() string {
+	if e == nil {
 		return ""
 	}
-	return b.Code
+	return e.Code
 }
 
 // BillingProfileTaxCode - Tax code reference.
@@ -692,15 +692,15 @@ type DefaultTaxConfig struct {
 	//
 	// If not specified the billing profile is used to determine the tax behavior. If
 	// not specified in the billing profile, the provider's default behavior is used.
-	Behavior *BillingProfileTaxBehavior `json:"behavior,omitempty"`
+	Behavior *TaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Stripe *BillingProfileStripeTaxConfig `json:"stripe,omitempty"`
+	Stripe *StripeTaxConfig `json:"stripe,omitempty"`
 	// External invoicing tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	ExternalInvoicing *BillingProfileExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
+	ExternalInvoicing *ExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
 	// Tax code ID.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -713,21 +713,21 @@ type DefaultTaxConfig struct {
 	TaxCode *BillingProfileTaxCode `json:"tax_code,omitempty"`
 }
 
-func (d *DefaultTaxConfig) GetBehavior() *BillingProfileTaxBehavior {
+func (d *DefaultTaxConfig) GetBehavior() *TaxBehavior {
 	if d == nil {
 		return nil
 	}
 	return d.Behavior
 }
 
-func (d *DefaultTaxConfig) GetStripe() *BillingProfileStripeTaxConfig {
+func (d *DefaultTaxConfig) GetStripe() *StripeTaxConfig {
 	if d == nil {
 		return nil
 	}
 	return d.Stripe
 }
 
-func (d *DefaultTaxConfig) GetExternalInvoicing() *BillingProfileExternalInvoicingTaxConfig {
+func (d *DefaultTaxConfig) GetExternalInvoicing() *ExternalInvoicingTaxConfig {
 	if d == nil {
 		return nil
 	}

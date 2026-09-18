@@ -34,9 +34,6 @@ func newOpenMeterFeatures(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks
 }
 
 // ListFeatures - List features
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // List all features.
 func (s *OpenMeterFeatures) ListFeatures(ctx context.Context, request operations.ListFeaturesRequest, opts ...operations.Option) (*operations.ListFeaturesResponse, error) {
 	o := operations.Options{}
@@ -309,9 +306,6 @@ func (s *OpenMeterFeatures) ListFeatures(ctx context.Context, request operations
 }
 
 // CreateFeature - Create feature
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Create a feature.
 func (s *OpenMeterFeatures) CreateFeature(ctx context.Context, request components.CreateFeatureRequest, opts ...operations.Option) (*operations.CreateFeatureResponse, error) {
 	o := operations.Options{}
@@ -587,9 +581,6 @@ func (s *OpenMeterFeatures) CreateFeature(ctx context.Context, request component
 }
 
 // GetFeature - Get feature
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Get a feature by id.
 func (s *OpenMeterFeatures) GetFeature(ctx context.Context, featureID string, opts ...operations.Option) (*operations.GetFeatureResponse, error) {
 	request := operations.GetFeatureRequest{
@@ -904,9 +895,6 @@ func (s *OpenMeterFeatures) GetFeature(ctx context.Context, featureID string, op
 }
 
 // UpdateFeature - Update feature
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Update a feature by id. Currently only the unit_cost field can be updated.
 func (s *OpenMeterFeatures) UpdateFeature(ctx context.Context, featureID string, updateFeatureRequest components.UpdateFeatureRequest, opts ...operations.Option) (*operations.UpdateFeatureResponse, error) {
 	request := operations.UpdateFeatureRequest{
@@ -1208,9 +1196,6 @@ func (s *OpenMeterFeatures) UpdateFeature(ctx context.Context, featureID string,
 }
 
 // DeleteFeature - Delete feature
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Delete a feature by id.
 func (s *OpenMeterFeatures) DeleteFeature(ctx context.Context, featureID string, opts ...operations.Option) (*operations.DeleteFeatureResponse, error) {
 	request := operations.DeleteFeatureRequest{

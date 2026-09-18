@@ -66,6 +66,10 @@ type BillingAppStripeDefinition struct {
 	Name string `json:"name"`
 	// Description of the app.
 	Description string `json:"description"`
+	// Capabilities of the app.
+	Capabilities []BillingAppCapability `json:"capabilities"`
+	// Available install methods of the app.
+	InstallMethods []BillingAppInstallMethods `json:"install_methods"`
 }
 
 func (b BillingAppStripeDefinition) MarshalJSON() ([]byte, error) {
@@ -73,7 +77,7 @@ func (b BillingAppStripeDefinition) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BillingAppStripeDefinition) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type", "name", "description"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type", "name", "description", "capabilities", "install_methods"}); err != nil {
 		return err
 	}
 	return nil
@@ -98,6 +102,20 @@ func (b *BillingAppStripeDefinition) GetDescription() string {
 		return ""
 	}
 	return b.Description
+}
+
+func (b *BillingAppStripeDefinition) GetCapabilities() []BillingAppCapability {
+	if b == nil {
+		return []BillingAppCapability{}
+	}
+	return b.Capabilities
+}
+
+func (b *BillingAppStripeDefinition) GetInstallMethods() []BillingAppInstallMethods {
+	if b == nil {
+		return []BillingAppInstallMethods{}
+	}
+	return b.InstallMethods
 }
 
 // BillingAppStripeStatus - Status of the app connection.

@@ -2,6 +2,9 @@
 
 Used if the customer has a linked Stripe app.
 
+Set to `null` to remove the Stripe data of the customer; omit to leave it
+unchanged.
+
 
 ## Fields
 

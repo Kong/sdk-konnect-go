@@ -546,8 +546,8 @@ func (u SubscriptionAddonRateCardEntitlementTemplate) MarshalJSON() ([]byte, err
 	return nil, errors.New("could not marshal union type SubscriptionAddonRateCardEntitlementTemplate: all fields are null")
 }
 
-// RateCard - The rate card.
-type RateCard struct {
+// SubscriptionAddonRateCardRateCard - The rate card.
+type SubscriptionAddonRateCardRateCard struct {
 	// Display name of the resource.
 	//
 	// Between 1 and 256 characters.
@@ -565,6 +565,9 @@ type RateCard struct {
 	Key string `json:"key"`
 	// The feature associated with the rate card.
 	Feature *SubscriptionAddonRateCardFeatureReference `json:"feature,omitempty"`
+	// Overrides the containing plan or add-on currency for this rate card. When
+	// omitted, the containing resource currency applies.
+	Currency *string `json:"currency,omitempty"`
 	// The billing cadence of the rate card. When null, the charge is one-time
 	// (non-recurring). Only valid for flat prices.
 	BillingCadence *string `json:"billing_cadence,omitempty"`
@@ -594,144 +597,151 @@ type RateCard struct {
 	Entitlement *SubscriptionAddonRateCardEntitlementTemplate `json:"entitlement,omitempty"`
 }
 
-func (r RateCard) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
+func (s SubscriptionAddonRateCardRateCard) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
 }
 
-func (r *RateCard) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+func (s *SubscriptionAddonRateCardRateCard) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (r *RateCard) GetName() string {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return r.Name
+	return s.Name
 }
 
-func (r *RateCard) GetDescription() *string {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetDescription() *string {
+	if s == nil {
 		return nil
 	}
-	return r.Description
+	return s.Description
 }
 
-func (r *RateCard) GetLabels() map[string]string {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetLabels() map[string]string {
+	if s == nil {
 		return nil
 	}
-	return r.Labels
+	return s.Labels
 }
 
-func (r *RateCard) GetKey() string {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetKey() string {
+	if s == nil {
 		return ""
 	}
-	return r.Key
+	return s.Key
 }
 
-func (r *RateCard) GetFeature() *SubscriptionAddonRateCardFeatureReference {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetFeature() *SubscriptionAddonRateCardFeatureReference {
+	if s == nil {
 		return nil
 	}
-	return r.Feature
+	return s.Feature
 }
 
-func (r *RateCard) GetBillingCadence() *string {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetCurrency() *string {
+	if s == nil {
 		return nil
 	}
-	return r.BillingCadence
+	return s.Currency
 }
 
-func (r *RateCard) GetPrice() SubscriptionAddonRateCardPrice {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetBillingCadence() *string {
+	if s == nil {
+		return nil
+	}
+	return s.BillingCadence
+}
+
+func (s *SubscriptionAddonRateCardRateCard) GetPrice() SubscriptionAddonRateCardPrice {
+	if s == nil {
 		return SubscriptionAddonRateCardPrice{}
 	}
-	return r.Price
+	return s.Price
 }
 
-func (r *RateCard) GetPriceFree() *BillingPriceFree {
-	return r.GetPrice().BillingPriceFree
+func (s *SubscriptionAddonRateCardRateCard) GetPriceFree() *BillingPriceFree {
+	return s.GetPrice().BillingPriceFree
 }
 
-func (r *RateCard) GetPriceFlat() *BillingPriceFlat {
-	return r.GetPrice().BillingPriceFlat
+func (s *SubscriptionAddonRateCardRateCard) GetPriceFlat() *BillingPriceFlat {
+	return s.GetPrice().BillingPriceFlat
 }
 
-func (r *RateCard) GetPriceUnit() *BillingPriceUnit {
-	return r.GetPrice().BillingPriceUnit
+func (s *SubscriptionAddonRateCardRateCard) GetPriceUnit() *BillingPriceUnit {
+	return s.GetPrice().BillingPriceUnit
 }
 
-func (r *RateCard) GetPriceGraduated() *BillingPriceGraduated {
-	return r.GetPrice().BillingPriceGraduated
+func (s *SubscriptionAddonRateCardRateCard) GetPriceGraduated() *BillingPriceGraduated {
+	return s.GetPrice().BillingPriceGraduated
 }
 
-func (r *RateCard) GetPriceVolume() *BillingPriceVolume {
-	return r.GetPrice().BillingPriceVolume
+func (s *SubscriptionAddonRateCardRateCard) GetPriceVolume() *BillingPriceVolume {
+	return s.GetPrice().BillingPriceVolume
 }
 
-func (r *RateCard) GetUnitConfig() *SubscriptionAddonRateCardUnitConfig {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetUnitConfig() *SubscriptionAddonRateCardUnitConfig {
+	if s == nil {
 		return nil
 	}
-	return r.UnitConfig
+	return s.UnitConfig
 }
 
-func (r *RateCard) GetPaymentTerm() *SubscriptionAddonRateCardPaymentTerm {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetPaymentTerm() *SubscriptionAddonRateCardPaymentTerm {
+	if s == nil {
 		return nil
 	}
-	return r.PaymentTerm
+	return s.PaymentTerm
 }
 
-func (r *RateCard) GetCommitments() *SubscriptionAddonRateCardCommitments {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetCommitments() *SubscriptionAddonRateCardCommitments {
+	if s == nil {
 		return nil
 	}
-	return r.Commitments
+	return s.Commitments
 }
 
-func (r *RateCard) GetDiscounts() *SubscriptionAddonRateCardDiscounts {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetDiscounts() *SubscriptionAddonRateCardDiscounts {
+	if s == nil {
 		return nil
 	}
-	return r.Discounts
+	return s.Discounts
 }
 
-func (r *RateCard) GetTaxConfig() *SubscriptionAddonRateCardTaxConfig {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetTaxConfig() *SubscriptionAddonRateCardTaxConfig {
+	if s == nil {
 		return nil
 	}
-	return r.TaxConfig
+	return s.TaxConfig
 }
 
-func (r *RateCard) GetEntitlement() *SubscriptionAddonRateCardEntitlementTemplate {
-	if r == nil {
+func (s *SubscriptionAddonRateCardRateCard) GetEntitlement() *SubscriptionAddonRateCardEntitlementTemplate {
+	if s == nil {
 		return nil
 	}
-	return r.Entitlement
+	return s.Entitlement
 }
 
-func (r *RateCard) GetEntitlementMetered() *BillingRateCardMeteredEntitlement {
-	if v := r.GetEntitlement(); v != nil {
+func (s *SubscriptionAddonRateCardRateCard) GetEntitlementMetered() *BillingRateCardMeteredEntitlement {
+	if v := s.GetEntitlement(); v != nil {
 		return v.BillingRateCardMeteredEntitlement
 	}
 	return nil
 }
 
-func (r *RateCard) GetEntitlementStatic() *BillingRateCardStaticEntitlement {
-	if v := r.GetEntitlement(); v != nil {
+func (s *SubscriptionAddonRateCardRateCard) GetEntitlementStatic() *BillingRateCardStaticEntitlement {
+	if v := s.GetEntitlement(); v != nil {
 		return v.BillingRateCardStaticEntitlement
 	}
 	return nil
 }
 
-func (r *RateCard) GetEntitlementBoolean() *BillingRateCardBooleanEntitlement {
-	if v := r.GetEntitlement(); v != nil {
+func (s *SubscriptionAddonRateCardRateCard) GetEntitlementBoolean() *BillingRateCardBooleanEntitlement {
+	if v := s.GetEntitlement(); v != nil {
 		return v.BillingRateCardBooleanEntitlement
 	}
 	return nil
@@ -740,14 +750,14 @@ func (r *RateCard) GetEntitlementBoolean() *BillingRateCardBooleanEntitlement {
 // SubscriptionAddonRateCard - A rate card for a subscription add-on.
 type SubscriptionAddonRateCard struct {
 	// The rate card.
-	RateCard RateCard `json:"rate_card"`
+	RateCard SubscriptionAddonRateCardRateCard `json:"rate_card"`
 	// The IDs of the subscription items that this rate card belongs to.
 	AffectedSubscriptionItemIds []string `json:"affected_subscription_item_ids"`
 }
 
-func (s *SubscriptionAddonRateCard) GetRateCard() RateCard {
+func (s *SubscriptionAddonRateCard) GetRateCard() SubscriptionAddonRateCardRateCard {
 	if s == nil {
-		return RateCard{}
+		return SubscriptionAddonRateCardRateCard{}
 	}
 	return s.RateCard
 }

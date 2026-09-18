@@ -18,10 +18,19 @@ func NewMockPersonalAccessTokensSDK(t interface {
 	mock.TestingT
 	Cleanup(func())
 }) *MockPersonalAccessTokensSDK {
+	if helper, ok := t.(interface{ Helper() }); ok {
+		helper.Helper()
+	}
+
 	mock := &MockPersonalAccessTokensSDK{}
 	mock.Mock.Test(t)
 
-	t.Cleanup(func() { mock.AssertExpectations(t) })
+	t.Cleanup(func() {
+		if helper, ok := t.(interface{ Helper() }); ok {
+			helper.Helper()
+		}
+		mock.AssertExpectations(t)
+	})
 
 	return mock
 }

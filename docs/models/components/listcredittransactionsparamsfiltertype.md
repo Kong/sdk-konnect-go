@@ -23,3 +23,4 @@ custom := components.ListCreditTransactionsParamsFilterType("custom_value")
 | `ListCreditTransactionsParamsFilterTypeFunded`   | funded                                           |
 | `ListCreditTransactionsParamsFilterTypeConsumed` | consumed                                         |
 | `ListCreditTransactionsParamsFilterTypeExpired`  | expired                                          |
+| `ListCreditTransactionsParamsFilterTypeVoided`   | voided                                           |

@@ -17,10 +17,19 @@ func NewMockOpenMeterEntitlementsSDK(t interface {
 	mock.TestingT
 	Cleanup(func())
 }) *MockOpenMeterEntitlementsSDK {
+	if helper, ok := t.(interface{ Helper() }); ok {
+		helper.Helper()
+	}
+
 	mock := &MockOpenMeterEntitlementsSDK{}
 	mock.Mock.Test(t)
 
-	t.Cleanup(func() { mock.AssertExpectations(t) })
+	t.Cleanup(func() {
+		if helper, ok := t.(interface{ Helper() }); ok {
+			helper.Helper()
+		}
+		mock.AssertExpectations(t)
+	})
 
 	return mock
 }

@@ -17,10 +17,19 @@ func NewMockAIGatewayConfigStoreSecretsSDK(t interface {
 	mock.TestingT
 	Cleanup(func())
 }) *MockAIGatewayConfigStoreSecretsSDK {
+	if helper, ok := t.(interface{ Helper() }); ok {
+		helper.Helper()
+	}
+
 	mock := &MockAIGatewayConfigStoreSecretsSDK{}
 	mock.Mock.Test(t)
 
-	t.Cleanup(func() { mock.AssertExpectations(t) })
+	t.Cleanup(func() {
+		if helper, ok := t.(interface{ Helper() }); ok {
+			helper.Helper()
+		}
+		mock.AssertExpectations(t)
+	})
 
 	return mock
 }

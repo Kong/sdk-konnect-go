@@ -92,7 +92,7 @@ type Addon struct {
 	Version *int64 `default:"1" json:"version"`
 	// The InstanceType of the add-ons. Can be "single" or "multiple".
 	InstanceType TheInstanceTypeOfTheAddOnsCanBeSingleOrMultiple `json:"instance_type"`
-	// Fiat or custom currency code.
+	// The currency code of the add-on.
 	Currency string `json:"currency"`
 	// The date and time when the add-on becomes effective. When not specified, the
 	// add-on is a draft.

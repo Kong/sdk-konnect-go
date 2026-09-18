@@ -48,21 +48,6 @@ type OpenMeterCustomersSDK interface {
 	// Only returns URL if the customer billing profile is linked to a stripe app and
 	// customer.
 	CreateCustomerStripePortalSession(ctx context.Context, customerID string, billingCustomerStripeCreateCustomerPortalSessionRequest components.BillingCustomerStripeCreateCustomerPortalSessionRequest, opts ...operations.Option) (*operations.CreateCustomerStripePortalSessionResponse, error)
-	// ListCustomerCharges - List customer charges
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// List customer charges.
-	//
-	// Returns the customer's charges that are represented as either flat fee or
-	// usage-based charges.
-	ListCustomerCharges(ctx context.Context, request operations.ListCustomerChargesRequest, opts ...operations.Option) (*operations.ListCustomerChargesResponse, error)
-	// CreateCustomerCharges - Create customer charge
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// Create customer charge.
-	CreateCustomerCharges(ctx context.Context, customerID string, createChargeRequest components.CreateChargeRequest, opts ...operations.Option) (*operations.CreateCustomerChargesResponse, error)
 	// CreateCreditAdjustment - Create a credit adjustment
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.

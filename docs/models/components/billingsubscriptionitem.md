@@ -1,0 +1,13 @@
+# BillingSubscriptionItem
+
+A subscription item pins a rate card to a cadence within a subscription phase.
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ID`                                                                               | `string`                                                                           | :heavy_check_mark:                                                                 | The unique identifier of the subscription item instance.                           | 01G65Z755AFWAKHE12NY0CQ9FH                                                         |
+| `ActiveFrom`                                                                       | [time.Time](https://pkg.go.dev/time#Time)                                          | :heavy_check_mark:                                                                 | An ISO-8601 timestamp representation of when this item version becomes active.     | 2023-01-01T01:01:01.001Z                                                           |
+| `ActiveTo`                                                                         | [*time.Time](https://pkg.go.dev/time#Time)                                         | :heavy_minus_sign:                                                                 | An ISO-8601 timestamp representation of when this item version stops being<br/>active. | 2023-01-01T01:01:01.001Z                                                           |
+| `RateCard`                                                                         | [components.RateCard](../../models/components/ratecard.md)                         | :heavy_check_mark:                                                                 | The rate card describing what the customer gets and pays for this item.            |                                                                                    |

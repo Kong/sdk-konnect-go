@@ -8,6 +8,107 @@ import (
 	"time"
 )
 
+// BillingSubscriptionPlan - The plan the subscription was created from, if any. Includes the plan key and
+// version so clients can resolve the exact plan revision.
+type BillingSubscriptionPlan struct {
+	// The plan ID (exact revision).
+	ID string `json:"id"`
+	// The plan key. References the plan across versions.
+	Key string `json:"key"`
+	// The plan version.
+	Version int64 `json:"version"`
+}
+
+func (b *BillingSubscriptionPlan) GetID() string {
+	if b == nil {
+		return ""
+	}
+	return b.ID
+}
+
+func (b *BillingSubscriptionPlan) GetKey() string {
+	if b == nil {
+		return ""
+	}
+	return b.Key
+}
+
+func (b *BillingSubscriptionPlan) GetVersion() int64 {
+	if b == nil {
+		return 0
+	}
+	return b.Version
+}
+
+// BillingSubscriptionCostBasisMode - Controls whether custom-currency cost bases are resolved dynamically or pinned
+// when their currency pair is introduced to the subscription.
+type BillingSubscriptionCostBasisMode string
+
+const (
+	BillingSubscriptionCostBasisModeDynamic BillingSubscriptionCostBasisMode = "dynamic"
+	BillingSubscriptionCostBasisModePinned  BillingSubscriptionCostBasisMode = "pinned"
+)
+
+func (e BillingSubscriptionCostBasisMode) ToPointer() *BillingSubscriptionCostBasisMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *BillingSubscriptionCostBasisMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "dynamic", "pinned":
+			return true
+		}
+	}
+	return false
+}
+
+// BillingSubscriptionMode - How pro-rating is calculated when enabled.
+type BillingSubscriptionMode string
+
+const (
+	BillingSubscriptionModeNoProration   BillingSubscriptionMode = "no_proration"
+	BillingSubscriptionModeProratePrices BillingSubscriptionMode = "prorate_prices"
+)
+
+func (e BillingSubscriptionMode) ToPointer() *BillingSubscriptionMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *BillingSubscriptionMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "no_proration", "prorate_prices":
+			return true
+		}
+	}
+	return false
+}
+
+// ProRatingConfiguration - The pro-rating configuration of the subscription.
+type ProRatingConfiguration struct {
+	// Whether pro-rating is enabled.
+	Enabled bool `json:"enabled"`
+	// How pro-rating is calculated when enabled.
+	Mode BillingSubscriptionMode `json:"mode"`
+}
+
+func (p *ProRatingConfiguration) GetEnabled() bool {
+	if p == nil {
+		return false
+	}
+	return p.Enabled
+}
+
+func (p *ProRatingConfiguration) GetMode() BillingSubscriptionMode {
+	if p == nil {
+		return BillingSubscriptionMode("")
+	}
+	return p.Mode
+}
+
 // BillingSubscriptionStatus - The status of the subscription.
 type BillingSubscriptionStatus string
 
@@ -62,6 +163,44 @@ func (e *BillingSubscriptionSettlementMode) IsExact() bool {
 	return false
 }
 
+// CurrentBillingPeriod - The current aligned billing period. Present only when the subscription is active
+// and aligned.
+type CurrentBillingPeriod struct {
+	// The start of the period.
+	//
+	// The period is inclusive at the start.
+	From time.Time `json:"from"`
+	// The end of the period.
+	//
+	// The period is exclusive at the end.
+	To time.Time `json:"to"`
+}
+
+func (c CurrentBillingPeriod) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CurrentBillingPeriod) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c *CurrentBillingPeriod) GetFrom() time.Time {
+	if c == nil {
+		return time.Time{}
+	}
+	return c.From
+}
+
+func (c *CurrentBillingPeriod) GetTo() time.Time {
+	if c == nil {
+		return time.Time{}
+	}
+	return c.To
+}
+
 // BillingSubscription - Subscription.
 type BillingSubscription struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
@@ -77,10 +216,39 @@ type BillingSubscription struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// An ISO-8601 timestamp representation of entity deletion date.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
+	// Display name of the subscription. Defaults to the plan name when the
+	// subscription is created from a plan.
+	Name string `json:"name"`
+	// Optional description of the subscription.
+	Description *string `json:"description,omitempty"`
+	// An ISO-8601 timestamp representation of when the subscription became (or will
+	// become) active.
+	ActiveFrom time.Time `json:"active_from"`
+	// An ISO-8601 timestamp representation of when the subscription stops being
+	// active. Open-ended when not set.
+	ActiveTo *time.Time `json:"active_to,omitempty"`
 	// The customer ID of the subscription.
 	CustomerID string `json:"customer_id"`
 	// The plan ID of the subscription. Set if subscription is created from a plan.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	PlanID *string `json:"plan_id,omitempty"`
+	// The plan the subscription was created from, if any. Includes the plan key and
+	// version so clients can resolve the exact plan revision.
+	Plan *BillingSubscriptionPlan `json:"plan,omitempty"`
+	// The fiat currency in which the subscription is invoiced.
+	InvoiceCurrency string `json:"invoice_currency"`
+	// Controls whether custom-currency cost bases are resolved dynamically or pinned
+	// when their currency pair is introduced to the subscription.
+	CostBasisMode *BillingSubscriptionCostBasisMode `default:"dynamic" json:"cost_basis_mode"`
+	// Cost bases pinned to custom-currency pairs for this subscription.
+	CostBasisPins []BillingSubscriptionCostBasisPin `json:"cost_basis_pins"`
+	// The billing cadence of the subscription in ISO-8601 duration format. Defines how
+	// often the customer is billed. Examples: `P1M` (monthly), `P3M` (quarterly),
+	// `P1Y` (annually).
+	BillingCadence string `json:"billing_cadence"`
+	// The pro-rating configuration of the subscription.
+	ProRatingConfig *ProRatingConfiguration `json:"pro_rating_config,omitempty"`
 	// A billing anchor is the fixed point in time that determines the subscription's
 	// recurring billing cycle. It affects when charges occur and how prorations are
 	// calculated. Common anchors:
@@ -99,6 +267,12 @@ type BillingSubscription struct {
 	// invoiced.
 	// - `credit_only`: Usage is settled exclusively against credits.
 	SettlementMode *BillingSubscriptionSettlementMode `json:"settlement_mode,omitempty"`
+	// The current aligned billing period. Present only when the subscription is active
+	// and aligned.
+	CurrentPeriod *CurrentBillingPeriod `json:"current_period,omitempty"`
+	// The phases of the subscription in chronological order. A phase groups the rate
+	// cards that are in effect for a segment of the subscription's lifetime.
+	Phases []BillingSubscriptionPhase `json:"phases"`
 }
 
 func (b BillingSubscription) MarshalJSON() ([]byte, error) {
@@ -147,6 +321,34 @@ func (b *BillingSubscription) GetDeletedAt() *time.Time {
 	return b.DeletedAt
 }
 
+func (b *BillingSubscription) GetName() string {
+	if b == nil {
+		return ""
+	}
+	return b.Name
+}
+
+func (b *BillingSubscription) GetDescription() *string {
+	if b == nil {
+		return nil
+	}
+	return b.Description
+}
+
+func (b *BillingSubscription) GetActiveFrom() time.Time {
+	if b == nil {
+		return time.Time{}
+	}
+	return b.ActiveFrom
+}
+
+func (b *BillingSubscription) GetActiveTo() *time.Time {
+	if b == nil {
+		return nil
+	}
+	return b.ActiveTo
+}
+
 func (b *BillingSubscription) GetCustomerID() string {
 	if b == nil {
 		return ""
@@ -159,6 +361,48 @@ func (b *BillingSubscription) GetPlanID() *string {
 		return nil
 	}
 	return b.PlanID
+}
+
+func (b *BillingSubscription) GetPlan() *BillingSubscriptionPlan {
+	if b == nil {
+		return nil
+	}
+	return b.Plan
+}
+
+func (b *BillingSubscription) GetInvoiceCurrency() string {
+	if b == nil {
+		return ""
+	}
+	return b.InvoiceCurrency
+}
+
+func (b *BillingSubscription) GetCostBasisMode() *BillingSubscriptionCostBasisMode {
+	if b == nil {
+		return nil
+	}
+	return b.CostBasisMode
+}
+
+func (b *BillingSubscription) GetCostBasisPins() []BillingSubscriptionCostBasisPin {
+	if b == nil {
+		return []BillingSubscriptionCostBasisPin{}
+	}
+	return b.CostBasisPins
+}
+
+func (b *BillingSubscription) GetBillingCadence() string {
+	if b == nil {
+		return ""
+	}
+	return b.BillingCadence
+}
+
+func (b *BillingSubscription) GetProRatingConfig() *ProRatingConfiguration {
+	if b == nil {
+		return nil
+	}
+	return b.ProRatingConfig
 }
 
 func (b *BillingSubscription) GetBillingAnchor() time.Time {
@@ -180,4 +424,18 @@ func (b *BillingSubscription) GetSettlementMode() *BillingSubscriptionSettlement
 		return nil
 	}
 	return b.SettlementMode
+}
+
+func (b *BillingSubscription) GetCurrentPeriod() *CurrentBillingPeriod {
+	if b == nil {
+		return nil
+	}
+	return b.CurrentPeriod
+}
+
+func (b *BillingSubscription) GetPhases() []BillingSubscriptionPhase {
+	if b == nil {
+		return []BillingSubscriptionPhase{}
+	}
+	return b.Phases
 }

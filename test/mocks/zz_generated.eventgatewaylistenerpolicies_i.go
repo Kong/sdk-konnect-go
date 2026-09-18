@@ -17,10 +17,19 @@ func NewMockEventGatewayListenerPoliciesSDK(t interface {
 	mock.TestingT
 	Cleanup(func())
 }) *MockEventGatewayListenerPoliciesSDK {
+	if helper, ok := t.(interface{ Helper() }); ok {
+		helper.Helper()
+	}
+
 	mock := &MockEventGatewayListenerPoliciesSDK{}
 	mock.Mock.Test(t)
 
-	t.Cleanup(func() { mock.AssertExpectations(t) })
+	t.Cleanup(func() {
+		if helper, ok := t.(interface{ Helper() }); ok {
+			helper.Helper()
+		}
+		mock.AssertExpectations(t)
+	})
 
 	return mock
 }

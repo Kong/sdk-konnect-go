@@ -19,6 +19,9 @@ func (b *BillingCustomerDataBillingProfile) GetID() string {
 }
 
 // BillingCustomerDataStripe - Used if the customer has a linked Stripe app.
+//
+// Set to `null` to remove the Stripe data of the customer; omit to leave it
+// unchanged.
 type BillingCustomerDataStripe struct {
 	// The Stripe customer ID used.
 	CustomerID *string `json:"customer_id,omitempty"`
@@ -50,6 +53,9 @@ func (b *BillingCustomerDataStripe) GetLabels() map[string]string {
 }
 
 // BillingCustomerDataExternalInvoicing - Used if the customer has a linked external invoicing app.
+//
+// Set to `null` to remove the external invoicing data of the customer; omit to
+// leave it unchanged.
 type BillingCustomerDataExternalInvoicing struct {
 	// Labels for this external invoicing integration on the customer.
 	Labels map[string]string `json:"labels,omitempty"`
@@ -65,8 +71,14 @@ func (b *BillingCustomerDataExternalInvoicing) GetLabels() map[string]string {
 // AppCustomerData - App customer data.
 type AppCustomerData struct {
 	// Used if the customer has a linked Stripe app.
+	//
+	// Set to `null` to remove the Stripe data of the customer; omit to leave it
+	// unchanged.
 	Stripe *BillingCustomerDataStripe `json:"stripe,omitempty"`
 	// Used if the customer has a linked external invoicing app.
+	//
+	// Set to `null` to remove the external invoicing data of the customer; omit to
+	// leave it unchanged.
 	ExternalInvoicing *BillingCustomerDataExternalInvoicing `json:"external_invoicing,omitempty"`
 }
 

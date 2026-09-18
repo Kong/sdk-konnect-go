@@ -21,18 +21,12 @@ type MetersSDK interface {
 	// Get a meter by ID.
 	GetMeter(ctx context.Context, meterID string, opts ...operations.Option) (*operations.GetMeterResponse, error)
 	// UpdateMeter - Update meter
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Update a meter.
 	UpdateMeter(ctx context.Context, meterID string, updateMeterRequest components.UpdateMeterRequest, opts ...operations.Option) (*operations.UpdateMeterResponse, error)
 	// DeleteMeter - Delete meter
 	// Delete a meter.
 	DeleteMeter(ctx context.Context, meterID string, opts ...operations.Option) (*operations.DeleteMeterResponse, error)
 	// QueryMeter - Query meter
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Query a meter for usage.
 	//
 	// Set `Accept: application/json` (the default) to get a structured JSON response.
