@@ -37,6 +37,12 @@ type OpenMeterSubscriptionsSDK interface {
 	// Closes a running subscription and starts a new one according to the
 	// specification. Can be used for upgrades, downgrades, and plan changes.
 	ChangeSubscription(ctx context.Context, subscriptionID string, billingSubscriptionChange components.BillingSubscriptionChange, opts ...operations.Option) (*operations.ChangeSubscriptionResponse, error)
+	// EditSubscription - Edit subscription
+	// Edits a running subscription by applying an ordered batch of customizations
+	// (adding or removing items, adding, removing, or stretching phases, or
+	// unscheduling a pending edit). The changes may take effect immediately or at the
+	// next billing cycle. Subscriptions that have add-ons cannot be edited.
+	EditSubscription(ctx context.Context, subscriptionID string, billingSubscriptionEdit components.BillingSubscriptionEdit, opts ...operations.Option) (*operations.EditSubscriptionResponse, error)
 	// UnscheduleCancelation - Unschedule subscription cancelation
 	// Unschedules the subscription cancelation.
 	UnscheduleCancelation(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.UnscheduleCancelationResponse, error)

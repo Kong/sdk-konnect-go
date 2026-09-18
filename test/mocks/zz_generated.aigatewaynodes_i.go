@@ -17,10 +17,19 @@ func NewMockAIGatewayNodesSDK(t interface {
 	mock.TestingT
 	Cleanup(func())
 }) *MockAIGatewayNodesSDK {
+	if helper, ok := t.(interface{ Helper() }); ok {
+		helper.Helper()
+	}
+
 	mock := &MockAIGatewayNodesSDK{}
 	mock.Mock.Test(t)
 
-	t.Cleanup(func() { mock.AssertExpectations(t) })
+	t.Cleanup(func() {
+		if helper, ok := t.(interface{ Helper() }); ok {
+			helper.Helper()
+		}
+		mock.AssertExpectations(t)
+	})
 
 	return mock
 }

@@ -2,6 +2,9 @@
 
 Used if the customer has a linked external invoicing app.
 
+Set to `null` to remove the external invoicing data of the customer; omit to
+leave it unchanged.
+
 
 ## Fields
 

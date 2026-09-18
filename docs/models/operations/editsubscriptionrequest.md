@@ -1,0 +1,9 @@
+# EditSubscriptionRequest
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `SubscriptionID`                                                                         | `string`                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                                                               |
+| `BillingSubscriptionEdit`                                                                | [components.BillingSubscriptionEdit](../../models/components/billingsubscriptionedit.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |

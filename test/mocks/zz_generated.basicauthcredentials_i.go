@@ -17,10 +17,19 @@ func NewMockBasicAuthCredentialsSDK(t interface {
 	mock.TestingT
 	Cleanup(func())
 }) *MockBasicAuthCredentialsSDK {
+	if helper, ok := t.(interface{ Helper() }); ok {
+		helper.Helper()
+	}
+
 	mock := &MockBasicAuthCredentialsSDK{}
 	mock.Mock.Test(t)
 
-	t.Cleanup(func() { mock.AssertExpectations(t) })
+	t.Cleanup(func() {
+		if helper, ok := t.(interface{ Helper() }); ok {
+			helper.Helper()
+		}
+		mock.AssertExpectations(t)
+	})
 
 	return mock
 }

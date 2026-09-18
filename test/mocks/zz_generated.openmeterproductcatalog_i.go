@@ -18,10 +18,19 @@ func NewMockOpenMeterProductCatalogSDK(t interface {
 	mock.TestingT
 	Cleanup(func())
 }) *MockOpenMeterProductCatalogSDK {
+	if helper, ok := t.(interface{ Helper() }); ok {
+		helper.Helper()
+	}
+
 	mock := &MockOpenMeterProductCatalogSDK{}
 	mock.Mock.Test(t)
 
-	t.Cleanup(func() { mock.AssertExpectations(t) })
+	t.Cleanup(func() {
+		if helper, ok := t.(interface{ Helper() }); ok {
+			helper.Helper()
+		}
+		mock.AssertExpectations(t)
+	})
 
 	return mock
 }
@@ -966,95 +975,6 @@ func (_c *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call) Return(get
 }
 
 func (_c *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call) RunAndReturn(run func(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetProductCatalogAddonResponse, error)) *MockOpenMeterProductCatalogSDK_GetProductCatalogAddon_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListPlanAddons provides a mock function for the type MockOpenMeterProductCatalogSDK
-func (_mock *MockOpenMeterProductCatalogSDK) ListPlanAddons(ctx context.Context, planID string, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListPlanAddonsResponse, error) {
-	var tmpRet mock.Arguments
-	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, planID, page, opts)
-	} else {
-		tmpRet = _mock.Called(ctx, planID, page)
-	}
-	ret := tmpRet
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListPlanAddons")
-	}
-
-	var r0 *operations.ListPlanAddonsResponse
-	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PagePaginationQuery, ...operations.Option) (*operations.ListPlanAddonsResponse, error)); ok {
-		return returnFunc(ctx, planID, page, opts...)
-	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PagePaginationQuery, ...operations.Option) *operations.ListPlanAddonsResponse); ok {
-		r0 = returnFunc(ctx, planID, page, opts...)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.ListPlanAddonsResponse)
-		}
-	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.PagePaginationQuery, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, planID, page, opts...)
-	} else {
-		r1 = ret.Error(1)
-	}
-	return r0, r1
-}
-
-// MockOpenMeterProductCatalogSDK_ListPlanAddons_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPlanAddons'
-type MockOpenMeterProductCatalogSDK_ListPlanAddons_Call struct {
-	*mock.Call
-}
-
-// ListPlanAddons is a helper method to define mock.On call
-//   - ctx context.Context
-//   - planID string
-//   - page *components.PagePaginationQuery
-//   - opts ...operations.Option
-func (_e *MockOpenMeterProductCatalogSDK_Expecter) ListPlanAddons(ctx any, planID any, page any, opts ...any) *MockOpenMeterProductCatalogSDK_ListPlanAddons_Call {
-	return &MockOpenMeterProductCatalogSDK_ListPlanAddons_Call{Call: _e.mock.On("ListPlanAddons",
-		append([]any{ctx, planID, page}, opts...)...)}
-}
-
-func (_c *MockOpenMeterProductCatalogSDK_ListPlanAddons_Call) Run(run func(ctx context.Context, planID string, page *components.PagePaginationQuery, opts ...operations.Option)) *MockOpenMeterProductCatalogSDK_ListPlanAddons_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		var arg0 context.Context
-		if args[0] != nil {
-			arg0 = args[0].(context.Context)
-		}
-		var arg1 string
-		if args[1] != nil {
-			arg1 = args[1].(string)
-		}
-		var arg2 *components.PagePaginationQuery
-		if args[2] != nil {
-			arg2 = args[2].(*components.PagePaginationQuery)
-		}
-		var arg3 []operations.Option
-		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
-		}
-		arg3 = variadicArgs
-		run(
-			arg0,
-			arg1,
-			arg2,
-			arg3...,
-		)
-	})
-	return _c
-}
-
-func (_c *MockOpenMeterProductCatalogSDK_ListPlanAddons_Call) Return(listPlanAddonsResponse *operations.ListPlanAddonsResponse, err error) *MockOpenMeterProductCatalogSDK_ListPlanAddons_Call {
-	_c.Call.Return(listPlanAddonsResponse, err)
-	return _c
-}
-
-func (_c *MockOpenMeterProductCatalogSDK_ListPlanAddons_Call) RunAndReturn(run func(ctx context.Context, planID string, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListPlanAddonsResponse, error)) *MockOpenMeterProductCatalogSDK_ListPlanAddons_Call {
 	_c.Call.Return(run)
 	return _c
 }

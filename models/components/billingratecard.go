@@ -23,14 +23,14 @@ func (f *FeatureReference) GetID() string {
 	return f.ID
 }
 
-type PriceUnionType string
+type PriceType string
 
 const (
-	PriceUnionTypeFree      PriceUnionType = "free"
-	PriceUnionTypeFlat      PriceUnionType = "flat"
-	PriceUnionTypeUnit      PriceUnionType = "unit"
-	PriceUnionTypeGraduated PriceUnionType = "graduated"
-	PriceUnionTypeVolume    PriceUnionType = "volume"
+	PriceTypeFree      PriceType = "free"
+	PriceTypeFlat      PriceType = "flat"
+	PriceTypeUnit      PriceType = "unit"
+	PriceTypeGraduated PriceType = "graduated"
+	PriceTypeVolume    PriceType = "volume"
 )
 
 // Price - The price of the rate card.
@@ -41,11 +41,11 @@ type Price struct {
 	BillingPriceGraduated *BillingPriceGraduated `queryParam:"inline" union:"member"`
 	BillingPriceVolume    *BillingPriceVolume    `queryParam:"inline" union:"member"`
 
-	Type PriceUnionType
+	Type PriceType
 }
 
 func CreatePriceFree(free BillingPriceFree) Price {
-	typ := PriceUnionTypeFree
+	typ := PriceTypeFree
 
 	typStr := BillingPriceFreeType(typ)
 	free.Type = typStr
@@ -57,7 +57,7 @@ func CreatePriceFree(free BillingPriceFree) Price {
 }
 
 func CreatePriceFlat(flat BillingPriceFlat) Price {
-	typ := PriceUnionTypeFlat
+	typ := PriceTypeFlat
 
 	typStr := BillingPriceFlatType(typ)
 	flat.Type = typStr
@@ -69,7 +69,7 @@ func CreatePriceFlat(flat BillingPriceFlat) Price {
 }
 
 func CreatePriceUnit(unit BillingPriceUnit) Price {
-	typ := PriceUnionTypeUnit
+	typ := PriceTypeUnit
 
 	typStr := BillingPriceUnitType(typ)
 	unit.Type = typStr
@@ -81,7 +81,7 @@ func CreatePriceUnit(unit BillingPriceUnit) Price {
 }
 
 func CreatePriceGraduated(graduated BillingPriceGraduated) Price {
-	typ := PriceUnionTypeGraduated
+	typ := PriceTypeGraduated
 
 	typStr := BillingPriceGraduatedType(typ)
 	graduated.Type = typStr
@@ -93,7 +93,7 @@ func CreatePriceGraduated(graduated BillingPriceGraduated) Price {
 }
 
 func CreatePriceVolume(volume BillingPriceVolume) Price {
-	typ := PriceUnionTypeVolume
+	typ := PriceTypeVolume
 
 	typStr := BillingPriceVolumeType(typ)
 	volume.Type = typStr
@@ -130,7 +130,7 @@ func (u *Price) UnmarshalJSON(data []byte) (err error) {
 		}
 
 		u.BillingPriceFree = billingPriceFree
-		u.Type = PriceUnionTypeFree
+		u.Type = PriceTypeFree
 		return nil
 	case "flat":
 		billingPriceFlat := new(BillingPriceFlat)
@@ -139,7 +139,7 @@ func (u *Price) UnmarshalJSON(data []byte) (err error) {
 		}
 
 		u.BillingPriceFlat = billingPriceFlat
-		u.Type = PriceUnionTypeFlat
+		u.Type = PriceTypeFlat
 		return nil
 	case "unit":
 		billingPriceUnit := new(BillingPriceUnit)
@@ -148,7 +148,7 @@ func (u *Price) UnmarshalJSON(data []byte) (err error) {
 		}
 
 		u.BillingPriceUnit = billingPriceUnit
-		u.Type = PriceUnionTypeUnit
+		u.Type = PriceTypeUnit
 		return nil
 	case "graduated":
 		billingPriceGraduated := new(BillingPriceGraduated)
@@ -157,7 +157,7 @@ func (u *Price) UnmarshalJSON(data []byte) (err error) {
 		}
 
 		u.BillingPriceGraduated = billingPriceGraduated
-		u.Type = PriceUnionTypeGraduated
+		u.Type = PriceTypeGraduated
 		return nil
 	case "volume":
 		billingPriceVolume := new(BillingPriceVolume)
@@ -166,7 +166,7 @@ func (u *Price) UnmarshalJSON(data []byte) (err error) {
 		}
 
 		u.BillingPriceVolume = billingPriceVolume
-		u.Type = PriceUnionTypeVolume
+		u.Type = PriceTypeVolume
 		return nil
 	}
 
@@ -565,6 +565,9 @@ type BillingRateCard struct {
 	Key string `json:"key"`
 	// The feature associated with the rate card.
 	Feature *FeatureReference `json:"feature,omitempty"`
+	// Overrides the containing plan or add-on currency for this rate card. When
+	// omitted, the containing resource currency applies.
+	Currency *string `json:"currency,omitempty"`
 	// The billing cadence of the rate card. When null, the charge is one-time
 	// (non-recurring). Only valid for flat prices.
 	BillingCadence *string `json:"billing_cadence,omitempty"`
@@ -638,6 +641,13 @@ func (b *BillingRateCard) GetFeature() *FeatureReference {
 		return nil
 	}
 	return b.Feature
+}
+
+func (b *BillingRateCard) GetCurrency() *string {
+	if b == nil {
+		return nil
+	}
+	return b.Currency
 }
 
 func (b *BillingRateCard) GetBillingCadence() *string {

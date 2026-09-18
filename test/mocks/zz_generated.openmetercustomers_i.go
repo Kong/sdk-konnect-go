@@ -18,10 +18,19 @@ func NewMockOpenMeterCustomersSDK(t interface {
 	mock.TestingT
 	Cleanup(func())
 }) *MockOpenMeterCustomersSDK {
+	if helper, ok := t.(interface{ Helper() }); ok {
+		helper.Helper()
+	}
+
 	mock := &MockOpenMeterCustomersSDK{}
 	mock.Mock.Test(t)
 
-	t.Cleanup(func() { mock.AssertExpectations(t) })
+	t.Cleanup(func() {
+		if helper, ok := t.(interface{ Helper() }); ok {
+			helper.Helper()
+		}
+		mock.AssertExpectations(t)
+	})
 
 	return mock
 }
@@ -296,95 +305,6 @@ func (_c *MockOpenMeterCustomersSDK_CreateCustomer_Call) Return(createCustomerRe
 }
 
 func (_c *MockOpenMeterCustomersSDK_CreateCustomer_Call) RunAndReturn(run func(ctx context.Context, request components.CreateCustomerRequest, opts ...operations.Option) (*operations.CreateCustomerResponse, error)) *MockOpenMeterCustomersSDK_CreateCustomer_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// CreateCustomerCharges provides a mock function for the type MockOpenMeterCustomersSDK
-func (_mock *MockOpenMeterCustomersSDK) CreateCustomerCharges(ctx context.Context, customerID string, createChargeRequest components.CreateChargeRequest, opts ...operations.Option) (*operations.CreateCustomerChargesResponse, error) {
-	var tmpRet mock.Arguments
-	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, customerID, createChargeRequest, opts)
-	} else {
-		tmpRet = _mock.Called(ctx, customerID, createChargeRequest)
-	}
-	ret := tmpRet
-
-	if len(ret) == 0 {
-		panic("no return value specified for CreateCustomerCharges")
-	}
-
-	var r0 *operations.CreateCustomerChargesResponse
-	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateChargeRequest, ...operations.Option) (*operations.CreateCustomerChargesResponse, error)); ok {
-		return returnFunc(ctx, customerID, createChargeRequest, opts...)
-	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateChargeRequest, ...operations.Option) *operations.CreateCustomerChargesResponse); ok {
-		r0 = returnFunc(ctx, customerID, createChargeRequest, opts...)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.CreateCustomerChargesResponse)
-		}
-	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateChargeRequest, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, customerID, createChargeRequest, opts...)
-	} else {
-		r1 = ret.Error(1)
-	}
-	return r0, r1
-}
-
-// MockOpenMeterCustomersSDK_CreateCustomerCharges_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCustomerCharges'
-type MockOpenMeterCustomersSDK_CreateCustomerCharges_Call struct {
-	*mock.Call
-}
-
-// CreateCustomerCharges is a helper method to define mock.On call
-//   - ctx context.Context
-//   - customerID string
-//   - createChargeRequest components.CreateChargeRequest
-//   - opts ...operations.Option
-func (_e *MockOpenMeterCustomersSDK_Expecter) CreateCustomerCharges(ctx any, customerID any, createChargeRequest any, opts ...any) *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call {
-	return &MockOpenMeterCustomersSDK_CreateCustomerCharges_Call{Call: _e.mock.On("CreateCustomerCharges",
-		append([]any{ctx, customerID, createChargeRequest}, opts...)...)}
-}
-
-func (_c *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call) Run(run func(ctx context.Context, customerID string, createChargeRequest components.CreateChargeRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		var arg0 context.Context
-		if args[0] != nil {
-			arg0 = args[0].(context.Context)
-		}
-		var arg1 string
-		if args[1] != nil {
-			arg1 = args[1].(string)
-		}
-		var arg2 components.CreateChargeRequest
-		if args[2] != nil {
-			arg2 = args[2].(components.CreateChargeRequest)
-		}
-		var arg3 []operations.Option
-		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
-		}
-		arg3 = variadicArgs
-		run(
-			arg0,
-			arg1,
-			arg2,
-			arg3...,
-		)
-	})
-	return _c
-}
-
-func (_c *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call) Return(createCustomerChargesResponse *operations.CreateCustomerChargesResponse, err error) *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call {
-	_c.Call.Return(createCustomerChargesResponse, err)
-	return _c
-}
-
-func (_c *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call) RunAndReturn(run func(ctx context.Context, customerID string, createChargeRequest components.CreateChargeRequest, opts ...operations.Option) (*operations.CreateCustomerChargesResponse, error)) *MockOpenMeterCustomersSDK_CreateCustomerCharges_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1150,89 +1070,6 @@ func (_c *MockOpenMeterCustomersSDK_ListCreditTransactions_Call) Return(listCred
 }
 
 func (_c *MockOpenMeterCustomersSDK_ListCreditTransactions_Call) RunAndReturn(run func(ctx context.Context, request operations.ListCreditTransactionsRequest, opts ...operations.Option) (*operations.ListCreditTransactionsResponse, error)) *MockOpenMeterCustomersSDK_ListCreditTransactions_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListCustomerCharges provides a mock function for the type MockOpenMeterCustomersSDK
-func (_mock *MockOpenMeterCustomersSDK) ListCustomerCharges(ctx context.Context, request operations.ListCustomerChargesRequest, opts ...operations.Option) (*operations.ListCustomerChargesResponse, error) {
-	var tmpRet mock.Arguments
-	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, request, opts)
-	} else {
-		tmpRet = _mock.Called(ctx, request)
-	}
-	ret := tmpRet
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListCustomerCharges")
-	}
-
-	var r0 *operations.ListCustomerChargesResponse
-	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCustomerChargesRequest, ...operations.Option) (*operations.ListCustomerChargesResponse, error)); ok {
-		return returnFunc(ctx, request, opts...)
-	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListCustomerChargesRequest, ...operations.Option) *operations.ListCustomerChargesResponse); ok {
-		r0 = returnFunc(ctx, request, opts...)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.ListCustomerChargesResponse)
-		}
-	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListCustomerChargesRequest, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, request, opts...)
-	} else {
-		r1 = ret.Error(1)
-	}
-	return r0, r1
-}
-
-// MockOpenMeterCustomersSDK_ListCustomerCharges_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListCustomerCharges'
-type MockOpenMeterCustomersSDK_ListCustomerCharges_Call struct {
-	*mock.Call
-}
-
-// ListCustomerCharges is a helper method to define mock.On call
-//   - ctx context.Context
-//   - request operations.ListCustomerChargesRequest
-//   - opts ...operations.Option
-func (_e *MockOpenMeterCustomersSDK_Expecter) ListCustomerCharges(ctx any, request any, opts ...any) *MockOpenMeterCustomersSDK_ListCustomerCharges_Call {
-	return &MockOpenMeterCustomersSDK_ListCustomerCharges_Call{Call: _e.mock.On("ListCustomerCharges",
-		append([]any{ctx, request}, opts...)...)}
-}
-
-func (_c *MockOpenMeterCustomersSDK_ListCustomerCharges_Call) Run(run func(ctx context.Context, request operations.ListCustomerChargesRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_ListCustomerCharges_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		var arg0 context.Context
-		if args[0] != nil {
-			arg0 = args[0].(context.Context)
-		}
-		var arg1 operations.ListCustomerChargesRequest
-		if args[1] != nil {
-			arg1 = args[1].(operations.ListCustomerChargesRequest)
-		}
-		var arg2 []operations.Option
-		var variadicArgs []operations.Option
-		if len(args) > 2 {
-			variadicArgs = args[2].([]operations.Option)
-		}
-		arg2 = variadicArgs
-		run(
-			arg0,
-			arg1,
-			arg2...,
-		)
-	})
-	return _c
-}
-
-func (_c *MockOpenMeterCustomersSDK_ListCustomerCharges_Call) Return(listCustomerChargesResponse *operations.ListCustomerChargesResponse, err error) *MockOpenMeterCustomersSDK_ListCustomerCharges_Call {
-	_c.Call.Return(listCustomerChargesResponse, err)
-	return _c
-}
-
-func (_c *MockOpenMeterCustomersSDK_ListCustomerCharges_Call) RunAndReturn(run func(ctx context.Context, request operations.ListCustomerChargesRequest, opts ...operations.Option) (*operations.ListCustomerChargesResponse, error)) *MockOpenMeterCustomersSDK_ListCustomerCharges_Call {
 	_c.Call.Return(run)
 	return _c
 }

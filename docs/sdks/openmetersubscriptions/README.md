@@ -13,6 +13,7 @@ Subscriptions are used to track usage of your product or service. Subscriptions 
 * [GetSubscriptionAddon](#getsubscriptionaddon) - Get add-on association for subscription
 * [CancelSubscription](#cancelsubscription) - Cancel subscription
 * [ChangeSubscription](#changesubscription) - Change subscription
+* [EditSubscription](#editsubscription) - Edit subscription
 * [UnscheduleCancelation](#unschedulecancelation) - Unschedule subscription cancelation
 
 ## CreateSubscription
@@ -50,9 +51,57 @@ func main() {
             ID: sdkkonnectgo.Pointer("01G65Z755AFWAKHE12NY0CQ9FH"),
             Key: sdkkonnectgo.Pointer("019ae40f-4258-7f15-9491-842f42a7d6ac"),
         },
-        Plan: components.Plan{
+        Plan: &components.Plan{
             ID: sdkkonnectgo.Pointer("01G65Z755AFWAKHE12NY0CQ9FH"),
             Key: sdkkonnectgo.Pointer("resource_key"),
+        },
+        CustomPlan: &components.CustomPlan{
+            Name: "<value>",
+            Labels: map[string]string{
+                "env": "test",
+            },
+            Currency: "USD",
+            BillingCadence: "P1Y",
+            Phases: []components.BillingPlanPhase{
+                components.BillingPlanPhase{
+                    Name: "<value>",
+                    Labels: map[string]string{
+                        "env": "test",
+                    },
+                    Key: "resource_key",
+                    Duration: sdkkonnectgo.Pointer("P1Y"),
+                    RateCards: []components.BillingRateCard{
+                        components.BillingRateCard{
+                            Name: "<value>",
+                            Labels: map[string]string{
+                                "env": "test",
+                            },
+                            Key: "resource_key",
+                            Feature: &components.FeatureReference{
+                                ID: "01G65Z755AFWAKHE12NY0CQ9FH",
+                            },
+                            Currency: sdkkonnectgo.Pointer("USD"),
+                            BillingCadence: sdkkonnectgo.Pointer("P1Y"),
+                            Price: components.CreatePriceFlat(
+                                components.BillingPriceFlat{
+                                    Type: components.BillingPriceFlatTypeFlat,
+                                    Amount: "112.57",
+                                },
+                            ),
+                            TaxConfig: &components.TaxConfig{
+                                Code: components.TaxCodeReference{
+                                    ID: "01G65Z755AFWAKHE12NY0CQ9FH",
+                                },
+                            },
+                            Entitlement: sdkkonnectgo.Pointer(components.CreateEntitlementTemplateBoolean(
+                                components.BillingRateCardBooleanEntitlement{
+                                    Type: components.BillingRateCardBooleanEntitlementTypeBoolean,
+                                },
+                            )),
+                        },
+                    },
+                },
+            },
         },
         BillingAnchor: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),
     })
@@ -446,9 +495,28 @@ func main() {
             ID: sdkkonnectgo.Pointer("01G65Z755AFWAKHE12NY0CQ9FH"),
             Key: sdkkonnectgo.Pointer("019ae40f-4258-7f15-9491-842f42a7d6ac"),
         },
-        Plan: components.BillingSubscriptionChangePlan{
+        Plan: &components.BillingSubscriptionChangePlan{
             ID: sdkkonnectgo.Pointer("01G65Z755AFWAKHE12NY0CQ9FH"),
             Key: sdkkonnectgo.Pointer("resource_key"),
+        },
+        CustomPlan: &components.BillingSubscriptionChangeCustomPlan{
+            Name: "<value>",
+            Labels: map[string]string{
+                "env": "test",
+            },
+            Currency: "USD",
+            BillingCadence: "P1Y",
+            Phases: []components.BillingPlanPhase{
+                components.BillingPlanPhase{
+                    Name: "<value>",
+                    Labels: map[string]string{
+                        "env": "test",
+                    },
+                    Key: "resource_key",
+                    Duration: sdkkonnectgo.Pointer("P1Y"),
+                    RateCards: []components.BillingRateCard{},
+                },
+            },
         },
         BillingAnchor: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),
         Timing: components.CreateBillingSubscriptionChangeTimingBillingSubscriptionEditTimingEnum(
@@ -476,6 +544,109 @@ func main() {
 ### Response
 
 **[*operations.ChangeSubscriptionResponse](../../models/operations/changesubscriptionresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## EditSubscription
+
+Edits a running subscription by applying an ordered batch of customizations
+(adding or removing items, adding, removing, or stretching phases, or
+unscheduling a pending edit). The changes may take effect immediately or at the
+next billing cycle. Subscriptions that have add-ons cannot be edited.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="edit-subscription" method="post" path="/v3/openmeter/subscriptions/{subscriptionId}/edit" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterSubscriptions.EditSubscription(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.BillingSubscriptionEdit{
+        Customizations: []components.BillingSubscriptionEditOperation{
+            components.CreateBillingSubscriptionEditOperationAddItem(
+                components.BillingSubscriptionEditAddItem{
+                    Type: components.BillingSubscriptionEditAddItemTypeAddItem,
+                    PhaseKey: "<value>",
+                    RateCard: components.BillingSubscriptionEditAddItemRateCard{
+                        Name: "<value>",
+                        Labels: map[string]string{
+                            "env": "test",
+                        },
+                        Key: "resource_key",
+                        Feature: &components.BillingSubscriptionEditAddItemFeatureReference{
+                            ID: "01G65Z755AFWAKHE12NY0CQ9FH",
+                        },
+                        Currency: sdkkonnectgo.Pointer("USD"),
+                        BillingCadence: sdkkonnectgo.Pointer("P1Y"),
+                        Price: components.CreateBillingSubscriptionEditAddItemPriceFree(
+                            components.BillingPriceFree{
+                                Type: components.BillingPriceFreeTypeFree,
+                            },
+                        ),
+                        TaxConfig: &components.BillingSubscriptionEditAddItemTaxConfig{
+                            Code: components.TaxCodeReference{
+                                ID: "01G65Z755AFWAKHE12NY0CQ9FH",
+                            },
+                        },
+                        Entitlement: sdkkonnectgo.Pointer(components.CreateBillingSubscriptionEditAddItemEntitlementTemplateStatic(
+                            components.BillingRateCardStaticEntitlement{
+                                Type: components.BillingRateCardStaticEntitlementTypeStatic,
+                                Config: "<value>",
+                            },
+                        )),
+                    },
+                },
+            ),
+        },
+        Timing: sdkkonnectgo.Pointer(components.CreateBillingSubscriptionEditTimingBillingSubscriptionEditTimingEnum(
+            components.BillingSubscriptionEditTimingEnumImmediate,
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingSubscription != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |                                                                                          |
+| `subscriptionID`                                                                         | `string`                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                                                               |
+| `billingSubscriptionEdit`                                                                | [components.BillingSubscriptionEdit](../../models/components/billingsubscriptionedit.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |                                                                                          |
+
+### Response
+
+**[*operations.EditSubscriptionResponse](../../models/operations/editsubscriptionresponse.md), error**
 
 ### Errors
 

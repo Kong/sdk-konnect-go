@@ -18,7 +18,6 @@ Product catalog manages plans, add-ons, and their associations for subscription-
 * [UpdatePlan](#updateplan) - Update plan
 * [GetPlan](#getplan) - Get plan
 * [DeletePlan](#deleteplan) - Delete plan
-* [ListPlanAddons](#listplanaddons) - List add-ons for plan
 * [CreatePlanAddon](#createplanaddon) - Add add-on to plan
 * [GetPlanAddon](#getplanaddon) - Get add-on association for plan
 * [UpdatePlanAddon](#updateplanaddon) - Update add-on association for plan
@@ -850,68 +849,6 @@ func main() {
 ### Response
 
 **[*operations.DeletePlanResponse](../../models/operations/deleteplanresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ListPlanAddons
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
-List add-ons associated with a plan.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-plan-addons" method="get" path="/v3/openmeter/plans/{planId}/addons" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.OpenMeterProductCatalog.ListPlanAddons(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", nil)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.PlanAddonPagePaginatedResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |                                                                                   |
-| `planID`                                                                          | `string`                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | 01G65Z755AFWAKHE12NY0CQ9FH                                                        |
-| `page`                                                                            | [*components.PagePaginationQuery](../../models/components/pagepaginationquery.md) | :heavy_minus_sign:                                                                | Determines which page of the collection to retrieve.                              |                                                                                   |
-| `opts`                                                                            | [][operations.Option](../../models/operations/option.md)                          | :heavy_minus_sign:                                                                | The options for this request.                                                     |                                                                                   |
-
-### Response
-
-**[*operations.ListPlanAddonsResponse](../../models/operations/listplanaddonsresponse.md), error**
 
 ### Errors
 

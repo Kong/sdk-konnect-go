@@ -11,9 +11,6 @@ Metering events are used to track usage of your product or service. Events are p
 
 ## ListMeteringEvents
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 List ingested events.
 
 ### Example Usage

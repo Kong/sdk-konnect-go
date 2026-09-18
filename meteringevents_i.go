@@ -11,9 +11,6 @@ import (
 // MeteringEventsSDK is a generated interface.
 type MeteringEventsSDK interface {
 	// ListMeteringEvents - List metering events
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// List ingested events.
 	ListMeteringEvents(ctx context.Context, request operations.ListMeteringEventsRequest, opts ...operations.Option) (*operations.ListMeteringEventsResponse, error)
 	// IngestMeteringEvents - Ingest metering events

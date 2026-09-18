@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.15.0 and generator version 2.935.1
+// Generated from OpenAPI doc version 3.15.0 and generator version 2.937.18
 
 import (
 	"context"
@@ -521,11 +521,11 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.65.0",
+		SDKVersion: "0.66.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.65.0 2.935.1 3.15.0 github.com/Kong/sdk-konnect-go",
-			SDKVersion:        "0.65.0",
-			GenVersion:        "2.935.1",
+			UserAgent:         "speakeasy-sdk/go 0.66.0 2.937.18 3.15.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.66.0",
+			GenVersion:        "2.937.18",
 			OpenAPIDocVersion: "3.15.0",
 			ServerList:        ServerList,
 		},

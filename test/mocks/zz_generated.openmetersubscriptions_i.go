@@ -18,10 +18,19 @@ func NewMockOpenMeterSubscriptionsSDK(t interface {
 	mock.TestingT
 	Cleanup(func())
 }) *MockOpenMeterSubscriptionsSDK {
+	if helper, ok := t.(interface{ Helper() }); ok {
+		helper.Helper()
+	}
+
 	mock := &MockOpenMeterSubscriptionsSDK{}
 	mock.Mock.Test(t)
 
-	t.Cleanup(func() { mock.AssertExpectations(t) })
+	t.Cleanup(func() {
+		if helper, ok := t.(interface{ Helper() }); ok {
+			helper.Helper()
+		}
+		mock.AssertExpectations(t)
+	})
 
 	return mock
 }
@@ -296,6 +305,95 @@ func (_c *MockOpenMeterSubscriptionsSDK_CreateSubscription_Call) Return(createSu
 }
 
 func (_c *MockOpenMeterSubscriptionsSDK_CreateSubscription_Call) RunAndReturn(run func(ctx context.Context, request components.BillingSubscriptionCreate, opts ...operations.Option) (*operations.CreateSubscriptionResponse, error)) *MockOpenMeterSubscriptionsSDK_CreateSubscription_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EditSubscription provides a mock function for the type MockOpenMeterSubscriptionsSDK
+func (_mock *MockOpenMeterSubscriptionsSDK) EditSubscription(ctx context.Context, subscriptionID string, billingSubscriptionEdit components.BillingSubscriptionEdit, opts ...operations.Option) (*operations.EditSubscriptionResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, subscriptionID, billingSubscriptionEdit, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, subscriptionID, billingSubscriptionEdit)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for EditSubscription")
+	}
+
+	var r0 *operations.EditSubscriptionResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.BillingSubscriptionEdit, ...operations.Option) (*operations.EditSubscriptionResponse, error)); ok {
+		return returnFunc(ctx, subscriptionID, billingSubscriptionEdit, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.BillingSubscriptionEdit, ...operations.Option) *operations.EditSubscriptionResponse); ok {
+		r0 = returnFunc(ctx, subscriptionID, billingSubscriptionEdit, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.EditSubscriptionResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.BillingSubscriptionEdit, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, subscriptionID, billingSubscriptionEdit, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterSubscriptionsSDK_EditSubscription_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EditSubscription'
+type MockOpenMeterSubscriptionsSDK_EditSubscription_Call struct {
+	*mock.Call
+}
+
+// EditSubscription is a helper method to define mock.On call
+//   - ctx context.Context
+//   - subscriptionID string
+//   - billingSubscriptionEdit components.BillingSubscriptionEdit
+//   - opts ...operations.Option
+func (_e *MockOpenMeterSubscriptionsSDK_Expecter) EditSubscription(ctx any, subscriptionID any, billingSubscriptionEdit any, opts ...any) *MockOpenMeterSubscriptionsSDK_EditSubscription_Call {
+	return &MockOpenMeterSubscriptionsSDK_EditSubscription_Call{Call: _e.mock.On("EditSubscription",
+		append([]any{ctx, subscriptionID, billingSubscriptionEdit}, opts...)...)}
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_EditSubscription_Call) Run(run func(ctx context.Context, subscriptionID string, billingSubscriptionEdit components.BillingSubscriptionEdit, opts ...operations.Option)) *MockOpenMeterSubscriptionsSDK_EditSubscription_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.BillingSubscriptionEdit
+		if args[2] != nil {
+			arg2 = args[2].(components.BillingSubscriptionEdit)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_EditSubscription_Call) Return(editSubscriptionResponse *operations.EditSubscriptionResponse, err error) *MockOpenMeterSubscriptionsSDK_EditSubscription_Call {
+	_c.Call.Return(editSubscriptionResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_EditSubscription_Call) RunAndReturn(run func(ctx context.Context, subscriptionID string, billingSubscriptionEdit components.BillingSubscriptionEdit, opts ...operations.Option) (*operations.EditSubscriptionResponse, error)) *MockOpenMeterSubscriptionsSDK_EditSubscription_Call {
 	_c.Call.Return(run)
 	return _c
 }

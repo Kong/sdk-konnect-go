@@ -12,33 +12,18 @@ import (
 // OpenMeterFeaturesSDK is a generated interface.
 type OpenMeterFeaturesSDK interface {
 	// ListFeatures - List features
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// List all features.
 	ListFeatures(ctx context.Context, request operations.ListFeaturesRequest, opts ...operations.Option) (*operations.ListFeaturesResponse, error)
 	// CreateFeature - Create feature
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Create a feature.
 	CreateFeature(ctx context.Context, request components.CreateFeatureRequest, opts ...operations.Option) (*operations.CreateFeatureResponse, error)
 	// GetFeature - Get feature
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Get a feature by id.
 	GetFeature(ctx context.Context, featureID string, opts ...operations.Option) (*operations.GetFeatureResponse, error)
 	// UpdateFeature - Update feature
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Update a feature by id. Currently only the unit_cost field can be updated.
 	UpdateFeature(ctx context.Context, featureID string, updateFeatureRequest components.UpdateFeatureRequest, opts ...operations.Option) (*operations.UpdateFeatureResponse, error)
 	// DeleteFeature - Delete feature
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
 	// Delete a feature by id.
 	DeleteFeature(ctx context.Context, featureID string, opts ...operations.Option) (*operations.DeleteFeatureResponse, error)
 	// QueryFeatureCost - Query feature cost

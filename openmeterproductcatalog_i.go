@@ -83,12 +83,6 @@ type OpenMeterProductCatalogSDK interface {
 	//
 	// Delete a plan by id.
 	DeletePlan(ctx context.Context, planID string, opts ...operations.Option) (*operations.DeletePlanResponse, error)
-	// ListPlanAddons - List add-ons for plan
-	// **Pre-release Endpoint**
-	// This endpoint is currently in beta and is subject to change.
-	//
-	// List add-ons associated with a plan.
-	ListPlanAddons(ctx context.Context, planID string, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListPlanAddonsResponse, error)
 	// CreatePlanAddon - Add add-on to plan
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.

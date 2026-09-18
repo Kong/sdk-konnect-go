@@ -8,11 +8,96 @@ import (
 	"time"
 )
 
+// AIGatewayMCPServerListenerResponseLogging - Configuration for AI Gateway logging.
+type AIGatewayMCPServerListenerResponseLogging struct {
+	Payloads *bool `default:"false" json:"payloads"`
+	Audits   *bool `default:"false" json:"audits"`
+}
+
+func (a AIGatewayMCPServerListenerResponseLogging) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayMCPServerListenerResponseLogging) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayMCPServerListenerResponseLogging) GetPayloads() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.Payloads
+}
+
+func (a *AIGatewayMCPServerListenerResponseLogging) GetAudits() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.Audits
+}
+
+// AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig - Server-side configuration specific to modes where Kong answers as the MCP server.
+type AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig struct {
+	// Route configuration for an MCP Server that terminates its own listener. At least one
+	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
+	// incoming requests.
+	//
+	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
+	// Configuration for AI Gateway logging.
+	Logging *AIGatewayMCPServerListenerResponseLogging `json:"logging,omitempty"`
+	// Maximum size of request body to parse. Set to 0 for unlimited.
+	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
+	// Server-side configuration for the MCP Server.
+	Server *AIGatewayMCPServerServerConfigBaseOutput `json:"server,omitempty"`
+}
+
+func (a AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) GetRoute() *AIGatewayMCPServerRouteWithMatcher {
+	if a == nil {
+		return nil
+	}
+	return a.Route
+}
+
+func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) GetLogging() *AIGatewayMCPServerListenerResponseLogging {
+	if a == nil {
+		return nil
+	}
+	return a.Logging
+}
+
+func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) GetMaxRequestBodySize() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.MaxRequestBodySize
+}
+
+func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) GetServer() *AIGatewayMCPServerServerConfigBaseOutput {
+	if a == nil {
+		return nil
+	}
+	return a.Server
+}
+
 type AIGatewayMCPServerListenerResponse struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"listener" json:"type"`
-	// Routing, logging, and server configuration for the MCP Server.
-	Config AIGatewayMCPServerNoUpstreamConfigOutput `json:"config"`
+	// Server-side configuration specific to modes where Kong answers as the MCP server.
+	Config AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig `json:"config"`
 	// The explicit list of source MCP Servers whose tools this listener exposes.
 	// Each entry is the immutable `name` of a `conversion-only` (toolset) or
 	// `upstream-server` (third-party MCP server) MCP Server in the same AI Gateway.
@@ -63,9 +148,9 @@ func (a *AIGatewayMCPServerListenerResponse) GetType() string {
 	return "listener"
 }
 
-func (a *AIGatewayMCPServerListenerResponse) GetConfig() AIGatewayMCPServerNoUpstreamConfigOutput {
+func (a *AIGatewayMCPServerListenerResponse) GetConfig() AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig {
 	if a == nil {
-		return AIGatewayMCPServerNoUpstreamConfigOutput{}
+		return AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig{}
 	}
 	return a.Config
 }

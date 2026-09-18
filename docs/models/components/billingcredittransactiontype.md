@@ -23,3 +23,4 @@ custom := components.BillingCreditTransactionType("custom_value")
 | `BillingCreditTransactionTypeFunded`   | funded                                 |
 | `BillingCreditTransactionTypeConsumed` | consumed                               |
 | `BillingCreditTransactionTypeExpired`  | expired                                |
+| `BillingCreditTransactionTypeVoided`   | voided                                 |

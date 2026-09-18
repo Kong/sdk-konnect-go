@@ -9,10 +9,10 @@
 aiGatewayModelProviderSagemakerAuthOutput := components.CreateAIGatewayModelProviderSagemakerAuthOutputBasic(components.AIGatewayModelProviderConfigAuthBasicOutput{/* values here */})
 ```
 
-### AIGatewayModelProviderConfigAuthSagemaker
+### AIGatewayModelProviderConfigAuthSagemakerOutput
 
 ```go
-aiGatewayModelProviderSagemakerAuthOutput := components.CreateAIGatewayModelProviderSagemakerAuthOutputSagemaker(components.AIGatewayModelProviderConfigAuthSagemaker{/* values here */})
+aiGatewayModelProviderSagemakerAuthOutput := components.CreateAIGatewayModelProviderSagemakerAuthOutputSagemaker(components.AIGatewayModelProviderConfigAuthSagemakerOutput{/* values here */})
 ```
 
 ## Union Discrimination
@@ -24,6 +24,6 @@ switch aiGatewayModelProviderSagemakerAuthOutput.Type {
 	case components.AIGatewayModelProviderSagemakerAuthOutputTypeBasic:
 		// aiGatewayModelProviderSagemakerAuthOutput.AIGatewayModelProviderConfigAuthBasicOutput is populated
 	case components.AIGatewayModelProviderSagemakerAuthOutputTypeSagemaker:
-		// aiGatewayModelProviderSagemakerAuthOutput.AIGatewayModelProviderConfigAuthSagemaker is populated
+		// aiGatewayModelProviderSagemakerAuthOutput.AIGatewayModelProviderConfigAuthSagemakerOutput is populated
 }
 ```
