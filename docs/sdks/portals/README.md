@@ -579,6 +579,9 @@ func main() {
 
     res, err := s.Portals.UpdatePortal(ctx, "06a06521-85cd-4704-8a94-628a34be93a4", components.UpdatePortal{
         AuthenticationEnabled: sdkkonnectgo.Pointer(false),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
     })
     if err != nil {
         log.Fatal(err)
@@ -611,6 +614,8 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "c33fb6aa-eefa-4b2c-839d-ae0c33151e65", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
         AutoApproveDevelopers: sdkkonnectgo.Pointer(true),
         AutoApproveApplications: sdkkonnectgo.Pointer(true),
     })
@@ -645,7 +650,10 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "89fecbfd-98af-4be4-a961-762758c1cda0", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
         RbacEnabled: sdkkonnectgo.Pointer(true),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
     })
     if err != nil {
         log.Fatal(err)
@@ -679,6 +687,9 @@ func main() {
 
     res, err := s.Portals.UpdatePortal(ctx, "efe853b6-a55c-4929-9b80-c39a22b01c7a", components.UpdatePortal{
         AuthenticationEnabled: sdkkonnectgo.Pointer(false),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
     })
     if err != nil {
         log.Fatal(err)
@@ -711,6 +722,10 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "11e433bf-d599-4a1d-95d3-d79b8659de0e", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
@@ -746,6 +761,10 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "1bbd136e-032f-41e0-ac85-574f86daa79b", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
@@ -781,6 +800,10 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "02bccb4f-0606-4eb1-afe4-af597707eae1", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
@@ -816,6 +839,10 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "b646206d-66de-4dee-8106-381967797727", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
@@ -851,6 +878,10 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "e2802368-801b-4ad3-994f-f01954a4f348", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
@@ -886,6 +917,10 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "0abeae52-4205-4262-bf1c-ce816dc7730f", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
@@ -921,6 +956,10 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "a92fd996-1a8b-4414-a3fb-9333666a001f", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
@@ -956,6 +995,10 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "f0c9976f-d0f3-42ad-9f78-b7cd2eb521ae", components.UpdatePortal{
+        AuthenticationEnabled: sdkkonnectgo.Pointer(true),
+        RbacEnabled: sdkkonnectgo.Pointer(false),
+        AutoApproveDevelopers: sdkkonnectgo.Pointer(false),
+        AutoApproveApplications: sdkkonnectgo.Pointer(false),
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
