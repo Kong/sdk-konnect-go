@@ -13,8 +13,8 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: false
     sharedErrorComponentsApr2025: false
-    sharedNestedComponentsJan2026: false
     nameOverrideFeb2026: false
+    sharedNestedComponentsJan2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
@@ -22,15 +22,15 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
-  versioningStrategy: automatic
   persistentEdits:
     enabled: never
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
+  versioningStrategy: automatic
 go:
-  version: 0.2.0
+  version: 0.3.0
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   baseErrorName: SDKBaseError
