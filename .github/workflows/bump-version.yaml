@@ -39,7 +39,7 @@ jobs:
           version: 1.675.4 # renovate: datasource=github-releases depName=speakeasy-api/speakeasy
 
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ secrets.PAT }}
