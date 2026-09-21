@@ -186,10 +186,15 @@ generate.interfaces: ifacemaker remove.interfaces
 	@$(foreach s, $(TYPES_TO_MOCK), \
 		$(MAKE) _generate.ifacemaker STRUCT=$(s) || exit 1;)
 
+.PHONY: remove.mocks
+remove.mocks:
+	@echo "Removing existing mocks (to prevent breakage on breaking changes) and generating new ones..."
+	rm -f test/mocks/zz_generated*.go
+
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks
-generate.mocks: mockery
-	GODEBUG=gotypesalias=0 $(MOCKERY)
+generate.mocks: mockery remove.mocks
+	$(MOCKERY)
 
 .PHONY: verify.diff
 verify.diff:
