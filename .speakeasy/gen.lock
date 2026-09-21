@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 53a80c439ee68f73a04763de94b8e159
+  docChecksum: 41ee138dc7e4f199803ea9cbf195a82a
   docVersion: 3.15.0
   speakeasyVersion: 1.798.0
   generationVersion: 2.938.0
   releaseVersion: 0.66.0
   configChecksum: 77b0c0c683c69b83b1462a7674461426
 persistentEdits:
-  generation_id: 6da06741-14d2-413d-acdd-fffaa728359b
-  pristine_commit_hash: cbf6de3e000c2c267ffe48ab724edcd419eb621a
-  pristine_tree_hash: de0bf8b7d9b270137b097dc7bd421acc7aef0a4e
+  generation_id: 0a3c3a4e-1420-4426-9d19-471a0d24c476
+  pristine_commit_hash: 1d1ddd503a2b2c5e7ed2a6f7e70eb025c63e990d
+  pristine_tree_hash: 875e0e47372d829a75f4f3cbd16ac0fe558f90eb
 features:
   go:
     acceptHeaders: 2.81.2
@@ -299,6 +299,10 @@ trackedFiles:
     id: 0961cc7b048b
     last_write_checksum: sha1:d653732040b9739c0d2575c87d268d5b767af215
     pristine_git_object: 5e943ba653ca2a4408cd2ea3ce632241cea3de99
+  docs/models/components/accounttype.md:
+    id: 106c181c8bb5
+    last_write_checksum: sha1:d9cade1c234a317f79196088c5ca0e5c57bd23a4
+    pristine_git_object: 1fe3f6fe02a888d5fdfa994977897da806a317bb
   docs/models/components/acl.md:
     id: 6f393cba7b84
     last_write_checksum: sha1:df4c698b7ea6d9cfbfdb5ebbb00034230da3b1aa
@@ -11257,8 +11261,8 @@ trackedFiles:
     pristine_git_object: d20c0c29582ecbe529159ba5aa84daf4ec2bdeaf
   docs/models/components/user.md:
     id: 9615438c874c
-    last_write_checksum: sha1:4c1b1ae87e89ff140031a5058120ca07320e88e5
-    pristine_git_object: 28e55da5e432d33f96abc8982c3d8b29bc660e41
+    last_write_checksum: sha1:9804a5515092bf44f7a9f51ffcfae5cc756a74b4
+    pristine_git_object: 9fcfdf99334a96fb20e53ad13e8cd05a5c455491
   docs/models/components/usercollection.md:
     id: 264c62af4fbf
     last_write_checksum: sha1:bf9847ba4f1e0c0b7e91c05e36783816b9ca41a0
@@ -15189,8 +15193,8 @@ trackedFiles:
     pristine_git_object: ed684fd041b53f4ddf2d90838765ebed9639e6a9
   docs/models/operations/getuserresponse.md:
     id: 1ad61fe526d9
-    last_write_checksum: sha1:39932a3c1fa7830a6ccfbc8990ba436a6988e4ab
-    pristine_git_object: 04d168a15888df9575f16725db790866e08c29b3
+    last_write_checksum: sha1:2e91d2f2ef7105f6f36ba88a99b1580ebf54dab9
+    pristine_git_object: 5d6ae6d9fbbdf4101eaac8557fa17ca674e941c8
   docs/models/operations/getuserrolerequest.md:
     id: 83217a05d697
     last_write_checksum: sha1:ff620d4a3e628d4d68a3b3239b919d32d1541c1b
@@ -15201,8 +15205,8 @@ trackedFiles:
     pristine_git_object: 8586463a439077a840c3dafb48b9717b39f73062
   docs/models/operations/getusersmeresponse.md:
     id: bcef4d69c6c3
-    last_write_checksum: sha1:6c41db74c111a4762405d9377fb43bfb6a199d3d
-    pristine_git_object: cb8a30ff8d48be9b0f021cb3d4d51539e873dfc3
+    last_write_checksum: sha1:635d6091d655598a087414026f4bdcc090faa564
+    pristine_git_object: 02446316162229bbbd621a0e70a38ad6a7b3b8c6
   docs/models/operations/getvaultrequest.md:
     id: 01b164c58889
     last_write_checksum: sha1:e10d44324cf1ae7b6cf5dd9eebeddd933c72ae6b
@@ -18021,8 +18025,8 @@ trackedFiles:
     pristine_git_object: 4f48fbe0c69fcd80f4ff8585b28f791066cf168b
   docs/models/operations/updateuserresponse.md:
     id: 8c92a972b817
-    last_write_checksum: sha1:c0b624d02c1ddf70270b242555c1eb9847ebab09
-    pristine_git_object: ad32bfce0d87658ef8be434664b2cfaa954cd4ac
+    last_write_checksum: sha1:4250b5e1b29040717f813c37b68affb620920374
+    pristine_git_object: 788caad87841a92dbc7becb5a98901d1f4148d84
   docs/models/operations/upsertaclwithconsumerrequest.md:
     id: e2821865254e
     last_write_checksum: sha1:388d1ccb0026441935f01a06325e880b95ed451a
@@ -24613,8 +24617,8 @@ trackedFiles:
     pristine_git_object: 326e85d1b27a635de210238640e6448772a23cf9
   models/components/user.go:
     id: 972e0ca973c7
-    last_write_checksum: sha1:361fa4bf758af51242807dd61ba0202ebd538dba
-    pristine_git_object: 13eefa799a1d935ca7c8aa028e200198e3bdec21
+    last_write_checksum: sha1:147544b018524f877cf74e9721df09b69bcb97f8
+    pristine_git_object: ed96dee493ff02f0c7d441b8c17604c6c3be929c
   models/components/usercollection.go:
     id: 0a38b607424b
     last_write_checksum: sha1:3347bb1cd9bec9ed654a59293179a505e830b459
@@ -40071,7 +40075,7 @@ examples:
     speakeasy-default-get-users-me:
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "inferred_region": "us", "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "inferred_region": "us", "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z", "account_type": "google"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
     Example:
@@ -43017,7 +43021,7 @@ examples:
           userId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "inferred_region": "us", "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "inferred_region": "us", "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z", "account_type": "google"}
         "400":
           application/problem+json: {"status": 401553, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "404":
@@ -43115,7 +43119,7 @@ examples:
         application/json: {"full_name": "James C. Woods", "preferred_name": "Jimmy"}
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "inferred_region": "us", "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "inferred_region": "us", "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z", "account_type": "google"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
