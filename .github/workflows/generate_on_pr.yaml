@@ -19,10 +19,16 @@ jobs:
     outputs:
       result: ${{ steps.decision.outputs.result }}
     steps:
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app-token
+        with:
+          client-id: ${{ vars.GH_APP__KONG_K8S__APP_ID }}
+          private-key: ${{ secrets.GH_APP__KONG_K8S__PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
       - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.PAT }}
+          token: ${{ steps.app-token.outputs.token }}
       - id: decision
         run: |
             if [[ "$(git show -s --format=%B HEAD)" == "Update provider based on openapi.yaml changes" ]]; then
@@ -49,11 +55,18 @@ jobs:
           package_type: zip
           version: 1.675.4 # renovate: datasource=github-releases depName=speakeasy-api/speakeasy
 
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app-token
+        with:
+          client-id: ${{ vars.GH_APP__KONG_K8S__APP_ID }}
+          private-key: ${{ secrets.GH_APP__KONG_K8S__PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+
       - name: Checkout current repo
         uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.PAT }}
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Configure speakeasy CLI
         run: |
