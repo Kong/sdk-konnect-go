@@ -17,6 +17,12 @@ eventGatewayProduceSchemaValidationPolicyConfig := components.CreateEventGateway
 eventGatewayProduceSchemaValidationPolicyConfig := components.CreateEventGatewayProduceSchemaValidationPolicyConfigJSON(components.EventGatewayProduceSchemaValidationPolicyJSONConfig{/* values here */})
 ```
 
+### EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig
+
+```go
+eventGatewayProduceSchemaValidationPolicyConfig := components.CreateEventGatewayProduceSchemaValidationPolicyConfigInlineSchema(components.EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -27,5 +33,7 @@ switch eventGatewayProduceSchemaValidationPolicyConfig.Type {
 		// eventGatewayProduceSchemaValidationPolicyConfig.EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig is populated
 	case components.EventGatewayProduceSchemaValidationPolicyConfigTypeJSON:
 		// eventGatewayProduceSchemaValidationPolicyConfig.EventGatewayProduceSchemaValidationPolicyJSONConfig is populated
+	case components.EventGatewayProduceSchemaValidationPolicyConfigTypeInlineSchema:
+		// eventGatewayProduceSchemaValidationPolicyConfig.EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig is populated
 }
 ```
