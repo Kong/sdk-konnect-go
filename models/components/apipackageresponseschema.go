@@ -57,6 +57,9 @@ type APIPackageResponseSchema struct {
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time                       `json:"updated_at"`
 	Images    *APIPackageResponseSchemaImages `json:"images,omitempty"`
+	// UUID of the organization environment this package is scoped to.
+	//
+	EnvironmentID *string `json:"environment_id,omitempty"`
 }
 
 func (a APIPackageResponseSchema) MarshalJSON() ([]byte, error) {
@@ -145,4 +148,11 @@ func (a *APIPackageResponseSchema) GetImages() *APIPackageResponseSchemaImages {
 		return nil
 	}
 	return a.Images
+}
+
+func (a *APIPackageResponseSchema) GetEnvironmentID() *string {
+	if a == nil {
+		return nil
+	}
+	return a.EnvironmentID
 }

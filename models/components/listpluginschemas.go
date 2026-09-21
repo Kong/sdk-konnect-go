@@ -11,8 +11,11 @@ type ListPluginSchemasItems struct {
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// An ISO-8604 timestamp representation of custom plugin schema update date.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
-	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
-	ManagedBy map[string]any `json:"managed_by,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (l *ListPluginSchemasItems) GetLuaSchema() *string {
@@ -43,7 +46,7 @@ func (l *ListPluginSchemasItems) GetUpdatedAt() *int64 {
 	return l.UpdatedAt
 }
 
-func (l *ListPluginSchemasItems) GetManagedBy() map[string]any {
+func (l *ListPluginSchemasItems) GetManagedBy() map[string]string {
 	if l == nil {
 		return nil
 	}
@@ -51,14 +54,14 @@ func (l *ListPluginSchemasItems) GetManagedBy() map[string]any {
 }
 
 type ListPluginSchemasPage struct {
-	Total *int64 `json:"total,omitempty"`
+	TotalCount *int64 `json:"total_count,omitempty"`
 }
 
-func (l *ListPluginSchemasPage) GetTotal() *int64 {
+func (l *ListPluginSchemasPage) GetTotalCount() *int64 {
 	if l == nil {
 		return nil
 	}
-	return l.Total
+	return l.TotalCount
 }
 
 // ListPluginSchemas - A paginated list response for a collection of custom plugin schemas.

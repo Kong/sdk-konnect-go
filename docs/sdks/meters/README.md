@@ -204,9 +204,6 @@ func main() {
 
 ## UpdateMeter
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Update a meter.
 
 ### Example Usage
@@ -330,9 +327,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## QueryMeter
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Query a meter for usage.
 

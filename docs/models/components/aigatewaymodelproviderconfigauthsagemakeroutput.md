@@ -1,0 +1,12 @@
+# AIGatewayModelProviderConfigAuthSagemakerOutput
+
+Auth configuration for Sagemaker model provider.
+
+
+
+## Fields
+
+| Field                                                                                                                                           | Type                                                                                                                                            | Required                                                                                                                                        | Description                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                                          | [components.AIGatewayModelProviderConfigAuthSagemakerType](../../models/components/aigatewaymodelproviderconfigauthsagemakertype.md)            | :heavy_check_mark:                                                                                                                              | N/A                                                                                                                                             |
+| `Aws`                                                                                                                                           | [*components.AIGatewayModelProviderConfigAuthSagemakerAwsOutput](../../models/components/aigatewaymodelproviderconfigauthsagemakerawsoutput.md) | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |

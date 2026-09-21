@@ -97,6 +97,11 @@ type APIResponseSchema struct {
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
 	Images    *Images   `json:"images,omitempty"`
+	// The API's associated environments. Versions can differ per environment. A single-environment API has one element; a
+	// multi-environment API has one element per association. Clients can infer mode
+	// from the array length.
+	//
+	Environments []APIEnvironmentSummary `json:"environments,omitempty"`
 }
 
 func (a APIResponseSchema) MarshalJSON() ([]byte, error) {
@@ -206,4 +211,11 @@ func (a *APIResponseSchema) GetImages() *Images {
 		return nil
 	}
 	return a.Images
+}
+
+func (a *APIResponseSchema) GetEnvironments() []APIEnvironmentSummary {
+	if a == nil {
+		return nil
+	}
+	return a.Environments
 }

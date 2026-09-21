@@ -1,15 +1,6 @@
 # StringFieldNEQFilter
 
-Filter charges by status.
-
-Supported statuses are:
-
-- `created`
-- `active`
-- `final`
-- `deleted`
-
-If omitted, all statuses are returned except for `deleted`.
+Filter by invoice status.
 
 
 ## Fields

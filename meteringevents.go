@@ -33,9 +33,6 @@ func newMeteringEvents(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *h
 }
 
 // ListMeteringEvents - List metering events
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // List ingested events.
 func (s *MeteringEvents) ListMeteringEvents(ctx context.Context, request operations.ListMeteringEventsRequest, opts ...operations.Option) (*operations.ListMeteringEventsResponse, error) {
 	o := operations.Options{}

@@ -29,7 +29,14 @@ func CreateCatalogServiceIntegrationEventsFilterParametersIntegrationNameStringF
 	}
 }
 
-func (u *CatalogServiceIntegrationEventsFilterParametersIntegrationName) UnmarshalJSON(data []byte) error {
+func (u *CatalogServiceIntegrationEventsFilterParametersIntegrationName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogServiceIntegrationEventsFilterParametersIntegrationName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -70,7 +77,14 @@ func CreateCatalogServiceIntegrationEventsFilterParametersIntegrationInstanceIDS
 	}
 }
 
-func (u *CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) error {
+func (u *CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilterExact StringFieldFilterExact = StringFieldFilterExact{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilterExact, "", true, nil); err == nil {
@@ -111,7 +125,14 @@ func CreateCatalogServiceIntegrationEventsFilterParametersIntegrationInstanceNam
 	}
 }
 
-func (u *CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) error {
+func (u *CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -152,7 +173,14 @@ func CreateCatalogServiceIntegrationEventsFilterParametersIntegrationInstanceDis
 	}
 }
 
-func (u *CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) error {
+func (u *CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -193,7 +221,14 @@ func CreateCatalogServiceIntegrationEventsFilterParametersActorTypeStringFieldFi
 	}
 }
 
-func (u *CatalogServiceIntegrationEventsFilterParametersActorType) UnmarshalJSON(data []byte) error {
+func (u *CatalogServiceIntegrationEventsFilterParametersActorType) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogServiceIntegrationEventsFilterParametersActorType{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -234,7 +269,14 @@ func CreateCatalogServiceIntegrationEventsFilterParametersActorIDStringFieldFilt
 	}
 }
 
-func (u *CatalogServiceIntegrationEventsFilterParametersActorID) UnmarshalJSON(data []byte) error {
+func (u *CatalogServiceIntegrationEventsFilterParametersActorID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogServiceIntegrationEventsFilterParametersActorID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -275,7 +317,14 @@ func CreateCatalogServiceIntegrationEventsFilterParametersActorNameStringFieldFi
 	}
 }
 
-func (u *CatalogServiceIntegrationEventsFilterParametersActorName) UnmarshalJSON(data []byte) error {
+func (u *CatalogServiceIntegrationEventsFilterParametersActorName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogServiceIntegrationEventsFilterParametersActorName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {

@@ -62,7 +62,14 @@ func CreateCustomFieldsSuggestionMapOfStr(mapOfStr map[string]string) CustomFiel
 	}
 }
 
-func (u *CustomFieldsSuggestion) UnmarshalJSON(data []byte) error {
+func (u *CustomFieldsSuggestion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CustomFieldsSuggestion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {

@@ -19,7 +19,9 @@ type PortalDeveloper struct {
 	FullName  string    `json:"full_name"`
 	// The status of a developer in a portal. Approved developers can log in, create applications, and view and register for products they have access to. Pending, revoked, and rejected developers cannot login or view any non-public portal information, or create or modify applications or registrations.
 	Status DeveloperStatus `json:"status"`
-	// Developer-supplied responses to the portal's `developer_registration` form, captured at registration time. `null` when no responses were recorded (form not configured at registration time, or developer created via admin endpoint without `additional_data`). Keyed by field `name` (lowercase slug; letters, digits, underscores, or hyphens).
+	// The developer's answers to the portal's `developer_registration`
+	// form, captured when they registered.
+	//
 	AdditionalData map[string]FormResponseEntry `json:"additional_data,omitempty"`
 }
 

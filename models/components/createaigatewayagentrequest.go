@@ -31,8 +31,7 @@ func (e *CreateAIGatewayAgentRequestType) IsExact() bool {
 
 // CreateAIGatewayAgentRequestLogging - Configuration for AI Gateway logging.
 type CreateAIGatewayAgentRequestLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
+	Payloads *bool `default:"false" json:"payloads"`
 	// Maximum size in bytes for logged request/response payloads. Payloads exceeding this size will be truncated.
 	MaxPayloadSize *int64 `default:"1048576" json:"max_payload_size"`
 }
@@ -55,13 +54,6 @@ func (c *CreateAIGatewayAgentRequestLogging) GetPayloads() *bool {
 	return c.Payloads
 }
 
-func (c *CreateAIGatewayAgentRequestLogging) GetStatistics() *bool {
-	if c == nil {
-		return nil
-	}
-	return c.Statistics
-}
-
 func (c *CreateAIGatewayAgentRequestLogging) GetMaxPayloadSize() *int64 {
 	if c == nil {
 		return nil
@@ -74,9 +66,13 @@ type CreateAIGatewayAgentRequestConfig struct {
 	// Helper field to set protocol, host, port and path of the upstream A2A Agent using a URL.
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
-	URL *string `json:"url,omitempty"`
+	URL string `json:"url"`
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfig `json:"upstream,omitempty"`
 	// Configuration for an AI Gateway route.
 	Route *AIGatewayRouteConfig `json:"route,omitempty"`
+	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
+	Proxy *AIGatewayProxyConfig `json:"proxy,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
 	// Configuration for AI Gateway logging.
@@ -94,11 +90,18 @@ func (c *CreateAIGatewayAgentRequestConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *CreateAIGatewayAgentRequestConfig) GetURL() *string {
+func (c *CreateAIGatewayAgentRequestConfig) GetURL() string {
+	if c == nil {
+		return ""
+	}
+	return c.URL
+}
+
+func (c *CreateAIGatewayAgentRequestConfig) GetUpstream() *AIGatewayUpstreamConfig {
 	if c == nil {
 		return nil
 	}
-	return c.URL
+	return c.Upstream
 }
 
 func (c *CreateAIGatewayAgentRequestConfig) GetRoute() *AIGatewayRouteConfig {
@@ -106,6 +109,13 @@ func (c *CreateAIGatewayAgentRequestConfig) GetRoute() *AIGatewayRouteConfig {
 		return nil
 	}
 	return c.Route
+}
+
+func (c *CreateAIGatewayAgentRequestConfig) GetProxy() *AIGatewayProxyConfig {
+	if c == nil {
+		return nil
+	}
+	return c.Proxy
 }
 
 func (c *CreateAIGatewayAgentRequestConfig) GetMaxRequestBodySize() *int64 {
@@ -125,15 +135,16 @@ func (c *CreateAIGatewayAgentRequestConfig) GetLogging() *CreateAIGatewayAgentRe
 type CreateAIGatewayAgentRequest struct {
 	// The display name for this agent.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this agent, used as a stable human-readable reference.
+	// A user-defined unique identifier for this agent, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the Agent is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
 	// The type of the agent.
 	Type CreateAIGatewayAgentRequestType `json:"type"`
 	// List of policy references.
-	Policies []string      `json:"policies"`
-	Acls     AIGatewayACLS `json:"acls"`
+	Policies []string `json:"policies,omitempty"`
+	// Access control configuration for an agent.
+	Access *AIGatewayAgentAccess `json:"access,omitempty"`
 	// Configuration for the agent. The structure varies depending on the agent type.
 	Config CreateAIGatewayAgentRequestConfig `json:"config"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -147,8 +158,7 @@ type CreateAIGatewayAgentRequest struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy            map[string]string `json:"managed_by,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (c CreateAIGatewayAgentRequest) MarshalJSON() ([]byte, error) {
@@ -192,16 +202,16 @@ func (c *CreateAIGatewayAgentRequest) GetType() CreateAIGatewayAgentRequestType 
 
 func (c *CreateAIGatewayAgentRequest) GetPolicies() []string {
 	if c == nil {
-		return []string{}
+		return nil
 	}
 	return c.Policies
 }
 
-func (c *CreateAIGatewayAgentRequest) GetAcls() AIGatewayACLS {
+func (c *CreateAIGatewayAgentRequest) GetAccess() *AIGatewayAgentAccess {
 	if c == nil {
-		return AIGatewayACLS{}
+		return nil
 	}
-	return c.Acls
+	return c.Access
 }
 
 func (c *CreateAIGatewayAgentRequest) GetConfig() CreateAIGatewayAgentRequestConfig {
@@ -223,11 +233,4 @@ func (c *CreateAIGatewayAgentRequest) GetManagedBy() map[string]string {
 		return nil
 	}
 	return c.ManagedBy
-}
-
-func (c *CreateAIGatewayAgentRequest) GetAdditionalProperties() map[string]any {
-	if c == nil {
-		return nil
-	}
-	return c.AdditionalProperties
 }

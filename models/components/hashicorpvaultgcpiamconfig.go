@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -54,29 +52,6 @@ func (e *HashiCorpVaultGcpIAMConfigProtocol) IsExact() bool {
 	return false
 }
 
-type HashiCorpVaultGcpIAMConfigAuthMethod string
-
-const (
-	HashiCorpVaultGcpIAMConfigAuthMethodGcpIam HashiCorpVaultGcpIAMConfigAuthMethod = "gcp_iam"
-)
-
-func (e HashiCorpVaultGcpIAMConfigAuthMethod) ToPointer() *HashiCorpVaultGcpIAMConfigAuthMethod {
-	return &e
-}
-func (e *HashiCorpVaultGcpIAMConfigAuthMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gcp_iam":
-		*e = HashiCorpVaultGcpIAMConfigAuthMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultGcpIAMConfigAuthMethod: %v", v)
-	}
-}
-
 type HashiCorpVaultGcpIAMConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -110,8 +85,9 @@ type HashiCorpVaultGcpIAMConfig struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                              `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultGcpIAMConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"gcp_iam" json:"auth_method"`
 	// The role to use for GCP IAM auth.
 	Role string `json:"role"`
 	// The GCP service account for GCE auth.
@@ -208,11 +184,8 @@ func (h *HashiCorpVaultGcpIAMConfig) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultGcpIAMConfig) GetAuthMethod() HashiCorpVaultGcpIAMConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultGcpIAMConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultGcpIAMConfig) GetAuthMethod() string {
+	return "gcp_iam"
 }
 
 func (h *HashiCorpVaultGcpIAMConfig) GetRole() string {

@@ -6,21 +6,21 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AuthProvider - Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
-type AuthProvider string
+// PartialRedisCeAuthProvider - Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
+type PartialRedisCeAuthProvider string
 
 const (
-	AuthProviderAws   AuthProvider = "aws"
-	AuthProviderAzure AuthProvider = "azure"
-	AuthProviderGcp   AuthProvider = "gcp"
+	PartialRedisCeAuthProviderAws   PartialRedisCeAuthProvider = "aws"
+	PartialRedisCeAuthProviderAzure PartialRedisCeAuthProvider = "azure"
+	PartialRedisCeAuthProviderGcp   PartialRedisCeAuthProvider = "gcp"
 )
 
-func (e AuthProvider) ToPointer() *AuthProvider {
+func (e PartialRedisCeAuthProvider) ToPointer() *PartialRedisCeAuthProvider {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AuthProvider) IsExact() bool {
+func (e *PartialRedisCeAuthProvider) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "aws", "azure", "gcp":
@@ -33,7 +33,7 @@ func (e *AuthProvider) IsExact() bool {
 // PartialRedisCeCloudAuthentication - Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
 type PartialRedisCeCloudAuthentication struct {
 	// Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
-	AuthProvider *AuthProvider `json:"auth_provider,omitempty"`
+	AuthProvider *PartialRedisCeAuthProvider `json:"auth_provider,omitempty"`
 	// AWS Access Key ID to be used for authentication when `auth_provider` is set to `aws`.
 	AwsAccessKeyID *string `json:"aws_access_key_id,omitempty"`
 	// The ARN of the IAM role to assume for generating ElastiCache IAM authentication tokens.
@@ -69,7 +69,7 @@ func (p *PartialRedisCeCloudAuthentication) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (p *PartialRedisCeCloudAuthentication) GetAuthProvider() *AuthProvider {
+func (p *PartialRedisCeCloudAuthentication) GetAuthProvider() *PartialRedisCeAuthProvider {
 	if p == nil {
 		return nil
 	}

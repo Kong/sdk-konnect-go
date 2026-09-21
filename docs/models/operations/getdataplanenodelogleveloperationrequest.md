@@ -1,0 +1,9 @@
+# GetDataplaneNodeLogLevelOperationRequest
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ControlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `OperationID`                                                                      | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of the log level override operation.                                      | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |

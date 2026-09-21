@@ -15,9 +15,6 @@ Features represent product capabilities backed by meters, with optional per-unit
 
 ## ListFeatures
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 List all features.
 
 ### Example Usage
@@ -82,9 +79,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## CreateFeature
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Create a feature.
 
@@ -158,9 +152,6 @@ func main() {
 
 ## GetFeature
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Get a feature by id.
 
 ### Example Usage
@@ -226,9 +217,6 @@ func main() {
 
 ## UpdateFeature
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Update a feature by id. Currently only the unit_cost field can be updated.
 
 ### Example Usage
@@ -293,9 +281,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## DeleteFeature
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Delete a feature by id.
 

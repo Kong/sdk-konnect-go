@@ -80,6 +80,8 @@ type ConfigurationDataPlaneGroup struct {
 	// List of egress IP addresses for the network that this data-plane group runs on.
 	//
 	EgressIPAddresses []string `json:"egress_ip_addresses,omitempty"`
+	// List of hostnames for proxying to the data-plane group.
+	Hostnames []string `json:"hostnames,omitempty"`
 	// An RFC-3339 timestamp representation of data-plane group creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An RFC-3339 timestamp representation of data-plane group update date.
@@ -165,6 +167,13 @@ func (c *ConfigurationDataPlaneGroup) GetEgressIPAddresses() []string {
 		return nil
 	}
 	return c.EgressIPAddresses
+}
+
+func (c *ConfigurationDataPlaneGroup) GetHostnames() []string {
+	if c == nil {
+		return nil
+	}
+	return c.Hostnames
 }
 
 func (c *ConfigurationDataPlaneGroup) GetCreatedAt() time.Time {

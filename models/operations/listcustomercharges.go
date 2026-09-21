@@ -24,13 +24,27 @@ type ListCustomerChargesRequest struct {
 	//
 	// To filter charges by status add the following query param:
 	// `filter[status][oeq]=created,active`
+	//
+	// To filter charges by feature, use `filter[feature_id][oeq]=<id>,<id>` or
+	// `filter[feature_key][oeq]=<key>,<key>`.
+	//
+	// See the `service_period_from` filter field for expressing a service-period
+	// window query.
 	Filter *components.ListChargesParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Expand full objects for referenced entities.
 	//
 	// Supported values are:
 	//
-	// - `real_time_usage`: Expand the charge's real-time usage.
-	Expand []components.BillingChargesExpand `queryParam:"style=form,explode=true,name=expand"`
+	// - `real_time_usage`: Expand the charge's real-time usage; it sets the `usage`
+	// and the `totals.realtime` fields.
+	// - `customer`: Expand the charge's customer to the complete entity.
+	// - `feature`: Expand the charge's feature to the complete entity.
+	// - `subscription`: Expand the charge's subscription to the complete entity.
+	// - `realization.invoice`: Expand each realization's invoice to the complete
+	// entity.
+	// - `realization.totals`: Expand each realization run's `totals`.
+	// - `realization.detailed_lines`: Expand each realization run's `detailed_lines`.
+	Expand []components.BillingChargesExpand `queryParam:"style=form,explode=false,name=expand"`
 }
 
 func (l *ListCustomerChargesRequest) GetPage() *components.PagePaginationQuery {

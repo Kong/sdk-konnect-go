@@ -10,36 +10,14 @@ import (
 	"time"
 )
 
-type HashiCorpVaultAIGatewayVaultType string
-
-const (
-	HashiCorpVaultAIGatewayVaultTypeHcv HashiCorpVaultAIGatewayVaultType = "hcv"
-)
-
-func (e HashiCorpVaultAIGatewayVaultType) ToPointer() *HashiCorpVaultAIGatewayVaultType {
-	return &e
-}
-func (e *HashiCorpVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "hcv":
-		*e = HashiCorpVaultAIGatewayVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultAIGatewayVaultType: %v", v)
-	}
-}
-
 type AIGatewayVaultHashiCorpVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -51,8 +29,9 @@ type AIGatewayVaultHashiCorpVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                `json:"managed_by,omitempty"`
-	Type      HashiCorpVaultAIGatewayVaultType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"hcv" json:"type"`
 	// Configuration for an AI Gateway Vault.
 	Config HashiCorpVaultConfigOutput `json:"config"`
 	// Contains a unique identifier used for this resource.
@@ -102,11 +81,8 @@ func (a *AIGatewayVaultHashiCorpVault) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayVaultHashiCorpVault) GetType() HashiCorpVaultAIGatewayVaultType {
-	if a == nil {
-		return HashiCorpVaultAIGatewayVaultType("")
-	}
-	return a.Type
+func (a *AIGatewayVaultHashiCorpVault) GetType() string {
+	return "hcv"
 }
 
 func (a *AIGatewayVaultHashiCorpVault) GetConfig() HashiCorpVaultConfigOutput {
@@ -175,29 +151,6 @@ func (a *AIGatewayVaultHashiCorpVault) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-type ConjurVaultAIGatewayVaultType string
-
-const (
-	ConjurVaultAIGatewayVaultTypeConjur ConjurVaultAIGatewayVaultType = "conjur"
-)
-
-func (e ConjurVaultAIGatewayVaultType) ToPointer() *ConjurVaultAIGatewayVaultType {
-	return &e
-}
-func (e *ConjurVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "conjur":
-		*e = ConjurVaultAIGatewayVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ConjurVaultAIGatewayVaultType: %v", v)
-	}
 }
 
 type ConjurVaultConjurVaultConfig struct {
@@ -293,11 +246,12 @@ func (c *ConjurVaultConjurVaultConfig) GetLogin() string {
 
 type AIGatewayVaultConjurVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -309,9 +263,10 @@ type AIGatewayVaultConjurVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string             `json:"managed_by,omitempty"`
-	Type      ConjurVaultAIGatewayVaultType `json:"type"`
-	Config    ConjurVaultConjurVaultConfig  `json:"config"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                       `const:"conjur" json:"type"`
+	Config ConjurVaultConjurVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -359,11 +314,8 @@ func (a *AIGatewayVaultConjurVault) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayVaultConjurVault) GetType() ConjurVaultAIGatewayVaultType {
-	if a == nil {
-		return ConjurVaultAIGatewayVaultType("")
-	}
-	return a.Type
+func (a *AIGatewayVaultConjurVault) GetType() string {
+	return "conjur"
 }
 
 func (a *AIGatewayVaultConjurVault) GetConfig() ConjurVaultConjurVaultConfig {
@@ -397,7 +349,7 @@ func (a *AIGatewayVaultConjurVault) GetUpdatedAt() time.Time {
 type AzureKeyVaultAIGatewayVaultType string
 
 const (
-	AzureKeyVaultAIGatewayVaultTypeAzure AzureKeyVaultAIGatewayVaultType = "azure"
+	AzureKeyVaultAIGatewayVaultTypeSecrets AzureKeyVaultAIGatewayVaultType = "secrets"
 )
 
 func (e AzureKeyVaultAIGatewayVaultType) ToPointer() *AzureKeyVaultAIGatewayVaultType {
@@ -409,34 +361,11 @@ func (e *AzureKeyVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "azure":
+	case "secrets":
 		*e = AzureKeyVaultAIGatewayVaultType(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for AzureKeyVaultAIGatewayVaultType: %v", v)
-	}
-}
-
-type AzureKeyVaultAIGatewayVaultConfigType string
-
-const (
-	AzureKeyVaultAIGatewayVaultConfigTypeSecrets AzureKeyVaultAIGatewayVaultConfigType = "secrets"
-)
-
-func (e AzureKeyVaultAIGatewayVaultConfigType) ToPointer() *AzureKeyVaultAIGatewayVaultConfigType {
-	return &e
-}
-func (e *AzureKeyVaultAIGatewayVaultConfigType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "secrets":
-		*e = AzureKeyVaultAIGatewayVaultConfigType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AzureKeyVaultAIGatewayVaultConfigType: %v", v)
 	}
 }
 
@@ -478,8 +407,8 @@ type AzureKeyVaultAzureKeyVaultConfig struct {
 	// The DirectoryId and TenantId are the same: both refer to the GUID representing your Azure Active Directory tenant.
 	// Microsoft documentation and products may use either term depending on context.
 	//
-	TenantID *string                                `json:"tenant_id,omitempty"`
-	Type     *AzureKeyVaultAIGatewayVaultConfigType `default:"secrets" json:"type"`
+	TenantID *string                          `json:"tenant_id,omitempty"`
+	Type     *AzureKeyVaultAIGatewayVaultType `default:"secrets" json:"type"`
 }
 
 func (a AzureKeyVaultAzureKeyVaultConfig) MarshalJSON() ([]byte, error) {
@@ -556,7 +485,7 @@ func (a *AzureKeyVaultAzureKeyVaultConfig) GetTenantID() *string {
 	return a.TenantID
 }
 
-func (a *AzureKeyVaultAzureKeyVaultConfig) GetType() *AzureKeyVaultAIGatewayVaultConfigType {
+func (a *AzureKeyVaultAzureKeyVaultConfig) GetType() *AzureKeyVaultAIGatewayVaultType {
 	if a == nil {
 		return nil
 	}
@@ -565,11 +494,12 @@ func (a *AzureKeyVaultAzureKeyVaultConfig) GetType() *AzureKeyVaultAIGatewayVaul
 
 type AIGatewayVaultAzureKeyVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -581,9 +511,10 @@ type AIGatewayVaultAzureKeyVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                `json:"managed_by,omitempty"`
-	Type      AzureKeyVaultAIGatewayVaultType  `json:"type"`
-	Config    AzureKeyVaultAzureKeyVaultConfig `json:"config"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                           `const:"azure" json:"type"`
+	Config AzureKeyVaultAzureKeyVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -631,11 +562,8 @@ func (a *AIGatewayVaultAzureKeyVault) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayVaultAzureKeyVault) GetType() AzureKeyVaultAIGatewayVaultType {
-	if a == nil {
-		return AzureKeyVaultAIGatewayVaultType("")
-	}
-	return a.Type
+func (a *AIGatewayVaultAzureKeyVault) GetType() string {
+	return "azure"
 }
 
 func (a *AIGatewayVaultAzureKeyVault) GetConfig() AzureKeyVaultAzureKeyVaultConfig {
@@ -664,29 +592,6 @@ func (a *AIGatewayVaultAzureKeyVault) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-type GoogleSecretManagerVaultAIGatewayVaultType string
-
-const (
-	GoogleSecretManagerVaultAIGatewayVaultTypeGcp GoogleSecretManagerVaultAIGatewayVaultType = "gcp"
-)
-
-func (e GoogleSecretManagerVaultAIGatewayVaultType) ToPointer() *GoogleSecretManagerVaultAIGatewayVaultType {
-	return &e
-}
-func (e *GoogleSecretManagerVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gcp":
-		*e = GoogleSecretManagerVaultAIGatewayVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GoogleSecretManagerVaultAIGatewayVaultType: %v", v)
-	}
 }
 
 type GoogleSecretManagerVaultGoogleSecretManagerVaultConfig struct {
@@ -763,11 +668,12 @@ func (g *GoogleSecretManagerVaultGoogleSecretManagerVaultConfig) GetProjectID() 
 
 type AIGatewayVaultGoogleSecretManagerVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -779,9 +685,10 @@ type AIGatewayVaultGoogleSecretManagerVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                                      `json:"managed_by,omitempty"`
-	Type      GoogleSecretManagerVaultAIGatewayVaultType             `json:"type"`
-	Config    GoogleSecretManagerVaultGoogleSecretManagerVaultConfig `json:"config"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                                                 `const:"gcp" json:"type"`
+	Config GoogleSecretManagerVaultGoogleSecretManagerVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -829,11 +736,8 @@ func (a *AIGatewayVaultGoogleSecretManagerVault) GetManagedBy() map[string]strin
 	return a.ManagedBy
 }
 
-func (a *AIGatewayVaultGoogleSecretManagerVault) GetType() GoogleSecretManagerVaultAIGatewayVaultType {
-	if a == nil {
-		return GoogleSecretManagerVaultAIGatewayVaultType("")
-	}
-	return a.Type
+func (a *AIGatewayVaultGoogleSecretManagerVault) GetType() string {
+	return "gcp"
 }
 
 func (a *AIGatewayVaultGoogleSecretManagerVault) GetConfig() GoogleSecretManagerVaultGoogleSecretManagerVaultConfig {
@@ -862,29 +766,6 @@ func (a *AIGatewayVaultGoogleSecretManagerVault) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-type AwsSecretsManagerVaultAIGatewayVaultType string
-
-const (
-	AwsSecretsManagerVaultAIGatewayVaultTypeAws AwsSecretsManagerVaultAIGatewayVaultType = "aws"
-)
-
-func (e AwsSecretsManagerVaultAIGatewayVaultType) ToPointer() *AwsSecretsManagerVaultAIGatewayVaultType {
-	return &e
-}
-func (e *AwsSecretsManagerVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "aws":
-		*e = AwsSecretsManagerVaultAIGatewayVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AwsSecretsManagerVaultAIGatewayVaultType: %v", v)
-	}
 }
 
 type AwsSecretsManagerVaultAwsSecretsManagerVaultConfig struct {
@@ -1002,11 +883,12 @@ func (a *AwsSecretsManagerVaultAwsSecretsManagerVaultConfig) GetStsEndpointURL()
 
 type AIGatewayVaultAwsSecretsManagerVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -1018,9 +900,10 @@ type AIGatewayVaultAwsSecretsManagerVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                                  `json:"managed_by,omitempty"`
-	Type      AwsSecretsManagerVaultAIGatewayVaultType           `json:"type"`
-	Config    AwsSecretsManagerVaultAwsSecretsManagerVaultConfig `json:"config"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                                             `const:"aws" json:"type"`
+	Config AwsSecretsManagerVaultAwsSecretsManagerVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -1068,11 +951,8 @@ func (a *AIGatewayVaultAwsSecretsManagerVault) GetManagedBy() map[string]string 
 	return a.ManagedBy
 }
 
-func (a *AIGatewayVaultAwsSecretsManagerVault) GetType() AwsSecretsManagerVaultAIGatewayVaultType {
-	if a == nil {
-		return AwsSecretsManagerVaultAIGatewayVaultType("")
-	}
-	return a.Type
+func (a *AIGatewayVaultAwsSecretsManagerVault) GetType() string {
+	return "aws"
 }
 
 func (a *AIGatewayVaultAwsSecretsManagerVault) GetConfig() AwsSecretsManagerVaultAwsSecretsManagerVaultConfig {
@@ -1101,29 +981,6 @@ func (a *AIGatewayVaultAwsSecretsManagerVault) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-type EnvironmentVariableVaultAIGatewayVaultType string
-
-const (
-	EnvironmentVariableVaultAIGatewayVaultTypeEnv EnvironmentVariableVaultAIGatewayVaultType = "env"
-)
-
-func (e EnvironmentVariableVaultAIGatewayVaultType) ToPointer() *EnvironmentVariableVaultAIGatewayVaultType {
-	return &e
-}
-func (e *EnvironmentVariableVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "env":
-		*e = EnvironmentVariableVaultAIGatewayVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EnvironmentVariableVaultAIGatewayVaultType: %v", v)
-	}
 }
 
 type EnvironmentVariableVaultEnvironmentVariableVaultConfig struct {
@@ -1164,11 +1021,12 @@ func (e *EnvironmentVariableVaultEnvironmentVariableVaultConfig) GetPrefix() *st
 
 type AIGatewayVaultEnvironmentVariableVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -1180,9 +1038,10 @@ type AIGatewayVaultEnvironmentVariableVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                                      `json:"managed_by,omitempty"`
-	Type      EnvironmentVariableVaultAIGatewayVaultType             `json:"type"`
-	Config    EnvironmentVariableVaultEnvironmentVariableVaultConfig `json:"config"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                                                 `const:"env" json:"type"`
+	Config EnvironmentVariableVaultEnvironmentVariableVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -1230,11 +1089,8 @@ func (a *AIGatewayVaultEnvironmentVariableVault) GetManagedBy() map[string]strin
 	return a.ManagedBy
 }
 
-func (a *AIGatewayVaultEnvironmentVariableVault) GetType() EnvironmentVariableVaultAIGatewayVaultType {
-	if a == nil {
-		return EnvironmentVariableVaultAIGatewayVaultType("")
-	}
-	return a.Type
+func (a *AIGatewayVaultEnvironmentVariableVault) GetType() string {
+	return "env"
 }
 
 func (a *AIGatewayVaultEnvironmentVariableVault) GetConfig() EnvironmentVariableVaultEnvironmentVariableVaultConfig {
@@ -1265,29 +1121,6 @@ func (a *AIGatewayVaultEnvironmentVariableVault) GetUpdatedAt() time.Time {
 	return a.UpdatedAt
 }
 
-type KonnectConfigStoreVaultAIGatewayVaultType string
-
-const (
-	KonnectConfigStoreVaultAIGatewayVaultTypeKonnect KonnectConfigStoreVaultAIGatewayVaultType = "konnect"
-)
-
-func (e KonnectConfigStoreVaultAIGatewayVaultType) ToPointer() *KonnectConfigStoreVaultAIGatewayVaultType {
-	return &e
-}
-func (e *KonnectConfigStoreVaultAIGatewayVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "konnect":
-		*e = KonnectConfigStoreVaultAIGatewayVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for KonnectConfigStoreVaultAIGatewayVaultType: %v", v)
-	}
-}
-
 type KonnectConfigStoreVaultAIGatewayVaultConfig struct {
 	// The ID of the Konnect Config Store that contains the secrets.
 	//
@@ -1314,11 +1147,12 @@ func (k *KonnectConfigStoreVaultAIGatewayVaultConfig) GetConfigStoreID() string 
 
 type AIGatewayVaultKonnectConfigStoreVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -1330,9 +1164,10 @@ type AIGatewayVaultKonnectConfigStoreVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string                           `json:"managed_by,omitempty"`
-	Type      KonnectConfigStoreVaultAIGatewayVaultType   `json:"type"`
-	Config    KonnectConfigStoreVaultAIGatewayVaultConfig `json:"config"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                                      `const:"konnect" json:"type"`
+	Config KonnectConfigStoreVaultAIGatewayVaultConfig `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -1380,11 +1215,8 @@ func (a *AIGatewayVaultKonnectConfigStoreVault) GetManagedBy() map[string]string
 	return a.ManagedBy
 }
 
-func (a *AIGatewayVaultKonnectConfigStoreVault) GetType() KonnectConfigStoreVaultAIGatewayVaultType {
-	if a == nil {
-		return KonnectConfigStoreVaultAIGatewayVaultType("")
-	}
-	return a.Type
+func (a *AIGatewayVaultKonnectConfigStoreVault) GetType() string {
+	return "konnect"
 }
 
 func (a *AIGatewayVaultKonnectConfigStoreVault) GetConfig() KonnectConfigStoreVaultAIGatewayVaultConfig {
@@ -1443,9 +1275,6 @@ type AIGatewayVault struct {
 func CreateAIGatewayVaultKonnect(konnect AIGatewayVaultKonnectConfigStoreVault) AIGatewayVault {
 	typ := AIGatewayVaultTypeKonnect
 
-	typStr := KonnectConfigStoreVaultAIGatewayVaultType(typ)
-	konnect.Type = typStr
-
 	return AIGatewayVault{
 		AIGatewayVaultKonnectConfigStoreVault: &konnect,
 		Type:                                  typ,
@@ -1454,9 +1283,6 @@ func CreateAIGatewayVaultKonnect(konnect AIGatewayVaultKonnectConfigStoreVault) 
 
 func CreateAIGatewayVaultEnv(env AIGatewayVaultEnvironmentVariableVault) AIGatewayVault {
 	typ := AIGatewayVaultTypeEnv
-
-	typStr := EnvironmentVariableVaultAIGatewayVaultType(typ)
-	env.Type = typStr
 
 	return AIGatewayVault{
 		AIGatewayVaultEnvironmentVariableVault: &env,
@@ -1467,9 +1293,6 @@ func CreateAIGatewayVaultEnv(env AIGatewayVaultEnvironmentVariableVault) AIGatew
 func CreateAIGatewayVaultAws(aws AIGatewayVaultAwsSecretsManagerVault) AIGatewayVault {
 	typ := AIGatewayVaultTypeAws
 
-	typStr := AwsSecretsManagerVaultAIGatewayVaultType(typ)
-	aws.Type = typStr
-
 	return AIGatewayVault{
 		AIGatewayVaultAwsSecretsManagerVault: &aws,
 		Type:                                 typ,
@@ -1478,9 +1301,6 @@ func CreateAIGatewayVaultAws(aws AIGatewayVaultAwsSecretsManagerVault) AIGateway
 
 func CreateAIGatewayVaultGcp(gcp AIGatewayVaultGoogleSecretManagerVault) AIGatewayVault {
 	typ := AIGatewayVaultTypeGcp
-
-	typStr := GoogleSecretManagerVaultAIGatewayVaultType(typ)
-	gcp.Type = typStr
 
 	return AIGatewayVault{
 		AIGatewayVaultGoogleSecretManagerVault: &gcp,
@@ -1491,9 +1311,6 @@ func CreateAIGatewayVaultGcp(gcp AIGatewayVaultGoogleSecretManagerVault) AIGatew
 func CreateAIGatewayVaultAzure(azure AIGatewayVaultAzureKeyVault) AIGatewayVault {
 	typ := AIGatewayVaultTypeAzure
 
-	typStr := AzureKeyVaultAIGatewayVaultType(typ)
-	azure.Type = typStr
-
 	return AIGatewayVault{
 		AIGatewayVaultAzureKeyVault: &azure,
 		Type:                        typ,
@@ -1502,9 +1319,6 @@ func CreateAIGatewayVaultAzure(azure AIGatewayVaultAzureKeyVault) AIGatewayVault
 
 func CreateAIGatewayVaultConjur(conjur AIGatewayVaultConjurVault) AIGatewayVault {
 	typ := AIGatewayVaultTypeConjur
-
-	typStr := ConjurVaultAIGatewayVaultType(typ)
-	conjur.Type = typStr
 
 	return AIGatewayVault{
 		AIGatewayVaultConjurVault: &conjur,
@@ -1515,16 +1329,20 @@ func CreateAIGatewayVaultConjur(conjur AIGatewayVaultConjurVault) AIGatewayVault
 func CreateAIGatewayVaultHcv(hcv AIGatewayVaultHashiCorpVault) AIGatewayVault {
 	typ := AIGatewayVaultTypeHcv
 
-	typStr := HashiCorpVaultAIGatewayVaultType(typ)
-	hcv.Type = typStr
-
 	return AIGatewayVault{
 		AIGatewayVaultHashiCorpVault: &hcv,
 		Type:                         typ,
 	}
 }
 
-func (u *AIGatewayVault) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayVault) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayVault{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

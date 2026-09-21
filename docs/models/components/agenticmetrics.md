@@ -20,6 +20,7 @@ custom := components.AgenticMetrics("custom_value")
 | ------------------------------------------ | ------------------------------------------ |
 | `AgenticMetricsA2aLatencyAverage`          | a2a_latency_average                        |
 | `AgenticMetricsA2aResponseSizeSum`         | a2a_response_size_sum                      |
+| `AgenticMetricsCacheHitRate`               | cache_hit_rate                             |
 | `AgenticMetricsErrorRate`                  | error_rate                                 |
 | `AgenticMetricsKongInternalLatencyAverage` | kong_internal_latency_average              |
 | `AgenticMetricsKongInternalLatencyP50`     | kong_internal_latency_p50                  |

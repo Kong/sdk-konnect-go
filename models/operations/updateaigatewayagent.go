@@ -10,8 +10,8 @@ import (
 type UpdateAiGatewayAgentRequest struct {
 	// The unique ID of the AI Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
-	// The unique ID of the AI Gateway agent.
-	AgentID                     string                                 `pathParam:"style=simple,explode=false,name=agentId"`
+	// The unique ID or name of the AI Gateway agent.
+	AgentIDOrName               string                                 `pathParam:"style=simple,explode=false,name=agentIdOrName"`
 	UpdateAIGatewayAgentRequest components.UpdateAIGatewayAgentRequest `request:"mediaType=application/json"`
 }
 
@@ -22,11 +22,11 @@ func (u *UpdateAiGatewayAgentRequest) GetGatewayID() string {
 	return u.GatewayID
 }
 
-func (u *UpdateAiGatewayAgentRequest) GetAgentID() string {
+func (u *UpdateAiGatewayAgentRequest) GetAgentIDOrName() string {
 	if u == nil {
 		return ""
 	}
-	return u.AgentID
+	return u.AgentIDOrName
 }
 
 func (u *UpdateAiGatewayAgentRequest) GetUpdateAIGatewayAgentRequest() components.UpdateAIGatewayAgentRequest {

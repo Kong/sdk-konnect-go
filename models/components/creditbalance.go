@@ -6,12 +6,16 @@ package components
 type CreditBalance struct {
 	// Fiat or custom currency code.
 	Currency string `json:"currency"`
-	// Credits that have been granted but cannot yet be consumed. Includes grants
-	// awaiting payment clearance or with a future effective date.
+	// Credits available after applying currently live charge impacts.
+	//
+	// Always zero for historical balance queries using the `timestamp` parameter
+	// because live charge impacts cannot be reconstructed historically.
+	Live string `json:"live"`
+	// Credits that have been booked on the ledger as of the balance timestamp.
+	Settled string `json:"settled"`
+	// Credits that have been granted but are not yet written to the ledger, or are
+	// written to the ledger with a future booked time.
 	Pending string `json:"pending"`
-	// Credits that can be consumed right now. Derived from cleared grants after
-	// applying eligibility and restriction rules.
-	Available string `json:"available"`
 }
 
 func (c *CreditBalance) GetCurrency() string {
@@ -21,16 +25,23 @@ func (c *CreditBalance) GetCurrency() string {
 	return c.Currency
 }
 
+func (c *CreditBalance) GetLive() string {
+	if c == nil {
+		return ""
+	}
+	return c.Live
+}
+
+func (c *CreditBalance) GetSettled() string {
+	if c == nil {
+		return ""
+	}
+	return c.Settled
+}
+
 func (c *CreditBalance) GetPending() string {
 	if c == nil {
 		return ""
 	}
 	return c.Pending
-}
-
-func (c *CreditBalance) GetAvailable() string {
-	if c == nil {
-		return ""
-	}
-	return c.Available
 }

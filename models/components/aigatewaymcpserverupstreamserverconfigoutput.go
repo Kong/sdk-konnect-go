@@ -8,9 +8,8 @@ import (
 
 // AIGatewayMCPServerUpstreamServerConfigLogging - Configuration for AI Gateway logging.
 type AIGatewayMCPServerUpstreamServerConfigLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
-	Audits     *bool `default:"false" json:"audits"`
+	Payloads *bool `default:"false" json:"payloads"`
+	Audits   *bool `default:"false" json:"audits"`
 }
 
 func (a AIGatewayMCPServerUpstreamServerConfigLogging) MarshalJSON() ([]byte, error) {
@@ -31,13 +30,6 @@ func (a *AIGatewayMCPServerUpstreamServerConfigLogging) GetPayloads() *bool {
 	return a.Payloads
 }
 
-func (a *AIGatewayMCPServerUpstreamServerConfigLogging) GetStatistics() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Statistics
-}
-
 func (a *AIGatewayMCPServerUpstreamServerConfigLogging) GetAudits() *bool {
 	if a == nil {
 		return nil
@@ -47,20 +39,23 @@ func (a *AIGatewayMCPServerUpstreamServerConfigLogging) GetAudits() *bool {
 
 // AIGatewayMCPServerUpstreamServerConfigOutput - Routing, logging, and server configuration for the MCP Server.
 type AIGatewayMCPServerUpstreamServerConfigOutput struct {
-	// Configuration for an AI Gateway route.
-	Route *AIGatewayRouteConfig `json:"route,omitempty"`
+	// Route configuration for an MCP Server that terminates its own listener. At least one
+	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
+	// incoming requests.
+	//
+	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
 	// Configuration for AI Gateway logging.
 	Logging *AIGatewayMCPServerUpstreamServerConfigLogging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
-	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
-	Proxy *AIGatewayProxyConfigOutput `json:"proxy,omitempty"`
 	// Server-side configuration specific to `upstream-server` mode.
 	Server *AIGatewayMCPServerUpstreamServerServerConfigOutput `json:"server,omitempty"`
 	// Helper field to set protocol, host, port and path of the upstream service using a URL.
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfigOutput `json:"upstream,omitempty"`
 	// The time-to-live (TTL) for the upstream tools cache in seconds. Set to `0` to refresh on
 	// every client call.
 	//
@@ -78,7 +73,7 @@ func (a *AIGatewayMCPServerUpstreamServerConfigOutput) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetRoute() *AIGatewayRouteConfig {
+func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetRoute() *AIGatewayMCPServerRouteWithMatcher {
 	if a == nil {
 		return nil
 	}
@@ -99,13 +94,6 @@ func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetMaxRequestBodySize() *
 	return a.MaxRequestBodySize
 }
 
-func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetProxy() *AIGatewayProxyConfigOutput {
-	if a == nil {
-		return nil
-	}
-	return a.Proxy
-}
-
 func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetServer() *AIGatewayMCPServerUpstreamServerServerConfigOutput {
 	if a == nil {
 		return nil
@@ -120,6 +108,13 @@ func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetURL() string {
 	return a.URL
 }
 
+func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetUpstream() *AIGatewayUpstreamConfigOutput {
+	if a == nil {
+		return nil
+	}
+	return a.Upstream
+}
+
 func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetToolsCacheTTLSeconds() int64 {
 	if a == nil {
 		return 0
@@ -129,20 +124,23 @@ func (a *AIGatewayMCPServerUpstreamServerConfigOutput) GetToolsCacheTTLSeconds()
 
 // AIGatewayMCPServerUpstreamServerConfig - Routing, logging, and server configuration for the MCP Server.
 type AIGatewayMCPServerUpstreamServerConfig struct {
-	// Configuration for an AI Gateway route.
-	Route *AIGatewayRouteConfig `json:"route,omitempty"`
+	// Route configuration for an MCP Server that terminates its own listener. At least one
+	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
+	// incoming requests.
+	//
+	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
 	// Configuration for AI Gateway logging.
 	Logging *AIGatewayMCPServerUpstreamServerConfigLogging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
-	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
-	Proxy *AIGatewayProxyConfig `json:"proxy,omitempty"`
 	// Server-side configuration specific to `upstream-server` mode.
 	Server *AIGatewayMCPServerUpstreamServerServerConfig `json:"server,omitempty"`
 	// Helper field to set protocol, host, port and path of the upstream service using a URL.
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
 	URL string `json:"url"`
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfig `json:"upstream,omitempty"`
 	// The time-to-live (TTL) for the upstream tools cache in seconds. Set to `0` to refresh on
 	// every client call.
 	//
@@ -160,7 +158,7 @@ func (a *AIGatewayMCPServerUpstreamServerConfig) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (a *AIGatewayMCPServerUpstreamServerConfig) GetRoute() *AIGatewayRouteConfig {
+func (a *AIGatewayMCPServerUpstreamServerConfig) GetRoute() *AIGatewayMCPServerRouteWithMatcher {
 	if a == nil {
 		return nil
 	}
@@ -181,13 +179,6 @@ func (a *AIGatewayMCPServerUpstreamServerConfig) GetMaxRequestBodySize() *int64 
 	return a.MaxRequestBodySize
 }
 
-func (a *AIGatewayMCPServerUpstreamServerConfig) GetProxy() *AIGatewayProxyConfig {
-	if a == nil {
-		return nil
-	}
-	return a.Proxy
-}
-
 func (a *AIGatewayMCPServerUpstreamServerConfig) GetServer() *AIGatewayMCPServerUpstreamServerServerConfig {
 	if a == nil {
 		return nil
@@ -200,6 +191,13 @@ func (a *AIGatewayMCPServerUpstreamServerConfig) GetURL() string {
 		return ""
 	}
 	return a.URL
+}
+
+func (a *AIGatewayMCPServerUpstreamServerConfig) GetUpstream() *AIGatewayUpstreamConfig {
+	if a == nil {
+		return nil
+	}
+	return a.Upstream
 }
 
 func (a *AIGatewayMCPServerUpstreamServerConfig) GetToolsCacheTTLSeconds() int64 {

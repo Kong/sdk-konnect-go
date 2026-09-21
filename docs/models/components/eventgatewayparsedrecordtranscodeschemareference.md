@@ -1,0 +1,12 @@
+# EventGatewayParsedRecordTranscodeSchemaReference
+
+References a schema registered in a schema registry, computing the subject and version to use.
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `SchemaRegistry`                                                                          | [*components.SchemaRegistryReference](../../models/components/schemaregistryreference.md) | :heavy_minus_sign:                                                                        | A reference to a schema Registry.                                                         |                                                                                           |
+| `Subject`                                                                                 | `*string`                                                                                 | :heavy_minus_sign:                                                                        | An expression that computes the schema registry subject of the output data's schema.      | ${context.topic.name + '-value'}                                                          |
+| `Version`                                                                                 | `*string`                                                                                 | :heavy_minus_sign:                                                                        | An expression that computes the schema registry version of the output data's schema.      | ${'latest'}                                                                               |

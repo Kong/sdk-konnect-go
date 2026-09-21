@@ -7,19 +7,19 @@ import (
 	"time"
 )
 
-// CustomFormResponse - A custom form definition for a developer portal.
+// CustomFormResponse - A custom form configured for a developer portal, including its fields.
 type CustomFormResponse struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
-	// Kebab-case slug identifier for the form. Unique per portal across all form types. For type `developer_registration`, the value is the reserved literal `developer-registration`. For type `api_registration`, the admin supplies the slug on create and may rename it on update.
+	// A unique, URL-friendly identifier for the form (lowercase letters, digits, and hyphens). For `developer_registration` forms, this is always `developer-registration`. For `api_registration` forms, you choose the name when creating the form and can change it later.
 	//
 	Name string `json:"name"`
-	// The form's purpose. Determines built-in field requirements and where the form is consumed by the portal client.
+	// The kind of form. Determines which fields are required and where developers see the form on the portal.
 	Type CustomFormType `json:"type"`
-	// Whether the form is live on the portal. `unpublished` forms are not served from the portal-client form-fetch endpoint; `developer_registration` falls back to a default schema in that case.
+	// Whether the form is visible to developers on the portal. `unpublished` forms aren't shown to developers; for the `developer_registration` form, a default form is shown instead.
 	//
 	Status *CustomFormStatus `default:"unpublished" json:"status"`
-	// Ordered array of form fields. Position determines display order. Must contain exactly one `submit` field. For `developer_registration`, must contain the built-in `full_name` and `email` fields.
+	// The form's fields, in the order they're displayed. Must include exactly one `submit` field. `developer_registration` forms must also include the built-in `full_name` and `email` fields.
 	//
 	Fields []CustomFormField `json:"fields"`
 	// An ISO-8601 timestamp representation of entity creation date.

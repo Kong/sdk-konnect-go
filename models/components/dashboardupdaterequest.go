@@ -9,7 +9,7 @@ type DashboardUpdateRequest struct {
 	Name string `json:"name"`
 	// A JSON object describing a dashboard.
 	//
-	// A dashboard is an array of tiles.  All tiles are of type 'chart', which query data and render a chart displaying that data.
+	// A dashboard is an array of tiles.  All tiles are of type 'chart', which query data and render a visualization, either a chart or table.
 	//
 	// Dashboards have 6 columns and as many rows as necessary to display their tiles.
 	//

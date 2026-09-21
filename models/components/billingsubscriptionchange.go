@@ -9,6 +9,35 @@ import (
 	"time"
 )
 
+// BillingSubscriptionChangeSettlementMode - Settlement mode for billing.
+//
+// Values:
+//
+// - `credit_then_invoice`: Credits are applied first, then any remainder is
+// invoiced.
+// - `credit_only`: Usage is settled exclusively against credits.
+type BillingSubscriptionChangeSettlementMode string
+
+const (
+	BillingSubscriptionChangeSettlementModeCreditThenInvoice BillingSubscriptionChangeSettlementMode = "credit_then_invoice"
+	BillingSubscriptionChangeSettlementModeCreditOnly        BillingSubscriptionChangeSettlementMode = "credit_only"
+)
+
+func (e BillingSubscriptionChangeSettlementMode) ToPointer() *BillingSubscriptionChangeSettlementMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *BillingSubscriptionChangeSettlementMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "credit_then_invoice", "credit_only":
+			return true
+		}
+	}
+	return false
+}
+
 // BillingSubscriptionChangeCustomer - The customer to create the subscription for.
 type BillingSubscriptionChangeCustomer struct {
 	// The ID of the customer to create the subscription for.
@@ -37,7 +66,11 @@ func (b *BillingSubscriptionChangeCustomer) GetKey() *string {
 	return b.Key
 }
 
-// BillingSubscriptionChangePlan - The plan reference of the subscription.
+// BillingSubscriptionChangePlan - A reference to a published plan the subscription is created from.
+//
+// Exactly one of `plan` or `custom_plan` must be provided. Use `plan` to base the
+// subscription on an existing published plan; use `custom_plan` to define the plan
+// inline.
 type BillingSubscriptionChangePlan struct {
 	// The plan ID of the subscription. Set if subscription is created from a plan.
 	//
@@ -76,6 +109,119 @@ func (b *BillingSubscriptionChangePlan) GetVersion() *int64 {
 	return b.Version
 }
 
+// BillingSubscriptionChangeCustomPlan - An inline plan definition to create the subscription from, without referencing a
+// published plan.
+//
+// Exactly one of `plan` or `custom_plan` must be provided. The subscription is not
+// linked to a persisted plan, so the response omits the `plan` reference.
+type BillingSubscriptionChangeCustomPlan struct {
+	// Display name of the resource.
+	//
+	// Between 1 and 256 characters.
+	Name string `json:"name"`
+	// Optional description of the resource.
+	//
+	// Maximum 1024 characters.
+	Description *string `json:"description,omitempty"`
+	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
+	Labels map[string]string `json:"labels,omitempty"`
+	// The currency code of the plan.
+	Currency string `json:"currency"`
+	// The billing cadence for subscriptions using this plan.
+	BillingCadence string `json:"billing_cadence"`
+	// Whether pro-rating is enabled for this plan.
+	ProRatingEnabled *bool `default:"true" json:"pro_rating_enabled"`
+	// The plan phases define the pricing ramp for a subscription. A phase switch
+	// occurs only at the end of a billing period. At least one phase is required.
+	Phases []BillingPlanPhase `json:"phases"`
+}
+
+func (b BillingSubscriptionChangeCustomPlan) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BillingSubscriptionChangeCustomPlan) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (b *BillingSubscriptionChangeCustomPlan) GetName() string {
+	if b == nil {
+		return ""
+	}
+	return b.Name
+}
+
+func (b *BillingSubscriptionChangeCustomPlan) GetDescription() *string {
+	if b == nil {
+		return nil
+	}
+	return b.Description
+}
+
+func (b *BillingSubscriptionChangeCustomPlan) GetLabels() map[string]string {
+	if b == nil {
+		return nil
+	}
+	return b.Labels
+}
+
+func (b *BillingSubscriptionChangeCustomPlan) GetCurrency() string {
+	if b == nil {
+		return ""
+	}
+	return b.Currency
+}
+
+func (b *BillingSubscriptionChangeCustomPlan) GetBillingCadence() string {
+	if b == nil {
+		return ""
+	}
+	return b.BillingCadence
+}
+
+func (b *BillingSubscriptionChangeCustomPlan) GetProRatingEnabled() *bool {
+	if b == nil {
+		return nil
+	}
+	return b.ProRatingEnabled
+}
+
+func (b *BillingSubscriptionChangeCustomPlan) GetPhases() []BillingPlanPhase {
+	if b == nil {
+		return []BillingPlanPhase{}
+	}
+	return b.Phases
+}
+
+// BillingSubscriptionChangeCostBasisMode - Controls how custom-currency cost bases are selected for the subscription.
+type BillingSubscriptionChangeCostBasisMode string
+
+const (
+	BillingSubscriptionChangeCostBasisModeDynamic BillingSubscriptionChangeCostBasisMode = "dynamic"
+	BillingSubscriptionChangeCostBasisModePinned  BillingSubscriptionChangeCostBasisMode = "pinned"
+)
+
+func (e BillingSubscriptionChangeCostBasisMode) ToPointer() *BillingSubscriptionChangeCostBasisMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *BillingSubscriptionChangeCostBasisMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "dynamic", "pinned":
+			return true
+		}
+	}
+	return false
+}
+
 type BillingSubscriptionChangeTimingType string
 
 const (
@@ -111,7 +257,14 @@ func CreateBillingSubscriptionChangeTimingDateTime(dateTime time.Time) BillingSu
 	}
 }
 
-func (u *BillingSubscriptionChangeTiming) UnmarshalJSON(data []byte) error {
+func (u *BillingSubscriptionChangeTiming) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = BillingSubscriptionChangeTiming{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var billingSubscriptionEditTimingEnum BillingSubscriptionEditTimingEnum = BillingSubscriptionEditTimingEnum("")
 	if err := utils.UnmarshalJSON(data, &billingSubscriptionEditTimingEnum, "", true, nil); err == nil {
@@ -149,10 +302,28 @@ type BillingSubscriptionChange struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+	// Settlement mode for billing.
+	//
+	// Values:
+	//
+	// - `credit_then_invoice`: Credits are applied first, then any remainder is
+	// invoiced.
+	// - `credit_only`: Usage is settled exclusively against credits.
+	SettlementMode *BillingSubscriptionChangeSettlementMode `json:"settlement_mode,omitempty"`
 	// The customer to create the subscription for.
 	Customer BillingSubscriptionChangeCustomer `json:"customer"`
-	// The plan reference of the subscription.
-	Plan BillingSubscriptionChangePlan `json:"plan"`
+	// A reference to a published plan the subscription is created from.
+	//
+	// Exactly one of `plan` or `custom_plan` must be provided. Use `plan` to base the
+	// subscription on an existing published plan; use `custom_plan` to define the plan
+	// inline.
+	Plan *BillingSubscriptionChangePlan `json:"plan,omitempty"`
+	// An inline plan definition to create the subscription from, without referencing a
+	// published plan.
+	//
+	// Exactly one of `plan` or `custom_plan` must be provided. The subscription is not
+	// linked to a persisted plan, so the response omits the `plan` reference.
+	CustomPlan *BillingSubscriptionChangeCustomPlan `json:"custom_plan,omitempty"`
 	// A billing anchor is the fixed point in time that determines the subscription's
 	// recurring billing cycle. It affects when charges occur and how prorations are
 	// calculated. Common anchors:
@@ -164,6 +335,8 @@ type BillingSubscriptionChange struct {
 	// If not provided, the subscription will be created with the subscription's
 	// creation time as the billing anchor.
 	BillingAnchor *time.Time `json:"billing_anchor,omitempty"`
+	// Controls how custom-currency cost bases are selected for the subscription.
+	CostBasisMode *BillingSubscriptionChangeCostBasisMode `default:"dynamic" json:"cost_basis_mode"`
 	// Timing configuration for the change, when the change should take effect. For
 	// changing a subscription, the accepted values depend on the subscription
 	// configuration.
@@ -188,6 +361,13 @@ func (b *BillingSubscriptionChange) GetLabels() map[string]string {
 	return b.Labels
 }
 
+func (b *BillingSubscriptionChange) GetSettlementMode() *BillingSubscriptionChangeSettlementMode {
+	if b == nil {
+		return nil
+	}
+	return b.SettlementMode
+}
+
 func (b *BillingSubscriptionChange) GetCustomer() BillingSubscriptionChangeCustomer {
 	if b == nil {
 		return BillingSubscriptionChangeCustomer{}
@@ -195,11 +375,18 @@ func (b *BillingSubscriptionChange) GetCustomer() BillingSubscriptionChangeCusto
 	return b.Customer
 }
 
-func (b *BillingSubscriptionChange) GetPlan() BillingSubscriptionChangePlan {
+func (b *BillingSubscriptionChange) GetPlan() *BillingSubscriptionChangePlan {
 	if b == nil {
-		return BillingSubscriptionChangePlan{}
+		return nil
 	}
 	return b.Plan
+}
+
+func (b *BillingSubscriptionChange) GetCustomPlan() *BillingSubscriptionChangeCustomPlan {
+	if b == nil {
+		return nil
+	}
+	return b.CustomPlan
 }
 
 func (b *BillingSubscriptionChange) GetBillingAnchor() *time.Time {
@@ -207,6 +394,13 @@ func (b *BillingSubscriptionChange) GetBillingAnchor() *time.Time {
 		return nil
 	}
 	return b.BillingAnchor
+}
+
+func (b *BillingSubscriptionChange) GetCostBasisMode() *BillingSubscriptionChangeCostBasisMode {
+	if b == nil {
+		return nil
+	}
+	return b.CostBasisMode
 }
 
 func (b *BillingSubscriptionChange) GetTiming() BillingSubscriptionChangeTiming {

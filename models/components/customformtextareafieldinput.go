@@ -31,9 +31,12 @@ func (e *CustomFormTextareaFieldInputType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CustomFormTextareaFieldInput - Multi-line text input.
+// CustomFormTextareaFieldInput - A multi-line text field.
 type CustomFormTextareaFieldInput struct {
-	// Stable slug for the field (letters, digits, underscores, or hyphens). Immutable for the life of the field; renames are achieved by editing `label`. Acts as the join key for stored responses. Optional on create — server slugifies `label` when omitted.
+	// A stable, URL-safe slug identifying the field (letters, digits,
+	// underscores, or hyphens). When omitted, `label` is slugified instead.
+	//
+	// Used to match up stored responses across edits.
 	//
 	Name        *string                          `json:"name,omitempty"`
 	Type        CustomFormTextareaFieldInputType `json:"type"`

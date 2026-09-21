@@ -62,7 +62,14 @@ func CreateMetadataTemplateURLMetadataValueTemplate(urlMetadataValueTemplate URL
 	}
 }
 
-func (u *MetadataTemplate) UnmarshalJSON(data []byte) error {
+func (u *MetadataTemplate) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = MetadataTemplate{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var urlMetadataValueTemplate URLMetadataValueTemplate = URLMetadataValueTemplate{}
 	if err := utils.UnmarshalJSON(data, &urlMetadataValueTemplate, "", true, nil); err == nil {

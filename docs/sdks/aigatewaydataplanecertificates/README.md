@@ -101,7 +101,16 @@ func main() {
         }),
     )
 
-    res, err := s.AIGatewayDataPlaneCertificates.CreateAiGatewayDataPlaneCertificate(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", nil)
+    res, err := s.AIGatewayDataPlaneCertificates.CreateAiGatewayDataPlaneCertificate(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", &components.CreateAIGatewayDataPlaneCertificateRequest{
+        Cert: "<value>",
+        Title: "<value>",
+        Labels: map[string]string{
+            "category": "finance",
+        },
+        ManagedBy: map[string]string{
+            "owner": "terraform",
+        },
+    })
     if err != nil {
         log.Fatal(err)
     }

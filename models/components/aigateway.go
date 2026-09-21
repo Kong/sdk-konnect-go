@@ -7,6 +7,30 @@ import (
 	"time"
 )
 
+// DeploymentType - How this AI Gateway's control plane is deployed.
+type DeploymentType string
+
+const (
+	DeploymentTypeHybrid     DeploymentType = "hybrid"
+	DeploymentTypeManaged    DeploymentType = "managed"
+	DeploymentTypeServerless DeploymentType = "serverless"
+)
+
+func (e DeploymentType) ToPointer() *DeploymentType {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *DeploymentType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "hybrid", "managed", "serverless":
+			return true
+		}
+	}
+	return false
+}
+
 // Endpoints - Object containing AI Gateway access endpoints.
 type Endpoints struct {
 	// Configuration Endpoint.
@@ -32,6 +56,8 @@ func (e *Endpoints) GetTelemetry() string {
 type AIGateway struct {
 	// The display name for this AI Gateway.
 	DisplayName string `json:"display_name"`
+	// The name for this AI Gateway. This value is immutable after creation.
+	Name string `json:"name"`
 	// The description of the AI Gateway.
 	Description *string `json:"description,omitempty"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
@@ -45,19 +71,27 @@ type AIGateway struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
+	// The minimum AI Gateway runtime version supported by this AI Gateway. This is the lowest data plane version that may receive configuration from it, and it controls which features the API accepts.
+	//
+	// Data planes older than this version still connect for topology visibility.
+	//
+	// When not specified, the latest generally available runtime version is used.
+	//
+	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
+	// How this AI Gateway's control plane is deployed.
+	DeploymentType *DeploymentType `default:"hybrid" json:"deployment_type"`
 	// Object containing AI Gateway access endpoints.
 	Endpoints Endpoints `json:"endpoints"`
-	// The hash of the latest configuration for the gateway. Every change to an entity
-	// under this gateway will result in a new config_hash being generated.
-	// The config hash can be used to verify if the config hash of an AI Gateway
-	// node is up to date with the AI Gateway. The config hash will be the same if they are in sync.
+	// The version identification of the latest configuration of the gateway.
+	// Any change to an entity under this gateway can result in a new version.
+	// The config_version is generated in the control plane and used to verify if
+	// an AI Gateway node configuration is up to date.
 	//
-	ConfigHash *string `json:"config_hash,omitempty"`
+	ConfigVersion *string `json:"config_version,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt            time.Time      `json:"updated_at"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (a AIGateway) MarshalJSON() ([]byte, error) {
@@ -76,6 +110,13 @@ func (a *AIGateway) GetDisplayName() string {
 		return ""
 	}
 	return a.DisplayName
+}
+
+func (a *AIGateway) GetName() string {
+	if a == nil {
+		return ""
+	}
+	return a.Name
 }
 
 func (a *AIGateway) GetDescription() *string {
@@ -106,6 +147,20 @@ func (a *AIGateway) GetID() string {
 	return a.ID
 }
 
+func (a *AIGateway) GetMinRuntimeVersion() *string {
+	if a == nil {
+		return nil
+	}
+	return a.MinRuntimeVersion
+}
+
+func (a *AIGateway) GetDeploymentType() *DeploymentType {
+	if a == nil {
+		return nil
+	}
+	return a.DeploymentType
+}
+
 func (a *AIGateway) GetEndpoints() Endpoints {
 	if a == nil {
 		return Endpoints{}
@@ -113,11 +168,11 @@ func (a *AIGateway) GetEndpoints() Endpoints {
 	return a.Endpoints
 }
 
-func (a *AIGateway) GetConfigHash() *string {
+func (a *AIGateway) GetConfigVersion() *string {
 	if a == nil {
 		return nil
 	}
-	return a.ConfigHash
+	return a.ConfigVersion
 }
 
 func (a *AIGateway) GetCreatedAt() time.Time {
@@ -132,11 +187,4 @@ func (a *AIGateway) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-func (a *AIGateway) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
 }

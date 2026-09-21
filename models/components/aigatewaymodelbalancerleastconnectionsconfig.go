@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -39,29 +37,6 @@ func (e *AIGatewayModelBalancerLeastConnectionsConfigFailoverCriteria) IsExact()
 	return false
 }
 
-type AIGatewayModelBalancerLeastConnectionsConfigAlgorithm string
-
-const (
-	AIGatewayModelBalancerLeastConnectionsConfigAlgorithmLeastConnections AIGatewayModelBalancerLeastConnectionsConfigAlgorithm = "least-connections"
-)
-
-func (e AIGatewayModelBalancerLeastConnectionsConfigAlgorithm) ToPointer() *AIGatewayModelBalancerLeastConnectionsConfigAlgorithm {
-	return &e
-}
-func (e *AIGatewayModelBalancerLeastConnectionsConfigAlgorithm) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "least-connections":
-		*e = AIGatewayModelBalancerLeastConnectionsConfigAlgorithm(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelBalancerLeastConnectionsConfigAlgorithm: %v", v)
-	}
-}
-
 type AIGatewayModelBalancerLeastConnectionsConfig struct {
 	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.
@@ -74,9 +49,10 @@ type AIGatewayModelBalancerLeastConnectionsConfig struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64                                                `default:"10000" json:"slots"`
-	WriteTimeout *int64                                                `default:"60000" json:"write_timeout"`
-	Algorithm    AIGatewayModelBalancerLeastConnectionsConfigAlgorithm `json:"algorithm"`
+	Slots        *int64 `default:"10000" json:"slots"`
+	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	algorithm string `const:"least-connections" json:"algorithm"`
 }
 
 func (a AIGatewayModelBalancerLeastConnectionsConfig) MarshalJSON() ([]byte, error) {
@@ -146,9 +122,6 @@ func (a *AIGatewayModelBalancerLeastConnectionsConfig) GetWriteTimeout() *int64 
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerLeastConnectionsConfig) GetAlgorithm() AIGatewayModelBalancerLeastConnectionsConfigAlgorithm {
-	if a == nil {
-		return AIGatewayModelBalancerLeastConnectionsConfigAlgorithm("")
-	}
-	return a.Algorithm
+func (a *AIGatewayModelBalancerLeastConnectionsConfig) GetAlgorithm() string {
+	return "least-connections"
 }

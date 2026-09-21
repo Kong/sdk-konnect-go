@@ -1,6 +1,11 @@
 # UpdatePortalFormRequest
 
-Form-update request body, discriminated by `type`. The `type` field is an immutable echo and must match the existing form's type — server returns 400 if it differs. Field removal is achieved by omitting the field from `fields`; field renames are achieved by editing `label`.
+Request body for updating a form.
+
+The `type` must match the form's existing type — it can't be changed.
+
+To remove a field, leave it out of `fields`; to rename a field, edit its `label`.
+
 
 
 ## Supported Types

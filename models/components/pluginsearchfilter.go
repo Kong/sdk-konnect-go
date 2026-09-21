@@ -7,8 +7,8 @@ type PluginSearchFilter struct {
 	Name *LegacyStringFieldFilter `queryParam:"name=name"`
 	// Filter by a boolean value (true/false).
 	Enabled *bool `queryParam:"name=enabled"`
-	// Filters on the given plugin scope value by exact match.
-	Scope *PluginScopeEqualsFilter `queryParam:"name=scope"`
+	// Filters on the given plugin scope value. Set `eq` for an exact match on a single scope, or `oeq` for a match on any of the comma-separated scopes. Exactly one of `eq` or `oeq` must be set.
+	Scope *PluginScopeFilter `queryParam:"name=scope"`
 	// Filters on the given string field value by exact match.
 	Route *StringFieldEqualsFilter `queryParam:"name=route"`
 	// Filters on the given string field value by exact match.
@@ -33,7 +33,7 @@ func (p *PluginSearchFilter) GetEnabled() *bool {
 	return p.Enabled
 }
 
-func (p *PluginSearchFilter) GetScope() *PluginScopeEqualsFilter {
+func (p *PluginSearchFilter) GetScope() *PluginScopeFilter {
 	if p == nil {
 		return nil
 	}

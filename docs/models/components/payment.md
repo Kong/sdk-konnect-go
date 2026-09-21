@@ -1,31 +1,11 @@
 # Payment
 
-The payment settings for this workflow
+The payment state of the realization, when the charge requires a fiat
+transaction to settle.
 
 
-## Supported Types
+## Fields
 
-### BillingWorkflowPaymentChargeAutomaticallySettings
-
-```go
-payment := components.CreatePaymentChargeAutomatically(components.BillingWorkflowPaymentChargeAutomaticallySettings{/* values here */})
-```
-
-### BillingWorkflowPaymentSendInvoiceSettings
-
-```go
-payment := components.CreatePaymentSendInvoice(components.BillingWorkflowPaymentSendInvoiceSettings{/* values here */})
-```
-
-## Union Discrimination
-
-Use the `Type` field to determine which variant is active, then access the corresponding field:
-
-```go
-switch payment.Type {
-	case components.PaymentTypeChargeAutomatically:
-		// payment.BillingWorkflowPaymentChargeAutomaticallySettings is populated
-	case components.PaymentTypeSendInvoice:
-		// payment.BillingWorkflowPaymentSendInvoiceSettings is populated
-}
-```
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `Status`                                                                                               | [components.BillingChargeRealizationStatus](../../models/components/billingchargerealizationstatus.md) | :heavy_check_mark:                                                                                     | The settlement status of the payment.                                                                  |

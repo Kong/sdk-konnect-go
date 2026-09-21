@@ -9,7 +9,8 @@ When adding a plugin configuration to a service, the plugin will run on every re
 
 ### Available Operations
 
-* [SearchPlugin](#searchplugin) - Search for Plugins
+* [SearchPluginsInWorkspace](#searchpluginsinworkspace) - Search Plugins in a workspace
+* [SearchPlugins](#searchplugins) - Search for Plugins
 * [ListPluginWithConsumerGroupInWorkspace](#listpluginwithconsumergroupinworkspace) - List all Plugins associated with a Consumer Group in a workspace
 * [CreatePluginWithConsumerGroupInWorkspace](#createpluginwithconsumergroupinworkspace) - Create a new Plugin associated with a Consumer Group in a workspace
 * [DeletePluginWithConsumerGroupInWorkspace](#deletepluginwithconsumergroupinworkspace) - Delete a a Plugin associated with a Consumer Group in a workspace
@@ -62,13 +63,13 @@ When adding a plugin configuration to a service, the plugin will run on every re
 * [GetPluginWithService](#getpluginwithservice) - Get a Plugin associated with a Service
 * [UpsertPluginWithService](#upsertpluginwithservice) - Upsert a Plugin associated with a Service
 
-## SearchPlugin
+## SearchPluginsInWorkspace
 
-Search for Plugins
+Search Plugins in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="search-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/search" -->
+<!-- UsageSnippet language="go" operationID="search-plugins-in-workspace" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/search" -->
 ```go
 package main
 
@@ -89,9 +90,16 @@ func main() {
         }),
     )
 
-    res, err := s.Plugins.SearchPlugin(ctx, operations.SearchPluginRequest{
+    res, err := s.Plugins.SearchPluginsInWorkspace(ctx, operations.SearchPluginsInWorkspaceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Filter: &components.PluginSearchFilter{
+            Scope: &components.PluginScopeFilter{
+                Eq: components.EqService.ToPointer(),
+                Oeq: sdkkonnectgo.Pointer("global,service"),
+            },
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -104,22 +112,93 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [operations.SearchPluginRequest](../../models/operations/searchpluginrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |
+| `request`                                                                                                | [operations.SearchPluginsInWorkspaceRequest](../../models/operations/searchpluginsinworkspacerequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `opts`                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                 | :heavy_minus_sign:                                                                                       | The options for this request.                                                                            |
 
 ### Response
 
-**[*operations.SearchPluginResponse](../../models/operations/searchpluginresponse.md), error**
+**[*operations.SearchPluginsInWorkspaceResponse](../../models/operations/searchpluginsinworkspaceresponse.md), error**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
-| sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## SearchPlugins
+
+Search for Plugins
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="search-plugins" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/search" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.SearchPlugins(ctx, operations.SearchPluginsRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Filter: &components.PluginSearchFilter{
+            Scope: &components.PluginScopeFilter{
+                Eq: components.EqService.ToPointer(),
+                Oeq: sdkkonnectgo.Pointer("global,service"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
+| `request`                                                                          | [operations.SearchPluginsRequest](../../models/operations/searchpluginsrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |
+
+### Response
+
+**[*operations.SearchPluginsResponse](../../models/operations/searchpluginsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListPluginWithConsumerGroupInWorkspace
 
@@ -967,11 +1046,11 @@ func main() {
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
-            Protocols: []components.Protocols{
-                components.ProtocolsGrpc,
-                components.ProtocolsGrpcs,
-                components.ProtocolsHTTP,
-                components.ProtocolsHTTPS,
+            Protocols: []components.PluginProtocols{
+                components.PluginProtocolsGrpc,
+                components.PluginProtocolsGrpcs,
+                components.PluginProtocolsHTTP,
+                components.PluginProtocolsHTTPS,
             },
         },
     })
@@ -1180,11 +1259,11 @@ func main() {
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
-            Protocols: []components.Protocols{
-                components.ProtocolsGrpc,
-                components.ProtocolsGrpcs,
-                components.ProtocolsHTTP,
-                components.ProtocolsHTTPS,
+            Protocols: []components.PluginProtocols{
+                components.PluginProtocolsGrpc,
+                components.PluginProtocolsGrpcs,
+                components.PluginProtocolsHTTP,
+                components.PluginProtocolsHTTPS,
             },
         },
     })
@@ -2781,11 +2860,11 @@ func main() {
                 Path: sdkkonnectgo.Pointer("config.redis"),
             },
         },
-        Protocols: []components.Protocols{
-            components.ProtocolsGrpc,
-            components.ProtocolsGrpcs,
-            components.ProtocolsHTTP,
-            components.ProtocolsHTTPS,
+        Protocols: []components.PluginProtocols{
+            components.PluginProtocolsGrpc,
+            components.PluginProtocolsGrpcs,
+            components.PluginProtocolsHTTP,
+            components.PluginProtocolsHTTPS,
         },
     })
     if err != nil {
@@ -2989,11 +3068,11 @@ func main() {
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
-            Protocols: []components.Protocols{
-                components.ProtocolsGrpc,
-                components.ProtocolsGrpcs,
-                components.ProtocolsHTTP,
-                components.ProtocolsHTTPS,
+            Protocols: []components.PluginProtocols{
+                components.PluginProtocolsGrpc,
+                components.PluginProtocolsGrpcs,
+                components.PluginProtocolsHTTP,
+                components.PluginProtocolsHTTPS,
             },
         },
     })

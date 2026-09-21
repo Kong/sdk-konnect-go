@@ -9,8 +9,12 @@ type CreateWorkspaceRequest struct {
 	// The description of the workspace.
 	Comment *string `json:"comment,omitempty"`
 	// The description of the workspace.
-	Description *string        `json:"description,omitempty"`
-	ManagedBy   map[string]any `json:"managed_by,omitempty"`
+	Description *string `json:"description,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (c *CreateWorkspaceRequest) GetName() string {
@@ -34,7 +38,7 @@ func (c *CreateWorkspaceRequest) GetDescription() *string {
 	return c.Description
 }
 
-func (c *CreateWorkspaceRequest) GetManagedBy() map[string]any {
+func (c *CreateWorkspaceRequest) GetManagedBy() map[string]string {
 	if c == nil {
 		return nil
 	}

@@ -32,12 +32,7 @@ func newAPIVersion(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks
 
 // CreateAPIVersion - Create API Version
 // Creates a version (OpenAPI or AsyncAPI) for an API.
-func (s *APIVersion) CreateAPIVersion(ctx context.Context, apiID string, createAPIVersionRequest components.CreateAPIVersionRequest, opts ...operations.Option) (*operations.CreateAPIVersionResponse, error) {
-	request := operations.CreateAPIVersionRequest{
-		APIID:                   apiID,
-		CreateAPIVersionRequest: createAPIVersionRequest,
-	}
-
+func (s *APIVersion) CreateAPIVersion(ctx context.Context, request operations.CreateAPIVersionRequest, opts ...operations.Option) (*operations.CreateAPIVersionResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -94,6 +89,10 @@ func (s *APIVersion) CreateAPIVersion(ctx context.Context, apiID string, createA
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	if reqContentType != "" {
 		req.Header.Set("Content-Type", reqContentType)
+	}
+
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
@@ -648,12 +647,7 @@ func (s *APIVersion) ListAPIVersions(ctx context.Context, request operations.Lis
 
 // FetchAPIVersion - Get an API Version
 // Fetches the version (OpenAPI or AsyncAPI) of an API.
-func (s *APIVersion) FetchAPIVersion(ctx context.Context, apiID string, versionID string, opts ...operations.Option) (*operations.FetchAPIVersionResponse, error) {
-	request := operations.FetchAPIVersionRequest{
-		APIID:     apiID,
-		VersionID: versionID,
-	}
-
+func (s *APIVersion) FetchAPIVersion(ctx context.Context, request operations.FetchAPIVersionRequest, opts ...operations.Option) (*operations.FetchAPIVersionResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -704,6 +698,10 @@ func (s *APIVersion) FetchAPIVersion(ctx context.Context, apiID string, versionI
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err

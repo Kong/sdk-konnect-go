@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -39,40 +37,17 @@ func (e *AIGatewayModelBalancerSemanticConfigFailoverCriteria) IsExact() bool {
 	return false
 }
 
-type AIGatewayModelBalancerSemanticConfigAlgorithm string
-
-const (
-	AIGatewayModelBalancerSemanticConfigAlgorithmSemantic AIGatewayModelBalancerSemanticConfigAlgorithm = "semantic"
-)
-
-func (e AIGatewayModelBalancerSemanticConfigAlgorithm) ToPointer() *AIGatewayModelBalancerSemanticConfigAlgorithm {
-	return &e
-}
-func (e *AIGatewayModelBalancerSemanticConfigAlgorithm) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "semantic":
-		*e = AIGatewayModelBalancerSemanticConfigAlgorithm(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelBalancerSemanticConfigAlgorithm: %v", v)
-	}
-}
-
 // Embeddings model configuration for this model.
 type Embeddings struct {
 	// When enabled, request-level auth parameters (such as API keys or bearer tokens) will override the static values defined for the provider.
 	//
 	AllowAuthOverride *bool `default:"false" json:"allow_auth_override"`
-	// Reference to a provider instance. This is either the provider ID or the provider name.
+	// Reference to a model provider instance by name.
 	Provider string `json:"provider"`
 	// The name of the embeddings model.
 	Name string `json:"name"`
 	// Configuration for an embeddings model.
-	Config *AIGatewayEmbeddingsModelConfig `json:"config,omitempty"`
+	Config AIGatewayEmbeddingsModelConfig `json:"config"`
 }
 
 func (e Embeddings) MarshalJSON() ([]byte, error) {
@@ -80,7 +55,7 @@ func (e Embeddings) MarshalJSON() ([]byte, error) {
 }
 
 func (e *Embeddings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"provider", "name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"provider", "name", "config"}); err != nil {
 		return err
 	}
 	return nil
@@ -107,53 +82,39 @@ func (e *Embeddings) GetName() string {
 	return e.Name
 }
 
-func (e *Embeddings) GetConfig() *AIGatewayEmbeddingsModelConfig {
+func (e *Embeddings) GetConfig() AIGatewayEmbeddingsModelConfig {
 	if e == nil {
-		return nil
+		return AIGatewayEmbeddingsModelConfig{}
 	}
 	return e.Config
 }
 
 func (e *Embeddings) GetConfigAzure() *AIGatewayAzureEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayAzureEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayAzureEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigBedrock() *AIGatewayBedrockEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayBedrockEmbeddingsModelConfig
-	}
-	return nil
-}
-
-func (e *Embeddings) GetConfigDatabricks() *AIGatewayDatabricksEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayDatabricksEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayBedrockEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigGemini() *AIGatewayGeminiEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayGeminiEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayGeminiEmbeddingsModelConfig
 }
 
 func (e *Embeddings) GetConfigHuggingface() *AIGatewayHuggingfaceEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayHuggingfaceEmbeddingsModelConfig
-	}
-	return nil
+	return e.GetConfig().AIGatewayHuggingfaceEmbeddingsModelConfig
 }
 
-func (e *Embeddings) GetConfigVercel() *AIGatewayVercelEmbeddingsModelConfig {
-	if v := e.GetConfig(); v != nil {
-		return v.AIGatewayVercelEmbeddingsModelConfig
-	}
-	return nil
+func (e *Embeddings) GetConfigMistral() *AIGatewayMistralEmbeddingsModelConfig {
+	return e.GetConfig().AIGatewayMistralEmbeddingsModelConfig
+}
+
+func (e *Embeddings) GetConfigOllama() *AIGatewayOllamaEmbeddingsModelConfig {
+	return e.GetConfig().AIGatewayOllamaEmbeddingsModelConfig
+}
+
+func (e *Embeddings) GetConfigOpenai() *AIGatewayOpenaiEmbeddingsModelConfig {
+	return e.GetConfig().AIGatewayOpenaiEmbeddingsModelConfig
 }
 
 type AIGatewayModelBalancerSemanticConfigOutput struct {
@@ -168,9 +129,10 @@ type AIGatewayModelBalancerSemanticConfigOutput struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64                                        `default:"10000" json:"slots"`
-	WriteTimeout *int64                                        `default:"60000" json:"write_timeout"`
-	Algorithm    AIGatewayModelBalancerSemanticConfigAlgorithm `json:"algorithm"`
+	Slots        *int64 `default:"10000" json:"slots"`
+	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	algorithm string `const:"semantic" json:"algorithm"`
 	// Embeddings model configuration for this model.
 	Embeddings Embeddings `json:"embeddings"`
 	// Configuration for the vector database used by the model.
@@ -244,11 +206,8 @@ func (a *AIGatewayModelBalancerSemanticConfigOutput) GetWriteTimeout() *int64 {
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerSemanticConfigOutput) GetAlgorithm() AIGatewayModelBalancerSemanticConfigAlgorithm {
-	if a == nil {
-		return AIGatewayModelBalancerSemanticConfigAlgorithm("")
-	}
-	return a.Algorithm
+func (a *AIGatewayModelBalancerSemanticConfigOutput) GetAlgorithm() string {
+	return "semantic"
 }
 
 func (a *AIGatewayModelBalancerSemanticConfigOutput) GetEmbeddings() Embeddings {
@@ -269,8 +228,8 @@ func (a *AIGatewayModelBalancerSemanticConfigOutput) GetVectordbPgvector() *AIGa
 	return a.GetVectordb().AIGatewayModelVectorDBConfigPgVectorOutput
 }
 
-func (a *AIGatewayModelBalancerSemanticConfigOutput) GetVectordbRedis() *AIGatewayModelVectorDBConfigRedis {
-	return a.GetVectordb().AIGatewayModelVectorDBConfigRedis
+func (a *AIGatewayModelBalancerSemanticConfigOutput) GetVectordbRedis() *AIGatewayModelVectorDBConfigRedisOutput {
+	return a.GetVectordb().AIGatewayModelVectorDBConfigRedisOutput
 }
 
 type AIGatewayModelBalancerSemanticConfig struct {
@@ -285,9 +244,10 @@ type AIGatewayModelBalancerSemanticConfig struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64                                        `default:"10000" json:"slots"`
-	WriteTimeout *int64                                        `default:"60000" json:"write_timeout"`
-	Algorithm    AIGatewayModelBalancerSemanticConfigAlgorithm `json:"algorithm"`
+	Slots        *int64 `default:"10000" json:"slots"`
+	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	algorithm string `const:"semantic" json:"algorithm"`
 	// Embeddings model configuration for this model.
 	Embeddings Embeddings `json:"embeddings"`
 	// Configuration for the vector database used by the model.
@@ -361,11 +321,8 @@ func (a *AIGatewayModelBalancerSemanticConfig) GetWriteTimeout() *int64 {
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerSemanticConfig) GetAlgorithm() AIGatewayModelBalancerSemanticConfigAlgorithm {
-	if a == nil {
-		return AIGatewayModelBalancerSemanticConfigAlgorithm("")
-	}
-	return a.Algorithm
+func (a *AIGatewayModelBalancerSemanticConfig) GetAlgorithm() string {
+	return "semantic"
 }
 
 func (a *AIGatewayModelBalancerSemanticConfig) GetEmbeddings() Embeddings {

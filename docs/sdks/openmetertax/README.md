@@ -14,7 +14,8 @@ Tax codes are used to calculate taxes for customers.
 
 ## CreateTaxCode
 
-Create tax code
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 ### Example Usage
 
@@ -83,7 +84,8 @@ func main() {
 
 ## ListTaxCodes
 
-List tax codes
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 ### Example Usage
 
@@ -141,7 +143,8 @@ func main() {
 
 ## GetTaxCode
 
-Get tax code
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 ### Example Usage
 
@@ -199,7 +202,8 @@ func main() {
 
 ## UpsertTaxCode
 
-Upsert tax code
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 ### Example Usage
 
@@ -265,7 +269,8 @@ func main() {
 
 ## DeleteTaxCode
 
-Delete tax code
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 ### Example Usage
 

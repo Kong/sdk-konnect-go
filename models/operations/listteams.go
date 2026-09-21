@@ -11,10 +11,15 @@ var ListTeamsServerList = []string{
 	"https://global.api.konghq.com/",
 }
 
-// ListTeamsQueryParamFilter - Filter teams returned in the response.
+// ListTeamsQueryParamFilter - Filter teams returned in the response. Supports filtering by label value using
+// dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`, where `<op>` is one of
+// `eq`, `contains`, or `exists`.
 type ListTeamsQueryParamFilter struct {
 	// Filter using **one** of the following operators: `eq`, `contains`
-	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
+	Name   *components.LegacyStringFieldFilter                     `queryParam:"name=name"`
+	Labels map[string]components.LegacyStringFieldFilterWithExists `queryParam:"name=labels"`
+	// Filter by a boolean value (true/false).
+	KonnectManaged *bool `queryParam:"name=konnect_managed"`
 }
 
 func (l *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
@@ -24,12 +29,28 @@ func (l *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilte
 	return l.Name
 }
 
+func (l *ListTeamsQueryParamFilter) GetLabels() map[string]components.LegacyStringFieldFilterWithExists {
+	if l == nil {
+		return nil
+	}
+	return l.Labels
+}
+
+func (l *ListTeamsQueryParamFilter) GetKonnectManaged() *bool {
+	if l == nil {
+		return nil
+	}
+	return l.KonnectManaged
+}
+
 type ListTeamsRequest struct {
 	// The maximum number of items to include per page. The last page of a collection may include fewer items.
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
-	// Filter teams returned in the response.
+	// Filter teams returned in the response. Supports filtering by label value using
+	// dot-notation, e.g. `filter[labels.<key>][<op>]=<value>`, where `<op>` is one of
+	// `eq`, `contains`, or `exists`.
 	Filter *ListTeamsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
@@ -61,8 +82,8 @@ type ListTeamsResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A paginated list response for a collection of users.
-	TeamCollection *components.TeamCollection
+	// A paginated list response for a collection of teams.
+	TeamCollectionResponse *components.TeamCollectionResponse
 
 	Next func() (*ListTeamsResponse, error)
 }
@@ -88,9 +109,9 @@ func (l *ListTeamsResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListTeamsResponse) GetTeamCollection() *components.TeamCollection {
+func (l *ListTeamsResponse) GetTeamCollectionResponse() *components.TeamCollectionResponse {
 	if l == nil {
 		return nil
 	}
-	return l.TeamCollection
+	return l.TeamCollectionResponse
 }

@@ -23,6 +23,7 @@ custom := components.LLMQueryDimensions("custom_value")
 | `LLMQueryDimensionsGatewayService`        | gateway_service                           |
 | `LLMQueryDimensionsConsumer`              | consumer                                  |
 | `LLMQueryDimensionsApplication`           | application                               |
+| `LLMQueryDimensionsOidcCredential`        | oidc_credential                           |
 | `LLMQueryDimensionsRoute`                 | route                                     |
 | `LLMQueryDimensionsAiProvider`            | ai_provider                               |
 | `LLMQueryDimensionsAiResponseModel`       | ai_response_model                         |
@@ -31,6 +32,7 @@ custom := components.LLMQueryDimensions("custom_value")
 | `LLMQueryDimensionsLlmEmbeddingsProvider` | llm_embeddings_provider                   |
 | `LLMQueryDimensionsLlmEmbeddingsModel`    | llm_embeddings_model                      |
 | `LLMQueryDimensionsTime`                  | time                                      |
+| `LLMQueryDimensionsPrincipal`             | principal                                 |
 | `LLMQueryDimensionsRealm`                 | realm                                     |
 | `LLMQueryDimensionsStatusCode`            | status_code                               |
 | `LLMQueryDimensionsStatusCodeGrouped`     | status_code_grouped                       |

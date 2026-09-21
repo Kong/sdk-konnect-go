@@ -9,8 +9,8 @@ import (
 type DeleteAiGatewayModelRequest struct {
 	// The unique ID of the AI Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
-	// The unique ID of the AI Gateway model.
-	ModelID string `pathParam:"style=simple,explode=false,name=modelId"`
+	// The unique ID or name of the AI Gateway model.
+	ModelIDOrName string `pathParam:"style=simple,explode=false,name=modelIdOrName"`
 }
 
 func (d *DeleteAiGatewayModelRequest) GetGatewayID() string {
@@ -20,11 +20,11 @@ func (d *DeleteAiGatewayModelRequest) GetGatewayID() string {
 	return d.GatewayID
 }
 
-func (d *DeleteAiGatewayModelRequest) GetModelID() string {
+func (d *DeleteAiGatewayModelRequest) GetModelIDOrName() string {
 	if d == nil {
 		return ""
 	}
-	return d.ModelID
+	return d.ModelIDOrName
 }
 
 type DeleteAiGatewayModelResponse struct {

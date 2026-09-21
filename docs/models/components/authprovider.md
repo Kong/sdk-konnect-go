@@ -1,7 +1,5 @@
 # AuthProvider
 
-Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
-
 ## Example Usage
 
 ```go
@@ -21,5 +19,5 @@ custom := components.AuthProvider("custom_value")
 | Name                | Value               |
 | ------------------- | ------------------- |
 | `AuthProviderAws`   | aws                 |
-| `AuthProviderAzure` | azure               |
 | `AuthProviderGcp`   | gcp                 |
+| `AuthProviderAzure` | azure               |

@@ -9,8 +9,8 @@ import (
 type DeleteAiGatewayConsumerGroupRequest struct {
 	// The unique ID of the AI Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
-	// The unique ID of the AI Gateway Consumer Group.
-	ConsumerGroupID string `pathParam:"style=simple,explode=false,name=consumerGroupId"`
+	// The unique ID or name of the AI Gateway Consumer Group.
+	ConsumerGroupIDOrName string `pathParam:"style=simple,explode=false,name=consumerGroupIdOrName"`
 }
 
 func (d *DeleteAiGatewayConsumerGroupRequest) GetGatewayID() string {
@@ -20,11 +20,11 @@ func (d *DeleteAiGatewayConsumerGroupRequest) GetGatewayID() string {
 	return d.GatewayID
 }
 
-func (d *DeleteAiGatewayConsumerGroupRequest) GetConsumerGroupID() string {
+func (d *DeleteAiGatewayConsumerGroupRequest) GetConsumerGroupIDOrName() string {
 	if d == nil {
 		return ""
 	}
-	return d.ConsumerGroupID
+	return d.ConsumerGroupIDOrName
 }
 
 type DeleteAiGatewayConsumerGroupResponse struct {

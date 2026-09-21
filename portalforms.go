@@ -31,7 +31,15 @@ func newPortalForms(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hook
 }
 
 // CreatePortalForm - Create Form
-// Creates a custom form for a portal. The form's `type` determines its consumer: type `developer_registration` is served by the portal's developer signup flow; `api_registration` is linked to API publications via `form_id`. The `fields` array must contain exactly one `submit` field — required for every form type. For type `developer_registration`, the `name` is reserved as `developer-registration` and the built-in `full_name` and `email` fields are required in the array; the server returns 400 if either is missing.
+// Creates a custom form for a portal.
+//
+// * `developer_registration` forms appear in the portal's developer signup flow
+// * `api_registration` forms are shown to developers when they request access to a specific API.
+//
+// Requirements:
+//
+// * Every form's `fields` array must include exactly one `submit` field.
+// * `developer_registration` forms must also include the built-in `full_name` and `email` fields.
 func (s *PortalForms) CreatePortalForm(ctx context.Context, portalID string, createPortalFormRequest components.CreatePortalFormRequest, opts ...operations.Option) (*operations.CreatePortalFormResponse, error) {
 	request := operations.CreatePortalFormRequest{
 		PortalID:                portalID,
@@ -353,7 +361,7 @@ func (s *PortalForms) CreatePortalForm(ctx context.Context, portalID string, cre
 }
 
 // ListPortalForms - List Forms
-// Lists custom forms for a portal. Default `developer_registration` forms are not returned virtually — only forms persisted in the portal are listed.
+// Lists the custom forms created for a portal. The default `developer_registration` form isn't included unless it's been explicitly created.
 func (s *PortalForms) ListPortalForms(ctx context.Context, request operations.ListPortalFormsRequest, opts ...operations.Option) (*operations.ListPortalFormsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -919,7 +927,16 @@ func (s *PortalForms) GetPortalForm(ctx context.Context, portalID string, formID
 }
 
 // ReplacePortalForm - Replace Form
-// Replaces a custom form with the supplied representation. Field removal is achieved by omitting the field from the `fields` array; field renames are achieved by editing `label` (the field `name` slug is immutable). The form `type` cannot be changed; the form `name` is immutable for `developer_registration` and mutable for `api_registration`. For type `developer_registration`, the built-in `full_name` and `email` fields are required in the replacement array; the server returns 400 if either is missing.
+// Replaces a custom form with the supplied fields and settings.
+//
+// To remove a field, leave it out of the `fields` array; to rename a
+// field, change its `label` (a field's `name` can't change once set).
+//
+// The form's `type` can't be changed. Its `name` is fixed for
+// `developer_registration` forms but can be changed for
+// `api_registration` forms.
+//
+// `developer_registration` forms must include the built-in `full_name` and `email` fields.
 func (s *PortalForms) ReplacePortalForm(ctx context.Context, request operations.ReplacePortalFormRequest, opts ...operations.Option) (*operations.ReplacePortalFormResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1215,7 +1232,7 @@ func (s *PortalForms) ReplacePortalForm(ctx context.Context, request operations.
 }
 
 // DeletePortalForm - Delete Form
-// Deletes a custom form. Any API publications previously linked to this form via `form_id` have the link cleared. Stored form responses collected before deletion are retained and remain viewable via the response detail view.
+// Deletes a custom form. Any API publications linked to this form are unlinked. Responses developers already submitted are kept and remain viewable.
 func (s *PortalForms) DeletePortalForm(ctx context.Context, portalID string, formID string, opts ...operations.Option) (*operations.DeletePortalFormResponse, error) {
 	request := operations.DeletePortalFormRequest{
 		PortalID: portalID,

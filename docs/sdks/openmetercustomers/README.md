@@ -16,12 +16,15 @@ Customers are used to track usage of your product or service. Customers can be i
 * [UpdateCustomerBillingAppData](#updatecustomerbillingappdata) - Update customer billing app data
 * [CreateCustomerStripeCheckoutSession](#createcustomerstripecheckoutsession) - Create Stripe Checkout Session
 * [CreateCustomerStripePortalSession](#createcustomerstripeportalsession) - Create Stripe customer portal session
+* [ListCustomerCharges](#listcustomercharges) - List customer charges
+* [CreateCustomerCharges](#createcustomercharges) - Create customer charge
 * [CreateCreditAdjustment](#createcreditadjustment) - Create a credit adjustment
 * [GetCustomerCreditBalance](#getcustomercreditbalance) - Get a customer's credit balance
 * [CreateCreditGrant](#createcreditgrant) - Create a new credit grant
 * [ListCreditGrants](#listcreditgrants) - List credit grants
 * [GetCreditGrant](#getcreditgrant) - Get a credit grant
 * [UpdateCreditGrantExternalSettlement](#updatecreditgrantexternalsettlement) - Update credit grant external settlement status
+* [VoidCreditGrant](#voidcreditgrant) - Void credit grant
 * [ListCreditTransactions](#listcredittransactions) - List credit transactions
 
 ## CreateCustomer
@@ -691,7 +694,177 @@ func main() {
 | sdkerrors.GoneError         | 410                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
+## ListCustomerCharges
+
+List customer charges.
+
+Returns the customer's charges that are represented as either flat fee or
+usage-based charges.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-customer-charges" method="get" path="/v3/openmeter/customers/{customerId}/charges" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterCustomers.ListCustomerCharges(ctx, operations.ListCustomerChargesRequest{
+        CustomerID: "01G65Z755AFWAKHE12NY0CQ9FH",
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
+        Filter: &components.ListChargesParamsFilter{
+            FeatureID: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+            ServicePeriodFrom: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter(
+                components.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter{
+                    Gte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            ServicePeriodTo: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterServicePeriodToDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter(
+                components.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter{
+                    Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ChargePagePaginatedResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [operations.ListCustomerChargesRequest](../../models/operations/listcustomerchargesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
+
+### Response
+
+**[*operations.ListCustomerChargesResponse](../../models/operations/listcustomerchargesresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreateCustomerCharges
+
+Create customer charge.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-customer-charges" method="post" path="/v3/openmeter/customers/{customerId}/charges" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterCustomers.CreateCustomerCharges(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.CreateCreateChargeRequestUsageBased(
+        components.CreateChargeUsageBasedRequest{
+            Name: "<value>",
+            Type: components.CreateChargeUsageBasedRequestTypeUsageBased,
+            Currency: "USD",
+            InvoiceAt: types.MustTimeFromString("2023-01-01T01:01:01.001Z"),
+            ServicePeriod: components.CreateChargeUsageBasedRequestServicePeriod{
+                From: types.MustTimeFromString("2023-01-01T01:01:01.001Z"),
+                To: types.MustTimeFromString("2023-01-01T01:01:01.001Z"),
+            },
+            SettlementMode: components.CreateChargeUsageBasedRequestSettlementModeCreditOnly,
+            Price: components.CreateCreateChargeUsageBasedRequestPriceUnit(
+                components.BillingPriceUnit{
+                    Type: components.BillingPriceUnitTypeUnit,
+                    Amount: "478.68",
+                },
+            ),
+            Feature: components.CreateChargeUsageBasedRequestFeature{
+                ID: "01G65Z755AFWAKHE12NY0CQ9FH",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingCharge != nil {
+        switch res.BillingCharge.Type {
+            case components.BillingChargeTypeFlatFee:
+                // res.BillingCharge.BillingChargeFlatFee is populated
+            case components.BillingChargeTypeUsageBased:
+                // res.BillingCharge.BillingChargeUsageBased is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |                                                                                  |
+| `customerID`                                                                     | `string`                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | 01G65Z755AFWAKHE12NY0CQ9FH                                                       |
+| `createChargeRequest`                                                            | [components.CreateChargeRequest](../../models/components/createchargerequest.md) | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |                                                                                  |
+
+### Response
+
+**[*operations.CreateCustomerChargesResponse](../../models/operations/createcustomerchargesresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
 ## CreateCreditAdjustment
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 A credit adjustment can be used to make manual adjustments to a customer's
 credit balance.
@@ -764,6 +937,9 @@ func main() {
 
 ## GetCustomerCreditBalance
 
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
 Get a credit balance.
 
 ### Example Usage
@@ -827,6 +1003,9 @@ func main() {
 
 ## CreateCreditGrant
 
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
 Create a new credit grant. A credit grant represents an allocation of prepaid
 credits to a customer.
 
@@ -840,6 +1019,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
 	"log"
 )
 
@@ -862,6 +1042,13 @@ func main() {
         Amount: "517.19",
         Purchase: &components.Purchase{
             Currency: "USD",
+            CostBasis: sdkkonnectgo.Pointer(components.CreateCreateCreditGrantRequestCostBasisPinned(
+                components.CreateChargeCostBasisPinned{
+                    Type: components.CreateChargeCostBasisPinnedTypePinned,
+                    FiatCurrency: "USD",
+                    CostBasisID: "01G65Z755AFWAKHE12NY0CQ9FH",
+                },
+            )),
         },
         TaxConfig: &components.TaxConfigurationForACreditGrant{
             TaxCode: &components.TaxCode{
@@ -874,7 +1061,9 @@ func main() {
                 "output_tokens",
             },
         },
+        EffectiveAt: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),
         ExpiresAfter: sdkkonnectgo.Pointer("P1Y"),
+        Key: sdkkonnectgo.Pointer("019ae40f-4258-7f15-9491-842f42a7d6ac"),
     })
     if err != nil {
         log.Fatal(err)
@@ -906,9 +1095,13 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListCreditGrants
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 List credit grants.
 
@@ -974,6 +1167,9 @@ func main() {
 
 ## GetCreditGrant
 
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
 Get a credit grant.
 
 ### Example Usage
@@ -1032,6 +1228,9 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## UpdateCreditGrantExternalSettlement
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 Update the payment settlement status of an externally funded credit grant.
 
@@ -1099,7 +1298,81 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
+## VoidCreditGrant
+
+Void a credit grant, forfeiting the remaining unused balance.
+
+Voiding is a forward-looking, irreversible operation. Credits already consumed
+by usage remain unaffected — only the remaining balance is forfeited. The grant
+reads as `voided` status afterwards. Payment state is not adjusted when
+`payment_adjustment` is `none`, so invoice-backed or externally collected
+payments may still collect the original amount. Only `active` grants can be
+voided; voiding a pending, expired, or fully consumed grant returns a conflict.
+Retrying a successful void is an idempotent success.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="void-credit-grant" method="post" path="/v3/openmeter/customers/{customerId}/credits/grants/{creditGrantId}/void" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterCustomers.VoidCreditGrant(ctx, operations.VoidCreditGrantRequest{
+        CustomerID: "01G65Z755AFWAKHE12NY0CQ9FH",
+        CreditGrantID: "01G65Z755AFWAKHE12NY0CQ9FH",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingCreditGrant != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
+| `request`                                                                              | [operations.VoidCreditGrantRequest](../../models/operations/voidcreditgrantrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `opts`                                                                                 | [][operations.Option](../../models/operations/option.md)                               | :heavy_minus_sign:                                                                     | The options for this request.                                                          |
+
+### Response
+
+**[*operations.VoidCreditGrantResponse](../../models/operations/voidcreditgrantresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
 ## ListCreditTransactions
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 List credit transactions for a customer.
 

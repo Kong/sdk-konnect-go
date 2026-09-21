@@ -51,7 +51,14 @@ func CreateSuggestionRulePayloadActionCreateOrMapAction(createOrMapAction Create
 	}
 }
 
-func (u *SuggestionRulePayloadAction) UnmarshalJSON(data []byte) error {
+func (u *SuggestionRulePayloadAction) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SuggestionRulePayloadAction{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var mapActionPayload MapActionPayload = MapActionPayload{}
 	if err := utils.UnmarshalJSON(data, &mapActionPayload, "", true, nil); err == nil {
@@ -125,7 +132,14 @@ func CreateRankRankBeforePayload(rankBeforePayload RankBeforePayload) Rank {
 	}
 }
 
-func (u *Rank) UnmarshalJSON(data []byte) error {
+func (u *Rank) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Rank{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var rankAfterPayload RankAfterPayload = RankAfterPayload{}
 	if err := utils.UnmarshalJSON(data, &rankAfterPayload, "", true, nil); err == nil {

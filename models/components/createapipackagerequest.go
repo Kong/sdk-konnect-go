@@ -22,6 +22,13 @@ type CreateAPIPackageRequest struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// A set of attributes that describe the API
 	Attributes any `json:"attributes,omitempty"`
+	// UUID of the organization environment to bind this package to. Must be
+	// an environment that exists for the organization. When omitted, the
+	// organization default environment is used. A package is scoped to a single environment for its
+	// lifetime; to publish the same APIs in another environment, create a
+	// separate package.
+	//
+	EnvironmentID *string `json:"environment_id,omitempty"`
 }
 
 func (c *CreateAPIPackageRequest) GetName() string {
@@ -71,4 +78,11 @@ func (c *CreateAPIPackageRequest) GetAttributes() any {
 		return nil
 	}
 	return c.Attributes
+}
+
+func (c *CreateAPIPackageRequest) GetEnvironmentID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.EnvironmentID
 }

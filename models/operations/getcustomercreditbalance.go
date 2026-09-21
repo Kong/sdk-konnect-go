@@ -13,7 +13,8 @@ type GetCustomerCreditBalanceRequest struct {
 	CustomerID string `pathParam:"style=simple,explode=false,name=customerId"`
 	// Return the credit balance as of this timestamp.
 	//
-	// Defaults to the current time.
+	// Defaults to the current time. Historical responses return `live` as zero because
+	// live charge impacts are only available for current balances.
 	Timestamp *time.Time `queryParam:"style=form,explode=false,name=timestamp"`
 	// Filter options for getting a credit balance.
 	Filter *components.GetCreditBalanceParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`

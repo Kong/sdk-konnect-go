@@ -16,7 +16,11 @@ const (
 	UpdatePortalFormRequestTypeAPIRegistration       UpdatePortalFormRequestType = "api_registration"
 )
 
-// UpdatePortalFormRequest - Form-update request body, discriminated by `type`. The `type` field is an immutable echo and must match the existing form's type — server returns 400 if it differs. Field removal is achieved by omitting the field from `fields`; field renames are achieved by editing `label`.
+// UpdatePortalFormRequest - Request body for updating a form.
+//
+// The `type` must match the form's existing type — it can't be changed.
+//
+// To remove a field, leave it out of `fields`; to rename a field, edit its `label`.
 type UpdatePortalFormRequest struct {
 	UpdateDeveloperRegistrationFormRequest *UpdateDeveloperRegistrationFormRequest `queryParam:"inline" union:"member"`
 	UpdateAPIRegistrationFormRequest       *UpdateAPIRegistrationFormRequest       `queryParam:"inline" union:"member"`
@@ -48,7 +52,14 @@ func CreateUpdatePortalFormRequestAPIRegistration(apiRegistration UpdateAPIRegis
 	}
 }
 
-func (u *UpdatePortalFormRequest) UnmarshalJSON(data []byte) error {
+func (u *UpdatePortalFormRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = UpdatePortalFormRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

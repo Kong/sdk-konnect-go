@@ -30,7 +30,6 @@ const (
 	AcceptHeaderEnumApplicationVndKonnectDocumentTreePlusJson AcceptHeaderEnum = "application/vnd.konnect.document-tree+json"
 	AcceptHeaderEnumTextCsv                                   AcceptHeaderEnum = "text/csv"
 	AcceptHeaderEnumWildcardRootWildcard                      AcceptHeaderEnum = "*/*"
-	AcceptHeaderEnumApplicationXYaml                          AcceptHeaderEnum = "application/x-yaml"
 )
 
 func (e AcceptHeaderEnum) ToPointer() *AcceptHeaderEnum {
@@ -83,7 +82,7 @@ func WithRetries(config retry.Config) Option {
 // WithOperationTimeout allows setting the request timeout applied for an operation.
 func WithOperationTimeout(timeout time.Duration) Option {
 	return func(opts *Options, supportedOptions ...string) error {
-		if !utils.Contains(supportedOptions, SupportedOptionRetries) {
+		if !utils.Contains(supportedOptions, SupportedOptionTimeout) {
 			return ErrUnsupportedOption
 		}
 

@@ -32,9 +32,6 @@ type CreateAIGatewayMCPServerRequest struct {
 func CreateCreateAIGatewayMCPServerRequestConversionOnly(conversionOnly AIGatewayMCPServerConversionOnly) CreateAIGatewayMCPServerRequest {
 	typ := CreateAIGatewayMCPServerRequestTypeConversionOnly
 
-	typStr := AIGatewayMCPServerConversionOnlyType(typ)
-	conversionOnly.Type = typStr
-
 	return CreateAIGatewayMCPServerRequest{
 		AIGatewayMCPServerConversionOnly: &conversionOnly,
 		Type:                             typ,
@@ -77,7 +74,14 @@ func CreateCreateAIGatewayMCPServerRequestUpstreamServer(upstreamServer AIGatewa
 	}
 }
 
-func (u *CreateAIGatewayMCPServerRequest) UnmarshalJSON(data []byte) error {
+func (u *CreateAIGatewayMCPServerRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreateAIGatewayMCPServerRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

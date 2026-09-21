@@ -669,10 +669,10 @@ func (s *AIGatewayAgents) CreateAiGatewayAgent(ctx context.Context, gatewayID st
 
 // GetAiGatewayAgent - Get an AI Gateway Agent
 // Returns the details of a specific AI Gateway agent.
-func (s *AIGatewayAgents) GetAiGatewayAgent(ctx context.Context, gatewayID string, agentID string, opts ...operations.Option) (*operations.GetAiGatewayAgentResponse, error) {
+func (s *AIGatewayAgents) GetAiGatewayAgent(ctx context.Context, gatewayID string, agentIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayAgentResponse, error) {
 	request := operations.GetAiGatewayAgentRequest{
-		GatewayID: gatewayID,
-		AgentID:   agentID,
+		GatewayID:     gatewayID,
+		AgentIDOrName: agentIDOrName,
 	}
 
 	o := operations.Options{}
@@ -693,7 +693,7 @@ func (s *AIGatewayAgents) GetAiGatewayAgent(ctx context.Context, gatewayID strin
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/agents/{agentId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/agents/{agentIdOrName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -982,7 +982,7 @@ func (s *AIGatewayAgents) UpdateAiGatewayAgent(ctx context.Context, request oper
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/agents/{agentId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/agents/{agentIdOrName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1280,10 +1280,10 @@ func (s *AIGatewayAgents) UpdateAiGatewayAgent(ctx context.Context, request oper
 
 // DeleteAiGatewayAgent - Delete an AI Gateway Agent
 // Removes a specific AI Gateway agent.
-func (s *AIGatewayAgents) DeleteAiGatewayAgent(ctx context.Context, gatewayID string, agentID string, opts ...operations.Option) (*operations.DeleteAiGatewayAgentResponse, error) {
+func (s *AIGatewayAgents) DeleteAiGatewayAgent(ctx context.Context, gatewayID string, agentIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayAgentResponse, error) {
 	request := operations.DeleteAiGatewayAgentRequest{
-		GatewayID: gatewayID,
-		AgentID:   agentID,
+		GatewayID:     gatewayID,
+		AgentIDOrName: agentIDOrName,
 	}
 
 	o := operations.Options{}
@@ -1304,7 +1304,7 @@ func (s *AIGatewayAgents) DeleteAiGatewayAgent(ctx context.Context, gatewayID st
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/agents/{agentId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/agents/{agentIdOrName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

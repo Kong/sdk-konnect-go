@@ -106,6 +106,9 @@ func main() {
         Name: "team-1",
         Comment: sdkkonnectgo.Pointer("A test workspace for team 1"),
         Description: sdkkonnectgo.Pointer("A test workspace for team 1"),
+        ManagedBy: map[string]string{
+            "owner": "terraform",
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -297,6 +300,9 @@ func main() {
         WorkspaceIDOrName: "2747d1e5-8246-4f65-a939-b392f1ee17f8",
         Workspace: components.WorkspaceInput{
             Name: "<value>",
+            ManagedBy: map[string]string{
+                "owner": "terraform",
+            },
         },
     })
     if err != nil {

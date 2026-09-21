@@ -48,7 +48,10 @@ type UpdateAPIVersionRequest struct {
 	// If false, operations removal will be rejected with a 409 error.
 	// Omitting the value (i.e., setting `?force`) means true.
 	//
-	Force             *QueryParamForce             `default:"false" queryParam:"style=form,explode=true,name=force"`
+	Force *QueryParamForce `default:"false" queryParam:"style=form,explode=true,name=force"`
+	// The format of the returned `spec.content`. Defaults to `json`.
+	//
+	SpecFormat        *components.SpecFormatSchema `default:"json" queryParam:"style=form,explode=true,name=spec_format"`
 	APIVersionRequest components.APIVersionRequest `request:"mediaType=application/json"`
 }
 
@@ -82,6 +85,13 @@ func (u *UpdateAPIVersionRequest) GetForce() *QueryParamForce {
 		return nil
 	}
 	return u.Force
+}
+
+func (u *UpdateAPIVersionRequest) GetSpecFormat() *components.SpecFormatSchema {
+	if u == nil {
+		return nil
+	}
+	return u.SpecFormat
 }
 
 func (u *UpdateAPIVersionRequest) GetAPIVersionRequest() components.APIVersionRequest {

@@ -168,6 +168,10 @@ type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse st
 	// - `false` when not supported for Client Credentials strategies
 	//
 	SupportsMultipleCredentials *bool `json:"supports_multiple_credentials,omitempty"`
+	// Application principal settings for this auth strategy. Runtime effect applies to V3 API Catalog (ACE) portals and
+	// applications; stored values may be set for any auth strategy in the organization.
+	//
+	Principals *AuthStrategyPrincipals `json:"principals,omitempty"`
 }
 
 func (a AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse) MarshalJSON() ([]byte, error) {
@@ -258,6 +262,13 @@ func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectRespons
 	return a.SupportsMultipleCredentials
 }
 
+func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse) GetPrincipals() *AuthStrategyPrincipals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
+}
+
 type AppAuthStrategyKeyAuthResponseAppAuthStrategyStrategyType string
 
 const (
@@ -308,24 +319,24 @@ func (a *AppAuthStrategyKeyAuthResponseAppAuthStrategyConfigs) GetKeyAuth() AppA
 	return a.KeyAuth
 }
 
-// AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType - The type of DCR provider.
-type AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType string
+// AppAuthStrategyKeyAuthResponseProviderType - The type of DCR provider.
+type AppAuthStrategyKeyAuthResponseProviderType string
 
 const (
-	AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderTypeAuth0        AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType = "auth0"
-	AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderTypeAzureAd      AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType = "azureAd"
-	AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderTypeCurity       AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType = "curity"
-	AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderTypeOkta         AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType = "okta"
-	AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderTypeHTTP         AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType = "http"
-	AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderTypeKongIdentity AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType = "kongIdentity"
+	AppAuthStrategyKeyAuthResponseProviderTypeAuth0        AppAuthStrategyKeyAuthResponseProviderType = "auth0"
+	AppAuthStrategyKeyAuthResponseProviderTypeAzureAd      AppAuthStrategyKeyAuthResponseProviderType = "azureAd"
+	AppAuthStrategyKeyAuthResponseProviderTypeCurity       AppAuthStrategyKeyAuthResponseProviderType = "curity"
+	AppAuthStrategyKeyAuthResponseProviderTypeOkta         AppAuthStrategyKeyAuthResponseProviderType = "okta"
+	AppAuthStrategyKeyAuthResponseProviderTypeHTTP         AppAuthStrategyKeyAuthResponseProviderType = "http"
+	AppAuthStrategyKeyAuthResponseProviderTypeKongIdentity AppAuthStrategyKeyAuthResponseProviderType = "kongIdentity"
 )
 
-func (e AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType) ToPointer() *AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType {
+func (e AppAuthStrategyKeyAuthResponseProviderType) ToPointer() *AppAuthStrategyKeyAuthResponseProviderType {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType) IsExact() bool {
+func (e *AppAuthStrategyKeyAuthResponseProviderType) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "auth0", "azureAd", "curity", "okta", "http", "kongIdentity":
@@ -343,7 +354,7 @@ type AppAuthStrategyKeyAuthResponseDcrProvider struct {
 	//
 	DisplayName *string `json:"display_name,omitempty"`
 	// The type of DCR provider.
-	ProviderType AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType `json:"provider_type"`
+	ProviderType AppAuthStrategyKeyAuthResponseProviderType `json:"provider_type"`
 }
 
 func (a AppAuthStrategyKeyAuthResponseDcrProvider) MarshalJSON() ([]byte, error) {
@@ -378,9 +389,9 @@ func (a *AppAuthStrategyKeyAuthResponseDcrProvider) GetDisplayName() *string {
 	return a.DisplayName
 }
 
-func (a *AppAuthStrategyKeyAuthResponseDcrProvider) GetProviderType() AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType {
+func (a *AppAuthStrategyKeyAuthResponseDcrProvider) GetProviderType() AppAuthStrategyKeyAuthResponseProviderType {
 	if a == nil {
-		return AppAuthStrategyKeyAuthResponseAppAuthStrategyProviderType("")
+		return AppAuthStrategyKeyAuthResponseProviderType("")
 	}
 	return a.ProviderType
 }
@@ -414,6 +425,10 @@ type AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse struct {
 	// Always `true` for KEY_AUTH.
 	//
 	SupportsMultipleCredentials *bool `default:"true" json:"supports_multiple_credentials"`
+	// Application principal settings for this auth strategy. Runtime effect applies to V3 API Catalog (ACE) portals and
+	// applications; stored values may be set for any auth strategy in the organization.
+	//
+	Principals *AuthStrategyPrincipals `json:"principals,omitempty"`
 }
 
 func (a AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse) MarshalJSON() ([]byte, error) {
@@ -504,6 +519,13 @@ func (a *AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse) GetSuppor
 	return a.SupportsMultipleCredentials
 }
 
+func (a *AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse) GetPrincipals() *AuthStrategyPrincipals {
+	if a == nil {
+		return nil
+	}
+	return a.Principals
+}
+
 type AppAuthStrategyType string
 
 const (
@@ -543,7 +565,14 @@ func CreateAppAuthStrategyOpenidConnect(openidConnect AppAuthStrategyOpenIDConne
 	}
 }
 
-func (u *AppAuthStrategy) UnmarshalJSON(data []byte) error {
+func (u *AppAuthStrategy) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AppAuthStrategy{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		StrategyType string `json:"strategy_type"`

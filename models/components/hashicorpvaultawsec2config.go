@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -54,29 +52,6 @@ func (e *HashiCorpVaultAwsEc2ConfigProtocol) IsExact() bool {
 	return false
 }
 
-type HashiCorpVaultAwsEc2ConfigAuthMethod string
-
-const (
-	HashiCorpVaultAwsEc2ConfigAuthMethodAwsEc2 HashiCorpVaultAwsEc2ConfigAuthMethod = "aws_ec2"
-)
-
-func (e HashiCorpVaultAwsEc2ConfigAuthMethod) ToPointer() *HashiCorpVaultAwsEc2ConfigAuthMethod {
-	return &e
-}
-func (e *HashiCorpVaultAwsEc2ConfigAuthMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "aws_ec2":
-		*e = HashiCorpVaultAwsEc2ConfigAuthMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultAwsEc2ConfigAuthMethod: %v", v)
-	}
-}
-
 type HashiCorpVaultAwsEc2Config struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -110,8 +85,9 @@ type HashiCorpVaultAwsEc2Config struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                              `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultAwsEc2ConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"aws_ec2" json:"auth_method"`
 	// The role to use for AWS EC2 auth.
 	Role string `json:"role"`
 	// The nonce for AWS EC2 auth.
@@ -208,11 +184,8 @@ func (h *HashiCorpVaultAwsEc2Config) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultAwsEc2Config) GetAuthMethod() HashiCorpVaultAwsEc2ConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultAwsEc2ConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultAwsEc2Config) GetAuthMethod() string {
+	return "aws_ec2"
 }
 
 func (h *HashiCorpVaultAwsEc2Config) GetRole() string {

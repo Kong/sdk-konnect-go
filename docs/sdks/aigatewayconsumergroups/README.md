@@ -107,10 +107,6 @@ func main() {
     res, err := s.AIGatewayConsumerGroups.CreateAiGatewayConsumerGroup(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateAIGatewayConsumerGroupRequest{
         DisplayName: "Dev Users Group",
         Name: "dev-users",
-        Policies: []string{
-            "<value 1>",
-            "<value 2>",
-        },
         Labels: map[string]string{
             "category": "finance",
         },
@@ -157,7 +153,7 @@ Returns the details of a specific AI Gateway Consumer Group.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-ai-gateway-consumer-group" method="get" path="/v1/ai-gateways/{gatewayId}/consumer-groups/{consumerGroupId}" -->
+<!-- UsageSnippet language="go" operationID="get-ai-gateway-consumer-group" method="get" path="/v1/ai-gateways/{gatewayId}/consumer-groups/{consumerGroupIdOrName}" -->
 ```go
 package main
 
@@ -177,7 +173,7 @@ func main() {
         }),
     )
 
-    res, err := s.AIGatewayConsumerGroups.GetAiGatewayConsumerGroup(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", "bf138ba2-c9b1-4229-b268-04d9d8a6410b")
+    res, err := s.AIGatewayConsumerGroups.GetAiGatewayConsumerGroup(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", "my-entity-name")
     if err != nil {
         log.Fatal(err)
     }
@@ -193,7 +189,7 @@ func main() {
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
 | `gatewayID`                                              | `string`                                                 | :heavy_check_mark:                                       | The unique ID of the AI Gateway.                         | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
-| `consumerGroupID`                                        | `string`                                                 | :heavy_check_mark:                                       | The unique ID of the AI Gateway Consumer Group.          | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `consumerGroupIDOrName`                                  | `string`                                                 | :heavy_check_mark:                                       | The unique ID or name of the AI Gateway Consumer Group.  | my-entity-name                                           |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -216,7 +212,7 @@ Updates the configuration of an existing AI Gateway Consumer Group.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="update-ai-gateway-consumer-group" method="put" path="/v1/ai-gateways/{gatewayId}/consumer-groups/{consumerGroupId}" -->
+<!-- UsageSnippet language="go" operationID="update-ai-gateway-consumer-group" method="put" path="/v1/ai-gateways/{gatewayId}/consumer-groups/{consumerGroupIdOrName}" -->
 ```go
 package main
 
@@ -239,15 +235,10 @@ func main() {
 
     res, err := s.AIGatewayConsumerGroups.UpdateAiGatewayConsumerGroup(ctx, operations.UpdateAiGatewayConsumerGroupRequest{
         GatewayID: "bf138ba2-c9b1-4229-b268-04d9d8a6410b",
-        ConsumerGroupID: "bf138ba2-c9b1-4229-b268-04d9d8a6410b",
+        ConsumerGroupIDOrName: "my-entity-name",
         UpdateAIGatewayConsumerGroupRequest: components.UpdateAIGatewayConsumerGroupRequest{
             DisplayName: "Dev Users Group",
             Name: "dev-users",
-            Policies: []string{
-                "<value 1>",
-                "<value 2>",
-                "<value 3>",
-            },
             Labels: map[string]string{
                 "category": "finance",
             },
@@ -294,7 +285,7 @@ Removes a specific AI Gateway Consumer Group.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-ai-gateway-consumer-group" method="delete" path="/v1/ai-gateways/{gatewayId}/consumer-groups/{consumerGroupId}" -->
+<!-- UsageSnippet language="go" operationID="delete-ai-gateway-consumer-group" method="delete" path="/v1/ai-gateways/{gatewayId}/consumer-groups/{consumerGroupIdOrName}" -->
 ```go
 package main
 
@@ -314,7 +305,7 @@ func main() {
         }),
     )
 
-    res, err := s.AIGatewayConsumerGroups.DeleteAiGatewayConsumerGroup(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", "bf138ba2-c9b1-4229-b268-04d9d8a6410b")
+    res, err := s.AIGatewayConsumerGroups.DeleteAiGatewayConsumerGroup(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", "my-entity-name")
     if err != nil {
         log.Fatal(err)
     }
@@ -330,7 +321,7 @@ func main() {
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
 | `gatewayID`                                              | `string`                                                 | :heavy_check_mark:                                       | The unique ID of the AI Gateway.                         | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
-| `consumerGroupID`                                        | `string`                                                 | :heavy_check_mark:                                       | The unique ID of the AI Gateway Consumer Group.          | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `consumerGroupIDOrName`                                  | `string`                                                 | :heavy_check_mark:                                       | The unique ID or name of the AI Gateway Consumer Group.  | my-entity-name                                           |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -483,7 +474,7 @@ Remove a consumer from an AI Gateway Consumer Group.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="remove-ai-gateway-consumer-from-consumer-group" method="delete" path="/v1/ai-gateways/{gatewayId}/consumer-groups/{consumerGroupId}/consumers/{consumerId}" -->
+<!-- UsageSnippet language="go" operationID="remove-ai-gateway-consumer-from-consumer-group" method="delete" path="/v1/ai-gateways/{gatewayId}/consumer-groups/{consumerGroupId}/consumers/{consumerIdOrName}" -->
 ```go
 package main
 
@@ -507,7 +498,7 @@ func main() {
     res, err := s.AIGatewayConsumerGroups.RemoveAiGatewayConsumerFromConsumerGroup(ctx, operations.RemoveAiGatewayConsumerFromConsumerGroupRequest{
         GatewayID: "bf138ba2-c9b1-4229-b268-04d9d8a6410b",
         ConsumerGroupID: "bf138ba2-c9b1-4229-b268-04d9d8a6410b",
-        ConsumerID: "bf138ba2-c9b1-4229-b268-04d9d8a6410b",
+        ConsumerIDOrName: "my-entity-name",
     })
     if err != nil {
         log.Fatal(err)

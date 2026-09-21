@@ -6,13 +6,18 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// CustomFormSelectOption - A single option in a select field.
+// CustomFormSelectOption - One selectable option in a dropdown field.
 type CustomFormSelectOption struct {
 	// The value submitted when this option is chosen.
 	Value string `json:"value"`
-	// Display label for the option.
+	// The text shown to the developer for this option.
 	Label string `json:"label"`
-	// When `true`, this option is selected by default when the form is rendered.
+	// When `true`, this option is pre-selected when the form is displayed.
+	//
+	// For a single-select field, at most one option may have `selected: true`.
+	//
+	// Marking more than one option as selected is rejected as invalid.
+	//
 	Selected *bool `default:"false" json:"selected"`
 }
 

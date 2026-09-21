@@ -29,11 +29,11 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch billingApp.Type {
-	case components.BillingAppTypeStripe:
+	case components.BillingAppUnionTypeStripe:
 		// billingApp.BillingAppStripe is populated
-	case components.BillingAppTypeSandbox:
+	case components.BillingAppUnionTypeSandbox:
 		// billingApp.BillingAppSandbox is populated
-	case components.BillingAppTypeExternalInvoicing:
+	case components.BillingAppUnionTypeExternalInvoicing:
 		// billingApp.BillingAppExternalInvoicing is populated
 }
 ```

@@ -2,6 +2,61 @@
 
 package components
 
+type GetNodeResiliency struct {
+	FallbackHash       *string     `json:"fallback_hash,omitempty"`
+	ActivatedAt        *int64      `json:"activated_at,omitempty"`
+	LatestConfigErrors []NodeError `json:"latest_config_errors,omitempty"`
+}
+
+func (g *GetNodeResiliency) GetFallbackHash() *string {
+	if g == nil {
+		return nil
+	}
+	return g.FallbackHash
+}
+
+func (g *GetNodeResiliency) GetActivatedAt() *int64 {
+	if g == nil {
+		return nil
+	}
+	return g.ActivatedAt
+}
+
+func (g *GetNodeResiliency) GetLatestConfigErrors() []NodeError {
+	if g == nil {
+		return nil
+	}
+	return g.LatestConfigErrors
+}
+
+type GetNodeConfigSync struct {
+	// Config sync state. One of `STATE_UNSPECIFIED`, `STATE_IN_SYNC`, `STATE_PENDING`, or `STATE_RESILIENCY`.
+	State      *string            `json:"state,omitempty"`
+	VersionID  *string            `json:"version_id,omitempty"`
+	Resiliency *GetNodeResiliency `json:"resiliency,omitempty"`
+}
+
+func (g *GetNodeConfigSync) GetState() *string {
+	if g == nil {
+		return nil
+	}
+	return g.State
+}
+
+func (g *GetNodeConfigSync) GetVersionID() *string {
+	if g == nil {
+		return nil
+	}
+	return g.VersionID
+}
+
+func (g *GetNodeConfigSync) GetResiliency() *GetNodeResiliency {
+	if g == nil {
+		return nil
+	}
+	return g.Resiliency
+}
+
 type GetNodeCompatibilityStatus struct {
 	State  *string                  `json:"state,omitempty"`
 	Issues []NodeCompatibilityIssue `json:"issues,omitempty"`
@@ -21,6 +76,33 @@ func (g *GetNodeCompatibilityStatus) GetIssues() []NodeCompatibilityIssue {
 	return g.Issues
 }
 
+type GetNodeDynamicLogging struct {
+	OperationID  *string `json:"operation_id,omitempty"`
+	LogLevel     *string `json:"log_level,omitempty"`
+	TTLRemaining *int64  `json:"ttl_remaining,omitempty"`
+}
+
+func (g *GetNodeDynamicLogging) GetOperationID() *string {
+	if g == nil {
+		return nil
+	}
+	return g.OperationID
+}
+
+func (g *GetNodeDynamicLogging) GetLogLevel() *string {
+	if g == nil {
+		return nil
+	}
+	return g.LogLevel
+}
+
+func (g *GetNodeDynamicLogging) GetTTLRemaining() *int64 {
+	if g == nil {
+		return nil
+	}
+	return g.TTLRemaining
+}
+
 type Item struct {
 	ID                  *string                     `json:"id,omitempty"`
 	Version             *string                     `json:"version,omitempty"`
@@ -30,7 +112,11 @@ type Item struct {
 	CreatedAt           *int64                      `json:"created_at,omitempty"`
 	UpdatedAt           *int64                      `json:"updated_at,omitempty"`
 	ConfigHash          *string                     `json:"config_hash,omitempty"`
+	ConfigSync          *GetNodeConfigSync          `json:"config_sync,omitempty"`
 	CompatibilityStatus *GetNodeCompatibilityStatus `json:"compatibility_status,omitempty"`
+	// The current log level of the node.
+	LogLevel       *string                `json:"log_level,omitempty"`
+	DynamicLogging *GetNodeDynamicLogging `json:"dynamic_logging,omitempty"`
 }
 
 func (i *Item) GetID() *string {
@@ -89,11 +175,32 @@ func (i *Item) GetConfigHash() *string {
 	return i.ConfigHash
 }
 
+func (i *Item) GetConfigSync() *GetNodeConfigSync {
+	if i == nil {
+		return nil
+	}
+	return i.ConfigSync
+}
+
 func (i *Item) GetCompatibilityStatus() *GetNodeCompatibilityStatus {
 	if i == nil {
 		return nil
 	}
 	return i.CompatibilityStatus
+}
+
+func (i *Item) GetLogLevel() *string {
+	if i == nil {
+		return nil
+	}
+	return i.LogLevel
+}
+
+func (i *Item) GetDynamicLogging() *GetNodeDynamicLogging {
+	if i == nil {
+		return nil
+	}
+	return i.DynamicLogging
 }
 
 // GetNode - Example response

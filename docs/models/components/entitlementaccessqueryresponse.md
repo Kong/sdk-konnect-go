@@ -1,0 +1,12 @@
+# EntitlementAccessQueryResponse
+
+Response of the entitlement access query.
+
+
+## Fields
+
+| Field                                                                                                                 | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `Data`                                                                                                                | [][components.EntitlementAccessQueryResult](../../models/components/entitlementaccessqueryresult.md)                  | :heavy_check_mark:                                                                                                    | Access evaluation results, one entry per resolved customer.                                                           |
+| `Errors`                                                                                                              | [][components.EntitlementAccessQueryError](../../models/components/entitlementaccessqueryerror.md)                    | :heavy_check_mark:                                                                                                    | Partial errors encountered while processing the request.                                                              |
+| `Meta`                                                                                                                | [components.EntitlementAccessQueryResponseMeta](../../models/components/entitlementaccessqueryresponsemeta.md)        | :heavy_check_mark:                                                                                                    | Pagination metadata. The endpoint may return a partial response if the full<br/>response would exceed server-side limits. |

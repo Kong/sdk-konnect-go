@@ -169,7 +169,14 @@ func CreateVulnerabilitiesMetricsFilterByScanAttributesNumericValueMetricsFilter
 	}
 }
 
-func (u *VulnerabilitiesMetricsFilterByScanAttributes) UnmarshalJSON(data []byte) error {
+func (u *VulnerabilitiesMetricsFilterByScanAttributes) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = VulnerabilitiesMetricsFilterByScanAttributes{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringValueMetricsFilter StringValueMetricsFilter = StringValueMetricsFilter{}
 	if err := utils.UnmarshalJSON(data, &stringValueMetricsFilter, "", true, nil); err == nil {

@@ -8,8 +8,16 @@ import (
 
 // CreateCustomDomainRequest - Request schema for creating a custom domain in the global API.
 type CreateCustomDomainRequest struct {
+	// ID of the Konnect control plane. Can be retrieved from the Control Planes API or the Konnect UI.
 	ControlPlaneID string `json:"control_plane_id"`
-	// Set of control-plane geos supported for deploying cloud-gateways configurations.
+	// Geographic region of the control plane. Supported values:
+	// - `us` — United States
+	// - `eu` — Europe
+	// - `au` — Australia
+	// - `me` — Middle East
+	// - `in` — India
+	// - `sg` — Singapore
+	//
 	ControlPlaneGeo ControlPlaneGeo `json:"control_plane_geo"`
 	// Domain name of the custom domain.
 	Domain string `json:"domain"`
@@ -18,6 +26,11 @@ type CreateCustomDomainRequest struct {
 	//
 	// Kind of the custom domain based on Cloud Gateway deployment.
 	Kind *CustomDomainKind `default:"dedicated.v0" json:"kind"`
+	// Type of gateway the dedicated custom domain belongs to: `api` for an API Gateway or
+	// `ai` for an AI Gateway. Applies only to dedicated custom domains. Defaults to `api`
+	// when omitted.
+	//
+	Type *CustomDomainType `default:"api" json:"type"`
 }
 
 func (c CreateCustomDomainRequest) MarshalJSON() ([]byte, error) {
@@ -57,4 +70,11 @@ func (c *CreateCustomDomainRequest) GetKind() *CustomDomainKind {
 		return nil
 	}
 	return c.Kind
+}
+
+func (c *CreateCustomDomainRequest) GetType() *CustomDomainType {
+	if c == nil {
+		return nil
+	}
+	return c.Type
 }

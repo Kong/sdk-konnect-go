@@ -207,7 +207,14 @@ func CreateCatalogIntegrationResourceTypeIntegrationDataSchemaCatalogIntegration
 	}
 }
 
-func (u *CatalogIntegrationResourceTypeIntegrationDataSchema) UnmarshalJSON(data []byte) error {
+func (u *CatalogIntegrationResourceTypeIntegrationDataSchema) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogIntegrationResourceTypeIntegrationDataSchema{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var catalogIntegrationResourceTypeIntegrationDataSimpleSchema CatalogIntegrationResourceTypeIntegrationDataSimpleSchema = CatalogIntegrationResourceTypeIntegrationDataSimpleSchema{}
 	if err := utils.UnmarshalJSON(data, &catalogIntegrationResourceTypeIntegrationDataSimpleSchema, "", true, nil); err == nil {

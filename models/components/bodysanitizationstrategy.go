@@ -41,7 +41,14 @@ func CreateBodySanitizationStrategyRegexStrategy(regexStrategy RegexStrategy) Bo
 	}
 }
 
-func (u *BodySanitizationStrategy) UnmarshalJSON(data []byte) error {
+func (u *BodySanitizationStrategy) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = BodySanitizationStrategy{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var jsonPathStrategy JSONPathStrategy = JSONPathStrategy{}
 	if err := utils.UnmarshalJSON(data, &jsonPathStrategy, "", true, nil); err == nil {

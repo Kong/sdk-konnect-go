@@ -27,9 +27,6 @@ type AIGatewayModelVectorDBConfig struct {
 func CreateAIGatewayModelVectorDBConfigPgvector(pgvector AIGatewayModelVectorDBConfigPgVector) AIGatewayModelVectorDBConfig {
 	typ := AIGatewayModelVectorDBConfigTypePgvector
 
-	typStr := Strategy(typ)
-	pgvector.Strategy = typStr
-
 	return AIGatewayModelVectorDBConfig{
 		AIGatewayModelVectorDBConfigPgVector: &pgvector,
 		Type:                                 typ,
@@ -39,19 +36,23 @@ func CreateAIGatewayModelVectorDBConfigPgvector(pgvector AIGatewayModelVectorDBC
 func CreateAIGatewayModelVectorDBConfigRedis(redis AIGatewayModelVectorDBConfigRedis) AIGatewayModelVectorDBConfig {
 	typ := AIGatewayModelVectorDBConfigTypeRedis
 
-	typStr := AIGatewayModelVectorDBConfigRedisStrategy(typ)
-	redis.Strategy = typStr
-
 	return AIGatewayModelVectorDBConfig{
 		AIGatewayModelVectorDBConfigRedis: &redis,
 		Type:                              typ,
 	}
 }
 
-func (u *AIGatewayModelVectorDBConfig) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayModelVectorDBConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayModelVectorDBConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
-		Strategy string `json:"strategy"`
+		Type string `json:"type"`
 	}
 
 	dis := new(discriminator)
@@ -59,11 +60,11 @@ func (u *AIGatewayModelVectorDBConfig) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	switch dis.Strategy {
+	switch dis.Type {
 	case "pgvector":
 		aiGatewayModelVectorDBConfigPgVector := new(AIGatewayModelVectorDBConfigPgVector)
 		if err := utils.UnmarshalJSON(data, &aiGatewayModelVectorDBConfigPgVector, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Strategy == pgvector) type AIGatewayModelVectorDBConfigPgVector within AIGatewayModelVectorDBConfig: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == pgvector) type AIGatewayModelVectorDBConfigPgVector within AIGatewayModelVectorDBConfig: %w", string(data), err)
 		}
 
 		u.AIGatewayModelVectorDBConfigPgVector = aiGatewayModelVectorDBConfigPgVector
@@ -72,7 +73,7 @@ func (u *AIGatewayModelVectorDBConfig) UnmarshalJSON(data []byte) error {
 	case "redis":
 		aiGatewayModelVectorDBConfigRedis := new(AIGatewayModelVectorDBConfigRedis)
 		if err := utils.UnmarshalJSON(data, &aiGatewayModelVectorDBConfigRedis, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Strategy == redis) type AIGatewayModelVectorDBConfigRedis within AIGatewayModelVectorDBConfig: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis) type AIGatewayModelVectorDBConfigRedis within AIGatewayModelVectorDBConfig: %w", string(data), err)
 		}
 
 		u.AIGatewayModelVectorDBConfigRedis = aiGatewayModelVectorDBConfigRedis

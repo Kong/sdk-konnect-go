@@ -121,8 +121,10 @@ type RouteExpression struct {
 	HTTPSRedirectStatusCode *RouteExpressionHTTPSRedirectStatusCode `default:"426" json:"https_redirect_status_code"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
-	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
-	ManagedBy map[string]any `json:"managed_by,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// The name of the Route. Route names must be unique, and they are case sensitive. For example, there can be two different Routes named "test" and "Test".
 	Name *string `json:"name,omitempty"`
 	// Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
@@ -193,7 +195,7 @@ func (r *RouteExpression) GetID() *string {
 	return r.ID
 }
 
-func (r *RouteExpression) GetManagedBy() map[string]any {
+func (r *RouteExpression) GetManagedBy() map[string]string {
 	if r == nil {
 		return nil
 	}

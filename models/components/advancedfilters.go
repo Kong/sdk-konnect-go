@@ -14,6 +14,7 @@ const (
 	AdvancedFiltersFieldAPIProduct                AdvancedFiltersField = "api_product"
 	AdvancedFiltersFieldAPIProductVersion         AdvancedFiltersField = "api_product_version"
 	AdvancedFiltersFieldApplication               AdvancedFiltersField = "application"
+	AdvancedFiltersFieldCacheStatus               AdvancedFiltersField = "cache_status"
 	AdvancedFiltersFieldConsumer                  AdvancedFiltersField = "consumer"
 	AdvancedFiltersFieldControlPlane              AdvancedFiltersField = "control_plane"
 	AdvancedFiltersFieldControlPlaneGroup         AdvancedFiltersField = "control_plane_group"
@@ -21,7 +22,9 @@ const (
 	AdvancedFiltersFieldDataPlaneNode             AdvancedFiltersField = "data_plane_node"
 	AdvancedFiltersFieldDataPlaneNodeVersion      AdvancedFiltersField = "data_plane_node_version"
 	AdvancedFiltersFieldGatewayService            AdvancedFiltersField = "gateway_service"
+	AdvancedFiltersFieldOidcCredential            AdvancedFiltersField = "oidc_credential"
 	AdvancedFiltersFieldPortal                    AdvancedFiltersField = "portal"
+	AdvancedFiltersFieldPrincipal                 AdvancedFiltersField = "principal"
 	AdvancedFiltersFieldRealm                     AdvancedFiltersField = "realm"
 	AdvancedFiltersFieldResponseSource            AdvancedFiltersField = "response_source"
 	AdvancedFiltersFieldRoute                     AdvancedFiltersField = "route"
@@ -39,7 +42,7 @@ func (e AdvancedFiltersField) ToPointer() *AdvancedFiltersField {
 func (e *AdvancedFiltersField) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "api", "api_package", "api_product", "api_product_version", "application", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "portal", "realm", "response_source", "route", "status_code", "status_code_grouped", "upstream_status_code", "upstream_status_code_grouped":
+		case "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "oidc_credential", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}

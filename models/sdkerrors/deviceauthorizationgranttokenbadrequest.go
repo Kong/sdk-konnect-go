@@ -252,7 +252,14 @@ func CreateDeviceAuthorizationGrantTokenBadRequestDeviceAuthorizationGrantTokenE
 	}
 }
 
-func (u *DeviceAuthorizationGrantTokenBadRequest) UnmarshalJSON(data []byte) error {
+func (u *DeviceAuthorizationGrantTokenBadRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DeviceAuthorizationGrantTokenBadRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var deviceAuthorizationGrantAuthorizeError DeviceAuthorizationGrantAuthorizeError = DeviceAuthorizationGrantAuthorizeError{}
 	if err := utils.UnmarshalJSON(data, &deviceAuthorizationGrantAuthorizeError, "", true, nil); err == nil {

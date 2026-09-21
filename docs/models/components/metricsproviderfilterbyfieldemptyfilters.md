@@ -1,0 +1,9 @@
+# MetricsProviderFilterByFieldEmptyFilters
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Operator`                                                                                                     | [components.RequestsFilterTypeEmpty](../../models/components/requestsfiltertypeempty.md)                       | :heavy_check_mark:                                                                                             | The type of filter to apply.                                                                                   |
+| `Field`                                                                                                        | [components.MetricsProviderFilterByField2Field](../../models/components/metricsproviderfilterbyfield2field.md) | :heavy_check_mark:                                                                                             | The field to filter.                                                                                           |

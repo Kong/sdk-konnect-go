@@ -1,0 +1,9 @@
+# UpdateContextSourceRequest
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `SourceID`                                                                                             | `string`                                                                                               | :heavy_check_mark:                                                                                     | The ID of the MCP resource.                                                                            |
+| `RequestBody`                                                                                          | [operations.UpdateContextSourceRequestBody](../../models/operations/updatecontextsourcerequestbody.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

@@ -55,6 +55,188 @@ func (e *AIGatewayMCPServerUpstreamServerServerConfigStrategy) IsExact() bool {
 	return false
 }
 
+// AIGatewayMCPServerUpstreamServerServerConfigSessionOutput - Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes.
+// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
+type AIGatewayMCPServerUpstreamServerServerConfigSessionOutput struct {
+	// The configuration for client-side session storage.
+	Client *AIGatewayMCPServerUpstreamServerServerConfigClient `json:"client,omitempty"`
+	// If enabled, Kong will maintain managed sessions with the MCP server.
+	Managed *bool `default:"true" json:"managed"`
+	// Config for connecting to a Cloud Provider's Redis instance.
+	Redis *AIGatewayRedisCloudConfigurationOutput `json:"redis,omitempty"`
+	// The time-to-live (TTL) for each session in seconds.
+	SessionTTL *int64 `default:"86400" json:"session_ttl"`
+	// The strategy for the session. If the value is 'client', the session is encrypted into MCP session id assigned to the client. If the value is not 'client', the session is stored in the configured database.
+	Strategy *AIGatewayMCPServerUpstreamServerServerConfigStrategy `json:"strategy,omitempty"`
+}
+
+func (a AIGatewayMCPServerUpstreamServerServerConfigSessionOutput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput) GetClient() *AIGatewayMCPServerUpstreamServerServerConfigClient {
+	if a == nil {
+		return nil
+	}
+	return a.Client
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput) GetManaged() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.Managed
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput) GetRedis() *AIGatewayRedisCloudConfigurationOutput {
+	if a == nil {
+		return nil
+	}
+	return a.Redis
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput) GetSessionTTL() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.SessionTTL
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput) GetStrategy() *AIGatewayMCPServerUpstreamServerServerConfigStrategy {
+	if a == nil {
+		return nil
+	}
+	return a.Strategy
+}
+
+// UpstreamProtocolVersion - The MCP protocol revision Kong speaks to the upstream MCP server. Leave unset to
+// negotiate a handshake revision with an `initialize` exchange, which is the default. Set a
+// per-request revision to reach an upstream that answers no handshake and mints no session.
+//
+// **Requires a minimum runtime version of `2.1`**.
+type UpstreamProtocolVersion string
+
+const (
+	UpstreamProtocolVersionTwoThousandAndTwentySixMinus07Minus28  UpstreamProtocolVersion = "2026-07-28"
+	UpstreamProtocolVersionTwoThousandAndTwentyFiveMinus11Minus25 UpstreamProtocolVersion = "2025-11-25"
+	UpstreamProtocolVersionTwoThousandAndTwentyFiveMinus06Minus18 UpstreamProtocolVersion = "2025-06-18"
+	UpstreamProtocolVersionTwoThousandAndTwentyFiveMinus03Minus26 UpstreamProtocolVersion = "2025-03-26"
+)
+
+func (e UpstreamProtocolVersion) ToPointer() *UpstreamProtocolVersion {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpstreamProtocolVersion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "2026-07-28", "2025-11-25", "2025-06-18", "2025-03-26":
+			return true
+		}
+	}
+	return false
+}
+
+// AIGatewayMCPServerUpstreamServerServerConfigOutput - Server-side configuration specific to `upstream-server` mode.
+type AIGatewayMCPServerUpstreamServerServerConfigOutput struct {
+	// Whether to forward the client request headers to the upstream server when calling the tools.
+	ForwardClientHeaders *bool `default:"true" json:"forward_client_headers"`
+	// Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes.
+	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
+	//
+	Session *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput `json:"session,omitempty"`
+	// The timeout for calling the tools in milliseconds.
+	Timeout *int64 `default:"10000" json:"timeout"`
+	// If enabled, the original upstream tool names are preserved as-is when Kong acts as an MCP server.
+	// If disabled (`false`), the service name will be prepended to the MCP tool names to avoid name
+	// collisions when multiple services are used.
+	//
+	PreserveUpstreamToolNames *bool `default:"false" json:"preserve_upstream_tool_names"`
+	// Configuration for an Upstream Server's MCP Server Tools' Authentication.
+	ToolsListAuth *AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput `json:"tools_list_auth,omitempty"`
+	// The MCP protocol revision Kong speaks to the upstream MCP server. Leave unset to
+	// negotiate a handshake revision with an `initialize` exchange, which is the default. Set a
+	// per-request revision to reach an upstream that answers no handshake and mints no session.
+	//
+	// **Requires a minimum runtime version of `2.1`**.
+	UpstreamProtocolVersion *UpstreamProtocolVersion `json:"upstream_protocol_version,omitempty"`
+}
+
+func (a AIGatewayMCPServerUpstreamServerServerConfigOutput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetForwardClientHeaders() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.ForwardClientHeaders
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetSession() *AIGatewayMCPServerUpstreamServerServerConfigSessionOutput {
+	if a == nil {
+		return nil
+	}
+	return a.Session
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetTimeout() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.Timeout
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetPreserveUpstreamToolNames() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.PreserveUpstreamToolNames
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetToolsListAuth() *AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput {
+	if a == nil {
+		return nil
+	}
+	return a.ToolsListAuth
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetToolsListAuthJwt() *AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt {
+	if v := a.GetToolsListAuth(); v != nil {
+		return v.AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt
+	}
+	return nil
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetToolsListAuthCredentials() *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput {
+	if v := a.GetToolsListAuth(); v != nil {
+		return v.AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput
+	}
+	return nil
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetUpstreamProtocolVersion() *UpstreamProtocolVersion {
+	if a == nil {
+		return nil
+	}
+	return a.UpstreamProtocolVersion
+}
+
 // AIGatewayMCPServerUpstreamServerServerConfigSession - Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes.
 // This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 type AIGatewayMCPServerUpstreamServerServerConfigSession struct {
@@ -116,94 +298,6 @@ func (a *AIGatewayMCPServerUpstreamServerServerConfigSession) GetStrategy() *AIG
 	return a.Strategy
 }
 
-// AIGatewayMCPServerUpstreamServerServerConfigOutput - Server-side configuration specific to `upstream-server` mode.
-type AIGatewayMCPServerUpstreamServerServerConfigOutput struct {
-	// Whether to forward the client request headers to the upstream server when calling the tools.
-	ForwardClientHeaders *bool `default:"true" json:"forward_client_headers"`
-	// Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes.
-	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
-	//
-	Session *AIGatewayMCPServerUpstreamServerServerConfigSession `json:"session,omitempty"`
-	// The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
-	Tag *string `json:"tag,omitempty"`
-	// The timeout for calling the tools in milliseconds.
-	Timeout *int64 `default:"10000" json:"timeout"`
-	// If enabled, the original upstream tool names are preserved as-is when Kong acts as an MCP server.
-	// If disabled (`false`), the service name will be prepended to the MCP tool names to avoid name
-	// collisions when multiple services are used.
-	//
-	PreserveUpstreamToolNames *bool `default:"false" json:"preserve_upstream_tool_names"`
-	// Configuration for an Upstream Server's MCP Server Tools' Authentication.
-	ToolsListAuth *AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput `json:"tools_list_auth,omitempty"`
-}
-
-func (a AIGatewayMCPServerUpstreamServerServerConfigOutput) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetForwardClientHeaders() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.ForwardClientHeaders
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetSession() *AIGatewayMCPServerUpstreamServerServerConfigSession {
-	if a == nil {
-		return nil
-	}
-	return a.Session
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetTag() *string {
-	if a == nil {
-		return nil
-	}
-	return a.Tag
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetTimeout() *int64 {
-	if a == nil {
-		return nil
-	}
-	return a.Timeout
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetPreserveUpstreamToolNames() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.PreserveUpstreamToolNames
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetToolsListAuth() *AIGatewayMCPServerUpstreamServerServerToolAuthConfigOutput {
-	if a == nil {
-		return nil
-	}
-	return a.ToolsListAuth
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetToolsListAuthJwt() *AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt {
-	if v := a.GetToolsListAuth(); v != nil {
-		return v.AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt
-	}
-	return nil
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfigOutput) GetToolsListAuthCredentials() *AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput {
-	if v := a.GetToolsListAuth(); v != nil {
-		return v.AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsOutput
-	}
-	return nil
-}
-
 // AIGatewayMCPServerUpstreamServerServerConfig - Server-side configuration specific to `upstream-server` mode.
 type AIGatewayMCPServerUpstreamServerServerConfig struct {
 	// Whether to forward the client request headers to the upstream server when calling the tools.
@@ -212,8 +306,6 @@ type AIGatewayMCPServerUpstreamServerServerConfig struct {
 	// This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 	//
 	Session *AIGatewayMCPServerUpstreamServerServerConfigSession `json:"session,omitempty"`
-	// The tag of the MCP server. This is used to filter the exported MCP tools. The field should contain exactly one tag.
-	Tag *string `json:"tag,omitempty"`
 	// The timeout for calling the tools in milliseconds.
 	Timeout *int64 `default:"10000" json:"timeout"`
 	// If enabled, the original upstream tool names are preserved as-is when Kong acts as an MCP server.
@@ -223,6 +315,12 @@ type AIGatewayMCPServerUpstreamServerServerConfig struct {
 	PreserveUpstreamToolNames *bool `default:"false" json:"preserve_upstream_tool_names"`
 	// Configuration for an Upstream Server's MCP Server Tools' Authentication.
 	ToolsListAuth *AIGatewayMCPServerUpstreamServerServerToolAuthConfig `json:"tools_list_auth,omitempty"`
+	// The MCP protocol revision Kong speaks to the upstream MCP server. Leave unset to
+	// negotiate a handshake revision with an `initialize` exchange, which is the default. Set a
+	// per-request revision to reach an upstream that answers no handshake and mints no session.
+	//
+	// **Requires a minimum runtime version of `2.1`**.
+	UpstreamProtocolVersion *UpstreamProtocolVersion `json:"upstream_protocol_version,omitempty"`
 }
 
 func (a AIGatewayMCPServerUpstreamServerServerConfig) MarshalJSON() ([]byte, error) {
@@ -248,13 +346,6 @@ func (a *AIGatewayMCPServerUpstreamServerServerConfig) GetSession() *AIGatewayMC
 		return nil
 	}
 	return a.Session
-}
-
-func (a *AIGatewayMCPServerUpstreamServerServerConfig) GetTag() *string {
-	if a == nil {
-		return nil
-	}
-	return a.Tag
 }
 
 func (a *AIGatewayMCPServerUpstreamServerServerConfig) GetTimeout() *int64 {
@@ -290,4 +381,11 @@ func (a *AIGatewayMCPServerUpstreamServerServerConfig) GetToolsListAuthCredentia
 		return v.AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials
 	}
 	return nil
+}
+
+func (a *AIGatewayMCPServerUpstreamServerServerConfig) GetUpstreamProtocolVersion() *UpstreamProtocolVersion {
+	if a == nil {
+		return nil
+	}
+	return a.UpstreamProtocolVersion
 }

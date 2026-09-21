@@ -13,6 +13,8 @@ type ListPortalTeamsQueryParamFilter struct {
 	Name *components.StringFieldFilter `queryParam:"name=name"`
 	// Filter by a boolean value (true/false).
 	CanOwnApplications *bool `queryParam:"name=can_own_applications"`
+	// Filter by a boolean value (true/false).
+	KonnectManaged *bool `queryParam:"name=konnect_managed"`
 }
 
 func (l *ListPortalTeamsQueryParamFilter) GetName() *components.StringFieldFilter {
@@ -27,6 +29,13 @@ func (l *ListPortalTeamsQueryParamFilter) GetCanOwnApplications() *bool {
 		return nil
 	}
 	return l.CanOwnApplications
+}
+
+func (l *ListPortalTeamsQueryParamFilter) GetKonnectManaged() *bool {
+	if l == nil {
+		return nil
+	}
+	return l.KonnectManaged
 }
 
 type ListPortalTeamsRequest struct {

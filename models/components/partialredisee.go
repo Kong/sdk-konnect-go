@@ -155,91 +155,98 @@ func (p *PartialRedisEeCloudAuthentication) GetGcpServiceAccountJSON() *string {
 	return p.GcpServiceAccountJSON
 }
 
-type ClusterNodes struct {
+type PartialRedisEeClusterNodes struct {
 	// A string representing a host name, such as example.com.
 	IP *string `default:"127.0.0.1" json:"ip"`
 	// An integer representing a port number between 0 and 65535, inclusive.
 	Port *int64 `default:"6379" json:"port"`
 }
 
-func (c ClusterNodes) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (p PartialRedisEeClusterNodes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
 }
 
-func (c *ClusterNodes) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+func (p *PartialRedisEeClusterNodes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *ClusterNodes) GetIP() *string {
-	if c == nil {
+func (p *PartialRedisEeClusterNodes) GetIP() *string {
+	if p == nil {
 		return nil
 	}
-	return c.IP
+	return p.IP
 }
 
-func (c *ClusterNodes) GetPort() *int64 {
-	if c == nil {
+func (p *PartialRedisEeClusterNodes) GetPort() *int64 {
+	if p == nil {
 		return nil
 	}
-	return c.Port
+	return p.Port
 }
 
-type PortType string
+type PartialRedisEePortType string
 
 const (
-	PortTypeInteger PortType = "integer"
-	PortTypeStr     PortType = "str"
+	PartialRedisEePortTypeInteger PartialRedisEePortType = "integer"
+	PartialRedisEePortTypeStr     PartialRedisEePortType = "str"
 )
 
-// Port - An integer representing a port number between 0 and 65535, inclusive.
-type Port struct {
+// PartialRedisEePort - An integer representing a port number between 0 and 65535, inclusive.
+type PartialRedisEePort struct {
 	Integer *int64  `queryParam:"inline" union:"member"`
 	Str     *string `queryParam:"inline" union:"member"`
 
-	Type PortType
+	Type PartialRedisEePortType
 }
 
-func CreatePortInteger(integer int64) Port {
-	typ := PortTypeInteger
+func CreatePartialRedisEePortInteger(integer int64) PartialRedisEePort {
+	typ := PartialRedisEePortTypeInteger
 
-	return Port{
+	return PartialRedisEePort{
 		Integer: &integer,
 		Type:    typ,
 	}
 }
 
-func CreatePortStr(str string) Port {
-	typ := PortTypeStr
+func CreatePartialRedisEePortStr(str string) PartialRedisEePort {
+	typ := PartialRedisEePortTypeStr
 
-	return Port{
+	return PartialRedisEePort{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func (u *Port) UnmarshalJSON(data []byte) error {
+func (u *PartialRedisEePort) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PartialRedisEePort{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integer int64 = int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
 		u.Integer = &integer
-		u.Type = PortTypeInteger
+		u.Type = PartialRedisEePortTypeInteger
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = PortTypeStr
+		u.Type = PartialRedisEePortTypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Port", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PartialRedisEePort", string(data))
 }
 
-func (u Port) MarshalJSON() ([]byte, error) {
+func (u PartialRedisEePort) MarshalJSON() ([]byte, error) {
 	if u.Integer != nil {
 		return utils.MarshalJSON(u.Integer, "", true)
 	}
@@ -248,56 +255,56 @@ func (u Port) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Port: all fields are null")
+	return nil, errors.New("could not marshal union type PartialRedisEePort: all fields are null")
 }
 
-type SentinelNodes struct {
+type PartialRedisEeSentinelNodes struct {
 	// A string representing a host name, such as example.com.
 	Host *string `default:"127.0.0.1" json:"host"`
 	// An integer representing a port number between 0 and 65535, inclusive.
 	Port *int64 `default:"6379" json:"port"`
 }
 
-func (s SentinelNodes) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
+func (p PartialRedisEeSentinelNodes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
 }
 
-func (s *SentinelNodes) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+func (p *PartialRedisEeSentinelNodes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (s *SentinelNodes) GetHost() *string {
-	if s == nil {
+func (p *PartialRedisEeSentinelNodes) GetHost() *string {
+	if p == nil {
 		return nil
 	}
-	return s.Host
+	return p.Host
 }
 
-func (s *SentinelNodes) GetPort() *int64 {
-	if s == nil {
+func (p *PartialRedisEeSentinelNodes) GetPort() *int64 {
+	if p == nil {
 		return nil
 	}
-	return s.Port
+	return p.Port
 }
 
-// SentinelRole - Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
-type SentinelRole string
+// PartialRedisEeSentinelRole - Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
+type PartialRedisEeSentinelRole string
 
 const (
-	SentinelRoleAny    SentinelRole = "any"
-	SentinelRoleMaster SentinelRole = "master"
-	SentinelRoleSlave  SentinelRole = "slave"
+	PartialRedisEeSentinelRoleAny    PartialRedisEeSentinelRole = "any"
+	PartialRedisEeSentinelRoleMaster PartialRedisEeSentinelRole = "master"
+	PartialRedisEeSentinelRoleSlave  PartialRedisEeSentinelRole = "slave"
 )
 
-func (e SentinelRole) ToPointer() *SentinelRole {
+func (e PartialRedisEeSentinelRole) ToPointer() *PartialRedisEeSentinelRole {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *SentinelRole) IsExact() bool {
+func (e *PartialRedisEeSentinelRole) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "any", "master", "slave":
@@ -313,7 +320,7 @@ type PartialRedisEeConfig struct {
 	// Maximum retry attempts for redirection.
 	ClusterMaxRedirections *int64 `default:"5" json:"cluster_max_redirections"`
 	// Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
-	ClusterNodes []ClusterNodes `json:"cluster_nodes,omitempty"`
+	ClusterNodes []PartialRedisEeClusterNodes `json:"cluster_nodes,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ConnectTimeout *int64 `default:"2000" json:"connect_timeout"`
 	// If the connection to Redis is proxied (e.g. Envoy), set it `true`. Set the `host` and `port` to point to the proxy address.
@@ -329,7 +336,7 @@ type PartialRedisEeConfig struct {
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
 	Password *string `json:"password,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *Port `json:"port,omitempty"`
+	Port *PartialRedisEePort `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
@@ -337,11 +344,11 @@ type PartialRedisEeConfig struct {
 	// Sentinel master to use for Redis connections. Defining this value implies using Redis Sentinel.
 	SentinelMaster *string `json:"sentinel_master,omitempty"`
 	// Sentinel node addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Sentinel. The minimum length of the array is 1 element.
-	SentinelNodes []SentinelNodes `json:"sentinel_nodes,omitempty"`
+	SentinelNodes []PartialRedisEeSentinelNodes `json:"sentinel_nodes,omitempty"`
 	// Sentinel password to authenticate with a Redis Sentinel instance. If undefined, no AUTH commands are sent to Redis Sentinels.
 	SentinelPassword *string `json:"sentinel_password,omitempty"`
 	// Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
-	SentinelRole *SentinelRole `json:"sentinel_role,omitempty"`
+	SentinelRole *PartialRedisEeSentinelRole `json:"sentinel_role,omitempty"`
 	// Sentinel username to authenticate with a Redis Sentinel instance. If undefined, ACL authentication won't be performed. This requires Redis v6.2.0+.
 	SentinelUsername *string `json:"sentinel_username,omitempty"`
 	// A string representing an SNI (server name indication) value for TLS.
@@ -379,7 +386,7 @@ func (p *PartialRedisEeConfig) GetClusterMaxRedirections() *int64 {
 	return p.ClusterMaxRedirections
 }
 
-func (p *PartialRedisEeConfig) GetClusterNodes() []ClusterNodes {
+func (p *PartialRedisEeConfig) GetClusterNodes() []PartialRedisEeClusterNodes {
 	if p == nil {
 		return nil
 	}
@@ -435,7 +442,7 @@ func (p *PartialRedisEeConfig) GetPassword() *string {
 	return p.Password
 }
 
-func (p *PartialRedisEeConfig) GetPort() *Port {
+func (p *PartialRedisEeConfig) GetPort() *PartialRedisEePort {
 	if p == nil {
 		return nil
 	}
@@ -463,7 +470,7 @@ func (p *PartialRedisEeConfig) GetSentinelMaster() *string {
 	return p.SentinelMaster
 }
 
-func (p *PartialRedisEeConfig) GetSentinelNodes() []SentinelNodes {
+func (p *PartialRedisEeConfig) GetSentinelNodes() []PartialRedisEeSentinelNodes {
 	if p == nil {
 		return nil
 	}
@@ -477,7 +484,7 @@ func (p *PartialRedisEeConfig) GetSentinelPassword() *string {
 	return p.SentinelPassword
 }
 
-func (p *PartialRedisEeConfig) GetSentinelRole() *SentinelRole {
+func (p *PartialRedisEeConfig) GetSentinelRole() *PartialRedisEeSentinelRole {
 	if p == nil {
 		return nil
 	}

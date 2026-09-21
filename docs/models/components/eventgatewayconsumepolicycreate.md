@@ -1,0 +1,71 @@
+# EventGatewayConsumePolicyCreate
+
+The typed schema of the consume policy to modify it.
+
+
+## Supported Types
+
+### EventGatewayModifyHeadersPolicyCreate
+
+```go
+eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateModifyHeaders(components.EventGatewayModifyHeadersPolicyCreate{/* values here */})
+```
+
+### EventGatewayConsumeSchemaValidationPolicy
+
+```go
+eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateSchemaValidation(components.EventGatewayConsumeSchemaValidationPolicy{/* values here */})
+```
+
+### EventGatewayDecryptPolicy
+
+```go
+eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateDecrypt(components.EventGatewayDecryptPolicy{/* values here */})
+```
+
+### EventGatewaySkipRecordPolicyCreate
+
+```go
+eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateSkipRecord(components.EventGatewaySkipRecordPolicyCreate{/* values here */})
+```
+
+### EventGatewayParsedRecordDecryptFieldsPolicyCreate
+
+```go
+eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateDecryptFields(components.EventGatewayParsedRecordDecryptFieldsPolicyCreate{/* values here */})
+```
+
+### EventGatewayParsedRecordTranscodeConsumePolicyCreate
+
+```go
+eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateTranscode(components.EventGatewayParsedRecordTranscodeConsumePolicyCreate{/* values here */})
+```
+
+### EventGatewayParsedRecordMaskFieldsConsumePolicyCreate
+
+```go
+eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateMaskFields(components.EventGatewayParsedRecordMaskFieldsConsumePolicyCreate{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch eventGatewayConsumePolicyCreate.Type {
+	case components.EventGatewayConsumePolicyCreateTypeModifyHeaders:
+		// eventGatewayConsumePolicyCreate.EventGatewayModifyHeadersPolicyCreate is populated
+	case components.EventGatewayConsumePolicyCreateTypeSchemaValidation:
+		// eventGatewayConsumePolicyCreate.EventGatewayConsumeSchemaValidationPolicy is populated
+	case components.EventGatewayConsumePolicyCreateTypeDecrypt:
+		// eventGatewayConsumePolicyCreate.EventGatewayDecryptPolicy is populated
+	case components.EventGatewayConsumePolicyCreateTypeSkipRecord:
+		// eventGatewayConsumePolicyCreate.EventGatewaySkipRecordPolicyCreate is populated
+	case components.EventGatewayConsumePolicyCreateTypeDecryptFields:
+		// eventGatewayConsumePolicyCreate.EventGatewayParsedRecordDecryptFieldsPolicyCreate is populated
+	case components.EventGatewayConsumePolicyCreateTypeTranscode:
+		// eventGatewayConsumePolicyCreate.EventGatewayParsedRecordTranscodeConsumePolicyCreate is populated
+	case components.EventGatewayConsumePolicyCreateTypeMaskFields:
+		// eventGatewayConsumePolicyCreate.EventGatewayParsedRecordMaskFieldsConsumePolicyCreate is populated
+}
+```

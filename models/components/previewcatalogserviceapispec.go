@@ -63,7 +63,14 @@ func CreatePreviewCatalogServiceAPISpecCreateAPISpecProviderResourceBoundIntegra
 	}
 }
 
-func (u *PreviewCatalogServiceAPISpecCreateAPISpecProvider) UnmarshalJSON(data []byte) error {
+func (u *PreviewCatalogServiceAPISpecCreateAPISpecProvider) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PreviewCatalogServiceAPISpecCreateAPISpecProvider{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integrationAPISpecProviderPayload IntegrationAPISpecProviderPayload = IntegrationAPISpecProviderPayload{}
 	if err := utils.UnmarshalJSON(data, &integrationAPISpecProviderPayload, "", true, nil); err == nil {

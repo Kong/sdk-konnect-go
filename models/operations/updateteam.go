@@ -40,7 +40,7 @@ type UpdateTeamResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A response including a single team.
-	Team *components.Team
+	TeamResponse *components.TeamResponse
 }
 
 func (u *UpdateTeamResponse) GetContentType() string {
@@ -64,9 +64,9 @@ func (u *UpdateTeamResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdateTeamResponse) GetTeam() *components.Team {
+func (u *UpdateTeamResponse) GetTeamResponse() *components.TeamResponse {
 	if u == nil {
 		return nil
 	}
-	return u.Team
+	return u.TeamResponse
 }

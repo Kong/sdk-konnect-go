@@ -30,14 +30,14 @@ func (l *ListNodesEolItems) GetMessage() *string {
 }
 
 type ListNodesEolPage struct {
-	Total *int64 `json:"total,omitempty"`
+	TotalCount *int64 `json:"total_count,omitempty"`
 }
 
-func (l *ListNodesEolPage) GetTotal() *int64 {
+func (l *ListNodesEolPage) GetTotalCount() *int64 {
 	if l == nil {
 		return nil
 	}
-	return l.Total
+	return l.TotalCount
 }
 
 // ListNodesEol - Example response

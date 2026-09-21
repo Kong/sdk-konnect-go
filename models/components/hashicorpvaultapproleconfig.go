@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -54,29 +52,6 @@ func (e *HashiCorpVaultAppRoleConfigProtocol) IsExact() bool {
 	return false
 }
 
-type HashiCorpVaultAppRoleConfigAuthMethod string
-
-const (
-	HashiCorpVaultAppRoleConfigAuthMethodApprole HashiCorpVaultAppRoleConfigAuthMethod = "approle"
-)
-
-func (e HashiCorpVaultAppRoleConfigAuthMethod) ToPointer() *HashiCorpVaultAppRoleConfigAuthMethod {
-	return &e
-}
-func (e *HashiCorpVaultAppRoleConfigAuthMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "approle":
-		*e = HashiCorpVaultAppRoleConfigAuthMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultAppRoleConfigAuthMethod: %v", v)
-	}
-}
-
 type HashiCorpVaultAppRoleConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -110,8 +85,9 @@ type HashiCorpVaultAppRoleConfig struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                               `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultAppRoleConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"approle" json:"auth_method"`
 	// Path for enabling the AppRole auth method. Single leading/trailing slashes are trimmed.
 	//
 	Path *string `default:"approle" json:"path"`
@@ -220,11 +196,8 @@ func (h *HashiCorpVaultAppRoleConfig) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultAppRoleConfig) GetAuthMethod() HashiCorpVaultAppRoleConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultAppRoleConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultAppRoleConfig) GetAuthMethod() string {
+	return "approle"
 }
 
 func (h *HashiCorpVaultAppRoleConfig) GetPath() *string {

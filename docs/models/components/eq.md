@@ -1,5 +1,7 @@
 # Eq
 
+Filters on the given plugin scope value with an exact match.
+
 ## Example Usage
 
 ```go

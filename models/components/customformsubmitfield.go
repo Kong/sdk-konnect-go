@@ -54,13 +54,19 @@ func (e *CustomFormSubmitFieldType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CustomFormSubmitField - Submit button. Exactly one submit field is required per form. Server enforces the literal `name: submit`.
+// CustomFormSubmitField - The form's submit button. Every form must include exactly one. Its `name` is always `submit`.
 type CustomFormSubmitField struct {
 	Name CustomFormSubmitFieldName `json:"name"`
 	Type CustomFormSubmitFieldType `json:"type"`
-	// Button label rendered to the developer.
+	// The text displayed on the button.
 	Value string `json:"value"`
-	// Response-only flag. Marks fields sourced from the default schema for the form's type. Built-in fields cannot be removed or have their type or label changed; `placeholder`, `description`, and `required` remain editable. Rejected on request bodies via `additionalProperties: false` on the request-side field schemas.
+	// Marks a field that comes with the form by default.
+	//
+	// Built-in fields can't be removed, retyped, or relabeled, but their
+	// `placeholder`, `description`, and `required` settings can still be changed.
+	//
+	// This flag is read-only — it's returned by the API but can't be set when
+	// creating or updating a form.
 	//
 	BuiltIn bool `json:"built_in"`
 }

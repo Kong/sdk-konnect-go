@@ -5,11 +5,15 @@ package components
 // WorkspaceInput - Workspaces provide a way to segment Kong entities.
 type WorkspaceInput struct {
 	// The unique UUID for this resource.
-	ID          *string        `json:"id,omitempty"`
-	Name        string         `json:"name"`
-	Comment     *string        `json:"comment,omitempty"`
-	Description *string        `json:"description,omitempty"`
-	ManagedBy   map[string]any `json:"managed_by,omitempty"`
+	ID          *string `json:"id,omitempty"`
+	Name        string  `json:"name"`
+	Comment     *string `json:"comment,omitempty"`
+	Description *string `json:"description,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (w *WorkspaceInput) GetID() *string {
@@ -40,7 +44,7 @@ func (w *WorkspaceInput) GetDescription() *string {
 	return w.Description
 }
 
-func (w *WorkspaceInput) GetManagedBy() map[string]any {
+func (w *WorkspaceInput) GetManagedBy() map[string]string {
 	if w == nil {
 		return nil
 	}

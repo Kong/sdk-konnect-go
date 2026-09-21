@@ -14,20 +14,22 @@ type AIGatewayEmbeddingsModelConfigType string
 const (
 	AIGatewayEmbeddingsModelConfigTypeAzure       AIGatewayEmbeddingsModelConfigType = "azure"
 	AIGatewayEmbeddingsModelConfigTypeBedrock     AIGatewayEmbeddingsModelConfigType = "bedrock"
-	AIGatewayEmbeddingsModelConfigTypeDatabricks  AIGatewayEmbeddingsModelConfigType = "databricks"
 	AIGatewayEmbeddingsModelConfigTypeGemini      AIGatewayEmbeddingsModelConfigType = "gemini"
 	AIGatewayEmbeddingsModelConfigTypeHuggingface AIGatewayEmbeddingsModelConfigType = "huggingface"
-	AIGatewayEmbeddingsModelConfigTypeVercel      AIGatewayEmbeddingsModelConfigType = "vercel"
+	AIGatewayEmbeddingsModelConfigTypeMistral     AIGatewayEmbeddingsModelConfigType = "mistral"
+	AIGatewayEmbeddingsModelConfigTypeOllama      AIGatewayEmbeddingsModelConfigType = "ollama"
+	AIGatewayEmbeddingsModelConfigTypeOpenai      AIGatewayEmbeddingsModelConfigType = "openai"
 )
 
 // AIGatewayEmbeddingsModelConfig - Configuration for an embeddings model.
 type AIGatewayEmbeddingsModelConfig struct {
 	AIGatewayAzureEmbeddingsModelConfig       *AIGatewayAzureEmbeddingsModelConfig       `queryParam:"inline" union:"member"`
 	AIGatewayBedrockEmbeddingsModelConfig     *AIGatewayBedrockEmbeddingsModelConfig     `queryParam:"inline" union:"member"`
-	AIGatewayDatabricksEmbeddingsModelConfig  *AIGatewayDatabricksEmbeddingsModelConfig  `queryParam:"inline" union:"member"`
 	AIGatewayGeminiEmbeddingsModelConfig      *AIGatewayGeminiEmbeddingsModelConfig      `queryParam:"inline" union:"member"`
 	AIGatewayHuggingfaceEmbeddingsModelConfig *AIGatewayHuggingfaceEmbeddingsModelConfig `queryParam:"inline" union:"member"`
-	AIGatewayVercelEmbeddingsModelConfig      *AIGatewayVercelEmbeddingsModelConfig      `queryParam:"inline" union:"member"`
+	AIGatewayMistralEmbeddingsModelConfig     *AIGatewayMistralEmbeddingsModelConfig     `queryParam:"inline" union:"member"`
+	AIGatewayOllamaEmbeddingsModelConfig      *AIGatewayOllamaEmbeddingsModelConfig      `queryParam:"inline" union:"member"`
+	AIGatewayOpenaiEmbeddingsModelConfig      *AIGatewayOpenaiEmbeddingsModelConfig      `queryParam:"inline" union:"member"`
 
 	Type AIGatewayEmbeddingsModelConfigType
 }
@@ -47,32 +49,14 @@ func CreateAIGatewayEmbeddingsModelConfigAzure(azure AIGatewayAzureEmbeddingsMod
 func CreateAIGatewayEmbeddingsModelConfigBedrock(bedrock AIGatewayBedrockEmbeddingsModelConfig) AIGatewayEmbeddingsModelConfig {
 	typ := AIGatewayEmbeddingsModelConfigTypeBedrock
 
-	typStr := AIGatewayBedrockEmbeddingsModelConfigType(typ)
-	bedrock.Type = typStr
-
 	return AIGatewayEmbeddingsModelConfig{
 		AIGatewayBedrockEmbeddingsModelConfig: &bedrock,
 		Type:                                  typ,
 	}
 }
 
-func CreateAIGatewayEmbeddingsModelConfigDatabricks(databricks AIGatewayDatabricksEmbeddingsModelConfig) AIGatewayEmbeddingsModelConfig {
-	typ := AIGatewayEmbeddingsModelConfigTypeDatabricks
-
-	typStr := AIGatewayDatabricksEmbeddingsModelConfigType(typ)
-	databricks.Type = typStr
-
-	return AIGatewayEmbeddingsModelConfig{
-		AIGatewayDatabricksEmbeddingsModelConfig: &databricks,
-		Type:                                     typ,
-	}
-}
-
 func CreateAIGatewayEmbeddingsModelConfigGemini(gemini AIGatewayGeminiEmbeddingsModelConfig) AIGatewayEmbeddingsModelConfig {
 	typ := AIGatewayEmbeddingsModelConfigTypeGemini
-
-	typStr := AIGatewayGeminiEmbeddingsModelConfigType(typ)
-	gemini.Type = typStr
 
 	return AIGatewayEmbeddingsModelConfig{
 		AIGatewayGeminiEmbeddingsModelConfig: &gemini,
@@ -83,28 +67,50 @@ func CreateAIGatewayEmbeddingsModelConfigGemini(gemini AIGatewayGeminiEmbeddings
 func CreateAIGatewayEmbeddingsModelConfigHuggingface(huggingface AIGatewayHuggingfaceEmbeddingsModelConfig) AIGatewayEmbeddingsModelConfig {
 	typ := AIGatewayEmbeddingsModelConfigTypeHuggingface
 
-	typStr := AIGatewayHuggingfaceEmbeddingsModelConfigType(typ)
-	huggingface.Type = typStr
-
 	return AIGatewayEmbeddingsModelConfig{
 		AIGatewayHuggingfaceEmbeddingsModelConfig: &huggingface,
 		Type: typ,
 	}
 }
 
-func CreateAIGatewayEmbeddingsModelConfigVercel(vercel AIGatewayVercelEmbeddingsModelConfig) AIGatewayEmbeddingsModelConfig {
-	typ := AIGatewayEmbeddingsModelConfigTypeVercel
+func CreateAIGatewayEmbeddingsModelConfigMistral(mistral AIGatewayMistralEmbeddingsModelConfig) AIGatewayEmbeddingsModelConfig {
+	typ := AIGatewayEmbeddingsModelConfigTypeMistral
 
-	typStr := AIGatewayVercelEmbeddingsModelConfigType(typ)
-	vercel.Type = typStr
+	typStr := AIGatewayMistralEmbeddingsModelConfigType(typ)
+	mistral.Type = typStr
 
 	return AIGatewayEmbeddingsModelConfig{
-		AIGatewayVercelEmbeddingsModelConfig: &vercel,
+		AIGatewayMistralEmbeddingsModelConfig: &mistral,
+		Type:                                  typ,
+	}
+}
+
+func CreateAIGatewayEmbeddingsModelConfigOllama(ollama AIGatewayOllamaEmbeddingsModelConfig) AIGatewayEmbeddingsModelConfig {
+	typ := AIGatewayEmbeddingsModelConfigTypeOllama
+
+	return AIGatewayEmbeddingsModelConfig{
+		AIGatewayOllamaEmbeddingsModelConfig: &ollama,
 		Type:                                 typ,
 	}
 }
 
-func (u *AIGatewayEmbeddingsModelConfig) UnmarshalJSON(data []byte) error {
+func CreateAIGatewayEmbeddingsModelConfigOpenai(openai AIGatewayOpenaiEmbeddingsModelConfig) AIGatewayEmbeddingsModelConfig {
+	typ := AIGatewayEmbeddingsModelConfigTypeOpenai
+
+	return AIGatewayEmbeddingsModelConfig{
+		AIGatewayOpenaiEmbeddingsModelConfig: &openai,
+		Type:                                 typ,
+	}
+}
+
+func (u *AIGatewayEmbeddingsModelConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayEmbeddingsModelConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -134,15 +140,6 @@ func (u *AIGatewayEmbeddingsModelConfig) UnmarshalJSON(data []byte) error {
 		u.AIGatewayBedrockEmbeddingsModelConfig = aiGatewayBedrockEmbeddingsModelConfig
 		u.Type = AIGatewayEmbeddingsModelConfigTypeBedrock
 		return nil
-	case "databricks":
-		aiGatewayDatabricksEmbeddingsModelConfig := new(AIGatewayDatabricksEmbeddingsModelConfig)
-		if err := utils.UnmarshalJSON(data, &aiGatewayDatabricksEmbeddingsModelConfig, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == databricks) type AIGatewayDatabricksEmbeddingsModelConfig within AIGatewayEmbeddingsModelConfig: %w", string(data), err)
-		}
-
-		u.AIGatewayDatabricksEmbeddingsModelConfig = aiGatewayDatabricksEmbeddingsModelConfig
-		u.Type = AIGatewayEmbeddingsModelConfigTypeDatabricks
-		return nil
 	case "gemini":
 		aiGatewayGeminiEmbeddingsModelConfig := new(AIGatewayGeminiEmbeddingsModelConfig)
 		if err := utils.UnmarshalJSON(data, &aiGatewayGeminiEmbeddingsModelConfig, "", true, nil); err != nil {
@@ -161,14 +158,32 @@ func (u *AIGatewayEmbeddingsModelConfig) UnmarshalJSON(data []byte) error {
 		u.AIGatewayHuggingfaceEmbeddingsModelConfig = aiGatewayHuggingfaceEmbeddingsModelConfig
 		u.Type = AIGatewayEmbeddingsModelConfigTypeHuggingface
 		return nil
-	case "vercel":
-		aiGatewayVercelEmbeddingsModelConfig := new(AIGatewayVercelEmbeddingsModelConfig)
-		if err := utils.UnmarshalJSON(data, &aiGatewayVercelEmbeddingsModelConfig, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vercel) type AIGatewayVercelEmbeddingsModelConfig within AIGatewayEmbeddingsModelConfig: %w", string(data), err)
+	case "mistral":
+		aiGatewayMistralEmbeddingsModelConfig := new(AIGatewayMistralEmbeddingsModelConfig)
+		if err := utils.UnmarshalJSON(data, &aiGatewayMistralEmbeddingsModelConfig, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == mistral) type AIGatewayMistralEmbeddingsModelConfig within AIGatewayEmbeddingsModelConfig: %w", string(data), err)
 		}
 
-		u.AIGatewayVercelEmbeddingsModelConfig = aiGatewayVercelEmbeddingsModelConfig
-		u.Type = AIGatewayEmbeddingsModelConfigTypeVercel
+		u.AIGatewayMistralEmbeddingsModelConfig = aiGatewayMistralEmbeddingsModelConfig
+		u.Type = AIGatewayEmbeddingsModelConfigTypeMistral
+		return nil
+	case "ollama":
+		aiGatewayOllamaEmbeddingsModelConfig := new(AIGatewayOllamaEmbeddingsModelConfig)
+		if err := utils.UnmarshalJSON(data, &aiGatewayOllamaEmbeddingsModelConfig, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == ollama) type AIGatewayOllamaEmbeddingsModelConfig within AIGatewayEmbeddingsModelConfig: %w", string(data), err)
+		}
+
+		u.AIGatewayOllamaEmbeddingsModelConfig = aiGatewayOllamaEmbeddingsModelConfig
+		u.Type = AIGatewayEmbeddingsModelConfigTypeOllama
+		return nil
+	case "openai":
+		aiGatewayOpenaiEmbeddingsModelConfig := new(AIGatewayOpenaiEmbeddingsModelConfig)
+		if err := utils.UnmarshalJSON(data, &aiGatewayOpenaiEmbeddingsModelConfig, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == openai) type AIGatewayOpenaiEmbeddingsModelConfig within AIGatewayEmbeddingsModelConfig: %w", string(data), err)
+		}
+
+		u.AIGatewayOpenaiEmbeddingsModelConfig = aiGatewayOpenaiEmbeddingsModelConfig
+		u.Type = AIGatewayEmbeddingsModelConfigTypeOpenai
 		return nil
 	}
 
@@ -184,10 +199,6 @@ func (u AIGatewayEmbeddingsModelConfig) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.AIGatewayBedrockEmbeddingsModelConfig, "", true)
 	}
 
-	if u.AIGatewayDatabricksEmbeddingsModelConfig != nil {
-		return utils.MarshalJSON(u.AIGatewayDatabricksEmbeddingsModelConfig, "", true)
-	}
-
 	if u.AIGatewayGeminiEmbeddingsModelConfig != nil {
 		return utils.MarshalJSON(u.AIGatewayGeminiEmbeddingsModelConfig, "", true)
 	}
@@ -196,8 +207,16 @@ func (u AIGatewayEmbeddingsModelConfig) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.AIGatewayHuggingfaceEmbeddingsModelConfig, "", true)
 	}
 
-	if u.AIGatewayVercelEmbeddingsModelConfig != nil {
-		return utils.MarshalJSON(u.AIGatewayVercelEmbeddingsModelConfig, "", true)
+	if u.AIGatewayMistralEmbeddingsModelConfig != nil {
+		return utils.MarshalJSON(u.AIGatewayMistralEmbeddingsModelConfig, "", true)
+	}
+
+	if u.AIGatewayOllamaEmbeddingsModelConfig != nil {
+		return utils.MarshalJSON(u.AIGatewayOllamaEmbeddingsModelConfig, "", true)
+	}
+
+	if u.AIGatewayOpenaiEmbeddingsModelConfig != nil {
+		return utils.MarshalJSON(u.AIGatewayOpenaiEmbeddingsModelConfig, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AIGatewayEmbeddingsModelConfig: all fields are null")

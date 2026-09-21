@@ -31,7 +31,14 @@ func CreateEventsAttributesFieldFilterStringFieldFilter(stringFieldFilter String
 	}
 }
 
-func (u *EventsAttributesFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *EventsAttributesFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EventsAttributesFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {

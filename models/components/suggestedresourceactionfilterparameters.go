@@ -29,7 +29,14 @@ func CreateSuggestedResourceActionFilterParametersIntegrationNameStringFieldFilt
 	}
 }
 
-func (u *SuggestedResourceActionFilterParametersIntegrationName) UnmarshalJSON(data []byte) error {
+func (u *SuggestedResourceActionFilterParametersIntegrationName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SuggestedResourceActionFilterParametersIntegrationName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -70,7 +77,14 @@ func CreateSuggestedResourceActionFilterParametersIntegrationInstanceNameStringF
 	}
 }
 
-func (u *SuggestedResourceActionFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) error {
+func (u *SuggestedResourceActionFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SuggestedResourceActionFilterParametersIntegrationInstanceName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -111,7 +125,14 @@ func CreateSuggestedResourceActionFilterParametersIntegrationInstanceDisplayName
 	}
 }
 
-func (u *SuggestedResourceActionFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) error {
+func (u *SuggestedResourceActionFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SuggestedResourceActionFilterParametersIntegrationInstanceDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -152,7 +173,14 @@ func CreateSuggestedResourceActionFilterParametersIntegrationInstanceIDStringFie
 	}
 }
 
-func (u *SuggestedResourceActionFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) error {
+func (u *SuggestedResourceActionFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SuggestedResourceActionFilterParametersIntegrationInstanceID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilterExact StringFieldFilterExact = StringFieldFilterExact{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilterExact, "", true, nil); err == nil {
@@ -193,7 +221,14 @@ func CreateSuggestedResourceActionFilterParametersActionTypeStringFieldFilterExa
 	}
 }
 
-func (u *SuggestedResourceActionFilterParametersActionType) UnmarshalJSON(data []byte) error {
+func (u *SuggestedResourceActionFilterParametersActionType) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SuggestedResourceActionFilterParametersActionType{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilterExact StringFieldFilterExact = StringFieldFilterExact{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilterExact, "", true, nil); err == nil {

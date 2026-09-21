@@ -166,7 +166,14 @@ func CreateVulnerabilitiesMetricsFilterByCVEVulnerabilitiesMetricsFilterByCVE2(v
 	}
 }
 
-func (u *VulnerabilitiesMetricsFilterByCVE) UnmarshalJSON(data []byte) error {
+func (u *VulnerabilitiesMetricsFilterByCVE) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = VulnerabilitiesMetricsFilterByCVE{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var vulnerabilitiesMetricsFilterByCVE2 VulnerabilitiesMetricsFilterByCVE2 = VulnerabilitiesMetricsFilterByCVE2{}
 	if err := utils.UnmarshalJSON(data, &vulnerabilitiesMetricsFilterByCVE2, "", true, nil); err == nil {

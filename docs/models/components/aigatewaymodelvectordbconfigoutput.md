@@ -11,10 +11,10 @@ Configuration for the vector database used by the model.
 aiGatewayModelVectorDBConfigOutput := components.CreateAIGatewayModelVectorDBConfigOutputPgvector(components.AIGatewayModelVectorDBConfigPgVectorOutput{/* values here */})
 ```
 
-### AIGatewayModelVectorDBConfigRedis
+### AIGatewayModelVectorDBConfigRedisOutput
 
 ```go
-aiGatewayModelVectorDBConfigOutput := components.CreateAIGatewayModelVectorDBConfigOutputRedis(components.AIGatewayModelVectorDBConfigRedis{/* values here */})
+aiGatewayModelVectorDBConfigOutput := components.CreateAIGatewayModelVectorDBConfigOutputRedis(components.AIGatewayModelVectorDBConfigRedisOutput{/* values here */})
 ```
 
 ## Union Discrimination
@@ -26,6 +26,6 @@ switch aiGatewayModelVectorDBConfigOutput.Type {
 	case components.AIGatewayModelVectorDBConfigOutputTypePgvector:
 		// aiGatewayModelVectorDBConfigOutput.AIGatewayModelVectorDBConfigPgVectorOutput is populated
 	case components.AIGatewayModelVectorDBConfigOutputTypeRedis:
-		// aiGatewayModelVectorDBConfigOutput.AIGatewayModelVectorDBConfigRedis is populated
+		// aiGatewayModelVectorDBConfigOutput.AIGatewayModelVectorDBConfigRedisOutput is populated
 }
 ```

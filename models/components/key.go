@@ -46,8 +46,10 @@ type Key struct {
 	Jwk *string `json:"jwk,omitempty"`
 	// A unique identifier for a key.
 	Kid string `json:"kid"`
-	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
-	ManagedBy map[string]any `json:"managed_by,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// The name to associate with the given keys.
 	Name *string `json:"name,omitempty"`
 	// A keypair in PEM format.
@@ -97,7 +99,7 @@ func (k *Key) GetKid() string {
 	return k.Kid
 }
 
-func (k *Key) GetManagedBy() map[string]any {
+func (k *Key) GetManagedBy() map[string]string {
 	if k == nil {
 		return nil
 	}

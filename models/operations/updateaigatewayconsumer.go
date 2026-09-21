@@ -10,8 +10,8 @@ import (
 type UpdateAiGatewayConsumerRequest struct {
 	// The unique ID of the AI Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
-	// The unique ID of the AI Gateway consumer.
-	ConsumerID                     string                                    `pathParam:"style=simple,explode=false,name=consumerId"`
+	// The unique ID or name of the AI Gateway consumer.
+	ConsumerIDOrName               string                                    `pathParam:"style=simple,explode=false,name=consumerIdOrName"`
 	UpdateAIGatewayConsumerRequest components.UpdateAIGatewayConsumerRequest `request:"mediaType=application/json"`
 }
 
@@ -22,11 +22,11 @@ func (u *UpdateAiGatewayConsumerRequest) GetGatewayID() string {
 	return u.GatewayID
 }
 
-func (u *UpdateAiGatewayConsumerRequest) GetConsumerID() string {
+func (u *UpdateAiGatewayConsumerRequest) GetConsumerIDOrName() string {
 	if u == nil {
 		return ""
 	}
-	return u.ConsumerID
+	return u.ConsumerIDOrName
 }
 
 func (u *UpdateAiGatewayConsumerRequest) GetUpdateAIGatewayConsumerRequest() components.UpdateAIGatewayConsumerRequest {

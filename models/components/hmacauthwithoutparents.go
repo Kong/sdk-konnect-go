@@ -21,9 +21,11 @@ type HMACAuthWithoutParents struct {
 	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
-	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
-	ManagedBy map[string]any `json:"managed_by,omitempty"`
-	Secret    *string        `json:"secret,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	Secret    *string           `json:"secret,omitempty"`
 	// A set of strings representing tags.
 	Tags     []string `json:"tags,omitempty"`
 	Username string   `json:"username"`
@@ -57,7 +59,7 @@ func (h *HMACAuthWithoutParents) GetID() *string {
 	return h.ID
 }
 
-func (h *HMACAuthWithoutParents) GetManagedBy() map[string]any {
+func (h *HMACAuthWithoutParents) GetManagedBy() map[string]string {
 	if h == nil {
 		return nil
 	}

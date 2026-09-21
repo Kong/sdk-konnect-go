@@ -2,7 +2,14 @@
 
 package components
 
-// StringFieldNEQFilter - Filter charges by status.
+import (
+	"errors"
+	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"time"
+)
+
+// ListChargesParamsFilterStringFieldNEQFilter - Filter charges by status.
 //
 // Supported statuses are:
 //
@@ -12,31 +19,679 @@ package components
 // - `deleted`
 //
 // If omitted, all statuses are returned except for `deleted`.
-type StringFieldNEQFilter struct {
+type ListChargesParamsFilterStringFieldNEQFilter struct {
 	Eq  *string `queryParam:"name=eq"`
 	Oeq string  `queryParam:"name=oeq"`
 	Neq string  `queryParam:"name=neq"`
 }
 
-func (s *StringFieldNEQFilter) GetEq() *string {
-	if s == nil {
+func (l *ListChargesParamsFilterStringFieldNEQFilter) GetEq() *string {
+	if l == nil {
 		return nil
 	}
-	return s.Eq
+	return l.Eq
 }
 
-func (s *StringFieldNEQFilter) GetOeq() string {
-	if s == nil {
+func (l *ListChargesParamsFilterStringFieldNEQFilter) GetOeq() string {
+	if l == nil {
 		return ""
 	}
-	return s.Oeq
+	return l.Oeq
 }
 
-func (s *StringFieldNEQFilter) GetNeq() string {
-	if s == nil {
+func (l *ListChargesParamsFilterStringFieldNEQFilter) GetNeq() string {
+	if l == nil {
 		return ""
 	}
-	return s.Neq
+	return l.Neq
+}
+
+type ListChargesParamsFilterULIDFieldFilter2 struct {
+	// Value strictly equals the given ULID value.
+	Eq *string `queryParam:"name=eq"`
+	// Returns entities that exact match any of the comma-delimited ULIDs in the filter
+	// string.
+	Oeq *string `queryParam:"name=oeq"`
+	// Value does not equal the given ULID value.
+	Neq *string `queryParam:"name=neq"`
+}
+
+func (l ListChargesParamsFilterULIDFieldFilter2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterULIDFieldFilter2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterULIDFieldFilter2) GetEq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Eq
+}
+
+func (l *ListChargesParamsFilterULIDFieldFilter2) GetOeq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Oeq
+}
+
+func (l *ListChargesParamsFilterULIDFieldFilter2) GetNeq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Neq
+}
+
+// #region class-body-listchargesparamsfilterulidfieldfilter2
+// #endregion class-body-listchargesparamsfilterulidfieldfilter2
+
+type ListChargesParamsFilterULIDFieldFilterType string
+
+const (
+	ListChargesParamsFilterULIDFieldFilterTypeStr                                     ListChargesParamsFilterULIDFieldFilterType = "str"
+	ListChargesParamsFilterULIDFieldFilterTypeListChargesParamsFilterULIDFieldFilter2 ListChargesParamsFilterULIDFieldFilterType = "ListChargesParamsFilter_ULID Field Filter_2"
+)
+
+// ListChargesParamsFilterULIDFieldFilter - Filter charges by the ID of their associated feature.
+type ListChargesParamsFilterULIDFieldFilter struct {
+	Str                                     *string                                  `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterULIDFieldFilter2 *ListChargesParamsFilterULIDFieldFilter2 `queryParam:"inline" union:"member"`
+
+	Type ListChargesParamsFilterULIDFieldFilterType
+}
+
+func CreateListChargesParamsFilterULIDFieldFilterStr(str string) ListChargesParamsFilterULIDFieldFilter {
+	typ := ListChargesParamsFilterULIDFieldFilterTypeStr
+
+	return ListChargesParamsFilterULIDFieldFilter{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterULIDFieldFilterListChargesParamsFilterULIDFieldFilter2(listChargesParamsFilterULIDFieldFilter2 ListChargesParamsFilterULIDFieldFilter2) ListChargesParamsFilterULIDFieldFilter {
+	typ := ListChargesParamsFilterULIDFieldFilterTypeListChargesParamsFilterULIDFieldFilter2
+
+	return ListChargesParamsFilterULIDFieldFilter{
+		ListChargesParamsFilterULIDFieldFilter2: &listChargesParamsFilterULIDFieldFilter2,
+		Type:                                    typ,
+	}
+}
+
+func (u *ListChargesParamsFilterULIDFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ListChargesParamsFilterULIDFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = ListChargesParamsFilterULIDFieldFilterTypeStr
+		return nil
+	}
+
+	var listChargesParamsFilterULIDFieldFilter2 ListChargesParamsFilterULIDFieldFilter2 = ListChargesParamsFilterULIDFieldFilter2{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterULIDFieldFilter2, "", true, nil); err == nil {
+		u.ListChargesParamsFilterULIDFieldFilter2 = &listChargesParamsFilterULIDFieldFilter2
+		u.Type = ListChargesParamsFilterULIDFieldFilterTypeListChargesParamsFilterULIDFieldFilter2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListChargesParamsFilterULIDFieldFilter", string(data))
+}
+
+func (u ListChargesParamsFilterULIDFieldFilter) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ListChargesParamsFilterULIDFieldFilter2 != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterULIDFieldFilter2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ListChargesParamsFilterULIDFieldFilter: all fields are null")
+}
+
+// ListChargesParamsFilterFeatureKeyStringFieldNEQFilter - Filter charges by the key of their associated feature.
+type ListChargesParamsFilterFeatureKeyStringFieldNEQFilter struct {
+	Eq  *string `queryParam:"name=eq"`
+	Oeq string  `queryParam:"name=oeq"`
+	Neq string  `queryParam:"name=neq"`
+}
+
+func (l *ListChargesParamsFilterFeatureKeyStringFieldNEQFilter) GetEq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Eq
+}
+
+func (l *ListChargesParamsFilterFeatureKeyStringFieldNEQFilter) GetOeq() string {
+	if l == nil {
+		return ""
+	}
+	return l.Oeq
+}
+
+func (l *ListChargesParamsFilterFeatureKeyStringFieldNEQFilter) GetNeq() string {
+	if l == nil {
+		return ""
+	}
+	return l.Neq
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter struct {
+	// Value is greater than or equal to the given RFC-3339 formatted timestamp in UTC
+	Gte time.Time `queryParam:"name=gte"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"gte"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter) GetGte() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Gte
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter struct {
+	// Value is greater than the given RFC-3339 formatted timestamp in UTC
+	Gt time.Time `queryParam:"name=gt"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"gt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter) GetGt() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Gt
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter struct {
+	// Value is less than or equal to the given RFC-3339 formatted timestamp in UTC
+	Lte time.Time `queryParam:"name=lte"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"lte"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter) GetLte() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Lte
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter struct {
+	// Value is less than the given RFC-3339 formatted timestamp in UTC
+	Lt time.Time `queryParam:"name=lt"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"lt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter) GetLt() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Lt
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter struct {
+	// Value strictly equals given RFC-3339 formatted timestamp in UTC
+	Eq time.Time `queryParam:"name=eq"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter) GetEq() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Eq
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterType string
+
+const (
+	ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter ListChargesParamsFilterDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_DateTimeFieldEqualsFilter"
+	ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter     ListChargesParamsFilterDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_DateTimeFieldLTFilter"
+	ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter    ListChargesParamsFilterDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_DateTimeFieldLTEFilter"
+	ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter     ListChargesParamsFilterDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_DateTimeFieldGTFilter"
+	ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter    ListChargesParamsFilterDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_DateTimeFieldGTEFilter"
+)
+
+// ListChargesParamsFilterDateTimeFieldFilter - Filter charges by the start of their service period.
+type ListChargesParamsFilterDateTimeFieldFilter struct {
+	ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter     *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter     `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter    *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter    `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter     *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter     `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter    *ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter    `queryParam:"inline" union:"member"`
+
+	Type ListChargesParamsFilterDateTimeFieldFilterType
+}
+
+func CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter(listChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter) ListChargesParamsFilterDateTimeFieldFilter {
+	typ := ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter
+
+	return ListChargesParamsFilterDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter: &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter(listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter) ListChargesParamsFilterDateTimeFieldFilter {
+	typ := ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter
+
+	return ListChargesParamsFilterDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter: &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter(listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter) ListChargesParamsFilterDateTimeFieldFilter {
+	typ := ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter
+
+	return ListChargesParamsFilterDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter: &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter(listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter) ListChargesParamsFilterDateTimeFieldFilter {
+	typ := ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter
+
+	return ListChargesParamsFilterDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter: &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter(listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter) ListChargesParamsFilterDateTimeFieldFilter {
+	typ := ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter
+
+	return ListChargesParamsFilterDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter: &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter,
+		Type: typ,
+	}
+}
+
+func (u *ListChargesParamsFilterDateTimeFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ListChargesParamsFilterDateTimeFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var listChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter = ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter = &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter
+		u.Type = ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter
+		return nil
+	}
+
+	var listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter = ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter = &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter
+		u.Type = ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter
+		return nil
+	}
+
+	var listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter = ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter = &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter
+		u.Type = ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter
+		return nil
+	}
+
+	var listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter = ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter = &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter
+		u.Type = ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter
+		return nil
+	}
+
+	var listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter = ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter = &listChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter
+		u.Type = ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListChargesParamsFilterDateTimeFieldFilter", string(data))
+}
+
+func (u ListChargesParamsFilterDateTimeFieldFilter) MarshalJSON() ([]byte, error) {
+	if u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter, "", true)
+	}
+
+	if u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter, "", true)
+	}
+
+	if u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter, "", true)
+	}
+
+	if u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter, "", true)
+	}
+
+	if u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ListChargesParamsFilterDateTimeFieldFilter: all fields are null")
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter struct {
+	// Value is greater than or equal to the given RFC-3339 formatted timestamp in UTC
+	Gte time.Time `queryParam:"name=gte"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"gte"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter) GetGte() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Gte
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter struct {
+	// Value is greater than the given RFC-3339 formatted timestamp in UTC
+	Gt time.Time `queryParam:"name=gt"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"gt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter) GetGt() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Gt
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter struct {
+	// Value is less than or equal to the given RFC-3339 formatted timestamp in UTC
+	Lte time.Time `queryParam:"name=lte"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"lte"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter) GetLte() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Lte
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter struct {
+	// Value is less than the given RFC-3339 formatted timestamp in UTC
+	Lt time.Time `queryParam:"name=lt"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"lt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter) GetLt() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Lt
+}
+
+type ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter struct {
+	// Value strictly equals given RFC-3339 formatted timestamp in UTC
+	Eq time.Time `queryParam:"name=eq"`
+}
+
+func (l ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter) GetEq() time.Time {
+	if l == nil {
+		return time.Time{}
+	}
+	return l.Eq
+}
+
+type ListChargesParamsFilterServicePeriodToDateTimeFieldFilterType string
+
+const (
+	ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter ListChargesParamsFilterServicePeriodToDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_service_period_to_DateTimeFieldEqualsFilter"
+	ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter     ListChargesParamsFilterServicePeriodToDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_service_period_to_DateTimeFieldLTFilter"
+	ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter    ListChargesParamsFilterServicePeriodToDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_service_period_to_DateTimeFieldLTEFilter"
+	ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter     ListChargesParamsFilterServicePeriodToDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_service_period_to_DateTimeFieldGTFilter"
+	ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter    ListChargesParamsFilterServicePeriodToDateTimeFieldFilterType = "ListChargesParamsFilter_DateTimeFieldFilter_service_period_to_DateTimeFieldGTEFilter"
+)
+
+// ListChargesParamsFilterServicePeriodToDateTimeFieldFilter - Filter charges by the end of their service period.
+type ListChargesParamsFilterServicePeriodToDateTimeFieldFilter struct {
+	ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter     *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter     `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter    *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter    `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter     *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter     `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter    *ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter    `queryParam:"inline" union:"member"`
+
+	Type ListChargesParamsFilterServicePeriodToDateTimeFieldFilterType
+}
+
+func CreateListChargesParamsFilterServicePeriodToDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter(listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter) ListChargesParamsFilterServicePeriodToDateTimeFieldFilter {
+	typ := ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter
+
+	return ListChargesParamsFilterServicePeriodToDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter: &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterServicePeriodToDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter(listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter) ListChargesParamsFilterServicePeriodToDateTimeFieldFilter {
+	typ := ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter
+
+	return ListChargesParamsFilterServicePeriodToDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter: &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterServicePeriodToDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter(listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter) ListChargesParamsFilterServicePeriodToDateTimeFieldFilter {
+	typ := ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter
+
+	return ListChargesParamsFilterServicePeriodToDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter: &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterServicePeriodToDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter(listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter) ListChargesParamsFilterServicePeriodToDateTimeFieldFilter {
+	typ := ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter
+
+	return ListChargesParamsFilterServicePeriodToDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter: &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterServicePeriodToDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter(listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter) ListChargesParamsFilterServicePeriodToDateTimeFieldFilter {
+	typ := ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter
+
+	return ListChargesParamsFilterServicePeriodToDateTimeFieldFilter{
+		ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter: &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter,
+		Type: typ,
+	}
+}
+
+func (u *ListChargesParamsFilterServicePeriodToDateTimeFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ListChargesParamsFilterServicePeriodToDateTimeFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter = ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter = &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter
+		u.Type = ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter
+		return nil
+	}
+
+	var listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter = ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter = &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter
+		u.Type = ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter
+		return nil
+	}
+
+	var listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter = ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter = &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter
+		u.Type = ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter
+		return nil
+	}
+
+	var listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter = ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter = &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter
+		u.Type = ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter
+		return nil
+	}
+
+	var listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter = ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter, "", true, nil); err == nil {
+		u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter = &listChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter
+		u.Type = ListChargesParamsFilterServicePeriodToDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListChargesParamsFilterServicePeriodToDateTimeFieldFilter", string(data))
+}
+
+func (u ListChargesParamsFilterServicePeriodToDateTimeFieldFilter) MarshalJSON() ([]byte, error) {
+	if u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter, "", true)
+	}
+
+	if u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTFilter, "", true)
+	}
+
+	if u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter, "", true)
+	}
+
+	if u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTFilter, "", true)
+	}
+
+	if u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldGTEFilter, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ListChargesParamsFilterServicePeriodToDateTimeFieldFilter: all fields are null")
 }
 
 // ListChargesParamsFilter - Filter options for listing charges.
@@ -51,12 +706,48 @@ type ListChargesParamsFilter struct {
 	// - `deleted`
 	//
 	// If omitted, all statuses are returned except for `deleted`.
-	Status *StringFieldNEQFilter `queryParam:"name=status"`
+	Status *ListChargesParamsFilterStringFieldNEQFilter `queryParam:"name=status"`
+	// Filter charges by the ID of their associated feature.
+	FeatureID *ListChargesParamsFilterULIDFieldFilter `queryParam:"name=feature_id"`
+	// Filter charges by the key of their associated feature.
+	FeatureKey *ListChargesParamsFilterFeatureKeyStringFieldNEQFilter `queryParam:"name=feature_key"`
+	// Filter charges by the start of their service period.
+	ServicePeriodFrom *ListChargesParamsFilterDateTimeFieldFilter `queryParam:"name=service_period_from"`
+	// Filter charges by the end of their service period.
+	ServicePeriodTo *ListChargesParamsFilterServicePeriodToDateTimeFieldFilter `queryParam:"name=service_period_to"`
 }
 
-func (l *ListChargesParamsFilter) GetStatus() *StringFieldNEQFilter {
+func (l *ListChargesParamsFilter) GetStatus() *ListChargesParamsFilterStringFieldNEQFilter {
 	if l == nil {
 		return nil
 	}
 	return l.Status
+}
+
+func (l *ListChargesParamsFilter) GetFeatureID() *ListChargesParamsFilterULIDFieldFilter {
+	if l == nil {
+		return nil
+	}
+	return l.FeatureID
+}
+
+func (l *ListChargesParamsFilter) GetFeatureKey() *ListChargesParamsFilterFeatureKeyStringFieldNEQFilter {
+	if l == nil {
+		return nil
+	}
+	return l.FeatureKey
+}
+
+func (l *ListChargesParamsFilter) GetServicePeriodFrom() *ListChargesParamsFilterDateTimeFieldFilter {
+	if l == nil {
+		return nil
+	}
+	return l.ServicePeriodFrom
+}
+
+func (l *ListChargesParamsFilter) GetServicePeriodTo() *ListChargesParamsFilterServicePeriodToDateTimeFieldFilter {
+	if l == nil {
+		return nil
+	}
+	return l.ServicePeriodTo
 }

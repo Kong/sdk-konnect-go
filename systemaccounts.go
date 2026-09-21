@@ -71,6 +71,7 @@ func (s *SystemAccounts) GetSystemAccounts(ctx context.Context, request operatio
 	if timeout == nil {
 		timeout = s.sdkConfiguration.Timeout
 	}
+	paginationCtx := ctx
 
 	if timeout != nil {
 		var cancel context.CancelFunc
@@ -249,7 +250,7 @@ func (s *SystemAccounts) GetSystemAccounts(ctx context.Context, request operatio
 		request.PageNumber = &nP
 
 		return s.GetSystemAccounts(
-			ctx,
+			paginationCtx,
 			request,
 			opts...,
 		)

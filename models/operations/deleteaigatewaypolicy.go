@@ -9,8 +9,8 @@ import (
 type DeleteAiGatewayPolicyRequest struct {
 	// The unique ID of the AI Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
-	// The unique ID of the AI Gateway policy.
-	PolicyID string `pathParam:"style=simple,explode=false,name=policyId"`
+	// The unique ID or name of the AI Gateway policy.
+	PolicyIDOrName string `pathParam:"style=simple,explode=false,name=policyIdOrName"`
 }
 
 func (d *DeleteAiGatewayPolicyRequest) GetGatewayID() string {
@@ -20,11 +20,11 @@ func (d *DeleteAiGatewayPolicyRequest) GetGatewayID() string {
 	return d.GatewayID
 }
 
-func (d *DeleteAiGatewayPolicyRequest) GetPolicyID() string {
+func (d *DeleteAiGatewayPolicyRequest) GetPolicyIDOrName() string {
 	if d == nil {
 		return ""
 	}
-	return d.PolicyID
+	return d.PolicyIDOrName
 }
 
 type DeleteAiGatewayPolicyResponse struct {

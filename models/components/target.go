@@ -28,8 +28,10 @@ type Target struct {
 	Failover *bool `default:"false" json:"failover"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
-	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
-	ManagedBy map[string]any `json:"managed_by,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// An optional set of strings associated with the Target for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// The target address (ip or hostname) and port. If the hostname resolves to an SRV record, the `port` value will be overridden by the value from the DNS record.
@@ -81,7 +83,7 @@ func (t *Target) GetID() *string {
 	return t.ID
 }
 
-func (t *Target) GetManagedBy() map[string]any {
+func (t *Target) GetManagedBy() map[string]string {
 	if t == nil {
 		return nil
 	}

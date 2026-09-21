@@ -1,0 +1,12 @@
+# BillingSubscriptionEditRemoveItem
+
+Remove a rate card from a phase.
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                               | [components.BillingSubscriptionEditRemoveItemType](../../models/components/billingsubscriptioneditremoveitemtype.md) | :heavy_check_mark:                                                                                                   | Discriminator for the remove-item operation.                                                                         |
+| `PhaseKey`                                                                                                           | `string`                                                                                                             | :heavy_check_mark:                                                                                                   | The key of the phase to remove the item from.                                                                        |
+| `ItemKey`                                                                                                            | `string`                                                                                                             | :heavy_check_mark:                                                                                                   | The key of the item to remove.                                                                                       |

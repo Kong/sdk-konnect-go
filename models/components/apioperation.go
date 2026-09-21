@@ -2,6 +2,27 @@
 
 package components
 
+type Environments struct {
+	// The environment identifier.
+	ID string `json:"id"`
+	// The environment name.
+	Name string `json:"name"`
+}
+
+func (e *Environments) GetID() string {
+	if e == nil {
+		return ""
+	}
+	return e.ID
+}
+
+func (e *Environments) GetName() string {
+	if e == nil {
+		return ""
+	}
+	return e.Name
+}
+
 // APIOperation - An operation linked to an API
 type APIOperation struct {
 	// The API operation identifier.
@@ -12,6 +33,13 @@ type APIOperation struct {
 	Path string `json:"path"`
 	// The implementation status of the operation.
 	ImplementationStatus *APIOperationImplementationStatus `json:"implementation_status,omitempty"`
+	// The environments in which this operation is available, each as an object with the
+	// environment's `id` and `name`. An operation is available in an environment when that
+	// environment's pinned spec version contains the operation's (method, path) and the
+	// environment has a linked `access_control_enforcement` (ACE) implementation.
+	// Environments without an ACE implementation never appear.
+	//
+	Environments []Environments `json:"environments,omitempty"`
 }
 
 func (a *APIOperation) GetID() string {
@@ -40,4 +68,11 @@ func (a *APIOperation) GetImplementationStatus() *APIOperationImplementationStat
 		return nil
 	}
 	return a.ImplementationStatus
+}
+
+func (a *APIOperation) GetEnvironments() []Environments {
+	if a == nil {
+		return nil
+	}
+	return a.Environments
 }

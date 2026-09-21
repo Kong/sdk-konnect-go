@@ -8,7 +8,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// FormResponseEntryType - Field input type at submission time.
+// FormResponseEntryType - The field's type at the time it was submitted.
 type FormResponseEntryType string
 
 const (
@@ -44,7 +44,12 @@ const (
 	FormResponseEntryValueTypeArrayOfStr FormResponseEntryValueType = "arrayOfStr"
 )
 
-// FormResponseEntryValue - Submitted value. Type matches the field `type`: `text`/`email`/`textarea` return strings; `number` returns a number; `checkbox` returns a boolean; `select` returns a string for single-select or an array of strings for multi-select.
+// FormResponseEntryValue - The submitted value. Its type matches the field's type:
+//
+// * `text`, `email`, `textarea` — string
+// * `number` — number
+// * `checkbox` — boolean
+// * `select` — string for single-select fields, or an array of strings for multi-select fields
 type FormResponseEntryValue struct {
 	Str        *string  `queryParam:"inline" union:"member"`
 	Number     *float64 `queryParam:"inline" union:"member"`
@@ -90,7 +95,14 @@ func CreateFormResponseEntryValueArrayOfStr(arrayOfStr []string) FormResponseEnt
 	}
 }
 
-func (u *FormResponseEntryValue) UnmarshalJSON(data []byte) error {
+func (u *FormResponseEntryValue) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = FormResponseEntryValue{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -143,15 +155,20 @@ func (u FormResponseEntryValue) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type FormResponseEntryValue: all fields are null")
 }
 
-// FormResponseEntry - A single field's submitted answer, snapshotted with the field metadata as it appeared at submission time.
+// FormResponseEntry - One field's submitted answer, along with a snapshot of that field's details as they appeared when submitted.
 type FormResponseEntry struct {
-	// Field slug, matches the parent object key.
+	// The field's `name`. Matches the parent object's key.
 	Name string `json:"name"`
-	// Field label snapshotted at submission time.
+	// The field's label at the time it was submitted.
 	Label string `json:"label"`
-	// Field input type at submission time.
+	// The field's type at the time it was submitted.
 	Type FormResponseEntryType `json:"type"`
-	// Submitted value. Type matches the field `type`: `text`/`email`/`textarea` return strings; `number` returns a number; `checkbox` returns a boolean; `select` returns a string for single-select or an array of strings for multi-select.
+	// The submitted value. Its type matches the field's type:
+	//
+	// * `text`, `email`, `textarea` — string
+	// * `number` — number
+	// * `checkbox` — boolean
+	// * `select` — string for single-select fields, or an array of strings for multi-select fields
 	//
 	Value FormResponseEntryValue `json:"value"`
 }

@@ -7,11 +7,19 @@ type CreateCurrencyCustomRequest struct {
 	// The name of the currency. It should be a human-readable string that represents
 	// the name of the currency, such as "US Dollar" or "Euro".
 	Name string `json:"name"`
-	// Description of the currency.
-	Description *string `json:"description,omitempty"`
 	// The symbol of the currency. It should be a string that represents the symbol of
 	// the currency, such as "$" for US Dollar or "€" for Euro.
 	Symbol *string `json:"symbol,omitempty"`
+	// The precision of the currency. It should be a number that represents the number
+	// of decimal places used for the currency, such as 2 for US Dollar or Euro.
+	Precision int64 `json:"precision"`
+	// The decimal mark for the currency. It should be a string that represents the
+	// decimal mark of the currency, such as "." for US Dollar or "," for Euro.
+	DecimalMark string `json:"decimal_mark"`
+	// The thousand separator for the currency. It should be a string that represents
+	// the thousand separator of the currency, such as "," for US Dollar or "." for
+	// Euro.
+	ThousandSeparator string `json:"thousand_separator"`
 	// Custom currency code. It should be a unique code but not conflicting with any
 	// existing fiat currency codes.
 	Code string `json:"code"`
@@ -24,18 +32,32 @@ func (c *CreateCurrencyCustomRequest) GetName() string {
 	return c.Name
 }
 
-func (c *CreateCurrencyCustomRequest) GetDescription() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Description
-}
-
 func (c *CreateCurrencyCustomRequest) GetSymbol() *string {
 	if c == nil {
 		return nil
 	}
 	return c.Symbol
+}
+
+func (c *CreateCurrencyCustomRequest) GetPrecision() int64 {
+	if c == nil {
+		return 0
+	}
+	return c.Precision
+}
+
+func (c *CreateCurrencyCustomRequest) GetDecimalMark() string {
+	if c == nil {
+		return ""
+	}
+	return c.DecimalMark
+}
+
+func (c *CreateCurrencyCustomRequest) GetThousandSeparator() string {
+	if c == nil {
+		return ""
+	}
+	return c.ThousandSeparator
 }
 
 func (c *CreateCurrencyCustomRequest) GetCode() string {

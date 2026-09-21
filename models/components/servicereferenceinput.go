@@ -8,6 +8,12 @@ import (
 
 // ServiceReferenceInput - A gateway service that implements an API
 type ServiceReferenceInput struct {
+	// UUID of the organization environment this implementation is scoped to.
+	// Must be an environment associated with the API. Required when the API
+	// has multiple associated environments (`400` if omitted).
+	// Returns `404` if the UUID is unknown or not associated with the API.
+	//
+	EnvironmentID *string `json:"environment_id,omitempty"`
 	// A Gateway service that implements an API
 	Service *APIImplementationService `json:"service,omitempty"`
 }
@@ -21,6 +27,13 @@ func (s *ServiceReferenceInput) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (s *ServiceReferenceInput) GetEnvironmentID() *string {
+	if s == nil {
+		return nil
+	}
+	return s.EnvironmentID
 }
 
 func (s *ServiceReferenceInput) GetService() *APIImplementationService {

@@ -37,9 +37,19 @@ type AIGatewayDataPlaneNode struct {
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
-	// The hash of the configuration applied by the node.
-	ConfigHash          *string             `json:"config_hash,omitempty"`
-	CompatibilityStatus CompatibilityStatus `json:"compatibility_status"`
+	// The version of the configuration applied by the node.
+	ConfigVersion *string                           `json:"config_version,omitempty"`
+	ConfigSync    *AIGatewayDataPlaneNodeConfigSync `json:"config_sync,omitempty"`
+	// Validation or configuration errors reported by the data plane node.
+	Errors              []AIGatewayDataPlaneNodeError `json:"errors,omitempty"`
+	CompatibilityStatus CompatibilityStatus           `json:"compatibility_status"`
+	// Public labels store information about an entity that can be used for filtering a list of objects.
+	//
+	// Public labels are intended to store **PUBLIC** metadata.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
+	Labels map[string]string `json:"labels,omitempty"`
 }
 
 func (a AIGatewayDataPlaneNode) MarshalJSON() ([]byte, error) {
@@ -102,11 +112,25 @@ func (a *AIGatewayDataPlaneNode) GetUpdatedAt() time.Time {
 	return a.UpdatedAt
 }
 
-func (a *AIGatewayDataPlaneNode) GetConfigHash() *string {
+func (a *AIGatewayDataPlaneNode) GetConfigVersion() *string {
 	if a == nil {
 		return nil
 	}
-	return a.ConfigHash
+	return a.ConfigVersion
+}
+
+func (a *AIGatewayDataPlaneNode) GetConfigSync() *AIGatewayDataPlaneNodeConfigSync {
+	if a == nil {
+		return nil
+	}
+	return a.ConfigSync
+}
+
+func (a *AIGatewayDataPlaneNode) GetErrors() []AIGatewayDataPlaneNodeError {
+	if a == nil {
+		return nil
+	}
+	return a.Errors
 }
 
 func (a *AIGatewayDataPlaneNode) GetCompatibilityStatus() CompatibilityStatus {
@@ -114,4 +138,11 @@ func (a *AIGatewayDataPlaneNode) GetCompatibilityStatus() CompatibilityStatus {
 		return CompatibilityStatus{}
 	}
 	return a.CompatibilityStatus
+}
+
+func (a *AIGatewayDataPlaneNode) GetLabels() map[string]string {
+	if a == nil {
+		return nil
+	}
+	return a.Labels
 }

@@ -113,7 +113,38 @@ func (m *Menu) GetFooterBottom() []PortalMenuItem {
 	return m.FooterBottom
 }
 
-type SpecRenderer struct {
+// PortalCustomizationTryItUIAudience - The audience for the Try It UI feature.
+//
+// `all` means that the Try It UI will be available to all users, including unauthenticated users.
+//
+// `authenticated` means that the Try It UI will only be available to authenticated users.
+//
+// `registered` means that the Try It UI will only be available to users who have registered for the API.
+type PortalCustomizationTryItUIAudience string
+
+const (
+	PortalCustomizationTryItUIAudienceAll           PortalCustomizationTryItUIAudience = "all"
+	PortalCustomizationTryItUIAudienceAuthenticated PortalCustomizationTryItUIAudience = "authenticated"
+	PortalCustomizationTryItUIAudienceRegistered    PortalCustomizationTryItUIAudience = "registered"
+)
+
+func (e PortalCustomizationTryItUIAudience) ToPointer() *PortalCustomizationTryItUIAudience {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PortalCustomizationTryItUIAudience) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "all", "authenticated", "registered":
+			return true
+		}
+	}
+	return false
+}
+
+// PortalCustomizationSpecRenderer - The spec renderer settings of this portal
+type PortalCustomizationSpecRenderer struct {
 	// Enable in-browser testing for your APIs. All linked gateways must have the CORS plugin configured.
 	TryItUI *bool `default:"true" json:"try_it_ui"`
 	// Enables users to open API specifications in Insomnia to explore and send requests with the native client. Only public API specifications are supported.
@@ -127,78 +158,111 @@ type SpecRenderer struct {
 	// Manage visibility of deprecated endpoints and models.
 	HideDeprecated *bool `default:"false" json:"hide_deprecated"`
 	// Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
-	AllowCustomServerUrls *bool `default:"true" json:"allow_custom_server_urls"`
+	AllowCustomServerUrls *bool                               `default:"true" json:"allow_custom_server_urls"`
+	TryItUIAudience       *PortalCustomizationTryItUIAudience `default:"all" json:"try_it_ui_audience"`
 }
 
-func (s SpecRenderer) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
+func (p PortalCustomizationSpecRenderer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
 }
 
-func (s *SpecRenderer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+func (p *PortalCustomizationSpecRenderer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (s *SpecRenderer) GetTryItUI() *bool {
-	if s == nil {
+func (p *PortalCustomizationSpecRenderer) GetTryItUI() *bool {
+	if p == nil {
 		return nil
 	}
-	return s.TryItUI
+	return p.TryItUI
 }
 
-func (s *SpecRenderer) GetTryItInsomnia() *bool {
-	if s == nil {
+func (p *PortalCustomizationSpecRenderer) GetTryItInsomnia() *bool {
+	if p == nil {
 		return nil
 	}
-	return s.TryItInsomnia
+	return p.TryItInsomnia
 }
 
-func (s *SpecRenderer) GetInfiniteScroll() *bool {
-	if s == nil {
+func (p *PortalCustomizationSpecRenderer) GetInfiniteScroll() *bool {
+	if p == nil {
 		return nil
 	}
-	return s.InfiniteScroll
+	return p.InfiniteScroll
 }
 
-func (s *SpecRenderer) GetShowSchemas() *bool {
-	if s == nil {
+func (p *PortalCustomizationSpecRenderer) GetShowSchemas() *bool {
+	if p == nil {
 		return nil
 	}
-	return s.ShowSchemas
+	return p.ShowSchemas
 }
 
-func (s *SpecRenderer) GetHideInternal() *bool {
-	if s == nil {
+func (p *PortalCustomizationSpecRenderer) GetHideInternal() *bool {
+	if p == nil {
 		return nil
 	}
-	return s.HideInternal
+	return p.HideInternal
 }
 
-func (s *SpecRenderer) GetHideDeprecated() *bool {
-	if s == nil {
+func (p *PortalCustomizationSpecRenderer) GetHideDeprecated() *bool {
+	if p == nil {
 		return nil
 	}
-	return s.HideDeprecated
+	return p.HideDeprecated
 }
 
-func (s *SpecRenderer) GetAllowCustomServerUrls() *bool {
-	if s == nil {
+func (p *PortalCustomizationSpecRenderer) GetAllowCustomServerUrls() *bool {
+	if p == nil {
 		return nil
 	}
-	return s.AllowCustomServerUrls
+	return p.AllowCustomServerUrls
+}
+
+func (p *PortalCustomizationSpecRenderer) GetTryItUIAudience() *PortalCustomizationTryItUIAudience {
+	if p == nil {
+		return nil
+	}
+	return p.TryItUIAudience
+}
+
+type Footer struct {
+	// The unique name of a snippet in the portal to render in place of the default footer.
+	SnippetName *string `json:"snippet_name"`
+}
+
+func (f *Footer) GetSnippetName() *string {
+	if f == nil {
+		return nil
+	}
+	return f.SnippetName
+}
+
+type PortalLayout struct {
+	Footer *Footer `json:"footer,omitempty"`
+}
+
+func (p *PortalLayout) GetFooter() *Footer {
+	if p == nil {
+		return nil
+	}
+	return p.Footer
 }
 
 // PortalCustomization - The custom settings of this portal
 type PortalCustomization struct {
-	Theme        *Theme        `json:"theme,omitempty"`
-	Layout       *string       `json:"layout,omitempty"`
-	CSS          *string       `json:"css,omitempty"`
-	Js           *Js           `json:"js,omitempty"`
-	Menu         *Menu         `json:"menu,omitempty"`
-	SpecRenderer *SpecRenderer `json:"spec_renderer,omitempty"`
-	Robots       *string       `json:"robots,omitempty"`
+	Theme  *Theme  `json:"theme,omitempty"`
+	Layout *string `json:"layout,omitempty"`
+	CSS    *string `json:"css,omitempty"`
+	Js     *Js     `json:"js,omitempty"`
+	Menu   *Menu   `json:"menu,omitempty"`
+	// The spec renderer settings of this portal
+	SpecRenderer *PortalCustomizationSpecRenderer `json:"spec_renderer,omitempty"`
+	Robots       *string                          `json:"robots,omitempty"`
+	PortalLayout *PortalLayout                    `json:"portal_layout,omitempty"`
 }
 
 func (p *PortalCustomization) GetTheme() *Theme {
@@ -236,7 +300,7 @@ func (p *PortalCustomization) GetMenu() *Menu {
 	return p.Menu
 }
 
-func (p *PortalCustomization) GetSpecRenderer() *SpecRenderer {
+func (p *PortalCustomization) GetSpecRenderer() *PortalCustomizationSpecRenderer {
 	if p == nil {
 		return nil
 	}
@@ -248,4 +312,11 @@ func (p *PortalCustomization) GetRobots() *string {
 		return nil
 	}
 	return p.Robots
+}
+
+func (p *PortalCustomization) GetPortalLayout() *PortalLayout {
+	if p == nil {
+		return nil
+	}
+	return p.PortalLayout
 }

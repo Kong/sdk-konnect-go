@@ -10,8 +10,8 @@ import (
 type GetAiGatewayPolicyRequest struct {
 	// The unique ID of the AI Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
-	// The unique ID of the AI Gateway policy.
-	PolicyID string `pathParam:"style=simple,explode=false,name=policyId"`
+	// The unique ID or name of the AI Gateway policy.
+	PolicyIDOrName string `pathParam:"style=simple,explode=false,name=policyIdOrName"`
 }
 
 func (g *GetAiGatewayPolicyRequest) GetGatewayID() string {
@@ -21,11 +21,11 @@ func (g *GetAiGatewayPolicyRequest) GetGatewayID() string {
 	return g.GatewayID
 }
 
-func (g *GetAiGatewayPolicyRequest) GetPolicyID() string {
+func (g *GetAiGatewayPolicyRequest) GetPolicyIDOrName() string {
 	if g == nil {
 		return ""
 	}
-	return g.PolicyID
+	return g.PolicyIDOrName
 }
 
 type GetAiGatewayPolicyResponse struct {

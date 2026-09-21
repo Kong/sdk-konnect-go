@@ -1,0 +1,18 @@
+# DatastoreRedisCloudAuthenticationOutput
+
+Cloud-managed Redis authentication. Only the fields relevant to the chosen `auth_provider` need to be set.
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `AuthProvider`                                                      | [*components.AuthProvider](../../models/components/authprovider.md) | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `AwsCacheName`                                                      | `*string`                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `AwsRegion`                                                         | `*string`                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `AwsIsServerless`                                                   | `*bool`                                                             | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `AwsAccessKeyID`                                                    | `*string`                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `AwsAssumeRoleArn`                                                  | `*string`                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `AwsRoleSessionName`                                                | `*string`                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `AzureClientID`                                                     | `*string`                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `AzureTenantID`                                                     | `*string`                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |

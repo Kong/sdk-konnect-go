@@ -8,7 +8,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// UpdateDeveloperRegistrationFormRequestType - Immutable echo of the form's type.
+// UpdateDeveloperRegistrationFormRequestType - The form's type. Must match the existing value — it can't be changed.
 type UpdateDeveloperRegistrationFormRequestType string
 
 const (
@@ -55,10 +55,11 @@ func (e *UpdateDeveloperRegistrationFormRequestStatus) IsExact() bool {
 }
 
 type UpdateDeveloperRegistrationFormRequest struct {
-	// Immutable echo of the form's type.
+	// The form's type. Must match the existing value — it can't be changed.
 	Type   UpdateDeveloperRegistrationFormRequestType    `json:"type"`
 	Status *UpdateDeveloperRegistrationFormRequestStatus `json:"status,omitempty"`
-	// Full replacement of the form's field array. Fields omitted from this array are removed. Must contain the built-in `full_name` (type=text) and `email` (type=email) fields and exactly one `submit` field; the server returns 400 if any required built-in or the submit field is missing.
+	// The form's complete set of fields — this replaces the existing array, so any field left out is removed. Must include the built-in `full_name` (type `text`) and `email` (type `email`) fields, plus exactly one `submit` field.
+	//
 	Fields []CustomFormFieldInput `json:"fields"`
 }
 

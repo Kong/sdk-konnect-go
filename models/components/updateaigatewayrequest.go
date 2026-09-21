@@ -2,13 +2,18 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type UpdateAIGatewayRequest struct {
+	// The minimum AI Gateway runtime version supported by this AI Gateway. This is the lowest data plane version that may receive configuration from it, and it controls which features the API accepts.
+	//
+	// It may be lowered only when no configuration already stored uses a feature that requires a runtime version above the requested one. Otherwise the request is rejected, naming the entities and fields that stand in the way so that they can be removed or downgraded first.
+	//
+	// When not specified, the minimum runtime version is left unchanged.
+	//
+	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
 	// The display name for this AI Gateway.
 	DisplayName string `json:"display_name"`
+	// The name for this AI Gateway. This value is immutable after creation.
+	Name string `json:"name"`
 	// The description of the AI Gateway.
 	Description *string `json:"description,omitempty"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
@@ -19,19 +24,14 @@ type UpdateAIGatewayRequest struct {
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
-	Labels               map[string]string `json:"labels,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
+	Labels map[string]string `json:"labels,omitempty"`
 }
 
-func (u UpdateAIGatewayRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateAIGatewayRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
+func (u *UpdateAIGatewayRequest) GetMinRuntimeVersion() *string {
+	if u == nil {
+		return nil
 	}
-	return nil
+	return u.MinRuntimeVersion
 }
 
 func (u *UpdateAIGatewayRequest) GetDisplayName() string {
@@ -39,6 +39,13 @@ func (u *UpdateAIGatewayRequest) GetDisplayName() string {
 		return ""
 	}
 	return u.DisplayName
+}
+
+func (u *UpdateAIGatewayRequest) GetName() string {
+	if u == nil {
+		return ""
+	}
+	return u.Name
 }
 
 func (u *UpdateAIGatewayRequest) GetDescription() *string {
@@ -60,11 +67,4 @@ func (u *UpdateAIGatewayRequest) GetLabels() map[string]string {
 		return nil
 	}
 	return u.Labels
-}
-
-func (u *UpdateAIGatewayRequest) GetAdditionalProperties() map[string]any {
-	if u == nil {
-		return nil
-	}
-	return u.AdditionalProperties
 }

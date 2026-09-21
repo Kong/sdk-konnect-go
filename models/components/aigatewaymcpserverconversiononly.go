@@ -3,48 +3,24 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayMCPServerConversionOnlyType string
-
-const (
-	AIGatewayMCPServerConversionOnlyTypeConversionOnly AIGatewayMCPServerConversionOnlyType = "conversion-only"
-)
-
-func (e AIGatewayMCPServerConversionOnlyType) ToPointer() *AIGatewayMCPServerConversionOnlyType {
-	return &e
-}
-func (e *AIGatewayMCPServerConversionOnlyType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "conversion-only":
-		*e = AIGatewayMCPServerConversionOnlyType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayMCPServerConversionOnlyType: %v", v)
-	}
-}
-
 type AIGatewayMCPServerConversionOnly struct {
-	Type AIGatewayMCPServerConversionOnlyType `json:"type"`
-	// Routing, logging, and server configuration for the MCP Server.
-	Config AIGatewayMCPServerWithUpstreamConfig `json:"config"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"conversion-only" json:"type"`
+	// Routing, logging, and request body size limits for the MCP Server.
+	Config AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig `json:"config"`
 	// List of tools exposed by this MCP Server.
-	Tools []AIGatewayMCPToolBase `json:"tools"`
+	Tools []AIGatewayMCPConversionTool `json:"tools"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference.
+	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the MCP Server is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
 	// List of policy references.
-	Policies []string `json:"policies"`
+	Policies []string `json:"policies,omitempty"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -56,8 +32,7 @@ type AIGatewayMCPServerConversionOnly struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy            map[string]string `json:"managed_by,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (a AIGatewayMCPServerConversionOnly) MarshalJSON() ([]byte, error) {
@@ -65,29 +40,26 @@ func (a AIGatewayMCPServerConversionOnly) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayMCPServerConversionOnly) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "tools", "display_name", "name", "policies"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "config", "tools", "display_name", "name"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayMCPServerConversionOnly) GetType() AIGatewayMCPServerConversionOnlyType {
-	if a == nil {
-		return AIGatewayMCPServerConversionOnlyType("")
-	}
-	return a.Type
+func (a *AIGatewayMCPServerConversionOnly) GetType() string {
+	return "conversion-only"
 }
 
-func (a *AIGatewayMCPServerConversionOnly) GetConfig() AIGatewayMCPServerWithUpstreamConfig {
+func (a *AIGatewayMCPServerConversionOnly) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig {
 	if a == nil {
-		return AIGatewayMCPServerWithUpstreamConfig{}
+		return AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig{}
 	}
 	return a.Config
 }
 
-func (a *AIGatewayMCPServerConversionOnly) GetTools() []AIGatewayMCPToolBase {
+func (a *AIGatewayMCPServerConversionOnly) GetTools() []AIGatewayMCPConversionTool {
 	if a == nil {
-		return []AIGatewayMCPToolBase{}
+		return []AIGatewayMCPConversionTool{}
 	}
 	return a.Tools
 }
@@ -115,7 +87,7 @@ func (a *AIGatewayMCPServerConversionOnly) GetEnabled() *bool {
 
 func (a *AIGatewayMCPServerConversionOnly) GetPolicies() []string {
 	if a == nil {
-		return []string{}
+		return nil
 	}
 	return a.Policies
 }
@@ -132,11 +104,4 @@ func (a *AIGatewayMCPServerConversionOnly) GetManagedBy() map[string]string {
 		return nil
 	}
 	return a.ManagedBy
-}
-
-func (a *AIGatewayMCPServerConversionOnly) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
 }

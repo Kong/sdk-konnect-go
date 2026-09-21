@@ -14,6 +14,7 @@ const (
 	BillingCreditTransactionTypeFunded   BillingCreditTransactionType = "funded"
 	BillingCreditTransactionTypeConsumed BillingCreditTransactionType = "consumed"
 	BillingCreditTransactionTypeExpired  BillingCreditTransactionType = "expired"
+	BillingCreditTransactionTypeVoided   BillingCreditTransactionType = "voided"
 )
 
 func (e BillingCreditTransactionType) ToPointer() *BillingCreditTransactionType {
@@ -24,7 +25,7 @@ func (e BillingCreditTransactionType) ToPointer() *BillingCreditTransactionType 
 func (e *BillingCreditTransactionType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "funded", "consumed", "expired":
+		case "funded", "consumed", "expired", "voided":
 			return true
 		}
 	}
@@ -79,7 +80,7 @@ type BillingCreditTransaction struct {
 	BookedAt time.Time `json:"booked_at"`
 	// The type of credit transaction.
 	Type BillingCreditTransactionType `json:"type"`
-	// Fiat or custom currency code.
+	// Currency of the balance affected by the transaction.
 	Currency string `json:"currency"`
 	// Signed amount of the credit movement. Positive values add balance, negative
 	// values reduce balance.

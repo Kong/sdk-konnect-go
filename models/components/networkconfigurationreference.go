@@ -12,7 +12,11 @@ type NetworkConfigurationReference struct {
 	ID string `json:"id"`
 	// Supported gateway version. For serverless.v1 kind of cloud gateways, this field should be omitted.
 	Version *string `json:"version,omitempty"`
-	// Type of API access data-plane groups will support for a configuration.
+	// Controls how data planes in a configuration are exposed. Supported values:
+	// - `private` — data planes are accessible only within the VPC network; no public internet exposure
+	// - `public` — data planes are accessible from the public internet
+	// - `private+public` — equivalent to `public`; data planes are accessible from the public internet (default)
+	//
 	APIAccess *APIAccess `default:"private+public" json:"api_access"`
 	// Object that describes where data-planes will be deployed to, along with how many instances.
 	DataplaneGroupConfig []ConfigurationDataPlaneGroupConfig `json:"dataplane_group_config"`
@@ -26,15 +30,24 @@ type NetworkConfigurationReference struct {
 	// Kind of the Cloud Gateway deployment. If serverless.v1 is specified, the following fields
 	// should be omitted (will be ignored if provided): autoscale, cloud_gateway_network_id, version.
 	Kind *ConfigurationKind `default:"dedicated.v0" json:"kind"`
+	Type *ConfigurationType `default:"api" json:"type"`
 	// Positive, monotonically increasing version integer, to serialize configuration changes.
 	//
 	EntityVersion float64 `json:"entity_version"`
 	// An RFC-3339 timestamp representation of configuration creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An RFC-3339 timestamp representation of configuration update date.
-	UpdatedAt      time.Time `json:"updated_at"`
-	ControlPlaneID string    `json:"control_plane_id"`
-	// Set of control-plane geos supported for deploying cloud-gateways configurations.
+	UpdatedAt time.Time `json:"updated_at"`
+	// ID of the Konnect control plane. Can be retrieved from the Control Planes API or the Konnect UI.
+	ControlPlaneID string `json:"control_plane_id"`
+	// Geographic region of the control plane. Supported values:
+	// - `us` — United States
+	// - `eu` — Europe
+	// - `au` — Australia
+	// - `me` — Middle East
+	// - `in` — India
+	// - `sg` — Singapore
+	//
 	ControlPlaneGeo ControlPlaneGeo `json:"control_plane_geo"`
 }
 
@@ -89,6 +102,13 @@ func (n *NetworkConfigurationReference) GetKind() *ConfigurationKind {
 		return nil
 	}
 	return n.Kind
+}
+
+func (n *NetworkConfigurationReference) GetType() *ConfigurationType {
+	if n == nil {
+		return nil
+	}
+	return n.Type
 }
 
 func (n *NetworkConfigurationReference) GetEntityVersion() float64 {

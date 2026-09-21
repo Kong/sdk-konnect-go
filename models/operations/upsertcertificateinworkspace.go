@@ -15,7 +15,7 @@ type UpsertCertificateInWorkspaceRequest struct {
 	// The name of the workspace
 	Workspace string `pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the Certificate
-	Certificate components.Certificate `request:"mediaType=application/json"`
+	CertificateRequest components.CertificateRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpsertCertificateInWorkspaceRequest) GetCertificateID() string {
@@ -39,11 +39,11 @@ func (u *UpsertCertificateInWorkspaceRequest) GetWorkspace() string {
 	return u.Workspace
 }
 
-func (u *UpsertCertificateInWorkspaceRequest) GetCertificate() components.Certificate {
+func (u *UpsertCertificateInWorkspaceRequest) GetCertificateRequest() components.CertificateRequest {
 	if u == nil {
-		return components.Certificate{}
+		return components.CertificateRequest{}
 	}
-	return u.Certificate
+	return u.CertificateRequest
 }
 
 type UpsertCertificateInWorkspaceResponse struct {

@@ -27,9 +27,6 @@ type AIGatewayMCPServerUpstreamServerServerToolAuthConfig struct {
 func CreateAIGatewayMCPServerUpstreamServerServerToolAuthConfigJwt(jwt AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt) AIGatewayMCPServerUpstreamServerServerToolAuthConfig {
 	typ := AIGatewayMCPServerUpstreamServerServerToolAuthConfigTypeJwt
 
-	typStr := AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwtType(typ)
-	jwt.Type = typStr
-
 	return AIGatewayMCPServerUpstreamServerServerToolAuthConfig{
 		AIGatewayMCPServerUpstreamServerToolOauth2ConfigJwt: &jwt,
 		Type: typ,
@@ -39,16 +36,20 @@ func CreateAIGatewayMCPServerUpstreamServerServerToolAuthConfigJwt(jwt AIGateway
 func CreateAIGatewayMCPServerUpstreamServerServerToolAuthConfigCredentials(credentials AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials) AIGatewayMCPServerUpstreamServerServerToolAuthConfig {
 	typ := AIGatewayMCPServerUpstreamServerServerToolAuthConfigTypeCredentials
 
-	typStr := AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentialsType(typ)
-	credentials.Type = typStr
-
 	return AIGatewayMCPServerUpstreamServerServerToolAuthConfig{
 		AIGatewayMCPServerUpstreamServerToolOauth2ConfigCredentials: &credentials,
 		Type: typ,
 	}
 }
 
-func (u *AIGatewayMCPServerUpstreamServerServerToolAuthConfig) UnmarshalJSON(data []byte) error {
+func (u *AIGatewayMCPServerUpstreamServerServerToolAuthConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayMCPServerUpstreamServerServerToolAuthConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

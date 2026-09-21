@@ -71,6 +71,7 @@ func (s *Teams) ListTeams(ctx context.Context, request operations.ListTeamsReque
 	if timeout == nil {
 		timeout = s.sdkConfiguration.Timeout
 	}
+	paginationCtx := ctx
 
 	if timeout != nil {
 		var cancel context.CancelFunc
@@ -249,7 +250,7 @@ func (s *Teams) ListTeams(ctx context.Context, request operations.ListTeamsReque
 		request.PageNumber = &nP
 
 		return s.ListTeams(
-			ctx,
+			paginationCtx,
 			request,
 			opts...,
 		)
@@ -264,12 +265,12 @@ func (s *Teams) ListTeams(ctx context.Context, request operations.ListTeamsReque
 				return nil, err
 			}
 
-			var out components.TeamCollection
+			var out components.TeamCollectionResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.TeamCollection = &out
+			res.TeamCollectionResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -517,12 +518,12 @@ func (s *Teams) CreateTeam(ctx context.Context, request *components.CreateTeam, 
 				return nil, err
 			}
 
-			var out components.Team
+			var out components.TeamResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Team = &out
+			res.TeamResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -767,12 +768,12 @@ func (s *Teams) GetTeam(ctx context.Context, teamID string, opts ...operations.O
 				return nil, err
 			}
 
-			var out components.Team
+			var out components.TeamResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Team = &out
+			res.TeamResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -1025,12 +1026,12 @@ func (s *Teams) UpdateTeam(ctx context.Context, teamID string, updateTeam *compo
 				return nil, err
 			}
 
-			var out components.Team
+			var out components.TeamResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Team = &out
+			res.TeamResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

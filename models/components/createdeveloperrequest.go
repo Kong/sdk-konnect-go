@@ -39,7 +39,8 @@ type CreateDeveloperRequest struct {
 	Status *CreateDeveloperRequestDeveloperStatus `json:"status,omitempty"`
 	// When true, sends an invitation email to the developer. Default is false; no emails are sent unless explicitly requested.
 	SendInvitationEmail *bool `default:"false" json:"send_invitation_email"`
-	// Optional developer-supplied answers to the portal's `developer_registration` form, supplied as a flat map keyed by field `name` (the field's non-built-in slug). Values match each field's input type. Built-in fields (`full_name`, `email`) come in via the top-level body properties — not here. Silently ignored when no developer registration form is active on the portal.
+	// The developer's answers to the portal's `developer_registration` form, if it has one, as a map from each field's `name` to its value. Optional. Built-in fields like `full_name` and `email` go in their own top-level properties, not here. Ignored if the portal doesn't have a `developer_registration` form.
+	//
 	AdditionalData map[string]FormResponseInput `json:"additional_data,omitempty"`
 }
 

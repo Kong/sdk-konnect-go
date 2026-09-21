@@ -3,37 +3,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayRedisAWSAuthenticationType string
-
-const (
-	AIGatewayRedisAWSAuthenticationTypeAws AIGatewayRedisAWSAuthenticationType = "aws"
-)
-
-func (e AIGatewayRedisAWSAuthenticationType) ToPointer() *AIGatewayRedisAWSAuthenticationType {
-	return &e
-}
-func (e *AIGatewayRedisAWSAuthenticationType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "aws":
-		*e = AIGatewayRedisAWSAuthenticationType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayRedisAWSAuthenticationType: %v", v)
-	}
-}
-
 // AIGatewayRedisAWSAuthentication - AWS specific configs for connecting to a Cloud Provider's redis instance.
 type AIGatewayRedisAWSAuthentication struct {
-	Type AIGatewayRedisAWSAuthenticationType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"aws" json:"type"`
 	// AWS Access Key ID to be used for authentication.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -73,11 +49,8 @@ func (a *AIGatewayRedisAWSAuthentication) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayRedisAWSAuthentication) GetType() AIGatewayRedisAWSAuthenticationType {
-	if a == nil {
-		return AIGatewayRedisAWSAuthenticationType("")
-	}
-	return a.Type
+func (a *AIGatewayRedisAWSAuthentication) GetType() string {
+	return "aws"
 }
 
 func (a *AIGatewayRedisAWSAuthentication) GetAccessKeyID() *string {

@@ -1,15 +1,29 @@
 # MCPResourceInfo
 
 
-## Fields
+## Supported Types
 
-| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  | Example                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `ID`                                                                                                                         | `string`                                                                                                                     | :heavy_check_mark:                                                                                                           | The unique identifier for the MCP resource.                                                                                  |                                                                                                                              |
-| `Name`                                                                                                                       | `string`                                                                                                                     | :heavy_check_mark:                                                                                                           | The unique name of the MCP resource.                                                                                         |                                                                                                                              |
-| `McpServers`                                                                                                                 | []`string`                                                                                                                   | :heavy_check_mark:                                                                                                           | List of MCP server IDs that reference this resource.                                                                         |                                                                                                                              |
-| `Type`                                                                                                                       | [components.MCPResourceInfoType](../../models/components/mcpresourceinfotype.md)                                             | :heavy_check_mark:                                                                                                           | The type of the MCP resource.                                                                                                |                                                                                                                              |
-| `Source`                                                                                                                     | [components.MCPResourceSource](../../models/components/mcpresourcesource.md)                                                 | :heavy_check_mark:                                                                                                           | The source of the MCP resource, indicating how it was created.                                                               |                                                                                                                              |
-| `Version`                                                                                                                    | `string`                                                                                                                     | :heavy_check_mark:                                                                                                           | The version of the MCP resource. In the case of API resources, this corresponds<br/>to the version of the spec (e.g., "3.0.0").<br/> |                                                                                                                              |
-| `UpdatedAt`                                                                                                                  | [time.Time](https://pkg.go.dev/time#Time)                                                                                    | :heavy_check_mark:                                                                                                           | An ISO-8601 timestamp representation of entity update date.                                                                  | 2022-11-04T20:10:06.927Z                                                                                                     |
-| `CreatedAt`                                                                                                                  | [time.Time](https://pkg.go.dev/time#Time)                                                                                    | :heavy_check_mark:                                                                                                           | An ISO-8601 timestamp representation of entity creation date.                                                                | 2022-11-04T20:10:06.927Z                                                                                                     |
+### APIResource
+
+```go
+mcpResourceInfo := components.CreateMCPResourceInfoAPI(components.APIResource{/* values here */})
+```
+
+### McpServerResource
+
+```go
+mcpResourceInfo := components.CreateMCPResourceInfoMcpServer(components.McpServerResource{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch mcpResourceInfo.Type {
+	case components.MCPResourceInfoTypeAPI:
+		// mcpResourceInfo.APIResource is populated
+	case components.MCPResourceInfoTypeMcpServer:
+		// mcpResourceInfo.McpServerResource is populated
+}
+```

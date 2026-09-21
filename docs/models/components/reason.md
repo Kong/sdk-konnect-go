@@ -1,13 +1,25 @@
 # Reason
 
-Optional reason when the customer does not have access to the feature. Populated
-when `has_access` is `false`.
+The reason this discount was applied.
+
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.ReasonMaximumSpend
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.Reason("custom_value")
+```
 
 
-## Fields
+## Values
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `Code`                                                                                           | [components.GovernanceFeatureAccessCode](../../models/components/governancefeatureaccesscode.md) | :heavy_check_mark:                                                                               | Machine-readable error code.                                                                     |
-| `Message`                                                                                        | `string`                                                                                         | :heavy_check_mark:                                                                               | Human-readable description of the error.                                                         |
-| `Attributes`                                                                                     | map[string]`any`                                                                                 | :heavy_minus_sign:                                                                               | Additional structured context.                                                                   |
+| Name                       | Value                      |
+| -------------------------- | -------------------------- |
+| `ReasonMaximumSpend`       | maximum_spend              |
+| `ReasonRatecardPercentage` | ratecard_percentage        |
+| `ReasonRatecardUsage`      | ratecard_usage             |

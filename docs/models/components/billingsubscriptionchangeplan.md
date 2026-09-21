@@ -1,6 +1,10 @@
 # BillingSubscriptionChangePlan
 
-The plan reference of the subscription.
+A reference to a published plan the subscription is created from.
+
+Exactly one of `plan` or `custom_plan` must be provided. Use `plan` to base the
+subscription on an existing published plan; use `custom_plan` to define the plan
+inline.
 
 
 ## Fields

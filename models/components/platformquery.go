@@ -44,6 +44,10 @@ const (
 	PlatformQueryDimensionsPluginName           PlatformQueryDimensions = "plugin_name"
 	PlatformQueryDimensionsPluginScope          PlatformQueryDimensions = "plugin_scope"
 	PlatformQueryDimensionsDataPlaneNodeVersion PlatformQueryDimensions = "data_plane_node_version"
+	PlatformQueryDimensionsEnv                  PlatformQueryDimensions = "env"
+	PlatformQueryDimensionsTeam                 PlatformQueryDimensions = "team"
+	PlatformQueryDimensionsRegion               PlatformQueryDimensions = "region"
+	PlatformQueryDimensionsHostname             PlatformQueryDimensions = "hostname"
 )
 
 func (e PlatformQueryDimensions) ToPointer() *PlatformQueryDimensions {
@@ -54,7 +58,7 @@ func (e PlatformQueryDimensions) ToPointer() *PlatformQueryDimensions {
 func (e *PlatformQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "time", "control_plane", "gateway_service", "realm", "route", "consumer", "plugin", "plugin_name", "plugin_scope", "data_plane_node_version":
+		case "time", "control_plane", "gateway_service", "realm", "route", "consumer", "plugin", "plugin_name", "plugin_scope", "data_plane_node_version", "env", "team", "region", "hostname":
 			return true
 		}
 	}
@@ -91,7 +95,7 @@ type PlatformQuery struct {
 	Granularity *PlatformGranularity `json:"granularity,omitempty"`
 	// The time range to query for platform data.
 	TimeRange *PlatformTimeRange `json:"time_range,omitempty"`
-	// Maximum number of group_by buckets to return. Defaults to 50, capped at 1000. Only applies when a group_by dimension is requested.
+	// Limits the number of distinct metric groups to return.
 	Limit *float64 `default:"50" json:"limit"`
 }
 

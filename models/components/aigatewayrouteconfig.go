@@ -6,70 +6,8 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type Destinations struct {
-	IP   *string `json:"ip,omitempty"`
-	Port *int64  `json:"port,omitempty"`
-}
-
-func (d Destinations) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
-}
-
-func (d *Destinations) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (d *Destinations) GetIP() *string {
-	if d == nil {
-		return nil
-	}
-	return d.IP
-}
-
-func (d *Destinations) GetPort() *int64 {
-	if d == nil {
-		return nil
-	}
-	return d.Port
-}
-
-type Sources struct {
-	IP   *string `json:"ip,omitempty"`
-	Port *int64  `json:"port,omitempty"`
-}
-
-func (s Sources) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
-}
-
-func (s *Sources) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (s *Sources) GetIP() *string {
-	if s == nil {
-		return nil
-	}
-	return s.IP
-}
-
-func (s *Sources) GetPort() *int64 {
-	if s == nil {
-		return nil
-	}
-	return s.Port
-}
-
 // AIGatewayRouteConfig - Configuration for an AI Gateway route.
 type AIGatewayRouteConfig struct {
-	// A list of IP destinations of incoming connections that match this route when using stream routing. Each entry is an object with fields ip (optionally in CIDR range notation) and/or port.
-	Destinations []Destinations `json:"destinations,omitempty"`
 	// One or more lists of values indexed by header name that will cause this route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.
 	Headers map[string]any `json:"headers,omitempty"`
 	// A list of domain names that match this route. Note that the hosts value is case sensitive.
@@ -78,8 +16,6 @@ type AIGatewayRouteConfig struct {
 	HTTPSRedirectStatusCode *int64 `default:"426" json:"https_redirect_status_code"`
 	// A list of HTTP methods that match this route.
 	Methods []string `json:"methods,omitempty"`
-	// Controls how the service path, route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
-	PathHandling *string `default:"v0" json:"path_handling"`
 	// A list of paths that match this route.
 	Paths []string `json:"paths,omitempty"`
 	// When matching a route via one of the `hosts` domain names, use the request `Host` header in the upstream request headers. If set to `false`, the upstream `Host` header will be that of the service's `host`.
@@ -92,10 +28,6 @@ type AIGatewayRouteConfig struct {
 	RequestBuffering *bool `default:"true" json:"request_buffering"`
 	// Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.
 	ResponseBuffering *bool `default:"true" json:"response_buffering"`
-	// A list of SNIs that match this route when using stream routing.
-	Snis []string `json:"snis,omitempty"`
-	// A list of IP sources of incoming connections that match this route when using stream routing. Each entry is an object with fields ip (optionally in CIDR range notation) and/or port.
-	Sources []Sources `json:"sources,omitempty"`
 	// When matching a route via one of the `paths`, strip the matching prefix from the upstream request URL.
 	StripPath *bool `default:"true" json:"strip_path"`
 	// An optional set of strings associated with the route for grouping and filtering.
@@ -111,13 +43,6 @@ func (a *AIGatewayRouteConfig) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
-}
-
-func (a *AIGatewayRouteConfig) GetDestinations() []Destinations {
-	if a == nil {
-		return nil
-	}
-	return a.Destinations
 }
 
 func (a *AIGatewayRouteConfig) GetHeaders() map[string]any {
@@ -146,13 +71,6 @@ func (a *AIGatewayRouteConfig) GetMethods() []string {
 		return nil
 	}
 	return a.Methods
-}
-
-func (a *AIGatewayRouteConfig) GetPathHandling() *string {
-	if a == nil {
-		return nil
-	}
-	return a.PathHandling
 }
 
 func (a *AIGatewayRouteConfig) GetPaths() []string {
@@ -195,20 +113,6 @@ func (a *AIGatewayRouteConfig) GetResponseBuffering() *bool {
 		return nil
 	}
 	return a.ResponseBuffering
-}
-
-func (a *AIGatewayRouteConfig) GetSnis() []string {
-	if a == nil {
-		return nil
-	}
-	return a.Snis
-}
-
-func (a *AIGatewayRouteConfig) GetSources() []Sources {
-	if a == nil {
-		return nil
-	}
-	return a.Sources
 }
 
 func (a *AIGatewayRouteConfig) GetStripPath() *bool {

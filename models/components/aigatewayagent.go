@@ -32,8 +32,7 @@ func (e *AIGatewayAgentType) IsExact() bool {
 
 // AIGatewayAgentLogging - Configuration for AI Gateway logging.
 type AIGatewayAgentLogging struct {
-	Payloads   *bool `default:"false" json:"payloads"`
-	Statistics *bool `default:"true" json:"statistics"`
+	Payloads *bool `default:"false" json:"payloads"`
 	// Maximum size in bytes for logged request/response payloads. Payloads exceeding this size will be truncated.
 	MaxPayloadSize *int64 `default:"1048576" json:"max_payload_size"`
 }
@@ -56,13 +55,6 @@ func (a *AIGatewayAgentLogging) GetPayloads() *bool {
 	return a.Payloads
 }
 
-func (a *AIGatewayAgentLogging) GetStatistics() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Statistics
-}
-
 func (a *AIGatewayAgentLogging) GetMaxPayloadSize() *int64 {
 	if a == nil {
 		return nil
@@ -75,9 +67,13 @@ type AIGatewayAgentConfig struct {
 	// Helper field to set protocol, host, port and path of the upstream A2A Agent using a URL.
 	// This is the same as a Kong Gateway Service URL: ${scheme}://${host}:${port}/${path}
 	//
-	URL *string `json:"url,omitempty"`
+	URL string `json:"url"`
+	// Configuration applied when proxying to the upstream service, including authentication.
+	Upstream *AIGatewayUpstreamConfigOutput `json:"upstream,omitempty"`
 	// Configuration for an AI Gateway route.
 	Route *AIGatewayRouteConfig `json:"route,omitempty"`
+	// HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
+	Proxy *AIGatewayProxyConfigOutput `json:"proxy,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
 	// Configuration for AI Gateway logging.
@@ -95,11 +91,18 @@ func (a *AIGatewayAgentConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayAgentConfig) GetURL() *string {
+func (a *AIGatewayAgentConfig) GetURL() string {
+	if a == nil {
+		return ""
+	}
+	return a.URL
+}
+
+func (a *AIGatewayAgentConfig) GetUpstream() *AIGatewayUpstreamConfigOutput {
 	if a == nil {
 		return nil
 	}
-	return a.URL
+	return a.Upstream
 }
 
 func (a *AIGatewayAgentConfig) GetRoute() *AIGatewayRouteConfig {
@@ -107,6 +110,13 @@ func (a *AIGatewayAgentConfig) GetRoute() *AIGatewayRouteConfig {
 		return nil
 	}
 	return a.Route
+}
+
+func (a *AIGatewayAgentConfig) GetProxy() *AIGatewayProxyConfigOutput {
+	if a == nil {
+		return nil
+	}
+	return a.Proxy
 }
 
 func (a *AIGatewayAgentConfig) GetMaxRequestBodySize() *int64 {
@@ -126,15 +136,16 @@ func (a *AIGatewayAgentConfig) GetLogging() *AIGatewayAgentLogging {
 type AIGatewayAgent struct {
 	// The display name for this agent.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this agent, used as a stable human-readable reference.
+	// A user-defined unique identifier for this agent, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the Agent is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
 	// The type of the agent.
 	Type AIGatewayAgentType `json:"type"`
 	// List of policy references.
-	Policies []string      `json:"policies"`
-	Acls     AIGatewayACLS `json:"acls"`
+	Policies []string `json:"policies,omitempty"`
+	// Access control configuration for an agent.
+	Access *AIGatewayAgentAccess `json:"access,omitempty"`
 	// Configuration for the agent. The structure varies depending on the agent type.
 	Config AIGatewayAgentConfig `json:"config"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
@@ -154,8 +165,7 @@ type AIGatewayAgent struct {
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt            time.Time      `json:"updated_at"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (a AIGatewayAgent) MarshalJSON() ([]byte, error) {
@@ -199,16 +209,16 @@ func (a *AIGatewayAgent) GetType() AIGatewayAgentType {
 
 func (a *AIGatewayAgent) GetPolicies() []string {
 	if a == nil {
-		return []string{}
+		return nil
 	}
 	return a.Policies
 }
 
-func (a *AIGatewayAgent) GetAcls() AIGatewayACLS {
+func (a *AIGatewayAgent) GetAccess() *AIGatewayAgentAccess {
 	if a == nil {
-		return AIGatewayACLS{}
+		return nil
 	}
-	return a.Acls
+	return a.Access
 }
 
 func (a *AIGatewayAgent) GetConfig() AIGatewayAgentConfig {
@@ -251,11 +261,4 @@ func (a *AIGatewayAgent) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-func (a *AIGatewayAgent) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
 }

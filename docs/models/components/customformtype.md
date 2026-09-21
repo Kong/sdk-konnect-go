@@ -1,6 +1,6 @@
 # CustomFormType
 
-The form's purpose. Determines built-in field requirements and where the form is consumed by the portal client.
+The kind of form. Determines which fields are required and where developers see the form on the portal.
 
 ## Example Usage
 

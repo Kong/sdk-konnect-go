@@ -23,6 +23,7 @@ custom := components.AdvancedQueryDimensions("custom_value")
 | `AdvancedQueryDimensionsAPIProduct`                | api_product                                        |
 | `AdvancedQueryDimensionsAPIProductVersion`         | api_product_version                                |
 | `AdvancedQueryDimensionsApplication`               | application                                        |
+| `AdvancedQueryDimensionsCacheStatus`               | cache_status                                       |
 | `AdvancedQueryDimensionsConsumer`                  | consumer                                           |
 | `AdvancedQueryDimensionsControlPlane`              | control_plane                                      |
 | `AdvancedQueryDimensionsControlPlaneGroup`         | control_plane_group                                |
@@ -30,7 +31,9 @@ custom := components.AdvancedQueryDimensions("custom_value")
 | `AdvancedQueryDimensionsDataPlaneNode`             | data_plane_node                                    |
 | `AdvancedQueryDimensionsDataPlaneNodeVersion`      | data_plane_node_version                            |
 | `AdvancedQueryDimensionsGatewayService`            | gateway_service                                    |
+| `AdvancedQueryDimensionsOidcCredential`            | oidc_credential                                    |
 | `AdvancedQueryDimensionsPortal`                    | portal                                             |
+| `AdvancedQueryDimensionsPrincipal`                 | principal                                          |
 | `AdvancedQueryDimensionsRealm`                     | realm                                              |
 | `AdvancedQueryDimensionsResponseSource`            | response_source                                    |
 | `AdvancedQueryDimensionsRoute`                     | route                                              |

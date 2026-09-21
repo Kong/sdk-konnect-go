@@ -6,9 +6,44 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// CreateAIGatewayRequestDeploymentType - How this AI Gateway's control plane is deployed. Set at creation time and cannot be changed afterward.
+type CreateAIGatewayRequestDeploymentType string
+
+const (
+	CreateAIGatewayRequestDeploymentTypeHybrid     CreateAIGatewayRequestDeploymentType = "hybrid"
+	CreateAIGatewayRequestDeploymentTypeManaged    CreateAIGatewayRequestDeploymentType = "managed"
+	CreateAIGatewayRequestDeploymentTypeServerless CreateAIGatewayRequestDeploymentType = "serverless"
+)
+
+func (e CreateAIGatewayRequestDeploymentType) ToPointer() *CreateAIGatewayRequestDeploymentType {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CreateAIGatewayRequestDeploymentType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "hybrid", "managed", "serverless":
+			return true
+		}
+	}
+	return false
+}
+
 type CreateAIGatewayRequest struct {
+	// How this AI Gateway's control plane is deployed. Set at creation time and cannot be changed afterward.
+	DeploymentType *CreateAIGatewayRequestDeploymentType `default:"hybrid" json:"deployment_type"`
+	// The minimum AI Gateway runtime version supported by this AI Gateway. This is the lowest data plane version that may receive configuration from it, and it controls which features the API accepts.
+	//
+	// Data planes older than this version still connect for topology visibility.
+	//
+	// When not specified, the latest generally available runtime version is used.
+	//
+	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
 	// The display name for this AI Gateway.
 	DisplayName string `json:"display_name"`
+	// The name for this AI Gateway. This value is immutable after creation.
+	Name string `json:"name"`
 	// The description of the AI Gateway.
 	Description *string `json:"description,omitempty"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
@@ -19,8 +54,7 @@ type CreateAIGatewayRequest struct {
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
-	Labels               map[string]string `json:"labels,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
+	Labels map[string]string `json:"labels,omitempty"`
 }
 
 func (c CreateAIGatewayRequest) MarshalJSON() ([]byte, error) {
@@ -34,11 +68,32 @@ func (c *CreateAIGatewayRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+func (c *CreateAIGatewayRequest) GetDeploymentType() *CreateAIGatewayRequestDeploymentType {
+	if c == nil {
+		return nil
+	}
+	return c.DeploymentType
+}
+
+func (c *CreateAIGatewayRequest) GetMinRuntimeVersion() *string {
+	if c == nil {
+		return nil
+	}
+	return c.MinRuntimeVersion
+}
+
 func (c *CreateAIGatewayRequest) GetDisplayName() string {
 	if c == nil {
 		return ""
 	}
 	return c.DisplayName
+}
+
+func (c *CreateAIGatewayRequest) GetName() string {
+	if c == nil {
+		return ""
+	}
+	return c.Name
 }
 
 func (c *CreateAIGatewayRequest) GetDescription() *string {
@@ -60,11 +115,4 @@ func (c *CreateAIGatewayRequest) GetLabels() map[string]string {
 		return nil
 	}
 	return c.Labels
-}
-
-func (c *CreateAIGatewayRequest) GetAdditionalProperties() map[string]any {
-	if c == nil {
-		return nil
-	}
-	return c.AdditionalProperties
 }

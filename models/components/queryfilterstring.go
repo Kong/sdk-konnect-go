@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // QueryFilterString - A query filter for a string attribute. Operators are mutually exclusive, only
 // one operator is allowed at a time.
 type QueryFilterString struct {
@@ -21,6 +25,17 @@ type QueryFilterString struct {
 	And []QueryFilterString `json:"and,omitempty"`
 	// Combines the provided filters with a logical OR.
 	Or []QueryFilterString `json:"or,omitempty"`
+}
+
+func (q QueryFilterString) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(q, "", false)
+}
+
+func (q *QueryFilterString) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &q, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (q *QueryFilterString) GetEq() *string {

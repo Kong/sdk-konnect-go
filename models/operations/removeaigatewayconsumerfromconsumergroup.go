@@ -11,8 +11,8 @@ type RemoveAiGatewayConsumerFromConsumerGroupRequest struct {
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
 	// The unique ID of the AI Gateway Consumer Group.
 	ConsumerGroupID string `pathParam:"style=simple,explode=false,name=consumerGroupId"`
-	// The unique ID of the AI Gateway consumer.
-	ConsumerID string `pathParam:"style=simple,explode=false,name=consumerId"`
+	// The unique ID or name of the AI Gateway consumer.
+	ConsumerIDOrName string `pathParam:"style=simple,explode=false,name=consumerIdOrName"`
 }
 
 func (r *RemoveAiGatewayConsumerFromConsumerGroupRequest) GetGatewayID() string {
@@ -29,11 +29,11 @@ func (r *RemoveAiGatewayConsumerFromConsumerGroupRequest) GetConsumerGroupID() s
 	return r.ConsumerGroupID
 }
 
-func (r *RemoveAiGatewayConsumerFromConsumerGroupRequest) GetConsumerID() string {
+func (r *RemoveAiGatewayConsumerFromConsumerGroupRequest) GetConsumerIDOrName() string {
 	if r == nil {
 		return ""
 	}
-	return r.ConsumerID
+	return r.ConsumerIDOrName
 }
 
 type RemoveAiGatewayConsumerFromConsumerGroupResponse struct {

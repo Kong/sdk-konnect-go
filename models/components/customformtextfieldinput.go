@@ -31,15 +31,18 @@ func (e *CustomFormTextFieldInputType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CustomFormTextFieldInput - Single-line text input.
+// CustomFormTextFieldInput - A single-line text field.
 type CustomFormTextFieldInput struct {
-	// Stable slug for the field (letters, digits, underscores, or hyphens). Immutable for the life of the field; renames are achieved by editing `label`. Acts as the join key for stored responses. Optional on create — server slugifies `label` when omitted.
+	// A stable, URL-safe slug identifying the field (letters, digits,
+	// underscores, or hyphens). When omitted, `label` is slugified instead.
+	//
+	// Used to match up stored responses across edits.
 	//
 	Name        *string                      `json:"name,omitempty"`
 	Type        CustomFormTextFieldInputType `json:"type"`
 	Label       string                       `json:"label"`
 	Placeholder *string                      `json:"placeholder,omitempty"`
-	// Help text rendered with the field. Supports MDC markdown.
+	// Help text displayed with the field. Supports Markdown formatting.
 	Description *string `json:"description,omitempty"`
 	Required    *bool   `json:"required,omitempty"`
 }

@@ -2,19 +2,36 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // CreateTeam - The request schema for the create team request.
 //
 // If you pass the same `name` and `description` of an existing team in the request, a team with the same `name` and `description` will be created. The two teams will have different `team_id` values to differentiate them.
 type CreateTeam struct {
-	// A name for the team being created.
+	// The name of the team.
 	Name string `json:"name"`
-	// The description of the new team.
+	// The description of the team.
 	Description *string `json:"description,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+	// Whether the team's membership is managed by Konnect instead of being synced from an identity provider's team mappings. Set to `false` (default) to let identity provider team mappings keep syncing members into this team. Set to `true` to manage membership directly in Konnect and prevent identity provider team mappings from syncing to this team.
+	KonnectManaged *bool `default:"false" json:"konnect_managed"`
+}
+
+func (c CreateTeam) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateTeam) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreateTeam) GetName() string {
@@ -36,4 +53,11 @@ func (c *CreateTeam) GetLabels() map[string]string {
 		return nil
 	}
 	return c.Labels
+}
+
+func (c *CreateTeam) GetKonnectManaged() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.KonnectManaged
 }

@@ -101,7 +101,14 @@ func CreateAPIVersionResponseAPISpecProviderResourceBoundIntegrationAPISpecProvi
 	}
 }
 
-func (u *APIVersionResponseAPISpecProvider) UnmarshalJSON(data []byte) error {
+func (u *APIVersionResponseAPISpecProvider) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = APIVersionResponseAPISpecProvider{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integrationAPISpecProviderPayload IntegrationAPISpecProviderPayload = IntegrationAPISpecProviderPayload{}
 	if err := utils.UnmarshalJSON(data, &integrationAPISpecProviderPayload, "", true, nil); err == nil {

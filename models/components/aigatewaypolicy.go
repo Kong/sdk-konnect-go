@@ -10,10 +10,10 @@ import (
 type AIGatewayPolicy struct {
 	// The display name for this policy instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this policy instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this policy instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// The type of the Policy. This is equivalent to the Kong 3 plugin name.
-	// Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'openid-connect'.
+	// Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'rate-limiting'.
 	// Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
 	//
 	Type string `json:"type"`
@@ -25,6 +25,10 @@ type AIGatewayPolicy struct {
 	// Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
 	//
 	Config map[string]any `json:"config"`
+	// An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.
+	//
+	// **Requires a minimum runtime version of `2.1`**.
+	Condition *string `json:"condition,omitempty"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -37,6 +41,8 @@ type AIGatewayPolicy struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	// Names of the Datastores this policy references.
+	Datastores []string `json:"datastores,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -98,6 +104,13 @@ func (a *AIGatewayPolicy) GetConfig() map[string]any {
 	return a.Config
 }
 
+func (a *AIGatewayPolicy) GetCondition() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Condition
+}
+
 func (a *AIGatewayPolicy) GetLabels() map[string]string {
 	if a == nil {
 		return nil
@@ -110,6 +123,13 @@ func (a *AIGatewayPolicy) GetManagedBy() map[string]string {
 		return nil
 	}
 	return a.ManagedBy
+}
+
+func (a *AIGatewayPolicy) GetDatastores() []string {
+	if a == nil {
+		return nil
+	}
+	return a.Datastores
 }
 
 func (a *AIGatewayPolicy) GetID() string {

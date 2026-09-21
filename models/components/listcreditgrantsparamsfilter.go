@@ -27,12 +27,58 @@ func (e *ListCreditGrantsParamsFilterCreditGrantLifecycleStatus) IsExact() bool 
 	return false
 }
 
+// ListCreditGrantsParamsFilterStringFieldNEQFilter - Filter credit grants by key.
+type ListCreditGrantsParamsFilterStringFieldNEQFilter struct {
+	Eq        *string `queryParam:"name=eq"`
+	Contains  string  `queryParam:"name=contains"`
+	Ocontains string  `queryParam:"name=ocontains"`
+	Oeq       string  `queryParam:"name=oeq"`
+	Neq       string  `queryParam:"name=neq"`
+}
+
+func (l *ListCreditGrantsParamsFilterStringFieldNEQFilter) GetEq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Eq
+}
+
+func (l *ListCreditGrantsParamsFilterStringFieldNEQFilter) GetContains() string {
+	if l == nil {
+		return ""
+	}
+	return l.Contains
+}
+
+func (l *ListCreditGrantsParamsFilterStringFieldNEQFilter) GetOcontains() string {
+	if l == nil {
+		return ""
+	}
+	return l.Ocontains
+}
+
+func (l *ListCreditGrantsParamsFilterStringFieldNEQFilter) GetOeq() string {
+	if l == nil {
+		return ""
+	}
+	return l.Oeq
+}
+
+func (l *ListCreditGrantsParamsFilterStringFieldNEQFilter) GetNeq() string {
+	if l == nil {
+		return ""
+	}
+	return l.Neq
+}
+
 // ListCreditGrantsParamsFilter - Filter options for listing credit grants.
 type ListCreditGrantsParamsFilter struct {
 	// Filter credit grants by status.
 	Status *ListCreditGrantsParamsFilterCreditGrantLifecycleStatus `queryParam:"name=status"`
 	// Filter credit grants by currency.
 	Currency *string `queryParam:"name=currency"`
+	// Filter credit grants by key.
+	Key *ListCreditGrantsParamsFilterStringFieldNEQFilter `queryParam:"name=key"`
 }
 
 func (l *ListCreditGrantsParamsFilter) GetStatus() *ListCreditGrantsParamsFilterCreditGrantLifecycleStatus {
@@ -47,4 +93,11 @@ func (l *ListCreditGrantsParamsFilter) GetCurrency() *string {
 		return nil
 	}
 	return l.Currency
+}
+
+func (l *ListCreditGrantsParamsFilter) GetKey() *ListCreditGrantsParamsFilterStringFieldNEQFilter {
+	if l == nil {
+		return nil
+	}
+	return l.Key
 }
