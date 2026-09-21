@@ -173,10 +173,18 @@ _generate.ifacemaker:
 		--output $(LOWERCASE_STRUCT)_i.go \
 		-p sdkkonnectgo
 
+TYPES_TO_MOCK := $(shell grep -B 20 'rootSDK.*\*SDK' *.go | grep 'type.*struct' | awk '{print $$2}' | sort -u)
+
+.PHONY: remove.interfaces
+remove.interfaces:
+	@echo "Removing existing interfaces (to prevent breakage on breaking changes)..."
+	@$(foreach s, $(TYPES_TO_MOCK), \
+		rm -f $(shell echo $(s) | tr 'A-Z' 'a-z')_i.go; )
+
 .PHONY: generate.interfaces
-generate.interfaces: ifacemaker
-# TODO: make this iterate over all structs that need mocks if necessary.
-	$(MAKE) _generate.ifacemaker STRUCT=ControlPlanes
+generate.interfaces: ifacemaker remove.interfaces
+	@$(foreach s, $(TYPES_TO_MOCK), \
+		$(MAKE) _generate.ifacemaker STRUCT=$(s) || exit 1;)
 
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks
