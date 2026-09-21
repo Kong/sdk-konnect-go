@@ -82764,7 +82764,7 @@ x-input-schemas:
     version: 3.6.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect MCP Servers
-    version: 1.37.0
+    version: 1.38.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.2.0
