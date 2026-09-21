@@ -5,8 +5,8 @@ management:
   docVersion: 3.15.0
   speakeasyVersion: 1.798.0
   generationVersion: 2.938.0
-  releaseVersion: 0.3.0
-  configChecksum: e36d9877b5a64aeef6959455d13a2883
+  releaseVersion: 0.4.0
+  configChecksum: df60cd64ffb7df9f284fc7524e7b7af9
 persistentEdits:
   generation_id: 13c2163a-60e6-4c35-b896-a9ea41a6dd75
   pristine_commit_hash: 14753c7fba454bec4419143dc7ad13be13ff031f
@@ -32446,10 +32446,10 @@ examples:
         path:
           gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
       requestBody:
-        application/json: {"type": "upstream-server", "config": {"route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com", "tools_cache_ttl_seconds": 93572}, "tools": [], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"]}
+        application/json: {"type": "upstream-server", "config": {"route": {"hosts": ["foo.example.com"], "headers": {"version": ["v1", "v2"]}, "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com", "tools_cache_ttl_seconds": 93572}, "tools": [], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"]}
       responses:
         "201":
-          application/json: {"type": "conversion-listener", "config": {"route": {"methods": [], "headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com"}, "tools": [{"description": "Search for available flights", "name": "<value>", "method": "DELETE", "parameters": [{"name": "origin", "in": "query", "description": "The origin airport code.", "required": true}]}], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"], "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"type": "conversion-listener", "config": {"route": {"hosts": ["foo.example.com"], "headers": {"version": ["v1", "v2"]}, "https_redirect_status_code": 426, "methods": [], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com"}, "tools": [{"description": "Search for available flights", "name": "<value>", "method": "DELETE", "parameters": [{"name": "origin", "in": "query", "description": "The origin airport code.", "required": true}]}], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"], "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 632000, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -32471,7 +32471,7 @@ examples:
           mcpServerIdOrName: "my-entity-name"
       responses:
         "200":
-          application/json: {"type": "conversion-listener", "config": {"route": {"paths": ["<value 1>", "<value 2>"], "headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com"}, "tools": [{"description": "Search for available flights", "name": "<value>", "method": "DELETE", "parameters": [{"name": "origin", "in": "query", "description": "The origin airport code.", "required": true}]}], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"], "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"type": "conversion-listener", "config": {"route": {"hosts": ["foo.example.com"], "headers": {"version": ["v1", "v2"]}, "https_redirect_status_code": 426, "paths": ["<value 1>", "<value 2>"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com"}, "tools": [{"description": "Search for available flights", "name": "<value>", "method": "DELETE", "parameters": [{"name": "origin", "in": "query", "description": "The origin airport code.", "required": true}]}], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"], "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -32488,10 +32488,10 @@ examples:
           mcpServerId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
           mcpServerIdOrName: "my-entity-name"
       requestBody:
-        application/json: {"type": "upstream-server", "config": {"route": {"headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com", "tools_cache_ttl_seconds": 97975}, "tools": [{"description": "Search for available flights", "name": "<value>"}], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"]}
+        application/json: {"type": "upstream-server", "config": {"route": {"hosts": ["foo.example.com"], "headers": {"version": ["v1", "v2"]}, "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com", "tools_cache_ttl_seconds": 97975}, "tools": [{"description": "Search for available flights", "name": "<value>"}], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"]}
       responses:
         "200":
-          application/json: {"type": "conversion-listener", "config": {"route": {"methods": ["<value 1>", "<value 2>", "<value 3>"], "headers": {"version": ["v1", "v2"]}, "hosts": ["foo.example.com"], "https_redirect_status_code": 426, "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com"}, "tools": [], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"], "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"type": "conversion-listener", "config": {"route": {"hosts": ["foo.example.com"], "headers": {"version": ["v1", "v2"]}, "https_redirect_status_code": 426, "methods": ["<value 1>", "<value 2>", "<value 3>"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "strip_path": true}, "max_request_body_size": 8388608, "url": "https://mcp.internal.kongair.com"}, "tools": [], "display_name": "Kong Air Flights", "name": "kongair-flights", "enabled": true, "policies": ["<value 1>"], "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 953018, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value 1>", "<value 2>"], "source": "body"}]}
         "401":
