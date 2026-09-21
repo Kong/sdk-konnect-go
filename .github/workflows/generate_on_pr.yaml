@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - .speakeasy/gen.yaml
+      - openapi.yaml
     types:
     - opened
     - synchronize
@@ -81,6 +82,11 @@ jobs:
         run: |
           export PATH=${PATH}:$(go env GOPATH)/bin
           make generate.sdk
+
+      - name: Generate interfaces
+        run: |
+          export PATH=${PATH}:$(go env GOPATH)/bin
+          make generate.interfaces
 
       - name: Commit SDK changes to the PR
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
