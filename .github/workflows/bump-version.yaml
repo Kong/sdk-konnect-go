@@ -33,6 +33,10 @@ env:
   MISE_VERBOSE: 1
 
 jobs:
+  github-app-token:
+    uses: ./.github/workflows/__github_app_token.yaml
+    secrets: inherit
+
   check-semver-label:
     runs-on: ubuntu-latest
     outputs:
@@ -125,6 +129,7 @@ jobs:
   reset-version:
     if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'false'
     needs:
+    - github-app-token
     - check-semver-label
     runs-on: ubuntu-latest
     permissions:
@@ -140,7 +145,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.PAT }}
+          token: ${{ needs.github-app-token.outputs.token }}
 
       - name: Check if version needs reset
         id: check_reset
@@ -189,6 +194,7 @@ jobs:
   bump-version:
     if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'true'
     needs:
+    - github-app-token
     - check-semver-label
     runs-on: ubuntu-latest
     permissions:
@@ -208,7 +214,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.PAT }}
+          token: ${{ needs.github-app-token.outputs.token }}
 
       - name: Reset version in gen.yaml to match main
         run: |
@@ -337,6 +343,8 @@ jobs:
 
   manual-bump:
     if: github.event_name == 'workflow_dispatch'
+    needs:
+    - github-app-token
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -350,7 +358,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
-          token: ${{ secrets.PAT }}
+          token: ${{ needs.github-app-token.outputs.token }}
 
       - name: Configure speakeasy CLI
         run: |

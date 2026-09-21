@@ -1,0 +1,40 @@
+name: github-app-token
+
+on:
+  workflow_call:
+    inputs:
+      repositories:
+        description: Newline-separated list of repositories the token can access
+        required: false
+        type: string
+        default: |
+          sdk-konnect-go
+    secrets:
+      GH_APP__KONG_K8S__PRIVATE_KEY:
+        description: "GitHub App private key. Callers that pass secrets explicitly must map this name; secrets: inherit callers need not."
+        required: true
+    outputs:
+      token:
+        description: GitHub App installation token
+        value: ${{ jobs.github-app-token.outputs.token }}
+
+permissions:
+  contents: read
+
+jobs:
+  github-app-token:
+    runs-on: ubuntu-latest
+    outputs:
+      token: ${{ steps.app-token.outputs.token }}
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          egress-policy: audit
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app-token
+        with:
+          client-id: ${{ vars.GH_APP__KONG_K8S__APP_ID }}
+          private-key: ${{ secrets.GH_APP__KONG_K8S__PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ inputs.repositories }}
