@@ -20,6 +20,10 @@ env:
   MISE_VERBOSE: 1
 
 jobs:
+  github-app-token:
+    uses: ./.github/workflows/__github_app_token.yaml
+    secrets: inherit
+
   should-generate:
     runs-on:
       - ubuntu-latest
@@ -34,7 +38,6 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.PAT }}
 
       - name: Get changed files
         id: changed-files
@@ -48,6 +51,7 @@ jobs:
 
   generate:
     needs:
+    - github-app-token
     - should-generate
     permissions:
       contents: write
@@ -64,7 +68,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.PAT }}
+          token: ${{ needs.github-app-token.outputs.token }}
 
       - name: Configure speakeasy CLI
         run: |
