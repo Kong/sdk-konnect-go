@@ -43820,9 +43820,11 @@ components:
         mapping:
           confluent_schema_registry: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig'
           json: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyJsonConfig'
+          inline_schema: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyInlineSchemaConfig'
       oneOf:
         - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig'
         - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyJsonConfig'
+        - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyInlineSchemaConfig'
     EventGatewayConsumeSchemaValidationPolicyJsonConfig:
       description: The configuration of the consume schema validation policy when using JSON parsing without schema.
       type: object
@@ -43962,9 +43964,11 @@ components:
         mapping:
           confluent_schema_registry: '#/components/schemas/EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig'
           json: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyJsonConfig'
+          inline_schema: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig'
       oneOf:
         - $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig'
         - $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyJsonConfig'
+        - $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig'
     EventGatewayProduceSchemaValidationPolicyJsonConfig:
       description: The configuration of the produce schema validation policy when using JSON parsing without schema.
       type: object
@@ -44027,6 +44031,76 @@ components:
           const: confluent_schema_registry
       required:
         - type
+    EventGatewayConsumeSchemaValidationPolicyInlineSchemaConfig:
+      description: |-
+        The configuration of the consume schema validation policy when using an inline schema.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        schema_registry:
+          $ref: '#/components/schemas/SchemaRegistryReference'
+        failure_mode:
+          $ref: '#/components/schemas/ConsumeFailureMode'
+        validate_key:
+          description: |-
+            If true, validate the record key.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        validate_value:
+          description: |-
+            If true, validate the record value.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        key_validation_action:
+          $ref: '#/components/schemas/ConsumeKeyValidationAction'
+        value_validation_action:
+          $ref: '#/components/schemas/ConsumeValueValidationAction'
+        type:
+          type: string
+          const: inline_schema
+      required:
+        - type
+      x-min-runtime-version: '1.3'
+    EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig:
+      description: |-
+        The configuration of the produce schema validation policy when using an inline schema.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        schema_registry:
+          $ref: '#/components/schemas/SchemaRegistryReference'
+        failure_mode:
+          $ref: '#/components/schemas/ProduceFailureMode'
+        validate_key:
+          description: |-
+            If true, validate the record key.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        validate_value:
+          description: |-
+            If true, validate the record value.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        key_validation_action:
+          $ref: '#/components/schemas/ProduceKeyValidationAction'
+        value_validation_action:
+          $ref: '#/components/schemas/ProduceValueValidationAction'
+        type:
+          type: string
+          const: inline_schema
+      required:
+        - type
+      x-min-runtime-version: '1.3'
     EventGatewayACLsPolicy:
       description: Apply Kafka ACLs to virtual cluster traffic.
       type: object
@@ -81532,7 +81606,7 @@ x-input-schemas:
     version: 2.1.1
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
-    version: 1.3.2
+    version: 1.3.3
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
     version: 3.6.0
