@@ -669,10 +669,10 @@ func (s *AIGatewayVaults) CreateAiGatewayVault(ctx context.Context, gatewayID st
 
 // GetAiGatewayVault - Get an AI Gateway Vault
 // Returns the details of a specific AI Gateway vault.
-func (s *AIGatewayVaults) GetAiGatewayVault(ctx context.Context, gatewayID string, vaultID string, opts ...operations.Option) (*operations.GetAiGatewayVaultResponse, error) {
+func (s *AIGatewayVaults) GetAiGatewayVault(ctx context.Context, gatewayID string, vaultIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayVaultResponse, error) {
 	request := operations.GetAiGatewayVaultRequest{
-		GatewayID: gatewayID,
-		VaultID:   vaultID,
+		GatewayID:     gatewayID,
+		VaultIDOrName: vaultIDOrName,
 	}
 
 	o := operations.Options{}
@@ -693,7 +693,7 @@ func (s *AIGatewayVaults) GetAiGatewayVault(ctx context.Context, gatewayID strin
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/vaults/{vaultId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/vaults/{vaultIdOrName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -982,7 +982,7 @@ func (s *AIGatewayVaults) UpdateAiGatewayVault(ctx context.Context, request oper
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/vaults/{vaultId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/vaults/{vaultIdOrName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1280,10 +1280,10 @@ func (s *AIGatewayVaults) UpdateAiGatewayVault(ctx context.Context, request oper
 
 // DeleteAiGatewayVault - Delete an AI Gateway Vault
 // Removes a specific AI Gateway vault.
-func (s *AIGatewayVaults) DeleteAiGatewayVault(ctx context.Context, gatewayID string, vaultID string, opts ...operations.Option) (*operations.DeleteAiGatewayVaultResponse, error) {
+func (s *AIGatewayVaults) DeleteAiGatewayVault(ctx context.Context, gatewayID string, vaultIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayVaultResponse, error) {
 	request := operations.DeleteAiGatewayVaultRequest{
-		GatewayID: gatewayID,
-		VaultID:   vaultID,
+		GatewayID:     gatewayID,
+		VaultIDOrName: vaultIDOrName,
 	}
 
 	o := operations.Options{}
@@ -1304,7 +1304,7 @@ func (s *AIGatewayVaults) DeleteAiGatewayVault(ctx context.Context, gatewayID st
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/vaults/{vaultId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/vaults/{vaultIdOrName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

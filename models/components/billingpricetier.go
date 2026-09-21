@@ -125,8 +125,8 @@ func (u *UnitPriceComponent) GetAmount() string {
 // BillingPriceTier - A price tier used in graduated and volume pricing.
 //
 // At least one price component (flat_price or unit_price) must be set. When
-// UnitConfig is present on the rate card, up_to_amount is expressed in converted
-// billing units.
+// UnitConfig is present on the containing resource, up_to_amount is expressed in
+// converted billing units.
 type BillingPriceTier struct {
 	// Up to and including this quantity will be contained in the tier. If undefined,
 	// the tier is open-ended (the last tier).

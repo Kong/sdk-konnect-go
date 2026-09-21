@@ -54,11 +54,11 @@ func (e *CustomFormSubmitFieldInputType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CustomFormSubmitFieldInput - Submit button. Exactly one submit field is required per form. Server enforces the literal `name: submit`.
+// CustomFormSubmitFieldInput - The form's submit button. Every form must include exactly one. Its `name` is always `submit`.
 type CustomFormSubmitFieldInput struct {
 	Name CustomFormSubmitFieldInputName `json:"name"`
 	Type CustomFormSubmitFieldInputType `json:"type"`
-	// Button label rendered to the developer.
+	// The text displayed on the button.
 	Value string `json:"value"`
 }
 

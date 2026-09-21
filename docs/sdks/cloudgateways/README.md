@@ -51,9 +51,7 @@
 
 ## GetAvailabilityJSON
 
-Get Cloud Gateways Availability JSON document for describing cloud provider and region availability, pricing,
-gateway version availability, and instance type information.
-
+Returns a public JSON document describing the supported cloud providers, regions, gateway versions, and instance types available for Kong Cloud Gateways. Authentication isn't required — query this endpoint to discover valid inputs for network and configuration requests.
 
 ### Example Usage
 
@@ -101,8 +99,8 @@ func main() {
 
 ## ListConfigurations
 
-Returns a paginated collection of configurations across control-planes for an organization (restricted by
-permitted control-plane reads).
+Returns a paginated collection of Cloud Gateway configurations visible to the caller.
+Results are scoped to control planes the caller has permission to read.
 
 
 ### Example Usage
@@ -164,12 +162,14 @@ func main() {
 
 ## CreateConfiguration
 
-Creates a new configuration for a control-plane (restricted by permitted control-plane permissions for
-configurations). This request will replace any existing configuration for the requested control_plane_id and
-control_plane_geo by performing a diff. From this diff, new resources detected in the requested configuration
-will be added, resources not found in the request configuration but in the previous will be deleted, and
-resources found in both will be updated to the requested configuration. Networks referenced in this request that
-are in an offline state will automatically initialize (i.e. move to an initializing state).
+Creates or replaces the Cloud Gateway configuration for a control plane and geo. The request fully describes
+the desired state — Kong diffs it against the current configuration, then adds, removes, or updates data plane
+groups to match. Any network referenced in the request that is currently `offline` automatically transitions
+to `initializing`.
+
+Use `kind: dedicated.v0` (default) for dedicated Cloud Gateways — `version`, `cloud_gateway_network_id`, and
+`autoscale` are required. Use `kind: serverless.v1` for serverless Cloud Gateways — those three fields must
+be omitted.
 
 
 ### Example Usage
@@ -252,7 +252,9 @@ func main() {
 
 ## GetConfiguration
 
-Retrieves a configuration by ID (restricted by permitted control-plane read).
+Retrieves a single Cloud Gateway configuration by ID, including the current state of each deployed
+data plane group. Access is restricted to control planes the caller has permission to read.
+
 
 ### Example Usage
 
@@ -309,7 +311,10 @@ func main() {
 
 ## ListNetworks
 
-Returns a paginated list of networks.
+Returns a paginated list of Cloud Gateway networks visible to the caller. Filter by
+`state` to narrow results — for example, poll for `state=ready` to find networks
+available for data plane group configurations.
+
 
 ### Example Usage
 
@@ -370,7 +375,9 @@ func main() {
 
 ## CreateNetwork
 
-Creates a new network for a given provider account.
+Creates a new Cloud Gateway network in the specified provider account and region. Network creation is
+asynchronous — the network starts in `initializing` state and transitions to `ready` once provisioned.
+
 
 ### Example Usage
 
@@ -447,7 +454,7 @@ func main() {
 
 ## GetNetwork
 
-Retrieves a network by ID.
+Retrieves a Cloud Gateway network by ID, including its current state and provider metadata.
 
 ### Example Usage
 
@@ -504,7 +511,7 @@ func main() {
 
 ## UpdateNetwork
 
-Updates a network by ID.
+Updates a Cloud Gateway network by ID. You can also rename the network.
 
 ### Example Usage
 
@@ -574,7 +581,7 @@ func main() {
 
 ## DeleteNetwork
 
-Deletes a network by ID.
+Deletes a Cloud Gateway network by ID. The network cannot be referenced by any active configuration before it can be deleted.
 
 ### Example Usage
 
@@ -632,7 +639,7 @@ func main() {
 
 ## ListTransitGateways
 
-Returns a paginated collection of transit gateways for a given network.
+Returns a paginated collection of transit gateways attached to a given network.
 
 ### Example Usage
 
@@ -695,7 +702,12 @@ func main() {
 
 ## CreateTransitGateway
 
-Creates a new transit gateway for a given network.
+Creates a new transit gateway attachment for a given network. The attachment type is determined by the
+`transit_gateway_attachment_config.kind` field. Supported types: `aws-transit-gateway-attachment`,
+`aws-vpc-peering-attachment`, `aws-resource-endpoint-attachment`, `azure-vnet-peering-attachment`,
+`azure-vhub-peering-attachment`, and `gcp-vpc-peering-attachment`. Creation is asynchronous —
+the transit gateway starts in `initializing` state and transitions to `ready` once provisioned.
+
 
 ### Example Usage
 
@@ -787,7 +799,7 @@ func main() {
 
 ## GetTransitGateway
 
-Retrieves a transit gateway by ID for a given network.
+Retrieves a transit gateway by ID, including its current state and attachment configuration.
 
 ### Example Usage
 
@@ -859,7 +871,9 @@ func main() {
 
 ## UpdateTransitGateway
 
-Updates a transit gateway by ID for a given network.
+Updates a transit gateway by ID. Supports updating CIDR blocks on an AWS Transit Gateway, or updating
+the resource endpoint configuration on an AWS Resource Endpoint gateway.
+
 
 ### Example Usage
 
@@ -941,7 +955,7 @@ func main() {
 
 ## DeleteTransitGateway
 
-Deletes a transit gateway by ID for a given network.
+Deletes a transit gateway by ID. The transit gateway must be in a non-transitional state before deletion.
 
 ### Example Usage
 
@@ -1000,7 +1014,7 @@ func main() {
 
 ## ListPrivateDNS
 
-Returns a paginated collection of Private DNS for a given network.
+Returns a paginated collection of private DNS attachments for a given network.
 
 ### Example Usage
 
@@ -1063,7 +1077,11 @@ func main() {
 
 ## CreatePrivateDNS
 
-Creates a new Private DNS for a given network.
+Creates a new private DNS attachment for a given network. The attachment type is determined by
+`private_dns_attachment_config.kind`. Supported types: `aws-private-hosted-zone-attachment`,
+`aws-outbound-resolver`, `gcp-private-hosted-zone-attachment`, `azure-private-hosted-zone-attachment`,
+and `azure-outbound-resolver`.
+
 
 ### Example Usage
 
@@ -1147,7 +1165,7 @@ func main() {
 
 ## GetPrivateDNS
 
-Retrieves a Private DNS by ID for a given network.
+Retrieves a private DNS attachment by ID, including its current state and attachment configuration.
 
 ### Example Usage
 
@@ -1217,7 +1235,9 @@ func main() {
 
 ## UpdatePrivateDNS
 
-Updates a Private DNS by ID for a given network.
+Updates a private DNS attachment by ID. Supports updating the name or DNS resolver configuration
+for AWS Outbound Resolver and Azure Outbound Resolver attachment types.
+
 
 ### Example Usage
 
@@ -1312,7 +1332,10 @@ func main() {
 
 ## DeletePrivateDNS
 
-Deletes a Private DNS by ID for a given network.
+Deletes a Private DNS attachment by ID. The attachment must be in a stable state (`ready`
+or `error`) before deletion — requests against attachments in a transitional state
+(`initializing`, `terminating`) will be rejected.
+
 
 ### Example Usage
 
@@ -1371,7 +1394,8 @@ func main() {
 
 ## ListNetworkConfigurations
 
-Returns a paginated collection of configurations that reference a network.
+Returns a paginated list of data plane group configurations that reference a given network.
+Use this to determine which control planes are using a network before renaming or deleting it.
 
 
 ### Example Usage
@@ -1435,7 +1459,7 @@ func main() {
 
 ## ListProviderAccounts
 
-Returns a a paginated collection of provider accounts for an organization.
+Returns a paginated list of provider accounts linked to the organization. Filter by cloud provider to see accounts for a specific CSP.
 
 ### Example Usage
 
@@ -1508,7 +1532,7 @@ func main() {
 
 ## CreateProviderAccount
 
-Creates a new provider account for an organization.
+Creates a new provider account by linking a cloud provider account to the organization via automatic account vending.
 
 ### Example Usage
 
@@ -1568,7 +1592,7 @@ func main() {
 
 ## GetProviderAccount
 
-Retrieves a provider account by ID.
+Retrieves a single provider account by ID, including the associated cloud provider and cloud account ID.
 
 ### Example Usage
 
@@ -1625,7 +1649,7 @@ func main() {
 
 ## DeleteProviderAccount
 
-Deletes a provider account by ID.
+Deletes a provider account by ID. The request is rejected if any networks are still associated with this provider account.
 
 ### Example Usage
 
@@ -1683,8 +1707,8 @@ func main() {
 
 ## ListCustomDomains
 
-Returns a paginated collection of custom domains across control-planes for an organization (restricted by
-permitted control-plane reads).
+Returns a paginated list of custom domains across all control planes in the organization,
+scoped to control planes you have read access to.
 
 
 ### Example Usage
@@ -1747,8 +1771,12 @@ func main() {
 
 ## CreateCustomDomains
 
-Creates a new custom domain for a control-plane (restricted by permitted control-plane associate-custom-domain
-action).
+Registers a custom domain for a control plane. After creation, Konnect provisions a TLS
+certificate and configures SNI routing, transitioning the domain through
+`initializing → ready`. To complete setup, configure two CNAME records at your DNS
+registrar: one pointing your domain to the Konnect gateway hostname, and one pointing
+`_acme-challenge.<your-domain>` to the ACME challenge hostname provided by Konnect.
+Use the online-status endpoint to verify both records are correctly configured.
 
 
 ### Example Usage
@@ -1812,7 +1840,7 @@ func main() {
 
 ## GetCustomDomain
 
-Retrieves a custom domain by ID (restricted by permitted control-plane reads).
+Retrieves a single custom domain by ID, including its current lifecycle state and any error metadata.
 
 ### Example Usage
 
@@ -1869,7 +1897,7 @@ func main() {
 
 ## DeleteCustomDomain
 
-Deletes a custom domain by ID (restricted by permitted control-plane reads).
+Deletes a custom domain by ID, removing the associated TLS certificate and SNI configuration from the control plane's data planes.
 
 ### Example Usage
 
@@ -1927,7 +1955,7 @@ func main() {
 
 ## GetCustomDomainOnlineStatus
 
-Retrieves the CNAME and SSL status of a custom domain.
+Checks whether the primary domain CNAME and ACME challenge CNAME records are correctly configured at your DNS registrar. Returns `verified` or `unverified` for each.
 
 ### Example Usage
 
@@ -1984,8 +2012,8 @@ func main() {
 
 ## ListDefaultResourceQuotas
 
-Returns a paginated collection of default resource quotas for cloud-gateways, along with
-organizationally-defined overrides for those resource quotas.
+Returns the platform-default resource quotas for Cloud Gateways, along with any
+organization-level overrides. Use this to view the effective limits for your organization.
 
 
 ### Example Usage
@@ -2044,7 +2072,10 @@ func main() {
 
 ## ListResourceQuotas
 
-Returns a paginated collection of resource quotas for an organization.
+Returns organization-specific resource quota overrides that take precedence over platform
+defaults. Each quota enforces a count limit on a specific Cloud Gateway resource type —
+including active networks, data planes, serverless data planes, data plane groups, and
+provider accounts per cloud provider.
 
 
 ### Example Usage
@@ -2103,8 +2134,7 @@ func main() {
 
 ## CreateResourceQuota
 
-Creates a new resource quota, scoped to a given resource, for an organization.
-
+Creates an organization-level resource quota override for a specific resource type, replacing the platform default.
 
 ### Example Usage
 
@@ -2165,7 +2195,7 @@ func main() {
 
 ## GetResourceQuota
 
-Retrieves a resource quota by ID.
+Retrieves a single organization-level resource quota override by ID.
 
 ### Example Usage
 
@@ -2222,7 +2252,7 @@ func main() {
 
 ## UpdateResourceQuota
 
-Updates a resource quota by ID.
+Updates the value of an existing organization-level resource quota override.
 
 ### Example Usage
 
@@ -2283,10 +2313,10 @@ func main() {
 
 ## ListDefaultResourceConfigurations
 
-Returns a paginated collection of default resource configurations for cloud-gateways, along with
-organizationally-defined overrides for those resource configurations.
-Resource configurations are settings that are applied to all cloud gateway resources in an organization.
-For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
+Returns the platform-default resource configurations for Cloud Gateways, along with any
+organization-level overrides. Resource configurations are behavioral settings applied to
+Cloud Gateway resources — for example, the idle timeout for data plane groups.
+Use this to view the effective settings for your organization.
 
 
 ### Example Usage
@@ -2345,9 +2375,10 @@ func main() {
 
 ## ListResourceConfigurations
 
-Returns a paginated collection of resource configurations for an organization.
-Resource configurations are settings that are applied to all cloud gateway resources in an organization.
-For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
+Returns organization-specific resource configuration overrides that take precedence over
+platform defaults. Each configuration controls a behavioral setting for a specific Cloud
+Gateway resource type — for example, `data-plane-group-idle-timeout-minutes` sets how long
+a data plane group can remain idle before it scales to zero instances.
 
 
 ### Example Usage
@@ -2406,8 +2437,7 @@ func main() {
 
 ## CreateResourceConfiguration
 
-Creates a new resource configuration for an organization.
-
+Creates an organization-level resource configuration override, replacing the platform default for that configuration.
 
 ### Example Usage
 
@@ -2468,7 +2498,7 @@ func main() {
 
 ## GetResourceConfiguration
 
-Retrieves a resource configuration by ID.
+Retrieves a single organization-level resource configuration override by ID. Returns the qualifier, override value, and description for the configuration setting.
 
 ### Example Usage
 
@@ -2525,7 +2555,7 @@ func main() {
 
 ## UpdateResourceConfiguration
 
-Updates a resource configuration by ID.
+Updates the value of an existing organization-level resource configuration override.
 
 ### Example Usage
 
@@ -2587,8 +2617,10 @@ func main() {
 
 ## CreateAddOn
 
-Creates a new add-on. Specific add-on types (e.g., managed cache)
-are defined by the sub-kind configuration.
+Creates a new add-on for a control plane or control plane group. The add-on type is
+determined by the `config.kind` field — currently only `managed-cache.v0` is supported,
+which provisions a Redis-compatible cache co-located with your data planes. After it's created,
+the add-on transitions through `initializing → ready` as it deploys across data plane groups.
 
 
 ### Example Usage
@@ -2671,7 +2703,8 @@ func main() {
 
 ## ListAddOns
 
-Returns a paginated collection of add-ons for an organization.
+Returns a paginated list of add-ons for the organization. Use filter parameters to narrow
+results by owner (control plane or control plane group), lifecycle state, or config kind.
 
 
 ### Example Usage
@@ -2733,7 +2766,7 @@ func main() {
 
 ## GetAddOn
 
-Retrieves an add-on by ID.
+Retrieves a single add-on by ID, including its current lifecycle state and per data plane group deployment status.
 
 ### Example Usage
 
@@ -2796,7 +2829,8 @@ func main() {
 
 ## DeleteAddOn
 
-Deletes an add-on by ID. The request will be rejected if the managed cache partial is still in use by some plugins.
+Deletes an add-on by ID. The request is rejected if any Kong plugins are still referencing
+the managed cache add-on — remove those plugin references before deleting.
 
 
 ### Example Usage
@@ -2855,7 +2889,9 @@ func main() {
 
 ## UpdateAddOn
 
-Updates the configuration of an existing add-on.
+Updates the configuration of an existing add-on, such as changing the managed cache
+capacity tier. Tier upgrades are supported; downgrades are not.
+
 
 ### Example Usage
 

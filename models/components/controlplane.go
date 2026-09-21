@@ -131,6 +131,11 @@ type ControlPlane struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// CP configuration object for related access endpoints.
 	Config Config `json:"config"`
 	// An ISO-8604 timestamp representation of control plane creation date.
@@ -176,6 +181,13 @@ func (c *ControlPlane) GetLabels() map[string]string {
 		return map[string]string{}
 	}
 	return c.Labels
+}
+
+func (c *ControlPlane) GetManagedBy() map[string]string {
+	if c == nil {
+		return nil
+	}
+	return c.ManagedBy
 }
 
 func (c *ControlPlane) GetConfig() Config {

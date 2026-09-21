@@ -8,7 +8,14 @@ import (
 
 // ControlPlaneGeoFieldNotEqualsFilter - Filter a control-plane geo by inequality match.
 type ControlPlaneGeoFieldNotEqualsFilter struct {
-	// Set of control-plane geos supported for deploying cloud-gateways configurations.
+	// Geographic region of the control plane. Supported values:
+	// - `us` — United States
+	// - `eu` — Europe
+	// - `au` — Australia
+	// - `me` — Middle East
+	// - `in` — India
+	// - `sg` — Singapore
+	//
 	Neq ControlPlaneGeo `queryParam:"name=neq"`
 }
 

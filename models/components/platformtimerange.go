@@ -48,7 +48,14 @@ func CreatePlatformTimeRangeAbsolute(absolute MetricsAbsoluteTimeRangeDtoV2) Pla
 	}
 }
 
-func (u *PlatformTimeRange) UnmarshalJSON(data []byte) error {
+func (u *PlatformTimeRange) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PlatformTimeRange{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

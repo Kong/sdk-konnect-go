@@ -3,37 +3,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayRedisAzureAuthenticationType string
-
-const (
-	AIGatewayRedisAzureAuthenticationTypeAzure AIGatewayRedisAzureAuthenticationType = "azure"
-)
-
-func (e AIGatewayRedisAzureAuthenticationType) ToPointer() *AIGatewayRedisAzureAuthenticationType {
-	return &e
-}
-func (e *AIGatewayRedisAzureAuthenticationType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "azure":
-		*e = AIGatewayRedisAzureAuthenticationType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayRedisAzureAuthenticationType: %v", v)
-	}
-}
-
 // AIGatewayRedisAzureAuthentication - Azure specific configs for connecting to a Cloud Provider's redis instance.
 type AIGatewayRedisAzureAuthentication struct {
-	Type AIGatewayRedisAzureAuthenticationType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"azure" json:"type"`
 	// Azure Client ID.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -41,7 +17,7 @@ type AIGatewayRedisAzureAuthentication struct {
 	// Azure Client Secret.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	Secret *string `json:"secret,omitempty"`
+	ClientSecret *string `json:"client_secret,omitempty"`
 	// Azure Tenant ID.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -59,11 +35,8 @@ func (a *AIGatewayRedisAzureAuthentication) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayRedisAzureAuthentication) GetType() AIGatewayRedisAzureAuthenticationType {
-	if a == nil {
-		return AIGatewayRedisAzureAuthenticationType("")
-	}
-	return a.Type
+func (a *AIGatewayRedisAzureAuthentication) GetType() string {
+	return "azure"
 }
 
 func (a *AIGatewayRedisAzureAuthentication) GetClientID() *string {
@@ -73,11 +46,11 @@ func (a *AIGatewayRedisAzureAuthentication) GetClientID() *string {
 	return a.ClientID
 }
 
-func (a *AIGatewayRedisAzureAuthentication) GetSecret() *string {
+func (a *AIGatewayRedisAzureAuthentication) GetClientSecret() *string {
 	if a == nil {
 		return nil
 	}
-	return a.Secret
+	return a.ClientSecret
 }
 
 func (a *AIGatewayRedisAzureAuthentication) GetTenantID() *string {

@@ -31,17 +31,26 @@ func (e *CustomFormCheckboxFieldType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CustomFormCheckboxField - Single boolean checkbox.
+// CustomFormCheckboxField - A single checkbox.
 type CustomFormCheckboxField struct {
-	// Stable slug for the field (letters, digits, underscores, or hyphens). Immutable for the life of the field; renames are achieved by editing `label`. Acts as the join key for stored responses. Optional on create — server slugifies `label` when omitted.
+	// A stable, URL-safe slug identifying the field (letters, digits,
+	// underscores, or hyphens). When omitted, `label` is slugified instead.
+	//
+	// Used to match up stored responses across edits.
 	//
 	Name  string                      `json:"name"`
 	Type  CustomFormCheckboxFieldType `json:"type"`
 	Label string                      `json:"label"`
-	// Supports MDC markdown — useful for embedding links to terms.
+	// Supports Markdown formatting — useful for linking to terms and conditions.
 	Description *string `json:"description,omitempty"`
-	Required    *bool   `json:"required,omitempty"`
-	// Response-only flag. Marks fields sourced from the default schema for the form's type. Built-in fields cannot be removed or have their type or label changed; `placeholder`, `description`, and `required` remain editable. Rejected on request bodies via `additionalProperties: false` on the request-side field schemas.
+	Required    *bool   `default:"false" json:"required"`
+	// Marks a field that comes with the form by default.
+	//
+	// Built-in fields can't be removed, retyped, or relabeled, but their
+	// `placeholder`, `description`, and `required` settings can still be changed.
+	//
+	// This flag is read-only — it's returned by the API but can't be set when
+	// creating or updating a form.
 	//
 	BuiltIn bool `json:"built_in"`
 }

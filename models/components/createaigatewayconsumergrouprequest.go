@@ -2,17 +2,13 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type CreateAIGatewayConsumerGroupRequest struct {
 	// The display name for this consumer group instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this consumer group, used as a stable human-readable reference.
+	// A user-defined unique identifier for this consumer group, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// List of policy references.
-	Policies []string `json:"policies"`
+	Policies []string `json:"policies,omitempty"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -24,19 +20,7 @@ type CreateAIGatewayConsumerGroupRequest struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy            map[string]string `json:"managed_by,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
-}
-
-func (c CreateAIGatewayConsumerGroupRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateAIGatewayConsumerGroupRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (c *CreateAIGatewayConsumerGroupRequest) GetDisplayName() string {
@@ -55,7 +39,7 @@ func (c *CreateAIGatewayConsumerGroupRequest) GetName() string {
 
 func (c *CreateAIGatewayConsumerGroupRequest) GetPolicies() []string {
 	if c == nil {
-		return []string{}
+		return nil
 	}
 	return c.Policies
 }
@@ -72,11 +56,4 @@ func (c *CreateAIGatewayConsumerGroupRequest) GetManagedBy() map[string]string {
 		return nil
 	}
 	return c.ManagedBy
-}
-
-func (c *CreateAIGatewayConsumerGroupRequest) GetAdditionalProperties() map[string]any {
-	if c == nil {
-		return nil
-	}
-	return c.AdditionalProperties
 }

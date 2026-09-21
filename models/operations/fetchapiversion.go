@@ -3,6 +3,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -12,6 +13,20 @@ type FetchAPIVersionRequest struct {
 	APIID string `pathParam:"style=simple,explode=false,name=apiId"`
 	// The API version identifier
 	VersionID string `pathParam:"style=simple,explode=false,name=versionId"`
+	// The format of the returned `spec.content`. Defaults to `json`.
+	//
+	SpecFormat *components.SpecFormatSchema `default:"json" queryParam:"style=form,explode=true,name=spec_format"`
+}
+
+func (f FetchAPIVersionRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FetchAPIVersionRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (f *FetchAPIVersionRequest) GetAPIID() string {
@@ -26,6 +41,13 @@ func (f *FetchAPIVersionRequest) GetVersionID() string {
 		return ""
 	}
 	return f.VersionID
+}
+
+func (f *FetchAPIVersionRequest) GetSpecFormat() *components.SpecFormatSchema {
+	if f == nil {
+		return nil
+	}
+	return f.SpecFormat
 }
 
 type FetchAPIVersionResponse struct {

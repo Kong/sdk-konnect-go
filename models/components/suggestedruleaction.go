@@ -62,7 +62,14 @@ func CreateSuggestedRuleActionCreateOrMapAction(createOrMapAction CreateOrMapAct
 	}
 }
 
-func (u *SuggestedRuleAction) UnmarshalJSON(data []byte) error {
+func (u *SuggestedRuleAction) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SuggestedRuleAction{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var mapActionPayload MapActionPayload = MapActionPayload{}
 	if err := utils.UnmarshalJSON(data, &mapActionPayload, "", true, nil); err == nil {

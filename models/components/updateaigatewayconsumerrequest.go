@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateAIGatewayConsumerRequestType - The type of the consumer.
 type UpdateAIGatewayConsumerRequestType string
 
@@ -33,14 +29,14 @@ func (e *UpdateAIGatewayConsumerRequestType) IsExact() bool {
 type UpdateAIGatewayConsumerRequest struct {
 	// The display name for this consumer instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this consumer, used as a stable human-readable reference.
+	// A user-defined unique identifier for this consumer, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// The type of the consumer.
 	Type UpdateAIGatewayConsumerRequestType `json:"type"`
 	// Identifier for mapping the consumer when using OAuth authentication.
 	CustomID *string `json:"custom_id,omitempty"`
 	// List of policy references.
-	Policies []string `json:"policies"`
+	Policies []string `json:"policies,omitempty"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -52,19 +48,7 @@ type UpdateAIGatewayConsumerRequest struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy            map[string]string `json:"managed_by,omitempty"`
-	AdditionalProperties map[string]any    `additionalProperties:"true" json:"-"`
-}
-
-func (u UpdateAIGatewayConsumerRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateAIGatewayConsumerRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (u *UpdateAIGatewayConsumerRequest) GetDisplayName() string {
@@ -97,7 +81,7 @@ func (u *UpdateAIGatewayConsumerRequest) GetCustomID() *string {
 
 func (u *UpdateAIGatewayConsumerRequest) GetPolicies() []string {
 	if u == nil {
-		return []string{}
+		return nil
 	}
 	return u.Policies
 }
@@ -114,11 +98,4 @@ func (u *UpdateAIGatewayConsumerRequest) GetManagedBy() map[string]string {
 		return nil
 	}
 	return u.ManagedBy
-}
-
-func (u *UpdateAIGatewayConsumerRequest) GetAdditionalProperties() map[string]any {
-	if u == nil {
-		return nil
-	}
-	return u.AdditionalProperties
 }

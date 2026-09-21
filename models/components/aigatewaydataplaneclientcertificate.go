@@ -7,6 +7,111 @@ import (
 	"time"
 )
 
+// AIGatewayDataPlaneClientCertificateMetadata - Metadata extracted from the certificate.
+type AIGatewayDataPlaneClientCertificateMetadata struct {
+	// The certificate subject.
+	Subject *string `json:"subject,omitempty"`
+	// The certificate issuer.
+	Issuer *string `json:"issuer,omitempty"`
+	// Subject alternative names (deprecated).
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	SanNames []string `json:"san_names,omitempty"`
+	// Unix timestamp of certificate expiry.
+	Expiry *int64 `json:"expiry,omitempty"`
+	// Key usage types for the certificate.
+	KeyUsages []string `json:"key_usages,omitempty"`
+	// Server Name Indications associated with the certificate.
+	Snis []string `json:"snis,omitempty"`
+	// DNS subject alternative names.
+	DNSNames []string `json:"dns_names,omitempty"`
+	// Email subject alternative names.
+	EmailAddresses []string `json:"email_addresses,omitempty"`
+	// IP subject alternative names.
+	IPAddresses []string `json:"ip_addresses,omitempty"`
+	// URI subject alternative names.
+	Uris []string `json:"uris,omitempty"`
+	// Whether the certificate is a CA certificate.
+	IsCa *bool `json:"is_ca,omitempty"`
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetSubject() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Subject
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetIssuer() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Issuer
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetSanNames() []string {
+	if a == nil {
+		return nil
+	}
+	return a.SanNames
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetExpiry() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.Expiry
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetKeyUsages() []string {
+	if a == nil {
+		return nil
+	}
+	return a.KeyUsages
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetSnis() []string {
+	if a == nil {
+		return nil
+	}
+	return a.Snis
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetDNSNames() []string {
+	if a == nil {
+		return nil
+	}
+	return a.DNSNames
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetEmailAddresses() []string {
+	if a == nil {
+		return nil
+	}
+	return a.EmailAddresses
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetIPAddresses() []string {
+	if a == nil {
+		return nil
+	}
+	return a.IPAddresses
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetUris() []string {
+	if a == nil {
+		return nil
+	}
+	return a.Uris
+}
+
+func (a *AIGatewayDataPlaneClientCertificateMetadata) GetIsCa() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.IsCa
+}
+
 type AIGatewayDataPlaneClientCertificate struct {
 	// JSON escaped string of the certificate.
 	Cert string `json:"cert"`
@@ -14,12 +119,26 @@ type AIGatewayDataPlaneClientCertificate struct {
 	Title string `json:"title"`
 	// An optional description of the certificate.
 	Description *string `json:"description,omitempty"`
+	// Public labels store information about an entity that can be used for filtering a list of objects.
+	//
+	// Public labels are intended to store **PUBLIC** metadata.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
+	Labels map[string]string `json:"labels,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
+	// Metadata extracted from the certificate.
+	Metadata *AIGatewayDataPlaneClientCertificateMetadata `json:"metadata,omitempty"`
 }
 
 func (a AIGatewayDataPlaneClientCertificate) MarshalJSON() ([]byte, error) {
@@ -54,6 +173,20 @@ func (a *AIGatewayDataPlaneClientCertificate) GetDescription() *string {
 	return a.Description
 }
 
+func (a *AIGatewayDataPlaneClientCertificate) GetLabels() map[string]string {
+	if a == nil {
+		return nil
+	}
+	return a.Labels
+}
+
+func (a *AIGatewayDataPlaneClientCertificate) GetManagedBy() map[string]string {
+	if a == nil {
+		return nil
+	}
+	return a.ManagedBy
+}
+
 func (a *AIGatewayDataPlaneClientCertificate) GetID() string {
 	if a == nil {
 		return ""
@@ -73,4 +206,11 @@ func (a *AIGatewayDataPlaneClientCertificate) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
+}
+
+func (a *AIGatewayDataPlaneClientCertificate) GetMetadata() *AIGatewayDataPlaneClientCertificateMetadata {
+	if a == nil {
+		return nil
+	}
+	return a.Metadata
 }

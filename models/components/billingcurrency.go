@@ -48,7 +48,14 @@ func CreateBillingCurrencyCustom(custom BillingCurrencyCustom) BillingCurrency {
 	}
 }
 
-func (u *BillingCurrency) UnmarshalJSON(data []byte) error {
+func (u *BillingCurrency) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = BillingCurrency{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

@@ -74,6 +74,11 @@ type CreateControlPlaneRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (c *CreateControlPlaneRequest) GetName() string {
@@ -123,4 +128,11 @@ func (c *CreateControlPlaneRequest) GetLabels() map[string]string {
 		return nil
 	}
 	return c.Labels
+}
+
+func (c *CreateControlPlaneRequest) GetManagedBy() map[string]string {
+	if c == nil {
+		return nil
+	}
+	return c.ManagedBy
 }

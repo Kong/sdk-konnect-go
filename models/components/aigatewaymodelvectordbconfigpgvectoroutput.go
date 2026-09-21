@@ -3,33 +3,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type Strategy string
-
-const (
-	StrategyPgvector Strategy = "pgvector"
-)
-
-func (e Strategy) ToPointer() *Strategy {
-	return &e
-}
-func (e *Strategy) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pgvector":
-		*e = Strategy(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Strategy: %v", v)
-	}
-}
 
 // DistanceMetric - the distance metric to use for vector searches
 type DistanceMetric string
@@ -147,7 +122,8 @@ func (s *Ssl) GetVersion() *Version {
 }
 
 type AIGatewayModelVectorDBConfigPgVectorOutput struct {
-	Strategy Strategy `json:"strategy"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"pgvector" json:"type"`
 	// the desired dimensionality for the vectors
 	Dimensions int64 `json:"dimensions"`
 	// the distance metric to use for vector searches
@@ -174,17 +150,14 @@ func (a AIGatewayModelVectorDBConfigPgVectorOutput) MarshalJSON() ([]byte, error
 }
 
 func (a *AIGatewayModelVectorDBConfigPgVectorOutput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"strategy", "dimensions", "distance_metric"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "dimensions", "distance_metric"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayModelVectorDBConfigPgVectorOutput) GetStrategy() Strategy {
-	if a == nil {
-		return Strategy("")
-	}
-	return a.Strategy
+func (a *AIGatewayModelVectorDBConfigPgVectorOutput) GetType() string {
+	return "pgvector"
 }
 
 func (a *AIGatewayModelVectorDBConfigPgVectorOutput) GetDimensions() int64 {
@@ -251,7 +224,8 @@ func (a *AIGatewayModelVectorDBConfigPgVectorOutput) GetUser() *string {
 }
 
 type AIGatewayModelVectorDBConfigPgVector struct {
-	Strategy Strategy `json:"strategy"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"pgvector" json:"type"`
 	// the desired dimensionality for the vectors
 	Dimensions int64 `json:"dimensions"`
 	// the distance metric to use for vector searches
@@ -282,17 +256,14 @@ func (a AIGatewayModelVectorDBConfigPgVector) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayModelVectorDBConfigPgVector) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"strategy", "dimensions", "distance_metric"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "dimensions", "distance_metric"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayModelVectorDBConfigPgVector) GetStrategy() Strategy {
-	if a == nil {
-		return Strategy("")
-	}
-	return a.Strategy
+func (a *AIGatewayModelVectorDBConfigPgVector) GetType() string {
+	return "pgvector"
 }
 
 func (a *AIGatewayModelVectorDBConfigPgVector) GetDimensions() int64 {

@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // QueryFilterStringMapItem - A query filter for an item in a string map attribute. Operators are mutually
 // exclusive, only one operator is allowed at a time.
 type QueryFilterStringMapItem struct {
@@ -23,6 +27,17 @@ type QueryFilterStringMapItem struct {
 	And []QueryFilterString `json:"and,omitempty"`
 	// Combines the provided filters with a logical OR.
 	Or []QueryFilterString `json:"or,omitempty"`
+}
+
+func (q QueryFilterStringMapItem) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(q, "", false)
+}
+
+func (q *QueryFilterStringMapItem) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &q, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (q *QueryFilterStringMapItem) GetExists() *bool {

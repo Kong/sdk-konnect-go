@@ -34,6 +34,10 @@ custom := components.RoleName("custom_value")
 | `RoleNameDiscoveryAdmin`            | Discovery Admin                     |
 | `RoleNameDiscoveryViewer`           | Discovery Viewer                    |
 | `RoleNameEditor`                    | Editor                              |
+| `RoleNameEnvironmentsAdmin`         | Environments Admin                  |
+| `RoleNameEnvironmentsCreator`       | Environments Creator                |
+| `RoleNameEnvironmentsUser`          | Environments User                   |
+| `RoleNameEnvironmentsViewer`        | Environments Viewer                 |
 | `RoleNameGatewayServiceAdmin`       | Gateway Service Admin               |
 | `RoleNameIntegrationAdmin`          | Integration Admin                   |
 | `RoleNameIntegrationViewer`         | Integration Viewer                  |

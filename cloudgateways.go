@@ -33,8 +33,7 @@ func newCloudGateways(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *ho
 }
 
 // GetAvailabilityJSON - Get Resource Availability JSON
-// Get Cloud Gateways Availability JSON document for describing cloud provider and region availability, pricing,
-// gateway version availability, and instance type information.
+// Returns a public JSON document describing the supported cloud providers, regions, gateway versions, and instance types available for Kong Cloud Gateways. Authentication isn't required — query this endpoint to discover valid inputs for network and configuration requests.
 func (s *CloudGateways) GetAvailabilityJSON(ctx context.Context, opts ...operations.Option) (*operations.GetAvailabilityJSONResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -234,8 +233,8 @@ func (s *CloudGateways) GetAvailabilityJSON(ctx context.Context, opts ...operati
 }
 
 // ListConfigurations - List Configurations
-// Returns a paginated collection of configurations across control-planes for an organization (restricted by
-// permitted control-plane reads).
+// Returns a paginated collection of Cloud Gateway configurations visible to the caller.
+// Results are scoped to control planes the caller has permission to read.
 func (s *CloudGateways) ListConfigurations(ctx context.Context, request operations.ListConfigurationsRequest, opts ...operations.Option) (*operations.ListConfigurationsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -506,12 +505,14 @@ func (s *CloudGateways) ListConfigurations(ctx context.Context, request operatio
 }
 
 // CreateConfiguration - Create Configuration
-// Creates a new configuration for a control-plane (restricted by permitted control-plane permissions for
-// configurations). This request will replace any existing configuration for the requested control_plane_id and
-// control_plane_geo by performing a diff. From this diff, new resources detected in the requested configuration
-// will be added, resources not found in the request configuration but in the previous will be deleted, and
-// resources found in both will be updated to the requested configuration. Networks referenced in this request that
-// are in an offline state will automatically initialize (i.e. move to an initializing state).
+// Creates or replaces the Cloud Gateway configuration for a control plane and geo. The request fully describes
+// the desired state — Kong diffs it against the current configuration, then adds, removes, or updates data plane
+// groups to match. Any network referenced in the request that is currently `offline` automatically transitions
+// to `initializing`.
+//
+// Use `kind: dedicated.v0` (default) for dedicated Cloud Gateways — `version`, `cloud_gateway_network_id`, and
+// `autoscale` are required. Use `kind: serverless.v1` for serverless Cloud Gateways — those three fields must
+// be omitted.
 func (s *CloudGateways) CreateConfiguration(ctx context.Context, request components.CreateConfigurationRequest, opts ...operations.Option) (*operations.CreateConfigurationResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -827,7 +828,8 @@ func (s *CloudGateways) CreateConfiguration(ctx context.Context, request compone
 }
 
 // GetConfiguration - Get Configuration
-// Retrieves a configuration by ID (restricted by permitted control-plane read).
+// Retrieves a single Cloud Gateway configuration by ID, including the current state of each deployed
+// data plane group. Access is restricted to control planes the caller has permission to read.
 func (s *CloudGateways) GetConfiguration(ctx context.Context, configurationID string, opts ...operations.Option) (*operations.GetConfigurationResponse, error) {
 	request := operations.GetConfigurationRequest{
 		ConfigurationID: configurationID,
@@ -1098,7 +1100,9 @@ func (s *CloudGateways) GetConfiguration(ctx context.Context, configurationID st
 }
 
 // ListNetworks - List Networks
-// Returns a paginated list of networks.
+// Returns a paginated list of Cloud Gateway networks visible to the caller. Filter by
+// `state` to narrow results — for example, poll for `state=ready` to find networks
+// available for data plane group configurations.
 func (s *CloudGateways) ListNetworks(ctx context.Context, request operations.ListNetworksRequest, opts ...operations.Option) (*operations.ListNetworksResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1369,7 +1373,8 @@ func (s *CloudGateways) ListNetworks(ctx context.Context, request operations.Lis
 }
 
 // CreateNetwork - Create Network
-// Creates a new network for a given provider account.
+// Creates a new Cloud Gateway network in the specified provider account and region. Network creation is
+// asynchronous — the network starts in `initializing` state and transitions to `ready` once provisioned.
 func (s *CloudGateways) CreateNetwork(ctx context.Context, request components.CreateNetworkRequest, opts ...operations.Option) (*operations.CreateNetworkResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1664,7 +1669,7 @@ func (s *CloudGateways) CreateNetwork(ctx context.Context, request components.Cr
 }
 
 // GetNetwork - Get Network
-// Retrieves a network by ID.
+// Retrieves a Cloud Gateway network by ID, including its current state and provider metadata.
 func (s *CloudGateways) GetNetwork(ctx context.Context, networkID string, opts ...operations.Option) (*operations.GetNetworkResponse, error) {
 	request := operations.GetNetworkRequest{
 		NetworkID: networkID,
@@ -1935,7 +1940,7 @@ func (s *CloudGateways) GetNetwork(ctx context.Context, networkID string, opts .
 }
 
 // UpdateNetwork - Update Network
-// Updates a network by ID.
+// Updates a Cloud Gateway network by ID. You can also rename the network.
 func (s *CloudGateways) UpdateNetwork(ctx context.Context, networkID string, patchNetworkRequest components.PatchNetworkRequest, opts ...operations.Option) (*operations.UpdateNetworkResponse, error) {
 	request := operations.UpdateNetworkRequest{
 		NetworkID:           networkID,
@@ -2256,7 +2261,7 @@ func (s *CloudGateways) UpdateNetwork(ctx context.Context, networkID string, pat
 }
 
 // DeleteNetwork - Delete Network
-// Deletes a network by ID.
+// Deletes a Cloud Gateway network by ID. The network cannot be referenced by any active configuration before it can be deleted.
 func (s *CloudGateways) DeleteNetwork(ctx context.Context, networkID string, opts ...operations.Option) (*operations.DeleteNetworkResponse, error) {
 	request := operations.DeleteNetworkRequest{
 		NetworkID: networkID,
@@ -2535,7 +2540,7 @@ func (s *CloudGateways) DeleteNetwork(ctx context.Context, networkID string, opt
 }
 
 // ListTransitGateways - List Transit Gateways
-// Returns a paginated collection of transit gateways for a given network.
+// Returns a paginated collection of transit gateways attached to a given network.
 func (s *CloudGateways) ListTransitGateways(ctx context.Context, request operations.ListTransitGatewaysRequest, opts ...operations.Option) (*operations.ListTransitGatewaysResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -2827,7 +2832,11 @@ func (s *CloudGateways) ListTransitGateways(ctx context.Context, request operati
 }
 
 // CreateTransitGateway - Create Transit Gateway
-// Creates a new transit gateway for a given network.
+// Creates a new transit gateway attachment for a given network. The attachment type is determined by the
+// `transit_gateway_attachment_config.kind` field. Supported types: `aws-transit-gateway-attachment`,
+// `aws-vpc-peering-attachment`, `aws-resource-endpoint-attachment`, `azure-vnet-peering-attachment`,
+// `azure-vhub-peering-attachment`, and `gcp-vpc-peering-attachment`. Creation is asynchronous —
+// the transit gateway starts in `initializing` state and transitions to `ready` once provisioned.
 func (s *CloudGateways) CreateTransitGateway(ctx context.Context, networkID string, createTransitGatewayRequest components.CreateTransitGatewayRequest, opts ...operations.Option) (*operations.CreateTransitGatewayResponse, error) {
 	request := operations.CreateTransitGatewayRequest{
 		NetworkID:                   networkID,
@@ -3154,7 +3163,7 @@ func (s *CloudGateways) CreateTransitGateway(ctx context.Context, networkID stri
 }
 
 // GetTransitGateway - Get Transit Gateway
-// Retrieves a transit gateway by ID for a given network.
+// Retrieves a transit gateway by ID, including its current state and attachment configuration.
 func (s *CloudGateways) GetTransitGateway(ctx context.Context, networkID string, transitGatewayID string, opts ...operations.Option) (*operations.GetTransitGatewayResponse, error) {
 	request := operations.GetTransitGatewayRequest{
 		NetworkID:        networkID,
@@ -3426,7 +3435,8 @@ func (s *CloudGateways) GetTransitGateway(ctx context.Context, networkID string,
 }
 
 // UpdateTransitGateway - Update Transit Gateway
-// Updates a transit gateway by ID for a given network.
+// Updates a transit gateway by ID. Supports updating CIDR blocks on an AWS Transit Gateway, or updating
+// the resource endpoint configuration on an AWS Resource Endpoint gateway.
 func (s *CloudGateways) UpdateTransitGateway(ctx context.Context, request operations.UpdateTransitGatewayRequest, opts ...operations.Option) (*operations.UpdateTransitGatewayResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -3742,7 +3752,7 @@ func (s *CloudGateways) UpdateTransitGateway(ctx context.Context, request operat
 }
 
 // DeleteTransitGateway - Delete Transit Gateway
-// Deletes a transit gateway by ID for a given network.
+// Deletes a transit gateway by ID. The transit gateway must be in a non-transitional state before deletion.
 func (s *CloudGateways) DeleteTransitGateway(ctx context.Context, networkID string, transitGatewayID string, opts ...operations.Option) (*operations.DeleteTransitGatewayResponse, error) {
 	request := operations.DeleteTransitGatewayRequest{
 		NetworkID:        networkID,
@@ -4022,7 +4032,7 @@ func (s *CloudGateways) DeleteTransitGateway(ctx context.Context, networkID stri
 }
 
 // ListPrivateDNS - List Private DNS
-// Returns a paginated collection of Private DNS for a given network.
+// Returns a paginated collection of private DNS attachments for a given network.
 func (s *CloudGateways) ListPrivateDNS(ctx context.Context, request operations.ListPrivateDNSRequest, opts ...operations.Option) (*operations.ListPrivateDNSResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -4314,7 +4324,10 @@ func (s *CloudGateways) ListPrivateDNS(ctx context.Context, request operations.L
 }
 
 // CreatePrivateDNS - Create Private DNS
-// Creates a new Private DNS for a given network.
+// Creates a new private DNS attachment for a given network. The attachment type is determined by
+// `private_dns_attachment_config.kind`. Supported types: `aws-private-hosted-zone-attachment`,
+// `aws-outbound-resolver`, `gcp-private-hosted-zone-attachment`, `azure-private-hosted-zone-attachment`,
+// and `azure-outbound-resolver`.
 func (s *CloudGateways) CreatePrivateDNS(ctx context.Context, networkID string, createPrivateDNSRequest components.CreatePrivateDNSRequest, opts ...operations.Option) (*operations.CreatePrivateDNSResponse, error) {
 	request := operations.CreatePrivateDNSRequest{
 		NetworkID:               networkID,
@@ -4641,7 +4654,7 @@ func (s *CloudGateways) CreatePrivateDNS(ctx context.Context, networkID string, 
 }
 
 // GetPrivateDNS - Get Private DNS
-// Retrieves a Private DNS by ID for a given network.
+// Retrieves a private DNS attachment by ID, including its current state and attachment configuration.
 func (s *CloudGateways) GetPrivateDNS(ctx context.Context, networkID string, privateDNSID string, opts ...operations.Option) (*operations.GetPrivateDNSResponse, error) {
 	request := operations.GetPrivateDNSRequest{
 		NetworkID:    networkID,
@@ -4913,7 +4926,8 @@ func (s *CloudGateways) GetPrivateDNS(ctx context.Context, networkID string, pri
 }
 
 // UpdatePrivateDNS - Update Private DNS
-// Updates a Private DNS by ID for a given network.
+// Updates a private DNS attachment by ID. Supports updating the name or DNS resolver configuration
+// for AWS Outbound Resolver and Azure Outbound Resolver attachment types.
 func (s *CloudGateways) UpdatePrivateDNS(ctx context.Context, request operations.UpdatePrivateDNSRequest, opts ...operations.Option) (*operations.UpdatePrivateDNSResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -5229,7 +5243,9 @@ func (s *CloudGateways) UpdatePrivateDNS(ctx context.Context, request operations
 }
 
 // DeletePrivateDNS - Delete Private DNS
-// Deletes a Private DNS by ID for a given network.
+// Deletes a Private DNS attachment by ID. The attachment must be in a stable state (`ready`
+// or `error`) before deletion — requests against attachments in a transitional state
+// (`initializing`, `terminating`) will be rejected.
 func (s *CloudGateways) DeletePrivateDNS(ctx context.Context, networkID string, privateDNSID string, opts ...operations.Option) (*operations.DeletePrivateDNSResponse, error) {
 	request := operations.DeletePrivateDNSRequest{
 		NetworkID:    networkID,
@@ -5509,7 +5525,8 @@ func (s *CloudGateways) DeletePrivateDNS(ctx context.Context, networkID string, 
 }
 
 // ListNetworkConfigurations - List Network Configuration References
-// Returns a paginated collection of configurations that reference a network.
+// Returns a paginated list of data plane group configurations that reference a given network.
+// Use this to determine which control planes are using a network before renaming or deleting it.
 func (s *CloudGateways) ListNetworkConfigurations(ctx context.Context, request operations.ListNetworkConfigurationsRequest, opts ...operations.Option) (*operations.ListNetworkConfigurationsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -5801,7 +5818,7 @@ func (s *CloudGateways) ListNetworkConfigurations(ctx context.Context, request o
 }
 
 // ListProviderAccounts - List Provider Accounts
-// Returns a a paginated collection of provider accounts for an organization.
+// Returns a paginated list of provider accounts linked to the organization. Filter by cloud provider to see accounts for a specific CSP.
 func (s *CloudGateways) ListProviderAccounts(ctx context.Context, request operations.ListProviderAccountsRequest, opts ...operations.Option) (*operations.ListProviderAccountsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -5839,6 +5856,7 @@ func (s *CloudGateways) ListProviderAccounts(ctx context.Context, request operat
 	if timeout == nil {
 		timeout = s.sdkConfiguration.Timeout
 	}
+	paginationCtx := ctx
 
 	if timeout != nil {
 		var cancel context.CancelFunc
@@ -6017,7 +6035,7 @@ func (s *CloudGateways) ListProviderAccounts(ctx context.Context, request operat
 		request.PageNumber = &nP
 
 		return s.ListProviderAccounts(
-			ctx,
+			paginationCtx,
 			request,
 			opts...,
 		)
@@ -6133,7 +6151,7 @@ func (s *CloudGateways) ListProviderAccounts(ctx context.Context, request operat
 }
 
 // CreateProviderAccount - Create Provider Account
-// Creates a new provider account for an organization.
+// Creates a new provider account by linking a cloud provider account to the organization via automatic account vending.
 func (s *CloudGateways) CreateProviderAccount(ctx context.Context, request components.CreateProviderAccountRequest, opts ...operations.Option) (*operations.CreateProviderAccountResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -6428,7 +6446,7 @@ func (s *CloudGateways) CreateProviderAccount(ctx context.Context, request compo
 }
 
 // GetProviderAccount - Get Provider Account
-// Retrieves a provider account by ID.
+// Retrieves a single provider account by ID, including the associated cloud provider and cloud account ID.
 func (s *CloudGateways) GetProviderAccount(ctx context.Context, providerAccountID string, opts ...operations.Option) (*operations.GetProviderAccountResponse, error) {
 	request := operations.GetProviderAccountRequest{
 		ProviderAccountID: providerAccountID,
@@ -6699,7 +6717,7 @@ func (s *CloudGateways) GetProviderAccount(ctx context.Context, providerAccountI
 }
 
 // DeleteProviderAccount - Delete Provider Account
-// Deletes a provider account by ID.
+// Deletes a provider account by ID. The request is rejected if any networks are still associated with this provider account.
 func (s *CloudGateways) DeleteProviderAccount(ctx context.Context, providerAccountID string, opts ...operations.Option) (*operations.DeleteProviderAccountResponse, error) {
 	request := operations.DeleteProviderAccountRequest{
 		ProviderAccountID: providerAccountID,
@@ -6972,8 +6990,8 @@ func (s *CloudGateways) DeleteProviderAccount(ctx context.Context, providerAccou
 }
 
 // ListCustomDomains - List Custom Domains
-// Returns a paginated collection of custom domains across control-planes for an organization (restricted by
-// permitted control-plane reads).
+// Returns a paginated list of custom domains across all control planes in the organization,
+// scoped to control planes you have read access to.
 func (s *CloudGateways) ListCustomDomains(ctx context.Context, request operations.ListCustomDomainsRequest, opts ...operations.Option) (*operations.ListCustomDomainsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -7265,8 +7283,12 @@ func (s *CloudGateways) ListCustomDomains(ctx context.Context, request operation
 }
 
 // CreateCustomDomains - Create Custom Domain
-// Creates a new custom domain for a control-plane (restricted by permitted control-plane associate-custom-domain
-// action).
+// Registers a custom domain for a control plane. After creation, Konnect provisions a TLS
+// certificate and configures SNI routing, transitioning the domain through
+// `initializing → ready`. To complete setup, configure two CNAME records at your DNS
+// registrar: one pointing your domain to the Konnect gateway hostname, and one pointing
+// `_acme-challenge.<your-domain>` to the ACME challenge hostname provided by Konnect.
+// Use the online-status endpoint to verify both records are correctly configured.
 func (s *CloudGateways) CreateCustomDomains(ctx context.Context, request components.CreateCustomDomainRequest, opts ...operations.Option) (*operations.CreateCustomDomainsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -7582,7 +7604,7 @@ func (s *CloudGateways) CreateCustomDomains(ctx context.Context, request compone
 }
 
 // GetCustomDomain - Get Custom Domain
-// Retrieves a custom domain by ID (restricted by permitted control-plane reads).
+// Retrieves a single custom domain by ID, including its current lifecycle state and any error metadata.
 func (s *CloudGateways) GetCustomDomain(ctx context.Context, customDomainID string, opts ...operations.Option) (*operations.GetCustomDomainResponse, error) {
 	request := operations.GetCustomDomainRequest{
 		CustomDomainID: customDomainID,
@@ -7853,7 +7875,7 @@ func (s *CloudGateways) GetCustomDomain(ctx context.Context, customDomainID stri
 }
 
 // DeleteCustomDomain - Delete Custom Domain
-// Deletes a custom domain by ID (restricted by permitted control-plane reads).
+// Deletes a custom domain by ID, removing the associated TLS certificate and SNI configuration from the control plane's data planes.
 func (s *CloudGateways) DeleteCustomDomain(ctx context.Context, customDomainID string, opts ...operations.Option) (*operations.DeleteCustomDomainResponse, error) {
 	request := operations.DeleteCustomDomainRequest{
 		CustomDomainID: customDomainID,
@@ -8132,7 +8154,7 @@ func (s *CloudGateways) DeleteCustomDomain(ctx context.Context, customDomainID s
 }
 
 // GetCustomDomainOnlineStatus - Get Custom Domain Online Status
-// Retrieves the CNAME and SSL status of a custom domain.
+// Checks whether the primary domain CNAME and ACME challenge CNAME records are correctly configured at your DNS registrar. Returns `verified` or `unverified` for each.
 func (s *CloudGateways) GetCustomDomainOnlineStatus(ctx context.Context, customDomainID string, opts ...operations.Option) (*operations.GetCustomDomainOnlineStatusResponse, error) {
 	request := operations.GetCustomDomainOnlineStatusRequest{
 		CustomDomainID: customDomainID,
@@ -8403,8 +8425,8 @@ func (s *CloudGateways) GetCustomDomainOnlineStatus(ctx context.Context, customD
 }
 
 // ListDefaultResourceQuotas - List Default Resource Quotas
-// Returns a paginated collection of default resource quotas for cloud-gateways, along with
-// organizationally-defined overrides for those resource quotas.
+// Returns the platform-default resource quotas for Cloud Gateways, along with any
+// organization-level overrides. Use this to view the effective limits for your organization.
 func (s *CloudGateways) ListDefaultResourceQuotas(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.ListDefaultResourceQuotasResponse, error) {
 	request := operations.ListDefaultResourceQuotasRequest{
 		PageSize:   pageSize,
@@ -8680,7 +8702,10 @@ func (s *CloudGateways) ListDefaultResourceQuotas(ctx context.Context, pageSize 
 }
 
 // ListResourceQuotas - List Resource Quotas
-// Returns a paginated collection of resource quotas for an organization.
+// Returns organization-specific resource quota overrides that take precedence over platform
+// defaults. Each quota enforces a count limit on a specific Cloud Gateway resource type —
+// including active networks, data planes, serverless data planes, data plane groups, and
+// provider accounts per cloud provider.
 func (s *CloudGateways) ListResourceQuotas(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.ListResourceQuotasResponse, error) {
 	request := operations.ListResourceQuotasRequest{
 		PageSize:   pageSize,
@@ -8956,7 +8981,7 @@ func (s *CloudGateways) ListResourceQuotas(ctx context.Context, pageSize *int64,
 }
 
 // CreateResourceQuota - Create Resource Quota
-// Creates a new resource quota, scoped to a given resource, for an organization.
+// Creates an organization-level resource quota override for a specific resource type, replacing the platform default.
 func (s *CloudGateways) CreateResourceQuota(ctx context.Context, request components.CreateResourceQuotaRequest, opts ...operations.Option) (*operations.CreateResourceQuotaResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -9251,7 +9276,7 @@ func (s *CloudGateways) CreateResourceQuota(ctx context.Context, request compone
 }
 
 // GetResourceQuota - Get Resource Quota
-// Retrieves a resource quota by ID.
+// Retrieves a single organization-level resource quota override by ID.
 func (s *CloudGateways) GetResourceQuota(ctx context.Context, resourceQuotaID string, opts ...operations.Option) (*operations.GetResourceQuotaResponse, error) {
 	request := operations.GetResourceQuotaRequest{
 		ResourceQuotaID: resourceQuotaID,
@@ -9522,7 +9547,7 @@ func (s *CloudGateways) GetResourceQuota(ctx context.Context, resourceQuotaID st
 }
 
 // UpdateResourceQuota - Update Resource Quota
-// Updates a resource quota by ID.
+// Updates the value of an existing organization-level resource quota override.
 func (s *CloudGateways) UpdateResourceQuota(ctx context.Context, resourceQuotaID string, patchResourceQuotaRequest components.PatchResourceQuotaRequest, opts ...operations.Option) (*operations.UpdateResourceQuotaResponse, error) {
 	request := operations.UpdateResourceQuotaRequest{
 		ResourceQuotaID:           resourceQuotaID,
@@ -9822,10 +9847,10 @@ func (s *CloudGateways) UpdateResourceQuota(ctx context.Context, resourceQuotaID
 }
 
 // ListDefaultResourceConfigurations - List Default Resource Configurations
-// Returns a paginated collection of default resource configurations for cloud-gateways, along with
-// organizationally-defined overrides for those resource configurations.
-// Resource configurations are settings that are applied to all cloud gateway resources in an organization.
-// For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
+// Returns the platform-default resource configurations for Cloud Gateways, along with any
+// organization-level overrides. Resource configurations are behavioral settings applied to
+// Cloud Gateway resources — for example, the idle timeout for data plane groups.
+// Use this to view the effective settings for your organization.
 func (s *CloudGateways) ListDefaultResourceConfigurations(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.ListDefaultResourceConfigurationsResponse, error) {
 	request := operations.ListDefaultResourceConfigurationsRequest{
 		PageSize:   pageSize,
@@ -10101,9 +10126,10 @@ func (s *CloudGateways) ListDefaultResourceConfigurations(ctx context.Context, p
 }
 
 // ListResourceConfigurations - List Resource Configurations
-// Returns a paginated collection of resource configurations for an organization.
-// Resource configurations are settings that are applied to all cloud gateway resources in an organization.
-// For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
+// Returns organization-specific resource configuration overrides that take precedence over
+// platform defaults. Each configuration controls a behavioral setting for a specific Cloud
+// Gateway resource type — for example, `data-plane-group-idle-timeout-minutes` sets how long
+// a data plane group can remain idle before it scales to zero instances.
 func (s *CloudGateways) ListResourceConfigurations(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.ListResourceConfigurationsResponse, error) {
 	request := operations.ListResourceConfigurationsRequest{
 		PageSize:   pageSize,
@@ -10379,7 +10405,7 @@ func (s *CloudGateways) ListResourceConfigurations(ctx context.Context, pageSize
 }
 
 // CreateResourceConfiguration - Create Resource Configuration
-// Creates a new resource configuration for an organization.
+// Creates an organization-level resource configuration override, replacing the platform default for that configuration.
 func (s *CloudGateways) CreateResourceConfiguration(ctx context.Context, request components.CreateResourceConfigurationRequest, opts ...operations.Option) (*operations.CreateResourceConfigurationResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -10674,7 +10700,7 @@ func (s *CloudGateways) CreateResourceConfiguration(ctx context.Context, request
 }
 
 // GetResourceConfiguration - Get Resource Configuration
-// Retrieves a resource configuration by ID.
+// Retrieves a single organization-level resource configuration override by ID. Returns the qualifier, override value, and description for the configuration setting.
 func (s *CloudGateways) GetResourceConfiguration(ctx context.Context, resourceConfigurationID string, opts ...operations.Option) (*operations.GetResourceConfigurationResponse, error) {
 	request := operations.GetResourceConfigurationRequest{
 		ResourceConfigurationID: resourceConfigurationID,
@@ -10945,7 +10971,7 @@ func (s *CloudGateways) GetResourceConfiguration(ctx context.Context, resourceCo
 }
 
 // UpdateResourceConfiguration - Update Resource Configuration
-// Updates a resource configuration by ID.
+// Updates the value of an existing organization-level resource configuration override.
 func (s *CloudGateways) UpdateResourceConfiguration(ctx context.Context, resourceConfigurationID string, patchResourceConfigurationRequest components.PatchResourceConfigurationRequest, opts ...operations.Option) (*operations.UpdateResourceConfigurationResponse, error) {
 	request := operations.UpdateResourceConfigurationRequest{
 		ResourceConfigurationID:           resourceConfigurationID,
@@ -11245,8 +11271,10 @@ func (s *CloudGateways) UpdateResourceConfiguration(ctx context.Context, resourc
 }
 
 // CreateAddOn - Create Add-On
-// Creates a new add-on. Specific add-on types (e.g., managed cache)
-// are defined by the sub-kind configuration.
+// Creates a new add-on for a control plane or control plane group. The add-on type is
+// determined by the `config.kind` field — currently only `managed-cache.v0` is supported,
+// which provisions a Redis-compatible cache co-located with your data planes. After it's created,
+// the add-on transitions through `initializing → ready` as it deploys across data plane groups.
 func (s *CloudGateways) CreateAddOn(ctx context.Context, request components.CreateAddOnRequest, opts ...operations.Option) (*operations.CreateAddOnResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -11562,7 +11590,8 @@ func (s *CloudGateways) CreateAddOn(ctx context.Context, request components.Crea
 }
 
 // ListAddOns - List Add-Ons
-// Returns a paginated collection of add-ons for an organization.
+// Returns a paginated list of add-ons for the organization. Use filter parameters to narrow
+// results by owner (control plane or control plane group), lifecycle state, or config kind.
 func (s *CloudGateways) ListAddOns(ctx context.Context, request operations.ListAddOnsRequest, opts ...operations.Option) (*operations.ListAddOnsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -11833,7 +11862,7 @@ func (s *CloudGateways) ListAddOns(ctx context.Context, request operations.ListA
 }
 
 // GetAddOn - Get Add-On
-// Retrieves an add-on by ID.
+// Retrieves a single add-on by ID, including its current lifecycle state and per data plane group deployment status.
 func (s *CloudGateways) GetAddOn(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.GetAddOnResponse, error) {
 	request := operations.GetAddOnRequest{
 		AddOnID: addOnID,
@@ -12104,7 +12133,8 @@ func (s *CloudGateways) GetAddOn(ctx context.Context, addOnID string, opts ...op
 }
 
 // DeleteAddOn - Delete Add-On
-// Deletes an add-on by ID. The request will be rejected if the managed cache partial is still in use by some plugins.
+// Deletes an add-on by ID. The request is rejected if any Kong plugins are still referencing
+// the managed cache add-on — remove those plugin references before deleting.
 func (s *CloudGateways) DeleteAddOn(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.DeleteAddOnResponse, error) {
 	request := operations.DeleteAddOnRequest{
 		AddOnID: addOnID,
@@ -12377,7 +12407,8 @@ func (s *CloudGateways) DeleteAddOn(ctx context.Context, addOnID string, opts ..
 }
 
 // UpdateAddOn - Update Add-On
-// Updates the configuration of an existing add-on.
+// Updates the configuration of an existing add-on, such as changing the managed cache
+// capacity tier. Tier upgrades are supported; downgrades are not.
 func (s *CloudGateways) UpdateAddOn(ctx context.Context, addOnID string, updateAddOnRequest components.UpdateAddOnRequest, opts ...operations.Option) (*operations.UpdateAddOnResponse, error) {
 	request := operations.UpdateAddOnRequest{
 		AddOnID:            addOnID,

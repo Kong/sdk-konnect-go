@@ -31,9 +31,12 @@ func (e *CustomFormEmailFieldInputType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CustomFormEmailFieldInput - Email input with format validation.
+// CustomFormEmailFieldInput - An email address field. Rejects values that aren't a valid email format.
 type CustomFormEmailFieldInput struct {
-	// Stable slug for the field (letters, digits, underscores, or hyphens). Immutable for the life of the field; renames are achieved by editing `label`. Acts as the join key for stored responses. Optional on create — server slugifies `label` when omitted.
+	// A stable, URL-safe slug identifying the field (letters, digits,
+	// underscores, or hyphens). When omitted, `label` is slugified instead.
+	//
+	// Used to match up stored responses across edits.
 	//
 	Name        *string                       `json:"name,omitempty"`
 	Type        CustomFormEmailFieldInputType `json:"type"`

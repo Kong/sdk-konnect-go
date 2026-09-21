@@ -2,6 +2,61 @@
 
 package components
 
+type Resiliency struct {
+	FallbackHash       *string     `json:"fallback_hash,omitempty"`
+	ActivatedAt        *int64      `json:"activated_at,omitempty"`
+	LatestConfigErrors []NodeError `json:"latest_config_errors,omitempty"`
+}
+
+func (r *Resiliency) GetFallbackHash() *string {
+	if r == nil {
+		return nil
+	}
+	return r.FallbackHash
+}
+
+func (r *Resiliency) GetActivatedAt() *int64 {
+	if r == nil {
+		return nil
+	}
+	return r.ActivatedAt
+}
+
+func (r *Resiliency) GetLatestConfigErrors() []NodeError {
+	if r == nil {
+		return nil
+	}
+	return r.LatestConfigErrors
+}
+
+type ConfigSync struct {
+	// Config sync state. One of `STATE_UNSPECIFIED`, `STATE_IN_SYNC`, `STATE_PENDING`, or `STATE_RESILIENCY`.
+	State      *string     `json:"state,omitempty"`
+	VersionID  *string     `json:"version_id,omitempty"`
+	Resiliency *Resiliency `json:"resiliency,omitempty"`
+}
+
+func (c *ConfigSync) GetState() *string {
+	if c == nil {
+		return nil
+	}
+	return c.State
+}
+
+func (c *ConfigSync) GetVersionID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.VersionID
+}
+
+func (c *ConfigSync) GetResiliency() *Resiliency {
+	if c == nil {
+		return nil
+	}
+	return c.Resiliency
+}
+
 type ListNodesCompatibilityStatus struct {
 	State  *string                  `json:"state,omitempty"`
 	Issues []NodeCompatibilityIssue `json:"issues,omitempty"`
@@ -21,6 +76,33 @@ func (l *ListNodesCompatibilityStatus) GetIssues() []NodeCompatibilityIssue {
 	return l.Issues
 }
 
+type DynamicLogging struct {
+	OperationID  *string `json:"operation_id,omitempty"`
+	LogLevel     *string `json:"log_level,omitempty"`
+	TTLRemaining *int64  `json:"ttl_remaining,omitempty"`
+}
+
+func (d *DynamicLogging) GetOperationID() *string {
+	if d == nil {
+		return nil
+	}
+	return d.OperationID
+}
+
+func (d *DynamicLogging) GetLogLevel() *string {
+	if d == nil {
+		return nil
+	}
+	return d.LogLevel
+}
+
+func (d *DynamicLogging) GetTTLRemaining() *int64 {
+	if d == nil {
+		return nil
+	}
+	return d.TTLRemaining
+}
+
 type Items struct {
 	ID                  *string                       `json:"id,omitempty"`
 	Version             *string                       `json:"version,omitempty"`
@@ -30,7 +112,11 @@ type Items struct {
 	CreatedAt           *int64                        `json:"created_at,omitempty"`
 	UpdatedAt           *int64                        `json:"updated_at,omitempty"`
 	ConfigHash          *string                       `json:"config_hash,omitempty"`
+	ConfigSync          *ConfigSync                   `json:"config_sync,omitempty"`
 	CompatibilityStatus *ListNodesCompatibilityStatus `json:"compatibility_status,omitempty"`
+	// The current log level of the node.
+	LogLevel       *string         `json:"log_level,omitempty"`
+	DynamicLogging *DynamicLogging `json:"dynamic_logging,omitempty"`
 }
 
 func (i *Items) GetID() *string {
@@ -89,6 +175,13 @@ func (i *Items) GetConfigHash() *string {
 	return i.ConfigHash
 }
 
+func (i *Items) GetConfigSync() *ConfigSync {
+	if i == nil {
+		return nil
+	}
+	return i.ConfigSync
+}
+
 func (i *Items) GetCompatibilityStatus() *ListNodesCompatibilityStatus {
 	if i == nil {
 		return nil
@@ -96,16 +189,30 @@ func (i *Items) GetCompatibilityStatus() *ListNodesCompatibilityStatus {
 	return i.CompatibilityStatus
 }
 
-type ListNodesPage struct {
-	Total *int64  `json:"total,omitempty"`
-	Next  *string `json:"next,omitempty"`
+func (i *Items) GetLogLevel() *string {
+	if i == nil {
+		return nil
+	}
+	return i.LogLevel
 }
 
-func (l *ListNodesPage) GetTotal() *int64 {
+func (i *Items) GetDynamicLogging() *DynamicLogging {
+	if i == nil {
+		return nil
+	}
+	return i.DynamicLogging
+}
+
+type ListNodesPage struct {
+	TotalCount *int64  `json:"total_count,omitempty"`
+	Next       *string `json:"next,omitempty"`
+}
+
+func (l *ListNodesPage) GetTotalCount() *int64 {
 	if l == nil {
 		return nil
 	}
-	return l.Total
+	return l.TotalCount
 }
 
 func (l *ListNodesPage) GetNext() *string {

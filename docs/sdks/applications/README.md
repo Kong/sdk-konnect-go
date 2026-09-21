@@ -6,6 +6,8 @@ APIs related to Konnect Developer Portal Applications.
 
 ### Available Operations
 
+* [ListApplicationGroups](#listapplicationgroups) - List Application Groups
+* [GetApplicationGroup](#getapplicationgroup) - Get an Application Group
 * [CreateApplication](#createapplication) - Create Application
 * [ListApplications](#listapplications) - List Applications
 * [GetApplication](#getapplication) - Get an Application by Portal
@@ -16,6 +18,126 @@ APIs related to Konnect Developer Portal Applications.
 * [RemoveDeveloperFromApplication](#removedeveloperfromapplication) - Remove Developer from Application
 * [GetApplicationUnscoped](#getapplicationunscoped) - Get an Application
 * [ListCredentialsByApplication](#listcredentialsbyapplication) - List Credentials by Application
+
+## ListApplicationGroups
+
+Lists the application groups in this portal. An application group links the applications that represent one logical consumer across environments under a single identity, and its `name` is derived from those member applications. This is a read-only resource: groups are created and deleted through the application lifecycle, and the derived `name` is changed by updating a member application — there is no create, update, or delete operation for a group.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-application-groups" method="get" path="/v3/portals/{portalId}/application-groups" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.ListApplicationGroups(ctx, operations.ListApplicationGroupsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListApplicationGroupsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
+| `request`                                                                                          | [operations.ListApplicationGroupsRequest](../../models/operations/listapplicationgroupsrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `opts`                                                                                             | [][operations.Option](../../models/operations/option.md)                                           | :heavy_minus_sign:                                                                                 | The options for this request.                                                                      |
+
+### Response
+
+**[*operations.ListApplicationGroupsResponse](../../models/operations/listapplicationgroupsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetApplicationGroup
+
+Returns a single application group in this portal, including its member applications. The group's `name` is derived from its members.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-application-group" method="get" path="/v3/portals/{portalId}/application-groups/{applicationGroupId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.GetApplicationGroup(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", "32c0e2a3-18f4-4426-a49b-b17e46ddc341")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationGroupResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `applicationGroupID`                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the application group.                             |                                                          |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetApplicationGroupResponse](../../models/operations/getapplicationgroupresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## CreateApplication
 

@@ -21,6 +21,7 @@ custom := components.EntityTypeName("custom_value")
 | Name                                      | Value                                     |
 | ----------------------------------------- | ----------------------------------------- |
 | `EntityTypeNameAddOns`                    | Add Ons                                   |
+| `EntityTypeNameAgents`                    | Agents                                    |
 | `EntityTypeNameApIs`                      | APIs                                      |
 | `EntityTypeNameAPIProducts`               | API Products                              |
 | `EntityTypeNameApplicationAuthStrategies` | Application Auth Strategies               |
@@ -28,6 +29,7 @@ custom := components.EntityTypeName("custom_value")
 | `EntityTypeNameControlPlanes`             | Control Planes                            |
 | `EntityTypeNameDashboards`                | Dashboards                                |
 | `EntityTypeNameDcrProviders`              | DCR Providers                             |
+| `EntityTypeNameEnvironments`              | Environments                              |
 | `EntityTypeNameMeshControlPlanes`         | Mesh Control Planes                       |
 | `EntityTypeNameNetworks`                  | Networks                                  |
 | `EntityTypeNamePortals`                   | Portals                                   |

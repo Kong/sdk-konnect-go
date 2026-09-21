@@ -4,119 +4,99 @@ package components
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"time"
 )
 
-// MCPResourceInfoType - The type of the MCP resource.
 type MCPResourceInfoType string
 
 const (
-	MCPResourceInfoTypeAPI MCPResourceInfoType = "api"
+	MCPResourceInfoTypeAPI       MCPResourceInfoType = "api"
+	MCPResourceInfoTypeMcpServer MCPResourceInfoType = "mcp_server"
 )
 
-func (e MCPResourceInfoType) ToPointer() *MCPResourceInfoType {
-	return &e
-}
-func (e *MCPResourceInfoType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "api":
-		*e = MCPResourceInfoType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for MCPResourceInfoType: %v", v)
-	}
-}
-
 type MCPResourceInfo struct {
-	// The unique identifier for the MCP resource.
-	ID string `json:"id"`
-	// The unique name of the MCP resource.
-	Name string `json:"name"`
-	// List of MCP server IDs that reference this resource.
-	McpServers []string `json:"mcp_servers"`
-	// The type of the MCP resource.
-	Type MCPResourceInfoType `json:"type"`
-	// The source of the MCP resource, indicating how it was created.
-	Source MCPResourceSource `json:"source"`
-	// The version of the MCP resource. In the case of API resources, this corresponds
-	// to the version of the spec (e.g., "3.0.0").
-	//
-	Version string `json:"version"`
-	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt time.Time `json:"updated_at"`
-	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
+	APIResource       *APIResource       `queryParam:"inline" union:"member"`
+	McpServerResource *McpServerResource `queryParam:"inline" union:"member"`
+
+	Type MCPResourceInfoType
 }
 
-func (m MCPResourceInfo) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(m, "", false)
-}
+func CreateMCPResourceInfoAPI(api APIResource) MCPResourceInfo {
+	typ := MCPResourceInfoTypeAPI
 
-func (m *MCPResourceInfo) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
-		return err
+	typStr := APIResourceType(typ)
+	api.Type = typStr
+
+	return MCPResourceInfo{
+		APIResource: &api,
+		Type:        typ,
 	}
-	return nil
 }
 
-func (m *MCPResourceInfo) GetID() string {
-	if m == nil {
-		return ""
+func CreateMCPResourceInfoMcpServer(mcpServer McpServerResource) MCPResourceInfo {
+	typ := MCPResourceInfoTypeMcpServer
+
+	typStr := McpServerResourceType(typ)
+	mcpServer.Type = typStr
+
+	return MCPResourceInfo{
+		McpServerResource: &mcpServer,
+		Type:              typ,
 	}
-	return m.ID
 }
 
-func (m *MCPResourceInfo) GetName() string {
-	if m == nil {
-		return ""
+func (u *MCPResourceInfo) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = MCPResourceInfo{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	type discriminator struct {
+		Type string `json:"type"`
 	}
-	return m.Name
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "api":
+		apiResource := new(APIResource)
+		if err := utils.UnmarshalJSON(data, &apiResource, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == api) type APIResource within MCPResourceInfo: %w", string(data), err)
+		}
+
+		u.APIResource = apiResource
+		u.Type = MCPResourceInfoTypeAPI
+		return nil
+	case "mcp_server":
+		mcpServerResource := new(McpServerResource)
+		if err := utils.UnmarshalJSON(data, &mcpServerResource, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == mcp_server) type McpServerResource within MCPResourceInfo: %w", string(data), err)
+		}
+
+		u.McpServerResource = mcpServerResource
+		u.Type = MCPResourceInfoTypeMcpServer
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for MCPResourceInfo", string(data))
 }
 
-func (m *MCPResourceInfo) GetMcpServers() []string {
-	if m == nil {
-		return []string{}
+func (u MCPResourceInfo) MarshalJSON() ([]byte, error) {
+	if u.APIResource != nil {
+		return utils.MarshalJSON(u.APIResource, "", true)
 	}
-	return m.McpServers
-}
 
-func (m *MCPResourceInfo) GetType() MCPResourceInfoType {
-	if m == nil {
-		return MCPResourceInfoType("")
+	if u.McpServerResource != nil {
+		return utils.MarshalJSON(u.McpServerResource, "", true)
 	}
-	return m.Type
-}
 
-func (m *MCPResourceInfo) GetSource() MCPResourceSource {
-	if m == nil {
-		return MCPResourceSource("")
-	}
-	return m.Source
-}
-
-func (m *MCPResourceInfo) GetVersion() string {
-	if m == nil {
-		return ""
-	}
-	return m.Version
-}
-
-func (m *MCPResourceInfo) GetUpdatedAt() time.Time {
-	if m == nil {
-		return time.Time{}
-	}
-	return m.UpdatedAt
-}
-
-func (m *MCPResourceInfo) GetCreatedAt() time.Time {
-	if m == nil {
-		return time.Time{}
-	}
-	return m.CreatedAt
+	return nil, errors.New("could not marshal union type MCPResourceInfo: all fields are null")
 }

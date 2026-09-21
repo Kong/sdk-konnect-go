@@ -8,15 +8,15 @@ import (
 )
 
 type GetMcpServerStatusRequest struct {
-	// The ID of the MCP server.
-	McpServerID string `pathParam:"style=simple,explode=false,name=mcpServerId"`
+	// The ID of the Context Interface.
+	InterfaceID string `pathParam:"style=simple,explode=false,name=interfaceId"`
 }
 
-func (g *GetMcpServerStatusRequest) GetMcpServerID() string {
+func (g *GetMcpServerStatusRequest) GetInterfaceID() string {
 	if g == nil {
 		return ""
 	}
-	return g.McpServerID
+	return g.InterfaceID
 }
 
 type GetMcpServerStatusResponse struct {
@@ -26,7 +26,7 @@ type GetMcpServerStatusResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// Deployment status of the MCP server.
+	// Deployment status of the Context Interface.
 	MCPServerStatusResponse *components.MCPServerStatusResponse
 }
 

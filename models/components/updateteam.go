@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // UpdateTeam - The request schema for the update team request.
 type UpdateTeam struct {
 	// The name of the team.
@@ -15,6 +19,19 @@ type UpdateTeam struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]*string `json:"labels,omitempty"`
+	// Whether the team's membership is managed by Konnect instead of being synced from an identity provider's team mappings. Set to `false` (default) to let identity provider team mappings keep syncing members into this team. Set to `true` to manage membership directly in Konnect and prevent identity provider team mappings from syncing to this team.
+	KonnectManaged *bool `default:"false" json:"konnect_managed"`
+}
+
+func (u UpdateTeam) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateTeam) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpdateTeam) GetName() *string {
@@ -36,4 +53,11 @@ func (u *UpdateTeam) GetLabels() map[string]*string {
 		return nil
 	}
 	return u.Labels
+}
+
+func (u *UpdateTeam) GetKonnectManaged() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.KonnectManaged
 }

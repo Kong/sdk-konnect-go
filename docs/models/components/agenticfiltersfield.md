@@ -27,6 +27,7 @@ custom := components.AgenticFiltersField("custom_value")
 | `AgenticFiltersFieldAPIProduct`                | api_product                                    |
 | `AgenticFiltersFieldAPIProductVersion`         | api_product_version                            |
 | `AgenticFiltersFieldApplication`               | application                                    |
+| `AgenticFiltersFieldCacheStatus`               | cache_status                                   |
 | `AgenticFiltersFieldConsumer`                  | consumer                                       |
 | `AgenticFiltersFieldControlPlane`              | control_plane                                  |
 | `AgenticFiltersFieldControlPlaneGroup`         | control_plane_group                            |
@@ -38,7 +39,9 @@ custom := components.AgenticFiltersField("custom_value")
 | `AgenticFiltersFieldMcpMethod`                 | mcp_method                                     |
 | `AgenticFiltersFieldMcpSessionID`              | mcp_session_id                                 |
 | `AgenticFiltersFieldMcpToolName`               | mcp_tool_name                                  |
+| `AgenticFiltersFieldOidcCredential`            | oidc_credential                                |
 | `AgenticFiltersFieldPortal`                    | portal                                         |
+| `AgenticFiltersFieldPrincipal`                 | principal                                      |
 | `AgenticFiltersFieldRealm`                     | realm                                          |
 | `AgenticFiltersFieldResponseSource`            | response_source                                |
 | `AgenticFiltersFieldRoute`                     | route                                          |

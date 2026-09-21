@@ -8,6 +8,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// IntegrationNotInstalledErrorType - The error type.
 type IntegrationNotInstalledErrorType string
 
 const (
@@ -41,14 +42,20 @@ type IntegrationNotInstalledError struct {
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.
 	//
-	Title string                           `json:"title"`
-	Type  IntegrationNotInstalledErrorType `json:"type"`
+	Title string `json:"title"`
+	// The error type.
+	Type IntegrationNotInstalledErrorType `json:"type"`
 	// Used to return the correlation ID back to the user, in the format
 	// kong:trace:<correlation_id>. This helps us find the relevant logs
 	// when a customer reports an issue.
 	//
 	Instance string `json:"instance"`
-	Detail   any    `json:"detail"`
+	// A human readable explanation specific to this occurence of the problem.
+	// This field may contain request/entity data to help the user understand
+	// what went wrong. Enclose variable values in square brackets. Should be
+	// provided as "Sentence case" for direct use in the UI.
+	//
+	Detail string `json:"detail"`
 }
 
 func (i IntegrationNotInstalledError) MarshalJSON() ([]byte, error) {
@@ -90,9 +97,9 @@ func (i *IntegrationNotInstalledError) GetInstance() string {
 	return i.Instance
 }
 
-func (i *IntegrationNotInstalledError) GetDetail() any {
+func (i *IntegrationNotInstalledError) GetDetail() string {
 	if i == nil {
-		return nil
+		return ""
 	}
 	return i.Detail
 }

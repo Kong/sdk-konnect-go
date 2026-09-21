@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -54,29 +52,6 @@ func (e *HashiCorpVaultKubernetesConfigProtocol) IsExact() bool {
 	return false
 }
 
-type HashiCorpVaultKubernetesConfigAuthMethod string
-
-const (
-	HashiCorpVaultKubernetesConfigAuthMethodKubernetes HashiCorpVaultKubernetesConfigAuthMethod = "kubernetes"
-)
-
-func (e HashiCorpVaultKubernetesConfigAuthMethod) ToPointer() *HashiCorpVaultKubernetesConfigAuthMethod {
-	return &e
-}
-func (e *HashiCorpVaultKubernetesConfigAuthMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "kubernetes":
-		*e = HashiCorpVaultKubernetesConfigAuthMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultKubernetesConfigAuthMethod: %v", v)
-	}
-}
-
 type HashiCorpVaultKubernetesConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -110,8 +85,9 @@ type HashiCorpVaultKubernetesConfig struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                                  `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultKubernetesConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"kubernetes" json:"auth_method"`
 	// Role assigned to the Kubernetes service account.
 	//
 	Role *string `json:"role,omitempty"`
@@ -211,11 +187,8 @@ func (h *HashiCorpVaultKubernetesConfig) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultKubernetesConfig) GetAuthMethod() HashiCorpVaultKubernetesConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultKubernetesConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultKubernetesConfig) GetAuthMethod() string {
+	return "kubernetes"
 }
 
 func (h *HashiCorpVaultKubernetesConfig) GetRole() *string {

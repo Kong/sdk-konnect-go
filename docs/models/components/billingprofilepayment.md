@@ -1,10 +1,31 @@
 # BillingProfilePayment
 
-The payment app used for this workflow.
+The payment settings for this workflow
 
 
-## Fields
+## Supported Types
 
-| Field                      | Type                       | Required                   | Description                | Example                    |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `ID`                       | `string`                   | :heavy_check_mark:         | The ID of the app.         | 01G65Z755AFWAKHE12NY0CQ9FH |
+### BillingWorkflowPaymentChargeAutomaticallySettings
+
+```go
+billingProfilePayment := components.CreateBillingProfilePaymentChargeAutomatically(components.BillingWorkflowPaymentChargeAutomaticallySettings{/* values here */})
+```
+
+### BillingWorkflowPaymentSendInvoiceSettings
+
+```go
+billingProfilePayment := components.CreateBillingProfilePaymentSendInvoice(components.BillingWorkflowPaymentSendInvoiceSettings{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch billingProfilePayment.Type {
+	case components.BillingProfilePaymentTypeChargeAutomatically:
+		// billingProfilePayment.BillingWorkflowPaymentChargeAutomaticallySettings is populated
+	case components.BillingProfilePaymentTypeSendInvoice:
+		// billingProfilePayment.BillingWorkflowPaymentSendInvoiceSettings is populated
+}
+```

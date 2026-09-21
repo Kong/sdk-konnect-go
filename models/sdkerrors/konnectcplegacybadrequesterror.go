@@ -8,7 +8,9 @@ import (
 
 // KonnectCPLegacyBadRequestError - standard error
 type KonnectCPLegacyBadRequestError struct {
-	Message any `json:"message,omitempty"`
+	// A short summary of the problem.
+	//
+	Message *string `json:"message,omitempty"`
 }
 
 var _ error = &KonnectCPLegacyBadRequestError{}

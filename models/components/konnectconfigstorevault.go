@@ -3,33 +3,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type KonnectConfigStoreVaultType string
-
-const (
-	KonnectConfigStoreVaultTypeKonnect KonnectConfigStoreVaultType = "konnect"
-)
-
-func (e KonnectConfigStoreVaultType) ToPointer() *KonnectConfigStoreVaultType {
-	return &e
-}
-func (e *KonnectConfigStoreVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "konnect":
-		*e = KonnectConfigStoreVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for KonnectConfigStoreVaultType: %v", v)
-	}
-}
 
 type KonnectConfigStoreVaultConfig struct {
 	// The ID of the Konnect Config Store that contains the secrets.
@@ -57,11 +32,12 @@ func (k *KonnectConfigStoreVaultConfig) GetConfigStoreID() string {
 
 type KonnectConfigStoreVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -73,9 +49,10 @@ type KonnectConfigStoreVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string             `json:"managed_by,omitempty"`
-	Type      KonnectConfigStoreVaultType   `json:"type"`
-	Config    KonnectConfigStoreVaultConfig `json:"config"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                        `const:"konnect" json:"type"`
+	Config KonnectConfigStoreVaultConfig `json:"config"`
 }
 
 func (k KonnectConfigStoreVault) MarshalJSON() ([]byte, error) {
@@ -117,11 +94,8 @@ func (k *KonnectConfigStoreVault) GetManagedBy() map[string]string {
 	return k.ManagedBy
 }
 
-func (k *KonnectConfigStoreVault) GetType() KonnectConfigStoreVaultType {
-	if k == nil {
-		return KonnectConfigStoreVaultType("")
-	}
-	return k.Type
+func (k *KonnectConfigStoreVault) GetType() string {
+	return "konnect"
 }
 
 func (k *KonnectConfigStoreVault) GetConfig() KonnectConfigStoreVaultConfig {

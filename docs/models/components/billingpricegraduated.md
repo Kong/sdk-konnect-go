@@ -5,8 +5,8 @@ Graduated tiered price.
 Each tier's rate applies only to the usage within that tier. Pricing can change
 as cumulative usage crosses tier boundaries.
 
-When UnitConfig is present on the rate card, tier boundaries (up_to_amount) are
-expressed in converted billing units.
+When UnitConfig is present on the containing resource, tier boundaries
+(up_to_amount) are expressed in converted billing units.
 
 
 ## Fields

@@ -27,6 +27,7 @@ custom := components.AgenticQueryDimensions("custom_value")
 | `AgenticQueryDimensionsAPIProduct`                | api_product                                       |
 | `AgenticQueryDimensionsAPIProductVersion`         | api_product_version                               |
 | `AgenticQueryDimensionsApplication`               | application                                       |
+| `AgenticQueryDimensionsCacheStatus`               | cache_status                                      |
 | `AgenticQueryDimensionsConsumer`                  | consumer                                          |
 | `AgenticQueryDimensionsControlPlane`              | control_plane                                     |
 | `AgenticQueryDimensionsControlPlaneGroup`         | control_plane_group                               |
@@ -38,7 +39,9 @@ custom := components.AgenticQueryDimensions("custom_value")
 | `AgenticQueryDimensionsMcpMethod`                 | mcp_method                                        |
 | `AgenticQueryDimensionsMcpSessionID`              | mcp_session_id                                    |
 | `AgenticQueryDimensionsMcpToolName`               | mcp_tool_name                                     |
+| `AgenticQueryDimensionsOidcCredential`            | oidc_credential                                   |
 | `AgenticQueryDimensionsPortal`                    | portal                                            |
+| `AgenticQueryDimensionsPrincipal`                 | principal                                         |
 | `AgenticQueryDimensionsRealm`                     | realm                                             |
 | `AgenticQueryDimensionsResponseSource`            | response_source                                   |
 | `AgenticQueryDimensionsRoute`                     | route                                             |

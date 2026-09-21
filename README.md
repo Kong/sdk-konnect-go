@@ -233,6 +233,44 @@ func main() {
 * [UpdateAiGatewayAgent](docs/sdks/aigatewayagents/README.md#updateaigatewayagent) - Update an AI Gateway Agent
 * [DeleteAiGatewayAgent](docs/sdks/aigatewayagents/README.md#deleteaigatewayagent) - Delete an AI Gateway Agent
 
+### [AIGatewayAuthStrategies](docs/sdks/aigatewayauthstrategies/README.md)
+
+* [ListAiGatewayAuthStrategies](docs/sdks/aigatewayauthstrategies/README.md#listaigatewayauthstrategies) - List AI Gateway Auth Strategies
+* [CreateAiGatewayAuthStrategy](docs/sdks/aigatewayauthstrategies/README.md#createaigatewayauthstrategy) - Create an AI Gateway Auth Strategy
+* [GetAiGatewayAuthStrategy](docs/sdks/aigatewayauthstrategies/README.md#getaigatewayauthstrategy) - Get an AI Gateway Auth Strategy
+* [UpdateAiGatewayAuthStrategy](docs/sdks/aigatewayauthstrategies/README.md#updateaigatewayauthstrategy) - Update an AI Gateway Auth Strategy
+* [DeleteAiGatewayAuthStrategy](docs/sdks/aigatewayauthstrategies/README.md#deleteaigatewayauthstrategy) - Delete an AI Gateway Auth Strategy
+* [ListAiGatewayAuthStrategyUsage](docs/sdks/aigatewayauthstrategies/README.md#listaigatewayauthstrategyusage) - List AI Gateway Auth Strategy Usage
+
+### [AIGatewayCACertificates](docs/sdks/aigatewaycacertificates/README.md)
+
+* [ListAiGatewayCaCertificates](docs/sdks/aigatewaycacertificates/README.md#listaigatewaycacertificates) - List AI Gateway CA Certificates
+* [CreateAiGatewayCaCertificate](docs/sdks/aigatewaycacertificates/README.md#createaigatewaycacertificate) - Create an AI Gateway CA Certificate
+* [GetAiGatewayCaCertificate](docs/sdks/aigatewaycacertificates/README.md#getaigatewaycacertificate) - Get an AI Gateway CA Certificate
+* [UpdateAiGatewayCaCertificate](docs/sdks/aigatewaycacertificates/README.md#updateaigatewaycacertificate) - Update an AI Gateway CA Certificate
+* [DeleteAiGatewayCaCertificate](docs/sdks/aigatewaycacertificates/README.md#deleteaigatewaycacertificate) - Delete an AI Gateway CA Certificate
+
+### [AIGatewayCertificates](docs/sdks/aigatewaycertificates/README.md)
+
+* [ListAiGatewayCertificates](docs/sdks/aigatewaycertificates/README.md#listaigatewaycertificates) - List AI Gateway Certificates
+* [CreateAiGatewayCertificate](docs/sdks/aigatewaycertificates/README.md#createaigatewaycertificate) - Create an AI Gateway Certificate
+* [GetAiGatewayCertificate](docs/sdks/aigatewaycertificates/README.md#getaigatewaycertificate) - Get an AI Gateway Certificate
+* [UpdateAiGatewayCertificate](docs/sdks/aigatewaycertificates/README.md#updateaigatewaycertificate) - Update an AI Gateway Certificate
+* [DeleteAiGatewayCertificate](docs/sdks/aigatewaycertificates/README.md#deleteaigatewaycertificate) - Delete an AI Gateway Certificate
+
+### [AIGatewayConfigStores](docs/sdks/aigatewayconfigstores/README.md)
+
+* [ListAiGatewayConfigStores](docs/sdks/aigatewayconfigstores/README.md#listaigatewayconfigstores) - List AI Gateway Config Stores
+* [CreateAiGatewayConfigStore](docs/sdks/aigatewayconfigstores/README.md#createaigatewayconfigstore) - Create an AI Gateway Config Store
+* [GetAiGatewayConfigStore](docs/sdks/aigatewayconfigstores/README.md#getaigatewayconfigstore) - Get an AI Gateway Config Store
+* [UpdateAiGatewayConfigStore](docs/sdks/aigatewayconfigstores/README.md#updateaigatewayconfigstore) - Update an AI Gateway Config Store
+* [DeleteAiGatewayConfigStore](docs/sdks/aigatewayconfigstores/README.md#deleteaigatewayconfigstore) - Delete an AI Gateway Config Store
+* [ListAiGatewayConfigStoreSecrets](docs/sdks/aigatewayconfigstores/README.md#listaigatewayconfigstoresecrets) - List AI Gateway Config Store Secrets
+* [CreateAiGatewayConfigStoreSecret](docs/sdks/aigatewayconfigstores/README.md#createaigatewayconfigstoresecret) - Create an AI Gateway Config Store Secret
+* [GetAiGatewayConfigStoreSecret](docs/sdks/aigatewayconfigstores/README.md#getaigatewayconfigstoresecret) - Get an AI Gateway Config Store Secret
+* [UpdateAiGatewayConfigStoreSecret](docs/sdks/aigatewayconfigstores/README.md#updateaigatewayconfigstoresecret) - Update an AI Gateway Config Store Secret
+* [DeleteAiGatewayConfigStoreSecret](docs/sdks/aigatewayconfigstores/README.md#deleteaigatewayconfigstoresecret) - Delete an AI Gateway Config Store Secret
+
 ### [AIGatewayConsumerGroups](docs/sdks/aigatewayconsumergroups/README.md)
 
 * [ListAiGatewayConsumerGroups](docs/sdks/aigatewayconsumergroups/README.md#listaigatewayconsumergroups) - List AI Gateway Consumer Groups
@@ -251,6 +289,8 @@ func main() {
 * [GetAiGatewayConsumer](docs/sdks/aigatewayconsumers/README.md#getaigatewayconsumer) - Get an AI Gateway Consumer
 * [UpdateAiGatewayConsumer](docs/sdks/aigatewayconsumers/README.md#updateaigatewayconsumer) - Update an AI Gateway Consumer
 * [DeleteAiGatewayConsumer](docs/sdks/aigatewayconsumers/README.md#deleteaigatewayconsumer) - Delete an AI Gateway Consumer
+* [ListAiGatewayConsumerGroupsForConsumer](docs/sdks/aigatewayconsumers/README.md#listaigatewayconsumergroupsforconsumer) - List Consumer Groups a Consumer belongs to
+* [UpdateAiGatewayConsumerGroupsForConsumer](docs/sdks/aigatewayconsumers/README.md#updateaigatewayconsumergroupsforconsumer) - Updates Consumer Groups a Consumer belongs to
 * [ListAiGatewayConsumerCredentials](docs/sdks/aigatewayconsumers/README.md#listaigatewayconsumercredentials) - List AI Gateway Consumer Credentials
 * [CreateAiGatewayConsumerCredential](docs/sdks/aigatewayconsumers/README.md#createaigatewayconsumercredential) - Create an AI Gateway Consumer Credential
 * [GetAiGatewayConsumerCredential](docs/sdks/aigatewayconsumers/README.md#getaigatewayconsumercredential) - Get an AI Gateway Consumer Credential
@@ -263,6 +303,27 @@ func main() {
 * [GetAiGatewayDataPlaneCertificate](docs/sdks/aigatewaydataplanecertificates/README.md#getaigatewaydataplanecertificate) - Get a DataPlane Certificate
 * [DeleteAiGatewayDataPlaneCertificate](docs/sdks/aigatewaydataplanecertificates/README.md#deleteaigatewaydataplanecertificate) - Delete AI Gateway DataPlane Certificate
 
+### [AIGatewayDatastores](docs/sdks/aigatewaydatastores/README.md)
+
+* [ListAiGatewayDatastores](docs/sdks/aigatewaydatastores/README.md#listaigatewaydatastores) - List AI Gateway Datastores
+* [CreateAiGatewayDatastore](docs/sdks/aigatewaydatastores/README.md#createaigatewaydatastore) - Create an AI Gateway Datastore
+* [GetAiGatewayDatastore](docs/sdks/aigatewaydatastores/README.md#getaigatewaydatastore) - Get an AI Gateway Datastore
+* [UpdateAiGatewayDatastore](docs/sdks/aigatewaydatastores/README.md#updateaigatewaydatastore) - Update an AI Gateway Datastore
+* [DeleteAiGatewayDatastore](docs/sdks/aigatewaydatastores/README.md#deleteaigatewaydatastore) - Delete an AI Gateway Datastore
+* [ListAiGatewayDatastoreUsage](docs/sdks/aigatewaydatastores/README.md#listaigatewaydatastoreusage) - List AI Gateway Datastore Usage
+
+### [AIGatewayDebug](docs/sdks/aigatewaydebug/README.md)
+
+* [GetAiGatewayDebugCpOutput](docs/sdks/aigatewaydebug/README.md#getaigatewaydebugcpoutput) - Get the CP config output for an AI Gateway
+
+### [~~AIGatewayIdentityProviders~~](docs/sdks/aigatewayidentityproviders/README.md)
+
+* [~~ListAiGatewayIdentityProviders~~](docs/sdks/aigatewayidentityproviders/README.md#listaigatewayidentityproviders) - List AI Gateway Identity Providers :warning: **Deprecated**
+* [~~CreateAiGatewayIdentityProvider~~](docs/sdks/aigatewayidentityproviders/README.md#createaigatewayidentityprovider) - Create an AI Gateway Identity Provider :warning: **Deprecated**
+* [~~GetAiGatewayIdentityProvider~~](docs/sdks/aigatewayidentityproviders/README.md#getaigatewayidentityprovider) - Get an AI Gateway Identity Provider :warning: **Deprecated**
+* [~~UpdateAiGatewayIdentityProvider~~](docs/sdks/aigatewayidentityproviders/README.md#updateaigatewayidentityprovider) - Update an AI Gateway Identity Provider :warning: **Deprecated**
+* [~~DeleteAiGatewayIdentityProvider~~](docs/sdks/aigatewayidentityproviders/README.md#deleteaigatewayidentityprovider) - Delete an AI Gateway Identity Provider :warning: **Deprecated**
+
 ### [AIGatewayMCPServers](docs/sdks/aigatewaymcpservers/README.md)
 
 * [ListAiGatewayMcpServers](docs/sdks/aigatewaymcpservers/README.md#listaigatewaymcpservers) - List MCP Servers
@@ -270,6 +331,14 @@ func main() {
 * [GetAiGatewayMcpServer](docs/sdks/aigatewaymcpservers/README.md#getaigatewaymcpserver) - Get an MCP Server
 * [UpdateAiGatewayMcpServer](docs/sdks/aigatewaymcpservers/README.md#updateaigatewaymcpserver) - Update an MCP Server
 * [DeleteAiGatewayMcpServer](docs/sdks/aigatewaymcpservers/README.md#deleteaigatewaymcpserver) - Delete an MCP Server
+
+### [AIGatewayModelProviders](docs/sdks/aigatewaymodelproviders/README.md)
+
+* [ListAiGatewayModelProviders](docs/sdks/aigatewaymodelproviders/README.md#listaigatewaymodelproviders) - List AI Gateway Model Providers
+* [CreateAiGatewayModelProvider](docs/sdks/aigatewaymodelproviders/README.md#createaigatewaymodelprovider) - Create an AI Gateway Model Provider
+* [GetAiGatewayModelProvider](docs/sdks/aigatewaymodelproviders/README.md#getaigatewaymodelprovider) - Get an AI Gateway Model Provider
+* [UpdateAiGatewayModelProvider](docs/sdks/aigatewaymodelproviders/README.md#updateaigatewaymodelprovider) - Update an AI Gateway Model Provider
+* [DeleteAiGatewayModelProvider](docs/sdks/aigatewaymodelproviders/README.md#deleteaigatewaymodelprovider) - Delete an AI Gateway Model Provider
 
 ### [AIGatewayModels](docs/sdks/aigatewaymodels/README.md)
 
@@ -281,6 +350,7 @@ func main() {
 
 ### [AIGatewayNodes](docs/sdks/aigatewaynodes/README.md)
 
+* [GetAiGatewayExpectedConfigVersion](docs/sdks/aigatewaynodes/README.md#getaigatewayexpectedconfigversion) - Get the Expected Config Version
 * [ListAiGatewayNodes](docs/sdks/aigatewaynodes/README.md#listaigatewaynodes) - List Nodes
 * [GetAiGatewayNode](docs/sdks/aigatewaynodes/README.md#getaigatewaynode) - Get a Node
 
@@ -295,13 +365,18 @@ func main() {
 * [DeleteAiGatewayPolicy](docs/sdks/aigatewaypolicies/README.md#deleteaigatewaypolicy) - Delete an AI Gateway Policy
 * [ListAiGatewayPolicyUsage](docs/sdks/aigatewaypolicies/README.md#listaigatewaypolicyusage) - List AI Gateway Policy Usage
 
-### [AIGatewayProviders](docs/sdks/aigatewayproviders/README.md)
+### [AIGatewaySNIs](docs/sdks/aigatewaysnis/README.md)
 
-* [ListAiGatewayProviders](docs/sdks/aigatewayproviders/README.md#listaigatewayproviders) - List AI Gateway Providers
-* [CreateAiGatewayProvider](docs/sdks/aigatewayproviders/README.md#createaigatewayprovider) - Create an AI Gateway Provider
-* [GetAiGatewayProvider](docs/sdks/aigatewayproviders/README.md#getaigatewayprovider) - Get an AI Gateway Provider
-* [UpdateAiGatewayProvider](docs/sdks/aigatewayproviders/README.md#updateaigatewayprovider) - Update an AI Gateway Provider
-* [DeleteAiGatewayProvider](docs/sdks/aigatewayproviders/README.md#deleteaigatewayprovider) - Delete an AI Gateway Provider
+* [ListAiGatewaySnisForCertificate](docs/sdks/aigatewaysnis/README.md#listaigatewaysnisforcertificate) - List AI Gateway SNIs for a Certificate
+* [CreateAiGatewaySniForCertificate](docs/sdks/aigatewaysnis/README.md#createaigatewaysniforcertificate) - Create an AI Gateway SNI for a Certificate
+* [GetAiGatewaySniForCertificate](docs/sdks/aigatewaysnis/README.md#getaigatewaysniforcertificate) - Get an AI Gateway SNI for a Certificate
+* [UpdateAiGatewaySniForCertificate](docs/sdks/aigatewaysnis/README.md#updateaigatewaysniforcertificate) - Update an AI Gateway SNI for a Certificate
+* [DeleteAiGatewaySniForCertificate](docs/sdks/aigatewaysnis/README.md#deleteaigatewaysniforcertificate) - Delete an AI Gateway SNI for a Certificate
+* [ListAiGatewaySnis](docs/sdks/aigatewaysnis/README.md#listaigatewaysnis) - List AI Gateway SNIs
+* [CreateAiGatewaySni](docs/sdks/aigatewaysnis/README.md#createaigatewaysni) - Create an AI Gateway SNI
+* [GetAiGatewaySni](docs/sdks/aigatewaysnis/README.md#getaigatewaysni) - Get an AI Gateway SNI
+* [UpdateAiGatewaySni](docs/sdks/aigatewaysnis/README.md#updateaigatewaysni) - Update an AI Gateway SNI
+* [DeleteAiGatewaySni](docs/sdks/aigatewaysnis/README.md#deleteaigatewaysni) - Delete an AI Gateway SNI
 
 ### [AIGatewayVaults](docs/sdks/aigatewayvaults/README.md)
 
@@ -317,11 +392,17 @@ func main() {
 * [CreateAiGateway](docs/sdks/aigateways/README.md#createaigateway) - Create an AI Gateway
 * [GetAiGateway](docs/sdks/aigateways/README.md#getaigateway) - Get an AI Gateway
 * [UpdateAiGateway](docs/sdks/aigateways/README.md#updateaigateway) - Update an AI Gateway
+* [PatchAiGateway](docs/sdks/aigateways/README.md#patchaigateway) - Patch an AI Gateway
 * [DeleteAiGateway](docs/sdks/aigateways/README.md#deleteaigateway) - Delete an AI Gateway
 
 ### [AIManager](docs/sdks/aimanager/README.md)
 
 * [ListVirtualKeys](docs/sdks/aimanager/README.md#listvirtualkeys) - Get Control Plane Virtual Keys
+
+### [AISettings](docs/sdks/aisettings/README.md)
+
+* [GetAiSettings](docs/sdks/aisettings/README.md#getaisettings) - Get AI Settings by Portal
+* [UpdateAiSettings](docs/sdks/aisettings/README.md#updateaisettings) - Update AI Settings by Portal
 
 ### [Api](docs/sdks/api/README.md)
 
@@ -345,6 +426,14 @@ func main() {
 * [UpdateAPIDocument](docs/sdks/apidocumentation/README.md#updateapidocument) - Update API Document
 * [DeleteAPIDocument](docs/sdks/apidocumentation/README.md#deleteapidocument) - Delete API Documentation
 * [MoveAPIDocument](docs/sdks/apidocumentation/README.md#moveapidocument) - Move API Documentation
+
+### [APIEnvironment](docs/sdks/apienvironment/README.md)
+
+* [ListAPIEnvironments](docs/sdks/apienvironment/README.md#listapienvironments) - List API Environments
+* [CreateAPIEnvironment](docs/sdks/apienvironment/README.md#createapienvironment) - Add an API Environment
+* [FetchAPIEnvironment](docs/sdks/apienvironment/README.md#fetchapienvironment) - Get an API Environment
+* [UpdateAPIEnvironment](docs/sdks/apienvironment/README.md#updateapienvironment) - Update an API Environment
+* [DeleteAPIEnvironment](docs/sdks/apienvironment/README.md#deleteapienvironment) - Remove an API Environment
 
 ### [APIImage](docs/sdks/apiimage/README.md)
 
@@ -402,6 +491,7 @@ func main() {
 * [GetAPIPackage](docs/sdks/apipackages/README.md#getapipackage) - Get API Package
 * [PatchAPIPackage](docs/sdks/apipackages/README.md#patchapipackage) - Patch API Package
 * [DeleteAPIPackage](docs/sdks/apipackages/README.md#deleteapipackage) - Delete API Package
+* [ListAPIPackageRegistrations](docs/sdks/apipackages/README.md#listapipackageregistrations) - List API Package Registrations
 
 ### [APIPublication](docs/sdks/apipublication/README.md)
 
@@ -413,6 +503,9 @@ func main() {
 * [PublishAPIPackageToPortal](docs/sdks/apipublication/README.md#publishapipackagetoportal) - Publish API Package
 * [FetchAPIPackagePublication](docs/sdks/apipublication/README.md#fetchapipackagepublication) - Get an API Package Publication
 * [DeleteAPIPackagePublication](docs/sdks/apipublication/README.md#deleteapipackagepublication) - Delete API Package Publication
+* [PublishAPIToPortalInEnvironment](docs/sdks/apipublication/README.md#publishapitoportalinenvironment) - Publish API in an Environment
+* [FetchPublicationInEnvironment](docs/sdks/apipublication/README.md#fetchpublicationinenvironment) - Get a Publication in an Environment
+* [DeletePublicationInEnvironment](docs/sdks/apipublication/README.md#deletepublicationinenvironment) - Delete Publication in an Environment
 
 ### [APISpecification](docs/sdks/apispecification/README.md)
 
@@ -474,6 +567,8 @@ func main() {
 
 ### [Applications](docs/sdks/applications/README.md)
 
+* [ListApplicationGroups](docs/sdks/applications/README.md#listapplicationgroups) - List Application Groups
+* [GetApplicationGroup](docs/sdks/applications/README.md#getapplicationgroup) - Get an Application Group
 * [CreateApplication](docs/sdks/applications/README.md#createapplication) - Create Application
 * [ListApplications](docs/sdks/applications/README.md#listapplications) - List Applications
 * [GetApplication](docs/sdks/applications/README.md#getapplication) - Get an Application by Portal
@@ -523,6 +618,9 @@ func main() {
 * [RefreshToken](docs/sdks/authentication/README.md#refreshtoken) - Refresh Token
 * [Logout](docs/sdks/authentication/README.md#logout) - Log Out
 * [AuthenticateSso](docs/sdks/authentication/README.md#authenticatesso) - SSO Callback
+* [ExchangeAuthorizationCode](docs/sdks/authentication/README.md#exchangeauthorizationcode) - Exchange Authorization Code
+* [CreateDiscoveryCode](docs/sdks/authentication/README.md#creatediscoverycode) - Create Organization Discovery Code
+* [ExchangeDiscoveryCode](docs/sdks/authentication/README.md#exchangediscoverycode) - Exchange Organization Discovery Code
 
 ### [Aws](docs/sdks/aws/README.md)
 
@@ -746,6 +844,8 @@ func main() {
 
 ### [Consumers](docs/sdks/consumers/README.md)
 
+* [SearchConsumersInWorkspace](docs/sdks/consumers/README.md#searchconsumersinworkspace) - Search Consumers in a workspace
+* [SearchConsumers](docs/sdks/consumers/README.md#searchconsumers) - Search Consumers
 * [ListConsumerInWorkspace](docs/sdks/consumers/README.md#listconsumerinworkspace) - List all Consumers in a workspace
 * [CreateConsumerInWorkspace](docs/sdks/consumers/README.md#createconsumerinworkspace) - Create a new Consumer in a workspace
 * [DeleteConsumerInWorkspace](docs/sdks/consumers/README.md#deleteconsumerinworkspace) - Delete a Consumer in a workspace
@@ -765,6 +865,43 @@ func main() {
 * [AddConsumerToSpecificConsumerGroup](docs/sdks/consumers/README.md#addconsumertospecificconsumergroup) - Add consumer to a specific consumer group
 * [RemoveConsumerFromConsumerGroup](docs/sdks/consumers/README.md#removeconsumerfromconsumergroup) - Remove consumer from consumer group
 
+### [ContextInterfaceConfigs](docs/sdks/contextinterfaceconfigs/README.md)
+
+* [GetContextInterfacesSourceMappingCapabilityControls](docs/sdks/contextinterfaceconfigs/README.md#getcontextinterfacessourcemappingcapabilitycontrols) - Get Interface-Source Capability Controls
+* [CreateContextInterfacesSourceMappingCapabilityControls](docs/sdks/contextinterfaceconfigs/README.md#createcontextinterfacessourcemappingcapabilitycontrols) - Create Interface-Source Capability Controls
+* [PatchContextInterfacesSourceMappingCapabilityControls](docs/sdks/contextinterfaceconfigs/README.md#patchcontextinterfacessourcemappingcapabilitycontrols) - Update Interface-Source Capability Controls
+
+### [ContextInterfaces](docs/sdks/contextinterfaces/README.md)
+
+* [ListContextInterfaces](docs/sdks/contextinterfaces/README.md#listcontextinterfaces) - List all Context Interfaces
+* [CreateContextInterface](docs/sdks/contextinterfaces/README.md#createcontextinterface) - Create a Context Interface
+* [GetContextInterface](docs/sdks/contextinterfaces/README.md#getcontextinterface) - Get Context Interface
+* [UpdateContextInterface](docs/sdks/contextinterfaces/README.md#updatecontextinterface) - Update MCP Server
+* [PatchContextInterface](docs/sdks/contextinterfaces/README.md#patchcontextinterface) - Partially Update Context Interface
+* [DeleteContextInterface](docs/sdks/contextinterfaces/README.md#deletecontextinterface) - Delete MCP Server
+* [ListContextInterfacesByContextSource](docs/sdks/contextinterfaces/README.md#listcontextinterfacesbycontextsource) - List Context Source Context Interfaces
+* [GetMcpServerStatus](docs/sdks/contextinterfaces/README.md#getmcpserverstatus) - Get Context Interface deployment status
+* [GetContextInterfaceGeneratedCode](docs/sdks/contextinterfaces/README.md#getcontextinterfacegeneratedcode) - Get generated code for a Context Interface
+
+### [ContextSourceContents](docs/sdks/contextsourcecontents/README.md)
+
+* [GetContextSourceContents](docs/sdks/contextsourcecontents/README.md#getcontextsourcecontents) - Get Context Source Contents
+
+### [ContextSourceMappings](docs/sdks/contextsourcemappings/README.md)
+
+* [CreateContextInterfaceSourceMapping](docs/sdks/contextsourcemappings/README.md#createcontextinterfacesourcemapping) - Create Context Interface Source Mapping
+* [ListContextInterfaceSourceMappings](docs/sdks/contextsourcemappings/README.md#listcontextinterfacesourcemappings) - List Context Interface Source Mappings
+* [DeleteContextInterfaceSourceMapping](docs/sdks/contextsourcemappings/README.md#deletecontextinterfacesourcemapping) - Delete Context Interface Source Mapping
+* [GetContextInterfaceSourceMapping](docs/sdks/contextsourcemappings/README.md#getcontextinterfacesourcemapping) - Get Context Interface Source Mapping
+
+### [ContextSources](docs/sdks/contextsources/README.md)
+
+* [ListContextSources](docs/sdks/contextsources/README.md#listcontextsources) - List Context Sources
+* [CreateContextSource](docs/sdks/contextsources/README.md#createcontextsource) - Create a Context Source
+* [GetContextSource](docs/sdks/contextsources/README.md#getcontextsource) - Get a Context Source
+* [DeleteContextSource](docs/sdks/contextsources/README.md#deletecontextsource) - Delete a Context Source
+* [UpdateContextSource](docs/sdks/contextsources/README.md#updatecontextsource) - Update a Context Source
+
 ### [ControlPlaneGroups](docs/sdks/controlplanegroups/README.md)
 
 * [GetControlPlanesIDGroupMemberships](docs/sdks/controlplanegroups/README.md#getcontrolplanesidgroupmemberships) - List Control Plane Group Memberships
@@ -775,6 +912,14 @@ func main() {
 * [GetControlPlanesIDGroupStatus](docs/sdks/controlplanegroups/README.md#getcontrolplanesidgroupstatus) - Get Control Plane Group Status
 * [GetControlPlaneGroupSettings](docs/sdks/controlplanegroups/README.md#getcontrolplanegroupsettings) - Get Control Plane Group Settings
 * [PutControlPlaneGroupSettings](docs/sdks/controlplanegroups/README.md#putcontrolplanegroupsettings) - Upsert Control Plane Group Settings
+
+### [ControlPlaneMappings](docs/sdks/controlplanemappings/README.md)
+
+* [ListControlPlaneMappings](docs/sdks/controlplanemappings/README.md#listcontrolplanemappings) - Get a list of CPs mapped to Context Interface
+* [CreateContextInterfaceControlPlaneMapping](docs/sdks/controlplanemappings/README.md#createcontextinterfacecontrolplanemapping) - Create Context Interface CP Mapping
+* [GetControlPlaneMapping](docs/sdks/controlplanemappings/README.md#getcontrolplanemapping) - Get Context Interface Control Plane Mapping
+* [PatchContextInterfaceControlPlaneMapping](docs/sdks/controlplanemappings/README.md#patchcontextinterfacecontrolplanemapping) - Patch Context Interface Control Plane Mapping
+* [DeleteContextInterfaceControlPlaneMapping](docs/sdks/controlplanemappings/README.md#deletecontextinterfacecontrolplanemapping) - Delete Context Interface CP Mapping
 
 ### [ControlPlaneResourceQuotas](docs/sdks/controlplaneresourcequotas/README.md)
 
@@ -792,6 +937,8 @@ func main() {
 * [GetControlPlane](docs/sdks/controlplanes/README.md#getcontrolplane) - Get a Control Plane
 * [UpdateControlPlane](docs/sdks/controlplanes/README.md#updatecontrolplane) - Update Control Plane
 * [DeleteControlPlane](docs/sdks/controlplanes/README.md#deletecontrolplane) - Delete Control Plane
+* [GetControlPlaneSettings](docs/sdks/controlplanes/README.md#getcontrolplanesettings) - Get Control Plane Settings
+* [PutControlPlaneSettings](docs/sdks/controlplanes/README.md#putcontrolplanesettings) - Upsert Control Plane Settings
 
 ### [CriteriaTemplates](docs/sdks/criteriatemplates/README.md)
 
@@ -804,19 +951,9 @@ func main() {
 * [GetPluginSchema](docs/sdks/custompluginschemas/README.md#getpluginschema) - Get a custom plugin schema
 * [DeletePluginSchemas](docs/sdks/custompluginschemas/README.md#deletepluginschemas) - Delete custom plugin schema
 * [UpdatePluginSchemas](docs/sdks/custompluginschemas/README.md#updatepluginschemas) - Create or update a custom plugin schema
-* [ListPluginSchemasInWorkspace](docs/sdks/custompluginschemas/README.md#listpluginschemasinworkspace) - List Custom Plugin Schemas in a workspace
-* [CreatePluginSchemasInWorkspace](docs/sdks/custompluginschemas/README.md#createpluginschemasinworkspace) - Upload custom plugin schema in a workspace
-* [GetPluginSchemaInWorkspace](docs/sdks/custompluginschemas/README.md#getpluginschemainworkspace) - Get a custom plugin schema in a workspace
-* [DeletePluginSchemasInWorkspace](docs/sdks/custompluginschemas/README.md#deletepluginschemasinworkspace) - Delete custom plugin schema in a workspace
-* [UpdatePluginSchemasInWorkspace](docs/sdks/custompluginschemas/README.md#updatepluginschemasinworkspace) - Create or update a custom plugin schema in a workspace
 
 ### [CustomPlugins](docs/sdks/customplugins/README.md)
 
-* [ListCustomPluginInWorkspace](docs/sdks/customplugins/README.md#listcustomplugininworkspace) - List all CustomPlugins in a workspace
-* [CreateCustomPluginInWorkspace](docs/sdks/customplugins/README.md#createcustomplugininworkspace) - Create a new CustomPlugin in a workspace
-* [DeleteCustomPluginInWorkspace](docs/sdks/customplugins/README.md#deletecustomplugininworkspace) - Delete a CustomPlugin in a workspace
-* [GetCustomPluginInWorkspace](docs/sdks/customplugins/README.md#getcustomplugininworkspace) - Get a CustomPlugin in a workspace
-* [UpsertCustomPluginInWorkspace](docs/sdks/customplugins/README.md#upsertcustomplugininworkspace) - Upsert a CustomPlugin in a workspace
 * [ListCustomPlugin](docs/sdks/customplugins/README.md#listcustomplugin) - List all CustomPlugins
 * [CreateCustomPlugin](docs/sdks/customplugins/README.md#createcustomplugin) - Create a new CustomPlugin
 * [DeleteCustomPlugin](docs/sdks/customplugins/README.md#deletecustomplugin) - Delete a CustomPlugin
@@ -830,6 +967,14 @@ func main() {
 * [DashboardsGet](docs/sdks/dashboards/README.md#dashboardsget) - Get a single dashboard
 * [DashboardsUpdate](docs/sdks/dashboards/README.md#dashboardsupdate) - Update an existing dashboard
 * [DashboardsDelete](docs/sdks/dashboards/README.md#dashboardsdelete) - Delete an existing dashboard
+
+### [DataPlaneNodeLogLevelOperations](docs/sdks/dataplanenodelogleveloperations/README.md)
+
+* [ListDataplaneNodeLogLevelOperations](docs/sdks/dataplanenodelogleveloperations/README.md#listdataplanenodelogleveloperations) - List Data Plane Node Log Level Operations
+* [CreateDataplaneNodeLogLevelOperation](docs/sdks/dataplanenodelogleveloperations/README.md#createdataplanenodelogleveloperation) - Create a data plane node log level operation
+* [GetDataplaneNodeLogLevelOperation](docs/sdks/dataplanenodelogleveloperations/README.md#getdataplanenodelogleveloperation) - Get a data plane node log level operation
+* [ListDataplaneNodeLogLevelOperationResults](docs/sdks/dataplanenodelogleveloperations/README.md#listdataplanenodelogleveloperationresults) - List results of a data plane node log level operation
+* [GetDataplaneNodeLogLevelOperationResult](docs/sdks/dataplanenodelogleveloperations/README.md#getdataplanenodelogleveloperationresult) - Get result of a data plane node log level operation
 
 ### [DCRProviders](docs/sdks/dcrproviders/README.md)
 
@@ -853,9 +998,6 @@ func main() {
 * [UpsertDeclarativeConfig](docs/sdks/declarativeconfiguration/README.md#upsertdeclarativeconfig) - Create or Update the declarative config
 * [GetDeclarativeConfig](docs/sdks/declarativeconfiguration/README.md#getdeclarativeconfig) - Get the declarative configuration
 * [DeleteDeclarativeConfig](docs/sdks/declarativeconfiguration/README.md#deletedeclarativeconfig) - Delete the declarative config
-* [GetNativeEventProxyDeclarativeConfig](docs/sdks/declarativeconfiguration/README.md#getnativeeventproxydeclarativeconfig) - Get Event Proxy Configuration
-* [GetHTTPGatewayDeclarativeConfig](docs/sdks/declarativeconfiguration/README.md#gethttpgatewaydeclarativeconfig) - Get HTTP Proxy Configuration
-* [GetHoudiniEventGatewayDeclarativeConfig](docs/sdks/declarativeconfiguration/README.md#gethoudinieventgatewaydeclarativeconfig) - Get Houdini Event Gateway Configuration
 
 ### [DegraphqlRoutes](docs/sdks/degraphqlroutes/README.md)
 
@@ -898,6 +1040,143 @@ func main() {
 * [GetNodesNodeID](docs/sdks/dpnodes/README.md#getnodesnodeid) - Get a Data Plane Node Record
 * [DeleteNodesNodeID](docs/sdks/dpnodes/README.md#deletenodesnodeid) - Delete Data Plane Node Record
 
+### [EventGatewayBackendClusters](docs/sdks/eventgatewaybackendclusters/README.md)
+
+* [ListEventGatewayBackendClusters](docs/sdks/eventgatewaybackendclusters/README.md#listeventgatewaybackendclusters) - List Backend Clusters
+* [CreateEventGatewayBackendCluster](docs/sdks/eventgatewaybackendclusters/README.md#createeventgatewaybackendcluster) - Create Backend Cluster
+* [GetEventGatewayBackendCluster](docs/sdks/eventgatewaybackendclusters/README.md#geteventgatewaybackendcluster) - Get a Backend Cluster
+* [UpdateEventGatewayBackendCluster](docs/sdks/eventgatewaybackendclusters/README.md#updateeventgatewaybackendcluster) - Update Backend Cluster
+* [DeleteEventGatewayBackendCluster](docs/sdks/eventgatewaybackendclusters/README.md#deleteeventgatewaybackendcluster) - Delete Backend Cluster
+
+### [EventGatewayDataPlaneCertificates](docs/sdks/eventgatewaydataplanecertificates/README.md)
+
+* [ListEventGatewayDataPlaneCertificates](docs/sdks/eventgatewaydataplanecertificates/README.md#listeventgatewaydataplanecertificates) - List Event Gateway DataPlane Certificates
+* [CreateEventGatewayDataPlaneCertificate](docs/sdks/eventgatewaydataplanecertificates/README.md#createeventgatewaydataplanecertificate) - Create a New DataPlane Certificate
+* [GetEventGatewayDataPlaneCertificate](docs/sdks/eventgatewaydataplanecertificates/README.md#geteventgatewaydataplanecertificate) - Get a DataPlane Certificate
+* [UpdateEventGatewayDataPlaneCertificate](docs/sdks/eventgatewaydataplanecertificates/README.md#updateeventgatewaydataplanecertificate) - Update Event Gateway DataPlane Certificate
+* [DeleteEventGatewayDataPlaneCertificate](docs/sdks/eventgatewaydataplanecertificates/README.md#deleteeventgatewaydataplanecertificate) - Delete Event Gateway DataPlane Certificate
+
+### [EventGatewayListenerPolicies](docs/sdks/eventgatewaylistenerpolicies/README.md)
+
+* [ListEventGatewayListenerPolicies](docs/sdks/eventgatewaylistenerpolicies/README.md#listeventgatewaylistenerpolicies) - List Policies for Listener
+* [CreateEventGatewayListenerPolicy](docs/sdks/eventgatewaylistenerpolicies/README.md#createeventgatewaylistenerpolicy) - Create Policy for Listener
+* [GetEventGatewayListenerPolicy](docs/sdks/eventgatewaylistenerpolicies/README.md#geteventgatewaylistenerpolicy) - Get a Policy for Listener
+* [UpdateEventGatewayListenerPolicy](docs/sdks/eventgatewaylistenerpolicies/README.md#updateeventgatewaylistenerpolicy) - Update Policy for Listener
+* [PatchEventGatewayListenerPolicy](docs/sdks/eventgatewaylistenerpolicies/README.md#patcheventgatewaylistenerpolicy) - Partially Update Policy for Listener
+* [DeleteEventGatewayListenerPolicy](docs/sdks/eventgatewaylistenerpolicies/README.md#deleteeventgatewaylistenerpolicy) - Delete Policy for Listener
+* [MoveEventGatewayListenerPolicy](docs/sdks/eventgatewaylistenerpolicies/README.md#moveeventgatewaylistenerpolicy) - Move Policy
+* [GetEventGatewayListenerPolicyChain](docs/sdks/eventgatewaylistenerpolicies/README.md#geteventgatewaylistenerpolicychain) - Get Policy Chain for Listener
+* [UpdateEventGatewayListenerPolicyChain](docs/sdks/eventgatewaylistenerpolicies/README.md#updateeventgatewaylistenerpolicychain) - Update Policy Chain for Listener
+
+### [EventGatewayListeners](docs/sdks/eventgatewaylisteners/README.md)
+
+* [ListEventGatewayListeners](docs/sdks/eventgatewaylisteners/README.md#listeventgatewaylisteners) - List Event Gateway Listeners
+* [CreateEventGatewayListener](docs/sdks/eventgatewaylisteners/README.md#createeventgatewaylistener) - Create Event Gateway Listener
+* [GetEventGatewayListener](docs/sdks/eventgatewaylisteners/README.md#geteventgatewaylistener) - Get an Event Gateway Listener
+* [UpdateEventGatewayListener](docs/sdks/eventgatewaylisteners/README.md#updateeventgatewaylistener) - Update Event Gateway Listener
+* [DeleteEventGatewayListener](docs/sdks/eventgatewaylisteners/README.md#deleteeventgatewaylistener) - Delete Event Gateway Listener
+
+### [EventGatewayNodes](docs/sdks/eventgatewaynodes/README.md)
+
+* [ListEventGatewayNodes](docs/sdks/eventgatewaynodes/README.md#listeventgatewaynodes) - List Nodes
+* [GetEventGatewayNode](docs/sdks/eventgatewaynodes/README.md#geteventgatewaynode) - Get a Node
+* [GetEventGatewayNodeStatus](docs/sdks/eventgatewaynodes/README.md#geteventgatewaynodestatus) - Get Node Status
+* [ListEventGatewayNodeErrors](docs/sdks/eventgatewaynodes/README.md#listeventgatewaynodeerrors) - List Node Errors
+
+### [EventGatewaySchemaRegistries](docs/sdks/eventgatewayschemaregistries/README.md)
+
+* [ListEventGatewaySchemaRegistries](docs/sdks/eventgatewayschemaregistries/README.md#listeventgatewayschemaregistries) - List Schema Registries
+* [CreateEventGatewaySchemaRegistry](docs/sdks/eventgatewayschemaregistries/README.md#createeventgatewayschemaregistry) - Create Schema Registry
+* [GetEventGatewaySchemaRegistry](docs/sdks/eventgatewayschemaregistries/README.md#geteventgatewayschemaregistry) - Get a Schema Registry
+* [UpdateEventGatewaySchemaRegistry](docs/sdks/eventgatewayschemaregistries/README.md#updateeventgatewayschemaregistry) - Update Schema Registry
+* [DeleteEventGatewaySchemaRegistry](docs/sdks/eventgatewayschemaregistries/README.md#deleteeventgatewayschemaregistry) - Delete Schema Registry
+
+### [EventGatewayStaticKeys](docs/sdks/eventgatewaystatickeys/README.md)
+
+* [ListEventGatewayStaticKeys](docs/sdks/eventgatewaystatickeys/README.md#listeventgatewaystatickeys) - List Event Gateway Static Keys
+* [CreateEventGatewayStaticKey](docs/sdks/eventgatewaystatickeys/README.md#createeventgatewaystatickey) - Create a New Static Key
+* [GetEventGatewayStaticKey](docs/sdks/eventgatewaystatickeys/README.md#geteventgatewaystatickey) - Get a Static Key
+* [DeleteEventGatewayStaticKey](docs/sdks/eventgatewaystatickeys/README.md#deleteeventgatewaystatickey) - Delete Event Gateway Static Key
+
+### [EventGatewayTLSTrustBundles](docs/sdks/eventgatewaytlstrustbundles/README.md)
+
+* [ListEventGatewayTLSTrustBundles](docs/sdks/eventgatewaytlstrustbundles/README.md#listeventgatewaytlstrustbundles) - List TLS Trust Bundles
+* [CreateEventGatewayTLSTrustBundle](docs/sdks/eventgatewaytlstrustbundles/README.md#createeventgatewaytlstrustbundle) - Create TLS Trust Bundle
+* [GetEventGatewayTLSTrustBundle](docs/sdks/eventgatewaytlstrustbundles/README.md#geteventgatewaytlstrustbundle) - Get a TLS Trust Bundle
+* [UpdateEventGatewayTLSTrustBundle](docs/sdks/eventgatewaytlstrustbundles/README.md#updateeventgatewaytlstrustbundle) - Update TLS Trust Bundle
+* [DeleteEventGatewayTLSTrustBundle](docs/sdks/eventgatewaytlstrustbundles/README.md#deleteeventgatewaytlstrustbundle) - Delete TLS Trust Bundle
+
+### [EventGatewayVaultSecrets](docs/sdks/eventgatewayvaultsecrets/README.md)
+
+* [ListEventGatewayVaultSecrets](docs/sdks/eventgatewayvaultsecrets/README.md#listeventgatewayvaultsecrets) - List Vault Secrets
+* [CreateEventGatewayVaultSecret](docs/sdks/eventgatewayvaultsecrets/README.md#createeventgatewayvaultsecret) - Create Vault Secret
+* [GetEventGatewayVaultSecret](docs/sdks/eventgatewayvaultsecrets/README.md#geteventgatewayvaultsecret) - Get Vault Secret
+* [UpdateEventGatewayVaultSecret](docs/sdks/eventgatewayvaultsecrets/README.md#updateeventgatewayvaultsecret) - Update Vault Secret
+* [DeleteEventGatewayVaultSecret](docs/sdks/eventgatewayvaultsecrets/README.md#deleteeventgatewayvaultsecret) - Delete Vault Secret
+
+### [EventGatewayVaults](docs/sdks/eventgatewayvaults/README.md)
+
+* [ListEventGatewayVaults](docs/sdks/eventgatewayvaults/README.md#listeventgatewayvaults) - List Vaults
+* [CreateEventGatewayVault](docs/sdks/eventgatewayvaults/README.md#createeventgatewayvault) - Create Vault
+* [GetEventGatewayVault](docs/sdks/eventgatewayvaults/README.md#geteventgatewayvault) - Get a Vault
+* [UpdateEventGatewayVault](docs/sdks/eventgatewayvaults/README.md#updateeventgatewayvault) - Update Vault
+* [DeleteEventGatewayVault](docs/sdks/eventgatewayvaults/README.md#deleteeventgatewayvault) - Delete Vault
+
+### [EventGatewayVirtualClusterConsumePolicies](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md)
+
+* [ListEventGatewayVirtualClusterConsumePolicies](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md#listeventgatewayvirtualclusterconsumepolicies) - List Consume Policies for Virtual Cluster
+* [CreateEventGatewayVirtualClusterConsumePolicy](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md#createeventgatewayvirtualclusterconsumepolicy) - Create Consume Policy for Virtual Cluster
+* [GetEventGatewayVirtualClusterConsumePolicy](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md#geteventgatewayvirtualclusterconsumepolicy) - Get a Consume Policy for Virtual Cluster
+* [UpdateEventGatewayVirtualClusterConsumePolicy](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md#updateeventgatewayvirtualclusterconsumepolicy) - Update Consume Policy for Virtual Cluster
+* [PatchEventGatewayVirtualClusterConsumePolicy](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md#patcheventgatewayvirtualclusterconsumepolicy) - Patch Consume Policy for Virtual Cluster
+* [DeleteEventGatewayVirtualClusterConsumePolicy](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md#deleteeventgatewayvirtualclusterconsumepolicy) - Delete Consume Policy for Virtual Cluster
+* [MoveEventGatewayVirtualClusterConsumePolicy](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md#moveeventgatewayvirtualclusterconsumepolicy) - Move Consume Policy
+* [GetEventGatewayVirtualClusterConsumePolicyChain](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md#geteventgatewayvirtualclusterconsumepolicychain) - Get Consume Policy Chain
+* [UpdateEventGatewayVirtualClusterConsumePolicyChain](docs/sdks/eventgatewayvirtualclusterconsumepolicies/README.md#updateeventgatewayvirtualclusterconsumepolicychain) - Update Consume Policy Chain
+
+### [EventGatewayVirtualClusterPolicies](docs/sdks/eventgatewayvirtualclusterpolicies/README.md)
+
+* [ListEventGatewayVirtualClusterClusterLevelPolicies](docs/sdks/eventgatewayvirtualclusterpolicies/README.md#listeventgatewayvirtualclusterclusterlevelpolicies) - List Cluster Policies for Virtual Cluster
+* [CreateEventGatewayVirtualClusterClusterLevelPolicy](docs/sdks/eventgatewayvirtualclusterpolicies/README.md#createeventgatewayvirtualclusterclusterlevelpolicy) - Create Cluster Policy for Virtual Cluster
+* [GetEventGatewayVirtualClusterClusterLevelPolicy](docs/sdks/eventgatewayvirtualclusterpolicies/README.md#geteventgatewayvirtualclusterclusterlevelpolicy) - Get a Cluster Policy for Virtual Cluster
+* [UpdateEventGatewayVirtualClusterClusterLevelPolicy](docs/sdks/eventgatewayvirtualclusterpolicies/README.md#updateeventgatewayvirtualclusterclusterlevelpolicy) - Update Cluster Policy for Virtual Cluster
+* [PatchEventGatewayVirtualClusterClusterLevelPolicy](docs/sdks/eventgatewayvirtualclusterpolicies/README.md#patcheventgatewayvirtualclusterclusterlevelpolicy) - Patch Cluster Policy for Virtual Cluster
+* [DeleteEventGatewayVirtualClusterClusterLevelPolicy](docs/sdks/eventgatewayvirtualclusterpolicies/README.md#deleteeventgatewayvirtualclusterclusterlevelpolicy) - Delete Cluster Policy for Virtual Cluster
+* [MoveEventGatewayVirtualClusterClusterLevelPolicy](docs/sdks/eventgatewayvirtualclusterpolicies/README.md#moveeventgatewayvirtualclusterclusterlevelpolicy) - Move Cluster Policy
+* [GetEventGatewayVirtualClusterClusterLevelPolicyChain](docs/sdks/eventgatewayvirtualclusterpolicies/README.md#geteventgatewayvirtualclusterclusterlevelpolicychain) - Get Cluster Policy Chain for Virtual Cluster
+* [UpdateEventGatewayVirtualClusterClusterLevelPolicyChain](docs/sdks/eventgatewayvirtualclusterpolicies/README.md#updateeventgatewayvirtualclusterclusterlevelpolicychain) - Update Cluster Policy Chain
+
+### [EventGatewayVirtualClusterProducePolicies](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md)
+
+* [ListEventGatewayVirtualClusterProducePolicies](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md#listeventgatewayvirtualclusterproducepolicies) - List Produce Policies for Virtual Cluster
+* [CreateEventGatewayVirtualClusterProducePolicy](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md#createeventgatewayvirtualclusterproducepolicy) - Create Produce Policy for Virtual Cluster
+* [GetEventGatewayVirtualClusterProducePolicy](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md#geteventgatewayvirtualclusterproducepolicy) - Get a Produce Policy for Virtual Cluster
+* [UpdateEventGatewayVirtualClusterProducePolicy](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md#updateeventgatewayvirtualclusterproducepolicy) - Update Produce Policy for Virtual Cluster
+* [PatchEventGatewayVirtualClusterProducePolicy](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md#patcheventgatewayvirtualclusterproducepolicy) - Patch Produce Policy for Virtual Cluster
+* [DeleteEventGatewayVirtualClusterProducePolicy](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md#deleteeventgatewayvirtualclusterproducepolicy) - Delete Produce Policy for Virtual Cluster
+* [MoveEventGatewayVirtualClusterProducePolicy](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md#moveeventgatewayvirtualclusterproducepolicy) - Move Produce Policy
+* [GetEventGatewayVirtualClusterProducePolicyChain](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md#geteventgatewayvirtualclusterproducepolicychain) - Get Produce Policy Chain for Virtual Cluster
+* [UpdateEventGatewayVirtualClusterProducePolicyChain](docs/sdks/eventgatewayvirtualclusterproducepolicies/README.md#updateeventgatewayvirtualclusterproducepolicychain) - Update Produce Policy Chain
+
+### [EventGatewayVirtualClusters](docs/sdks/eventgatewayvirtualclusters/README.md)
+
+* [ListEventGatewayVirtualClusters](docs/sdks/eventgatewayvirtualclusters/README.md#listeventgatewayvirtualclusters) - List all virtual clusters
+* [CreateEventGatewayVirtualCluster](docs/sdks/eventgatewayvirtualclusters/README.md#createeventgatewayvirtualcluster) - Create Virtual Cluster
+* [GetEventGatewayVirtualCluster](docs/sdks/eventgatewayvirtualclusters/README.md#geteventgatewayvirtualcluster) - Get a Virtual Cluster
+* [UpdateEventGatewayVirtualCluster](docs/sdks/eventgatewayvirtualclusters/README.md#updateeventgatewayvirtualcluster) - Update Virtual Cluster
+* [DeleteEventGatewayVirtualCluster](docs/sdks/eventgatewayvirtualclusters/README.md#deleteeventgatewayvirtualcluster) - Delete Virtual Cluster
+
+### [EventGateways](docs/sdks/eventgateways/README.md)
+
+* [ListEventGatewaysUsage](docs/sdks/eventgateways/README.md#listeventgatewaysusage) - Get Event Gateways Usage
+* [ListEventGatewayVersions](docs/sdks/eventgateways/README.md#listeventgatewayversions) - List Event Gateway API Versions
+* [ListEventGateways](docs/sdks/eventgateways/README.md#listeventgateways) - List all Event Gateways
+* [CreateEventGateway](docs/sdks/eventgateways/README.md#createeventgateway) - Create Event Gateway
+* [GetEventGateway](docs/sdks/eventgateways/README.md#geteventgateway) - Get an Event Gateway
+* [UpdateEventGateway](docs/sdks/eventgateways/README.md#updateeventgateway) - Update Event Gateway
+* [PatchEventGateway](docs/sdks/eventgateways/README.md#patcheventgateway) - Partially Update Event Gateway
+* [DeleteEventGateway](docs/sdks/eventgateways/README.md#deleteeventgateway) - Delete Event Gateway
+
 ### [GraphQLCostDecorations](docs/sdks/graphqlcostdecorations/README.md)
 
 * [ListGraphqlRateLimitingAdvancedCostInWorkspace](docs/sdks/graphqlcostdecorations/README.md#listgraphqlratelimitingadvancedcostinworkspace) - List all GraphQL Cost Decorations in a workspace
@@ -931,6 +1210,10 @@ func main() {
 * [UpsertHmacAuthWithConsumer](docs/sdks/hmacauthcredentials/README.md#upserthmacauthwithconsumer) - Upsert a HMAC-auth credential associated with a Consumer
 * [ListHmacAuth](docs/sdks/hmacauthcredentials/README.md#listhmacauth) - List all HMAC-auth credentials
 * [GetHmacAuth](docs/sdks/hmacauthcredentials/README.md#gethmacauth) - Get a HMAC-auth credential
+
+### [Identity](docs/sdks/identity/README.md)
+
+* [AuthorizeConnectedApp](docs/sdks/identity/README.md#authorizeconnectedapp) - Authorize Connected App
 
 ### [ImpersonationSettings](docs/sdks/impersonationsettings/README.md)
 
@@ -1029,22 +1312,12 @@ func main() {
 * [GetSystemAccountsAssignedRolesInternal](docs/sdks/managedsystemaccountsroles/README.md#getsystemaccountsassignedrolesinternal) - List Roles (Internal)
 * [CreateSystemAccountsAssignedRolesInternal](docs/sdks/managedsystemaccountsroles/README.md#createsystemaccountsassignedrolesinternal) - Assign a role to a managed System Account
 
+### [MCPServerRuntime](docs/sdks/mcpserverruntime/README.md)
+
+* [GetMcpServerRuntimeConfig](docs/sdks/mcpserverruntime/README.md#getmcpserverruntimeconfig) - Get MCP Server Runtime Configuration
+
 ### [MCPServers](docs/sdks/mcpservers/README.md)
 
-* [ListMcpServerConfigs](docs/sdks/mcpservers/README.md#listmcpserverconfigs) - List all MCP Servers
-* [CreateMcpServerConfig](docs/sdks/mcpservers/README.md#createmcpserverconfig) - Create an MCP Server
-* [GetMcpServerConfig](docs/sdks/mcpservers/README.md#getmcpserverconfig) - Get MCP Server
-* [UpdateMcpServerConfig](docs/sdks/mcpservers/README.md#updatemcpserverconfig) - Update MCP Server
-* [PatchMcpServerConfig](docs/sdks/mcpservers/README.md#patchmcpserverconfig) - Partially Update MCP Server
-* [DeleteMcpServerConfig](docs/sdks/mcpservers/README.md#deletemcpserverconfig) - Delete MCP Server
-* [GetMcpServerStatus](docs/sdks/mcpservers/README.md#getmcpserverstatus) - Get MCP Server deployment status
-* [GetMcpServerGeneratedCode](docs/sdks/mcpservers/README.md#getmcpservergeneratedcode) - Get generated Python code for an MCP Server
-* [ListMcpResources](docs/sdks/mcpservers/README.md#listmcpresources) - List MCP Resources
-* [CreateMcpResource](docs/sdks/mcpservers/README.md#createmcpresource) - Create an MCP Resource
-* [GetMcpResource](docs/sdks/mcpservers/README.md#getmcpresource) - Get an MCP Resource
-* [DeleteMcpResource](docs/sdks/mcpservers/README.md#deletemcpresource) - Delete an MCP Resource
-* [UpdateMcpResource](docs/sdks/mcpservers/README.md#updatemcpresource) - Update an MCP Resource
-* [GetMcpResourceSpec](docs/sdks/mcpservers/README.md#getmcpresourcespec) - Get MCP Resource Spec
 * [GetMcpServerSignals](docs/sdks/mcpservers/README.md#getmcpserversignals) - Get MCP Server Signals
 * [ListMcpServersByControlPlane](docs/sdks/mcpservers/README.md#listmcpserversbycontrolplane) - List MCP Servers by Control Plane
 * [GetMcpServerByControlPlane](docs/sdks/mcpservers/README.md#getmcpserverbycontrolplane) - Get MCP Server by Control Plane
@@ -1092,10 +1365,6 @@ func main() {
 * [ListMtlsAuth](docs/sdks/mtlsauthcredentials/README.md#listmtlsauth) - List all MTLS-auth credentials
 * [GetMtlsAuth](docs/sdks/mtlsauthcredentials/README.md#getmtlsauth) - Get a MTLS-auth credential
 
-### [Nodes](docs/sdks/nodes/README.md)
-
-* [UpsertNode](docs/sdks/nodes/README.md#upsertnode) - Create or update a node
-
 ### [Notifications](docs/sdks/notifications/README.md)
 
 * [ListNotifications](docs/sdks/notifications/README.md#listnotifications) - List available notifications
@@ -1112,21 +1381,37 @@ func main() {
 
 ### [OpenMeterApps](docs/sdks/openmeterapps/README.md)
 
+* [ListAppCatalog](docs/sdks/openmeterapps/README.md#listappcatalog) - List app catalog
+* [InstallApp](docs/sdks/openmeterapps/README.md#installapp) - Install app from the catalog
+* [GetAppCatalogItem](docs/sdks/openmeterapps/README.md#getappcatalogitem) - Get app catalog item by type
 * [ListApps](docs/sdks/openmeterapps/README.md#listapps) - List apps
 * [GetApp](docs/sdks/openmeterapps/README.md#getapp) - Get app
+* [UninstallApp](docs/sdks/openmeterapps/README.md#uninstallapp) - Uninstall app
+* [UpdateApp](docs/sdks/openmeterapps/README.md#updateapp) - Update app
 
-### [OpenMeterBilling](docs/sdks/openmeterbilling/README.md)
+### [OpenMeterBillingSettings](docs/sdks/openmeterbillingsettings/README.md)
 
-* [ListCurrencies](docs/sdks/openmeterbilling/README.md#listcurrencies) - List currencies
-* [CreateCustomCurrency](docs/sdks/openmeterbilling/README.md#createcustomcurrency) - Create custom currency
-* [ListCostBases](docs/sdks/openmeterbilling/README.md#listcostbases) - List cost bases
-* [CreateCostBasis](docs/sdks/openmeterbilling/README.md#createcostbasis) - Create cost basis
-* [ListCustomerCharges](docs/sdks/openmeterbilling/README.md#listcustomercharges) - List customer charges
-* [ListBillingProfiles](docs/sdks/openmeterbilling/README.md#listbillingprofiles) - List billing profiles
-* [CreateBillingProfile](docs/sdks/openmeterbilling/README.md#createbillingprofile) - Create a new billing profile
-* [GetBillingProfile](docs/sdks/openmeterbilling/README.md#getbillingprofile) - Get a billing profile
-* [UpdateBillingProfile](docs/sdks/openmeterbilling/README.md#updatebillingprofile) - Update a billing profile
-* [DeleteBillingProfile](docs/sdks/openmeterbilling/README.md#deletebillingprofile) - Delete a billing profile
+* [ListInvoices](docs/sdks/openmeterbillingsettings/README.md#listinvoices) - List billing invoices
+* [GetInvoice](docs/sdks/openmeterbillingsettings/README.md#getinvoice) - Get a billing invoice
+* [UpdateInvoice](docs/sdks/openmeterbillingsettings/README.md#updateinvoice) - Update a billing invoice
+* [DeleteInvoice](docs/sdks/openmeterbillingsettings/README.md#deleteinvoice) - Delete a billing invoice
+* [AdvanceInvoice](docs/sdks/openmeterbillingsettings/README.md#advanceinvoice) - Advance billing invoice's next status
+* [ApproveInvoice](docs/sdks/openmeterbillingsettings/README.md#approveinvoice) - Send the invoice to the customer
+* [RetryInvoice](docs/sdks/openmeterbillingsettings/README.md#retryinvoice) - Retry advancing the invoice after a failed attempt
+* [SnapshotQuantitiesInvoice](docs/sdks/openmeterbillingsettings/README.md#snapshotquantitiesinvoice) - Snapshot quantities for usage based line items
+* [ListBillingProfiles](docs/sdks/openmeterbillingsettings/README.md#listbillingprofiles) - List billing profiles
+* [CreateBillingProfile](docs/sdks/openmeterbillingsettings/README.md#createbillingprofile) - Create a new billing profile
+* [GetBillingProfile](docs/sdks/openmeterbillingsettings/README.md#getbillingprofile) - Get a billing profile
+* [UpdateBillingProfile](docs/sdks/openmeterbillingsettings/README.md#updatebillingprofile) - Update a billing profile
+* [DeleteBillingProfile](docs/sdks/openmeterbillingsettings/README.md#deletebillingprofile) - Delete a billing profile
+
+### [OpenMeterCurrencies](docs/sdks/openmetercurrencies/README.md)
+
+* [ListCurrencies](docs/sdks/openmetercurrencies/README.md#listcurrencies) - List currencies
+* [CreateCustomCurrency](docs/sdks/openmetercurrencies/README.md#createcustomcurrency) - Create custom currency
+* [GetCustomCurrency](docs/sdks/openmetercurrencies/README.md#getcustomcurrency) - Get custom currency
+* [ListCostBases](docs/sdks/openmetercurrencies/README.md#listcostbases) - List cost bases
+* [CreateCostBasis](docs/sdks/openmetercurrencies/README.md#createcostbasis) - Create cost basis
 
 ### [OpenMeterCustomers](docs/sdks/openmetercustomers/README.md)
 
@@ -1140,12 +1425,15 @@ func main() {
 * [UpdateCustomerBillingAppData](docs/sdks/openmetercustomers/README.md#updatecustomerbillingappdata) - Update customer billing app data
 * [CreateCustomerStripeCheckoutSession](docs/sdks/openmetercustomers/README.md#createcustomerstripecheckoutsession) - Create Stripe Checkout Session
 * [CreateCustomerStripePortalSession](docs/sdks/openmetercustomers/README.md#createcustomerstripeportalsession) - Create Stripe customer portal session
+* [ListCustomerCharges](docs/sdks/openmetercustomers/README.md#listcustomercharges) - List customer charges
+* [CreateCustomerCharges](docs/sdks/openmetercustomers/README.md#createcustomercharges) - Create customer charge
 * [CreateCreditAdjustment](docs/sdks/openmetercustomers/README.md#createcreditadjustment) - Create a credit adjustment
 * [GetCustomerCreditBalance](docs/sdks/openmetercustomers/README.md#getcustomercreditbalance) - Get a customer's credit balance
 * [CreateCreditGrant](docs/sdks/openmetercustomers/README.md#createcreditgrant) - Create a new credit grant
 * [ListCreditGrants](docs/sdks/openmetercustomers/README.md#listcreditgrants) - List credit grants
 * [GetCreditGrant](docs/sdks/openmetercustomers/README.md#getcreditgrant) - Get a credit grant
 * [UpdateCreditGrantExternalSettlement](docs/sdks/openmetercustomers/README.md#updatecreditgrantexternalsettlement) - Update credit grant external settlement status
+* [VoidCreditGrant](docs/sdks/openmetercustomers/README.md#voidcreditgrant) - Void credit grant
 * [ListCreditTransactions](docs/sdks/openmetercustomers/README.md#listcredittransactions) - List credit transactions
 
 ### [OpenMeterDefaults](docs/sdks/openmeterdefaults/README.md)
@@ -1156,6 +1444,7 @@ func main() {
 ### [OpenMeterEntitlements](docs/sdks/openmeterentitlements/README.md)
 
 * [ListCustomerEntitlementAccess](docs/sdks/openmeterentitlements/README.md#listcustomerentitlementaccess) - List customer entitlement access
+* [QueryEntitlementAccess](docs/sdks/openmeterentitlements/README.md#queryentitlementaccess) - Query entitlement access
 
 ### [OpenMeterFeatures](docs/sdks/openmeterfeatures/README.md)
 
@@ -1165,10 +1454,6 @@ func main() {
 * [UpdateFeature](docs/sdks/openmeterfeatures/README.md#updatefeature) - Update feature
 * [DeleteFeature](docs/sdks/openmeterfeatures/README.md#deletefeature) - Delete feature
 * [QueryFeatureCost](docs/sdks/openmeterfeatures/README.md#queryfeaturecost) - Query feature cost
-
-### [OpenMeterGovernance](docs/sdks/openmetergovernance/README.md)
-
-* [QueryGovernanceAccess](docs/sdks/openmetergovernance/README.md#querygovernanceaccess) - Query governance access
 
 ### [OpenMeterLLMCost](docs/sdks/openmeterllmcost/README.md)
 
@@ -1180,13 +1465,13 @@ func main() {
 
 ### [OpenMeterProductCatalog](docs/sdks/openmeterproductcatalog/README.md)
 
-* [ListOpenmeterAddons](docs/sdks/openmeterproductcatalog/README.md#listopenmeteraddons) - List add-ons
-* [CreateOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#createopenmeteraddon) - Create add-on
-* [UpdateOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#updateopenmeteraddon) - Update add-on
-* [GetOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#getopenmeteraddon) - Get add-on
-* [DeleteOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#deleteopenmeteraddon) - Soft delete add-on
-* [ArchiveOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#archiveopenmeteraddon) - Archive add-on version
-* [PublishAddon](docs/sdks/openmeterproductcatalog/README.md#publishaddon) - Publish add-on version
+* [ListProductCatalogAddons](docs/sdks/openmeterproductcatalog/README.md#listproductcatalogaddons) - List add-ons
+* [CreateProductCatalogAddon](docs/sdks/openmeterproductcatalog/README.md#createproductcatalogaddon) - Create add-on
+* [UpdateProductCatalogAddon](docs/sdks/openmeterproductcatalog/README.md#updateproductcatalogaddon) - Update add-on
+* [GetProductCatalogAddon](docs/sdks/openmeterproductcatalog/README.md#getproductcatalogaddon) - Get add-on
+* [DeleteProductCatalogAddon](docs/sdks/openmeterproductcatalog/README.md#deleteproductcatalogaddon) - Soft delete add-on
+* [ArchiveProductCatalogAddon](docs/sdks/openmeterproductcatalog/README.md#archiveproductcatalogaddon) - Archive add-on version
+* [PublishProductCatalogAddon](docs/sdks/openmeterproductcatalog/README.md#publishproductcatalogaddon) - Publish add-on version
 * [ListPlans](docs/sdks/openmeterproductcatalog/README.md#listplans) - List plans
 * [CreatePlan](docs/sdks/openmeterproductcatalog/README.md#createplan) - Create plan
 * [UpdatePlan](docs/sdks/openmeterproductcatalog/README.md#updateplan) - Update plan
@@ -1205,10 +1490,12 @@ func main() {
 * [CreateSubscription](docs/sdks/openmetersubscriptions/README.md#createsubscription) - Create subscription
 * [ListSubscriptions](docs/sdks/openmetersubscriptions/README.md#listsubscriptions) - List subscriptions
 * [GetSubscription](docs/sdks/openmetersubscriptions/README.md#getsubscription) - Get subscription
+* [CreateSubscriptionAddon](docs/sdks/openmetersubscriptions/README.md#createsubscriptionaddon) - Create a new subscription add-on
 * [ListSubscriptionAddons](docs/sdks/openmetersubscriptions/README.md#listsubscriptionaddons) - List subscription addons
 * [GetSubscriptionAddon](docs/sdks/openmetersubscriptions/README.md#getsubscriptionaddon) - Get add-on association for subscription
 * [CancelSubscription](docs/sdks/openmetersubscriptions/README.md#cancelsubscription) - Cancel subscription
 * [ChangeSubscription](docs/sdks/openmetersubscriptions/README.md#changesubscription) - Change subscription
+* [EditSubscription](docs/sdks/openmetersubscriptions/README.md#editsubscription) - Edit subscription
 * [UnscheduleCancelation](docs/sdks/openmetersubscriptions/README.md#unschedulecancelation) - Unschedule subscription cancelation
 
 ### [OpenMeterTax](docs/sdks/openmetertax/README.md)
@@ -1257,7 +1544,8 @@ func main() {
 
 ### [Plugins](docs/sdks/plugins/README.md)
 
-* [SearchPlugin](docs/sdks/plugins/README.md#searchplugin) - Search for Plugins
+* [SearchPluginsInWorkspace](docs/sdks/plugins/README.md#searchpluginsinworkspace) - Search Plugins in a workspace
+* [SearchPlugins](docs/sdks/plugins/README.md#searchplugins) - Search for Plugins
 * [ListPluginWithConsumerGroupInWorkspace](docs/sdks/plugins/README.md#listpluginwithconsumergroupinworkspace) - List all Plugins associated with a Consumer Group in a workspace
 * [CreatePluginWithConsumerGroupInWorkspace](docs/sdks/plugins/README.md#createpluginwithconsumergroupinworkspace) - Create a new Plugin associated with a Consumer Group in a workspace
 * [DeletePluginWithConsumerGroupInWorkspace](docs/sdks/plugins/README.md#deletepluginwithconsumergroupinworkspace) - Delete a a Plugin associated with a Consumer Group in a workspace
@@ -1477,6 +1765,8 @@ func main() {
 
 ### [Routes](docs/sdks/routes/README.md)
 
+* [SearchRoutesInWorkspace](docs/sdks/routes/README.md#searchroutesinworkspace) - Search Routes in a workspace
+* [SearchRoutes](docs/sdks/routes/README.md#searchroutes) - Search Routes
 * [ListRouteInWorkspace](docs/sdks/routes/README.md#listrouteinworkspace) - List all Routes in a workspace
 * [CreateRouteInWorkspace](docs/sdks/routes/README.md#createrouteinworkspace) - Create a new Route in a workspace
 * [DeleteRouteInWorkspace](docs/sdks/routes/README.md#deleterouteinworkspace) - Delete a Route in a workspace
@@ -1500,6 +1790,7 @@ func main() {
 
 ### [Schemas](docs/sdks/schemas/README.md)
 
+* [FetchCoreEntityJSONSchema](docs/sdks/schemas/README.md#fetchcoreentityjsonschema) - Get core entity JSON schema
 * [ValidateEntitySchema](docs/sdks/schemas/README.md#validateentityschema) - Validate entity schema
 * [FetchPartialSchema](docs/sdks/schemas/README.md#fetchpartialschema) - Get partial schema
 
@@ -1520,6 +1811,8 @@ func main() {
 
 ### [Services](docs/sdks/services/README.md)
 
+* [SearchServicesInWorkspace](docs/sdks/services/README.md#searchservicesinworkspace) - Search Services in a workspace
+* [SearchServices](docs/sdks/services/README.md#searchservices) - Search Services
 * [ListServiceInWorkspace](docs/sdks/services/README.md#listserviceinworkspace) - List all Services in a workspace
 * [CreateServiceInWorkspace](docs/sdks/services/README.md#createserviceinworkspace) - Create a new Service in a workspace
 * [DeleteServiceInWorkspace](docs/sdks/services/README.md#deleteserviceinworkspace) - Delete a Service in a workspace
@@ -1530,6 +1823,17 @@ func main() {
 * [DeleteService](docs/sdks/services/README.md#deleteservice) - Delete a Service
 * [GetService](docs/sdks/services/README.md#getservice) - Get a Service
 * [UpsertService](docs/sdks/services/README.md#upsertservice) - Upsert a Service
+
+### [Skills](docs/sdks/skills/README.md)
+
+* [ListMcpServerSkillsByControlPlane](docs/sdks/skills/README.md#listmcpserverskillsbycontrolplane) - List Skills by Control Plane
+* [GetMcpServerSkillContentsByControlPlane](docs/sdks/skills/README.md#getmcpserverskillcontentsbycontrolplane) - Get Skill Contents by Control Plane
+* [GetContextInterfaceSkill](docs/sdks/skills/README.md#getcontextinterfaceskill) - Get a Skill
+* [PatchContextInterfaceSkill](docs/sdks/skills/README.md#patchcontextinterfaceskill) - Update a Skill
+* [DeleteContextInterfaceSkill](docs/sdks/skills/README.md#deletecontextinterfaceskill) - Delete a Skill
+* [GetContextInterfaceSkillContents](docs/sdks/skills/README.md#getcontextinterfaceskillcontents) - Get Skill Contents
+* [ListContextInterfaceSkills](docs/sdks/skills/README.md#listcontextinterfaceskills) - List Skills
+* [CreateContextInterfaceSkill](docs/sdks/skills/README.md#createcontextinterfaceskill) - Create a Skill
 
 ### [Snippets](docs/sdks/snippets/README.md)
 

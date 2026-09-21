@@ -1,8 +1,6 @@
 # Mode
 
-Mode of the checkout session.
-
-Currently only "setup" mode is supported for collecting payment methods.
+Single selection — the developer chooses exactly one option.
 
 ## Example Usage
 
@@ -11,12 +9,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.ModeSetup
+value := components.ModeSingleSelect
 ```
 
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `ModeSetup` | setup       |
+| Name               | Value              |
+| ------------------ | ------------------ |
+| `ModeSingleSelect` | single_select      |

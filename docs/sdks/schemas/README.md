@@ -4,8 +4,67 @@
 
 ### Available Operations
 
+* [FetchCoreEntityJSONSchema](#fetchcoreentityjsonschema) - Get core entity JSON schema
 * [ValidateEntitySchema](#validateentityschema) - Validate entity schema
 * [FetchPartialSchema](#fetchpartialschema) - Get partial schema
+
+## FetchCoreEntityJSONSchema
+
+Returns the JSON schema for a Kong Gateway core entity.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="fetch-core-entity-json-schema" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/v1/schemas/json/{entityName}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Schemas.FetchCoreEntityJSONSchema(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "upstream")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CoreEntityJSONSchema != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `entityName`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | The name of the core entity                                                        | upstream                                                                           |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+
+### Response
+
+**[*operations.FetchCoreEntityJSONSchemaResponse](../../models/operations/fetchcoreentityjsonschemaresponse.md), error**
+
+### Errors
+
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| sdkerrors.KonnectCPLegacyUnauthorizedError | 401                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyForbiddenError    | 403                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyNotFoundError     | 404                                        | application/json                           |
+| sdkerrors.SDKError                         | 4XX, 5XX                                   | \*/\*                                      |
 
 ## ValidateEntitySchema
 

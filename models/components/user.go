@@ -7,6 +7,32 @@ import (
 	"time"
 )
 
+// AccountType - The authorization strategy used to register the user.
+type AccountType string
+
+const (
+	AccountTypeGoogle    AccountType = "google"
+	AccountTypeGithub    AccountType = "github"
+	AccountTypeMicrosoft AccountType = "microsoft"
+	AccountTypeBasicAuth AccountType = "basic-auth"
+	AccountTypeSso       AccountType = "sso"
+)
+
+func (e AccountType) ToPointer() *AccountType {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AccountType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "google", "github", "microsoft", "basic-auth", "sso":
+			return true
+		}
+	}
+	return false
+}
+
 // User - The user object contains information about an individual user who can use the Konnect application and API.
 type User struct {
 	// The User ID.
@@ -25,6 +51,8 @@ type User struct {
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// A Unix timestamp representation of the most recent change to the User account.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	// The authorization strategy used to register the user.
+	AccountType *AccountType `json:"account_type,omitempty"`
 }
 
 func (u User) MarshalJSON() ([]byte, error) {
@@ -92,4 +120,11 @@ func (u *User) GetUpdatedAt() *time.Time {
 		return nil
 	}
 	return u.UpdatedAt
+}
+
+func (u *User) GetAccountType() *AccountType {
+	if u == nil {
+		return nil
+	}
+	return u.AccountType
 }

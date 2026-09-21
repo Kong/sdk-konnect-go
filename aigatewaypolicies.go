@@ -1256,10 +1256,10 @@ func (s *AIGatewayPolicies) CreateAiGatewayPolicy(ctx context.Context, gatewayID
 
 // GetAiGatewayPolicy - Get an AI Gateway Policy
 // Returns the details of a specific AI Gateway policy.
-func (s *AIGatewayPolicies) GetAiGatewayPolicy(ctx context.Context, gatewayID string, policyID string, opts ...operations.Option) (*operations.GetAiGatewayPolicyResponse, error) {
+func (s *AIGatewayPolicies) GetAiGatewayPolicy(ctx context.Context, gatewayID string, policyIDOrName string, opts ...operations.Option) (*operations.GetAiGatewayPolicyResponse, error) {
 	request := operations.GetAiGatewayPolicyRequest{
-		GatewayID: gatewayID,
-		PolicyID:  policyID,
+		GatewayID:      gatewayID,
+		PolicyIDOrName: policyIDOrName,
 	}
 
 	o := operations.Options{}
@@ -1280,7 +1280,7 @@ func (s *AIGatewayPolicies) GetAiGatewayPolicy(ctx context.Context, gatewayID st
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/policies/{policyId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/policies/{policyIdOrName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1569,7 +1569,7 @@ func (s *AIGatewayPolicies) UpdateAiGatewayPolicy(ctx context.Context, request o
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/policies/{policyId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/policies/{policyIdOrName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1867,10 +1867,10 @@ func (s *AIGatewayPolicies) UpdateAiGatewayPolicy(ctx context.Context, request o
 
 // DeleteAiGatewayPolicy - Delete an AI Gateway Policy
 // Removes a specific AI Gateway policy.
-func (s *AIGatewayPolicies) DeleteAiGatewayPolicy(ctx context.Context, gatewayID string, policyID string, opts ...operations.Option) (*operations.DeleteAiGatewayPolicyResponse, error) {
+func (s *AIGatewayPolicies) DeleteAiGatewayPolicy(ctx context.Context, gatewayID string, policyIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayPolicyResponse, error) {
 	request := operations.DeleteAiGatewayPolicyRequest{
-		GatewayID: gatewayID,
-		PolicyID:  policyID,
+		GatewayID:      gatewayID,
+		PolicyIDOrName: policyIDOrName,
 	}
 
 	o := operations.Options{}
@@ -1891,7 +1891,7 @@ func (s *AIGatewayPolicies) DeleteAiGatewayPolicy(ctx context.Context, gatewayID
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/policies/{policyId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/ai-gateways/{gatewayId}/policies/{policyIdOrName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2032,6 +2032,27 @@ func (s *AIGatewayPolicies) DeleteAiGatewayPolicy(ctx context.Context, gatewayID
 	switch {
 	case httpRes.StatusCode == 204:
 		utils.DrainBody(httpRes)
+	case httpRes.StatusCode == 400:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.BadRequestError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):

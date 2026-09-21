@@ -651,7 +651,14 @@ func CreateServiceSelectorSelectorParametersURLCustomFieldSelectorParams(urlCust
 	}
 }
 
-func (u *ServiceSelectorSelectorParameters) UnmarshalJSON(data []byte) error {
+func (u *ServiceSelectorSelectorParameters) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ServiceSelectorSelectorParameters{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var urlCustomFieldSelectorParams URLCustomFieldSelectorParams = URLCustomFieldSelectorParams{}
 	if err := utils.UnmarshalJSON(data, &urlCustomFieldSelectorParams, "", true, nil); err == nil {
@@ -1091,7 +1098,14 @@ func CreateServiceSelectorHasResourcesSelector(hasResourcesSelector HasResources
 	}
 }
 
-func (u *ServiceSelector) UnmarshalJSON(data []byte) error {
+func (u *ServiceSelector) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ServiceSelector{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var allEntitiesSelector AllEntitiesSelector = AllEntitiesSelector{}
 	if err := utils.UnmarshalJSON(data, &allEntitiesSelector, "", true, nil); err == nil {
@@ -1233,7 +1247,14 @@ func CreateScorecardEntitySelectorServiceSelector(serviceSelector ServiceSelecto
 	}
 }
 
-func (u *ScorecardEntitySelector) UnmarshalJSON(data []byte) error {
+func (u *ScorecardEntitySelector) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ScorecardEntitySelector{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var serviceSelector ServiceSelector = ServiceSelector{}
 	if err := utils.UnmarshalJSON(data, &serviceSelector, "", true, nil); err == nil {

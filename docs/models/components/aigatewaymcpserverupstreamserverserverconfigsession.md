@@ -1,6 +1,6 @@
 # AIGatewayMCPServerUpstreamServerServerConfigSession
 
-Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes. 
+Enable managed session when Kong responds as MCP server in listener, conversion-listener, or upstream-server modes.
 This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 
 

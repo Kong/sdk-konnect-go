@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -39,29 +37,6 @@ func (e *FailoverCriteria) IsExact() bool {
 	return false
 }
 
-type Algorithm string
-
-const (
-	AlgorithmConsistentHashing Algorithm = "consistent-hashing"
-)
-
-func (e Algorithm) ToPointer() *Algorithm {
-	return &e
-}
-func (e *Algorithm) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "consistent-hashing":
-		*e = Algorithm(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Algorithm: %v", v)
-	}
-}
-
 type AIGatewayModelBalancerConsistentHashingConfig struct {
 	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
 	// The period of time (in milliseconds) the target will be considered unavailable after the number of unsuccessful attempts reaches `max_fails`.
@@ -74,9 +49,10 @@ type AIGatewayModelBalancerConsistentHashingConfig struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64    `default:"10000" json:"slots"`
-	WriteTimeout *int64    `default:"60000" json:"write_timeout"`
-	Algorithm    Algorithm `json:"algorithm"`
+	Slots        *int64 `default:"10000" json:"slots"`
+	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	algorithm string `const:"consistent-hashing" json:"algorithm"`
 	// The header to use for consistent-hashing.
 	HashOnHeader *string `default:"X-Kong-LLM-Request-ID" json:"hash_on_header"`
 }
@@ -148,11 +124,8 @@ func (a *AIGatewayModelBalancerConsistentHashingConfig) GetWriteTimeout() *int64
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerConsistentHashingConfig) GetAlgorithm() Algorithm {
-	if a == nil {
-		return Algorithm("")
-	}
-	return a.Algorithm
+func (a *AIGatewayModelBalancerConsistentHashingConfig) GetAlgorithm() string {
+	return "consistent-hashing"
 }
 
 func (a *AIGatewayModelBalancerConsistentHashingConfig) GetHashOnHeader() *string {

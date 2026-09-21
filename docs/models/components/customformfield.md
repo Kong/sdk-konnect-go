@@ -1,6 +1,6 @@
 # CustomFormField
 
-Response-side form field. Discriminated by `type`. Carries the server-set `built_in` flag on field variants that support it.
+A field on a form, as returned by the API. The `type` property determines what kind of field it is. Fields that came with the form by default carry a `built_in` flag.
 
 
 

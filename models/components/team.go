@@ -13,7 +13,7 @@ type Team struct {
 	ID *string `json:"id,omitempty"`
 	// The name of the team.
 	Name *string `json:"name,omitempty"`
-	// The team description in Konnect.
+	// The description of the team.
 	Description *string `json:"description,omitempty"`
 	// Returns True if a user belongs to a `system_team`. System teams are teams that can manage Konnect objects, like "Organization Admin", or "Service"
 	SystemTeam *bool `default:"false" json:"system_team"`
@@ -27,6 +27,8 @@ type Team struct {
 	// A Unix timestamp representation of the most recent change to the team object in Konnect.
 	//
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	// Whether the team's membership is managed by Konnect instead of being synced from an identity provider's team mappings. Set to `false` (default) to let identity provider team mappings keep syncing members into this team. Set to `true` to manage membership directly in Konnect and prevent identity provider team mappings from syncing to this team.
+	KonnectManaged *bool `default:"false" json:"konnect_managed"`
 }
 
 func (t Team) MarshalJSON() ([]byte, error) {
@@ -87,4 +89,11 @@ func (t *Team) GetUpdatedAt() *time.Time {
 		return nil
 	}
 	return t.UpdatedAt
+}
+
+func (t *Team) GetKonnectManaged() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.KonnectManaged
 }

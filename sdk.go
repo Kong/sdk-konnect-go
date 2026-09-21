@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.14.0 and generator version 2.893.0
+// Generated from OpenAPI doc version 3.15.0 and generator version 2.938.0
 
 import (
 	"context"
@@ -80,7 +80,9 @@ type SDK struct {
 	Authentication               *Authentication
 	Aws                          *Aws
 	PersonalAccessTokens         *PersonalAccessTokens
-	CloudGateways                *CloudGateways
+	// API for connected apps authorization.
+	Identity      *Identity
+	CloudGateways *CloudGateways
 	// Operations related to notifications
 	Notifications *Notifications
 	// Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
@@ -91,6 +93,7 @@ type SDK struct {
 	// Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version.
 	// Called “Auth Strategy” for short in the context of portals/applications.
 	// The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
+	// The optional `principals` property controls application-principal behavior for V3 API Catalog portals and applications. It defaults to disabled when omitted.
 	//
 	AppAuthStrategies       *AppAuthStrategies
 	API                     *API
@@ -100,6 +103,7 @@ type SDK struct {
 	APIPublication          *APIPublication
 	APIImage                *APIImage
 	APIImplementation       *APIImplementation
+	APIEnvironment          *APIEnvironment
 	APIOperations           *APIOperations
 	APIAttributes           *APIAttributes
 	APIPackages             *APIPackages
@@ -124,6 +128,8 @@ type SDK struct {
 	Pages *Pages
 	// APIs related to Konnect Developer Portal Applications.
 	Applications *Applications
+	// APIs related to Konnect Developer Portal AI Settings.
+	AISettings *AISettings
 	// APIs related to Konnect Developer Portal Application Registrations.
 	ApplicationRegistrations *ApplicationRegistrations
 	// APIs related to configuration of Konnect Developer Portal auth settings.
@@ -288,12 +294,67 @@ type SDK struct {
 	//
 	Quotas          *Quotas
 	APISpecsPreview *APISpecsPreview
+	// Create an Event Gateway Control Plane, used to store Event Gateway configuration
+	//
+	EventGateways *EventGateways
+	// A listener represents hostname-port or IP-port combinations that connect to TCP sockets. Listeners need at least as many ports as backend brokers if you use port mapping in a Forward to Virtual Cluster policy. For SNI routing, you can route all brokers using a listener with only one port. Ports can be expressed as a single port or range. Addresses can be IPv4, IPv6, or hostnames.
+	//
+	// A listener can have policies that enforce TLS certificates and perform SNI routing. The listener runs at Layer 4 of the network stack. In Kong Event Gateway, listeners first take in the connection and then route the TCP connection to a virtual cluster based on conditions defined in listener policies.
+	//
+	EventGatewayListeners *EventGatewayListeners
+	// Virtual clusters are the primary way clients interact with the Event Gateway proxy. They allow you to isolate clients from each other when connecting to the same backend cluster, and provide each client with modified view while still appearing as a standard Kafka cluster.
+	//
+	EventGatewayVirtualClusters *EventGatewayVirtualClusters
+	// A backend cluster is an abstraction of a real Kafka cluster. It stores the connection and configuration details required for Kong Event Gateway to proxy traffic to Kafka.
+	//
+	// Multiple Kafka clusters can be proxied through a single Kong Event Gateway.
+	//
+	EventGatewayBackendClusters *EventGatewayBackendClusters
+	EventGatewayVaults          *EventGatewayVaults
+	EventGatewayVaultSecrets    *EventGatewayVaultSecrets
+	// Configure a schema registry that can be used to validate payloads when producing/consuming messages
+	//
+	EventGatewaySchemaRegistries *EventGatewaySchemaRegistries
+	EventGatewayNodes            *EventGatewayNodes
+	// Policies control how Kafka protocol traffic is modified between the client and the backend cluster.
+	//
+	// Listener policies are routing policies that pass traffic to the virtual cluster.
+	//
+	EventGatewayListenerPolicies *EventGatewayListenerPolicies
+	// Consume policies operate on Kafka messages as they are read from a Kafka cluster.
+	//
+	// Transformations may be applied at consume time, but they are applied once per Consumer. Where possible, transofmrations should be applied as a Produce policy
+	//
+	EventGatewayVirtualClusterConsumePolicies *EventGatewayVirtualClusterConsumePolicies
+	// Produce policies operate on Kafka messages before they are written to the Kafka cluster.
+	//
+	// Where possible, apply transformations to the data using produce policies rather than consume policies for maximum efficiency.
+	//
+	EventGatewayVirtualClusterProducePolicies *EventGatewayVirtualClusterProducePolicies
+	// Policies control how Kafka protocol traffic is modified between the client and the backend cluster.
+	//
+	// Cluster policies are transformation and validation policies that can be applied to Kafka messages.
+	//
+	EventGatewayVirtualClusterPolicies *EventGatewayVirtualClusterPolicies
+	// DataPlane certificates control how your running Event Gateway instances connect to the Control Plane
+	//
+	EventGatewayDataPlaneCertificates *EventGatewayDataPlaneCertificates
+	// Static Keys are used by the Encrypt and Decrypt policies to encrypt data at rest
+	//
+	EventGatewayStaticKeys *EventGatewayStaticKeys
+	// A TLS trust bundle defines a set of trusted certificate authorities (CAs) used for client certificate
+	// verification during mutual TLS (mTLS). Trust bundles are referenced by TLS listener policies to
+	// determine which client certificates are accepted.
+	//
+	EventGatewayTLSTrustBundles *EventGatewayTLSTrustBundles
 	// Product catalog manages plans, add-ons, and their associations for subscription-based billing.
 	OpenMeterProductCatalog *OpenMeterProductCatalog
 	// Apps enable you to extend and customize billing and usage workflows by integrating with external systems and services. Apps can automate and enhance your billing ecosystem by supporting capabilities such as synchronizing usage data with third-party platforms, calculating taxes, generating and delivering invoices, handling payment collection, and other billing-related tasks.
 	OpenMeterApps *OpenMeterApps
-	// Billing manages the billing profiles, currencies, cost bases, and invoices for customers.
-	OpenMeterBilling *OpenMeterBilling
+	// Billing settings manages the billing profiles and invoices for customers.
+	OpenMeterBillingSettings *OpenMeterBillingSettings
+	// Currencies and cost bases for customers.
+	OpenMeterCurrencies *OpenMeterCurrencies
 	// Customers are used to track usage of your product or service. Customers can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterCustomers *OpenMeterCustomers
 	// Entitlements are used to control access to features for customers.
@@ -304,8 +365,6 @@ type SDK struct {
 	MeteringEvents *MeteringEvents
 	// Features represent product capabilities backed by meters, with optional per-unit cost configuration.
 	OpenMeterFeatures *OpenMeterFeatures
-	// Governance evaluation of customers to check their feature access.
-	OpenMeterGovernance *OpenMeterGovernance
 	// LLM cost database providing normalized pricing data for language models across providers. Prices are synced from multiple external sources and auto-confirmed when they agree.
 	OpenMeterLLMCost *OpenMeterLLMCost
 	// Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.
@@ -313,14 +372,29 @@ type SDK struct {
 	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterSubscriptions *OpenMeterSubscriptions
 	// Tax codes are used to calculate taxes for customers.
-	OpenMeterTax *OpenMeterTax
-	MCPServers   *MCPServers
+	OpenMeterTax            *OpenMeterTax
+	ContextInterfaces       *ContextInterfaces
+	ContextSources          *ContextSources
+	ContextSourceContents   *ContextSourceContents
+	MCPServers              *MCPServers
+	Skills                  *Skills
+	ContextSourceMappings   *ContextSourceMappings
+	ContextInterfaceConfigs *ContextInterfaceConfigs
+	ControlPlaneMappings    *ControlPlaneMappings
+	MCPServerRuntime        *MCPServerRuntime
 	// API related to the management of Konnect AI Gateway resources.
 	AIGateways *AIGateways
 	// API related to the management of AI Gateway DataPlane Certificates.
 	AIGatewayDataPlaneCertificates *AIGatewayDataPlaneCertificates
+	// API related to the management of AI Gateway CA Certificates.
+	AIGatewayCACertificates *AIGatewayCACertificates
+	// API related to the management of AI Gateway Certificates.
+	AIGatewayCertificates *AIGatewayCertificates
+	AIGatewaySNIs         *AIGatewaySNIs
 	// API related to the management of AI Gateway nodes.
 	AIGatewayNodes *AIGatewayNodes
+	// AI Gateway debug endpoints.
+	AIGatewayDebug *AIGatewayDebug
 	// API related to the management of AI Gateway vaults for storing secrets.
 	AIGatewayVaults *AIGatewayVaults
 	// Policies that control security, rate-limiting, and guardrail behavior for the AI Gateway.
@@ -335,9 +409,53 @@ type SDK struct {
 	AIGatewayConsumerGroups *AIGatewayConsumerGroups
 	// MCP Servers that expose tools for AI Gateway integrations.
 	AIGatewayMCPServers *AIGatewayMCPServers
-	// Providers that define the backend AI service connections for the AI Gateway.
-	AIGatewayProviders *AIGatewayProviders
-	Dashboards         *Dashboards
+	// Model providers that define the backend AI service connections for the AI Gateway.
+	AIGatewayModelProviders *AIGatewayModelProviders
+	// Deprecated in favor of AI Gateway Auth Strategies. Identity providers for authenticating users and accessing AI Gateway resources.
+	AIGatewayIdentityProviders *AIGatewayIdentityProviders
+	// Auth strategies for authenticating clients accessing AI Gateway resources.
+	AIGatewayAuthStrategies *AIGatewayAuthStrategies
+	// API related to the management of AI Gateway Config Stores.
+	AIGatewayConfigStores *AIGatewayConfigStores
+	// Datastores that back AI Gateway policies and models, such as Redis and vector database connections.
+	AIGatewayDatastores *AIGatewayDatastores
+	Dashboards          *Dashboards
+	// The consumer object represents a consumer - or a user - of a service.
+	// You can either rely on Kong Gateway as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong Gateway and your existing primary datastore.
+	//
+	Consumers *Consumers
+	// Service entities are abstractions of your microservice interfaces or formal APIs. For example, a service could be a data transformation microservice or a billing API.
+	// <br><br>
+	// The main attribute of a service is the destination URL for proxying traffic. This URL can be set as a single string or by specifying its protocol, host, port and path individually.
+	// <br><br>
+	// Services are associated to routes, and a single service can have many routes associated with it. Routes are entrypoints in Kong Gateway which define rules to match client requests. Once a route is matched, Kong Gateway proxies the request to its associated service. See the [Route documentation](https://developer.konghq.com/gateway/entities/route/) for a detailed explanation of how Kong proxies traffic.
+	// <br><br>
+	// Services can be both [tagged and filtered by tags](https://developer.konghq.com/admin-api/).
+	//
+	Services *Services
+	// Route entities define rules to match client requests. Each route is associated with a service, and a service may have multiple routes associated to it. Every request matching a given route will be proxied to the associated service. You need at least one matching rule that applies to the protocol being matched by the route.
+	// <br><br>
+	// The combination of routes and services, and the separation of concerns between them, offers a powerful routing mechanism with which it is possible to define fine-grained entrypoints in Kong Gateway leading to different upstream services of your infrastructure.
+	// <br><br>
+	// Depending on the protocol, one of the following attributes must be set:
+	// <br>
+	//
+	// - `http`: At least one of `methods`, `hosts`, `headers`, or `paths`
+	// - `https`: At least one of `methods`, `hosts`, `headers`, `paths`, or `snis`
+	// - `tcp`: At least one of `sources` or `destinations`
+	// - `tls`: at least one of `sources`, `destinations`, or `snis`
+	// - `tls_passthrough`: set `snis`
+	// - `grpc`: At least one of `hosts`, `headers`, or `paths`
+	// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
+	// - `ws`: At least one of `hosts`, `headers`, or `paths`
+	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
+	//   <br>
+	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
+	//   <br><br>
+	//   Learn more about the router:
+	// - [Configure routes using expressions](https://developer.konghq.com/gateway/routing/expressions/)
+	//
+	Routes *Routes
 	// A plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. Plugins let you add functionality to services that run behind a Kong Gateway instance, like authentication or rate limiting.
 	// You can find more information about available plugins and which values each plugin accepts at the [Plugin Hub](https://developer.konghq.com/plugins/).
 	// <br><br>
@@ -346,10 +464,11 @@ type SDK struct {
 	// DP Nodes
 	DPNodes *DPNodes
 	// DP Certificates
-	DPCertificates *DPCertificates
-	Nodes          *Nodes
+	DPCertificates                  *DPCertificates
+	DataPlaneNodeLogLevelOperations *DataPlaneNodeLogLevelOperations
 	// Custom Plugin Schemas
 	CustomPluginSchemas *CustomPluginSchemas
+	Schemas             *Schemas
 	// A target is an IP address or hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly.
 	// <br><br>
 	// To disable a target, post a new one with `weight=0`, or use the `DELETE` method to accomplish the same.
@@ -380,16 +499,11 @@ type SDK struct {
 	SNIs *SNIs
 	// Consumer groups enable the organization and categorization of consumers (users or applications) within an API ecosystem.
 	// By grouping consumers together, you eliminate the need to manage them individually, providing a scalable, efficient approach to managing configurations.
-	ConsumerGroups *ConsumerGroups
-	// The consumer object represents a consumer - or a user - of a service.
-	// You can either rely on Kong Gateway as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong Gateway and your existing primary datastore.
-	//
-	Consumers              *Consumers
+	ConsumerGroups         *ConsumerGroups
 	HMACAuthCredentials    *HMACAuthCredentials
 	JWTs                   *JWTs
 	APIKeys                *APIKeys
 	MTLSAuthCredentials    *MTLSAuthCredentials
-	CustomPlugins          *CustomPlugins
 	DegraphqlRoutes        *DegraphqlRoutes
 	GraphQLCostDecorations *GraphQLCostDecorations
 	// A JSON Web key set. Key sets are the preferred way to expose keys to plugins because they tell the plugin where to look for keys or have a scoping mechanism to restrict plugins to specific keys.
@@ -401,38 +515,6 @@ type SDK struct {
 	// Some entities in Kong Gateway share common configuration settings that often need to be repeated. For example, multiple plugins that connect to Redis may require the same connection settings. Without Partials, you would need to replicate this configuration across all plugins. If the settings change, you would need to update each plugin individually.
 	Partials     *Partials
 	PartialLinks *PartialLinks
-	// Route entities define rules to match client requests. Each route is associated with a service, and a service may have multiple routes associated to it. Every request matching a given route will be proxied to the associated service. You need at least one matching rule that applies to the protocol being matched by the route.
-	// <br><br>
-	// The combination of routes and services, and the separation of concerns between them, offers a powerful routing mechanism with which it is possible to define fine-grained entrypoints in Kong Gateway leading to different upstream services of your infrastructure.
-	// <br><br>
-	// Depending on the protocol, one of the following attributes must be set:
-	// <br>
-	//
-	// - `http`: At least one of `methods`, `hosts`, `headers`, or `paths`
-	// - `https`: At least one of `methods`, `hosts`, `headers`, `paths`, or `snis`
-	// - `tcp`: At least one of `sources` or `destinations`
-	// - `tls`: at least one of `sources`, `destinations`, or `snis`
-	// - `tls_passthrough`: set `snis`
-	// - `grpc`: At least one of `hosts`, `headers`, or `paths`
-	// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
-	// - `ws`: At least one of `hosts`, `headers`, or `paths`
-	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-	//   <br>
-	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
-	//   <br><br>
-	//   Learn more about the router:
-	// - [Configure routes using expressions](https://developer.konghq.com/gateway/routing/expressions/)
-	//
-	Routes *Routes
-	// Service entities are abstractions of your microservice interfaces or formal APIs. For example, a service could be a data transformation microservice or a billing API.
-	// <br><br>
-	// The main attribute of a service is the destination URL for proxying traffic. This URL can be set as a single string or by specifying its protocol, host, port and path individually.
-	// <br><br>
-	// Services are associated to routes, and a single service can have many routes associated with it. Routes are entrypoints in Kong Gateway which define rules to match client requests. Once a route is matched, Kong Gateway proxies the request to its associated service. See the [Route documentation](https://developer.konghq.com/gateway/entities/route/) for a detailed explanation of how Kong proxies traffic.
-	// <br><br>
-	// Services can be both [tagged and filtered by tags](https://developer.konghq.com/admin-api/).
-	//
-	Services *Services
 	// The upstream object represents a virtual hostname and can be used to load balance incoming requests over multiple services (targets).
 	// <br><br>
 	// An upstream also includes a [health checker](https://developer.konghq.com/gateway/traffic-control/health-checks-circuit-breakers/), which can enable and disable targets based on their ability or inability to serve requests.
@@ -448,7 +530,7 @@ type SDK struct {
 	//
 	Vaults        *Vaults
 	ClonedPlugins *ClonedPlugins
-	Schemas       *Schemas
+	CustomPlugins *CustomPlugins
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -524,10 +606,13 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.2.0",
+		SDKVersion: "0.3.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.2.0 2.893.0 3.14.0 github.com/Kong/sdk-konnect-go",
-			ServerList: ServerList,
+			UserAgent:         "speakeasy-sdk/go 0.3.0 2.938.0 3.15.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.3.0",
+			GenVersion:        "2.938.0",
+			OpenAPIDocVersion: "3.15.0",
+			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),
 	}
@@ -572,6 +657,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Authentication = newAuthentication(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Aws = newAws(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PersonalAccessTokens = newPersonalAccessTokens(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Identity = newIdentity(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CloudGateways = newCloudGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DCRProviders = newDCRProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -583,6 +669,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.APIPublication = newAPIPublication(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIImage = newAPIImage(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIImplementation = newAPIImplementation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIEnvironment = newAPIEnvironment(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIOperations = newAPIOperations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIAttributes = newAPIAttributes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIPackages = newAPIPackages(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -599,6 +686,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Snippets = newSnippets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Pages = newPages(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Applications = newApplications(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AISettings = newAISettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ApplicationRegistrations = newApplicationRegistrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalAuthSettings = newPortalAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeams = newPortalTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -635,23 +723,50 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Quotas = newQuotas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APISpecsPreview = newAPISpecsPreview(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGateways = newEventGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayListeners = newEventGatewayListeners(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVirtualClusters = newEventGatewayVirtualClusters(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayBackendClusters = newEventGatewayBackendClusters(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVaults = newEventGatewayVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVaultSecrets = newEventGatewayVaultSecrets(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewaySchemaRegistries = newEventGatewaySchemaRegistries(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayNodes = newEventGatewayNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayListenerPolicies = newEventGatewayListenerPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVirtualClusterConsumePolicies = newEventGatewayVirtualClusterConsumePolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVirtualClusterProducePolicies = newEventGatewayVirtualClusterProducePolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVirtualClusterPolicies = newEventGatewayVirtualClusterPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayDataPlaneCertificates = newEventGatewayDataPlaneCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayStaticKeys = newEventGatewayStaticKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayTLSTrustBundles = newEventGatewayTLSTrustBundles(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterProductCatalog = newOpenMeterProductCatalog(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterApps = newOpenMeterApps(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.OpenMeterBilling = newOpenMeterBilling(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterBillingSettings = newOpenMeterBillingSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterCurrencies = newOpenMeterCurrencies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterCustomers = newOpenMeterCustomers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterEntitlements = newOpenMeterEntitlements(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterDefaults = newOpenMeterDefaults(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MeteringEvents = newMeteringEvents(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterFeatures = newOpenMeterFeatures(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.OpenMeterGovernance = newOpenMeterGovernance(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterLLMCost = newOpenMeterLLMCost(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Meters = newMeters(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterSubscriptions = newOpenMeterSubscriptions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterTax = newOpenMeterTax(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextInterfaces = newContextInterfaces(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextSources = newContextSources(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextSourceContents = newContextSourceContents(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Skills = newSkills(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextSourceMappings = newContextSourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextInterfaceConfigs = newContextInterfaceConfigs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ControlPlaneMappings = newControlPlaneMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.MCPServerRuntime = newMCPServerRuntime(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGateways = newAIGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayDataPlaneCertificates = newAIGatewayDataPlaneCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayCACertificates = newAIGatewayCACertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayCertificates = newAIGatewayCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewaySNIs = newAIGatewaySNIs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayNodes = newAIGatewayNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayDebug = newAIGatewayDebug(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayVaults = newAIGatewayVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayPolicies = newAIGatewayPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayModels = newAIGatewayModels(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -659,13 +774,21 @@ func New(opts ...SDKOption) *SDK {
 	sdk.AIGatewayConsumers = newAIGatewayConsumers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConsumerGroups = newAIGatewayConsumerGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayMCPServers = newAIGatewayMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.AIGatewayProviders = newAIGatewayProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayModelProviders = newAIGatewayModelProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayIdentityProviders = newAIGatewayIdentityProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayAuthStrategies = newAIGatewayAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayConfigStores = newAIGatewayConfigStores(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayDatastores = newAIGatewayDatastores(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Dashboards = newDashboards(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Consumers = newConsumers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Plugins = newPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPCertificates = newDPCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Nodes = newNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.DataPlaneNodeLogLevelOperations = newDataPlaneNodeLogLevelOperations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CustomPluginSchemas = newCustomPluginSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Targets = newTargets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ConfigStores = newConfigStores(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ConfigStoreSecrets = newConfigStoreSecrets(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -677,24 +800,20 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Certificates = newCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.SNIs = newSNIs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ConsumerGroups = newConsumerGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Consumers = newConsumers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.HMACAuthCredentials = newHMACAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.JWTs = newJWTs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIKeys = newAPIKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MTLSAuthCredentials = newMTLSAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.CustomPlugins = newCustomPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DegraphqlRoutes = newDegraphqlRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.GraphQLCostDecorations = newGraphQLCostDecorations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.KeySets = newKeySets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Keys = newKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Partials = newPartials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PartialLinks = newPartialLinks(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Upstreams = newUpstreams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Vaults = newVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ClonedPlugins = newClonedPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CustomPlugins = newCustomPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

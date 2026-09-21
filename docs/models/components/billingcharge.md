@@ -5,16 +5,16 @@ Customer charge.
 
 ## Supported Types
 
-### BillingFlatFeeCharge
+### BillingChargeFlatFee
 
 ```go
-billingCharge := components.CreateBillingChargeFlatFee(components.BillingFlatFeeCharge{/* values here */})
+billingCharge := components.CreateBillingChargeFlatFee(components.BillingChargeFlatFee{/* values here */})
 ```
 
-### BillingUsageBasedCharge
+### BillingChargeUsageBased
 
 ```go
-billingCharge := components.CreateBillingChargeUsageBased(components.BillingUsageBasedCharge{/* values here */})
+billingCharge := components.CreateBillingChargeUsageBased(components.BillingChargeUsageBased{/* values here */})
 ```
 
 ## Union Discrimination
@@ -24,8 +24,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 ```go
 switch billingCharge.Type {
 	case components.BillingChargeTypeFlatFee:
-		// billingCharge.BillingFlatFeeCharge is populated
+		// billingCharge.BillingChargeFlatFee is populated
 	case components.BillingChargeTypeUsageBased:
-		// billingCharge.BillingUsageBasedCharge is populated
+		// billingCharge.BillingChargeUsageBased is populated
 }
 ```

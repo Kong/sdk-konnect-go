@@ -1,6 +1,10 @@
 # ServicePeriod
 
-The effective service period covered by the charge.
+The service period covered by this invoice.
+
+For flat fee the service period can be empty which means `from` will be equals
+to `to`. In other cases those fields will be filled with the actual service
+period.
 
 
 ## Fields

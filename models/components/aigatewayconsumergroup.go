@@ -10,10 +10,10 @@ import (
 type AIGatewayConsumerGroup struct {
 	// The display name for this consumer group instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this consumer group, used as a stable human-readable reference.
+	// A user-defined unique identifier for this consumer group, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// List of policy references.
-	Policies []string `json:"policies"`
+	Policies []string `json:"policies,omitempty"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -31,8 +31,7 @@ type AIGatewayConsumerGroup struct {
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt            time.Time      `json:"updated_at"`
-	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (a AIGatewayConsumerGroup) MarshalJSON() ([]byte, error) {
@@ -62,7 +61,7 @@ func (a *AIGatewayConsumerGroup) GetName() string {
 
 func (a *AIGatewayConsumerGroup) GetPolicies() []string {
 	if a == nil {
-		return []string{}
+		return nil
 	}
 	return a.Policies
 }
@@ -100,11 +99,4 @@ func (a *AIGatewayConsumerGroup) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-func (a *AIGatewayConsumerGroup) GetAdditionalProperties() map[string]any {
-	if a == nil {
-		return nil
-	}
-	return a.AdditionalProperties
 }

@@ -8,6 +8,12 @@ import (
 
 // ControlPlaneReference - A control plane that implements an API
 type ControlPlaneReference struct {
+	// UUID of the organization environment this implementation is scoped to.
+	// Must be an environment associated with the API. Required when the API
+	// has multiple associated environments (`400` if omitted).
+	// Returns `404` if the UUID is unknown or not associated with the API.
+	//
+	EnvironmentID *string `json:"environment_id,omitempty"`
 	// A Control plane that implements an API
 	ControlPlane *APIImplementationControlPlaneInput `json:"control_plane,omitempty"`
 }
@@ -21,6 +27,13 @@ func (c *ControlPlaneReference) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (c *ControlPlaneReference) GetEnvironmentID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.EnvironmentID
 }
 
 func (c *ControlPlaneReference) GetControlPlane() *APIImplementationControlPlaneInput {

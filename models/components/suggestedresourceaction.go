@@ -62,7 +62,14 @@ func CreateSuggestedResourceActionCreateAndMapServiceActionPayload(createAndMapS
 	}
 }
 
-func (u *SuggestedResourceAction) UnmarshalJSON(data []byte) error {
+func (u *SuggestedResourceAction) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SuggestedResourceAction{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var mapServiceAction MapServiceAction = MapServiceAction{}
 	if err := utils.UnmarshalJSON(data, &mapServiceAction, "", true, nil); err == nil {

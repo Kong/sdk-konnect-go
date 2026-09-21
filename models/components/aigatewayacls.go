@@ -3,37 +3,78 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type AIGatewayACLSType string
+
+const (
+	AIGatewayACLSTypeAIGatewayAllowACL AIGatewayACLSType = "AIGatewayAllowACL"
+	AIGatewayACLSTypeAIGatewayDenyACL  AIGatewayACLSType = "AIGatewayDenyACL"
+)
+
+// AIGatewayACLS - Access control rules. Configure exactly one of `allow` or `deny`.
 type AIGatewayACLS struct {
-	// List of Consumers, Consumer Groups, or Authenticated Groups that are permitted access.
-	Allow []string `json:"allow"`
-	// List of Consumers, Consumer Groups, or Authenticated Groups that are denied access.
-	Deny []string `json:"deny"`
+	AIGatewayAllowACL *AIGatewayAllowACL `queryParam:"inline" union:"member"`
+	AIGatewayDenyACL  *AIGatewayDenyACL  `queryParam:"inline" union:"member"`
+
+	Type AIGatewayACLSType
 }
 
-func (a AIGatewayACLS) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
+func CreateAIGatewayACLSAIGatewayAllowACL(aiGatewayAllowACL AIGatewayAllowACL) AIGatewayACLS {
+	typ := AIGatewayACLSTypeAIGatewayAllowACL
 
-func (a *AIGatewayACLS) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"allow", "deny"}); err != nil {
-		return err
+	return AIGatewayACLS{
+		AIGatewayAllowACL: &aiGatewayAllowACL,
+		Type:              typ,
 	}
-	return nil
 }
 
-func (a *AIGatewayACLS) GetAllow() []string {
-	if a == nil {
-		return []string{}
+func CreateAIGatewayACLSAIGatewayDenyACL(aiGatewayDenyACL AIGatewayDenyACL) AIGatewayACLS {
+	typ := AIGatewayACLSTypeAIGatewayDenyACL
+
+	return AIGatewayACLS{
+		AIGatewayDenyACL: &aiGatewayDenyACL,
+		Type:             typ,
 	}
-	return a.Allow
 }
 
-func (a *AIGatewayACLS) GetDeny() []string {
-	if a == nil {
-		return []string{}
+func (u *AIGatewayACLS) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayACLS{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var aiGatewayAllowACL AIGatewayAllowACL = AIGatewayAllowACL{}
+	if err := utils.UnmarshalJSON(data, &aiGatewayAllowACL, "", true, nil); err == nil {
+		u.AIGatewayAllowACL = &aiGatewayAllowACL
+		u.Type = AIGatewayACLSTypeAIGatewayAllowACL
+		return nil
 	}
-	return a.Deny
+
+	var aiGatewayDenyACL AIGatewayDenyACL = AIGatewayDenyACL{}
+	if err := utils.UnmarshalJSON(data, &aiGatewayDenyACL, "", true, nil); err == nil {
+		u.AIGatewayDenyACL = &aiGatewayDenyACL
+		u.Type = AIGatewayACLSTypeAIGatewayDenyACL
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayACLS", string(data))
+}
+
+func (u AIGatewayACLS) MarshalJSON() ([]byte, error) {
+	if u.AIGatewayAllowACL != nil {
+		return utils.MarshalJSON(u.AIGatewayAllowACL, "", true)
+	}
+
+	if u.AIGatewayDenyACL != nil {
+		return utils.MarshalJSON(u.AIGatewayDenyACL, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type AIGatewayACLS: all fields are null")
 }

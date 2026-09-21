@@ -31,13 +31,16 @@ func (e *CustomFormContentFieldInputType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CustomFormContentFieldInput - A markdown content block rendered above or between input fields. Supports MDC syntax.
+// CustomFormContentFieldInput - A block of Markdown content, displayed between or above the form's input fields.
 type CustomFormContentFieldInput struct {
-	// Stable slug for the field (letters, digits, underscores, or hyphens). Immutable for the life of the field; renames are achieved by editing `label`. Acts as the join key for stored responses. Optional on create — server slugifies `label` when omitted.
+	// A stable, URL-safe slug identifying the field (letters, digits,
+	// underscores, or hyphens). When omitted, `label` is slugified instead.
+	//
+	// Used to match up stored responses across edits.
 	//
 	Name *string                         `json:"name,omitempty"`
 	Type CustomFormContentFieldInputType `json:"type"`
-	// MDC markdown rendered as content within the form.
+	// The Markdown content to display.
 	Value string `json:"value"`
 }
 

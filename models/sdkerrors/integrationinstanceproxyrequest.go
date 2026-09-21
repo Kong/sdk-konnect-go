@@ -49,7 +49,16 @@ func CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyIn
 	}
 }
 
-func (u *IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody) UnmarshalJSON(data []byte) error {
+func (u *IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody{
+		RawResponse: previous.RawResponse,
+	}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integrationNotInstalledError components.IntegrationNotInstalledError = components.IntegrationNotInstalledError{}
 	if err := utils.UnmarshalJSON(data, &integrationNotInstalledError, "", true, nil); err == nil {
@@ -131,7 +140,16 @@ func CreateIntegrationInstanceProxyRequestResponseBodyIntegrationUnauthorizedErr
 	}
 }
 
-func (u *IntegrationInstanceProxyRequestResponseBody) UnmarshalJSON(data []byte) error {
+func (u *IntegrationInstanceProxyRequestResponseBody) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IntegrationInstanceProxyRequestResponseBody{
+		RawResponse: previous.RawResponse,
+	}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integrationUnauthorizedError components.IntegrationUnauthorizedError = components.IntegrationUnauthorizedError{}
 	if err := utils.UnmarshalJSON(data, &integrationUnauthorizedError, "", true, nil); err == nil {

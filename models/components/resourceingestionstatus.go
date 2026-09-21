@@ -41,7 +41,14 @@ func CreateSchedulerStateResourceSchedulerStateNotOk(resourceSchedulerStateNotOk
 	}
 }
 
-func (u *SchedulerState) UnmarshalJSON(data []byte) error {
+func (u *SchedulerState) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SchedulerState{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var resourceSchedulerStateNotOk ResourceSchedulerStateNotOk = ResourceSchedulerStateNotOk{}
 	if err := utils.UnmarshalJSON(data, &resourceSchedulerStateNotOk, "", true, nil); err == nil {

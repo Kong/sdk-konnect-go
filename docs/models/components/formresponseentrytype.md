@@ -1,6 +1,6 @@
 # FormResponseEntryType
 
-Field input type at submission time.
+The field's type at the time it was submitted.
 
 ## Example Usage
 

@@ -17,6 +17,7 @@ const (
 	ChartTypeTimeseriesBar  ChartType = "timeseries_bar"
 	ChartTypeHorizontalBar  ChartType = "horizontal_bar"
 	ChartTypeVerticalBar    ChartType = "vertical_bar"
+	ChartTypeTopN           ChartType = "top_n"
 	ChartTypeSingleValue    ChartType = "single_value"
 	ChartTypeChoroplethMap  ChartType = "choropleth_map"
 )
@@ -26,6 +27,7 @@ type Chart struct {
 	DonutChart         *DonutChart         `queryParam:"inline" union:"member"`
 	TimeseriesChart    *TimeseriesChart    `queryParam:"inline" union:"member"`
 	BarChart           *BarChart           `queryParam:"inline" union:"member"`
+	TopNChart          *TopNChart          `queryParam:"inline" union:"member"`
 	SingleValueChart   *SingleValueChart   `queryParam:"inline" union:"member"`
 	ChoroplethMapChart *ChoroplethMapChart `queryParam:"inline" union:"member"`
 
@@ -92,6 +94,18 @@ func CreateChartVerticalBar(verticalBar BarChart) Chart {
 	}
 }
 
+func CreateChartTopN(topN TopNChart) Chart {
+	typ := ChartTypeTopN
+
+	typStr := TopNChartType(typ)
+	topN.Type = typStr
+
+	return Chart{
+		TopNChart: &topN,
+		Type:      typ,
+	}
+}
+
 func CreateChartSingleValue(singleValue SingleValueChart) Chart {
 	typ := ChartTypeSingleValue
 
@@ -116,7 +130,14 @@ func CreateChartChoroplethMap(choroplethMap ChoroplethMapChart) Chart {
 	}
 }
 
-func (u *Chart) UnmarshalJSON(data []byte) error {
+func (u *Chart) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Chart{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -173,6 +194,15 @@ func (u *Chart) UnmarshalJSON(data []byte) error {
 		u.BarChart = barChart
 		u.Type = ChartTypeVerticalBar
 		return nil
+	case "top_n":
+		topNChart := new(TopNChart)
+		if err := utils.UnmarshalJSON(data, &topNChart, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == top_n) type TopNChart within Chart: %w", string(data), err)
+		}
+
+		u.TopNChart = topNChart
+		u.Type = ChartTypeTopN
+		return nil
 	case "single_value":
 		singleValueChart := new(SingleValueChart)
 		if err := utils.UnmarshalJSON(data, &singleValueChart, "", true, nil); err != nil {
@@ -207,6 +237,10 @@ func (u Chart) MarshalJSON() ([]byte, error) {
 
 	if u.BarChart != nil {
 		return utils.MarshalJSON(u.BarChart, "", true)
+	}
+
+	if u.TopNChart != nil {
+		return utils.MarshalJSON(u.TopNChart, "", true)
 	}
 
 	if u.SingleValueChart != nil {

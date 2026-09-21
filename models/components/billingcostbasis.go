@@ -19,6 +19,10 @@ type BillingCostBasis struct {
 	// effective. If not provided, it will be effective immediately and will be set to
 	// `now` by the system.
 	EffectiveFrom *time.Time `json:"effective_from,omitempty"`
+	// An ISO-8601 timestamp representation of the date until which the cost basis is
+	// effective. If provided, it must be later than `effective_from`. If not provided,
+	// it remains effective until superseded.
+	EffectiveTo *time.Time `json:"effective_to,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 }
@@ -28,7 +32,7 @@ func (b BillingCostBasis) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BillingCostBasis) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id", "fiat_code", "rate", "created_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -60,6 +64,13 @@ func (b *BillingCostBasis) GetEffectiveFrom() *time.Time {
 		return nil
 	}
 	return b.EffectiveFrom
+}
+
+func (b *BillingCostBasis) GetEffectiveTo() *time.Time {
+	if b == nil {
+		return nil
+	}
+	return b.EffectiveTo
 }
 
 func (b *BillingCostBasis) GetCreatedAt() time.Time {

@@ -3,37 +3,13 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayRedisGCPAuthenticationType string
-
-const (
-	AIGatewayRedisGCPAuthenticationTypeGcp AIGatewayRedisGCPAuthenticationType = "gcp"
-)
-
-func (e AIGatewayRedisGCPAuthenticationType) ToPointer() *AIGatewayRedisGCPAuthenticationType {
-	return &e
-}
-func (e *AIGatewayRedisGCPAuthenticationType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gcp":
-		*e = AIGatewayRedisGCPAuthenticationType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayRedisGCPAuthenticationType: %v", v)
-	}
-}
-
 // AIGatewayRedisGCPAuthentication - GCP specific configs for connecting to a Cloud Provider's redis instance.
 type AIGatewayRedisGCPAuthentication struct {
-	Type AIGatewayRedisGCPAuthenticationType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"gcp" json:"type"`
 	// GCP Service Account JSON.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -51,11 +27,8 @@ func (a *AIGatewayRedisGCPAuthentication) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayRedisGCPAuthentication) GetType() AIGatewayRedisGCPAuthenticationType {
-	if a == nil {
-		return AIGatewayRedisGCPAuthenticationType("")
-	}
-	return a.Type
+func (a *AIGatewayRedisGCPAuthentication) GetType() string {
+	return "gcp"
 }
 
 func (a *AIGatewayRedisGCPAuthentication) GetServiceAccountJSON() *string {

@@ -29,7 +29,14 @@ func CreateResourceActionFilterParametersIntegrationNameStringFieldFilter(string
 	}
 }
 
-func (u *ResourceActionFilterParametersIntegrationName) UnmarshalJSON(data []byte) error {
+func (u *ResourceActionFilterParametersIntegrationName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceActionFilterParametersIntegrationName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -70,7 +77,14 @@ func CreateResourceActionFilterParametersIntegrationInstanceNameStringFieldFilte
 	}
 }
 
-func (u *ResourceActionFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) error {
+func (u *ResourceActionFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceActionFilterParametersIntegrationInstanceName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -111,7 +125,14 @@ func CreateResourceActionFilterParametersIntegrationInstanceDisplayNameStringFie
 	}
 }
 
-func (u *ResourceActionFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) error {
+func (u *ResourceActionFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceActionFilterParametersIntegrationInstanceDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -152,7 +173,14 @@ func CreateResourceActionFilterParametersIntegrationInstanceIDStringFieldFilterE
 	}
 }
 
-func (u *ResourceActionFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) error {
+func (u *ResourceActionFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ResourceActionFilterParametersIntegrationInstanceID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilterExact StringFieldFilterExact = StringFieldFilterExact{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilterExact, "", true, nil); err == nil {

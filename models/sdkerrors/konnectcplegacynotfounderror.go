@@ -8,7 +8,9 @@ import (
 
 // KonnectCPLegacyNotFoundError - standard error
 type KonnectCPLegacyNotFoundError struct {
-	Message any `json:"message,omitempty"`
+	// A short summary of the problem.
+	//
+	Message *string `json:"message,omitempty"`
 }
 
 var _ error = &KonnectCPLegacyNotFoundError{}

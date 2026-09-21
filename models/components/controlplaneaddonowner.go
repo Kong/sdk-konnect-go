@@ -11,9 +11,20 @@ type ControlPlaneAddOnOwner struct {
 	// Type of owner for the add-on.
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	kind string `const:"control-plane" json:"kind"`
+	// Type of gateway that owns the add-on: `api` for an API Gateway or `ai` for an
+	// AI Gateway. Defaults to `api` when omitted.
+	//
+	Type *ControlPlaneAddOnOwnerType `default:"api" json:"type"`
 	// ID of the control-plane that owns this add-on.
 	ControlPlaneID string `json:"control_plane_id"`
-	// Set of control-plane geos supported for deploying cloud-gateways configurations.
+	// Geographic region of the control plane. Supported values:
+	// - `us` — United States
+	// - `eu` — Europe
+	// - `au` — Australia
+	// - `me` — Middle East
+	// - `in` — India
+	// - `sg` — Singapore
+	//
 	ControlPlaneGeo ControlPlaneGeo `json:"control_plane_geo"`
 }
 
@@ -30,6 +41,13 @@ func (c *ControlPlaneAddOnOwner) UnmarshalJSON(data []byte) error {
 
 func (c *ControlPlaneAddOnOwner) GetKind() string {
 	return "control-plane"
+}
+
+func (c *ControlPlaneAddOnOwner) GetType() *ControlPlaneAddOnOwnerType {
+	if c == nil {
+		return nil
+	}
+	return c.Type
 }
 
 func (c *ControlPlaneAddOnOwner) GetControlPlaneID() string {

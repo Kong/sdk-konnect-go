@@ -39,6 +39,7 @@ const (
 	LLMQueryDimensionsGatewayService        LLMQueryDimensions = "gateway_service"
 	LLMQueryDimensionsConsumer              LLMQueryDimensions = "consumer"
 	LLMQueryDimensionsApplication           LLMQueryDimensions = "application"
+	LLMQueryDimensionsOidcCredential        LLMQueryDimensions = "oidc_credential"
 	LLMQueryDimensionsRoute                 LLMQueryDimensions = "route"
 	LLMQueryDimensionsAiProvider            LLMQueryDimensions = "ai_provider"
 	LLMQueryDimensionsAiResponseModel       LLMQueryDimensions = "ai_response_model"
@@ -47,6 +48,7 @@ const (
 	LLMQueryDimensionsLlmEmbeddingsProvider LLMQueryDimensions = "llm_embeddings_provider"
 	LLMQueryDimensionsLlmEmbeddingsModel    LLMQueryDimensions = "llm_embeddings_model"
 	LLMQueryDimensionsTime                  LLMQueryDimensions = "time"
+	LLMQueryDimensionsPrincipal             LLMQueryDimensions = "principal"
 	LLMQueryDimensionsRealm                 LLMQueryDimensions = "realm"
 	LLMQueryDimensionsStatusCode            LLMQueryDimensions = "status_code"
 	LLMQueryDimensionsStatusCodeGrouped     LLMQueryDimensions = "status_code_grouped"
@@ -61,7 +63,7 @@ func (e LLMQueryDimensions) ToPointer() *LLMQueryDimensions {
 func (e *LLMQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "control_plane", "control_plane_group", "gateway_service", "consumer", "application", "route", "ai_provider", "ai_response_model", "ai_request_model", "llm_cache_status", "llm_embeddings_provider", "llm_embeddings_model", "time", "realm", "status_code", "status_code_grouped", "ai_plugin":
+		case "control_plane", "control_plane_group", "gateway_service", "consumer", "application", "oidc_credential", "route", "ai_provider", "ai_response_model", "ai_request_model", "llm_cache_status", "llm_embeddings_provider", "llm_embeddings_model", "time", "principal", "realm", "status_code", "status_code_grouped", "ai_plugin":
 			return true
 		}
 	}
@@ -101,6 +103,8 @@ type LLMQuery struct {
 	Granularity *Granularity `json:"granularity,omitempty"`
 	// The time range to query.
 	TimeRange *TimeRange `json:"time_range,omitempty"`
+	// Limits the number of distinct metric groups to return.
+	Limit *float64 `default:"50" json:"limit"`
 }
 
 func (l LLMQuery) MarshalJSON() ([]byte, error) {
@@ -168,4 +172,11 @@ func (l *LLMQuery) GetTimeRangeAbsolute() *MetricsAbsoluteTimeRangeDtoV2 {
 		return v.MetricsAbsoluteTimeRangeDtoV2
 	}
 	return nil
+}
+
+func (l *LLMQuery) GetLimit() *float64 {
+	if l == nil {
+		return nil
+	}
+	return l.Limit
 }

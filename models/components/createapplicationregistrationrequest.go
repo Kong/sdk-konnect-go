@@ -31,7 +31,8 @@ type CreateApplicationRegistrationRequest struct {
 	APIID string `json:"api_id"`
 	// The status of the application registration. It must be a valid status value for a registration creation.
 	Status *CreateApplicationRegistrationRequestStatus `json:"status,omitempty"`
-	// Optional developer answers to the `api_registration` form linked to the API publication, captured at admin-side creation time. Supplied as a flat map keyed by field `name`; values match each field's input type. Silently ignored when no form is linked to the publication.
+	// The developer's answers to the `api_registration` form linked to this API, as a map from each field's `name` to its value. Optional, and ignored if no form is linked to the publication.
+	//
 	AdditionalData map[string]FormResponseInput `json:"additional_data,omitempty"`
 }
 

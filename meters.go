@@ -873,9 +873,6 @@ func (s *Meters) GetMeter(ctx context.Context, meterID string, opts ...operation
 }
 
 // UpdateMeter - Update meter
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Update a meter.
 func (s *Meters) UpdateMeter(ctx context.Context, meterID string, updateMeterRequest components.UpdateMeterRequest, opts ...operations.Option) (*operations.UpdateMeterResponse, error) {
 	request := operations.UpdateMeterRequest{
@@ -1451,9 +1448,6 @@ func (s *Meters) DeleteMeter(ctx context.Context, meterID string, opts ...operat
 }
 
 // QueryMeter - Query meter
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Query a meter for usage.
 //
 // Set `Accept: application/json` (the default) to get a structured JSON response.

@@ -64,7 +64,14 @@ func CreateMapCriteriaEvaluationErrorResult(criteriaEvaluationErrorResult Criter
 	}
 }
 
-func (u *Map) UnmarshalJSON(data []byte) error {
+func (u *Map) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Map{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var criteriaEvaluationRelationResult CriteriaEvaluationRelationResult = CriteriaEvaluationRelationResult{}
 	if err := utils.UnmarshalJSON(data, &criteriaEvaluationRelationResult, "", true, nil); err == nil {

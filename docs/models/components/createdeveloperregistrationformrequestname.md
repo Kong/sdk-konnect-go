@@ -1,6 +1,7 @@
 # CreateDeveloperRegistrationFormRequestName
 
-Reserved slug for the developer registration form. Server pins this literal regardless of what the admin supplies.
+The form's name. Only `developer-registration` is accepted at this time
+
 
 ## Example Usage
 

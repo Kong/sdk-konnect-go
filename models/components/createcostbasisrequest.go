@@ -17,6 +17,10 @@ type CreateCostBasisRequest struct {
 	// effective. If not provided, it will be effective immediately and will be set to
 	// `now` by the system.
 	EffectiveFrom *time.Time `json:"effective_from,omitempty"`
+	// An ISO-8601 timestamp representation of the date until which the cost basis is
+	// effective. If provided, it must be later than `effective_from`. If not provided,
+	// it remains effective until superseded.
+	EffectiveTo *time.Time `json:"effective_to,omitempty"`
 }
 
 func (c CreateCostBasisRequest) MarshalJSON() ([]byte, error) {
@@ -49,4 +53,11 @@ func (c *CreateCostBasisRequest) GetEffectiveFrom() *time.Time {
 		return nil
 	}
 	return c.EffectiveFrom
+}
+
+func (c *CreateCostBasisRequest) GetEffectiveTo() *time.Time {
+	if c == nil {
+		return nil
+	}
+	return c.EffectiveTo
 }

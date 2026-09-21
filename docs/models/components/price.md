@@ -41,15 +41,15 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch price.Type {
-	case components.PriceUnionTypeFree:
+	case components.PriceTypeFree:
 		// price.BillingPriceFree is populated
-	case components.PriceUnionTypeFlat:
+	case components.PriceTypeFlat:
 		// price.BillingPriceFlat is populated
-	case components.PriceUnionTypeUnit:
+	case components.PriceTypeUnit:
 		// price.BillingPriceUnit is populated
-	case components.PriceUnionTypeGraduated:
+	case components.PriceTypeGraduated:
 		// price.BillingPriceGraduated is populated
-	case components.PriceUnionTypeVolume:
+	case components.PriceTypeVolume:
 		// price.BillingPriceVolume is populated
 }
 ```

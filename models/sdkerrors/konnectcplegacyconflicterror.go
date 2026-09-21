@@ -8,7 +8,9 @@ import (
 
 // KonnectCPLegacyConflictError - standard error
 type KonnectCPLegacyConflictError struct {
-	Message any `json:"message,omitempty"`
+	// A short summary of the problem.
+	//
+	Message *string `json:"message,omitempty"`
 }
 
 var _ error = &KonnectCPLegacyConflictError{}

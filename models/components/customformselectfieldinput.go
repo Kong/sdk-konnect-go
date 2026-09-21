@@ -4,6 +4,7 @@ package components
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
@@ -11,105 +12,95 @@ import (
 type CustomFormSelectFieldInputType string
 
 const (
-	CustomFormSelectFieldInputTypeSelect CustomFormSelectFieldInputType = "select"
+	CustomFormSelectFieldInputTypeSingleSelect CustomFormSelectFieldInputType = "single_select"
+	CustomFormSelectFieldInputTypeMultiSelect  CustomFormSelectFieldInputType = "multi_select"
 )
 
-func (e CustomFormSelectFieldInputType) ToPointer() *CustomFormSelectFieldInputType {
-	return &e
-}
-func (e *CustomFormSelectFieldInputType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "select":
-		*e = CustomFormSelectFieldInputType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomFormSelectFieldInputType: %v", v)
-	}
-}
-
-// CustomFormSelectFieldInput - Dropdown selection input. Set `multiple` to true for multi-select.
+// CustomFormSelectFieldInput - A dropdown field. Set `mode` to one of:
+//
+// * `single_select` — the developer chooses one option (at least 1 option required)
+// * `multi_select` — the developer can choose multiple options (at least 2 options required)
 type CustomFormSelectFieldInput struct {
-	// Stable slug for the field (letters, digits, underscores, or hyphens). Immutable for the life of the field; renames are achieved by editing `label`. Acts as the join key for stored responses. Optional on create — server slugifies `label` when omitted.
-	//
-	Name        *string                        `json:"name,omitempty"`
-	Type        CustomFormSelectFieldInputType `json:"type"`
-	Label       string                         `json:"label"`
-	Placeholder *string                        `json:"placeholder,omitempty"`
-	Description *string                        `json:"description,omitempty"`
-	Required    *bool                          `json:"required,omitempty"`
-	// When `true`, allows the developer to select multiple options.
-	Multiple *bool `default:"false" json:"multiple"`
-	// Available choices presented to the developer.
-	Options []CustomFormSelectOption `json:"options"`
+	CustomFormSingleSelectFieldInput *CustomFormSingleSelectFieldInput `queryParam:"inline" union:"member"`
+	CustomFormMultiSelectFieldInput  *CustomFormMultiSelectFieldInput  `queryParam:"inline" union:"member"`
+
+	Type CustomFormSelectFieldInputType
 }
 
-func (c CustomFormSelectFieldInput) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
+func CreateCustomFormSelectFieldInputSingleSelect(singleSelect CustomFormSingleSelectFieldInput) CustomFormSelectFieldInput {
+	typ := CustomFormSelectFieldInputTypeSingleSelect
 
-func (c *CustomFormSelectFieldInput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "label", "options"}); err != nil {
-		return err
+	typStr := Mode(typ)
+	singleSelect.Mode = typStr
+
+	return CustomFormSelectFieldInput{
+		CustomFormSingleSelectFieldInput: &singleSelect,
+		Type:                             typ,
 	}
-	return nil
 }
 
-func (c *CustomFormSelectFieldInput) GetName() *string {
-	if c == nil {
+func CreateCustomFormSelectFieldInputMultiSelect(multiSelect CustomFormMultiSelectFieldInput) CustomFormSelectFieldInput {
+	typ := CustomFormSelectFieldInputTypeMultiSelect
+
+	typStr := CustomFormMultiSelectFieldInputMode(typ)
+	multiSelect.Mode = typStr
+
+	return CustomFormSelectFieldInput{
+		CustomFormMultiSelectFieldInput: &multiSelect,
+		Type:                            typ,
+	}
+}
+
+func (u *CustomFormSelectFieldInput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CustomFormSelectFieldInput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	type discriminator struct {
+		Mode string `json:"mode"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Mode {
+	case "single_select":
+		customFormSingleSelectFieldInput := new(CustomFormSingleSelectFieldInput)
+		if err := utils.UnmarshalJSON(data, &customFormSingleSelectFieldInput, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Mode == single_select) type CustomFormSingleSelectFieldInput within CustomFormSelectFieldInput: %w", string(data), err)
+		}
+
+		u.CustomFormSingleSelectFieldInput = customFormSingleSelectFieldInput
+		u.Type = CustomFormSelectFieldInputTypeSingleSelect
+		return nil
+	case "multi_select":
+		customFormMultiSelectFieldInput := new(CustomFormMultiSelectFieldInput)
+		if err := utils.UnmarshalJSON(data, &customFormMultiSelectFieldInput, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Mode == multi_select) type CustomFormMultiSelectFieldInput within CustomFormSelectFieldInput: %w", string(data), err)
+		}
+
+		u.CustomFormMultiSelectFieldInput = customFormMultiSelectFieldInput
+		u.Type = CustomFormSelectFieldInputTypeMultiSelect
 		return nil
 	}
-	return c.Name
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CustomFormSelectFieldInput", string(data))
 }
 
-func (c *CustomFormSelectFieldInput) GetType() CustomFormSelectFieldInputType {
-	if c == nil {
-		return CustomFormSelectFieldInputType("")
+func (u CustomFormSelectFieldInput) MarshalJSON() ([]byte, error) {
+	if u.CustomFormSingleSelectFieldInput != nil {
+		return utils.MarshalJSON(u.CustomFormSingleSelectFieldInput, "", true)
 	}
-	return c.Type
-}
 
-func (c *CustomFormSelectFieldInput) GetLabel() string {
-	if c == nil {
-		return ""
+	if u.CustomFormMultiSelectFieldInput != nil {
+		return utils.MarshalJSON(u.CustomFormMultiSelectFieldInput, "", true)
 	}
-	return c.Label
-}
 
-func (c *CustomFormSelectFieldInput) GetPlaceholder() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Placeholder
-}
-
-func (c *CustomFormSelectFieldInput) GetDescription() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Description
-}
-
-func (c *CustomFormSelectFieldInput) GetRequired() *bool {
-	if c == nil {
-		return nil
-	}
-	return c.Required
-}
-
-func (c *CustomFormSelectFieldInput) GetMultiple() *bool {
-	if c == nil {
-		return nil
-	}
-	return c.Multiple
-}
-
-func (c *CustomFormSelectFieldInput) GetOptions() []CustomFormSelectOption {
-	if c == nil {
-		return []CustomFormSelectOption{}
-	}
-	return c.Options
+	return nil, errors.New("could not marshal union type CustomFormSelectFieldInput: all fields are null")
 }

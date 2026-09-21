@@ -27,6 +27,12 @@ query := components.CreateQueryAgenticUsage(components.AgenticQuery{/* values he
 query := components.CreateQueryPlatformUsage(components.PlatformQuery{/* values here */})
 ```
 
+### ManagedCacheUsageQuery
+
+```go
+query := components.CreateQueryManagedCacheUsage(components.ManagedCacheUsageQuery{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -41,5 +47,7 @@ switch query.Type {
 		// query.AgenticQuery is populated
 	case components.QueryTypePlatformUsage:
 		// query.PlatformQuery is populated
+	case components.QueryTypeManagedCacheUsage:
+		// query.ManagedCacheUsageQuery is populated
 }
 ```

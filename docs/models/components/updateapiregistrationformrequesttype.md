@@ -1,6 +1,6 @@
 # UpdateAPIRegistrationFormRequestType
 
-Immutable echo of the form's type.
+The form's type. Must match the existing value — it can't be changed.
 
 ## Example Usage
 

@@ -5,6 +5,11 @@ package components
 // CreateConfigStore - The request schema to create a Config Store.
 type CreateConfigStore struct {
 	Name *string `json:"name,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (c *CreateConfigStore) GetName() *string {
@@ -12,4 +17,11 @@ func (c *CreateConfigStore) GetName() *string {
 		return nil
 	}
 	return c.Name
+}
+
+func (c *CreateConfigStore) GetManagedBy() map[string]string {
+	if c == nil {
+		return nil
+	}
+	return c.ManagedBy
 }

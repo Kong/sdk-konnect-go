@@ -177,8 +177,10 @@ type PluginWithoutParents struct {
 	ID *string `json:"id,omitempty"`
 	// A unique string representing a UTF-8 encoded name.
 	InstanceName *string `json:"instance_name,omitempty"`
-	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
-	ManagedBy map[string]any `json:"managed_by,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
 	Name     string                        `json:"name"`
 	Ordering *PluginWithoutParentsOrdering `json:"ordering,omitempty"`
@@ -277,7 +279,7 @@ func (p *PluginWithoutParents) GetInstanceName() *string {
 	return p.InstanceName
 }
 
-func (p *PluginWithoutParents) GetManagedBy() map[string]any {
+func (p *PluginWithoutParents) GetManagedBy() map[string]string {
 	if p == nil {
 		return nil
 	}

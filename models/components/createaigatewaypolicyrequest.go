@@ -9,10 +9,10 @@ import (
 type CreateAIGatewayPolicyRequest struct {
 	// The display name for this policy instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this policy instance, used as a stable human-readable reference.
+	// A user-defined unique identifier for this policy instance, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// The type of the Policy. This is equivalent to the Kong 3 plugin name.
-	// Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'openid-connect'.
+	// Some examples are: 'ai-sanitizer', 'ai-prompt-guard', and 'rate-limiting'.
 	// Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
 	//
 	Type string `json:"type"`
@@ -24,6 +24,10 @@ type CreateAIGatewayPolicyRequest struct {
 	// Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
 	//
 	Config map[string]any `json:"config"`
+	// An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.
+	//
+	// **Requires a minimum runtime version of `2.1`**.
+	Condition *string `json:"condition,omitempty"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -36,6 +40,8 @@ type CreateAIGatewayPolicyRequest struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	// Names of the Datastores this policy references.
+	Datastores []string `json:"datastores,omitempty"`
 }
 
 func (c CreateAIGatewayPolicyRequest) MarshalJSON() ([]byte, error) {
@@ -91,6 +97,13 @@ func (c *CreateAIGatewayPolicyRequest) GetConfig() map[string]any {
 	return c.Config
 }
 
+func (c *CreateAIGatewayPolicyRequest) GetCondition() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Condition
+}
+
 func (c *CreateAIGatewayPolicyRequest) GetLabels() map[string]string {
 	if c == nil {
 		return nil
@@ -103,4 +116,11 @@ func (c *CreateAIGatewayPolicyRequest) GetManagedBy() map[string]string {
 		return nil
 	}
 	return c.ManagedBy
+}
+
+func (c *CreateAIGatewayPolicyRequest) GetDatastores() []string {
+	if c == nil {
+		return nil
+	}
+	return c.Datastores
 }

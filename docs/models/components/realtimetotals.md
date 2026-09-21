@@ -1,8 +1,11 @@
 # RealtimeTotals
 
-The realtime amount of the charge.
+The realtime amount of the charge, i.e. the whole usage rated at the charge's
+price for its full service period, ignoring what has already been booked to a
+realization. This differs from the `usage` of a realization with type
+`outstanding`, which only covers the quantity not yet booked.
 
-Requires the `realtime_usage` expand.
+Requires the `real_time_usage` expand.
 
 
 ## Fields

@@ -23,6 +23,7 @@ custom := components.AdvancedFiltersField("custom_value")
 | `AdvancedFiltersFieldAPIProduct`                | api_product                                     |
 | `AdvancedFiltersFieldAPIProductVersion`         | api_product_version                             |
 | `AdvancedFiltersFieldApplication`               | application                                     |
+| `AdvancedFiltersFieldCacheStatus`               | cache_status                                    |
 | `AdvancedFiltersFieldConsumer`                  | consumer                                        |
 | `AdvancedFiltersFieldControlPlane`              | control_plane                                   |
 | `AdvancedFiltersFieldControlPlaneGroup`         | control_plane_group                             |
@@ -30,7 +31,9 @@ custom := components.AdvancedFiltersField("custom_value")
 | `AdvancedFiltersFieldDataPlaneNode`             | data_plane_node                                 |
 | `AdvancedFiltersFieldDataPlaneNodeVersion`      | data_plane_node_version                         |
 | `AdvancedFiltersFieldGatewayService`            | gateway_service                                 |
+| `AdvancedFiltersFieldOidcCredential`            | oidc_credential                                 |
 | `AdvancedFiltersFieldPortal`                    | portal                                          |
+| `AdvancedFiltersFieldPrincipal`                 | principal                                       |
 | `AdvancedFiltersFieldRealm`                     | realm                                           |
 | `AdvancedFiltersFieldResponseSource`            | response_source                                 |
 | `AdvancedFiltersFieldRoute`                     | route                                           |

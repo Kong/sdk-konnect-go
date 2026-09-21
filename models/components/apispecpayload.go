@@ -51,7 +51,14 @@ func CreateAPISpecProviderPayloadProviderResourceBoundIntegrationAPISpecProvider
 	}
 }
 
-func (u *APISpecProviderPayloadProvider) UnmarshalJSON(data []byte) error {
+func (u *APISpecProviderPayloadProvider) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = APISpecProviderPayloadProvider{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integrationAPISpecProviderPayload IntegrationAPISpecProviderPayload = IntegrationAPISpecProviderPayload{}
 	if err := utils.UnmarshalJSON(data, &integrationAPISpecProviderPayload, "", true, nil); err == nil {
@@ -171,7 +178,14 @@ func CreateAPISpecPayloadAPISpecProviderPayload(apiSpecProviderPayload APISpecPr
 	}
 }
 
-func (u *APISpecPayload) UnmarshalJSON(data []byte) error {
+func (u *APISpecPayload) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = APISpecPayload{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var apiSpecContentPayload APISpecContentPayload = APISpecContentPayload{}
 	if err := utils.UnmarshalJSON(data, &apiSpecContentPayload, "", true, nil); err == nil {

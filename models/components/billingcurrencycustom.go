@@ -35,23 +35,34 @@ func (e *BillingCurrencyCustomType) UnmarshalJSON(data []byte) error {
 
 // BillingCurrencyCustom - Describes custom currency.
 type BillingCurrencyCustom struct {
-	// ULID (Universally Unique Lexicographically Sortable Identifier).
-	ID string `json:"id"`
 	// The type of the currency.
 	Type BillingCurrencyCustomType `json:"type"`
 	// The name of the currency. It should be a human-readable string that represents
 	// the name of the currency, such as "US Dollar" or "Euro".
 	Name string `json:"name"`
-	// Description of the currency.
-	Description *string `json:"description,omitempty"`
 	// The symbol of the currency. It should be a string that represents the symbol of
 	// the currency, such as "$" for US Dollar or "€" for Euro.
 	Symbol *string `json:"symbol,omitempty"`
+	// The precision of the currency. It should be a number that represents the number
+	// of decimal places used for the currency, such as 2 for US Dollar or Euro.
+	Precision int64 `json:"precision"`
+	// The decimal mark for the currency. It should be a string that represents the
+	// decimal mark of the currency, such as "." for US Dollar or "," for Euro.
+	DecimalMark string `json:"decimal_mark"`
+	// The thousand separator for the currency. It should be a string that represents
+	// the thousand separator of the currency, such as "," for US Dollar or "." for
+	// Euro.
+	ThousandSeparator string `json:"thousand_separator"`
+	// ULID (Universally Unique Lexicographically Sortable Identifier).
+	ID string `json:"id"`
 	// Custom currency code. It should be a unique code but not conflicting with any
 	// existing fiat currency codes.
 	Code string `json:"code"`
 	// An ISO-8601 timestamp representation of the custom currency creation date.
 	CreatedAt time.Time `json:"created_at"`
+	// The list of active and scheduled cost bases for the custom currency. Expired and
+	// deleted cost bases are excluded.
+	CostBasis []BillingCostBasis `json:"cost_basis,omitempty"`
 }
 
 func (b BillingCurrencyCustom) MarshalJSON() ([]byte, error) {
@@ -59,17 +70,10 @@ func (b BillingCurrencyCustom) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BillingCurrencyCustom) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id", "type", "name", "code", "created_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type", "name", "precision", "decimal_mark", "thousand_separator", "id", "code", "created_at"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (b *BillingCurrencyCustom) GetID() string {
-	if b == nil {
-		return ""
-	}
-	return b.ID
 }
 
 func (b *BillingCurrencyCustom) GetType() BillingCurrencyCustomType {
@@ -86,18 +90,39 @@ func (b *BillingCurrencyCustom) GetName() string {
 	return b.Name
 }
 
-func (b *BillingCurrencyCustom) GetDescription() *string {
-	if b == nil {
-		return nil
-	}
-	return b.Description
-}
-
 func (b *BillingCurrencyCustom) GetSymbol() *string {
 	if b == nil {
 		return nil
 	}
 	return b.Symbol
+}
+
+func (b *BillingCurrencyCustom) GetPrecision() int64 {
+	if b == nil {
+		return 0
+	}
+	return b.Precision
+}
+
+func (b *BillingCurrencyCustom) GetDecimalMark() string {
+	if b == nil {
+		return ""
+	}
+	return b.DecimalMark
+}
+
+func (b *BillingCurrencyCustom) GetThousandSeparator() string {
+	if b == nil {
+		return ""
+	}
+	return b.ThousandSeparator
+}
+
+func (b *BillingCurrencyCustom) GetID() string {
+	if b == nil {
+		return ""
+	}
+	return b.ID
 }
 
 func (b *BillingCurrencyCustom) GetCode() string {
@@ -112,4 +137,11 @@ func (b *BillingCurrencyCustom) GetCreatedAt() time.Time {
 		return time.Time{}
 	}
 	return b.CreatedAt
+}
+
+func (b *BillingCurrencyCustom) GetCostBasis() []BillingCostBasis {
+	if b == nil {
+		return nil
+	}
+	return b.CostBasis
 }

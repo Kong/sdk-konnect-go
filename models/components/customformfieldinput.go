@@ -22,7 +22,7 @@ const (
 	CustomFormFieldInputTypeSubmit   CustomFormFieldInputType = "submit"
 )
 
-// CustomFormFieldInput - Request-side form field used in form-create and form-update request bodies. Identical shape to `CustomFormField` minus the server-owned `built_in` flag (rejected on requests via `additionalProperties: false`).
+// CustomFormFieldInput - A field definition used when creating or updating a form.
 type CustomFormFieldInput struct {
 	CustomFormContentFieldInput  *CustomFormContentFieldInput  `queryParam:"inline" union:"member"`
 	CustomFormTextFieldInput     *CustomFormTextFieldInput     `queryParam:"inline" union:"member"`
@@ -99,9 +99,6 @@ func CreateCustomFormFieldInputTextarea(textarea CustomFormTextareaFieldInput) C
 func CreateCustomFormFieldInputSelect(selectT CustomFormSelectFieldInput) CustomFormFieldInput {
 	typ := CustomFormFieldInputTypeSelect
 
-	typStr := CustomFormSelectFieldInputType(typ)
-	selectT.Type = typStr
-
 	return CustomFormFieldInput{
 		CustomFormSelectFieldInput: &selectT,
 		Type:                       typ,
@@ -132,7 +129,14 @@ func CreateCustomFormFieldInputSubmit(submit CustomFormSubmitFieldInput) CustomF
 	}
 }
 
-func (u *CustomFormFieldInput) UnmarshalJSON(data []byte) error {
+func (u *CustomFormFieldInput) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CustomFormFieldInput{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

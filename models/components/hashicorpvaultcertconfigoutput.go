@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -54,29 +52,6 @@ func (e *HashiCorpVaultCertConfigProtocol) IsExact() bool {
 	return false
 }
 
-type HashiCorpVaultCertConfigAuthMethod string
-
-const (
-	HashiCorpVaultCertConfigAuthMethodCert HashiCorpVaultCertConfigAuthMethod = "cert"
-)
-
-func (e HashiCorpVaultCertConfigAuthMethod) ToPointer() *HashiCorpVaultCertConfigAuthMethod {
-	return &e
-}
-func (e *HashiCorpVaultCertConfigAuthMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "cert":
-		*e = HashiCorpVaultCertConfigAuthMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HashiCorpVaultCertConfigAuthMethod: %v", v)
-	}
-}
-
 type HashiCorpVaultCertConfigOutput struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -110,8 +85,9 @@ type HashiCorpVaultCertConfigOutput struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                            `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultCertConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"cert" json:"auth_method"`
 	// The client certificate.
 	Cert string `json:"cert"`
 	// The trusted certificate role name.
@@ -206,11 +182,8 @@ func (h *HashiCorpVaultCertConfigOutput) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultCertConfigOutput) GetAuthMethod() HashiCorpVaultCertConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultCertConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultCertConfigOutput) GetAuthMethod() string {
+	return "cert"
 }
 
 func (h *HashiCorpVaultCertConfigOutput) GetCert() string {
@@ -260,8 +233,9 @@ type HashiCorpVaultCertConfig struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace  *string                            `json:"namespace,omitempty"`
-	AuthMethod HashiCorpVaultCertConfigAuthMethod `json:"auth_method"`
+	Namespace *string `json:"namespace,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	authMethod string `const:"cert" json:"auth_method"`
 	// The client certificate.
 	Cert string `json:"cert"`
 	// The key for the client certificate.
@@ -358,11 +332,8 @@ func (h *HashiCorpVaultCertConfig) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultCertConfig) GetAuthMethod() HashiCorpVaultCertConfigAuthMethod {
-	if h == nil {
-		return HashiCorpVaultCertConfigAuthMethod("")
-	}
-	return h.AuthMethod
+func (h *HashiCorpVaultCertConfig) GetAuthMethod() string {
+	return "cert"
 }
 
 func (h *HashiCorpVaultCertConfig) GetCert() string {

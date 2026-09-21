@@ -29,7 +29,14 @@ func CreateCreateCatalogIntegrationCreatePrivateCatalogIntegration(createPrivate
 	}
 }
 
-func (u *CreateCatalogIntegration) UnmarshalJSON(data []byte) error {
+func (u *CreateCatalogIntegration) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreateCatalogIntegration{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var createPrivateCatalogIntegration CreatePrivateCatalogIntegration = CreatePrivateCatalogIntegration{}
 	if err := utils.UnmarshalJSON(data, &createPrivateCatalogIntegration, "", true, nil); err == nil {

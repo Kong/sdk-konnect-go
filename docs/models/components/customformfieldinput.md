@@ -1,7 +1,6 @@
 # CustomFormFieldInput
 
-Request-side form field used in form-create and form-update request bodies. Identical shape to `CustomFormField` minus the server-owned `built_in` flag (rejected on requests via `additionalProperties: false`).
-
+A field definition used when creating or updating a form.
 
 
 ## Supported Types

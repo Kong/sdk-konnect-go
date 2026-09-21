@@ -2,34 +2,22 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"time"
-)
-
 // Workspace - Workspaces provide a way to segment Kong entities.
 type Workspace struct {
 	// The unique UUID for this resource.
-	ID          *string        `json:"id,omitempty"`
-	Name        string         `json:"name"`
-	Comment     *string        `json:"comment,omitempty"`
-	Description *string        `json:"description,omitempty"`
-	ManagedBy   map[string]any `json:"managed_by,omitempty"`
-	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-}
-
-func (w Workspace) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(w, "", false)
-}
-
-func (w *Workspace) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	ID          *string `json:"id,omitempty"`
+	Name        string  `json:"name"`
+	Comment     *string `json:"comment,omitempty"`
+	Description *string `json:"description,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	// Unix epoch when the resource was created.
+	CreatedAt *int64 `json:"created_at,omitempty"`
+	// Unix epoch when the resource was last updated.
+	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
 
 func (w *Workspace) GetID() *string {
@@ -60,21 +48,21 @@ func (w *Workspace) GetDescription() *string {
 	return w.Description
 }
 
-func (w *Workspace) GetManagedBy() map[string]any {
+func (w *Workspace) GetManagedBy() map[string]string {
 	if w == nil {
 		return nil
 	}
 	return w.ManagedBy
 }
 
-func (w *Workspace) GetCreatedAt() *time.Time {
+func (w *Workspace) GetCreatedAt() *int64 {
 	if w == nil {
 		return nil
 	}
 	return w.CreatedAt
 }
 
-func (w *Workspace) GetUpdatedAt() *time.Time {
+func (w *Workspace) GetUpdatedAt() *int64 {
 	if w == nil {
 		return nil
 	}

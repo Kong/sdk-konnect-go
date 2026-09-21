@@ -29,7 +29,14 @@ func CreateSuggestionRuleFilterParametersActionTypeStringFieldFilterExact(string
 	}
 }
 
-func (u *SuggestionRuleFilterParametersActionType) UnmarshalJSON(data []byte) error {
+func (u *SuggestionRuleFilterParametersActionType) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = SuggestionRuleFilterParametersActionType{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilterExact StringFieldFilterExact = StringFieldFilterExact{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilterExact, "", true, nil); err == nil {

@@ -10,8 +10,8 @@ import (
 type UpdateAiGatewayMcpServerRequest struct {
 	// The unique ID of the AI Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
-	// The unique ID of the MCP Server.
-	McpServerID                     string                                     `pathParam:"style=simple,explode=false,name=mcpServerId"`
+	// The unique ID or name of the MCP Server.
+	McpServerIDOrName               string                                     `pathParam:"style=simple,explode=false,name=mcpServerIdOrName"`
 	UpdateAIGatewayMCPServerRequest components.UpdateAIGatewayMCPServerRequest `request:"mediaType=application/json"`
 }
 
@@ -22,11 +22,11 @@ func (u *UpdateAiGatewayMcpServerRequest) GetGatewayID() string {
 	return u.GatewayID
 }
 
-func (u *UpdateAiGatewayMcpServerRequest) GetMcpServerID() string {
+func (u *UpdateAiGatewayMcpServerRequest) GetMcpServerIDOrName() string {
 	if u == nil {
 		return ""
 	}
-	return u.McpServerID
+	return u.McpServerIDOrName
 }
 
 func (u *UpdateAiGatewayMcpServerRequest) GetUpdateAIGatewayMCPServerRequest() components.UpdateAIGatewayMCPServerRequest {
@@ -95,37 +95,37 @@ func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServer() *components.A
 	return u.AIGatewayMCPServer
 }
 
-func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerConversionOnly() *components.AIGatewayMCPServerAIGatewayMCPServerConversionOnly {
+func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerConversionOnly() *components.AIGatewayMCPServerConversionOnlyResponse {
 	if v := u.GetAIGatewayMCPServer(); v != nil {
-		return v.AIGatewayMCPServerAIGatewayMCPServerConversionOnly
+		return v.AIGatewayMCPServerConversionOnlyResponse
 	}
 	return nil
 }
 
-func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerConversionListener() *components.AIGatewayMCPServerAIGatewayMCPServerConversionListener {
+func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerConversionListener() *components.AIGatewayMCPServerConversionListenerResponse {
 	if v := u.GetAIGatewayMCPServer(); v != nil {
-		return v.AIGatewayMCPServerAIGatewayMCPServerConversionListener
+		return v.AIGatewayMCPServerConversionListenerResponse
 	}
 	return nil
 }
 
-func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerListener() *components.AIGatewayMCPServerAIGatewayMCPServerListener {
+func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerListener() *components.AIGatewayMCPServerListenerResponse {
 	if v := u.GetAIGatewayMCPServer(); v != nil {
-		return v.AIGatewayMCPServerAIGatewayMCPServerListener
+		return v.AIGatewayMCPServerListenerResponse
 	}
 	return nil
 }
 
-func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerPassthroughListener() *components.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener {
+func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerPassthroughListener() *components.AIGatewayMCPServerPassthroughListenerResponse {
 	if v := u.GetAIGatewayMCPServer(); v != nil {
-		return v.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener
+		return v.AIGatewayMCPServerPassthroughListenerResponse
 	}
 	return nil
 }
 
-func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerUpstreamServer() *components.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer {
+func (u *UpdateAiGatewayMcpServerResponse) GetAIGatewayMCPServerUpstreamServer() *components.AIGatewayMCPServerUpstreamServerResponse {
 	if v := u.GetAIGatewayMCPServer(); v != nil {
-		return v.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer
+		return v.AIGatewayMCPServerUpstreamServerResponse
 	}
 	return nil
 }

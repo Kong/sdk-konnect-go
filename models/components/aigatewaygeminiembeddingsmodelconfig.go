@@ -3,45 +3,17 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayGeminiEmbeddingsModelConfigType string
-
-const (
-	AIGatewayGeminiEmbeddingsModelConfigTypeGemini AIGatewayGeminiEmbeddingsModelConfigType = "gemini"
-)
-
-func (e AIGatewayGeminiEmbeddingsModelConfigType) ToPointer() *AIGatewayGeminiEmbeddingsModelConfigType {
-	return &e
-}
-func (e *AIGatewayGeminiEmbeddingsModelConfigType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "gemini":
-		*e = AIGatewayGeminiEmbeddingsModelConfigType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayGeminiEmbeddingsModelConfigType: %v", v)
-	}
-}
-
 // AIGatewayGeminiEmbeddingsModelConfig - Google Gemini-specific configuration for a model.
 type AIGatewayGeminiEmbeddingsModelConfig struct {
-	// The name of the embeddings model.
-	Name string `json:"name"`
 	// The URL of the embeddings model.
-	UpstreamURL string                                   `json:"upstream_url"`
-	Type        AIGatewayGeminiEmbeddingsModelConfigType `json:"type"`
-	// The Google Cloud location ID for the model endpoint.
-	LocationID *string `json:"location_id,omitempty"`
-	// The custom API endpoint for the Gemini model.
-	APIEndpoint *string `json:"api_endpoint,omitempty"`
+	UpstreamURL *string `json:"upstream_url,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"gemini" json:"type"`
+	// Configuration for a model hosted on Google Cloud Project.
+	GcpEnvironment *GCPModelConfig `json:"gcp_environment,omitempty"`
 }
 
 func (a AIGatewayGeminiEmbeddingsModelConfig) MarshalJSON() ([]byte, error) {
@@ -49,43 +21,26 @@ func (a AIGatewayGeminiEmbeddingsModelConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayGeminiEmbeddingsModelConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "upstream_url", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayGeminiEmbeddingsModelConfig) GetName() string {
+func (a *AIGatewayGeminiEmbeddingsModelConfig) GetUpstreamURL() *string {
 	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayGeminiEmbeddingsModelConfig) GetUpstreamURL() string {
-	if a == nil {
-		return ""
+		return nil
 	}
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayGeminiEmbeddingsModelConfig) GetType() AIGatewayGeminiEmbeddingsModelConfigType {
-	if a == nil {
-		return AIGatewayGeminiEmbeddingsModelConfigType("")
-	}
-	return a.Type
+func (a *AIGatewayGeminiEmbeddingsModelConfig) GetType() string {
+	return "gemini"
 }
 
-func (a *AIGatewayGeminiEmbeddingsModelConfig) GetLocationID() *string {
+func (a *AIGatewayGeminiEmbeddingsModelConfig) GetGcpEnvironment() *GCPModelConfig {
 	if a == nil {
 		return nil
 	}
-	return a.LocationID
-}
-
-func (a *AIGatewayGeminiEmbeddingsModelConfig) GetAPIEndpoint() *string {
-	if a == nil {
-		return nil
-	}
-	return a.APIEndpoint
+	return a.GcpEnvironment
 }

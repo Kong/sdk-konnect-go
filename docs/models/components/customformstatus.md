@@ -1,6 +1,6 @@
 # CustomFormStatus
 
-Whether the form is live on the portal. `unpublished` forms are not served from the portal-client form-fetch endpoint; `developer_registration` falls back to a default schema in that case.
+Whether the form is visible to developers on the portal. `unpublished` forms aren't shown to developers; for the `developer_registration` form, a default form is shown instead.
 
 
 ## Example Usage

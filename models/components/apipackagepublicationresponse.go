@@ -7,6 +7,26 @@ import (
 	"time"
 )
 
+// APIPackagePublicationResponseAPIPublicationSpecRenderer - Customization settings for the API spec renderer in the portal.
+type APIPackagePublicationResponseAPIPublicationSpecRenderer struct {
+	// The audience for the Try It UI feature.
+	//
+	// `all` means that the Try It UI will be available to all users, including unauthenticated users.
+	//
+	// `authenticated` means that the Try It UI will only be available to authenticated users.
+	//
+	// `registered` means that the Try It UI will only be available to users who have registered for the API.
+	//
+	TryItUIAudience TryItUIAudience `json:"try_it_ui_audience"`
+}
+
+func (a *APIPackagePublicationResponseAPIPublicationSpecRenderer) GetTryItUIAudience() TryItUIAudience {
+	if a == nil {
+		return TryItUIAudience("")
+	}
+	return a.TryItUIAudience
+}
+
 // APIPackagePublicationResponse - An API Package publication in a portal
 type APIPackagePublicationResponse struct {
 	// Whether the application registration auto approval on this portal for the api is enabled. If set to false, fallbacks on portal's auto_approve_applications value.
@@ -20,8 +40,14 @@ type APIPackagePublicationResponse struct {
 	// The visibility of the API in the portal.
 	// Public API publications do not require authentication to view and retrieve information about them.
 	// Private API publications require authentication to retrieve information about them.
+	// If omitted, this defaults to the target portal's configured default API visibility.
 	//
-	Visibility *APIPublicationVisibility `default:"private" json:"visibility"`
+	Visibility APIPublicationVisibility `json:"visibility"`
+	// Customization settings for the API spec renderer in the portal.
+	SpecRenderer *APIPackagePublicationResponseAPIPublicationSpecRenderer `json:"spec_renderer,omitempty"`
+	// UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
+	//
+	FormID *string `json:"form_id"`
 	// Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
 	Warnings []string `json:"warnings,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -55,11 +81,25 @@ func (a *APIPackagePublicationResponse) GetAuthStrategyIds() []string {
 	return a.AuthStrategyIds
 }
 
-func (a *APIPackagePublicationResponse) GetVisibility() *APIPublicationVisibility {
+func (a *APIPackagePublicationResponse) GetVisibility() APIPublicationVisibility {
+	if a == nil {
+		return APIPublicationVisibility("")
+	}
+	return a.Visibility
+}
+
+func (a *APIPackagePublicationResponse) GetSpecRenderer() *APIPackagePublicationResponseAPIPublicationSpecRenderer {
 	if a == nil {
 		return nil
 	}
-	return a.Visibility
+	return a.SpecRenderer
+}
+
+func (a *APIPackagePublicationResponse) GetFormID() *string {
+	if a == nil {
+		return nil
+	}
+	return a.FormID
 }
 
 func (a *APIPackagePublicationResponse) GetWarnings() []string {

@@ -9,6 +9,7 @@ const (
 	ListCreditTransactionsParamsFilterTypeFunded   ListCreditTransactionsParamsFilterType = "funded"
 	ListCreditTransactionsParamsFilterTypeConsumed ListCreditTransactionsParamsFilterType = "consumed"
 	ListCreditTransactionsParamsFilterTypeExpired  ListCreditTransactionsParamsFilterType = "expired"
+	ListCreditTransactionsParamsFilterTypeVoided   ListCreditTransactionsParamsFilterType = "voided"
 )
 
 func (e ListCreditTransactionsParamsFilterType) ToPointer() *ListCreditTransactionsParamsFilterType {
@@ -19,11 +20,57 @@ func (e ListCreditTransactionsParamsFilterType) ToPointer() *ListCreditTransacti
 func (e *ListCreditTransactionsParamsFilterType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "funded", "consumed", "expired":
+		case "funded", "consumed", "expired", "voided":
 			return true
 		}
 	}
 	return false
+}
+
+// ListCreditTransactionsParamsFilterStringFieldNEQFilter - Filter credit transactions by feature key. Omit to return all credit
+// transactions. Use `exists=false` to return only unrestricted credit
+// transactions.
+type ListCreditTransactionsParamsFilterStringFieldNEQFilter struct {
+	Eq        *string `queryParam:"name=eq"`
+	Contains  string  `queryParam:"name=contains"`
+	Ocontains string  `queryParam:"name=ocontains"`
+	Oeq       string  `queryParam:"name=oeq"`
+	Neq       string  `queryParam:"name=neq"`
+}
+
+func (l *ListCreditTransactionsParamsFilterStringFieldNEQFilter) GetEq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Eq
+}
+
+func (l *ListCreditTransactionsParamsFilterStringFieldNEQFilter) GetContains() string {
+	if l == nil {
+		return ""
+	}
+	return l.Contains
+}
+
+func (l *ListCreditTransactionsParamsFilterStringFieldNEQFilter) GetOcontains() string {
+	if l == nil {
+		return ""
+	}
+	return l.Ocontains
+}
+
+func (l *ListCreditTransactionsParamsFilterStringFieldNEQFilter) GetOeq() string {
+	if l == nil {
+		return ""
+	}
+	return l.Oeq
+}
+
+func (l *ListCreditTransactionsParamsFilterStringFieldNEQFilter) GetNeq() string {
+	if l == nil {
+		return ""
+	}
+	return l.Neq
 }
 
 // ListCreditTransactionsParamsFilter - Filter options for listing credit transactions.
@@ -32,6 +79,10 @@ type ListCreditTransactionsParamsFilter struct {
 	Type *ListCreditTransactionsParamsFilterType `queryParam:"name=type"`
 	// Filter credit transactions by currency.
 	Currency *string `queryParam:"name=currency"`
+	// Filter credit transactions by feature key. Omit to return all credit
+	// transactions. Use `exists=false` to return only unrestricted credit
+	// transactions.
+	FeatureKey *ListCreditTransactionsParamsFilterStringFieldNEQFilter `queryParam:"name=feature_key"`
 }
 
 func (l *ListCreditTransactionsParamsFilter) GetType() *ListCreditTransactionsParamsFilterType {
@@ -46,4 +97,11 @@ func (l *ListCreditTransactionsParamsFilter) GetCurrency() *string {
 		return nil
 	}
 	return l.Currency
+}
+
+func (l *ListCreditTransactionsParamsFilter) GetFeatureKey() *ListCreditTransactionsParamsFilterStringFieldNEQFilter {
+	if l == nil {
+		return nil
+	}
+	return l.FeatureKey
 }

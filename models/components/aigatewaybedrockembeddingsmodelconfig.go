@@ -3,41 +3,19 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayBedrockEmbeddingsModelConfigType string
-
-const (
-	AIGatewayBedrockEmbeddingsModelConfigTypeBedrock AIGatewayBedrockEmbeddingsModelConfigType = "bedrock"
-)
-
-func (e AIGatewayBedrockEmbeddingsModelConfigType) ToPointer() *AIGatewayBedrockEmbeddingsModelConfigType {
-	return &e
-}
-func (e *AIGatewayBedrockEmbeddingsModelConfigType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bedrock":
-		*e = AIGatewayBedrockEmbeddingsModelConfigType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayBedrockEmbeddingsModelConfigType: %v", v)
-	}
-}
-
 // AIGatewayBedrockEmbeddingsModelConfig - AWS Bedrock-specific configuration for a model.
 type AIGatewayBedrockEmbeddingsModelConfig struct {
-	// The name of the embeddings model.
-	Name string `json:"name"`
 	// The URL of the embeddings model.
-	UpstreamURL string                                    `json:"upstream_url"`
-	Type        AIGatewayBedrockEmbeddingsModelConfigType `json:"type"`
+	UpstreamURL *string `json:"upstream_url,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"bedrock" json:"type"`
+	// The AWS region for the model.
+	// Setting this option overrides the AWS_REGION environment variable.
+	//
+	Region *string `json:"region,omitempty"`
 	// S3 bucket prefix for batch inference jobs.
 	BatchBucketPrefix *string `json:"batch_bucket_prefix,omitempty"`
 	// Whether to normalize embedding vectors in the response.
@@ -53,31 +31,28 @@ func (a AIGatewayBedrockEmbeddingsModelConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayBedrockEmbeddingsModelConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "upstream_url", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayBedrockEmbeddingsModelConfig) GetName() string {
+func (a *AIGatewayBedrockEmbeddingsModelConfig) GetUpstreamURL() *string {
 	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayBedrockEmbeddingsModelConfig) GetUpstreamURL() string {
-	if a == nil {
-		return ""
+		return nil
 	}
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayBedrockEmbeddingsModelConfig) GetType() AIGatewayBedrockEmbeddingsModelConfigType {
+func (a *AIGatewayBedrockEmbeddingsModelConfig) GetType() string {
+	return "bedrock"
+}
+
+func (a *AIGatewayBedrockEmbeddingsModelConfig) GetRegion() *string {
 	if a == nil {
-		return AIGatewayBedrockEmbeddingsModelConfigType("")
+		return nil
 	}
-	return a.Type
+	return a.Region
 }
 
 func (a *AIGatewayBedrockEmbeddingsModelConfig) GetBatchBucketPrefix() *string {

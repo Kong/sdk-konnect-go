@@ -11,7 +11,8 @@ Organization-level default configuration.
 
 ## GetOrganizationDefaultTaxCodes
 
-Get organization default tax codes
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 ### Example Usage
 
@@ -68,7 +69,8 @@ func main() {
 
 ## UpdateOrganizationDefaultTaxCodes
 
-Update organization default tax codes
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 ### Example Usage
 

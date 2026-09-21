@@ -1,0 +1,11 @@
+# MCPResourceSourceAPICatalogPayload
+
+An MCP resource sourced from an API catalog entry.
+
+
+## Fields
+
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                     | [components.MCPResourceSourceAPICatalogPayloadType](../../models/components/mcpresourcesourceapicatalogpayloadtype.md)     | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `Config`                                                                                                                   | [components.MCPResourceSourceAPICatalogConfigPayload](../../models/components/mcpresourcesourceapicatalogconfigpayload.md) | :heavy_check_mark:                                                                                                         | Identifies the API catalog entry the MCP resource was sourced from.                                                        |

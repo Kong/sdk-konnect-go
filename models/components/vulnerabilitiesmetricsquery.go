@@ -180,7 +180,14 @@ func CreateFiltersVulnerabilitiesMetricsFilterByScanAttributes(vulnerabilitiesMe
 	}
 }
 
-func (u *Filters) UnmarshalJSON(data []byte) error {
+func (u *Filters) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = Filters{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var vulnerabilitiesMetricsFilterByService VulnerabilitiesMetricsFilterByService = VulnerabilitiesMetricsFilterByService{}
 	if err := utils.UnmarshalJSON(data, &vulnerabilitiesMetricsFilterByService, "", true, nil); err == nil {
@@ -380,7 +387,14 @@ func CreateVulnerabilitiesMetricsQueryTimeRangeAbsolute(absolute VulnerabilityMe
 	}
 }
 
-func (u *VulnerabilitiesMetricsQueryTimeRange) UnmarshalJSON(data []byte) error {
+func (u *VulnerabilitiesMetricsQueryTimeRange) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = VulnerabilitiesMetricsQueryTimeRange{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

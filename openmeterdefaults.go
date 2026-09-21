@@ -33,6 +33,8 @@ func newOpenMeterDefaults(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks
 }
 
 // GetOrganizationDefaultTaxCodes - Get organization default tax codes
+// **Pre-release Endpoint**
+// This endpoint is currently in beta and is subject to change.
 func (s *OpenMeterDefaults) GetOrganizationDefaultTaxCodes(ctx context.Context, opts ...operations.Option) (*operations.GetOrganizationDefaultTaxCodesResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -321,6 +323,8 @@ func (s *OpenMeterDefaults) GetOrganizationDefaultTaxCodes(ctx context.Context, 
 }
 
 // UpdateOrganizationDefaultTaxCodes - Update organization default tax codes
+// **Pre-release Endpoint**
+// This endpoint is currently in beta and is subject to change.
 func (s *OpenMeterDefaults) UpdateOrganizationDefaultTaxCodes(ctx context.Context, request components.UpdateOrganizationDefaultTaxCodesRequest, opts ...operations.Option) (*operations.UpdateOrganizationDefaultTaxCodesResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{

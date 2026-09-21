@@ -3,41 +3,15 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayHuggingfaceEmbeddingsModelConfigType string
-
-const (
-	AIGatewayHuggingfaceEmbeddingsModelConfigTypeHuggingface AIGatewayHuggingfaceEmbeddingsModelConfigType = "huggingface"
-)
-
-func (e AIGatewayHuggingfaceEmbeddingsModelConfigType) ToPointer() *AIGatewayHuggingfaceEmbeddingsModelConfigType {
-	return &e
-}
-func (e *AIGatewayHuggingfaceEmbeddingsModelConfigType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "huggingface":
-		*e = AIGatewayHuggingfaceEmbeddingsModelConfigType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayHuggingfaceEmbeddingsModelConfigType: %v", v)
-	}
-}
-
 // AIGatewayHuggingfaceEmbeddingsModelConfig - Hugging Face-specific configuration for a model.
 type AIGatewayHuggingfaceEmbeddingsModelConfig struct {
-	// The name of the embeddings model.
-	Name string `json:"name"`
 	// The URL of the embeddings model.
-	UpstreamURL string                                        `json:"upstream_url"`
-	Type        AIGatewayHuggingfaceEmbeddingsModelConfigType `json:"type"`
+	UpstreamURL *string `json:"upstream_url,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"huggingface" json:"type"`
 	// Whether to use the Hugging Face inference cache.
 	UseCache *bool `default:"false" json:"use_cache"`
 	// Whether to wait for the model to load if it is not ready.
@@ -49,31 +23,21 @@ func (a AIGatewayHuggingfaceEmbeddingsModelConfig) MarshalJSON() ([]byte, error)
 }
 
 func (a *AIGatewayHuggingfaceEmbeddingsModelConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "upstream_url", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayHuggingfaceEmbeddingsModelConfig) GetName() string {
+func (a *AIGatewayHuggingfaceEmbeddingsModelConfig) GetUpstreamURL() *string {
 	if a == nil {
-		return ""
-	}
-	return a.Name
-}
-
-func (a *AIGatewayHuggingfaceEmbeddingsModelConfig) GetUpstreamURL() string {
-	if a == nil {
-		return ""
+		return nil
 	}
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayHuggingfaceEmbeddingsModelConfig) GetType() AIGatewayHuggingfaceEmbeddingsModelConfigType {
-	if a == nil {
-		return AIGatewayHuggingfaceEmbeddingsModelConfigType("")
-	}
-	return a.Type
+func (a *AIGatewayHuggingfaceEmbeddingsModelConfig) GetType() string {
+	return "huggingface"
 }
 
 func (a *AIGatewayHuggingfaceEmbeddingsModelConfig) GetUseCache() *bool {

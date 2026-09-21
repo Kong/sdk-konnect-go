@@ -263,7 +263,14 @@ func CreateListEventsParamsFilterULIDFieldFilterListEventsParamsFilterULIDFieldF
 	}
 }
 
-func (u *ListEventsParamsFilterULIDFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *ListEventsParamsFilterULIDFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ListEventsParamsFilterULIDFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -475,7 +482,14 @@ func CreateListEventsParamsFilterDateTimeFieldFilterListEventsParamsFilterDateTi
 	}
 }
 
-func (u *ListEventsParamsFilterDateTimeFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *ListEventsParamsFilterDateTimeFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ListEventsParamsFilterDateTimeFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var listEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter = ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter{}
 	if err := utils.UnmarshalJSON(data, &listEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter, "", true, nil); err == nil {
@@ -720,7 +734,14 @@ func CreateListEventsParamsFilterIngestedAtDateTimeFieldFilterListEventsParamsFi
 	}
 }
 
-func (u *ListEventsParamsFilterIngestedAtDateTimeFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *ListEventsParamsFilterIngestedAtDateTimeFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ListEventsParamsFilterIngestedAtDateTimeFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var listEventsParamsFilterDateTimeFieldFilterIngestedAtDateTimeFieldEqualsFilter ListEventsParamsFilterDateTimeFieldFilterIngestedAtDateTimeFieldEqualsFilter = ListEventsParamsFilterDateTimeFieldFilterIngestedAtDateTimeFieldEqualsFilter{}
 	if err := utils.UnmarshalJSON(data, &listEventsParamsFilterDateTimeFieldFilterIngestedAtDateTimeFieldEqualsFilter, "", true, nil); err == nil {
@@ -965,7 +986,14 @@ func CreateListEventsParamsFilterStoredAtDateTimeFieldFilterListEventsParamsFilt
 	}
 }
 
-func (u *ListEventsParamsFilterStoredAtDateTimeFieldFilter) UnmarshalJSON(data []byte) error {
+func (u *ListEventsParamsFilterStoredAtDateTimeFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ListEventsParamsFilterStoredAtDateTimeFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var listEventsParamsFilterDateTimeFieldFilterStoredAtDateTimeFieldEqualsFilter ListEventsParamsFilterDateTimeFieldFilterStoredAtDateTimeFieldEqualsFilter = ListEventsParamsFilterDateTimeFieldFilterStoredAtDateTimeFieldEqualsFilter{}
 	if err := utils.UnmarshalJSON(data, &listEventsParamsFilterDateTimeFieldFilterStoredAtDateTimeFieldEqualsFilter, "", true, nil); err == nil {

@@ -64,7 +64,14 @@ func CreateMapActionPayloadServiceMapByID(mapByID MapByID) MapActionPayloadServi
 	}
 }
 
-func (u *MapActionPayloadService) UnmarshalJSON(data []byte) error {
+func (u *MapActionPayloadService) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = MapActionPayloadService{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var mapByName MapByName = MapByName{}
 	if err := utils.UnmarshalJSON(data, &mapByName, "", true, nil); err == nil {

@@ -55,10 +55,11 @@ func (e *CreateAPIRegistrationFormRequestStatus) IsExact() bool {
 
 type CreateAPIRegistrationFormRequest struct {
 	Type CreateAPIRegistrationFormRequestType `json:"type"`
-	// Kebab-case slug identifier for the form, admin-supplied.
+	// A unique name for the form that you choose (lowercase letters, digits, and hyphens).
 	Name   string                                  `json:"name"`
 	Status *CreateAPIRegistrationFormRequestStatus `default:"unpublished" json:"status"`
-	// Ordered field array. Must contain exactly one `submit` type field and a named `api_id` of type `text` field.
+	// The form's fields, in display order. Must include exactly one `submit` field and a field named `api_id` of type `text`.
+	//
 	Fields []CustomFormFieldInput `json:"fields"`
 }
 

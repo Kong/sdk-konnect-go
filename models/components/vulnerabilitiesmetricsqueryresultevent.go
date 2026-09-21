@@ -30,7 +30,14 @@ func CreateVulnerabilitiesMetricsQueryResultEventVulnerabilityCountMetricEvent(v
 	}
 }
 
-func (u *VulnerabilitiesMetricsQueryResultEvent) UnmarshalJSON(data []byte) error {
+func (u *VulnerabilitiesMetricsQueryResultEvent) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = VulnerabilitiesMetricsQueryResultEvent{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var vulnerabilityCountMetricEvent VulnerabilityCountMetricEvent = VulnerabilityCountMetricEvent{}
 	if err := utils.UnmarshalJSON(data, &vulnerabilityCountMetricEvent, "", true, nil); err == nil {

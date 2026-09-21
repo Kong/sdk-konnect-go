@@ -22,6 +22,10 @@ type ListCurrenciesRequest struct {
 	//
 	// To filter currencies by type add the following query param: filter[type]=custom
 	Filter *components.ListCurrenciesParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	// Expand the currencies returned in the response.
+	//
+	// To include the active and scheduled cost basis add: expand=cost_basis
+	Expand []components.BillingCurrencyExpand `queryParam:"style=form,explode=false,name=expand"`
 }
 
 func (l *ListCurrenciesRequest) GetPage() *components.PagePaginationQuery {
@@ -43,6 +47,13 @@ func (l *ListCurrenciesRequest) GetFilter() *components.ListCurrenciesParamsFilt
 		return nil
 	}
 	return l.Filter
+}
+
+func (l *ListCurrenciesRequest) GetExpand() []components.BillingCurrencyExpand {
+	if l == nil {
+		return nil
+	}
+	return l.Expand
 }
 
 type ListCurrenciesResponse struct {

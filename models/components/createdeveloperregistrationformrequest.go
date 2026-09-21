@@ -31,7 +31,7 @@ func (e *CreateDeveloperRegistrationFormRequestType) UnmarshalJSON(data []byte) 
 	}
 }
 
-// CreateDeveloperRegistrationFormRequestName - Reserved slug for the developer registration form. Server pins this literal regardless of what the admin supplies.
+// CreateDeveloperRegistrationFormRequestName - The form's name. Only `developer-registration` is accepted at this time
 type CreateDeveloperRegistrationFormRequestName string
 
 const (
@@ -79,10 +79,12 @@ func (e *CreateDeveloperRegistrationFormRequestStatus) IsExact() bool {
 
 type CreateDeveloperRegistrationFormRequest struct {
 	Type CreateDeveloperRegistrationFormRequestType `json:"type"`
-	// Reserved slug for the developer registration form. Server pins this literal regardless of what the admin supplies.
+	// The form's name. Only `developer-registration` is accepted at this time
+	//
 	Name   *CreateDeveloperRegistrationFormRequestName   `json:"name,omitempty"`
 	Status *CreateDeveloperRegistrationFormRequestStatus `default:"unpublished" json:"status"`
-	// Ordered field array. Must contain the built-in fields `full_name` (type=text) and `email` (type=email) and exactly one `submit` field. Server returns 400 if any built-in is missing.
+	// The form's fields, in display order. Must include the built-in `full_name` (type `text`) and `email` (type `email`) fields, plus exactly one `submit` field.
+	//
 	Fields []CustomFormFieldInput `json:"fields"`
 }
 

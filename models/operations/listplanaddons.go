@@ -11,6 +11,17 @@ type ListPlanAddonsRequest struct {
 	PlanID string `pathParam:"style=simple,explode=false,name=planId"`
 	// Determines which page of the collection to retrieve.
 	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	// Sort plan add-ons returned in the response. Supported sort attributes are:
+	//
+	// - `id` (default)
+	// - `created_at`
+	// - `updated_at`
+	//
+	// The `asc` suffix is optional as the default sort order is ascending. The `desc`
+	// suffix is used to specify a descending order.
+	Sort *string `queryParam:"style=form,explode=false,name=sort"`
+	// Filter plan add-ons returned in the response.
+	Filter *components.ListPlanAddonsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListPlanAddonsRequest) GetPlanID() string {
@@ -25,6 +36,20 @@ func (l *ListPlanAddonsRequest) GetPage() *components.PagePaginationQuery {
 		return nil
 	}
 	return l.Page
+}
+
+func (l *ListPlanAddonsRequest) GetSort() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Sort
+}
+
+func (l *ListPlanAddonsRequest) GetFilter() *components.ListPlanAddonsParamsFilter {
+	if l == nil {
+		return nil
+	}
+	return l.Filter
 }
 
 type ListPlanAddonsResponse struct {

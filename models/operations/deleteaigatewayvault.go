@@ -9,8 +9,8 @@ import (
 type DeleteAiGatewayVaultRequest struct {
 	// The unique ID of the AI Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
-	// The unique ID of the AI Gateway Vault.
-	VaultID string `pathParam:"style=simple,explode=false,name=vaultId"`
+	// The unique ID or name of the AI Gateway Vault.
+	VaultIDOrName string `pathParam:"style=simple,explode=false,name=vaultIdOrName"`
 }
 
 func (d *DeleteAiGatewayVaultRequest) GetGatewayID() string {
@@ -20,11 +20,11 @@ func (d *DeleteAiGatewayVaultRequest) GetGatewayID() string {
 	return d.GatewayID
 }
 
-func (d *DeleteAiGatewayVaultRequest) GetVaultID() string {
+func (d *DeleteAiGatewayVaultRequest) GetVaultIDOrName() string {
 	if d == nil {
 		return ""
 	}
-	return d.VaultID
+	return d.VaultIDOrName
 }
 
 type DeleteAiGatewayVaultResponse struct {

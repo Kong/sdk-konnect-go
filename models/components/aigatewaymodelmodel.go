@@ -3,33 +3,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type AIGatewayModelModelType string
-
-const (
-	AIGatewayModelModelTypeModel AIGatewayModelModelType = "model"
-)
-
-func (e AIGatewayModelModelType) ToPointer() *AIGatewayModelModelType {
-	return &e
-}
-func (e *AIGatewayModelModelType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "model":
-		*e = AIGatewayModelModelType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AIGatewayModelModelType: %v", v)
-	}
-}
 
 type AIGatewayModelModelCapabilities string
 
@@ -65,20 +40,18 @@ func (e *AIGatewayModelModelCapabilities) IsExact() bool {
 type AIGatewayModelModel struct {
 	// The display name for this model instance.
 	DisplayName string `json:"display_name"`
-	// A user-defined unique identifier for this model, used as a stable human-readable reference.
+	// A user-defined unique identifier for this model, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// Whether the model is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
-	// Access control rules for allowing or denying Consumers, Consumer Groups, or Authenticated Groups to this model.
-	Acls AIGatewayACLS `json:"acls"`
-	// Routing, logging, and load balancing configuration for the model.
-	Config AIGatewayModelConfig `json:"config"`
+	// Access control configuration for a model.
+	Access *AIGatewayModelAccess `json:"access,omitempty"`
 	// List of request/response formats supported by this model.
 	Formats []AIGatewayModelFormat `json:"formats"`
 	// One or more backend models that this model entry routes to.
-	TargetModels []AIGatewayTargetModel `json:"target_models"`
+	Targets []AIGatewayTarget `json:"targets"`
 	// List of policy references.
-	Policies []string `json:"policies"`
+	Policies []string `json:"policies,omitempty"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -90,8 +63,13 @@ type AIGatewayModelModel struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string       `json:"managed_by,omitempty"`
-	Type      AIGatewayModelModelType `json:"type"`
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	// Names of the Datastores this model references.
+	Datastores []string `json:"datastores,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"model" json:"type"`
+	// Routing, logging, and load balancing configuration for the model.
+	Config AIGatewayModelModelConfig `json:"config"`
 	// List of AI capabilities enabled for this model.
 	Capabilities []AIGatewayModelModelCapabilities `json:"capabilities"`
 }
@@ -101,7 +79,7 @@ func (a AIGatewayModelModel) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AIGatewayModelModel) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"display_name", "name", "acls", "config", "formats", "target_models", "policies", "type", "capabilities"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"display_name", "name", "formats", "targets", "type", "config", "capabilities"}); err != nil {
 		return err
 	}
 	return nil
@@ -128,18 +106,11 @@ func (a *AIGatewayModelModel) GetEnabled() *bool {
 	return a.Enabled
 }
 
-func (a *AIGatewayModelModel) GetAcls() AIGatewayACLS {
+func (a *AIGatewayModelModel) GetAccess() *AIGatewayModelAccess {
 	if a == nil {
-		return AIGatewayACLS{}
+		return nil
 	}
-	return a.Acls
-}
-
-func (a *AIGatewayModelModel) GetConfig() AIGatewayModelConfig {
-	if a == nil {
-		return AIGatewayModelConfig{}
-	}
-	return a.Config
+	return a.Access
 }
 
 func (a *AIGatewayModelModel) GetFormats() []AIGatewayModelFormat {
@@ -149,16 +120,16 @@ func (a *AIGatewayModelModel) GetFormats() []AIGatewayModelFormat {
 	return a.Formats
 }
 
-func (a *AIGatewayModelModel) GetTargetModels() []AIGatewayTargetModel {
+func (a *AIGatewayModelModel) GetTargets() []AIGatewayTarget {
 	if a == nil {
-		return []AIGatewayTargetModel{}
+		return []AIGatewayTarget{}
 	}
-	return a.TargetModels
+	return a.Targets
 }
 
 func (a *AIGatewayModelModel) GetPolicies() []string {
 	if a == nil {
-		return []string{}
+		return nil
 	}
 	return a.Policies
 }
@@ -177,11 +148,22 @@ func (a *AIGatewayModelModel) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayModelModel) GetType() AIGatewayModelModelType {
+func (a *AIGatewayModelModel) GetDatastores() []string {
 	if a == nil {
-		return AIGatewayModelModelType("")
+		return nil
 	}
-	return a.Type
+	return a.Datastores
+}
+
+func (a *AIGatewayModelModel) GetType() string {
+	return "model"
+}
+
+func (a *AIGatewayModelModel) GetConfig() AIGatewayModelModelConfig {
+	if a == nil {
+		return AIGatewayModelModelConfig{}
+	}
+	return a.Config
 }
 
 func (a *AIGatewayModelModel) GetCapabilities() []AIGatewayModelModelCapabilities {

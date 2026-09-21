@@ -29,7 +29,14 @@ func CreateIntegrationEventsFilterParametersIntegrationNameStringFieldFilter(str
 	}
 }
 
-func (u *IntegrationEventsFilterParametersIntegrationName) UnmarshalJSON(data []byte) error {
+func (u *IntegrationEventsFilterParametersIntegrationName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IntegrationEventsFilterParametersIntegrationName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -70,7 +77,14 @@ func CreateIntegrationEventsFilterParametersIntegrationInstanceIDStringFieldFilt
 	}
 }
 
-func (u *IntegrationEventsFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) error {
+func (u *IntegrationEventsFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IntegrationEventsFilterParametersIntegrationInstanceID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilterExact StringFieldFilterExact = StringFieldFilterExact{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilterExact, "", true, nil); err == nil {
@@ -111,7 +125,14 @@ func CreateIntegrationEventsFilterParametersIntegrationInstanceNameStringFieldFi
 	}
 }
 
-func (u *IntegrationEventsFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) error {
+func (u *IntegrationEventsFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IntegrationEventsFilterParametersIntegrationInstanceName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -152,7 +173,14 @@ func CreateIntegrationEventsFilterParametersIntegrationInstanceDisplayNameString
 	}
 }
 
-func (u *IntegrationEventsFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) error {
+func (u *IntegrationEventsFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = IntegrationEventsFilterParametersIntegrationInstanceDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -193,7 +221,14 @@ func CreateActorTypeStringFieldFilter(stringFieldFilter StringFieldFilter) Actor
 	}
 }
 
-func (u *ActorType) UnmarshalJSON(data []byte) error {
+func (u *ActorType) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ActorType{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -234,7 +269,14 @@ func CreateActorIDStringFieldFilter(stringFieldFilter StringFieldFilter) ActorID
 	}
 }
 
-func (u *ActorID) UnmarshalJSON(data []byte) error {
+func (u *ActorID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ActorID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -275,7 +317,14 @@ func CreateActorNameStringFieldFilter(stringFieldFilter StringFieldFilter) Actor
 	}
 }
 
-func (u *ActorName) UnmarshalJSON(data []byte) error {
+func (u *ActorName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ActorName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {

@@ -1,6 +1,8 @@
 # Port
 
 An integer representing a port number between 0 and 65535, inclusive.
+This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+
 
 
 ## Supported Types

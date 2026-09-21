@@ -522,8 +522,10 @@ type Upstream struct {
 	HostHeader *string `json:"host_header,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
-	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
-	ManagedBy map[string]any `json:"managed_by,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// This is a hostname, which must be equal to the `host` of a Service.
 	Name string `json:"name"`
 	// The number of slots in the load balancer algorithm. If `algorithm` is set to `round-robin`, this setting determines the maximum number of slots. If `algorithm` is set to `consistent-hashing`, this setting determines the actual number of slots in the algorithm. Accepts an integer in the range `10`-`65536`.
@@ -670,7 +672,7 @@ func (u *Upstream) GetID() *string {
 	return u.ID
 }
 
-func (u *Upstream) GetManagedBy() map[string]any {
+func (u *Upstream) GetManagedBy() map[string]string {
 	if u == nil {
 		return nil
 	}

@@ -11,6 +11,11 @@ type PluginSchemasItem struct {
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// An ISO-8604 timestamp representation of custom plugin schema update date.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (p *PluginSchemasItem) GetLuaSchema() *string {
@@ -39,6 +44,13 @@ func (p *PluginSchemasItem) GetUpdatedAt() *int64 {
 		return nil
 	}
 	return p.UpdatedAt
+}
+
+func (p *PluginSchemasItem) GetManagedBy() map[string]string {
+	if p == nil {
+		return nil
+	}
+	return p.ManagedBy
 }
 
 // PluginSchemas - A response for a single custom plugin schema.

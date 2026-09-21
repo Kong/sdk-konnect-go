@@ -16,6 +16,11 @@ type ConfigStore struct {
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	//
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
 
 func (c ConfigStore) MarshalJSON() ([]byte, error) {
@@ -55,4 +60,11 @@ func (c *ConfigStore) GetUpdatedAt() *time.Time {
 		return nil
 	}
 	return c.UpdatedAt
+}
+
+func (c *ConfigStore) GetManagedBy() map[string]string {
+	if c == nil {
+		return nil
+	}
+	return c.ManagedBy
 }

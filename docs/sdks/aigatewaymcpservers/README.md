@@ -102,30 +102,12 @@ func main() {
     )
 
     res, err := s.AIGatewayMCPServers.CreateAiGatewayMcpServer(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayMCPServerRequestUpstreamServer(
-        components.CreateAIGatewayMCPServerUpstreamServerOauthAccessToken(
-            components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesOauth{
-                ACLAttributeType: components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerACLAttributeTypeOauthAccessToken,
-                AccessTokenClaimField: "<value>",
-                Acls: components.AIGatewayACLS{
-                    Allow: []string{},
-                    Deny: []string{
-                        "<value 1>",
-                    },
-                },
-                DefaultToolAcls: components.AIGatewayACLS{
-                    Allow: []string{},
-                    Deny: []string{
-                        "<value 1>",
-                    },
-                },
-                Type: components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerTypeUpstreamServer,
-                Config: components.AIGatewayMCPServerUpstreamServerConfig{
-                    Route: &components.AIGatewayRouteConfig{
-                        Destinations: []components.Destinations{
-                            components.Destinations{
-                                IP: sdkkonnectgo.Pointer("10.1.0.0/16"),
-                                Port: sdkkonnectgo.Pointer[int64](1234),
-                            },
+        components.AIGatewayMCPServerUpstreamServer{
+            Config: components.AIGatewayMCPServerUpstreamServerConfig{
+                Route: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher1(
+                    components.AIGatewayMCPServerRouteWithMatcher1{
+                        Hosts: []string{
+                            "foo.example.com",
                         },
                         Headers: map[string]any{
                             "version": []any{
@@ -133,27 +115,18 @@ func main() {
                                 "v2",
                             },
                         },
-                        Hosts: []string{
-                            "foo.example.com",
-                        },
-                        Sources: []components.Sources{
-                            components.Sources{
-                                IP: sdkkonnectgo.Pointer("10.1.0.0/16"),
-                                Port: sdkkonnectgo.Pointer[int64](1234),
-                            },
-                        },
                     },
-                    URL: "https://mcp.internal.kongair.com",
-                    ToolsCacheTTLSeconds: 93572,
-                },
-                Tools: []components.AIGatewayMCPUpstreamTool{},
-                DisplayName: "Kong Air Flights",
-                Name: "kongair-flights",
-                Policies: []string{
-                    "<value 1>",
-                },
+                )),
+                URL: "https://mcp.internal.kongair.com",
+                ToolsCacheTTLSeconds: 93572,
             },
-        ),
+            Tools: []components.AIGatewayMCPUpstreamTool{},
+            DisplayName: "Kong Air Flights",
+            Name: "kongair-flights",
+            Policies: []string{
+                "<value 1>",
+            },
+        },
     ))
     if err != nil {
         log.Fatal(err)
@@ -161,15 +134,15 @@ func main() {
     if res.AIGatewayMCPServer != nil {
         switch res.AIGatewayMCPServer.Type {
             case components.AIGatewayMCPServerTypeConversionOnly:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionOnly is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionOnlyResponse is populated
             case components.AIGatewayMCPServerTypeConversionListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionListenerResponse is populated
             case components.AIGatewayMCPServerTypeListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerListenerResponse is populated
             case components.AIGatewayMCPServerTypePassthroughListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerPassthroughListenerResponse is populated
             case components.AIGatewayMCPServerTypeUpstreamServer:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerUpstreamServerResponse is populated
         }
 
     }
@@ -207,7 +180,7 @@ Returns the details of a specific MCP Server.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-ai-gateway-mcp-server" method="get" path="/v1/ai-gateways/{gatewayId}/mcp-servers/{mcpServerId}" -->
+<!-- UsageSnippet language="go" operationID="get-ai-gateway-mcp-server" method="get" path="/v1/ai-gateways/{gatewayId}/mcp-servers/{mcpServerIdOrName}" -->
 ```go
 package main
 
@@ -227,22 +200,22 @@ func main() {
         }),
     )
 
-    res, err := s.AIGatewayMCPServers.GetAiGatewayMcpServer(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", "bf138ba2-c9b1-4229-b268-04d9d8a6410b")
+    res, err := s.AIGatewayMCPServers.GetAiGatewayMcpServer(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", "my-entity-name")
     if err != nil {
         log.Fatal(err)
     }
     if res.AIGatewayMCPServer != nil {
         switch res.AIGatewayMCPServer.Type {
             case components.AIGatewayMCPServerTypeConversionOnly:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionOnly is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionOnlyResponse is populated
             case components.AIGatewayMCPServerTypeConversionListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionListenerResponse is populated
             case components.AIGatewayMCPServerTypeListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerListenerResponse is populated
             case components.AIGatewayMCPServerTypePassthroughListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerPassthroughListenerResponse is populated
             case components.AIGatewayMCPServerTypeUpstreamServer:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerUpstreamServerResponse is populated
         }
 
     }
@@ -255,7 +228,7 @@ func main() {
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
 | `gatewayID`                                              | `string`                                                 | :heavy_check_mark:                                       | The unique ID of the AI Gateway.                         | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
-| `mcpServerID`                                            | `string`                                                 | :heavy_check_mark:                                       | The unique ID of the MCP Server.                         | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `mcpServerIDOrName`                                      | `string`                                                 | :heavy_check_mark:                                       | The unique ID or name of the MCP Server.                 | my-entity-name                                           |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -278,7 +251,7 @@ Updates the configuration of an existing MCP Server.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="update-ai-gateway-mcp-server" method="put" path="/v1/ai-gateways/{gatewayId}/mcp-servers/{mcpServerId}" -->
+<!-- UsageSnippet language="go" operationID="update-ai-gateway-mcp-server" method="put" path="/v1/ai-gateways/{gatewayId}/mcp-servers/{mcpServerIdOrName}" -->
 ```go
 package main
 
@@ -301,40 +274,14 @@ func main() {
 
     res, err := s.AIGatewayMCPServers.UpdateAiGatewayMcpServer(ctx, operations.UpdateAiGatewayMcpServerRequest{
         GatewayID: "bf138ba2-c9b1-4229-b268-04d9d8a6410b",
-        McpServerID: "bf138ba2-c9b1-4229-b268-04d9d8a6410b",
+        McpServerIDOrName: "my-entity-name",
         UpdateAIGatewayMCPServerRequest: components.CreateUpdateAIGatewayMCPServerRequestUpstreamServer(
-            components.CreateAIGatewayMCPServerUpstreamServerOauthAccessToken(
-                components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerAIGatewayMCPServerBaseACLPropertiesOauth{
-                    ACLAttributeType: components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerACLAttributeTypeOauthAccessToken,
-                    AccessTokenClaimField: "<value>",
-                    Acls: components.AIGatewayACLS{
-                        Allow: []string{
-                            "<value 1>",
-                            "<value 2>",
-                            "<value 3>",
-                        },
-                        Deny: []string{
-                            "<value 1>",
-                            "<value 2>",
-                        },
-                    },
-                    DefaultToolAcls: components.AIGatewayACLS{
-                        Allow: []string{
-                            "<value 1>",
-                        },
-                        Deny: []string{
-                            "<value 1>",
-                            "<value 2>",
-                        },
-                    },
-                    Type: components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerUpstreamServerTypeUpstreamServer,
-                    Config: components.AIGatewayMCPServerUpstreamServerConfig{
-                        Route: &components.AIGatewayRouteConfig{
-                            Destinations: []components.Destinations{
-                                components.Destinations{
-                                    IP: sdkkonnectgo.Pointer("10.1.0.0/16"),
-                                    Port: sdkkonnectgo.Pointer[int64](1234),
-                                },
+            components.AIGatewayMCPServerUpstreamServer{
+                Config: components.AIGatewayMCPServerUpstreamServerConfig{
+                    Route: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher1(
+                        components.AIGatewayMCPServerRouteWithMatcher1{
+                            Hosts: []string{
+                                "foo.example.com",
                             },
                             Headers: map[string]any{
                                 "version": []any{
@@ -342,40 +289,23 @@ func main() {
                                     "v2",
                                 },
                             },
-                            Hosts: []string{
-                                "foo.example.com",
-                            },
-                            Sources: []components.Sources{
-                                components.Sources{
-                                    IP: sdkkonnectgo.Pointer("10.1.0.0/16"),
-                                    Port: sdkkonnectgo.Pointer[int64](1234),
-                                },
-                            },
                         },
-                        URL: "https://mcp.internal.kongair.com",
-                        ToolsCacheTTLSeconds: 97975,
-                    },
-                    Tools: []components.AIGatewayMCPUpstreamTool{
-                        components.AIGatewayMCPUpstreamTool{
-                            Description: "Search for available flights",
-                            Method: components.AIGatewayMCPUpstreamToolMethodGet,
-                            Parameters: []components.AIGatewayMCPToolParameter{
-                                components.AIGatewayMCPToolParameter{
-                                    Name: "origin",
-                                    In: components.InQuery,
-                                    Description: sdkkonnectgo.Pointer("The origin airport code."),
-                                    Required: sdkkonnectgo.Pointer(true),
-                                },
-                            },
-                        },
-                    },
-                    DisplayName: "Kong Air Flights",
-                    Name: "kongair-flights",
-                    Policies: []string{
-                        "<value 1>",
+                    )),
+                    URL: "https://mcp.internal.kongair.com",
+                    ToolsCacheTTLSeconds: 97975,
+                },
+                Tools: []components.AIGatewayMCPUpstreamTool{
+                    components.AIGatewayMCPUpstreamTool{
+                        Description: sdkkonnectgo.Pointer("Search for available flights"),
+                        Name: "<value>",
                     },
                 },
-            ),
+                DisplayName: "Kong Air Flights",
+                Name: "kongair-flights",
+                Policies: []string{
+                    "<value 1>",
+                },
+            },
         ),
     })
     if err != nil {
@@ -384,15 +314,15 @@ func main() {
     if res.AIGatewayMCPServer != nil {
         switch res.AIGatewayMCPServer.Type {
             case components.AIGatewayMCPServerTypeConversionOnly:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionOnly is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionOnlyResponse is populated
             case components.AIGatewayMCPServerTypeConversionListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerConversionListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerConversionListenerResponse is populated
             case components.AIGatewayMCPServerTypeListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerListenerResponse is populated
             case components.AIGatewayMCPServerTypePassthroughListener:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerPassthroughListener is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerPassthroughListenerResponse is populated
             case components.AIGatewayMCPServerTypeUpstreamServer:
-                // res.AIGatewayMCPServer.AIGatewayMCPServerAIGatewayMCPServerUpstreamServer is populated
+                // res.AIGatewayMCPServer.AIGatewayMCPServerUpstreamServerResponse is populated
         }
 
     }
@@ -428,7 +358,7 @@ Removes a specific MCP Server from the AI Gateway.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-ai-gateway-mcp-server" method="delete" path="/v1/ai-gateways/{gatewayId}/mcp-servers/{mcpServerId}" -->
+<!-- UsageSnippet language="go" operationID="delete-ai-gateway-mcp-server" method="delete" path="/v1/ai-gateways/{gatewayId}/mcp-servers/{mcpServerIdOrName}" -->
 ```go
 package main
 
@@ -448,7 +378,7 @@ func main() {
         }),
     )
 
-    res, err := s.AIGatewayMCPServers.DeleteAiGatewayMcpServer(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", "bf138ba2-c9b1-4229-b268-04d9d8a6410b")
+    res, err := s.AIGatewayMCPServers.DeleteAiGatewayMcpServer(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", "my-entity-name")
     if err != nil {
         log.Fatal(err)
     }
@@ -464,7 +394,7 @@ func main() {
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
 | `gatewayID`                                              | `string`                                                 | :heavy_check_mark:                                       | The unique ID of the AI Gateway.                         | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
-| `mcpServerID`                                            | `string`                                                 | :heavy_check_mark:                                       | The unique ID of the MCP Server.                         | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `mcpServerIDOrName`                                      | `string`                                                 | :heavy_check_mark:                                       | The unique ID or name of the MCP Server.                 | my-entity-name                                           |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -475,6 +405,7 @@ func main() {
 
 | Error Type                     | Status Code                    | Content Type                   |
 | ------------------------------ | ------------------------------ | ------------------------------ |
+| sdkerrors.BadRequestError      | 400                            | application/problem+json       |
 | sdkerrors.UnauthorizedError    | 401                            | application/problem+json       |
 | sdkerrors.ForbiddenError       | 403                            | application/problem+json       |
 | sdkerrors.NotFoundError        | 404                            | application/problem+json       |

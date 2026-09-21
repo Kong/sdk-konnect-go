@@ -34,18 +34,24 @@ func (e *BillingCurrencyFiatType) UnmarshalJSON(data []byte) error {
 
 // BillingCurrencyFiat - Currency describes a currency supported by the billing system.
 type BillingCurrencyFiat struct {
-	// ULID (Universally Unique Lexicographically Sortable Identifier).
-	ID string `json:"id"`
 	// The type of the currency.
 	Type BillingCurrencyFiatType `json:"type"`
 	// The name of the currency. It should be a human-readable string that represents
 	// the name of the currency, such as "US Dollar" or "Euro".
 	Name string `json:"name"`
-	// Description of the currency.
-	Description *string `json:"description,omitempty"`
 	// The symbol of the currency. It should be a string that represents the symbol of
 	// the currency, such as "$" for US Dollar or "€" for Euro.
 	Symbol *string `json:"symbol,omitempty"`
+	// The precision of the currency. It should be a number that represents the number
+	// of decimal places used for the currency, such as 2 for US Dollar or Euro.
+	Precision int64 `json:"precision"`
+	// The decimal mark for the currency. It should be a string that represents the
+	// decimal mark of the currency, such as "." for US Dollar or "," for Euro.
+	DecimalMark string `json:"decimal_mark"`
+	// The thousand separator for the currency. It should be a string that represents
+	// the thousand separator of the currency, such as "," for US Dollar or "." for
+	// Euro.
+	ThousandSeparator string `json:"thousand_separator"`
 	// Three-letter [ISO4217](https://www.iso.org/iso-4217-currency-codes.html)
 	// currency code. Custom three-letter currency codes are also supported for
 	// convenience.
@@ -57,17 +63,10 @@ func (b BillingCurrencyFiat) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BillingCurrencyFiat) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id", "type", "name", "code"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type", "name", "precision", "decimal_mark", "thousand_separator", "code"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (b *BillingCurrencyFiat) GetID() string {
-	if b == nil {
-		return ""
-	}
-	return b.ID
 }
 
 func (b *BillingCurrencyFiat) GetType() BillingCurrencyFiatType {
@@ -84,18 +83,32 @@ func (b *BillingCurrencyFiat) GetName() string {
 	return b.Name
 }
 
-func (b *BillingCurrencyFiat) GetDescription() *string {
-	if b == nil {
-		return nil
-	}
-	return b.Description
-}
-
 func (b *BillingCurrencyFiat) GetSymbol() *string {
 	if b == nil {
 		return nil
 	}
 	return b.Symbol
+}
+
+func (b *BillingCurrencyFiat) GetPrecision() int64 {
+	if b == nil {
+		return 0
+	}
+	return b.Precision
+}
+
+func (b *BillingCurrencyFiat) GetDecimalMark() string {
+	if b == nil {
+		return ""
+	}
+	return b.DecimalMark
+}
+
+func (b *BillingCurrencyFiat) GetThousandSeparator() string {
+	if b == nil {
+		return ""
+	}
+	return b.ThousandSeparator
 }
 
 func (b *BillingCurrencyFiat) GetCode() string {

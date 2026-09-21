@@ -13,7 +13,7 @@ type CreateCertificateInWorkspaceRequest struct {
 	// The name of the workspace
 	Workspace string `pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the new Certificate for creation
-	Certificate components.Certificate `request:"mediaType=application/json"`
+	CertificateRequest components.CertificateRequest `request:"mediaType=application/json"`
 }
 
 func (c *CreateCertificateInWorkspaceRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (c *CreateCertificateInWorkspaceRequest) GetWorkspace() string {
 	return c.Workspace
 }
 
-func (c *CreateCertificateInWorkspaceRequest) GetCertificate() components.Certificate {
+func (c *CreateCertificateInWorkspaceRequest) GetCertificateRequest() components.CertificateRequest {
 	if c == nil {
-		return components.Certificate{}
+		return components.CertificateRequest{}
 	}
-	return c.Certificate
+	return c.CertificateRequest
 }
 
 type CreateCertificateInWorkspaceResponse struct {

@@ -29,7 +29,14 @@ func CreateCatalogResourceRefFilterParametersIntegrationNameStringFieldFilter(st
 	}
 }
 
-func (u *CatalogResourceRefFilterParametersIntegrationName) UnmarshalJSON(data []byte) error {
+func (u *CatalogResourceRefFilterParametersIntegrationName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogResourceRefFilterParametersIntegrationName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -70,7 +77,14 @@ func CreateCatalogResourceRefFilterParametersIntegrationDisplayNameStringFieldFi
 	}
 }
 
-func (u *CatalogResourceRefFilterParametersIntegrationDisplayName) UnmarshalJSON(data []byte) error {
+func (u *CatalogResourceRefFilterParametersIntegrationDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogResourceRefFilterParametersIntegrationDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -111,7 +125,14 @@ func CreateCatalogResourceRefFilterParametersIntegrationInstanceIDUUIDFieldFilte
 	}
 }
 
-func (u *CatalogResourceRefFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) error {
+func (u *CatalogResourceRefFilterParametersIntegrationInstanceID) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogResourceRefFilterParametersIntegrationInstanceID{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var uuidFieldFilter UUIDFieldFilter = UUIDFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &uuidFieldFilter, "", true, nil); err == nil {
@@ -152,7 +173,14 @@ func CreateCatalogResourceRefFilterParametersIntegrationInstanceNameStringFieldF
 	}
 }
 
-func (u *CatalogResourceRefFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) error {
+func (u *CatalogResourceRefFilterParametersIntegrationInstanceName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogResourceRefFilterParametersIntegrationInstanceName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -193,7 +221,14 @@ func CreateCatalogResourceRefFilterParametersIntegrationInstanceDisplayNameStrin
 	}
 }
 
-func (u *CatalogResourceRefFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) error {
+func (u *CatalogResourceRefFilterParametersIntegrationInstanceDisplayName) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogResourceRefFilterParametersIntegrationInstanceDisplayName{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var stringFieldFilter StringFieldFilter = StringFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldFilter, "", true, nil); err == nil {
@@ -234,7 +269,14 @@ func CreateCatalogResourceRefFilterParametersConfigCatalogResourceConfigFieldFil
 	}
 }
 
-func (u *CatalogResourceRefFilterParametersConfig) UnmarshalJSON(data []byte) error {
+func (u *CatalogResourceRefFilterParametersConfig) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogResourceRefFilterParametersConfig{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var catalogResourceConfigFieldFilter CatalogResourceConfigFieldFilter = CatalogResourceConfigFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &catalogResourceConfigFieldFilter, "", true, nil); err == nil {
@@ -275,7 +317,14 @@ func CreateCatalogResourceRefFilterParametersIntegrationDataCatalogResourceInteg
 	}
 }
 
-func (u *CatalogResourceRefFilterParametersIntegrationData) UnmarshalJSON(data []byte) error {
+func (u *CatalogResourceRefFilterParametersIntegrationData) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CatalogResourceRefFilterParametersIntegrationData{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var catalogResourceIntegrationDataFieldFilter CatalogResourceIntegrationDataFieldFilter = CatalogResourceIntegrationDataFieldFilter{}
 	if err := utils.UnmarshalJSON(data, &catalogResourceIntegrationDataFieldFilter, "", true, nil); err == nil {

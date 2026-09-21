@@ -7,8 +7,31 @@ import (
 	"time"
 )
 
+// APIPublicationListItemAPIPublicationSpecRenderer - Customization settings for the API spec renderer in the portal.
+type APIPublicationListItemAPIPublicationSpecRenderer struct {
+	// The audience for the Try It UI feature.
+	//
+	// `all` means that the Try It UI will be available to all users, including unauthenticated users.
+	//
+	// `authenticated` means that the Try It UI will only be available to authenticated users.
+	//
+	// `registered` means that the Try It UI will only be available to users who have registered for the API.
+	//
+	TryItUIAudience TryItUIAudience `json:"try_it_ui_audience"`
+}
+
+func (a *APIPublicationListItemAPIPublicationSpecRenderer) GetTryItUIAudience() TryItUIAudience {
+	if a == nil {
+		return TryItUIAudience("")
+	}
+	return a.TryItUIAudience
+}
+
 // APIPublicationListItem - An API publication in a portal
 type APIPublicationListItem struct {
+	// The environment this record is scoped to.
+	//
+	Environment *APIEnvironmentRef `json:"environment,omitempty"`
 	// The API identifier.
 	APIID string `json:"api_id"`
 	// The portal identifier.
@@ -20,16 +43,20 @@ type APIPublicationListItem struct {
 	// The visibility of the API in the portal.
 	// Public API publications do not require authentication to view and retrieve information about them.
 	// Private API publications require authentication to retrieve information about them.
+	// If omitted, this defaults to the target portal's configured default API visibility.
 	//
-	Visibility *APIPublicationVisibility `default:"private" json:"visibility"`
+	Visibility APIPublicationVisibility `json:"visibility"`
 	// The auth strategy the API enforces for applications in the portal.
 	// Omitting this property means the portal's default application auth strategy will be used.
 	// Setting to null means the API will not require application authentication.
 	// DCR support for application registration is currently in development.
 	//
 	AuthStrategyIds []string `json:"auth_strategy_ids"`
-	// UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
-	FormID *string `json:"form_id,omitempty"`
+	// Customization settings for the API spec renderer in the portal.
+	SpecRenderer *APIPublicationListItemAPIPublicationSpecRenderer `json:"spec_renderer,omitempty"`
+	// UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
+	//
+	FormID *string `json:"form_id"`
 	// Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
 	Warnings []string `json:"warnings,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -47,6 +74,13 @@ func (a *APIPublicationListItem) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (a *APIPublicationListItem) GetEnvironment() *APIEnvironmentRef {
+	if a == nil {
+		return nil
+	}
+	return a.Environment
 }
 
 func (a *APIPublicationListItem) GetAPIID() string {
@@ -77,9 +111,9 @@ func (a *APIPublicationListItem) GetEntityType() EntityType {
 	return a.EntityType
 }
 
-func (a *APIPublicationListItem) GetVisibility() *APIPublicationVisibility {
+func (a *APIPublicationListItem) GetVisibility() APIPublicationVisibility {
 	if a == nil {
-		return nil
+		return APIPublicationVisibility("")
 	}
 	return a.Visibility
 }
@@ -89,6 +123,13 @@ func (a *APIPublicationListItem) GetAuthStrategyIds() []string {
 		return nil
 	}
 	return a.AuthStrategyIds
+}
+
+func (a *APIPublicationListItem) GetSpecRenderer() *APIPublicationListItemAPIPublicationSpecRenderer {
+	if a == nil {
+		return nil
+	}
+	return a.SpecRenderer
 }
 
 func (a *APIPublicationListItem) GetFormID() *string {

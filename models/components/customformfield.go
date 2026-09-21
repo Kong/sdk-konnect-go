@@ -22,7 +22,7 @@ const (
 	CustomFormFieldTypeSubmit   CustomFormFieldType = "submit"
 )
 
-// CustomFormField - Response-side form field. Discriminated by `type`. Carries the server-set `built_in` flag on field variants that support it.
+// CustomFormField - A field on a form, as returned by the API. The `type` property determines what kind of field it is. Fields that came with the form by default carry a `built_in` flag.
 type CustomFormField struct {
 	CustomFormContentField  *CustomFormContentField  `queryParam:"inline" union:"member"`
 	CustomFormTextField     *CustomFormTextField     `queryParam:"inline" union:"member"`
@@ -99,9 +99,6 @@ func CreateCustomFormFieldTextarea(textarea CustomFormTextareaField) CustomFormF
 func CreateCustomFormFieldSelect(selectT CustomFormSelectField) CustomFormField {
 	typ := CustomFormFieldTypeSelect
 
-	typStr := CustomFormSelectFieldType(typ)
-	selectT.Type = typStr
-
 	return CustomFormField{
 		CustomFormSelectField: &selectT,
 		Type:                  typ,
@@ -132,7 +129,14 @@ func CreateCustomFormFieldSubmit(submit CustomFormSubmitField) CustomFormField {
 	}
 }
 
-func (u *CustomFormField) UnmarshalJSON(data []byte) error {
+func (u *CustomFormField) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CustomFormField{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	type discriminator struct {
 		Type string `json:"type"`

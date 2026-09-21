@@ -3,33 +3,8 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-type ConjurVaultType string
-
-const (
-	ConjurVaultTypeConjur ConjurVaultType = "conjur"
-)
-
-func (e ConjurVaultType) ToPointer() *ConjurVaultType {
-	return &e
-}
-func (e *ConjurVaultType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "conjur":
-		*e = ConjurVaultType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ConjurVaultType: %v", v)
-	}
-}
 
 type ConjurVaultConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
@@ -134,11 +109,12 @@ func (c *ConjurVaultConfig) GetLogin() string {
 
 type ConjurVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
+	// This value is immutable after creation.
 	// The name is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
 	//
 	Name string `json:"name"`
 	// The description of the Vault.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -151,8 +127,9 @@ type ConjurVault struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	Type      ConjurVaultType   `json:"type"`
-	Config    ConjurVaultConfig `json:"config"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string            `const:"conjur" json:"type"`
+	Config ConjurVaultConfig `json:"config"`
 }
 
 func (c ConjurVault) MarshalJSON() ([]byte, error) {
@@ -194,11 +171,8 @@ func (c *ConjurVault) GetManagedBy() map[string]string {
 	return c.ManagedBy
 }
 
-func (c *ConjurVault) GetType() ConjurVaultType {
-	if c == nil {
-		return ConjurVaultType("")
-	}
-	return c.Type
+func (c *ConjurVault) GetType() string {
+	return "conjur"
 }
 
 func (c *ConjurVault) GetConfig() ConjurVaultConfig {

@@ -70,10 +70,12 @@ type JWTWithoutParents struct {
 	// A string representing a UUID (universally unique identifier).
 	ID  *string `json:"id,omitempty"`
 	Key *string `json:"key,omitempty"`
-	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
-	ManagedBy    map[string]any `json:"managed_by,omitempty"`
-	RsaPublicKey *string        `json:"rsa_public_key,omitempty"`
-	Secret       *string        `json:"secret,omitempty"`
+	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+	//
+	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	ManagedBy    map[string]string `json:"managed_by,omitempty"`
+	RsaPublicKey *string           `json:"rsa_public_key,omitempty"`
+	Secret       *string           `json:"secret,omitempty"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
 }
@@ -131,7 +133,7 @@ func (j *JWTWithoutParents) GetKey() *string {
 	return j.Key
 }
 
-func (j *JWTWithoutParents) GetManagedBy() map[string]any {
+func (j *JWTWithoutParents) GetManagedBy() map[string]string {
 	if j == nil {
 		return nil
 	}

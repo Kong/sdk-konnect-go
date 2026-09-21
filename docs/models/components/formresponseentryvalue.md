@@ -1,6 +1,11 @@
 # FormResponseEntryValue
 
-Submitted value. Type matches the field `type`: `text`/`email`/`textarea` return strings; `number` returns a number; `checkbox` returns a boolean; `select` returns a string for single-select or an array of strings for multi-select.
+The submitted value. Its type matches the field's type:
+
+* `text`, `email`, `textarea` — string
+* `number` — number
+* `checkbox` — boolean
+* `select` — string for single-select fields, or an array of strings for multi-select fields
 
 
 

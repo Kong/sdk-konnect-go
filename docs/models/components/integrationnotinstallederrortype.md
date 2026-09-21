@@ -1,5 +1,7 @@
 # IntegrationNotInstalledErrorType
 
+The error type.
+
 ## Example Usage
 
 ```go

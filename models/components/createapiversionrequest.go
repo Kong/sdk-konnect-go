@@ -52,7 +52,14 @@ func CreateCreateAPIVersionRequestProviderResourceBoundIntegrationAPISpecProvide
 	}
 }
 
-func (u *CreateAPIVersionRequestProvider) UnmarshalJSON(data []byte) error {
+func (u *CreateAPIVersionRequestProvider) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = CreateAPIVersionRequestProvider{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var integrationAPISpecProviderPayload IntegrationAPISpecProviderPayload = IntegrationAPISpecProviderPayload{}
 	if err := utils.UnmarshalJSON(data, &integrationAPISpecProviderPayload, "", true, nil); err == nil {

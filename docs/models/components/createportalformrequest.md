@@ -1,6 +1,10 @@
 # CreatePortalFormRequest
 
-Form-create request body, discriminated by `type`. Server requires the per-type built-in fields (full_name and email on `developer_registration`; none on `api_registration`) and returns 400 if any are missing from `fields`.
+Request body for creating a form, discriminated by `type`.
+The required fields in `fields` depend on the form type.
+* `full_name` and `email` are required for `developer_registration` forms.
+* `api_id` is required for `api_registration` forms.
+Returns a 400 error if a required field is missing.
 
 
 ## Supported Types

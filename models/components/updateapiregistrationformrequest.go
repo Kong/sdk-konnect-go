@@ -8,7 +8,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// UpdateAPIRegistrationFormRequestType - Immutable echo of the form's type.
+// UpdateAPIRegistrationFormRequestType - The form's type. Must match the existing value — it can't be changed.
 type UpdateAPIRegistrationFormRequestType string
 
 const (
@@ -55,12 +55,14 @@ func (e *UpdateAPIRegistrationFormRequestStatus) IsExact() bool {
 }
 
 type UpdateAPIRegistrationFormRequest struct {
-	// Immutable echo of the form's type.
+	// The form's type. Must match the existing value — it can't be changed.
 	Type UpdateAPIRegistrationFormRequestType `json:"type"`
-	// Kebab-case slug identifier. Admin may rename `api_registration` forms on update; collisions against other forms in the portal return 409.
+	// The form's name. You can rename `api_registration` forms; if the new name is already used by another form in the portal, the request fails with a 409 error.
+	//
 	Name   *string                                 `json:"name,omitempty"`
 	Status *UpdateAPIRegistrationFormRequestStatus `json:"status,omitempty"`
-	// Full replacement of the form's field array. Fields omitted from this array are removed. Must contain exactly one `submit` field type field and a named `api_id` of type `text` field; the server returns 400 if it is missing.
+	// The form's complete set of fields — this replaces the existing array, so any field left out is removed. Must include exactly one `submit` field and a field named `api_id` of type `text`.
+	//
 	Fields []CustomFormFieldInput `json:"fields"`
 }
 

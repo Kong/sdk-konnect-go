@@ -2,9 +2,10 @@
 
 ## Overview
 
-Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version. 
-Called “Auth Strategy” for short in the context of portals/applications. 
+Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version.
+Called “Auth Strategy” for short in the context of portals/applications.
 The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
+The optional `principals` property controls application-principal behavior for V3 API Catalog portals and applications. It defaults to disabled when omitted.
 
 
 ### Available Operations
@@ -292,6 +293,7 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## UpdateAppAuthStrategy
