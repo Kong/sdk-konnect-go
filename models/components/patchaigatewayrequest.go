@@ -23,7 +23,7 @@ type PatchAIGatewayRequest struct {
 	//
 	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
 	// Whether the control plane should automatically raise min_runtime_version as connected data planes report a newer AI Gateway runtime version.
-	RuntimeAutoUpgrade *bool `default:"false" json:"runtime_auto_upgrade"`
+	RuntimeAutoUpgrade *bool `default:"true" json:"runtime_auto_upgrade"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
