@@ -56395,6 +56395,30 @@ components:
         - host
         - port
         - protocol
+    AIGatewayMinRuntimeVersion:
+      description: |
+        The minimum AI Gateway runtime version supported by this AI Gateway. This is the lowest data plane version that may receive configuration from it, and it controls which features the API accepts.
+
+        Data planes older than this version still connect for topology visibility.
+
+        When not specified, the latest generally available runtime version is used.
+      type: string
+      example: '2.0'
+      pattern: ^\d+\.\d+$
+    AIGatewayMinRuntimeVersionUpdate:
+      description: |
+        The minimum AI Gateway runtime version supported by this AI Gateway. This is the lowest data plane version that may receive configuration from it, and it controls which features the API accepts.
+
+        It may be lowered only when no configuration already stored uses a feature that requires a runtime version above the requested one. Otherwise the request is rejected, naming the entities and fields that stand in the way so that they can be removed or downgraded first.
+
+        When not specified, the minimum runtime version is left unchanged.
+      type: string
+      example: '2.0'
+      pattern: ^\d+\.\d+$
+    AIGatewayRuntimeAutoUpgrade:
+      description: Whether the control plane should automatically raise min_runtime_version as connected data planes report a newer AI Gateway runtime version.
+      type: boolean
+      default: false
     CreateAIGatewayRequest:
       type: object
       properties:
@@ -56408,6 +56432,10 @@ components:
             - managed
             - serverless
           x-speakeasy-unknown-values: allow
+        min_runtime_version:
+          $ref: '#/components/schemas/AIGatewayMinRuntimeVersion'
+        runtime_auto_upgrade:
+          $ref: '#/components/schemas/AIGatewayRuntimeAutoUpgrade'
         display_name:
           description: The display name for this AI Gateway.
           type: string
@@ -56441,6 +56469,10 @@ components:
     UpdateAIGatewayRequest:
       type: object
       properties:
+        min_runtime_version:
+          $ref: '#/components/schemas/AIGatewayMinRuntimeVersionUpdate'
+        runtime_auto_upgrade:
+          $ref: '#/components/schemas/AIGatewayRuntimeAutoUpgrade'
         display_name:
           description: The display name for this AI Gateway.
           type: string
@@ -56492,6 +56524,10 @@ components:
           items:
             $ref: '#/components/schemas/AIGatewayProxyURL'
           format: set
+        min_runtime_version:
+          $ref: '#/components/schemas/AIGatewayMinRuntimeVersionUpdate'
+        runtime_auto_upgrade:
+          $ref: '#/components/schemas/AIGatewayRuntimeAutoUpgrade'
         labels:
           $ref: '#/components/schemas/PublicLabels'
       additionalProperties: false
@@ -56527,6 +56563,10 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         id:
           $ref: '#/components/schemas/UUID'
+        min_runtime_version:
+          $ref: '#/components/schemas/AIGatewayMinRuntimeVersion'
+        runtime_auto_upgrade:
+          $ref: '#/components/schemas/AIGatewayRuntimeAutoUpgrade'
         deployment_type:
           description: How this AI Gateway's control plane is deployed.
           type: string
@@ -58754,6 +58794,27 @@ components:
         - ttl
         - cost
       title: AIGatewayCacheWriteCost
+    AIGatewayModalCostList:
+      type: object
+      properties:
+        modal:
+          description: The modal type this price applies to.
+          type: string
+          enum:
+            - text
+            - audio
+            - image
+            - video
+          x-speakeasy-unknown-values: allow
+        cost:
+          description: Cost per 1M tokens for this modal type.
+          type: number
+          minimum: 0
+      additionalProperties: false
+      required:
+        - modal
+        - cost
+      title: AIGatewayModalCostList
     AIGatewayContextWindowFactor:
       type: object
       properties:
@@ -58820,6 +58881,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58885,6 +58973,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58967,6 +59082,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59046,6 +59188,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59107,6 +59276,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59193,6 +59389,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59258,6 +59481,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59323,6 +59573,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59384,6 +59661,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59447,6 +59751,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59516,6 +59847,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59583,6 +59941,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59654,6 +60039,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59723,6 +60135,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59784,6 +60223,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59845,6 +60311,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59906,6 +60399,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -59968,6 +60488,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -60029,6 +60576,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -61891,6 +62465,15 @@ components:
               - creditcard
             stop_on_error: true
           additionalProperties: true
+        condition:
+          description: |-
+            An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: string
+          maxLength: 1024
+          nullable: true
+          x-min-runtime-version: '2.1'
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -61943,6 +62526,15 @@ components:
               - creditcard
             stop_on_error: true
           additionalProperties: true
+        condition:
+          description: |-
+            An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: string
+          maxLength: 1024
+          nullable: true
+          x-min-runtime-version: '2.1'
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -61995,6 +62587,15 @@ components:
               - creditcard
             stop_on_error: true
           additionalProperties: true
+        condition:
+          description: |-
+            An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: string
+          maxLength: 1024
+          nullable: true
+          x-min-runtime-version: '2.1'
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -62732,6 +63333,39 @@ components:
               example: 'https://mcp.internal.kongair.com'
             upstream:
               $ref: '#/components/schemas/AIGatewayUpstreamConfig'
+            allowed_versions:
+              description: |-
+                The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+                implements, which is the default. When set, `server/discover` advertises exactly this
+                list and a request declaring anything else is rejected. Listing only per-request
+                revisions refuses handshake clients.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: array
+              items:
+                type: string
+                enum:
+                  - '2026-07-28'
+                  - '2025-11-25'
+                  - '2025-06-18'
+                  - '2025-03-26'
+                x-speakeasy-unknown-values: allow
+              minItems: 1
+              x-min-runtime-version: '2.1'
+            cache:
+              description: |-
+                Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+                revision that defines them receive them.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: object
+              additionalProperties: false
+              properties:
+                tools_list:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+                discover:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+              x-min-runtime-version: '2.1'
           required:
             - url
           title: AIGatewayMCPServerKongListenerConfig
@@ -62807,6 +63441,39 @@ components:
               minimum: 0
             server:
               $ref: '#/components/schemas/AIGatewayMCPServerServerConfigBase'
+            allowed_versions:
+              description: |-
+                The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+                implements, which is the default. When set, `server/discover` advertises exactly this
+                list and a request declaring anything else is rejected. Listing only per-request
+                revisions refuses handshake clients.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: array
+              items:
+                type: string
+                enum:
+                  - '2026-07-28'
+                  - '2025-11-25'
+                  - '2025-06-18'
+                  - '2025-03-26'
+                x-speakeasy-unknown-values: allow
+              minItems: 1
+              x-min-runtime-version: '2.1'
+            cache:
+              description: |-
+                Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+                revision that defines them receive them.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: object
+              additionalProperties: false
+              properties:
+                tools_list:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+                discover:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+              x-min-runtime-version: '2.1'
           title: AIGatewayMCPServerKongListenerConfig
         sources:
           description: |
@@ -62855,7 +63522,40 @@ components:
     AIGatewayMCPServerKongListenerConfig:
       description: Server-side configuration specific to modes where Kong answers as the MCP server.
       type: object
-      properties: {}
+      properties:
+        allowed_versions:
+          description: |-
+            The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+            implements, which is the default. When set, `server/discover` advertises exactly this
+            list and a request declaring anything else is rejected. Listing only per-request
+            revisions refuses handshake clients.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            type: string
+            enum:
+              - '2026-07-28'
+              - '2025-11-25'
+              - '2025-06-18'
+              - '2025-03-26'
+            x-speakeasy-unknown-values: allow
+          minItems: 1
+          x-min-runtime-version: '2.1'
+        cache:
+          description: |-
+            Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+            revision that defines them receive them.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: object
+          additionalProperties: false
+          properties:
+            tools_list:
+              $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+            discover:
+              $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+          x-min-runtime-version: '2.1'
       title: AIGatewayMCPServerKongListenerConfig
     AIGatewayMCPServerPassthroughListener:
       type: object
@@ -63924,6 +64624,26 @@ components:
           maximum: 2147483646
           minimum: 0
       additionalProperties: false
+    AIGatewayMCPServerCacheHint:
+      description: A cache hint Kong emits on a cacheable operation it serves.
+      type: object
+      properties:
+        ttl_ms:
+          description: 'How long a client may treat the result as fresh, in milliseconds.'
+          type: integer
+          minimum: 0
+        cache_scope:
+          description: |
+            Whether the result may be cached across authorization contexts. `public` is rejected when
+            the server's tool list is filtered per subject by `default_tool_acls` or a tool's own
+            `access.acls`.
+          type: string
+          default: private
+          enum:
+            - public
+            - private
+          x-speakeasy-unknown-values: allow
+      additionalProperties: false
     AIGatewayMCPServerListenerServerConfig:
       description: Server-side configuration for the MCP Server.
       type: object
@@ -64048,6 +64768,21 @@ components:
           default: false
         tools_list_auth:
           $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerServerToolAuthConfig'
+        upstream_protocol_version:
+          description: |-
+            The MCP protocol revision Kong speaks to the upstream MCP server. Leave unset to
+            negotiate a handshake revision with an `initialize` exchange, which is the default. Set a
+            per-request revision to reach an upstream that answers no handshake and mints no session.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: string
+          enum:
+            - '2026-07-28'
+            - '2025-11-25'
+            - '2025-06-18'
+            - '2025-03-26'
+          x-min-runtime-version: '2.1'
+          x-speakeasy-unknown-values: allow
       additionalProperties: false
     AIGatewayMCPServerUpstreamServerServerToolAuthConfig:
       description: Configuration for an Upstream Server's MCP Server Tools' Authentication.
@@ -64286,6 +65021,39 @@ components:
               example: 'https://mcp.internal.kongair.com'
             upstream:
               $ref: '#/components/schemas/AIGatewayUpstreamConfig'
+            allowed_versions:
+              description: |-
+                The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+                implements, which is the default. When set, `server/discover` advertises exactly this
+                list and a request declaring anything else is rejected. Listing only per-request
+                revisions refuses handshake clients.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: array
+              items:
+                type: string
+                enum:
+                  - '2026-07-28'
+                  - '2025-11-25'
+                  - '2025-06-18'
+                  - '2025-03-26'
+                x-speakeasy-unknown-values: allow
+              minItems: 1
+              x-min-runtime-version: '2.1'
+            cache:
+              description: |-
+                Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+                revision that defines them receive them.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: object
+              additionalProperties: false
+              properties:
+                tools_list:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+                discover:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+              x-min-runtime-version: '2.1'
           required:
             - url
           title: AIGatewayMCPServerKongListenerConfig
@@ -64371,6 +65139,39 @@ components:
               minimum: 0
             server:
               $ref: '#/components/schemas/AIGatewayMCPServerServerConfigBase'
+            allowed_versions:
+              description: |-
+                The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+                implements, which is the default. When set, `server/discover` advertises exactly this
+                list and a request declaring anything else is rejected. Listing only per-request
+                revisions refuses handshake clients.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: array
+              items:
+                type: string
+                enum:
+                  - '2026-07-28'
+                  - '2025-11-25'
+                  - '2025-06-18'
+                  - '2025-03-26'
+                x-speakeasy-unknown-values: allow
+              minItems: 1
+              x-min-runtime-version: '2.1'
+            cache:
+              description: |-
+                Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+                revision that defines them receive them.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: object
+              additionalProperties: false
+              properties:
+                tools_list:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+                discover:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+              x-min-runtime-version: '2.1'
           title: AIGatewayMCPServerKongListenerConfig
         sources:
           description: |
@@ -82737,7 +83538,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.0.14
+    version: 2.1.0
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.3.0
