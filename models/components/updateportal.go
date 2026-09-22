@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdatePortalDefaultAPIVisibility - The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
 type UpdatePortalDefaultAPIVisibility string
 
@@ -62,11 +58,11 @@ type UpdatePortal struct {
 	// A description of the portal.
 	Description *string `json:"description,omitempty"`
 	// Whether the portal supports developer authentication. If disabled, developers cannot register for accounts or create applications.
-	AuthenticationEnabled *bool `default:"true" json:"authentication_enabled"`
+	AuthenticationEnabled *bool `json:"authentication_enabled,omitempty"`
 	// Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.
-	RbacEnabled *bool `default:"false" json:"rbac_enabled"`
+	RbacEnabled *bool `json:"rbac_enabled,omitempty"`
 	// Whether ip allow list is enabled for the portal.
-	SiprEnabled *bool `default:"false" json:"sipr_enabled"`
+	SiprEnabled *bool `json:"sipr_enabled,omitempty"`
 	// The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
 	DefaultAPIVisibility *UpdatePortalDefaultAPIVisibility `json:"default_api_visibility,omitempty"`
 	// The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
@@ -74,9 +70,9 @@ type UpdatePortal struct {
 	// The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.
 	DefaultApplicationAuthStrategyID *string `json:"default_application_auth_strategy_id,omitempty"`
 	// Whether developer account registrations will be automatically approved, or if they will be set to pending until approved by an admin.
-	AutoApproveDevelopers *bool `default:"false" json:"auto_approve_developers"`
+	AutoApproveDevelopers *bool `json:"auto_approve_developers,omitempty"`
 	// Whether requests from applications to register for APIs will be automatically approved, or if they will be set to pending until approved by an admin.
-	AutoApproveApplications *bool `default:"false" json:"auto_approve_applications"`
+	AutoApproveApplications *bool `json:"auto_approve_applications,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Labels are intended to store **INTERNAL** metadata.
@@ -85,18 +81,7 @@ type UpdatePortal struct {
 	//
 	Labels map[string]*string `json:"labels,omitempty"`
 	// When enabled, portal registration notifications include the registering developer's identifying information (such as name and email).
-	NotificationsDeveloperPiiVisibilityEnabled *bool `default:"false" json:"notifications_developer_pii_visibility_enabled"`
-}
-
-func (u UpdatePortal) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdatePortal) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	NotificationsDeveloperPiiVisibilityEnabled *bool `json:"notifications_developer_pii_visibility_enabled,omitempty"`
 }
 
 func (u *UpdatePortal) GetName() *string {
