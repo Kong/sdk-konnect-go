@@ -62,6 +62,17 @@ endif
 
 OPENAPI_FILE = openapi.yaml
 SPEAKEASY_DIR = .speakeasy
+UPDATE_PORTAL_OVERLAY = $(SPEAKEASY_DIR)/overlays/update-portal-patch-defaults.yaml
+UPDATE_PORTAL_AUDIT_LOG_WEBHOOK_OVERLAY = \
+	$(SPEAKEASY_DIR)/overlays/update-portal-audit-log-webhook-patch-defaults.yaml
+PATCH_CUSTOM_PORTAL_EMAIL_TEMPLATE_OVERLAY = \
+	$(SPEAKEASY_DIR)/overlays/patch-custom-portal-email-template-defaults.yaml
+UPDATE_PORTAL_IDENTITY_PROVIDER_OVERLAY = \
+	$(SPEAKEASY_DIR)/overlays/update-portal-identity-provider-defaults.yaml
+UPDATE_DCR_CONFIG_HTTP_OVERLAY = \
+	$(SPEAKEASY_DIR)/overlays/update-dcr-config-http-defaults.yaml
+BACKEND_CLUSTER_TLS_OVERLAY = \
+	$(SPEAKEASY_DIR)/overlays/backend-cluster-tls-defaults.yaml
 KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
 
 
@@ -145,8 +156,45 @@ generate.deepcopy: controller-gen
 		$(shell git ls-files docs/models/components/upstream*.md) \
 		$(shell git ls-files docs/models/components/healthchecks*.md)
 
+.PHONY: validate.update-portal-overlay
+validate.update-portal-overlay: speakeasy
+	speakeasy overlay validate --overlay $(UPDATE_PORTAL_OVERLAY)
+	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) --overlay $(UPDATE_PORTAL_OVERLAY) --out /dev/null
+
+.PHONY: validate.update-portal-audit-log-webhook-overlay
+validate.update-portal-audit-log-webhook-overlay: speakeasy
+	speakeasy overlay validate --overlay $(UPDATE_PORTAL_AUDIT_LOG_WEBHOOK_OVERLAY)
+	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) \
+		--overlay $(UPDATE_PORTAL_AUDIT_LOG_WEBHOOK_OVERLAY) --out /dev/null
+
+.PHONY: validate.patch-custom-portal-email-template-overlay
+validate.patch-custom-portal-email-template-overlay: speakeasy
+	speakeasy overlay validate --overlay $(PATCH_CUSTOM_PORTAL_EMAIL_TEMPLATE_OVERLAY)
+	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) \
+		--overlay $(PATCH_CUSTOM_PORTAL_EMAIL_TEMPLATE_OVERLAY) --out /dev/null
+
+.PHONY: validate.update-portal-identity-provider-overlay
+validate.update-portal-identity-provider-overlay: speakeasy
+	speakeasy overlay validate --overlay $(UPDATE_PORTAL_IDENTITY_PROVIDER_OVERLAY)
+	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) \
+		--overlay $(UPDATE_PORTAL_IDENTITY_PROVIDER_OVERLAY) --out /dev/null
+
+.PHONY: validate.update-dcr-config-http-overlay
+validate.update-dcr-config-http-overlay: speakeasy
+	speakeasy overlay validate --overlay $(UPDATE_DCR_CONFIG_HTTP_OVERLAY)
+	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) \
+		--overlay $(UPDATE_DCR_CONFIG_HTTP_OVERLAY) --out /dev/null
+
+.PHONY: validate.backend-cluster-tls-overlay
+validate.backend-cluster-tls-overlay: speakeasy
+	speakeasy overlay validate --overlay $(BACKEND_CLUSTER_TLS_OVERLAY)
+	speakeasy overlay apply --strict --schema $(OPENAPI_FILE) \
+		--overlay $(BACKEND_CLUSTER_TLS_OVERLAY) --out /dev/null
+
 .PHONY: generate.sdk.speakeasy
-generate.sdk.speakeasy: speakeasy
+generate.sdk.speakeasy: validate.update-portal-overlay validate.update-portal-audit-log-webhook-overlay \
+	validate.patch-custom-portal-email-template-overlay validate.update-portal-identity-provider-overlay \
+	validate.update-dcr-config-http-overlay validate.backend-cluster-tls-overlay
 	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
 
 .PHONY: lint.sdk
