@@ -39,6 +39,66 @@ func (a *AIGatewayMCPServerConversionListenerResponseLogging) GetAudits() *bool 
 	return a.Audits
 }
 
+type AllowedVersions string
+
+const (
+	AllowedVersionsTwoThousandAndTwentySixMinus07Minus28  AllowedVersions = "2026-07-28"
+	AllowedVersionsTwoThousandAndTwentyFiveMinus11Minus25 AllowedVersions = "2025-11-25"
+	AllowedVersionsTwoThousandAndTwentyFiveMinus06Minus18 AllowedVersions = "2025-06-18"
+	AllowedVersionsTwoThousandAndTwentyFiveMinus03Minus26 AllowedVersions = "2025-03-26"
+)
+
+func (e AllowedVersions) ToPointer() *AllowedVersions {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AllowedVersions) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "2026-07-28", "2025-11-25", "2025-06-18", "2025-03-26":
+			return true
+		}
+	}
+	return false
+}
+
+// Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+// revision that defines them receive them.
+//
+// **Requires a minimum runtime version of `2.1`**.
+type Cache struct {
+	// A cache hint Kong emits on a cacheable operation it serves.
+	ToolsList *AIGatewayMCPServerCacheHint `json:"tools_list,omitempty"`
+	// A cache hint Kong emits on a cacheable operation it serves.
+	Discover *AIGatewayMCPServerCacheHint `json:"discover,omitempty"`
+}
+
+func (c Cache) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Cache) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c *Cache) GetToolsList() *AIGatewayMCPServerCacheHint {
+	if c == nil {
+		return nil
+	}
+	return c.ToolsList
+}
+
+func (c *Cache) GetDiscover() *AIGatewayMCPServerCacheHint {
+	if c == nil {
+		return nil
+	}
+	return c.Discover
+}
+
 // AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig - Server-side configuration specific to modes where Kong answers as the MCP server.
 type AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig struct {
 	// Route configuration for an MCP Server that terminates its own listener. At least one
@@ -58,6 +118,18 @@ type AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerC
 	URL string `json:"url"`
 	// Configuration applied when proxying to the upstream service, including authentication.
 	Upstream *AIGatewayUpstreamConfigOutput `json:"upstream,omitempty"`
+	// The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+	// implements, which is the default. When set, `server/discover` advertises exactly this
+	// list and a request declaring anything else is rejected. Listing only per-request
+	// revisions refuses handshake clients.
+	//
+	// **Requires a minimum runtime version of `2.1`**.
+	AllowedVersions []AllowedVersions `json:"allowed_versions,omitempty"`
+	// Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+	// revision that defines them receive them.
+	//
+	// **Requires a minimum runtime version of `2.1`**.
+	Cache *Cache `json:"cache,omitempty"`
 }
 
 func (a AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig) MarshalJSON() ([]byte, error) {
@@ -111,6 +183,20 @@ func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListe
 		return nil
 	}
 	return a.Upstream
+}
+
+func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig) GetAllowedVersions() []AllowedVersions {
+	if a == nil {
+		return nil
+	}
+	return a.AllowedVersions
+}
+
+func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig) GetCache() *Cache {
+	if a == nil {
+		return nil
+	}
+	return a.Cache
 }
 
 type AIGatewayMCPServerConversionListenerResponse struct {
