@@ -57668,13 +57668,12 @@ components:
           minLength: 1
         values:
           description: |
-            An optional model alias. When omitted, the model name is used.
+            Optional model aliases. When omitted, the model name is used.
             When no selector location is configured, the format default selector is used.
           type: array
           items:
             type: string
             minLength: 1
-          maxItems: 1
           minItems: 1
       additionalProperties: false
       title: AIGatewayModelSelectorConfig
@@ -83538,7 +83537,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.1.1
+    version: 2.1.2
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.3.0
