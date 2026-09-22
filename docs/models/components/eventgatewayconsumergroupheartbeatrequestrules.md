@@ -1,0 +1,11 @@
+# EventGatewayConsumerGroupHeartbeatRequestRules
+
+The rules to apply to Kafka `ConsumerGroupHeartbeat` requests.
+
+
+## Fields
+
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                     | `string`                                                                                                                   | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `Rules`                                                                                                                    | [][components.EventGatewayConsumerGroupHeartbeatRule](../../models/components/eventgatewayconsumergroupheartbeatrule.md)   | :heavy_check_mark:                                                                                                         | Every rule in this list is evaluated independently against the request.<br/>A rule that evaluates to `false` runs its action.<br/> |
