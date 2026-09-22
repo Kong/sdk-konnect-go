@@ -1,0 +1,11 @@
+# EventGatewayOffsetCommitRequestRules
+
+The rules to apply to Kafka `OffsetCommit` requests.
+
+
+## Fields
+
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                     | `string`                                                                                                                   | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `Rules`                                                                                                                    | [][components.EventGatewayOffsetCommitRule](../../models/components/eventgatewayoffsetcommitrule.md)                       | :heavy_check_mark:                                                                                                         | Every rule in this list is evaluated independently against the request.<br/>A rule that evaluates to `false` runs its action.<br/> |

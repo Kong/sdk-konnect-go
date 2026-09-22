@@ -11,6 +11,12 @@ The typed schema of the cluster policy to modify it.
 eventGatewayClusterPolicyModify := components.CreateEventGatewayClusterPolicyModifyAcls(components.EventGatewayACLsPolicy{/* values here */})
 ```
 
+### EventGatewayRequestRuleValidatorPolicy
+
+```go
+eventGatewayClusterPolicyModify := components.CreateEventGatewayClusterPolicyModifyRequestRuleValidator(components.EventGatewayRequestRuleValidatorPolicy{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -19,5 +25,7 @@ Use the `Type` field to determine which variant is active, then access the corre
 switch eventGatewayClusterPolicyModify.Type {
 	case components.EventGatewayClusterPolicyModifyTypeAcls:
 		// eventGatewayClusterPolicyModify.EventGatewayACLsPolicy is populated
+	case components.EventGatewayClusterPolicyModifyTypeRequestRuleValidator:
+		// eventGatewayClusterPolicyModify.EventGatewayRequestRuleValidatorPolicy is populated
 }
 ```
