@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 6e58fe9311ded33eba0d572240162ee0
+  docChecksum: 41c021cd3124754c8a03aed13cb2b4e2
   docVersion: 3.15.0
   speakeasyVersion: 1.798.0
   generationVersion: 2.938.0
   releaseVersion: 0.68.0
   configChecksum: 4c6dcfb812c479e23d6457952a187b21
 persistentEdits:
-  generation_id: 9dfb226c-d914-4d46-92ab-98f2b506dfeb
-  pristine_commit_hash: 5cb858e58f337b1d93c714fe6ef9e253a6b75044
-  pristine_tree_hash: bfd09143cebc63898b18ebeae9abe8659330d224
+  generation_id: 882970f6-35aa-4a59-b42b-d434099b6978
+  pristine_commit_hash: e89a51fc6795f24605ef90e47a76f63a18dbb98c
+  pristine_tree_hash: ae0eff9575727b969217e0d97102047e5f844f46
 features:
   go:
     acceptHeaders: 2.81.2
@@ -19489,8 +19489,8 @@ trackedFiles:
     pristine_git_object: 9afcfee122782b46600f8250ca8c508c2f9fa1a0
   models/components/aigateway.go:
     id: 1a92a1d57ddb
-    last_write_checksum: sha1:180b479cc9f2edefedc5657052eee2d241432f77
-    pristine_git_object: 1741fa01d4bd04afc3df1c7e31e4309dd44bfe90
+    last_write_checksum: sha1:6f5d1a4b77b30254570a0291d7d61bfb062583db
+    pristine_git_object: cf79fa03b992ff222db12b81eebc88843fc2f206
   models/components/aigatewayacls.go:
     id: c7ffa4321de7
     last_write_checksum: sha1:d82603b82361c4deee8b2b23d2c6ac049aa76cfe
@@ -21217,8 +21217,8 @@ trackedFiles:
     pristine_git_object: a3df7f988aec3cb074bf70d2eb8211c491891eb6
   models/components/createaigatewayrequest.go:
     id: 16e635de0793
-    last_write_checksum: sha1:1df99e5cd76ad7341a270e6ad519512d3a37de89
-    pristine_git_object: cc5907310e2da7668ced5fc4c6bf04dbc9f67ae9
+    last_write_checksum: sha1:203d9484e8e8697f113fb1a933be69801cea00a4
+    pristine_git_object: 31e9871ec1a041affaf991e21f32aab0fd5480eb
   models/components/createaigatewaysniforcertificaterequest.go:
     id: 872e35b657e9
     last_write_checksum: sha1:1508311cc8d9e64838fa7e0c009da78247e5ca1a
@@ -23689,8 +23689,8 @@ trackedFiles:
     pristine_git_object: c0e5a1580548fc395a94579558b917790bcda908
   models/components/patchaigatewayrequest.go:
     id: cca69d847089
-    last_write_checksum: sha1:2dfc2a9371575cd7810adb4542b96c3be0153313
-    pristine_git_object: 8a2526fe0e0f937e2fa04aaa9ff83197f0ed052a
+    last_write_checksum: sha1:945653e9a809061b9acfe78b10136fd6ba0bffd7
+    pristine_git_object: 5da75ed62137e87ff1f2bd16ece7c64ad7576c9d
   models/components/patchcustomportalemailtemplatepayload.go:
     id: 34614769245b
     last_write_checksum: sha1:0430b017145d0f7669c3fa75c5392894d455152b
@@ -24629,8 +24629,8 @@ trackedFiles:
     pristine_git_object: 14be38df70d1ea527fbca06e1a63f59df0f7ef28
   models/components/updateaigatewayrequest.go:
     id: 775f21b3fc3d
-    last_write_checksum: sha1:5ce13699da89058a931b3c29a8804760eb907db6
-    pristine_git_object: 1522426b9ac0c8330c655e991289dd40e54e47ac
+    last_write_checksum: sha1:7568ee64d762e2de818ced5760a970c40b638510
+    pristine_git_object: 80ba2b858f18c4f88e016d14b1328e07c8dfdc4e
   models/components/updateaigatewaysniforcertificaterequest.go:
     id: b7c7c76f964d
     last_write_checksum: sha1:271df7be8a5eb64804205c9d3ed4dc100c1eae14
@@ -57460,10 +57460,10 @@ examples:
   create-ai-gateway:
     speakeasy-default-create-ai-gateway:
       requestBody:
-        application/json: {"deployment_type": "hybrid", "min_runtime_version": "2.0", "runtime_auto_upgrade": false, "display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}}
+        application/json: {"deployment_type": "hybrid", "min_runtime_version": "2.0", "runtime_auto_upgrade": true, "display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}}
       responses:
         "201":
-          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "min_runtime_version": "2.0", "runtime_auto_upgrade": false, "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "min_runtime_version": "2.0", "runtime_auto_upgrade": true, "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 822667, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value 1>", "<value 2>", "<value 3>"], "source": "body"}]}
         "401":
@@ -57481,7 +57481,7 @@ examples:
           gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
       responses:
         "200":
-          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "min_runtime_version": "2.0", "runtime_auto_upgrade": false, "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "min_runtime_version": "2.0", "runtime_auto_upgrade": true, "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -57496,10 +57496,10 @@ examples:
         path:
           gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
       requestBody:
-        application/json: {"min_runtime_version": "2.0", "runtime_auto_upgrade": false, "display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}}
+        application/json: {"min_runtime_version": "2.0", "runtime_auto_upgrade": true, "display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}}
       responses:
         "200":
-          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "min_runtime_version": "2.0", "runtime_auto_upgrade": false, "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "min_runtime_version": "2.0", "runtime_auto_upgrade": true, "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 280932, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_length", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
@@ -59740,10 +59740,10 @@ examples:
         path:
           gatewayId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
       requestBody:
-        application/json: {"display_name": "My AI Gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "min_runtime_version": "2.0", "runtime_auto_upgrade": false, "labels": {"category": "finance"}}
+        application/json: {"display_name": "My AI Gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "min_runtime_version": "2.0", "runtime_auto_upgrade": true, "labels": {"category": "finance"}}
       responses:
         "200":
-          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "min_runtime_version": "2.0", "runtime_auto_upgrade": false, "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"display_name": "My AI Gateway", "name": "my-ai-gateway", "description": "An AI Gateway for my organization.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"category": "finance"}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "min_runtime_version": "2.0", "runtime_auto_upgrade": true, "deployment_type": "hybrid", "endpoints": {"configuration": "https://acfe5f253f.cp.konghq.com", "telemetry": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 785707, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
