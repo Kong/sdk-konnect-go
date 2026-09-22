@@ -13,12 +13,14 @@ import (
 type EventGatewayClusterPolicyModifyType string
 
 const (
-	EventGatewayClusterPolicyModifyTypeAcls EventGatewayClusterPolicyModifyType = "acls"
+	EventGatewayClusterPolicyModifyTypeAcls                 EventGatewayClusterPolicyModifyType = "acls"
+	EventGatewayClusterPolicyModifyTypeRequestRuleValidator EventGatewayClusterPolicyModifyType = "request_rule_validator"
 )
 
 // EventGatewayClusterPolicyModify - The typed schema of the cluster policy to modify it.
 type EventGatewayClusterPolicyModify struct {
-	EventGatewayACLsPolicy *EventGatewayACLsPolicy `queryParam:"inline" union:"member"`
+	EventGatewayACLsPolicy                 *EventGatewayACLsPolicy                 `queryParam:"inline" union:"member"`
+	EventGatewayRequestRuleValidatorPolicy *EventGatewayRequestRuleValidatorPolicy `queryParam:"inline" union:"member"`
 
 	Type EventGatewayClusterPolicyModifyType
 }
@@ -29,6 +31,15 @@ func CreateEventGatewayClusterPolicyModifyAcls(acls EventGatewayACLsPolicy) Even
 	return EventGatewayClusterPolicyModify{
 		EventGatewayACLsPolicy: &acls,
 		Type:                   typ,
+	}
+}
+
+func CreateEventGatewayClusterPolicyModifyRequestRuleValidator(requestRuleValidator EventGatewayRequestRuleValidatorPolicy) EventGatewayClusterPolicyModify {
+	typ := EventGatewayClusterPolicyModifyTypeRequestRuleValidator
+
+	return EventGatewayClusterPolicyModify{
+		EventGatewayRequestRuleValidatorPolicy: &requestRuleValidator,
+		Type:                                   typ,
 	}
 }
 
@@ -60,6 +71,15 @@ func (u *EventGatewayClusterPolicyModify) UnmarshalJSON(data []byte) (err error)
 		u.EventGatewayACLsPolicy = eventGatewayACLsPolicy
 		u.Type = EventGatewayClusterPolicyModifyTypeAcls
 		return nil
+	case "request_rule_validator":
+		eventGatewayRequestRuleValidatorPolicy := new(EventGatewayRequestRuleValidatorPolicy)
+		if err := utils.UnmarshalJSON(data, &eventGatewayRequestRuleValidatorPolicy, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == request_rule_validator) type EventGatewayRequestRuleValidatorPolicy within EventGatewayClusterPolicyModify: %w", string(data), err)
+		}
+
+		u.EventGatewayRequestRuleValidatorPolicy = eventGatewayRequestRuleValidatorPolicy
+		u.Type = EventGatewayClusterPolicyModifyTypeRequestRuleValidator
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EventGatewayClusterPolicyModify", string(data))
@@ -68,6 +88,10 @@ func (u *EventGatewayClusterPolicyModify) UnmarshalJSON(data []byte) (err error)
 func (u EventGatewayClusterPolicyModify) MarshalJSON() ([]byte, error) {
 	if u.EventGatewayACLsPolicy != nil {
 		return utils.MarshalJSON(u.EventGatewayACLsPolicy, "", true)
+	}
+
+	if u.EventGatewayRequestRuleValidatorPolicy != nil {
+		return utils.MarshalJSON(u.EventGatewayRequestRuleValidatorPolicy, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type EventGatewayClusterPolicyModify: all fields are null")

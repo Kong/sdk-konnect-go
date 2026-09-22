@@ -41445,8 +41445,10 @@ components:
         propertyName: type
         mapping:
           acls: '#/components/schemas/EventGatewayACLsPolicy'
+          request_rule_validator: '#/components/schemas/EventGatewayRequestRuleValidatorPolicy'
       oneOf:
         - $ref: '#/components/schemas/EventGatewayACLsPolicy'
+        - $ref: '#/components/schemas/EventGatewayRequestRuleValidatorPolicy'
     EventGatewayEncryptPolicy:
       description: Encrypts Kafka records or keys using AES_256_GCM. Keys are therefore 256 bits long.
       type: object
@@ -43820,9 +43822,11 @@ components:
         mapping:
           confluent_schema_registry: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig'
           json: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyJsonConfig'
+          inline_schema: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyInlineSchemaConfig'
       oneOf:
         - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig'
         - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyJsonConfig'
+        - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyInlineSchemaConfig'
     EventGatewayConsumeSchemaValidationPolicyJsonConfig:
       description: The configuration of the consume schema validation policy when using JSON parsing without schema.
       type: object
@@ -43962,9 +43966,11 @@ components:
         mapping:
           confluent_schema_registry: '#/components/schemas/EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig'
           json: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyJsonConfig'
+          inline_schema: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig'
       oneOf:
         - $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig'
         - $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyJsonConfig'
+        - $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig'
     EventGatewayProduceSchemaValidationPolicyJsonConfig:
       description: The configuration of the produce schema validation policy when using JSON parsing without schema.
       type: object
@@ -44027,6 +44033,76 @@ components:
           const: confluent_schema_registry
       required:
         - type
+    EventGatewayConsumeSchemaValidationPolicyInlineSchemaConfig:
+      description: |-
+        The configuration of the consume schema validation policy when using an inline schema.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        schema_registry:
+          $ref: '#/components/schemas/SchemaRegistryReference'
+        failure_mode:
+          $ref: '#/components/schemas/ConsumeFailureMode'
+        validate_key:
+          description: |-
+            If true, validate the record key.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        validate_value:
+          description: |-
+            If true, validate the record value.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        key_validation_action:
+          $ref: '#/components/schemas/ConsumeKeyValidationAction'
+        value_validation_action:
+          $ref: '#/components/schemas/ConsumeValueValidationAction'
+        type:
+          type: string
+          const: inline_schema
+      required:
+        - type
+      x-min-runtime-version: '1.3'
+    EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig:
+      description: |-
+        The configuration of the produce schema validation policy when using an inline schema.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        schema_registry:
+          $ref: '#/components/schemas/SchemaRegistryReference'
+        failure_mode:
+          $ref: '#/components/schemas/ProduceFailureMode'
+        validate_key:
+          description: |-
+            If true, validate the record key.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        validate_value:
+          description: |-
+            If true, validate the record value.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        key_validation_action:
+          $ref: '#/components/schemas/ProduceKeyValidationAction'
+        value_validation_action:
+          $ref: '#/components/schemas/ProduceValueValidationAction'
+        type:
+          type: string
+          const: inline_schema
+      required:
+        - type
+      x-min-runtime-version: '1.3'
     EventGatewayACLsPolicy:
       description: Apply Kafka ACLs to virtual cluster traffic.
       type: object
@@ -44217,6 +44293,1156 @@ components:
             type: object
             description: 'All claims from the JWT token. Only populated for sasl_oauth_bearer authentication. Claims can be strings, numbers, booleans, arrays or nested JSON objects.'
       x-min-runtime-version: '1.1'
+    EventGatewayRequestRuleValidatorPolicy:
+      description: |-
+        Validates the content of Kafka requests against a list of rules.
+
+        Use this policy to enforce conventions that Kafka ACLs cannot express, because ACLs
+        cannot read the content of a request. For example, a maximum number of partitions,
+        a topic naming convention, or a minimum number of acknowledgements on produce.
+
+        Each rule describes the valid state of the request. The action of the rule runs when
+        the rule evaluates to `false`.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        type:
+          description: The type name of the policy.
+          type: string
+          const: request_rule_validator
+          maxLength: 255
+          minLength: 1
+        name:
+          description: A unique user-defined name of the policy.
+          type: string
+          maxLength: 255
+          x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
+        description:
+          description: A human-readable description of the policy.
+          type: string
+          default: ''
+          maxLength: 512
+        enabled:
+          description: Whether the policy is enabled.
+          type: boolean
+          default: true
+        labels:
+          $ref: '#/components/schemas/Labels'
+        config:
+          description: The configuration of the policy.
+          type: object
+          $ref: '#/components/schemas/EventGatewayRequestRuleValidatorConfig'
+        condition:
+          description: A string containing the boolean expression that determines whether the policy is applied.
+          type: string
+          example: context.auth.principal.name == "this-user"
+          default: ''
+          maxLength: 1000
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+      required:
+        - type
+        - config
+      title: Request Rule Validator
+      x-min-runtime-version: '1.3'
+    EventGatewayRequestRuleValidatorConfig:
+      description: The configuration of the request rule validator policy.
+      type: object
+      properties:
+        requests:
+          description: |
+            The rules to apply, grouped by Kafka request type. A request type can occur more than
+            once in this list. Every entry for the type applies, in list order.
+            Requests of a type that is not in this list are not validated.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayRequestRules'
+          minItems: 1
+      required:
+        - requests
+    EventGatewayRequestRules:
+      description: The rules to apply to one Kafka request type.
+      discriminator:
+        propertyName: type
+        mapping:
+          create_topics: '#/components/schemas/EventGatewayCreateTopicsRequestRules'
+          create_partitions: '#/components/schemas/EventGatewayCreatePartitionsRequestRules'
+          alter_configs: '#/components/schemas/EventGatewayAlterConfigsRequestRules'
+          incremental_alter_configs: '#/components/schemas/EventGatewayIncrementalAlterConfigsRequestRules'
+          alter_client_quotas: '#/components/schemas/EventGatewayAlterClientQuotasRequestRules'
+          alter_user_scram_credentials: '#/components/schemas/EventGatewayAlterUserScramCredentialsRequestRules'
+          produce: '#/components/schemas/EventGatewayProduceRequestRules'
+          fetch: '#/components/schemas/EventGatewayFetchRequestRules'
+          join_group: '#/components/schemas/EventGatewayJoinGroupRequestRules'
+          consumer_group_heartbeat: '#/components/schemas/EventGatewayConsumerGroupHeartbeatRequestRules'
+          offset_commit: '#/components/schemas/EventGatewayOffsetCommitRequestRules'
+          offset_fetch: '#/components/schemas/EventGatewayOffsetFetchRequestRules'
+      oneOf:
+        - $ref: '#/components/schemas/EventGatewayCreateTopicsRequestRules'
+        - $ref: '#/components/schemas/EventGatewayCreatePartitionsRequestRules'
+        - $ref: '#/components/schemas/EventGatewayAlterConfigsRequestRules'
+        - $ref: '#/components/schemas/EventGatewayIncrementalAlterConfigsRequestRules'
+        - $ref: '#/components/schemas/EventGatewayAlterClientQuotasRequestRules'
+        - $ref: '#/components/schemas/EventGatewayAlterUserScramCredentialsRequestRules'
+        - $ref: '#/components/schemas/EventGatewayProduceRequestRules'
+        - $ref: '#/components/schemas/EventGatewayFetchRequestRules'
+        - $ref: '#/components/schemas/EventGatewayJoinGroupRequestRules'
+        - $ref: '#/components/schemas/EventGatewayConsumerGroupHeartbeatRequestRules'
+        - $ref: '#/components/schemas/EventGatewayOffsetCommitRequestRules'
+        - $ref: '#/components/schemas/EventGatewayOffsetFetchRequestRules'
+    EventGatewayRequestRuleAction:
+      description: |
+        What to do when a rule evaluates to `false`.
+
+        `reject` fails the request with the `POLICY_VIOLATION` error code.
+        `passthrough` lets the request continue, but logs the violation in the same way as `reject`.
+      type: string
+      enum:
+        - reject
+        - passthrough
+      x-speakeasy-unknown-values: allow
+    EventGatewayCreateTopicsRequestRules:
+      description: The rules to apply to Kafka `CreateTopics` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: create_topics
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against each topic in the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayCreateTopicsRule'
+          minItems: 1
+      example:
+        type: create_topics
+        rules:
+          - description: Enforce the topic naming convention and a partition limit.
+            rule: topic.name.startsWith('team-a.') && topic.num_partitions <= 50
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayCreateTopicsRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: topic.name.startsWith('team-a.') && topic.num_partitions <= 50
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: topic.name
+                type: string
+                description: The name of the topic to create.
+              - name: topic.num_partitions
+                type: integer
+                description: The number of partitions requested for the topic. `-1` when the topic uses a manual replica assignment or the broker default.
+              - name: topic.replication_factor
+                type: integer
+                description: The replication factor requested for the topic. `-1` when the topic uses a manual replica assignment or the broker default.
+              - name: topic.configs
+                type: object
+                description: 'The topic configuration entries in the request, keyed by configuration name. Every value is a string.'
+              - name: topic.assignments
+                type: array
+                items:
+                  type: object
+                  description: One manual replica assignment for a partition.
+                  properties:
+                    partition_index:
+                      description: The index of the partition.
+                      type: integer
+                    broker_ids:
+                      description: The IDs of the brokers that host the partition's replicas.
+                      type: array
+                      items:
+                        type: integer
+                x-min-runtime-version: '1.3'
+                description: |-
+                  The manual replica assignment, one entry per partition.
+                  Empty when the topic does not use a manual replica assignment.
+
+                  **Requires a minimum runtime version of `1.3`**.
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Create Topics Rule
+    EventGatewayCreatePartitionsRequestRules:
+      description: The rules to apply to Kafka `CreatePartitions` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: create_partitions
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against each topic in the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayCreatePartitionsRule'
+          minItems: 1
+      example:
+        type: create_partitions
+        rules:
+          - description: Limit the total number of partitions per topic.
+            rule: topic.count <= 50
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayCreatePartitionsRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: topic.count <= 50
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: topic.name
+                type: string
+                description: The name of the topic to grow.
+              - name: topic.count
+                type: integer
+                description: The total number of partitions the topic has after the request.
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Create Partitions Rule
+    EventGatewayAlterConfigsRequestRules:
+      description: The rules to apply to Kafka `AlterConfigs` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: alter_configs
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against each resource in the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayAlterConfigsRule'
+          minItems: 1
+      example:
+        type: alter_configs
+        rules:
+          - description: Broker-level config changes are not allowed.
+            rule: resource.type != 'BROKER'
+            action: reject
+          - description: The retention.ms config must remain 24h (86400000); a full alter must include it.
+            rule: 'resource.type != ''TOPIC'' || (''retention.ms'' in resource.configs && resource.configs[''retention.ms''] == "86400000")'
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayAlterConfigsRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: resource.type != 'BROKER'
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: resource.type
+                type: string
+                description: 'The type of the resource to change, for example `TOPIC` or `BROKER`.'
+              - name: resource.name
+                type: string
+                description: The name of the resource to change.
+              - name: resource.configs
+                type: object
+                description: 'The full set of configuration entries to apply to the resource, keyed by configuration name. Every value is a string.'
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Alter Configs Rule
+    EventGatewayIncrementalAlterConfigsRequestRules:
+      description: The rules to apply to Kafka `IncrementalAlterConfigs` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: incremental_alter_configs
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against each configuration entry in the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayIncrementalAlterConfigsRule'
+          minItems: 1
+      example:
+        type: incremental_alter_configs
+        rules:
+          - description: Broker-level config changes are not allowed.
+            rule: resource.type != 'BROKER'
+            action: reject
+          - description: The retention.ms config may only be SET to 24h (86400000).
+            rule: resource.type != 'TOPIC' || config.name != 'retention.ms' || (config.operation == 'SET' && config.value == "86400000")
+            action: reject
+          - description: The retention.ms config cannot be removed.
+            rule: '!(resource.type == ''TOPIC'' && config.name == ''retention.ms'' && config.operation == ''DELETE'')'
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayIncrementalAlterConfigsRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: resource.type != 'BROKER'
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: resource.type
+                type: string
+                description: 'The type of the resource to change, for example `TOPIC` or `BROKER`.'
+              - name: resource.name
+                type: string
+                description: The name of the resource to change.
+              - name: config.name
+                type: string
+                description: The name of the configuration entry to change.
+              - name: config.value
+                type: string
+                description: The new value of the configuration entry. Empty when the request removes the entry.
+              - name: config.operation
+                type: string
+                description: 'The change to apply to the configuration entry: `SET`, `DELETE`, `APPEND` or `SUBTRACT`.'
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Incremental Alter Configs Rule
+    EventGatewayAlterClientQuotasRequestRules:
+      description: The rules to apply to Kafka `AlterClientQuotas` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: alter_client_quotas
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against each quota operation in the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayAlterClientQuotasRule'
+          minItems: 1
+      example:
+        type: alter_client_quotas
+        rules:
+          - description: Limit how much the producer quota can be raised.
+            rule: op.key != 'producer_byte_rate' || op.remove || op.value <= 10485760
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayAlterClientQuotasRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: op.key != 'producer_byte_rate' || op.remove || op.value <= 10485760
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: op.key
+                type: string
+                description: 'The name of the quota to change, for example `producer_byte_rate`.'
+              - name: op.value
+                type: number
+                description: The new value of the quota. Not set when the operation removes the quota.
+              - name: op.remove
+                type: boolean
+                description: True when the operation removes the quota.
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Alter Client Quotas Rule
+    EventGatewayAlterUserScramCredentialsRequestRules:
+      description: The rules to apply to Kafka `AlterUserScramCredentials` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: alter_user_scram_credentials
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against each credential in the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayAlterUserScramCredentialsRule'
+          minItems: 1
+      example:
+        type: alter_user_scram_credentials
+        rules:
+          - description: Require new credentials to use SCRAM-SHA-256.
+            rule: credential.mechanism != 'SCRAM-SHA-256'
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayAlterUserScramCredentialsRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: credential.mechanism != 'SCRAM-SHA-256'
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: credential.name
+                type: string
+                description: The name of the user that the credential belongs to.
+              - name: credential.mechanism
+                type: string
+                description: 'The SCRAM mechanism of the credential, for example `SCRAM-SHA-512`.'
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Alter User SCRAM Credentials Rule
+    EventGatewayProduceRequestRules:
+      description: The rules to apply to Kafka `Produce` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: produce
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayProduceRule'
+          minItems: 1
+      example:
+        type: produce
+        rules:
+          - description: Require acknowledgement from all in-sync replicas.
+            rule: produce.acks == -1
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayProduceRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: produce.acks == -1
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: produce.acks
+                type: integer
+                description: 'The acknowledgements that the producer requires: `0` for none, `1` for the leader only and `-1` for all in-sync replicas.'
+              - name: produce.timeout_ms
+                type: integer
+                description: The time in milliseconds that the broker can wait before it answers the request.
+              - name: produce.transactional_id
+                type: string
+                description: The transactional ID of the producer. Empty when the request is not transactional.
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Produce Rule
+    EventGatewayFetchRequestRules:
+      description: The rules to apply to Kafka `Fetch` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: fetch
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayFetchRule'
+          minItems: 1
+      example:
+        type: fetch
+        rules:
+          - description: Require sane fetch size bounds.
+            rule: fetch.min_bytes >= 1024 && fetch.max_bytes <= 10485760
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayFetchRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: fetch.min_bytes >= 1024 && fetch.max_bytes <= 10485760
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: fetch.min_bytes
+                type: integer
+                description: The minimum number of bytes that the consumer waits for before the broker answers.
+              - name: fetch.max_bytes
+                type: integer
+                description: The maximum number of bytes that the broker returns in the response.
+              - name: fetch.max_wait_ms
+                type: integer
+                description: The time in milliseconds that the consumer waits for `fetch.min_bytes` before the broker answers.
+              - name: fetch.isolation_level
+                type: string
+                description: 'The isolation level of the consumer: `read_uncommitted` or `read_committed`.'
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Fetch Rule
+    EventGatewayJoinGroupRequestRules:
+      description: The rules to apply to Kafka `JoinGroup` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: join_group
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayJoinGroupRule'
+          minItems: 1
+      example:
+        type: join_group
+        rules:
+          - description: Enforce the consumer group naming convention.
+            rule: group.id.startsWith('team-a.')
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayJoinGroupRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: group.id.startsWith('team-a.')
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: group.id
+                type: string
+                description: The ID of the consumer group.
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Join Group Rule
+    EventGatewayConsumerGroupHeartbeatRequestRules:
+      description: The rules to apply to Kafka `ConsumerGroupHeartbeat` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: consumer_group_heartbeat
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayConsumerGroupHeartbeatRule'
+          minItems: 1
+      example:
+        type: consumer_group_heartbeat
+        rules:
+          - description: Enforce the consumer group naming convention.
+            rule: group.id.startsWith('team-a.')
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayConsumerGroupHeartbeatRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: group.id.startsWith('team-a.')
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: group.id
+                type: string
+                description: The ID of the consumer group.
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Consumer Group Heartbeat Rule
+    EventGatewayOffsetCommitRequestRules:
+      description: The rules to apply to Kafka `OffsetCommit` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: offset_commit
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayOffsetCommitRule'
+          minItems: 1
+      example:
+        type: offset_commit
+        rules:
+          - description: Enforce the consumer group naming convention.
+            rule: group.id.startsWith('team-a.')
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayOffsetCommitRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: group.id.startsWith("team-a.")
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: group.id
+                type: string
+                description: The ID of the consumer group.
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Offset Commit Rule
+    EventGatewayOffsetFetchRequestRules:
+      description: The rules to apply to Kafka `OffsetFetch` requests.
+      type: object
+      properties:
+        type:
+          type: string
+          const: offset_fetch
+        rules:
+          description: |
+            Every rule in this list is evaluated independently against the request.
+            A rule that evaluates to `false` runs its action.
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGatewayOffsetFetchRule'
+          minItems: 1
+      example:
+        type: offset_fetch
+        rules:
+          - description: Enforce the consumer group naming convention.
+            rule: group.id.startsWith('team-a.')
+            action: reject
+      required:
+        - type
+        - rules
+    EventGatewayOffsetFetchRule:
+      type: object
+      properties:
+        description:
+          description: |
+            An explanation of the rule. Event Gateway writes this text to the logs when the request
+            violates the rule, because the rule expression alone does not show the intent.
+          type: string
+          maxLength: 255
+          minLength: 1
+        rule:
+          description: |
+            A boolean expression that describes the valid state of the request.
+            The action runs when the expression evaluates to `false`.
+            An expression that cannot be evaluated, for example because a value has an unexpected
+            format, also counts as `false`.
+          type: string
+          example: group.id.startsWith('team-a.')
+          maxLength: 1000
+          minLength: 1
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+              - name: context.auth.principal.metadata
+                type: object
+                description: 'Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  All claims from the JWT token. Only populated for `sasl_oauth_bearer` authentication.
+                  Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: group.id
+                type: string
+                description: The ID of the consumer group.
+        action:
+          $ref: '#/components/schemas/EventGatewayRequestRuleAction'
+      required:
+        - description
+        - rule
+        - action
+      title: Offset Fetch Rule
     EventGatewayKeySource:
       description: |
         A key source that describes how to find a symmetric key for encryption or decryption.
@@ -55169,6 +56395,30 @@ components:
         - host
         - port
         - protocol
+    AIGatewayMinRuntimeVersion:
+      description: |
+        The minimum AI Gateway runtime version supported by this AI Gateway. This is the lowest data plane version that may receive configuration from it, and it controls which features the API accepts.
+
+        Data planes older than this version still connect for topology visibility.
+
+        When not specified, the latest generally available runtime version is used.
+      type: string
+      example: '2.0'
+      pattern: ^\d+\.\d+$
+    AIGatewayMinRuntimeVersionUpdate:
+      description: |
+        The minimum AI Gateway runtime version supported by this AI Gateway. This is the lowest data plane version that may receive configuration from it, and it controls which features the API accepts.
+
+        It may be lowered only when no configuration already stored uses a feature that requires a runtime version above the requested one. Otherwise the request is rejected, naming the entities and fields that stand in the way so that they can be removed or downgraded first.
+
+        When not specified, the minimum runtime version is left unchanged.
+      type: string
+      example: '2.0'
+      pattern: ^\d+\.\d+$
+    AIGatewayRuntimeAutoUpgrade:
+      description: Whether the control plane should automatically raise min_runtime_version as connected data planes report a newer AI Gateway runtime version.
+      type: boolean
+      default: true
     CreateAIGatewayRequest:
       type: object
       properties:
@@ -55182,6 +56432,10 @@ components:
             - managed
             - serverless
           x-speakeasy-unknown-values: allow
+        min_runtime_version:
+          $ref: '#/components/schemas/AIGatewayMinRuntimeVersion'
+        runtime_auto_upgrade:
+          $ref: '#/components/schemas/AIGatewayRuntimeAutoUpgrade'
         display_name:
           description: The display name for this AI Gateway.
           type: string
@@ -55215,6 +56469,10 @@ components:
     UpdateAIGatewayRequest:
       type: object
       properties:
+        min_runtime_version:
+          $ref: '#/components/schemas/AIGatewayMinRuntimeVersionUpdate'
+        runtime_auto_upgrade:
+          $ref: '#/components/schemas/AIGatewayRuntimeAutoUpgrade'
         display_name:
           description: The display name for this AI Gateway.
           type: string
@@ -55266,6 +56524,10 @@ components:
           items:
             $ref: '#/components/schemas/AIGatewayProxyURL'
           format: set
+        min_runtime_version:
+          $ref: '#/components/schemas/AIGatewayMinRuntimeVersionUpdate'
+        runtime_auto_upgrade:
+          $ref: '#/components/schemas/AIGatewayRuntimeAutoUpgrade'
         labels:
           $ref: '#/components/schemas/PublicLabels'
       additionalProperties: false
@@ -55301,6 +56563,10 @@ components:
           $ref: '#/components/schemas/PublicLabels'
         id:
           $ref: '#/components/schemas/UUID'
+        min_runtime_version:
+          $ref: '#/components/schemas/AIGatewayMinRuntimeVersion'
+        runtime_auto_upgrade:
+          $ref: '#/components/schemas/AIGatewayRuntimeAutoUpgrade'
         deployment_type:
           description: How this AI Gateway's control plane is deployed.
           type: string
@@ -57528,6 +58794,27 @@ components:
         - ttl
         - cost
       title: AIGatewayCacheWriteCost
+    AIGatewayModalCostList:
+      type: object
+      properties:
+        modal:
+          description: The modal type this price applies to.
+          type: string
+          enum:
+            - text
+            - audio
+            - image
+            - video
+          x-speakeasy-unknown-values: allow
+        cost:
+          description: Cost per 1M tokens for this modal type.
+          type: number
+          minimum: 0
+      additionalProperties: false
+      required:
+        - modal
+        - cost
+      title: AIGatewayModalCostList
     AIGatewayContextWindowFactor:
       type: object
       properties:
@@ -57594,6 +58881,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -57659,6 +58973,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -57741,6 +59082,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -57820,6 +59188,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -57881,6 +59276,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -57967,6 +59389,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58032,6 +59481,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58097,6 +59573,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58158,6 +59661,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58221,6 +59751,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58290,6 +59847,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58357,6 +59941,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58428,6 +60039,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58497,6 +60135,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58558,6 +60223,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58619,6 +60311,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58680,6 +60399,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58742,6 +60488,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -58803,6 +60576,33 @@ components:
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+        input_cost_list:
+          description: |-
+            Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        output_cost_list:
+          description: |-
+            Per-modality override of `output_cost`, in cost per 1M output tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
+        cache_read_cost_list:
+          description: |-
+            Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayModalCostList'
+          x-min-runtime-version: '2.1'
         cache_write_cost_list:
           description: Per-cache-TTL cache-write pricing; overrides cache_write_cost per TTL. Configure this when the upstream provider charges differently for different cache TTLs.
           type: array
@@ -60665,6 +62465,15 @@ components:
               - creditcard
             stop_on_error: true
           additionalProperties: true
+        condition:
+          description: |-
+            An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: string
+          maxLength: 1024
+          nullable: true
+          x-min-runtime-version: '2.1'
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -60717,6 +62526,15 @@ components:
               - creditcard
             stop_on_error: true
           additionalProperties: true
+        condition:
+          description: |-
+            An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: string
+          maxLength: 1024
+          nullable: true
+          x-min-runtime-version: '2.1'
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -60769,6 +62587,15 @@ components:
               - creditcard
             stop_on_error: true
           additionalProperties: true
+        condition:
+          description: |-
+            An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: string
+          maxLength: 1024
+          nullable: true
+          x-min-runtime-version: '2.1'
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -61506,6 +63333,39 @@ components:
               example: 'https://mcp.internal.kongair.com'
             upstream:
               $ref: '#/components/schemas/AIGatewayUpstreamConfig'
+            allowed_versions:
+              description: |-
+                The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+                implements, which is the default. When set, `server/discover` advertises exactly this
+                list and a request declaring anything else is rejected. Listing only per-request
+                revisions refuses handshake clients.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: array
+              items:
+                type: string
+                enum:
+                  - '2026-07-28'
+                  - '2025-11-25'
+                  - '2025-06-18'
+                  - '2025-03-26'
+                x-speakeasy-unknown-values: allow
+              minItems: 1
+              x-min-runtime-version: '2.1'
+            cache:
+              description: |-
+                Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+                revision that defines them receive them.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: object
+              additionalProperties: false
+              properties:
+                tools_list:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+                discover:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+              x-min-runtime-version: '2.1'
           required:
             - url
           title: AIGatewayMCPServerKongListenerConfig
@@ -61581,6 +63441,39 @@ components:
               minimum: 0
             server:
               $ref: '#/components/schemas/AIGatewayMCPServerServerConfigBase'
+            allowed_versions:
+              description: |-
+                The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+                implements, which is the default. When set, `server/discover` advertises exactly this
+                list and a request declaring anything else is rejected. Listing only per-request
+                revisions refuses handshake clients.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: array
+              items:
+                type: string
+                enum:
+                  - '2026-07-28'
+                  - '2025-11-25'
+                  - '2025-06-18'
+                  - '2025-03-26'
+                x-speakeasy-unknown-values: allow
+              minItems: 1
+              x-min-runtime-version: '2.1'
+            cache:
+              description: |-
+                Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+                revision that defines them receive them.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: object
+              additionalProperties: false
+              properties:
+                tools_list:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+                discover:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+              x-min-runtime-version: '2.1'
           title: AIGatewayMCPServerKongListenerConfig
         sources:
           description: |
@@ -61629,7 +63522,40 @@ components:
     AIGatewayMCPServerKongListenerConfig:
       description: Server-side configuration specific to modes where Kong answers as the MCP server.
       type: object
-      properties: {}
+      properties:
+        allowed_versions:
+          description: |-
+            The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+            implements, which is the default. When set, `server/discover` advertises exactly this
+            list and a request declaring anything else is rejected. Listing only per-request
+            revisions refuses handshake clients.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: array
+          items:
+            type: string
+            enum:
+              - '2026-07-28'
+              - '2025-11-25'
+              - '2025-06-18'
+              - '2025-03-26'
+            x-speakeasy-unknown-values: allow
+          minItems: 1
+          x-min-runtime-version: '2.1'
+        cache:
+          description: |-
+            Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+            revision that defines them receive them.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: object
+          additionalProperties: false
+          properties:
+            tools_list:
+              $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+            discover:
+              $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+          x-min-runtime-version: '2.1'
       title: AIGatewayMCPServerKongListenerConfig
     AIGatewayMCPServerPassthroughListener:
       type: object
@@ -62698,6 +64624,26 @@ components:
           maximum: 2147483646
           minimum: 0
       additionalProperties: false
+    AIGatewayMCPServerCacheHint:
+      description: A cache hint Kong emits on a cacheable operation it serves.
+      type: object
+      properties:
+        ttl_ms:
+          description: 'How long a client may treat the result as fresh, in milliseconds.'
+          type: integer
+          minimum: 0
+        cache_scope:
+          description: |
+            Whether the result may be cached across authorization contexts. `public` is rejected when
+            the server's tool list is filtered per subject by `default_tool_acls` or a tool's own
+            `access.acls`.
+          type: string
+          default: private
+          enum:
+            - public
+            - private
+          x-speakeasy-unknown-values: allow
+      additionalProperties: false
     AIGatewayMCPServerListenerServerConfig:
       description: Server-side configuration for the MCP Server.
       type: object
@@ -62822,6 +64768,21 @@ components:
           default: false
         tools_list_auth:
           $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerServerToolAuthConfig'
+        upstream_protocol_version:
+          description: |-
+            The MCP protocol revision Kong speaks to the upstream MCP server. Leave unset to
+            negotiate a handshake revision with an `initialize` exchange, which is the default. Set a
+            per-request revision to reach an upstream that answers no handshake and mints no session.
+
+            **Requires a minimum runtime version of `2.1`**.
+          type: string
+          enum:
+            - '2026-07-28'
+            - '2025-11-25'
+            - '2025-06-18'
+            - '2025-03-26'
+          x-min-runtime-version: '2.1'
+          x-speakeasy-unknown-values: allow
       additionalProperties: false
     AIGatewayMCPServerUpstreamServerServerToolAuthConfig:
       description: Configuration for an Upstream Server's MCP Server Tools' Authentication.
@@ -63060,6 +65021,39 @@ components:
               example: 'https://mcp.internal.kongair.com'
             upstream:
               $ref: '#/components/schemas/AIGatewayUpstreamConfig'
+            allowed_versions:
+              description: |-
+                The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+                implements, which is the default. When set, `server/discover` advertises exactly this
+                list and a request declaring anything else is rejected. Listing only per-request
+                revisions refuses handshake clients.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: array
+              items:
+                type: string
+                enum:
+                  - '2026-07-28'
+                  - '2025-11-25'
+                  - '2025-06-18'
+                  - '2025-03-26'
+                x-speakeasy-unknown-values: allow
+              minItems: 1
+              x-min-runtime-version: '2.1'
+            cache:
+              description: |-
+                Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+                revision that defines them receive them.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: object
+              additionalProperties: false
+              properties:
+                tools_list:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+                discover:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+              x-min-runtime-version: '2.1'
           required:
             - url
           title: AIGatewayMCPServerKongListenerConfig
@@ -63145,6 +65139,39 @@ components:
               minimum: 0
             server:
               $ref: '#/components/schemas/AIGatewayMCPServerServerConfigBase'
+            allowed_versions:
+              description: |-
+                The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
+                implements, which is the default. When set, `server/discover` advertises exactly this
+                list and a request declaring anything else is rejected. Listing only per-request
+                revisions refuses handshake clients.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: array
+              items:
+                type: string
+                enum:
+                  - '2026-07-28'
+                  - '2025-11-25'
+                  - '2025-06-18'
+                  - '2025-03-26'
+                x-speakeasy-unknown-values: allow
+              minItems: 1
+              x-min-runtime-version: '2.1'
+            cache:
+              description: |-
+                Cache hints Kong emits on the cacheable operations it serves. Only clients on a protocol
+                revision that defines them receive them.
+
+                **Requires a minimum runtime version of `2.1`**.
+              type: object
+              additionalProperties: false
+              properties:
+                tools_list:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+                discover:
+                  $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
+              x-min-runtime-version: '2.1'
           title: AIGatewayMCPServerKongListenerConfig
         sources:
           description: |
@@ -81511,7 +83538,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.0.12
+    version: 2.1.1
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.3.0
@@ -81532,13 +83559,13 @@ x-input-schemas:
     version: 2.1.1
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
-    version: 1.3.2
+    version: 1.3.5
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
     version: 3.6.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect MCP Servers
-    version: 1.37.0
+    version: 1.38.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.2.0

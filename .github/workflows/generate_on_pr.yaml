@@ -20,10 +20,6 @@ env:
   MISE_VERBOSE: 1
 
 jobs:
-  github-app-token:
-    uses: ./.github/workflows/__github_app_token.yaml
-    secrets: inherit
-
   should-generate:
     runs-on:
       - ubuntu-latest
@@ -51,7 +47,6 @@ jobs:
 
   generate:
     needs:
-    - github-app-token
     - should-generate
     permissions:
       contents: write
@@ -64,11 +59,20 @@ jobs:
         with:
           egress-policy: audit
 
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app-token
+        with:
+          client-id: ${{ vars.GH_APP__KONG_K8S__APP_ID }}
+          private-key: ${{ secrets.GH_APP__KONG_K8S__PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            sdk-konnect-go
+
       - name: Checkout current repo
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ needs.github-app-token.outputs.token }}
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Configure speakeasy CLI
         run: |

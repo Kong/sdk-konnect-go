@@ -54,6 +54,13 @@ func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyRequest) GetEventGate
 	return nil
 }
 
+func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyRequest) GetEventGatewayClusterPolicyModifyRequestRuleValidator() *components.EventGatewayRequestRuleValidatorPolicy {
+	if v := u.GetEventGatewayClusterPolicyModify(); v != nil {
+		return v.EventGatewayRequestRuleValidatorPolicy
+	}
+	return nil
+}
+
 type UpdateEventGatewayVirtualClusterClusterLevelPolicyResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

@@ -3,6 +3,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // PatchAIGatewayRequest - The request schema for partially updating an AI Gateway.
 type PatchAIGatewayRequest struct {
 	// The display name for this AI Gateway.
@@ -11,6 +15,15 @@ type PatchAIGatewayRequest struct {
 	Description *string `json:"description,omitempty"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
 	ProxyUrls []AIGatewayProxyURL `json:"proxy_urls,omitempty"`
+	// The minimum AI Gateway runtime version supported by this AI Gateway. This is the lowest data plane version that may receive configuration from it, and it controls which features the API accepts.
+	//
+	// It may be lowered only when no configuration already stored uses a feature that requires a runtime version above the requested one. Otherwise the request is rejected, naming the entities and fields that stand in the way so that they can be removed or downgraded first.
+	//
+	// When not specified, the minimum runtime version is left unchanged.
+	//
+	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
+	// Whether the control plane should automatically raise min_runtime_version as connected data planes report a newer AI Gateway runtime version.
+	RuntimeAutoUpgrade *bool `default:"true" json:"runtime_auto_upgrade"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -18,6 +31,17 @@ type PatchAIGatewayRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+}
+
+func (p PatchAIGatewayRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchAIGatewayRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (p *PatchAIGatewayRequest) GetDisplayName() *string {
@@ -39,6 +63,20 @@ func (p *PatchAIGatewayRequest) GetProxyUrls() []AIGatewayProxyURL {
 		return nil
 	}
 	return p.ProxyUrls
+}
+
+func (p *PatchAIGatewayRequest) GetMinRuntimeVersion() *string {
+	if p == nil {
+		return nil
+	}
+	return p.MinRuntimeVersion
+}
+
+func (p *PatchAIGatewayRequest) GetRuntimeAutoUpgrade() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.RuntimeAutoUpgrade
 }
 
 func (p *PatchAIGatewayRequest) GetLabels() map[string]string {

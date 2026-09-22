@@ -1,0 +1,11 @@
+# EventGatewayJoinGroupRequestRules
+
+The rules to apply to Kafka `JoinGroup` requests.
+
+
+## Fields
+
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                     | `string`                                                                                                                   | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `Rules`                                                                                                                    | [][components.EventGatewayJoinGroupRule](../../models/components/eventgatewayjoingrouprule.md)                             | :heavy_check_mark:                                                                                                         | Every rule in this list is evaluated independently against the request.<br/>A rule that evaluates to `false` runs its action.<br/> |

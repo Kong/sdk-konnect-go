@@ -1,0 +1,11 @@
+# EventGatewayOffsetFetchRequestRules
+
+The rules to apply to Kafka `OffsetFetch` requests.
+
+
+## Fields
+
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                     | `string`                                                                                                                   | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `Rules`                                                                                                                    | [][components.EventGatewayOffsetFetchRule](../../models/components/eventgatewayoffsetfetchrule.md)                         | :heavy_check_mark:                                                                                                         | Every rule in this list is evaluated independently against the request.<br/>A rule that evaluates to `false` runs its action.<br/> |

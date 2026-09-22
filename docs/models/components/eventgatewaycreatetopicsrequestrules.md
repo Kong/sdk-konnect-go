@@ -1,0 +1,11 @@
+# EventGatewayCreateTopicsRequestRules
+
+The rules to apply to Kafka `CreateTopics` requests.
+
+
+## Fields
+
+| Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                                   | `string`                                                                                                                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
+| `Rules`                                                                                                                                  | [][components.EventGatewayCreateTopicsRule](../../models/components/eventgatewaycreatetopicsrule.md)                                     | :heavy_check_mark:                                                                                                                       | Every rule in this list is evaluated independently against each topic in the request.<br/>A rule that evaluates to `false` runs its action.<br/> |
