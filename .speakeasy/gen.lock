@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 41c021cd3124754c8a03aed13cb2b4e2
+  docChecksum: 8e5fbd58159823912c409c5fb4bf4e10
   docVersion: 3.15.0
   speakeasyVersion: 1.798.0
   generationVersion: 2.938.0
   releaseVersion: 0.68.0
   configChecksum: 4c6dcfb812c479e23d6457952a187b21
 persistentEdits:
-  generation_id: 882970f6-35aa-4a59-b42b-d434099b6978
-  pristine_commit_hash: e89a51fc6795f24605ef90e47a76f63a18dbb98c
-  pristine_tree_hash: ae0eff9575727b969217e0d97102047e5f844f46
+  generation_id: 9273d7f3-2c12-408d-be0d-35c8060ae504
+  pristine_commit_hash: 60e6a5a532ca77267d171b737365b59f82dc64ce
+  pristine_tree_hash: 01854c4caaaaac6efbaef903ea0fc9df5e09ed1f
 features:
   go:
     acceptHeaders: 2.81.2
@@ -193,8 +193,8 @@ trackedFiles:
     pristine_git_object: c4710541265b843b07e95864b9cd214ca5fb51a9
   applications.go:
     id: db387a48954e
-    last_write_checksum: sha1:4fb74620a7181f6d149bc8bed6e8669b413902e4
-    pristine_git_object: 55f07980fcde2cce36eaae5c8c2e0d4da29fee7f
+    last_write_checksum: sha1:46d2c69c8927823bf00d3b28e010421a5c25e0e2
+    pristine_git_object: 9558b934e5a2c53ffc4c756bc8304ee979298e1f
   assets.go:
     id: b6b18a05c076
     last_write_checksum: sha1:33465b57b55258ae4f3178d9477ebd38d51f61b4
@@ -1609,8 +1609,8 @@ trackedFiles:
     pristine_git_object: b4d4628d536b3e237326022635ec2b904f598735
   docs/models/components/aigatewaymodelselectorconfig.md:
     id: 7f08ef2bb27d
-    last_write_checksum: sha1:2a2cb9f8040a6953195f2310abb3d8104fb7bb0e
-    pristine_git_object: 1af23069067dbba1529ab4c68d0a705d53d6906b
+    last_write_checksum: sha1:1fc7729b40138327772e6eff7d5512a44b7b6570
+    pristine_git_object: 72944a7602a24deb3f92293ea5deeb897e948be3
   docs/models/components/aigatewaymodelvectordbconfig.md:
     id: 2d7cb21d9424
     last_write_checksum: sha1:c4bbdb182676f57d12027f830a7761b3021fd457
@@ -18753,8 +18753,8 @@ trackedFiles:
     pristine_git_object: c9ddecc3e15910a3c2f05c442f3bef6bff6f265d
   docs/sdks/applications/README.md:
     id: 106eaf812595
-    last_write_checksum: sha1:ad069a3ad9bab2608e991db78f84924ddb119aba
-    pristine_git_object: 0c67aff235d64894544db91fed4d1e49aac7679c
+    last_write_checksum: sha1:686b1ae78f8019b63f3b4121581746857d24ba00
+    pristine_git_object: 37b071ce1c7b4a33e3a9f51d94e2c393b1ff8363
   docs/sdks/assets/README.md:
     id: c072a8a1f5c5
     last_write_checksum: sha1:1f79e17b1655157b5091da04c9c121482d45783e
@@ -19973,8 +19973,8 @@ trackedFiles:
     pristine_git_object: d9f0eb05a86d3100fd7f5865ea6479a069b7d5ec
   models/components/aigatewaymodelselectorconfig.go:
     id: f097eab16008
-    last_write_checksum: sha1:546fc95ce8dd1415d832f5fdb962c8b9b814b320
-    pristine_git_object: 7cb5515201b342f7c716a1d31f5d56157840df2f
+    last_write_checksum: sha1:ab695625ca66d160ed6afc6330f18d58c6ffa41a
+    pristine_git_object: 27c7c5be6ebb83532d25a09e9817e31e9d01fbfc
   models/components/aigatewaymodelvectordbconfig.go:
     id: f9a9c9dfcbee
     last_write_checksum: sha1:21bd2f9b9bdd7bb146ae649549e4a82e5aa3aff9
@@ -58891,6 +58891,8 @@ examples:
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
   list-product-catalog-addons:
     speakeasy-default-list-product-catalog-addons:
       parameters:

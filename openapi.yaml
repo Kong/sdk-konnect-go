@@ -17639,10 +17639,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
       tags:
         - Applications
       x-terraform-id-to-object:
         auth_strategy_id: auth_strategy.id
+        environment_id: environment.id
     get:
       operationId: list-applications
       summary: List Applications
@@ -57668,13 +57671,12 @@ components:
           minLength: 1
         values:
           description: |
-            An optional model alias. When omitted, the model name is used.
+            Optional model aliases. When omitted, the model name is used.
             When no selector location is configured, the format default selector is used.
           type: array
           items:
             type: string
             minLength: 1
-          maxItems: 1
           minItems: 1
       additionalProperties: false
       title: AIGatewayModelSelectorConfig
@@ -83538,7 +83540,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.1.1
+    version: 2.1.3
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.3.0
@@ -83574,7 +83576,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.11.0
+    version: 3.11.1
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2
