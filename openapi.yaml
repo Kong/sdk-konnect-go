@@ -69037,6 +69037,10 @@ components:
           items:
             type: string
             enum:
+              - ai_gateway
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
               - api
               - api_package
               - api_product
@@ -69044,6 +69048,7 @@ components:
               - application
               - cache_status
               - consumer
+              - consumer_group
               - control_plane
               - control_plane_group
               - country_code
@@ -69117,7 +69122,15 @@ components:
               - control_plane_group
               - gateway_service
               - consumer
+              - ai_gateway
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
+              - ai_gateway_mcp_server
+              - ai_gateway_model
+              - ai_gateway_agent
               - application
+              - cache_status
               - oidc_credential
               - route
               - ai_provider
@@ -69185,6 +69198,12 @@ components:
               - a2a_error
               - a2a_method
               - a2a_task_id
+              - ai_gateway
+              - ai_gateway_agent
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
+              - ai_gateway_mcp_server
               - api
               - api_package
               - api_product
@@ -69192,6 +69211,7 @@ components:
               - application
               - cache_status
               - consumer
+              - consumer_group
               - control_plane
               - control_plane_group
               - country_code
@@ -69656,6 +69676,150 @@ components:
         - empty
         - not_empty
       x-speakeasy-unknown-values: allow
+    MetricsAiGatewayFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway
+    MetricsAiGatewayConsumerFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_consumer
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_consumer
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_consumer
+    MetricsAiGatewayConsumerGroupFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_consumer_group
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_consumer_group
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_consumer_group
+    MetricsAiGatewayDataPlaneNodeFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_data_plane_node
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_data_plane_node
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_data_plane_node
     MetricsApiFilterByField:
       oneOf:
         - title: Multiselect filters
@@ -69911,6 +70075,42 @@ components:
             - operator
             - field
       title: Filter by consumer
+    MetricsConsumerGroupFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results. Because gateway IDs are only unique within a given control plane, the filter values must be of the form `control_plane_id:field_id` or `control_plane_group_id:field_id` for data plane nodes within a control plane group.
+              type: array
+              items:
+                $ref: '#/components/schemas/ScopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - consumer_group
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - consumer_group
+          required:
+            - operator
+            - field
+      title: Filter by consumer_group
     MetricsControlPlaneFilterByField:
       oneOf:
         - title: Multiselect filters
@@ -70502,6 +70702,10 @@ components:
           field:
             type: string
             enum:
+              - ai_gateway
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
               - api
               - api_package
               - api_product
@@ -70509,6 +70713,7 @@ components:
               - application
               - cache_status
               - consumer
+              - consumer_group
               - control_plane
               - control_plane_group
               - country_code
@@ -70650,8 +70855,10 @@ components:
         type: string
         enum:
           - total_tokens
+          - total_tokens_per_minute
           - prompt_tokens
           - completion_tokens
+          - cached_tokens
           - ai_request_count
           - cost
           - error_rate
@@ -70660,9 +70867,119 @@ components:
           - llm_latency_average
           - llm_embeddings_tokens
           - llm_embeddings_cost
+          - time_to_first_token_average
+          - time_per_token_average
         x-speakeasy-unknown-values: allow
       default:
         - ai_request_count
+    MetricsAiGatewayAgentFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_agent
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_agent
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_agent
+    MetricsAiGatewayMcpServerFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_mcp_server
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_mcp_server
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_mcp_server
+    MetricsAiGatewayModelFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_model
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_model
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_model
     MetricsAiPluginFilterByField:
       oneOf:
         - title: Multiselect filters
@@ -70924,11 +71241,19 @@ components:
           field:
             type: string
             enum:
+              - ai_gateway
+              - ai_gateway_agent
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
+              - ai_gateway_mcp_server
+              - ai_gateway_model
               - ai_plugin
               - ai_provider
               - ai_request_model
               - ai_response_model
               - application
+              - cache_status
               - consumer
               - control_plane
               - control_plane_group
@@ -71300,6 +71625,12 @@ components:
               - a2a_error
               - a2a_method
               - a2a_task_id
+              - ai_gateway
+              - ai_gateway_agent
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
+              - ai_gateway_mcp_server
               - api
               - api_package
               - api_product
@@ -71307,6 +71638,7 @@ components:
               - application
               - cache_status
               - consumer
+              - consumer_group
               - control_plane
               - control_plane_group
               - country_code
@@ -72005,6 +72337,13 @@ components:
             - a2a_error
             - a2a_method
             - a2a_task_id
+            - ai_gateway
+            - ai_gateway_agent
+            - ai_gateway_consumer
+            - ai_gateway_consumer_group
+            - ai_gateway_data_plane_node
+            - ai_gateway_mcp_server
+            - ai_gateway_model
             - ai_plugin
             - ai_provider
             - ai_request_model
@@ -72016,6 +72355,7 @@ components:
             - application
             - cache_status
             - consumer
+            - consumer_group
             - control_plane
             - control_plane_group
             - country_code
@@ -83639,7 +83979,7 @@ x-input-schemas:
     version: 2.1.10
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
-    version: 2.3.0
+    version: 2.4.0
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
     version: 3.6.5
