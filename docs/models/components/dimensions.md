@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.DimensionsAPI
+value := components.DimensionsAiGateway
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.Dimensions("custom_value")
@@ -18,6 +18,10 @@ custom := components.Dimensions("custom_value")
 
 | Name                                  | Value                                 |
 | ------------------------------------- | ------------------------------------- |
+| `DimensionsAiGateway`                 | ai_gateway                            |
+| `DimensionsAiGatewayConsumer`         | ai_gateway_consumer                   |
+| `DimensionsAiGatewayConsumerGroup`    | ai_gateway_consumer_group             |
+| `DimensionsAiGatewayDataPlaneNode`    | ai_gateway_data_plane_node            |
 | `DimensionsAPI`                       | api                                   |
 | `DimensionsAPIPackage`                | api_package                           |
 | `DimensionsAPIProduct`                | api_product                           |
@@ -25,6 +29,7 @@ custom := components.Dimensions("custom_value")
 | `DimensionsApplication`               | application                           |
 | `DimensionsCacheStatus`               | cache_status                          |
 | `DimensionsConsumer`                  | consumer                              |
+| `DimensionsConsumerGroup`             | consumer_group                        |
 | `DimensionsControlPlane`              | control_plane                         |
 | `DimensionsControlPlaneGroup`         | control_plane_group                   |
 | `DimensionsCountryCode`               | country_code                          |

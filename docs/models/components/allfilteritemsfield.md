@@ -22,6 +22,13 @@ custom := components.AllFilterItemsField("custom_value")
 | `AllFilterItemsFieldA2aError`                  | a2a_error                                      |
 | `AllFilterItemsFieldA2aMethod`                 | a2a_method                                     |
 | `AllFilterItemsFieldA2aTaskID`                 | a2a_task_id                                    |
+| `AllFilterItemsFieldAiGateway`                 | ai_gateway                                     |
+| `AllFilterItemsFieldAiGatewayAgent`            | ai_gateway_agent                               |
+| `AllFilterItemsFieldAiGatewayConsumer`         | ai_gateway_consumer                            |
+| `AllFilterItemsFieldAiGatewayConsumerGroup`    | ai_gateway_consumer_group                      |
+| `AllFilterItemsFieldAiGatewayDataPlaneNode`    | ai_gateway_data_plane_node                     |
+| `AllFilterItemsFieldAiGatewayMcpServer`        | ai_gateway_mcp_server                          |
+| `AllFilterItemsFieldAiGatewayModel`            | ai_gateway_model                               |
 | `AllFilterItemsFieldAiPlugin`                  | ai_plugin                                      |
 | `AllFilterItemsFieldAiProvider`                | ai_provider                                    |
 | `AllFilterItemsFieldAiRequestModel`            | ai_request_model                               |
@@ -33,6 +40,7 @@ custom := components.AllFilterItemsField("custom_value")
 | `AllFilterItemsFieldApplication`               | application                                    |
 | `AllFilterItemsFieldCacheStatus`               | cache_status                                   |
 | `AllFilterItemsFieldConsumer`                  | consumer                                       |
+| `AllFilterItemsFieldConsumerGroup`             | consumer_group                                 |
 | `AllFilterItemsFieldControlPlane`              | control_plane                                  |
 | `AllFilterItemsFieldControlPlaneGroup`         | control_plane_group                            |
 | `AllFilterItemsFieldCountryCode`               | country_code                                   |

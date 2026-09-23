@@ -35,6 +35,10 @@ func (e *Datasource) UnmarshalJSON(data []byte) error {
 type Dimensions string
 
 const (
+	DimensionsAiGateway                 Dimensions = "ai_gateway"
+	DimensionsAiGatewayConsumer         Dimensions = "ai_gateway_consumer"
+	DimensionsAiGatewayConsumerGroup    Dimensions = "ai_gateway_consumer_group"
+	DimensionsAiGatewayDataPlaneNode    Dimensions = "ai_gateway_data_plane_node"
 	DimensionsAPI                       Dimensions = "api"
 	DimensionsAPIPackage                Dimensions = "api_package"
 	DimensionsAPIProduct                Dimensions = "api_product"
@@ -42,6 +46,7 @@ const (
 	DimensionsApplication               Dimensions = "application"
 	DimensionsCacheStatus               Dimensions = "cache_status"
 	DimensionsConsumer                  Dimensions = "consumer"
+	DimensionsConsumerGroup             Dimensions = "consumer_group"
 	DimensionsControlPlane              Dimensions = "control_plane"
 	DimensionsControlPlaneGroup         Dimensions = "control_plane_group"
 	DimensionsCountryCode               Dimensions = "country_code"
@@ -69,7 +74,7 @@ func (e Dimensions) ToPointer() *Dimensions {
 func (e *Dimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "oidc_credential", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
+		case "ai_gateway", "ai_gateway_consumer", "ai_gateway_consumer_group", "ai_gateway_data_plane_node", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "consumer_group", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "oidc_credential", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}

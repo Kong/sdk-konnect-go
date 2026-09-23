@@ -19,8 +19,10 @@ custom := components.LLMMetrics("custom_value")
 | Name                                         | Value                                        |
 | -------------------------------------------- | -------------------------------------------- |
 | `LLMMetricsTotalTokens`                      | total_tokens                                 |
+| `LLMMetricsTotalTokensPerMinute`             | total_tokens_per_minute                      |
 | `LLMMetricsPromptTokens`                     | prompt_tokens                                |
 | `LLMMetricsCompletionTokens`                 | completion_tokens                            |
+| `LLMMetricsCachedTokens`                     | cached_tokens                                |
 | `LLMMetricsAiRequestCount`                   | ai_request_count                             |
 | `LLMMetricsCost`                             | cost                                         |
 | `LLMMetricsErrorRate`                        | error_rate                                   |
@@ -29,3 +31,5 @@ custom := components.LLMMetrics("custom_value")
 | `LLMMetricsLlmLatencyAverage`                | llm_latency_average                          |
 | `LLMMetricsLlmEmbeddingsTokens`              | llm_embeddings_tokens                        |
 | `LLMMetricsLlmEmbeddingsCost`                | llm_embeddings_cost                          |
+| `LLMMetricsTimeToFirstTokenAverage`          | time_to_first_token_average                  |
+| `LLMMetricsTimePerTokenAverage`              | time_per_token_average                       |
