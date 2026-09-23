@@ -22,6 +22,12 @@ custom := components.AgenticQueryDimensions("custom_value")
 | `AgenticQueryDimensionsA2aError`                  | a2a_error                                         |
 | `AgenticQueryDimensionsA2aMethod`                 | a2a_method                                        |
 | `AgenticQueryDimensionsA2aTaskID`                 | a2a_task_id                                       |
+| `AgenticQueryDimensionsAiGateway`                 | ai_gateway                                        |
+| `AgenticQueryDimensionsAiGatewayAgent`            | ai_gateway_agent                                  |
+| `AgenticQueryDimensionsAiGatewayConsumer`         | ai_gateway_consumer                               |
+| `AgenticQueryDimensionsAiGatewayConsumerGroup`    | ai_gateway_consumer_group                         |
+| `AgenticQueryDimensionsAiGatewayDataPlaneNode`    | ai_gateway_data_plane_node                        |
+| `AgenticQueryDimensionsAiGatewayMcpServer`        | ai_gateway_mcp_server                             |
 | `AgenticQueryDimensionsAPI`                       | api                                               |
 | `AgenticQueryDimensionsAPIPackage`                | api_package                                       |
 | `AgenticQueryDimensionsAPIProduct`                | api_product                                       |
@@ -29,6 +35,7 @@ custom := components.AgenticQueryDimensions("custom_value")
 | `AgenticQueryDimensionsApplication`               | application                                       |
 | `AgenticQueryDimensionsCacheStatus`               | cache_status                                      |
 | `AgenticQueryDimensionsConsumer`                  | consumer                                          |
+| `AgenticQueryDimensionsConsumerGroup`             | consumer_group                                    |
 | `AgenticQueryDimensionsControlPlane`              | control_plane                                     |
 | `AgenticQueryDimensionsControlPlaneGroup`         | control_plane_group                               |
 | `AgenticQueryDimensionsCountryCode`               | country_code                                      |

@@ -39,6 +39,12 @@ const (
 	AgenticQueryDimensionsA2aError                  AgenticQueryDimensions = "a2a_error"
 	AgenticQueryDimensionsA2aMethod                 AgenticQueryDimensions = "a2a_method"
 	AgenticQueryDimensionsA2aTaskID                 AgenticQueryDimensions = "a2a_task_id"
+	AgenticQueryDimensionsAiGateway                 AgenticQueryDimensions = "ai_gateway"
+	AgenticQueryDimensionsAiGatewayAgent            AgenticQueryDimensions = "ai_gateway_agent"
+	AgenticQueryDimensionsAiGatewayConsumer         AgenticQueryDimensions = "ai_gateway_consumer"
+	AgenticQueryDimensionsAiGatewayConsumerGroup    AgenticQueryDimensions = "ai_gateway_consumer_group"
+	AgenticQueryDimensionsAiGatewayDataPlaneNode    AgenticQueryDimensions = "ai_gateway_data_plane_node"
+	AgenticQueryDimensionsAiGatewayMcpServer        AgenticQueryDimensions = "ai_gateway_mcp_server"
 	AgenticQueryDimensionsAPI                       AgenticQueryDimensions = "api"
 	AgenticQueryDimensionsAPIPackage                AgenticQueryDimensions = "api_package"
 	AgenticQueryDimensionsAPIProduct                AgenticQueryDimensions = "api_product"
@@ -46,6 +52,7 @@ const (
 	AgenticQueryDimensionsApplication               AgenticQueryDimensions = "application"
 	AgenticQueryDimensionsCacheStatus               AgenticQueryDimensions = "cache_status"
 	AgenticQueryDimensionsConsumer                  AgenticQueryDimensions = "consumer"
+	AgenticQueryDimensionsConsumerGroup             AgenticQueryDimensions = "consumer_group"
 	AgenticQueryDimensionsControlPlane              AgenticQueryDimensions = "control_plane"
 	AgenticQueryDimensionsControlPlaneGroup         AgenticQueryDimensions = "control_plane_group"
 	AgenticQueryDimensionsCountryCode               AgenticQueryDimensions = "country_code"
@@ -77,7 +84,7 @@ func (e AgenticQueryDimensions) ToPointer() *AgenticQueryDimensions {
 func (e *AgenticQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "oidc_credential", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
+		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "ai_gateway", "ai_gateway_agent", "ai_gateway_consumer", "ai_gateway_consumer_group", "ai_gateway_data_plane_node", "ai_gateway_mcp_server", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "consumer_group", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "oidc_credential", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}
