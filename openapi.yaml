@@ -66830,6 +66830,7 @@ components:
         - display_name
         - name
         - config
+      x-min-runtime-version: '2.2'
     AIGatewayModelProviderConfigAuthBasic:
       description: |
         Basic auth config for an upstream model provider.
@@ -83583,7 +83584,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.1.4
+    version: 2.1.6
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.3.0
