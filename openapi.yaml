@@ -68774,7 +68774,7 @@ components:
       type: object
       properties:
         code:
-          description: Generated Python code for the MCP server implementation
+          description: Generated code for the Context Interface
           type: string
           example: print("Hello MCP")
       required:
@@ -68847,7 +68847,7 @@ components:
       required:
         - signals
     MCPServerControlPlaneMappingMode:
-      description: Whether the MCP Server deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
+      description: Whether the Context Interface deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
       type: string
       enum:
         - basic
@@ -82748,7 +82748,7 @@ components:
           schema:
             $ref: '#/components/schemas/ListMCPServersCPInfoResponse'
     MCPServerRuntimeResponse:
-      description: A response containing the MCP server runtime configuration
+      description: A response containing the Context Interface runtime configuration
       content:
         application/json:
           schema:
@@ -83662,8 +83662,8 @@ x-input-schemas:
   - title: Konnect Identity
     version: 3.6.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
-  - title: Konnect MCP Servers
-    version: 1.39.0
+  - title: Konnect Context Mesh
+    version: 1.40.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.2.0
