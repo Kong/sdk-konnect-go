@@ -36,7 +36,7 @@ type GetMcpServerRuntimeConfigResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A response containing the MCP server runtime configuration
+	// A response containing the Context Interface runtime configuration
 	MCPServerRuntime *components.MCPServerRuntime
 }
 

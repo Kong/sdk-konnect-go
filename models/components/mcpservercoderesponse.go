@@ -4,7 +4,7 @@
 package components
 
 type MCPServerCodeResponse struct {
-	// Generated Python code for the MCP server implementation
+	// Generated code for the Context Interface
 	Code string `json:"code"`
 }
 
