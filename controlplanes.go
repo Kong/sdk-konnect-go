@@ -351,7 +351,7 @@ func (s *ControlPlanes) ListControlPlanes(ctx context.Context, request operation
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1024,7 +1024,7 @@ func (s *ControlPlanes) GetControlPlane(ctx context.Context, controlPlaneID stri
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

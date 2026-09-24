@@ -308,7 +308,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -643,7 +643,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -967,7 +967,7 @@ func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Cont
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1291,7 +1291,7 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1615,7 +1615,7 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1950,7 +1950,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
