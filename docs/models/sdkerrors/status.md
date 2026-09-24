@@ -1,6 +1,8 @@
 # Status
 
-The HTTP status code.
+The HTTP status code of the error. Useful when passing the response
+body to child properties in a frontend UI. Must be returned as an integer.
+
 
 ## Example Usage
 
@@ -9,12 +11,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 )
 
-value := sdkerrors.StatusFiveHundredAndThree
+value := sdkerrors.StatusFourHundredAndOne
 ```
 
 
 ## Values
 
-| Name                        | Value                       |
-| --------------------------- | --------------------------- |
-| `StatusFiveHundredAndThree` | 503                         |
+| Name                      | Value                     |
+| ------------------------- | ------------------------- |
+| `StatusFourHundredAndOne` | 401                       |

@@ -73,7 +73,8 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
+| sdkerrors.NotAvailableError | 503                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## CreateEventGateway
@@ -139,7 +140,8 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.ConflictError     | 409                         | application/problem+json    |
-| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
+| sdkerrors.NotAvailableError | 503                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## GetEventGateway
@@ -198,7 +200,8 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
+| sdkerrors.NotAvailableError | 503                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## UpdateEventGateway
@@ -263,7 +266,8 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
+| sdkerrors.NotAvailableError | 503                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## PatchEventGateway
@@ -328,7 +332,8 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
+| sdkerrors.NotAvailableError | 503                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## DeleteEventGateway
