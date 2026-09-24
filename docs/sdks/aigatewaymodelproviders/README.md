@@ -157,8 +157,6 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
             case components.AIGatewayModelProviderTypeSagemaker:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
-            case components.AIGatewayModelProviderTypeTypesafe:
-                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderTypesafe is populated
         }
 
     }
@@ -259,8 +257,6 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
             case components.AIGatewayModelProviderTypeSagemaker:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
-            case components.AIGatewayModelProviderTypeTypesafe:
-                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderTypesafe is populated
         }
 
     }
@@ -373,8 +369,6 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderXai is populated
             case components.AIGatewayModelProviderTypeSagemaker:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderSagemaker is populated
-            case components.AIGatewayModelProviderTypeTypesafe:
-                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderTypesafe is populated
         }
 
     }
