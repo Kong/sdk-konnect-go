@@ -32,7 +32,6 @@ const (
 	CreateAIGatewayModelProviderRequestTypeVllm        CreateAIGatewayModelProviderRequestType = "vllm"
 	CreateAIGatewayModelProviderRequestTypeXai         CreateAIGatewayModelProviderRequestType = "xai"
 	CreateAIGatewayModelProviderRequestTypeSagemaker   CreateAIGatewayModelProviderRequestType = "sagemaker"
-	CreateAIGatewayModelProviderRequestTypeTypesafe    CreateAIGatewayModelProviderRequestType = "typesafe"
 )
 
 type CreateAIGatewayModelProviderRequest struct {
@@ -55,7 +54,6 @@ type CreateAIGatewayModelProviderRequest struct {
 	AIGatewayModelProviderVllm        *AIGatewayModelProviderVllm        `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderXai         *AIGatewayModelProviderXai         `queryParam:"inline" union:"member"`
 	AIGatewayModelProviderSagemaker   *AIGatewayModelProviderSagemaker   `queryParam:"inline" union:"member"`
-	AIGatewayModelProviderTypesafe    *AIGatewayModelProviderTypesafe    `queryParam:"inline" union:"member"`
 
 	Type CreateAIGatewayModelProviderRequestType
 }
@@ -228,15 +226,6 @@ func CreateCreateAIGatewayModelProviderRequestSagemaker(sagemaker AIGatewayModel
 	return CreateAIGatewayModelProviderRequest{
 		AIGatewayModelProviderSagemaker: &sagemaker,
 		Type:                            typ,
-	}
-}
-
-func CreateCreateAIGatewayModelProviderRequestTypesafe(typesafe AIGatewayModelProviderTypesafe) CreateAIGatewayModelProviderRequest {
-	typ := CreateAIGatewayModelProviderRequestTypeTypesafe
-
-	return CreateAIGatewayModelProviderRequest{
-		AIGatewayModelProviderTypesafe: &typesafe,
-		Type:                           typ,
 	}
 }
 
@@ -430,15 +419,6 @@ func (u *CreateAIGatewayModelProviderRequest) UnmarshalJSON(data []byte) (err er
 		u.AIGatewayModelProviderSagemaker = aiGatewayModelProviderSagemaker
 		u.Type = CreateAIGatewayModelProviderRequestTypeSagemaker
 		return nil
-	case "typesafe":
-		aiGatewayModelProviderTypesafe := new(AIGatewayModelProviderTypesafe)
-		if err := utils.UnmarshalJSON(data, &aiGatewayModelProviderTypesafe, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == typesafe) type AIGatewayModelProviderTypesafe within CreateAIGatewayModelProviderRequest: %w", string(data), err)
-		}
-
-		u.AIGatewayModelProviderTypesafe = aiGatewayModelProviderTypesafe
-		u.Type = CreateAIGatewayModelProviderRequestTypeTypesafe
-		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateAIGatewayModelProviderRequest", string(data))
@@ -519,10 +499,6 @@ func (u CreateAIGatewayModelProviderRequest) MarshalJSON() ([]byte, error) {
 
 	if u.AIGatewayModelProviderSagemaker != nil {
 		return utils.MarshalJSON(u.AIGatewayModelProviderSagemaker, "", true)
-	}
-
-	if u.AIGatewayModelProviderTypesafe != nil {
-		return utils.MarshalJSON(u.AIGatewayModelProviderTypesafe, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateAIGatewayModelProviderRequest: all fields are null")

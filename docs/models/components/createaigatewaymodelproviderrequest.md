@@ -117,12 +117,6 @@ createAIGatewayModelProviderRequest := components.CreateCreateAIGatewayModelProv
 createAIGatewayModelProviderRequest := components.CreateCreateAIGatewayModelProviderRequestSagemaker(components.AIGatewayModelProviderSagemaker{/* values here */})
 ```
 
-### AIGatewayModelProviderTypesafe
-
-```go
-createAIGatewayModelProviderRequest := components.CreateCreateAIGatewayModelProviderRequestTypesafe(components.AIGatewayModelProviderTypesafe{/* values here */})
-```
-
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -167,7 +161,5 @@ switch createAIGatewayModelProviderRequest.Type {
 		// createAIGatewayModelProviderRequest.AIGatewayModelProviderXai is populated
 	case components.CreateAIGatewayModelProviderRequestTypeSagemaker:
 		// createAIGatewayModelProviderRequest.AIGatewayModelProviderSagemaker is populated
-	case components.CreateAIGatewayModelProviderRequestTypeTypesafe:
-		// createAIGatewayModelProviderRequest.AIGatewayModelProviderTypesafe is populated
 }
 ```
