@@ -84025,7 +84025,7 @@ x-input-schemas:
     version: 1.3.5
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.6.2
+    version: 3.6.3
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.40.0
