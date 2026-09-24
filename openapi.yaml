@@ -20033,6 +20033,9 @@ paths:
       tags:
         - Portal Team Membership
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalTeamDeveloper#create
+        terraform-datasource: null
       operationId: add-developer-to-portal-team
       summary: Add Developer to Team
       description: 'Adds a developer to a team. This associates them with all of the roles that have been assigned to the team, providing specific permissions to perform actions on resources.'
@@ -20063,6 +20066,9 @@ paths:
       - $ref: '#/components/parameters/DeveloperId'
       - $ref: '#/components/parameters/TeamId'
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalTeamDeveloper#delete
+        terraform-datasource: null
       operationId: remove-developer-from-portal-team
       summary: Remove Developer from Team
       description: Removes a developer from a team. This removes the association of the team's roles from the developer.
@@ -83971,7 +83977,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.11.6
+    version: 3.11.7
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2
