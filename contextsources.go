@@ -600,7 +600,7 @@ func (s *ContextSources) CreateContextSource(ctx context.Context, request operat
 }
 
 // GetContextSource - Get a Context Source
-// Retrieve an MCP resource by its ID.
+// Retrieve an Context Source by its ID.
 func (s *ContextSources) GetContextSource(ctx context.Context, sourceID string, opts ...operations.Option) (*operations.GetContextSourceResponse, error) {
 	request := operations.GetContextSourceRequest{
 		SourceID: sourceID,

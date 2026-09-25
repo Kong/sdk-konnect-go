@@ -6,7 +6,33 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// UpsertPlanRequest - Plan upsert request.
+// UpsertPlanRequestSettlementMode - Settlement mode for the plan. When omitted, the existing settlement mode is
+// preserved.
+type UpsertPlanRequestSettlementMode string
+
+const (
+	UpsertPlanRequestSettlementModeCreditThenInvoice UpsertPlanRequestSettlementMode = "credit_then_invoice"
+	UpsertPlanRequestSettlementModeCreditOnly        UpsertPlanRequestSettlementMode = "credit_only"
+)
+
+func (e UpsertPlanRequestSettlementMode) ToPointer() *UpsertPlanRequestSettlementMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpsertPlanRequestSettlementMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "credit_then_invoice", "credit_only":
+			return true
+		}
+	}
+	return false
+}
+
+// UpsertPlanRequest - Plan upsert (update) request. `settlement_mode` is re-declared as optional with
+// no default, so an omitted value leaves the plan's existing settlement mode
+// unchanged.
 type UpsertPlanRequest struct {
 	// Display name of the resource.
 	//
@@ -26,6 +52,9 @@ type UpsertPlanRequest struct {
 	// The plan phases define the pricing ramp for a subscription. A phase switch
 	// occurs only at the end of a billing period. At least one phase is required.
 	Phases []BillingPlanPhase `json:"phases"`
+	// Settlement mode for the plan. When omitted, the existing settlement mode is
+	// preserved.
+	SettlementMode *UpsertPlanRequestSettlementMode `json:"settlement_mode,omitempty"`
 }
 
 func (u UpsertPlanRequest) MarshalJSON() ([]byte, error) {
@@ -72,4 +101,11 @@ func (u *UpsertPlanRequest) GetPhases() []BillingPlanPhase {
 		return []BillingPlanPhase{}
 	}
 	return u.Phases
+}
+
+func (u *UpsertPlanRequest) GetSettlementMode() *UpsertPlanRequestSettlementMode {
+	if u == nil {
+		return nil
+	}
+	return u.SettlementMode
 }

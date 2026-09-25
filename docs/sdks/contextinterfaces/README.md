@@ -9,14 +9,14 @@
 * [GetContextInterface](#getcontextinterface) - Get Context Interface
 * [UpdateContextInterface](#updatecontextinterface) - Update MCP Server
 * [PatchContextInterface](#patchcontextinterface) - Partially Update Context Interface
-* [DeleteContextInterface](#deletecontextinterface) - Delete MCP Server
+* [DeleteContextInterface](#deletecontextinterface) - Delete Context Interface
 * [ListContextInterfacesByContextSource](#listcontextinterfacesbycontextsource) - List Context Source Context Interfaces
-* [GetMcpServerStatus](#getmcpserverstatus) - Get Context Interface deployment status
-* [GetContextInterfaceGeneratedCode](#getcontextinterfacegeneratedcode) - Get generated code for a Context Interface
+* [GetMcpServerStatus](#getmcpserverstatus) - Get Context Interface Deployment Status
+* [GetContextInterfaceGeneratedCode](#getcontextinterfacegeneratedcode) - Get Generated Code for a Context Interface
 
 ## ListContextInterfaces
 
-Returns an array of MCP server objects.
+Returns an array of Context Interfaces.
 
 ### Example Usage
 
@@ -516,7 +516,7 @@ func main() {
 
 ## GetContextInterfaceGeneratedCode
 
-Generates MCP server Python code from the OpenAPI specifications associated with the Context Interface.
+Generated MCP Server code of a Context Interface.
 
 
 ### Example Usage

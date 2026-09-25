@@ -2,8 +2,10 @@
 
 Tax behavior.
 
-If not specified the billing profile is used to determine the tax behavior. If
-not specified in the billing profile, the provider's default behavior is used.
+This enum is used to specify whether tax is included in the price or excluded
+from the price. If not specified, the billing profile is used to determine the
+tax behavior. If not specified in the billing profile, the provider's default
+behavior is used.
 
 ## Example Usage
 

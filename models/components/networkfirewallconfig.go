@@ -3,7 +3,6 @@
 package components
 
 // NetworkFirewallConfig - Firewall configuration for a network.
-// +kubebuilder:object:generate=true
 type NetworkFirewallConfig struct {
 	// List of allowed CIDR blocks to access a network.
 	AllowedCidrBlocks []string `json:"allowed_cidr_blocks,omitempty"`

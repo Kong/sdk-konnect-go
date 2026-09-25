@@ -307,7 +307,7 @@ func (s *Workspaces) ListWorkspaces(ctx context.Context, request operations.List
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -670,7 +670,7 @@ func (s *Workspaces) CreateWorkspace(ctx context.Context, controlPlaneID string,
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1006,7 +1006,7 @@ func (s *Workspaces) GetWorkspace(ctx context.Context, controlPlaneID string, wo
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1344,7 +1344,7 @@ func (s *Workspaces) DeleteWorkspace(ctx context.Context, controlPlaneID string,
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1703,7 +1703,7 @@ func (s *Workspaces) UpsertWorkspace(ctx context.Context, request operations.Ups
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

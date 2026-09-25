@@ -9,8 +9,8 @@ type CreateSkillRequest struct {
 	DisplayName string `json:"display_name"`
 	// A description of the skill.
 	Description string `json:"description"`
-	// The raw SKILL.md content — a markdown document beginning with a YAML frontmatter block.
-	Content string `json:"content"`
+	// Where the skill's content comes from, used in create and update requests. The shape of `config` is determined by `type`.
+	Source SkillSourcePayload `json:"source"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -39,11 +39,15 @@ func (c *CreateSkillRequest) GetDescription() string {
 	return c.Description
 }
 
-func (c *CreateSkillRequest) GetContent() string {
+func (c *CreateSkillRequest) GetSource() SkillSourcePayload {
 	if c == nil {
-		return ""
+		return SkillSourcePayload{}
 	}
-	return c.Content
+	return c.Source
+}
+
+func (c *CreateSkillRequest) GetSourceRaw() *RawSkillSourcePayload {
+	return c.GetSource().RawSkillSourcePayload
 }
 
 func (c *CreateSkillRequest) GetLabels() map[string]string {

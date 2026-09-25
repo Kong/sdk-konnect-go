@@ -26,3 +26,5 @@ custom := components.AIGatewayModelFormatType("custom_value")
 | `AIGatewayModelFormatTypeGemini`      | gemini                                |
 | `AIGatewayModelFormatTypeHuggingface` | huggingface                           |
 | `AIGatewayModelFormatTypeOpenai`      | openai                                |
+| `AIGatewayModelFormatTypePassthrough` | passthrough                           |
+| `AIGatewayModelFormatTypeTypesafe`    | typesafe                              |

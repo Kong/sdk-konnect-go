@@ -3,23 +3,25 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AuthProvider string
+type One string
 
 const (
-	AuthProviderAws   AuthProvider = "aws"
-	AuthProviderGcp   AuthProvider = "gcp"
-	AuthProviderAzure AuthProvider = "azure"
+	OneAws   One = "aws"
+	OneGcp   One = "gcp"
+	OneAzure One = "azure"
 )
 
-func (e AuthProvider) ToPointer() *AuthProvider {
+func (e One) ToPointer() *One {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *AuthProvider) IsExact() bool {
+func (e *One) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "aws", "gcp", "azure":
@@ -27,6 +29,76 @@ func (e *AuthProvider) IsExact() bool {
 		}
 	}
 	return false
+}
+
+type AuthProviderType string
+
+const (
+	AuthProviderTypeOne AuthProviderType = "1"
+	AuthProviderTypeStr AuthProviderType = "str"
+)
+
+type AuthProvider struct {
+	One *One    `queryParam:"inline" union:"member"`
+	Str *string `queryParam:"inline" union:"member"`
+
+	Type AuthProviderType
+}
+
+func CreateAuthProviderOne(one One) AuthProvider {
+	typ := AuthProviderTypeOne
+
+	return AuthProvider{
+		One:  &one,
+		Type: typ,
+	}
+}
+
+func CreateAuthProviderStr(str string) AuthProvider {
+	typ := AuthProviderTypeStr
+
+	return AuthProvider{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *AuthProvider) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AuthProvider{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var one One = One("")
+	if err := utils.UnmarshalJSON(data, &one, "", true, nil); err == nil {
+		u.One = &one
+		u.Type = AuthProviderTypeOne
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = AuthProviderTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AuthProvider", string(data))
+}
+
+func (u AuthProvider) MarshalJSON() ([]byte, error) {
+	if u.One != nil {
+		return utils.MarshalJSON(u.One, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type AuthProvider: all fields are null")
 }
 
 // DatastoreRedisCloudAuthenticationOutput - Cloud-managed Redis authentication. Only the fields relevant to the chosen `auth_provider` need to be set.

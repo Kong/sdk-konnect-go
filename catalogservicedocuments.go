@@ -295,7 +295,7 @@ func (s *CatalogServiceDocuments) CreateCatalogServiceDocument(ctx context.Conte
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -627,7 +627,7 @@ func (s *CatalogServiceDocuments) ListCatalogServiceDocuments(ctx context.Contex
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -921,7 +921,7 @@ func (s *CatalogServiceDocuments) FetchCatalogServiceDocument(ctx context.Contex
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1238,7 +1238,7 @@ func (s *CatalogServiceDocuments) UpdateCatalogServiceDocument(ctx context.Conte
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1513,7 +1513,7 @@ func (s *CatalogServiceDocuments) DeleteCatalogServiceDocument(ctx context.Conte
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1790,7 +1790,7 @@ func (s *CatalogServiceDocuments) MoveCatalogServiceDocument(ctx context.Context
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

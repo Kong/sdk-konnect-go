@@ -8,6 +8,31 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// IntegrationNotInstalledErrorStatus - The HTTP status code of the error. Useful when passing the response
+// body to child properties in a frontend UI. Must be returned as an integer.
+type IntegrationNotInstalledErrorStatus int64
+
+const (
+	IntegrationNotInstalledErrorStatusFourHundredAndFour IntegrationNotInstalledErrorStatus = 404
+)
+
+func (e IntegrationNotInstalledErrorStatus) ToPointer() *IntegrationNotInstalledErrorStatus {
+	return &e
+}
+func (e *IntegrationNotInstalledErrorStatus) UnmarshalJSON(data []byte) error {
+	var v int64
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case 404:
+		*e = IntegrationNotInstalledErrorStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for IntegrationNotInstalledErrorStatus: %v", v)
+	}
+}
+
 // IntegrationNotInstalledErrorType - The error type.
 type IntegrationNotInstalledErrorType string
 
@@ -37,7 +62,7 @@ type IntegrationNotInstalledError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status int64 `json:"status"`
+	Status IntegrationNotInstalledErrorStatus `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.
@@ -69,9 +94,9 @@ func (i *IntegrationNotInstalledError) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (i *IntegrationNotInstalledError) GetStatus() int64 {
+func (i *IntegrationNotInstalledError) GetStatus() IntegrationNotInstalledErrorStatus {
 	if i == nil {
-		return 0
+		return IntegrationNotInstalledErrorStatus(0)
 	}
 	return i.Status
 }

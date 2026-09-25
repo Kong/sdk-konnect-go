@@ -307,7 +307,7 @@ func (s *AIManager) ListVirtualKeys(ctx context.Context, request operations.List
 				return nil, err
 			}
 
-			var out sdkerrors.BaseError
+			var out sdkerrors.InternalError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

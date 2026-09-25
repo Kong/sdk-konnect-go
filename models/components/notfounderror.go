@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 )
 
 // NotFoundError - standard error
@@ -11,7 +12,7 @@ type NotFoundError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status int64 `json:"status"`
+	Status sdkerrors.NotFoundErrorStatus `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.
@@ -43,9 +44,9 @@ func (n *NotFoundError) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (n *NotFoundError) GetStatus() int64 {
+func (n *NotFoundError) GetStatus() sdkerrors.NotFoundErrorStatus {
 	if n == nil {
-		return 0
+		return sdkerrors.NotFoundErrorStatus(0)
 	}
 	return n.Status
 }

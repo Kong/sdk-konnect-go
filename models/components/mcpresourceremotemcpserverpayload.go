@@ -6,7 +6,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// MCPResourceRemoteMCPServerPayloadType - The type of the MCP resource source.
+// MCPResourceRemoteMCPServerPayloadType - The type of the Context Source source.
 type MCPResourceRemoteMCPServerPayloadType string
 
 const (

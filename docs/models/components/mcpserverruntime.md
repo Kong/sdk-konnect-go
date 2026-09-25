@@ -1,6 +1,6 @@
 # MCPServerRuntime
 
-A response containing the MCP server runtime configuration
+A response containing the Context Interface runtime configuration
 
 
 ## Fields

@@ -894,7 +894,7 @@ func (s *Skills) GetContextInterfaceSkill(ctx context.Context, interfaceID strin
 }
 
 // PatchContextInterfaceSkill - Update a Skill
-// Partially update a skill.
+// Partially update a skill. Supplying `source` replaces the skill's source in its entirety and re-runs validation against the new content.
 func (s *Skills) PatchContextInterfaceSkill(ctx context.Context, request operations.PatchContextInterfaceSkillRequest, opts ...operations.Option) (*operations.PatchContextInterfaceSkillResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -2052,7 +2052,7 @@ func (s *Skills) ListContextInterfaceSkills(ctx context.Context, request operati
 }
 
 // CreateContextInterfaceSkill - Create a Skill
-// Create a skill for the specified Context Interface.
+// Create a skill for the specified Context Interface. The `source` determines where the skill's content comes from.
 func (s *Skills) CreateContextInterfaceSkill(ctx context.Context, interfaceID string, createSkillRequest components.CreateSkillRequest, opts ...operations.Option) (*operations.CreateContextInterfaceSkillResponse, error) {
 	request := operations.CreateContextInterfaceSkillRequest{
 		InterfaceID:        interfaceID,

@@ -1,0 +1,11 @@
+# ReplaceAISettingsRequest
+
+Replaces AI settings for a portal.
+
+
+## Fields
+
+| Field                                                                                                                         | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `Enabled`                                                                                                                     | `*bool`                                                                                                                       | :heavy_minus_sign:                                                                                                            | Whether AI is enabled or not                                                                                                  |
+| `Features`                                                                                                                    | [components.ReplaceAISettingsRequestFeatures](../../models/components/replaceaisettingsrequestfeatures.md)                    | :heavy_check_mark:                                                                                                            | AI Features configuration. When top-level `enabled` is false, every feature toggle here must be automatically reset to false. |

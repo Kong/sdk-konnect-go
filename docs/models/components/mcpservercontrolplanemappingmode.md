@@ -1,6 +1,6 @@
 # MCPServerControlPlaneMappingMode
 
-Whether the MCP Server deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
+Whether the Context Interface deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
 
 ## Example Usage
 

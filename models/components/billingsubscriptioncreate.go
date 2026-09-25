@@ -3,6 +3,8 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -197,6 +199,80 @@ func (c *CustomPlan) GetPhases() []BillingPlanPhase {
 	return c.Phases
 }
 
+type BillingSubscriptionCreateTimingType string
+
+const (
+	BillingSubscriptionCreateTimingTypeBillingSubscriptionCreateTimingEnum BillingSubscriptionCreateTimingType = "BillingSubscriptionCreateTimingEnum"
+	BillingSubscriptionCreateTimingTypeDateTime                            BillingSubscriptionCreateTimingType = "date-time"
+)
+
+// BillingSubscriptionCreateTiming - When the subscription should start. If not provided, the subscription starts
+// immediately. Provide a future timestamp to schedule the subscription to start
+// later — this creates a not-yet-active, scheduled subscription. A timestamp in
+// the past is rejected.
+type BillingSubscriptionCreateTiming struct {
+	BillingSubscriptionCreateTimingEnum *BillingSubscriptionCreateTimingEnum `queryParam:"inline" union:"member"`
+	DateTime                            *time.Time                           `queryParam:"inline" union:"member"`
+
+	Type BillingSubscriptionCreateTimingType
+}
+
+func CreateBillingSubscriptionCreateTimingBillingSubscriptionCreateTimingEnum(billingSubscriptionCreateTimingEnum BillingSubscriptionCreateTimingEnum) BillingSubscriptionCreateTiming {
+	typ := BillingSubscriptionCreateTimingTypeBillingSubscriptionCreateTimingEnum
+
+	return BillingSubscriptionCreateTiming{
+		BillingSubscriptionCreateTimingEnum: &billingSubscriptionCreateTimingEnum,
+		Type:                                typ,
+	}
+}
+
+func CreateBillingSubscriptionCreateTimingDateTime(dateTime time.Time) BillingSubscriptionCreateTiming {
+	typ := BillingSubscriptionCreateTimingTypeDateTime
+
+	return BillingSubscriptionCreateTiming{
+		DateTime: &dateTime,
+		Type:     typ,
+	}
+}
+
+func (u *BillingSubscriptionCreateTiming) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = BillingSubscriptionCreateTiming{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var billingSubscriptionCreateTimingEnum BillingSubscriptionCreateTimingEnum = BillingSubscriptionCreateTimingEnum("")
+	if err := utils.UnmarshalJSON(data, &billingSubscriptionCreateTimingEnum, "", true, nil); err == nil {
+		u.BillingSubscriptionCreateTimingEnum = &billingSubscriptionCreateTimingEnum
+		u.Type = BillingSubscriptionCreateTimingTypeBillingSubscriptionCreateTimingEnum
+		return nil
+	}
+
+	var dateTime time.Time = time.Time{}
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, nil); err == nil {
+		u.DateTime = &dateTime
+		u.Type = BillingSubscriptionCreateTimingTypeDateTime
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for BillingSubscriptionCreateTiming", string(data))
+}
+
+func (u BillingSubscriptionCreateTiming) MarshalJSON() ([]byte, error) {
+	if u.BillingSubscriptionCreateTimingEnum != nil {
+		return utils.MarshalJSON(u.BillingSubscriptionCreateTimingEnum, "", true)
+	}
+
+	if u.DateTime != nil {
+		return utils.MarshalJSON(u.DateTime, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type BillingSubscriptionCreateTiming: all fields are null")
+}
+
 // CostBasisMode - Controls how custom-currency cost bases are selected for the subscription.
 type CostBasisMode string
 
@@ -248,6 +324,17 @@ type BillingSubscriptionCreate struct {
 	// Exactly one of `plan` or `custom_plan` must be provided. The subscription is not
 	// linked to a persisted plan, so the response omits the `plan` reference.
 	CustomPlan *CustomPlan `json:"custom_plan,omitempty"`
+	// The key of the phase to start the subscription in. If not provided, the
+	// subscription starts in the first phase of the plan.
+	//
+	// Only applies when creating from a published `plan`; custom plans define their
+	// own phases inline.
+	StartingPhase *string `json:"starting_phase,omitempty"`
+	// When the subscription should start. If not provided, the subscription starts
+	// immediately. Provide a future timestamp to schedule the subscription to start
+	// later — this creates a not-yet-active, scheduled subscription. A timestamp in
+	// the past is rejected.
+	Timing *BillingSubscriptionCreateTiming `json:"timing,omitempty"`
 	// A billing anchor is the fixed point in time that determines the subscription's
 	// recurring billing cycle. It affects when charges occur and how prorations are
 	// calculated. Common anchors:
@@ -307,6 +394,20 @@ func (b *BillingSubscriptionCreate) GetCustomPlan() *CustomPlan {
 		return nil
 	}
 	return b.CustomPlan
+}
+
+func (b *BillingSubscriptionCreate) GetStartingPhase() *string {
+	if b == nil {
+		return nil
+	}
+	return b.StartingPhase
+}
+
+func (b *BillingSubscriptionCreate) GetTiming() *BillingSubscriptionCreateTiming {
+	if b == nil {
+		return nil
+	}
+	return b.Timing
 }
 
 func (b *BillingSubscriptionCreate) GetBillingAnchor() *time.Time {

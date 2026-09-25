@@ -162,9 +162,9 @@ func (c *CustomerBillingAddress) GetPhoneNumber() *string {
 	return c.PhoneNumber
 }
 
-// CustomerBillingCustomer - Customers can be individuals or organizations that can subscribe to plans and
+// BillingChargeFlatFeeCustomerBillingCustomer - Customers can be individuals or organizations that can subscribe to plans and
 // have access to features.
-type CustomerBillingCustomer struct {
+type BillingChargeFlatFeeCustomerBillingCustomer struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
 	// Display name of the resource.
@@ -199,106 +199,106 @@ type CustomerBillingCustomer struct {
 	BillingAddress *CustomerBillingAddress `json:"billing_address,omitempty"`
 }
 
-func (c CustomerBillingCustomer) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (b BillingChargeFlatFeeCustomerBillingCustomer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
 }
 
-func (c *CustomerBillingCustomer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "created_at", "updated_at", "key"}); err != nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id", "name", "created_at", "updated_at", "key"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *CustomerBillingCustomer) GetID() string {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetID() string {
+	if b == nil {
 		return ""
 	}
-	return c.ID
+	return b.ID
 }
 
-func (c *CustomerBillingCustomer) GetName() string {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetName() string {
+	if b == nil {
 		return ""
 	}
-	return c.Name
+	return b.Name
 }
 
-func (c *CustomerBillingCustomer) GetDescription() *string {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetDescription() *string {
+	if b == nil {
 		return nil
 	}
-	return c.Description
+	return b.Description
 }
 
-func (c *CustomerBillingCustomer) GetLabels() map[string]string {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetLabels() map[string]string {
+	if b == nil {
 		return nil
 	}
-	return c.Labels
+	return b.Labels
 }
 
-func (c *CustomerBillingCustomer) GetCreatedAt() time.Time {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetCreatedAt() time.Time {
+	if b == nil {
 		return time.Time{}
 	}
-	return c.CreatedAt
+	return b.CreatedAt
 }
 
-func (c *CustomerBillingCustomer) GetUpdatedAt() time.Time {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetUpdatedAt() time.Time {
+	if b == nil {
 		return time.Time{}
 	}
-	return c.UpdatedAt
+	return b.UpdatedAt
 }
 
-func (c *CustomerBillingCustomer) GetDeletedAt() *time.Time {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetDeletedAt() *time.Time {
+	if b == nil {
 		return nil
 	}
-	return c.DeletedAt
+	return b.DeletedAt
 }
 
-func (c *CustomerBillingCustomer) GetKey() string {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetKey() string {
+	if b == nil {
 		return ""
 	}
-	return c.Key
+	return b.Key
 }
 
-func (c *CustomerBillingCustomer) GetUsageAttribution() *CustomerUsageAttribution {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetUsageAttribution() *CustomerUsageAttribution {
+	if b == nil {
 		return nil
 	}
-	return c.UsageAttribution
+	return b.UsageAttribution
 }
 
-func (c *CustomerBillingCustomer) GetPrimaryEmail() *string {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetPrimaryEmail() *string {
+	if b == nil {
 		return nil
 	}
-	return c.PrimaryEmail
+	return b.PrimaryEmail
 }
 
-func (c *CustomerBillingCustomer) GetCurrency() *string {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetCurrency() *string {
+	if b == nil {
 		return nil
 	}
-	return c.Currency
+	return b.Currency
 }
 
-func (c *CustomerBillingCustomer) GetBillingAddress() *CustomerBillingAddress {
-	if c == nil {
+func (b *BillingChargeFlatFeeCustomerBillingCustomer) GetBillingAddress() *CustomerBillingAddress {
+	if b == nil {
 		return nil
 	}
-	return c.BillingAddress
+	return b.BillingAddress
 }
 
 type BillingChargeFlatFeeCustomerType string
 
 const (
-	BillingChargeFlatFeeCustomerTypeCustomerBillingCustomer BillingChargeFlatFeeCustomerType = "Customer_BillingCustomer"
-	BillingChargeFlatFeeCustomerTypeCustomerReference       BillingChargeFlatFeeCustomerType = "CustomerReference"
+	BillingChargeFlatFeeCustomerTypeBillingChargeFlatFeeCustomerBillingCustomer BillingChargeFlatFeeCustomerType = "BillingChargeFlatFee_Customer_BillingCustomer"
+	BillingChargeFlatFeeCustomerTypeCustomerReference                           BillingChargeFlatFeeCustomerType = "CustomerReference"
 )
 
 // BillingChargeFlatFeeCustomer - The customer owning the charge.
@@ -306,18 +306,18 @@ const (
 // By default, only the `id` of the customer is returned. For more details use the
 // `customer` expand.
 type BillingChargeFlatFeeCustomer struct {
-	CustomerBillingCustomer *CustomerBillingCustomer `queryParam:"inline" union:"member"`
-	CustomerReference       *CustomerReference       `queryParam:"inline" union:"member"`
+	BillingChargeFlatFeeCustomerBillingCustomer *BillingChargeFlatFeeCustomerBillingCustomer `queryParam:"inline" union:"member"`
+	CustomerReference                           *CustomerReference                           `queryParam:"inline" union:"member"`
 
 	Type BillingChargeFlatFeeCustomerType
 }
 
-func CreateBillingChargeFlatFeeCustomerCustomerBillingCustomer(customerBillingCustomer CustomerBillingCustomer) BillingChargeFlatFeeCustomer {
-	typ := BillingChargeFlatFeeCustomerTypeCustomerBillingCustomer
+func CreateBillingChargeFlatFeeCustomerBillingChargeFlatFeeCustomerBillingCustomer(billingChargeFlatFeeCustomerBillingCustomer BillingChargeFlatFeeCustomerBillingCustomer) BillingChargeFlatFeeCustomer {
+	typ := BillingChargeFlatFeeCustomerTypeBillingChargeFlatFeeCustomerBillingCustomer
 
 	return BillingChargeFlatFeeCustomer{
-		CustomerBillingCustomer: &customerBillingCustomer,
-		Type:                    typ,
+		BillingChargeFlatFeeCustomerBillingCustomer: &billingChargeFlatFeeCustomerBillingCustomer,
+		Type: typ,
 	}
 }
 
@@ -339,10 +339,10 @@ func (u *BillingChargeFlatFeeCustomer) UnmarshalJSON(data []byte) (err error) {
 		}
 	}()
 
-	var customerBillingCustomer CustomerBillingCustomer = CustomerBillingCustomer{}
-	if err := utils.UnmarshalJSON(data, &customerBillingCustomer, "", true, nil); err == nil {
-		u.CustomerBillingCustomer = &customerBillingCustomer
-		u.Type = BillingChargeFlatFeeCustomerTypeCustomerBillingCustomer
+	var billingChargeFlatFeeCustomerBillingCustomer BillingChargeFlatFeeCustomerBillingCustomer = BillingChargeFlatFeeCustomerBillingCustomer{}
+	if err := utils.UnmarshalJSON(data, &billingChargeFlatFeeCustomerBillingCustomer, "", true, nil); err == nil {
+		u.BillingChargeFlatFeeCustomerBillingCustomer = &billingChargeFlatFeeCustomerBillingCustomer
+		u.Type = BillingChargeFlatFeeCustomerTypeBillingChargeFlatFeeCustomerBillingCustomer
 		return nil
 	}
 
@@ -357,8 +357,8 @@ func (u *BillingChargeFlatFeeCustomer) UnmarshalJSON(data []byte) (err error) {
 }
 
 func (u BillingChargeFlatFeeCustomer) MarshalJSON() ([]byte, error) {
-	if u.CustomerBillingCustomer != nil {
-		return utils.MarshalJSON(u.CustomerBillingCustomer, "", true)
+	if u.BillingChargeFlatFeeCustomerBillingCustomer != nil {
+		return utils.MarshalJSON(u.BillingChargeFlatFeeCustomerBillingCustomer, "", true)
 	}
 
 	if u.CustomerReference != nil {
@@ -1237,23 +1237,23 @@ func (e *SettlementMode) IsExact() bool {
 	return false
 }
 
-// TaxBehavior - Tax behavior.
+// BillingChargeFlatFeeTaxBehavior - Tax behavior.
 //
 // If not specified the billing profile is used to determine the tax behavior. If
 // not specified in the billing profile, the provider's default behavior is used.
-type TaxBehavior string
+type BillingChargeFlatFeeTaxBehavior string
 
 const (
-	TaxBehaviorInclusive TaxBehavior = "inclusive"
-	TaxBehaviorExclusive TaxBehavior = "exclusive"
+	BillingChargeFlatFeeTaxBehaviorInclusive BillingChargeFlatFeeTaxBehavior = "inclusive"
+	BillingChargeFlatFeeTaxBehaviorExclusive BillingChargeFlatFeeTaxBehavior = "exclusive"
 )
 
-func (e TaxBehavior) ToPointer() *TaxBehavior {
+func (e BillingChargeFlatFeeTaxBehavior) ToPointer() *BillingChargeFlatFeeTaxBehavior {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *TaxBehavior) IsExact() bool {
+func (e *BillingChargeFlatFeeTaxBehavior) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "inclusive", "exclusive":
@@ -1349,7 +1349,7 @@ type TaxConfiguration struct {
 	//
 	// If not specified the billing profile is used to determine the tax behavior. If
 	// not specified in the billing profile, the provider's default behavior is used.
-	Behavior *TaxBehavior `json:"behavior,omitempty"`
+	Behavior *BillingChargeFlatFeeTaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -1381,7 +1381,7 @@ func (t *TaxConfiguration) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (t *TaxConfiguration) GetBehavior() *TaxBehavior {
+func (t *TaxConfiguration) GetBehavior() *BillingChargeFlatFeeTaxBehavior {
 	if t == nil {
 		return nil
 	}
@@ -2371,6 +2371,11 @@ type BillingChargeFlatFee struct {
 	ResolvedCostBasis *ResolvedCostBasis `json:"resolved_cost_basis,omitempty"`
 	// The lifecycle status of the charge.
 	Status BillingChargeFlatFeeStatus `json:"status"`
+	// Validation issues found while processing the charge.
+	//
+	// Present only when there are one or more validation findings. An empty list is
+	// omitted.
+	ValidationIssues []BillingValidationIssue `json:"validation_issues,omitempty"`
 	// The timestamp when the charge is intended to be invoiced.
 	InvoiceAt time.Time `json:"invoice_at"`
 	// The effective service period covered by the charge.
@@ -2515,6 +2520,13 @@ func (b *BillingChargeFlatFee) GetStatus() BillingChargeFlatFeeStatus {
 		return BillingChargeFlatFeeStatus("")
 	}
 	return b.Status
+}
+
+func (b *BillingChargeFlatFee) GetValidationIssues() []BillingValidationIssue {
+	if b == nil {
+		return nil
+	}
+	return b.ValidationIssues
 }
 
 func (b *BillingChargeFlatFee) GetInvoiceAt() time.Time {

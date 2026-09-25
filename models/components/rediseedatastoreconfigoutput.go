@@ -3,8 +3,82 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type RedisEEDatastoreConfigPortType string
+
+const (
+	RedisEEDatastoreConfigPortTypeInteger RedisEEDatastoreConfigPortType = "integer"
+	RedisEEDatastoreConfigPortTypeStr     RedisEEDatastoreConfigPortType = "str"
+)
+
+// RedisEEDatastoreConfigPort - An integer representing a port number between 0 and 65535, inclusive.
+// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+type RedisEEDatastoreConfigPort struct {
+	Integer *int64  `queryParam:"inline" union:"member"`
+	Str     *string `queryParam:"inline" union:"member"`
+
+	Type RedisEEDatastoreConfigPortType
+}
+
+func CreateRedisEEDatastoreConfigPortInteger(integer int64) RedisEEDatastoreConfigPort {
+	typ := RedisEEDatastoreConfigPortTypeInteger
+
+	return RedisEEDatastoreConfigPort{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func CreateRedisEEDatastoreConfigPortStr(str string) RedisEEDatastoreConfigPort {
+	typ := RedisEEDatastoreConfigPortTypeStr
+
+	return RedisEEDatastoreConfigPort{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *RedisEEDatastoreConfigPort) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = RedisEEDatastoreConfigPort{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
+		u.Integer = &integer
+		u.Type = RedisEEDatastoreConfigPortTypeInteger
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = RedisEEDatastoreConfigPortTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RedisEEDatastoreConfigPort", string(data))
+}
+
+func (u RedisEEDatastoreConfigPort) MarshalJSON() ([]byte, error) {
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type RedisEEDatastoreConfigPort: all fields are null")
+}
 
 type SentinelRole string
 
@@ -90,9 +164,12 @@ func (c *ClusterNodes) GetPort() int64 {
 }
 
 type RedisEEDatastoreConfigOutput struct {
-	Host     string  `json:"host"`
-	Port     *int64  `json:"port,omitempty"`
-	Username *string `json:"username,omitempty"`
+	Host string `json:"host"`
+	// An integer representing a port number between 0 and 65535, inclusive.
+	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+	//
+	Port     *RedisEEDatastoreConfigPort `json:"port,omitempty"`
+	Username *string                     `json:"username,omitempty"`
 	// The Redis database index to use.
 	Database          *int64 `json:"database,omitempty"`
 	ConnectTimeout    *int64 `json:"connect_timeout,omitempty"`
@@ -133,7 +210,7 @@ func (r *RedisEEDatastoreConfigOutput) GetHost() string {
 	return r.Host
 }
 
-func (r *RedisEEDatastoreConfigOutput) GetPort() *int64 {
+func (r *RedisEEDatastoreConfigOutput) GetPort() *RedisEEDatastoreConfigPort {
 	if r == nil {
 		return nil
 	}
@@ -267,10 +344,13 @@ func (r *RedisEEDatastoreConfigOutput) GetCloudAuthentication() *DatastoreRedisC
 }
 
 type RedisEEDatastoreConfig struct {
-	Host     string  `json:"host"`
-	Port     *int64  `json:"port,omitempty"`
-	Username *string `json:"username,omitempty"`
-	Password *string `json:"password,omitempty"`
+	Host string `json:"host"`
+	// An integer representing a port number between 0 and 65535, inclusive.
+	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+	//
+	Port     *RedisEEDatastoreConfigPort `json:"port,omitempty"`
+	Username *string                     `json:"username,omitempty"`
+	Password *string                     `json:"password,omitempty"`
 	// The Redis database index to use.
 	Database          *int64 `json:"database,omitempty"`
 	ConnectTimeout    *int64 `json:"connect_timeout,omitempty"`
@@ -312,7 +392,7 @@ func (r *RedisEEDatastoreConfig) GetHost() string {
 	return r.Host
 }
 
-func (r *RedisEEDatastoreConfig) GetPort() *int64 {
+func (r *RedisEEDatastoreConfig) GetPort() *RedisEEDatastoreConfigPort {
 	if r == nil {
 		return nil
 	}

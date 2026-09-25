@@ -2,6 +2,79 @@
 
 package components
 
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
+type PatchSkillRequestSourceType string
+
+const (
+	PatchSkillRequestSourceTypeRaw PatchSkillRequestSourceType = "raw"
+)
+
+// PatchSkillRequestSource - Replaces the existing source in its entirety — partial updates to individual source attributes are not supported. The source `type` cannot be changed after creation.
+type PatchSkillRequestSource struct {
+	RawSkillSourcePayload *RawSkillSourcePayload `queryParam:"inline" union:"member"`
+
+	Type PatchSkillRequestSourceType
+}
+
+func CreatePatchSkillRequestSourceRaw(raw RawSkillSourcePayload) PatchSkillRequestSource {
+	typ := PatchSkillRequestSourceTypeRaw
+
+	typStr := RawSkillSourcePayloadType(typ)
+	raw.Type = typStr
+
+	return PatchSkillRequestSource{
+		RawSkillSourcePayload: &raw,
+		Type:                  typ,
+	}
+}
+
+func (u *PatchSkillRequestSource) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = PatchSkillRequestSource{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "raw":
+		rawSkillSourcePayload := new(RawSkillSourcePayload)
+		if err := utils.UnmarshalJSON(data, &rawSkillSourcePayload, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == raw) type RawSkillSourcePayload within PatchSkillRequestSource: %w", string(data), err)
+		}
+
+		u.RawSkillSourcePayload = rawSkillSourcePayload
+		u.Type = PatchSkillRequestSourceTypeRaw
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PatchSkillRequestSource", string(data))
+}
+
+func (u PatchSkillRequestSource) MarshalJSON() ([]byte, error) {
+	if u.RawSkillSourcePayload != nil {
+		return utils.MarshalJSON(u.RawSkillSourcePayload, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PatchSkillRequestSource: all fields are null")
+}
+
 type PatchSkillRequest struct {
 	// The machine name of the skill. Must be unique within the MCP server and must match the name declared in the frontmatter.
 	Name *string `json:"name,omitempty"`
@@ -9,8 +82,8 @@ type PatchSkillRequest struct {
 	DisplayName *string `json:"display_name,omitempty"`
 	// A description of the skill.
 	Description *string `json:"description,omitempty"`
-	// The raw SKILL.md content — a markdown document beginning with a YAML frontmatter block.
-	Content *string `json:"content,omitempty"`
+	// Replaces the existing source in its entirety — partial updates to individual source attributes are not supported. The source `type` cannot be changed after creation.
+	Source *PatchSkillRequestSource `json:"source,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -39,11 +112,18 @@ func (p *PatchSkillRequest) GetDescription() *string {
 	return p.Description
 }
 
-func (p *PatchSkillRequest) GetContent() *string {
+func (p *PatchSkillRequest) GetSource() *PatchSkillRequestSource {
 	if p == nil {
 		return nil
 	}
-	return p.Content
+	return p.Source
+}
+
+func (p *PatchSkillRequest) GetSourceRaw() *RawSkillSourcePayload {
+	if v := p.GetSource(); v != nil {
+		return v.RawSkillSourcePayload
+	}
+	return nil
 }
 
 func (p *PatchSkillRequest) GetLabels() map[string]string {

@@ -180,7 +180,7 @@ func main() {
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
 | `interfaceID`                                            | `string`                                                 | :heavy_check_mark:                                       | The ID of the Context Interface.                         |
-| `mappingID`                                              | `string`                                                 | :heavy_check_mark:                                       | The ID of the MCP Server - Control Plane mapping.        |
+| `mappingID`                                              | `string`                                                 | :heavy_check_mark:                                       | The ID of the Context Interface - Control Plane mapping. |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -302,7 +302,7 @@ func main() {
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
 | `interfaceID`                                            | `string`                                                 | :heavy_check_mark:                                       | The ID of the Context Interface.                         |
-| `mappingID`                                              | `string`                                                 | :heavy_check_mark:                                       | The ID of the MCP Server - Control Plane mapping.        |
+| `mappingID`                                              | `string`                                                 | :heavy_check_mark:                                       | The ID of the Context Interface - Control Plane mapping. |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response

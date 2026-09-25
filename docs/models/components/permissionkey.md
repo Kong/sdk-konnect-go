@@ -1,0 +1,11 @@
+# PermissionKey
+
+One key of the response, and the filters selecting the permissions returned under it.
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       | Example                                                                                           |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Key`                                                                                             | `string`                                                                                          | :heavy_check_mark:                                                                                | Name this key's matching permissions are returned under.                                          | control_planes                                                                                    |
+| `Filters`                                                                                         | [][components.PermissionFilter](../../models/components/permissionfilter.md)                      | :heavy_minus_sign:                                                                                | Filters for this key, combined with OR. When omitted or empty, every permission matches this key. |                                                                                                   |

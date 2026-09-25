@@ -249,15 +249,69 @@ func (u UpdateInvoiceStandardLinePrice) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateInvoiceStandardLinePrice: all fields are null")
 }
 
+// UpdateInvoiceStandardLineTaxBehavior - Tax behavior.
+//
+// This enum is used to specify whether tax is included in the price or excluded
+// from the price. If not specified, the billing profile is used to determine the
+// tax behavior. If not specified in the billing profile, the provider's default
+// behavior is used.
+type UpdateInvoiceStandardLineTaxBehavior string
+
+const (
+	UpdateInvoiceStandardLineTaxBehaviorInclusive UpdateInvoiceStandardLineTaxBehavior = "inclusive"
+	UpdateInvoiceStandardLineTaxBehaviorExclusive UpdateInvoiceStandardLineTaxBehavior = "exclusive"
+)
+
+func (e UpdateInvoiceStandardLineTaxBehavior) ToPointer() *UpdateInvoiceStandardLineTaxBehavior {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpdateInvoiceStandardLineTaxBehavior) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "inclusive", "exclusive":
+			return true
+		}
+	}
+	return false
+}
+
+// UpdateInvoiceStandardLineTaxCode - Tax code applied to the invoice line item.
+type UpdateInvoiceStandardLineTaxCode struct {
+	// ULID (Universally Unique Lexicographically Sortable Identifier).
+	ID string `json:"id"`
+}
+
+func (u UpdateInvoiceStandardLineTaxCode) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateInvoiceStandardLineTaxCode) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (u *UpdateInvoiceStandardLineTaxCode) GetID() string {
+	if u == nil {
+		return ""
+	}
+	return u.ID
+}
+
 // UpdateInvoiceStandardLineTaxConfig - Tax configuration snapshot for this line.
 type UpdateInvoiceStandardLineTaxConfig struct {
 	// Tax behavior.
 	//
 	// This enum is used to specify whether tax is included in the price or excluded
-	// from the price.
-	Behavior *BillingTaxBehavior `json:"behavior,omitempty"`
-	// TaxCode reference.
-	Code UpdateResourceReference `json:"code"`
+	// from the price. If not specified, the billing profile is used to determine the
+	// tax behavior. If not specified in the billing profile, the provider's default
+	// behavior is used.
+	Behavior *UpdateInvoiceStandardLineTaxBehavior `json:"behavior,omitempty"`
+	// Tax code applied to the invoice line item.
+	Code *UpdateInvoiceStandardLineTaxCode `json:"code,omitempty"`
 }
 
 func (u UpdateInvoiceStandardLineTaxConfig) MarshalJSON() ([]byte, error) {
@@ -265,22 +319,22 @@ func (u UpdateInvoiceStandardLineTaxConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateInvoiceStandardLineTaxConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"code"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (u *UpdateInvoiceStandardLineTaxConfig) GetBehavior() *BillingTaxBehavior {
+func (u *UpdateInvoiceStandardLineTaxConfig) GetBehavior() *UpdateInvoiceStandardLineTaxBehavior {
 	if u == nil {
 		return nil
 	}
 	return u.Behavior
 }
 
-func (u *UpdateInvoiceStandardLineTaxConfig) GetCode() UpdateResourceReference {
+func (u *UpdateInvoiceStandardLineTaxConfig) GetCode() *UpdateInvoiceStandardLineTaxCode {
 	if u == nil {
-		return UpdateResourceReference{}
+		return nil
 	}
 	return u.Code
 }

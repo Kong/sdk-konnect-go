@@ -74,6 +74,8 @@ type ClientCredentialsApplication struct {
 	DcrProvider *DcrProvider `json:"dcr_provider"`
 	// Information about the portal the application is in.
 	Portal ClientCredentialsApplicationPortal `json:"portal"`
+	// The environment this application is scoped to.
+	Environment *ApplicationEnvironment `json:"environment,omitempty"`
 	// Client Credential Auth strategy that the application uses.
 	AuthStrategy AuthStrategyClientCredentials `json:"auth_strategy"`
 	// List of granted scopes for the application. Null if application type does not support returning granted scopes.
@@ -153,6 +155,13 @@ func (c *ClientCredentialsApplication) GetPortal() ClientCredentialsApplicationP
 		return ClientCredentialsApplicationPortal{}
 	}
 	return c.Portal
+}
+
+func (c *ClientCredentialsApplication) GetEnvironment() *ApplicationEnvironment {
+	if c == nil {
+		return nil
+	}
+	return c.Environment
 }
 
 func (c *ClientCredentialsApplication) GetAuthStrategy() AuthStrategyClientCredentials {

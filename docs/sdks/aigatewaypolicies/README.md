@@ -238,8 +238,10 @@ func main() {
         ManagedBy: map[string]string{
             "owner": "terraform",
         },
-        Datastores: []string{
-            "kong-managed",
+        Datastores: []components.AIGatewayDatastoreRef{
+            components.AIGatewayDatastoreRef{
+                Name: sdkkonnectgo.Pointer("shared-redis"),
+            },
         },
     })
     if err != nil {
@@ -382,8 +384,10 @@ func main() {
             ManagedBy: map[string]string{
                 "owner": "terraform",
             },
-            Datastores: []string{
-                "kong-managed",
+            Datastores: []components.AIGatewayDatastoreRef{
+                components.AIGatewayDatastoreRef{
+                    Name: sdkkonnectgo.Pointer("shared-redis"),
+                },
             },
         },
     })

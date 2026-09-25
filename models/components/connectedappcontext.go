@@ -10,6 +10,8 @@ type ConnectedAppContext struct {
 	Source string `json:"source"`
 	// The subdomain of the authserver.
 	Subdomain string `json:"subdomain"`
+	// The (space-separated) list of consented scope names for the connected app.
+	ConsentedScopeNames *string `json:"consented_scope_names,omitempty"`
 }
 
 func (c *ConnectedAppContext) GetState() string {
@@ -31,4 +33,11 @@ func (c *ConnectedAppContext) GetSubdomain() string {
 		return ""
 	}
 	return c.Subdomain
+}
+
+func (c *ConnectedAppContext) GetConsentedScopeNames() *string {
+	if c == nil {
+		return nil
+	}
+	return c.ConsentedScopeNames
 }

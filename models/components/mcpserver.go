@@ -8,13 +8,13 @@ import (
 )
 
 type MCPServer struct {
-	// The unique identifier for the MCP server.
+	// The unique identifier for the Context Interface.
 	ID string `json:"id"`
-	// The machine name of the MCP server.
+	// The machine name of the Context Interface.
 	Name string `json:"name"`
-	// The human-readable display name of the MCP server.
+	// The human-readable display name of the Context Interface.
 	DisplayName string `json:"display_name"`
-	// A description of the MCP server.
+	// A description of the Context Interface.
 	Description *string `json:"description"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//

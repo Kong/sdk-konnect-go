@@ -8,15 +8,15 @@ import (
 )
 
 type ListContextInterfacesByContextSourceRequest struct {
-	// The ID of the MCP resource.
+	// The ID of the Context Source.
 	SourceID string `pathParam:"style=simple,explode=false,name=sourceId"`
 	// The maximum number of items to include per page. The last page of a collection may include fewer items.
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
-	// Filter for MCP Servers.
+	// Filter for Context Interfaces.
 	Filter *components.MCPServerFilter `queryParam:"style=deepObject,explode=true,name=filter"`
-	// Sorts a collection of MCP Servers. Supported sort attributes are:
+	// Sorts a collection of Context Interfaces. Supported sort attributes are:
 	//   - `name`
 	//   - `created_at`
 	//   - `updated_at`
@@ -68,7 +68,7 @@ type ListContextInterfacesByContextSourceResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A response to listing MCP servers.
+	// A response to listing Context Interfaces.
 	PaginateMCPServersResponse *components.PaginateMCPServersResponse
 }
 

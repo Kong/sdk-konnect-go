@@ -32,7 +32,7 @@ func newContextInterfaces(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks
 }
 
 // ListContextInterfaces - List all Context Interfaces
-// Returns an array of MCP server objects.
+// Returns an array of Context Interfaces.
 func (s *ContextInterfaces) ListContextInterfaces(ctx context.Context, request operations.ListContextInterfacesRequest, opts ...operations.Option) (*operations.ListContextInterfacesResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1536,7 +1536,7 @@ func (s *ContextInterfaces) PatchContextInterface(ctx context.Context, interface
 
 }
 
-// DeleteContextInterface - Delete MCP Server
+// DeleteContextInterface - Delete Context Interface
 // Delete a Context Interface.
 func (s *ContextInterfaces) DeleteContextInterface(ctx context.Context, interfaceID string, opts ...operations.Option) (*operations.DeleteContextInterfaceResponse, error) {
 	request := operations.DeleteContextInterfaceRequest{
@@ -2103,7 +2103,7 @@ func (s *ContextInterfaces) ListContextInterfacesByContextSource(ctx context.Con
 
 }
 
-// GetMcpServerStatus - Get Context Interface deployment status
+// GetMcpServerStatus - Get Context Interface Deployment Status
 // Returns the current aggregated deployment status of a Context Interface.
 func (s *ContextInterfaces) GetMcpServerStatus(ctx context.Context, interfaceID string, opts ...operations.Option) (*operations.GetMcpServerStatusResponse, error) {
 	request := operations.GetMcpServerStatusRequest{
@@ -2396,8 +2396,8 @@ func (s *ContextInterfaces) GetMcpServerStatus(ctx context.Context, interfaceID 
 
 }
 
-// GetContextInterfaceGeneratedCode - Get generated code for a Context Interface
-// Generates MCP server Python code from the OpenAPI specifications associated with the Context Interface.
+// GetContextInterfaceGeneratedCode - Get Generated Code for a Context Interface
+// Generated MCP Server code of a Context Interface.
 func (s *ContextInterfaces) GetContextInterfaceGeneratedCode(ctx context.Context, interfaceID string, opts ...operations.Option) (*operations.GetContextInterfaceGeneratedCodeResponse, error) {
 	request := operations.GetContextInterfaceGeneratedCodeRequest{
 		InterfaceID: interfaceID,

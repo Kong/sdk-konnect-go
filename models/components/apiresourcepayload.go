@@ -8,7 +8,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// APIResourcePayloadType - The type of the MCP resource.
+// APIResourcePayloadType - The type of the Context Source.
 type APIResourcePayloadType string
 
 const (
@@ -33,20 +33,20 @@ func (e *APIResourcePayloadType) UnmarshalJSON(data []byte) error {
 }
 
 type APIResourcePayload struct {
-	// The name of the MCP resource. Must be unique within the organization and follow machine name conventions.
+	// The name of the Context Source. Must be unique within the organization and follow machine name conventions.
 	Name string `json:"name"`
-	// The display name of the MCP resource.
+	// The display name of the Context Source.
 	DisplayName string `json:"display_name"`
-	// A description of the MCP resource.
+	// A description of the Context Source.
 	Description string `json:"description"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels"`
-	// The type of the MCP resource.
+	// The type of the Context Source.
 	Type *APIResourcePayloadType `default:"api" json:"type"`
-	// The source of the MCP resource used in create and update requests.
+	// The source of the Context Source used in create and update requests.
 	Source APIResourceSourcePayload `json:"source"`
 }
 

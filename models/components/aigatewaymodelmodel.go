@@ -19,6 +19,7 @@ const (
 	AIGatewayModelModelCapabilitiesAudioTranslation   AIGatewayModelModelCapabilities = "audio/translation"
 	AIGatewayModelModelCapabilitiesVideo              AIGatewayModelModelCapabilities = "video"
 	AIGatewayModelModelCapabilitiesRerank             AIGatewayModelModelCapabilities = "rerank"
+	AIGatewayModelModelCapabilitiesDecisions          AIGatewayModelModelCapabilities = "decisions"
 )
 
 func (e AIGatewayModelModelCapabilities) ToPointer() *AIGatewayModelModelCapabilities {
@@ -29,7 +30,7 @@ func (e AIGatewayModelModelCapabilities) ToPointer() *AIGatewayModelModelCapabil
 func (e *AIGatewayModelModelCapabilities) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "generate", "agentic", "realtime", "embeddings", "image", "audio/speech", "audio/transcription", "audio/translation", "video", "rerank":
+		case "generate", "agentic", "realtime", "embeddings", "image", "audio/speech", "audio/transcription", "audio/translation", "video", "rerank", "decisions":
 			return true
 		}
 	}
@@ -65,7 +66,7 @@ type AIGatewayModelModel struct {
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Names of the Datastores this model references.
-	Datastores []string `json:"datastores,omitempty"`
+	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"model" json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
@@ -148,7 +149,7 @@ func (a *AIGatewayModelModel) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayModelModel) GetDatastores() []string {
+func (a *AIGatewayModelModel) GetDatastores() []AIGatewayDatastoreRef {
 	if a == nil {
 		return nil
 	}

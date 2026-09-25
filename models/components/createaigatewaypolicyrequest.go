@@ -41,7 +41,7 @@ type CreateAIGatewayPolicyRequest struct {
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Names of the Datastores this policy references.
-	Datastores []string `json:"datastores,omitempty"`
+	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
 }
 
 func (c CreateAIGatewayPolicyRequest) MarshalJSON() ([]byte, error) {
@@ -118,7 +118,7 @@ func (c *CreateAIGatewayPolicyRequest) GetManagedBy() map[string]string {
 	return c.ManagedBy
 }
 
-func (c *CreateAIGatewayPolicyRequest) GetDatastores() []string {
+func (c *CreateAIGatewayPolicyRequest) GetDatastores() []AIGatewayDatastoreRef {
 	if c == nil {
 		return nil
 	}

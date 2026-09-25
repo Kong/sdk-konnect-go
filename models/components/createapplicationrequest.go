@@ -34,8 +34,17 @@ type CreateApplicationRequest struct {
 	//
 	ClientID *string `json:"client_id,omitempty"`
 	// The ID of the authentication strategy the application will use when making requests to registered APIs.
-	AuthStrategyID *string          `json:"auth_strategy_id,omitempty"`
-	Owner          ApplicationOwner `json:"owner"`
+	AuthStrategyID *string `json:"auth_strategy_id,omitempty"`
+	// UUID of the organization environment to bind this application to. When
+	// omitted, the organization default environment is used.
+	//
+	EnvironmentID *string `json:"environment_id,omitempty"`
+	// UUID of an existing application group to join. When omitted, a new 1:1
+	// application group is created for this application. Membership is immutable
+	// after creation.
+	//
+	GroupID *string          `json:"group_id,omitempty"`
+	Owner   ApplicationOwner `json:"owner"`
 }
 
 func (c *CreateApplicationRequest) GetName() string {
@@ -78,6 +87,20 @@ func (c *CreateApplicationRequest) GetAuthStrategyID() *string {
 		return nil
 	}
 	return c.AuthStrategyID
+}
+
+func (c *CreateApplicationRequest) GetEnvironmentID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.EnvironmentID
+}
+
+func (c *CreateApplicationRequest) GetGroupID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.GroupID
 }
 
 func (c *CreateApplicationRequest) GetOwner() ApplicationOwner {

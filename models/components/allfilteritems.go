@@ -9,6 +9,13 @@ const (
 	AllFilterItemsFieldA2aError                  AllFilterItemsField = "a2a_error"
 	AllFilterItemsFieldA2aMethod                 AllFilterItemsField = "a2a_method"
 	AllFilterItemsFieldA2aTaskID                 AllFilterItemsField = "a2a_task_id"
+	AllFilterItemsFieldAiGateway                 AllFilterItemsField = "ai_gateway"
+	AllFilterItemsFieldAiGatewayAgent            AllFilterItemsField = "ai_gateway_agent"
+	AllFilterItemsFieldAiGatewayConsumer         AllFilterItemsField = "ai_gateway_consumer"
+	AllFilterItemsFieldAiGatewayConsumerGroup    AllFilterItemsField = "ai_gateway_consumer_group"
+	AllFilterItemsFieldAiGatewayDataPlaneNode    AllFilterItemsField = "ai_gateway_data_plane_node"
+	AllFilterItemsFieldAiGatewayMcpServer        AllFilterItemsField = "ai_gateway_mcp_server"
+	AllFilterItemsFieldAiGatewayModel            AllFilterItemsField = "ai_gateway_model"
 	AllFilterItemsFieldAiPlugin                  AllFilterItemsField = "ai_plugin"
 	AllFilterItemsFieldAiProvider                AllFilterItemsField = "ai_provider"
 	AllFilterItemsFieldAiRequestModel            AllFilterItemsField = "ai_request_model"
@@ -20,6 +27,7 @@ const (
 	AllFilterItemsFieldApplication               AllFilterItemsField = "application"
 	AllFilterItemsFieldCacheStatus               AllFilterItemsField = "cache_status"
 	AllFilterItemsFieldConsumer                  AllFilterItemsField = "consumer"
+	AllFilterItemsFieldConsumerGroup             AllFilterItemsField = "consumer_group"
 	AllFilterItemsFieldControlPlane              AllFilterItemsField = "control_plane"
 	AllFilterItemsFieldControlPlaneGroup         AllFilterItemsField = "control_plane_group"
 	AllFilterItemsFieldCountryCode               AllFilterItemsField = "country_code"
@@ -62,7 +70,7 @@ func (e AllFilterItemsField) ToPointer() *AllFilterItemsField {
 func (e *AllFilterItemsField) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_group", "data_plane_node", "data_plane_node_version", "env", "gateway_service", "hostname", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "managed_cache", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "network", "oidc_credential", "portal", "principal", "provider", "provider_region", "realm", "region", "response_source", "route", "status_code", "status_code_grouped", "team", "upstream_status_code", "upstream_status_code_grouped":
+		case "a2a_context_id", "a2a_error", "a2a_method", "a2a_task_id", "ai_gateway", "ai_gateway_agent", "ai_gateway_consumer", "ai_gateway_consumer_group", "ai_gateway_data_plane_node", "ai_gateway_mcp_server", "ai_gateway_model", "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "consumer_group", "control_plane", "control_plane_group", "country_code", "data_plane_group", "data_plane_node", "data_plane_node_version", "env", "gateway_service", "hostname", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "managed_cache", "mcp_error", "mcp_method", "mcp_session_id", "mcp_tool_name", "network", "oidc_credential", "portal", "principal", "provider", "provider_region", "realm", "region", "response_source", "route", "status_code", "status_code_grouped", "team", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}

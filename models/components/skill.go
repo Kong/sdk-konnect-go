@@ -3,40 +3,15 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
 
-// SourceType - The source type of the skill content.
-type SourceType string
-
-const (
-	SourceTypeRaw SourceType = "raw"
-)
-
-func (e SourceType) ToPointer() *SourceType {
-	return &e
-}
-func (e *SourceType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "raw":
-		*e = SourceType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for SourceType: %v", v)
-	}
-}
-
-// SkillStatus - The current validation status of the skill.
+// SkillStatus - The current validation status of the skill. `pending` means the content has not yet been read and validated.
 type SkillStatus string
 
 const (
+	SkillStatusPending SkillStatus = "pending"
 	SkillStatusValid   SkillStatus = "valid"
 	SkillStatusInvalid SkillStatus = "invalid"
 )
@@ -49,11 +24,77 @@ func (e SkillStatus) ToPointer() *SkillStatus {
 func (e *SkillStatus) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "valid", "invalid":
+		case "pending", "valid", "invalid":
 			return true
 		}
 	}
 	return false
+}
+
+// SkillSyncStatusStatus - The state of the most recent synchronization attempt.
+type SkillSyncStatusStatus string
+
+const (
+	SkillSyncStatusStatusPending SkillSyncStatusStatus = "pending"
+	SkillSyncStatusStatusSuccess SkillSyncStatusStatus = "success"
+	SkillSyncStatusStatusFailed  SkillSyncStatusStatus = "failed"
+)
+
+func (e SkillSyncStatusStatus) ToPointer() *SkillSyncStatusStatus {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *SkillSyncStatusStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "pending", "success", "failed":
+			return true
+		}
+	}
+	return false
+}
+
+// SyncStatus - The outcome of the most recent attempt to fetch the skill's content from its source. `null` for sources whose content is supplied inline.
+type SyncStatus struct {
+	// The state of the most recent synchronization attempt.
+	Status SkillSyncStatusStatus `json:"status"`
+	// The time the synchronization reached this state.
+	Timestamp time.Time `json:"timestamp"`
+	// The reason the synchronization failed. `null` unless `status` is `failed`.
+	ErrorMessage *string `json:"error_message,omitempty"`
+}
+
+func (s SyncStatus) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SyncStatus) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *SyncStatus) GetStatus() SkillSyncStatusStatus {
+	if s == nil {
+		return SkillSyncStatusStatus("")
+	}
+	return s.Status
+}
+
+func (s *SyncStatus) GetTimestamp() time.Time {
+	if s == nil {
+		return time.Time{}
+	}
+	return s.Timestamp
+}
+
+func (s *SyncStatus) GetErrorMessage() *string {
+	if s == nil {
+		return nil
+	}
+	return s.ErrorMessage
 }
 
 type Skill struct {
@@ -73,10 +114,14 @@ type Skill struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels"`
-	// The source type of the skill content.
-	SourceType SourceType `json:"source_type"`
-	// The current validation status of the skill.
+	// Where the skill's content comes from, as returned by the API. Never includes the content itself — read it through the skill contents endpoint.
+	Source SkillSource `json:"source"`
+	// The current validation status of the skill. `pending` means the content has not yet been read and validated.
 	Status SkillStatus `json:"status"`
+	// The outcome of the most recent attempt to fetch the skill's content from its source. `null` for sources whose content is supplied inline.
+	SyncStatus *SyncStatus `json:"sync_status"`
+	// The reason the skill failed validation. `null` unless `status` is `invalid`.
+	ValidationMessage *string `json:"validation_message"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -143,11 +188,15 @@ func (s *Skill) GetLabels() map[string]string {
 	return s.Labels
 }
 
-func (s *Skill) GetSourceType() SourceType {
+func (s *Skill) GetSource() SkillSource {
 	if s == nil {
-		return SourceType("")
+		return SkillSource{}
 	}
-	return s.SourceType
+	return s.Source
+}
+
+func (s *Skill) GetSourceRaw() *RawSkillSource {
+	return s.GetSource().RawSkillSource
 }
 
 func (s *Skill) GetStatus() SkillStatus {
@@ -155,6 +204,20 @@ func (s *Skill) GetStatus() SkillStatus {
 		return SkillStatus("")
 	}
 	return s.Status
+}
+
+func (s *Skill) GetSyncStatus() *SyncStatus {
+	if s == nil {
+		return nil
+	}
+	return s.SyncStatus
+}
+
+func (s *Skill) GetValidationMessage() *string {
+	if s == nil {
+		return nil
+	}
+	return s.ValidationMessage
 }
 
 func (s *Skill) GetCreatedAt() time.Time {

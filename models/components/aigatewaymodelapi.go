@@ -11,6 +11,7 @@ type Capabilities string
 const (
 	CapabilitiesBatches Capabilities = "batches"
 	CapabilitiesFiles   Capabilities = "files"
+	CapabilitiesSkills  Capabilities = "skills"
 )
 
 func (e Capabilities) ToPointer() *Capabilities {
@@ -21,14 +22,14 @@ func (e Capabilities) ToPointer() *Capabilities {
 func (e *Capabilities) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "batches", "files":
+		case "batches", "files", "skills":
 			return true
 		}
 	}
 	return false
 }
 
-// AIGatewayModelAPI - Configuration for proxying asynchronous requests/responses to/from an AI Gateway model using the files and batches APIs.
+// AIGatewayModelAPI - Configuration for proxying asynchronous requests/responses to/from an AI Gateway model using the files, batches, and skills APIs.
 type AIGatewayModelAPI struct {
 	// The display name for this model instance.
 	DisplayName string `json:"display_name"`
@@ -57,7 +58,7 @@ type AIGatewayModelAPI struct {
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Names of the Datastores this model references.
-	Datastores []string `json:"datastores,omitempty"`
+	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"api" json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
@@ -140,7 +141,7 @@ func (a *AIGatewayModelAPI) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayModelAPI) GetDatastores() []string {
+func (a *AIGatewayModelAPI) GetDatastores() []AIGatewayDatastoreRef {
 	if a == nil {
 		return nil
 	}

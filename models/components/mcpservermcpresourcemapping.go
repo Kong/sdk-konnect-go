@@ -9,7 +9,7 @@ import (
 
 // MCPServerMCPResourceMapping - A response to creating an MCP server MCP resource mapping.
 type MCPServerMCPResourceMapping struct {
-	// The unique identifier for the MCP server MCP resource mapping.
+	// The unique identifier for the Context Inerface Source mapping.
 	ID string `json:"id"`
 	// The ID of the Context Interface.
 	ContextInterfaceID string `json:"context_interface_id"`

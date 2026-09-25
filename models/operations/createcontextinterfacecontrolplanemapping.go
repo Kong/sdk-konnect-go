@@ -34,7 +34,7 @@ type CreateContextInterfaceControlPlaneMappingResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// Details of MCP Server - Control Plane mapping creation.
+	// Details of Context Interface - Control Plane mapping creation.
 	MCPServerControlPlaneMappingInfo *components.MCPServerControlPlaneMappingInfo
 }
 

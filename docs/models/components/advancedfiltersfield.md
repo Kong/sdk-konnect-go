@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.AdvancedFiltersFieldAPI
+value := components.AdvancedFiltersFieldAiGateway
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.AdvancedFiltersField("custom_value")
@@ -18,6 +18,10 @@ custom := components.AdvancedFiltersField("custom_value")
 
 | Name                                            | Value                                           |
 | ----------------------------------------------- | ----------------------------------------------- |
+| `AdvancedFiltersFieldAiGateway`                 | ai_gateway                                      |
+| `AdvancedFiltersFieldAiGatewayConsumer`         | ai_gateway_consumer                             |
+| `AdvancedFiltersFieldAiGatewayConsumerGroup`    | ai_gateway_consumer_group                       |
+| `AdvancedFiltersFieldAiGatewayDataPlaneNode`    | ai_gateway_data_plane_node                      |
 | `AdvancedFiltersFieldAPI`                       | api                                             |
 | `AdvancedFiltersFieldAPIPackage`                | api_package                                     |
 | `AdvancedFiltersFieldAPIProduct`                | api_product                                     |
@@ -25,6 +29,7 @@ custom := components.AdvancedFiltersField("custom_value")
 | `AdvancedFiltersFieldApplication`               | application                                     |
 | `AdvancedFiltersFieldCacheStatus`               | cache_status                                    |
 | `AdvancedFiltersFieldConsumer`                  | consumer                                        |
+| `AdvancedFiltersFieldConsumerGroup`             | consumer_group                                  |
 | `AdvancedFiltersFieldControlPlane`              | control_plane                                   |
 | `AdvancedFiltersFieldControlPlaneGroup`         | control_plane_group                             |
 | `AdvancedFiltersFieldCountryCode`               | country_code                                    |

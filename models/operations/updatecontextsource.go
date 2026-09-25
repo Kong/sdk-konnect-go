@@ -81,7 +81,7 @@ func (u UpdateContextSourceRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateContextSourceRequest struct {
-	// The ID of the MCP resource.
+	// The ID of the Context Source.
 	SourceID    string                         `pathParam:"style=simple,explode=false,name=sourceId"`
 	RequestBody UpdateContextSourceRequestBody `request:"mediaType=application/json"`
 }

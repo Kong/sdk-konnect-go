@@ -7,7 +7,7 @@ import (
 )
 
 type GetContextSourceContentsRequest struct {
-	// The ID of the MCP resource.
+	// The ID of the Context Source.
 	SourceID string `pathParam:"style=simple,explode=false,name=sourceId"`
 }
 

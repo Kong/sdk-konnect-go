@@ -75,7 +75,7 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.BaseError         | 500                         | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListCatalogServiceDocuments
@@ -139,7 +139,7 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.BaseError         | 500                         | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## FetchCatalogServiceDocument
@@ -198,7 +198,7 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.BaseError         | 500                         | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## UpdateCatalogServiceDocument
@@ -265,7 +265,7 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.BaseError         | 500                         | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## DeleteCatalogServiceDocument
@@ -324,7 +324,7 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.BaseError         | 500                         | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## MoveCatalogServiceDocument
@@ -390,5 +390,5 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.BaseError         | 500                         | application/problem+json    |
+| sdkerrors.InternalError     | 500                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |

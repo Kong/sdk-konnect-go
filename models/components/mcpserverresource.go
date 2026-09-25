@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-// McpServerResourceType - The type of the MCP resource.
+// McpServerResourceType - The type of the Context Source.
 type McpServerResourceType string
 
 const (
@@ -35,13 +35,13 @@ func (e *McpServerResourceType) UnmarshalJSON(data []byte) error {
 
 // McpServerResource - The MCP resource object.
 type McpServerResource struct {
-	// The unique identifier for the MCP resource.
+	// The unique identifier for the Context Source.
 	ID string `json:"id"`
-	// The unique name of the MCP resource.
+	// The unique name of the Context Source.
 	Name string `json:"name"`
-	// The display name of the MCP resource.
+	// The display name of the Context Source.
 	DisplayName string `json:"display_name"`
-	// A description of the MCP resource.
+	// A description of the Context Source.
 	Description string `json:"description"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
@@ -52,7 +52,7 @@ type McpServerResource struct {
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
-	// The type of the MCP resource.
+	// The type of the Context Source.
 	Type   McpServerResourceType             `json:"type"`
 	Source MCPResourceRemoteMCPServerPayload `json:"source"`
 }

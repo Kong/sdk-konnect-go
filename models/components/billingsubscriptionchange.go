@@ -324,6 +324,12 @@ type BillingSubscriptionChange struct {
 	// Exactly one of `plan` or `custom_plan` must be provided. The subscription is not
 	// linked to a persisted plan, so the response omits the `plan` reference.
 	CustomPlan *BillingSubscriptionChangeCustomPlan `json:"custom_plan,omitempty"`
+	// The key of the phase to start the subscription in. If not provided, the
+	// subscription starts in the first phase of the plan.
+	//
+	// Only applies when creating from a published `plan`; custom plans define their
+	// own phases inline.
+	StartingPhase *string `json:"starting_phase,omitempty"`
 	// A billing anchor is the fixed point in time that determines the subscription's
 	// recurring billing cycle. It affects when charges occur and how prorations are
 	// calculated. Common anchors:
@@ -387,6 +393,13 @@ func (b *BillingSubscriptionChange) GetCustomPlan() *BillingSubscriptionChangeCu
 		return nil
 	}
 	return b.CustomPlan
+}
+
+func (b *BillingSubscriptionChange) GetStartingPhase() *string {
+	if b == nil {
+		return nil
+	}
+	return b.StartingPhase
 }
 
 func (b *BillingSubscriptionChange) GetBillingAnchor() *time.Time {

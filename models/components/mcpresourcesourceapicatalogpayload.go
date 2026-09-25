@@ -34,7 +34,7 @@ func (e *MCPResourceSourceAPICatalogPayloadType) UnmarshalJSON(data []byte) erro
 // MCPResourceSourceAPICatalogPayload - An MCP resource sourced from an API catalog entry.
 type MCPResourceSourceAPICatalogPayload struct {
 	Type MCPResourceSourceAPICatalogPayloadType `json:"type"`
-	// Identifies the API catalog entry the MCP resource was sourced from.
+	// Identifies the API catalog entry the Context Source was sourced from.
 	Config MCPResourceSourceAPICatalogConfigPayload `json:"config"`
 }
 

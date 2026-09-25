@@ -2,7 +2,7 @@
 
 package components
 
-// MCPServerStatusResponseStatus - Aggregated deployment status of the MCP server.
+// MCPServerStatusResponseStatus - Aggregated deployment status of the Context Interface.
 // - `deploying` — single version with desired replicas not yet fully ready.
 // - `healthy` — single version running with no failing pods.
 // - `pending` — no deployment status has been reported yet.
@@ -34,7 +34,7 @@ func (e *MCPServerStatusResponseStatus) IsExact() bool {
 }
 
 type MCPServerStatusResponse struct {
-	// Aggregated deployment status of the MCP server.
+	// Aggregated deployment status of the Context Interface.
 	// - `deploying` — single version with desired replicas not yet fully ready.
 	// - `healthy` — single version running with no failing pods.
 	// - `pending` — no deployment status has been reported yet.

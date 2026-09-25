@@ -30,7 +30,7 @@ type ListCustomerChargesRequest struct {
 	//
 	// See the `service_period_from` filter field for expressing a service-period
 	// window query.
-	Filter *components.ListChargesParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *components.ListCustomerChargesParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Expand full objects for referenced entities.
 	//
 	// Supported values are:
@@ -68,7 +68,7 @@ func (l *ListCustomerChargesRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListCustomerChargesRequest) GetFilter() *components.ListChargesParamsFilter {
+func (l *ListCustomerChargesRequest) GetFilter() *components.ListCustomerChargesParamsFilter {
 	if l == nil {
 		return nil
 	}

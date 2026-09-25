@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 )
 
 // BadRequestError - standard error
@@ -11,7 +12,7 @@ type BadRequestError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status int64 `json:"status"`
+	Status sdkerrors.Status `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.
@@ -45,9 +46,9 @@ func (b *BadRequestError) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (b *BadRequestError) GetStatus() int64 {
+func (b *BadRequestError) GetStatus() sdkerrors.Status {
 	if b == nil {
-		return 0
+		return sdkerrors.Status(0)
 	}
 	return b.Status
 }

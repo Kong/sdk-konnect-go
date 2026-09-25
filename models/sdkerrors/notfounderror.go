@@ -4,14 +4,40 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"fmt"
 )
+
+// NotFoundErrorStatus - The HTTP status code of the error. Useful when passing the response
+// body to child properties in a frontend UI. Must be returned as an integer.
+type NotFoundErrorStatus int64
+
+const (
+	NotFoundErrorStatusFourHundredAndFour NotFoundErrorStatus = 404
+)
+
+func (e NotFoundErrorStatus) ToPointer() *NotFoundErrorStatus {
+	return &e
+}
+func (e *NotFoundErrorStatus) UnmarshalJSON(data []byte) error {
+	var v int64
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case 404:
+		*e = NotFoundErrorStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for NotFoundErrorStatus: %v", v)
+	}
+}
 
 // NotFoundError - standard error
 type NotFoundError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status int64 `json:"status"`
+	Status NotFoundErrorStatus `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.

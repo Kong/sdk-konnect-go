@@ -1,9 +1,0 @@
-# AISettingsResponseBodyFeatures
-
-
-## Fields
-
-| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `PortalAgent`                                                                                                | [components.AISettingsResponseBodyPortalAgent](../../models/components/aisettingsresponsebodyportalagent.md) | :heavy_check_mark:                                                                                           | Portal Agent config                                                                                          |
-| `McpServer`                                                                                                  | [components.AISettingsResponseBodyMcpServer](../../models/components/aisettingsresponsebodymcpserver.md)     | :heavy_check_mark:                                                                                           | MCP Server config                                                                                            |

@@ -6,7 +6,31 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// CreatePlanRequest - Plan create request.
+// CreatePlanRequestSettlementMode - Settlement mode for the plan. Defaults to `credit_then_invoice` when omitted.
+type CreatePlanRequestSettlementMode string
+
+const (
+	CreatePlanRequestSettlementModeCreditThenInvoice CreatePlanRequestSettlementMode = "credit_then_invoice"
+	CreatePlanRequestSettlementModeCreditOnly        CreatePlanRequestSettlementMode = "credit_only"
+)
+
+func (e CreatePlanRequestSettlementMode) ToPointer() *CreatePlanRequestSettlementMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CreatePlanRequestSettlementMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "credit_then_invoice", "credit_only":
+			return true
+		}
+	}
+	return false
+}
+
+// CreatePlanRequest - Plan create request. `settlement_mode` is re-declared as optional with a
+// `credit_then_invoice` default, applied only on create.
 type CreatePlanRequest struct {
 	// Display name of the resource.
 	//
@@ -34,6 +58,8 @@ type CreatePlanRequest struct {
 	// The plan phases define the pricing ramp for a subscription. A phase switch
 	// occurs only at the end of a billing period. At least one phase is required.
 	Phases []BillingPlanPhase `json:"phases"`
+	// Settlement mode for the plan. Defaults to `credit_then_invoice` when omitted.
+	SettlementMode *CreatePlanRequestSettlementMode `default:"credit_then_invoice" json:"settlement_mode"`
 }
 
 func (c CreatePlanRequest) MarshalJSON() ([]byte, error) {
@@ -101,4 +127,11 @@ func (c *CreatePlanRequest) GetPhases() []BillingPlanPhase {
 		return []BillingPlanPhase{}
 	}
 	return c.Phases
+}
+
+func (c *CreatePlanRequest) GetSettlementMode() *CreatePlanRequestSettlementMode {
+	if c == nil {
+		return nil
+	}
+	return c.SettlementMode
 }

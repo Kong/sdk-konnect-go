@@ -162,9 +162,9 @@ func (b *BillingCustomerCustomerBillingAddress) GetPhoneNumber() *string {
 	return b.PhoneNumber
 }
 
-// BillingChargeUsageBasedCustomerBillingCustomer - Customers can be individuals or organizations that can subscribe to plans and
+// CustomerBillingCustomer - Customers can be individuals or organizations that can subscribe to plans and
 // have access to features.
-type BillingChargeUsageBasedCustomerBillingCustomer struct {
+type CustomerBillingCustomer struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
 	// Display name of the resource.
@@ -199,106 +199,106 @@ type BillingChargeUsageBasedCustomerBillingCustomer struct {
 	BillingAddress *BillingCustomerCustomerBillingAddress `json:"billing_address,omitempty"`
 }
 
-func (b BillingChargeUsageBasedCustomerBillingCustomer) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
+func (c CustomerBillingCustomer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id", "name", "created_at", "updated_at", "key"}); err != nil {
+func (c *CustomerBillingCustomer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "created_at", "updated_at", "key"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetID() string {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return b.ID
+	return c.ID
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetName() string {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return b.Name
+	return c.Name
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetDescription() *string {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return b.Description
+	return c.Description
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetLabels() map[string]string {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetLabels() map[string]string {
+	if c == nil {
 		return nil
 	}
-	return b.Labels
+	return c.Labels
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetCreatedAt() time.Time {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetCreatedAt() time.Time {
+	if c == nil {
 		return time.Time{}
 	}
-	return b.CreatedAt
+	return c.CreatedAt
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetUpdatedAt() time.Time {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetUpdatedAt() time.Time {
+	if c == nil {
 		return time.Time{}
 	}
-	return b.UpdatedAt
+	return c.UpdatedAt
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetDeletedAt() *time.Time {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetDeletedAt() *time.Time {
+	if c == nil {
 		return nil
 	}
-	return b.DeletedAt
+	return c.DeletedAt
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetKey() string {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetKey() string {
+	if c == nil {
 		return ""
 	}
-	return b.Key
+	return c.Key
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetUsageAttribution() *BillingCustomerCustomerUsageAttribution {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetUsageAttribution() *BillingCustomerCustomerUsageAttribution {
+	if c == nil {
 		return nil
 	}
-	return b.UsageAttribution
+	return c.UsageAttribution
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetPrimaryEmail() *string {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetPrimaryEmail() *string {
+	if c == nil {
 		return nil
 	}
-	return b.PrimaryEmail
+	return c.PrimaryEmail
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetCurrency() *string {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetCurrency() *string {
+	if c == nil {
 		return nil
 	}
-	return b.Currency
+	return c.Currency
 }
 
-func (b *BillingChargeUsageBasedCustomerBillingCustomer) GetBillingAddress() *BillingCustomerCustomerBillingAddress {
-	if b == nil {
+func (c *CustomerBillingCustomer) GetBillingAddress() *BillingCustomerCustomerBillingAddress {
+	if c == nil {
 		return nil
 	}
-	return b.BillingAddress
+	return c.BillingAddress
 }
 
 type BillingChargeUsageBasedCustomerType string
 
 const (
-	BillingChargeUsageBasedCustomerTypeBillingChargeUsageBasedCustomerBillingCustomer BillingChargeUsageBasedCustomerType = "BillingChargeUsageBased_Customer_BillingCustomer"
-	BillingChargeUsageBasedCustomerTypeCustomerCustomerReference                      BillingChargeUsageBasedCustomerType = "Customer_CustomerReference"
+	BillingChargeUsageBasedCustomerTypeCustomerBillingCustomer   BillingChargeUsageBasedCustomerType = "Customer_BillingCustomer"
+	BillingChargeUsageBasedCustomerTypeCustomerCustomerReference BillingChargeUsageBasedCustomerType = "Customer_CustomerReference"
 )
 
 // BillingChargeUsageBasedCustomer - The customer owning the charge.
@@ -306,18 +306,18 @@ const (
 // By default, only the `id` of the customer is returned. For more details use the
 // `customer` expand.
 type BillingChargeUsageBasedCustomer struct {
-	BillingChargeUsageBasedCustomerBillingCustomer *BillingChargeUsageBasedCustomerBillingCustomer `queryParam:"inline" union:"member"`
-	CustomerCustomerReference                      *CustomerCustomerReference                      `queryParam:"inline" union:"member"`
+	CustomerBillingCustomer   *CustomerBillingCustomer   `queryParam:"inline" union:"member"`
+	CustomerCustomerReference *CustomerCustomerReference `queryParam:"inline" union:"member"`
 
 	Type BillingChargeUsageBasedCustomerType
 }
 
-func CreateBillingChargeUsageBasedCustomerBillingChargeUsageBasedCustomerBillingCustomer(billingChargeUsageBasedCustomerBillingCustomer BillingChargeUsageBasedCustomerBillingCustomer) BillingChargeUsageBasedCustomer {
-	typ := BillingChargeUsageBasedCustomerTypeBillingChargeUsageBasedCustomerBillingCustomer
+func CreateBillingChargeUsageBasedCustomerCustomerBillingCustomer(customerBillingCustomer CustomerBillingCustomer) BillingChargeUsageBasedCustomer {
+	typ := BillingChargeUsageBasedCustomerTypeCustomerBillingCustomer
 
 	return BillingChargeUsageBasedCustomer{
-		BillingChargeUsageBasedCustomerBillingCustomer: &billingChargeUsageBasedCustomerBillingCustomer,
-		Type: typ,
+		CustomerBillingCustomer: &customerBillingCustomer,
+		Type:                    typ,
 	}
 }
 
@@ -339,10 +339,10 @@ func (u *BillingChargeUsageBasedCustomer) UnmarshalJSON(data []byte) (err error)
 		}
 	}()
 
-	var billingChargeUsageBasedCustomerBillingCustomer BillingChargeUsageBasedCustomerBillingCustomer = BillingChargeUsageBasedCustomerBillingCustomer{}
-	if err := utils.UnmarshalJSON(data, &billingChargeUsageBasedCustomerBillingCustomer, "", true, nil); err == nil {
-		u.BillingChargeUsageBasedCustomerBillingCustomer = &billingChargeUsageBasedCustomerBillingCustomer
-		u.Type = BillingChargeUsageBasedCustomerTypeBillingChargeUsageBasedCustomerBillingCustomer
+	var customerBillingCustomer CustomerBillingCustomer = CustomerBillingCustomer{}
+	if err := utils.UnmarshalJSON(data, &customerBillingCustomer, "", true, nil); err == nil {
+		u.CustomerBillingCustomer = &customerBillingCustomer
+		u.Type = BillingChargeUsageBasedCustomerTypeCustomerBillingCustomer
 		return nil
 	}
 
@@ -357,8 +357,8 @@ func (u *BillingChargeUsageBasedCustomer) UnmarshalJSON(data []byte) (err error)
 }
 
 func (u BillingChargeUsageBasedCustomer) MarshalJSON() ([]byte, error) {
-	if u.BillingChargeUsageBasedCustomerBillingCustomer != nil {
-		return utils.MarshalJSON(u.BillingChargeUsageBasedCustomerBillingCustomer, "", true)
+	if u.CustomerBillingCustomer != nil {
+		return utils.MarshalJSON(u.CustomerBillingCustomer, "", true)
 	}
 
 	if u.CustomerCustomerReference != nil {
@@ -2945,6 +2945,11 @@ type BillingChargeUsageBased struct {
 	ResolvedCostBasis *BillingChargeUsageBasedResolvedCostBasis `json:"resolved_cost_basis,omitempty"`
 	// The lifecycle status of the charge.
 	Status BillingChargeUsageBasedStatus `json:"status"`
+	// Validation issues found while processing the charge.
+	//
+	// Present only when there are one or more validation findings. An empty list is
+	// omitted.
+	ValidationIssues []BillingValidationIssue `json:"validation_issues,omitempty"`
 	// The timestamp when the charge is intended to be invoiced.
 	InvoiceAt time.Time `json:"invoice_at"`
 	// The effective service period covered by the charge.
@@ -3104,6 +3109,13 @@ func (b *BillingChargeUsageBased) GetStatus() BillingChargeUsageBasedStatus {
 		return BillingChargeUsageBasedStatus("")
 	}
 	return b.Status
+}
+
+func (b *BillingChargeUsageBased) GetValidationIssues() []BillingValidationIssue {
+	if b == nil {
+		return nil
+	}
+	return b.ValidationIssues
 }
 
 func (b *BillingChargeUsageBased) GetInvoiceAt() time.Time {

@@ -6,7 +6,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// MCPResourceSourceRawInputType - The type of the MCP resource source.
+// MCPResourceSourceRawInputType - The type of the Context Source source.
 type MCPResourceSourceRawInputType string
 
 const (
