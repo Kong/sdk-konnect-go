@@ -4,6 +4,7 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"net/http"
 )
 
 // APISlugConflict - Conflict - `slug` property must be unique
@@ -12,6 +13,8 @@ type APISlugConflict struct {
 	Title    string  `json:"title"`
 	Type     *string `json:"type,omitempty"`
 	Instance string  `json:"instance"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &APISlugConflict{}

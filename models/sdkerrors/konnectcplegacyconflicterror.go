@@ -4,6 +4,7 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"net/http"
 )
 
 // KonnectCPLegacyConflictError - standard error
@@ -11,6 +12,8 @@ type KonnectCPLegacyConflictError struct {
 	// A short summary of the problem.
 	//
 	Message *string `json:"message,omitempty"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &KonnectCPLegacyConflictError{}

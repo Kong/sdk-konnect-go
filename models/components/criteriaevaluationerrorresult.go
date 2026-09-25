@@ -36,38 +36,38 @@ func (c *CriteriaEvaluationErrorResultRelation) GetName() string {
 	return c.Name
 }
 
-// Error - Details about an error that occurred during evaluation preventing computation of a pass/fail result.
+// CriteriaEvaluationErrorResultError - Details about an error that occurred during evaluation preventing computation of a pass/fail result.
 // Will be `null` when no error occurred.
-type Error struct {
+type CriteriaEvaluationErrorResultError struct {
 	// The type of error that occurred.
 	Type string `json:"type"`
 	// Human-readable error message about the error.
 	Details string `json:"details"`
 }
 
-func (e Error) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (c CriteriaEvaluationErrorResultError) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
 }
 
-func (e *Error) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "details"}); err != nil {
+func (c *CriteriaEvaluationErrorResultError) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "details"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *Error) GetType() string {
-	if e == nil {
+func (c *CriteriaEvaluationErrorResultError) GetType() string {
+	if c == nil {
 		return ""
 	}
-	return e.Type
+	return c.Type
 }
 
-func (e *Error) GetDetails() string {
-	if e == nil {
+func (c *CriteriaEvaluationErrorResultError) GetDetails() string {
+	if c == nil {
 		return ""
 	}
-	return e.Details
+	return c.Details
 }
 
 type CriteriaEvaluationErrorResult struct {
@@ -75,7 +75,7 @@ type CriteriaEvaluationErrorResult struct {
 	// Details about an error that occurred during evaluation preventing computation of a pass/fail result.
 	// Will be `null` when no error occurred.
 	//
-	Error *Error `json:"error"`
+	Error *CriteriaEvaluationErrorResultError `json:"error"`
 }
 
 func (c CriteriaEvaluationErrorResult) MarshalJSON() ([]byte, error) {
@@ -96,7 +96,7 @@ func (c *CriteriaEvaluationErrorResult) GetRelation() CriteriaEvaluationErrorRes
 	return c.Relation
 }
 
-func (c *CriteriaEvaluationErrorResult) GetError() *Error {
+func (c *CriteriaEvaluationErrorResult) GetError() *CriteriaEvaluationErrorResultError {
 	if c == nil {
 		return nil
 	}

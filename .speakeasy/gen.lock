@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: bdff948d3b3578a510c0fcbdbb7295da
+  docChecksum: fa43a9be07c8c8c4bcdc2b60f21c9caa
   docVersion: 3.15.0
-  speakeasyVersion: 1.798.0
-  generationVersion: 2.938.0
+  speakeasyVersion: 1.799.0
+  generationVersion: 2.941.0
   releaseVersion: 0.4.1
-  configChecksum: 073690752b7cc4b31b7d88bfcd06374b
+  configChecksum: 9c7c2d0e73af035744a9dfbf92881e9a
 persistentEdits:
   generation_id: 13c2163a-60e6-4c35-b896-a9ea41a6dd75
   pristine_commit_hash: 14753c7fba454bec4419143dc7ad13be13ff031f
@@ -17,7 +17,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.3
     constsAndDefaults: 0.1.14
-    core: 3.13.58
+    core: 3.14.1
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -34,7 +34,7 @@ features:
     intellisenseMarkdownSupport: 0.1.0
     methodServerURLs: 2.82.2
     nameOverrides: 2.81.4
-    nullables: 0.2.1
+    nullables: 0.2.2
     openEnums: 0.1.0
     pagination: 2.82.9
     responseFormat: 0.1.2
@@ -1410,9 +1410,6 @@ trackedFiles:
   docs/models/components/backendclusterreferencebyname.md: {}
   docs/models/components/backendclusterreferencemodify.md: {}
   docs/models/components/backendclustertls.md: {}
-  docs/models/components/badrequesterror.md:
-    id: dd25205310a1
-    pristine_git_object: f54edd00b6d99b2597c7a31252bc352786b04a02
   docs/models/components/barchart.md: {}
   docs/models/components/barcharttype.md: {}
   docs/models/components/basicauth.md:
@@ -2235,6 +2232,7 @@ trackedFiles:
     pristine_git_object: df655ba4499c97f2d586778580291486209d23c7
   docs/models/components/configurationtype.md: {}
   docs/models/components/conflict.md: {}
+  docs/models/components/conflicterrorstatus.md: {}
   docs/models/components/conjurvault.md: {}
   docs/models/components/conjurvaultconfig.md: {}
   docs/models/components/conjurvaultconjurvaultconfig.md: {}
@@ -2777,6 +2775,7 @@ trackedFiles:
   docs/models/components/criteriaevaluationerrorresult.md:
     id: c730d0e37ac5
     pristine_git_object: 35aba048618206b0ea99b18cdd978eff1108f837
+  docs/models/components/criteriaevaluationerrorresulterror.md: {}
   docs/models/components/criteriaevaluationerrorresultrelation.md:
     id: f3f01813834c
     pristine_git_object: a94e2b0b3aa4fa933272ce216c78dbadae44ad05
@@ -3215,6 +3214,8 @@ trackedFiles:
   docs/models/components/deviceaccesstokenresponse.md:
     id: 5bb6d84f0f8f
     pristine_git_object: 62079d20cf367d8bf65a3b0426c9e0b86963564a
+  docs/models/components/deviceauthorizationgranttokenbadrequesterror.md: {}
+  docs/models/components/deviceauthorizationgranttokenerrordeviceauthorizationgranttokenbadrequesterror.md: {}
   docs/models/components/deviceauthorizationresponse.md:
     id: 56ba97a8ed6d
     pristine_git_object: b71da31e78e26e45fa85619ebda99ea2c2963fa1
@@ -3571,6 +3572,7 @@ trackedFiles:
     pristine_git_object: 443e40238ba901746fe3833d8bfe4dd97584b1d7
   docs/models/components/flatpricecomponent.md: {}
   docs/models/components/footer.md: {}
+  docs/models/components/forbiddenerrorstatus.md: {}
   docs/models/components/format.md: {}
   docs/models/components/formresponseentry.md: {}
   docs/models/components/formresponseentrytype.md: {}
@@ -3681,6 +3683,7 @@ trackedFiles:
   docs/models/components/githubappinstallationcredentialconfig.md:
     id: 327475556d9a
     pristine_git_object: 208bcd597158349bee69c9f85edd4ad56f11a520
+  docs/models/components/goneerrorstatus.md: {}
   docs/models/components/googleanalytics4integration.md: {}
   docs/models/components/googleanalytics4integrationconfigdata.md: {}
   docs/models/components/googleanalytics4integrationconfigproperties.md: {}
@@ -3944,9 +3947,6 @@ trackedFiles:
   docs/models/components/integrationname.md:
     id: 41f7ac4f939b
     pristine_git_object: 78403956696827db6f405e88dd7adbe723f604af
-  docs/models/components/integrationnotinstallederror.md:
-    id: 6acddde6e875
-    pristine_git_object: 18c7f00c50f045915d3ad622ae33c81e116ee68c
   docs/models/components/integrationnotinstallederrorstatus.md: {}
   docs/models/components/integrationnotinstallederrortype.md:
     id: 8a38e13fef68
@@ -3960,15 +3960,14 @@ trackedFiles:
   docs/models/components/integrationresourceevent.md:
     id: edd8567be7b6
     pristine_git_object: 8b9934d1cbcb4d236e95e79dd309941d6480b9ec
-  docs/models/components/integrationunauthorizederror.md:
-    id: 4dd2165e7951
-    pristine_git_object: 1dd9c9973413f17510aa5bb529a62ec7216b0c34
   docs/models/components/integrationunauthorizederrorstatus.md:
     id: cd8ede8335b1
     pristine_git_object: 3cbff479f38f796de96aa9a79b30306e4f948301
   docs/models/components/integrationunauthorizederrortype.md:
     id: 9b8188b4d6ef
     pristine_git_object: 0250a01ea9e852ee0d82468b3703a987c3dc997a
+  docs/models/components/internalerrorstatus.md: {}
+  docs/models/components/internalservererrorstatus.md: {}
   docs/models/components/internalusers.md:
     id: 6e4f0c14c555
     pristine_git_object: 0bf4407accdcd96b06c5e33f5ba8bb1ad6788790
@@ -4904,9 +4903,8 @@ trackedFiles:
     id: 94cd5d9f42a7
     pristine_git_object: 63190d2afc775d7a0cf31368296e22162c6d7b50
   docs/models/components/nodes.md: {}
-  docs/models/components/notfounderror.md:
-    id: 788b0eb46117
-    pristine_git_object: 7fb676bbae3d523c10d330411bac2b6f4c977630
+  docs/models/components/notavailableerrorstatus.md: {}
+  docs/models/components/notfounderrorstatus.md: {}
   docs/models/components/notification.md:
     id: 9ebeda57b843
     pristine_git_object: 050ecf963f783df266939f388aeacdde9943f524
@@ -6267,6 +6265,7 @@ trackedFiles:
   docs/models/components/serviceselectorselectorparameters.md:
     id: f35054640952
     pristine_git_object: d1df8eb3b63cf4c2397e5dfea42efdc1148b55b2
+  docs/models/components/serviceunavailablestatus.md: {}
   docs/models/components/servicevulnerabilityattributes.md:
     id: 8e3ce61a1086
     pristine_git_object: c9833407d49d4f7bb4f0f5360d9cd952c88acf72
@@ -6658,6 +6657,7 @@ trackedFiles:
   docs/models/components/uimode.md: {}
   docs/models/components/ulidfieldfilter.md: {}
   docs/models/components/ulidfieldfilter2.md: {}
+  docs/models/components/unauthorizederrorstatus.md: {}
   docs/models/components/unhealthy.md:
     id: 93815dfa4196
     pristine_git_object: 8894ca4803096b250859e48398f78585f8b07be3
@@ -7068,6 +7068,7 @@ trackedFiles:
   docs/models/components/verifydcrproviderresponse.md:
     id: 3d5fde14bc74
     pristine_git_object: 231bfa86d4c4644eb6b0a921648cf2103ee3e691
+  docs/models/components/verifydcrproviderresponsestatus.md: {}
   docs/models/components/version.md: {}
   docs/models/components/viewer.md:
     id: 346cb404cd97
@@ -12455,7 +12456,6 @@ trackedFiles:
   docs/models/sdkerrors/conflicterror.md:
     id: 0fc6504dab18
     pristine_git_object: 1c3eaadd24748f8ee6724eec07e6695eb9d2352d
-  docs/models/sdkerrors/conflicterrorstatus.md: {}
   docs/models/sdkerrors/deviceauthorizationgrantauthorizebadrequest.md:
     id: ea88ee16bd51
     pristine_git_object: 51e5014091b3506e3c789cc4c4624721673a6548
@@ -12465,41 +12465,28 @@ trackedFiles:
   docs/models/sdkerrors/deviceauthorizationgranttokenbadrequest.md:
     id: 27947ae45725
     pristine_git_object: 6eaff44b294d3c9163fb7c786e70cbe8f3f4b1ea
-  docs/models/sdkerrors/deviceauthorizationgranttokenbadrequestdeviceauthorizationgranttokenbadrequesterror.md:
-    id: 161fd42e8ae9
-    pristine_git_object: bf621637a5e5095d0366daecfdb44c1b58fb5886
-  docs/models/sdkerrors/deviceauthorizationgranttokenbadrequesterror.md:
-    id: 87c253c486ed
-    pristine_git_object: 43912eae326c0d1a76597f5e79b365d9eb2ed858
   docs/models/sdkerrors/deviceauthorizationgranttokenerror.md:
     id: 8ba001efddfc
     pristine_git_object: cf0bae79bf466e871f97c96e9aab5d3ed88c7c77
-  docs/models/sdkerrors/error.md:
-    id: f38026ef53ea
-    pristine_git_object: decfed6a2531a7bc80845f1e5540788e58d05ede
   docs/models/sdkerrors/forbiddenerror.md:
     id: 7b3ef98cf0c0
     pristine_git_object: de4fab1437818b3f034c852486cc926c64c98ea4
-  docs/models/sdkerrors/forbiddenerrorstatus.md: {}
   docs/models/sdkerrors/gatewayunauthorizederror.md:
     id: 4b49fe9cb6f3
     pristine_git_object: c32d408016baee645a38891aac3998c30253f71f
   docs/models/sdkerrors/goneerror.md: {}
-  docs/models/sdkerrors/goneerrorstatus.md: {}
   docs/models/sdkerrors/integrationinstanceproxyrequestintegrationinstanceproxyresponsebody.md:
     id: 1a14da10906b
     pristine_git_object: 399653db18fd1e0722f125d6f6f7774282445a84
   docs/models/sdkerrors/integrationinstanceproxyrequestresponsebody.md:
     id: 0c2e02efbecb
     pristine_git_object: 5dda94d8b833d73f48c7250fa433016e576ea0ce
+  docs/models/sdkerrors/integrationnotinstallederror.md: {}
+  docs/models/sdkerrors/integrationunauthorizederror.md: {}
   docs/models/sdkerrors/internalerror.md: {}
-  docs/models/sdkerrors/internalerrorstatus.md: {}
   docs/models/sdkerrors/internalservererror.md:
     id: e52a05543ebe
     pristine_git_object: cb4e428b91098b6073fe837e0cec45bf23e1a0c0
-  docs/models/sdkerrors/internalservererrorstatus.md:
-    id: 2b831a352156
-    pristine_git_object: 8b996508c95cf56f5772d6df6f4f314daf9674f7
   docs/models/sdkerrors/konnectcplegacybadrequesterror.md:
     id: aa9564864796
     pristine_git_object: bc2fb3a65d03a11638fd0ff6176937192f276aff
@@ -12516,11 +12503,9 @@ trackedFiles:
     id: 1cc896ad2b9e
     pristine_git_object: 37c76b20e26b4a435ce75c83533cdea60922b77b
   docs/models/sdkerrors/notavailableerror.md: {}
-  docs/models/sdkerrors/notavailableerrorstatus.md: {}
   docs/models/sdkerrors/notfounderror.md:
     id: c152a82a215f
     pristine_git_object: 7fb676bbae3d523c10d330411bac2b6f4c977630
-  docs/models/sdkerrors/notfounderrorstatus.md: {}
   docs/models/sdkerrors/notimplementederror.md:
     id: b1a2144ce77b
     pristine_git_object: 95b0378133bd424089295f7ad2b244bda7101fc6
@@ -12533,15 +12518,10 @@ trackedFiles:
   docs/models/sdkerrors/serviceunavailable.md:
     id: 9f2ff1ce2638
     pristine_git_object: a5289752fa819590f991d61f5ab6adbb7f9ca4d8
-  docs/models/sdkerrors/serviceunavailablestatus.md: {}
-  docs/models/sdkerrors/status.md:
-    id: 9560bc481836
-    pristine_git_object: feefb2bd9f24765af48b9d738445d538d6cbe601
   docs/models/sdkerrors/toomanyrequestserror.md: {}
   docs/models/sdkerrors/unauthorizederror.md:
     id: 3ce22d4d65e1
     pristine_git_object: 50a5f0b67f32428c555eccd74150f1131290b499
-  docs/models/sdkerrors/unauthorizederrorstatus.md: {}
   docs/models/sdkerrors/unsupportedmediatypeerror.md:
     id: 1c15c4634ff9
     pristine_git_object: ac741f2f49c1fbdee10cbf574756c0dddc285e7a
@@ -13972,6 +13952,7 @@ trackedFiles:
     id: f33a36dd89c0
     pristine_git_object: ba6bad5d115e0e540017f02052fa60713b3c2b7b
   models/components/configurationtype.go: {}
+  models/components/conflicterror.go: {}
   models/components/conjurvault.go: {}
   models/components/connectedappcontext.go: {}
   models/components/consentconnectedappresponse.go: {}
@@ -14502,6 +14483,8 @@ trackedFiles:
   models/components/deviceaccesstokenresponse.go:
     id: 0807b9bd84cb
     pristine_git_object: 6e004df823a958167b5ceef33699a28165ddb89e
+  models/components/deviceauthorizationgrantauthorizebadrequest.go: {}
+  models/components/deviceauthorizationgranttokenbadrequest.go: {}
   models/components/deviceauthorizationresponse.go:
     id: 8b40895e0024
     pristine_git_object: 316d83299920dc0153bdbd9432231c3e9f6e944a
@@ -14743,6 +14726,7 @@ trackedFiles:
   models/components/fetchkongidentityprincipalfetchby.go: {}
   models/components/fetchkongidentityprincipaloauthbearer.go: {}
   models/components/filterapplications.go: {}
+  models/components/forbiddenerror.go: {}
   models/components/formresponseentry.go: {}
   models/components/formresponseinput.go: {}
   models/components/forwardtoclusterbyportmappingconfig.go: {}
@@ -14807,6 +14791,7 @@ trackedFiles:
   models/components/githubappinstallationauth.go:
     id: 930b8f7285c2
     pristine_git_object: 6788ac2721b681ab4e0fec3302c4c41373d9a7b6
+  models/components/goneerror.go: {}
   models/components/googleanalytics4integration.go: {}
   models/components/googleanalytics4integrationconfigproperties.go: {}
   models/components/googlesecretmanagervault.go: {}
@@ -14935,6 +14920,8 @@ trackedFiles:
   models/components/integrationunauthorizederror.go:
     id: 62b08a157926
     pristine_git_object: 214be9b776fe9d850addc29d906cd06bb85ad8a0
+  models/components/internalerror.go: {}
+  models/components/internalservererror.go: {}
   models/components/internalusers.go:
     id: b5b6a0122165
     pristine_git_object: 304b715f34eb1bc4dc4904cd0ec75ccf0e51bc97
@@ -15478,6 +15465,7 @@ trackedFiles:
   models/components/nodeerror.go:
     id: 6bff2dfc0760
     pristine_git_object: f634c7f9191f1bfb42043facce0fb7a09f880283
+  models/components/notavailableerror.go: {}
   models/components/notfounderror.go:
     id: 3fe20428ea8c
     pristine_git_object: 54f383ec62f54e9dfb1abf5ef2ae465ff9369c89
@@ -16067,6 +16055,7 @@ trackedFiles:
     id: 68daf19d3bbb
     pristine_git_object: 60473eb39955d8514903974fa0f0cd063f14845c
   models/components/servicesearchfilter.go: {}
+  models/components/serviceunavailable.go: {}
   models/components/servicevulnerabilityattributes.go:
     id: bc0a477e97ff
     pristine_git_object: 94034d763abd3d87838f963930a597df3fc07a09
@@ -16266,6 +16255,7 @@ trackedFiles:
     pristine_git_object: 51d589e27666b114cb96b4fc26ea609ba43537d8
   models/components/tryituiaudience.go: {}
   models/components/ulidfieldfilter.go: {}
+  models/components/unauthorizederror.go: {}
   models/components/updateaddonconfig.go: {}
   models/components/updateaddonrequest.go: {}
   models/components/updateaigatewayagentrequest.go: {}
@@ -19227,6 +19217,8 @@ trackedFiles:
   models/sdkerrors/integrationinstanceproxyrequest.go:
     id: 32958193abef
     pristine_git_object: 60fc5d0a8e05249247d9c2cd1ce8f1b78e0cfc94
+  models/sdkerrors/integrationnotinstallederror.go: {}
+  models/sdkerrors/integrationunauthorizederror.go: {}
   models/sdkerrors/internalerror.go: {}
   models/sdkerrors/internalservererror.go:
     id: a76d61d9ec70
@@ -19259,6 +19251,7 @@ trackedFiles:
   models/sdkerrors/ratelimited.go:
     id: 6bc0c6889523
     pristine_git_object: e10c3f0df3617ff8273e3326b322bccb2025bfc6
+  models/sdkerrors/responsevalidationerror.go: {}
   models/sdkerrors/sdkerror.go:
     id: 5234765820c9
     pristine_git_object: 7d63b9813d4d5a025a0337b45f42e4b9fb404eeb

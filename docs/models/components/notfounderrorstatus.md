@@ -1,4 +1,4 @@
-# ConflictErrorStatus
+# NotFoundErrorStatus
 
 The HTTP status code of the error. Useful when passing the response
 body to child properties in a frontend UI. Must be returned as an integer.
@@ -8,10 +8,10 @@ body to child properties in a frontend UI. Must be returned as an integer.
 
 ```go
 import (
-	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
+	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := sdkerrors.ConflictErrorStatusFourHundredAndNine
+value := components.NotFoundErrorStatusFourHundredAndFour
 ```
 
 
@@ -19,4 +19,4 @@ value := sdkerrors.ConflictErrorStatusFourHundredAndNine
 
 | Name                                    | Value                                   |
 | --------------------------------------- | --------------------------------------- |
-| `ConflictErrorStatusFourHundredAndNine` | 409                                     |
+| `NotFoundErrorStatusFourHundredAndFour` | 404                                     |

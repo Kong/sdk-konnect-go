@@ -381,12 +381,12 @@ func (_c *MockOpenMeterAppsSDK_ListAppCatalog_Call) RunAndReturn(run func(ctx co
 }
 
 // ListApps provides a mock function for the type MockOpenMeterAppsSDK
-func (_mock *MockOpenMeterAppsSDK) ListApps(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListAppsResponse, error) {
+func (_mock *MockOpenMeterAppsSDK) ListApps(ctx context.Context, request operations.ListAppsRequest, opts ...operations.Option) (*operations.ListAppsResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, page, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, page)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -396,18 +396,18 @@ func (_mock *MockOpenMeterAppsSDK) ListApps(ctx context.Context, page *component
 
 	var r0 *operations.ListAppsResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.PagePaginationQuery, ...operations.Option) (*operations.ListAppsResponse, error)); ok {
-		return returnFunc(ctx, page, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAppsRequest, ...operations.Option) (*operations.ListAppsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.PagePaginationQuery, ...operations.Option) *operations.ListAppsResponse); ok {
-		r0 = returnFunc(ctx, page, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAppsRequest, ...operations.Option) *operations.ListAppsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.ListAppsResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *components.PagePaginationQuery, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, page, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListAppsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -421,22 +421,22 @@ type MockOpenMeterAppsSDK_ListApps_Call struct {
 
 // ListApps is a helper method to define mock.On call
 //   - ctx context.Context
-//   - page *components.PagePaginationQuery
+//   - request operations.ListAppsRequest
 //   - opts ...operations.Option
-func (_e *MockOpenMeterAppsSDK_Expecter) ListApps(ctx any, page any, opts ...any) *MockOpenMeterAppsSDK_ListApps_Call {
+func (_e *MockOpenMeterAppsSDK_Expecter) ListApps(ctx any, request any, opts ...any) *MockOpenMeterAppsSDK_ListApps_Call {
 	return &MockOpenMeterAppsSDK_ListApps_Call{Call: _e.mock.On("ListApps",
-		append([]any{ctx, page}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockOpenMeterAppsSDK_ListApps_Call) Run(run func(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option)) *MockOpenMeterAppsSDK_ListApps_Call {
+func (_c *MockOpenMeterAppsSDK_ListApps_Call) Run(run func(ctx context.Context, request operations.ListAppsRequest, opts ...operations.Option)) *MockOpenMeterAppsSDK_ListApps_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 *components.PagePaginationQuery
+		var arg1 operations.ListAppsRequest
 		if args[1] != nil {
-			arg1 = args[1].(*components.PagePaginationQuery)
+			arg1 = args[1].(operations.ListAppsRequest)
 		}
 		var arg2 []operations.Option
 		var variadicArgs []operations.Option
@@ -458,7 +458,7 @@ func (_c *MockOpenMeterAppsSDK_ListApps_Call) Return(listAppsResponse *operation
 	return _c
 }
 
-func (_c *MockOpenMeterAppsSDK_ListApps_Call) RunAndReturn(run func(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListAppsResponse, error)) *MockOpenMeterAppsSDK_ListApps_Call {
+func (_c *MockOpenMeterAppsSDK_ListApps_Call) RunAndReturn(run func(ctx context.Context, request operations.ListAppsRequest, opts ...operations.Option) (*operations.ListAppsResponse, error)) *MockOpenMeterAppsSDK_ListApps_Call {
 	_c.Call.Return(run)
 	return _c
 }

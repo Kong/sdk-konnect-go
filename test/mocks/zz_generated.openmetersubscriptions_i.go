@@ -825,6 +825,178 @@ func (_c *MockOpenMeterSubscriptionsSDK_ListSubscriptions_Call) RunAndReturn(run
 	return _c
 }
 
+// MigrateSubscription provides a mock function for the type MockOpenMeterSubscriptionsSDK
+func (_mock *MockOpenMeterSubscriptionsSDK) MigrateSubscription(ctx context.Context, subscriptionID string, billingSubscriptionMigrate components.BillingSubscriptionMigrate, opts ...operations.Option) (*operations.MigrateSubscriptionResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, subscriptionID, billingSubscriptionMigrate, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, subscriptionID, billingSubscriptionMigrate)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for MigrateSubscription")
+	}
+
+	var r0 *operations.MigrateSubscriptionResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.BillingSubscriptionMigrate, ...operations.Option) (*operations.MigrateSubscriptionResponse, error)); ok {
+		return returnFunc(ctx, subscriptionID, billingSubscriptionMigrate, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.BillingSubscriptionMigrate, ...operations.Option) *operations.MigrateSubscriptionResponse); ok {
+		r0 = returnFunc(ctx, subscriptionID, billingSubscriptionMigrate, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.MigrateSubscriptionResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.BillingSubscriptionMigrate, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, subscriptionID, billingSubscriptionMigrate, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateSubscription'
+type MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call struct {
+	*mock.Call
+}
+
+// MigrateSubscription is a helper method to define mock.On call
+//   - ctx context.Context
+//   - subscriptionID string
+//   - billingSubscriptionMigrate components.BillingSubscriptionMigrate
+//   - opts ...operations.Option
+func (_e *MockOpenMeterSubscriptionsSDK_Expecter) MigrateSubscription(ctx any, subscriptionID any, billingSubscriptionMigrate any, opts ...any) *MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call {
+	return &MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call{Call: _e.mock.On("MigrateSubscription",
+		append([]any{ctx, subscriptionID, billingSubscriptionMigrate}, opts...)...)}
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call) Run(run func(ctx context.Context, subscriptionID string, billingSubscriptionMigrate components.BillingSubscriptionMigrate, opts ...operations.Option)) *MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.BillingSubscriptionMigrate
+		if args[2] != nil {
+			arg2 = args[2].(components.BillingSubscriptionMigrate)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call) Return(migrateSubscriptionResponse *operations.MigrateSubscriptionResponse, err error) *MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call {
+	_c.Call.Return(migrateSubscriptionResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call) RunAndReturn(run func(ctx context.Context, subscriptionID string, billingSubscriptionMigrate components.BillingSubscriptionMigrate, opts ...operations.Option) (*operations.MigrateSubscriptionResponse, error)) *MockOpenMeterSubscriptionsSDK_MigrateSubscription_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RestoreSubscription provides a mock function for the type MockOpenMeterSubscriptionsSDK
+func (_mock *MockOpenMeterSubscriptionsSDK) RestoreSubscription(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.RestoreSubscriptionResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, subscriptionID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, subscriptionID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for RestoreSubscription")
+	}
+
+	var r0 *operations.RestoreSubscriptionResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.RestoreSubscriptionResponse, error)); ok {
+		return returnFunc(ctx, subscriptionID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.RestoreSubscriptionResponse); ok {
+		r0 = returnFunc(ctx, subscriptionID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.RestoreSubscriptionResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, subscriptionID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RestoreSubscription'
+type MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call struct {
+	*mock.Call
+}
+
+// RestoreSubscription is a helper method to define mock.On call
+//   - ctx context.Context
+//   - subscriptionID string
+//   - opts ...operations.Option
+func (_e *MockOpenMeterSubscriptionsSDK_Expecter) RestoreSubscription(ctx any, subscriptionID any, opts ...any) *MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call {
+	return &MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call{Call: _e.mock.On("RestoreSubscription",
+		append([]any{ctx, subscriptionID}, opts...)...)}
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call) Run(run func(ctx context.Context, subscriptionID string, opts ...operations.Option)) *MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call) Return(restoreSubscriptionResponse *operations.RestoreSubscriptionResponse, err error) *MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call {
+	_c.Call.Return(restoreSubscriptionResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call) RunAndReturn(run func(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.RestoreSubscriptionResponse, error)) *MockOpenMeterSubscriptionsSDK_RestoreSubscription_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UnscheduleCancelation provides a mock function for the type MockOpenMeterSubscriptionsSDK
 func (_mock *MockOpenMeterSubscriptionsSDK) UnscheduleCancelation(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.UnscheduleCancelationResponse, error) {
 	var tmpRet mock.Arguments
@@ -904,6 +1076,172 @@ func (_c *MockOpenMeterSubscriptionsSDK_UnscheduleCancelation_Call) Return(unsch
 }
 
 func (_c *MockOpenMeterSubscriptionsSDK_UnscheduleCancelation_Call) RunAndReturn(run func(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.UnscheduleCancelationResponse, error)) *MockOpenMeterSubscriptionsSDK_UnscheduleCancelation_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UnscheduleSubscription provides a mock function for the type MockOpenMeterSubscriptionsSDK
+func (_mock *MockOpenMeterSubscriptionsSDK) UnscheduleSubscription(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.UnscheduleSubscriptionResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, subscriptionID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, subscriptionID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UnscheduleSubscription")
+	}
+
+	var r0 *operations.UnscheduleSubscriptionResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.UnscheduleSubscriptionResponse, error)); ok {
+		return returnFunc(ctx, subscriptionID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.UnscheduleSubscriptionResponse); ok {
+		r0 = returnFunc(ctx, subscriptionID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UnscheduleSubscriptionResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, subscriptionID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UnscheduleSubscription'
+type MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call struct {
+	*mock.Call
+}
+
+// UnscheduleSubscription is a helper method to define mock.On call
+//   - ctx context.Context
+//   - subscriptionID string
+//   - opts ...operations.Option
+func (_e *MockOpenMeterSubscriptionsSDK_Expecter) UnscheduleSubscription(ctx any, subscriptionID any, opts ...any) *MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call {
+	return &MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call{Call: _e.mock.On("UnscheduleSubscription",
+		append([]any{ctx, subscriptionID}, opts...)...)}
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call) Run(run func(ctx context.Context, subscriptionID string, opts ...operations.Option)) *MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call) Return(unscheduleSubscriptionResponse *operations.UnscheduleSubscriptionResponse, err error) *MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call {
+	_c.Call.Return(unscheduleSubscriptionResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call) RunAndReturn(run func(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.UnscheduleSubscriptionResponse, error)) *MockOpenMeterSubscriptionsSDK_UnscheduleSubscription_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateSubscriptionAddon provides a mock function for the type MockOpenMeterSubscriptionsSDK
+func (_mock *MockOpenMeterSubscriptionsSDK) UpdateSubscriptionAddon(ctx context.Context, request operations.UpdateSubscriptionAddonRequest, opts ...operations.Option) (*operations.UpdateSubscriptionAddonResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateSubscriptionAddon")
+	}
+
+	var r0 *operations.UpdateSubscriptionAddonResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateSubscriptionAddonRequest, ...operations.Option) (*operations.UpdateSubscriptionAddonResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateSubscriptionAddonRequest, ...operations.Option) *operations.UpdateSubscriptionAddonResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateSubscriptionAddonResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpdateSubscriptionAddonRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateSubscriptionAddon'
+type MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call struct {
+	*mock.Call
+}
+
+// UpdateSubscriptionAddon is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpdateSubscriptionAddonRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterSubscriptionsSDK_Expecter) UpdateSubscriptionAddon(ctx any, request any, opts ...any) *MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call {
+	return &MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call{Call: _e.mock.On("UpdateSubscriptionAddon",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call) Run(run func(ctx context.Context, request operations.UpdateSubscriptionAddonRequest, opts ...operations.Option)) *MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpdateSubscriptionAddonRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpdateSubscriptionAddonRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call) Return(updateSubscriptionAddonResponse *operations.UpdateSubscriptionAddonResponse, err error) *MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call {
+	_c.Call.Return(updateSubscriptionAddonResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateSubscriptionAddonRequest, opts ...operations.Option) (*operations.UpdateSubscriptionAddonResponse, error)) *MockOpenMeterSubscriptionsSDK_UpdateSubscriptionAddon_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -4,6 +4,7 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"net/http"
 )
 
 // RateLimited - The error object
@@ -16,6 +17,8 @@ type RateLimited struct {
 	Instance *string `json:"instance,omitempty"`
 	// Detailed explanation of the error response.
 	Detail *string `json:"detail,omitempty"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &RateLimited{}

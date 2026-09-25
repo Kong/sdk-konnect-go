@@ -3,87 +3,31 @@
 package components
 
 import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
+	"encoding/json"
+	"fmt"
 )
 
-// BadRequestError - standard error
-type BadRequestError struct {
-	// The HTTP status code of the error. Useful when passing the response
-	// body to child properties in a frontend UI. Must be returned as an integer.
-	//
-	Status sdkerrors.Status `json:"status"`
-	// A short, human-readable summary of the problem. It should not
-	// change between occurences of a problem, except for localization.
-	// Should be provided as "Sentence case" for direct use in the UI.
-	//
-	Title string `json:"title"`
-	// The error type.
-	Type *string `json:"type,omitempty"`
-	// Used to return the correlation ID back to the user, in the format
-	// kong:trace:<correlation_id>. This helps us find the relevant logs
-	// when a customer reports an issue.
-	//
-	Instance string `json:"instance"`
-	// A human readable explanation specific to this occurence of the problem.
-	// This field may contain request/entity data to help the user understand
-	// what went wrong. Enclose variable values in square brackets. Should be
-	// provided as "Sentence case" for direct use in the UI.
-	//
-	Detail string `json:"detail"`
-	// invalid parameters
-	InvalidParameters []InvalidParameters `json:"invalid_parameters"`
-}
+// Status - The HTTP status code of the error. Useful when passing the response
+// body to child properties in a frontend UI. Must be returned as an integer.
+type Status int64
 
-func (b BadRequestError) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
+const (
+	StatusFourHundred Status = 400
+)
 
-func (b *BadRequestError) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"status", "title", "instance", "detail", "invalid_parameters"}); err != nil {
+func (e Status) ToPointer() *Status {
+	return &e
+}
+func (e *Status) UnmarshalJSON(data []byte) error {
+	var v int64
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	return nil
-}
-
-func (b *BadRequestError) GetStatus() sdkerrors.Status {
-	if b == nil {
-		return sdkerrors.Status(0)
-	}
-	return b.Status
-}
-
-func (b *BadRequestError) GetTitle() string {
-	if b == nil {
-		return ""
-	}
-	return b.Title
-}
-
-func (b *BadRequestError) GetType() *string {
-	if b == nil {
+	switch v {
+	case 400:
+		*e = Status(v)
 		return nil
+	default:
+		return fmt.Errorf("invalid value for Status: %v", v)
 	}
-	return b.Type
-}
-
-func (b *BadRequestError) GetInstance() string {
-	if b == nil {
-		return ""
-	}
-	return b.Instance
-}
-
-func (b *BadRequestError) GetDetail() string {
-	if b == nil {
-		return ""
-	}
-	return b.Detail
-}
-
-func (b *BadRequestError) GetInvalidParameters() []InvalidParameters {
-	if b == nil {
-		return []InvalidParameters{}
-	}
-	return b.InvalidParameters
 }

@@ -22,7 +22,7 @@ type OpenMeterAppsSDK interface {
 	GetAppCatalogItem(ctx context.Context, appType components.BillingAppType, opts ...operations.Option) (*operations.GetAppCatalogItemResponse, error)
 	// ListApps - List apps
 	// List installed apps.
-	ListApps(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListAppsResponse, error)
+	ListApps(ctx context.Context, request operations.ListAppsRequest, opts ...operations.Option) (*operations.ListAppsResponse, error)
 	// GetApp - Get app
 	// Get an installed app.
 	GetApp(ctx context.Context, appID string, opts ...operations.Option) (*operations.GetAppResponse, error)

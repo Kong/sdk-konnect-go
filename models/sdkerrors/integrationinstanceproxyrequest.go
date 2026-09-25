@@ -7,7 +7,6 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
 
@@ -20,8 +19,8 @@ const (
 
 // IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody - Not Found
 type IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody struct {
-	NotFoundError                *components.NotFoundError                `queryParam:"inline" union:"member"`
-	IntegrationNotInstalledError *components.IntegrationNotInstalledError `queryParam:"inline" union:"member"`
+	NotFoundError                *NotFoundError                `queryParam:"inline" union:"member"`
+	IntegrationNotInstalledError *IntegrationNotInstalledError `queryParam:"inline" union:"member"`
 
 	Type IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyType
 
@@ -31,7 +30,7 @@ type IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody struct 
 
 var _ error = &IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody{}
 
-func CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyNotFoundError(notFoundError components.NotFoundError) IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody {
+func CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyNotFoundError(notFoundError NotFoundError) IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody {
 	typ := IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyTypeNotFoundError
 
 	return IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody{
@@ -40,7 +39,7 @@ func CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyNo
 	}
 }
 
-func CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyIntegrationNotInstalledError(integrationNotInstalledError components.IntegrationNotInstalledError) IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody {
+func CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyIntegrationNotInstalledError(integrationNotInstalledError IntegrationNotInstalledError) IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody {
 	typ := IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyTypeIntegrationNotInstalledError
 
 	return IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody{
@@ -60,17 +59,17 @@ func (u *IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody) Un
 		}
 	}()
 
-	var integrationNotInstalledError components.IntegrationNotInstalledError = components.IntegrationNotInstalledError{}
-	if err := utils.UnmarshalJSON(data, &integrationNotInstalledError, "", true, nil); err == nil {
-		u.IntegrationNotInstalledError = &integrationNotInstalledError
-		u.Type = IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyTypeIntegrationNotInstalledError
-		return nil
-	}
-
-	var notFoundError components.NotFoundError = components.NotFoundError{}
+	var notFoundError NotFoundError = NotFoundError{}
 	if err := utils.UnmarshalJSON(data, &notFoundError, "", true, nil); err == nil {
 		u.NotFoundError = &notFoundError
 		u.Type = IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyTypeNotFoundError
+		return nil
+	}
+
+	var integrationNotInstalledError IntegrationNotInstalledError = IntegrationNotInstalledError{}
+	if err := utils.UnmarshalJSON(data, &integrationNotInstalledError, "", true, nil); err == nil {
+		u.IntegrationNotInstalledError = &integrationNotInstalledError
+		u.Type = IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyTypeIntegrationNotInstalledError
 		return nil
 	}
 
@@ -111,8 +110,8 @@ const (
 
 // IntegrationInstanceProxyRequestResponseBody - Error response indicating the proxy request could not be sent due to invalid state of the request body or integration instance
 type IntegrationInstanceProxyRequestResponseBody struct {
-	BadRequestError              *components.BadRequestError              `queryParam:"inline" union:"member"`
-	IntegrationUnauthorizedError *components.IntegrationUnauthorizedError `queryParam:"inline" union:"member"`
+	BadRequestError              *BadRequestError              `queryParam:"inline" union:"member"`
+	IntegrationUnauthorizedError *IntegrationUnauthorizedError `queryParam:"inline" union:"member"`
 
 	Type IntegrationInstanceProxyRequestResponseBodyType
 
@@ -122,7 +121,7 @@ type IntegrationInstanceProxyRequestResponseBody struct {
 
 var _ error = &IntegrationInstanceProxyRequestResponseBody{}
 
-func CreateIntegrationInstanceProxyRequestResponseBodyBadRequestError(badRequestError components.BadRequestError) IntegrationInstanceProxyRequestResponseBody {
+func CreateIntegrationInstanceProxyRequestResponseBodyBadRequestError(badRequestError BadRequestError) IntegrationInstanceProxyRequestResponseBody {
 	typ := IntegrationInstanceProxyRequestResponseBodyTypeBadRequestError
 
 	return IntegrationInstanceProxyRequestResponseBody{
@@ -131,7 +130,7 @@ func CreateIntegrationInstanceProxyRequestResponseBodyBadRequestError(badRequest
 	}
 }
 
-func CreateIntegrationInstanceProxyRequestResponseBodyIntegrationUnauthorizedError(integrationUnauthorizedError components.IntegrationUnauthorizedError) IntegrationInstanceProxyRequestResponseBody {
+func CreateIntegrationInstanceProxyRequestResponseBodyIntegrationUnauthorizedError(integrationUnauthorizedError IntegrationUnauthorizedError) IntegrationInstanceProxyRequestResponseBody {
 	typ := IntegrationInstanceProxyRequestResponseBodyTypeIntegrationUnauthorizedError
 
 	return IntegrationInstanceProxyRequestResponseBody{
@@ -151,17 +150,17 @@ func (u *IntegrationInstanceProxyRequestResponseBody) UnmarshalJSON(data []byte)
 		}
 	}()
 
-	var integrationUnauthorizedError components.IntegrationUnauthorizedError = components.IntegrationUnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &integrationUnauthorizedError, "", true, nil); err == nil {
-		u.IntegrationUnauthorizedError = &integrationUnauthorizedError
-		u.Type = IntegrationInstanceProxyRequestResponseBodyTypeIntegrationUnauthorizedError
-		return nil
-	}
-
-	var badRequestError components.BadRequestError = components.BadRequestError{}
+	var badRequestError BadRequestError = BadRequestError{}
 	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
 		u.BadRequestError = &badRequestError
 		u.Type = IntegrationInstanceProxyRequestResponseBodyTypeBadRequestError
+		return nil
+	}
+
+	var integrationUnauthorizedError IntegrationUnauthorizedError = IntegrationUnauthorizedError{}
+	if err := utils.UnmarshalJSON(data, &integrationUnauthorizedError, "", true, nil); err == nil {
+		u.IntegrationUnauthorizedError = &integrationUnauthorizedError
+		u.Type = IntegrationInstanceProxyRequestResponseBodyTypeIntegrationUnauthorizedError
 		return nil
 	}
 

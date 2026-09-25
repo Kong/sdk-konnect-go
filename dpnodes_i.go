@@ -28,4 +28,7 @@ type DPNodesSDK interface {
 	// DeleteNodesNodeID - Delete Data Plane Node Record
 	// Remove a specific data plane node record associated to this control plane. Deleting this record does not prevent the data plane node from re-connecting to the control plane.
 	DeleteNodesNodeID(ctx context.Context, controlPlaneID string, nodeID string, opts ...operations.Option) (*operations.DeleteNodesNodeIDResponse, error)
+	// GetNodesNodeIDConf - Get a Data Plane Node Process Conf
+	// Returns the Kong Gateway configuration this data plane node reported when it connected.
+	GetNodesNodeIDConf(ctx context.Context, controlPlaneID string, nodeID string, opts ...operations.Option) (*operations.GetNodesNodeIDConfResponse, error)
 }

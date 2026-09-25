@@ -27,7 +27,7 @@ type SkillsSDK interface {
 	// Retrieve a single skill by its ID.
 	GetContextInterfaceSkill(ctx context.Context, interfaceID string, skillID string, opts ...operations.Option) (*operations.GetContextInterfaceSkillResponse, error)
 	// PatchContextInterfaceSkill - Update a Skill
-	// Partially update a skill.
+	// Partially update a skill. Supplying `source` replaces the skill's source in its entirety and re-runs validation against the new content.
 	PatchContextInterfaceSkill(ctx context.Context, request operations.PatchContextInterfaceSkillRequest, opts ...operations.Option) (*operations.PatchContextInterfaceSkillResponse, error)
 	// DeleteContextInterfaceSkill - Delete a Skill
 	// Delete a skill and its associated content.
@@ -39,6 +39,6 @@ type SkillsSDK interface {
 	// Returns a list of skills for the specified Context Interface.
 	ListContextInterfaceSkills(ctx context.Context, request operations.ListContextInterfaceSkillsRequest, opts ...operations.Option) (*operations.ListContextInterfaceSkillsResponse, error)
 	// CreateContextInterfaceSkill - Create a Skill
-	// Create a skill for the specified Context Interface.
+	// Create a skill for the specified Context Interface. The `source` determines where the skill's content comes from.
 	CreateContextInterfaceSkill(ctx context.Context, interfaceID string, createSkillRequest components.CreateSkillRequest, opts ...operations.Option) (*operations.CreateContextInterfaceSkillResponse, error)
 }

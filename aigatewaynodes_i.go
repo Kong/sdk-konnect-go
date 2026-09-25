@@ -19,4 +19,7 @@ type AIGatewayNodesSDK interface {
 	// GetAiGatewayNode - Get a Node
 	// Returns information about a specific node associated with the AI Gateway.
 	GetAiGatewayNode(ctx context.Context, gatewayID string, dataPlaneNodeID string, opts ...operations.Option) (*operations.GetAiGatewayNodeResponse, error)
+	// GetAiGatewayNodeConf - Get a Node Process Conf
+	// Returns the Kong Gateway configuration this node reported when it connected.
+	GetAiGatewayNodeConf(ctx context.Context, gatewayID string, dataPlaneNodeID string, opts ...operations.Option) (*operations.GetAiGatewayNodeConfResponse, error)
 }

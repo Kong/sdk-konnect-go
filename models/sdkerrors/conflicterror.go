@@ -4,40 +4,16 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"fmt"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
 )
-
-// ConflictErrorStatus - The HTTP status code of the error. Useful when passing the response
-// body to child properties in a frontend UI. Must be returned as an integer.
-type ConflictErrorStatus int64
-
-const (
-	ConflictErrorStatusFourHundredAndNine ConflictErrorStatus = 409
-)
-
-func (e ConflictErrorStatus) ToPointer() *ConflictErrorStatus {
-	return &e
-}
-func (e *ConflictErrorStatus) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case 409:
-		*e = ConflictErrorStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ConflictErrorStatus: %v", v)
-	}
-}
 
 // ConflictError - standard error
 type ConflictError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status ConflictErrorStatus `json:"status"`
+	Status components.ConflictErrorStatus `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.
@@ -56,6 +32,8 @@ type ConflictError struct {
 	// provided as "Sentence case" for direct use in the UI.
 	//
 	Detail string `json:"detail"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &ConflictError{}

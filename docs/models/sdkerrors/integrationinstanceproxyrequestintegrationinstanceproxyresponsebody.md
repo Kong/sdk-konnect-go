@@ -8,13 +8,13 @@ Not Found
 ### NotFoundError
 
 ```go
-integrationInstanceProxyRequestIntegrationInstanceProxyResponseBody := sdkerrors.CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyNotFoundError(components.NotFoundError{/* values here */})
+integrationInstanceProxyRequestIntegrationInstanceProxyResponseBody := sdkerrors.CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyNotFoundError(sdkerrors.NotFoundError{/* values here */})
 ```
 
 ### IntegrationNotInstalledError
 
 ```go
-integrationInstanceProxyRequestIntegrationInstanceProxyResponseBody := sdkerrors.CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyIntegrationNotInstalledError(components.IntegrationNotInstalledError{/* values here */})
+integrationInstanceProxyRequestIntegrationInstanceProxyResponseBody := sdkerrors.CreateIntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyIntegrationNotInstalledError(sdkerrors.IntegrationNotInstalledError{/* values here */})
 ```
 
 ## Union Discrimination

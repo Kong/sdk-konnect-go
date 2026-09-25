@@ -4,40 +4,16 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"fmt"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
 )
-
-// NotAvailableErrorStatus - The HTTP status code of the error. Useful when passing the response
-// body to child properties in a frontend UI. Must be returned as an integer.
-type NotAvailableErrorStatus int64
-
-const (
-	NotAvailableErrorStatusFiveHundredAndThree NotAvailableErrorStatus = 503
-)
-
-func (e NotAvailableErrorStatus) ToPointer() *NotAvailableErrorStatus {
-	return &e
-}
-func (e *NotAvailableErrorStatus) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case 503:
-		*e = NotAvailableErrorStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NotAvailableErrorStatus: %v", v)
-	}
-}
 
 // NotAvailableError - standard error
 type NotAvailableError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status NotAvailableErrorStatus `json:"status"`
+	Status components.NotAvailableErrorStatus `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.
@@ -56,6 +32,8 @@ type NotAvailableError struct {
 	// provided as "Sentence case" for direct use in the UI.
 	//
 	Detail string `json:"detail"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &NotAvailableError{}

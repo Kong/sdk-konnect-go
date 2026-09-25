@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type IntegrationUnauthorizedErrorType string
@@ -52,68 +51,4 @@ func (e *IntegrationUnauthorizedErrorStatus) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for IntegrationUnauthorizedErrorStatus: %v", v)
 	}
-}
-
-type IntegrationUnauthorizedError struct {
-	Type   IntegrationUnauthorizedErrorType   `json:"type"`
-	Status IntegrationUnauthorizedErrorStatus `json:"status"`
-	Title  string                             `json:"title"`
-	// The Konnect trace ID.
-	Instance string `json:"instance"`
-	Detail   string `json:"detail"`
-	// invalid parameters
-	InvalidParameters []InvalidParameters `json:"invalid_parameters"`
-}
-
-func (i IntegrationUnauthorizedError) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(i, "", false)
-}
-
-func (i *IntegrationUnauthorizedError) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"type", "status", "title", "instance", "detail", "invalid_parameters"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (i *IntegrationUnauthorizedError) GetType() IntegrationUnauthorizedErrorType {
-	if i == nil {
-		return IntegrationUnauthorizedErrorType("")
-	}
-	return i.Type
-}
-
-func (i *IntegrationUnauthorizedError) GetStatus() IntegrationUnauthorizedErrorStatus {
-	if i == nil {
-		return IntegrationUnauthorizedErrorStatus(0)
-	}
-	return i.Status
-}
-
-func (i *IntegrationUnauthorizedError) GetTitle() string {
-	if i == nil {
-		return ""
-	}
-	return i.Title
-}
-
-func (i *IntegrationUnauthorizedError) GetInstance() string {
-	if i == nil {
-		return ""
-	}
-	return i.Instance
-}
-
-func (i *IntegrationUnauthorizedError) GetDetail() string {
-	if i == nil {
-		return ""
-	}
-	return i.Detail
-}
-
-func (i *IntegrationUnauthorizedError) GetInvalidParameters() []InvalidParameters {
-	if i == nil {
-		return []InvalidParameters{}
-	}
-	return i.InvalidParameters
 }

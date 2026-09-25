@@ -4,40 +4,16 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"fmt"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
 )
-
-// InternalErrorStatus - The HTTP status code of the error. Useful when passing the response
-// body to child properties in a frontend UI. Must be returned as an integer.
-type InternalErrorStatus int64
-
-const (
-	InternalErrorStatusFiveHundred InternalErrorStatus = 500
-)
-
-func (e InternalErrorStatus) ToPointer() *InternalErrorStatus {
-	return &e
-}
-func (e *InternalErrorStatus) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case 500:
-		*e = InternalErrorStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for InternalErrorStatus: %v", v)
-	}
-}
 
 // InternalError - standard error
 type InternalError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status InternalErrorStatus `json:"status"`
+	Status components.InternalErrorStatus `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.
@@ -56,6 +32,8 @@ type InternalError struct {
 	// provided as "Sentence case" for direct use in the UI.
 	//
 	Detail string `json:"detail"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &InternalError{}

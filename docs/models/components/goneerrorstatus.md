@@ -8,10 +8,10 @@ body to child properties in a frontend UI. Must be returned as an integer.
 
 ```go
 import (
-	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
+	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := sdkerrors.GoneErrorStatusFourHundredAndTen
+value := components.GoneErrorStatusFourHundredAndTen
 ```
 
 

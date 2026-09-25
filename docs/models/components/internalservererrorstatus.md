@@ -6,10 +6,10 @@ The HTTP status code.
 
 ```go
 import (
-	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
+	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := sdkerrors.InternalServerErrorStatusFiveHundred
+value := components.InternalServerErrorStatusFiveHundred
 ```
 
 

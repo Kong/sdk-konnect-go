@@ -4,40 +4,16 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"fmt"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
 )
-
-// ForbiddenErrorStatus - The HTTP status code of the error. Useful when passing the response
-// body to child properties in a frontend UI. Must be returned as an integer.
-type ForbiddenErrorStatus int64
-
-const (
-	ForbiddenErrorStatusFourHundredAndThree ForbiddenErrorStatus = 403
-)
-
-func (e ForbiddenErrorStatus) ToPointer() *ForbiddenErrorStatus {
-	return &e
-}
-func (e *ForbiddenErrorStatus) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case 403:
-		*e = ForbiddenErrorStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ForbiddenErrorStatus: %v", v)
-	}
-}
 
 // ForbiddenError - standard error
 type ForbiddenError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status ForbiddenErrorStatus `json:"status"`
+	Status components.ForbiddenErrorStatus `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.
@@ -56,6 +32,8 @@ type ForbiddenError struct {
 	// provided as "Sentence case" for direct use in the UI.
 	//
 	Detail string `json:"detail"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &ForbiddenError{}

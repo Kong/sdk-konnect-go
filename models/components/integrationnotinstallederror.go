@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 // IntegrationNotInstalledErrorStatus - The HTTP status code of the error. Useful when passing the response
@@ -55,76 +54,4 @@ func (e *IntegrationNotInstalledErrorType) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for IntegrationNotInstalledErrorType: %v", v)
 	}
-}
-
-// IntegrationNotInstalledError - standard error
-type IntegrationNotInstalledError struct {
-	// The HTTP status code of the error. Useful when passing the response
-	// body to child properties in a frontend UI. Must be returned as an integer.
-	//
-	Status IntegrationNotInstalledErrorStatus `json:"status"`
-	// A short, human-readable summary of the problem. It should not
-	// change between occurences of a problem, except for localization.
-	// Should be provided as "Sentence case" for direct use in the UI.
-	//
-	Title string `json:"title"`
-	// The error type.
-	Type IntegrationNotInstalledErrorType `json:"type"`
-	// Used to return the correlation ID back to the user, in the format
-	// kong:trace:<correlation_id>. This helps us find the relevant logs
-	// when a customer reports an issue.
-	//
-	Instance string `json:"instance"`
-	// A human readable explanation specific to this occurence of the problem.
-	// This field may contain request/entity data to help the user understand
-	// what went wrong. Enclose variable values in square brackets. Should be
-	// provided as "Sentence case" for direct use in the UI.
-	//
-	Detail string `json:"detail"`
-}
-
-func (i IntegrationNotInstalledError) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(i, "", false)
-}
-
-func (i *IntegrationNotInstalledError) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"status", "title", "type", "instance", "detail"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (i *IntegrationNotInstalledError) GetStatus() IntegrationNotInstalledErrorStatus {
-	if i == nil {
-		return IntegrationNotInstalledErrorStatus(0)
-	}
-	return i.Status
-}
-
-func (i *IntegrationNotInstalledError) GetTitle() string {
-	if i == nil {
-		return ""
-	}
-	return i.Title
-}
-
-func (i *IntegrationNotInstalledError) GetType() IntegrationNotInstalledErrorType {
-	if i == nil {
-		return IntegrationNotInstalledErrorType("")
-	}
-	return i.Type
-}
-
-func (i *IntegrationNotInstalledError) GetInstance() string {
-	if i == nil {
-		return ""
-	}
-	return i.Instance
-}
-
-func (i *IntegrationNotInstalledError) GetDetail() string {
-	if i == nil {
-		return ""
-	}
-	return i.Detail
 }

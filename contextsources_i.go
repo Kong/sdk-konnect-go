@@ -17,7 +17,7 @@ type ContextSourcesSDK interface {
 	// Create a Context Source in the Konnect Organization.
 	CreateContextSource(ctx context.Context, request operations.CreateContextSourceRequestBody, opts ...operations.Option) (*operations.CreateContextSourceResponse, error)
 	// GetContextSource - Get a Context Source
-	// Retrieve an MCP resource by its ID.
+	// Retrieve an Context Source by its ID.
 	GetContextSource(ctx context.Context, sourceID string, opts ...operations.Option) (*operations.GetContextSourceResponse, error)
 	// DeleteContextSource - Delete a Context Source
 	// Delete a Context Source by its ID.
