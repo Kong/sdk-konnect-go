@@ -38,6 +38,8 @@ go:
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableSkipDeserialization: false
+  fixFlags:
+    encodePathParams: false
   flattenGlobalSecurity: true
   forwardCompatibleEnumsByDefault: false
   forwardCompatibleUnionsByDefault: "false"
