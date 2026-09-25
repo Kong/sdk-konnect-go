@@ -57812,7 +57812,6 @@ components:
               - video
               - rerank
             x-speakeasy-unknown-values: allow
-          minItems: 1
       required:
         - display_name
         - name
@@ -84352,7 +84351,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.1.14
+    version: 2.1.15
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
