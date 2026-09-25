@@ -104968,6 +104968,8 @@ components:
               - decisions
             x-enum-min-runtime-version:
               decisions: '2.2'
+            x-enum-dev:
+              - decisions
             x-speakeasy-unknown-values: allow
       description: >-
         Configuration for proxying synchronous requests/responses to/from an AI
@@ -105049,6 +105051,8 @@ components:
               - skills
             x-enum-min-runtime-version:
               skills: '2.2'
+            x-enum-dev:
+              - skills
             x-speakeasy-unknown-values: allow
       description: >-
         Configuration for proxying asynchronous requests/responses to/from an AI
@@ -106530,6 +106534,9 @@ components:
           x-enum-min-runtime-version:
             passthrough: '2.2'
             typesafe: '2.2'
+          x-enum-dev:
+            - passthrough
+            - typesafe
           x-speakeasy-unknown-values: allow
     AIGatewayTarget:
       type: object
@@ -108983,6 +108990,8 @@ components:
           type: string
           format: uri
           description: The upstream URL for the model endpoint.
+      x-unstable: true
+      x-internal: true
     GCPModelConfig:
       type: object
       description: Configuration for a model hosted on Google Cloud Project.
@@ -117202,6 +117211,8 @@ components:
         Configuration for an upstream model provider.
     AIGatewayModelProviderTypesafe:
       x-min-runtime-version: '2.2'
+      x-unstable: true
+      x-internal: true
       description: |
         Configuration for an upstream model provider.
       type: object
@@ -132234,7 +132245,7 @@ externalDocs:
   url: https://developer.konghq.com
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.1.17
+    version: 2.1.16
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
