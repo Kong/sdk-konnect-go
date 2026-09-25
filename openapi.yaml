@@ -7,7 +7,7 @@ info:
     name: Kong Inc
     url: https://konghq.com
     email: support@konghq.com
-  x-latest-public-runtime-version: '2.2'
+  x-latest-public-runtime-version: '2.1'
   x-extensions-note: |
     Entities and properties may be annotated with `x-min-runtime-version`, the
     earliest AI Gateway runtime version (major and minor) that supports them. A
