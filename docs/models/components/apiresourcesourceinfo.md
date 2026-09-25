@@ -1,6 +1,6 @@
 # APIResourceSourceInfo
 
-The source of an API MCP resource.
+The source of an API Context Source.
 
 
 ## Supported Types

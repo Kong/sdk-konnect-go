@@ -76,9 +76,15 @@ type OpenMeterBillingSettingsSDK interface {
 	// This call is only valid in draft.waiting_for_collection status, where the
 	// collection period can be skipped using this action.
 	SnapshotQuantitiesInvoice(ctx context.Context, invoiceID string, opts ...operations.Option) (*operations.SnapshotQuantitiesInvoiceResponse, error)
+	// ListCharges - List charges
+	// List charges.
+	//
+	// Returns the charges of every customer that are represented as either flat fee or
+	// usage-based charges.
+	ListCharges(ctx context.Context, request operations.ListChargesRequest, opts ...operations.Option) (*operations.ListChargesResponse, error)
 	// ListBillingProfiles - List billing profiles
 	// List billing profiles.
-	ListBillingProfiles(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error)
+	ListBillingProfiles(ctx context.Context, request operations.ListBillingProfilesRequest, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error)
 	// CreateBillingProfile - Create a new billing profile
 	// Create a new billing profile.
 	//

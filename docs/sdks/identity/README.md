@@ -40,6 +40,7 @@ func main() {
             State: "xyz789statetoken",
             Source: "connected-app-123",
             Subdomain: "acme",
+            ConsentedScopeNames: sdkkonnectgo.Pointer("konnect:read konnect:write"),
         },
     })
     if err != nil {

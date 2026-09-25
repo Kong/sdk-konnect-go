@@ -4,57 +4,9 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
 )
-
-// Error - A single error code from the following enum.
-//
-//	invalid_request
-//	   The request is missing a required parameter, includes an unsupported parameter value (other than grant type),
-//	   repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the
-//	   client, or is otherwise malformed.
-//
-//	invalid_client
-//	   Client authentication failed (e.g., unknown client, no client authentication included, or unsupported
-//	   authentication method).
-//
-//	invalid_grant
-//	   The provided authorization grant (e.g., authorization code, resource owner credentials) or refresh token is
-//	   invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to
-//	   another client.
-//
-//	unauthorized_client
-//	   The authenticated client is not authorized to use this authorization grant type.
-//
-//	unsupported_grant_type
-//	   The authorization grant type is not supported by the authorization server.
-//
-//	invalid_scope
-//	   The requested scope is invalid, unknown, malformed, or exceeds the scope granted by the resource owner.
-type Error string
-
-const (
-	ErrorInvalidRequest       Error = "invalid_request"
-	ErrorInvalidClient        Error = "invalid_client"
-	ErrorInvalidGrant         Error = "invalid_grant"
-	ErrorUnauthorizedClient   Error = "unauthorized_client"
-	ErrorUnsupportedGrantType Error = "unsupported_grant_type"
-	ErrorInvalidScope         Error = "invalid_scope"
-)
-
-func (e Error) ToPointer() *Error {
-	return &e
-}
-
-// IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Error) IsExact() bool {
-	if e != nil {
-		switch *e {
-		case "invalid_request", "invalid_client", "invalid_grant", "unauthorized_client", "unsupported_grant_type", "invalid_scope":
-			return true
-		}
-	}
-	return false
-}
 
 // DeviceAuthorizationGrantAuthorizeBadRequest - The error response for the device authorization grant request.
 type DeviceAuthorizationGrantAuthorizeBadRequest struct {
@@ -86,7 +38,9 @@ type DeviceAuthorizationGrantAuthorizeBadRequest struct {
 	//
 	//   invalid_scope
 	//      The requested scope is invalid, unknown, malformed, or exceeds the scope granted by the resource owner.
-	Error_ Error `json:"error"`
+	Error_ components.Error `json:"error"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &DeviceAuthorizationGrantAuthorizeBadRequest{}

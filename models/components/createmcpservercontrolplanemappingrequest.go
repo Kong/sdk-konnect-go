@@ -5,7 +5,7 @@ package components
 type CreateMCPServerControlPlaneMappingRequest struct {
 	// The unique identifier for the Control Plane.
 	ControlPlaneID string `json:"control_plane_id"`
-	// Whether the MCP Server deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
+	// Whether the Context Interface deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
 	Mode *MCPServerControlPlaneMappingMode `json:"mode,omitempty"`
 }
 

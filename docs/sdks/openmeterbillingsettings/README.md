@@ -14,6 +14,7 @@ Billing settings manages the billing profiles and invoices for customers.
 * [ApproveInvoice](#approveinvoice) - Send the invoice to the customer
 * [RetryInvoice](#retryinvoice) - Retry advancing the invoice after a failed attempt
 * [SnapshotQuantitiesInvoice](#snapshotquantitiesinvoice) - Snapshot quantities for usage based line items
+* [ListCharges](#listcharges) - List charges
 * [ListBillingProfiles](#listbillingprofiles) - List billing profiles
 * [CreateBillingProfile](#createbillingprofile) - Create a new billing profile
 * [GetBillingProfile](#getbillingprofile) - Get a billing profile
@@ -604,6 +605,88 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
+## ListCharges
+
+List charges.
+
+Returns the charges of every customer that are represented as either flat fee or
+usage-based charges.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-charges" method="get" path="/v3/openmeter/charges" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.ListCharges(ctx, operations.ListChargesRequest{
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
+        Filter: &components.ListChargesParamsFilter{
+            FeatureID: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+            ServicePeriodFrom: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter(
+                components.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter{
+                    Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            ServicePeriodTo: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterServicePeriodToDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter(
+                components.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter{
+                    Eq: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            CustomerID: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterCustomerIDULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ChargePagePaginatedResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.ListChargesRequest](../../models/operations/listchargesrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
+
+### Response
+
+**[*operations.ListChargesResponse](../../models/operations/listchargesresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
 ## ListBillingProfiles
 
 List billing profiles.
@@ -618,6 +701,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -630,7 +714,14 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterBillingSettings.ListBillingProfiles(ctx, nil)
+    res, err := s.OpenMeterBillingSettings.ListBillingProfiles(ctx, operations.ListBillingProfilesRequest{
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
+        Filter: &components.ListBillingProfilesParamsFilter{
+            ID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+        },
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -642,11 +733,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |
-| `page`                                                                            | [*components.PagePaginationQuery](../../models/components/pagepaginationquery.md) | :heavy_minus_sign:                                                                | Determines which page of the collection to retrieve.                              |
-| `opts`                                                                            | [][operations.Option](../../models/operations/option.md)                          | :heavy_minus_sign:                                                                | The options for this request.                                                     |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [operations.ListBillingProfilesRequest](../../models/operations/listbillingprofilesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
 
 ### Response
 

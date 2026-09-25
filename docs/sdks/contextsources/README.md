@@ -156,7 +156,7 @@ func main() {
 
 ## GetContextSource
 
-Retrieve an MCP resource by its ID.
+Retrieve an Context Source by its ID.
 
 ### Example Usage
 
@@ -201,7 +201,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `sourceID`                                               | `string`                                                 | :heavy_check_mark:                                       | The ID of the MCP resource.                              |
+| `sourceID`                                               | `string`                                                 | :heavy_check_mark:                                       | The ID of the Context Source.                            |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -259,7 +259,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `sourceID`                                               | `string`                                                 | :heavy_check_mark:                                       | The ID of the MCP resource.                              |
+| `sourceID`                                               | `string`                                                 | :heavy_check_mark:                                       | The ID of the Context Source.                            |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -344,7 +344,7 @@ func main() {
 | Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |
-| `sourceID`                                                                                             | `string`                                                                                               | :heavy_check_mark:                                                                                     | The ID of the MCP resource.                                                                            |
+| `sourceID`                                                                                             | `string`                                                                                               | :heavy_check_mark:                                                                                     | The ID of the Context Source.                                                                          |
 | `requestBody`                                                                                          | [operations.UpdateContextSourceRequestBody](../../models/operations/updatecontextsourcerequestbody.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
 | `opts`                                                                                                 | [][operations.Option](../../models/operations/option.md)                                               | :heavy_minus_sign:                                                                                     | The options for this request.                                                                          |
 

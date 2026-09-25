@@ -4,6 +4,7 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"net/http"
 )
 
 // PreconditionFailed - The error response object.
@@ -16,6 +17,8 @@ type PreconditionFailed struct {
 	Instance *string `json:"instance,omitempty"`
 	// Details about the error response.
 	Detail *string `json:"detail,omitempty"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &PreconditionFailed{}

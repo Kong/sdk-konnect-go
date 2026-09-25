@@ -2,79 +2,37 @@
 
 package components
 
-// PatchAISettingsRequestPortalAgent - Portal Agent configuration
-type PatchAISettingsRequestPortalAgent struct {
-	// Whether the Portal Agent is enabled or not
-	Enabled bool `json:"enabled"`
-}
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
 
-func (p *PatchAISettingsRequestPortalAgent) GetEnabled() bool {
-	if p == nil {
-		return false
-	}
-	return p.Enabled
-}
-
-// PatchAISettingsRequestMcpServer - MCP Server configuration
-type PatchAISettingsRequestMcpServer struct {
-	// Whether the Portal MCP Server is enabled or not
-	Enabled bool `json:"enabled"`
-	// Whether write operations are enabled or not for the Portal MCP Server enabled
-	WriteOperationsEnabled *bool `json:"write_operations_enabled,omitempty"`
-}
-
-func (p *PatchAISettingsRequestMcpServer) GetEnabled() bool {
-	if p == nil {
-		return false
-	}
-	return p.Enabled
-}
-
-func (p *PatchAISettingsRequestMcpServer) GetWriteOperationsEnabled() *bool {
-	if p == nil {
-		return nil
-	}
-	return p.WriteOperationsEnabled
-}
-
-// PatchAISettingsRequestFeatures - AI Features configuration. Only nullable when top-level `enabled` is false
-type PatchAISettingsRequestFeatures struct {
-	// Portal Agent configuration
-	PortalAgent *PatchAISettingsRequestPortalAgent `json:"portal_agent,omitempty"`
-	// MCP Server configuration
-	McpServer PatchAISettingsRequestMcpServer `json:"mcp_server"`
-}
-
-func (p *PatchAISettingsRequestFeatures) GetPortalAgent() *PatchAISettingsRequestPortalAgent {
-	if p == nil {
-		return nil
-	}
-	return p.PortalAgent
-}
-
-func (p *PatchAISettingsRequestFeatures) GetMcpServer() PatchAISettingsRequestMcpServer {
-	if p == nil {
-		return PatchAISettingsRequestMcpServer{}
-	}
-	return p.McpServer
-}
-
-// PatchAISettingsRequest - Update AI settings for a portal.
+// PatchAISettingsRequest - Patch AI settings for a portal.
 type PatchAISettingsRequest struct {
 	// Whether AI is enabled or not
-	Enabled bool `json:"enabled"`
-	// AI Features configuration. Only nullable when top-level `enabled` is false
-	Features *PatchAISettingsRequestFeatures `json:"features,omitempty"`
+	Enabled *bool `default:"false" json:"enabled"`
+	// AI Features configuration. Only nullable when top-level `enabled` is false. When top-level `enabled` is false, every feature toggle here is automatically reset to false.
+	Features *AISettingsRequestFeatures `json:"features,omitempty"`
 }
 
-func (p *PatchAISettingsRequest) GetEnabled() bool {
+func (p PatchAISettingsRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchAISettingsRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (p *PatchAISettingsRequest) GetEnabled() *bool {
 	if p == nil {
-		return false
+		return nil
 	}
 	return p.Enabled
 }
 
-func (p *PatchAISettingsRequest) GetFeatures() *PatchAISettingsRequestFeatures {
+func (p *PatchAISettingsRequest) GetFeatures() *AISettingsRequestFeatures {
 	if p == nil {
 		return nil
 	}

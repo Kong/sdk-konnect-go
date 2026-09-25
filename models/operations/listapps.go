@@ -10,6 +10,18 @@ import (
 type ListAppsRequest struct {
 	// Determines which page of the collection to retrieve.
 	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	// Sort apps returned in the response. Supported sort attributes are:
+	//
+	// - `id`
+	// - `created_at` (default)
+	//
+	// The `asc` suffix is optional as the default sort order is ascending. The `desc`
+	// suffix is used to specify a descending order.
+	Sort *string `queryParam:"style=form,explode=false,name=sort"`
+	// Filter apps returned in the response.
+	//
+	// To filter apps by name add the following query param: filter[name]=my-app
+	Filter *components.ListAppsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListAppsRequest) GetPage() *components.PagePaginationQuery {
@@ -17,6 +29,20 @@ func (l *ListAppsRequest) GetPage() *components.PagePaginationQuery {
 		return nil
 	}
 	return l.Page
+}
+
+func (l *ListAppsRequest) GetSort() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Sort
+}
+
+func (l *ListAppsRequest) GetFilter() *components.ListAppsParamsFilter {
+	if l == nil {
+		return nil
+	}
+	return l.Filter
 }
 
 type ListAppsResponse struct {

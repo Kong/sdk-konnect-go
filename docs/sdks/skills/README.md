@@ -178,7 +178,11 @@ func main() {
         log.Fatal(err)
     }
     if res.Skill != nil {
-        // handle response
+        switch res.Skill.Source.Type {
+            case components.SkillSourceTypeRaw:
+                // res.Skill.Source.RawSkillSource is populated
+        }
+
     }
 }
 ```
@@ -208,7 +212,8 @@ func main() {
 
 ## PatchContextInterfaceSkill
 
-Partially update a skill.
+Partially update a skill. Supplying `source` replaces the skill's source in its entirety and re-runs validation against the new content.
+
 
 ### Example Usage
 
@@ -237,6 +242,14 @@ func main() {
         InterfaceID: "9cb81f58-8e7e-4d0e-9f56-26153eac497d",
         SkillID: "12917b31-c65d-47ce-9861-19c8a52b252b",
         PatchSkillRequest: components.PatchSkillRequest{
+            Source: sdkkonnectgo.Pointer(components.CreatePatchSkillRequestSourceRaw(
+                components.RawSkillSourcePayload{
+                    Type: components.RawSkillSourcePayloadTypeRaw,
+                    Config: components.RawSkillSourceConfigPayload{
+                        Contents: "---\nname: pdf-processing\ndescription: Extract and summarize content from PDF documents\n---\n# PDF Processing\n...",
+                    },
+                },
+            )),
             Labels: map[string]string{
                 "env": "test",
             },
@@ -246,7 +259,11 @@ func main() {
         log.Fatal(err)
     }
     if res.Skill != nil {
-        // handle response
+        switch res.Skill.Source.Type {
+            case components.SkillSourceTypeRaw:
+                // res.Skill.Source.RawSkillSource is populated
+        }
+
     }
 }
 ```
@@ -458,7 +475,8 @@ func main() {
 
 ## CreateContextInterfaceSkill
 
-Create a skill for the specified Context Interface.
+Create a skill for the specified Context Interface. The `source` determines where the skill's content comes from.
+
 
 ### Example Usage
 
@@ -486,7 +504,14 @@ func main() {
         Name: "pdf-processing",
         DisplayName: "PDF Processing",
         Description: "Extract and summarize content from PDF documents",
-        Content: "---\nname: pdf-processing\ndescription: Extract and summarize content from PDF documents\n---\n# PDF Processing\n...",
+        Source: components.CreateSkillSourcePayloadRaw(
+            components.RawSkillSourcePayload{
+                Type: components.RawSkillSourcePayloadTypeRaw,
+                Config: components.RawSkillSourceConfigPayload{
+                    Contents: "---\nname: pdf-processing\ndescription: Extract and summarize content from PDF documents\n---\n# PDF Processing\n...",
+                },
+            },
+        ),
         Labels: map[string]string{
             "env": "test",
         },
@@ -495,7 +520,11 @@ func main() {
         log.Fatal(err)
     }
     if res.Skill != nil {
-        // handle response
+        switch res.Skill.Source.Type {
+            case components.SkillSourceTypeRaw:
+                // res.Skill.Source.RawSkillSource is populated
+        }
+
     }
 }
 ```

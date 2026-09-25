@@ -2,7 +2,7 @@
 
 package components
 
-// ListMCPServersResponse - A response to listing MCP servers.
+// ListMCPServersResponse - A response to listing Context Interfaces.
 type ListMCPServersResponse struct {
 	Data []MCPServer `json:"data"`
 	// Pagination metadata.

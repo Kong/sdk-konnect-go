@@ -2,36 +2,14 @@
 
 package components
 
-// Environment - The environment the member application is scoped to.
-type Environment struct {
-	// Contains a unique identifier used for this resource.
-	ID string `json:"id"`
-	// The name of the environment.
-	Name string `json:"name"`
-}
-
-func (e *Environment) GetID() string {
-	if e == nil {
-		return ""
-	}
-	return e.ID
-}
-
-func (e *Environment) GetName() string {
-	if e == nil {
-		return ""
-	}
-	return e.Name
-}
-
 // ApplicationGroupMember - A member application of an application group.
 type ApplicationGroupMember struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// The name of the member application.
 	Name string `json:"name"`
-	// The environment the member application is scoped to.
-	Environment *Environment `json:"environment"`
+	// The environment this application is scoped to.
+	Environment *ApplicationEnvironment `json:"environment"`
 }
 
 func (a *ApplicationGroupMember) GetID() string {
@@ -48,7 +26,7 @@ func (a *ApplicationGroupMember) GetName() string {
 	return a.Name
 }
 
-func (a *ApplicationGroupMember) GetEnvironment() *Environment {
+func (a *ApplicationGroupMember) GetEnvironment() *ApplicationEnvironment {
 	if a == nil {
 		return nil
 	}

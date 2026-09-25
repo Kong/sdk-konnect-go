@@ -4,6 +4,8 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
 )
 
 // ConflictError - standard error
@@ -11,7 +13,7 @@ type ConflictError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status int64 `json:"status"`
+	Status components.ConflictErrorStatus `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.
@@ -30,6 +32,8 @@ type ConflictError struct {
 	// provided as "Sentence case" for direct use in the UI.
 	//
 	Detail string `json:"detail"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &ConflictError{}

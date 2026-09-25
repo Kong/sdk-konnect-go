@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.15.0 and generator version 2.938.0
+// Generated from OpenAPI doc version 3.15.0 and generator version 2.941.0
 
 import (
 	"context"
@@ -372,16 +372,17 @@ type SDK struct {
 	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterSubscriptions *OpenMeterSubscriptions
 	// Tax codes are used to calculate taxes for customers.
-	OpenMeterTax            *OpenMeterTax
-	ContextInterfaces       *ContextInterfaces
-	ContextSources          *ContextSources
-	ContextSourceContents   *ContextSourceContents
-	MCPServers              *MCPServers
-	Skills                  *Skills
-	ContextSourceMappings   *ContextSourceMappings
-	ContextInterfaceConfigs *ContextInterfaceConfigs
-	ControlPlaneMappings    *ControlPlaneMappings
-	MCPServerRuntime        *MCPServerRuntime
+	OpenMeterTax               *OpenMeterTax
+	ContextInterfaces          *ContextInterfaces
+	ContextSources             *ContextSources
+	ContextSourceContents      *ContextSourceContents
+	MCPServers                 *MCPServers
+	Skills                     *Skills
+	ContextSourceMappings      *ContextSourceMappings
+	ContextInterfaceConfigs    *ContextInterfaceConfigs
+	ControlPlaneMappings       *ControlPlaneMappings
+	ContextProviderCredentials *ContextProviderCredentials
+	MCPServerRuntime           *MCPServerRuntime
 	// API related to the management of Konnect AI Gateway resources.
 	AIGateways *AIGateways
 	// API related to the management of AI Gateway DataPlane Certificates.
@@ -399,6 +400,8 @@ type SDK struct {
 	AIGatewayVaults *AIGatewayVaults
 	// Policies that control security, rate-limiting, and guardrail behavior for the AI Gateway.
 	AIGatewayPolicies *AIGatewayPolicies
+	// Custom policies that let you bring your own Lua plugin schema and handler to the AI Gateway.
+	AIGatewayCustomPolicies *AIGatewayCustomPolicies
 	// Models that define routing, capabilities, and backend targets for the AI Gateway.
 	AIGatewayModels *AIGatewayModels
 	// AI Agents registered with the AI Gateway.
@@ -608,9 +611,9 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.4.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.4.1 2.938.0 3.15.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.4.1 2.941.0 3.15.0 github.com/Kong/sdk-konnect-go",
 			SDKVersion:        "0.4.1",
-			GenVersion:        "2.938.0",
+			GenVersion:        "2.941.0",
 			OpenAPIDocVersion: "3.15.0",
 			ServerList:        ServerList,
 		},
@@ -759,6 +762,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.ContextSourceMappings = newContextSourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ContextInterfaceConfigs = newContextInterfaceConfigs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlaneMappings = newControlPlaneMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextProviderCredentials = newContextProviderCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServerRuntime = newMCPServerRuntime(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGateways = newAIGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayDataPlaneCertificates = newAIGatewayDataPlaneCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -769,6 +773,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.AIGatewayDebug = newAIGatewayDebug(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayVaults = newAIGatewayVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayPolicies = newAIGatewayPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayCustomPolicies = newAIGatewayCustomPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayModels = newAIGatewayModels(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayAgents = newAIGatewayAgents(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConsumers = newAIGatewayConsumers(sdk, sdk.sdkConfiguration, sdk.hooks)

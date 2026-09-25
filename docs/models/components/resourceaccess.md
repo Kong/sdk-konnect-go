@@ -1,0 +1,11 @@
+# ResourceAccess
+
+The actions the caller may perform on a resource.
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `Resource`                                                                                             | `string`                                                                                               | :heavy_check_mark:                                                                                     | The resource the actions apply to.                                                                     | krn:reg/us:org/aa878768-05cb-4811-90d2-b82ef61caf44/runtimegroups/0d7dd1ba-b4b0-4b2e-9a4f-4f8e0fba4c1e |
+| `Actions`                                                                                              | []`string`                                                                                             | :heavy_check_mark:                                                                                     | The actions the caller may perform on the resource.                                                    | [<br/>"read"<br/>]                                                                                     |

@@ -2,79 +2,39 @@
 
 package components
 
-// AISettingsResponseBodyPortalAgent - Portal Agent config
-type AISettingsResponseBodyPortalAgent struct {
-	// Whether the Portal Agent is enabled or not
-	Enabled bool `json:"enabled"`
-}
-
-func (a *AISettingsResponseBodyPortalAgent) GetEnabled() bool {
-	if a == nil {
-		return false
-	}
-	return a.Enabled
-}
-
-// AISettingsResponseBodyMcpServer - MCP Server config
-type AISettingsResponseBodyMcpServer struct {
-	// Whether the MCP Server is enabled or not
-	Enabled bool `json:"enabled"`
-	// Whether write operations are enabled or not for the Portal MCP Server enabled
-	WriteOperationsEnabled *bool `json:"write_operations_enabled,omitempty"`
-}
-
-func (a *AISettingsResponseBodyMcpServer) GetEnabled() bool {
-	if a == nil {
-		return false
-	}
-	return a.Enabled
-}
-
-func (a *AISettingsResponseBodyMcpServer) GetWriteOperationsEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.WriteOperationsEnabled
-}
-
-type AISettingsResponseBodyFeatures struct {
-	// Portal Agent config
-	PortalAgent AISettingsResponseBodyPortalAgent `json:"portal_agent"`
-	// MCP Server config
-	McpServer AISettingsResponseBodyMcpServer `json:"mcp_server"`
-}
-
-func (a *AISettingsResponseBodyFeatures) GetPortalAgent() AISettingsResponseBodyPortalAgent {
-	if a == nil {
-		return AISettingsResponseBodyPortalAgent{}
-	}
-	return a.PortalAgent
-}
-
-func (a *AISettingsResponseBodyFeatures) GetMcpServer() AISettingsResponseBodyMcpServer {
-	if a == nil {
-		return AISettingsResponseBodyMcpServer{}
-	}
-	return a.McpServer
-}
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
 
 // AISettingsResponseBody - AI settings for a given portal.
 type AISettingsResponseBody struct {
 	// Is AI enabled?
-	Enabled  bool                           `json:"enabled"`
-	Features AISettingsResponseBodyFeatures `json:"features"`
+	Enabled *bool `default:"false" json:"enabled"`
+	// AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.
+	Features AISettingsResponseFeatures `json:"features"`
 }
 
-func (a *AISettingsResponseBody) GetEnabled() bool {
+func (a AISettingsResponseBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AISettingsResponseBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AISettingsResponseBody) GetEnabled() *bool {
 	if a == nil {
-		return false
+		return nil
 	}
 	return a.Enabled
 }
 
-func (a *AISettingsResponseBody) GetFeatures() AISettingsResponseBodyFeatures {
+func (a *AISettingsResponseBody) GetFeatures() AISettingsResponseFeatures {
 	if a == nil {
-		return AISettingsResponseBodyFeatures{}
+		return AISettingsResponseFeatures{}
 	}
 	return a.Features
 }

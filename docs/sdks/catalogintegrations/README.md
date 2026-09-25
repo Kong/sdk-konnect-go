@@ -79,8 +79,8 @@ func main() {
     }
     if res.CatalogIntegration != nil {
         switch res.CatalogIntegration.Authorization.Type {
-            case components.CatalogIntegrationAuthorizationTypeOne:
-                // res.CatalogIntegration.Authorization.One is populated
+            case components.CatalogIntegrationAuthorizationTypeCatalogIntegrationAuthorization1:
+                // res.CatalogIntegration.Authorization.CatalogIntegrationAuthorization1 is populated
             case components.CatalogIntegrationAuthorizationTypeOAuth:
                 // res.CatalogIntegration.Authorization.OAuth is populated
             case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:
@@ -215,8 +215,8 @@ func main() {
     }
     if res.CatalogIntegration != nil {
         switch res.CatalogIntegration.Authorization.Type {
-            case components.CatalogIntegrationAuthorizationTypeOne:
-                // res.CatalogIntegration.Authorization.One is populated
+            case components.CatalogIntegrationAuthorizationTypeCatalogIntegrationAuthorization1:
+                // res.CatalogIntegration.Authorization.CatalogIntegrationAuthorization1 is populated
             case components.CatalogIntegrationAuthorizationTypeOAuth:
                 // res.CatalogIntegration.Authorization.OAuth is populated
             case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:
@@ -284,8 +284,8 @@ func main() {
     }
     if res.CatalogIntegration != nil {
         switch res.CatalogIntegration.Authorization.Type {
-            case components.CatalogIntegrationAuthorizationTypeOne:
-                // res.CatalogIntegration.Authorization.One is populated
+            case components.CatalogIntegrationAuthorizationTypeCatalogIntegrationAuthorization1:
+                // res.CatalogIntegration.Authorization.CatalogIntegrationAuthorization1 is populated
             case components.CatalogIntegrationAuthorizationTypeOAuth:
                 // res.CatalogIntegration.Authorization.OAuth is populated
             case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:

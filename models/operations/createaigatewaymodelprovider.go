@@ -103,6 +103,10 @@ func (c *CreateAiGatewayModelProviderRequest) GetCreateAIGatewayModelProviderReq
 	return c.GetCreateAIGatewayModelProviderRequest().AIGatewayModelProviderSagemaker
 }
 
+func (c *CreateAiGatewayModelProviderRequest) GetCreateAIGatewayModelProviderRequestTypesafe() *components.AIGatewayModelProviderTypesafe {
+	return c.GetCreateAIGatewayModelProviderRequest().AIGatewayModelProviderTypesafe
+}
+
 type CreateAiGatewayModelProviderResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -271,6 +275,13 @@ func (c *CreateAiGatewayModelProviderResponse) GetAIGatewayModelProviderXai() *c
 func (c *CreateAiGatewayModelProviderResponse) GetAIGatewayModelProviderSagemaker() *components.AIGatewayModelProviderAIGatewayModelProviderSagemaker {
 	if v := c.GetAIGatewayModelProvider(); v != nil {
 		return v.AIGatewayModelProviderAIGatewayModelProviderSagemaker
+	}
+	return nil
+}
+
+func (c *CreateAiGatewayModelProviderResponse) GetAIGatewayModelProviderTypesafe() *components.AIGatewayModelProviderAIGatewayModelProviderTypesafe {
+	if v := c.GetAIGatewayModelProvider(); v != nil {
+		return v.AIGatewayModelProviderAIGatewayModelProviderTypesafe
 	}
 	return nil
 }

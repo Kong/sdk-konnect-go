@@ -33,11 +33,11 @@ func (e *McpServerResourcePayloadType) UnmarshalJSON(data []byte) error {
 }
 
 type McpServerResourcePayload struct {
-	// The name of the MCP resource. Must be unique within the organization and follow machine name conventions.
+	// The name of the Context Source. Must be unique within the organization and follow machine name conventions.
 	Name string `json:"name"`
-	// The display name of the MCP resource.
+	// The display name of the Context Source.
 	DisplayName string `json:"display_name"`
-	// A description of the MCP resource.
+	// A description of the Context Source.
 	Description string `json:"description"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//

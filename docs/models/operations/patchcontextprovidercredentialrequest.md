@@ -1,0 +1,9 @@
+# PatchContextProviderCredentialRequest
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ContextProviderCredentialID`                                                                                        | `string`                                                                                                             | :heavy_check_mark:                                                                                                   | The ID of the context provider credential.                                                                           |
+| `PatchContextProviderCredentialRequest`                                                                              | [components.PatchContextProviderCredentialRequest](../../models/components/patchcontextprovidercredentialrequest.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |

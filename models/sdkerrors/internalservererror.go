@@ -4,43 +4,22 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"fmt"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
 )
-
-// InternalServerErrorStatus - The HTTP status code.
-type InternalServerErrorStatus int
-
-const (
-	InternalServerErrorStatusFiveHundred InternalServerErrorStatus = 500
-)
-
-func (e InternalServerErrorStatus) ToPointer() *InternalServerErrorStatus {
-	return &e
-}
-func (e *InternalServerErrorStatus) UnmarshalJSON(data []byte) error {
-	var v int
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case 500:
-		*e = InternalServerErrorStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for InternalServerErrorStatus: %v", v)
-	}
-}
 
 // InternalServerError - The error response object.
 type InternalServerError struct {
 	// The HTTP status code.
-	Status InternalServerErrorStatus `json:"status"`
+	Status components.InternalServerErrorStatus `json:"status"`
 	// The error response code.
 	Title string `json:"title"`
 	// The Konnect traceback code
 	Instance string `json:"instance"`
 	// Details about the error.
 	Detail *string `json:"detail,omitempty"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &InternalServerError{}

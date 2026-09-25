@@ -20,3 +20,4 @@ custom := components.AIGatewayModelAPICapabilities("custom_value")
 | -------------------------------------- | -------------------------------------- |
 | `AIGatewayModelAPICapabilitiesBatches` | batches                                |
 | `AIGatewayModelAPICapabilitiesFiles`   | files                                  |
+| `AIGatewayModelAPICapabilitiesSkills`  | skills                                 |

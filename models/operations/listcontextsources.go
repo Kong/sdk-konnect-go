@@ -12,7 +12,7 @@ type ListContextSourcesRequest struct {
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Request the next page of data, starting with the item after this parameter.
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
-	// Filters for MCP Resources.
+	// Filters for Context Sources.
 	Filter *components.MCPResourceCommonFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 

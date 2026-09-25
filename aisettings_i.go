@@ -14,7 +14,10 @@ type AISettingsSDK interface {
 	// GetAiSettings - Get AI Settings by Portal
 	// Gets AI settings for a given portal including the configuration of all AI features.
 	GetAiSettings(ctx context.Context, portalID string, opts ...operations.Option) (*operations.GetAiSettingsResponse, error)
-	// UpdateAiSettings - Update AI Settings by Portal
-	// Updates AI settings for a given portal including the configuration of all AI features.
-	UpdateAiSettings(ctx context.Context, portalID string, patchAISettingsRequest components.PatchAISettingsRequest, opts ...operations.Option) (*operations.UpdateAiSettingsResponse, error)
+	// ReplaceAiSettings - Replace AI Settings by Portal
+	// Replaces AI settings for a given portal including the configuration of all AI features.
+	ReplaceAiSettings(ctx context.Context, portalID string, replaceAISettingsRequest components.ReplaceAISettingsRequest, opts ...operations.Option) (*operations.ReplaceAiSettingsResponse, error)
+	// PatchAiSettings - Patch AI Settings by Portal
+	// Patches AI settings for a given portal including the configuration of all AI features.
+	PatchAiSettings(ctx context.Context, portalID string, patchAISettingsRequest components.PatchAISettingsRequest, opts ...operations.Option) (*operations.PatchAiSettingsResponse, error)
 }

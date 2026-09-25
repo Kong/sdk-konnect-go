@@ -1,6 +1,6 @@
 # APIResourceSourcePayload
 
-The source of the MCP resource used in create and update requests.
+The source of the Context Source used in create and update requests.
 
 
 ## Supported Types

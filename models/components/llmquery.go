@@ -34,25 +34,33 @@ func (e *LLMQueryDatasource) UnmarshalJSON(data []byte) error {
 type LLMQueryDimensions string
 
 const (
-	LLMQueryDimensionsControlPlane          LLMQueryDimensions = "control_plane"
-	LLMQueryDimensionsControlPlaneGroup     LLMQueryDimensions = "control_plane_group"
-	LLMQueryDimensionsGatewayService        LLMQueryDimensions = "gateway_service"
-	LLMQueryDimensionsConsumer              LLMQueryDimensions = "consumer"
-	LLMQueryDimensionsApplication           LLMQueryDimensions = "application"
-	LLMQueryDimensionsOidcCredential        LLMQueryDimensions = "oidc_credential"
-	LLMQueryDimensionsRoute                 LLMQueryDimensions = "route"
-	LLMQueryDimensionsAiProvider            LLMQueryDimensions = "ai_provider"
-	LLMQueryDimensionsAiResponseModel       LLMQueryDimensions = "ai_response_model"
-	LLMQueryDimensionsAiRequestModel        LLMQueryDimensions = "ai_request_model"
-	LLMQueryDimensionsLlmCacheStatus        LLMQueryDimensions = "llm_cache_status"
-	LLMQueryDimensionsLlmEmbeddingsProvider LLMQueryDimensions = "llm_embeddings_provider"
-	LLMQueryDimensionsLlmEmbeddingsModel    LLMQueryDimensions = "llm_embeddings_model"
-	LLMQueryDimensionsTime                  LLMQueryDimensions = "time"
-	LLMQueryDimensionsPrincipal             LLMQueryDimensions = "principal"
-	LLMQueryDimensionsRealm                 LLMQueryDimensions = "realm"
-	LLMQueryDimensionsStatusCode            LLMQueryDimensions = "status_code"
-	LLMQueryDimensionsStatusCodeGrouped     LLMQueryDimensions = "status_code_grouped"
-	LLMQueryDimensionsAiPlugin              LLMQueryDimensions = "ai_plugin"
+	LLMQueryDimensionsControlPlane           LLMQueryDimensions = "control_plane"
+	LLMQueryDimensionsControlPlaneGroup      LLMQueryDimensions = "control_plane_group"
+	LLMQueryDimensionsGatewayService         LLMQueryDimensions = "gateway_service"
+	LLMQueryDimensionsConsumer               LLMQueryDimensions = "consumer"
+	LLMQueryDimensionsAiGateway              LLMQueryDimensions = "ai_gateway"
+	LLMQueryDimensionsAiGatewayConsumer      LLMQueryDimensions = "ai_gateway_consumer"
+	LLMQueryDimensionsAiGatewayConsumerGroup LLMQueryDimensions = "ai_gateway_consumer_group"
+	LLMQueryDimensionsAiGatewayDataPlaneNode LLMQueryDimensions = "ai_gateway_data_plane_node"
+	LLMQueryDimensionsAiGatewayMcpServer     LLMQueryDimensions = "ai_gateway_mcp_server"
+	LLMQueryDimensionsAiGatewayModel         LLMQueryDimensions = "ai_gateway_model"
+	LLMQueryDimensionsAiGatewayAgent         LLMQueryDimensions = "ai_gateway_agent"
+	LLMQueryDimensionsApplication            LLMQueryDimensions = "application"
+	LLMQueryDimensionsCacheStatus            LLMQueryDimensions = "cache_status"
+	LLMQueryDimensionsOidcCredential         LLMQueryDimensions = "oidc_credential"
+	LLMQueryDimensionsRoute                  LLMQueryDimensions = "route"
+	LLMQueryDimensionsAiProvider             LLMQueryDimensions = "ai_provider"
+	LLMQueryDimensionsAiResponseModel        LLMQueryDimensions = "ai_response_model"
+	LLMQueryDimensionsAiRequestModel         LLMQueryDimensions = "ai_request_model"
+	LLMQueryDimensionsLlmCacheStatus         LLMQueryDimensions = "llm_cache_status"
+	LLMQueryDimensionsLlmEmbeddingsProvider  LLMQueryDimensions = "llm_embeddings_provider"
+	LLMQueryDimensionsLlmEmbeddingsModel     LLMQueryDimensions = "llm_embeddings_model"
+	LLMQueryDimensionsTime                   LLMQueryDimensions = "time"
+	LLMQueryDimensionsPrincipal              LLMQueryDimensions = "principal"
+	LLMQueryDimensionsRealm                  LLMQueryDimensions = "realm"
+	LLMQueryDimensionsStatusCode             LLMQueryDimensions = "status_code"
+	LLMQueryDimensionsStatusCodeGrouped      LLMQueryDimensions = "status_code_grouped"
+	LLMQueryDimensionsAiPlugin               LLMQueryDimensions = "ai_plugin"
 )
 
 func (e LLMQueryDimensions) ToPointer() *LLMQueryDimensions {
@@ -63,7 +71,7 @@ func (e LLMQueryDimensions) ToPointer() *LLMQueryDimensions {
 func (e *LLMQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "control_plane", "control_plane_group", "gateway_service", "consumer", "application", "oidc_credential", "route", "ai_provider", "ai_response_model", "ai_request_model", "llm_cache_status", "llm_embeddings_provider", "llm_embeddings_model", "time", "principal", "realm", "status_code", "status_code_grouped", "ai_plugin":
+		case "control_plane", "control_plane_group", "gateway_service", "consumer", "ai_gateway", "ai_gateway_consumer", "ai_gateway_consumer_group", "ai_gateway_data_plane_node", "ai_gateway_mcp_server", "ai_gateway_model", "ai_gateway_agent", "application", "cache_status", "oidc_credential", "route", "ai_provider", "ai_response_model", "ai_request_model", "llm_cache_status", "llm_embeddings_provider", "llm_embeddings_model", "time", "principal", "realm", "status_code", "status_code_grouped", "ai_plugin":
 			return true
 		}
 	}

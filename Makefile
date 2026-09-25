@@ -144,6 +144,16 @@ generate.sdk:
 	$(MAKE) _generate.omitempty
 	go mod tidy
 
+# NOTE: Use this when there are breaking changes in the generated SDK code
+#       that require the interfaces and mocks to be regenerated.
+.PHONY: generate.sdk.from-scratch
+generate.sdk.from-scratch:
+	$(MAKE) remove.interfaces
+	$(MAKE) remove.mocks
+	$(MAKE) generate.sdk
+	$(MAKE) generate.interfaces
+	$(MAKE) generate.mocks
+
 .PHONY: test
 test: test.unit test.integration
 

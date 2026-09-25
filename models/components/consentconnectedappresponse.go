@@ -5,7 +5,7 @@ package components
 // ConsentConnectedAppResponse - Consent response with the connected app callback URL.
 type ConsentConnectedAppResponse struct {
 	// Callback URL the client should redirect to.
-	// Authorized: https://{subdomain}.{geo}.identity.konghq.com/auth/authorize/callback?code={code}&state={state}
+	// Authorized: https://{subdomain}.{geo}.identity.konghq.com/auth/authorize/callback?code={code}&state={state}&consented_scope_names={consented_scope_names}
 	// Denied: https://{subdomain}.{geo}.identity.konghq.com/auth/authorize/callback?error=access_denied&state={state}
 	//
 	CallbackURL string `json:"callback_url"`

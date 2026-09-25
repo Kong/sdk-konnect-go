@@ -1,0 +1,9 @@
+# RetrieveUsersMePermissionsRequest
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `Page`                                                                                                              | [*components.RetrieveMyPermissionsCursorPageQuery](../../models/components/retrievemypermissionscursorpagequery.md) | :heavy_minus_sign:                                                                                                  | Determines which page of the collection to retrieve.                                                                |
+| `RetrieveMyPermissionsBatchRequest`                                                                                 | [components.RetrieveMyPermissionsBatchRequest](../../models/components/retrievemypermissionsbatchrequest.md)        | :heavy_check_mark:                                                                                                  | The keys, and the filters for each key, to group the caller's permissions under.                                    |

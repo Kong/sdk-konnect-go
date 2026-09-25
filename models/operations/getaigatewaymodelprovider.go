@@ -199,3 +199,10 @@ func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderSagemaker()
 	}
 	return nil
 }
+
+func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderTypesafe() *components.AIGatewayModelProviderAIGatewayModelProviderTypesafe {
+	if v := g.GetAIGatewayModelProvider(); v != nil {
+		return v.AIGatewayModelProviderAIGatewayModelProviderTypesafe
+	}
+	return nil
+}

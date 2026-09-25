@@ -9,24 +9,32 @@ import (
 type LLMFiltersField string
 
 const (
-	LLMFiltersFieldAiPlugin              LLMFiltersField = "ai_plugin"
-	LLMFiltersFieldAiProvider            LLMFiltersField = "ai_provider"
-	LLMFiltersFieldAiRequestModel        LLMFiltersField = "ai_request_model"
-	LLMFiltersFieldAiResponseModel       LLMFiltersField = "ai_response_model"
-	LLMFiltersFieldApplication           LLMFiltersField = "application"
-	LLMFiltersFieldConsumer              LLMFiltersField = "consumer"
-	LLMFiltersFieldControlPlane          LLMFiltersField = "control_plane"
-	LLMFiltersFieldControlPlaneGroup     LLMFiltersField = "control_plane_group"
-	LLMFiltersFieldGatewayService        LLMFiltersField = "gateway_service"
-	LLMFiltersFieldLlmCacheStatus        LLMFiltersField = "llm_cache_status"
-	LLMFiltersFieldLlmEmbeddingsModel    LLMFiltersField = "llm_embeddings_model"
-	LLMFiltersFieldLlmEmbeddingsProvider LLMFiltersField = "llm_embeddings_provider"
-	LLMFiltersFieldOidcCredential        LLMFiltersField = "oidc_credential"
-	LLMFiltersFieldPrincipal             LLMFiltersField = "principal"
-	LLMFiltersFieldRealm                 LLMFiltersField = "realm"
-	LLMFiltersFieldRoute                 LLMFiltersField = "route"
-	LLMFiltersFieldStatusCode            LLMFiltersField = "status_code"
-	LLMFiltersFieldStatusCodeGrouped     LLMFiltersField = "status_code_grouped"
+	LLMFiltersFieldAiGateway              LLMFiltersField = "ai_gateway"
+	LLMFiltersFieldAiGatewayAgent         LLMFiltersField = "ai_gateway_agent"
+	LLMFiltersFieldAiGatewayConsumer      LLMFiltersField = "ai_gateway_consumer"
+	LLMFiltersFieldAiGatewayConsumerGroup LLMFiltersField = "ai_gateway_consumer_group"
+	LLMFiltersFieldAiGatewayDataPlaneNode LLMFiltersField = "ai_gateway_data_plane_node"
+	LLMFiltersFieldAiGatewayMcpServer     LLMFiltersField = "ai_gateway_mcp_server"
+	LLMFiltersFieldAiGatewayModel         LLMFiltersField = "ai_gateway_model"
+	LLMFiltersFieldAiPlugin               LLMFiltersField = "ai_plugin"
+	LLMFiltersFieldAiProvider             LLMFiltersField = "ai_provider"
+	LLMFiltersFieldAiRequestModel         LLMFiltersField = "ai_request_model"
+	LLMFiltersFieldAiResponseModel        LLMFiltersField = "ai_response_model"
+	LLMFiltersFieldApplication            LLMFiltersField = "application"
+	LLMFiltersFieldCacheStatus            LLMFiltersField = "cache_status"
+	LLMFiltersFieldConsumer               LLMFiltersField = "consumer"
+	LLMFiltersFieldControlPlane           LLMFiltersField = "control_plane"
+	LLMFiltersFieldControlPlaneGroup      LLMFiltersField = "control_plane_group"
+	LLMFiltersFieldGatewayService         LLMFiltersField = "gateway_service"
+	LLMFiltersFieldLlmCacheStatus         LLMFiltersField = "llm_cache_status"
+	LLMFiltersFieldLlmEmbeddingsModel     LLMFiltersField = "llm_embeddings_model"
+	LLMFiltersFieldLlmEmbeddingsProvider  LLMFiltersField = "llm_embeddings_provider"
+	LLMFiltersFieldOidcCredential         LLMFiltersField = "oidc_credential"
+	LLMFiltersFieldPrincipal              LLMFiltersField = "principal"
+	LLMFiltersFieldRealm                  LLMFiltersField = "realm"
+	LLMFiltersFieldRoute                  LLMFiltersField = "route"
+	LLMFiltersFieldStatusCode             LLMFiltersField = "status_code"
+	LLMFiltersFieldStatusCodeGrouped      LLMFiltersField = "status_code_grouped"
 )
 
 func (e LLMFiltersField) ToPointer() *LLMFiltersField {
@@ -37,7 +45,7 @@ func (e LLMFiltersField) ToPointer() *LLMFiltersField {
 func (e *LLMFiltersField) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "application", "consumer", "control_plane", "control_plane_group", "gateway_service", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "oidc_credential", "principal", "realm", "route", "status_code", "status_code_grouped":
+		case "ai_gateway", "ai_gateway_agent", "ai_gateway_consumer", "ai_gateway_consumer_group", "ai_gateway_data_plane_node", "ai_gateway_mcp_server", "ai_gateway_model", "ai_plugin", "ai_provider", "ai_request_model", "ai_response_model", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "gateway_service", "llm_cache_status", "llm_embeddings_model", "llm_embeddings_provider", "oidc_credential", "principal", "realm", "route", "status_code", "status_code_grouped":
 			return true
 		}
 	}

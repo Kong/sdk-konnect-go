@@ -48,6 +48,178 @@ func (_m *MockOpenMeterEntitlementsSDK) EXPECT() *MockOpenMeterEntitlementsSDK_E
 	return &MockOpenMeterEntitlementsSDK_Expecter{mock: &_m.Mock}
 }
 
+// CreateCustomerEntitlement provides a mock function for the type MockOpenMeterEntitlementsSDK
+func (_mock *MockOpenMeterEntitlementsSDK) CreateCustomerEntitlement(ctx context.Context, customerID string, createEntitlementRequest components.CreateEntitlementRequest, opts ...operations.Option) (*operations.CreateCustomerEntitlementResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, customerID, createEntitlementRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, customerID, createEntitlementRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateCustomerEntitlement")
+	}
+
+	var r0 *operations.CreateCustomerEntitlementResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateEntitlementRequest, ...operations.Option) (*operations.CreateCustomerEntitlementResponse, error)); ok {
+		return returnFunc(ctx, customerID, createEntitlementRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateEntitlementRequest, ...operations.Option) *operations.CreateCustomerEntitlementResponse); ok {
+		r0 = returnFunc(ctx, customerID, createEntitlementRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateCustomerEntitlementResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateEntitlementRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, customerID, createEntitlementRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCustomerEntitlement'
+type MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call struct {
+	*mock.Call
+}
+
+// CreateCustomerEntitlement is a helper method to define mock.On call
+//   - ctx context.Context
+//   - customerID string
+//   - createEntitlementRequest components.CreateEntitlementRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterEntitlementsSDK_Expecter) CreateCustomerEntitlement(ctx any, customerID any, createEntitlementRequest any, opts ...any) *MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call {
+	return &MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call{Call: _e.mock.On("CreateCustomerEntitlement",
+		append([]any{ctx, customerID, createEntitlementRequest}, opts...)...)}
+}
+
+func (_c *MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call) Run(run func(ctx context.Context, customerID string, createEntitlementRequest components.CreateEntitlementRequest, opts ...operations.Option)) *MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.CreateEntitlementRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.CreateEntitlementRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call) Return(createCustomerEntitlementResponse *operations.CreateCustomerEntitlementResponse, err error) *MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call {
+	_c.Call.Return(createCustomerEntitlementResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call) RunAndReturn(run func(ctx context.Context, customerID string, createEntitlementRequest components.CreateEntitlementRequest, opts ...operations.Option) (*operations.CreateCustomerEntitlementResponse, error)) *MockOpenMeterEntitlementsSDK_CreateCustomerEntitlement_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetCustomerEntitlementAccess provides a mock function for the type MockOpenMeterEntitlementsSDK
+func (_mock *MockOpenMeterEntitlementsSDK) GetCustomerEntitlementAccess(ctx context.Context, request operations.GetCustomerEntitlementAccessRequest, opts ...operations.Option) (*operations.GetCustomerEntitlementAccessResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetCustomerEntitlementAccess")
+	}
+
+	var r0 *operations.GetCustomerEntitlementAccessResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetCustomerEntitlementAccessRequest, ...operations.Option) (*operations.GetCustomerEntitlementAccessResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetCustomerEntitlementAccessRequest, ...operations.Option) *operations.GetCustomerEntitlementAccessResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetCustomerEntitlementAccessResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetCustomerEntitlementAccessRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetCustomerEntitlementAccess'
+type MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call struct {
+	*mock.Call
+}
+
+// GetCustomerEntitlementAccess is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetCustomerEntitlementAccessRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterEntitlementsSDK_Expecter) GetCustomerEntitlementAccess(ctx any, request any, opts ...any) *MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call {
+	return &MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call{Call: _e.mock.On("GetCustomerEntitlementAccess",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call) Run(run func(ctx context.Context, request operations.GetCustomerEntitlementAccessRequest, opts ...operations.Option)) *MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetCustomerEntitlementAccessRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetCustomerEntitlementAccessRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call) Return(getCustomerEntitlementAccessResponse *operations.GetCustomerEntitlementAccessResponse, err error) *MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call {
+	_c.Call.Return(getCustomerEntitlementAccessResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call) RunAndReturn(run func(ctx context.Context, request operations.GetCustomerEntitlementAccessRequest, opts ...operations.Option) (*operations.GetCustomerEntitlementAccessResponse, error)) *MockOpenMeterEntitlementsSDK_GetCustomerEntitlementAccess_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListCustomerEntitlementAccess provides a mock function for the type MockOpenMeterEntitlementsSDK
 func (_mock *MockOpenMeterEntitlementsSDK) ListCustomerEntitlementAccess(ctx context.Context, customerID string, opts ...operations.Option) (*operations.ListCustomerEntitlementAccessResponse, error) {
 	var tmpRet mock.Arguments

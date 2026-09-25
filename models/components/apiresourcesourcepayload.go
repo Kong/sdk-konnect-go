@@ -16,7 +16,7 @@ const (
 	APIResourceSourcePayloadTypeRaw        APIResourceSourcePayloadType = "raw"
 )
 
-// APIResourceSourcePayload - The source of the MCP resource used in create and update requests.
+// APIResourceSourcePayload - The source of the Context Source used in create and update requests.
 type APIResourceSourcePayload struct {
 	MCPResourceSourceAPICatalogPayload *MCPResourceSourceAPICatalogPayload `queryParam:"inline" union:"member"`
 	MCPResourceSourceRawInput          *MCPResourceSourceRawInput          `queryParam:"inline" union:"member"`

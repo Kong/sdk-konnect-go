@@ -2,78 +2,38 @@
 
 package components
 
-// PortalAgent - Portal Agent config
-type PortalAgent struct {
-	// Whether the Portal Agent is enabled or not
-	Enabled bool `json:"enabled"`
-}
-
-func (p *PortalAgent) GetEnabled() bool {
-	if p == nil {
-		return false
-	}
-	return p.Enabled
-}
-
-// AISettingsMcpServer - AI Features config
-type AISettingsMcpServer struct {
-	// Whether the MCP Server is enabled or not
-	Enabled bool `json:"enabled"`
-	// Whether write operations are enabled or not for the Portal MCP Server enabled
-	WriteOperationsEnabled bool `json:"write_operations_enabled"`
-}
-
-func (a *AISettingsMcpServer) GetEnabled() bool {
-	if a == nil {
-		return false
-	}
-	return a.Enabled
-}
-
-func (a *AISettingsMcpServer) GetWriteOperationsEnabled() bool {
-	if a == nil {
-		return false
-	}
-	return a.WriteOperationsEnabled
-}
-
-type Features struct {
-	// Portal Agent config
-	PortalAgent PortalAgent `json:"portal_agent"`
-	// AI Features config
-	McpServer AISettingsMcpServer `json:"mcp_server"`
-}
-
-func (f *Features) GetPortalAgent() PortalAgent {
-	if f == nil {
-		return PortalAgent{}
-	}
-	return f.PortalAgent
-}
-
-func (f *Features) GetMcpServer() AISettingsMcpServer {
-	if f == nil {
-		return AISettingsMcpServer{}
-	}
-	return f.McpServer
-}
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
 
 type AISettings struct {
 	// Is AI enabled?
-	Enabled  bool     `json:"enabled"`
-	Features Features `json:"features"`
+	Enabled *bool `default:"false" json:"enabled"`
+	// AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.
+	Features AISettingsFeatures `json:"features"`
 }
 
-func (a *AISettings) GetEnabled() bool {
+func (a AISettings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AISettings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AISettings) GetEnabled() *bool {
 	if a == nil {
-		return false
+		return nil
 	}
 	return a.Enabled
 }
 
-func (a *AISettings) GetFeatures() Features {
+func (a *AISettings) GetFeatures() AISettingsFeatures {
 	if a == nil {
-		return Features{}
+		return AISettingsFeatures{}
 	}
 	return a.Features
 }

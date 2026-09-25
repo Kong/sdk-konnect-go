@@ -10,7 +10,7 @@ import (
 type GetControlPlaneMappingRequest struct {
 	// The ID of the Context Interface.
 	InterfaceID string `pathParam:"style=simple,explode=false,name=interfaceId"`
-	// The ID of the MCP Server - Control Plane mapping.
+	// The ID of the Context Interface - Control Plane mapping.
 	MappingID string `pathParam:"style=simple,explode=false,name=mappingId"`
 }
 

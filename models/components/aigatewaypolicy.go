@@ -42,7 +42,7 @@ type AIGatewayPolicy struct {
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Names of the Datastores this policy references.
-	Datastores []string `json:"datastores,omitempty"`
+	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -125,7 +125,7 @@ func (a *AIGatewayPolicy) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayPolicy) GetDatastores() []string {
+func (a *AIGatewayPolicy) GetDatastores() []AIGatewayDatastoreRef {
 	if a == nil {
 		return nil
 	}

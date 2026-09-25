@@ -8,10 +8,10 @@ By default, only the `id` of the customer is returned. For more details use the
 
 ## Supported Types
 
-### CustomerBillingCustomer
+### BillingChargeFlatFeeCustomerBillingCustomer
 
 ```go
-billingChargeFlatFeeCustomer := components.CreateBillingChargeFlatFeeCustomerCustomerBillingCustomer(components.CustomerBillingCustomer{/* values here */})
+billingChargeFlatFeeCustomer := components.CreateBillingChargeFlatFeeCustomerBillingChargeFlatFeeCustomerBillingCustomer(components.BillingChargeFlatFeeCustomerBillingCustomer{/* values here */})
 ```
 
 ### CustomerReference
@@ -26,8 +26,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch billingChargeFlatFeeCustomer.Type {
-	case components.BillingChargeFlatFeeCustomerTypeCustomerBillingCustomer:
-		// billingChargeFlatFeeCustomer.CustomerBillingCustomer is populated
+	case components.BillingChargeFlatFeeCustomerTypeBillingChargeFlatFeeCustomerBillingCustomer:
+		// billingChargeFlatFeeCustomer.BillingChargeFlatFeeCustomerBillingCustomer is populated
 	case components.BillingChargeFlatFeeCustomerTypeCustomerReference:
 		// billingChargeFlatFeeCustomer.CustomerReference is populated
 }

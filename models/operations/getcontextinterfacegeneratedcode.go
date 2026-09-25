@@ -26,7 +26,7 @@ type GetContextInterfaceGeneratedCodeResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// Generated Python code for the Context Interface
+	// Generated code for the Context Interface
 	MCPServerCodeResponse *components.MCPServerCodeResponse
 }
 

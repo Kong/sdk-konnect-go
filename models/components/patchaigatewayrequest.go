@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // PatchAIGatewayRequest - The request schema for partially updating an AI Gateway.
 type PatchAIGatewayRequest struct {
 	// The display name for this AI Gateway.
@@ -16,7 +20,11 @@ type PatchAIGatewayRequest struct {
 	//
 	// When not specified, the minimum runtime version is left unchanged.
 	//
+	// When runtime_auto_upgrade is enabled (the default), this value is raised automatically to track the minimum runtime version reported across connected data planes, so any value set here may be superseded as the fleet upgrades.
+	//
 	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
+	// Whether the control plane should automatically raise min_runtime_version to match the DP fleet's minimum runtime version (the lowest AI Gateway runtime version reported across all connected data planes) as that value increases.
+	RuntimeAutoUpgrade *bool `default:"true" json:"runtime_auto_upgrade"`
 	// Public labels store information about an entity that can be used for filtering a list of objects.
 	//
 	// Public labels are intended to store **PUBLIC** metadata.
@@ -24,6 +32,17 @@ type PatchAIGatewayRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+}
+
+func (p PatchAIGatewayRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchAIGatewayRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (p *PatchAIGatewayRequest) GetDisplayName() *string {
@@ -52,6 +71,13 @@ func (p *PatchAIGatewayRequest) GetMinRuntimeVersion() *string {
 		return nil
 	}
 	return p.MinRuntimeVersion
+}
+
+func (p *PatchAIGatewayRequest) GetRuntimeAutoUpgrade() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.RuntimeAutoUpgrade
 }
 
 func (p *PatchAIGatewayRequest) GetLabels() map[string]string {

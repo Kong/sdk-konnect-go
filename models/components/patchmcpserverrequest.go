@@ -3,11 +3,11 @@
 package components
 
 type PatchMCPServerRequest struct {
-	// The machine name of the MCP server.
+	// The machine name of the Context Interface.
 	Name *string `json:"name,omitempty"`
-	// The human-readable display name of the MCP server.
+	// The human-readable display name of the Context Interface.
 	DisplayName *string `json:"display_name,omitempty"`
-	// A description of the MCP server.
+	// A description of the Context Interface.
 	Description *string `json:"description,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//

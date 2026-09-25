@@ -694,7 +694,123 @@ func (u ListChargesParamsFilterServicePeriodToDateTimeFieldFilter) MarshalJSON()
 	return nil, errors.New("could not marshal union type ListChargesParamsFilterServicePeriodToDateTimeFieldFilter: all fields are null")
 }
 
-// ListChargesParamsFilter - Filter options for listing charges.
+type ListChargesParamsFilterULIDFieldFilterCustomerID2 struct {
+	// Value strictly equals the given ULID value.
+	Eq *string `queryParam:"name=eq"`
+	// Returns entities that exact match any of the comma-delimited ULIDs in the filter
+	// string.
+	Oeq *string `queryParam:"name=oeq"`
+	// Value does not equal the given ULID value.
+	Neq *string `queryParam:"name=neq"`
+}
+
+func (l ListChargesParamsFilterULIDFieldFilterCustomerID2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListChargesParamsFilterULIDFieldFilterCustomerID2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (l *ListChargesParamsFilterULIDFieldFilterCustomerID2) GetEq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Eq
+}
+
+func (l *ListChargesParamsFilterULIDFieldFilterCustomerID2) GetOeq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Oeq
+}
+
+func (l *ListChargesParamsFilterULIDFieldFilterCustomerID2) GetNeq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Neq
+}
+
+// #region class-body-listchargesparamsfilterulidfieldfiltercustomerid2
+// #endregion class-body-listchargesparamsfilterulidfieldfiltercustomerid2
+
+type ListChargesParamsFilterCustomerIDULIDFieldFilterType string
+
+const (
+	ListChargesParamsFilterCustomerIDULIDFieldFilterTypeStr                                               ListChargesParamsFilterCustomerIDULIDFieldFilterType = "str"
+	ListChargesParamsFilterCustomerIDULIDFieldFilterTypeListChargesParamsFilterULIDFieldFilterCustomerID2 ListChargesParamsFilterCustomerIDULIDFieldFilterType = "ListChargesParamsFilter_ULID Field Filter_customer_id_2"
+)
+
+// ListChargesParamsFilterCustomerIDULIDFieldFilter - Filter charges by the ID of their customer.
+type ListChargesParamsFilterCustomerIDULIDFieldFilter struct {
+	Str                                               *string                                            `queryParam:"inline" union:"member"`
+	ListChargesParamsFilterULIDFieldFilterCustomerID2 *ListChargesParamsFilterULIDFieldFilterCustomerID2 `queryParam:"inline" union:"member"`
+
+	Type ListChargesParamsFilterCustomerIDULIDFieldFilterType
+}
+
+func CreateListChargesParamsFilterCustomerIDULIDFieldFilterStr(str string) ListChargesParamsFilterCustomerIDULIDFieldFilter {
+	typ := ListChargesParamsFilterCustomerIDULIDFieldFilterTypeStr
+
+	return ListChargesParamsFilterCustomerIDULIDFieldFilter{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateListChargesParamsFilterCustomerIDULIDFieldFilterListChargesParamsFilterULIDFieldFilterCustomerID2(listChargesParamsFilterULIDFieldFilterCustomerID2 ListChargesParamsFilterULIDFieldFilterCustomerID2) ListChargesParamsFilterCustomerIDULIDFieldFilter {
+	typ := ListChargesParamsFilterCustomerIDULIDFieldFilterTypeListChargesParamsFilterULIDFieldFilterCustomerID2
+
+	return ListChargesParamsFilterCustomerIDULIDFieldFilter{
+		ListChargesParamsFilterULIDFieldFilterCustomerID2: &listChargesParamsFilterULIDFieldFilterCustomerID2,
+		Type: typ,
+	}
+}
+
+func (u *ListChargesParamsFilterCustomerIDULIDFieldFilter) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = ListChargesParamsFilterCustomerIDULIDFieldFilter{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = ListChargesParamsFilterCustomerIDULIDFieldFilterTypeStr
+		return nil
+	}
+
+	var listChargesParamsFilterULIDFieldFilterCustomerID2 ListChargesParamsFilterULIDFieldFilterCustomerID2 = ListChargesParamsFilterULIDFieldFilterCustomerID2{}
+	if err := utils.UnmarshalJSON(data, &listChargesParamsFilterULIDFieldFilterCustomerID2, "", true, nil); err == nil {
+		u.ListChargesParamsFilterULIDFieldFilterCustomerID2 = &listChargesParamsFilterULIDFieldFilterCustomerID2
+		u.Type = ListChargesParamsFilterCustomerIDULIDFieldFilterTypeListChargesParamsFilterULIDFieldFilterCustomerID2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListChargesParamsFilterCustomerIDULIDFieldFilter", string(data))
+}
+
+func (u ListChargesParamsFilterCustomerIDULIDFieldFilter) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ListChargesParamsFilterULIDFieldFilterCustomerID2 != nil {
+		return utils.MarshalJSON(u.ListChargesParamsFilterULIDFieldFilterCustomerID2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ListChargesParamsFilterCustomerIDULIDFieldFilter: all fields are null")
+}
+
+// ListChargesParamsFilter - Filter options for listing charges across customers.
 type ListChargesParamsFilter struct {
 	// Filter charges by status.
 	//
@@ -715,6 +831,8 @@ type ListChargesParamsFilter struct {
 	ServicePeriodFrom *ListChargesParamsFilterDateTimeFieldFilter `queryParam:"name=service_period_from"`
 	// Filter charges by the end of their service period.
 	ServicePeriodTo *ListChargesParamsFilterServicePeriodToDateTimeFieldFilter `queryParam:"name=service_period_to"`
+	// Filter charges by the ID of their customer.
+	CustomerID *ListChargesParamsFilterCustomerIDULIDFieldFilter `queryParam:"name=customer_id"`
 }
 
 func (l *ListChargesParamsFilter) GetStatus() *ListChargesParamsFilterStringFieldNEQFilter {
@@ -750,4 +868,11 @@ func (l *ListChargesParamsFilter) GetServicePeriodTo() *ListChargesParamsFilterS
 		return nil
 	}
 	return l.ServicePeriodTo
+}
+
+func (l *ListChargesParamsFilter) GetCustomerID() *ListChargesParamsFilterCustomerIDULIDFieldFilter {
+	if l == nil {
+		return nil
+	}
+	return l.CustomerID
 }

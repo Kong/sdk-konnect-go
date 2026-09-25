@@ -22,6 +22,12 @@ custom := components.AgenticFiltersField("custom_value")
 | `AgenticFiltersFieldA2aError`                  | a2a_error                                      |
 | `AgenticFiltersFieldA2aMethod`                 | a2a_method                                     |
 | `AgenticFiltersFieldA2aTaskID`                 | a2a_task_id                                    |
+| `AgenticFiltersFieldAiGateway`                 | ai_gateway                                     |
+| `AgenticFiltersFieldAiGatewayAgent`            | ai_gateway_agent                               |
+| `AgenticFiltersFieldAiGatewayConsumer`         | ai_gateway_consumer                            |
+| `AgenticFiltersFieldAiGatewayConsumerGroup`    | ai_gateway_consumer_group                      |
+| `AgenticFiltersFieldAiGatewayDataPlaneNode`    | ai_gateway_data_plane_node                     |
+| `AgenticFiltersFieldAiGatewayMcpServer`        | ai_gateway_mcp_server                          |
 | `AgenticFiltersFieldAPI`                       | api                                            |
 | `AgenticFiltersFieldAPIPackage`                | api_package                                    |
 | `AgenticFiltersFieldAPIProduct`                | api_product                                    |
@@ -29,6 +35,7 @@ custom := components.AgenticFiltersField("custom_value")
 | `AgenticFiltersFieldApplication`               | application                                    |
 | `AgenticFiltersFieldCacheStatus`               | cache_status                                   |
 | `AgenticFiltersFieldConsumer`                  | consumer                                       |
+| `AgenticFiltersFieldConsumerGroup`             | consumer_group                                 |
 | `AgenticFiltersFieldControlPlane`              | control_plane                                  |
 | `AgenticFiltersFieldControlPlaneGroup`         | control_plane_group                            |
 | `AgenticFiltersFieldCountryCode`               | country_code                                   |

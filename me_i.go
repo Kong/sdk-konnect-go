@@ -31,6 +31,11 @@ type MeSDK interface {
 	//
 	// If set, this operation will use [Security.KonnectAccessToken] from the global security.
 	GetUsersMePermissions(ctx context.Context, filter *operations.GetUsersMePermissionsQueryParamFilter, opts ...operations.Option) (*operations.GetUsersMePermissionsResponse, error)
+	// RetrieveUsersMePermissions - Retrieve My Permissions
+	// Returns the permissions for the current user, grouped under caller-supplied keys. Each key declares its own filters, and every permission matching any of that key's filters is returned under the key. The same permission may be returned under more than one key. A key with no filters matches every permission.
+	//
+	// If set, this operation will use one of [Security.PersonalAccessToken], [Security.SystemAccountAccessToken], or [Security.KonnectAccessToken] from the global security.
+	RetrieveUsersMePermissions(ctx context.Context, retrieveMyPermissionsBatchRequest components.RetrieveMyPermissionsBatchRequest, page *components.RetrieveMyPermissionsCursorPageQuery, opts ...operations.Option) (*operations.RetrieveUsersMePermissionsResponse, error)
 	// GetOrganizationsMe - Get My Organization
 	// Returns the organization of the user identified in the token of the request.
 	GetOrganizationsMe(ctx context.Context, opts ...operations.Option) (*operations.GetOrganizationsMeResponse, error)

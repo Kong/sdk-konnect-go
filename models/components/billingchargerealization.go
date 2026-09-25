@@ -1077,7 +1077,7 @@ type ChargeRealizationInvoice struct {
 	//
 	// Present only when there are one or more validation findings. An empty list is
 	// omitted.
-	ValidationIssues []BillingInvoiceValidationIssue `json:"validation_issues,omitempty"`
+	ValidationIssues []BillingValidationIssue `json:"validation_issues,omitempty"`
 	// External identifiers assigned to this invoice by third-party systems.
 	ExternalReferences *InvoiceExternalReferences `json:"external_references,omitempty"`
 	// Discriminator field identifying this as a standard invoice.
@@ -1192,7 +1192,7 @@ func (c *ChargeRealizationInvoice) GetServicePeriod() InvoiceServicePeriod {
 	return c.ServicePeriod
 }
 
-func (c *ChargeRealizationInvoice) GetValidationIssues() []BillingInvoiceValidationIssue {
+func (c *ChargeRealizationInvoice) GetValidationIssues() []BillingValidationIssue {
 	if c == nil {
 		return nil
 	}

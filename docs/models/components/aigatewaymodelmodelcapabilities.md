@@ -28,3 +28,4 @@ custom := components.AIGatewayModelModelCapabilities("custom_value")
 | `AIGatewayModelModelCapabilitiesAudioTranslation`   | audio/translation                                   |
 | `AIGatewayModelModelCapabilitiesVideo`              | video                                               |
 | `AIGatewayModelModelCapabilitiesRerank`             | rerank                                              |
+| `AIGatewayModelModelCapabilitiesDecisions`          | decisions                                           |

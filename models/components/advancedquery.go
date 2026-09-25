@@ -34,6 +34,10 @@ func (e *Datasource) UnmarshalJSON(data []byte) error {
 type AdvancedQueryDimensions string
 
 const (
+	AdvancedQueryDimensionsAiGateway                 AdvancedQueryDimensions = "ai_gateway"
+	AdvancedQueryDimensionsAiGatewayConsumer         AdvancedQueryDimensions = "ai_gateway_consumer"
+	AdvancedQueryDimensionsAiGatewayConsumerGroup    AdvancedQueryDimensions = "ai_gateway_consumer_group"
+	AdvancedQueryDimensionsAiGatewayDataPlaneNode    AdvancedQueryDimensions = "ai_gateway_data_plane_node"
 	AdvancedQueryDimensionsAPI                       AdvancedQueryDimensions = "api"
 	AdvancedQueryDimensionsAPIPackage                AdvancedQueryDimensions = "api_package"
 	AdvancedQueryDimensionsAPIProduct                AdvancedQueryDimensions = "api_product"
@@ -41,6 +45,7 @@ const (
 	AdvancedQueryDimensionsApplication               AdvancedQueryDimensions = "application"
 	AdvancedQueryDimensionsCacheStatus               AdvancedQueryDimensions = "cache_status"
 	AdvancedQueryDimensionsConsumer                  AdvancedQueryDimensions = "consumer"
+	AdvancedQueryDimensionsConsumerGroup             AdvancedQueryDimensions = "consumer_group"
 	AdvancedQueryDimensionsControlPlane              AdvancedQueryDimensions = "control_plane"
 	AdvancedQueryDimensionsControlPlaneGroup         AdvancedQueryDimensions = "control_plane_group"
 	AdvancedQueryDimensionsCountryCode               AdvancedQueryDimensions = "country_code"
@@ -68,7 +73,7 @@ func (e AdvancedQueryDimensions) ToPointer() *AdvancedQueryDimensions {
 func (e *AdvancedQueryDimensions) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "oidc_credential", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
+		case "ai_gateway", "ai_gateway_consumer", "ai_gateway_consumer_group", "ai_gateway_data_plane_node", "api", "api_package", "api_product", "api_product_version", "application", "cache_status", "consumer", "consumer_group", "control_plane", "control_plane_group", "country_code", "data_plane_node", "data_plane_node_version", "gateway_service", "oidc_credential", "portal", "principal", "realm", "response_source", "route", "status_code", "status_code_grouped", "time", "upstream_status_code", "upstream_status_code_grouped":
 			return true
 		}
 	}

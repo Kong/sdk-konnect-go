@@ -8,6 +8,7 @@
 * [DeleteUsersMe](#deleteusersme) - Delete My User Account
 * [PatchUsersMe](#patchusersme) - Update My User Account
 * [GetUsersMePermissions](#getusersmepermissions) - Get My Permissions
+* [RetrieveUsersMePermissions](#retrieveusersmepermissions) - Retrieve My Permissions
 * [GetOrganizationsMe](#getorganizationsme) - Get My Organization
 * [UpdateOrganizationsMe](#updateorganizationsme) - Update My Organization
 
@@ -231,6 +232,85 @@ func main() {
 | --------------------------- | --------------------------- | --------------------------- |
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## RetrieveUsersMePermissions
+
+Returns the permissions for the current user, grouped under caller-supplied keys. Each key declares its own filters, and every permission matching any of that key's filters is returned under the key. The same permission may be returned under more than one key. A key with no filters matches every permission.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="retrieve-users-me-permissions" method="post" path="/v3/users/me/retrieve-permissions" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Me.RetrieveUsersMePermissions(ctx, components.RetrieveMyPermissionsBatchRequest{
+        Keys: []components.PermissionKey{
+            components.PermissionKey{
+                Key: "control_planes",
+                Filters: []components.PermissionFilter{
+                    components.PermissionFilter{
+                        Resource: sdkkonnectgo.Pointer("runtimegroups/*"),
+                        Service: sdkkonnectgo.Pointer("reg"),
+                        Region: sdkkonnectgo.Pointer("us"),
+                        TopLevel: sdkkonnectgo.Pointer(true),
+                        Actions: []string{
+                            "read",
+                        },
+                    },
+                },
+            },
+        },
+    }, &components.RetrieveMyPermissionsCursorPageQuery{
+        Size: sdkkonnectgo.Pointer[int64](10),
+        After: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+        Before: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.RetrieveMyPermissionsBatchResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                               | [context.Context](https://pkg.go.dev/context#Context)                                                               | :heavy_check_mark:                                                                                                  | The context to use for the request.                                                                                 |
+| `retrieveMyPermissionsBatchRequest`                                                                                 | [components.RetrieveMyPermissionsBatchRequest](../../models/components/retrievemypermissionsbatchrequest.md)        | :heavy_check_mark:                                                                                                  | The keys, and the filters for each key, to group the caller's permissions under.                                    |
+| `page`                                                                                                              | [*components.RetrieveMyPermissionsCursorPageQuery](../../models/components/retrievemypermissionscursorpagequery.md) | :heavy_minus_sign:                                                                                                  | Determines which page of the collection to retrieve.                                                                |
+| `opts`                                                                                                              | [][operations.Option](../../models/operations/option.md)                                                            | :heavy_minus_sign:                                                                                                  | The options for this request.                                                                                       |
+
+### Response
+
+**[*operations.RetrieveUsersMePermissionsResponse](../../models/operations/retrieveusersmepermissionsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## GetOrganizationsMe

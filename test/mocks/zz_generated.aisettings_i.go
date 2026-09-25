@@ -131,8 +131,8 @@ func (_c *MockAISettingsSDK_GetAiSettings_Call) RunAndReturn(run func(ctx contex
 	return _c
 }
 
-// UpdateAiSettings provides a mock function for the type MockAISettingsSDK
-func (_mock *MockAISettingsSDK) UpdateAiSettings(ctx context.Context, portalID string, patchAISettingsRequest components.PatchAISettingsRequest, opts ...operations.Option) (*operations.UpdateAiSettingsResponse, error) {
+// PatchAiSettings provides a mock function for the type MockAISettingsSDK
+func (_mock *MockAISettingsSDK) PatchAiSettings(ctx context.Context, portalID string, patchAISettingsRequest components.PatchAISettingsRequest, opts ...operations.Option) (*operations.PatchAiSettingsResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
 		tmpRet = _mock.Called(ctx, portalID, patchAISettingsRequest, opts)
@@ -142,19 +142,19 @@ func (_mock *MockAISettingsSDK) UpdateAiSettings(ctx context.Context, portalID s
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAiSettings")
+		panic("no return value specified for PatchAiSettings")
 	}
 
-	var r0 *operations.UpdateAiSettingsResponse
+	var r0 *operations.PatchAiSettingsResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PatchAISettingsRequest, ...operations.Option) (*operations.UpdateAiSettingsResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PatchAISettingsRequest, ...operations.Option) (*operations.PatchAiSettingsResponse, error)); ok {
 		return returnFunc(ctx, portalID, patchAISettingsRequest, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PatchAISettingsRequest, ...operations.Option) *operations.UpdateAiSettingsResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PatchAISettingsRequest, ...operations.Option) *operations.PatchAiSettingsResponse); ok {
 		r0 = returnFunc(ctx, portalID, patchAISettingsRequest, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.UpdateAiSettingsResponse)
+			r0 = ret.Get(0).(*operations.PatchAiSettingsResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.PatchAISettingsRequest, ...operations.Option) error); ok {
@@ -165,22 +165,22 @@ func (_mock *MockAISettingsSDK) UpdateAiSettings(ctx context.Context, portalID s
 	return r0, r1
 }
 
-// MockAISettingsSDK_UpdateAiSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAiSettings'
-type MockAISettingsSDK_UpdateAiSettings_Call struct {
+// MockAISettingsSDK_PatchAiSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PatchAiSettings'
+type MockAISettingsSDK_PatchAiSettings_Call struct {
 	*mock.Call
 }
 
-// UpdateAiSettings is a helper method to define mock.On call
+// PatchAiSettings is a helper method to define mock.On call
 //   - ctx context.Context
 //   - portalID string
 //   - patchAISettingsRequest components.PatchAISettingsRequest
 //   - opts ...operations.Option
-func (_e *MockAISettingsSDK_Expecter) UpdateAiSettings(ctx any, portalID any, patchAISettingsRequest any, opts ...any) *MockAISettingsSDK_UpdateAiSettings_Call {
-	return &MockAISettingsSDK_UpdateAiSettings_Call{Call: _e.mock.On("UpdateAiSettings",
+func (_e *MockAISettingsSDK_Expecter) PatchAiSettings(ctx any, portalID any, patchAISettingsRequest any, opts ...any) *MockAISettingsSDK_PatchAiSettings_Call {
+	return &MockAISettingsSDK_PatchAiSettings_Call{Call: _e.mock.On("PatchAiSettings",
 		append([]any{ctx, portalID, patchAISettingsRequest}, opts...)...)}
 }
 
-func (_c *MockAISettingsSDK_UpdateAiSettings_Call) Run(run func(ctx context.Context, portalID string, patchAISettingsRequest components.PatchAISettingsRequest, opts ...operations.Option)) *MockAISettingsSDK_UpdateAiSettings_Call {
+func (_c *MockAISettingsSDK_PatchAiSettings_Call) Run(run func(ctx context.Context, portalID string, patchAISettingsRequest components.PatchAISettingsRequest, opts ...operations.Option)) *MockAISettingsSDK_PatchAiSettings_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -210,12 +210,101 @@ func (_c *MockAISettingsSDK_UpdateAiSettings_Call) Run(run func(ctx context.Cont
 	return _c
 }
 
-func (_c *MockAISettingsSDK_UpdateAiSettings_Call) Return(updateAiSettingsResponse *operations.UpdateAiSettingsResponse, err error) *MockAISettingsSDK_UpdateAiSettings_Call {
-	_c.Call.Return(updateAiSettingsResponse, err)
+func (_c *MockAISettingsSDK_PatchAiSettings_Call) Return(patchAiSettingsResponse *operations.PatchAiSettingsResponse, err error) *MockAISettingsSDK_PatchAiSettings_Call {
+	_c.Call.Return(patchAiSettingsResponse, err)
 	return _c
 }
 
-func (_c *MockAISettingsSDK_UpdateAiSettings_Call) RunAndReturn(run func(ctx context.Context, portalID string, patchAISettingsRequest components.PatchAISettingsRequest, opts ...operations.Option) (*operations.UpdateAiSettingsResponse, error)) *MockAISettingsSDK_UpdateAiSettings_Call {
+func (_c *MockAISettingsSDK_PatchAiSettings_Call) RunAndReturn(run func(ctx context.Context, portalID string, patchAISettingsRequest components.PatchAISettingsRequest, opts ...operations.Option) (*operations.PatchAiSettingsResponse, error)) *MockAISettingsSDK_PatchAiSettings_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ReplaceAiSettings provides a mock function for the type MockAISettingsSDK
+func (_mock *MockAISettingsSDK) ReplaceAiSettings(ctx context.Context, portalID string, replaceAISettingsRequest components.ReplaceAISettingsRequest, opts ...operations.Option) (*operations.ReplaceAiSettingsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, portalID, replaceAISettingsRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, portalID, replaceAISettingsRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ReplaceAiSettings")
+	}
+
+	var r0 *operations.ReplaceAiSettingsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.ReplaceAISettingsRequest, ...operations.Option) (*operations.ReplaceAiSettingsResponse, error)); ok {
+		return returnFunc(ctx, portalID, replaceAISettingsRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.ReplaceAISettingsRequest, ...operations.Option) *operations.ReplaceAiSettingsResponse); ok {
+		r0 = returnFunc(ctx, portalID, replaceAISettingsRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ReplaceAiSettingsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.ReplaceAISettingsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, portalID, replaceAISettingsRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAISettingsSDK_ReplaceAiSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ReplaceAiSettings'
+type MockAISettingsSDK_ReplaceAiSettings_Call struct {
+	*mock.Call
+}
+
+// ReplaceAiSettings is a helper method to define mock.On call
+//   - ctx context.Context
+//   - portalID string
+//   - replaceAISettingsRequest components.ReplaceAISettingsRequest
+//   - opts ...operations.Option
+func (_e *MockAISettingsSDK_Expecter) ReplaceAiSettings(ctx any, portalID any, replaceAISettingsRequest any, opts ...any) *MockAISettingsSDK_ReplaceAiSettings_Call {
+	return &MockAISettingsSDK_ReplaceAiSettings_Call{Call: _e.mock.On("ReplaceAiSettings",
+		append([]any{ctx, portalID, replaceAISettingsRequest}, opts...)...)}
+}
+
+func (_c *MockAISettingsSDK_ReplaceAiSettings_Call) Run(run func(ctx context.Context, portalID string, replaceAISettingsRequest components.ReplaceAISettingsRequest, opts ...operations.Option)) *MockAISettingsSDK_ReplaceAiSettings_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.ReplaceAISettingsRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.ReplaceAISettingsRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAISettingsSDK_ReplaceAiSettings_Call) Return(replaceAiSettingsResponse *operations.ReplaceAiSettingsResponse, err error) *MockAISettingsSDK_ReplaceAiSettings_Call {
+	_c.Call.Return(replaceAiSettingsResponse, err)
+	return _c
+}
+
+func (_c *MockAISettingsSDK_ReplaceAiSettings_Call) RunAndReturn(run func(ctx context.Context, portalID string, replaceAISettingsRequest components.ReplaceAISettingsRequest, opts ...operations.Option) (*operations.ReplaceAiSettingsResponse, error)) *MockAISettingsSDK_ReplaceAiSettings_Call {
 	_c.Call.Return(run)
 	return _c
 }

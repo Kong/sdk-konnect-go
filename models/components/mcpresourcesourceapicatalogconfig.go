@@ -6,7 +6,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// MCPResourceSourceAPICatalogConfig - Identifies the API catalog entry the MCP resource was sourced from.
+// MCPResourceSourceAPICatalogConfig - Identifies the API catalog entry the Context Source was sourced from.
 type MCPResourceSourceAPICatalogConfig struct {
 	// The unique identifier for the API catalog entry.
 	APIID string `json:"api_id"`

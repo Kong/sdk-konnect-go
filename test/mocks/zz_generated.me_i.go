@@ -445,6 +445,95 @@ func (_c *MockMeSDK_PatchUsersMe_Call) RunAndReturn(run func(ctx context.Context
 	return _c
 }
 
+// RetrieveUsersMePermissions provides a mock function for the type MockMeSDK
+func (_mock *MockMeSDK) RetrieveUsersMePermissions(ctx context.Context, retrieveMyPermissionsBatchRequest components.RetrieveMyPermissionsBatchRequest, page *components.RetrieveMyPermissionsCursorPageQuery, opts ...operations.Option) (*operations.RetrieveUsersMePermissionsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, retrieveMyPermissionsBatchRequest, page, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, retrieveMyPermissionsBatchRequest, page)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for RetrieveUsersMePermissions")
+	}
+
+	var r0 *operations.RetrieveUsersMePermissionsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.RetrieveMyPermissionsBatchRequest, *components.RetrieveMyPermissionsCursorPageQuery, ...operations.Option) (*operations.RetrieveUsersMePermissionsResponse, error)); ok {
+		return returnFunc(ctx, retrieveMyPermissionsBatchRequest, page, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.RetrieveMyPermissionsBatchRequest, *components.RetrieveMyPermissionsCursorPageQuery, ...operations.Option) *operations.RetrieveUsersMePermissionsResponse); ok {
+		r0 = returnFunc(ctx, retrieveMyPermissionsBatchRequest, page, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.RetrieveUsersMePermissionsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.RetrieveMyPermissionsBatchRequest, *components.RetrieveMyPermissionsCursorPageQuery, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, retrieveMyPermissionsBatchRequest, page, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockMeSDK_RetrieveUsersMePermissions_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RetrieveUsersMePermissions'
+type MockMeSDK_RetrieveUsersMePermissions_Call struct {
+	*mock.Call
+}
+
+// RetrieveUsersMePermissions is a helper method to define mock.On call
+//   - ctx context.Context
+//   - retrieveMyPermissionsBatchRequest components.RetrieveMyPermissionsBatchRequest
+//   - page *components.RetrieveMyPermissionsCursorPageQuery
+//   - opts ...operations.Option
+func (_e *MockMeSDK_Expecter) RetrieveUsersMePermissions(ctx any, retrieveMyPermissionsBatchRequest any, page any, opts ...any) *MockMeSDK_RetrieveUsersMePermissions_Call {
+	return &MockMeSDK_RetrieveUsersMePermissions_Call{Call: _e.mock.On("RetrieveUsersMePermissions",
+		append([]any{ctx, retrieveMyPermissionsBatchRequest, page}, opts...)...)}
+}
+
+func (_c *MockMeSDK_RetrieveUsersMePermissions_Call) Run(run func(ctx context.Context, retrieveMyPermissionsBatchRequest components.RetrieveMyPermissionsBatchRequest, page *components.RetrieveMyPermissionsCursorPageQuery, opts ...operations.Option)) *MockMeSDK_RetrieveUsersMePermissions_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 components.RetrieveMyPermissionsBatchRequest
+		if args[1] != nil {
+			arg1 = args[1].(components.RetrieveMyPermissionsBatchRequest)
+		}
+		var arg2 *components.RetrieveMyPermissionsCursorPageQuery
+		if args[2] != nil {
+			arg2 = args[2].(*components.RetrieveMyPermissionsCursorPageQuery)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockMeSDK_RetrieveUsersMePermissions_Call) Return(retrieveUsersMePermissionsResponse *operations.RetrieveUsersMePermissionsResponse, err error) *MockMeSDK_RetrieveUsersMePermissions_Call {
+	_c.Call.Return(retrieveUsersMePermissionsResponse, err)
+	return _c
+}
+
+func (_c *MockMeSDK_RetrieveUsersMePermissions_Call) RunAndReturn(run func(ctx context.Context, retrieveMyPermissionsBatchRequest components.RetrieveMyPermissionsBatchRequest, page *components.RetrieveMyPermissionsCursorPageQuery, opts ...operations.Option) (*operations.RetrieveUsersMePermissionsResponse, error)) *MockMeSDK_RetrieveUsersMePermissions_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpdateOrganizationsMe provides a mock function for the type MockMeSDK
 func (_mock *MockMeSDK) UpdateOrganizationsMe(ctx context.Context, request *components.UpdateOrganization, opts ...operations.Option) (*operations.UpdateOrganizationsMeResponse, error) {
 	var tmpRet mock.Arguments

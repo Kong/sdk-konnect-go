@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.AdvancedQueryDimensionsAPI
+value := components.AdvancedQueryDimensionsAiGateway
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.AdvancedQueryDimensions("custom_value")
@@ -18,6 +18,10 @@ custom := components.AdvancedQueryDimensions("custom_value")
 
 | Name                                               | Value                                              |
 | -------------------------------------------------- | -------------------------------------------------- |
+| `AdvancedQueryDimensionsAiGateway`                 | ai_gateway                                         |
+| `AdvancedQueryDimensionsAiGatewayConsumer`         | ai_gateway_consumer                                |
+| `AdvancedQueryDimensionsAiGatewayConsumerGroup`    | ai_gateway_consumer_group                          |
+| `AdvancedQueryDimensionsAiGatewayDataPlaneNode`    | ai_gateway_data_plane_node                         |
 | `AdvancedQueryDimensionsAPI`                       | api                                                |
 | `AdvancedQueryDimensionsAPIPackage`                | api_package                                        |
 | `AdvancedQueryDimensionsAPIProduct`                | api_product                                        |
@@ -25,6 +29,7 @@ custom := components.AdvancedQueryDimensions("custom_value")
 | `AdvancedQueryDimensionsApplication`               | application                                        |
 | `AdvancedQueryDimensionsCacheStatus`               | cache_status                                       |
 | `AdvancedQueryDimensionsConsumer`                  | consumer                                           |
+| `AdvancedQueryDimensionsConsumerGroup`             | consumer_group                                     |
 | `AdvancedQueryDimensionsControlPlane`              | control_plane                                      |
 | `AdvancedQueryDimensionsControlPlaneGroup`         | control_plane_group                                |
 | `AdvancedQueryDimensionsCountryCode`               | country_code                                       |

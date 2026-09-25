@@ -12,7 +12,7 @@ import (
 // ContextInterfacesSDK is a generated interface.
 type ContextInterfacesSDK interface {
 	// ListContextInterfaces - List all Context Interfaces
-	// Returns an array of MCP server objects.
+	// Returns an array of Context Interfaces.
 	ListContextInterfaces(ctx context.Context, request operations.ListContextInterfacesRequest, opts ...operations.Option) (*operations.ListContextInterfacesResponse, error)
 	// CreateContextInterface - Create a Context Interface
 	// Create a Context Interface in the Konnect Organization.
@@ -26,16 +26,16 @@ type ContextInterfacesSDK interface {
 	// PatchContextInterface - Partially Update Context Interface
 	// Partially update an individual Context Interface.
 	PatchContextInterface(ctx context.Context, interfaceID string, patchMCPServerRequest components.PatchMCPServerRequest, opts ...operations.Option) (*operations.PatchContextInterfaceResponse, error)
-	// DeleteContextInterface - Delete MCP Server
+	// DeleteContextInterface - Delete Context Interface
 	// Delete a Context Interface.
 	DeleteContextInterface(ctx context.Context, interfaceID string, opts ...operations.Option) (*operations.DeleteContextInterfaceResponse, error)
 	// ListContextInterfacesByContextSource - List Context Source Context Interfaces
 	// List Context Interfaces which are mapped by the provided Context Source ID in the path parameter
 	ListContextInterfacesByContextSource(ctx context.Context, request operations.ListContextInterfacesByContextSourceRequest, opts ...operations.Option) (*operations.ListContextInterfacesByContextSourceResponse, error)
-	// GetMcpServerStatus - Get Context Interface deployment status
+	// GetMcpServerStatus - Get Context Interface Deployment Status
 	// Returns the current aggregated deployment status of a Context Interface.
 	GetMcpServerStatus(ctx context.Context, interfaceID string, opts ...operations.Option) (*operations.GetMcpServerStatusResponse, error)
-	// GetContextInterfaceGeneratedCode - Get generated code for a Context Interface
-	// Generates MCP server Python code from the OpenAPI specifications associated with the Context Interface.
+	// GetContextInterfaceGeneratedCode - Get Generated Code for a Context Interface
+	// Generated MCP Server code of a Context Interface.
 	GetContextInterfaceGeneratedCode(ctx context.Context, interfaceID string, opts ...operations.Option) (*operations.GetContextInterfaceGeneratedCodeResponse, error)
 }

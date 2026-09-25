@@ -16,7 +16,7 @@ const (
 	APIResourceSourceInfoTypeRaw        APIResourceSourceInfoType = "raw"
 )
 
-// APIResourceSourceInfo - The source of an API MCP resource.
+// APIResourceSourceInfo - The source of an API Context Source.
 type APIResourceSourceInfo struct {
 	MCPResourceSourceAPICatalog *MCPResourceSourceAPICatalog `queryParam:"inline" union:"member"`
 	MCPResourceSourceRaw        *MCPResourceSourceRaw        `queryParam:"inline" union:"member"`

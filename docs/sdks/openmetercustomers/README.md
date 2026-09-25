@@ -728,17 +728,17 @@ func main() {
     res, err := s.OpenMeterCustomers.ListCustomerCharges(ctx, operations.ListCustomerChargesRequest{
         CustomerID: "01G65Z755AFWAKHE12NY0CQ9FH",
         Sort: sdkkonnectgo.Pointer("created_at desc"),
-        Filter: &components.ListChargesParamsFilter{
-            FeatureID: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterULIDFieldFilterStr(
+        Filter: &components.ListCustomerChargesParamsFilter{
+            FeatureID: sdkkonnectgo.Pointer(components.CreateListCustomerChargesParamsFilterULIDFieldFilterStr(
                 "01G65Z755AFWAKHE12NY0CQ9FH",
             )),
-            ServicePeriodFrom: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter(
-                components.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter{
+            ServicePeriodFrom: sdkkonnectgo.Pointer(components.CreateListCustomerChargesParamsFilterDateTimeFieldFilterListCustomerChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter(
+                components.ListCustomerChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter{
                     Gte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
-            ServicePeriodTo: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterServicePeriodToDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter(
-                components.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter{
+            ServicePeriodTo: sdkkonnectgo.Pointer(components.CreateListCustomerChargesParamsFilterServicePeriodToDateTimeFieldFilterListCustomerChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter(
+                components.ListCustomerChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldLTEFilter{
                     Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
@@ -1050,8 +1050,8 @@ func main() {
                 },
             )),
         },
-        TaxConfig: &components.TaxConfigurationForACreditGrant{
-            TaxCode: &components.TaxCode{
+        TaxConfig: &components.TaxCodeConfiguration{
+            Code: &components.CreateCreditGrantRequestTaxCode{
                 ID: "01G65Z755AFWAKHE12NY0CQ9FH",
             },
         },

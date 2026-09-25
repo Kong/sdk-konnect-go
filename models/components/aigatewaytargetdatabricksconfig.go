@@ -28,7 +28,7 @@ type AIGatewayTargetDatabricksConfig struct {
 	//
 	// **Requires a minimum runtime version of `2.1`**.
 	OutputCostList []AIGatewayModalCostList `json:"output_cost_list,omitempty"`
-	// Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens.  Set it for models that price each modality separately.
+	// Per-modality override of `cache_read_cost`, in cost per 1M cache-read prompt tokens. Set it for models that price each modality separately.
 	//
 	// **Requires a minimum runtime version of `2.1`**.
 	CacheReadCostList []AIGatewayModalCostList `json:"cache_read_cost_list,omitempty"`

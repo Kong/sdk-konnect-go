@@ -4,6 +4,7 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"net/http"
 )
 
 // UnsupportedMediaTypeError - standard error
@@ -30,6 +31,8 @@ type UnsupportedMediaTypeError struct {
 	// provided as "Sentence case" for direct use in the UI.
 	//
 	Detail string `json:"detail"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &UnsupportedMediaTypeError{}

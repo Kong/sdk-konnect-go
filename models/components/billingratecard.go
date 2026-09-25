@@ -399,27 +399,70 @@ func (d *Discounts) GetUsage() *string {
 	return d.Usage
 }
 
+// TaxBehavior - Tax behavior.
+//
+// This enum is used to specify whether tax is included in the price or excluded
+// from the price. If not specified, the billing profile is used to determine the
+// tax behavior. If not specified in the billing profile, the provider's default
+// behavior is used.
+type TaxBehavior string
+
+const (
+	TaxBehaviorInclusive TaxBehavior = "inclusive"
+	TaxBehaviorExclusive TaxBehavior = "exclusive"
+)
+
+func (e TaxBehavior) ToPointer() *TaxBehavior {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *TaxBehavior) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "inclusive", "exclusive":
+			return true
+		}
+	}
+	return false
+}
+
+// TaxCode - Tax code applied to the invoice line item.
+type TaxCode struct {
+	// ULID (Universally Unique Lexicographically Sortable Identifier).
+	ID string `json:"id"`
+}
+
+func (t *TaxCode) GetID() string {
+	if t == nil {
+		return ""
+	}
+	return t.ID
+}
+
 // TaxConfig - The tax config of the rate card.
 type TaxConfig struct {
 	// Tax behavior.
 	//
 	// This enum is used to specify whether tax is included in the price or excluded
-	// from the price.
-	Behavior *BillingTaxBehavior `json:"behavior,omitempty"`
-	// TaxCode reference.
-	Code TaxCodeReference `json:"code"`
+	// from the price. If not specified, the billing profile is used to determine the
+	// tax behavior. If not specified in the billing profile, the provider's default
+	// behavior is used.
+	Behavior *TaxBehavior `json:"behavior,omitempty"`
+	// Tax code applied to the invoice line item.
+	Code *TaxCode `json:"code,omitempty"`
 }
 
-func (t *TaxConfig) GetBehavior() *BillingTaxBehavior {
+func (t *TaxConfig) GetBehavior() *TaxBehavior {
 	if t == nil {
 		return nil
 	}
 	return t.Behavior
 }
 
-func (t *TaxConfig) GetCode() TaxCodeReference {
+func (t *TaxConfig) GetCode() *TaxCode {
 	if t == nil {
-		return TaxCodeReference{}
+		return nil
 	}
 	return t.Code
 }

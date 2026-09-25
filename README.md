@@ -296,6 +296,14 @@ func main() {
 * [GetAiGatewayConsumerCredential](docs/sdks/aigatewayconsumers/README.md#getaigatewayconsumercredential) - Get an AI Gateway Consumer Credential
 * [DeleteAiGatewayConsumerCredential](docs/sdks/aigatewayconsumers/README.md#deleteaigatewayconsumercredential) - Delete an AI Gateway Consumer Credential
 
+### [AIGatewayCustomPolicies](docs/sdks/aigatewaycustompolicies/README.md)
+
+* [ListAiGatewayCustomPolicies](docs/sdks/aigatewaycustompolicies/README.md#listaigatewaycustompolicies) - List AI Gateway Custom Policies
+* [CreateAiGatewayCustomPolicy](docs/sdks/aigatewaycustompolicies/README.md#createaigatewaycustompolicy) - Create an AI Gateway Custom Policy
+* [GetAiGatewayCustomPolicy](docs/sdks/aigatewaycustompolicies/README.md#getaigatewaycustompolicy) - Get an AI Gateway Custom Policy
+* [UpdateAiGatewayCustomPolicy](docs/sdks/aigatewaycustompolicies/README.md#updateaigatewaycustompolicy) - Update an AI Gateway Custom Policy
+* [DeleteAiGatewayCustomPolicy](docs/sdks/aigatewaycustompolicies/README.md#deleteaigatewaycustompolicy) - Delete an AI Gateway Custom Policy
+
 ### [AIGatewayDataPlaneCertificates](docs/sdks/aigatewaydataplanecertificates/README.md)
 
 * [ListAiGatewayDataPlaneCertificates](docs/sdks/aigatewaydataplanecertificates/README.md#listaigatewaydataplanecertificates) - List AI Gateway DataPlane Certificates
@@ -353,6 +361,7 @@ func main() {
 * [GetAiGatewayExpectedConfigVersion](docs/sdks/aigatewaynodes/README.md#getaigatewayexpectedconfigversion) - Get the Expected Config Version
 * [ListAiGatewayNodes](docs/sdks/aigatewaynodes/README.md#listaigatewaynodes) - List Nodes
 * [GetAiGatewayNode](docs/sdks/aigatewaynodes/README.md#getaigatewaynode) - Get a Node
+* [GetAiGatewayNodeConf](docs/sdks/aigatewaynodes/README.md#getaigatewaynodeconf) - Get a Node Process Conf
 
 ### [AIGatewayPolicies](docs/sdks/aigatewaypolicies/README.md)
 
@@ -402,7 +411,8 @@ func main() {
 ### [AISettings](docs/sdks/aisettings/README.md)
 
 * [GetAiSettings](docs/sdks/aisettings/README.md#getaisettings) - Get AI Settings by Portal
-* [UpdateAiSettings](docs/sdks/aisettings/README.md#updateaisettings) - Update AI Settings by Portal
+* [ReplaceAiSettings](docs/sdks/aisettings/README.md#replaceaisettings) - Replace AI Settings by Portal
+* [PatchAiSettings](docs/sdks/aisettings/README.md#patchaisettings) - Patch AI Settings by Portal
 
 ### [Api](docs/sdks/api/README.md)
 
@@ -878,10 +888,18 @@ func main() {
 * [GetContextInterface](docs/sdks/contextinterfaces/README.md#getcontextinterface) - Get Context Interface
 * [UpdateContextInterface](docs/sdks/contextinterfaces/README.md#updatecontextinterface) - Update MCP Server
 * [PatchContextInterface](docs/sdks/contextinterfaces/README.md#patchcontextinterface) - Partially Update Context Interface
-* [DeleteContextInterface](docs/sdks/contextinterfaces/README.md#deletecontextinterface) - Delete MCP Server
+* [DeleteContextInterface](docs/sdks/contextinterfaces/README.md#deletecontextinterface) - Delete Context Interface
 * [ListContextInterfacesByContextSource](docs/sdks/contextinterfaces/README.md#listcontextinterfacesbycontextsource) - List Context Source Context Interfaces
-* [GetMcpServerStatus](docs/sdks/contextinterfaces/README.md#getmcpserverstatus) - Get Context Interface deployment status
-* [GetContextInterfaceGeneratedCode](docs/sdks/contextinterfaces/README.md#getcontextinterfacegeneratedcode) - Get generated code for a Context Interface
+* [GetMcpServerStatus](docs/sdks/contextinterfaces/README.md#getmcpserverstatus) - Get Context Interface Deployment Status
+* [GetContextInterfaceGeneratedCode](docs/sdks/contextinterfaces/README.md#getcontextinterfacegeneratedcode) - Get Generated Code for a Context Interface
+
+### [ContextProviderCredentials](docs/sdks/contextprovidercredentials/README.md)
+
+* [ListContextProviderCredentials](docs/sdks/contextprovidercredentials/README.md#listcontextprovidercredentials) - List Context Provider Credentials
+* [CreateContextProviderCredential](docs/sdks/contextprovidercredentials/README.md#createcontextprovidercredential) - Create a Context Provider Credential
+* [GetContextProviderCredential](docs/sdks/contextprovidercredentials/README.md#getcontextprovidercredential) - Get a Context Provider Credential
+* [PatchContextProviderCredential](docs/sdks/contextprovidercredentials/README.md#patchcontextprovidercredential) - Update a Context Provider Credential
+* [DeleteContextProviderCredential](docs/sdks/contextprovidercredentials/README.md#deletecontextprovidercredential) - Delete a Context Provider Credential
 
 ### [ContextSourceContents](docs/sdks/contextsourcecontents/README.md)
 
@@ -1039,6 +1057,7 @@ func main() {
 * [GetNodesEol](docs/sdks/dpnodes/README.md#getnodeseol) - List End-of-Life Data Plane Node Records
 * [GetNodesNodeID](docs/sdks/dpnodes/README.md#getnodesnodeid) - Get a Data Plane Node Record
 * [DeleteNodesNodeID](docs/sdks/dpnodes/README.md#deletenodesnodeid) - Delete Data Plane Node Record
+* [GetNodesNodeIDConf](docs/sdks/dpnodes/README.md#getnodesnodeidconf) - Get a Data Plane Node Process Conf
 
 ### [EventGatewayBackendClusters](docs/sdks/eventgatewaybackendclusters/README.md)
 
@@ -1331,6 +1350,7 @@ func main() {
 * [DeleteUsersMe](docs/sdks/me/README.md#deleteusersme) - Delete My User Account
 * [PatchUsersMe](docs/sdks/me/README.md#patchusersme) - Update My User Account
 * [GetUsersMePermissions](docs/sdks/me/README.md#getusersmepermissions) - Get My Permissions
+* [RetrieveUsersMePermissions](docs/sdks/me/README.md#retrieveusersmepermissions) - Retrieve My Permissions
 * [GetOrganizationsMe](docs/sdks/me/README.md#getorganizationsme) - Get My Organization
 * [UpdateOrganizationsMe](docs/sdks/me/README.md#updateorganizationsme) - Update My Organization
 
@@ -1399,6 +1419,7 @@ func main() {
 * [ApproveInvoice](docs/sdks/openmeterbillingsettings/README.md#approveinvoice) - Send the invoice to the customer
 * [RetryInvoice](docs/sdks/openmeterbillingsettings/README.md#retryinvoice) - Retry advancing the invoice after a failed attempt
 * [SnapshotQuantitiesInvoice](docs/sdks/openmeterbillingsettings/README.md#snapshotquantitiesinvoice) - Snapshot quantities for usage based line items
+* [ListCharges](docs/sdks/openmeterbillingsettings/README.md#listcharges) - List charges
 * [ListBillingProfiles](docs/sdks/openmeterbillingsettings/README.md#listbillingprofiles) - List billing profiles
 * [CreateBillingProfile](docs/sdks/openmeterbillingsettings/README.md#createbillingprofile) - Create a new billing profile
 * [GetBillingProfile](docs/sdks/openmeterbillingsettings/README.md#getbillingprofile) - Get a billing profile
@@ -1444,6 +1465,8 @@ func main() {
 ### [OpenMeterEntitlements](docs/sdks/openmeterentitlements/README.md)
 
 * [ListCustomerEntitlementAccess](docs/sdks/openmeterentitlements/README.md#listcustomerentitlementaccess) - List customer entitlement access
+* [GetCustomerEntitlementAccess](docs/sdks/openmeterentitlements/README.md#getcustomerentitlementaccess) - Get customer entitlement access
+* [CreateCustomerEntitlement](docs/sdks/openmeterentitlements/README.md#createcustomerentitlement) - Create customer entitlement
 * [QueryEntitlementAccess](docs/sdks/openmeterentitlements/README.md#queryentitlementaccess) - Query entitlement access
 
 ### [OpenMeterFeatures](docs/sdks/openmeterfeatures/README.md)
@@ -1493,9 +1516,13 @@ func main() {
 * [CreateSubscriptionAddon](docs/sdks/openmetersubscriptions/README.md#createsubscriptionaddon) - Create a new subscription add-on
 * [ListSubscriptionAddons](docs/sdks/openmetersubscriptions/README.md#listsubscriptionaddons) - List subscription addons
 * [GetSubscriptionAddon](docs/sdks/openmetersubscriptions/README.md#getsubscriptionaddon) - Get add-on association for subscription
+* [UpdateSubscriptionAddon](docs/sdks/openmetersubscriptions/README.md#updatesubscriptionaddon) - Update subscription addon
 * [CancelSubscription](docs/sdks/openmetersubscriptions/README.md#cancelsubscription) - Cancel subscription
 * [ChangeSubscription](docs/sdks/openmetersubscriptions/README.md#changesubscription) - Change subscription
 * [EditSubscription](docs/sdks/openmetersubscriptions/README.md#editsubscription) - Edit subscription
+* [MigrateSubscription](docs/sdks/openmetersubscriptions/README.md#migratesubscription) - Migrate subscription
+* [RestoreSubscription](docs/sdks/openmetersubscriptions/README.md#restoresubscription) - Restore subscription
+* [UnscheduleSubscription](docs/sdks/openmetersubscriptions/README.md#unschedulesubscription) - Unschedule subscription
 * [UnscheduleCancelation](docs/sdks/openmetersubscriptions/README.md#unschedulecancelation) - Unschedule subscription cancelation
 
 ### [OpenMeterTax](docs/sdks/openmetertax/README.md)
@@ -2218,7 +2245,7 @@ For example, the `ListControlPlanes` function may return the following errors:
 | sdkerrors.BadRequestError    | 400         | application/problem+json |
 | sdkerrors.UnauthorizedError  | 401         | application/problem+json |
 | sdkerrors.ForbiddenError     | 403         | application/problem+json |
-| sdkerrors.BaseError          | 500         | application/problem+json |
+| sdkerrors.InternalError      | 500         | application/problem+json |
 | sdkerrors.ServiceUnavailable | 503         | application/problem+json |
 | sdkerrors.SDKError           | 4XX, 5XX    | \*/\*                    |
 
@@ -2272,7 +2299,7 @@ func main() {
 			log.Fatal(e.Error())
 		}
 
-		var e *sdkerrors.BaseError
+		var e *sdkerrors.InternalError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())

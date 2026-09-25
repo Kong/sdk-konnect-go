@@ -20,3 +20,4 @@ custom := components.Capabilities("custom_value")
 | --------------------- | --------------------- |
 | `CapabilitiesBatches` | batches               |
 | `CapabilitiesFiles`   | files                 |
+| `CapabilitiesSkills`  | skills                |

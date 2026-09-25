@@ -1,6 +1,6 @@
 # McpServerResourceType
 
-The type of the MCP resource.
+The type of the Context Source.
 
 ## Example Usage
 

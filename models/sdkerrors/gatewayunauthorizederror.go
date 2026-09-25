@@ -4,12 +4,15 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"net/http"
 )
 
 // GatewayUnauthorizedError - Unauthorized
 type GatewayUnauthorizedError struct {
 	Message string `json:"message"`
 	Status  int64  `json:"status"`
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &GatewayUnauthorizedError{}

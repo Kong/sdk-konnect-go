@@ -13,6 +13,16 @@ import (
 type OpenMeterEntitlementsSDK interface {
 	// ListCustomerEntitlementAccess - List customer entitlement access
 	ListCustomerEntitlementAccess(ctx context.Context, customerID string, opts ...operations.Option) (*operations.ListCustomerEntitlementAccessResponse, error)
+	// GetCustomerEntitlementAccess - Get customer entitlement access
+	// Get the customer's access to a single feature.
+	GetCustomerEntitlementAccess(ctx context.Context, request operations.GetCustomerEntitlementAccessRequest, opts ...operations.Option) (*operations.GetCustomerEntitlementAccessResponse, error)
+	// CreateCustomerEntitlement - Create customer entitlement
+	// Create an entitlement for the customer.
+	//
+	// A customer can have only one active entitlement per feature. The feature must be
+	// compatible with the entitlement type. Entitlements cannot be modified after
+	// creation, only deleted.
+	CreateCustomerEntitlement(ctx context.Context, customerID string, createEntitlementRequest components.CreateEntitlementRequest, opts ...operations.Option) (*operations.CreateCustomerEntitlementResponse, error)
 	// QueryEntitlementAccess - Query entitlement access
 	// Query feature access for a list of customers.
 	//

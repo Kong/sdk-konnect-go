@@ -10,9 +10,9 @@ import (
 type ListContextInterfacesRequest struct {
 	// Determines which page of the collection to retrieve.
 	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
-	// Filter for MCP Servers.
+	// Filter for Context Interfaces.
 	Filter *components.MCPServerFilter `queryParam:"style=deepObject,explode=true,name=filter"`
-	// Sorts a collection of MCP Servers. Supported sort attributes are:
+	// Sorts a collection of Context Interfaces. Supported sort attributes are:
 	//   - `name`
 	//   - `created_at`
 	//   - `updated_at`
@@ -50,7 +50,7 @@ type ListContextInterfacesResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A response to listing MCP servers.
+	// A response to listing Context Interfaces.
 	ListMCPServersResponse *components.ListMCPServersResponse
 }
 

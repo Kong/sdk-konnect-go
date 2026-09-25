@@ -14,7 +14,7 @@ type CreateContextInterfaceResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A response to creating an MCP server.
+	// A response to creating a Context Interface.
 	MCPServer *components.MCPServer
 }
 

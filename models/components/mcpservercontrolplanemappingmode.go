@@ -2,7 +2,7 @@
 
 package components
 
-// MCPServerControlPlaneMappingMode - Whether the MCP Server deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
+// MCPServerControlPlaneMappingMode - Whether the Context Interface deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
 type MCPServerControlPlaneMappingMode string
 
 const (

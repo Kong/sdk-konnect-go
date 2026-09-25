@@ -2,19 +2,19 @@
 
 package components
 
-type Status string
+type VerifyDcrProviderResponseStatus string
 
 const (
-	StatusSuccess Status = "success"
-	StatusFailed  Status = "failed"
+	VerifyDcrProviderResponseStatusSuccess VerifyDcrProviderResponseStatus = "success"
+	VerifyDcrProviderResponseStatusFailed  VerifyDcrProviderResponseStatus = "failed"
 )
 
-func (e Status) ToPointer() *Status {
+func (e VerifyDcrProviderResponseStatus) ToPointer() *VerifyDcrProviderResponseStatus {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Status) IsExact() bool {
+func (e *VerifyDcrProviderResponseStatus) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "success", "failed":
@@ -26,13 +26,13 @@ func (e *Status) IsExact() bool {
 
 // VerifyDcrProviderResponse - A response containing the result of attempting to verify a DCR provider configuration.
 type VerifyDcrProviderResponse struct {
-	Status Status   `json:"status"`
-	Errors []string `json:"errors"`
+	Status VerifyDcrProviderResponseStatus `json:"status"`
+	Errors []string                        `json:"errors"`
 }
 
-func (v *VerifyDcrProviderResponse) GetStatus() Status {
+func (v *VerifyDcrProviderResponse) GetStatus() VerifyDcrProviderResponseStatus {
 	if v == nil {
-		return Status("")
+		return VerifyDcrProviderResponseStatus("")
 	}
 	return v.Status
 }

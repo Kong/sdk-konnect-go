@@ -1,6 +1,6 @@
 # MCPResourceSourceAPICatalogConfig
 
-Identifies the API catalog entry the MCP resource was sourced from.
+Identifies the API catalog entry the Context Source was sourced from.
 
 
 ## Fields

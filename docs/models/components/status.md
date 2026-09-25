@@ -1,5 +1,9 @@
 # Status
 
+The HTTP status code of the error. Useful when passing the response
+body to child properties in a frontend UI. Must be returned as an integer.
+
+
 ## Example Usage
 
 ```go
@@ -7,16 +11,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.StatusSuccess
-
-// Open enum: custom values can be created with a direct type cast
-custom := components.Status("custom_value")
+value := components.StatusFourHundred
 ```
 
 
 ## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `StatusSuccess` | success         |
-| `StatusFailed`  | failed          |
+| Name                | Value               |
+| ------------------- | ------------------- |
+| `StatusFourHundred` | 400                 |

@@ -10,7 +10,7 @@ import (
 type PatchContextInterfaceControlPlaneMappingRequest struct {
 	// The ID of the Context Interface.
 	InterfaceID string `pathParam:"style=simple,explode=false,name=interfaceId"`
-	// The ID of the MCP Server - Control Plane mapping.
+	// The ID of the Context Interface - Control Plane mapping.
 	MappingID                                string                                              `pathParam:"style=simple,explode=false,name=mappingId"`
 	PatchMCPServerControlPlaneMappingRequest components.PatchMCPServerControlPlaneMappingRequest `request:"mediaType=application/json"`
 }
@@ -43,7 +43,7 @@ type PatchContextInterfaceControlPlaneMappingResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// Details of MCP Server - Control Plane mapping after update.
+	// Details of Context Interface - Control Plane mapping after update.
 	MCPServerControlPlaneMappingInfo *components.MCPServerControlPlaneMappingInfo
 }
 

@@ -1,6 +1,6 @@
 # MCPResourceRemoteMCPServerPayloadType
 
-The type of the MCP resource source.
+The type of the Context Source source.
 
 ## Example Usage
 

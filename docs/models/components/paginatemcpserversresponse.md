@@ -1,6 +1,6 @@
 # PaginateMCPServersResponse
 
-A response to listing MCP servers.
+A response to listing Context Interfaces.
 
 
 ## Fields

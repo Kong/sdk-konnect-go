@@ -32,6 +32,11 @@ type OpenMeterSubscriptionsSDK interface {
 	//
 	// Get an add-on association for a subscription.
 	GetSubscriptionAddon(ctx context.Context, subscriptionID string, subscriptionAddonID string, opts ...operations.Option) (*operations.GetSubscriptionAddonResponse, error)
+	// UpdateSubscriptionAddon - Update subscription addon
+	// Update a subscription add-on. Only the quantity is mutable; the timing controls
+	// when the new quantity takes effect. A new entry is appended to the add-on's
+	// timeline.
+	UpdateSubscriptionAddon(ctx context.Context, request operations.UpdateSubscriptionAddonRequest, opts ...operations.Option) (*operations.UpdateSubscriptionAddonResponse, error)
 	// CancelSubscription - Cancel subscription
 	// Cancels the subscription. Will result in a scheduling conflict if there are
 	// other subscriptions scheduled to start after the cancelation time.
@@ -46,6 +51,29 @@ type OpenMeterSubscriptionsSDK interface {
 	// unscheduling a pending edit). The changes may take effect immediately or at the
 	// next billing cycle. Subscriptions that have add-ons cannot be edited.
 	EditSubscription(ctx context.Context, subscriptionID string, billingSubscriptionEdit components.BillingSubscriptionEdit, opts ...operations.Option) (*operations.EditSubscriptionResponse, error)
+	// MigrateSubscription - Migrate subscription
+	// Migrates to a later version of the current plan. With starting_phase omitted and
+	// billing_anchor omitted or unchanged, migration amends the subscription in place:
+	// unchanged items retain their service periods and both response entries have the
+	// same ID. Existing addons must remain compatible with the target plan.
+	// Incompatible phase timelines or billing settings return an error. Providing
+	// starting_phase or a different billing_anchor explicitly requests replacement,
+	// which resets the phase timeline, may produce billing adjustments, and does not
+	// transfer addons. Custom subscriptions cannot be migrated.
+	MigrateSubscription(ctx context.Context, subscriptionID string, billingSubscriptionMigrate components.BillingSubscriptionMigrate, opts ...operations.Option) (*operations.MigrateSubscriptionResponse, error)
+	// RestoreSubscription - Restore subscription
+	// Restores the subscription by deleting any later-scheduled successor
+	// subscriptions and continuing this one indefinitely. This is the inverse of a
+	// future-dated change, which schedules a successor. Restore is not available when
+	// multi-subscription is enabled.
+	RestoreSubscription(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.RestoreSubscriptionResponse, error)
+	// UnscheduleSubscription - Unschedule subscription
+	// Deletes a scheduled subscription that has not yet become active, removing it and
+	// resolving any scheduling conflict it was holding. This is distinct from
+	// canceling: cancel ends a running subscription, whereas unscheduling removes a
+	// not-yet-active one. Only scheduled subscriptions can be unscheduled;
+	// unscheduling an active or already-started subscription is rejected.
+	UnscheduleSubscription(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.UnscheduleSubscriptionResponse, error)
 	// UnscheduleCancelation - Unschedule subscription cancelation
 	// Unschedules the subscription cancelation.
 	UnscheduleCancelation(ctx context.Context, subscriptionID string, opts ...operations.Option) (*operations.UnscheduleCancelationResponse, error)

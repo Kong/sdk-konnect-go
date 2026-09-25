@@ -37,6 +37,15 @@ type AIGatewayMCPServerPassthroughListenerResponse struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	// Resolves an upstream credential per request via Kong's Token Vault instead of sending a static
+	// credential. Exchanged credentials are cached per node and, when `redis` is configured, shared
+	// across the cluster. Callers must enroll with the configured Token Vault provider before the
+	// upstream tools are exposed: until enrollment completes, the MCP Server serves virtual
+	// `authenticate` and `check_authentication_status` tools that guide the caller through the
+	// enrollment flow.
+	//
+	// **Requires a minimum runtime version of `2.3`**.
+	TokenVault *AIGatewayTokenVaultOutput `json:"token_vault,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -135,6 +144,13 @@ func (a *AIGatewayMCPServerPassthroughListenerResponse) GetManagedBy() map[strin
 		return nil
 	}
 	return a.ManagedBy
+}
+
+func (a *AIGatewayMCPServerPassthroughListenerResponse) GetTokenVault() *AIGatewayTokenVaultOutput {
+	if a == nil {
+		return nil
+	}
+	return a.TokenVault
 }
 
 func (a *AIGatewayMCPServerPassthroughListenerResponse) GetID() string {
