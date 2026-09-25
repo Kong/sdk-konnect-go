@@ -5,14 +5,40 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"fmt"
 )
+
+// GoneErrorStatus - The HTTP status code of the error. Useful when passing the response
+// body to child properties in a frontend UI. Must be returned as an integer.
+type GoneErrorStatus int64
+
+const (
+	GoneErrorStatusFourHundredAndTen GoneErrorStatus = 410
+)
+
+func (e GoneErrorStatus) ToPointer() *GoneErrorStatus {
+	return &e
+}
+func (e *GoneErrorStatus) UnmarshalJSON(data []byte) error {
+	var v int64
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case 410:
+		*e = GoneErrorStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GoneErrorStatus: %v", v)
+	}
+}
 
 // GoneError - standard error
 type GoneError struct {
 	// The HTTP status code of the error. Useful when passing the response
 	// body to child properties in a frontend UI. Must be returned as an integer.
 	//
-	Status int64 `json:"status"`
+	Status GoneErrorStatus `json:"status"`
 	// A short, human-readable summary of the problem. It should not
 	// change between occurences of a problem, except for localization.
 	// Should be provided as "Sentence case" for direct use in the UI.

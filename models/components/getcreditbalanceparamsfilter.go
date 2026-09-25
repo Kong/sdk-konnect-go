@@ -3,7 +3,8 @@
 
 package components
 
-// StringFieldNEQFilter - Filter credit balance by currency.
+// StringFieldNEQFilter - Filter credit balance by currency code. When historical custom currencies reuse
+// a code, each managed currency is returned as a separate balance row.
 type StringFieldNEQFilter struct {
 	Eq  *string `queryParam:"name=eq"`
 	Oeq string  `queryParam:"name=oeq"`
@@ -78,7 +79,8 @@ func (g *GetCreditBalanceParamsFilterStringFieldNEQFilter) GetNeq() string {
 
 // GetCreditBalanceParamsFilter - Filter options for getting a credit balance.
 type GetCreditBalanceParamsFilter struct {
-	// Filter credit balance by currency.
+	// Filter credit balance by currency code. When historical custom currencies reuse
+	// a code, each managed currency is returned as a separate balance row.
 	Currency *StringFieldNEQFilter `queryParam:"name=currency"`
 	// Filter credit balance by feature key. Omit to return the total portfolio value.
 	// Use `exists=false` to return only unrestricted balance.

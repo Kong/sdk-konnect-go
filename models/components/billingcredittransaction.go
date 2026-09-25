@@ -33,6 +33,19 @@ func (e *BillingCreditTransactionType) IsExact() bool {
 	return false
 }
 
+// BillingCreditTransactionCustomCurrency - Managed currency reference. Present only for custom currencies.
+type BillingCreditTransactionCustomCurrency struct {
+	// ULID (Universally Unique Lexicographically Sortable Identifier).
+	ID string `json:"id"`
+}
+
+func (b *BillingCreditTransactionCustomCurrency) GetID() string {
+	if b == nil {
+		return ""
+	}
+	return b.ID
+}
+
 // AvailableBalance - The available balance before and after the transaction.
 type AvailableBalance struct {
 	// Numeric represents an arbitrary precision number.
@@ -83,6 +96,8 @@ type BillingCreditTransaction struct {
 	Type BillingCreditTransactionType `json:"type"`
 	// Currency of the balance affected by the transaction.
 	Currency string `json:"currency"`
+	// Managed currency reference. Present only for custom currencies.
+	CustomCurrency *BillingCreditTransactionCustomCurrency `json:"custom_currency,omitempty"`
 	// Signed amount of the credit movement. Positive values add balance, negative
 	// values reduce balance.
 	Amount string `json:"amount"`
@@ -155,6 +170,13 @@ func (b *BillingCreditTransaction) GetCurrency() string {
 		return ""
 	}
 	return b.Currency
+}
+
+func (b *BillingCreditTransaction) GetCustomCurrency() *BillingCreditTransactionCustomCurrency {
+	if b == nil {
+		return nil
+	}
+	return b.CustomCurrency
 }
 
 func (b *BillingCreditTransaction) GetAmount() string {

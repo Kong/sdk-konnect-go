@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.FieldAPI
+value := components.FieldAiGateway
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.Field("custom_value")
@@ -18,6 +18,10 @@ custom := components.Field("custom_value")
 
 | Name                             | Value                            |
 | -------------------------------- | -------------------------------- |
+| `FieldAiGateway`                 | ai_gateway                       |
+| `FieldAiGatewayConsumer`         | ai_gateway_consumer              |
+| `FieldAiGatewayConsumerGroup`    | ai_gateway_consumer_group        |
+| `FieldAiGatewayDataPlaneNode`    | ai_gateway_data_plane_node       |
 | `FieldAPI`                       | api                              |
 | `FieldAPIPackage`                | api_package                      |
 | `FieldAPIProduct`                | api_product                      |
@@ -25,6 +29,7 @@ custom := components.Field("custom_value")
 | `FieldApplication`               | application                      |
 | `FieldCacheStatus`               | cache_status                     |
 | `FieldConsumer`                  | consumer                         |
+| `FieldConsumerGroup`             | consumer_group                   |
 | `FieldControlPlane`              | control_plane                    |
 | `FieldControlPlaneGroup`         | control_plane_group              |
 | `FieldCountryCode`               | country_code                     |

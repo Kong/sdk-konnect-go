@@ -13,7 +13,7 @@ import (
 type OpenMeterBillingSettingsSDK interface {
 	// ListBillingProfiles - List billing profiles
 	// List billing profiles.
-	ListBillingProfiles(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error)
+	ListBillingProfiles(ctx context.Context, request operations.ListBillingProfilesRequest, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error)
 	// CreateBillingProfile - Create a new billing profile
 	// Create a new billing profile.
 	//

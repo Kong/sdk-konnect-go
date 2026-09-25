@@ -608,23 +608,23 @@ func (u Payment) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type Payment: all fields are null")
 }
 
-// TaxBehavior - Tax behavior.
+// BillingProfileTaxBehavior - Tax behavior.
 //
 // If not specified the billing profile is used to determine the tax behavior. If
 // not specified in the billing profile, the provider's default behavior is used.
-type TaxBehavior string
+type BillingProfileTaxBehavior string
 
 const (
-	TaxBehaviorInclusive TaxBehavior = "inclusive"
-	TaxBehaviorExclusive TaxBehavior = "exclusive"
+	BillingProfileTaxBehaviorInclusive BillingProfileTaxBehavior = "inclusive"
+	BillingProfileTaxBehaviorExclusive BillingProfileTaxBehavior = "exclusive"
 )
 
-func (e TaxBehavior) ToPointer() *TaxBehavior {
+func (e BillingProfileTaxBehavior) ToPointer() *BillingProfileTaxBehavior {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *TaxBehavior) IsExact() bool {
+func (e *BillingProfileTaxBehavior) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "inclusive", "exclusive":
@@ -692,7 +692,7 @@ type DefaultTaxConfig struct {
 	//
 	// If not specified the billing profile is used to determine the tax behavior. If
 	// not specified in the billing profile, the provider's default behavior is used.
-	Behavior *TaxBehavior `json:"behavior,omitempty"`
+	Behavior *BillingProfileTaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -713,7 +713,7 @@ type DefaultTaxConfig struct {
 	TaxCode *BillingProfileTaxCode `json:"tax_code,omitempty"`
 }
 
-func (d *DefaultTaxConfig) GetBehavior() *TaxBehavior {
+func (d *DefaultTaxConfig) GetBehavior() *BillingProfileTaxBehavior {
 	if d == nil {
 		return nil
 	}

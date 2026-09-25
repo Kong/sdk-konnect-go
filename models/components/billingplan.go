@@ -128,7 +128,7 @@ type BillingPlan struct {
 	// - `credit_then_invoice`: Credits are applied first, then any remainder is
 	// invoiced.
 	// - `credit_only`: Usage is settled exclusively against credits.
-	SettlementMode *SettlementMode `default:"credit_then_invoice" json:"settlement_mode"`
+	SettlementMode SettlementMode `json:"settlement_mode"`
 	// List of validation errors in `draft` state that prevent the plan from being
 	// published.
 	ValidationErrors []ProductCatalogValidationError `json:"validation_errors,omitempty"`
@@ -257,9 +257,9 @@ func (b *BillingPlan) GetPhases() []BillingPlanPhase {
 	return b.Phases
 }
 
-func (b *BillingPlan) GetSettlementMode() *SettlementMode {
+func (b *BillingPlan) GetSettlementMode() SettlementMode {
 	if b == nil {
-		return nil
+		return SettlementMode("")
 	}
 	return b.SettlementMode
 }

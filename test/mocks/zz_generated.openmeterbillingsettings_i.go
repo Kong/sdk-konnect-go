@@ -298,12 +298,12 @@ func (_c *MockOpenMeterBillingSettingsSDK_GetBillingProfile_Call) RunAndReturn(r
 }
 
 // ListBillingProfiles provides a mock function for the type MockOpenMeterBillingSettingsSDK
-func (_mock *MockOpenMeterBillingSettingsSDK) ListBillingProfiles(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error) {
+func (_mock *MockOpenMeterBillingSettingsSDK) ListBillingProfiles(ctx context.Context, request operations.ListBillingProfilesRequest, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, page, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, page)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -313,18 +313,18 @@ func (_mock *MockOpenMeterBillingSettingsSDK) ListBillingProfiles(ctx context.Co
 
 	var r0 *operations.ListBillingProfilesResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.PagePaginationQuery, ...operations.Option) (*operations.ListBillingProfilesResponse, error)); ok {
-		return returnFunc(ctx, page, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListBillingProfilesRequest, ...operations.Option) (*operations.ListBillingProfilesResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.PagePaginationQuery, ...operations.Option) *operations.ListBillingProfilesResponse); ok {
-		r0 = returnFunc(ctx, page, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListBillingProfilesRequest, ...operations.Option) *operations.ListBillingProfilesResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.ListBillingProfilesResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *components.PagePaginationQuery, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, page, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListBillingProfilesRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -338,22 +338,22 @@ type MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call struct {
 
 // ListBillingProfiles is a helper method to define mock.On call
 //   - ctx context.Context
-//   - page *components.PagePaginationQuery
+//   - request operations.ListBillingProfilesRequest
 //   - opts ...operations.Option
-func (_e *MockOpenMeterBillingSettingsSDK_Expecter) ListBillingProfiles(ctx any, page any, opts ...any) *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call {
+func (_e *MockOpenMeterBillingSettingsSDK_Expecter) ListBillingProfiles(ctx any, request any, opts ...any) *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call {
 	return &MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call{Call: _e.mock.On("ListBillingProfiles",
-		append([]any{ctx, page}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call) Run(run func(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option)) *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call {
+func (_c *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call) Run(run func(ctx context.Context, request operations.ListBillingProfilesRequest, opts ...operations.Option)) *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 *components.PagePaginationQuery
+		var arg1 operations.ListBillingProfilesRequest
 		if args[1] != nil {
-			arg1 = args[1].(*components.PagePaginationQuery)
+			arg1 = args[1].(operations.ListBillingProfilesRequest)
 		}
 		var arg2 []operations.Option
 		var variadicArgs []operations.Option
@@ -375,7 +375,7 @@ func (_c *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call) Return(listB
 	return _c
 }
 
-func (_c *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call) RunAndReturn(run func(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error)) *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call {
+func (_c *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call) RunAndReturn(run func(ctx context.Context, request operations.ListBillingProfilesRequest, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error)) *MockOpenMeterBillingSettingsSDK_ListBillingProfiles_Call {
 	_c.Call.Return(run)
 	return _c
 }

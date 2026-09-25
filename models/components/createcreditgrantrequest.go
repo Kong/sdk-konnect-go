@@ -284,20 +284,25 @@ func (p *Purchase) GetAvailabilityPolicy() *CreditAvailabilityPolicy {
 	return p.AvailabilityPolicy
 }
 
-// Behavior - Tax behavior applied to the invoice line item.
-type Behavior string
+// CreateCreditGrantRequestTaxBehavior - Tax behavior.
+//
+// This enum is used to specify whether tax is included in the price or excluded
+// from the price. If not specified, the billing profile is used to determine the
+// tax behavior. If not specified in the billing profile, the provider's default
+// behavior is used.
+type CreateCreditGrantRequestTaxBehavior string
 
 const (
-	BehaviorInclusive Behavior = "inclusive"
-	BehaviorExclusive Behavior = "exclusive"
+	CreateCreditGrantRequestTaxBehaviorInclusive CreateCreditGrantRequestTaxBehavior = "inclusive"
+	CreateCreditGrantRequestTaxBehaviorExclusive CreateCreditGrantRequestTaxBehavior = "exclusive"
 )
 
-func (e Behavior) ToPointer() *Behavior {
+func (e CreateCreditGrantRequestTaxBehavior) ToPointer() *CreateCreditGrantRequestTaxBehavior {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Behavior) IsExact() bool {
+func (e *CreateCreditGrantRequestTaxBehavior) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "inclusive", "exclusive":
@@ -307,44 +312,49 @@ func (e *Behavior) IsExact() bool {
 	return false
 }
 
-// TaxCode - Tax code applied to the invoice line item.
-type TaxCode struct {
+// CreateCreditGrantRequestTaxCode - Tax code applied to the invoice line item.
+type CreateCreditGrantRequestTaxCode struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
 }
 
-func (t *TaxCode) GetID() string {
-	if t == nil {
+func (c *CreateCreditGrantRequestTaxCode) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return t.ID
+	return c.ID
 }
 
-// TaxConfigurationForACreditGrant - Tax configuration for the grant.
+// TaxCodeConfiguration - Tax configuration for the grant.
 //
 // For `invoice` and `external` funding methods, tax configuration should be
 // provided to ensure correct revenue recognition. When not provided, the default
 // credit grant tax code is applied, if that's not set the global default taxcode
 // is used.
-type TaxConfigurationForACreditGrant struct {
-	// Tax behavior applied to the invoice line item.
-	Behavior *Behavior `json:"behavior,omitempty"`
+type TaxCodeConfiguration struct {
+	// Tax behavior.
+	//
+	// This enum is used to specify whether tax is included in the price or excluded
+	// from the price. If not specified, the billing profile is used to determine the
+	// tax behavior. If not specified in the billing profile, the provider's default
+	// behavior is used.
+	Behavior *CreateCreditGrantRequestTaxBehavior `json:"behavior,omitempty"`
 	// Tax code applied to the invoice line item.
-	TaxCode *TaxCode `json:"tax_code,omitempty"`
+	Code *CreateCreditGrantRequestTaxCode `json:"code,omitempty"`
 }
 
-func (t *TaxConfigurationForACreditGrant) GetBehavior() *Behavior {
+func (t *TaxCodeConfiguration) GetBehavior() *CreateCreditGrantRequestTaxBehavior {
 	if t == nil {
 		return nil
 	}
 	return t.Behavior
 }
 
-func (t *TaxConfigurationForACreditGrant) GetTaxCode() *TaxCode {
+func (t *TaxCodeConfiguration) GetCode() *CreateCreditGrantRequestTaxCode {
 	if t == nil {
 		return nil
 	}
-	return t.TaxCode
+	return t.Code
 }
 
 // CreateCreditGrantRequest - CreditGrant create request.
@@ -379,7 +389,7 @@ type CreateCreditGrantRequest struct {
 	// provided to ensure correct revenue recognition. When not provided, the default
 	// credit grant tax code is applied, if that's not set the global default taxcode
 	// is used.
-	TaxConfig *TaxConfigurationForACreditGrant `json:"tax_config,omitempty"`
+	TaxConfig *TaxCodeConfiguration `json:"tax_config,omitempty"`
 	// Filters for the credit grant.
 	Filters *CreateCreditGrantFilters `json:"filters,omitempty"`
 	// Draw-down priority of the grant. Lower values have higher priority.
@@ -460,7 +470,7 @@ func (c *CreateCreditGrantRequest) GetPurchase() *Purchase {
 	return c.Purchase
 }
 
-func (c *CreateCreditGrantRequest) GetTaxConfig() *TaxConfigurationForACreditGrant {
+func (c *CreateCreditGrantRequest) GetTaxConfig() *TaxCodeConfiguration {
 	if c == nil {
 		return nil
 	}

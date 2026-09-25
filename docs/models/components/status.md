@@ -1,6 +1,6 @@
 # Status
 
-The current validation status of the skill.
+The current validation status of the skill. `pending` means the content has not yet been read and validated.
 
 ## Example Usage
 
@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.StatusValid
+value := components.StatusPending
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.Status("custom_value")
@@ -20,5 +20,6 @@ custom := components.Status("custom_value")
 
 | Name            | Value           |
 | --------------- | --------------- |
+| `StatusPending` | pending         |
 | `StatusValid`   | valid           |
 | `StatusInvalid` | invalid         |

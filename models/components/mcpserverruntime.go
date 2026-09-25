@@ -3,7 +3,7 @@
 
 package components
 
-// MCPServerRuntime - A response containing the MCP server runtime configuration
+// MCPServerRuntime - A response containing the Context Interface runtime configuration
 type MCPServerRuntime struct {
 	InitContainer    ContainerSpec `json:"init_container"`
 	RuntimeContainer ContainerSpec `json:"runtime_container"`

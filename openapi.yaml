@@ -14348,6 +14348,9 @@ paths:
         - Auth Settings
   /v3/identity-providers:
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: null
+        terraform-datasource: IdentityProviderList#read
       operationId: get-identity-providers
       summary: List Identity Providers
       description: |
@@ -14412,7 +14415,7 @@ paths:
     get:
       x-speakeasy-entity-operation:
         terraform-resource: IdentityProvider#read
-        terraform-datasource: null
+        terraform-datasource: IdentityProvider#read
       operationId: get-identity-provider
       summary: Get Identity Provider
       description: |
@@ -14891,6 +14894,31 @@ paths:
       description: List installed apps.
       parameters:
         - $ref: '#/components/parameters/PagePaginationQuery'
+        - name: sort
+          in: query
+          description: |-
+            Sort apps returned in the response. Supported sort attributes are:
+
+            - `id`
+            - `created_at` (default)
+
+            The `asc` suffix is optional as the default sort order is ascending. The `desc`
+            suffix is used to specify a descending order.
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+          explode: false
+          style: form
+        - name: filter
+          in: query
+          description: |-
+            Filter apps returned in the response.
+
+            To filter apps by name add the following query param: filter[name]=my-app
+          required: false
+          schema:
+            $ref: '#/components/schemas/ListAppsParamsFilter'
+          style: deepObject
       responses:
         '200':
           description: Page paginated response.
@@ -16712,6 +16740,33 @@ paths:
       description: List billing profiles.
       parameters:
         - $ref: '#/components/parameters/PagePaginationQuery'
+        - name: sort
+          in: query
+          description: |-
+            Sort billing profiles returned in the response. Supported sort attributes are:
+
+            - `id`
+            - `name`
+            - `created_at` (default)
+
+            The `asc` suffix is optional as the default sort order is ascending. The `desc`
+            suffix is used to specify a descending order.
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+          explode: false
+          style: form
+        - name: filter
+          in: query
+          description: |-
+            Filter billing profiles returned in the response.
+
+            To filter billing profiles by name add the following query param:
+            filter[name]=my-profile
+          required: false
+          schema:
+            $ref: '#/components/schemas/ListBillingProfilesParamsFilter'
+          style: deepObject
       responses:
         '200':
           description: Page paginated response.
@@ -20030,6 +20085,9 @@ paths:
       tags:
         - Portal Team Membership
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalTeamDeveloper#create
+        terraform-datasource: null
       operationId: add-developer-to-portal-team
       summary: Add Developer to Team
       description: 'Adds a developer to a team. This associates them with all of the roles that have been assigned to the team, providing specific permissions to perform actions on resources.'
@@ -20060,6 +20118,9 @@ paths:
       - $ref: '#/components/parameters/DeveloperId'
       - $ref: '#/components/parameters/TeamId'
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalTeamDeveloper#delete
+        terraform-datasource: null
       operationId: remove-developer-from-portal-team
       summary: Remove Developer from Team
       description: Removes a developer from a team. This removes the association of the team's roles from the developer.
@@ -23968,48 +24029,6 @@ components:
         maxLength: 63
       maxProperties: 5
       title: ManagedBy
-    BaseError:
-      description: standard error
-      type: object
-      properties:
-        status:
-          description: |
-            The HTTP status code of the error. Useful when passing the response
-            body to child properties in a frontend UI. Must be returned as an integer.
-          type: integer
-          readOnly: true
-        title:
-          description: |
-            A short, human-readable summary of the problem. It should not
-            change between occurences of a problem, except for localization.
-            Should be provided as "Sentence case" for direct use in the UI.
-          type: string
-          readOnly: true
-        type:
-          description: The error type.
-          type: string
-          readOnly: true
-        instance:
-          description: |
-            Used to return the correlation ID back to the user, in the format
-            kong:trace:<correlation_id>. This helps us find the relevant logs
-            when a customer reports an issue.
-          type: string
-          readOnly: true
-        detail:
-          description: |
-            A human readable explanation specific to this occurence of the problem.
-            This field may contain request/entity data to help the user understand
-            what went wrong. Enclose variable values in square brackets. Should be
-            provided as "Sentence case" for direct use in the UI.
-          type: string
-          readOnly: true
-      required:
-        - status
-        - title
-        - instance
-        - detail
-      title: Error
     InvalidRules:
       description: invalid parameters rules
       type: string
@@ -24220,6 +24239,8 @@ components:
             The HTTP status code of the error. Useful when passing the response
             body to child properties in a frontend UI. Must be returned as an integer.
           type: integer
+          enum:
+            - 400
           readOnly: true
         title:
           description: |
@@ -24266,6 +24287,8 @@ components:
             body to child properties in a frontend UI. Must be returned as an integer.
           type: integer
           example: 401
+          enum:
+            - 401
           readOnly: true
         title:
           description: |
@@ -24313,6 +24336,8 @@ components:
             body to child properties in a frontend UI. Must be returned as an integer.
           type: integer
           example: 403
+          enum:
+            - 403
           readOnly: true
         title:
           description: |
@@ -24350,6 +24375,51 @@ components:
         - instance
         - detail
       title: Error
+    InternalError:
+      description: standard error
+      type: object
+      properties:
+        status:
+          description: |
+            The HTTP status code of the error. Useful when passing the response
+            body to child properties in a frontend UI. Must be returned as an integer.
+          type: integer
+          example: 500
+          enum:
+            - 500
+          readOnly: true
+        title:
+          description: |
+            A short, human-readable summary of the problem. It should not
+            change between occurences of a problem, except for localization.
+            Should be provided as "Sentence case" for direct use in the UI.
+          type: string
+          readOnly: true
+        type:
+          description: The error type.
+          type: string
+          readOnly: true
+        instance:
+          description: |
+            Used to return the correlation ID back to the user, in the format
+            kong:trace:<correlation_id>. This helps us find the relevant logs
+            when a customer reports an issue.
+          type: string
+          readOnly: true
+        detail:
+          description: |
+            A human readable explanation specific to this occurence of the problem.
+            This field may contain request/entity data to help the user understand
+            what went wrong. Enclose variable values in square brackets. Should be
+            provided as "Sentence case" for direct use in the UI.
+          type: string
+          readOnly: true
+      required:
+        - status
+        - title
+        - instance
+        - detail
+      title: Error
     ConflictError:
       description: standard error
       type: object
@@ -24360,6 +24430,8 @@ components:
             body to child properties in a frontend UI. Must be returned as an integer.
           type: integer
           example: 409
+          enum:
+            - 409
           readOnly: true
         title:
           description: |
@@ -24407,6 +24479,8 @@ components:
             body to child properties in a frontend UI. Must be returned as an integer.
           type: integer
           example: 404
+          enum:
+            - 404
           readOnly: true
         title:
           description: |
@@ -24458,6 +24532,51 @@ components:
       example: '2022-11-04T20:10:06.927Z'
       readOnly: true
       x-speakeasy-param-suppress-computed-diff: true
+    NotAvailableError:
+      description: standard error
+      type: object
+      properties:
+        status:
+          description: |
+            The HTTP status code of the error. Useful when passing the response
+            body to child properties in a frontend UI. Must be returned as an integer.
+          type: integer
+          example: 503
+          enum:
+            - 503
+          readOnly: true
+        title:
+          description: |
+            A short, human-readable summary of the problem. It should not
+            change between occurences of a problem, except for localization.
+            Should be provided as "Sentence case" for direct use in the UI.
+          type: string
+          readOnly: true
+        type:
+          description: The error type.
+          type: string
+          readOnly: true
+        instance:
+          description: |
+            Used to return the correlation ID back to the user, in the format
+            kong:trace:<correlation_id>. This helps us find the relevant logs
+            when a customer reports an issue.
+          type: string
+          readOnly: true
+        detail:
+          description: |
+            A human readable explanation specific to this occurence of the problem.
+            This field may contain request/entity data to help the user understand
+            what went wrong. Enclose variable values in square brackets. Should be
+            provided as "Sentence case" for direct use in the UI.
+          type: string
+          readOnly: true
+      required:
+        - status
+        - title
+        - instance
+        - detail
+      title: Error
     PaginationNextResponse:
       description: URI to the next page (may be null)
       type: string
@@ -47509,13 +47628,20 @@ components:
           additionalProperties: false
           properties:
             behavior:
-              description: Tax behavior applied to the invoice line item.
+              description: |-
+                Tax behavior.
+
+                This enum is used to specify whether tax is included in the price or excluded
+                from the price. If not specified, the billing profile is used to determine the
+                tax behavior. If not specified in the billing profile, the provider's default
+                behavior is used.
               type: string
               enum:
                 - inclusive
                 - exclusive
+              title: Tax behavior
               x-speakeasy-unknown-values: allow
-            tax_code:
+            code:
               description: Tax code applied to the invoice line item.
               type: object
               additionalProperties: false
@@ -47524,7 +47650,8 @@ components:
                   $ref: '#/components/schemas/ULID'
               required:
                 - id
-          title: Tax configuration for a credit grant
+              title: Tax code
+          title: Tax code configuration
         invoice:
           description: Available when `funding_method` is `invoice`.
           type: object
@@ -47606,6 +47733,17 @@ components:
           readOnly: true
           title: Credit grant lifecycle status
           x-speakeasy-unknown-values: allow
+        validation_issues:
+          description: |-
+            Validation issues found while processing the credit grant.
+
+            Present only when there are one or more validation findings. An empty list is
+            omitted.
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingValidationIssue'
+          readOnly: true
+          title: Validation issues
       additionalProperties: false
       required:
         - id
@@ -47708,6 +47846,16 @@ components:
             - $ref: '#/components/schemas/CurrencyCode'
             - $ref: '#/components/schemas/BillingCurrencyCodeCustom'
           readOnly: true
+        custom_currency:
+          description: Managed currency reference. Present only for custom currencies.
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              $ref: '#/components/schemas/ULID'
+          readOnly: true
+          required:
+            - id
         amount:
           description: |-
             Signed amount of the credit movement. Positive values add balance, negative
@@ -48301,6 +48449,53 @@ components:
           type: string
           example: '{ "availableModels": ["gpt-5", "gpt-4o"] }'
           readOnly: true
+        value:
+          description: |-
+            Only available for metered entitlements. The current balance details of the
+            entitlement. Requires the `value` expand.
+          type: object
+          example:
+            balance: '100'
+            usage: '50'
+            overage: '0'
+            total_available_grant_amount: '100'
+            grant_balances:
+              additional_property: '1'
+          additionalProperties: false
+          properties:
+            balance:
+              type: string
+              pattern: '^\-?[0-9]+(\.[0-9]+)?$'
+              description: The remaining balance of the entitlement in the current usage period.
+              readOnly: true
+            grant_balances:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/Numeric'
+              description: 'The remaining balance of each grant, keyed by grant ID.'
+              readOnly: true
+            overage:
+              type: string
+              pattern: '^\-?[0-9]+(\.[0-9]+)?$'
+              description: The usage exceeding the available balance in the current usage period.
+              readOnly: true
+            total_available_grant_amount:
+              type: string
+              pattern: '^\-?[0-9]+(\.[0-9]+)?$'
+              description: The total amount granted and currently available to the entitlement.
+              readOnly: true
+            usage:
+              type: string
+              pattern: '^\-?[0-9]+(\.[0-9]+)?$'
+              description: The usage recorded in the current usage period.
+              readOnly: true
+          readOnly: true
+          required:
+            - balance
+            - usage
+            - overage
+            - total_available_grant_amount
+            - grant_balances
       additionalProperties: false
       required:
         - type
@@ -48564,7 +48759,6 @@ components:
             invoiced.
             - `credit_only`: Usage is settled exclusively against credits.
           type: string
-          default: credit_then_invoice
           enum:
             - credit_then_invoice
             - credit_only
@@ -48592,6 +48786,7 @@ components:
         - billing_cadence
         - status
         - phases
+        - settlement_mode
     BillingPlanPhase:
       description: |-
         The plan phase or pricing ramp allows changing a plan's rate cards over time as
@@ -49367,11 +49562,29 @@ components:
           additionalProperties: false
           properties:
             behavior:
-              $ref: '#/components/schemas/BillingTaxBehavior'
+              description: |-
+                Tax behavior.
+
+                This enum is used to specify whether tax is included in the price or excluded
+                from the price. If not specified, the billing profile is used to determine the
+                tax behavior. If not specified in the billing profile, the provider's default
+                behavior is used.
+              type: string
+              enum:
+                - inclusive
+                - exclusive
+              title: Tax behavior
+              x-speakeasy-unknown-values: allow
             code:
-              $ref: '#/components/schemas/TaxCodeReference'
-          required:
-            - code
+              description: Tax code applied to the invoice line item.
+              type: object
+              additionalProperties: false
+              properties:
+                id:
+                  $ref: '#/components/schemas/ULID'
+              required:
+                - id
+              title: Tax code
           title: Tax config
         entitlement:
           description: |-
@@ -49912,6 +50125,16 @@ components:
             - billing_cadence
             - phases
           title: Custom plan
+        starting_phase:
+          description: |-
+            The key of the phase to start the subscription in. If not provided, the
+            subscription starts in the first phase of the plan.
+
+            Only applies when creating from a published `plan`; custom plans define their
+            own phases inline.
+          type: string
+          minLength: 1
+          title: Starting phase
         billing_anchor:
           description: |-
             A billing anchor is the fixed point in time that determines the subscription's
@@ -50682,6 +50905,27 @@ components:
             - billing_cadence
             - phases
           title: Custom plan
+        starting_phase:
+          description: |-
+            The key of the phase to start the subscription in. If not provided, the
+            subscription starts in the first phase of the plan.
+
+            Only applies when creating from a published `plan`; custom plans define their
+            own phases inline.
+          type: string
+          minLength: 1
+          title: Starting phase
+        timing:
+          description: |-
+            When the subscription should start. If not provided, the subscription starts
+            immediately. Provide a future timestamp to schedule the subscription to start
+            later — this creates a not-yet-active, scheduled subscription. A timestamp in
+            the past is rejected.
+          example: immediate
+          oneOf:
+            - $ref: '#/components/schemas/BillingSubscriptionCreateTimingEnum'
+            - $ref: '#/components/schemas/DateTime'
+          title: Timing
         billing_anchor:
           description: |-
             A billing anchor is the fixed point in time that determines the subscription's
@@ -50710,6 +50954,14 @@ components:
       additionalProperties: false
       required:
         - customer
+    BillingSubscriptionCreateTimingEnum:
+      description: |-
+        Subscription create timing. Only immediate is supported as an enum value —
+        unlike edit timing, next_billing_cycle is not accepted on create, since a new
+        subscription has no current billing cycle to schedule against.
+      type: string
+      enum:
+        - immediate
     BillingSubscriptionEdit:
       description: |-
         Request for editing a running subscription. Applies an ordered batch of
@@ -50941,11 +51193,29 @@ components:
               additionalProperties: false
               properties:
                 behavior:
-                  $ref: '#/components/schemas/BillingTaxBehavior'
+                  description: |-
+                    Tax behavior.
+
+                    This enum is used to specify whether tax is included in the price or excluded
+                    from the price. If not specified, the billing profile is used to determine the
+                    tax behavior. If not specified in the billing profile, the provider's default
+                    behavior is used.
+                  type: string
+                  enum:
+                    - inclusive
+                    - exclusive
+                  title: Tax behavior
+                  x-speakeasy-unknown-values: allow
                 code:
-                  $ref: '#/components/schemas/TaxCodeReference'
-              required:
-                - code
+                  description: Tax code applied to the invoice line item.
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ULID'
+                  required:
+                    - id
+                  title: Tax code
               title: Tax config
             entitlement:
               description: |-
@@ -51373,11 +51643,29 @@ components:
               additionalProperties: false
               properties:
                 behavior:
-                  $ref: '#/components/schemas/BillingTaxBehavior'
+                  description: |-
+                    Tax behavior.
+
+                    This enum is used to specify whether tax is included in the price or excluded
+                    from the price. If not specified, the billing profile is used to determine the
+                    tax behavior. If not specified in the billing profile, the provider's default
+                    behavior is used.
+                  type: string
+                  enum:
+                    - inclusive
+                    - exclusive
+                  title: Tax behavior
+                  x-speakeasy-unknown-values: allow
                 code:
-                  $ref: '#/components/schemas/TaxCodeReference'
-              required:
-                - code
+                  description: Tax code applied to the invoice line item.
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ULID'
+                  required:
+                    - id
+                  title: Tax code
               title: Tax config
             entitlement:
               description: |-
@@ -51697,6 +51985,50 @@ components:
         - half_up
         - none
       x-speakeasy-unknown-values: allow
+    BillingValidationIssue:
+      description: A validation issue found while processing a billing resource.
+      type: object
+      properties:
+        code:
+          description: Machine-readable error code.
+          type: string
+          readOnly: true
+          title: Code
+        message:
+          description: Human-readable description of the error.
+          type: string
+          readOnly: true
+          title: Message
+        attributes:
+          description: Additional structured context.
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          title: Attributes
+        severity:
+          description: Severity of the validation issue.
+          type: string
+          enum:
+            - critical
+            - warning
+          readOnly: true
+          title: Severity
+          x-speakeasy-unknown-values: allow
+        field:
+          description: 'JSON path to the field that caused the validation issue, if applicable.'
+          type: string
+          readOnly: true
+          title: Field path
+        component:
+          description: 'Component that reported the validation issue, if applicable.'
+          type: string
+          readOnly: true
+          title: Component
+      additionalProperties: false
+      required:
+        - code
+        - message
+        - severity
     BillingWorkflowCollectionAlignment:
       description: |-
         The alignment for collecting the pending line items into an invoice.
@@ -52597,13 +52929,20 @@ components:
           additionalProperties: false
           properties:
             behavior:
-              description: Tax behavior applied to the invoice line item.
+              description: |-
+                Tax behavior.
+
+                This enum is used to specify whether tax is included in the price or excluded
+                from the price. If not specified, the billing profile is used to determine the
+                tax behavior. If not specified in the billing profile, the provider's default
+                behavior is used.
               type: string
               enum:
                 - inclusive
                 - exclusive
+              title: Tax behavior
               x-speakeasy-unknown-values: allow
-            tax_code:
+            code:
               description: Tax code applied to the invoice line item.
               type: object
               additionalProperties: false
@@ -52612,7 +52951,8 @@ components:
                   $ref: '#/components/schemas/ULID'
               required:
                 - id
-          title: Tax configuration for a credit grant
+              title: Tax code
+          title: Tax code configuration
         filters:
           $ref: '#/components/schemas/CreateCreditGrantFilters'
         priority:
@@ -52950,7 +53290,9 @@ components:
         - addon
         - from_plan_phase
     CreatePlanRequest:
-      description: Plan create request.
+      description: |-
+        Plan create request. `settlement_mode` is re-declared as optional with a
+        `credit_then_invoice` default, applied only on create.
       type: object
       properties:
         name:
@@ -53008,6 +53350,15 @@ components:
             $ref: '#/components/schemas/BillingPlanPhase'
           minItems: 1
           title: Plan phases
+        settlement_mode:
+          description: Settlement mode for the plan. Defaults to `credit_then_invoice` when omitted.
+          type: string
+          default: credit_then_invoice
+          enum:
+            - credit_then_invoice
+            - credit_only
+          title: Settlement Mode
+          x-speakeasy-unknown-values: allow
       additionalProperties: false
       required:
         - name
@@ -53068,6 +53419,16 @@ components:
             - $ref: '#/components/schemas/CurrencyCode'
             - $ref: '#/components/schemas/BillingCurrencyCodeCustom'
           readOnly: true
+        custom_currency:
+          description: Managed currency reference. Present only for custom currencies.
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              $ref: '#/components/schemas/ULID'
+          readOnly: true
+          required:
+            - id
         live:
           description: |-
             Credits available after applying currently live charge impacts.
@@ -53375,7 +53736,9 @@ components:
       type: object
       properties:
         currency:
-          description: Filter credit balance by currency.
+          description: |-
+            Filter credit balance by currency code. When historical custom currencies reuse
+            a code, each managed currency is returned as a separate balance row.
           type: object
           additionalProperties: false
           properties:
@@ -53648,6 +54011,28 @@ components:
         currency:
           $ref: '#/components/schemas/StringFieldFilterExact'
       additionalProperties: false
+    ListAppsParamsFilter:
+      description: Filter options for listing apps.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ULIDFieldFilter'
+        name:
+          $ref: '#/components/schemas/StringFieldFilter'
+        type:
+          $ref: '#/components/schemas/StringFieldFilterExact'
+        status:
+          $ref: '#/components/schemas/StringFieldFilterExact'
+      additionalProperties: false
+    ListBillingProfilesParamsFilter:
+      description: Filter options for listing billing profiles.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ULIDFieldFilter'
+        name:
+          $ref: '#/components/schemas/StringFieldFilter'
+      additionalProperties: false
     ListCreditGrantsParamsFilter:
       description: Filter options for listing credit grants.
       type: object
@@ -53705,7 +54090,9 @@ components:
             - voided
           x-speakeasy-unknown-values: allow
         currency:
-          description: Filter credit transactions by currency.
+          description: |-
+            Filter credit transactions by currency code. Custom-currency rows retain their
+            managed currency identifier.
           oneOf:
             - $ref: '#/components/schemas/CurrencyCode'
             - $ref: '#/components/schemas/BillingCurrencyCodeCustom'
@@ -55402,11 +55789,29 @@ components:
               additionalProperties: false
               properties:
                 behavior:
-                  $ref: '#/components/schemas/BillingTaxBehavior'
+                  description: |-
+                    Tax behavior.
+
+                    This enum is used to specify whether tax is included in the price or excluded
+                    from the price. If not specified, the billing profile is used to determine the
+                    tax behavior. If not specified in the billing profile, the provider's default
+                    behavior is used.
+                  type: string
+                  enum:
+                    - inclusive
+                    - exclusive
+                  title: Tax behavior
+                  x-speakeasy-unknown-values: allow
                 code:
-                  $ref: '#/components/schemas/TaxCodeReference'
-              required:
-                - code
+                  description: Tax code applied to the invoice line item.
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ULID'
+                  required:
+                    - id
+                  title: Tax code
               title: Tax config
             entitlement:
               description: |-
@@ -56235,7 +56640,10 @@ components:
         - name
         - from_plan_phase
     UpsertPlanRequest:
-      description: Plan upsert request.
+      description: |-
+        Plan upsert (update) request. `settlement_mode` is re-declared as optional with
+        no default, so an omitted value leaves the plan's existing settlement mode
+        unchanged.
       type: object
       properties:
         name:
@@ -56269,6 +56677,16 @@ components:
             $ref: '#/components/schemas/BillingPlanPhase'
           minItems: 1
           title: Plan phases
+        settlement_mode:
+          description: |-
+            Settlement mode for the plan. When omitted, the existing settlement mode is
+            preserved.
+          type: string
+          enum:
+            - credit_then_invoice
+            - credit_only
+          title: Settlement Mode
+          x-speakeasy-unknown-values: allow
       additionalProperties: false
       required:
         - name
@@ -56318,6 +56736,8 @@ components:
             body to child properties in a frontend UI. Must be returned as an integer.
           type: integer
           example: 410
+          enum:
+            - 410
           readOnly: true
         title:
           description: |
@@ -56405,6 +56825,8 @@ components:
         Data planes older than this version still connect for topology visibility.
 
         When not specified, the latest generally available runtime version is used.
+
+        When runtime_auto_upgrade is enabled (the default), this value is raised automatically to track the minimum runtime version reported across connected data planes, so any value set here may be superseded as the fleet upgrades.
       type: string
       example: '2.0'
       pattern: ^\d+\.\d+$
@@ -56415,11 +56837,13 @@ components:
         It may be lowered only when no configuration already stored uses a feature that requires a runtime version above the requested one. Otherwise the request is rejected, naming the entities and fields that stand in the way so that they can be removed or downgraded first.
 
         When not specified, the minimum runtime version is left unchanged.
+
+        When runtime_auto_upgrade is enabled (the default), this value is raised automatically to track the minimum runtime version reported across connected data planes, so any value set here may be superseded as the fleet upgrades.
       type: string
       example: '2.0'
       pattern: ^\d+\.\d+$
     AIGatewayRuntimeAutoUpgrade:
-      description: Whether the control plane should automatically raise min_runtime_version as connected data planes report a newer AI Gateway runtime version.
+      description: Whether the control plane should automatically raise min_runtime_version to match the DP fleet's minimum runtime version (the lowest AI Gateway runtime version reported across all connected data planes) as that value increases.
       type: boolean
       default: true
     CreateAIGatewayRequest:
@@ -57392,7 +57816,6 @@ components:
               - video
               - rerank
             x-speakeasy-unknown-values: allow
-          minItems: 1
       required:
         - display_name
         - name
@@ -57402,7 +57825,7 @@ components:
         - config
         - capabilities
     AIGatewayModelAPI:
-      description: Configuration for proxying asynchronous requests/responses to/from an AI Gateway model using the files and batches APIs.
+      description: 'Configuration for proxying asynchronous requests/responses to/from an AI Gateway model using the files, batches, and skills APIs.'
       type: object
       properties:
         display_name:
@@ -68730,7 +69153,7 @@ components:
       type: object
       properties:
         code:
-          description: Generated Python code for the MCP server implementation
+          description: Generated code for the Context Interface
           type: string
           example: print("Hello MCP")
       required:
@@ -68803,7 +69226,7 @@ components:
       required:
         - signals
     MCPServerControlPlaneMappingMode:
-      description: Whether the MCP Server deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
+      description: Whether the Context Interface deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
       type: string
       enum:
         - basic
@@ -68824,6 +69247,48 @@ components:
         - init_container
         - runtime_container
       title: MCPServerRuntime
+    RawSkillSource:
+      type: object
+      properties:
+        type:
+          description: The skill content was supplied inline when the skill was created or updated.
+          type: string
+          enum:
+            - raw
+      required:
+        - type
+    SkillSource:
+      description: 'Where the skill''s content comes from, as returned by the API. Never includes the content itself — read it through the skill contents endpoint.'
+      discriminator:
+        propertyName: type
+        mapping:
+          raw: '#/components/schemas/RawSkillSource'
+      oneOf:
+        - $ref: '#/components/schemas/RawSkillSource'
+    SkillSyncStatus:
+      description: The outcome of the most recent attempt to fetch the skill's content from its source.
+      type: object
+      properties:
+        status:
+          description: The state of the most recent synchronization attempt.
+          type: string
+          enum:
+            - pending
+            - success
+            - failed
+          x-speakeasy-unknown-values: allow
+        timestamp:
+          description: The time the synchronization reached this state.
+          type: string
+          format: date-time
+        error_message:
+          description: The reason the synchronization failed. `null` unless `status` is `failed`.
+          type: string
+          maxLength: 2048
+          nullable: true
+      required:
+        - status
+        - timestamp
     ListSkillsResponse:
       type: object
       properties:
@@ -68897,18 +69362,26 @@ components:
           $ref: '#/components/schemas/SkillFrontmatter'
         labels:
           $ref: '#/components/schemas/Labels'
-        source_type:
-          description: The source type of the skill content.
-          type: string
-          enum:
-            - raw
+        source:
+          $ref: '#/components/schemas/SkillSource'
         status:
-          description: The current validation status of the skill.
+          description: The current validation status of the skill. `pending` means the content has not yet been read and validated.
           type: string
           enum:
+            - pending
             - valid
             - invalid
           x-speakeasy-unknown-values: allow
+        sync_status:
+          description: The outcome of the most recent attempt to fetch the skill's content from its source. `null` for sources whose content is supplied inline.
+          allOf:
+            - $ref: '#/components/schemas/SkillSyncStatus'
+          nullable: true
+        validation_message:
+          description: The reason the skill failed validation. `null` unless `status` is `invalid`.
+          type: string
+          maxLength: 2048
+          nullable: true
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
@@ -68921,8 +69394,10 @@ components:
         - description
         - frontmatter
         - labels
-        - source_type
+        - source
         - status
+        - sync_status
+        - validation_message
         - created_at
         - updated_at
     AdvancedQuery:
@@ -68941,6 +69416,10 @@ components:
           items:
             type: string
             enum:
+              - ai_gateway
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
               - api
               - api_package
               - api_product
@@ -68948,6 +69427,7 @@ components:
               - application
               - cache_status
               - consumer
+              - consumer_group
               - control_plane
               - control_plane_group
               - country_code
@@ -69021,7 +69501,15 @@ components:
               - control_plane_group
               - gateway_service
               - consumer
+              - ai_gateway
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
+              - ai_gateway_mcp_server
+              - ai_gateway_model
+              - ai_gateway_agent
               - application
+              - cache_status
               - oidc_credential
               - route
               - ai_provider
@@ -69089,6 +69577,12 @@ components:
               - a2a_error
               - a2a_method
               - a2a_task_id
+              - ai_gateway
+              - ai_gateway_agent
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
+              - ai_gateway_mcp_server
               - api
               - api_package
               - api_product
@@ -69096,6 +69590,7 @@ components:
               - application
               - cache_status
               - consumer
+              - consumer_group
               - control_plane
               - control_plane_group
               - country_code
@@ -69560,6 +70055,150 @@ components:
         - empty
         - not_empty
       x-speakeasy-unknown-values: allow
+    MetricsAiGatewayFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway
+    MetricsAiGatewayConsumerFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_consumer
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_consumer
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_consumer
+    MetricsAiGatewayConsumerGroupFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_consumer_group
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_consumer_group
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_consumer_group
+    MetricsAiGatewayDataPlaneNodeFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_data_plane_node
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_data_plane_node
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_data_plane_node
     MetricsApiFilterByField:
       oneOf:
         - title: Multiselect filters
@@ -69815,6 +70454,42 @@ components:
             - operator
             - field
       title: Filter by consumer
+    MetricsConsumerGroupFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results. Because gateway IDs are only unique within a given control plane, the filter values must be of the form `control_plane_id:field_id` or `control_plane_group_id:field_id` for data plane nodes within a control plane group.
+              type: array
+              items:
+                $ref: '#/components/schemas/ScopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - consumer_group
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - consumer_group
+          required:
+            - operator
+            - field
+      title: Filter by consumer_group
     MetricsControlPlaneFilterByField:
       oneOf:
         - title: Multiselect filters
@@ -70406,6 +71081,10 @@ components:
           field:
             type: string
             enum:
+              - ai_gateway
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
               - api
               - api_package
               - api_product
@@ -70413,6 +71092,7 @@ components:
               - application
               - cache_status
               - consumer
+              - consumer_group
               - control_plane
               - control_plane_group
               - country_code
@@ -70554,8 +71234,10 @@ components:
         type: string
         enum:
           - total_tokens
+          - total_tokens_per_minute
           - prompt_tokens
           - completion_tokens
+          - cached_tokens
           - ai_request_count
           - cost
           - error_rate
@@ -70564,9 +71246,119 @@ components:
           - llm_latency_average
           - llm_embeddings_tokens
           - llm_embeddings_cost
+          - time_to_first_token_average
+          - time_per_token_average
         x-speakeasy-unknown-values: allow
       default:
         - ai_request_count
+    MetricsAiGatewayAgentFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_agent
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_agent
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_agent
+    MetricsAiGatewayMcpServerFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_mcp_server
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_mcp_server
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_mcp_server
+    MetricsAiGatewayModelFilterByField:
+      oneOf:
+        - title: Multiselect filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterType'
+            value:
+              description: |
+                The IDs to include in the results.
+              type: array
+              items:
+                $ref: '#/components/schemas/UnscopedUuid'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_model
+          required:
+            - operator
+            - value
+            - field
+        - title: Empty filters
+          type: object
+          properties:
+            operator:
+              $ref: '#/components/schemas/RequestsFilterTypeEmpty'
+            field:
+              description: The field to filter.
+              type: string
+              enum:
+                - ai_gateway_model
+          required:
+            - operator
+            - field
+      title: Filter by ai_gateway_model
     MetricsAiPluginFilterByField:
       oneOf:
         - title: Multiselect filters
@@ -70828,11 +71620,19 @@ components:
           field:
             type: string
             enum:
+              - ai_gateway
+              - ai_gateway_agent
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
+              - ai_gateway_mcp_server
+              - ai_gateway_model
               - ai_plugin
               - ai_provider
               - ai_request_model
               - ai_response_model
               - application
+              - cache_status
               - consumer
               - control_plane
               - control_plane_group
@@ -71204,6 +72004,12 @@ components:
               - a2a_error
               - a2a_method
               - a2a_task_id
+              - ai_gateway
+              - ai_gateway_agent
+              - ai_gateway_consumer
+              - ai_gateway_consumer_group
+              - ai_gateway_data_plane_node
+              - ai_gateway_mcp_server
               - api
               - api_package
               - api_product
@@ -71211,6 +72017,7 @@ components:
               - application
               - cache_status
               - consumer
+              - consumer_group
               - control_plane
               - control_plane_group
               - country_code
@@ -71909,6 +72716,13 @@ components:
             - a2a_error
             - a2a_method
             - a2a_task_id
+            - ai_gateway
+            - ai_gateway_agent
+            - ai_gateway_consumer
+            - ai_gateway_consumer_group
+            - ai_gateway_data_plane_node
+            - ai_gateway_mcp_server
+            - ai_gateway_model
             - ai_plugin
             - ai_provider
             - ai_request_model
@@ -71920,6 +72734,7 @@ components:
             - application
             - cache_status
             - consumer
+            - consumer_group
             - control_plane
             - control_plane_group
             - country_code
@@ -78437,7 +79252,7 @@ components:
       content:
         application/problem+json:
           schema:
-            $ref: '#/components/schemas/BaseError'
+            $ref: '#/components/schemas/InternalError'
     BadRequest:
       description: Bad Request
       content:
@@ -78487,7 +79302,7 @@ components:
       content:
         application/problem+json:
           schema:
-            $ref: '#/components/schemas/BaseError'
+            $ref: '#/components/schemas/NotAvailableError'
     GetImpersonationSettingsResponse:
       description: Response for Get Impersonation Settings endpoint
       content:
@@ -82652,7 +83467,7 @@ components:
           schema:
             $ref: '#/components/schemas/ListMCPServersCPInfoResponse'
     MCPServerRuntimeResponse:
-      description: A response containing the MCP server runtime configuration
+      description: A response containing the Context Interface runtime configuration
       content:
         application/json:
           schema:
@@ -83540,10 +84355,10 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.1.3
+    version: 2.1.16
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
-    version: 2.3.0
+    version: 2.4.0
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
     version: 3.6.5
@@ -83564,19 +84379,19 @@ x-input-schemas:
     version: 1.3.5
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.6.0
+    version: 3.6.3
     path: src/konnect/definitions/identity/v3/openapi.yaml
-  - title: Konnect MCP Servers
-    version: 1.38.0
+  - title: Konnect Context Mesh
+    version: 1.40.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
-    version: 1.2.0
+    version: 1.3.0
     path: src/konnect/definitions/metering-and-billing/v3/openapi.yaml
   - title: Konnect Notification Hub
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.11.1
+    version: 3.11.7
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2

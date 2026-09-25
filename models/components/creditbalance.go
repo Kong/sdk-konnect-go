@@ -3,10 +3,25 @@
 
 package components
 
+// CustomCurrency - Managed currency reference. Present only for custom currencies.
+type CustomCurrency struct {
+	// ULID (Universally Unique Lexicographically Sortable Identifier).
+	ID string `json:"id"`
+}
+
+func (c *CustomCurrency) GetID() string {
+	if c == nil {
+		return ""
+	}
+	return c.ID
+}
+
 // CreditBalance - The credit balance by currency.
 type CreditBalance struct {
 	// Fiat or custom currency code.
 	Currency string `json:"currency"`
+	// Managed currency reference. Present only for custom currencies.
+	CustomCurrency *CustomCurrency `json:"custom_currency,omitempty"`
 	// Credits available after applying currently live charge impacts.
 	//
 	// Always zero for historical balance queries using the `timestamp` parameter
@@ -24,6 +39,13 @@ func (c *CreditBalance) GetCurrency() string {
 		return ""
 	}
 	return c.Currency
+}
+
+func (c *CreditBalance) GetCustomCurrency() *CustomCurrency {
+	if c == nil {
+		return nil
+	}
+	return c.CustomCurrency
 }
 
 func (c *CreditBalance) GetLive() string {

@@ -1,6 +1,6 @@
 # AIGatewayModelAPI
 
-Configuration for proxying asynchronous requests/responses to/from an AI Gateway model using the files and batches APIs.
+Configuration for proxying asynchronous requests/responses to/from an AI Gateway model using the files, batches, and skills APIs.
 
 
 ## Fields
