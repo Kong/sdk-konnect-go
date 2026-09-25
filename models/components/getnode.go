@@ -87,6 +87,7 @@ type GetNodeItem struct {
 	UpdatedAt           *int64                      `json:"updated_at,omitempty"`
 	ConfigHash          *string                     `json:"config_hash,omitempty"`
 	ConfigSync          *GetNodeConfigSync          `json:"config_sync,omitempty"`
+	Errors              []NodeError                 `json:"errors,omitempty"`
 	CompatibilityStatus *GetNodeCompatibilityStatus `json:"compatibility_status,omitempty"`
 }
 
@@ -151,6 +152,13 @@ func (g *GetNodeItem) GetConfigSync() *GetNodeConfigSync {
 		return nil
 	}
 	return g.ConfigSync
+}
+
+func (g *GetNodeItem) GetErrors() []NodeError {
+	if g == nil {
+		return nil
+	}
+	return g.Errors
 }
 
 func (g *GetNodeItem) GetCompatibilityStatus() *GetNodeCompatibilityStatus {

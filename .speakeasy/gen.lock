@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 8a974f123416de70c29f996513314009
+  docChecksum: 34b08ee250ab05eb84df06d849fdedea
   docVersion: 3.15.0
   speakeasyVersion: 1.799.0
   generationVersion: 2.941.0
   releaseVersion: 0.69.0
   configChecksum: fd9fcd91bdd3f7f18654a46390649e30
 persistentEdits:
-  generation_id: f206adc3-887a-4b1c-987a-2451442f43b3
-  pristine_commit_hash: c8a6ab1e7f379a5633655891b34d16e0bda7977f
-  pristine_tree_hash: 3e150f709aac5cedf45d566033bd28299668e876
+  generation_id: ebdf6e99-b9a9-4382-9127-6114cfa0da2e
+  pristine_commit_hash: 13e31c21530de5b18da5b557cbd559698dfbd6fb
+  pristine_tree_hash: a532db1c33e8dc32f0fbc05978d9450da4301822
 features:
   go:
     acceptHeaders: 2.81.2
@@ -6485,8 +6485,8 @@ trackedFiles:
     pristine_git_object: 35cb4c44c354cb27849169126c07c9d02d95716b
   docs/models/components/getnodeitem.md:
     id: 17f4d1643c9c
-    last_write_checksum: sha1:36093f153faeeed300c85ac3bb05718402099ec0
-    pristine_git_object: fd3bf644e5ad405300759e95f1b5ee649f53a806
+    last_write_checksum: sha1:bca03b1dd024b1741127bed442fb0d4b4cca18bc
+    pristine_git_object: e8ca31cc780b44765b1490093fa8faafdf5d68f4
   docs/models/components/getnoderesiliency.md:
     id: f03306a15e4b
     last_write_checksum: sha1:b9ecb8e33916414d9a56942189d63e56daca48c0
@@ -7693,8 +7693,8 @@ trackedFiles:
     pristine_git_object: 80a7159cc3370adf30c1d05ed118f8b632b883ba
   docs/models/components/listnodesitems.md:
     id: 23bb52e4a151
-    last_write_checksum: sha1:fceb2f20e0d0ebaaae87431fdb9cb6c008b9746d
-    pristine_git_object: f034aaa2f9bb558983ad10305f85c9d35109355f
+    last_write_checksum: sha1:f84be076653d74e31c707685d5caf67ae73f49fa
+    pristine_git_object: 6f3617a5d00afeb96311341995f9e69c0e0d2d11
   docs/models/components/listnodespage.md:
     id: 83a41fa89152
     last_write_checksum: sha1:ca70615dc0093b0c0338f602ef72ab608fa33818
@@ -21121,11 +21121,11 @@ trackedFiles:
     pristine_git_object: b815ae575aa88ef0d6d1ded4b881eed1c50d109b
   models/components/chart.go:
     id: 423ff591212c
-    last_write_checksum: sha1:6bc727cf52bcbedfd3c788ec1ffc4dffb848d405
+    last_write_checksum: sha1:c3d72dcf86d76b06140bbc1e8b03b54461ac4532
     pristine_git_object: 23c41f9e4410e904a87dca0f854f828b1a358bcd
   models/components/charttile.go:
     id: 8f57713ab332
-    last_write_checksum: sha1:7409b26d892105ef19e92356c78ffa2d5a9e3b3e
+    last_write_checksum: sha1:05d36bea9c3d45af75174a7b6990e438f3b84ae9
     pristine_git_object: 66a72615091d06bbfcb64aa6d79a25ab76713779
   models/components/charttiledefinition.go:
     id: 823825da0d36
@@ -22693,8 +22693,8 @@ trackedFiles:
     pristine_git_object: 2af64fc1c41df719ba886d4f0d6826a1dd22c106
   models/components/getnode.go:
     id: 297d1f83d7e6
-    last_write_checksum: sha1:08fccdb2cba1a0501cc0de3693bbb1913cf45e64
-    pristine_git_object: f1d93a93d69ce451c9fb3c6530b5da4549cfe292
+    last_write_checksum: sha1:f6a48b23b526246cc03d69641d366aa60a7b0f7a
+    pristine_git_object: 973171031cc920f472df7afb7c94afe59eaaecb8
   models/components/getpartialschemaresponse.go:
     id: 7bab1c63395f
     last_write_checksum: sha1:e53ff83f02d96da09f6a8df9b8c2936bbf63540a
@@ -23329,8 +23329,8 @@ trackedFiles:
     pristine_git_object: a65ca05257a0342b92f387cc2590196bd0a388cd
   models/components/listnodes.go:
     id: dcff9efdf8b0
-    last_write_checksum: sha1:6013cfb522b1d7b44e06d15f241a7d2d9194fb4d
-    pristine_git_object: 756069c5474e5828cb444c48a60537873f00f8b9
+    last_write_checksum: sha1:e85b46d0e5a661cabc1e9cc12809b9f4ccc41c26
+    pristine_git_object: 76c7fcde6929f0b5734062b92add31dc55618b50
   models/components/listnodeseol.go:
     id: 63a48b4b3af8
     last_write_checksum: sha1:c95222fc022ecbf671af1f126683d4c73bcd30b2
@@ -24273,7 +24273,7 @@ trackedFiles:
     pristine_git_object: 51e55f11555061aafeca42f5f8d9da75c4252bd4
   models/components/routejson.go:
     id: d92d6bc73818
-    last_write_checksum: sha1:d0669fa17af77dc0d2d5f6ee82123fc77f3ee582
+    last_write_checksum: sha1:1a98e2c9cd5e08a1c7996d47cd01cfb33e0339a1
     pristine_git_object: 246b8bce0c28554cf2c221ed9d81255c750f56e0
   models/components/routewithoutparents.go:
     id: dbd67bd3596c
