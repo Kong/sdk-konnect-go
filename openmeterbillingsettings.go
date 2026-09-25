@@ -35,11 +35,7 @@ func newOpenMeterBillingSettings(rootSDK *SDK, sdkConfig config.SDKConfiguration
 
 // ListBillingProfiles - List billing profiles
 // List billing profiles.
-func (s *OpenMeterBillingSettings) ListBillingProfiles(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error) {
-	request := operations.ListBillingProfilesRequest{
-		Page: page,
-	}
-
+func (s *OpenMeterBillingSettings) ListBillingProfiles(ctx context.Context, request operations.ListBillingProfilesRequest, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,

@@ -1,6 +1,6 @@
-# TaxCodeReference
+# SubscriptionAddonRateCardTaxCode
 
-TaxCode reference.
+Tax code applied to the invoice line item.
 
 
 ## Fields

@@ -35,11 +35,7 @@ func newOpenMeterApps(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *ho
 
 // ListApps - List apps
 // List installed apps.
-func (s *OpenMeterApps) ListApps(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListAppsResponse, error) {
-	request := operations.ListAppsRequest{
-		Page: page,
-	}
-
+func (s *OpenMeterApps) ListApps(ctx context.Context, request operations.ListAppsRequest, opts ...operations.Option) (*operations.ListAppsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
