@@ -229,7 +229,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) ListEventGatewayVirtualClust
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -250,7 +250,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) ListEventGatewayVirtualClust
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -487,7 +487,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) CreateEventGatewayVirtualClu
 
 			var out sdkerrors.BadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -508,7 +508,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) CreateEventGatewayVirtualClu
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -529,7 +529,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) CreateEventGatewayVirtualClu
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -755,7 +755,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) GetEventGatewayVirtualCluste
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -776,7 +776,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) GetEventGatewayVirtualCluste
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -797,7 +797,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) GetEventGatewayVirtualCluste
 
 			var out sdkerrors.NotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1030,7 +1030,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) UpdateEventGatewayVirtualClu
 
 			var out sdkerrors.BadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1051,7 +1051,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) UpdateEventGatewayVirtualClu
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1072,7 +1072,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) UpdateEventGatewayVirtualClu
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1305,7 +1305,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) PatchEventGatewayVirtualClus
 
 			var out sdkerrors.BadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1326,7 +1326,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) PatchEventGatewayVirtualClus
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1347,7 +1347,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) PatchEventGatewayVirtualClus
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1554,7 +1554,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) DeleteEventGatewayVirtualClu
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1575,7 +1575,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) DeleteEventGatewayVirtualClu
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1596,7 +1596,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) DeleteEventGatewayVirtualClu
 
 			var out sdkerrors.NotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1813,7 +1813,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) MoveEventGatewayVirtualClust
 
 			var out sdkerrors.BadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1834,7 +1834,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) MoveEventGatewayVirtualClust
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1855,7 +1855,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) MoveEventGatewayVirtualClust
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -2086,7 +2086,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) GetEventGatewayVirtualCluste
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -2107,7 +2107,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) GetEventGatewayVirtualCluste
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -2340,7 +2340,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) UpdateEventGatewayVirtualClu
 
 			var out sdkerrors.BadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -2361,7 +2361,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) UpdateEventGatewayVirtualClu
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -2382,7 +2382,7 @@ func (s *EventGatewayVirtualClusterProducePolicies) UpdateEventGatewayVirtualClu
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out

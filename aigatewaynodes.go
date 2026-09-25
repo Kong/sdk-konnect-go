@@ -227,7 +227,7 @@ func (s *AIGatewayNodes) GetAiGatewayExpectedConfigVersion(ctx context.Context, 
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -248,7 +248,7 @@ func (s *AIGatewayNodes) GetAiGatewayExpectedConfigVersion(ctx context.Context, 
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -269,7 +269,7 @@ func (s *AIGatewayNodes) GetAiGatewayExpectedConfigVersion(ctx context.Context, 
 
 			var out sdkerrors.NotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -290,7 +290,7 @@ func (s *AIGatewayNodes) GetAiGatewayExpectedConfigVersion(ctx context.Context, 
 
 			var out sdkerrors.TooManyRequestsError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -520,7 +520,7 @@ func (s *AIGatewayNodes) ListAiGatewayNodes(ctx context.Context, request operati
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -541,7 +541,7 @@ func (s *AIGatewayNodes) ListAiGatewayNodes(ctx context.Context, request operati
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -562,7 +562,7 @@ func (s *AIGatewayNodes) ListAiGatewayNodes(ctx context.Context, request operati
 
 			var out sdkerrors.NotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -583,7 +583,7 @@ func (s *AIGatewayNodes) ListAiGatewayNodes(ctx context.Context, request operati
 
 			var out sdkerrors.TooManyRequestsError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -814,7 +814,7 @@ func (s *AIGatewayNodes) GetAiGatewayNode(ctx context.Context, gatewayID string,
 
 			var out sdkerrors.UnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -835,7 +835,7 @@ func (s *AIGatewayNodes) GetAiGatewayNode(ctx context.Context, gatewayID string,
 
 			var out sdkerrors.ForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -856,7 +856,7 @@ func (s *AIGatewayNodes) GetAiGatewayNode(ctx context.Context, gatewayID string,
 
 			var out sdkerrors.NotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -877,7 +877,7 @@ func (s *AIGatewayNodes) GetAiGatewayNode(ctx context.Context, gatewayID string,
 
 			var out sdkerrors.TooManyRequestsError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
