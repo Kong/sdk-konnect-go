@@ -27,6 +27,56 @@ func (e *BillingEntitlementAccessResultType) IsExact() bool {
 	return false
 }
 
+// BillingEntitlementAccessResultValue - Only available for metered entitlements. The current balance details of the
+// entitlement. Requires the `value` expand.
+type BillingEntitlementAccessResultValue struct {
+	// The remaining balance of the entitlement in the current usage period.
+	Balance string `json:"balance"`
+	// The remaining balance of each grant, keyed by grant ID.
+	GrantBalances map[string]string `json:"grant_balances"`
+	// The usage exceeding the available balance in the current usage period.
+	Overage string `json:"overage"`
+	// The total amount granted and currently available to the entitlement.
+	TotalAvailableGrantAmount string `json:"total_available_grant_amount"`
+	// The usage recorded in the current usage period.
+	Usage string `json:"usage"`
+}
+
+func (b *BillingEntitlementAccessResultValue) GetBalance() string {
+	if b == nil {
+		return ""
+	}
+	return b.Balance
+}
+
+func (b *BillingEntitlementAccessResultValue) GetGrantBalances() map[string]string {
+	if b == nil {
+		return map[string]string{}
+	}
+	return b.GrantBalances
+}
+
+func (b *BillingEntitlementAccessResultValue) GetOverage() string {
+	if b == nil {
+		return ""
+	}
+	return b.Overage
+}
+
+func (b *BillingEntitlementAccessResultValue) GetTotalAvailableGrantAmount() string {
+	if b == nil {
+		return ""
+	}
+	return b.TotalAvailableGrantAmount
+}
+
+func (b *BillingEntitlementAccessResultValue) GetUsage() string {
+	if b == nil {
+		return ""
+	}
+	return b.Usage
+}
+
 // BillingEntitlementAccessResult - Entitlement access result.
 type BillingEntitlementAccessResult struct {
 	// The type of the entitlement.
@@ -39,6 +89,9 @@ type BillingEntitlementAccessResult struct {
 	// Only available for static entitlements. Config is the JSON parsable
 	// configuration of the entitlement. Useful to describe per customer configuration.
 	Config *string `json:"config,omitempty"`
+	// Only available for metered entitlements. The current balance details of the
+	// entitlement. Requires the `value` expand.
+	Value *BillingEntitlementAccessResultValue `json:"value,omitempty"`
 }
 
 func (b *BillingEntitlementAccessResult) GetType() BillingEntitlementAccessResultType {
@@ -67,4 +120,11 @@ func (b *BillingEntitlementAccessResult) GetConfig() *string {
 		return nil
 	}
 	return b.Config
+}
+
+func (b *BillingEntitlementAccessResult) GetValue() *BillingEntitlementAccessResultValue {
+	if b == nil {
+		return nil
+	}
+	return b.Value
 }

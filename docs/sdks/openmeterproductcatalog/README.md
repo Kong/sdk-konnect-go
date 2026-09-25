@@ -148,7 +148,7 @@ func main() {
                     },
                 ),
                 TaxConfig: &components.TaxConfig{
-                    Code: components.TaxCodeReference{
+                    Code: &components.TaxCode{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },
@@ -245,7 +245,7 @@ func main() {
                     },
                 ),
                 TaxConfig: &components.TaxConfig{
-                    Code: components.TaxCodeReference{
+                    Code: &components.TaxCode{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },

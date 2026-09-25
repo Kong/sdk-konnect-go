@@ -223,20 +223,25 @@ func (b *BillingCreditGrantPurchase) GetSettlementStatus() *BillingCreditGrantCr
 	return b.SettlementStatus
 }
 
-// BillingCreditGrantBehavior - Tax behavior applied to the invoice line item.
-type BillingCreditGrantBehavior string
+// BillingCreditGrantTaxBehavior - Tax behavior.
+//
+// This enum is used to specify whether tax is included in the price or excluded
+// from the price. If not specified, the billing profile is used to determine the
+// tax behavior. If not specified in the billing profile, the provider's default
+// behavior is used.
+type BillingCreditGrantTaxBehavior string
 
 const (
-	BillingCreditGrantBehaviorInclusive BillingCreditGrantBehavior = "inclusive"
-	BillingCreditGrantBehaviorExclusive BillingCreditGrantBehavior = "exclusive"
+	BillingCreditGrantTaxBehaviorInclusive BillingCreditGrantTaxBehavior = "inclusive"
+	BillingCreditGrantTaxBehaviorExclusive BillingCreditGrantTaxBehavior = "exclusive"
 )
 
-func (e BillingCreditGrantBehavior) ToPointer() *BillingCreditGrantBehavior {
+func (e BillingCreditGrantTaxBehavior) ToPointer() *BillingCreditGrantTaxBehavior {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *BillingCreditGrantBehavior) IsExact() bool {
+func (e *BillingCreditGrantTaxBehavior) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "inclusive", "exclusive":
@@ -259,31 +264,36 @@ func (b *BillingCreditGrantTaxCode) GetID() string {
 	return b.ID
 }
 
-// BillingCreditGrantTaxConfigurationForACreditGrant - Tax configuration for the grant.
+// BillingCreditGrantTaxCodeConfiguration - Tax configuration for the grant.
 //
 // For `invoice` and `external` funding methods, tax configuration should be
 // provided to ensure correct revenue recognition. When not provided, the default
 // credit grant tax code is applied, if that's not set the global default taxcode
 // is used.
-type BillingCreditGrantTaxConfigurationForACreditGrant struct {
-	// Tax behavior applied to the invoice line item.
-	Behavior *BillingCreditGrantBehavior `json:"behavior,omitempty"`
+type BillingCreditGrantTaxCodeConfiguration struct {
+	// Tax behavior.
+	//
+	// This enum is used to specify whether tax is included in the price or excluded
+	// from the price. If not specified, the billing profile is used to determine the
+	// tax behavior. If not specified in the billing profile, the provider's default
+	// behavior is used.
+	Behavior *BillingCreditGrantTaxBehavior `json:"behavior,omitempty"`
 	// Tax code applied to the invoice line item.
-	TaxCode *BillingCreditGrantTaxCode `json:"tax_code,omitempty"`
+	Code *BillingCreditGrantTaxCode `json:"code,omitempty"`
 }
 
-func (b *BillingCreditGrantTaxConfigurationForACreditGrant) GetBehavior() *BillingCreditGrantBehavior {
+func (b *BillingCreditGrantTaxCodeConfiguration) GetBehavior() *BillingCreditGrantTaxBehavior {
 	if b == nil {
 		return nil
 	}
 	return b.Behavior
 }
 
-func (b *BillingCreditGrantTaxConfigurationForACreditGrant) GetTaxCode() *BillingCreditGrantTaxCode {
+func (b *BillingCreditGrantTaxCodeConfiguration) GetCode() *BillingCreditGrantTaxCode {
 	if b == nil {
 		return nil
 	}
-	return b.TaxCode
+	return b.Code
 }
 
 // Line - Identifier of the invoice line associated with the grant.
@@ -389,7 +399,7 @@ type BillingCreditGrant struct {
 	// provided to ensure correct revenue recognition. When not provided, the default
 	// credit grant tax code is applied, if that's not set the global default taxcode
 	// is used.
-	TaxConfig *BillingCreditGrantTaxConfigurationForACreditGrant `json:"tax_config,omitempty"`
+	TaxConfig *BillingCreditGrantTaxCodeConfiguration `json:"tax_config,omitempty"`
 	// Available when `funding_method` is `invoice`.
 	Invoice *Invoice `json:"invoice,omitempty"`
 	// Filters for the credit grant.
@@ -414,6 +424,11 @@ type BillingCreditGrant struct {
 	VoidedAt *time.Time `json:"voided_at,omitempty"`
 	// Current lifecycle status of the grant.
 	Status CreditGrantLifecycleStatus `json:"status"`
+	// Validation issues found while processing the credit grant.
+	//
+	// Present only when there are one or more validation findings. An empty list is
+	// omitted.
+	ValidationIssues []BillingValidationIssue `json:"validation_issues,omitempty"`
 }
 
 func (b BillingCreditGrant) MarshalJSON() ([]byte, error) {
@@ -504,7 +519,7 @@ func (b *BillingCreditGrant) GetPurchase() *BillingCreditGrantPurchase {
 	return b.Purchase
 }
 
-func (b *BillingCreditGrant) GetTaxConfig() *BillingCreditGrantTaxConfigurationForACreditGrant {
+func (b *BillingCreditGrant) GetTaxConfig() *BillingCreditGrantTaxCodeConfiguration {
 	if b == nil {
 		return nil
 	}
@@ -565,4 +580,11 @@ func (b *BillingCreditGrant) GetStatus() CreditGrantLifecycleStatus {
 		return CreditGrantLifecycleStatus("")
 	}
 	return b.Status
+}
+
+func (b *BillingCreditGrant) GetValidationIssues() []BillingValidationIssue {
+	if b == nil {
+		return nil
+	}
+	return b.ValidationIssues
 }

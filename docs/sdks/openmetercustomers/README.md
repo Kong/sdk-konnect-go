@@ -880,8 +880,8 @@ func main() {
                 },
             )),
         },
-        TaxConfig: &components.TaxConfigurationForACreditGrant{
-            TaxCode: &components.TaxCode{
+        TaxConfig: &components.TaxCodeConfiguration{
+            Code: &components.CreateCreditGrantRequestTaxCode{
                 ID: "01G65Z755AFWAKHE12NY0CQ9FH",
             },
         },

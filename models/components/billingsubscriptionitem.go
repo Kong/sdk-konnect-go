@@ -401,27 +401,70 @@ func (b *BillingSubscriptionItemDiscounts) GetUsage() *string {
 	return b.Usage
 }
 
+// BillingSubscriptionItemTaxBehavior - Tax behavior.
+//
+// This enum is used to specify whether tax is included in the price or excluded
+// from the price. If not specified, the billing profile is used to determine the
+// tax behavior. If not specified in the billing profile, the provider's default
+// behavior is used.
+type BillingSubscriptionItemTaxBehavior string
+
+const (
+	BillingSubscriptionItemTaxBehaviorInclusive BillingSubscriptionItemTaxBehavior = "inclusive"
+	BillingSubscriptionItemTaxBehaviorExclusive BillingSubscriptionItemTaxBehavior = "exclusive"
+)
+
+func (e BillingSubscriptionItemTaxBehavior) ToPointer() *BillingSubscriptionItemTaxBehavior {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *BillingSubscriptionItemTaxBehavior) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "inclusive", "exclusive":
+			return true
+		}
+	}
+	return false
+}
+
+// BillingSubscriptionItemTaxCode - Tax code applied to the invoice line item.
+type BillingSubscriptionItemTaxCode struct {
+	// ULID (Universally Unique Lexicographically Sortable Identifier).
+	ID string `json:"id"`
+}
+
+func (b *BillingSubscriptionItemTaxCode) GetID() string {
+	if b == nil {
+		return ""
+	}
+	return b.ID
+}
+
 // BillingSubscriptionItemTaxConfig - The tax config of the rate card.
 type BillingSubscriptionItemTaxConfig struct {
 	// Tax behavior.
 	//
 	// This enum is used to specify whether tax is included in the price or excluded
-	// from the price.
-	Behavior *BillingTaxBehavior `json:"behavior,omitempty"`
-	// TaxCode reference.
-	Code TaxCodeReference `json:"code"`
+	// from the price. If not specified, the billing profile is used to determine the
+	// tax behavior. If not specified in the billing profile, the provider's default
+	// behavior is used.
+	Behavior *BillingSubscriptionItemTaxBehavior `json:"behavior,omitempty"`
+	// Tax code applied to the invoice line item.
+	Code *BillingSubscriptionItemTaxCode `json:"code,omitempty"`
 }
 
-func (b *BillingSubscriptionItemTaxConfig) GetBehavior() *BillingTaxBehavior {
+func (b *BillingSubscriptionItemTaxConfig) GetBehavior() *BillingSubscriptionItemTaxBehavior {
 	if b == nil {
 		return nil
 	}
 	return b.Behavior
 }
 
-func (b *BillingSubscriptionItemTaxConfig) GetCode() TaxCodeReference {
+func (b *BillingSubscriptionItemTaxConfig) GetCode() *BillingSubscriptionItemTaxCode {
 	if b == nil {
-		return TaxCodeReference{}
+		return nil
 	}
 	return b.Code
 }

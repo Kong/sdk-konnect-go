@@ -89,7 +89,7 @@ func main() {
                                 },
                             ),
                             TaxConfig: &components.TaxConfig{
-                                Code: components.TaxCodeReference{
+                                Code: &components.TaxCode{
                                     ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                                 },
                             },
@@ -103,6 +103,9 @@ func main() {
                 },
             },
         },
+        Timing: sdkkonnectgo.Pointer(components.CreateBillingSubscriptionCreateTimingBillingSubscriptionCreateTimingEnum(
+            components.BillingSubscriptionCreateTimingEnumImmediate,
+        )),
         BillingAnchor: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),
     })
     if err != nil {
@@ -608,7 +611,7 @@ func main() {
                             },
                         ),
                         TaxConfig: &components.BillingSubscriptionEditAddItemTaxConfig{
-                            Code: components.TaxCodeReference{
+                            Code: &components.BillingSubscriptionEditAddItemTaxCode{
                                 ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                             },
                         },
