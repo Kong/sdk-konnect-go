@@ -83585,6 +83585,10 @@ components:
                               type: array
                               items:
                                 $ref: '#/components/schemas/NodeError'
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/NodeError'
                     compatibility_status:
                       type: object
                       properties:
@@ -83669,6 +83673,10 @@ components:
                             type: array
                             items:
                               $ref: '#/components/schemas/NodeError'
+                  errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NodeError'
                   compatibility_status:
                     type: object
                     properties:
@@ -84355,7 +84363,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.1.16
+    version: 2.1.17
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
