@@ -67803,7 +67803,7 @@ components:
       description: 'The secret value. Once stored, this value cannot be retrieved.'
       type: string
       example: my-secret-value
-      maxLength: 5120
+      maxLength: 8192
       writeOnly: true
     CreateAIGatewayConfigStoreSecretRequest:
       type: object
@@ -72859,7 +72859,7 @@ components:
           x-speakeasy-param-force-new: true
         value:
           type: string
-          maxLength: 5120
+          maxLength: 8192
           minLength: 1
           writeOnly: true
           x-sensitive: true
@@ -72872,7 +72872,7 @@ components:
       properties:
         value:
           type: string
-          maxLength: 5120
+          maxLength: 8192
           minLength: 1
           writeOnly: true
           x-sensitive: true
@@ -84363,7 +84363,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.1.17
+    version: 2.1.18
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
