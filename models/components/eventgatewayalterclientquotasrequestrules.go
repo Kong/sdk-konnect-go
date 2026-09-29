@@ -13,6 +13,7 @@ type EventGatewayAlterClientQuotasRequestRules struct {
 	type_ string `const:"alter_client_quotas" json:"type"`
 	// Every rule in this list is evaluated independently against each quota operation in the request.
 	// A rule that evaluates to `false` runs its action.
+	// A maximum of 10 rules are allowed.
 	//
 	Rules []EventGatewayAlterClientQuotasRule `json:"rules"`
 }

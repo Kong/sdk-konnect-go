@@ -7,12 +7,16 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// EventGatewayParsedRecordTranscodeSchemaSourceReference - Looks up an existing schema in a schema registry using a computed subject and version.
+// EventGatewayParsedRecordTranscodeSchemaSourceReference - References a schema registered in a schema registry, computing the subject and version to use.
 type EventGatewayParsedRecordTranscodeSchemaSourceReference struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"reference" json:"type"`
-	// References a schema registered in a schema registry, computing the subject and version to use.
-	Reference EventGatewayParsedRecordTranscodeSchemaReference `json:"reference"`
+	// A reference to a schema Registry.
+	SchemaRegistry *SchemaRegistryReference `json:"schema_registry,omitempty"`
+	// An expression that computes the schema registry subject of the output data's schema.
+	Subject *string `json:"subject,omitempty"`
+	// An expression that computes the schema registry version of the output data's schema.
+	Version *string `json:"version,omitempty"`
 }
 
 func (e EventGatewayParsedRecordTranscodeSchemaSourceReference) MarshalJSON() ([]byte, error) {
@@ -20,7 +24,7 @@ func (e EventGatewayParsedRecordTranscodeSchemaSourceReference) MarshalJSON() ([
 }
 
 func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "reference"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
@@ -30,9 +34,23 @@ func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetType() strin
 	return "reference"
 }
 
-func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetReference() EventGatewayParsedRecordTranscodeSchemaReference {
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetSchemaRegistry() *SchemaRegistryReference {
 	if e == nil {
-		return EventGatewayParsedRecordTranscodeSchemaReference{}
+		return nil
 	}
-	return e.Reference
+	return e.SchemaRegistry
+}
+
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetSubject() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Subject
+}
+
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetVersion() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Version
 }

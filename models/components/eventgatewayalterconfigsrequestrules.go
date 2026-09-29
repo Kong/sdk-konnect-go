@@ -13,6 +13,7 @@ type EventGatewayAlterConfigsRequestRules struct {
 	type_ string `const:"alter_configs" json:"type"`
 	// Every rule in this list is evaluated independently against each resource in the request.
 	// A rule that evaluates to `false` runs its action.
+	// A maximum of 10 rules are allowed.
 	//
 	Rules []EventGatewayAlterConfigsRule `json:"rules"`
 }

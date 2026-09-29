@@ -87,6 +87,7 @@ type ListNodesItems struct {
 	UpdatedAt           *int64                        `json:"updated_at,omitempty"`
 	ConfigHash          *string                       `json:"config_hash,omitempty"`
 	ConfigSync          *ConfigSync                   `json:"config_sync,omitempty"`
+	Errors              []NodeError                   `json:"errors,omitempty"`
 	CompatibilityStatus *ListNodesCompatibilityStatus `json:"compatibility_status,omitempty"`
 }
 
@@ -151,6 +152,13 @@ func (l *ListNodesItems) GetConfigSync() *ConfigSync {
 		return nil
 	}
 	return l.ConfigSync
+}
+
+func (l *ListNodesItems) GetErrors() []NodeError {
+	if l == nil {
+		return nil
+	}
+	return l.Errors
 }
 
 func (l *ListNodesItems) GetCompatibilityStatus() *ListNodesCompatibilityStatus {

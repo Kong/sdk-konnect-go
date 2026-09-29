@@ -8,11 +8,15 @@ import (
 )
 
 // EventGatewayCreateTopicsRequestRules - The rules to apply to Kafka `CreateTopics` requests.
+//
+// When at least one `create_topics` rule is configured, Event Gateway turns auto topic
+// creation off on `Metadata` requests, because clients could use it to bypass the rules.
 type EventGatewayCreateTopicsRequestRules struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"create_topics" json:"type"`
 	// Every rule in this list is evaluated independently against each topic in the request.
 	// A rule that evaluates to `false` runs its action.
+	// A maximum of 10 rules are allowed.
 	//
 	Rules []EventGatewayCreateTopicsRule `json:"rules"`
 }
