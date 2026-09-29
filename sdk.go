@@ -242,8 +242,11 @@ type SDK struct {
 	// The optional `principals` property controls application-principal behavior for V3 API Catalog portals and applications. It defaults to disabled when omitted.
 	//
 	AppAuthStrategies *AppAuthStrategies
-	CloudGateways     *CloudGateways
-	ControlPlanes     *ControlPlanes
+	// Optional services that extend the capabilities of a Cloud Gateway data plane group. The currently supported add-on type is managed cache (`managed-cache.v0`), which provisions a Redis-compatible in-memory cache co-located with your data planes. Each add-on is scoped to a control plane or control plane group, and is automatically deployed across all data plane groups that belong to that owner.
+	//
+	AddOns        *AddOns
+	CloudGateways *CloudGateways
+	ControlPlanes *ControlPlanes
 	// Config Stores
 	ConfigStores *ConfigStores
 	// Config Store Secrets
@@ -594,6 +597,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AppAuthStrategies = newAppAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AddOns = newAddOns(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CloudGateways = newCloudGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlanes = newControlPlanes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ConfigStores = newConfigStores(sdk, sdk.sdkConfiguration, sdk.hooks)
