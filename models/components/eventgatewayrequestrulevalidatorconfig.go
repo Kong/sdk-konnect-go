@@ -12,6 +12,7 @@ type EventGatewayRequestRuleValidatorConfig struct {
 	// The rules to apply, grouped by Kafka request type. A request type can occur more than
 	// once in this list. Every entry for the type applies, in list order.
 	// Requests of a type that is not in this list are not validated.
+	// A maximum of 100 entries are allowed.
 	//
 	Requests []EventGatewayRequestRules `json:"requests"`
 }

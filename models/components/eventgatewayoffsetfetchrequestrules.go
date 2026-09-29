@@ -13,6 +13,7 @@ type EventGatewayOffsetFetchRequestRules struct {
 	type_ string `const:"offset_fetch" json:"type"`
 	// Every rule in this list is evaluated independently against the request.
 	// A rule that evaluates to `false` runs its action.
+	// A maximum of 10 rules are allowed.
 	//
 	Rules []EventGatewayOffsetFetchRule `json:"rules"`
 }

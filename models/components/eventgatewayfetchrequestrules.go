@@ -13,6 +13,7 @@ type EventGatewayFetchRequestRules struct {
 	type_ string `const:"fetch" json:"type"`
 	// Every rule in this list is evaluated independently against the request.
 	// A rule that evaluates to `false` runs its action.
+	// A maximum of 10 rules are allowed.
 	//
 	Rules []EventGatewayFetchRule `json:"rules"`
 }
