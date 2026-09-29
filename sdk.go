@@ -121,7 +121,13 @@ type SDK struct {
 	// From the scorecard, you can view details on either a per-service or per-criteria basis.
 	// Learn more about scorecards by visiting our [documentation](https://developer.konghq.com/service-catalog/scorecards/).
 	//
-	Scorecards *Scorecards
+	Scorecards                         *Scorecards
+	ContextInterfaces                  *ContextInterfaces
+	ContextSourceMappings              *ContextSourceMappings
+	ContextInterfaceCapabilityControls *ContextInterfaceCapabilityControls
+	ControlPlaneMappings               *ControlPlaneMappings
+	Skills                             *Skills
+	ContextSources                     *ContextSources
 	// Several criteria templates are provided to help ensure your services adhere to industry best practices.
 	// A criteria template is a collection of criteria grouped together to target various categories.
 	//
@@ -224,7 +230,6 @@ type SDK struct {
 	CatalogIntegrations *CatalogIntegrations
 	MCPServers          *MCPServers
 	MCPServerRuntime    *MCPServerRuntime
-	Skills              *Skills
 	// Operations related to notifications
 	Notifications *Notifications
 	// Resource mappings represent the link between a resource and a service.
@@ -568,6 +573,12 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Scorecards = newScorecards(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextInterfaces = newContextInterfaces(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextSourceMappings = newContextSourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextInterfaceCapabilityControls = newContextInterfaceCapabilityControls(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ControlPlaneMappings = newControlPlaneMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Skills = newSkills(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextSources = newContextSources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CriteriaTemplates = newCriteriaTemplates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.EventGateways = newEventGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.EventGatewayBackendClusters = newEventGatewayBackendClusters(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -589,7 +600,6 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServerRuntime = newMCPServerRuntime(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Skills = newSkills(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
