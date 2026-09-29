@@ -42777,18 +42777,6 @@ components:
       oneOf:
         - $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeSchemaSourceReference'
         - $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeSchemaSourceInline'
-    EventGatewayParsedRecordTranscodeSchemaSourceReference:
-      description: Looks up an existing schema in a schema registry using a computed subject and version.
-      type: object
-      properties:
-        type:
-          type: string
-          const: reference
-        reference:
-          $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeSchemaReference'
-      required:
-        - type
-        - reference
     EventGatewayParsedRecordTranscodeSchemaSourceInline:
       description: A schema embedded directly in the policy configuration.
       type: object
@@ -42802,10 +42790,13 @@ components:
       required:
         - type
         - inline
-    EventGatewayParsedRecordTranscodeSchemaReference:
+    EventGatewayParsedRecordTranscodeSchemaSourceReference:
       description: 'References a schema registered in a schema registry, computing the subject and version to use.'
       type: object
       properties:
+        type:
+          type: string
+          const: reference
         schema_registry:
           $ref: '#/components/schemas/SchemaRegistryReference'
         subject:
@@ -42840,6 +42831,8 @@ components:
               - name: record.headers
                 type: object
                 description: An associative array of header key value pairs.
+      required:
+        - type
     EventGatewayParsedRecordTranscodeSchemaRefDestination:
       description: |
         Defines how to record the schema id for the transcoded output data. See the
