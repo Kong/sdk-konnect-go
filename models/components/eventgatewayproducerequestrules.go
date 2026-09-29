@@ -13,6 +13,7 @@ type EventGatewayProduceRequestRules struct {
 	type_ string `const:"produce" json:"type"`
 	// Every rule in this list is evaluated independently against the request.
 	// A rule that evaluates to `false` runs its action.
+	// A maximum of 10 rules are allowed.
 	//
 	Rules []EventGatewayProduceRule `json:"rules"`
 }

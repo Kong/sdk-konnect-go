@@ -25,6 +25,7 @@ const (
 	EventGatewayRequestRulesTypeConsumerGroupHeartbeat    EventGatewayRequestRulesType = "consumer_group_heartbeat"
 	EventGatewayRequestRulesTypeOffsetCommit              EventGatewayRequestRulesType = "offset_commit"
 	EventGatewayRequestRulesTypeOffsetFetch               EventGatewayRequestRulesType = "offset_fetch"
+	EventGatewayRequestRulesTypeTxnOffsetCommit           EventGatewayRequestRulesType = "txn_offset_commit"
 )
 
 // EventGatewayRequestRules - The rules to apply to one Kafka request type.
@@ -41,6 +42,7 @@ type EventGatewayRequestRules struct {
 	EventGatewayConsumerGroupHeartbeatRequestRules    *EventGatewayConsumerGroupHeartbeatRequestRules    `queryParam:"inline" union:"member"`
 	EventGatewayOffsetCommitRequestRules              *EventGatewayOffsetCommitRequestRules              `queryParam:"inline" union:"member"`
 	EventGatewayOffsetFetchRequestRules               *EventGatewayOffsetFetchRequestRules               `queryParam:"inline" union:"member"`
+	EventGatewayTxnOffsetCommitRequestRules           *EventGatewayTxnOffsetCommitRequestRules           `queryParam:"inline" union:"member"`
 
 	Type EventGatewayRequestRulesType
 }
@@ -150,6 +152,15 @@ func CreateEventGatewayRequestRulesOffsetFetch(offsetFetch EventGatewayOffsetFet
 	return EventGatewayRequestRules{
 		EventGatewayOffsetFetchRequestRules: &offsetFetch,
 		Type:                                typ,
+	}
+}
+
+func CreateEventGatewayRequestRulesTxnOffsetCommit(txnOffsetCommit EventGatewayTxnOffsetCommitRequestRules) EventGatewayRequestRules {
+	typ := EventGatewayRequestRulesTypeTxnOffsetCommit
+
+	return EventGatewayRequestRules{
+		EventGatewayTxnOffsetCommitRequestRules: &txnOffsetCommit,
+		Type:                                    typ,
 	}
 }
 
@@ -280,6 +291,15 @@ func (u *EventGatewayRequestRules) UnmarshalJSON(data []byte) (err error) {
 		u.EventGatewayOffsetFetchRequestRules = eventGatewayOffsetFetchRequestRules
 		u.Type = EventGatewayRequestRulesTypeOffsetFetch
 		return nil
+	case "txn_offset_commit":
+		eventGatewayTxnOffsetCommitRequestRules := new(EventGatewayTxnOffsetCommitRequestRules)
+		if err := utils.UnmarshalJSON(data, &eventGatewayTxnOffsetCommitRequestRules, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == txn_offset_commit) type EventGatewayTxnOffsetCommitRequestRules within EventGatewayRequestRules: %w", string(data), err)
+		}
+
+		u.EventGatewayTxnOffsetCommitRequestRules = eventGatewayTxnOffsetCommitRequestRules
+		u.Type = EventGatewayRequestRulesTypeTxnOffsetCommit
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EventGatewayRequestRules", string(data))
@@ -332,6 +352,10 @@ func (u EventGatewayRequestRules) MarshalJSON() ([]byte, error) {
 
 	if u.EventGatewayOffsetFetchRequestRules != nil {
 		return utils.MarshalJSON(u.EventGatewayOffsetFetchRequestRules, "", true)
+	}
+
+	if u.EventGatewayTxnOffsetCommitRequestRules != nil {
+		return utils.MarshalJSON(u.EventGatewayTxnOffsetCommitRequestRules, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type EventGatewayRequestRules: all fields are null")

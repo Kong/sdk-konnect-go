@@ -77,6 +77,12 @@ eventGatewayRequestRules := components.CreateEventGatewayRequestRulesOffsetCommi
 eventGatewayRequestRules := components.CreateEventGatewayRequestRulesOffsetFetch(components.EventGatewayOffsetFetchRequestRules{/* values here */})
 ```
 
+### EventGatewayTxnOffsetCommitRequestRules
+
+```go
+eventGatewayRequestRules := components.CreateEventGatewayRequestRulesTxnOffsetCommit(components.EventGatewayTxnOffsetCommitRequestRules{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -107,5 +113,7 @@ switch eventGatewayRequestRules.Type {
 		// eventGatewayRequestRules.EventGatewayOffsetCommitRequestRules is populated
 	case components.EventGatewayRequestRulesTypeOffsetFetch:
 		// eventGatewayRequestRules.EventGatewayOffsetFetchRequestRules is populated
+	case components.EventGatewayRequestRulesTypeTxnOffsetCommit:
+		// eventGatewayRequestRules.EventGatewayTxnOffsetCommitRequestRules is populated
 }
 ```

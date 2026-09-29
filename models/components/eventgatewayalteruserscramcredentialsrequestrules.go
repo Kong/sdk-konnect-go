@@ -13,6 +13,7 @@ type EventGatewayAlterUserScramCredentialsRequestRules struct {
 	type_ string `const:"alter_user_scram_credentials" json:"type"`
 	// Every rule in this list is evaluated independently against each credential in the request.
 	// A rule that evaluates to `false` runs its action.
+	// A maximum of 10 rules are allowed.
 	//
 	Rules []EventGatewayAlterUserScramCredentialsRule `json:"rules"`
 }
