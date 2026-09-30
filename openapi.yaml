@@ -43796,7 +43796,7 @@ components:
         subject:
           description: An expression that computes the schema registry subject of the output data's schema.
           type: string
-          example: '${context.topic.name + ''-value''}'
+          example: context.topic.name + '-value'
           x-expression:
             type: string
             fields:
@@ -43812,7 +43812,7 @@ components:
         version:
           description: An expression that computes the schema registry version of the output data's schema.
           type: string
-          example: '${''latest''}'
+          example: '''latest'''
           x-expression:
             type: string
             fields:
@@ -86925,7 +86925,7 @@ x-input-schemas:
     version: 2.1.1
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
-    version: 1.3.6
+    version: 1.3.7
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
     version: 3.6.4
