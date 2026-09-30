@@ -104,7 +104,6 @@ func main() {
     res, err := s.AIGatewayCustomPolicies.CreateAiGatewayCustomPolicy(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayCustomPolicyRequestInstalled(
         components.CreateAIGatewayCustomPolicyInstalledRequest{
             Name: "my-installed-custom-policy",
-            Type: components.CreateAIGatewayCustomPolicyInstalledRequestTypeInstalled,
             DisplayName: "Custom Policy - Installed plugin",
             Schema: "<lua_schema>",
         },
@@ -247,7 +246,6 @@ func main() {
         UpdateAIGatewayCustomPolicyRequest: components.CreateUpdateAIGatewayCustomPolicyRequestStreaming(
             components.UpdateAIGatewayCustomPolicyStreamingRequest{
                 Name: "my-streaming-custom-policy",
-                Type: components.UpdateAIGatewayCustomPolicyStreamingRequestTypeStreaming,
                 DisplayName: "Custom Policy Streaming Plugin",
                 Schema: "<lua_schema>",
                 Handler: "<lua_handler>",
