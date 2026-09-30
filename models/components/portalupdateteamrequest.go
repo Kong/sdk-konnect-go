@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // PortalUpdateTeamRequest - Properties to update on a team.
 type PortalUpdateTeamRequest struct {
 	// The name of the team.
@@ -15,19 +11,13 @@ type PortalUpdateTeamRequest struct {
 	Description *string `json:"description,omitempty"`
 	// Whether the team is allowed to own applications.
 	CanOwnApplications *bool `json:"can_own_applications,omitempty"`
-	// Whether the team's membership is managed by Konnect instead of being synced from an identity provider's team mappings. Set to `false` (default) to let identity provider team mappings keep syncing members into this team. Set to `true` to manage membership directly in Konnect and prevent identity provider team mappings from syncing to this team.
-	KonnectManaged *bool `default:"false" json:"konnect_managed"`
-}
-
-func (p PortalUpdateTeamRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalUpdateTeamRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	// Whether the team's membership is managed by Konnect instead of being
+	// synced from an identity provider's team mappings. Set to false to let
+	// identity provider team mappings keep syncing members into this team.
+	// Set to true to manage membership directly in Konnect and prevent
+	// identity provider team mappings from syncing to this team.
+	//
+	KonnectManaged *bool `json:"konnect_managed,omitempty"`
 }
 
 func (p *PortalUpdateTeamRequest) GetName() *string {

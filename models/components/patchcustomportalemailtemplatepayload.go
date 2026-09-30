@@ -3,26 +3,11 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // PatchCustomPortalEmailTemplatePayload - Update a custom portal email template.
 type PatchCustomPortalEmailTemplatePayload struct {
 	Content *EmailTemplateContent `json:"content,omitempty"`
 	// Whether the email template is enabled or disabled for a portal
-	Enabled *bool `default:"true" json:"enabled"`
-}
-
-func (p PatchCustomPortalEmailTemplatePayload) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PatchCustomPortalEmailTemplatePayload) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 func (p *PatchCustomPortalEmailTemplatePayload) GetContent() *EmailTemplateContent {
