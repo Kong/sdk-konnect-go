@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 1acc410d321efde7b715aa34f03682d8
+  docChecksum: f4841c26311e0a0c48eb9c23194d474d
   docVersion: 3.15.0
   speakeasyVersion: 1.800.0
   generationVersion: 2.943.0
   releaseVersion: 0.71.0
   configChecksum: fa64d543b27bfd33fd743a35f03275ca
 persistentEdits:
-  generation_id: 2937c6c6-2716-4c5e-af2b-8061b7e14541
-  pristine_commit_hash: aadba397dcddcfba12d60375f8ab10e6b3600831
-  pristine_tree_hash: e23858827fc7d9d7fa0facd79a4cdb048ae97510
+  generation_id: 97b7831c-ce7f-4afe-ae4e-a856da213cf7
+  pristine_commit_hash: 4b662d50d8f8611474461af899a5bd254e2d344d
+  pristine_tree_hash: aaada871062018fdb0f6d7f1c6b792b656a51f84
 features:
   go:
     acceptHeaders: 2.81.2
@@ -6253,8 +6253,8 @@ trackedFiles:
     pristine_git_object: 6404cf45e5064ddd65d31c13da5de79e6887e7e8
   docs/models/components/eventgatewayparsedrecordtranscodeschemasourcereference.md:
     id: d860ebd1b567
-    last_write_checksum: sha1:3c2f8a589396de46166d73d01ec8664032df3dd5
-    pristine_git_object: f78ee969fb306a40d93d7f6008206cd0885e3b66
+    last_write_checksum: sha1:6fa5f11197b9f7314947e941669b5713f3fcc077
+    pristine_git_object: 298f1fdc5b010e05e641e9021856e99279f0c8b8
   docs/models/components/eventgatewaypolicy.md:
     id: 048fb533f729
     last_write_checksum: sha1:532adeee44a7f158bdfc16b67b8c97848dd6c769
