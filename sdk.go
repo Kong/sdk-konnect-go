@@ -530,8 +530,13 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.71.1",
 		sdkConfiguration: config.SDKConfiguration{
+<<<<<<< HEAD
 			UserAgent:         "speakeasy-sdk/go 0.71.1 2.943.0 3.15.0 github.com/Kong/sdk-konnect-go",
 			SDKVersion:        "0.71.1",
+=======
+			UserAgent:         "speakeasy-sdk/go 0.71.0 2.943.0 3.15.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.71.0",
+>>>>>>> 7f27284 (Update provider based on openapi.yaml changes)
 			GenVersion:        "2.943.0",
 			OpenAPIDocVersion: "3.15.0",
 			ServerList:        ServerList,
