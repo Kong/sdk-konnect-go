@@ -1,5 +1,7 @@
 # AIGatewayModelAPICapabilities
 
+**`skills` requires a minimum runtime version of `2.2`**.
+
 ## Example Usage
 
 ```go
@@ -20,3 +22,4 @@ custom := components.AIGatewayModelAPICapabilities("custom_value")
 | -------------------------------------- | -------------------------------------- |
 | `AIGatewayModelAPICapabilitiesBatches` | batches                                |
 | `AIGatewayModelAPICapabilitiesFiles`   | files                                  |
+| `AIGatewayModelAPICapabilitiesSkills`  | skills                                 |

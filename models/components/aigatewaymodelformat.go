@@ -8,6 +8,10 @@ import (
 )
 
 // AIGatewayModelFormatType - The format type.
+//
+// **`passthrough` requires a minimum runtime version of `2.2`**.
+//
+// **`typesafe` requires a minimum runtime version of `2.2`**.
 type AIGatewayModelFormatType string
 
 const (
@@ -17,6 +21,8 @@ const (
 	AIGatewayModelFormatTypeGemini      AIGatewayModelFormatType = "gemini"
 	AIGatewayModelFormatTypeHuggingface AIGatewayModelFormatType = "huggingface"
 	AIGatewayModelFormatTypeOpenai      AIGatewayModelFormatType = "openai"
+	AIGatewayModelFormatTypePassthrough AIGatewayModelFormatType = "passthrough"
+	AIGatewayModelFormatTypeTypesafe    AIGatewayModelFormatType = "typesafe"
 )
 
 func (e AIGatewayModelFormatType) ToPointer() *AIGatewayModelFormatType {
@@ -27,7 +33,7 @@ func (e AIGatewayModelFormatType) ToPointer() *AIGatewayModelFormatType {
 func (e *AIGatewayModelFormatType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "anthropic", "bedrock", "cohere", "gemini", "huggingface", "openai":
+		case "anthropic", "bedrock", "cohere", "gemini", "huggingface", "openai", "passthrough", "typesafe":
 			return true
 		}
 	}
@@ -37,6 +43,10 @@ func (e *AIGatewayModelFormatType) IsExact() bool {
 // AIGatewayModelFormat - Request and response format supported by this model.
 type AIGatewayModelFormat struct {
 	// The format type.
+	//
+	// **`passthrough` requires a minimum runtime version of `2.2`**.
+	//
+	// **`typesafe` requires a minimum runtime version of `2.2`**.
 	Type *AIGatewayModelFormatType `json:"type,omitempty"`
 }
 

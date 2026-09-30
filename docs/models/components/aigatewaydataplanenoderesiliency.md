@@ -1,0 +1,12 @@
+# AIGatewayDataPlaneNodeResiliency
+
+Present when the control plane is serving the node's last-known-good configuration because the current configuration could not be applied.
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `FallbackConfigVersion`                                                                            | `*string`                                                                                          | :heavy_minus_sign:                                                                                 | The configuration version of the fallback config in use.                                           |
+| `ActivatedAt`                                                                                      | `*int64`                                                                                           | :heavy_minus_sign:                                                                                 | The timestamp when the resiliency state was activated.                                             |
+| `LatestConfigErrors`                                                                               | [][components.AIGatewayDataPlaneNodeError](../../models/components/aigatewaydataplanenodeerror.md) | :heavy_minus_sign:                                                                                 | The list of errors encountered when applying the latest configuration.                             |
