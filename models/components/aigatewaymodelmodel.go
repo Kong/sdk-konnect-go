@@ -7,6 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// AIGatewayModelModelCapabilities - **`decisions` requires a minimum runtime version of `2.2`**.
 type AIGatewayModelModelCapabilities string
 
 const (
@@ -20,6 +21,7 @@ const (
 	AIGatewayModelModelCapabilitiesAudioTranslation   AIGatewayModelModelCapabilities = "audio/translation"
 	AIGatewayModelModelCapabilitiesVideo              AIGatewayModelModelCapabilities = "video"
 	AIGatewayModelModelCapabilitiesRerank             AIGatewayModelModelCapabilities = "rerank"
+	AIGatewayModelModelCapabilitiesDecisions          AIGatewayModelModelCapabilities = "decisions"
 )
 
 func (e AIGatewayModelModelCapabilities) ToPointer() *AIGatewayModelModelCapabilities {
@@ -30,7 +32,7 @@ func (e AIGatewayModelModelCapabilities) ToPointer() *AIGatewayModelModelCapabil
 func (e *AIGatewayModelModelCapabilities) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "generate", "agentic", "realtime", "embeddings", "image", "audio/speech", "audio/transcription", "audio/translation", "video", "rerank":
+		case "generate", "agentic", "realtime", "embeddings", "image", "audio/speech", "audio/transcription", "audio/translation", "video", "rerank", "decisions":
 			return true
 		}
 	}

@@ -73,6 +73,8 @@ type SDK struct {
 	AIGatewayConsumerGroups *AIGatewayConsumerGroups
 	// Individual consumers with credentials and group memberships for AI Gateway access control.
 	AIGatewayConsumers *AIGatewayConsumers
+	// Custom policies that let you bring your own Lua plugin schema and handler to the AI Gateway.
+	AIGatewayCustomPolicies *AIGatewayCustomPolicies
 	// API related to the management of AI Gateway DataPlane Certificates.
 	AIGatewayDataPlaneCertificates *AIGatewayDataPlaneCertificates
 	// API related to the management of AI Gateway nodes.
@@ -121,7 +123,13 @@ type SDK struct {
 	// From the scorecard, you can view details on either a per-service or per-criteria basis.
 	// Learn more about scorecards by visiting our [documentation](https://developer.konghq.com/service-catalog/scorecards/).
 	//
-	Scorecards *Scorecards
+	Scorecards                         *Scorecards
+	ContextInterfaces                  *ContextInterfaces
+	ContextSourceMappings              *ContextSourceMappings
+	ContextInterfaceCapabilityControls *ContextInterfaceCapabilityControls
+	ControlPlaneMappings               *ControlPlaneMappings
+	Skills                             *Skills
+	ContextSources                     *ContextSources
 	// Several criteria templates are provided to help ensure your services adhere to industry best practices.
 	// A criteria template is a collection of criteria grouped together to target various categories.
 	//
@@ -224,7 +232,6 @@ type SDK struct {
 	CatalogIntegrations *CatalogIntegrations
 	MCPServers          *MCPServers
 	MCPServerRuntime    *MCPServerRuntime
-	Skills              *Skills
 	// Operations related to notifications
 	Notifications *Notifications
 	// Resource mappings represent the link between a resource and a service.
@@ -521,10 +528,10 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.70.0",
+		SDKVersion: "0.71.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.70.0 2.941.0 3.15.0 github.com/Kong/sdk-konnect-go",
-			SDKVersion:        "0.70.0",
+			UserAgent:         "speakeasy-sdk/go 0.71.0 2.941.0 3.15.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.71.0",
 			GenVersion:        "2.941.0",
 			OpenAPIDocVersion: "3.15.0",
 			ServerList:        ServerList,
@@ -556,6 +563,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.AIGatewayConfigStores = newAIGatewayConfigStores(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConsumerGroups = newAIGatewayConsumerGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayConsumers = newAIGatewayConsumers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIGatewayCustomPolicies = newAIGatewayCustomPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayDataPlaneCertificates = newAIGatewayDataPlaneCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayNodes = newAIGatewayNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayIdentityProviders = newAIGatewayIdentityProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -568,6 +576,12 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Scorecards = newScorecards(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextInterfaces = newContextInterfaces(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextSourceMappings = newContextSourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextInterfaceCapabilityControls = newContextInterfaceCapabilityControls(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ControlPlaneMappings = newControlPlaneMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Skills = newSkills(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ContextSources = newContextSources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CriteriaTemplates = newCriteriaTemplates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.EventGateways = newEventGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.EventGatewayBackendClusters = newEventGatewayBackendClusters(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -589,7 +603,6 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServerRuntime = newMCPServerRuntime(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Skills = newSkills(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)

@@ -39,7 +39,8 @@ type AIGatewayDataPlaneNode struct {
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
 	// The version of the configuration applied by the node.
-	ConfigVersion *string `json:"config_version,omitempty"`
+	ConfigVersion *string                           `json:"config_version,omitempty"`
+	ConfigSync    *AIGatewayDataPlaneNodeConfigSync `json:"config_sync,omitempty"`
 	// Validation or configuration errors reported by the data plane node.
 	Errors              []AIGatewayDataPlaneNodeError `json:"errors,omitempty"`
 	CompatibilityStatus CompatibilityStatus           `json:"compatibility_status"`
@@ -117,6 +118,13 @@ func (a *AIGatewayDataPlaneNode) GetConfigVersion() *string {
 		return nil
 	}
 	return a.ConfigVersion
+}
+
+func (a *AIGatewayDataPlaneNode) GetConfigSync() *AIGatewayDataPlaneNodeConfigSync {
+	if a == nil {
+		return nil
+	}
+	return a.ConfigSync
 }
 
 func (a *AIGatewayDataPlaneNode) GetErrors() []AIGatewayDataPlaneNodeError {

@@ -2,6 +2,10 @@
 
 The format type.
 
+**`passthrough` requires a minimum runtime version of `2.2`**.
+
+**`typesafe` requires a minimum runtime version of `2.2`**.
+
 ## Example Usage
 
 ```go
@@ -26,3 +30,5 @@ custom := components.AIGatewayModelFormatType("custom_value")
 | `AIGatewayModelFormatTypeGemini`      | gemini                                |
 | `AIGatewayModelFormatTypeHuggingface` | huggingface                           |
 | `AIGatewayModelFormatTypeOpenai`      | openai                                |
+| `AIGatewayModelFormatTypePassthrough` | passthrough                           |
+| `AIGatewayModelFormatTypeTypesafe`    | typesafe                              |

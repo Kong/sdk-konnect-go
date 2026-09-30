@@ -1,5 +1,7 @@
 # Capabilities
 
+**`skills` requires a minimum runtime version of `2.2`**.
+
 ## Example Usage
 
 ```go
@@ -20,3 +22,4 @@ custom := components.Capabilities("custom_value")
 | --------------------- | --------------------- |
 | `CapabilitiesBatches` | batches               |
 | `CapabilitiesFiles`   | files                 |
+| `CapabilitiesSkills`  | skills                |

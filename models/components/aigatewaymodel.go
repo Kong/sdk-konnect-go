@@ -11,6 +11,7 @@ import (
 	"time"
 )
 
+// AIGatewayModelModelAIGatewayModelCapabilities - **`decisions` requires a minimum runtime version of `2.2`**.
 type AIGatewayModelModelAIGatewayModelCapabilities string
 
 const (
@@ -24,6 +25,7 @@ const (
 	AIGatewayModelModelAIGatewayModelCapabilitiesAudioTranslation   AIGatewayModelModelAIGatewayModelCapabilities = "audio/translation"
 	AIGatewayModelModelAIGatewayModelCapabilitiesVideo              AIGatewayModelModelAIGatewayModelCapabilities = "video"
 	AIGatewayModelModelAIGatewayModelCapabilitiesRerank             AIGatewayModelModelAIGatewayModelCapabilities = "rerank"
+	AIGatewayModelModelAIGatewayModelCapabilitiesDecisions          AIGatewayModelModelAIGatewayModelCapabilities = "decisions"
 )
 
 func (e AIGatewayModelModelAIGatewayModelCapabilities) ToPointer() *AIGatewayModelModelAIGatewayModelCapabilities {
@@ -34,7 +36,7 @@ func (e AIGatewayModelModelAIGatewayModelCapabilities) ToPointer() *AIGatewayMod
 func (e *AIGatewayModelModelAIGatewayModelCapabilities) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "generate", "agentic", "realtime", "embeddings", "image", "audio/speech", "audio/transcription", "audio/translation", "video", "rerank":
+		case "generate", "agentic", "realtime", "embeddings", "image", "audio/speech", "audio/transcription", "audio/translation", "video", "rerank", "decisions":
 			return true
 		}
 	}
@@ -196,11 +198,13 @@ func (a *AIGatewayModelAIGatewayModelModel) GetUpdatedAt() time.Time {
 	return a.UpdatedAt
 }
 
+// AIGatewayModelAPICapabilities - **`skills` requires a minimum runtime version of `2.2`**.
 type AIGatewayModelAPICapabilities string
 
 const (
 	AIGatewayModelAPICapabilitiesBatches AIGatewayModelAPICapabilities = "batches"
 	AIGatewayModelAPICapabilitiesFiles   AIGatewayModelAPICapabilities = "files"
+	AIGatewayModelAPICapabilitiesSkills  AIGatewayModelAPICapabilities = "skills"
 )
 
 func (e AIGatewayModelAPICapabilities) ToPointer() *AIGatewayModelAPICapabilities {
@@ -211,7 +215,7 @@ func (e AIGatewayModelAPICapabilities) ToPointer() *AIGatewayModelAPICapabilitie
 func (e *AIGatewayModelAPICapabilities) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "batches", "files":
+		case "batches", "files", "skills":
 			return true
 		}
 	}

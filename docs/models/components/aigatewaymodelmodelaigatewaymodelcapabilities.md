@@ -1,5 +1,7 @@
 # AIGatewayModelModelAIGatewayModelCapabilities
 
+**`decisions` requires a minimum runtime version of `2.2`**.
+
 ## Example Usage
 
 ```go
@@ -28,3 +30,4 @@ custom := components.AIGatewayModelModelAIGatewayModelCapabilities("custom_value
 | `AIGatewayModelModelAIGatewayModelCapabilitiesAudioTranslation`   | audio/translation                                                 |
 | `AIGatewayModelModelAIGatewayModelCapabilitiesVideo`              | video                                                             |
 | `AIGatewayModelModelAIGatewayModelCapabilitiesRerank`             | rerank                                                            |
+| `AIGatewayModelModelAIGatewayModelCapabilitiesDecisions`          | decisions                                                         |

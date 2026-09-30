@@ -5,11 +5,48 @@ package sdkkonnectgo
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // SkillsSDK is a generated interface.
 type SkillsSDK interface {
+	// ListContextInterfaceSkills - List Skills
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Returns a list of skills for the specified Context Interface.
+	ListContextInterfaceSkills(ctx context.Context, request operations.ListContextInterfaceSkillsRequest, opts ...operations.Option) (*operations.ListContextInterfaceSkillsResponse, error)
+	// CreateContextInterfaceSkill - Create a Skill
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Create a skill for the specified Context Interface. The `source` determines where the skill's content comes from.
+	CreateContextInterfaceSkill(ctx context.Context, interfaceID string, createSkillRequest components.CreateSkillRequest, opts ...operations.Option) (*operations.CreateContextInterfaceSkillResponse, error)
+	// GetContextInterfaceSkill - Get a Skill
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Retrieve a single skill by its ID.
+	GetContextInterfaceSkill(ctx context.Context, interfaceID string, skillID string, opts ...operations.Option) (*operations.GetContextInterfaceSkillResponse, error)
+	// PatchContextInterfaceSkill - Update a Skill
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Partially update a skill. Supplying `source` replaces the skill's source in its entirety and re-runs validation against the new content.
+	PatchContextInterfaceSkill(ctx context.Context, request operations.PatchContextInterfaceSkillRequest, opts ...operations.Option) (*operations.PatchContextInterfaceSkillResponse, error)
+	// DeleteContextInterfaceSkill - Delete a Skill
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Delete a skill and its associated content.
+	DeleteContextInterfaceSkill(ctx context.Context, interfaceID string, skillID string, opts ...operations.Option) (*operations.DeleteContextInterfaceSkillResponse, error)
+	// GetContextInterfaceSkillContents - Get Skill Contents
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Returns a presigned S3 URL for the skill's SKILL.md file. Used by the Konnect UI to let a user view a skill's content.
+	GetContextInterfaceSkillContents(ctx context.Context, interfaceID string, skillID string, opts ...operations.Option) (*operations.GetContextInterfaceSkillContentsResponse, error)
 	// ListMcpServerSkillsByControlPlane - List Skills by Control Plane
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.

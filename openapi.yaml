@@ -1543,6 +1543,133 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
       tags:
         - AI Gateway Consumers
+  '/v1/ai-gateways/{gatewayId}/custom-policies':
+    parameters:
+      - $ref: '#/components/parameters/AIGatewayId'
+    get:
+      operationId: list-ai-gateway-custom-policies
+      summary: List AI Gateway Custom Policies
+      description: Returns a list of custom policies registered for the AI Gateway.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListAIGatewayCustomPoliciesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Custom Policies
+    post:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayCustomPolicy#create
+        terraform-datasource: null
+      operationId: create-ai-gateway-custom-policy
+      summary: Create an AI Gateway Custom Policy
+      description: Registers a new custom policy for the AI Gateway.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAIGatewayCustomPolicyRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateAIGatewayCustomPolicyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Custom Policies
+  '/v1/ai-gateways/{gatewayId}/custom-policies/{customPolicyIdOrName}':
+    parameters:
+      - $ref: '#/components/parameters/AIGatewayId'
+      - $ref: '#/components/parameters/AIGatewayCustomPolicyIdOrName'
+    get:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayCustomPolicy#read
+        terraform-datasource: null
+      operationId: get-ai-gateway-custom-policy
+      summary: Get an AI Gateway Custom Policy
+      description: Returns the details of a specific AI Gateway custom policy.
+      responses:
+        '200':
+          $ref: '#/components/responses/GetAIGatewayCustomPolicyResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Custom Policies
+    put:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayCustomPolicy#update
+        terraform-datasource: null
+      operationId: update-ai-gateway-custom-policy
+      summary: Update an AI Gateway Custom Policy
+      description: Updates the configuration of an existing AI Gateway custom policy.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAIGatewayCustomPolicyRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateAIGatewayCustomPolicyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Custom Policies
+    delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayCustomPolicy#delete
+        terraform-datasource: null
+      operationId: delete-ai-gateway-custom-policy
+      summary: Delete an AI Gateway Custom Policy
+      description: Removes a specific AI Gateway custom policy.
+      responses:
+        '204':
+          description: Custom policy deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      tags:
+        - AI Gateway Custom Policies
   '/v1/ai-gateways/{gatewayId}/data-plane-certificates':
     parameters:
       - $ref: '#/components/parameters/AIGatewayId'
@@ -2931,6 +3058,762 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Scorecards
+  /v1/context-interfaces:
+    get:
+      operationId: list-context-interfaces
+      summary: List all Context Interfaces
+      description: Returns an array of Context Interfaces.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - $ref: '#/components/parameters/MCPServerFilter'
+        - $ref: '#/components/parameters/MCPServerSort'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListMCPServersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Context Interfaces
+    post:
+      operationId: create-context-interface
+      summary: Create a Context Interface
+      description: Create a Context Interface in the Konnect Organization.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMCPServerRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateMCPServerResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Context Interfaces
+  '/v1/context-interfaces/{interfaceId}':
+    parameters:
+      - $ref: '#/components/parameters/interfaceId'
+    get:
+      operationId: get-context-interface
+      summary: Get Context Interface
+      description: Returns information about an individual Context Interface.
+      responses:
+        '200':
+          description: A response to retrieving a single Context Interface.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Context Interfaces
+    put:
+      operationId: update-context-interface
+      summary: Update Context Interface
+      description: Update an individual Context Interface.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMCPServerRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateMCPServerResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Context Interfaces
+    patch:
+      operationId: patch-context-interface
+      summary: Partially Update Context Interface
+      description: Partially update an individual Context Interface.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchMCPServerRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateMCPServerResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Context Interfaces
+    delete:
+      operationId: delete-context-interface
+      summary: Delete Context Interface
+      description: Delete a Context Interface.
+      responses:
+        '204':
+          description: Successfully deleted MCP server.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Context Interfaces
+  '/v1/context-interfaces/{interfaceId}/context-source-mappings':
+    parameters:
+      - $ref: '#/components/parameters/interfaceId'
+    post:
+      operationId: create-context-interface-source-mapping
+      summary: Create Context Interface Source Mapping
+      description: Create a mapping between a Context Interface and a Context Source.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMCPServerMCPResourceMappingRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateMCPServerMCPResourceMappingResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Context Source Mappings
+    get:
+      operationId: list-context-interface-source-mappings
+      summary: List Context Interface Source Mappings
+      description: Returns a list of Context Interface Source Mappings for the given Context Interface.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/MCPResourceMappingFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListMCPServerMCPResourceMappingsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Context Source Mappings
+  '/v1/context-interfaces/{interfaceId}/context-source-mappings/{mappingId}':
+    parameters:
+      - $ref: '#/components/parameters/interfaceId'
+      - $ref: '#/components/parameters/contextSourceMappingId'
+    delete:
+      operationId: delete-context-interface-source-mapping
+      summary: Delete Context Interface Source Mapping
+      description: Delete a mapping between a Context Interface and a Context Source.
+      responses:
+        '204':
+          description: Successfully deleted Context Interface Source Mapping.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Context Source Mappings
+    get:
+      operationId: get-context-interface-source-mapping
+      summary: Get Context Interface Source Mapping
+      description: Retrieve a specific Context Interface Source Mapping by its ID.
+      responses:
+        '200':
+          description: A response to retrieving a Context Interface Source Mapping.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerMCPResourceMapping'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Context Source Mappings
+  '/v1/context-interfaces/{interfaceId}/context-source-mappings/{mappingId}/capability-controls':
+    parameters:
+      - $ref: '#/components/parameters/interfaceId'
+      - $ref: '#/components/parameters/contextSourceMappingId'
+    get:
+      operationId: get-context-interfaces-source-mapping-capability-controls
+      summary: Get Interface-Source Capability Controls
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieve the capability controls configured for a context interface-source mapping.
+      responses:
+        '200':
+          $ref: '#/components/responses/GetMCPServerMCPResourceMappingCapabilityControlsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/MCPServerMCPResourceMappingCapabilityControlsNotFound'
+      tags:
+        - Context Interface Capability Controls
+    post:
+      operationId: create-context-interfaces-source-mapping-capability-controls
+      summary: Create Interface-Source Capability Controls
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Create the capability controls for a context interface-source mapping.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapabilityControls'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateContextInterfaceContextSourceMappingCapabilityControlsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Context Interface Capability Controls
+    patch:
+      operationId: patch-context-interfaces-source-mapping-capability-controls
+      summary: Update Interface-Source Capability Controls
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Partially update the capability controls configured for a context interface-source mapping. Omitted deny keys preserve their existing value, an empty array clears a capability, and a non-empty array replaces.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchCapabilityControls'
+      responses:
+        '200':
+          $ref: '#/components/responses/PatchContextInterfaceContextSourceMappingCapabilityControlsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/MCPServerMCPResourceMappingCapabilityControlsNotFound'
+      tags:
+        - Context Interface Capability Controls
+  '/v1/context-interfaces/{interfaceId}/control-plane-mappings':
+    parameters:
+      - $ref: '#/components/parameters/interfaceId'
+    get:
+      operationId: list-control-plane-mappings
+      summary: Get a list of CPs mapped to Context Interface
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Get a list of all Control Planes that have been mapped to the given Context Interface.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - $ref: '#/components/parameters/MCPServerControlPlaneMappingFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListMCPServerControlPlaneMappingResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Control Plane Mappings
+    post:
+      operationId: create-context-interface-control-plane-mapping
+      summary: Create Context Interface CP Mapping
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Create a Context Interface - Control Plane mapping
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMCPServerControlPlaneMappingRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateMCPServerControlPlaneMappingResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Control Plane Mappings
+  '/v1/context-interfaces/{interfaceId}/control-plane-mappings/{mappingId}':
+    parameters:
+      - $ref: '#/components/parameters/interfaceId'
+      - $ref: '#/components/parameters/mcpServerControlPlaneMappingId'
+    get:
+      operationId: get-control-plane-mapping
+      summary: Get Context Interface Control Plane Mapping
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieve a mapping by its ID.
+      responses:
+        '200':
+          description: Details of an Context Interface and Control Plane mapping.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerControlPlaneMappingInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Control Plane Mappings
+    patch:
+      operationId: patch-context-interface-control-plane-mapping
+      summary: Patch Context Interface Control Plane Mapping
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Update a mapping between a Context Interface and a Control Plane.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchMCPServerControlPlaneMappingRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PatchMCPServerControlPlaneMappingResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Control Plane Mappings
+    delete:
+      operationId: delete-context-interface-control-plane-mapping
+      summary: Delete Context Interface CP Mapping
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Delete Context Interface Control Plane Mapping.
+      responses:
+        '204':
+          description: Successfully deleted Context Interface Control Plane mapping.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Control Plane Mappings
+  '/v1/context-interfaces/{interfaceId}/skills':
+    parameters:
+      - $ref: '#/components/parameters/interfaceId'
+    get:
+      operationId: list-context-interface-skills
+      summary: List Skills
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns a list of skills for the specified Context Interface.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/SkillFilter'
+        - $ref: '#/components/parameters/SkillSort'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListSkillsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Skills
+    post:
+      operationId: create-context-interface-skill
+      summary: Create a Skill
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Create a skill for the specified Context Interface. The `source` determines where the skill's content comes from.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSkillRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateSkillResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Skills
+  '/v1/context-interfaces/{interfaceId}/skills/{skillId}':
+    parameters:
+      - $ref: '#/components/parameters/interfaceId'
+      - $ref: '#/components/parameters/skillId'
+    get:
+      operationId: get-context-interface-skill
+      summary: Get a Skill
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieve a single skill by its ID.
+      responses:
+        '200':
+          description: A response to retrieving a skill.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Skills
+    patch:
+      operationId: patch-context-interface-skill
+      summary: Update a Skill
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Partially update a skill. Supplying `source` replaces the skill's source in its entirety and re-runs validation against the new content.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchSkillRequest'
+      responses:
+        '200':
+          description: A response to updating a skill.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Skills
+    delete:
+      operationId: delete-context-interface-skill
+      summary: Delete a Skill
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Delete a skill and its associated content.
+      responses:
+        '204':
+          description: Successfully deleted skill.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Skills
+  '/v1/context-interfaces/{interfaceId}/skills/{skillId}/contents':
+    parameters:
+      - $ref: '#/components/parameters/interfaceId'
+      - $ref: '#/components/parameters/skillId'
+    get:
+      operationId: get-context-interface-skill-contents
+      summary: Get Skill Contents
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns a presigned S3 URL for the skill's SKILL.md file. Used by the Konnect UI to let a user view a skill's content.
+      responses:
+        '200':
+          $ref: '#/components/responses/SkillContentsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Skills
+  /v1/context-sources:
+    get:
+      operationId: list-context-sources
+      summary: List Context Sources
+      description: Returns a list of Context Source objects.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/MCPResourceCommonFilter'
+      responses:
+        '200':
+          description: A response to listing Context Sources.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMCPResourcesResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Context Sources
+    post:
+      operationId: create-context-source
+      summary: Create a Context Source
+      description: Create a Context Source in the Konnect Organization.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              discriminator:
+                propertyName: type
+                mapping:
+                  api: '#/components/schemas/ApiResourcePayload'
+                  mcp_server: '#/components/schemas/McpServerResourcePayload'
+              oneOf:
+                - $ref: '#/components/schemas/ApiResourcePayload'
+                - $ref: '#/components/schemas/McpServerResourcePayload'
+      responses:
+        '201':
+          description: A response to creating a Context Source.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPResourceInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Context Sources
+  '/v1/context-sources/{sourceId}':
+    parameters:
+      - $ref: '#/components/parameters/mcpResourceId'
+    get:
+      operationId: get-context-source
+      summary: Get a Context Source
+      description: Retrieve an Context Source by its ID.
+      responses:
+        '200':
+          description: A response to retrieving a Context Source.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPResourceInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Context Sources
+    delete:
+      operationId: delete-context-source
+      summary: Delete a Context Source
+      description: Delete a Context Source by its ID.
+      responses:
+        '204':
+          description: Successfully deleted Context Source.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Context Sources
+    put:
+      operationId: update-context-source
+      summary: Update a Context Source
+      description: Update a Context Source by its ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              discriminator:
+                propertyName: type
+                mapping:
+                  api: '#/components/schemas/ApiResourcePayload'
+                  mcp_server: '#/components/schemas/McpServerResourcePayload'
+              oneOf:
+                - $ref: '#/components/schemas/ApiResourcePayload'
+                - $ref: '#/components/schemas/McpServerResourcePayload'
+      responses:
+        '200':
+          description: A response to updating a Context Source.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPResourceInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Context Sources
+  '/v1/context-sources/{sourceId}/context-interfaces':
+    parameters:
+      - $ref: '#/components/parameters/mcpResourceId'
+    get:
+      operationId: list-context-interfaces-by-context-source
+      summary: List Context Source Context Interfaces
+      description: |
+        List Context Interfaces which are mapped by the provided Context Source ID in the path parameter
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/MCPServerFilter'
+        - $ref: '#/components/parameters/MCPServerSort'
+      responses:
+        '200':
+          $ref: '#/components/responses/PaginateMCPServersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Context Interfaces
   /v1/criteria-templates:
     get:
       operationId: list-criteria-templates
@@ -5211,7 +6094,8 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
       tags:
-        - MCP Servers
+        - Signaling APIs
+      x-speakeasy-group: MCP Servers
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -5240,7 +6124,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
       tags:
-        - MCP Servers
+        - Signaling APIs
+      x-speakeasy-group: MCP Servers
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/code':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -5269,7 +6154,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
       tags:
-        - MCP Servers
+        - Signaling APIs
+      x-speakeasy-group: MCP Servers
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/kong-entities':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -5306,7 +6192,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
       tags:
-        - MCP Servers
+        - Signaling APIs
+      x-speakeasy-group: MCP Servers
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/runtime-config':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -5329,7 +6216,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
       tags:
-        - MCP Server Runtime
+        - Signaling APIs
+      x-speakeasy-group: MCP Server Runtime
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/skills':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -5359,7 +6247,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
       tags:
-        - Skills
+        - Signaling APIs
+      x-speakeasy-group: Skills
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/skills/{skillId}/contents':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -5385,7 +6274,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
       tags:
-        - Skills
+        - Signaling APIs
+      x-speakeasy-group: Skills
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/status':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -5416,7 +6306,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
       tags:
-        - MCP Servers
+        - Signaling APIs
+      x-speakeasy-group: MCP Servers
   '/v1/mcp-cp/{controlPlaneId}/signals':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -5455,7 +6346,8 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
       tags:
-        - MCP Servers
+        - Signaling APIs
+      x-speakeasy-group: MCP Servers
   /v1/notifications/configurations:
     get:
       operationId: list-user-configurations
@@ -21745,6 +22637,13 @@ components:
       description: The unique ID or name of the AI Gateway consumer.
       schema:
         $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+    AIGatewayCustomPolicyIdOrName:
+      name: customPolicyIdOrName
+      in: path
+      required: true
+      description: The unique ID or name of the AI Gateway custom policy.
+      schema:
+        $ref: '#/components/schemas/AIGatewayEntityIdentifier'
     AIGatewayDataPlaneCertificateId:
       name: certificateId
       in: path
@@ -22264,6 +23163,14 @@ components:
       required: true
       schema:
         type: string
+    contextSourceMappingId:
+      name: mappingId
+      in: path
+      required: true
+      description: The ID of the Context Interface Source Mapping.
+      schema:
+        type: string
+        format: uuid
     ControlPlaneFilter:
       name: filter
       description: Filters a collection of control-planes.
@@ -22728,6 +23635,14 @@ components:
       in: query
       schema:
         $ref: '#/components/schemas/SortQuery'
+    interfaceId:
+      name: interfaceId
+      in: path
+      required: true
+      description: The ID of the Context Interface.
+      schema:
+        type: string
+        format: uuid
     JWTId:
       description: ID of the JWT to lookup
       example: 4a7f5faa-8c96-46d6-8214-c87573ef2ac4
@@ -22781,6 +23696,36 @@ components:
       example:
         mcp:
           version: '5'
+    MCPResourceCommonFilter:
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/StringFieldFilter'
+      in: query
+      name: filter
+      description: Filters for Context Sources.
+      required: false
+      style: deepObject
+    mcpResourceId:
+      name: sourceId
+      in: path
+      required: true
+      description: The ID of the Context Source.
+      schema:
+        type: string
+        format: uuid
+    MCPResourceMappingFilter:
+      name: filter
+      in: query
+      required: false
+      description: Filter documents returned in the response.
+      style: deepObject
+      schema:
+        type: object
+        properties:
+          context_source_id:
+            $ref: '#/components/schemas/UuidFieldFilter'
     MCPServerCommonFilter:
       schema:
         type: object
@@ -22792,6 +23737,42 @@ components:
       description: Filter documents returned in the response.
       required: false
       style: deepObject
+    MCPServerControlPlaneMappingFilter:
+      name: filter
+      in: query
+      required: false
+      description: Filter control planes returned in the response.
+      style: deepObject
+      schema:
+        type: object
+        properties:
+          control_plane_id:
+            $ref: '#/components/schemas/UuidFieldFilter'
+    mcpServerControlPlaneMappingId:
+      name: mappingId
+      in: path
+      required: true
+      description: The ID of the Context Interface - Control Plane mapping.
+      schema:
+        type: string
+        format: uuid
+    MCPServerFilter:
+      schema:
+        type: object
+        properties:
+          id:
+            $ref: '#/components/schemas/UuidFieldFilter'
+          name:
+            $ref: '#/components/schemas/StringFieldFilter'
+          display_name:
+            $ref: '#/components/schemas/StringFieldFilter'
+          labels:
+            $ref: '#/components/schemas/LabelsFieldFilter'
+      in: query
+      name: filter
+      description: Filter for Context Interfaces.
+      required: false
+      style: deepObject
     mcpServerId:
       name: mcpServerId
       in: path
@@ -22800,6 +23781,19 @@ components:
       schema:
         type: string
         format: uuid
+    MCPServerSort:
+      name: sort
+      required: false
+      in: query
+      description: |
+        Sorts a collection of Context Interfaces. Supported sort attributes are:
+          - `name`
+          - `created_at`
+          - `updated_at`
+
+        Default sort is `name` in ascending order.
+      schema:
+        $ref: '#/components/schemas/SortQuery'
     MTLSAuthId:
       description: ID of the MTLS-auth credential to lookup
       example: ''
@@ -57604,6 +58598,10 @@ components:
           description: An optional description of the certificate.
           type: string
           maxLength: 1024
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
       additionalProperties: false
       required:
         - cert
@@ -57623,6 +58621,10 @@ components:
           description: An optional description of the certificate.
           type: string
           maxLength: 1024
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
         id:
           $ref: '#/components/schemas/UUID'
         created_at:
@@ -57712,6 +58714,8 @@ components:
           description: The version of the configuration applied by the node.
           type: string
           readOnly: true
+        config_sync:
+          $ref: '#/components/schemas/AIGatewayDataPlaneNodeConfigSync'
         errors:
           description: Validation or configuration errors reported by the data plane node.
           type: array
@@ -57739,6 +58743,41 @@ components:
         - created_at
         - updated_at
         - compatibility_status
+    AIGatewayDataPlaneNodeConfigSync:
+      type: object
+      properties:
+        state:
+          description: Config sync state.
+          type: string
+          enum:
+            - STATE_UNSPECIFIED
+            - STATE_IN_SYNC
+            - STATE_PENDING
+            - STATE_RESILIENCY
+          x-speakeasy-unknown-values: allow
+        version_id:
+          description: The version ID of the configuration currently applied by the node.
+          type: string
+        resiliency:
+          $ref: '#/components/schemas/AIGatewayDataPlaneNodeResiliency'
+      additionalProperties: false
+    AIGatewayDataPlaneNodeResiliency:
+      description: Present when the control plane is serving the node's last-known-good configuration because the current configuration could not be applied.
+      type: object
+      properties:
+        fallback_config_version:
+          description: The configuration version of the fallback config in use.
+          type: string
+        activated_at:
+          description: The timestamp when the resiliency state was activated.
+          type: integer
+        latest_config_errors:
+          description: The list of errors encountered when applying the latest configuration.
+          type: array
+          items:
+            $ref: '#/components/schemas/AIGatewayDataPlaneNodeError'
+      additionalProperties: false
+      readOnly: true
     AIGatewayDataPlaneNodeError:
       type: object
       properties:
@@ -57920,6 +58959,10 @@ components:
               - audio/translation
               - video
               - rerank
+              - decisions
+            x-enum-min-runtime-version:
+              decisions: '2.2'
+            description: '**`decisions` requires a minimum runtime version of `2.2`**.'
             x-speakeasy-unknown-values: allow
       required:
         - display_name
@@ -57983,6 +59026,10 @@ components:
             enum:
               - batches
               - files
+              - skills
+            x-enum-min-runtime-version:
+              skills: '2.2'
+            description: '**`skills` requires a minimum runtime version of `2.2`**.'
             x-speakeasy-unknown-values: allow
       required:
         - display_name
@@ -59218,7 +60265,12 @@ components:
       type: object
       properties:
         type:
-          description: The format type.
+          description: |-
+            The format type.
+
+            **`passthrough` requires a minimum runtime version of `2.2`**.
+
+            **`typesafe` requires a minimum runtime version of `2.2`**.
           type: string
           example: openai
           enum:
@@ -59228,6 +60280,11 @@ components:
             - gemini
             - huggingface
             - openai
+            - passthrough
+            - typesafe
+          x-enum-min-runtime-version:
+            passthrough: '2.2'
+            typesafe: '2.2'
           x-speakeasy-unknown-values: allow
       additionalProperties: false
     AIGatewayTarget:
@@ -59288,6 +60345,7 @@ components:
           vllm: '#/components/schemas/AIGatewayTargetVllmConfig'
           xai: '#/components/schemas/AIGatewayTargetXaiConfig'
           sagemaker: '#/components/schemas/AIGatewayTargetSagemakerConfig'
+          typesafe: '#/components/schemas/AIGatewayTargetTypesafeConfig'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayTargetAnthropicConfig'
         - $ref: '#/components/schemas/AIGatewayTargetAzureConfig'
@@ -59308,6 +60366,7 @@ components:
         - $ref: '#/components/schemas/AIGatewayTargetVllmConfig'
         - $ref: '#/components/schemas/AIGatewayTargetXaiConfig'
         - $ref: '#/components/schemas/AIGatewayTargetSagemakerConfig'
+        - $ref: '#/components/schemas/AIGatewayTargetTypesafeConfig'
     AIGatewayCacheWriteCost:
       type: object
       properties:
@@ -61197,6 +62256,30 @@ components:
               type: string
       required:
         - type
+    AIGatewayTargetTypesafeConfig:
+      description: |-
+        Typesafe-specific configuration for a model.
+
+        **Requires a minimum runtime version of `2.2`**.
+      type: object
+      properties:
+        type:
+          type: string
+          const: typesafe
+        input_cost:
+          description: Cost per 1M input tokens for billing and cost tracking.
+          type: number
+        output_cost:
+          description: Cost per 1M output tokens for billing and cost tracking.
+          type: number
+        upstream_url:
+          description: The upstream URL for the model endpoint.
+          type: string
+          format: uri
+      required:
+        - type
+      title: AIGatewayTargetTypesafeConfig
+      x-min-runtime-version: '2.2'
     GCPModelConfig:
       description: Configuration for a model hosted on Google Cloud Project.
       type: object
@@ -63145,6 +64228,270 @@ components:
         - id
         - created_at
         - updated_at
+    CreateAIGatewayCustomPolicyInstalledRequest:
+      type: object
+      properties:
+        name:
+          description: 'A user-defined unique identifier for this custom policy, used as a stable human-readable reference. This value is immutable after creation.'
+          example: my-installed-custom-policy
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        type:
+          description: An installed Kong plugin used as a custom policy.
+          type: string
+          enum:
+            - installed
+        display_name:
+          description: The display name for this custom policy.
+          type: string
+          example: Custom Policy - Installed plugin
+          maxLength: 256
+          minLength: 1
+        schema:
+          description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
+          type: string
+          example: <lua_schema>
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+      additionalProperties: false
+      required:
+        - name
+        - type
+        - display_name
+        - schema
+    CreateAIGatewayCustomPolicyStreamingRequest:
+      type: object
+      properties:
+        name:
+          description: 'A user-defined unique identifier for this custom policy, used as a stable human-readable reference. This value is immutable after creation.'
+          example: my-streaming-custom-policy
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        type:
+          description: A streaming Kong plugin used as a custom policy.
+          type: string
+          enum:
+            - streaming
+        display_name:
+          description: The display name for this custom policy.
+          type: string
+          example: Custom Policy Streaming Plugin
+          maxLength: 256
+          minLength: 1
+        schema:
+          description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
+          type: string
+          example: <lua_schema>
+        handler:
+          description: 'The Lua handler implementation for the custom policy, equivalent to a Kong plugin''s `handler.lua`.'
+          type: string
+          example: <lua_handler>
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+      additionalProperties: false
+      required:
+        - name
+        - type
+        - display_name
+        - schema
+        - handler
+    CreateAIGatewayCustomPolicyRequest:
+      description: Request payload to register a new AI Gateway custom policy.
+      type: object
+      discriminator:
+        propertyName: type
+        mapping:
+          installed: '#/components/schemas/CreateAIGatewayCustomPolicyInstalledRequest'
+          streaming: '#/components/schemas/CreateAIGatewayCustomPolicyStreamingRequest'
+      oneOf:
+        - $ref: '#/components/schemas/CreateAIGatewayCustomPolicyInstalledRequest'
+        - $ref: '#/components/schemas/CreateAIGatewayCustomPolicyStreamingRequest'
+    UpdateAIGatewayCustomPolicyInstalledRequest:
+      type: object
+      properties:
+        name:
+          description: 'A user-defined unique identifier for this custom policy, used as a stable human-readable reference. This value is immutable after creation.'
+          example: my-installed-custom-policy
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        type:
+          description: An installed Kong plugin used as a custom policy.
+          type: string
+          enum:
+            - installed
+        display_name:
+          description: The display name for this custom policy.
+          type: string
+          example: Custom Policy - Installed plugin
+          maxLength: 256
+          minLength: 1
+        schema:
+          description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
+          type: string
+          example: <lua_schema>
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+      additionalProperties: false
+      required:
+        - name
+        - type
+        - display_name
+        - schema
+    UpdateAIGatewayCustomPolicyStreamingRequest:
+      type: object
+      properties:
+        name:
+          description: 'A user-defined unique identifier for this custom policy, used as a stable human-readable reference. This value is immutable after creation.'
+          example: my-streaming-custom-policy
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        type:
+          description: A streaming Kong plugin used as a custom policy.
+          type: string
+          enum:
+            - streaming
+        display_name:
+          description: The display name for this custom policy.
+          type: string
+          example: Custom Policy Streaming Plugin
+          maxLength: 256
+          minLength: 1
+        schema:
+          description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
+          type: string
+          example: <lua_schema>
+        handler:
+          description: 'The Lua handler implementation for the custom policy, equivalent to a Kong plugin''s `handler.lua`.'
+          type: string
+          example: <lua_handler>
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+      additionalProperties: false
+      required:
+        - name
+        - type
+        - display_name
+        - schema
+        - handler
+    UpdateAIGatewayCustomPolicyRequest:
+      description: Request payload to update an existing AI Gateway custom policy.
+      type: object
+      discriminator:
+        propertyName: type
+        mapping:
+          installed: '#/components/schemas/UpdateAIGatewayCustomPolicyInstalledRequest'
+          streaming: '#/components/schemas/UpdateAIGatewayCustomPolicyStreamingRequest'
+      oneOf:
+        - $ref: '#/components/schemas/UpdateAIGatewayCustomPolicyInstalledRequest'
+        - $ref: '#/components/schemas/UpdateAIGatewayCustomPolicyStreamingRequest'
+    AIGatewayCustomPolicyInstalled:
+      type: object
+      properties:
+        name:
+          description: 'A user-defined unique identifier for this custom policy, used as a stable human-readable reference. This value is immutable after creation.'
+          example: my-installed-custom-policy
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        type:
+          description: An installed Kong plugin used as a custom policy.
+          type: string
+          enum:
+            - installed
+        display_name:
+          description: The display name for this custom policy.
+          type: string
+          example: Custom Policy - Installed plugin
+          maxLength: 256
+          minLength: 1
+        schema:
+          description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
+          type: string
+          example: <lua_schema>
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - name
+        - type
+        - display_name
+        - schema
+        - id
+        - created_at
+        - updated_at
+    AIGatewayCustomPolicyStreaming:
+      type: object
+      properties:
+        name:
+          description: 'A user-defined unique identifier for this custom policy, used as a stable human-readable reference. This value is immutable after creation.'
+          example: my-streaming-custom-policy
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        type:
+          description: A streaming Kong plugin used as a custom policy.
+          type: string
+          enum:
+            - streaming
+        display_name:
+          description: The display name for this custom policy.
+          type: string
+          example: Custom Policy Streaming Plugin
+          maxLength: 256
+          minLength: 1
+        schema:
+          description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
+          type: string
+          example: <lua_schema>
+        handler:
+          description: 'The Lua handler implementation for the custom policy, equivalent to a Kong plugin''s `handler.lua`.'
+          type: string
+          example: <lua_handler>
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - name
+        - type
+        - display_name
+        - schema
+        - handler
+        - id
+        - created_at
+        - updated_at
+    AIGatewayCustomPolicy:
+      description: An AI Gateway custom policy.
+      type: object
+      discriminator:
+        propertyName: type
+        mapping:
+          installed: '#/components/schemas/AIGatewayCustomPolicyInstalled'
+          streaming: '#/components/schemas/AIGatewayCustomPolicyStreaming'
+      oneOf:
+        - $ref: '#/components/schemas/AIGatewayCustomPolicyInstalled'
+        - $ref: '#/components/schemas/AIGatewayCustomPolicyStreaming'
     CreateAIGatewayAgentRequest:
       type: object
       properties:
@@ -67321,6 +68668,44 @@ components:
         - display_name
         - name
         - config
+    AIGatewayModelProviderTypesafe:
+      description: |
+        Configuration for an upstream model provider.
+      type: object
+      properties:
+        type:
+          type: string
+          const: typesafe
+        display_name:
+          description: The display name for this model provider instance.
+          type: string
+          example: Azure AI SE
+          maxLength: 256
+          minLength: 1
+        name:
+          description: 'A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.'
+          example: azure-ai-se
+          allOf:
+            - $ref: '#/components/schemas/AIGatewayEntityIdentifier'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        config:
+          description: Configuration for the model provider.
+          type: object
+          additionalProperties: false
+          properties:
+            auth:
+              $ref: '#/components/schemas/AIGatewayModelProviderConfigAuthBasic'
+          required:
+            - auth
+      required:
+        - type
+        - display_name
+        - name
+        - config
+      x-min-runtime-version: '2.2'
     AIGatewayModelProviderConfigAuthBasic:
       description: |
         Basic auth config for an upstream model provider.
@@ -67966,6 +69351,7 @@ components:
           vllm: '#/components/schemas/AIGatewayModelProviderVllm'
           xai: '#/components/schemas/AIGatewayModelProviderXai'
           sagemaker: '#/components/schemas/AIGatewayModelProviderSagemaker'
+          typesafe: '#/components/schemas/AIGatewayModelProviderTypesafe'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayModelProviderAnthropic'
         - $ref: '#/components/schemas/AIGatewayModelProviderAzure'
@@ -67986,6 +69372,7 @@ components:
         - $ref: '#/components/schemas/AIGatewayModelProviderVllm'
         - $ref: '#/components/schemas/AIGatewayModelProviderXai'
         - $ref: '#/components/schemas/AIGatewayModelProviderSagemaker'
+        - $ref: '#/components/schemas/AIGatewayModelProviderTypesafe'
     UpdateAIGatewayModelProviderRequest:
       discriminator:
         propertyName: type
@@ -68009,6 +69396,7 @@ components:
           vllm: '#/components/schemas/AIGatewayModelProviderVllm'
           xai: '#/components/schemas/AIGatewayModelProviderXai'
           sagemaker: '#/components/schemas/AIGatewayModelProviderSagemaker'
+          typesafe: '#/components/schemas/AIGatewayModelProviderTypesafe'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayModelProviderAnthropic'
         - $ref: '#/components/schemas/AIGatewayModelProviderAzure'
@@ -68029,6 +69417,7 @@ components:
         - $ref: '#/components/schemas/AIGatewayModelProviderVllm'
         - $ref: '#/components/schemas/AIGatewayModelProviderXai'
         - $ref: '#/components/schemas/AIGatewayModelProviderSagemaker'
+        - $ref: '#/components/schemas/AIGatewayModelProviderTypesafe'
     AIGatewayModelProvider:
       type: object
       properties:
@@ -68060,6 +69449,7 @@ components:
           vllm: '#/components/schemas/AIGatewayModelProviderVllm'
           xai: '#/components/schemas/AIGatewayModelProviderXai'
           sagemaker: '#/components/schemas/AIGatewayModelProviderSagemaker'
+          typesafe: '#/components/schemas/AIGatewayModelProviderTypesafe'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayModelProviderAnthropic'
         - $ref: '#/components/schemas/AIGatewayModelProviderAzure'
@@ -68080,6 +69470,7 @@ components:
         - $ref: '#/components/schemas/AIGatewayModelProviderVllm'
         - $ref: '#/components/schemas/AIGatewayModelProviderXai'
         - $ref: '#/components/schemas/AIGatewayModelProviderSagemaker'
+        - $ref: '#/components/schemas/AIGatewayModelProviderTypesafe'
       required:
         - id
         - created_at
@@ -69084,6 +70475,42 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/MCPServerVersionStatus'
+    MCPServer:
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the Context Interface.
+          type: string
+          format: uuid
+        name:
+          description: The machine name of the Context Interface.
+          type: string
+          maxLength: 256
+          minLength: 1
+        display_name:
+          description: The human-readable display name of the Context Interface.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the Context Interface.
+          type: string
+          maxLength: 1024
+          nullable: true
+        labels:
+          $ref: '#/components/schemas/Labels'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - name
+        - display_name
+        - description
+        - labels
+        - created_at
+        - updated_at
     MCPServerInfo:
       type: object
       properties:
@@ -69157,6 +70584,488 @@ components:
               allOf:
                 - $ref: '#/components/schemas/ContainerSpec'
                 - description: Configuration for the init container.
+    CreateMCPServerRequest:
+      type: object
+      properties:
+        name:
+          description: The machine name of the Context Interface.
+          type: string
+          maxLength: 256
+          minLength: 1
+        display_name:
+          description: The human-readable display name of the Context Interface.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the Context Interface.
+          type: string
+          maxLength: 1024
+        labels:
+          $ref: '#/components/schemas/Labels'
+      required:
+        - name
+        - display_name
+        - description
+        - labels
+    PatchMCPServerRequest:
+      type: object
+      properties:
+        name:
+          description: The machine name of the Context Interface.
+          type: string
+          maxLength: 256
+          minLength: 1
+        display_name:
+          description: The human-readable display name of the Context Interface.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the Context Interface.
+          type: string
+          maxLength: 1024
+        labels:
+          $ref: '#/components/schemas/Labels'
+    BaseResourcePayload:
+      type: object
+      properties:
+        name:
+          description: The name of the Context Source. Must be unique within the organization and follow machine name conventions.
+          type: string
+          example: my-api-resource
+          maxLength: 256
+          minLength: 1
+          pattern: '^[0-9a-z.-]+$'
+        display_name:
+          description: The display name of the Context Source.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the Context Source.
+          type: string
+          maxLength: 1024
+        labels:
+          $ref: '#/components/schemas/Labels'
+      required:
+        - name
+        - display_name
+        - description
+        - labels
+    ApiResourcePayload:
+      allOf:
+        - $ref: '#/components/schemas/BaseResourcePayload'
+        - type: object
+          required:
+            - type
+            - source
+          properties:
+            type:
+              description: The type of the Context Source.
+              type: string
+              default: api
+              enum:
+                - api
+            source:
+              $ref: '#/components/schemas/ApiResourceSourcePayload'
+    McpServerResourcePayload:
+      allOf:
+        - $ref: '#/components/schemas/BaseResourcePayload'
+        - type: object
+          required:
+            - type
+            - source
+          properties:
+            type:
+              description: The type of the MCP resource.
+              type: string
+              default: mcp_server
+              enum:
+                - mcp_server
+            source:
+              $ref: '#/components/schemas/McpServerResourceSourcePayload'
+    ApiResourceSourceInfo:
+      description: The source of an API Context Source.
+      discriminator:
+        propertyName: type
+        mapping:
+          api_catalog: '#/components/schemas/MCPResourceSourceAPICatalog'
+          raw: '#/components/schemas/MCPResourceSourceRaw'
+      oneOf:
+        - $ref: '#/components/schemas/MCPResourceSourceAPICatalog'
+        - $ref: '#/components/schemas/MCPResourceSourceRaw'
+    ApiResource:
+      description: The MCP resource object.
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the Context Source.
+          type: string
+          format: uuid
+        name:
+          description: The unique name of the Context Source.
+          type: string
+          maxLength: 256
+          minLength: 1
+        display_name:
+          description: The display name of the Context Source.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the Context Source.
+          type: string
+          maxLength: 1024
+        labels:
+          $ref: '#/components/schemas/Labels'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        type:
+          description: The type of the Context Source.
+          type: string
+          enum:
+            - api
+        source:
+          $ref: '#/components/schemas/ApiResourceSourceInfo'
+      required:
+        - id
+        - name
+        - display_name
+        - description
+        - labels
+        - created_at
+        - updated_at
+        - type
+        - source
+    McpServerResource:
+      description: The MCP resource object.
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the Context Source.
+          type: string
+          format: uuid
+        name:
+          description: The unique name of the Context Source.
+          type: string
+          maxLength: 256
+          minLength: 1
+        display_name:
+          description: The display name of the Context Source.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the Context Source.
+          type: string
+          maxLength: 1024
+        labels:
+          $ref: '#/components/schemas/Labels'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        type:
+          description: The type of the Context Source.
+          type: string
+          enum:
+            - mcp_server
+        source:
+          $ref: '#/components/schemas/MCPResourceRemoteMcpServerPayload'
+      required:
+        - id
+        - name
+        - display_name
+        - description
+        - labels
+        - created_at
+        - updated_at
+        - type
+        - source
+    MCPResourceInfo:
+      discriminator:
+        propertyName: type
+        mapping:
+          api: '#/components/schemas/ApiResource'
+          mcp_server: '#/components/schemas/McpServerResource'
+      oneOf:
+        - $ref: '#/components/schemas/ApiResource'
+        - $ref: '#/components/schemas/McpServerResource'
+    MCPResourceSourceConfigType:
+      description: The type of the Context Source source.
+      type: string
+      enum:
+        - api_catalog
+        - raw
+        - remote_mcp_server
+      x-enum-varnames:
+        - MCPResourceSourceConfigTypeAPICatalog
+        - MCPResourceSourceConfigTypeRaw
+        - MCPResourceSourceConfigTypeRemoteMcpServer
+      x-speakeasy-unknown-values: allow
+    CommonApiResourceConfigResponse:
+      type: object
+      properties:
+        base_url:
+          description: |
+            Base URL to use when calling backing API service.
+            This URL will be used over what is defined in the resource specification if provided
+            Must include a protocol (http/https), and cannot contain query parameters or fragments.
+          type: string
+          nullable: true
+        headers:
+          description: Default headers sent to backing API service.
+          type: object
+          additionalProperties:
+            type: string
+      required:
+        - base_url
+        - headers
+    MCPResourceSourceAPICatalogConfig:
+      description: Identifies the API catalog entry the Context Source was sourced from.
+      type: object
+      properties:
+        api_id:
+          description: The unique identifier for the API catalog entry.
+          type: string
+          format: uuid
+        api_version_id:
+          description: The unique identifier for the API catalog entry version.
+          type: string
+          format: uuid
+        base_url:
+          description: |
+            Base URL to use when calling backing API service.
+            This URL will be used over what is defined in the resource specification if provided
+            Must include a protocol (http/https), and cannot contain query parameters or fragments.
+          type: string
+          nullable: true
+        headers:
+          description: Default headers sent to backing API service.
+          type: object
+          additionalProperties:
+            type: string
+      required:
+        - api_id
+        - api_version_id
+        - base_url
+        - headers
+    MCPResourceSourceAPICatalogConfigPayload:
+      description: Identifies the API catalog entry the Context Source was sourced from.
+      type: object
+      properties:
+        api_id:
+          description: The unique identifier for the API catalog entry.
+          type: string
+          format: uuid
+        api_version_id:
+          description: The unique identifier for the API catalog entry version.
+          type: string
+          format: uuid
+        base_url:
+          description: |
+            Base URL to use when calling backing API service.
+            This URL will be used over what is defined in the resource specification if provided
+            Must include a protocol (http/https), and cannot contain query parameters or fragments.
+          type: string
+          format: uri
+          nullable: true
+          pattern: '^https?://[^?#]+$'
+        headers:
+          description: Default headers sent to backing API service.
+          type: object
+          additionalProperties:
+            type: string
+      required:
+        - api_id
+        - api_version_id
+    MCPResourceSourceAPICatalog:
+      description: An MCP resource sourced from an API catalog entry.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - api_catalog
+        config:
+          $ref: '#/components/schemas/MCPResourceSourceAPICatalogConfig'
+      example:
+        type: api_catalog
+        config:
+          api_id: 158a0fc7-479a-4928-8a64-7656c1824f7f
+          api_version_id: bc0b9df1-67ba-475f-9670-37de3cc2e4f6
+          base_url: null
+          headers: {}
+      required:
+        - type
+        - config
+    MCPResourceSourceAPICatalogPayload:
+      description: An MCP resource sourced from an API catalog entry.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - api_catalog
+        config:
+          $ref: '#/components/schemas/MCPResourceSourceAPICatalogConfigPayload'
+      example:
+        type: api_catalog
+        config:
+          api_id: 158a0fc7-479a-4928-8a64-7656c1824f7f
+          api_version_id: bc0b9df1-67ba-475f-9670-37de3cc2e4f6
+      required:
+        - type
+        - config
+    MCPResourceSourceRaw:
+      description: An MCP resource sourced from a raw spec upload.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - raw
+        config:
+          $ref: '#/components/schemas/CommonApiResourceConfigResponse'
+      example:
+        type: raw
+        config:
+          base_url: null
+          headers: {}
+      required:
+        - type
+        - config
+    MCPResourceSourceRawInput:
+      description: A raw spec upload used when creating or updating an MCP resource.
+      type: object
+      properties:
+        type:
+          allOf:
+            - $ref: '#/components/schemas/MCPResourceSourceConfigType'
+            - type: string
+              enum:
+                - raw
+              x-go-type: MCPResourceSourceConfigType
+        config:
+          type: object
+          properties:
+            spec:
+              description: The raw contents of the API spec in JSON or YAML format.
+              type: string
+            base_url:
+              description: |
+                Base URL to use when calling backing API service.
+                This URL will be used over what is defined in the resource specification if provided
+                Must include a protocol (http/https), and cannot contain query parameters or fragments.
+              type: string
+              format: uri
+              nullable: true
+              pattern: '^https?://[^?#]+$'
+            headers:
+              description: Default headers sent to backing API service.
+              type: object
+              additionalProperties:
+                type: string
+          required:
+            - spec
+      example:
+        type: raw
+        config:
+          spec: |-
+            openapi: 3.0.0
+            info:
+              title: My API
+              version: 1.0.0
+      required:
+        - type
+        - config
+    MCPResourceRemoteMcpServerPayload:
+      type: object
+      properties:
+        type:
+          allOf:
+            - $ref: '#/components/schemas/MCPResourceSourceConfigType'
+            - type: string
+              enum:
+                - remote_mcp_server
+              x-go-type: MCPResourceSourceConfigType
+        config:
+          description: Configuration of a remote MCP Server.
+          type: object
+          properties:
+            url:
+              description: 'URL to a remote MCP Server that must include a protocol (http/https), and cannot contain query parameters or fragments.'
+              type: string
+              format: uri
+              pattern: '^https?://[^?#]+$'
+            headers:
+              description: Headers to be used when making proxying requests to a MCP Server
+              type: object
+              additionalProperties:
+                type: string
+          required:
+            - url
+            - headers
+      required:
+        - type
+        - config
+    ApiResourceSourcePayload:
+      description: The source of the Context Source used in create and update requests.
+      discriminator:
+        propertyName: type
+        mapping:
+          api_catalog: '#/components/schemas/MCPResourceSourceAPICatalogPayload'
+          raw: '#/components/schemas/MCPResourceSourceRawInput'
+      oneOf:
+        - $ref: '#/components/schemas/MCPResourceSourceAPICatalogPayload'
+        - $ref: '#/components/schemas/MCPResourceSourceRawInput'
+    McpServerResourceSourcePayload:
+      description: The source of the MCP resource used in create and update requests.
+      discriminator:
+        propertyName: type
+        mapping:
+          remote_mcp_server: '#/components/schemas/MCPResourceRemoteMcpServerPayload'
+      oneOf:
+        - $ref: '#/components/schemas/MCPResourceRemoteMcpServerPayload'
+    ListMCPResourcesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPResourceInfo'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
+    ListMCPServersResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServer'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
+    PaginateMCPServersResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServer'
+        meta:
+          $ref: '#/components/schemas/PaginatedMeta'
+      required:
+        - data
+        - meta
     ListMCPServersCPInfoResponse:
       type: object
       properties:
@@ -69330,6 +71239,246 @@ components:
             $ref: '#/components/schemas/MCPServerSignal'
       required:
         - signals
+    CreateMCPServerMCPResourceMappingRequest:
+      type: object
+      properties:
+        context_source_id:
+          description: The ID of the Context Source to map to the Context Interface.
+          type: string
+          format: uuid
+          example: a60eceeb-dd7c-4884-8b26-806489c2f704
+      required:
+        - context_source_id
+    MCPServerMCPResourceMapping:
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the Context Inerface Source mapping.
+          type: string
+          format: uuid
+          example: edf35010-61d0-4fc4-a3b2-8095b02ec3fe
+        context_interface_id:
+          description: The ID of the Context Interface.
+          type: string
+          format: uuid
+          example: d5756e2a-75e4-470b-9a48-326eb9303fd6
+        context_source_id:
+          description: The ID of the Context Source.
+          type: string
+          format: uuid
+          example: a60eceeb-dd7c-4884-8b26-806489c2f704
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - context_interface_id
+        - context_source_id
+        - created_at
+        - updated_at
+    ListMCPServerMCPResourceMappingsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServerMCPResourceMapping'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
+    APICapabilityControlsOperation:
+      description: An API operation that is denied.
+      type: object
+      properties:
+        path:
+          description: The path of the API operation.
+          type: string
+          example: '/library/{id}/books'
+        methods:
+          description: The HTTP methods of the API operation that are denied.
+          type: array
+          items:
+            type: string
+          example:
+            - GET
+      required:
+        - path
+        - methods
+    APICapabilityControlsDeny:
+      description: The capabilities of the mapped API that are denied.
+      type: object
+      properties:
+        operations:
+          description: The API operations that are denied.
+          type: array
+          items:
+            $ref: '#/components/schemas/APICapabilityControlsOperation'
+      required:
+        - operations
+    APICapabilityControls:
+      description: Capability controls for a mapping to an API MCP resource.
+      type: object
+      properties:
+        type:
+          description: The type of the mapped MCP resource.
+          type: string
+          enum:
+            - api
+        deny:
+          $ref: '#/components/schemas/APICapabilityControlsDeny'
+      example:
+        type: api
+        deny:
+          operations:
+            - path: '/library/{id}/books'
+              methods:
+                - GET
+      required:
+        - type
+        - deny
+    MCPCapabilityControlsDeny:
+      description: The capabilities of the mapped MCP server that are denied.
+      type: object
+      properties:
+        tools:
+          description: The names of the tools that are denied.
+          type: array
+          items:
+            type: string
+        resources:
+          description: The URIs of the resources that are denied.
+          type: array
+          items:
+            type: string
+        prompts:
+          description: The names of the prompts that are denied.
+          type: array
+          items:
+            type: string
+      required:
+        - tools
+        - resources
+        - prompts
+    MCPCapabilityControls:
+      description: Capability controls for a mapping to an MCP server MCP resource.
+      type: object
+      properties:
+        type:
+          description: The type of the mapped MCP resource.
+          type: string
+          enum:
+            - mcp_server
+        deny:
+          $ref: '#/components/schemas/MCPCapabilityControlsDeny'
+      example:
+        type: mcp_server
+        deny:
+          tools:
+            - search_books
+          resources:
+            - 'file:///library/catalog.json'
+          prompts:
+            - summarize_book
+      required:
+        - type
+        - deny
+    CapabilityControls:
+      description: |
+        The capabilities of a mapped MCP resource that the MCP server does not expose.
+      discriminator:
+        propertyName: type
+        mapping:
+          api: '#/components/schemas/APICapabilityControls'
+          mcp_server: '#/components/schemas/MCPCapabilityControls'
+      oneOf:
+        - $ref: '#/components/schemas/APICapabilityControls'
+        - $ref: '#/components/schemas/MCPCapabilityControls'
+    PatchAPICapabilityControlsDeny:
+      description: |
+        The capabilities of the mapped API to deny. Omitted keys preserve their current value, an empty array clears the capability, and a non-empty array replaces.
+      type: object
+      properties:
+        operations:
+          description: The API operations that are denied.
+          type: array
+          items:
+            $ref: '#/components/schemas/APICapabilityControlsOperation'
+    PatchAPICapabilityControls:
+      description: Partial capability controls for a mapping to an API MCP resource.
+      type: object
+      properties:
+        type:
+          description: The type of the mapped MCP resource.
+          type: string
+          enum:
+            - api
+        deny:
+          $ref: '#/components/schemas/PatchAPICapabilityControlsDeny'
+      example:
+        type: api
+        deny:
+          operations:
+            - path: '/library/{id}/books'
+              methods:
+                - GET
+      required:
+        - type
+        - deny
+    PatchMCPCapabilityControlsDeny:
+      description: |
+        The capabilities of the mapped MCP server to deny. Omitted keys preserve their current value, an empty array clears the capability, and a non-empty array replaces.
+      type: object
+      properties:
+        tools:
+          description: The names of the tools that are denied.
+          type: array
+          items:
+            type: string
+        resources:
+          description: The URIs of the resources that are denied.
+          type: array
+          items:
+            type: string
+        prompts:
+          description: The names of the prompts that are denied.
+          type: array
+          items:
+            type: string
+    PatchMCPCapabilityControls:
+      description: Partial capability controls for a mapping to an MCP server MCP resource.
+      type: object
+      properties:
+        type:
+          description: The type of the mapped MCP resource.
+          type: string
+          enum:
+            - mcp_server
+        deny:
+          $ref: '#/components/schemas/PatchMCPCapabilityControlsDeny'
+      example:
+        type: mcp_server
+        deny:
+          prompts:
+            - prompt_a
+          resources:
+            - res_a
+      required:
+        - type
+        - deny
+    PatchCapabilityControls:
+      description: |
+        The capability controls to merge into the existing configuration for a mapped context source. Omitted deny keys preserve their current value, an empty array clears a capability, and a non-empty array replaces.
+      discriminator:
+        propertyName: type
+        mapping:
+          api: '#/components/schemas/PatchAPICapabilityControls'
+          mcp_server: '#/components/schemas/PatchMCPCapabilityControls'
+      oneOf:
+        - $ref: '#/components/schemas/PatchAPICapabilityControls'
+        - $ref: '#/components/schemas/PatchMCPCapabilityControls'
     MCPServerControlPlaneMappingMode:
       description: Whether the Context Interface deployment on this Control Plane is managed by Konnect defaults ('basic') or configured directly via Kong Operator custom resources ('advanced').
       type: string
@@ -69337,6 +71486,62 @@ components:
         - basic
         - advanced
       x-speakeasy-unknown-values: allow
+    MCPServerControlPlaneMappingInfo:
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the mapping.
+          type: string
+          format: uuid
+        context_interface_id:
+          description: The unique identifier for the Context Interface.
+          type: string
+          format: uuid
+        control_plane_id:
+          description: The unique identifier for the Control Plane.
+          type: string
+          format: uuid
+        mode:
+          $ref: '#/components/schemas/MCPServerControlPlaneMappingMode'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - context_interface_id
+        - control_plane_id
+        - mode
+        - created_at
+        - updated_at
+    ListMCPServerControlPlaneMappingResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServerControlPlaneMappingInfo'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
+    CreateMCPServerControlPlaneMappingRequest:
+      type: object
+      properties:
+        control_plane_id:
+          description: The unique identifier for the Control Plane.
+          type: string
+          format: uuid
+        mode:
+          $ref: '#/components/schemas/MCPServerControlPlaneMappingMode'
+      required:
+        - control_plane_id
+    PatchMCPServerControlPlaneMappingRequest:
+      type: object
+      properties:
+        mode:
+          $ref: '#/components/schemas/MCPServerControlPlaneMappingMode'
     MCPServerRuntime:
       type: object
       properties:
@@ -69352,6 +71557,44 @@ components:
         - init_container
         - runtime_container
       title: MCPServerRuntime
+    RawSkillSourceConfigPayload:
+      type: object
+      properties:
+        contents:
+          description: The raw SKILL.md content — a markdown document beginning with a YAML frontmatter block.
+          type: string
+          example: |-
+            ---
+            name: pdf-processing
+            description: Extract and summarize content from PDF documents
+            ---
+            # PDF Processing
+            ...
+          minLength: 1
+      required:
+        - contents
+    RawSkillSourcePayload:
+      type: object
+      properties:
+        type:
+          description: The skill content is supplied inline in the request body.
+          type: string
+          example: raw
+          enum:
+            - raw
+        config:
+          $ref: '#/components/schemas/RawSkillSourceConfigPayload'
+      required:
+        - type
+        - config
+    SkillSourcePayload:
+      description: 'Where the skill''s content comes from, used in create and update requests. The shape of `config` is determined by `type`.'
+      discriminator:
+        propertyName: type
+        mapping:
+          raw: '#/components/schemas/RawSkillSourcePayload'
+      oneOf:
+        - $ref: '#/components/schemas/RawSkillSourcePayload'
     RawSkillSource:
       type: object
       properties:
@@ -69394,6 +71637,34 @@ components:
       required:
         - status
         - timestamp
+    PatchSkillRequest:
+      type: object
+      properties:
+        name:
+          description: The machine name of the skill. Must be unique within the MCP server and must match the name declared in the frontmatter.
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
+        display_name:
+          description: The human-readable display name of the skill.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the skill.
+          type: string
+          maxLength: 1024
+        source:
+          description: Replaces the existing source in its entirety — partial updates to individual source attributes are not supported. The source `type` cannot be changed after creation.
+          discriminator:
+            propertyName: type
+            mapping:
+              raw: '#/components/schemas/RawSkillSourcePayload'
+          oneOf:
+            - $ref: '#/components/schemas/RawSkillSourcePayload'
+        labels:
+          $ref: '#/components/schemas/Labels'
     ListSkillsResponse:
       type: object
       properties:
@@ -69406,6 +71677,46 @@ components:
       required:
         - data
         - meta
+    SkillContentsResponse:
+      type: object
+      properties:
+        url:
+          description: Presigned S3 URL for the skill's content.
+          type: string
+          format: uri
+      required:
+        - url
+    CreateSkillRequest:
+      type: object
+      properties:
+        name:
+          description: The machine name of the skill. Must be unique within the MCP server and must match the name declared in the frontmatter.
+          type: string
+          example: pdf-processing
+          maxLength: 64
+          minLength: 1
+          pattern: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
+        display_name:
+          description: The human-readable display name of the skill.
+          type: string
+          example: PDF Processing
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the skill.
+          type: string
+          example: Extract and summarize content from PDF documents
+          maxLength: 1024
+        source:
+          $ref: '#/components/schemas/SkillSourcePayload'
+        labels:
+          $ref: '#/components/schemas/Labels'
+      required:
+        - name
+        - display_name
+        - description
+        - source
+        - labels
     SkillFrontmatter:
       type: object
       properties:
@@ -83205,6 +85516,40 @@ components:
             required:
               - data
               - meta
+    CreateAIGatewayCustomPolicyResponse:
+      description: Custom policy created successfully.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AIGatewayCustomPolicy'
+    GetAIGatewayCustomPolicyResponse:
+      description: A successful response returning the AI Gateway Custom Policy.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AIGatewayCustomPolicy'
+    UpdateAIGatewayCustomPolicyResponse:
+      description: Custom policy updated successfully.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AIGatewayCustomPolicy'
+    ListAIGatewayCustomPoliciesResponse:
+      description: A successful response listing AI Gateway Custom Policies.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIGatewayCustomPolicy'
+              meta:
+                $ref: '#/components/schemas/CursorMeta'
+            required:
+              - data
+              - meta
     ListAIGatewayMCPServersResponse:
       description: A paginated list of MCP Servers.
       content:
@@ -83565,12 +85910,91 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/MCPServerSignals'
+    ListMCPServersResponse:
+      description: A response to listing Context Interfaces.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListMCPServersResponse'
+    PaginateMCPServersResponse:
+      description: A response to listing Context Interfaces.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaginateMCPServersResponse'
+    CreateMCPServerResponse:
+      description: A response to creating a Context Interface.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServer'
     ListMCPServersCPInfoResponse:
       description: A response to listing MCP servers with CP info.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ListMCPServersCPInfoResponse'
+    UpdateMCPServerResponse:
+      description: A response to updating an MCP server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServer'
+    CreateMCPServerMCPResourceMappingResponse:
+      description: A response to creating an MCP server MCP resource mapping.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServerMCPResourceMapping'
+    ListMCPServerMCPResourceMappingsResponse:
+      description: A response to listing Context Interface Source Mappings.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListMCPServerMCPResourceMappingsResponse'
+    GetMCPServerMCPResourceMappingCapabilityControlsResponse:
+      description: A response to retrieving the capability controls for an MCP server MCP resource mapping.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CapabilityControls'
+    CreateContextInterfaceContextSourceMappingCapabilityControlsResponse:
+      description: A response to creating the capability controls for a Context Interface-Source mapping.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CapabilityControls'
+    PatchContextInterfaceContextSourceMappingCapabilityControlsResponse:
+      description: A response to updating the capability controls for a Context Interface-Source mapping.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CapabilityControls'
+    MCPServerMCPResourceMappingCapabilityControlsNotFound:
+      description: |
+        The MCP resource mapping does not exist, or it has no capability controls configured.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+    ListMCPServerControlPlaneMappingResponse:
+      description: Listing MCP Server to Control Plane mappings.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListMCPServerControlPlaneMappingResponse'
+    CreateMCPServerControlPlaneMappingResponse:
+      description: Details of Context Interface - Control Plane mapping creation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServerControlPlaneMappingInfo'
+    PatchMCPServerControlPlaneMappingResponse:
+      description: Details of Context Interface - Control Plane mapping after update.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServerControlPlaneMappingInfo'
     MCPServerRuntimeResponse:
       description: A response containing the Context Interface runtime configuration
       content:
@@ -83583,6 +86007,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ListSkillsResponse'
+    SkillContentsResponse:
+      description: A response containing a presigned URL for the skill's content.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SkillContentsResponse'
+    CreateSkillResponse:
+      description: A response to creating a skill.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Skill'
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
@@ -84337,13 +86773,19 @@ tags:
     description: 'Models that define routing, capabilities, and backend targets for the AI Gateway.'
   - name: AI Gateway Policies
     description: 'Policies that control security, rate-limiting, and guardrail behavior for the AI Gateway.'
+  - name: AI Gateway Custom Policies
+    description: Custom policies that let you bring your own Lua plugin schema and handler to the AI Gateway.
   - name: AI Gateway MCP Servers
     description: MCP Servers that expose tools for AI Gateway integrations.
   - name: AI Gateway Model Providers
     description: Model providers that define the backend AI service connections for the AI Gateway.
+  - name: Context Interfaces
+  - name: Context Sources
+  - name: Context Source Mappings
+  - name: Control Plane Mappings
   - name: Skills
-  - name: MCP Servers
-  - name: MCP Server Runtime
+  - name: Context Interface Capability Controls
+  - name: Signaling APIs
   - name: Dashboards
   - description: DP Nodes
     name: DP Nodes
@@ -84468,7 +86910,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.1.19
+    version: 2.2.0
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
@@ -84495,7 +86937,7 @@ x-input-schemas:
     version: 3.6.4
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
-    version: 1.40.0
+    version: 1.41.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.3.0

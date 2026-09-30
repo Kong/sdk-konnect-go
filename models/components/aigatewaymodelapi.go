@@ -7,11 +7,13 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// Capabilities - **`skills` requires a minimum runtime version of `2.2`**.
 type Capabilities string
 
 const (
 	CapabilitiesBatches Capabilities = "batches"
 	CapabilitiesFiles   Capabilities = "files"
+	CapabilitiesSkills  Capabilities = "skills"
 )
 
 func (e Capabilities) ToPointer() *Capabilities {
@@ -22,7 +24,7 @@ func (e Capabilities) ToPointer() *Capabilities {
 func (e *Capabilities) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "batches", "files":
+		case "batches", "files", "skills":
 			return true
 		}
 	}
