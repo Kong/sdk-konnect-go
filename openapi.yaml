@@ -64239,8 +64239,7 @@ components:
         type:
           description: An installed Kong plugin used as a custom policy.
           type: string
-          enum:
-            - installed
+          const: installed
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -64272,8 +64271,7 @@ components:
         type:
           description: A streaming Kong plugin used as a custom policy.
           type: string
-          enum:
-            - streaming
+          const: streaming
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -64321,8 +64319,7 @@ components:
         type:
           description: An installed Kong plugin used as a custom policy.
           type: string
-          enum:
-            - installed
+          const: installed
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -64354,8 +64351,7 @@ components:
         type:
           description: A streaming Kong plugin used as a custom policy.
           type: string
-          enum:
-            - streaming
+          const: streaming
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -64403,8 +64399,7 @@ components:
         type:
           description: An installed Kong plugin used as a custom policy.
           type: string
-          enum:
-            - installed
+          const: installed
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -64445,8 +64440,7 @@ components:
         type:
           description: A streaming Kong plugin used as a custom policy.
           type: string
-          enum:
-            - streaming
+          const: streaming
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -86910,7 +86904,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.2.0
+    version: 2.2.1
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
