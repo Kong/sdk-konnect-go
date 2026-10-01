@@ -68059,6 +68059,13 @@ components:
           type: object
           additionalProperties: true
           properties:
+            anonymous:
+              description: |
+                The read-only anonymous consumer value used when authentication fails.
+                AI Gateway always sets this value to `anonymous`.
+              type: string
+              default: anonymous
+              readOnly: true
             hide_credentials:
               description: |
                 An optional boolean value telling the plugin to show or hide the credential from the upstream service.
@@ -68110,6 +68117,13 @@ components:
                     When false, allow the request to continue unauthenticated instead.
                   type: boolean
                   default: true
+            realm:
+              description: When authentication fails the plugin sends `WWW-Authenticate` header with `realm` attribute value.
+              type: string
+            run_on_preflight:
+              description: 'A boolean value that indicates whether the plugin should run (and try to authenticate) on `OPTIONS` preflight requests. If set to `false`, then `OPTIONS` requests are always allowed.'
+              type: boolean
+              default: true
       required:
         - display_name
         - name
@@ -70274,6 +70288,13 @@ components:
           type: object
           additionalProperties: true
           properties:
+            anonymous:
+              description: |
+                The read-only anonymous consumer value used when authentication fails.
+                AI Gateway always sets this value to `anonymous`.
+              type: string
+              default: anonymous
+              readOnly: true
             hide_credentials:
               description: |
                 An optional boolean value telling the plugin to show or hide the credential from the upstream service.
@@ -70325,6 +70346,13 @@ components:
                     When false, allow the request to continue unauthenticated instead.
                   type: boolean
                   default: true
+            realm:
+              description: When authentication fails the plugin sends `WWW-Authenticate` header with `realm` attribute value.
+              type: string
+            run_on_preflight:
+              description: 'A boolean value that indicates whether the plugin should run (and try to authenticate) on `OPTIONS` preflight requests. If set to `false`, then `OPTIONS` requests are always allowed.'
+              type: boolean
+              default: true
         id:
           $ref: '#/components/schemas/UUID'
         created_at:
@@ -87216,7 +87244,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.2.3
+    version: 2.2.4
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
