@@ -60451,6 +60451,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -60461,15 +60462,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -60515,14 +60521,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -60543,6 +60553,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -60553,15 +60564,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -60607,14 +60623,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -60652,6 +60672,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -60662,15 +60683,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -60716,14 +60742,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -60758,6 +60788,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -60768,15 +60799,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -60822,14 +60858,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -60846,6 +60886,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -60856,15 +60897,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -60910,14 +60956,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -60959,6 +61009,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -60969,15 +61020,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61023,14 +61079,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61051,6 +61111,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61061,15 +61122,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61115,14 +61181,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61143,6 +61213,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61153,15 +61224,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61207,14 +61283,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61231,6 +61311,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61241,15 +61322,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61295,14 +61381,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61321,6 +61411,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61331,15 +61422,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61385,14 +61481,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61417,6 +61517,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61427,15 +61528,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61481,14 +61587,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61511,6 +61621,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61521,15 +61632,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61575,14 +61691,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61609,6 +61729,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61619,15 +61740,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61673,14 +61799,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61705,6 +61835,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61715,15 +61846,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61769,14 +61905,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61793,6 +61933,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61803,15 +61944,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61857,14 +62003,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61881,6 +62031,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61891,15 +62042,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -61945,14 +62101,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -61969,6 +62129,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -61979,15 +62140,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -62033,14 +62199,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -62058,6 +62228,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -62068,15 +62239,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -62122,14 +62298,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -62146,6 +62326,7 @@ components:
         embeddings_dimensions:
           description: The number of dimensions for embedding outputs.
           type: integer
+          exclusiveMinimum: true
           maximum: 2147483646
           minimum: 0
         max_tokens:
@@ -62156,15 +62337,20 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_read_cost:
           description: Cost per 1M cache-read (cached) prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         cache_write_cost:
           description: Cost per 1M cache-write prompt tokens for billing and cost tracking.
           type: number
+          minimum: 0
         input_cost_list:
           description: |-
             Per-modality override of `input_cost`, in cost per 1M prompt tokens. Set it for models that price each modality separately.
@@ -62210,14 +62396,18 @@ components:
         temperature:
           description: Controls randomness in the model output. Higher values produce more varied responses.
           type: number
+          maximum: 5
+          minimum: 0
         top_k:
           description: Limits the number of highest-probability tokens considered during generation.
           type: integer
-          maximum: 2147483646
+          maximum: 500
           minimum: 0
         top_p:
           description: Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
           type: number
+          maximum: 1
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -62269,9 +62459,12 @@ components:
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
+          exclusiveMinimum: true
+          minimum: 0
         output_cost:
           description: Cost per 1M output tokens for billing and cost tracking.
           type: number
+          minimum: 0
         upstream_url:
           description: The upstream URL for the model endpoint.
           type: string
@@ -64554,6 +64747,7 @@ components:
                   type: integer
                   example: 524288
                   default: 1048576
+                  exclusiveMinimum: true
                   maximum: 2147483646
                   minimum: 0
           required:
@@ -64636,6 +64830,7 @@ components:
                   type: integer
                   example: 524288
                   default: 1048576
+                  exclusiveMinimum: true
                   maximum: 2147483646
                   minimum: 0
           required:
@@ -64718,6 +64913,7 @@ components:
                   type: integer
                   example: 524288
                   default: 1048576
+                  exclusiveMinimum: true
                   maximum: 2147483646
                   minimum: 0
           required:
@@ -65556,6 +65752,9 @@ components:
         name:
           description: 'The MCP tool name. In upstream-server mode, it also matches the remote MCP Server tool whose metadata this entry overrides.'
           type: string
+          maxLength: 128
+          minLength: 1
+          pattern: '^[A-Za-z0-9._-]+$'
         headers:
           $ref: '#/components/schemas/AIGatewayMCPToolHeaders'
         host:
@@ -65680,6 +65879,7 @@ components:
             The claim in the OAuth2 access token to use as the subject for ACL evaluation when `acl_attribute_type` is set to `oauth_access_token`.
             Nested claim can be fetched by using a jq filter starts with dot, e.g., “.user.email”: https://jqlang.org/manual/#object-identifier-index
           type: string
+          minLength: 1
         acls:
           description: |
             Server-level access control rules for allowing or denying callers, evaluated against the
@@ -67224,6 +67424,9 @@ components:
         name:
           description: 'The MCP tool name. In upstream-server mode, it also matches the remote MCP Server tool whose metadata this entry overrides.'
           type: string
+          maxLength: 128
+          minLength: 1
+          pattern: '^[A-Za-z0-9._-]+$'
         input_schema:
           description: |
             The entire `inputSchema` section for the tool. Overrides the upstream server's `inputSchema`
@@ -86904,7 +87107,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.2.1
+    version: 2.2.2
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
