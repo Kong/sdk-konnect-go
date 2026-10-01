@@ -76,8 +76,12 @@ type AIGatewayAuthStrategyKeyAuthConfig struct {
 	// Authenticate against Kong Identity instead of local credentials.
 	// Mutually exclusive with identity realms.
 	//
-	Principals           *AIGatewayAuthStrategyKeyAuthPrincipals `json:"principals,omitempty"`
-	AdditionalProperties map[string]any                          `additionalProperties:"true" json:"-"`
+	Principals *AIGatewayAuthStrategyKeyAuthPrincipals `json:"principals,omitempty"`
+	// When authentication fails the plugin sends `WWW-Authenticate` header with `realm` attribute value.
+	Realm *string `json:"realm,omitempty"`
+	// A boolean value that indicates whether the plugin should run (and try to authenticate) on `OPTIONS` preflight requests. If set to `false`, then `OPTIONS` requests are always allowed.
+	RunOnPreflight       *bool          `default:"true" json:"run_on_preflight"`
+	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
 }
 
 func (a AIGatewayAuthStrategyKeyAuthConfig) MarshalJSON() ([]byte, error) {
@@ -131,6 +135,20 @@ func (a *AIGatewayAuthStrategyKeyAuthConfig) GetPrincipals() *AIGatewayAuthStrat
 		return nil
 	}
 	return a.Principals
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetRealm() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Realm
+}
+
+func (a *AIGatewayAuthStrategyKeyAuthConfig) GetRunOnPreflight() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.RunOnPreflight
 }
 
 func (a *AIGatewayAuthStrategyKeyAuthConfig) GetAdditionalProperties() map[string]any {
