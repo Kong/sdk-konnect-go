@@ -59348,10 +59348,11 @@ components:
           minLength: 1
         path_param:
           description: |
-            The name of the regex capture group defined in the route path for routing.
+            The name of the regex capture group beginning with "~", which is defined in the route path for routing.
           type: string
-          example: model_name
+          example: ~model_name
           minLength: 1
+          pattern: ^~.+$
         values:
           description: |
             Optional model aliases. When omitted, the model name is used.
@@ -87215,7 +87216,7 @@ security:
   - serviceAccessToken: []
 x-input-schemas:
   - title: Konnect AI Gateway
-    version: 2.2.2
+    version: 2.2.3
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
