@@ -6,12 +6,12 @@ package components
 // ListCustomerEntitlementAccessResponseData - List customer entitlement access response data.
 type ListCustomerEntitlementAccessResponseData struct {
 	// The list of entitlement access results.
-	Data []BillingEntitlementAccessResult `json:"data"`
+	Data []BillingEntitlementValueResult `json:"data"`
 }
 
-func (l *ListCustomerEntitlementAccessResponseData) GetData() []BillingEntitlementAccessResult {
+func (l *ListCustomerEntitlementAccessResponseData) GetData() []BillingEntitlementValueResult {
 	if l == nil {
-		return []BillingEntitlementAccessResult{}
+		return []BillingEntitlementValueResult{}
 	}
 	return l.Data
 }
