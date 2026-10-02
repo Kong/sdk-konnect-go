@@ -71974,12 +71974,6 @@ components:
     PatchSkillRequest:
       type: object
       properties:
-        name:
-          description: The machine name of the skill. Must be unique within the MCP server and must match the name declared in the frontmatter.
-          type: string
-          maxLength: 64
-          minLength: 1
-          pattern: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
         display_name:
           description: The human-readable display name of the skill.
           type: string
@@ -72023,13 +72017,6 @@ components:
     CreateSkillRequest:
       type: object
       properties:
-        name:
-          description: The machine name of the skill. Must be unique within the MCP server and must match the name declared in the frontmatter.
-          type: string
-          example: pdf-processing
-          maxLength: 64
-          minLength: 1
-          pattern: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
         display_name:
           description: The human-readable display name of the skill.
           type: string
@@ -72046,7 +72033,6 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
       required:
-        - name
         - display_name
         - description
         - source
@@ -72094,11 +72080,12 @@ components:
           type: string
           format: uuid
         name:
-          description: The machine name of the skill.
+          description: 'The machine name of the skill, taken from the name declared in the frontmatter. Unique within the MCP server and cannot be set or changed by the client.'
           type: string
           maxLength: 64
           minLength: 1
           pattern: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
+          readOnly: true
         display_name:
           description: The human-readable display name of the skill.
           type: string
@@ -87271,7 +87258,7 @@ x-input-schemas:
     version: 3.6.4
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
-    version: 1.41.0
+    version: 1.42.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Metering & Billing
     version: 1.4.0
