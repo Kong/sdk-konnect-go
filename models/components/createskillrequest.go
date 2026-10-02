@@ -4,8 +4,6 @@
 package components
 
 type CreateSkillRequest struct {
-	// The machine name of the skill. Must be unique within the MCP server and must match the name declared in the frontmatter.
-	Name string `json:"name"`
 	// The human-readable display name of the skill.
 	DisplayName string `json:"display_name"`
 	// A description of the skill.
@@ -17,13 +15,6 @@ type CreateSkillRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels"`
-}
-
-func (c *CreateSkillRequest) GetName() string {
-	if c == nil {
-		return ""
-	}
-	return c.Name
 }
 
 func (c *CreateSkillRequest) GetDisplayName() string {

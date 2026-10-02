@@ -110,7 +110,6 @@ func main() {
     )
 
     res, err := s.Skills.CreateContextInterfaceSkill(ctx, "cc5067fd-3514-4974-bc56-7c504711542c", components.CreateSkillRequest{
-        Name: "pdf-processing",
         DisplayName: "PDF Processing",
         Description: "Extract and summarize content from PDF documents",
         Source: components.CreateSkillSourcePayloadRaw(

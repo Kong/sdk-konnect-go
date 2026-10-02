@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: a209f8b8a2cc5d963565b6c4cb33c8c6
+  docChecksum: 74d55caa2486d731527e86c1a32626bd
   docVersion: 3.15.0
-  speakeasyVersion: 1.800.0
+  speakeasyVersion: 1.800.1
   generationVersion: 2.943.0
   releaseVersion: 0.71.0
   configChecksum: fa64d543b27bfd33fd743a35f03275ca
 persistentEdits:
-  generation_id: d5fcf0e4-7181-41aa-9634-ae4646ac1832
-  pristine_commit_hash: c3601bbce29b9a87f669f2516f3514077ce27a0d
-  pristine_tree_hash: 636f5c94d49ee895a4b2abfd1acde0bcb45c7781
+  generation_id: 52a9655f-51e6-4442-8a98-cb3e48eed58e
+  pristine_commit_hash: c17b89c2504463d86003ab041c492ca3b28fdc92
+  pristine_tree_hash: f98414bfa7d79819a3905e00c7abd81c19118b3c
 features:
   go:
     acceptHeaders: 2.81.2
@@ -4925,8 +4925,8 @@ trackedFiles:
     pristine_git_object: 52552191c8ae58d1a4422411f898177278728715
   docs/models/components/createskillrequest.md:
     id: 122fdddbb3a4
-    last_write_checksum: sha1:267f233adad81597b5dc7ed866fcaeb2461b0e65
-    pristine_git_object: 07785440affbbf3fe617df3e9bfb1a776456cb8c
+    last_write_checksum: sha1:965a7c036a38f6388acb7450e85742c30d08484a
+    pristine_git_object: e31b3f239e952ae0d99fb960dbd90e22a48d4ab4
   docs/models/components/createsystemaccount.md:
     id: 16bb0445d83b
     last_write_checksum: sha1:bfd6c9c1ed2d5277440bc1e6a75eab345b04debe
@@ -9105,8 +9105,8 @@ trackedFiles:
     pristine_git_object: bfe3d06a192560339a54280225188c65f1ea5fe2
   docs/models/components/patchskillrequest.md:
     id: 456fe0a46a81
-    last_write_checksum: sha1:c3b7c77b2f8f8c3f6843aed1625a0bcb0ace814a
-    pristine_git_object: 25ef544eb58c456b6b771a99aa8b20d5f05954bd
+    last_write_checksum: sha1:06d20f8ea865249da74a1cb162229fa9c3edd7d6
+    pristine_git_object: 144240f30b27ed1f5642299313b331ca894ae4c9
   docs/models/components/patchskillrequestsource.md:
     id: e8cac8a41e6e
     last_write_checksum: sha1:0459611394cd52f2830a05c7afddabefebf5a7d7
@@ -10729,8 +10729,8 @@ trackedFiles:
     pristine_git_object: 85301f09de3d4e677951cfe8d4ee6e3d1052f761
   docs/models/components/skill.md:
     id: e0796cc343a9
-    last_write_checksum: sha1:7074c574231035bb466e6808e485441bf3061fa8
-    pristine_git_object: e18a2298e9b55ef5473e127f93d551b2b7f2cee8
+    last_write_checksum: sha1:dde51c45a37e21264b204677e3dd444acd254a48
+    pristine_git_object: 480955ff04110e11bb49b2948ec0715e481a85cb
   docs/models/components/skillcontentsresponse.md:
     id: 254272efc456
     last_write_checksum: sha1:916c2f86cafe6638fec3a3861e4bfd805398a28b
@@ -19937,8 +19937,8 @@ trackedFiles:
     pristine_git_object: c97e548bd0f188f649ae9d4602c81c995919f040
   docs/sdks/skills/README.md:
     id: 3a14a5c90791
-    last_write_checksum: sha1:5e8779e72bc01d75a595faab02037743f9369687
-    pristine_git_object: 5ba965bf05b9cc612dbdbaf804d79935c8de6935
+    last_write_checksum: sha1:4e333f2c619b747af93f7eaac3b3d21c0122a6f5
+    pristine_git_object: 3f17a3a39a318a900d1a084d5dacd1b9ff21564d
   docs/sdks/snippets/README.md:
     id: 84aed19b8e5e
     last_write_checksum: sha1:acd09989b319ea0bee65e21c598cfd5651c021ff
@@ -22433,8 +22433,8 @@ trackedFiles:
     pristine_git_object: 95baef13b5237dc4a676e97dfc9f488db3c234e0
   models/components/createskillrequest.go:
     id: c7c81968feaf
-    last_write_checksum: sha1:9dda99761da93e834bb4de027b41dae8dc748568
-    pristine_git_object: 764bf9cf2592c19230fa07a50f8ed158ac81dfde
+    last_write_checksum: sha1:ed5a30109a7bc99c82772e2da1e5b0e75b34235f
+    pristine_git_object: 367d531b9098768b5e5babf4c7a951514caf0b64
   models/components/createsystemaccount.go:
     id: 639283c8bbd8
     last_write_checksum: sha1:9fffa384a4408014307d51964446a9d5213ded76
@@ -24777,8 +24777,8 @@ trackedFiles:
     pristine_git_object: 45044febd6c25415643a6efdbca940b7735ce468
   models/components/patchskillrequest.go:
     id: 01fcf582a0c0
-    last_write_checksum: sha1:2c253cf4bca98b00e24c8cc19c79c50eb7f66993
-    pristine_git_object: 3b07b1bd61154e3985e6d4835202fb70f3535004
+    last_write_checksum: sha1:46238c104692160dacdb4189cd1fd8e7e4493356
+    pristine_git_object: 152f885fd9d883bfbd081615e8da02b2b4fadb39
   models/components/patchteamgroupmappings.go:
     id: 835b19ae66ad
     last_write_checksum: sha1:c9ce16bee1340e5b464af3a6c3837e5aafcb6a42
@@ -25397,8 +25397,8 @@ trackedFiles:
     pristine_git_object: 317d788226a7b3860b90e3842847495a3cccc08f
   models/components/skill.go:
     id: d6fdbd1c8bf3
-    last_write_checksum: sha1:f2a4672807f48757280125a1051e4ab7366ff287
-    pristine_git_object: 708841a7c4595b8dff5c413366d1c94a7a099ed4
+    last_write_checksum: sha1:5ecdee6760440e1c2b3e6250e0515fda96168c31
+    pristine_git_object: 7c92f4c4ac19eb5cb900c92d07d9bedf98e78748
   models/components/skillcontentsresponse.go:
     id: bc13d9acbd96
     last_write_checksum: sha1:fbb87ef75087b07267526d9b0514a73ca3dfa32c
@@ -61620,7 +61620,7 @@ examples:
         path:
           interfaceId: "cc5067fd-3514-4974-bc56-7c504711542c"
       requestBody:
-        application/json: {"name": "pdf-processing", "display_name": "PDF Processing", "description": "Extract and summarize content from PDF documents", "source": {"type": "raw", "config": {"contents": "---\nname: pdf-processing\ndescription: Extract and summarize content from PDF documents\n---\n# PDF Processing\n..."}}, "labels": {"env": "test"}}
+        application/json: {"display_name": "PDF Processing", "description": "Extract and summarize content from PDF documents", "source": {"type": "raw", "config": {"contents": "---\nname: pdf-processing\ndescription: Extract and summarize content from PDF documents\n---\n# PDF Processing\n..."}}, "labels": {"env": "test"}}
       responses:
         "201":
           application/json: {"id": "a5244dc8-daae-4016-9e4f-8c33e6889bd5", "context_interface_id": "b3b287d1-0e9c-4dfc-acb9-5ac242b3d007", "name": "<value>", "display_name": "Jazmyne1", "description": "juicy dwell fond pro though vastly", "frontmatter": {"name": "<value>", "description": "reel desecrate where curiously indeed exaggerate stable personalise repeat bungalow"}, "labels": {"env": "test"}, "source": {"type": "raw"}, "status": "valid", "sync_status": {"status": "pending", "timestamp": "2024-04-15T14:38:56.925Z"}, "validation_message": "<value>", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
