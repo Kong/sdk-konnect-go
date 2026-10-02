@@ -103,7 +103,7 @@ type Skill struct {
 	ID string `json:"id"`
 	// The ID of the Context Interface this skill belongs to.
 	ContextInterfaceID string `json:"context_interface_id"`
-	// The machine name of the skill.
+	// The machine name of the skill, taken from the name declared in the frontmatter. Unique within the MCP server and cannot be set or changed by the client.
 	Name string `json:"name"`
 	// The human-readable display name of the skill.
 	DisplayName string `json:"display_name"`
