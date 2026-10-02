@@ -77,8 +77,6 @@ func (u PatchSkillRequestSource) MarshalJSON() ([]byte, error) {
 }
 
 type PatchSkillRequest struct {
-	// The machine name of the skill. Must be unique within the MCP server and must match the name declared in the frontmatter.
-	Name *string `json:"name,omitempty"`
 	// The human-readable display name of the skill.
 	DisplayName *string `json:"display_name,omitempty"`
 	// A description of the skill.
@@ -90,13 +88,6 @@ type PatchSkillRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
-}
-
-func (p *PatchSkillRequest) GetName() *string {
-	if p == nil {
-		return nil
-	}
-	return p.Name
 }
 
 func (p *PatchSkillRequest) GetDisplayName() *string {
