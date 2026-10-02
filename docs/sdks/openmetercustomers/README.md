@@ -890,6 +890,11 @@ func main() {
                 "input_tokens",
                 "output_tokens",
             },
+            Plans: []components.CreateCreditGrantPlanFilter{
+                components.CreateCreditGrantPlanFilter{
+                    Key: "resource_key",
+                },
+            },
         },
         EffectiveAt: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),
         ExpiresAfter: sdkkonnectgo.Pointer("P1Y"),

@@ -4,40 +4,15 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
-
-// UpdateAIGatewayCustomPolicyStreamingRequestType - A streaming Kong plugin used as a custom policy.
-type UpdateAIGatewayCustomPolicyStreamingRequestType string
-
-const (
-	UpdateAIGatewayCustomPolicyStreamingRequestTypeStreaming UpdateAIGatewayCustomPolicyStreamingRequestType = "streaming"
-)
-
-func (e UpdateAIGatewayCustomPolicyStreamingRequestType) ToPointer() *UpdateAIGatewayCustomPolicyStreamingRequestType {
-	return &e
-}
-func (e *UpdateAIGatewayCustomPolicyStreamingRequestType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "streaming":
-		*e = UpdateAIGatewayCustomPolicyStreamingRequestType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateAIGatewayCustomPolicyStreamingRequestType: %v", v)
-	}
-}
 
 type UpdateAIGatewayCustomPolicyStreamingRequest struct {
 	// A user-defined unique identifier for this custom policy, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// A streaming Kong plugin used as a custom policy.
-	Type UpdateAIGatewayCustomPolicyStreamingRequestType `json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"streaming" json:"type"`
 	// The display name for this custom policy.
 	DisplayName string `json:"display_name"`
 	// The Lua schema definition for the custom policy, equivalent to a Kong plugin's `schema.lua`.
@@ -76,11 +51,8 @@ func (u *UpdateAIGatewayCustomPolicyStreamingRequest) GetName() string {
 	return u.Name
 }
 
-func (u *UpdateAIGatewayCustomPolicyStreamingRequest) GetType() UpdateAIGatewayCustomPolicyStreamingRequestType {
-	if u == nil {
-		return UpdateAIGatewayCustomPolicyStreamingRequestType("")
-	}
-	return u.Type
+func (u *UpdateAIGatewayCustomPolicyStreamingRequest) GetType() string {
+	return "streaming"
 }
 
 func (u *UpdateAIGatewayCustomPolicyStreamingRequest) GetDisplayName() string {
