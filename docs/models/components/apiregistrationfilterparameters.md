@@ -1,4 +1,4 @@
-# APIRegistrationsFilters
+# APIRegistrationFilterParameters
 
 
 ## Fields
