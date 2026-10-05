@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 1eabeb5c1a7137b18edf389c1655d25a
+  docChecksum: 358bc5539c4a5338bcd8e0ee487e84f2
   docVersion: 3.15.0
   speakeasyVersion: 1.800.1
   generationVersion: 2.943.0
   releaseVersion: 0.72.0
   configChecksum: 95fcfc34ac9852ba721c3669ea9ed332
 persistentEdits:
-  generation_id: aca66be2-d89f-4453-bc62-f4b57e42dc94
-  pristine_commit_hash: 803ec14b6b359ed4403323bb36e6b0a756f76399
-  pristine_tree_hash: 823b3dec72617edbcd170cd53de710e0f9709d9f
+  generation_id: b97eeffd-fb37-4909-a029-612adc640576
+  pristine_commit_hash: 2afa6ae38744e928cf5a60f1f640b1264eb50868
+  pristine_tree_hash: d7249621db937b3f65320fe6f5f6795e2ad0185f
 features:
   go:
     acceptHeaders: 2.81.2
@@ -19937,8 +19937,8 @@ trackedFiles:
     pristine_git_object: c97e548bd0f188f649ae9d4602c81c995919f040
   docs/sdks/skills/README.md:
     id: 3a14a5c90791
-    last_write_checksum: sha1:4e333f2c619b747af93f7eaac3b3d21c0122a6f5
-    pristine_git_object: 3f17a3a39a318a900d1a084d5dacd1b9ff21564d
+    last_write_checksum: sha1:7f0eaec79e9f55a4e6a021f6af69737441f89fa0
+    pristine_git_object: 015b390a6295b3eb3a9ac77a8f8a901e3b8f4bfd
   docs/sdks/snippets/README.md:
     id: 84aed19b8e5e
     last_write_checksum: sha1:acd09989b319ea0bee65e21c598cfd5651c021ff
@@ -29949,8 +29949,8 @@ trackedFiles:
     pristine_git_object: 96d2947542fd56bb35967a182fe8b770700f96de
   skills.go:
     id: 65ecddcd9ce6
-    last_write_checksum: sha1:d36ac53cfabe081479c1066288a1dcd2b7145782
-    pristine_git_object: d33f289210b95fc300a04e7f757e762e4bb4af48
+    last_write_checksum: sha1:b7bd895a7d6e8a7a365df5286b02a2a4c4a3be02
+    pristine_git_object: dbfe87d8a749f09a816c529bc8ac332fc773136b
   snippets.go:
     id: f12d0f7071cd
     last_write_checksum: sha1:70630f286464088bedb46379fce3d9b54b71370a
@@ -61632,6 +61632,8 @@ examples:
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "409":
           application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
   get-context-interface-skill:
     speakeasy-default-get-context-interface-skill:
       parameters:
