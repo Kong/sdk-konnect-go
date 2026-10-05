@@ -22877,22 +22877,7 @@ components:
       required: false
       in: query
       schema:
-        type: object
-        properties:
-          status:
-            $ref: '#/components/schemas/StringFieldFilter'
-          portal_id:
-            $ref: '#/components/schemas/UuidFieldFilter'
-          portal_name:
-            $ref: '#/components/schemas/StringFieldFilter'
-          application_id:
-            $ref: '#/components/schemas/UuidFieldFilter'
-          application_name:
-            $ref: '#/components/schemas/StringFieldFilter'
-          application_owner_type:
-            $ref: '#/components/schemas/StringFieldFilter'
-          application_owner_id:
-            $ref: '#/components/schemas/UuidFieldFilter'
+        $ref: '#/components/schemas/ApiRegistrationFilterParameters'
       style: deepObject
     ApiSort:
       name: sort
@@ -32122,6 +32107,24 @@ components:
         updated_at:
           $ref: '#/components/schemas/DateTimeFieldFilter'
       title: API Package Operations Filter Parameters
+    ApiRegistrationFilterParameters:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/StringFieldFilter'
+        portal_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+        portal_name:
+          $ref: '#/components/schemas/StringFieldFilter'
+        application_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+        application_name:
+          $ref: '#/components/schemas/StringFieldFilter'
+        application_owner_type:
+          $ref: '#/components/schemas/StringFieldFilter'
+        application_owner_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+      title: API Registration Filter Parameters
     ApiDocumentFilterParameters:
       type: object
       properties:
@@ -87257,7 +87260,7 @@ x-input-schemas:
     version: 2.4.0
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.6.6
+    version: 3.6.7
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
     version: 2.1.3
