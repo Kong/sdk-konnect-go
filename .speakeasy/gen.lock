@@ -5,12 +5,12 @@ management:
   docVersion: 3.15.0
   speakeasyVersion: 1.800.1
   generationVersion: 2.943.0
-  releaseVersion: 0.71.1
-  configChecksum: 5522d0391fd92c57067d778b3d2efa31
+  releaseVersion: 0.72.0
+  configChecksum: 95fcfc34ac9852ba721c3669ea9ed332
 persistentEdits:
-  generation_id: 5dfb2d3d-5a71-49ca-ad6a-3fb493352adf
-  pristine_commit_hash: dd9ed8accf75df6d4f78422975d970b565067f3c
-  pristine_tree_hash: 0a12d3df642f71364caa75ff9c29a40a9e14e35c
+  generation_id: aca66be2-d89f-4453-bc62-f4b57e42dc94
+  pristine_commit_hash: 803ec14b6b359ed4403323bb36e6b0a756f76399
+  pristine_tree_hash: 823b3dec72617edbcd170cd53de710e0f9709d9f
 features:
   go:
     acceptHeaders: 2.81.2
@@ -21877,11 +21877,11 @@ trackedFiles:
     pristine_git_object: b815ae575aa88ef0d6d1ded4b881eed1c50d109b
   models/components/chart.go:
     id: 423ff591212c
-    last_write_checksum: sha1:c3d72dcf86d76b06140bbc1e8b03b54461ac4532
+    last_write_checksum: sha1:6bc727cf52bcbedfd3c788ec1ffc4dffb848d405
     pristine_git_object: 23c41f9e4410e904a87dca0f854f828b1a358bcd
   models/components/charttile.go:
     id: 8f57713ab332
-    last_write_checksum: sha1:05d36bea9c3d45af75174a7b6990e438f3b84ae9
+    last_write_checksum: sha1:7409b26d892105ef19e92356c78ffa2d5a9e3b3e
     pristine_git_object: 66a72615091d06bbfcb64aa6d79a25ab76713779
   models/components/charttiledefinition.go:
     id: 823825da0d36
@@ -25217,7 +25217,7 @@ trackedFiles:
     pristine_git_object: 51e55f11555061aafeca42f5f8d9da75c4252bd4
   models/components/routejson.go:
     id: d92d6bc73818
-    last_write_checksum: sha1:1a98e2c9cd5e08a1c7996d47cd01cfb33e0339a1
+    last_write_checksum: sha1:d0669fa17af77dc0d2d5f6ee82123fc77f3ee582
     pristine_git_object: 246b8bce0c28554cf2c221ed9d81255c750f56e0
   models/components/routewithoutparents.go:
     id: dbd67bd3596c
@@ -29941,8 +29941,8 @@ trackedFiles:
     pristine_git_object: 769e0b766ed3fc44070c4f19daf4362f9cc965c0
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:3c604dc1f258a573d9d6de988929fd926f73a957
-    pristine_git_object: afafd831d8bb9f48f05e5a6220eea8f604c774a7
+    last_write_checksum: sha1:086dac2f01c7d06cc2a1d33f257b015bfd8a23c6
+    pristine_git_object: 18465892b5342f87d3afd253d5765762d77829c2
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:3690261b6c8f18602301a446ce047edbd0e099a4
