@@ -123,7 +123,7 @@ jobs:
           echo "has_version_labels=true" >> $GITHUB_OUTPUT
 
   reset-version:
-    if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'false'
+    if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'false' && github.event.pull_request.head.repo.fork == false
     needs:
     - check-semver-label
     runs-on: ubuntu-latest
@@ -196,13 +196,15 @@ jobs:
           message: Reset version to main - no version labels present
 
   bump-version:
-    if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'true'
+    if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'true' && github.event.pull_request.head.repo.fork == false
     needs:
     - check-semver-label
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
       contents: write
+    env:
+      SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
@@ -358,6 +360,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
@@ -378,11 +382,6 @@ jobs:
         with:
           ref: main
           token: ${{ steps.app-token.outputs.token }}
-
-      - name: Configure speakeasy CLI
-        run: |
-          mkdir -p ~/.speakeasy
-          echo 'speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}' > ~/.speakeasy/config.yaml
 
       - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
         with:
