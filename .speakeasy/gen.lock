@@ -8,9 +8,9 @@ management:
   releaseVersion: 0.71.1
   configChecksum: 5522d0391fd92c57067d778b3d2efa31
 persistentEdits:
-  generation_id: 52a9655f-51e6-4442-8a98-cb3e48eed58e
-  pristine_commit_hash: c17b89c2504463d86003ab041c492ca3b28fdc92
-  pristine_tree_hash: f98414bfa7d79819a3905e00c7abd81c19118b3c
+  generation_id: 5dfb2d3d-5a71-49ca-ad6a-3fb493352adf
+  pristine_commit_hash: dd9ed8accf75df6d4f78422975d970b565067f3c
+  pristine_tree_hash: 0a12d3df642f71364caa75ff9c29a40a9e14e35c
 features:
   go:
     acceptHeaders: 2.81.2
@@ -29941,13 +29941,8 @@ trackedFiles:
     pristine_git_object: 769e0b766ed3fc44070c4f19daf4362f9cc965c0
   sdk.go:
     id: 8db9b9536b0a
-<<<<<<< HEAD
     last_write_checksum: sha1:3c604dc1f258a573d9d6de988929fd926f73a957
     pristine_git_object: afafd831d8bb9f48f05e5a6220eea8f604c774a7
-=======
-    last_write_checksum: sha1:34616032e5aef1c6ff0bdb396f4f8e03f89718ae
-    pristine_git_object: 688028195d6ed91ba2454766687790222c72184b
->>>>>>> 7f27284 (Update provider based on openapi.yaml changes)
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:3690261b6c8f18602301a446ce047edbd0e099a4
