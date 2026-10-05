@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -13,10 +14,21 @@ type ListConfigStoreSecretsRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Config Store identifier
 	ConfigStoreID string `pathParam:"style=simple,explode=false,name=configStoreId"`
-	// The maximum number of items to include per page. The last page of a collection may include fewer items.
-	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
-	// Request the next page of data, starting with the item after this parameter.
-	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
+	// Number of resources to be returned.
+	Size *int64 `default:"100" queryParam:"style=form,explode=true,name=size"`
+	// Offset from which to return the next set of resources. Use the value of the 'offset' field from the response of a list operation as input here to paginate through all the resources
+	Offset *string `queryParam:"style=form,explode=true,name=offset"`
+}
+
+func (l ListConfigStoreSecretsRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListConfigStoreSecretsRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (l *ListConfigStoreSecretsRequest) GetControlPlaneID() string {
@@ -33,18 +45,18 @@ func (l *ListConfigStoreSecretsRequest) GetConfigStoreID() string {
 	return l.ConfigStoreID
 }
 
-func (l *ListConfigStoreSecretsRequest) GetPageSize() *int64 {
+func (l *ListConfigStoreSecretsRequest) GetSize() *int64 {
 	if l == nil {
 		return nil
 	}
-	return l.PageSize
+	return l.Size
 }
 
-func (l *ListConfigStoreSecretsRequest) GetPageAfter() *string {
+func (l *ListConfigStoreSecretsRequest) GetOffset() *string {
 	if l == nil {
 		return nil
 	}
-	return l.PageAfter
+	return l.Offset
 }
 
 type ListConfigStoreSecretsResponse struct {

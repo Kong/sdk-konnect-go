@@ -5,16 +5,11 @@ package components
 
 // ListConfigStoresResponse - List of Config Stores
 type ListConfigStoresResponse struct {
-	// Pagination metadata.
-	Meta CursorMeta    `json:"meta"`
 	Data []ConfigStore `json:"data"`
-}
-
-func (l *ListConfigStoresResponse) GetMeta() CursorMeta {
-	if l == nil {
-		return CursorMeta{}
-	}
-	return l.Meta
+	// URI to the next page (may be null)
+	Next *string `json:"next,omitempty"`
+	// Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
+	Offset *string `json:"offset,omitempty"`
 }
 
 func (l *ListConfigStoresResponse) GetData() []ConfigStore {
@@ -22,4 +17,18 @@ func (l *ListConfigStoresResponse) GetData() []ConfigStore {
 		return []ConfigStore{}
 	}
 	return l.Data
+}
+
+func (l *ListConfigStoresResponse) GetNext() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Next
+}
+
+func (l *ListConfigStoresResponse) GetOffset() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Offset
 }

@@ -304,8 +304,6 @@ func main() {
     res, err := s.ConfigStoreSecrets.ListConfigStoreSecrets(ctx, operations.ListConfigStoreSecretsRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        PageSize: sdkkonnectgo.Pointer[int64](10),
-        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
     })
     if err != nil {
         log.Fatal(err)

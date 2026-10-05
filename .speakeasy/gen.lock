@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 358bc5539c4a5338bcd8e0ee487e84f2
+  docChecksum: 537ee88c3197fbf837fc261b47dad631
   docVersion: 3.15.0
   speakeasyVersion: 1.800.1
   generationVersion: 2.943.0
   releaseVersion: 0.72.0
   configChecksum: 95fcfc34ac9852ba721c3669ea9ed332
 persistentEdits:
-  generation_id: b97eeffd-fb37-4909-a029-612adc640576
-  pristine_commit_hash: 2afa6ae38744e928cf5a60f1f640b1264eb50868
-  pristine_tree_hash: d7249621db937b3f65320fe6f5f6795e2ad0185f
+  generation_id: 6405d8ad-62f5-48be-a79b-1fb941636a1c
+  pristine_commit_hash: a02b6ea8d441b37759fa0c2d4cb8f16dcf9e7bb6
+  pristine_tree_hash: 435b7cdedc6d6b09b4f861cd5b2a0ff173b188c9
 features:
   go:
     acceptHeaders: 2.81.2
@@ -7549,12 +7549,12 @@ trackedFiles:
     pristine_git_object: dff45c039d4aa4bde143fe79fb6dce89a6b9edcd
   docs/models/components/listconfigstoresecretsresponse.md:
     id: fdbd88c7d541
-    last_write_checksum: sha1:ef53b163cc79e100e96dd9f1c5fe02b1d80d50f9
-    pristine_git_object: 56217e77332586dfc86a2e87f9650ba1537bfe48
+    last_write_checksum: sha1:1b0e5c8387e6c32217a82ba5e4c45ff2eebbd3c1
+    pristine_git_object: 4b4a3bdf1f7553ceab52e957546db120c591e342
   docs/models/components/listconfigstoresresponse.md:
     id: f7638f1ac988
-    last_write_checksum: sha1:2365ab0fd1731f369a69a6bc41a359208168cad5
-    pristine_git_object: 193d59f4f2fd6b973e421758ca444d5c9bd650c4
+    last_write_checksum: sha1:127c73b5f1498a327856d615ec0b9bbe9cc9589e
+    pristine_git_object: 01a5e19b921d2e7cdf97dc87b754b217f91ee7d4
   docs/models/components/listconfigurationsresponse.md:
     id: cd50432133cb
     last_write_checksum: sha1:5e6e8a630915c7582486d601e7be7df5d912e688
@@ -16477,16 +16477,16 @@ trackedFiles:
     pristine_git_object: 771f5b8f20a3d5b140e513a3af5f6dceb431d120
   docs/models/operations/listconfigstoresecretsrequest.md:
     id: aff130cbdb48
-    last_write_checksum: sha1:f9b43509cfbcb5d99f9c39fc1e6eaaad649343e1
-    pristine_git_object: a37498fc5fd88d6f4a0eac79f7beea8017733327
+    last_write_checksum: sha1:5c174e8f3a00ab5164b415e00fbeb88f0c2e9316
+    pristine_git_object: d9bd0fa64ceb734aeee26d82ba75cc1feec5957d
   docs/models/operations/listconfigstoresecretsresponse.md:
     id: d1a766ad0bca
     last_write_checksum: sha1:43537fc0e4559acf17c4eb786a3c1771b9ee8de3
     pristine_git_object: 3b5ef0f9ad3e7f4180e37aad3609019e0d8b461d
   docs/models/operations/listconfigstoresrequest.md:
     id: c226ffc6845b
-    last_write_checksum: sha1:9c7371707637b4c01321f79d745b06628098f052
-    pristine_git_object: 54bb637fc522dd75f3b136ce3690f02cdac23719
+    last_write_checksum: sha1:6360aad4efe51422e641f9a183e05e555016639f
+    pristine_git_object: c3b1b02afada6d3c5aabe098283536d483dc2b7b
   docs/models/operations/listconfigstoresresponse.md:
     id: fdd6258ba9ab
     last_write_checksum: sha1:e09a6c8a2128c0f45f5a663e420f79c4cecab1e6
@@ -19605,12 +19605,12 @@ trackedFiles:
     pristine_git_object: 049caa1109172ec92d59935b7ee3bd900b1bd6e1
   docs/sdks/configstores/README.md:
     id: d176df2737d7
-    last_write_checksum: sha1:946aee68a6c8c52ed1b084ecb9bdc10beecff25e
-    pristine_git_object: 349efb64f5a84bd66d8741f76b14d369e8294fe0
+    last_write_checksum: sha1:3afdc669f23a984f8f3822e191117c541c755681
+    pristine_git_object: b39491a68ac469804171fb135cc7c45acd124092
   docs/sdks/configstoresecrets/README.md:
     id: fbab14c5fd78
-    last_write_checksum: sha1:1c6612e1422cfc83950e64f5a444445946b1c8a5
-    pristine_git_object: 8149a9a87d0d85b85bf089d279d989561f64ab69
+    last_write_checksum: sha1:cd04588a251f590f33714b96bdc0cc3de3faea7d
+    pristine_git_object: a0cad010db808398ea1bd9aae29897c0a74335e5
   docs/sdks/consumergroups/README.md:
     id: 57d7a08f1631
     last_write_checksum: sha1:7c11edb8a1071410b5b11e2afe048e6a32f236de
@@ -23989,12 +23989,12 @@ trackedFiles:
     pristine_git_object: 6aa756399b4e26d6e341c69cca7623e1448a0d1c
   models/components/listconfigstoresecretsresponse.go:
     id: 93f65c52f65f
-    last_write_checksum: sha1:2de9d158229e5a7dad5ba12ac01d6d8076771cff
-    pristine_git_object: 8e3ccca3d1b7ae340d2b29816fab9105876a4de9
+    last_write_checksum: sha1:1a5d760b7d9d7e1e6f176502ce8df756bc593c08
+    pristine_git_object: e4c6819295a516f094a81e6d8f32d0dd417279bb
   models/components/listconfigstoresresponse.go:
     id: a4909137e957
-    last_write_checksum: sha1:a37eb58fb8bdf9be38bc74d17559b5d3fc4d877f
-    pristine_git_object: 3994a26545526d13fa56182e3515635d2f804d9a
+    last_write_checksum: sha1:0cd3772b658570d450f64badf99091fa83ae1205
+    pristine_git_object: 33e94dcab809602681b043d5b2d4ae81e27060b3
   models/components/listconfigurationsresponse.go:
     id: 29de1195c333
     last_write_checksum: sha1:113777461cb7f4814c1546424825a2826ffa8940
@@ -28385,12 +28385,12 @@ trackedFiles:
     pristine_git_object: 8475ea64934d7ae7bc4da6641d6ca4b47c819cb1
   models/operations/listconfigstores.go:
     id: 178402fa8659
-    last_write_checksum: sha1:3bfa5527a65ff074f6a95e74a8e4341f2eac6a28
-    pristine_git_object: f059114284edb6961dd34a8aafb4c09a3f442277
+    last_write_checksum: sha1:f5f0e6d840fe121439f5571d16a0f77ea45b0c24
+    pristine_git_object: 878cf1d864f1d7cc24d9d95b7bf53f45e7e03a6e
   models/operations/listconfigstoresecrets.go:
     id: daaa8e980ad3
-    last_write_checksum: sha1:895acc590d0fb9e67317121fb022e9e36a2761d4
-    pristine_git_object: 46f13aa8601dff200d6c9092553ffc15ec72cd78
+    last_write_checksum: sha1:fcab6e0a49cace48bb3382f521dfc8b1cf06a43b
+    pristine_git_object: a571ee0258afa874e1ac4dd3dc1105b71e492983
   models/operations/listconfigurations.go:
     id: 13559911b18d
     last_write_checksum: sha1:ba3b0e4ba304c7a461813297a8b1cd71768bf377
@@ -32955,9 +32955,10 @@ examples:
         query:
           page[size]: 10
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+          size: 100
       responses:
         "200":
-          application/json: {"meta": {"page": {"next": null, "previous": null, "size": 10}}, "data": [{"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+          application/json: {"data": [{"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
@@ -33322,9 +33323,10 @@ examples:
         query:
           page[size]: 10
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+          size: 100
       responses:
         "200":
-          application/json: {"meta": {"page": {"next": null, "previous": null, "size": 10}}, "data": [{"key": "<key>", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+          application/json: {"data": [{"key": "<key>", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
