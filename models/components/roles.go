@@ -1656,8 +1656,74 @@ func (r *RolesAuditLogsAdmin) GetDescription() RolesAuditLogsDescription {
 	return r.Description
 }
 
+type RolesAuditLogsRolesViewerName string
+
+const (
+	RolesAuditLogsRolesViewerNameViewer RolesAuditLogsRolesViewerName = "Viewer"
+)
+
+func (e RolesAuditLogsRolesViewerName) ToPointer() *RolesAuditLogsRolesViewerName {
+	return &e
+}
+func (e *RolesAuditLogsRolesViewerName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Viewer":
+		*e = RolesAuditLogsRolesViewerName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesAuditLogsRolesViewerName: %v", v)
+	}
+}
+
+type RolesAuditLogsRolesDescription string
+
+const (
+	RolesAuditLogsRolesDescriptionThisRoleGrantsReadAccessToTheAuditLogConfiguration RolesAuditLogsRolesDescription = "This role grants read access to the Audit log configuration."
+)
+
+func (e RolesAuditLogsRolesDescription) ToPointer() *RolesAuditLogsRolesDescription {
+	return &e
+}
+func (e *RolesAuditLogsRolesDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "This role grants read access to the Audit log configuration.":
+		*e = RolesAuditLogsRolesDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesAuditLogsRolesDescription: %v", v)
+	}
+}
+
+type RolesAuditLogsViewer struct {
+	Name        RolesAuditLogsRolesViewerName  `json:"name"`
+	Description RolesAuditLogsRolesDescription `json:"description"`
+}
+
+func (r *RolesAuditLogsViewer) GetName() RolesAuditLogsRolesViewerName {
+	if r == nil {
+		return RolesAuditLogsRolesViewerName("")
+	}
+	return r.Name
+}
+
+func (r *RolesAuditLogsViewer) GetDescription() RolesAuditLogsRolesDescription {
+	if r == nil {
+		return RolesAuditLogsRolesDescription("")
+	}
+	return r.Description
+}
+
 type RolesAuditLogsRoles struct {
-	Admin *RolesAuditLogsAdmin `json:"admin,omitempty"`
+	Admin  *RolesAuditLogsAdmin  `json:"admin,omitempty"`
+	Viewer *RolesAuditLogsViewer `json:"viewer,omitempty"`
 }
 
 func (r *RolesAuditLogsRoles) GetAdmin() *RolesAuditLogsAdmin {
@@ -1665,6 +1731,13 @@ func (r *RolesAuditLogsRoles) GetAdmin() *RolesAuditLogsAdmin {
 		return nil
 	}
 	return r.Admin
+}
+
+func (r *RolesAuditLogsRoles) GetViewer() *RolesAuditLogsViewer {
+	if r == nil {
+		return nil
+	}
+	return r.Viewer
 }
 
 type AuditLogs struct {
