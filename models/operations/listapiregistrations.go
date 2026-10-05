@@ -12,7 +12,7 @@ type ListAPIRegistrationsRequest struct {
 	// The UUID API identifier
 	APIID string `pathParam:"style=simple,explode=false,name=apiId"`
 	// Filters API registrations in the response.
-	Filter *components.APIRegistrationsFilters `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *components.APIRegistrationFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 	// The maximum number of items to include per page. The last page of a collection may include fewer items.
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Determines which page of the entities to retrieve.
@@ -26,7 +26,7 @@ func (l *ListAPIRegistrationsRequest) GetAPIID() string {
 	return l.APIID
 }
 
-func (l *ListAPIRegistrationsRequest) GetFilter() *components.APIRegistrationsFilters {
+func (l *ListAPIRegistrationsRequest) GetFilter() *components.APIRegistrationFilterParameters {
 	if l == nil {
 		return nil
 	}
