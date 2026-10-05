@@ -8425,8 +8425,8 @@ paths:
       summary: List all config stores for a control plane
       parameters:
         - $ref: '#/components/parameters/controlPlaneId'
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
       responses:
         '200':
           $ref: '#/components/responses/ListConfigStoresResponse'
@@ -8585,8 +8585,8 @@ paths:
       summary: List Config Store Secrets
       description: Returns a collection of all secrets for a Config Store.
       parameters:
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
       responses:
         '200':
           $ref: '#/components/responses/ListConfigStoreSecretsResponse'
@@ -86632,15 +86632,16 @@ components:
           schema:
             type: object
             properties:
-              meta:
-                $ref: '#/components/schemas/CursorMeta'
               data:
                 type: array
                 items:
                   $ref: '#/components/schemas/ConfigStore'
+              next:
+                $ref: '#/components/schemas/PaginationNextResponse'
+              offset:
+                $ref: '#/components/schemas/PaginationOffsetResponse'
             required:
               - data
-              - meta
             title: ListConfigStoresResponse
     ListConfigStoreSecretsResponse:
       description: List of Config Store Secrets
@@ -86649,15 +86650,16 @@ components:
           schema:
             type: object
             properties:
-              meta:
-                $ref: '#/components/schemas/CursorMeta'
               data:
                 type: array
                 items:
                   $ref: '#/components/schemas/ConfigStoreSecret'
+              next:
+                $ref: '#/components/schemas/PaginationNextResponse'
+              offset:
+                $ref: '#/components/schemas/PaginationOffsetResponse'
             required:
               - data
-              - meta
             title: ListConfigStoreSecretsResponse
     ConfigStoreResponse:
       description: Config Store
