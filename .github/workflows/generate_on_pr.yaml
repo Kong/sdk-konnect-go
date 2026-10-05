@@ -48,11 +48,11 @@ jobs:
   generate:
     needs:
     - should-generate
+    if: needs.should-generate.outputs.result == 'true' && github.event.pull_request.head.repo.fork == false
     permissions:
       contents: write
     runs-on:
       - ubuntu-latest
-    if: needs.should-generate.outputs.result == 'true'
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
@@ -74,16 +74,13 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ steps.app-token.outputs.token }}
 
-      - name: Configure speakeasy CLI
-        run: |
-          mkdir -p ~/.speakeasy
-          echo 'speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}' > ~/.speakeasy/config.yaml
-
       - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
         with:
           install: false
 
       - name: Generate SDK
+        env:
+          SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
         run: |
           export PATH=${PATH}:$(go env GOPATH)/bin
           make generate.sdk
