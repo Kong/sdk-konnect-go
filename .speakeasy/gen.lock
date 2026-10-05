@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 537ee88c3197fbf837fc261b47dad631
+  docChecksum: e5c93ebc1b8ae7fa52f35ca7321b116c
   docVersion: 3.15.0
   speakeasyVersion: 1.800.1
   generationVersion: 2.943.0
   releaseVersion: 0.72.0
   configChecksum: 95fcfc34ac9852ba721c3669ea9ed332
 persistentEdits:
-  generation_id: 6405d8ad-62f5-48be-a79b-1fb941636a1c
-  pristine_commit_hash: a02b6ea8d441b37759fa0c2d4cb8f16dcf9e7bb6
-  pristine_tree_hash: 435b7cdedc6d6b09b4f861cd5b2a0ff173b188c9
+  generation_id: 31204339-aa37-4b22-b199-a9db626064bf
+  pristine_commit_hash: f4d7f73737ac46bc11fda213dcbaad56e40d1fc1
+  pristine_tree_hash: 6a865598cfd715243c90ece292d11775ebfa6e27
 features:
   go:
     acceptHeaders: 2.81.2
@@ -10021,12 +10021,24 @@ trackedFiles:
     pristine_git_object: afe58fc73c106e40ded8b1ca695fa6b701d9cbb3
   docs/models/components/rolesauditlogsroles.md:
     id: cc1d54ccf566
-    last_write_checksum: sha1:4d70a49106c21b7b74818f950f175470ae6e8709
-    pristine_git_object: 8725ed7f3e325cc6c644e8a7690b8df226c62cae
+    last_write_checksum: sha1:cac422faaf044f612fa5d0a49d4136ea6886d04f
+    pristine_git_object: 4ef4463380a12e5a4622cde868316acdb884e1dd
+  docs/models/components/rolesauditlogsrolesdescription.md:
+    id: d0b56a6e504c
+    last_write_checksum: sha1:445834d46855614f8c9559f3bf74c5bd1b6c0d36
+    pristine_git_object: 1357a25690e6fee456b6ccd877793c4074247581
   docs/models/components/rolesauditlogsrolesname.md:
     id: 76698cf33acf
     last_write_checksum: sha1:04a6ab3d9d39b0eb2abb9193e291876bdf2e6f35
     pristine_git_object: a08f7d97165df2c63fba88e3fee015a18b54f3db
+  docs/models/components/rolesauditlogsrolesviewername.md:
+    id: 2f17a822f44c
+    last_write_checksum: sha1:51676a55b7bb40a12e710d45da25462c107d8cc9
+    pristine_git_object: ec5cc67dc9119c7feca6d8101ce70c77e7ab0b10
+  docs/models/components/rolesauditlogsviewer.md:
+    id: 0b6d81094bf5
+    last_write_checksum: sha1:785bda60afb87bff30905b3d759c9220ee820004
+    pristine_git_object: 02b66c1142690b29b4f840846e2c9016ce5b6d02
   docs/models/components/rolescontrolplanesdescription.md:
     id: 62e792ff4dc2
     last_write_checksum: sha1:8fca3cadf0f5ded58b45362fb42d7f55a2ba1430
@@ -25205,8 +25217,8 @@ trackedFiles:
     pristine_git_object: 533e146c978502a57bfd291be19f21f1796c9c32
   models/components/roles.go:
     id: 50d151440c36
-    last_write_checksum: sha1:ec57c5a21af988bd8cba155f88df4953b8c83556
-    pristine_git_object: 353b546cc0687bf4053dcdf87738328c518fd160
+    last_write_checksum: sha1:6ec62b18670d62996c14f6089040e468fca9be46
+    pristine_git_object: bdf2c5bb2e59ff8512a47e8db1ae6cad3fedf471
   models/components/route.go:
     id: a9c2c979b72d
     last_write_checksum: sha1:afbfd75e052fdd4c337de3a1ea860566786cfa92
@@ -41640,7 +41652,7 @@ examples:
     speakeasy-default-get-predefined-roles:
       responses:
         "200":
-          application/json: {"control_planes": {"name": "Control Planes", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to all entities within a control plane."}, "certificate_admin": {"name": "Certificate Admin", "description": "This role grants full write access to administer certificates."}, "consumer_admin": {"name": "Consumer Admin", "description": "This role grants full write access to administer consumers."}, "creator": {"name": "Creator", "description": "Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create."}, "debug_session_creator": {"name": "Debug Session Creator", "description": "This role grants access to create debug sessions. This role also grants read-only access to all entities within a control plane."}, "deployer": {"name": "Deployer", "description": "This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub."}, "gateway_service_admin": {"name": "Gateway Service Admin", "description": "This role grants full write access to administer gateway services."}, "plugin_admin": {"name": "Plugin Admin", "description": "This role grants full write access to administer plugins."}, "route_admin": {"name": "Route Admin", "description": "This role grants full write access to administer routes."}, "sni_admin": {"name": "SNI Admin", "description": "This role grants full write access to administer SNIs."}, "upstream_admin": {"name": "Upstream Admin", "description": "This role grants full write access to administer upstreams."}, "viewer": {"name": "Viewer", "description": "This role grants read only access to all entities within a control plane."}}}, "api_products": {"name": "API Products", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to an API product and its versions."}, "application_registration": {"name": "Application Registration", "description": "This role grants permission to enable and disable application registration on an API product."}, "creator": {"name": "Creator", "description": "This access is required to create API products. This access is not for creating sub-entities such as versions, API specs, etc."}, "deployer": {"name": "Deployer", "description": "This role grants permission to deploy and remove an API product from a control plane."}, "maintainer": {"name": "Maintainer", "description": "This role grants all write permission to manage an API product and to administer plugins."}, "plugins_admin": {"name": "Plugins Admin", "description": "This role grants full write permission to administer plugins."}, "publisher": {"name": "Publisher", "description": "This role grants permission to publish an API product to one or more portals."}, "viewer": {"name": "Viewer", "description": "Viewer has read-only access to an API product and its sub-entities."}}}, "audit_logs": {"name": "Audit Logs", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Audit log configuration."}}}, "identity": {"name": "Identity", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Identity configuration."}}}, "mesh_control_planes": {"name": "Mesh Control Plane", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the related to Mesh control planes."}, "connector": {"name": "Connector", "description": "This role grants a mesh zone to connect to the mesh control plane in Konnect."}, "creator": {"name": "Creator", "description": "This role grants access to create new Mesh control planes."}, "viewer": {"name": "Viewer", "description": "This role grants access to read-only permissions to Mesh control planes."}}}, "dashboards": {"name": "Dashboards", "roles": {"admin": {"name": "Admin", "description": "Allows users to edit, delete, and share a Dashboard in Konnect Analytics."}, "creator": {"name": "Creator", "description": "Allows users to create a new Dashboard in Konnect Analytics."}, "editor": {"name": "Editor", "description": "Allows users to edit a Dashboard in Konnect Analytics."}, "viewer": {"name": "Viewer", "description": "Allows users to view any Dashboards content in Konnect Analytics."}}}, "reports": {"name": "Reports", "roles": {"admin": {"name": "Admin", "description": "Allows users to edit, delete, and share a Report in Konnect Analytics."}, "creator": {"name": "Creator", "description": "Allows users to create a new Report in Konnect Analytics."}, "editor": {"name": "Editor", "description": "Allows users to edit a Report in Konnect Analytics."}, "viewer": {"name": "Viewer", "description": "Allows users to view a Report in Konnect Analytics."}}}}
+          application/json: {"control_planes": {"name": "Control Planes", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to all entities within a control plane."}, "certificate_admin": {"name": "Certificate Admin", "description": "This role grants full write access to administer certificates."}, "consumer_admin": {"name": "Consumer Admin", "description": "This role grants full write access to administer consumers."}, "creator": {"name": "Creator", "description": "Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create."}, "debug_session_creator": {"name": "Debug Session Creator", "description": "This role grants access to create debug sessions. This role also grants read-only access to all entities within a control plane."}, "deployer": {"name": "Deployer", "description": "This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub."}, "gateway_service_admin": {"name": "Gateway Service Admin", "description": "This role grants full write access to administer gateway services."}, "plugin_admin": {"name": "Plugin Admin", "description": "This role grants full write access to administer plugins."}, "route_admin": {"name": "Route Admin", "description": "This role grants full write access to administer routes."}, "sni_admin": {"name": "SNI Admin", "description": "This role grants full write access to administer SNIs."}, "upstream_admin": {"name": "Upstream Admin", "description": "This role grants full write access to administer upstreams."}, "viewer": {"name": "Viewer", "description": "This role grants read only access to all entities within a control plane."}}}, "api_products": {"name": "API Products", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to an API product and its versions."}, "application_registration": {"name": "Application Registration", "description": "This role grants permission to enable and disable application registration on an API product."}, "creator": {"name": "Creator", "description": "This access is required to create API products. This access is not for creating sub-entities such as versions, API specs, etc."}, "deployer": {"name": "Deployer", "description": "This role grants permission to deploy and remove an API product from a control plane."}, "maintainer": {"name": "Maintainer", "description": "This role grants all write permission to manage an API product and to administer plugins."}, "plugins_admin": {"name": "Plugins Admin", "description": "This role grants full write permission to administer plugins."}, "publisher": {"name": "Publisher", "description": "This role grants permission to publish an API product to one or more portals."}, "viewer": {"name": "Viewer", "description": "Viewer has read-only access to an API product and its sub-entities."}}}, "audit_logs": {"name": "Audit Logs", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Audit log configuration."}, "viewer": {"name": "Viewer", "description": "This role grants read access to the Audit log configuration."}}}, "identity": {"name": "Identity", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Identity configuration."}}}, "mesh_control_planes": {"name": "Mesh Control Plane", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the related to Mesh control planes."}, "connector": {"name": "Connector", "description": "This role grants a mesh zone to connect to the mesh control plane in Konnect."}, "creator": {"name": "Creator", "description": "This role grants access to create new Mesh control planes."}, "viewer": {"name": "Viewer", "description": "This role grants access to read-only permissions to Mesh control planes."}}}, "dashboards": {"name": "Dashboards", "roles": {"admin": {"name": "Admin", "description": "Allows users to edit, delete, and share a Dashboard in Konnect Analytics."}, "creator": {"name": "Creator", "description": "Allows users to create a new Dashboard in Konnect Analytics."}, "editor": {"name": "Editor", "description": "Allows users to edit a Dashboard in Konnect Analytics."}, "viewer": {"name": "Viewer", "description": "Allows users to view any Dashboards content in Konnect Analytics."}}}, "reports": {"name": "Reports", "roles": {"admin": {"name": "Admin", "description": "Allows users to edit, delete, and share a Report in Konnect Analytics."}, "creator": {"name": "Creator", "description": "Allows users to create a new Report in Konnect Analytics."}, "editor": {"name": "Editor", "description": "Allows users to edit a Report in Konnect Analytics."}, "viewer": {"name": "Viewer", "description": "Allows users to view a Report in Konnect Analytics."}}}}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_uppercase", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}, {"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>"], "source": "body"}]}
         "401":
