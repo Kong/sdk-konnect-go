@@ -10,6 +10,8 @@ import (
 
 // APIPublicationSpecRenderer - Customization settings for the API spec renderer in the portal.
 type APIPublicationSpecRenderer struct {
+	// Enable in-browser testing for your API. All linked gateways must have the CORS plugin configured.
+	TryItUI *bool `default:"true" json:"try_it_ui"`
 	// The audience for the Try It UI feature.
 	//
 	// `all` means that the Try It UI will be available to all users, including unauthenticated users.
@@ -19,6 +21,24 @@ type APIPublicationSpecRenderer struct {
 	// `registered` means that the Try It UI will only be available to users who have registered for the API.
 	//
 	TryItUIAudience TryItUIAudience `json:"try_it_ui_audience"`
+}
+
+func (a APIPublicationSpecRenderer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APIPublicationSpecRenderer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *APIPublicationSpecRenderer) GetTryItUI() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.TryItUI
 }
 
 func (a *APIPublicationSpecRenderer) GetTryItUIAudience() TryItUIAudience {
