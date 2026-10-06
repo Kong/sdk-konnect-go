@@ -340,14 +340,14 @@ func main() {
 		}),
 	)
 
-	res, err := s.CloudGateways.ListProviderAccounts(ctx, operations.ListProviderAccountsRequest{
+	res, err := s.Mesh.ListMeshControlPlanes(ctx, operations.ListMeshControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListProviderAccountsResponse != nil {
+	if res.ListMeshControlPlanesResponse != nil {
 		for {
 			// handle items
 

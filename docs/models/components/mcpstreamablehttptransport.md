@@ -1,0 +1,10 @@
+# MCPStreamableHTTPTransport
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `Type`                                                                       | `string`                                                                     | :heavy_check_mark:                                                           | Transport type                                                               | streamable-http                                                              |
+| `URL`                                                                        | `string`                                                                     | :heavy_check_mark:                                                           | URL template for the streamable-http transport.                              | https://api.example.com/mcp                                                  |
+| `Headers`                                                                    | [][components.MCPKeyValueInput](../../models/components/mcpkeyvalueinput.md) | :heavy_minus_sign:                                                           | HTTP headers to include                                                      |                                                                              |

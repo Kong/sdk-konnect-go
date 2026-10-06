@@ -92,6 +92,14 @@ type SDK struct {
 	AIGatewayPolicies *AIGatewayPolicies
 	// API related to the management of AI Gateway vaults for storing secrets.
 	AIGatewayVaults *AIGatewayVaults
+	// Manage AI Models - a catalogable proxy for AI Gateway models
+	CatalogAIModels *CatalogAIModels
+	// Link an AI Model to an AI Gateway model.
+	CatalogAIModelImplementations *CatalogAIModelImplementations
+	// Manage an AI Model version's oas specification.
+	CatalogAIModelSpecs *CatalogAIModelSpecs
+	// Manage an AI Model's version.
+	CatalogAIModelVersions *CatalogAIModelVersions
 	// Service API mappings represent the link between Service and API entities.
 	// Once an API is mapped to a Service, a rich view of the linked APIs will be presented on the APIs tab of the Catalog Service.
 	// Similarly, Services mapped to an API will be listed on the API overview page under Catalog.
@@ -233,6 +241,13 @@ type SDK struct {
 	CatalogIntegrations *CatalogIntegrations
 	MCPServers          *MCPServers
 	MCPServerRuntime    *MCPServerRuntime
+	// Manage MCPs - a catalogable proxy for AI Gateway MCPs
+	CatalogMCPs *CatalogMCPs
+	// Link an MCP to an AI Gateway MCP.
+	CatalogMCPImplementations *CatalogMCPImplementations
+	// Manage an MCP's version.
+	CatalogMCPVersions *CatalogMCPVersions
+	Mesh               *Mesh
 	// Operations related to notifications
 	Notifications *Notifications
 	// Resource mappings represent the link between a resource and a service.
@@ -577,6 +592,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk.AIGatewayModels = newAIGatewayModels(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayPolicies = newAIGatewayPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayVaults = newAIGatewayVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogAIModels = newCatalogAIModels(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogAIModelImplementations = newCatalogAIModelImplementations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogAIModelSpecs = newCatalogAIModelSpecs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogAIModelVersions = newCatalogAIModelVersions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -608,6 +627,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServerRuntime = newMCPServerRuntime(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogMCPs = newCatalogMCPs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogMCPImplementations = newCatalogMCPImplementations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogMCPVersions = newCatalogMCPVersions(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Mesh = newMesh(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)

@@ -19,9 +19,9 @@ custom := components.ClientAuth("custom_value")
 | Name                                | Value                               |
 | ----------------------------------- | ----------------------------------- |
 | `ClientAuthClientSecretBasic`       | client_secret_basic                 |
-| `ClientAuthClientSecretPost`        | client_secret_post                  |
 | `ClientAuthClientSecretJwt`         | client_secret_jwt                   |
-| `ClientAuthPrivateKeyJwt`           | private_key_jwt                     |
-| `ClientAuthTLSClientAuth`           | tls_client_auth                     |
-| `ClientAuthSelfSignedTLSClientAuth` | self_signed_tls_client_auth         |
+| `ClientAuthClientSecretPost`        | client_secret_post                  |
 | `ClientAuthNone`                    | none                                |
+| `ClientAuthPrivateKeyJwt`           | private_key_jwt                     |
+| `ClientAuthSelfSignedTLSClientAuth` | self_signed_tls_client_auth         |
+| `ClientAuthTLSClientAuth`           | tls_client_auth                     |
