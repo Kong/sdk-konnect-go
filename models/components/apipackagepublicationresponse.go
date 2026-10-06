@@ -8,10 +8,40 @@ import (
 	"time"
 )
 
+// TryItUIAudience - The audience for the Try It UI feature.
+//
+// `all` means that the Try It UI will be available to all users, including unauthenticated users.
+//
+// `authenticated` means that the Try It UI will only be available to authenticated users.
+//
+// `registered` means that the Try It UI will only be available to users who have registered for the API.
+type TryItUIAudience string
+
+const (
+	TryItUIAudienceAll           TryItUIAudience = "all"
+	TryItUIAudienceAuthenticated TryItUIAudience = "authenticated"
+	TryItUIAudienceRegistered    TryItUIAudience = "registered"
+)
+
+func (e TryItUIAudience) ToPointer() *TryItUIAudience {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *TryItUIAudience) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "all", "authenticated", "registered":
+			return true
+		}
+	}
+	return false
+}
+
 // APIPublicationSpecRenderer - Customization settings for the API spec renderer in the portal.
 type APIPublicationSpecRenderer struct {
 	// Enable in-browser testing for your API. All linked gateways must have the CORS plugin configured.
-	TryItUI *bool `default:"true" json:"try_it_ui"`
+	TryItUI *bool `json:"try_it_ui"`
 	// The audience for the Try It UI feature.
 	//
 	// `all` means that the Try It UI will be available to all users, including unauthenticated users.
@@ -20,18 +50,7 @@ type APIPublicationSpecRenderer struct {
 	//
 	// `registered` means that the Try It UI will only be available to users who have registered for the API.
 	//
-	TryItUIAudience TryItUIAudience `json:"try_it_ui_audience"`
-}
-
-func (a APIPublicationSpecRenderer) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *APIPublicationSpecRenderer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	TryItUIAudience *TryItUIAudience `json:"try_it_ui_audience"`
 }
 
 func (a *APIPublicationSpecRenderer) GetTryItUI() *bool {
@@ -41,9 +60,9 @@ func (a *APIPublicationSpecRenderer) GetTryItUI() *bool {
 	return a.TryItUI
 }
 
-func (a *APIPublicationSpecRenderer) GetTryItUIAudience() TryItUIAudience {
+func (a *APIPublicationSpecRenderer) GetTryItUIAudience() *TryItUIAudience {
 	if a == nil {
-		return TryItUIAudience("")
+		return nil
 	}
 	return a.TryItUIAudience
 }
