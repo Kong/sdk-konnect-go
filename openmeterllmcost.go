@@ -38,6 +38,8 @@ func newOpenMeterLLMCost(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks 
 // This endpoint is currently in beta and is subject to change.
 //
 // List per-namespace price overrides.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *OpenMeterLLMCost) ListLlmCostOverrides(ctx context.Context, filter *components.ListLLMCostPricesParamsFilter, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListLlmCostOverridesResponse, error) {
 	request := operations.ListLlmCostOverridesRequest{
 		Filter: filter,
@@ -318,6 +320,8 @@ func (s *OpenMeterLLMCost) ListLlmCostOverrides(ctx context.Context, filter *com
 // This endpoint is currently in beta and is subject to change.
 //
 // Create a per-namespace price override.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *OpenMeterLLMCost) CreateLlmCostOverride(ctx context.Context, request components.LLMCostOverrideCreate, opts ...operations.Option) (*operations.CreateLlmCostOverrideResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -596,6 +600,8 @@ func (s *OpenMeterLLMCost) CreateLlmCostOverride(ctx context.Context, request co
 // This endpoint is currently in beta and is subject to change.
 //
 // Delete a per-namespace price override.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *OpenMeterLLMCost) DeleteLlmCostOverride(ctx context.Context, priceID string, opts ...operations.Option) (*operations.DeleteLlmCostOverrideResponse, error) {
 	request := operations.DeleteLlmCostOverrideRequest{
 		PriceID: priceID,
@@ -873,6 +879,8 @@ func (s *OpenMeterLLMCost) DeleteLlmCostOverride(ctx context.Context, priceID st
 // This endpoint is currently in beta and is subject to change.
 //
 // List global LLM cost prices. Returns prices with overrides applied if any.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *OpenMeterLLMCost) ListLlmCostPrices(ctx context.Context, request operations.ListLlmCostPricesRequest, opts ...operations.Option) (*operations.ListLlmCostPricesResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1149,6 +1157,8 @@ func (s *OpenMeterLLMCost) ListLlmCostPrices(ctx context.Context, request operat
 //
 // Get a specific LLM cost price by ID. Returns the price with overrides applied if
 // any.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *OpenMeterLLMCost) GetLlmCostPrice(ctx context.Context, priceID string, opts ...operations.Option) (*operations.GetLlmCostPriceResponse, error) {
 	request := operations.GetLlmCostPriceRequest{
 		PriceID: priceID,

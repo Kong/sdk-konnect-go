@@ -3,6 +3,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // BillingSubscriptionCostBasisPin - A cost basis pinned to a custom-currency pair for the subscription.
 type BillingSubscriptionCostBasisPin struct {
 	// The managed custom currency ID.
@@ -11,6 +15,17 @@ type BillingSubscriptionCostBasisPin struct {
 	InvoiceCurrency string `json:"invoice_currency"`
 	// The pinned cost basis resource ID.
 	CostBasisID string `json:"cost_basis_id"`
+}
+
+func (b BillingSubscriptionCostBasisPin) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BillingSubscriptionCostBasisPin) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"custom_currency_id", "invoice_currency", "cost_basis_id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (b *BillingSubscriptionCostBasisPin) GetCustomCurrencyID() string {

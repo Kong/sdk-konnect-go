@@ -16,24 +16,32 @@ type OpenMeterLLMCostSDK interface {
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// List per-namespace price overrides.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	ListLlmCostOverrides(ctx context.Context, filter *components.ListLLMCostPricesParamsFilter, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListLlmCostOverridesResponse, error)
 	// CreateLlmCostOverride - Create LLM cost override
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Create a per-namespace price override.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	CreateLlmCostOverride(ctx context.Context, request components.LLMCostOverrideCreate, opts ...operations.Option) (*operations.CreateLlmCostOverrideResponse, error)
 	// DeleteLlmCostOverride - Delete LLM cost override
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Delete a per-namespace price override.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	DeleteLlmCostOverride(ctx context.Context, priceID string, opts ...operations.Option) (*operations.DeleteLlmCostOverrideResponse, error)
 	// ListLlmCostPrices - List LLM cost prices
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// List global LLM cost prices. Returns prices with overrides applied if any.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	ListLlmCostPrices(ctx context.Context, request operations.ListLlmCostPricesRequest, opts ...operations.Option) (*operations.ListLlmCostPricesResponse, error)
 	// GetLlmCostPrice - Get LLM cost price
 	// **Pre-release Endpoint**
@@ -41,5 +49,7 @@ type OpenMeterLLMCostSDK interface {
 	//
 	// Get a specific LLM cost price by ID. Returns the price with overrides applied if
 	// any.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	GetLlmCostPrice(ctx context.Context, priceID string, opts ...operations.Option) (*operations.GetLlmCostPriceResponse, error)
 }

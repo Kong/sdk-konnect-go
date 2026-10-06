@@ -17,6 +17,17 @@ type BillingSubscriptionItemFeatureReference struct {
 	ID string `json:"id"`
 }
 
+func (b BillingSubscriptionItemFeatureReference) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BillingSubscriptionItemFeatureReference) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (b *BillingSubscriptionItemFeatureReference) GetID() string {
 	if b == nil {
 		return ""
@@ -289,7 +300,7 @@ func (b BillingSubscriptionItemUnitConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BillingSubscriptionItemUnitConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"operation", "conversion_factor"}); err != nil {
 		return err
 	}
 	return nil
@@ -363,6 +374,17 @@ type BillingSubscriptionItemCommitments struct {
 	MaximumAmount *string `json:"maximum_amount,omitempty"`
 }
 
+func (b BillingSubscriptionItemCommitments) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BillingSubscriptionItemCommitments) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (b *BillingSubscriptionItemCommitments) GetMinimumAmount() *string {
 	if b == nil {
 		return nil
@@ -385,6 +407,17 @@ type BillingSubscriptionItemDiscounts struct {
 	// usage-based lines (not flat fees). Usage is treated as zero until this amount is
 	// exhausted.
 	Usage *string `json:"usage,omitempty"`
+}
+
+func (b BillingSubscriptionItemDiscounts) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BillingSubscriptionItemDiscounts) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (b *BillingSubscriptionItemDiscounts) GetPercentage() *float64 {
@@ -435,6 +468,17 @@ type BillingSubscriptionItemTaxCode struct {
 	ID string `json:"id"`
 }
 
+func (b BillingSubscriptionItemTaxCode) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BillingSubscriptionItemTaxCode) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (b *BillingSubscriptionItemTaxCode) GetID() string {
 	if b == nil {
 		return ""
@@ -453,6 +497,17 @@ type BillingSubscriptionItemTaxConfig struct {
 	Behavior *BillingSubscriptionItemTaxBehavior `json:"behavior,omitempty"`
 	// Tax code applied to the invoice line item.
 	Code *BillingSubscriptionItemTaxCode `json:"code,omitempty"`
+}
+
+func (b BillingSubscriptionItemTaxConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BillingSubscriptionItemTaxConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (b *BillingSubscriptionItemTaxConfig) GetBehavior() *BillingSubscriptionItemTaxBehavior {
@@ -590,8 +645,8 @@ func (u BillingSubscriptionItemEntitlementTemplate) MarshalJSON() ([]byte, error
 	return nil, errors.New("could not marshal union type BillingSubscriptionItemEntitlementTemplate: all fields are null")
 }
 
-// RateCard - The rate card describing what the customer gets and pays for this item.
-type RateCard struct {
+// BillingSubscriptionItemRateCard - The rate card describing what the customer gets and pays for this item.
+type BillingSubscriptionItemRateCard struct {
 	// Display name of the resource.
 	//
 	// Between 1 and 256 characters.
@@ -641,151 +696,151 @@ type RateCard struct {
 	Entitlement *BillingSubscriptionItemEntitlementTemplate `json:"entitlement,omitempty"`
 }
 
-func (r RateCard) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
+func (b BillingSubscriptionItemRateCard) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
 }
 
-func (r *RateCard) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+func (b *BillingSubscriptionItemRateCard) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"name", "key", "price"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (r *RateCard) GetName() string {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetName() string {
+	if b == nil {
 		return ""
 	}
-	return r.Name
+	return b.Name
 }
 
-func (r *RateCard) GetDescription() *string {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetDescription() *string {
+	if b == nil {
 		return nil
 	}
-	return r.Description
+	return b.Description
 }
 
-func (r *RateCard) GetLabels() map[string]string {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetLabels() map[string]string {
+	if b == nil {
 		return nil
 	}
-	return r.Labels
+	return b.Labels
 }
 
-func (r *RateCard) GetKey() string {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetKey() string {
+	if b == nil {
 		return ""
 	}
-	return r.Key
+	return b.Key
 }
 
-func (r *RateCard) GetFeature() *BillingSubscriptionItemFeatureReference {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetFeature() *BillingSubscriptionItemFeatureReference {
+	if b == nil {
 		return nil
 	}
-	return r.Feature
+	return b.Feature
 }
 
-func (r *RateCard) GetCurrency() *string {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetCurrency() *string {
+	if b == nil {
 		return nil
 	}
-	return r.Currency
+	return b.Currency
 }
 
-func (r *RateCard) GetBillingCadence() *string {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetBillingCadence() *string {
+	if b == nil {
 		return nil
 	}
-	return r.BillingCadence
+	return b.BillingCadence
 }
 
-func (r *RateCard) GetPrice() BillingSubscriptionItemPrice {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetPrice() BillingSubscriptionItemPrice {
+	if b == nil {
 		return BillingSubscriptionItemPrice{}
 	}
-	return r.Price
+	return b.Price
 }
 
-func (r *RateCard) GetPriceFree() *BillingPriceFree {
-	return r.GetPrice().BillingPriceFree
+func (b *BillingSubscriptionItemRateCard) GetPriceFree() *BillingPriceFree {
+	return b.GetPrice().BillingPriceFree
 }
 
-func (r *RateCard) GetPriceFlat() *BillingPriceFlat {
-	return r.GetPrice().BillingPriceFlat
+func (b *BillingSubscriptionItemRateCard) GetPriceFlat() *BillingPriceFlat {
+	return b.GetPrice().BillingPriceFlat
 }
 
-func (r *RateCard) GetPriceUnit() *BillingPriceUnit {
-	return r.GetPrice().BillingPriceUnit
+func (b *BillingSubscriptionItemRateCard) GetPriceUnit() *BillingPriceUnit {
+	return b.GetPrice().BillingPriceUnit
 }
 
-func (r *RateCard) GetPriceGraduated() *BillingPriceGraduated {
-	return r.GetPrice().BillingPriceGraduated
+func (b *BillingSubscriptionItemRateCard) GetPriceGraduated() *BillingPriceGraduated {
+	return b.GetPrice().BillingPriceGraduated
 }
 
-func (r *RateCard) GetPriceVolume() *BillingPriceVolume {
-	return r.GetPrice().BillingPriceVolume
+func (b *BillingSubscriptionItemRateCard) GetPriceVolume() *BillingPriceVolume {
+	return b.GetPrice().BillingPriceVolume
 }
 
-func (r *RateCard) GetUnitConfig() *BillingSubscriptionItemUnitConfig {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetUnitConfig() *BillingSubscriptionItemUnitConfig {
+	if b == nil {
 		return nil
 	}
-	return r.UnitConfig
+	return b.UnitConfig
 }
 
-func (r *RateCard) GetPaymentTerm() *BillingSubscriptionItemPaymentTerm {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetPaymentTerm() *BillingSubscriptionItemPaymentTerm {
+	if b == nil {
 		return nil
 	}
-	return r.PaymentTerm
+	return b.PaymentTerm
 }
 
-func (r *RateCard) GetCommitments() *BillingSubscriptionItemCommitments {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetCommitments() *BillingSubscriptionItemCommitments {
+	if b == nil {
 		return nil
 	}
-	return r.Commitments
+	return b.Commitments
 }
 
-func (r *RateCard) GetDiscounts() *BillingSubscriptionItemDiscounts {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetDiscounts() *BillingSubscriptionItemDiscounts {
+	if b == nil {
 		return nil
 	}
-	return r.Discounts
+	return b.Discounts
 }
 
-func (r *RateCard) GetTaxConfig() *BillingSubscriptionItemTaxConfig {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetTaxConfig() *BillingSubscriptionItemTaxConfig {
+	if b == nil {
 		return nil
 	}
-	return r.TaxConfig
+	return b.TaxConfig
 }
 
-func (r *RateCard) GetEntitlement() *BillingSubscriptionItemEntitlementTemplate {
-	if r == nil {
+func (b *BillingSubscriptionItemRateCard) GetEntitlement() *BillingSubscriptionItemEntitlementTemplate {
+	if b == nil {
 		return nil
 	}
-	return r.Entitlement
+	return b.Entitlement
 }
 
-func (r *RateCard) GetEntitlementMetered() *BillingRateCardMeteredEntitlement {
-	if v := r.GetEntitlement(); v != nil {
+func (b *BillingSubscriptionItemRateCard) GetEntitlementMetered() *BillingRateCardMeteredEntitlement {
+	if v := b.GetEntitlement(); v != nil {
 		return v.BillingRateCardMeteredEntitlement
 	}
 	return nil
 }
 
-func (r *RateCard) GetEntitlementStatic() *BillingRateCardStaticEntitlement {
-	if v := r.GetEntitlement(); v != nil {
+func (b *BillingSubscriptionItemRateCard) GetEntitlementStatic() *BillingRateCardStaticEntitlement {
+	if v := b.GetEntitlement(); v != nil {
 		return v.BillingRateCardStaticEntitlement
 	}
 	return nil
 }
 
-func (r *RateCard) GetEntitlementBoolean() *BillingRateCardBooleanEntitlement {
-	if v := r.GetEntitlement(); v != nil {
+func (b *BillingSubscriptionItemRateCard) GetEntitlementBoolean() *BillingRateCardBooleanEntitlement {
+	if v := b.GetEntitlement(); v != nil {
 		return v.BillingRateCardBooleanEntitlement
 	}
 	return nil
@@ -801,7 +856,7 @@ type BillingSubscriptionItem struct {
 	// active.
 	ActiveTo *time.Time `json:"active_to,omitempty"`
 	// The rate card describing what the customer gets and pays for this item.
-	RateCard RateCard `json:"rate_card"`
+	RateCard BillingSubscriptionItemRateCard `json:"rate_card"`
 }
 
 func (b BillingSubscriptionItem) MarshalJSON() ([]byte, error) {
@@ -809,7 +864,7 @@ func (b BillingSubscriptionItem) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BillingSubscriptionItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id", "active_from", "rate_card"}); err != nil {
 		return err
 	}
 	return nil
@@ -836,9 +891,9 @@ func (b *BillingSubscriptionItem) GetActiveTo() *time.Time {
 	return b.ActiveTo
 }
 
-func (b *BillingSubscriptionItem) GetRateCard() RateCard {
+func (b *BillingSubscriptionItem) GetRateCard() BillingSubscriptionItemRateCard {
 	if b == nil {
-		return RateCard{}
+		return BillingSubscriptionItemRateCard{}
 	}
 	return b.RateCard
 }

@@ -34,9 +34,6 @@ func newOpenMeterProductCatalog(rootSDK *SDK, sdkConfig config.SDKConfiguration,
 }
 
 // ListProductCatalogAddons - List add-ons
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // List all add-ons.
 func (s *OpenMeterProductCatalog) ListProductCatalogAddons(ctx context.Context, request operations.ListProductCatalogAddonsRequest, opts ...operations.Option) (*operations.ListProductCatalogAddonsResponse, error) {
 	o := operations.Options{}
@@ -309,9 +306,6 @@ func (s *OpenMeterProductCatalog) ListProductCatalogAddons(ctx context.Context, 
 }
 
 // CreateProductCatalogAddon - Create add-on
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Create a new add-on.
 func (s *OpenMeterProductCatalog) CreateProductCatalogAddon(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateProductCatalogAddonResponse, error) {
 	o := operations.Options{}
@@ -587,9 +581,6 @@ func (s *OpenMeterProductCatalog) CreateProductCatalogAddon(ctx context.Context,
 }
 
 // UpdateProductCatalogAddon - Update add-on
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Update an add-on by id.
 func (s *OpenMeterProductCatalog) UpdateProductCatalogAddon(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateProductCatalogAddonResponse, error) {
 	request := operations.UpdateProductCatalogAddonRequest{
@@ -912,9 +903,6 @@ func (s *OpenMeterProductCatalog) UpdateProductCatalogAddon(ctx context.Context,
 }
 
 // GetProductCatalogAddon - Get add-on
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Get add-on by id.
 func (s *OpenMeterProductCatalog) GetProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.GetProductCatalogAddonResponse, error) {
 	request := operations.GetProductCatalogAddonRequest{
@@ -1229,9 +1217,6 @@ func (s *OpenMeterProductCatalog) GetProductCatalogAddon(ctx context.Context, ad
 }
 
 // DeleteProductCatalogAddon - Soft delete add-on
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Soft delete add-on by id.
 func (s *OpenMeterProductCatalog) DeleteProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.DeleteProductCatalogAddonResponse, error) {
 	request := operations.DeleteProductCatalogAddonRequest{
@@ -1506,9 +1491,6 @@ func (s *OpenMeterProductCatalog) DeleteProductCatalogAddon(ctx context.Context,
 }
 
 // ArchiveProductCatalogAddon - Archive add-on version
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Archive an add-on version.
 func (s *OpenMeterProductCatalog) ArchiveProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.ArchiveProductCatalogAddonResponse, error) {
 	request := operations.ArchiveProductCatalogAddonRequest{
@@ -1802,9 +1784,6 @@ func (s *OpenMeterProductCatalog) ArchiveProductCatalogAddon(ctx context.Context
 }
 
 // PublishProductCatalogAddon - Publish add-on version
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Publish an add-on version.
 func (s *OpenMeterProductCatalog) PublishProductCatalogAddon(ctx context.Context, addonID string, opts ...operations.Option) (*operations.PublishProductCatalogAddonResponse, error) {
 	request := operations.PublishProductCatalogAddonRequest{
@@ -2098,9 +2077,6 @@ func (s *OpenMeterProductCatalog) PublishProductCatalogAddon(ctx context.Context
 }
 
 // ListPlans - List plans
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // List all plans.
 func (s *OpenMeterProductCatalog) ListPlans(ctx context.Context, request operations.ListPlansRequest, opts ...operations.Option) (*operations.ListPlansResponse, error) {
 	o := operations.Options{}
@@ -2373,9 +2349,6 @@ func (s *OpenMeterProductCatalog) ListPlans(ctx context.Context, request operati
 }
 
 // CreatePlan - Create plan
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Create a new plan.
 func (s *OpenMeterProductCatalog) CreatePlan(ctx context.Context, request components.CreatePlanRequest, opts ...operations.Option) (*operations.CreatePlanResponse, error) {
 	o := operations.Options{}
@@ -2651,9 +2624,6 @@ func (s *OpenMeterProductCatalog) CreatePlan(ctx context.Context, request compon
 }
 
 // UpdatePlan - Update plan
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Update a plan by id.
 func (s *OpenMeterProductCatalog) UpdatePlan(ctx context.Context, planID string, upsertPlanRequest components.UpsertPlanRequest, opts ...operations.Option) (*operations.UpdatePlanResponse, error) {
 	request := operations.UpdatePlanRequest{
@@ -2976,9 +2946,6 @@ func (s *OpenMeterProductCatalog) UpdatePlan(ctx context.Context, planID string,
 }
 
 // GetPlan - Get plan
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Get a plan by id.
 func (s *OpenMeterProductCatalog) GetPlan(ctx context.Context, planID string, opts ...operations.Option) (*operations.GetPlanResponse, error) {
 	request := operations.GetPlanRequest{
@@ -3293,9 +3260,6 @@ func (s *OpenMeterProductCatalog) GetPlan(ctx context.Context, planID string, op
 }
 
 // DeletePlan - Delete plan
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Delete a plan by id.
 func (s *OpenMeterProductCatalog) DeletePlan(ctx context.Context, planID string, opts ...operations.Option) (*operations.DeletePlanResponse, error) {
 	request := operations.DeletePlanRequest{
@@ -3461,6 +3425,302 @@ func (s *OpenMeterProductCatalog) DeletePlan(ctx context.Context, planID string,
 	switch {
 	case httpRes.StatusCode == 204:
 		utils.DrainBody(httpRes)
+	case httpRes.StatusCode == 400:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.BadRequestError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
+			}
+
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 401:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.UnauthorizedError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
+			}
+
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 403:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.ForbiddenError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
+			}
+
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 404:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.NotFoundError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
+			}
+
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+
+}
+
+// ListPlanAddons - List add-ons for plan
+// **Pre-release Endpoint**
+// This endpoint is currently in beta and is subject to change.
+//
+// List add-ons associated with a plan.
+func (s *OpenMeterProductCatalog) ListPlanAddons(ctx context.Context, request operations.ListPlanAddonsRequest, opts ...operations.Option) (*operations.ListPlanAddonsResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionRetries,
+		operations.SupportedOptionTimeout,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
+
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/plans/{planId}/addons", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "list-plan-addons",
+		OAuth2Scopes:     nil,
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
+
+	timeout := o.Timeout
+	if timeout == nil {
+		timeout = s.sdkConfiguration.Timeout
+	}
+
+	if timeout != nil {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, *timeout)
+		defer cancel()
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
+	}
+
+	globalRetryConfig := s.sdkConfiguration.RetryConfig
+	retryConfig := o.Retries
+	if retryConfig == nil {
+		if globalRetryConfig != nil {
+			retryConfig = globalRetryConfig
+		}
+	}
+
+	var httpRes *http.Response
+	if retryConfig != nil {
+		httpRes, err = utils.Retry(ctx, utils.Retries{
+			Config: retryConfig,
+			StatusCodes: []string{
+				"429",
+				"500",
+				"502",
+				"503",
+				"504",
+			},
+		}, func() (*http.Response, error) {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
+				copyBody, err := req.GetBody()
+
+				if err != nil {
+					return nil, err
+				}
+
+				req.Body = copyBody
+			}
+
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			if err != nil {
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
+			}
+
+			httpRes, err := s.sdkConfiguration.Client.Do(req)
+			if err != nil || httpRes == nil {
+				if err != nil {
+					err = fmt.Errorf("error sending request: %w", err)
+				} else {
+					err = fmt.Errorf("error sending request: no response")
+				}
+
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			}
+			return httpRes, err
+		})
+
+		if err != nil {
+			return nil, err
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	} else {
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		if err != nil {
+			return nil, err
+		}
+
+		httpRes, err = s.sdkConfiguration.Client.Do(req)
+		if err != nil || httpRes == nil {
+			if err != nil {
+				err = fmt.Errorf("error sending request: %w", err)
+			} else {
+				err = fmt.Errorf("error sending request: no response")
+			}
+
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			return nil, err
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			if err != nil {
+				return nil, err
+			} else if _httpRes != nil {
+				httpRes = _httpRes
+			}
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+
+	res := &operations.ListPlanAddonsResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out components.PlanAddonPagePaginatedResponse
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.PlanAddonPagePaginatedResponse = &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -4748,9 +5008,6 @@ func (s *OpenMeterProductCatalog) DeletePlanAddon(ctx context.Context, planID st
 }
 
 // ArchivePlan - Archive plan version
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Archive a plan version.
 func (s *OpenMeterProductCatalog) ArchivePlan(ctx context.Context, planID string, opts ...operations.Option) (*operations.ArchivePlanResponse, error) {
 	request := operations.ArchivePlanRequest{
@@ -5044,9 +5301,6 @@ func (s *OpenMeterProductCatalog) ArchivePlan(ctx context.Context, planID string
 }
 
 // PublishPlan - Publish plan version
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Publish a plan version.
 func (s *OpenMeterProductCatalog) PublishPlan(ctx context.Context, planID string, opts ...operations.Option) (*operations.PublishPlanResponse, error) {
 	request := operations.PublishPlanRequest{

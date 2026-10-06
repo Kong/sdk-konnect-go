@@ -6,11 +6,689 @@ Billing settings manages the billing profiles and invoices for customers.
 
 ### Available Operations
 
+* [ListInvoices](#listinvoices) - List billing invoices
+* [GetInvoice](#getinvoice) - Get a billing invoice
+* [UpdateInvoice](#updateinvoice) - Update a billing invoice
+* [DeleteInvoice](#deleteinvoice) - Delete a billing invoice
+* [AdvanceInvoice](#advanceinvoice) - Advance billing invoice's next status
+* [ApproveInvoice](#approveinvoice) - Send the invoice to the customer
+* [RetryInvoice](#retryinvoice) - Retry advancing the invoice after a failed attempt
+* [SnapshotQuantitiesInvoice](#snapshotquantitiesinvoice) - Snapshot quantities for usage based line items
+* [ListCharges](#listcharges) - List charges
 * [ListBillingProfiles](#listbillingprofiles) - List billing profiles
 * [CreateBillingProfile](#createbillingprofile) - Create a new billing profile
 * [GetBillingProfile](#getbillingprofile) - Get a billing profile
 * [UpdateBillingProfile](#updatebillingprofile) - Update a billing profile
 * [DeleteBillingProfile](#deletebillingprofile) - Delete a billing profile
+
+## ListInvoices
+
+List billing invoices.
+
+Returns a page of invoices. Gathering invoices are never included. Use `filter`
+to narrow by status, customer, dates, or service period start. Use `sort` to
+control ordering.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-invoices" method="get" path="/v3/openmeter/billing/invoices" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.ListInvoices(ctx, operations.ListInvoicesRequest{
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
+        Filter: &components.ListInvoicesParamsFilter{
+            CustomerID: sdkkonnectgo.Pointer(components.CreateListInvoicesParamsFilterULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+            IssuedAt: sdkkonnectgo.Pointer(components.CreateListInvoicesParamsFilterDateTimeFieldFilterListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter(
+                components.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter{
+                    Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            ServicePeriodStart: sdkkonnectgo.Pointer(components.CreateListInvoicesParamsFilterServicePeriodStartDateTimeFieldFilterListInvoicesParamsFilterDateTimeFieldFilterServicePeriodStartDateTimeFieldLTFilter(
+                components.ListInvoicesParamsFilterDateTimeFieldFilterServicePeriodStartDateTimeFieldLTFilter{
+                    Lt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            CreatedAt: sdkkonnectgo.Pointer(components.CreateListInvoicesParamsFilterCreatedAtDateTimeFieldFilterListInvoicesParamsFilterDateTimeFieldFilterCreatedAtDateTimeFieldGTFilter(
+                components.ListInvoicesParamsFilterDateTimeFieldFilterCreatedAtDateTimeFieldGTFilter{
+                    Gt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.InvoicePagePaginatedResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
+| `request`                                                                        | [operations.ListInvoicesRequest](../../models/operations/listinvoicesrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |
+
+### Response
+
+**[*operations.ListInvoicesResponse](../../models/operations/listinvoicesresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetInvoice
+
+Get a billing invoice by ID.
+
+Returns the full invoice resource including line items, status details, totals,
+and workflow configuration snapshot.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-invoice" method="get" path="/v3/openmeter/billing/invoices/{invoiceId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.GetInvoice(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingInvoice != nil {
+        switch res.BillingInvoice.Type {
+            case components.BillingInvoiceTypeStandard:
+                // res.BillingInvoice.BillingInvoiceStandard is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `invoiceID`                                              | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                               |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetInvoiceResponse](../../models/operations/getinvoiceresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateInvoice
+
+Update a billing invoice.
+
+Only the mutable fields of the invoice can be edited: description, labels,
+supplier, customer, workflow settings, and top-level lines. Top-level lines are
+matched by `id`; lines without an `id` are created, and existing lines omitted
+from `lines` are deleted. Detailed (child) lines are always computed and cannot
+be edited directly. Only invoices in draft status can be updated.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-invoice" method="put" path="/v3/openmeter/billing/invoices/{invoiceId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.UpdateInvoice(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.CreateUpdateInvoiceRequestStandard(
+        components.UpdateInvoiceStandardRequest{
+            Supplier: components.UpdateInvoiceStandardRequestSupplier{
+                Addresses: &components.UpdateInvoiceStandardRequestAddresses{
+                    BillingAddress: components.UpdateInvoiceStandardRequestBillingAddress{
+                        Country: sdkkonnectgo.Pointer("US"),
+                    },
+                },
+            },
+            Customer: components.UpdateInvoiceStandardRequestCustomer{
+                Name: "<value>",
+                BillingAddress: &components.UpdateInvoiceStandardRequestCustomerBillingAddress{
+                    Country: sdkkonnectgo.Pointer("US"),
+                },
+                ID: "01G65Z755AFWAKHE12NY0CQ9FH",
+                Key: sdkkonnectgo.Pointer("019ae40f-4258-7f15-9491-842f42a7d6ac"),
+            },
+            Type: components.UpdateInvoiceStandardRequestTypeStandard,
+            Workflow: components.UpdateInvoiceStandardRequestWorkflow{
+                Workflow: components.UpdateInvoiceStandardRequestWorkflowConfig{
+                    Invoicing: &components.UpdateInvoiceStandardRequestInvoicingSettings{
+                        DraftPeriod: sdkkonnectgo.Pointer("P1D"),
+                    },
+                    Payment: sdkkonnectgo.Pointer(components.CreateUpdateInvoiceStandardRequestPaymentSettingsChargeAutomatically(
+                        components.UpdateBillingWorkflowPaymentChargeAutomaticallySettings{
+                            CollectionMethod: components.UpdateBillingWorkflowPaymentChargeAutomaticallySettingsCollectionMethodChargeAutomatically,
+                        },
+                    )),
+                },
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingInvoice != nil {
+        switch res.BillingInvoice.Type {
+            case components.BillingInvoiceTypeStandard:
+                // res.BillingInvoice.BillingInvoiceStandard is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `invoiceID`                                                                        | `string`                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | 01G65Z755AFWAKHE12NY0CQ9FH                                                         |
+| `updateInvoiceRequest`                                                             | [components.UpdateInvoiceRequest](../../models/components/updateinvoicerequest.md) | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+
+### Response
+
+**[*operations.UpdateInvoiceResponse](../../models/operations/updateinvoiceresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteInvoice
+
+Delete a billing invoice.
+
+Only standard invoices in draft status can be deleted. Deleting an invoice will
+also delete all associated line items and workflow configuration.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-invoice" method="delete" path="/v3/openmeter/billing/invoices/{invoiceId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.DeleteInvoice(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `invoiceID`                                              | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                               |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteInvoiceResponse](../../models/operations/deleteinvoiceresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## AdvanceInvoice
+
+Advance a billing invoice.
+
+Advances the invoice to the next workflow state. The next state is determined by
+the invoice's current status and workflow configuration. Only invoices in draft
+or issued status can be advanced.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="advance-invoice" method="post" path="/v3/openmeter/billing/invoices/{invoiceId}/advance" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.AdvanceInvoice(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingInvoice != nil {
+        switch res.BillingInvoice.Type {
+            case components.BillingInvoiceTypeStandard:
+                // res.BillingInvoice.BillingInvoiceStandard is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `invoiceID`                                              | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                               |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.AdvanceInvoiceResponse](../../models/operations/advanceinvoiceresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ApproveInvoice
+
+Approve a billing invoice.
+
+This call instantly sends the invoice to the customer using the configured
+billing profile app.
+
+This call is valid in two invoice statuses:
+
+- draft: the invoice will be sent to the customer, the invoice state becomes
+issued
+- manual_approval_needed: the invoice will be sent to the customer, the invoice
+state becomes issued
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="approve-invoice" method="post" path="/v3/openmeter/billing/invoices/{invoiceId}/approve" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.ApproveInvoice(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingInvoice != nil {
+        switch res.BillingInvoice.Type {
+            case components.BillingInvoiceTypeStandard:
+                // res.BillingInvoice.BillingInvoiceStandard is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `invoiceID`                                              | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                               |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.ApproveInvoiceResponse](../../models/operations/approveinvoiceresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## RetryInvoice
+
+Retry sending a billing invoice.
+
+Retry advancing the invoice after a failed attempt.
+
+The action can be called when the invoice's statusDetails' actions field contain
+the "retry" action.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="retry-invoice" method="post" path="/v3/openmeter/billing/invoices/{invoiceId}/retry" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.RetryInvoice(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingInvoice != nil {
+        switch res.BillingInvoice.Type {
+            case components.BillingInvoiceTypeStandard:
+                // res.BillingInvoice.BillingInvoiceStandard is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `invoiceID`                                              | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                               |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.RetryInvoiceResponse](../../models/operations/retryinvoiceresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## SnapshotQuantitiesInvoice
+
+Snapshot quantities for usage-based line items.
+
+This call will snapshot the quantities for all usage based line items in the
+invoice.
+
+This call is only valid in draft.waiting_for_collection status, where the
+collection period can be skipped using this action.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="snapshot-quantities-invoice" method="post" path="/v3/openmeter/billing/invoices/{invoiceId}/snapshot-quantities" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.SnapshotQuantitiesInvoice(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingInvoice != nil {
+        switch res.BillingInvoice.Type {
+            case components.BillingInvoiceTypeStandard:
+                // res.BillingInvoice.BillingInvoiceStandard is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `invoiceID`                                              | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                               |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.SnapshotQuantitiesInvoiceResponse](../../models/operations/snapshotquantitiesinvoiceresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListCharges
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
+List charges.
+
+Returns the charges of every customer that are represented as either flat fee or
+usage-based charges.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-charges" method="get" path="/v3/openmeter/charges" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterBillingSettings.ListCharges(ctx, operations.ListChargesRequest{
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
+        Filter: &components.ListChargesParamsFilter{
+            FeatureID: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+            ServicePeriodFrom: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter(
+                components.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter{
+                    Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            ServicePeriodTo: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterServicePeriodToDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter(
+                components.ListChargesParamsFilterDateTimeFieldFilterServicePeriodToDateTimeFieldEqualsFilter{
+                    Eq: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            CustomerID: sdkkonnectgo.Pointer(components.CreateListChargesParamsFilterCustomerIDULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ChargePagePaginatedResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.ListChargesRequest](../../models/operations/listchargesrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
+
+### Response
+
+**[*operations.ListChargesResponse](../../models/operations/listchargesresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListBillingProfiles
 
