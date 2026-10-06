@@ -8,10 +8,40 @@ import (
 	"time"
 )
 
+// APIPublicationResponseTryItUIAudience - The audience for the Try It UI feature.
+//
+// `all` means that the Try It UI will be available to all users, including unauthenticated users.
+//
+// `authenticated` means that the Try It UI will only be available to authenticated users.
+//
+// `registered` means that the Try It UI will only be available to users who have registered for the API.
+type APIPublicationResponseTryItUIAudience string
+
+const (
+	APIPublicationResponseTryItUIAudienceAll           APIPublicationResponseTryItUIAudience = "all"
+	APIPublicationResponseTryItUIAudienceAuthenticated APIPublicationResponseTryItUIAudience = "authenticated"
+	APIPublicationResponseTryItUIAudienceRegistered    APIPublicationResponseTryItUIAudience = "registered"
+)
+
+func (e APIPublicationResponseTryItUIAudience) ToPointer() *APIPublicationResponseTryItUIAudience {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *APIPublicationResponseTryItUIAudience) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "all", "authenticated", "registered":
+			return true
+		}
+	}
+	return false
+}
+
 // APIPublicationResponseAPIPublicationSpecRenderer - Customization settings for the API spec renderer in the portal.
 type APIPublicationResponseAPIPublicationSpecRenderer struct {
 	// Enable in-browser testing for your API. All linked gateways must have the CORS plugin configured.
-	TryItUI *bool `default:"true" json:"try_it_ui"`
+	TryItUI *bool `json:"try_it_ui"`
 	// The audience for the Try It UI feature.
 	//
 	// `all` means that the Try It UI will be available to all users, including unauthenticated users.
@@ -20,18 +50,7 @@ type APIPublicationResponseAPIPublicationSpecRenderer struct {
 	//
 	// `registered` means that the Try It UI will only be available to users who have registered for the API.
 	//
-	TryItUIAudience TryItUIAudience `json:"try_it_ui_audience"`
-}
-
-func (a APIPublicationResponseAPIPublicationSpecRenderer) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *APIPublicationResponseAPIPublicationSpecRenderer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	TryItUIAudience *APIPublicationResponseTryItUIAudience `json:"try_it_ui_audience"`
 }
 
 func (a *APIPublicationResponseAPIPublicationSpecRenderer) GetTryItUI() *bool {
@@ -41,9 +60,9 @@ func (a *APIPublicationResponseAPIPublicationSpecRenderer) GetTryItUI() *bool {
 	return a.TryItUI
 }
 
-func (a *APIPublicationResponseAPIPublicationSpecRenderer) GetTryItUIAudience() TryItUIAudience {
+func (a *APIPublicationResponseAPIPublicationSpecRenderer) GetTryItUIAudience() *APIPublicationResponseTryItUIAudience {
 	if a == nil {
-		return TryItUIAudience("")
+		return nil
 	}
 	return a.TryItUIAudience
 }
