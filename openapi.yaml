@@ -103079,7 +103079,7 @@ x-input-schemas:
     version: 3.6.6
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
-    version: 1.44.0
+    version: 1.45.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Mesh Control Plane manager
     version: 0.3.0
