@@ -90381,9 +90381,6 @@ components:
           type: string
           example: 1.0.2
           minLength: 1
-          not:
-            enum:
-              - latest
         file_sha256:
           description: SHA-256 hash of the package file for integrity verification.
           type: string
