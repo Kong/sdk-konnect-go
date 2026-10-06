@@ -38787,11 +38787,14 @@ components:
       type: object
       properties:
         theme:
+          description: The theme settings for this portal.
           type: object
           additionalProperties: false
           properties:
             name:
+              description: 'The theme name to apply to this portal. Supported names are ''ocean'' and ''glacier''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
               type: string
+              default: ocean
               nullable: false
             mode:
               type: string
@@ -38805,13 +38808,16 @@ components:
               additionalProperties: false
               properties:
                 primary:
+                  description: The primary accent color used in the portal's theme. Must be a valid hex color value.
                   type: string
                   example: '#000000'
                   nullable: false
                   pattern: '^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$'
                   x-validation-message: must be a valid hex color value
         layout:
+          description: This property is deprecated and is not used by the portal.
           type: string
+          deprecated: true
           nullable: false
         css:
           type: string
