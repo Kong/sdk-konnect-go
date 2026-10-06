@@ -50,7 +50,7 @@ func (b BillingSubscriptionPhase) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BillingSubscriptionPhase) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"id", "name", "created_at", "updated_at", "key", "active_from", "items"}); err != nil {
 		return err
 	}
 	return nil

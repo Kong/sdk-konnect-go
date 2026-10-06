@@ -10,12 +10,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type BillingAppType string
+type BillingAppUnionType string
 
 const (
-	BillingAppTypeStripe            BillingAppType = "stripe"
-	BillingAppTypeSandbox           BillingAppType = "sandbox"
-	BillingAppTypeExternalInvoicing BillingAppType = "external_invoicing"
+	BillingAppUnionTypeStripe            BillingAppUnionType = "stripe"
+	BillingAppUnionTypeSandbox           BillingAppUnionType = "sandbox"
+	BillingAppUnionTypeExternalInvoicing BillingAppUnionType = "external_invoicing"
 )
 
 // BillingApp - Installed application.
@@ -24,11 +24,11 @@ type BillingApp struct {
 	BillingAppSandbox           *BillingAppSandbox           `queryParam:"inline" union:"member"`
 	BillingAppExternalInvoicing *BillingAppExternalInvoicing `queryParam:"inline" union:"member"`
 
-	Type BillingAppType
+	Type BillingAppUnionType
 }
 
 func CreateBillingAppStripe(stripe BillingAppStripe) BillingApp {
-	typ := BillingAppTypeStripe
+	typ := BillingAppUnionTypeStripe
 
 	typStr := BillingAppStripeType(typ)
 	stripe.Type = typStr
@@ -40,7 +40,7 @@ func CreateBillingAppStripe(stripe BillingAppStripe) BillingApp {
 }
 
 func CreateBillingAppSandbox(sandbox BillingAppSandbox) BillingApp {
-	typ := BillingAppTypeSandbox
+	typ := BillingAppUnionTypeSandbox
 
 	typStr := BillingAppSandboxType(typ)
 	sandbox.Type = typStr
@@ -52,7 +52,7 @@ func CreateBillingAppSandbox(sandbox BillingAppSandbox) BillingApp {
 }
 
 func CreateBillingAppExternalInvoicing(externalInvoicing BillingAppExternalInvoicing) BillingApp {
-	typ := BillingAppTypeExternalInvoicing
+	typ := BillingAppUnionTypeExternalInvoicing
 
 	typStr := BillingAppExternalInvoicingType(typ)
 	externalInvoicing.Type = typStr
@@ -89,7 +89,7 @@ func (u *BillingApp) UnmarshalJSON(data []byte) (err error) {
 		}
 
 		u.BillingAppStripe = billingAppStripe
-		u.Type = BillingAppTypeStripe
+		u.Type = BillingAppUnionTypeStripe
 		return nil
 	case "sandbox":
 		billingAppSandbox := new(BillingAppSandbox)
@@ -98,7 +98,7 @@ func (u *BillingApp) UnmarshalJSON(data []byte) (err error) {
 		}
 
 		u.BillingAppSandbox = billingAppSandbox
-		u.Type = BillingAppTypeSandbox
+		u.Type = BillingAppUnionTypeSandbox
 		return nil
 	case "external_invoicing":
 		billingAppExternalInvoicing := new(BillingAppExternalInvoicing)
@@ -107,7 +107,7 @@ func (u *BillingApp) UnmarshalJSON(data []byte) (err error) {
 		}
 
 		u.BillingAppExternalInvoicing = billingAppExternalInvoicing
-		u.Type = BillingAppTypeExternalInvoicing
+		u.Type = BillingAppUnionTypeExternalInvoicing
 		return nil
 	}
 

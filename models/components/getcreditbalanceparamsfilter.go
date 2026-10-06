@@ -3,43 +3,12 @@
 
 package components
 
-// StringFieldNEQFilter - Filter credit balance by currency code. When historical custom currencies reuse
+// GetCreditBalanceParamsFilterStringFieldNEQFilter - Filter credit balance by currency code. When historical custom currencies reuse
 // a code, each managed currency is returned as a separate balance row.
-type StringFieldNEQFilter struct {
+type GetCreditBalanceParamsFilterStringFieldNEQFilter struct {
 	Eq  *string `queryParam:"name=eq"`
 	Oeq string  `queryParam:"name=oeq"`
 	Neq string  `queryParam:"name=neq"`
-}
-
-func (s *StringFieldNEQFilter) GetEq() *string {
-	if s == nil {
-		return nil
-	}
-	return s.Eq
-}
-
-func (s *StringFieldNEQFilter) GetOeq() string {
-	if s == nil {
-		return ""
-	}
-	return s.Oeq
-}
-
-func (s *StringFieldNEQFilter) GetNeq() string {
-	if s == nil {
-		return ""
-	}
-	return s.Neq
-}
-
-// GetCreditBalanceParamsFilterStringFieldNEQFilter - Filter credit balance by feature key. Omit to return the total portfolio value.
-// Use `exists=false` to return only unrestricted balance.
-type GetCreditBalanceParamsFilterStringFieldNEQFilter struct {
-	Eq        *string `queryParam:"name=eq"`
-	Contains  string  `queryParam:"name=contains"`
-	Ocontains string  `queryParam:"name=ocontains"`
-	Oeq       string  `queryParam:"name=oeq"`
-	Neq       string  `queryParam:"name=neq"`
 }
 
 func (g *GetCreditBalanceParamsFilterStringFieldNEQFilter) GetEq() *string {
@@ -47,20 +16,6 @@ func (g *GetCreditBalanceParamsFilterStringFieldNEQFilter) GetEq() *string {
 		return nil
 	}
 	return g.Eq
-}
-
-func (g *GetCreditBalanceParamsFilterStringFieldNEQFilter) GetContains() string {
-	if g == nil {
-		return ""
-	}
-	return g.Contains
-}
-
-func (g *GetCreditBalanceParamsFilterStringFieldNEQFilter) GetOcontains() string {
-	if g == nil {
-		return ""
-	}
-	return g.Ocontains
 }
 
 func (g *GetCreditBalanceParamsFilterStringFieldNEQFilter) GetOeq() string {
@@ -77,24 +32,69 @@ func (g *GetCreditBalanceParamsFilterStringFieldNEQFilter) GetNeq() string {
 	return g.Neq
 }
 
+// GetCreditBalanceParamsFilterFeatureKeyStringFieldNEQFilter - Filter credit balance by feature key. Omit to return the total portfolio value.
+// Use `exists=false` to return only unrestricted balance.
+type GetCreditBalanceParamsFilterFeatureKeyStringFieldNEQFilter struct {
+	Eq        *string `queryParam:"name=eq"`
+	Contains  string  `queryParam:"name=contains"`
+	Ocontains string  `queryParam:"name=ocontains"`
+	Oeq       string  `queryParam:"name=oeq"`
+	Neq       string  `queryParam:"name=neq"`
+}
+
+func (g *GetCreditBalanceParamsFilterFeatureKeyStringFieldNEQFilter) GetEq() *string {
+	if g == nil {
+		return nil
+	}
+	return g.Eq
+}
+
+func (g *GetCreditBalanceParamsFilterFeatureKeyStringFieldNEQFilter) GetContains() string {
+	if g == nil {
+		return ""
+	}
+	return g.Contains
+}
+
+func (g *GetCreditBalanceParamsFilterFeatureKeyStringFieldNEQFilter) GetOcontains() string {
+	if g == nil {
+		return ""
+	}
+	return g.Ocontains
+}
+
+func (g *GetCreditBalanceParamsFilterFeatureKeyStringFieldNEQFilter) GetOeq() string {
+	if g == nil {
+		return ""
+	}
+	return g.Oeq
+}
+
+func (g *GetCreditBalanceParamsFilterFeatureKeyStringFieldNEQFilter) GetNeq() string {
+	if g == nil {
+		return ""
+	}
+	return g.Neq
+}
+
 // GetCreditBalanceParamsFilter - Filter options for getting a credit balance.
 type GetCreditBalanceParamsFilter struct {
 	// Filter credit balance by currency code. When historical custom currencies reuse
 	// a code, each managed currency is returned as a separate balance row.
-	Currency *StringFieldNEQFilter `queryParam:"name=currency"`
+	Currency *GetCreditBalanceParamsFilterStringFieldNEQFilter `queryParam:"name=currency"`
 	// Filter credit balance by feature key. Omit to return the total portfolio value.
 	// Use `exists=false` to return only unrestricted balance.
-	FeatureKey *GetCreditBalanceParamsFilterStringFieldNEQFilter `queryParam:"name=feature_key"`
+	FeatureKey *GetCreditBalanceParamsFilterFeatureKeyStringFieldNEQFilter `queryParam:"name=feature_key"`
 }
 
-func (g *GetCreditBalanceParamsFilter) GetCurrency() *StringFieldNEQFilter {
+func (g *GetCreditBalanceParamsFilter) GetCurrency() *GetCreditBalanceParamsFilterStringFieldNEQFilter {
 	if g == nil {
 		return nil
 	}
 	return g.Currency
 }
 
-func (g *GetCreditBalanceParamsFilter) GetFeatureKey() *GetCreditBalanceParamsFilterStringFieldNEQFilter {
+func (g *GetCreditBalanceParamsFilter) GetFeatureKey() *GetCreditBalanceParamsFilterFeatureKeyStringFieldNEQFilter {
 	if g == nil {
 		return nil
 	}

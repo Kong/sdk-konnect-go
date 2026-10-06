@@ -1,34 +1,29 @@
 # CostBasis
 
-Defines how custom-currency credits are priced in the purchase `currency`; the
-resolved rate is exposed through `resolved_cost_basis`.
-
-Fiat grants accept only a `manual` cost basis without `fiat_currency`, where
-`rate` is the fiat cost per credit unit. Custom-currency grants require a cost
-basis of any type with `fiat_currency` set and equal to the purchase `currency`.
-A `dynamic` cost basis is resolved at the grant's effective time, so the
-currency cost basis must be effective by then. Cannot be combined with
-`per_unit_cost_basis`.
+Defines how a custom-currency charge is converted into its fiat invoice
+currency; the resolved rate is exposed through `resolved_cost_basis`. Required
+when `currency` is custom and the charge settles as `credit_then_invoice`; must
+be omitted otherwise.
 
 
 ## Supported Types
 
-### CreateChargeCostBasisDynamic
+### BillingChargeCostBasisDynamic
 
 ```go
-costBasis := components.CreateCostBasisDynamic(components.CreateChargeCostBasisDynamic{/* values here */})
+costBasis := components.CreateCostBasisDynamic(components.BillingChargeCostBasisDynamic{/* values here */})
 ```
 
-### CreateChargeCostBasisPinned
+### BillingChargeCostBasisPinned
 
 ```go
-costBasis := components.CreateCostBasisPinned(components.CreateChargeCostBasisPinned{/* values here */})
+costBasis := components.CreateCostBasisPinned(components.BillingChargeCostBasisPinned{/* values here */})
 ```
 
-### CreateChargeCostBasisManual
+### BillingChargeCostBasisManual
 
 ```go
-costBasis := components.CreateCostBasisManual(components.CreateChargeCostBasisManual{/* values here */})
+costBasis := components.CreateCostBasisManual(components.BillingChargeCostBasisManual{/* values here */})
 ```
 
 ## Union Discrimination
@@ -38,10 +33,10 @@ Use the `Type` field to determine which variant is active, then access the corre
 ```go
 switch costBasis.Type {
 	case components.CostBasisTypeDynamic:
-		// costBasis.CreateChargeCostBasisDynamic is populated
+		// costBasis.BillingChargeCostBasisDynamic is populated
 	case components.CostBasisTypePinned:
-		// costBasis.CreateChargeCostBasisPinned is populated
+		// costBasis.BillingChargeCostBasisPinned is populated
 	case components.CostBasisTypeManual:
-		// costBasis.CreateChargeCostBasisManual is populated
+		// costBasis.BillingChargeCostBasisManual is populated
 }
 ```

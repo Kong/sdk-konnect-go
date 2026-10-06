@@ -1,0 +1,11 @@
+# ListGrantsParamsFilter
+
+Filter options for listing grants.
+
+
+## Fields
+
+| Field                                                                                                                                   | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `CustomerID`                                                                                                                            | [*components.ListGrantsParamsFilterULIDFieldFilter](../../models/components/listgrantsparamsfilterulidfieldfilter.md)                   | :heavy_minus_sign:                                                                                                                      | Filter grants by the ID of the customer that owns the entitlement.                                                                      |
+| `FeatureID`                                                                                                                             | [*components.ListGrantsParamsFilterFeatureIDULIDFieldFilter](../../models/components/listgrantsparamsfilterfeatureidulidfieldfilter.md) | :heavy_minus_sign:                                                                                                                      | Filter grants by the ID of the entitlement's feature.                                                                                   |

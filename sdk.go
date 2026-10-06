@@ -389,6 +389,10 @@ type SDK struct {
 	OpenMeterProductCatalog *OpenMeterProductCatalog
 	// Apps enable you to extend and customize billing and usage workflows by integrating with external systems and services. Apps can automate and enhance your billing ecosystem by supporting capabilities such as synchronizing usage data with third-party platforms, calculating taxes, generating and delivering invoices, handling payment collection, and other billing-related tasks.
 	OpenMeterApps *OpenMeterApps
+	// Billing settings manages the billing profiles and invoices for customers.
+	OpenMeterBillingSettings *OpenMeterBillingSettings
+	// Currencies and cost bases for customers.
+	OpenMeterCurrencies *OpenMeterCurrencies
 	// Customers are used to track usage of your product or service. Customers can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterCustomers *OpenMeterCustomers
 	// Entitlements are used to control access to features for customers.
@@ -403,8 +407,8 @@ type SDK struct {
 	OpenMeterLLMCost *OpenMeterLLMCost
 	// Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.
 	Meters *Meters
-	// Billing settings manages the billing profiles and invoices for customers.
-	OpenMeterBillingSettings *OpenMeterBillingSettings
+	// Notification channels deliver notification events, such as entitlement balance threshold crossings, to external systems.
+	OpenMeterNotifications *OpenMeterNotifications
 	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterSubscriptions *OpenMeterSubscriptions
 	// Tax codes are used to calculate taxes for customers.
@@ -662,6 +666,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Invites = newInvites(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterProductCatalog = newOpenMeterProductCatalog(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterApps = newOpenMeterApps(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterBillingSettings = newOpenMeterBillingSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterCurrencies = newOpenMeterCurrencies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterCustomers = newOpenMeterCustomers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterEntitlements = newOpenMeterEntitlements(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterDefaults = newOpenMeterDefaults(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -669,7 +675,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.OpenMeterFeatures = newOpenMeterFeatures(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterLLMCost = newOpenMeterLLMCost(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Meters = newMeters(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.OpenMeterBillingSettings = newOpenMeterBillingSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterNotifications = newOpenMeterNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterSubscriptions = newOpenMeterSubscriptions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterTax = newOpenMeterTax(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ImpersonationSettings = newImpersonationSettings(sdk, sdk.sdkConfiguration, sdk.hooks)

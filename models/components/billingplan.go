@@ -39,26 +39,26 @@ func (e *BillingPlanStatus) IsExact() bool {
 	return false
 }
 
-// SettlementMode - Settlement mode for plan.
+// BillingPlanSettlementMode - Settlement mode for plan.
 //
 // Values:
 //
 // - `credit_then_invoice`: Credits are applied first, then any remainder is
 // invoiced.
 // - `credit_only`: Usage is settled exclusively against credits.
-type SettlementMode string
+type BillingPlanSettlementMode string
 
 const (
-	SettlementModeCreditThenInvoice SettlementMode = "credit_then_invoice"
-	SettlementModeCreditOnly        SettlementMode = "credit_only"
+	BillingPlanSettlementModeCreditThenInvoice BillingPlanSettlementMode = "credit_then_invoice"
+	BillingPlanSettlementModeCreditOnly        BillingPlanSettlementMode = "credit_only"
 )
 
-func (e SettlementMode) ToPointer() *SettlementMode {
+func (e BillingPlanSettlementMode) ToPointer() *BillingPlanSettlementMode {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *SettlementMode) IsExact() bool {
+func (e *BillingPlanSettlementMode) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "credit_then_invoice", "credit_only":
@@ -128,7 +128,7 @@ type BillingPlan struct {
 	// - `credit_then_invoice`: Credits are applied first, then any remainder is
 	// invoiced.
 	// - `credit_only`: Usage is settled exclusively against credits.
-	SettlementMode SettlementMode `json:"settlement_mode"`
+	SettlementMode BillingPlanSettlementMode `json:"settlement_mode"`
 	// List of validation errors in `draft` state that prevent the plan from being
 	// published.
 	ValidationErrors []ProductCatalogValidationError `json:"validation_errors,omitempty"`
@@ -257,9 +257,9 @@ func (b *BillingPlan) GetPhases() []BillingPlanPhase {
 	return b.Phases
 }
 
-func (b *BillingPlan) GetSettlementMode() SettlementMode {
+func (b *BillingPlan) GetSettlementMode() BillingPlanSettlementMode {
 	if b == nil {
-		return SettlementMode("")
+		return BillingPlanSettlementMode("")
 	}
 	return b.SettlementMode
 }

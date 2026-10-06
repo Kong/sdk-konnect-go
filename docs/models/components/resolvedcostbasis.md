@@ -1,7 +1,8 @@
 # ResolvedCostBasis
 
-The rate the purchase is settled at in the purchase `currency`. Present once the
-cost basis is resolved.
+The resolved fiat conversion rate of a custom-currency charge. Resolution
+depends on costbasis type: dynamic is resolved when charge becomes active, all
+other types resolved on creation.
 
 
 ## Fields

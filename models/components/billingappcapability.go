@@ -7,23 +7,23 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// BillingAppCapabilityType - Type of the capability.
-type BillingAppCapabilityType string
+// BillingAppCapabilityType1 - Type of the capability.
+type BillingAppCapabilityType1 string
 
 const (
-	BillingAppCapabilityTypeReportUsage      BillingAppCapabilityType = "report_usage"
-	BillingAppCapabilityTypeReportEvents     BillingAppCapabilityType = "report_events"
-	BillingAppCapabilityTypeCalculateTax     BillingAppCapabilityType = "calculate_tax"
-	BillingAppCapabilityTypeInvoiceCustomers BillingAppCapabilityType = "invoice_customers"
-	BillingAppCapabilityTypeCollectPayments  BillingAppCapabilityType = "collect_payments"
+	BillingAppCapabilityType1ReportUsage      BillingAppCapabilityType1 = "report_usage"
+	BillingAppCapabilityType1ReportEvents     BillingAppCapabilityType1 = "report_events"
+	BillingAppCapabilityType1CalculateTax     BillingAppCapabilityType1 = "calculate_tax"
+	BillingAppCapabilityType1InvoiceCustomers BillingAppCapabilityType1 = "invoice_customers"
+	BillingAppCapabilityType1CollectPayments  BillingAppCapabilityType1 = "collect_payments"
 )
 
-func (e BillingAppCapabilityType) ToPointer() *BillingAppCapabilityType {
+func (e BillingAppCapabilityType1) ToPointer() *BillingAppCapabilityType1 {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *BillingAppCapabilityType) IsExact() bool {
+func (e *BillingAppCapabilityType1) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "report_usage", "report_events", "calculate_tax", "invoice_customers", "collect_payments":
@@ -36,7 +36,7 @@ func (e *BillingAppCapabilityType) IsExact() bool {
 // BillingAppCapability - App capability describes a function that an App can perform.
 type BillingAppCapability struct {
 	// Type of the capability.
-	Type BillingAppCapabilityType `json:"type"`
+	Type BillingAppCapabilityType1 `json:"type"`
 	// Key of the capability.
 	Key string `json:"key"`
 	// Name of the capability.
@@ -56,9 +56,9 @@ func (b *BillingAppCapability) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (b *BillingAppCapability) GetType() BillingAppCapabilityType {
+func (b *BillingAppCapability) GetType() BillingAppCapabilityType1 {
 	if b == nil {
-		return BillingAppCapabilityType("")
+		return BillingAppCapabilityType1("")
 	}
 	return b.Type
 }
