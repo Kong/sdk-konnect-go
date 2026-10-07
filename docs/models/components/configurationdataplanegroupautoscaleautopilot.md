@@ -1,6 +1,6 @@
 # ConfigurationDataPlaneGroupAutoscaleAutopilot
 
-Object that describes the autopilot autoscaling strategy. For serverless.v1 kind of cloud gateways, this field should be omitted.
+Object that describes the autopilot autoscaling strategy.
 
 
 ## Fields
