@@ -1,0 +1,55 @@
+# ListInvoicesParamsFilterDateTimeFieldFilter
+
+Filter by the time the invoice was issued.
+
+
+## Supported Types
+
+### ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter
+
+```go
+listInvoicesParamsFilterDateTimeFieldFilter := components.CreateListInvoicesParamsFilterDateTimeFieldFilterListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter(components.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter{/* values here */})
+```
+
+### ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter
+
+```go
+listInvoicesParamsFilterDateTimeFieldFilter := components.CreateListInvoicesParamsFilterDateTimeFieldFilterListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter(components.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter{/* values here */})
+```
+
+### ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter
+
+```go
+listInvoicesParamsFilterDateTimeFieldFilter := components.CreateListInvoicesParamsFilterDateTimeFieldFilterListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter(components.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter{/* values here */})
+```
+
+### ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter
+
+```go
+listInvoicesParamsFilterDateTimeFieldFilter := components.CreateListInvoicesParamsFilterDateTimeFieldFilterListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter(components.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter{/* values here */})
+```
+
+### ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter
+
+```go
+listInvoicesParamsFilterDateTimeFieldFilter := components.CreateListInvoicesParamsFilterDateTimeFieldFilterListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter(components.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch listInvoicesParamsFilterDateTimeFieldFilter.Type {
+	case components.ListInvoicesParamsFilterDateTimeFieldFilterTypeListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter:
+		// listInvoicesParamsFilterDateTimeFieldFilter.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter is populated
+	case components.ListInvoicesParamsFilterDateTimeFieldFilterTypeListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter:
+		// listInvoicesParamsFilterDateTimeFieldFilter.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter is populated
+	case components.ListInvoicesParamsFilterDateTimeFieldFilterTypeListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter:
+		// listInvoicesParamsFilterDateTimeFieldFilter.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter is populated
+	case components.ListInvoicesParamsFilterDateTimeFieldFilterTypeListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter:
+		// listInvoicesParamsFilterDateTimeFieldFilter.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter is populated
+	case components.ListInvoicesParamsFilterDateTimeFieldFilterTypeListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter:
+		// listInvoicesParamsFilterDateTimeFieldFilter.ListInvoicesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter is populated
+}
+```

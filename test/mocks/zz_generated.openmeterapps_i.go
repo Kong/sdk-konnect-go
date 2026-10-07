@@ -7,6 +7,7 @@ package mocks
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -130,6 +131,255 @@ func (_c *MockOpenMeterAppsSDK_GetApp_Call) RunAndReturn(run func(ctx context.Co
 	return _c
 }
 
+// GetAppCatalogItem provides a mock function for the type MockOpenMeterAppsSDK
+func (_mock *MockOpenMeterAppsSDK) GetAppCatalogItem(ctx context.Context, appType components.BillingAppType, opts ...operations.Option) (*operations.GetAppCatalogItemResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, appType, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, appType)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAppCatalogItem")
+	}
+
+	var r0 *operations.GetAppCatalogItemResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.BillingAppType, ...operations.Option) (*operations.GetAppCatalogItemResponse, error)); ok {
+		return returnFunc(ctx, appType, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.BillingAppType, ...operations.Option) *operations.GetAppCatalogItemResponse); ok {
+		r0 = returnFunc(ctx, appType, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetAppCatalogItemResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.BillingAppType, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, appType, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterAppsSDK_GetAppCatalogItem_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAppCatalogItem'
+type MockOpenMeterAppsSDK_GetAppCatalogItem_Call struct {
+	*mock.Call
+}
+
+// GetAppCatalogItem is a helper method to define mock.On call
+//   - ctx context.Context
+//   - appType components.BillingAppType
+//   - opts ...operations.Option
+func (_e *MockOpenMeterAppsSDK_Expecter) GetAppCatalogItem(ctx any, appType any, opts ...any) *MockOpenMeterAppsSDK_GetAppCatalogItem_Call {
+	return &MockOpenMeterAppsSDK_GetAppCatalogItem_Call{Call: _e.mock.On("GetAppCatalogItem",
+		append([]any{ctx, appType}, opts...)...)}
+}
+
+func (_c *MockOpenMeterAppsSDK_GetAppCatalogItem_Call) Run(run func(ctx context.Context, appType components.BillingAppType, opts ...operations.Option)) *MockOpenMeterAppsSDK_GetAppCatalogItem_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 components.BillingAppType
+		if args[1] != nil {
+			arg1 = args[1].(components.BillingAppType)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_GetAppCatalogItem_Call) Return(getAppCatalogItemResponse *operations.GetAppCatalogItemResponse, err error) *MockOpenMeterAppsSDK_GetAppCatalogItem_Call {
+	_c.Call.Return(getAppCatalogItemResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_GetAppCatalogItem_Call) RunAndReturn(run func(ctx context.Context, appType components.BillingAppType, opts ...operations.Option) (*operations.GetAppCatalogItemResponse, error)) *MockOpenMeterAppsSDK_GetAppCatalogItem_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// InstallApp provides a mock function for the type MockOpenMeterAppsSDK
+func (_mock *MockOpenMeterAppsSDK) InstallApp(ctx context.Context, request components.BillingInstallAppRequest, opts ...operations.Option) (*operations.InstallAppResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for InstallApp")
+	}
+
+	var r0 *operations.InstallAppResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.BillingInstallAppRequest, ...operations.Option) (*operations.InstallAppResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.BillingInstallAppRequest, ...operations.Option) *operations.InstallAppResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.InstallAppResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.BillingInstallAppRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterAppsSDK_InstallApp_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'InstallApp'
+type MockOpenMeterAppsSDK_InstallApp_Call struct {
+	*mock.Call
+}
+
+// InstallApp is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request components.BillingInstallAppRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterAppsSDK_Expecter) InstallApp(ctx any, request any, opts ...any) *MockOpenMeterAppsSDK_InstallApp_Call {
+	return &MockOpenMeterAppsSDK_InstallApp_Call{Call: _e.mock.On("InstallApp",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockOpenMeterAppsSDK_InstallApp_Call) Run(run func(ctx context.Context, request components.BillingInstallAppRequest, opts ...operations.Option)) *MockOpenMeterAppsSDK_InstallApp_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 components.BillingInstallAppRequest
+		if args[1] != nil {
+			arg1 = args[1].(components.BillingInstallAppRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_InstallApp_Call) Return(installAppResponse *operations.InstallAppResponse, err error) *MockOpenMeterAppsSDK_InstallApp_Call {
+	_c.Call.Return(installAppResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_InstallApp_Call) RunAndReturn(run func(ctx context.Context, request components.BillingInstallAppRequest, opts ...operations.Option) (*operations.InstallAppResponse, error)) *MockOpenMeterAppsSDK_InstallApp_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListAppCatalog provides a mock function for the type MockOpenMeterAppsSDK
+func (_mock *MockOpenMeterAppsSDK) ListAppCatalog(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListAppCatalogResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, page, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, page)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListAppCatalog")
+	}
+
+	var r0 *operations.ListAppCatalogResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.PagePaginationQuery, ...operations.Option) (*operations.ListAppCatalogResponse, error)); ok {
+		return returnFunc(ctx, page, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *components.PagePaginationQuery, ...operations.Option) *operations.ListAppCatalogResponse); ok {
+		r0 = returnFunc(ctx, page, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListAppCatalogResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *components.PagePaginationQuery, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, page, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterAppsSDK_ListAppCatalog_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAppCatalog'
+type MockOpenMeterAppsSDK_ListAppCatalog_Call struct {
+	*mock.Call
+}
+
+// ListAppCatalog is a helper method to define mock.On call
+//   - ctx context.Context
+//   - page *components.PagePaginationQuery
+//   - opts ...operations.Option
+func (_e *MockOpenMeterAppsSDK_Expecter) ListAppCatalog(ctx any, page any, opts ...any) *MockOpenMeterAppsSDK_ListAppCatalog_Call {
+	return &MockOpenMeterAppsSDK_ListAppCatalog_Call{Call: _e.mock.On("ListAppCatalog",
+		append([]any{ctx, page}, opts...)...)}
+}
+
+func (_c *MockOpenMeterAppsSDK_ListAppCatalog_Call) Run(run func(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option)) *MockOpenMeterAppsSDK_ListAppCatalog_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *components.PagePaginationQuery
+		if args[1] != nil {
+			arg1 = args[1].(*components.PagePaginationQuery)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_ListAppCatalog_Call) Return(listAppCatalogResponse *operations.ListAppCatalogResponse, err error) *MockOpenMeterAppsSDK_ListAppCatalog_Call {
+	_c.Call.Return(listAppCatalogResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_ListAppCatalog_Call) RunAndReturn(run func(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListAppCatalogResponse, error)) *MockOpenMeterAppsSDK_ListAppCatalog_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListApps provides a mock function for the type MockOpenMeterAppsSDK
 func (_mock *MockOpenMeterAppsSDK) ListApps(ctx context.Context, request operations.ListAppsRequest, opts ...operations.Option) (*operations.ListAppsResponse, error) {
 	var tmpRet mock.Arguments
@@ -209,6 +459,178 @@ func (_c *MockOpenMeterAppsSDK_ListApps_Call) Return(listAppsResponse *operation
 }
 
 func (_c *MockOpenMeterAppsSDK_ListApps_Call) RunAndReturn(run func(ctx context.Context, request operations.ListAppsRequest, opts ...operations.Option) (*operations.ListAppsResponse, error)) *MockOpenMeterAppsSDK_ListApps_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UninstallApp provides a mock function for the type MockOpenMeterAppsSDK
+func (_mock *MockOpenMeterAppsSDK) UninstallApp(ctx context.Context, appID string, opts ...operations.Option) (*operations.UninstallAppResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, appID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, appID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UninstallApp")
+	}
+
+	var r0 *operations.UninstallAppResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.UninstallAppResponse, error)); ok {
+		return returnFunc(ctx, appID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.UninstallAppResponse); ok {
+		r0 = returnFunc(ctx, appID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UninstallAppResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, appID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterAppsSDK_UninstallApp_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UninstallApp'
+type MockOpenMeterAppsSDK_UninstallApp_Call struct {
+	*mock.Call
+}
+
+// UninstallApp is a helper method to define mock.On call
+//   - ctx context.Context
+//   - appID string
+//   - opts ...operations.Option
+func (_e *MockOpenMeterAppsSDK_Expecter) UninstallApp(ctx any, appID any, opts ...any) *MockOpenMeterAppsSDK_UninstallApp_Call {
+	return &MockOpenMeterAppsSDK_UninstallApp_Call{Call: _e.mock.On("UninstallApp",
+		append([]any{ctx, appID}, opts...)...)}
+}
+
+func (_c *MockOpenMeterAppsSDK_UninstallApp_Call) Run(run func(ctx context.Context, appID string, opts ...operations.Option)) *MockOpenMeterAppsSDK_UninstallApp_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_UninstallApp_Call) Return(uninstallAppResponse *operations.UninstallAppResponse, err error) *MockOpenMeterAppsSDK_UninstallApp_Call {
+	_c.Call.Return(uninstallAppResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_UninstallApp_Call) RunAndReturn(run func(ctx context.Context, appID string, opts ...operations.Option) (*operations.UninstallAppResponse, error)) *MockOpenMeterAppsSDK_UninstallApp_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateApp provides a mock function for the type MockOpenMeterAppsSDK
+func (_mock *MockOpenMeterAppsSDK) UpdateApp(ctx context.Context, appID string, billingUpdateAppRequest components.BillingUpdateAppRequest, opts ...operations.Option) (*operations.UpdateAppResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, appID, billingUpdateAppRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, appID, billingUpdateAppRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateApp")
+	}
+
+	var r0 *operations.UpdateAppResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.BillingUpdateAppRequest, ...operations.Option) (*operations.UpdateAppResponse, error)); ok {
+		return returnFunc(ctx, appID, billingUpdateAppRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.BillingUpdateAppRequest, ...operations.Option) *operations.UpdateAppResponse); ok {
+		r0 = returnFunc(ctx, appID, billingUpdateAppRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateAppResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.BillingUpdateAppRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, appID, billingUpdateAppRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterAppsSDK_UpdateApp_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateApp'
+type MockOpenMeterAppsSDK_UpdateApp_Call struct {
+	*mock.Call
+}
+
+// UpdateApp is a helper method to define mock.On call
+//   - ctx context.Context
+//   - appID string
+//   - billingUpdateAppRequest components.BillingUpdateAppRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterAppsSDK_Expecter) UpdateApp(ctx any, appID any, billingUpdateAppRequest any, opts ...any) *MockOpenMeterAppsSDK_UpdateApp_Call {
+	return &MockOpenMeterAppsSDK_UpdateApp_Call{Call: _e.mock.On("UpdateApp",
+		append([]any{ctx, appID, billingUpdateAppRequest}, opts...)...)}
+}
+
+func (_c *MockOpenMeterAppsSDK_UpdateApp_Call) Run(run func(ctx context.Context, appID string, billingUpdateAppRequest components.BillingUpdateAppRequest, opts ...operations.Option)) *MockOpenMeterAppsSDK_UpdateApp_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.BillingUpdateAppRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.BillingUpdateAppRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_UpdateApp_Call) Return(updateAppResponse *operations.UpdateAppResponse, err error) *MockOpenMeterAppsSDK_UpdateApp_Call {
+	_c.Call.Return(updateAppResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterAppsSDK_UpdateApp_Call) RunAndReturn(run func(ctx context.Context, appID string, billingUpdateAppRequest components.BillingUpdateAppRequest, opts ...operations.Option) (*operations.UpdateAppResponse, error)) *MockOpenMeterAppsSDK_UpdateApp_Call {
 	_c.Call.Return(run)
 	return _c
 }

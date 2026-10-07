@@ -11,18 +11,18 @@ import (
 	"time"
 )
 
-// TaxID - The entity's legal identification used for tax purposes. They may have other
+// BillingProfileTaxID - The entity's legal identification used for tax purposes. They may have other
 // numbers, but we're only interested in those valid for tax purposes.
-type TaxID struct {
+type BillingProfileTaxID struct {
 	// Normalized tax identification code shown on the original identity document.
 	Code *string `json:"code,omitempty"`
 }
 
-func (t *TaxID) GetCode() *string {
-	if t == nil {
+func (b *BillingProfileTaxID) GetCode() *string {
+	if b == nil {
 		return nil
 	}
-	return t.Code
+	return b.Code
 }
 
 // BillingProfileBillingAddress - Billing address.
@@ -93,17 +93,17 @@ func (b *BillingProfileBillingAddress) GetPhoneNumber() *string {
 	return b.PhoneNumber
 }
 
-// Addresses - Address for where information should be sent if needed.
-type Addresses struct {
+// BillingProfileAddresses - Address for where information should be sent if needed.
+type BillingProfileAddresses struct {
 	// Billing address.
 	BillingAddress BillingProfileBillingAddress `json:"billing_address"`
 }
 
-func (a *Addresses) GetBillingAddress() BillingProfileBillingAddress {
-	if a == nil {
+func (b *BillingProfileAddresses) GetBillingAddress() BillingProfileBillingAddress {
+	if b == nil {
 		return BillingProfileBillingAddress{}
 	}
-	return a.BillingAddress
+	return b.BillingAddress
 }
 
 // Supplier - The name and contact information for the supplier this billing profile
@@ -117,9 +117,9 @@ type Supplier struct {
 	Name *string `json:"name,omitempty"`
 	// The entity's legal identification used for tax purposes. They may have other
 	// numbers, but we're only interested in those valid for tax purposes.
-	TaxID *TaxID `json:"tax_id,omitempty"`
+	TaxID *BillingProfileTaxID `json:"tax_id,omitempty"`
 	// Address for where information should be sent if needed.
-	Addresses *Addresses `json:"addresses,omitempty"`
+	Addresses *BillingProfileAddresses `json:"addresses,omitempty"`
 }
 
 func (s *Supplier) GetID() *string {
@@ -143,14 +143,14 @@ func (s *Supplier) GetName() *string {
 	return s.Name
 }
 
-func (s *Supplier) GetTaxID() *TaxID {
+func (s *Supplier) GetTaxID() *BillingProfileTaxID {
 	if s == nil {
 		return nil
 	}
 	return s.TaxID
 }
 
-func (s *Supplier) GetAddresses() *Addresses {
+func (s *Supplier) GetAddresses() *BillingProfileAddresses {
 	if s == nil {
 		return nil
 	}
@@ -515,48 +515,48 @@ func (w *WorkflowInvoiceSettings) GetSubscriptionEndProrationMode() *Subscriptio
 	return w.SubscriptionEndProrationMode
 }
 
-type PaymentType string
+type BillingProfilePaymentType string
 
 const (
-	PaymentTypeChargeAutomatically PaymentType = "charge_automatically"
-	PaymentTypeSendInvoice         PaymentType = "send_invoice"
+	BillingProfilePaymentTypeChargeAutomatically BillingProfilePaymentType = "charge_automatically"
+	BillingProfilePaymentTypeSendInvoice         BillingProfilePaymentType = "send_invoice"
 )
 
-// Payment - The payment settings for this workflow
-type Payment struct {
+// BillingProfilePayment - The payment settings for this workflow
+type BillingProfilePayment struct {
 	BillingWorkflowPaymentChargeAutomaticallySettings *BillingWorkflowPaymentChargeAutomaticallySettings `queryParam:"inline" union:"member"`
 	BillingWorkflowPaymentSendInvoiceSettings         *BillingWorkflowPaymentSendInvoiceSettings         `queryParam:"inline" union:"member"`
 
-	Type PaymentType
+	Type BillingProfilePaymentType
 }
 
-func CreatePaymentChargeAutomatically(chargeAutomatically BillingWorkflowPaymentChargeAutomaticallySettings) Payment {
-	typ := PaymentTypeChargeAutomatically
+func CreateBillingProfilePaymentChargeAutomatically(chargeAutomatically BillingWorkflowPaymentChargeAutomaticallySettings) BillingProfilePayment {
+	typ := BillingProfilePaymentTypeChargeAutomatically
 
 	typStr := CollectionMethod(typ)
 	chargeAutomatically.CollectionMethod = typStr
 
-	return Payment{
+	return BillingProfilePayment{
 		BillingWorkflowPaymentChargeAutomaticallySettings: &chargeAutomatically,
 		Type: typ,
 	}
 }
 
-func CreatePaymentSendInvoice(sendInvoice BillingWorkflowPaymentSendInvoiceSettings) Payment {
-	typ := PaymentTypeSendInvoice
+func CreateBillingProfilePaymentSendInvoice(sendInvoice BillingWorkflowPaymentSendInvoiceSettings) BillingProfilePayment {
+	typ := BillingProfilePaymentTypeSendInvoice
 
 	typStr := BillingWorkflowPaymentSendInvoiceSettingsCollectionMethod(typ)
 	sendInvoice.CollectionMethod = typStr
 
-	return Payment{
+	return BillingProfilePayment{
 		BillingWorkflowPaymentSendInvoiceSettings: &sendInvoice,
 		Type: typ,
 	}
 }
 
-func (u *Payment) UnmarshalJSON(data []byte) (err error) {
+func (u *BillingProfilePayment) UnmarshalJSON(data []byte) (err error) {
 	previous := *u
-	*u = Payment{}
+	*u = BillingProfilePayment{}
 	defer func() {
 		if err != nil {
 			*u = previous
@@ -576,27 +576,27 @@ func (u *Payment) UnmarshalJSON(data []byte) (err error) {
 	case "charge_automatically":
 		billingWorkflowPaymentChargeAutomaticallySettings := new(BillingWorkflowPaymentChargeAutomaticallySettings)
 		if err := utils.UnmarshalJSON(data, &billingWorkflowPaymentChargeAutomaticallySettings, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (CollectionMethod == charge_automatically) type BillingWorkflowPaymentChargeAutomaticallySettings within Payment: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (CollectionMethod == charge_automatically) type BillingWorkflowPaymentChargeAutomaticallySettings within BillingProfilePayment: %w", string(data), err)
 		}
 
 		u.BillingWorkflowPaymentChargeAutomaticallySettings = billingWorkflowPaymentChargeAutomaticallySettings
-		u.Type = PaymentTypeChargeAutomatically
+		u.Type = BillingProfilePaymentTypeChargeAutomatically
 		return nil
 	case "send_invoice":
 		billingWorkflowPaymentSendInvoiceSettings := new(BillingWorkflowPaymentSendInvoiceSettings)
 		if err := utils.UnmarshalJSON(data, &billingWorkflowPaymentSendInvoiceSettings, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (CollectionMethod == send_invoice) type BillingWorkflowPaymentSendInvoiceSettings within Payment: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (CollectionMethod == send_invoice) type BillingWorkflowPaymentSendInvoiceSettings within BillingProfilePayment: %w", string(data), err)
 		}
 
 		u.BillingWorkflowPaymentSendInvoiceSettings = billingWorkflowPaymentSendInvoiceSettings
-		u.Type = PaymentTypeSendInvoice
+		u.Type = BillingProfilePaymentTypeSendInvoice
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Payment", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for BillingProfilePayment", string(data))
 }
 
-func (u Payment) MarshalJSON() ([]byte, error) {
+func (u BillingProfilePayment) MarshalJSON() ([]byte, error) {
 	if u.BillingWorkflowPaymentChargeAutomaticallySettings != nil {
 		return utils.MarshalJSON(u.BillingWorkflowPaymentChargeAutomaticallySettings, "", true)
 	}
@@ -605,7 +605,7 @@ func (u Payment) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.BillingWorkflowPaymentSendInvoiceSettings, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Payment: all fields are null")
+	return nil, errors.New("could not marshal union type BillingProfilePayment: all fields are null")
 }
 
 // BillingProfileTaxBehavior - Tax behavior.
@@ -634,34 +634,34 @@ func (e *BillingProfileTaxBehavior) IsExact() bool {
 	return false
 }
 
-// StripeTaxConfig - Stripe tax config.
+// BillingProfileStripeTaxConfig - Stripe tax config.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type StripeTaxConfig struct {
+type BillingProfileStripeTaxConfig struct {
 	// Product [tax code](https://docs.stripe.com/tax/tax-codes).
 	Code string `json:"code"`
 }
 
-func (s *StripeTaxConfig) GetCode() string {
-	if s == nil {
+func (b *BillingProfileStripeTaxConfig) GetCode() string {
+	if b == nil {
 		return ""
 	}
-	return s.Code
+	return b.Code
 }
 
-// ExternalInvoicingTaxConfig - External invoicing tax config.
+// BillingProfileExternalInvoicingTaxConfig - External invoicing tax config.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-type ExternalInvoicingTaxConfig struct {
+type BillingProfileExternalInvoicingTaxConfig struct {
 	// The tax code should be interpreted by the external invoicing provider.
 	Code string `json:"code"`
 }
 
-func (e *ExternalInvoicingTaxConfig) GetCode() string {
-	if e == nil {
+func (b *BillingProfileExternalInvoicingTaxConfig) GetCode() string {
+	if b == nil {
 		return ""
 	}
-	return e.Code
+	return b.Code
 }
 
 // BillingProfileTaxCode - Tax code reference.
@@ -696,11 +696,11 @@ type DefaultTaxConfig struct {
 	// Stripe tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	Stripe *StripeTaxConfig `json:"stripe,omitempty"`
+	Stripe *BillingProfileStripeTaxConfig `json:"stripe,omitempty"`
 	// External invoicing tax config.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	ExternalInvoicing *ExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
+	ExternalInvoicing *BillingProfileExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
 	// Tax code ID.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -720,14 +720,14 @@ func (d *DefaultTaxConfig) GetBehavior() *BillingProfileTaxBehavior {
 	return d.Behavior
 }
 
-func (d *DefaultTaxConfig) GetStripe() *StripeTaxConfig {
+func (d *DefaultTaxConfig) GetStripe() *BillingProfileStripeTaxConfig {
 	if d == nil {
 		return nil
 	}
 	return d.Stripe
 }
 
-func (d *DefaultTaxConfig) GetExternalInvoicing() *ExternalInvoicingTaxConfig {
+func (d *DefaultTaxConfig) GetExternalInvoicing() *BillingProfileExternalInvoicingTaxConfig {
 	if d == nil {
 		return nil
 	}
@@ -806,7 +806,7 @@ type Workflow struct {
 	// The invoicing settings for this workflow
 	Invoicing *WorkflowInvoiceSettings `json:"invoicing,omitempty"`
 	// The payment settings for this workflow
-	Payment *Payment `json:"payment,omitempty"`
+	Payment *BillingProfilePayment `json:"payment,omitempty"`
 	// The tax settings for this workflow
 	Tax *WorkflowTaxSettings `json:"tax,omitempty"`
 }
@@ -825,7 +825,7 @@ func (w *Workflow) GetInvoicing() *WorkflowInvoiceSettings {
 	return w.Invoicing
 }
 
-func (w *Workflow) GetPayment() *Payment {
+func (w *Workflow) GetPayment() *BillingProfilePayment {
 	if w == nil {
 		return nil
 	}
@@ -879,13 +879,13 @@ func (i *Invoicing) GetID() string {
 	return i.ID
 }
 
-// BillingProfilePayment - The payment app used for this workflow.
-type BillingProfilePayment struct {
+// BillingProfileAppsPayment - The payment app used for this workflow.
+type BillingProfileAppsPayment struct {
 	// The ID of the app.
 	ID string `json:"id"`
 }
 
-func (b *BillingProfilePayment) GetID() string {
+func (b *BillingProfileAppsPayment) GetID() string {
 	if b == nil {
 		return ""
 	}
@@ -899,7 +899,7 @@ type Apps struct {
 	// The invoicing app used for this workflow.
 	Invoicing Invoicing `json:"invoicing"`
 	// The payment app used for this workflow.
-	Payment BillingProfilePayment `json:"payment"`
+	Payment BillingProfileAppsPayment `json:"payment"`
 }
 
 func (a *Apps) GetTax() Tax {
@@ -916,9 +916,9 @@ func (a *Apps) GetInvoicing() Invoicing {
 	return a.Invoicing
 }
 
-func (a *Apps) GetPayment() BillingProfilePayment {
+func (a *Apps) GetPayment() BillingProfileAppsPayment {
 	if a == nil {
-		return BillingProfilePayment{}
+		return BillingProfileAppsPayment{}
 	}
 	return a.Payment
 }

@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.ConsumerByID
+value := components.ConsumerByCustomID
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.ConsumerBy("custom_value")
@@ -18,6 +18,6 @@ custom := components.ConsumerBy("custom_value")
 
 | Name                 | Value                |
 | -------------------- | -------------------- |
+| `ConsumerByCustomID` | custom_id            |
 | `ConsumerByID`       | id                   |
 | `ConsumerByUsername` | username             |
-| `ConsumerByCustomID` | custom_id            |

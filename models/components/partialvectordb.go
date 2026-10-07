@@ -411,7 +411,7 @@ func (e *PartialVectordbSentinelRole) IsExact() bool {
 	return false
 }
 
-type Redis struct {
+type PartialVectordbRedis struct {
 	// Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
 	CloudAuthentication *PartialVectordbCloudAuthentication `json:"cloud_authentication,omitempty"`
 	// Maximum retry attempts for redirection.
@@ -458,169 +458,169 @@ type Redis struct {
 	Username *string `json:"username,omitempty"`
 }
 
-func (r Redis) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
+func (p PartialVectordbRedis) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
 }
 
-func (r *Redis) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+func (p *PartialVectordbRedis) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (r *Redis) GetCloudAuthentication() *PartialVectordbCloudAuthentication {
-	if r == nil {
+func (p *PartialVectordbRedis) GetCloudAuthentication() *PartialVectordbCloudAuthentication {
+	if p == nil {
 		return nil
 	}
-	return r.CloudAuthentication
+	return p.CloudAuthentication
 }
 
-func (r *Redis) GetClusterMaxRedirections() *int64 {
-	if r == nil {
+func (p *PartialVectordbRedis) GetClusterMaxRedirections() *int64 {
+	if p == nil {
 		return nil
 	}
-	return r.ClusterMaxRedirections
+	return p.ClusterMaxRedirections
 }
 
-func (r *Redis) GetClusterNodes() []PartialVectordbClusterNodes {
-	if r == nil {
+func (p *PartialVectordbRedis) GetClusterNodes() []PartialVectordbClusterNodes {
+	if p == nil {
 		return nil
 	}
-	return r.ClusterNodes
+	return p.ClusterNodes
 }
 
-func (r *Redis) GetConnectTimeout() *int64 {
-	if r == nil {
+func (p *PartialVectordbRedis) GetConnectTimeout() *int64 {
+	if p == nil {
 		return nil
 	}
-	return r.ConnectTimeout
+	return p.ConnectTimeout
 }
 
-func (r *Redis) GetConnectionIsProxied() *bool {
-	if r == nil {
+func (p *PartialVectordbRedis) GetConnectionIsProxied() *bool {
+	if p == nil {
 		return nil
 	}
-	return r.ConnectionIsProxied
+	return p.ConnectionIsProxied
 }
 
-func (r *Redis) GetDatabase() *int64 {
-	if r == nil {
+func (p *PartialVectordbRedis) GetDatabase() *int64 {
+	if p == nil {
 		return nil
 	}
-	return r.Database
+	return p.Database
 }
 
-func (r *Redis) GetHost() *string {
-	if r == nil {
+func (p *PartialVectordbRedis) GetHost() *string {
+	if p == nil {
 		return nil
 	}
-	return r.Host
+	return p.Host
 }
 
-func (r *Redis) GetKeepaliveBacklog() *int64 {
-	if r == nil {
+func (p *PartialVectordbRedis) GetKeepaliveBacklog() *int64 {
+	if p == nil {
 		return nil
 	}
-	return r.KeepaliveBacklog
+	return p.KeepaliveBacklog
 }
 
-func (r *Redis) GetKeepalivePoolSize() *int64 {
-	if r == nil {
+func (p *PartialVectordbRedis) GetKeepalivePoolSize() *int64 {
+	if p == nil {
 		return nil
 	}
-	return r.KeepalivePoolSize
+	return p.KeepalivePoolSize
 }
 
-func (r *Redis) GetPassword() *string {
-	if r == nil {
+func (p *PartialVectordbRedis) GetPassword() *string {
+	if p == nil {
 		return nil
 	}
-	return r.Password
+	return p.Password
 }
 
-func (r *Redis) GetPort() *int64 {
-	if r == nil {
+func (p *PartialVectordbRedis) GetPort() *int64 {
+	if p == nil {
 		return nil
 	}
-	return r.Port
+	return p.Port
 }
 
-func (r *Redis) GetReadTimeout() *int64 {
-	if r == nil {
+func (p *PartialVectordbRedis) GetReadTimeout() *int64 {
+	if p == nil {
 		return nil
 	}
-	return r.ReadTimeout
+	return p.ReadTimeout
 }
 
-func (r *Redis) GetSendTimeout() *int64 {
-	if r == nil {
+func (p *PartialVectordbRedis) GetSendTimeout() *int64 {
+	if p == nil {
 		return nil
 	}
-	return r.SendTimeout
+	return p.SendTimeout
 }
 
-func (r *Redis) GetSentinelMaster() *string {
-	if r == nil {
+func (p *PartialVectordbRedis) GetSentinelMaster() *string {
+	if p == nil {
 		return nil
 	}
-	return r.SentinelMaster
+	return p.SentinelMaster
 }
 
-func (r *Redis) GetSentinelNodes() []PartialVectordbSentinelNodes {
-	if r == nil {
+func (p *PartialVectordbRedis) GetSentinelNodes() []PartialVectordbSentinelNodes {
+	if p == nil {
 		return nil
 	}
-	return r.SentinelNodes
+	return p.SentinelNodes
 }
 
-func (r *Redis) GetSentinelPassword() *string {
-	if r == nil {
+func (p *PartialVectordbRedis) GetSentinelPassword() *string {
+	if p == nil {
 		return nil
 	}
-	return r.SentinelPassword
+	return p.SentinelPassword
 }
 
-func (r *Redis) GetSentinelRole() *PartialVectordbSentinelRole {
-	if r == nil {
+func (p *PartialVectordbRedis) GetSentinelRole() *PartialVectordbSentinelRole {
+	if p == nil {
 		return nil
 	}
-	return r.SentinelRole
+	return p.SentinelRole
 }
 
-func (r *Redis) GetSentinelUsername() *string {
-	if r == nil {
+func (p *PartialVectordbRedis) GetSentinelUsername() *string {
+	if p == nil {
 		return nil
 	}
-	return r.SentinelUsername
+	return p.SentinelUsername
 }
 
-func (r *Redis) GetServerName() *string {
-	if r == nil {
+func (p *PartialVectordbRedis) GetServerName() *string {
+	if p == nil {
 		return nil
 	}
-	return r.ServerName
+	return p.ServerName
 }
 
-func (r *Redis) GetSsl() *bool {
-	if r == nil {
+func (p *PartialVectordbRedis) GetSsl() *bool {
+	if p == nil {
 		return nil
 	}
-	return r.Ssl
+	return p.Ssl
 }
 
-func (r *Redis) GetSslVerify() *bool {
-	if r == nil {
+func (p *PartialVectordbRedis) GetSslVerify() *bool {
+	if p == nil {
 		return nil
 	}
-	return r.SslVerify
+	return p.SslVerify
 }
 
-func (r *Redis) GetUsername() *string {
-	if r == nil {
+func (p *PartialVectordbRedis) GetUsername() *string {
+	if p == nil {
 		return nil
 	}
-	return r.Username
+	return p.Username
 }
 
 // PartialVectordbStrategy - which vector database driver to use
@@ -652,7 +652,7 @@ type PartialVectordbConfig struct {
 	// the distance metric to use for vector searches
 	DistanceMetric PartialVectordbDistanceMetric `json:"distance_metric"`
 	Pgvector       *Pgvector                     `json:"pgvector,omitempty"`
-	Redis          *Redis                        `json:"redis,omitempty"`
+	Redis          *PartialVectordbRedis         `json:"redis,omitempty"`
 	// which vector database driver to use
 	Strategy PartialVectordbStrategy `json:"strategy"`
 	// the default similarity threshold for accepting semantic search results (float). Higher threshold means more results are considered similar.
@@ -691,7 +691,7 @@ func (p *PartialVectordbConfig) GetPgvector() *Pgvector {
 	return p.Pgvector
 }
 
-func (p *PartialVectordbConfig) GetRedis() *Redis {
+func (p *PartialVectordbConfig) GetRedis() *PartialVectordbRedis {
 	if p == nil {
 		return nil
 	}

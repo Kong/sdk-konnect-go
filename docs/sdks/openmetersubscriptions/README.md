@@ -14,6 +14,9 @@ Subscriptions are used to track usage of your product or service. Subscriptions 
 * [CancelSubscription](#cancelsubscription) - Cancel subscription
 * [ChangeSubscription](#changesubscription) - Change subscription
 * [EditSubscription](#editsubscription) - Edit subscription
+* [MigrateSubscription](#migratesubscription) - Migrate subscription
+* [RestoreSubscription](#restoresubscription) - Restore subscription
+* [UnscheduleSubscription](#unschedulesubscription) - Unschedule subscription
 * [UnscheduleCancelation](#unschedulecancelation) - Unschedule subscription cancelation
 
 ## CreateSubscription
@@ -660,6 +663,212 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## MigrateSubscription
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
+Migrates to a later version of the current plan. With starting_phase omitted and
+billing_anchor omitted or unchanged, migration amends the subscription in place:
+unchanged items retain their service periods and both response entries have the
+same ID. Existing addons must remain compatible with the target plan.
+Incompatible phase timelines or billing settings return an error. Providing
+starting_phase or a different billing_anchor explicitly requests replacement,
+which resets the phase timeline, may produce billing adjustments, and does not
+transfer addons. Custom subscriptions cannot be migrated.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="migrate-subscription" method="post" path="/v3/openmeter/subscriptions/{subscriptionId}/migrate" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterSubscriptions.MigrateSubscription(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.BillingSubscriptionMigrate{
+        Timing: sdkkonnectgo.Pointer(components.CreateBillingSubscriptionMigrateTimingBillingSubscriptionEditTimingEnum(
+            components.BillingSubscriptionEditTimingEnumImmediate,
+        )),
+        BillingAnchor: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingSubscriptionMigrateResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    | Example                                                                                        |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |                                                                                                |
+| `subscriptionID`                                                                               | `string`                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            | 01G65Z755AFWAKHE12NY0CQ9FH                                                                     |
+| `billingSubscriptionMigrate`                                                                   | [components.BillingSubscriptionMigrate](../../models/components/billingsubscriptionmigrate.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |                                                                                                |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |                                                                                                |
+
+### Response
+
+**[*operations.MigrateSubscriptionResponse](../../models/operations/migratesubscriptionresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## RestoreSubscription
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
+Restores the subscription by deleting any later-scheduled successor
+subscriptions and continuing this one indefinitely. This is the inverse of a
+future-dated change, which schedules a successor. Restore is not available when
+multi-subscription is enabled.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="restore-subscription" method="post" path="/v3/openmeter/subscriptions/{subscriptionId}/restore" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterSubscriptions.RestoreSubscription(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingSubscription != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `subscriptionID`                                         | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                               |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.RestoreSubscriptionResponse](../../models/operations/restoresubscriptionresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UnscheduleSubscription
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
+Deletes a scheduled subscription that has not yet become active, removing it and
+resolving any scheduling conflict it was holding. This is distinct from
+canceling: cancel ends a running subscription, whereas unscheduling removes a
+not-yet-active one. Only scheduled subscriptions can be unscheduled;
+unscheduling an active or already-started subscription is rejected.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="unschedule-subscription" method="post" path="/v3/openmeter/subscriptions/{subscriptionId}/unschedule" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterSubscriptions.UnscheduleSubscription(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `subscriptionID`                                         | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                               |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.UnscheduleSubscriptionResponse](../../models/operations/unschedulesubscriptionresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## UnscheduleCancelation

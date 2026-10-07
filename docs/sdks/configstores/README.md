@@ -41,8 +41,6 @@ func main() {
 
     res, err := s.ConfigStores.ListConfigStores(ctx, operations.ListConfigStoresRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        PageSize: sdkkonnectgo.Pointer[int64](10),
-        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
     })
     if err != nil {
         log.Fatal(err)

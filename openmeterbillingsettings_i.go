@@ -11,6 +11,80 @@ import (
 
 // OpenMeterBillingSettingsSDK is a generated interface.
 type OpenMeterBillingSettingsSDK interface {
+	// ListInvoices - List billing invoices
+	// List billing invoices.
+	//
+	// Returns a page of invoices. Gathering invoices are never included. Use `filter`
+	// to narrow by status, customer, dates, or service period start. Use `sort` to
+	// control ordering.
+	ListInvoices(ctx context.Context, request operations.ListInvoicesRequest, opts ...operations.Option) (*operations.ListInvoicesResponse, error)
+	// GetInvoice - Get a billing invoice
+	// Get a billing invoice by ID.
+	//
+	// Returns the full invoice resource including line items, status details, totals,
+	// and workflow configuration snapshot.
+	GetInvoice(ctx context.Context, invoiceID string, opts ...operations.Option) (*operations.GetInvoiceResponse, error)
+	// UpdateInvoice - Update a billing invoice
+	// Update a billing invoice.
+	//
+	// Only the mutable fields of the invoice can be edited: description, labels,
+	// supplier, customer, workflow settings, and top-level lines. Top-level lines are
+	// matched by `id`; lines without an `id` are created, and existing lines omitted
+	// from `lines` are deleted. Detailed (child) lines are always computed and cannot
+	// be edited directly. Only invoices in draft status can be updated.
+	UpdateInvoice(ctx context.Context, invoiceID string, updateInvoiceRequest components.UpdateInvoiceRequest, opts ...operations.Option) (*operations.UpdateInvoiceResponse, error)
+	// DeleteInvoice - Delete a billing invoice
+	// Delete a billing invoice.
+	//
+	// Only standard invoices in draft status can be deleted. Deleting an invoice will
+	// also delete all associated line items and workflow configuration.
+	DeleteInvoice(ctx context.Context, invoiceID string, opts ...operations.Option) (*operations.DeleteInvoiceResponse, error)
+	// AdvanceInvoice - Advance billing invoice's next status
+	// Advance a billing invoice.
+	//
+	// Advances the invoice to the next workflow state. The next state is determined by
+	// the invoice's current status and workflow configuration. Only invoices in draft
+	// or issued status can be advanced.
+	AdvanceInvoice(ctx context.Context, invoiceID string, opts ...operations.Option) (*operations.AdvanceInvoiceResponse, error)
+	// ApproveInvoice - Send the invoice to the customer
+	// Approve a billing invoice.
+	//
+	// This call instantly sends the invoice to the customer using the configured
+	// billing profile app.
+	//
+	// This call is valid in two invoice statuses:
+	//
+	// - draft: the invoice will be sent to the customer, the invoice state becomes
+	// issued
+	// - manual_approval_needed: the invoice will be sent to the customer, the invoice
+	// state becomes issued
+	ApproveInvoice(ctx context.Context, invoiceID string, opts ...operations.Option) (*operations.ApproveInvoiceResponse, error)
+	// RetryInvoice - Retry advancing the invoice after a failed attempt
+	// Retry sending a billing invoice.
+	//
+	// Retry advancing the invoice after a failed attempt.
+	//
+	// The action can be called when the invoice's statusDetails' actions field contain
+	// the "retry" action.
+	RetryInvoice(ctx context.Context, invoiceID string, opts ...operations.Option) (*operations.RetryInvoiceResponse, error)
+	// SnapshotQuantitiesInvoice - Snapshot quantities for usage based line items
+	// Snapshot quantities for usage-based line items.
+	//
+	// This call will snapshot the quantities for all usage based line items in the
+	// invoice.
+	//
+	// This call is only valid in draft.waiting_for_collection status, where the
+	// collection period can be skipped using this action.
+	SnapshotQuantitiesInvoice(ctx context.Context, invoiceID string, opts ...operations.Option) (*operations.SnapshotQuantitiesInvoiceResponse, error)
+	// ListCharges - List charges
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// List charges.
+	//
+	// Returns the charges of every customer that are represented as either flat fee or
+	// usage-based charges.
+	ListCharges(ctx context.Context, request operations.ListChargesRequest, opts ...operations.Option) (*operations.ListChargesResponse, error)
 	// ListBillingProfiles - List billing profiles
 	// List billing profiles.
 	ListBillingProfiles(ctx context.Context, request operations.ListBillingProfilesRequest, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error)

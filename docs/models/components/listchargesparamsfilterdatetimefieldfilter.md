@@ -1,0 +1,55 @@
+# ListChargesParamsFilterDateTimeFieldFilter
+
+Filter charges by the start of their service period.
+
+
+## Supported Types
+
+### ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter
+
+```go
+listChargesParamsFilterDateTimeFieldFilter := components.CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter(components.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter{/* values here */})
+```
+
+### ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter
+
+```go
+listChargesParamsFilterDateTimeFieldFilter := components.CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter(components.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter{/* values here */})
+```
+
+### ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter
+
+```go
+listChargesParamsFilterDateTimeFieldFilter := components.CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter(components.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter{/* values here */})
+```
+
+### ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter
+
+```go
+listChargesParamsFilterDateTimeFieldFilter := components.CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter(components.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter{/* values here */})
+```
+
+### ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter
+
+```go
+listChargesParamsFilterDateTimeFieldFilter := components.CreateListChargesParamsFilterDateTimeFieldFilterListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter(components.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch listChargesParamsFilterDateTimeFieldFilter.Type {
+	case components.ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter:
+		// listChargesParamsFilterDateTimeFieldFilter.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter is populated
+	case components.ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter:
+		// listChargesParamsFilterDateTimeFieldFilter.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter is populated
+	case components.ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter:
+		// listChargesParamsFilterDateTimeFieldFilter.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter is populated
+	case components.ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter:
+		// listChargesParamsFilterDateTimeFieldFilter.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter is populated
+	case components.ListChargesParamsFilterDateTimeFieldFilterTypeListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter:
+		// listChargesParamsFilterDateTimeFieldFilter.ListChargesParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter is populated
+}
+```

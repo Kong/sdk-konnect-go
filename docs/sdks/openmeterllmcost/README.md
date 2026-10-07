@@ -1,4 +1,7 @@
-# OpenMeterLLMCost
+# ~~OpenMeterLLMCost~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
@@ -6,18 +9,20 @@ LLM cost database providing normalized pricing data for language models across p
 
 ### Available Operations
 
-* [ListLlmCostOverrides](#listllmcostoverrides) - List LLM cost overrides
-* [CreateLlmCostOverride](#createllmcostoverride) - Create LLM cost override
-* [DeleteLlmCostOverride](#deletellmcostoverride) - Delete LLM cost override
-* [ListLlmCostPrices](#listllmcostprices) - List LLM cost prices
-* [GetLlmCostPrice](#getllmcostprice) - Get LLM cost price
+* [~~ListLlmCostOverrides~~](#listllmcostoverrides) - List LLM cost overrides :warning: **Deprecated**
+* [~~CreateLlmCostOverride~~](#createllmcostoverride) - Create LLM cost override :warning: **Deprecated**
+* [~~DeleteLlmCostOverride~~](#deletellmcostoverride) - Delete LLM cost override :warning: **Deprecated**
+* [~~ListLlmCostPrices~~](#listllmcostprices) - List LLM cost prices :warning: **Deprecated**
+* [~~GetLlmCostPrice~~](#getllmcostprice) - Get LLM cost price :warning: **Deprecated**
 
-## ListLlmCostOverrides
+## ~~ListLlmCostOverrides~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 List per-namespace price overrides.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -73,12 +78,14 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## CreateLlmCostOverride
+## ~~CreateLlmCostOverride~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 Create a per-namespace price override.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -144,12 +151,14 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## DeleteLlmCostOverride
+## ~~DeleteLlmCostOverride~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 Delete a per-namespace price override.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -205,12 +214,14 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## ListLlmCostPrices
+## ~~ListLlmCostPrices~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 List global LLM cost prices. Returns prices with overrides applied if any.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -268,13 +279,15 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## GetLlmCostPrice
+## ~~GetLlmCostPrice~~
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
 Get a specific LLM cost price by ID. Returns the price with overrides applied if
 any.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

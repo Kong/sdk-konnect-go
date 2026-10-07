@@ -1,6 +1,8 @@
 # BillingAppCapabilityType
 
-Type of the capability.
+Supported capability types for an App.
+
+Each capability defines an integration function that an App can perform.
 
 ## Example Usage
 

@@ -1,0 +1,10 @@
+# MCPSseTransport
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `Type`                                                                       | `string`                                                                     | :heavy_check_mark:                                                           | Transport type                                                               | sse                                                                          |
+| `URL`                                                                        | `string`                                                                     | :heavy_check_mark:                                                           | Server-Sent Events endpoint URL template.                                    | https://mcp-fs.example.com/sse                                               |
+| `Headers`                                                                    | [][components.MCPKeyValueInput](../../models/components/mcpkeyvalueinput.md) | :heavy_minus_sign:                                                           | HTTP headers to include                                                      |                                                                              |

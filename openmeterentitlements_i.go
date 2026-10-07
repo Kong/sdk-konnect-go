@@ -4,7 +4,9 @@ package sdkkonnectgo
 
 import (
 	"context"
+	"time"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
@@ -12,4 +14,159 @@ import (
 type OpenMeterEntitlementsSDK interface {
 	// ListCustomerEntitlementAccess - List customer entitlement access
 	ListCustomerEntitlementAccess(ctx context.Context, customerID string, opts ...operations.Option) (*operations.ListCustomerEntitlementAccessResponse, error)
+	// GetCustomerEntitlementAccess - Get customer entitlement access
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Get the customer's access to a single feature.
+	GetCustomerEntitlementAccess(ctx context.Context, customerID string, featureKey string, opts ...operations.Option) (*operations.GetCustomerEntitlementAccessResponse, error)
+	// GetCustomerEntitlementValueByFeatureKey - Get customer entitlement value by feature key
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Get the customer's entitlement value for a feature at a point in time. Without
+	// an active entitlement, the result denies access and omits the type.
+	GetCustomerEntitlementValueByFeatureKey(ctx context.Context, request operations.GetCustomerEntitlementValueByFeatureKeyRequest, opts ...operations.Option) (*operations.GetCustomerEntitlementValueByFeatureKeyResponse, error)
+	// CreateCustomerEntitlement - Create customer entitlement
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Create an entitlement for the customer.
+	//
+	// A customer can have only one active entitlement per feature. The feature must be
+	// compatible with the entitlement type. Entitlements cannot be modified after
+	// creation, only deleted.
+	CreateCustomerEntitlement(ctx context.Context, customerID string, createEntitlementRequest components.CreateEntitlementRequest, opts ...operations.Option) (*operations.CreateCustomerEntitlementResponse, error)
+	// ListCustomerEntitlements - List customer entitlements
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// List the entitlements of the customer that are active at the time of the
+	// request. For checking entitlement access, use the entitlement access endpoints
+	// instead.
+	ListCustomerEntitlements(ctx context.Context, request operations.ListCustomerEntitlementsRequest, opts ...operations.Option) (*operations.ListCustomerEntitlementsResponse, error)
+	// GetCustomerEntitlement - Get customer entitlement
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Get an entitlement of the customer by ID. For checking entitlement access, use
+	// the entitlement access endpoints instead.
+	GetCustomerEntitlement(ctx context.Context, customerID string, entitlementID string, opts ...operations.Option) (*operations.GetCustomerEntitlementResponse, error)
+	// DeleteCustomerEntitlement - Delete customer entitlement
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Deletes the entitlement and revokes access to its feature. A customer can hold
+	// only one active entitlement per feature, so migrating a feature requires
+	// deleting the previous entitlement first.
+	//
+	// Deletion sets the `deleted_at` timestamp instead of removing history. Access and
+	// status queries for earlier points in time still treat the entitlement as active,
+	// so access changes are never retroactive.
+	DeleteCustomerEntitlement(ctx context.Context, customerID string, entitlementID string, opts ...operations.Option) (*operations.DeleteCustomerEntitlementResponse, error)
+	// CreateCustomerEntitlementGrant - Create customer entitlement grant
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Issue a grant for a metered entitlement of the customer. Boolean and static
+	// entitlements cannot have grants, so the request is rejected for them.
+	//
+	// Grants are immutable. The amount is added to the balance from `effective_at`,
+	// which cannot be earlier than the start of the current usage period.
+	CreateCustomerEntitlementGrant(ctx context.Context, request operations.CreateCustomerEntitlementGrantRequest, opts ...operations.Option) (*operations.CreateCustomerEntitlementGrantResponse, error)
+	// ListCustomerEntitlementGrants - List customer entitlement grants
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// List the grants issued for an entitlement of the customer. Grants only exist for
+	// metered entitlements, so the list is empty for boolean and static entitlements.
+	//
+	// Deleted grants are excluded unless `include_deleted` is set. Voided and expired
+	// grants are always included, as they are part of the balance history.
+	ListCustomerEntitlementGrants(ctx context.Context, request operations.ListCustomerEntitlementGrantsRequest, opts ...operations.Option) (*operations.ListCustomerEntitlementGrantsResponse, error)
+	// GetCustomerEntitlementHistory - Get customer entitlement history
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Get the balance and usage history of a metered entitlement. The queried range
+	// may span multiple usage periods.
+	//
+	// `windowed_history` groups usage into windows of the requested size and reports
+	// the balance at the start of each window. `burndown_history` lists the periods in
+	// which grants were consumed in a fixed order, together with the usage taken from
+	// each grant.
+	GetCustomerEntitlementHistory(ctx context.Context, request operations.GetCustomerEntitlementHistoryRequest, opts ...operations.Option) (*operations.GetCustomerEntitlementHistoryResponse, error)
+	// OverrideCustomerEntitlement - Override customer entitlement
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Override an entitlement of the customer with a new one.
+	//
+	// The referenced entitlement ends and the new one starts at the same instant, so
+	// access continues without a gap. Both must belong to the same feature. Use this
+	// for upgrades and downgrades.
+	//
+	// Fails if the referenced entitlement does not exist, is deleted, or is no longer
+	// active.
+	OverrideCustomerEntitlement(ctx context.Context, request operations.OverrideCustomerEntitlementRequest, opts ...operations.Option) (*operations.OverrideCustomerEntitlementResponse, error)
+	// ResetCustomerEntitlementUsage - Reset customer entitlement usage
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Reset the usage of a metered entitlement. The reset starts a new usage period:
+	// usage is zeroed and grants roll over according to their rollover settings.
+	//
+	// Usage is reset automatically at the end of each usage period. Use this operation
+	// to reset it earlier, for example to align the entitlement with the customer's
+	// billing period. The usage period anchor can be moved at the same time.
+	ResetCustomerEntitlementUsage(ctx context.Context, request operations.ResetCustomerEntitlementUsageRequest, opts ...operations.Option) (*operations.ResetCustomerEntitlementUsageResponse, error)
+	// GetCustomerEntitlementValue - Get customer entitlement value
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Get the customer's access through a single entitlement, optionally evaluated at
+	// a point in time.
+	GetCustomerEntitlementValue(ctx context.Context, request operations.GetCustomerEntitlementValueRequest, opts ...operations.Option) (*operations.GetCustomerEntitlementValueResponse, error)
+	// QueryEntitlementAccess - Query entitlement access
+	// Query feature access for a list of customers.
+	//
+	// The endpoint resolves each provided identifier to a customer and returns the
+	// access status for the requested features, plus optional credit balance
+	// availability.
+	//
+	// _Designed to be called on a fixed refresh interval and the query response is
+	// intended to be cached._
+	QueryEntitlementAccess(ctx context.Context, entitlementAccessQueryRequest components.EntitlementAccessQueryRequest, page *components.CursorPaginationQueryPage, opts ...operations.Option) (*operations.QueryEntitlementAccessResponse, error)
+	// ListEntitlements - List entitlements
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// List the active entitlements of all customers. Intended for administrative use.
+	// To list the entitlements of a single customer, use the customer entitlements
+	// endpoints; to check entitlement access, use the entitlement access endpoints.
+	ListEntitlements(ctx context.Context, request operations.ListEntitlementsRequest, opts ...operations.Option) (*operations.ListEntitlementsResponse, error)
+	// GetEntitlement - Get entitlement
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Get an entitlement by ID. To check entitlement access, use the entitlement
+	// access endpoints instead.
+	GetEntitlement(ctx context.Context, entitlementID string, opts ...operations.Option) (*operations.GetEntitlementResponse, error)
+	// ListGrants - List grants
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// List the grants of all customers and entitlements. To list the grants of a
+	// single entitlement, use the customer entitlement grants endpoint.
+	//
+	// Deleted grants are excluded unless `include_deleted` is set. Voided and expired
+	// grants are always included, as they are part of the balance history.
+	ListGrants(ctx context.Context, request operations.ListGrantsRequest, opts ...operations.Option) (*operations.ListGrantsResponse, error)
+	// VoidGrant - Void grant
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Void a grant so it no longer adds to the balance. Usage already deducted from
+	// the grant is kept.
+	VoidGrant(ctx context.Context, grantID string, voidedAt *time.Time, opts ...operations.Option) (*operations.VoidGrantResponse, error)
 }

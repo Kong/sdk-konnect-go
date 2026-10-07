@@ -3,6 +3,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // Severity of the validation issue.
 type Severity string
 
@@ -40,6 +44,17 @@ type BillingValidationIssue struct {
 	Field *string `json:"field,omitempty"`
 	// Component that reported the validation issue, if applicable.
 	Component *string `json:"component,omitempty"`
+}
+
+func (b BillingValidationIssue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BillingValidationIssue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"code", "message", "severity"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (b *BillingValidationIssue) GetCode() string {

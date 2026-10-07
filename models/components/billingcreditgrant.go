@@ -34,9 +34,9 @@ func (e *BillingCreditGrantCreditFundingMethod) IsExact() bool {
 	return false
 }
 
-// ResolvedCostBasis - The rate the purchase is settled at in the purchase `currency`. Present once the
+// BillingCreditGrantResolvedCostBasis - The rate the purchase is settled at in the purchase `currency`. Present once the
 // cost basis is resolved.
-type ResolvedCostBasis struct {
+type BillingCreditGrantResolvedCostBasis struct {
 	// The fiat currency the charge amount is converted into for invoicing.
 	FiatCurrency string `json:"fiat_currency"`
 	// Fiat amount per one unit of the custom currency.
@@ -48,43 +48,43 @@ type ResolvedCostBasis struct {
 	ResolvedAt time.Time `json:"resolved_at"`
 }
 
-func (r ResolvedCostBasis) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
+func (b BillingCreditGrantResolvedCostBasis) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
 }
 
-func (r *ResolvedCostBasis) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+func (b *BillingCreditGrantResolvedCostBasis) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (r *ResolvedCostBasis) GetFiatCurrency() string {
-	if r == nil {
+func (b *BillingCreditGrantResolvedCostBasis) GetFiatCurrency() string {
+	if b == nil {
 		return ""
 	}
-	return r.FiatCurrency
+	return b.FiatCurrency
 }
 
-func (r *ResolvedCostBasis) GetRate() string {
-	if r == nil {
+func (b *BillingCreditGrantResolvedCostBasis) GetRate() string {
+	if b == nil {
 		return ""
 	}
-	return r.Rate
+	return b.Rate
 }
 
-func (r *ResolvedCostBasis) GetCostBasisID() *string {
-	if r == nil {
+func (b *BillingCreditGrantResolvedCostBasis) GetCostBasisID() *string {
+	if b == nil {
 		return nil
 	}
-	return r.CostBasisID
+	return b.CostBasisID
 }
 
-func (r *ResolvedCostBasis) GetResolvedAt() time.Time {
-	if r == nil {
+func (b *BillingCreditGrantResolvedCostBasis) GetResolvedAt() time.Time {
+	if b == nil {
 		return time.Time{}
 	}
-	return r.ResolvedAt
+	return b.ResolvedAt
 }
 
 // BillingCreditGrantCreditAvailabilityPolicy - Controls when credits become available for consumption.
@@ -158,7 +158,7 @@ type BillingCreditGrantPurchase struct {
 	PerUnitCostBasis *string `json:"per_unit_cost_basis,omitempty"`
 	// The rate the purchase is settled at in the purchase `currency`. Present once the
 	// cost basis is resolved.
-	ResolvedCostBasis *ResolvedCostBasis `json:"resolved_cost_basis,omitempty"`
+	ResolvedCostBasis *BillingCreditGrantResolvedCostBasis `json:"resolved_cost_basis,omitempty"`
 	// The purchase amount, calculated from the resolved cost basis and credit
 	// `amount`. Present once the cost basis is resolved.
 	Amount *string `json:"amount,omitempty"`
@@ -195,7 +195,7 @@ func (b *BillingCreditGrantPurchase) GetPerUnitCostBasis() *string {
 	return b.PerUnitCostBasis
 }
 
-func (b *BillingCreditGrantPurchase) GetResolvedCostBasis() *ResolvedCostBasis {
+func (b *BillingCreditGrantPurchase) GetResolvedCostBasis() *BillingCreditGrantResolvedCostBasis {
 	if b == nil {
 		return nil
 	}

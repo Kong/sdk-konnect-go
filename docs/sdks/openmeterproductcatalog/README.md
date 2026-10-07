@@ -18,6 +18,7 @@ Product catalog manages plans, add-ons, and their associations for subscription-
 * [UpdatePlan](#updateplan) - Update plan
 * [GetPlan](#getplan) - Get plan
 * [DeletePlan](#deleteplan) - Delete plan
+* [ListPlanAddons](#listplanaddons) - List add-ons for plan
 * [CreatePlanAddon](#createplanaddon) - Add add-on to plan
 * [GetPlanAddon](#getplanaddon) - Get add-on association for plan
 * [UpdatePlanAddon](#updateplanaddon) - Update add-on association for plan
@@ -26,9 +27,6 @@ Product catalog manages plans, add-ons, and their associations for subscription-
 * [PublishPlan](#publishplan) - Publish plan version
 
 ## ListProductCatalogAddons
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 List all add-ons.
 
@@ -94,9 +92,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## CreateProductCatalogAddon
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Create a new add-on.
 
@@ -191,9 +186,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## UpdateProductCatalogAddon
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Update an add-on by id.
 
@@ -293,9 +285,6 @@ func main() {
 
 ## GetProductCatalogAddon
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Get add-on by id.
 
 ### Example Usage
@@ -355,9 +344,6 @@ func main() {
 
 ## DeleteProductCatalogAddon
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Soft delete add-on by id.
 
 ### Example Usage
@@ -415,9 +401,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ArchiveProductCatalogAddon
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Archive an add-on version.
 
@@ -477,9 +460,6 @@ func main() {
 
 ## PublishProductCatalogAddon
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Publish an add-on version.
 
 ### Example Usage
@@ -537,9 +517,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListPlans
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 List all plans.
 
@@ -600,9 +577,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## CreatePlan
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Create a new plan.
 
@@ -670,9 +644,6 @@ func main() {
 
 ## UpdatePlan
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Update a plan by id.
 
 ### Example Usage
@@ -739,9 +710,6 @@ func main() {
 
 ## GetPlan
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Get a plan by id.
 
 ### Example Usage
@@ -801,9 +769,6 @@ func main() {
 
 ## DeletePlan
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Delete a plan by id.
 
 ### Example Usage
@@ -849,6 +814,79 @@ func main() {
 ### Response
 
 **[*operations.DeletePlanResponse](../../models/operations/deleteplanresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListPlanAddons
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
+List add-ons associated with a plan.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-plan-addons" method="get" path="/v3/openmeter/plans/{planId}/addons" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterProductCatalog.ListPlanAddons(ctx, operations.ListPlanAddonsRequest{
+        PlanID: "01G65Z755AFWAKHE12NY0CQ9FH",
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
+        Filter: &components.ListPlanAddonsParamsFilter{
+            ID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+            AddonID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PlanAddonPagePaginatedResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [operations.ListPlanAddonsRequest](../../models/operations/listplanaddonsrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
+
+### Response
+
+**[*operations.ListPlanAddonsResponse](../../models/operations/listplanaddonsresponse.md), error**
 
 ### Errors
 
@@ -1129,9 +1167,6 @@ func main() {
 
 ## ArchivePlan
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Archive a plan version.
 
 ### Example Usage
@@ -1189,9 +1224,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## PublishPlan
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Publish a plan version.
 

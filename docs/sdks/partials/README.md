@@ -153,8 +153,8 @@ func main() {
     res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisEe(
         components.PartialRedisEe{
             Config: components.PartialRedisEeConfig{
-                ClusterNodes: []components.ClusterNodes{
-                    components.ClusterNodes{
+                ClusterNodes: []components.PartialRedisEeClusterNodes{
+                    components.PartialRedisEeClusterNodes{
                         IP: sdkkonnectgo.Pointer("192.168.1.10"),
                         Port: sdkkonnectgo.Pointer[int64](6380),
                     },
@@ -166,8 +166,8 @@ func main() {
                 )),
                 ReadTimeout: sdkkonnectgo.Pointer[int64](1000),
                 SendTimeout: sdkkonnectgo.Pointer[int64](1000),
-                SentinelNodes: []components.SentinelNodes{
-                    components.SentinelNodes{
+                SentinelNodes: []components.PartialRedisEeSentinelNodes{
+                    components.PartialRedisEeSentinelNodes{
                         Host: sdkkonnectgo.Pointer("sentinel1.redis.server"),
                         Port: sdkkonnectgo.Pointer[int64](26379),
                     },
@@ -429,8 +429,8 @@ func main() {
         Partial: components.CreatePartialRedisEe(
             components.PartialRedisEe{
                 Config: components.PartialRedisEeConfig{
-                    ClusterNodes: []components.ClusterNodes{
-                        components.ClusterNodes{
+                    ClusterNodes: []components.PartialRedisEeClusterNodes{
+                        components.PartialRedisEeClusterNodes{
                             IP: sdkkonnectgo.Pointer("192.168.1.10"),
                             Port: sdkkonnectgo.Pointer[int64](6380),
                         },
@@ -442,8 +442,8 @@ func main() {
                     )),
                     ReadTimeout: sdkkonnectgo.Pointer[int64](1000),
                     SendTimeout: sdkkonnectgo.Pointer[int64](1000),
-                    SentinelNodes: []components.SentinelNodes{
-                        components.SentinelNodes{
+                    SentinelNodes: []components.PartialRedisEeSentinelNodes{
+                        components.PartialRedisEeSentinelNodes{
                             Host: sdkkonnectgo.Pointer("sentinel1.redis.server"),
                             Port: sdkkonnectgo.Pointer[int64](26379),
                         },

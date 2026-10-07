@@ -35,15 +35,15 @@ func (e *CreditFundingMethod) IsExact() bool {
 	return false
 }
 
-type CostBasisType string
+type CreateCreditGrantRequestCostBasisType string
 
 const (
-	CostBasisTypeDynamic CostBasisType = "dynamic"
-	CostBasisTypePinned  CostBasisType = "pinned"
-	CostBasisTypeManual  CostBasisType = "manual"
+	CreateCreditGrantRequestCostBasisTypeDynamic CreateCreditGrantRequestCostBasisType = "dynamic"
+	CreateCreditGrantRequestCostBasisTypePinned  CreateCreditGrantRequestCostBasisType = "pinned"
+	CreateCreditGrantRequestCostBasisTypeManual  CreateCreditGrantRequestCostBasisType = "manual"
 )
 
-// CostBasis - Defines how custom-currency credits are priced in the purchase `currency`; the
+// CreateCreditGrantRequestCostBasis - Defines how custom-currency credits are priced in the purchase `currency`; the
 // resolved rate is exposed through `resolved_cost_basis`.
 //
 // Fiat grants accept only a `manual` cost basis without `fiat_currency`, where
@@ -52,53 +52,53 @@ const (
 // A `dynamic` cost basis is resolved at the grant's effective time, so the
 // currency cost basis must be effective by then. Cannot be combined with
 // `per_unit_cost_basis`.
-type CostBasis struct {
+type CreateCreditGrantRequestCostBasis struct {
 	CreateChargeCostBasisDynamic *CreateChargeCostBasisDynamic `queryParam:"inline" union:"member"`
 	CreateChargeCostBasisPinned  *CreateChargeCostBasisPinned  `queryParam:"inline" union:"member"`
 	CreateChargeCostBasisManual  *CreateChargeCostBasisManual  `queryParam:"inline" union:"member"`
 
-	Type CostBasisType
+	Type CreateCreditGrantRequestCostBasisType
 }
 
-func CreateCostBasisDynamic(dynamic CreateChargeCostBasisDynamic) CostBasis {
-	typ := CostBasisTypeDynamic
+func CreateCreateCreditGrantRequestCostBasisDynamic(dynamic CreateChargeCostBasisDynamic) CreateCreditGrantRequestCostBasis {
+	typ := CreateCreditGrantRequestCostBasisTypeDynamic
 
 	typStr := CreateChargeCostBasisDynamicType(typ)
 	dynamic.Type = typStr
 
-	return CostBasis{
+	return CreateCreditGrantRequestCostBasis{
 		CreateChargeCostBasisDynamic: &dynamic,
 		Type:                         typ,
 	}
 }
 
-func CreateCostBasisPinned(pinned CreateChargeCostBasisPinned) CostBasis {
-	typ := CostBasisTypePinned
+func CreateCreateCreditGrantRequestCostBasisPinned(pinned CreateChargeCostBasisPinned) CreateCreditGrantRequestCostBasis {
+	typ := CreateCreditGrantRequestCostBasisTypePinned
 
 	typStr := CreateChargeCostBasisPinnedType(typ)
 	pinned.Type = typStr
 
-	return CostBasis{
+	return CreateCreditGrantRequestCostBasis{
 		CreateChargeCostBasisPinned: &pinned,
 		Type:                        typ,
 	}
 }
 
-func CreateCostBasisManual(manual CreateChargeCostBasisManual) CostBasis {
-	typ := CostBasisTypeManual
+func CreateCreateCreditGrantRequestCostBasisManual(manual CreateChargeCostBasisManual) CreateCreditGrantRequestCostBasis {
+	typ := CreateCreditGrantRequestCostBasisTypeManual
 
 	typStr := CreateChargeCostBasisManualType(typ)
 	manual.Type = typStr
 
-	return CostBasis{
+	return CreateCreditGrantRequestCostBasis{
 		CreateChargeCostBasisManual: &manual,
 		Type:                        typ,
 	}
 }
 
-func (u *CostBasis) UnmarshalJSON(data []byte) (err error) {
+func (u *CreateCreditGrantRequestCostBasis) UnmarshalJSON(data []byte) (err error) {
 	previous := *u
-	*u = CostBasis{}
+	*u = CreateCreditGrantRequestCostBasis{}
 	defer func() {
 		if err != nil {
 			*u = previous
@@ -118,36 +118,36 @@ func (u *CostBasis) UnmarshalJSON(data []byte) (err error) {
 	case "dynamic":
 		createChargeCostBasisDynamic := new(CreateChargeCostBasisDynamic)
 		if err := utils.UnmarshalJSON(data, &createChargeCostBasisDynamic, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == dynamic) type CreateChargeCostBasisDynamic within CostBasis: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == dynamic) type CreateChargeCostBasisDynamic within CreateCreditGrantRequestCostBasis: %w", string(data), err)
 		}
 
 		u.CreateChargeCostBasisDynamic = createChargeCostBasisDynamic
-		u.Type = CostBasisTypeDynamic
+		u.Type = CreateCreditGrantRequestCostBasisTypeDynamic
 		return nil
 	case "pinned":
 		createChargeCostBasisPinned := new(CreateChargeCostBasisPinned)
 		if err := utils.UnmarshalJSON(data, &createChargeCostBasisPinned, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == pinned) type CreateChargeCostBasisPinned within CostBasis: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == pinned) type CreateChargeCostBasisPinned within CreateCreditGrantRequestCostBasis: %w", string(data), err)
 		}
 
 		u.CreateChargeCostBasisPinned = createChargeCostBasisPinned
-		u.Type = CostBasisTypePinned
+		u.Type = CreateCreditGrantRequestCostBasisTypePinned
 		return nil
 	case "manual":
 		createChargeCostBasisManual := new(CreateChargeCostBasisManual)
 		if err := utils.UnmarshalJSON(data, &createChargeCostBasisManual, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == manual) type CreateChargeCostBasisManual within CostBasis: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == manual) type CreateChargeCostBasisManual within CreateCreditGrantRequestCostBasis: %w", string(data), err)
 		}
 
 		u.CreateChargeCostBasisManual = createChargeCostBasisManual
-		u.Type = CostBasisTypeManual
+		u.Type = CreateCreditGrantRequestCostBasisTypeManual
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CostBasis", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateCreditGrantRequestCostBasis", string(data))
 }
 
-func (u CostBasis) MarshalJSON() ([]byte, error) {
+func (u CreateCreditGrantRequestCostBasis) MarshalJSON() ([]byte, error) {
 	if u.CreateChargeCostBasisDynamic != nil {
 		return utils.MarshalJSON(u.CreateChargeCostBasisDynamic, "", true)
 	}
@@ -160,7 +160,7 @@ func (u CostBasis) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CreateChargeCostBasisManual, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CostBasis: all fields are null")
+	return nil, errors.New("could not marshal union type CreateCreditGrantRequestCostBasis: all fields are null")
 }
 
 // CreditAvailabilityPolicy - Controls when credits become available for consumption.
@@ -217,7 +217,7 @@ type Purchase struct {
 	// A `dynamic` cost basis is resolved at the grant's effective time, so the
 	// currency cost basis must be effective by then. Cannot be combined with
 	// `per_unit_cost_basis`.
-	CostBasis *CostBasis `json:"cost_basis,omitempty"`
+	CostBasis *CreateCreditGrantRequestCostBasis `json:"cost_basis,omitempty"`
 	// Controls when credits become available for consumption.
 	//
 	// Defaults to `on_creation`.
@@ -249,7 +249,7 @@ func (p *Purchase) GetPerUnitCostBasis() *string {
 	return p.PerUnitCostBasis
 }
 
-func (p *Purchase) GetCostBasis() *CostBasis {
+func (p *Purchase) GetCostBasis() *CreateCreditGrantRequestCostBasis {
 	if p == nil {
 		return nil
 	}

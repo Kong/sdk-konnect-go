@@ -92,6 +92,14 @@ type SDK struct {
 	AIGatewayPolicies *AIGatewayPolicies
 	// API related to the management of AI Gateway vaults for storing secrets.
 	AIGatewayVaults *AIGatewayVaults
+	// Manage AI Models - a catalogable proxy for AI Gateway models
+	CatalogAIModels *CatalogAIModels
+	// Link an AI Model to an AI Gateway model.
+	CatalogAIModelImplementations *CatalogAIModelImplementations
+	// Manage an AI Model version's oas specification.
+	CatalogAIModelSpecs *CatalogAIModelSpecs
+	// Manage an AI Model's version.
+	CatalogAIModelVersions *CatalogAIModelVersions
 	// Service API mappings represent the link between Service and API entities.
 	// Once an API is mapped to a Service, a rich view of the linked APIs will be presented on the APIs tab of the Catalog Service.
 	// Similarly, Services mapped to an API will be listed on the API overview page under Catalog.
@@ -233,6 +241,13 @@ type SDK struct {
 	CatalogIntegrations *CatalogIntegrations
 	MCPServers          *MCPServers
 	MCPServerRuntime    *MCPServerRuntime
+	// Manage MCPs - a catalogable proxy for AI Gateway MCPs
+	CatalogMCPs *CatalogMCPs
+	// Link an MCP to an AI Gateway MCP.
+	CatalogMCPImplementations *CatalogMCPImplementations
+	// Manage an MCP's version.
+	CatalogMCPVersions *CatalogMCPVersions
+	Mesh               *Mesh
 	// Operations related to notifications
 	Notifications *Notifications
 	// Resource mappings represent the link between a resource and a service.
@@ -390,6 +405,10 @@ type SDK struct {
 	OpenMeterProductCatalog *OpenMeterProductCatalog
 	// Apps enable you to extend and customize billing and usage workflows by integrating with external systems and services. Apps can automate and enhance your billing ecosystem by supporting capabilities such as synchronizing usage data with third-party platforms, calculating taxes, generating and delivering invoices, handling payment collection, and other billing-related tasks.
 	OpenMeterApps *OpenMeterApps
+	// Billing settings manages the billing profiles and invoices for customers.
+	OpenMeterBillingSettings *OpenMeterBillingSettings
+	// Currencies and cost bases for customers.
+	OpenMeterCurrencies *OpenMeterCurrencies
 	// Customers are used to track usage of your product or service. Customers can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterCustomers *OpenMeterCustomers
 	// Entitlements are used to control access to features for customers.
@@ -404,8 +423,8 @@ type SDK struct {
 	OpenMeterLLMCost *OpenMeterLLMCost
 	// Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.
 	Meters *Meters
-	// Billing settings manages the billing profiles and invoices for customers.
-	OpenMeterBillingSettings *OpenMeterBillingSettings
+	// Notification channels deliver notification events, such as entitlement balance threshold crossings, to external systems.
+	OpenMeterNotifications *OpenMeterNotifications
 	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterSubscriptions *OpenMeterSubscriptions
 	// Tax codes are used to calculate taxes for customers.
@@ -529,10 +548,10 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.72.0",
+		SDKVersion: "0.73.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.72.0 2.943.0 3.15.0 github.com/Kong/sdk-konnect-go",
-			SDKVersion:        "0.72.0",
+			UserAgent:         "speakeasy-sdk/go 0.73.0 2.943.0 3.15.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.73.0",
 			GenVersion:        "2.943.0",
 			OpenAPIDocVersion: "3.15.0",
 			ServerList:        ServerList,
@@ -573,6 +592,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk.AIGatewayModels = newAIGatewayModels(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayPolicies = newAIGatewayPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AIGatewayVaults = newAIGatewayVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogAIModels = newCatalogAIModels(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogAIModelImplementations = newCatalogAIModelImplementations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogAIModelSpecs = newCatalogAIModelSpecs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogAIModelVersions = newCatalogAIModelVersions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -604,6 +627,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServerRuntime = newMCPServerRuntime(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogMCPs = newCatalogMCPs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogMCPImplementations = newCatalogMCPImplementations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogMCPVersions = newCatalogMCPVersions(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Mesh = newMesh(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -663,6 +690,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Invites = newInvites(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterProductCatalog = newOpenMeterProductCatalog(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterApps = newOpenMeterApps(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterBillingSettings = newOpenMeterBillingSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterCurrencies = newOpenMeterCurrencies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterCustomers = newOpenMeterCustomers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterEntitlements = newOpenMeterEntitlements(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterDefaults = newOpenMeterDefaults(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -670,7 +699,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.OpenMeterFeatures = newOpenMeterFeatures(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterLLMCost = newOpenMeterLLMCost(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Meters = newMeters(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.OpenMeterBillingSettings = newOpenMeterBillingSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterNotifications = newOpenMeterNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterSubscriptions = newOpenMeterSubscriptions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.OpenMeterTax = newOpenMeterTax(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ImpersonationSettings = newImpersonationSettings(sdk, sdk.sdkConfiguration, sdk.hooks)

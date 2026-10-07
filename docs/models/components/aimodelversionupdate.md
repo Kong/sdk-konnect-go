@@ -1,0 +1,12 @@
+# AiModelVersionUpdate
+
+Request body for partially updating an AI Model Version.
+
+
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   | Example                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `Version`                                                                                                     | `*string`                                                                                                     | :heavy_minus_sign:                                                                                            | An optional user-supplied version label. Omit it to leave the version unchanged, or send `null` to clear it.<br/> | 1.0.0                                                                                                         |
+| `TargetModels`                                                                                                | [][components.TargetModel](../../models/components/targetmodel.md)                                            | :heavy_minus_sign:                                                                                            | The upstream LLM targets.                                                                                     |                                                                                                               |
