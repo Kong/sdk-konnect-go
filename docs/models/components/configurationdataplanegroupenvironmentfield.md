@@ -1,6 +1,8 @@
 # ConfigurationDataPlaneGroupEnvironmentField
 
-Environment variable name and value to set for a data-plane group.
+Environment variable name and value to set for a data-plane group. For dedicated AI gateways
+(`kind: dedicated.v0` and `type: ai`), this field should be omitted.
+
 
 
 ## Fields
