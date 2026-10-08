@@ -11,14 +11,20 @@ import (
 // NetworkConfigurationReference - Object containing information about a control-plane's cloud-gateways configuration.
 type NetworkConfigurationReference struct {
 	ID string `json:"id"`
-	// Supported gateway version. For serverless.v1 kind of cloud gateways, this field should be omitted.
+	// Supported gateway version. For `serverless.v1` cloud gateways and dedicated AI gateways
+	// (`kind: dedicated.v0` and `type: ai`), this field should be omitted.
+	//
 	Version *string `json:"version,omitempty"`
 	// Controls how data planes in a configuration are exposed. Supported values:
 	// - `private` — data planes are accessible only within the VPC network; no public internet exposure
 	// - `public` — data planes are accessible from the public internet
-	// - `private+public` — equivalent to `public`; data planes are accessible from the public internet (default)
+	// - `private+public` — equivalent to `public`; data planes are accessible from the public internet
 	//
-	APIAccess *APIAccess `default:"private+public" json:"api_access"`
+	// Dedicated AI gateways (`kind: dedicated.v0` and `type: ai`) support only private or
+	// public; the default is `public`. The private+public value is not supported for dedicated
+	// AI gateways. For other gateway types, the default is `private+public`.
+	//
+	APIAccess *APIAccess `json:"api_access,omitempty"`
 	// Object that describes where data-planes will be deployed to, along with how many instances.
 	DataplaneGroupConfig []ConfigurationDataPlaneGroupConfig `json:"dataplane_group_config"`
 	// List of data-plane groups that describe where data-planes will be deployed to, along with how many
@@ -31,6 +37,12 @@ type NetworkConfigurationReference struct {
 	// Kind of the Cloud Gateway deployment. If serverless.v1 is specified, the following fields
 	// should be omitted (will be ignored if provided): autoscale, cloud_gateway_network_id, version.
 	Kind *ConfigurationKind `default:"dedicated.v0" json:"kind"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// Type of Cloud Gateway: `api` for an API Gateway or `ai` for an AI Gateway.
+	// Applies only to dedicated Cloud Gateways. Defaults to `api` when omitted.
+	Type *ConfigurationType `default:"api" json:"type"`
 	// Positive, monotonically increasing version integer, to serialize configuration changes.
 	//
 	EntityVersion float64 `json:"entity_version"`
@@ -102,6 +114,13 @@ func (n *NetworkConfigurationReference) GetKind() *ConfigurationKind {
 		return nil
 	}
 	return n.Kind
+}
+
+func (n *NetworkConfigurationReference) GetType() *ConfigurationType {
+	if n == nil {
+		return nil
+	}
+	return n.Type
 }
 
 func (n *NetworkConfigurationReference) GetEntityVersion() float64 {

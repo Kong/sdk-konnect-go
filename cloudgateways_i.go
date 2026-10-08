@@ -45,9 +45,11 @@ type CloudGatewaysSDK interface {
 	// groups to match. Any network referenced in the request that is currently `offline` automatically transitions
 	// to `initializing`.
 	//
-	// Use `kind: dedicated.v0` (default) for dedicated Cloud Gateways — `version`, `cloud_gateway_network_id`, and
-	// `autoscale` are required. Use `kind: serverless.v1` for serverless Cloud Gateways — those three fields must
-	// be omitted.
+	// For a `Dedicated API gateway`, use kind: dedicated.v0 and type: api (both defaults); version,
+	// cloud_gateway_network_id, and autoscale are required. For a `Dedicated AI gateway`, use
+	// kind: dedicated.v0 and type: ai; cloud_gateway_network_id is required, while version, autoscale,
+	// and environment must be omitted. For a `Serverless gateway`, use kind: serverless.v1; version,
+	// cloud_gateway_network_id, and autoscale must be omitted.
 	CreateConfiguration(ctx context.Context, request components.CreateConfigurationRequest, opts ...operations.Option) (*operations.CreateConfigurationResponse, error)
 	// GetConfiguration - Get Configuration
 	// Retrieves a single Cloud Gateway configuration by ID, including the current state of each deployed

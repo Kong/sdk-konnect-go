@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 6f1a22255260905f0dea384f5a716017
+  docChecksum: f16fdcf19f33fbc95b80d9f02bd98ce0
   docVersion: 3.15.0
-  speakeasyVersion: 1.800.1
-  generationVersion: 2.943.0
-  releaseVersion: 0.73.0
-  configChecksum: 08f5585191cbbcc30e01617776d20b6f
+  speakeasyVersion: 1.801.0
+  generationVersion: 2.946.0
+  releaseVersion: 0.73.1
+  configChecksum: 269fe894cbf42066abb0a3cf53751dcb
 persistentEdits:
-  generation_id: f59ee2d7-b5db-45f3-aed6-8f56c4215deb
-  pristine_commit_hash: f3dcbebdc4380b3a29dc4adb7a508f39a4ca50c2
-  pristine_tree_hash: a0d2c44af620a11b0380fbd1885e4b1fe8040457
+  generation_id: 9febfc42-561b-4985-8db5-343e34562184
+  pristine_commit_hash: 7113af71824e768692e9d9cf215886c08f960e4f
+  pristine_tree_hash: 40f46938115649b5ce607fc511dc8d5a53f86114
 features:
   go:
     acceptHeaders: 2.81.2
@@ -37,7 +37,7 @@ features:
     openEnums: 0.1.0
     pagination: 2.82.9
     responseFormat: 0.1.2
-    retries: 2.84.5
+    retries: 2.84.6
     sdkHooks: 0.3.1
     transformJq: 0.0.1
     typeOverrides: 2.81.1
@@ -281,8 +281,8 @@ trackedFiles:
     pristine_git_object: f724d0e51bfafaca252fd4272a1e47e4bfc36ee6
   cloudgateways.go:
     id: b65f9a397c64
-    last_write_checksum: sha1:080e74c6dea8e6b58b7eb6c746c1b6c414b67d7a
-    pristine_git_object: 9b79987c50d818bac2081379b481bd2e40b7ea4d
+    last_write_checksum: sha1:f9b8625e3acaf7d0a0f3ba9612daaa2fabaeebe5
+    pristine_git_object: f3408d54d17c8eb56a4717e16eb25fcc46abe0ff
   configstores.go:
     id: ad1caaaef799
     last_write_checksum: sha1:6d2ba98adf22503af905f077bb5e830f41780d06
@@ -557,8 +557,8 @@ trackedFiles:
     pristine_git_object: be72b6635261657ba664f04860167e754d9100d4
   docs/models/components/aigatewayagentaccess.md:
     id: 9786aa217eed
-    last_write_checksum: sha1:f897601e7429b06dfad9c53228c86f67d14d172d
-    pristine_git_object: 6b7963c096ce3134651d14846cceca9cb5137850
+    last_write_checksum: sha1:57856bbe1679e2c6c84f3aaeec5f79dfca817c57
+    pristine_git_object: 5d8620af954086b716005bf7aed8f4f47e201491
   docs/models/components/aigatewayagentconfig.md:
     id: 20193c645f4e
     last_write_checksum: sha1:7632e99d3000cff578086ee0c31e29031581a202
@@ -909,16 +909,16 @@ trackedFiles:
     pristine_git_object: adf69d2e14ca90e5908fd3d4b7eff892bc936109
   docs/models/components/aigatewaymcpserverlistenerconsumer.md:
     id: 0a6ca477e11d
-    last_write_checksum: sha1:2dce0ddc6a2aa490a6e068d734aaae56a9716a64
-    pristine_git_object: c57d69473ba95dde4a96cb1374ba0fbf09f90339
+    last_write_checksum: sha1:dd698fbd1452c2603d1009f2a2d63ac7f977226c
+    pristine_git_object: fb3a3628cdd5d67e6f5040c6146bf2fd7239b284
   docs/models/components/aigatewaymcpserverlistenerlogging.md:
     id: 3e97e49f1fda
     last_write_checksum: sha1:3b7412dfa0d3baf096995dbd010d51c0cce01df2
     pristine_git_object: 5e31fccd7a4cb57ebdb5675d77ad855d41723baa
   docs/models/components/aigatewaymcpserverlisteneroauth.md:
     id: 7496d0007d64
-    last_write_checksum: sha1:f9b8eb5318c757b35f6719c89bff2b67f5657126
-    pristine_git_object: b3160f405a7d25006c6d8cd71f3da407ff7f5ab0
+    last_write_checksum: sha1:0bf68a284b08f089f34af74c2a1687179a2bf89c
+    pristine_git_object: 8e95124a40c3459cbbdb06b7f40809c6122a1a00
   docs/models/components/aigatewaymcpserverlistenerresponse.md:
     id: 6fd57119e3aa
     last_write_checksum: sha1:c17821cded600713f567089881ac00df31dc65cb
@@ -1105,8 +1105,8 @@ trackedFiles:
     pristine_git_object: bd5d9c368a49e66b75ae8c571847f883a8f17e63
   docs/models/components/aigatewaymodelaccess.md:
     id: f7bba0184431
-    last_write_checksum: sha1:410685b183897ab4dc83cdac1917403dd935b4ab
-    pristine_git_object: 9f2986f2dbd7e688eaec78f975896b0304743bb8
+    last_write_checksum: sha1:55e59f3a3dc294f0aefeb20dc17b9bb7c21feba9
+    pristine_git_object: 6bbc1e6aaa64ab94a5281b08d0656c43de219ec5
   docs/models/components/aigatewaymodelaigatewaymodelapi.md:
     id: 68d17f717e7a
     last_write_checksum: sha1:b6b90042e58d78768db8cb56f69b57e4662252fd
@@ -1657,8 +1657,8 @@ trackedFiles:
     pristine_git_object: b4d4628d536b3e237326022635ec2b904f598735
   docs/models/components/aigatewaymodelselectorconfig.md:
     id: 7f08ef2bb27d
-    last_write_checksum: sha1:c79c37e3ba830e6ac5e7e3d9f3b05ce6e85fb218
-    pristine_git_object: 004da3b620ae6c6916aa50bc0e132d2cd9de6d31
+    last_write_checksum: sha1:1fc7729b40138327772e6eff7d5512a44b7b6570
+    pristine_git_object: 72944a7602a24deb3f92293ea5deeb897e948be3
   docs/models/components/aigatewaymodelvectordbconfig.md:
     id: 2d7cb21d9424
     last_write_checksum: sha1:c4bbdb182676f57d12027f830a7761b3021fd457
@@ -2137,8 +2137,8 @@ trackedFiles:
     pristine_git_object: 6712e7f693010ee46acd2befe535eab7e4ee43ef
   docs/models/components/apiaccess.md:
     id: 47486fe8ef1b
-    last_write_checksum: sha1:658d45e5f2857ac0a10cc9f6aa135778b492e004
-    pristine_git_object: 2fd8a4bf81b9b229deeb17c09a623316e5d42d21
+    last_write_checksum: sha1:95e837a349e26c425e2a8adc312adf3e3544778c
+    pristine_git_object: b2488c826fea9de3fb0bc44c69cb388c483f09cc
   docs/models/components/apiattributefilterparameters.md:
     id: 345614c117fa
     last_write_checksum: sha1:a7979d4e024f1a4b863be788f60f91a21a1c51b1
@@ -2405,8 +2405,8 @@ trackedFiles:
     pristine_git_object: fc09b469607afa4cf24910853b60da24f39d5eec
   docs/models/components/apiresponseschema.md:
     id: 28fa007ad29a
-    last_write_checksum: sha1:d4f02a831554794b3f5bcdc020e989cafe7abdc8
-    pristine_git_object: 04a1a964bb7b5f7a3d45262db84024ec4d754b4c
+    last_write_checksum: sha1:c1bc69ac6703f7da73f7122c2c5346fad1e4a3c2
+    pristine_git_object: 2443337282e7c858f8739048b7442cb5c46d8253
   docs/models/components/apispec.md:
     id: 11e202c16224
     last_write_checksum: sha1:4c6f1b3aa6beb2c3a38246fc0371ece33ce75933
@@ -3341,8 +3341,8 @@ trackedFiles:
     pristine_git_object: 2a2146791aa9513fdcd59ba0269753b84193998e
   docs/models/components/billingchargeflatfeesubscriptionbillingsubscription.md:
     id: 01da0cbe99c7
-    last_write_checksum: sha1:078a3be07b963bb8b2b9eea4ee4b69d9ae103234
-    pristine_git_object: 05fb1097730874cf0ecfcb1592183a903c82da6d
+    last_write_checksum: sha1:7bb0425ff9577e8e272f9a3bf6fcd71df22615ee
+    pristine_git_object: 9c4039fda3efc6208b510b0b9cf867947ebde0f4
   docs/models/components/billingchargeflatfeesystemintentdiscounts.md:
     id: 01481b8a2223
     last_write_checksum: sha1:1896a477c8e9d7a94ff8de7f6dddfd2417deaff6
@@ -3577,8 +3577,8 @@ trackedFiles:
     pristine_git_object: af452a7562ade187ad6229f408ad77fee8932d48
   docs/models/components/billingchargeusagebasedtaxconfiguration.md:
     id: 9e897a7f0409
-    last_write_checksum: sha1:8be2e21591461248b3cf37242be5c974d97d6161
-    pristine_git_object: 2043919420c0c79f1b941989d708a0e95a9033ec
+    last_write_checksum: sha1:ce8272682dd18635e85d9b2e6167a43727f672c5
+    pristine_git_object: 2d615c06baa3c60e471f12888f708c68ba912bfc
   docs/models/components/billingchargeusagebasedtype.md:
     id: 7282b06700cd
     last_write_checksum: sha1:85a2b82a6b261bf144782db5562bf24a4d4df4f5
@@ -3629,8 +3629,8 @@ trackedFiles:
     pristine_git_object: 35da9f0e7e1217f1e367d137c26637f530a3ee39
   docs/models/components/billingcreditgrantpurchase.md:
     id: b752ac325bd3
-    last_write_checksum: sha1:127f05add4eb3b3b49975c5043bca0aafb466042
-    pristine_git_object: 0350cfc87fb0afbdbea9f28e4c7670ed118a3de0
+    last_write_checksum: sha1:912e35d39d01d37ebf7b6afb0df6745ef48183be
+    pristine_git_object: 34c789fe6b7b7b11273ff86096fa558c2ad88a10
   docs/models/components/billingcreditgrantresolvedcostbasis.md:
     id: e03cbf28976f
     last_write_checksum: sha1:4044698910f9261a79e289ca0785308f8b49ed40
@@ -3837,8 +3837,8 @@ trackedFiles:
     pristine_git_object: 2b954e97410d9e34d5ae60c5ab10902de7ccba3c
   docs/models/components/billingentitlementmetered.md:
     id: 945a6ee7e3d2
-    last_write_checksum: sha1:9e037e9e728132fb040c25dc7bb1a38077d17578
-    pristine_git_object: b9a0d9392ebc23db80426718e2cf4e2a6c728db9
+    last_write_checksum: sha1:88cfe725d93e8f2a3c6ce722ca2503891b990b34
+    pristine_git_object: 2b65cdc4c846bf68b8b8e752f26610b83b887ddb
   docs/models/components/billingentitlementmeteredcustomer.md:
     id: 4edd90188084
     last_write_checksum: sha1:ec433041cb03a57f5e1fbe9f74ae9abb55714d42
@@ -4325,8 +4325,8 @@ trackedFiles:
     pristine_git_object: 8317b6bbb4c75bece5fc4a8ec825a0bdcf98524c
   docs/models/components/billingsubscription.md:
     id: aff92535e487
-    last_write_checksum: sha1:1cc09733454fe0e5a33438661ad44d4739e91c91
-    pristine_git_object: 41331a5c29ef6109da3d37d6fae07837a136fb58
+    last_write_checksum: sha1:7221816f243ef5a1efeee137af8c8576f9739b91
+    pristine_git_object: b8c9a9a0cecbcb9f4a39361586ea2db8bcce9f0c
   docs/models/components/billingsubscriptioncancel.md:
     id: 137373a5ce4b
     last_write_checksum: sha1:d05b19e0e7e6e0a875ddbd308d59b3fffba0836c
@@ -4633,8 +4633,8 @@ trackedFiles:
     pristine_git_object: bb6d9533b5621e4ea5f9ee9a61df6a579c325ab2
   docs/models/components/billingsubscriptionmigrateresponsecurrent.md:
     id: d186b46b2fc7
-    last_write_checksum: sha1:5acf692c1f53e8dd556eae91ef91441dfeb181db
-    pristine_git_object: af57da613f70917ef36f843631bec06a546a03e1
+    last_write_checksum: sha1:f52acd54c3b2cd883594cd6da521ecc015420f6f
+    pristine_git_object: 94d5cdd58e60ac911f45760e1606d2b6b0318f7b
   docs/models/components/billingsubscriptionmigrateresponsecurrentbillingperiod.md:
     id: 82a50d3979f7
     last_write_checksum: sha1:9ac43014ce2378ad804d5f48bd9e8da444ecc141
@@ -4645,8 +4645,8 @@ trackedFiles:
     pristine_git_object: fd88cbe4b76d9273c0013e8ee8cd5a02e4c9e944
   docs/models/components/billingsubscriptionmigrateresponsenext.md:
     id: a6fe1fb801e1
-    last_write_checksum: sha1:107d678e863b84021ab9c6a393a1ab65f6c3c886
-    pristine_git_object: 18aebe74e7abcfd39d7a122181763bd0edd34c26
+    last_write_checksum: sha1:2f73244c0d68c37f34fae54553109d2b97872fca
+    pristine_git_object: 85066bad39fb65f9caa6c59170bc45d65d85aa5b
   docs/models/components/billingsubscriptionmigrateresponsenextcostbasismode.md:
     id: 5eba86331ac2
     last_write_checksum: sha1:f2d607ced84a475fea2c13d8b5dd359129832fad
@@ -5313,32 +5313,32 @@ trackedFiles:
     pristine_git_object: 686b4e9cb7347a5d5aeb899ede5fb873342f2107
   docs/models/components/configurationdataplanegroup.md:
     id: 16de5856d965
-    last_write_checksum: sha1:4a334823822b38d09261a58c2870879779144395
-    pristine_git_object: 48541de9aa15d0af7d69fab57b2beef330418006
+    last_write_checksum: sha1:a423c0a39d79090819a3dcd18e45eafd0918b04e
+    pristine_git_object: 7897c20aef4812486ba6b4e31aab27a4ac8b4b55
   docs/models/components/configurationdataplanegroupautoscale.md:
     id: be8d99e833c2
-    last_write_checksum: sha1:c14a82bdb634429bd7b3218e65ea4528f2d8cec0
-    pristine_git_object: db12e2f6f9ca6c2868e9e37fa46078dd56d0a295
+    last_write_checksum: sha1:4deb9ce9f01189669abd75bfec67c1646c1de2b1
+    pristine_git_object: fd64ec4399e85ef855e34d5a584627dc6d137d9f
   docs/models/components/configurationdataplanegroupautoscaleautopilot.md:
     id: b0202b94c49d
-    last_write_checksum: sha1:f84f266bccced33c8f44d6db11ee2c3637a64900
-    pristine_git_object: b9f91f2ab50acc34c0931441292bfeecd04f0f0d
+    last_write_checksum: sha1:3c7419b689ac8971fc6d1d56594528a6fa75b538
+    pristine_git_object: 172205ea2b9395b2723c45b0bf4d3b86b8151872
   docs/models/components/configurationdataplanegroupautoscaleautopilotkind.md:
     id: 44771c983d89
     last_write_checksum: sha1:b479aa559df54df2935ea8170df2e7b8c615451a
     pristine_git_object: 0c241bb4609e2252c9fbec94e77e3dc2040fc648
   docs/models/components/configurationdataplanegroupautoscalestatic.md:
     id: d87a11c281fd
-    last_write_checksum: sha1:998c9bc19d75f3765608eadc78ee1dffb056ebad
-    pristine_git_object: 4d8429310d9d218ce7c2d3d464215eeff90d5d94
+    last_write_checksum: sha1:635f4cba601d72c637904911ff64ab9376c55371
+    pristine_git_object: 7544aa36895c5edd910dfa7ade280de08c07a850
   docs/models/components/configurationdataplanegroupconfig.md:
     id: 95b7e520d49e
-    last_write_checksum: sha1:c5bce86cbf0a4560a6f95bce2ecd2837c1a2aeda
-    pristine_git_object: f2679a6f6c0b00aa2519ca0698bc053cb61b0fdc
+    last_write_checksum: sha1:d3b9fd1a04268a1e74ea320bad15ae0a857c6942
+    pristine_git_object: fa04471537aeae6fff93ec99756b7ce3c7756032
   docs/models/components/configurationdataplanegroupenvironmentfield.md:
     id: 4da75ee378e7
-    last_write_checksum: sha1:c6649504cc84acf61a221c2ec68d32012932de72
-    pristine_git_object: e960d8497fff33f8ba68f321a8a779667e84f20d
+    last_write_checksum: sha1:67bdc2783ba0900e1c97de8cc0217a0ff4ed0985
+    pristine_git_object: 9b8107e619a9217d0bed2ae12c674faac5c804df
   docs/models/components/configurationdataplanegroupstate.md:
     id: 2a1e514b71ec
     last_write_checksum: sha1:3f85af91c79b56096b1f58e4c9d32a7d0efa3fbf
@@ -5357,12 +5357,16 @@ trackedFiles:
     pristine_git_object: eb91af237e820b8631cbdd729061f6a12372b800
   docs/models/components/configurationmanifest.md:
     id: 6848f9228421
-    last_write_checksum: sha1:b08a0a0214eabeec6e4859be59ad00d79a05e0e2
-    pristine_git_object: b3e654ce75524d731d877918fcc4b63768181b73
+    last_write_checksum: sha1:e23b20b48b5e051d7169103c2ce822ce9586b711
+    pristine_git_object: 5d66e0f3e5b70ba059449fd5d21ce7191b2018e4
   docs/models/components/configurationsfilterparameters.md:
     id: 2d47b3431ead
     last_write_checksum: sha1:40ecc0e33fa66c3954520bef6caf24e7314f2cea
     pristine_git_object: df655ba4499c97f2d586778580291486209d23c7
+  docs/models/components/configurationtype.md:
+    id: 4b715afa4b93
+    last_write_checksum: sha1:93e327a5692fdd5e644633eacb39f4e3237ffbf3
+    pristine_git_object: 1a1c900bef486afa586dac779d93915f4c6030c1
   docs/models/components/conflict.md:
     id: 022408366b49
     last_write_checksum: sha1:a1df0bed0ef7fb05d28d4b5d08afe8866d885342
@@ -5429,8 +5433,12 @@ trackedFiles:
     pristine_git_object: 67f08073ca4e601df2480b63816464986bcbf4da
   docs/models/components/controlplaneaddonowner.md:
     id: b2c5d68fa50d
-    last_write_checksum: sha1:a27ba765a39209c1612dfd1d3d5601f8d6acfd2b
-    pristine_git_object: 78820361b948c831b4ba46fe8c42918e7fb7f53c
+    last_write_checksum: sha1:04b2189c3afec895c63b986b5ead87236c6d681c
+    pristine_git_object: adaa632f36f677716977aeac53e5fafe0db75a3a
+  docs/models/components/controlplaneaddonownertype.md:
+    id: 8ef1118315dd
+    last_write_checksum: sha1:7a9b3370fa24ce2cedc482587f307794be6343ca
+    pristine_git_object: a0eaccb2bc5f3bfd3646d9a344c8bbf0672cf156
   docs/models/components/controlplaneauthtype.md:
     id: bf453b3946bf
     last_write_checksum: sha1:b5ba44f469ccab80de066a3e5fbbb1570634d887
@@ -5729,8 +5737,8 @@ trackedFiles:
     pristine_git_object: 950d82d95ac726972bbaa189629351f3da2a0faa
   docs/models/components/createbillingprofilerequestdefaulttaxconfig.md:
     id: 2faa9211fbc4
-    last_write_checksum: sha1:2ba6fdbdf34107bb0c8cc3fa6d15c720dccc0140
-    pristine_git_object: 5d9b0959f30945b5a785bdd216dea82fcf8d11df
+    last_write_checksum: sha1:01fa0049a44a3ec8c9719aea06b477d6be656709
+    pristine_git_object: 2a9d2e79566f38c4846db5671a85f4309f62e191
   docs/models/components/createbillingprofilerequestexternalinvoicingtaxconfig.md:
     id: bb2f6331eda4
     last_write_checksum: sha1:3b0917ceb431e86738866c4cbde03a0e663f47ee
@@ -5901,8 +5909,8 @@ trackedFiles:
     pristine_git_object: 3851e511813a8ce85e6a43a5920f4586139fb79b
   docs/models/components/createchargeflatfeerequesttaxconfiguration.md:
     id: 81a212560f2b
-    last_write_checksum: sha1:1770dd23e15a41b6cd44c3f65d291ac721726aef
-    pristine_git_object: 31f8f1556c20f3e8d4e07e9da731c9463331ef66
+    last_write_checksum: sha1:982f627f095baa7f67e2609442030ed5d7241cbc
+    pristine_git_object: 23c9bc11b995c538f7145361b78b7bd69941f1c3
   docs/models/components/createchargeflatfeerequesttype.md:
     id: 37b38aed8ebe
     last_write_checksum: sha1:763b2b35909425c096d32cf4c325e61f3c537a98
@@ -5977,8 +5985,8 @@ trackedFiles:
     pristine_git_object: e69b699895d7647dd6ae4f33bd188496c5ca505a
   docs/models/components/createchargeusagebasedrequesttaxconfiguration.md:
     id: 7a9a2e98f092
-    last_write_checksum: sha1:fd7dfbbc98881bd343b8e976dfd4ba1dae1e34d3
-    pristine_git_object: b0dfefd8cffc7b2d00b1a30a23e31a51866dcdd4
+    last_write_checksum: sha1:b1ddc2ad67dfd6b6614704e3e6497908ca02b03d
+    pristine_git_object: a4ec3988cff1cf4febb6ce92294dc6b13c009658
   docs/models/components/createchargeusagebasedrequesttype.md:
     id: 93ac5d6465d0
     last_write_checksum: sha1:ffea4881a9a00db1696f336f244f05bff6615389
@@ -5997,12 +6005,12 @@ trackedFiles:
     pristine_git_object: 8e26a194e3ce2d334ebda0142732ffed89dea3b2
   docs/models/components/createconfigurationdataplanegroup.md:
     id: c8067fffac76
-    last_write_checksum: sha1:2e283c91b7ba534d5fea01b0803bbce614b709b6
-    pristine_git_object: 0cb15fb05baf08ea5b8a5af620f167fafa4682d4
+    last_write_checksum: sha1:cae74160167200b485ba9ba9a4a95979afc69984
+    pristine_git_object: 1a0b0988afe3c62bfa1a4f3016e8ab5ccd2acc74
   docs/models/components/createconfigurationrequest.md:
     id: 3b382d6eb0d2
-    last_write_checksum: sha1:561e4d73fee56e5f606cb40e055e0bd2957e7923
-    pristine_git_object: 99390aa3616fd6e69c75c2fdc8cf3c08f313024e
+    last_write_checksum: sha1:e6582e0d9f3db11c26dea640505b260e2a052151
+    pristine_git_object: 9f8309021c25d0ae5c967f2ad7690aae30457668
   docs/models/components/createcontrolplanerequest.md:
     id: 34df43ce8525
     last_write_checksum: sha1:d4c505870e1c07cd993693dbf0da9a79203fd4c1
@@ -6049,8 +6057,8 @@ trackedFiles:
     pristine_git_object: 1fd9338ecc7cc0aeb266760580b9f03a2bb5e57a
   docs/models/components/createcustomdomainrequest.md:
     id: 225998ea60ce
-    last_write_checksum: sha1:a045fa7954488b7294c55ec6a997ca9ff1c76654
-    pristine_git_object: 1ed08881edf21642323f927bb44b7fc9f4d251b0
+    last_write_checksum: sha1:1d00f3b1eb8b9fbdc11ee47d0a141edaef54bdf4
+    pristine_git_object: 52215e5ffc9471712810b06c8664707f9715366c
   docs/models/components/createcustomerrequest.md:
     id: 62fa5611a60f
     last_write_checksum: sha1:08498b3fba1bf3c1169e713a7d5de26e67d013c8
@@ -6153,8 +6161,8 @@ trackedFiles:
     pristine_git_object: 1d7308fefa4e794ec6d0b090ac0fdb43280b3dba
   docs/models/components/createentitlementmeteredrequest.md:
     id: 3e04cf09c336
-    last_write_checksum: sha1:acc5280584ce787c1cfa71ef5a15ea91f5be73cf
-    pristine_git_object: 36f7263aba1906081817a46c7588e4b1dd8c1228
+    last_write_checksum: sha1:db1daaaaa84a5b6e528f5deac227ad6934a8a6c0
+    pristine_git_object: 3fc8ee99c0a52a3e17e0c888cae98222f949c035
   docs/models/components/createentitlementmeteredrequestfeature.md:
     id: 6c0f963453ba
     last_write_checksum: sha1:4375405616fa07365005328a578d01e60e57216e
@@ -6489,8 +6497,8 @@ trackedFiles:
     pristine_git_object: 6c4b2db95ed27f696e2dcc35339e1bae33a3412b
   docs/models/components/current.md:
     id: af0ec94fd8e1
-    last_write_checksum: sha1:3a3ec841ec6fb2b9982fdd210744ba9cd24c414a
-    pristine_git_object: 516853f4435bd8bb465abdab7673675965cb39d8
+    last_write_checksum: sha1:40d961ba55e895f25a45f25c3ba7555f4b88fea7
+    pristine_git_object: d0e4ee886f5b3d14f4168f38e58802e977ef272e
   docs/models/components/currentbillingperiod.md:
     id: 814e5ba32594
     last_write_checksum: sha1:3afcbf31b559f8a7dbc4a5b78e33a3475a7776be
@@ -6537,8 +6545,8 @@ trackedFiles:
     pristine_git_object: 7e1e4c057034abd89c504dfcf116d93fc029a104
   docs/models/components/customdomain.md:
     id: 70b1a3a2f702
-    last_write_checksum: sha1:7e1888550b4e84305eebadc4f2f62945fbc97d96
-    pristine_git_object: 22bf571a7cd1a2921d5b901f26e811ef9f24d63f
+    last_write_checksum: sha1:eac6e3db6652416f088bd42ad27839f0ce739223
+    pristine_git_object: c3c5526e1f0b4840550032a4ecfc988e5ae2ac0b
   docs/models/components/customdomainkind.md:
     id: ac6d0836b0e7
     last_write_checksum: sha1:028d93e6435f9426db1180ae49cb4bbe70b1702d
@@ -6583,6 +6591,10 @@ trackedFiles:
     id: 8219f9342caa
     last_write_checksum: sha1:5e7642341709aa6c282415520b7113345dad6d03
     pristine_git_object: 7bb0f24099c433bac7af9ac95b716d3d97e2b66d
+  docs/models/components/customdomaintype.md:
+    id: 31e1ef1caa1e
+    last_write_checksum: sha1:dff4c3fccb13585b754d4f5f811bc3b22b2f66f1
+    pristine_git_object: 298579dbaa08044e328bda9a931b82329f3a0d21
   docs/models/components/customer.md:
     id: c4a50385ed0c
     last_write_checksum: sha1:1a4dd36a806682d7ed477cfcef01dcbf9c7712ee
@@ -7077,8 +7089,8 @@ trackedFiles:
     pristine_git_object: 72ca6170c07604b6287aaf09bb76ef3c7a645fcc
   docs/models/components/defaulttaxconfig.md:
     id: 9f572e11e3be
-    last_write_checksum: sha1:7e7db4882e22524cbf7daf0273739509ad050c05
-    pristine_git_object: 1a7f763b40d7ec41abda2f57574e3245440f161e
+    last_write_checksum: sha1:a80ed0e1ff5afe24336db474d2410b98537c2bb0
+    pristine_git_object: 5ba73a9619cae78f400e6c1e8d1b6305045f099b
   docs/models/components/definition.md:
     id: 17ea57c287f3
     last_write_checksum: sha1:719d0e3a7a3dbbfbfc6d7ca76fc0a0f3dc77b6dc
@@ -7485,16 +7497,16 @@ trackedFiles:
     pristine_git_object: 92a1ec04af1f520669e1a9c73466d0214f6cf2e4
   docs/models/components/eventgatewayconsumeschemavalidationpolicyinlineschemaconfig.md:
     id: 912be4944b4c
-    last_write_checksum: sha1:fa643d4c3e9eff7c1771ffddafff85c4ea9bd61b
-    pristine_git_object: 09a928c293aa345fe8b9d79053d6988b1a092b7d
+    last_write_checksum: sha1:165d2868f53d9c2185feebf8942d28fc20efac94
+    pristine_git_object: fa348ed8ec926951c743daab5c5d575945682faf
   docs/models/components/eventgatewayconsumeschemavalidationpolicyjsonconfig.md:
     id: 6896b02dbbc3
-    last_write_checksum: sha1:690ef49d4ba4627dfa68223ef5f1a8c9dab0dd05
-    pristine_git_object: 5a4ef822e7d34c669921e2f37f2b8fe1f341fa83
+    last_write_checksum: sha1:2fdcc204402c97582ac6f22d2cd6addf1a4f3441
+    pristine_git_object: efff4c226fbdac1545cdc3887441d62bfa882a74
   docs/models/components/eventgatewayconsumeschemavalidationpolicyschemaregistryconfig.md:
     id: c8837b1e2d70
-    last_write_checksum: sha1:7d32687a40c3c110fd5c6c25b733f6e6b6922d0d
-    pristine_git_object: fe0da9c399d3a13e9802d0c56e4946b1ebb3f0d2
+    last_write_checksum: sha1:e216d56623bf183d7394d284fad7af67bb73185b
+    pristine_git_object: 7c90436c82ea092cddd8025dceb5fe495a206e2d
   docs/models/components/eventgatewaycreatepartitionsrequestrules.md:
     id: 4220662b4339
     last_write_checksum: sha1:42762091a80aada62b8e40b75543b475b4a9a0bf
@@ -10517,8 +10529,8 @@ trackedFiles:
     pristine_git_object: 556d8c35e377ec01935de101304062e632e20caf
   docs/models/components/metadata.md:
     id: 06867fa888c8
-    last_write_checksum: sha1:c9f23e1ec849a4eb56c93d8bd7fb62b9727bd2f9
-    pristine_git_object: 5301cc8a6e0ec016bdc9334a410bb3e50e3ebb70
+    last_write_checksum: sha1:7a3bfc7107b3c408e1e31cad4c24ece6e4ccfd4e
+    pristine_git_object: e77261905ebc80b0a5c111c5608fef93ce038a66
   docs/models/components/meter.md:
     id: a542760e5fcd
     last_write_checksum: sha1:2fde716aa7c95bbb4e7478a5e988775e880e10ef
@@ -10809,8 +10821,8 @@ trackedFiles:
     pristine_git_object: ebfcd53d8e6f6f0c407a027dbff8b893f96ff44b
   docs/models/components/networkconfigurationreference.md:
     id: 5203ff312ada
-    last_write_checksum: sha1:222996af9a1e104527bb69e591acecd1f42832de
-    pristine_git_object: 2c0e3ae54f276e92b4e169e3596ee692daecfbd3
+    last_write_checksum: sha1:199013d30e34549bca1db285aacbbb2d7ee5b84f
+    pristine_git_object: 0fe2c4181c60f37ff4e0c5fb71c1abe76b2547cb
   docs/models/components/networkcreatestate.md:
     id: 640800afa192
     last_write_checksum: sha1:073fabc4c01a724ffc885a2a13421f73a2aac3dd
@@ -10837,8 +10849,8 @@ trackedFiles:
     pristine_git_object: ed5640aa40829b01dfcd4cc8b55638b0552c503c
   docs/models/components/next.md:
     id: 336857b03f6e
-    last_write_checksum: sha1:4bc9e4db21b28279ead48bc76e88ebcafe702585
-    pristine_git_object: 15edfabaaa7e33f0118022991a1befe8ea73a64e
+    last_write_checksum: sha1:4606eab7500ef01d6ab8d54fedbaa8d1710cb39a
+    pristine_git_object: fac02da66be9d2bf2bc44ab0a8ac180e30dd6cd6
   docs/models/components/nodecompatibilityissue.md:
     id: 65880c4fcaf6
     last_write_checksum: sha1:e706392e6ea28e45eb2b33f655969c43f7855375
@@ -11597,12 +11609,12 @@ trackedFiles:
     pristine_git_object: 9d424e96215ef7119f5806d55dfafe2a9eb1768b
   docs/models/components/portalauthenticationsettingsresponse.md:
     id: a66ec66f4ed1
-    last_write_checksum: sha1:9a0556a8baf7212aaad9ebb957f8fd32ba0648ca
-    pristine_git_object: a7f638507c7247450eee10895569d062ca3cb2e5
+    last_write_checksum: sha1:25e9f4877e93a55a71aa49f3da962a5a3303a23f
+    pristine_git_object: bb446138f13a3c82550003ed7a22fa16fe596501
   docs/models/components/portalauthenticationsettingsupdaterequest.md:
     id: bbe8dfe0ce5a
-    last_write_checksum: sha1:5a6bef347458c0204a36c2547000c9ae92c3684d
-    pristine_git_object: cdc4b1894bb65563a4fdf0ae3dced09f9a71f565
+    last_write_checksum: sha1:509d632c6819aa3e5327bc7136dee7245157d954
+    pristine_git_object: f78455c7f08b6bc021f66570e6f4749787e4084b
   docs/models/components/portalauthenticationsettingsupdaterequestportalclaimmappings.md:
     id: d44549742a68
     last_write_checksum: sha1:ce18c89afd543dc68e6fcaeaed8460c9a6e5c5c5
@@ -11645,8 +11657,8 @@ trackedFiles:
     pristine_git_object: 48bce4e4f4a227b3b7d05bedc415767f186cfe1a
   docs/models/components/portalcustomization.md:
     id: 7436c5bcccfc
-    last_write_checksum: sha1:32f3486f6710d48be01f0dbbe2d9a851c3f41aa8
-    pristine_git_object: ec7fff9c19519184e9471afbcd17b1fcc5487527
+    last_write_checksum: sha1:c18abe8aaa64577bd5927806d879d88a076323de
+    pristine_git_object: 8103adb6775b371d6eb8e44108ad42701127dae4
   docs/models/components/portalcustomizationmode.md:
     id: 0790d24d0bf6
     last_write_checksum: sha1:18c55035df32660e28c65d4bf72472326fe0a913
@@ -11957,8 +11969,8 @@ trackedFiles:
     pristine_git_object: 681d63817695628a4561dbc7560b5a8f8c6f9774
   docs/models/components/purchase.md:
     id: 74796fc2d3c1
-    last_write_checksum: sha1:1e768c76c6389e6b123e1824f56e20a72220bfec
-    pristine_git_object: 8f577a31a958b8599fe9b34c20f7c83258249c96
+    last_write_checksum: sha1:5e1423a50f9a0408d6289bbd05835d8258f76d47
+    pristine_git_object: 0bcebd6dff0c235b9c4e2b79526ee5d0d6a6632e
   docs/models/components/pushedauthorizationrequestendpointauthmethod.md:
     id: d4a39441ca44
     last_write_checksum: sha1:4c3a8f16fc08bd1ec7314d826b6f1675d1cbbaec
@@ -13301,8 +13313,8 @@ trackedFiles:
     pristine_git_object: ff4d8d2ecd052c063b426e5d1db934cbdc86280d
   docs/models/components/subscriptionbillingsubscription.md:
     id: e503c05dc406
-    last_write_checksum: sha1:9401fec0841085d522703554ba1a544a09cfd7a3
-    pristine_git_object: b6f581c168fd0448a7f6f779bec47600863e8ccc
+    last_write_checksum: sha1:131285b291041b2afbe078a1348d1f821691a219
+    pristine_git_object: 69928c6fa6d83504bfe6f17bc46c5820dbea5a99
   docs/models/components/subscriptionbillingsubscriptionreference.md:
     id: 9679216c9659
     last_write_checksum: sha1:4b1dc04da70dc79d531f1fdcf363fcd3b8f2c217
@@ -13445,8 +13457,8 @@ trackedFiles:
     pristine_git_object: 2e378e34ad31b84041f2285a913931acbc2de830
   docs/models/components/taxconfiguration.md:
     id: 634f424e7b4f
-    last_write_checksum: sha1:34a465f889ecd79e8e384b0d2b7a70ca23ac5e76
-    pristine_git_object: 10ec91c4636e8153ae9d240318c08e8cf9a7d1c9
+    last_write_checksum: sha1:25d077ea25130ae1f70f8d7a81ebacd8458aa672
+    pristine_git_object: a542cfd75d77c7ede5745de873ac8811421e26f0
   docs/models/components/taxid.md:
     id: 011086c23571
     last_write_checksum: sha1:fd3b5f7cdfb56c8c4862cc0b28916eb5f937a141
@@ -14393,8 +14405,8 @@ trackedFiles:
     pristine_git_object: f01de91842a6abac716ff4b072d1dd94c0dde947
   docs/models/components/upsertbillingprofilerequestdefaulttaxconfig.md:
     id: ebd767d0de60
-    last_write_checksum: sha1:1028371ca5691b3f5856e7e7bbe6e5205aa2ccc8
-    pristine_git_object: cab01ac7d2edb5238b8a11013f9ce30b5bced711
+    last_write_checksum: sha1:aa708f46d2bb8c090e85e6d95f5378f5c8f1eab3
+    pristine_git_object: 7618bb210b66640c52193d0f60939d8a1f394573
   docs/models/components/upsertbillingprofilerequestexternalinvoicingtaxconfig.md:
     id: 2fc3daacd295
     last_write_checksum: sha1:18149341147e1fc808f1b946c32253101c75c2ef
@@ -16057,8 +16069,8 @@ trackedFiles:
     pristine_git_object: 638401070b3446a4b3de224980e1996b13d12795
   docs/models/operations/deleteaigatewayidentityproviderrequest.md:
     id: cc4266c50266
-    last_write_checksum: sha1:99a92d7460046c306e1446f1d3494d2e04ed9ddd
-    pristine_git_object: b121707f77d33e0f144f88fe94ae0515ce9fa179
+    last_write_checksum: sha1:909864f851cf460d45106b777b448db721e8fead
+    pristine_git_object: d27edfbad1c8a7ba9a2bbc6c4c1fcce4eb28eacb
   docs/models/operations/deleteaigatewayidentityproviderresponse.md:
     id: ab20cd25f6aa
     last_write_checksum: sha1:8972ab74b8ac0d54bd4caef6b61c26f6d7b063fb
@@ -17445,8 +17457,8 @@ trackedFiles:
     pristine_git_object: e1306b7c4aca8fed53d1250b1da381c5b9db7dbc
   docs/models/operations/getaigatewayidentityproviderrequest.md:
     id: e2ad81002568
-    last_write_checksum: sha1:49f28a3b8019ce83bc72b69eddd44a439cc7dbf8
-    pristine_git_object: 89ac940dff1d2ff19dba54379bb057b2545a4f0b
+    last_write_checksum: sha1:f26e494261241185341b4a6776b7b2a617dd69f2
+    pristine_git_object: d62c844ec9723f97b1fa773a01a71c2c2528d67a
   docs/models/operations/getaigatewayidentityproviderresponse.md:
     id: 34c48839fd0a
     last_write_checksum: sha1:c3bdbcbe94f579c9a8fe47f1a170b25181e93d21
@@ -21505,8 +21517,8 @@ trackedFiles:
     pristine_git_object: 276947cc5e6d8c2fe7062f49a3fbf6e6f8253b94
   docs/models/operations/updateaigatewayidentityproviderrequest.md:
     id: fd8c480a5d78
-    last_write_checksum: sha1:a444bdfa3dfaf090081ebc6d4247e175f9e04e91
-    pristine_git_object: be6e73c2b46ab160ff8334eae4ebccad700210c3
+    last_write_checksum: sha1:a231010608ee751ee75cf36b288bf93c75041ec2
+    pristine_git_object: 57ba32848cab6534c00a42b6628bf5e0eb2d8d68
   docs/models/operations/updateaigatewayidentityproviderresponse.md:
     id: ad782bf5a806
     last_write_checksum: sha1:89171cd36596b8d2a5c87d640bafb48cf0b3a2fd
@@ -22797,8 +22809,8 @@ trackedFiles:
     pristine_git_object: f82fe68cfbf246e349752e0a3fbe3a1fb067f9d9
   docs/sdks/aigatewayidentityproviders/README.md:
     id: 9a01f9e02915
-    last_write_checksum: sha1:abc354420228ee6cb6892ceb59056685916fda58
-    pristine_git_object: 07bda0298e2802c518dfea68b4138a8dd0d39ef8
+    last_write_checksum: sha1:8b5bca59b8308f5ad9beb15d049c91676c0f0f4e
+    pristine_git_object: 90fc0a6f9d84dc4883c162b13858f741a691b9e2
   docs/sdks/aigatewaymcpservers/README.md:
     id: feddebd26689
     last_write_checksum: sha1:a8597a4c6f038917c589b8a6e18f432bc06a888f
@@ -22985,8 +22997,8 @@ trackedFiles:
     pristine_git_object: dc1ff1f6b891106cf5cef2bab92dd0db0853985d
   docs/sdks/cloudgateways/README.md:
     id: f52e7ef21edc
-    last_write_checksum: sha1:56890327069a1301ef57698f2f1b925bfe07074a
-    pristine_git_object: 049caa1109172ec92d59935b7ee3bd900b1bd6e1
+    last_write_checksum: sha1:85bc4d44c768a27875e55d820cb5a6d5e2c9638d
+    pristine_git_object: 61270b35653d4e25bc8311364c1aedc96b722a42
   docs/sdks/configstores/README.md:
     id: d176df2737d7
     last_write_checksum: sha1:3afdc669f23a984f8f3822e191117c541c755681
@@ -23517,8 +23529,8 @@ trackedFiles:
     pristine_git_object: 3e69423234c5d3371bdeca23b817619adc9e9094
   internal/utils/retries.go:
     id: b5e011d15c2d
-    last_write_checksum: sha1:fb53117c2f92ff6e600ed5ea89297cb1ca2b5b2f
-    pristine_git_object: 5c6bdbc7ac420877eadf450b9f886db54fa9f8f7
+    last_write_checksum: sha1:c4fa479ff01d1b436c2672e9450f163bf201441f
+    pristine_git_object: a028fea2693fad8cb982c069be8814c882b741ae
   internal/utils/security.go:
     id: eeb54c55241b
     last_write_checksum: sha1:e3b4f26ccf6cd3b9bafe76938ac87530774dcfc1
@@ -24209,8 +24221,8 @@ trackedFiles:
     pristine_git_object: d9f0eb05a86d3100fd7f5865ea6479a069b7d5ec
   models/components/aigatewaymodelselectorconfig.go:
     id: f097eab16008
-    last_write_checksum: sha1:ed57e305d90cc98a45c8f4dda2accc682a032443
-    pristine_git_object: 3e7d77724135e637e874c4749491283401a15ad5
+    last_write_checksum: sha1:ab695625ca66d160ed6afc6330f18d58c6ffa41a
+    pristine_git_object: 27c7c5be6ebb83532d25a09e9817e31e9d01fbfc
   models/components/aigatewaymodelvectordbconfig.go:
     id: f9a9c9dfcbee
     last_write_checksum: sha1:21bd2f9b9bdd7bb146ae649549e4a82e5aa3aff9
@@ -24473,8 +24485,8 @@ trackedFiles:
     pristine_git_object: ab59871644c83c238548e2e032ea38fc7ee6d55d
   models/components/apiaccess.go:
     id: 69d6d88e6429
-    last_write_checksum: sha1:daa6ae2b6b936faad1aed5e5e54d4747fb4f271b
-    pristine_git_object: c54fa86e14ec769bf748e466a3335fa0d37553ef
+    last_write_checksum: sha1:cea3319f7efda900c782c02e61d98564e9cef6a1
+    pristine_git_object: 087d356612ba04968c555e5ddbd516590c9b8fbe
   models/components/apiattributefilterparameters.go:
     id: 44060c477a8c
     last_write_checksum: sha1:9ffadbaa54af90cec90158687733b8600c21f480
@@ -25673,28 +25685,28 @@ trackedFiles:
     pristine_git_object: f946f8e54752f156255a5599ab556a6bc1383995
   models/components/configurationdataplanegroup.go:
     id: a2778df7d0a0
-    last_write_checksum: sha1:ebaf304c99629f54caf45575f01f429e603f5880
-    pristine_git_object: 131f9f6a19da90b920e78d0f6829689d7c45cde6
+    last_write_checksum: sha1:8d9cb4fdb6d69d83125da6b0c4247b285a7cb76e
+    pristine_git_object: ce33648431342d4320447af34c5395e7976c2417
   models/components/configurationdataplanegroupautoscale.go:
     id: 9da8455f72ca
-    last_write_checksum: sha1:19b2ec839db325099b55b923aca167bebae443f9
-    pristine_git_object: c9829c4253595867beb16e4a8f21baa70b718886
+    last_write_checksum: sha1:1528788f825dc3d5ed9069c8b7caf7a46dc82ebf
+    pristine_git_object: feeb8ee59837f3df6a9aa67f0860f37909d14248
   models/components/configurationdataplanegroupautoscaleautopilot.go:
     id: a083ed01d697
-    last_write_checksum: sha1:d0d7b9722e370f0e9b5fa375997effc6cca3ecbe
-    pristine_git_object: cabf3484c85847a0e6f20a4306dd25b7b165087c
+    last_write_checksum: sha1:702b83ff8a1de7e1c9edc9a47b693a03afbfce30
+    pristine_git_object: e4bb0afbd03a0ebe85dd6c717b7240d2fd3ae587
   models/components/configurationdataplanegroupautoscalestatic.go:
     id: f76eac8310ea
-    last_write_checksum: sha1:dd70828328074beef992afaa58bf36badeeced21
-    pristine_git_object: 753596c50604cb27e87cb70e530152ab357609db
+    last_write_checksum: sha1:fb57753caa7402eb495a6c54c20d66d019ad8e9e
+    pristine_git_object: d3e26515a4a6d86a5ec3b4e3f041345831b95a7f
   models/components/configurationdataplanegroupconfig.go:
     id: f5238063837c
-    last_write_checksum: sha1:3ff92b2c544645c1476707d08cd5d2620396e7f3
-    pristine_git_object: 512dcd212074c2a6fcf5803cb05ad95f9f1c2a04
+    last_write_checksum: sha1:1cbcf4148bba0570b712048b8d13ac2bb8bac572
+    pristine_git_object: 170f1ac547a9a1ef9eaaf7760d45454eb0241625
   models/components/configurationdataplanegroupenvironmentfield.go:
     id: 6a7ecbdd884f
-    last_write_checksum: sha1:258775e13dd95e79f0b97ddb092785eb3ad3be3b
-    pristine_git_object: 0872e0769525364fd6f801d1e95ddd718f9c567d
+    last_write_checksum: sha1:15f88153457e9ded01ecf92ab8f5676ddd19a1e3
+    pristine_git_object: 0ab1b7dc3ae0033c3c667e93a4d3b071c9b2fd34
   models/components/configurationfilterparameters.go:
     id: a5f9142bfc87
     last_write_checksum: sha1:24f6ac5a3ebc324e90d086f6fdbab12a0c37c6f1
@@ -25705,12 +25717,16 @@ trackedFiles:
     pristine_git_object: 29e21a7bc7c156486b790485a67a7dd476a00fd0
   models/components/configurationmanifest.go:
     id: 11cee2ff0178
-    last_write_checksum: sha1:f9869d58911c888c05a29d4f4f5b2a5d296bc723
-    pristine_git_object: b88d722f227721ce4282f8de8fa8552b5b5d0d50
+    last_write_checksum: sha1:d78a68ebc0c872edb0e7159010791d818e5cf7ff
+    pristine_git_object: 5bc8b8a4136df377f0d7c68d216d35481c18a998
   models/components/configurationsfilterparameters.go:
     id: f33a36dd89c0
     last_write_checksum: sha1:d9ff71492a802495a2cf236cd0bacb66a2386768
     pristine_git_object: b9dd1bd79dac34b03314cafeddef0b112dc73afb
+  models/components/configurationtype.go:
+    id: 3df41147179a
+    last_write_checksum: sha1:4d3e909f2d1f2b84c346722d60164bf2492d7de6
+    pristine_git_object: 3a0b70798f49958deeb5e283b876d1900d0eedf9
   models/components/conjurvault.go:
     id: 3b9fda3362a1
     last_write_checksum: sha1:d3bf86c3af30dc0b75b798b68b804f7eafd4265b
@@ -25749,8 +25765,12 @@ trackedFiles:
     pristine_git_object: 3bab3668702b8441a6af5476716b1820d7259595
   models/components/controlplaneaddonowner.go:
     id: 221b9f9b4e1a
-    last_write_checksum: sha1:b90e4380555ab0c8de524bdd4b5dfddafe1586af
-    pristine_git_object: 81de6aa65ca5a28d1eea915fd467e03ba94708fc
+    last_write_checksum: sha1:936c6c8583a89e3e1a5a920bfe55b26174419b0c
+    pristine_git_object: eac338d92dcc27ee8771b51f03358a2c10c6d11f
+  models/components/controlplaneaddonownertype.go:
+    id: 627d83271df0
+    last_write_checksum: sha1:1a73b4383c8fcf90a55a0c011bcb6a9e3076f6a0
+    pristine_git_object: 61fcf776947d46a3b1df7959f7e6495406e41a04
   models/components/controlplanefilterparameters.go:
     id: 3645b2f99543
     last_write_checksum: sha1:a07263e1a3ab4ef0d80aad94f939f2d6e0b0af81
@@ -26005,12 +26025,12 @@ trackedFiles:
     pristine_git_object: 9a49716df787e91fec7a94a367701f2969241d1d
   models/components/createconfigurationdataplanegroup.go:
     id: 154b5204f776
-    last_write_checksum: sha1:dc6e57ad7788cd0c75522c6646133ae51c8de30f
-    pristine_git_object: 27f1e5f7e37eb77c3461fd8f6858d04b96c4491b
+    last_write_checksum: sha1:f31067ed55e448cc42d93ca5f0a06486030e36c2
+    pristine_git_object: 982d02e2282f3ebd70e39f0d429f96cffb39b34a
   models/components/createconfigurationrequest.go:
     id: 420b6cb36805
-    last_write_checksum: sha1:d4d31064db3b5c31be21507a6d68cd82ae014c57
-    pristine_git_object: 95ec8bd842f18cd6bdc2460330afb23ea5ff0a06
+    last_write_checksum: sha1:9b9694c16400cb94fb5aadee4142ba9ffdfca2f2
+    pristine_git_object: 63ddcd4aff36d14b9b105e5b1462c7a121e218fc
   models/components/createcontrolplanerequest.go:
     id: c84b3c4cd649
     last_write_checksum: sha1:007761eb90e88e62d348c46557c32333741b6286
@@ -26041,8 +26061,8 @@ trackedFiles:
     pristine_git_object: c4e6e4055bdce83187b65e1effe028af10c5b113
   models/components/createcustomdomainrequest.go:
     id: 914e3f0ca664
-    last_write_checksum: sha1:6a4e448d6926bc786c8521fa3537f60175b6feff
-    pristine_git_object: 5177c218e083afc437dbe47491daa2591ed552a1
+    last_write_checksum: sha1:23d942ea5f6d9de16204dd85d10845f36eaa2d5d
+    pristine_git_object: f9011cce3e78dfe3d6e1002afc5ffbd8d3d5134c
   models/components/createcustomerrequest.go:
     id: e0f533e38052
     last_write_checksum: sha1:7f881fbe312d7fa8e788934c5dbcaeb89d2bae64
@@ -26361,8 +26381,8 @@ trackedFiles:
     pristine_git_object: b5f7ed0d244f198805f51dd390b0ba1b6f0266a3
   models/components/customdomain.go:
     id: b27c806dd6df
-    last_write_checksum: sha1:2897ab2c11a2543b14c690e8c1ec1c68d004f44e
-    pristine_git_object: 39f0d2dcc9d8c42172b01ac2b2b62d875fa0e736
+    last_write_checksum: sha1:b9c1343607212aaf5d2223e485f521a599f6e822
+    pristine_git_object: 8729a3e833f53bf14987fcf21f3c94bda7ef43bd
   models/components/customdomainkind.go:
     id: e9ac44ecba13
     last_write_checksum: sha1:8c71000e75a1acc084069837013d4425135e5c7a
@@ -26399,6 +26419,10 @@ trackedFiles:
     id: 4a4a39e3d188
     last_write_checksum: sha1:c47a26187b80ac236cb7e788af68d104cf0e6792
     pristine_git_object: a8503c798c9440a09d8afbef2aae09eb7dd20722
+  models/components/customdomaintype.go:
+    id: 130ac414b73e
+    last_write_checksum: sha1:2c784cfac0506df855aa76ed25dea5c479d54509
+    pristine_git_object: e67347568eeac8105c9967c2f4a1ec58ad70fb0d
   models/components/customerpagepaginatedresponse.go:
     id: 2aa4ef56c471
     last_write_checksum: sha1:3c51cd907b52799425ba2b42f62e095ef90600cf
@@ -28525,8 +28549,8 @@ trackedFiles:
     pristine_git_object: 1186d4ad5b5637ed0903d76b16b0cc311697bb5d
   models/components/networkconfigurationreference.go:
     id: 1869d168a7c9
-    last_write_checksum: sha1:7e938657d0d20bb9d3235eadf25d150b4b7990fb
-    pristine_git_object: 9d4b28d88602638bf801fd91794fa62eaecb75ad
+    last_write_checksum: sha1:0eb7309fc6016574583b1ec7aa1af721beb01c8e
+    pristine_git_object: b85606b9b2c73ae7584f4d5a0cdc6ac79ba3b371
   models/components/networkcreatestate.go:
     id: c611b8e955ff
     last_write_checksum: sha1:63fb466031dd2e38b7d299e8e59c185941783593
@@ -34381,8 +34405,8 @@ trackedFiles:
     pristine_git_object: 769e0b766ed3fc44070c4f19daf4362f9cc965c0
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:177c02949907675bcc09fa15b7645a4edce6fb5b
-    pristine_git_object: c876dec0c1bbf38f4aaf425b2bf9adcff7d563d3
+    last_write_checksum: sha1:64ec3a7a19bb7dff20a8c788b1e96715aaba439f
+    pristine_git_object: ce6e5e821e6e6698c37a82d223566227709e3621
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:3690261b6c8f18602301a446ce047edbd0e099a4
@@ -34973,7 +34997,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "au"}, {"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "au"}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "type": "api", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "au"}, {"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "type": "api", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "au"}]}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
@@ -35049,10 +35073,10 @@ examples:
   create-configuration:
     speakeasy-default-create-configuration:
       requestBody:
-        application/json: {"control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "in", "version": "3.2", "dataplane_groups": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "kind": "dedicated.v0", "api_access": "private+public"}
+        application/json: {"control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "in", "version": "3.2", "dataplane_groups": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "kind": "dedicated.v0", "type": "api", "api_access": "private+public"}
       responses:
         "200":
-          application/json: {"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "large", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "large", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "ready", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "ready", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "ready", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "me"}
+          application/json: {"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "large", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "large", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "ready", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "ready", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "ready", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "type": "api", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "me"}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>"], "source": "body"}]}
         "401":
@@ -35142,7 +35166,7 @@ examples:
           configurationId: "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471"
       responses:
         "200":
-          application/json: {"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us"}
+          application/json: {"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "type": "api", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -35180,7 +35204,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "kind": "dedicated.v0"}, {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "kind": "dedicated.v0"}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "kind": "dedicated.v0", "type": "api"}, {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "kind": "dedicated.v0", "type": "api"}]}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}, {"field": "name", "rule": "max_length", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
@@ -35266,10 +35290,10 @@ examples:
   create-custom-domains:
     speakeasy-default-create-custom-domains:
       requestBody:
-        application/json: {"control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us", "domain": "example.com", "kind": "dedicated.v0"}
+        application/json: {"control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us", "domain": "example.com", "kind": "dedicated.v0", "type": "api"}
       responses:
         "201":
-          application/json: {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "in", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "ready", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "kind": "dedicated.v0"}
+          application/json: {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "in", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "ready", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "kind": "dedicated.v0", "type": "api"}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
@@ -35343,7 +35367,7 @@ examples:
           customDomainId: "39ed3790-085d-4605-9627-f96d86aaf425"
       responses:
         "200":
-          application/json: {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "me", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "initializing", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "kind": "dedicated.v0"}
+          application/json: {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "me", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "initializing", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "kind": "dedicated.v0", "type": "api"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -36052,7 +36076,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "in"}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Dataplane group could not be deployed due to insufficient cloud provider compute instances.\n"}, "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "kind": "dedicated.v0", "type": "api", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "in"}]}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": [], "source": "body"}]}
         "401":
@@ -61410,7 +61434,7 @@ examples:
         application/json: {"name": "my-add-on", "owner": {"kind": "control-plane-group", "control_plane_group_id": "123e4567-e89b-12d3-a456-426614174000", "control_plane_group_geo": "sg"}, "config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "small"}}}
       responses:
         "201":
-          application/json: {"id": "550e8400-e29b-41d4-a716-446655440000", "name": "my-add-on", "owner": {"kind": "control-plane", "control_plane_id": "123e4567-e89b-12d3-a456-426614174000", "control_plane_geo": "me"}, "config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "small"}, "data_plane_groups": [], "state_metadata": {"cache_config_id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "cache_server_name": "{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}", "cache_host": "{vault://env/ADDON_MANAGED_CACHE_HOST}", "cache_port": "{vault://env/ADDON_MANAGED_CACHE_PORT}", "cache_username": "{vault://env/ADDON_MANAGED_CACHE_USERNAME}", "cloud_authentication": {"auth_provider": "{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}", "aws_cache_name": "{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}", "aws_region": "{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}", "aws_assume_role_arn": "{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}", "azure_tenant_id": "{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}"}}}, "entity_version": 1, "state": "ready", "created_at": "2025-08-26T06:56:41Z", "updated_at": "2025-08-26T06:56:41Z"}
+          application/json: {"id": "550e8400-e29b-41d4-a716-446655440000", "name": "my-add-on", "owner": {"kind": "control-plane", "type": "api", "control_plane_id": "123e4567-e89b-12d3-a456-426614174000", "control_plane_geo": "me"}, "config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "small"}, "data_plane_groups": [], "state_metadata": {"cache_config_id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "cache_server_name": "{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}", "cache_host": "{vault://env/ADDON_MANAGED_CACHE_HOST}", "cache_port": "{vault://env/ADDON_MANAGED_CACHE_PORT}", "cache_username": "{vault://env/ADDON_MANAGED_CACHE_USERNAME}", "cloud_authentication": {"auth_provider": "{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}", "aws_cache_name": "{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}", "aws_region": "{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}", "aws_assume_role_arn": "{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}", "azure_tenant_id": "{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}"}}}, "entity_version": 1, "state": "ready", "created_at": "2025-08-26T06:56:41Z", "updated_at": "2025-08-26T06:56:41Z"}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_lowercase", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
         "401":
@@ -61429,7 +61453,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "550e8400-e29b-41d4-a716-446655440000", "name": "my-add-on", "owner": {"kind": "control-plane", "control_plane_id": "123e4567-e89b-12d3-a456-426614174000", "control_plane_geo": "us"}, "config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "4xlarge"}, "data_plane_groups": [{"id": "1150820b-c69f-4a2a-b9be-bbcdbc5cd618", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "provider": "aws", "region": "us-east-1", "state": "terminating", "state_metadata": {"error_reason": "Failed to create managed cache add-on due to invalid configuration.\n"}}], "state_metadata": {"cache_config_id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "cache_server_name": "{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}", "cache_host": "{vault://env/ADDON_MANAGED_CACHE_HOST}", "cache_port": "{vault://env/ADDON_MANAGED_CACHE_PORT}", "cache_username": "{vault://env/ADDON_MANAGED_CACHE_USERNAME}", "cloud_authentication": {"auth_provider": "{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}", "aws_cache_name": "{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}", "aws_region": "{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}", "aws_assume_role_arn": "{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}", "azure_tenant_id": "{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}"}}}, "entity_version": 1, "state": "terminating", "created_at": "2025-08-26T06:56:41Z", "updated_at": "2025-08-26T06:56:41Z"}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "550e8400-e29b-41d4-a716-446655440000", "name": "my-add-on", "owner": {"kind": "control-plane", "type": "api", "control_plane_id": "123e4567-e89b-12d3-a456-426614174000", "control_plane_geo": "us"}, "config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "4xlarge"}, "data_plane_groups": [{"id": "1150820b-c69f-4a2a-b9be-bbcdbc5cd618", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "provider": "aws", "region": "us-east-1", "state": "terminating", "state_metadata": {"error_reason": "Failed to create managed cache add-on due to invalid configuration.\n"}}], "state_metadata": {"cache_config_id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "cache_server_name": "{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}", "cache_host": "{vault://env/ADDON_MANAGED_CACHE_HOST}", "cache_port": "{vault://env/ADDON_MANAGED_CACHE_PORT}", "cache_username": "{vault://env/ADDON_MANAGED_CACHE_USERNAME}", "cloud_authentication": {"auth_provider": "{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}", "aws_cache_name": "{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}", "aws_region": "{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}", "aws_assume_role_arn": "{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}", "azure_tenant_id": "{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}"}}}, "entity_version": 1, "state": "terminating", "created_at": "2025-08-26T06:56:41Z", "updated_at": "2025-08-26T06:56:41Z"}]}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -61445,7 +61469,7 @@ examples:
           addOnId: "550e8400-e29b-41d4-a716-446655440000"
       responses:
         "200":
-          application/json: {"id": "550e8400-e29b-41d4-a716-446655440000", "name": "my-add-on", "owner": {"kind": "control-plane", "control_plane_id": "123e4567-e89b-12d3-a456-426614174000", "control_plane_geo": "eu"}, "config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "4xlarge"}, "data_plane_groups": [{"id": "1150820b-c69f-4a2a-b9be-bbcdbc5cd618", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "provider": "aws", "region": "us-east-1", "state": "terminating", "state_metadata": {"error_reason": "Failed to create managed cache add-on due to invalid configuration.\n"}}], "state_metadata": {"cache_config_id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "cache_server_name": "{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}", "cache_host": "{vault://env/ADDON_MANAGED_CACHE_HOST}", "cache_port": "{vault://env/ADDON_MANAGED_CACHE_PORT}", "cache_username": "{vault://env/ADDON_MANAGED_CACHE_USERNAME}", "cloud_authentication": {"auth_provider": "{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}", "aws_cache_name": "{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}", "aws_region": "{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}", "aws_assume_role_arn": "{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}", "azure_tenant_id": "{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}"}}}, "entity_version": 1, "state": "terminating", "created_at": "2025-08-26T06:56:41Z", "updated_at": "2025-08-26T06:56:41Z"}
+          application/json: {"id": "550e8400-e29b-41d4-a716-446655440000", "name": "my-add-on", "owner": {"kind": "control-plane", "type": "api", "control_plane_id": "123e4567-e89b-12d3-a456-426614174000", "control_plane_geo": "eu"}, "config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "4xlarge"}, "data_plane_groups": [{"id": "1150820b-c69f-4a2a-b9be-bbcdbc5cd618", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "provider": "aws", "region": "us-east-1", "state": "terminating", "state_metadata": {"error_reason": "Failed to create managed cache add-on due to invalid configuration.\n"}}], "state_metadata": {"cache_config_id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "cache_server_name": "{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}", "cache_host": "{vault://env/ADDON_MANAGED_CACHE_HOST}", "cache_port": "{vault://env/ADDON_MANAGED_CACHE_PORT}", "cache_username": "{vault://env/ADDON_MANAGED_CACHE_USERNAME}", "cloud_authentication": {"auth_provider": "{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}", "aws_cache_name": "{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}", "aws_region": "{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}", "aws_assume_role_arn": "{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}", "azure_tenant_id": "{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}"}}}, "entity_version": 1, "state": "terminating", "created_at": "2025-08-26T06:56:41Z", "updated_at": "2025-08-26T06:56:41Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -62457,7 +62481,7 @@ examples:
         application/json: {"config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "small"}}}
       responses:
         "200":
-          application/json: {"id": "550e8400-e29b-41d4-a716-446655440000", "name": "my-add-on", "owner": {"kind": "control-plane", "control_plane_id": "123e4567-e89b-12d3-a456-426614174000", "control_plane_geo": "eu"}, "config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "small"}, "data_plane_groups": [{"id": "1150820b-c69f-4a2a-b9be-bbcdbc5cd618", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "provider": "aws", "region": "us-east-1", "state": "initializing", "state_metadata": {"error_reason": "Failed to create managed cache add-on due to invalid configuration.\n"}}], "state_metadata": {"cache_config_id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "cache_server_name": "{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}", "cache_host": "{vault://env/ADDON_MANAGED_CACHE_HOST}", "cache_port": "{vault://env/ADDON_MANAGED_CACHE_PORT}", "cache_username": "{vault://env/ADDON_MANAGED_CACHE_USERNAME}", "cloud_authentication": {"auth_provider": "{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}", "aws_cache_name": "{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}", "aws_region": "{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}", "aws_assume_role_arn": "{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}", "azure_tenant_id": "{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}"}}}, "entity_version": 1, "state": "terminating", "created_at": "2025-08-26T06:56:41Z", "updated_at": "2025-08-26T06:56:41Z"}
+          application/json: {"id": "550e8400-e29b-41d4-a716-446655440000", "name": "my-add-on", "owner": {"kind": "control-plane", "type": "api", "control_plane_id": "123e4567-e89b-12d3-a456-426614174000", "control_plane_geo": "eu"}, "config": {"kind": "managed-cache.v0", "capacity_config": {"kind": "tiered", "tier": "small"}, "data_plane_groups": [{"id": "1150820b-c69f-4a2a-b9be-bbcdbc5cd618", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "provider": "aws", "region": "us-east-1", "state": "initializing", "state_metadata": {"error_reason": "Failed to create managed cache add-on due to invalid configuration.\n"}}], "state_metadata": {"cache_config_id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "cache_server_name": "{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}", "cache_host": "{vault://env/ADDON_MANAGED_CACHE_HOST}", "cache_port": "{vault://env/ADDON_MANAGED_CACHE_PORT}", "cache_username": "{vault://env/ADDON_MANAGED_CACHE_USERNAME}", "cloud_authentication": {"auth_provider": "{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}", "aws_cache_name": "{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}", "aws_region": "{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}", "aws_assume_role_arn": "{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}", "azure_tenant_id": "{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}"}}}, "entity_version": 1, "state": "terminating", "created_at": "2025-08-26T06:56:41Z", "updated_at": "2025-08-26T06:56:41Z"}
         "400":
           application/problem+json: {"status": 400, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
