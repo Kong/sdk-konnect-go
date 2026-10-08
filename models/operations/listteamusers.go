@@ -98,8 +98,8 @@ type ListTeamUsersResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A paginated list response for a collection of users.
-	UserCollection *components.UserCollection
+	// A paginated list response for a collection of users belonging to a team.
+	TeamUserMembershipCollection *components.TeamUserMembershipCollection
 }
 
 func (l *ListTeamUsersResponse) GetContentType() string {
@@ -123,9 +123,9 @@ func (l *ListTeamUsersResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListTeamUsersResponse) GetUserCollection() *components.UserCollection {
+func (l *ListTeamUsersResponse) GetTeamUserMembershipCollection() *components.TeamUserMembershipCollection {
 	if l == nil {
 		return nil
 	}
-	return l.UserCollection
+	return l.TeamUserMembershipCollection
 }

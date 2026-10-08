@@ -202,12 +202,12 @@ func (s *TeamMembership) ListTeamUsers(ctx context.Context, request operations.L
 				return nil, err
 			}
 
-			var out components.UserCollection
+			var out components.TeamUserMembershipCollection
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.UserCollection = &out
+			res.TeamUserMembershipCollection = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -945,12 +945,12 @@ func (s *TeamMembership) ListUserTeams(ctx context.Context, request operations.L
 				return nil, err
 			}
 
-			var out components.TeamCollection
+			var out components.UserTeamMembershipCollection
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.TeamCollection = &out
+			res.UserTeamMembershipCollection = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

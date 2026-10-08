@@ -6,8 +6,8 @@ package components
 // UserCollection - A paginated list response for a collection of users.
 type UserCollection struct {
 	// returns the pagination information
-	Meta *PaginatedMeta `json:"meta,omitempty"`
-	Data []User         `json:"data,omitempty"`
+	Meta *PaginatedMeta       `json:"meta,omitempty"`
+	Data []UserCollectionItem `json:"data,omitempty"`
 }
 
 func (u *UserCollection) GetMeta() *PaginatedMeta {
@@ -17,7 +17,7 @@ func (u *UserCollection) GetMeta() *PaginatedMeta {
 	return u.Meta
 }
 
-func (u *UserCollection) GetData() []User {
+func (u *UserCollection) GetData() []UserCollectionItem {
 	if u == nil {
 		return nil
 	}
