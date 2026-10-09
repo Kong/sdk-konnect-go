@@ -12906,7 +12906,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Service'
+              $ref: '#/components/schemas/ServiceRequest'
       responses:
         '201':
           description: Successfully created Service
@@ -12962,7 +12962,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Service'
+              $ref: '#/components/schemas/ServiceRequest'
       responses:
         '200':
           description: Successfully upserted Service
@@ -25197,7 +25197,7 @@ paths:
           style: deepObject
       responses:
         '200':
-          $ref: '#/components/responses/UserCollection'
+          $ref: '#/components/responses/TeamUserMembershipCollection'
         '400':
           $ref: '#/components/responses/IdentityBadRequest'
         '404':
@@ -25670,7 +25670,7 @@ paths:
           style: deepObject
       responses:
         '200':
-          $ref: '#/components/responses/TeamCollection'
+          $ref: '#/components/responses/UserTeamMembershipCollection'
         '404':
           $ref: '#/components/responses/IdentityNotFound'
       servers:
@@ -29066,6 +29066,65 @@ components:
           format: date-time
           example: '2022-10-08T17:00:00.52Z'
           readOnly: true
+      example:
+        id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+        email: user@email.com
+        full_name: Test User
+        preferred_name: test
+        active: true
+        inferred_region: us
+        created_at: '2022-02-07T17:46:57.52Z'
+        updated_at: '2022-10-08T17:00:00.52Z'
+      title: User
+    UserCollectionItem:
+      description: 'A user as returned when listing users, including the account type used to register.'
+      type: object
+      properties:
+        id:
+          description: The User ID.
+          type: string
+          format: uuid
+          example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+          readOnly: true
+        email:
+          description: The email registered to the user.
+          type: string
+          format: email
+          example: user@email.com
+          maxLength: 250
+        full_name:
+          description: The User's full name.
+          type: string
+          example: Jane Doe
+          maxLength: 250
+          pattern: '^[\w \W]+$'
+        preferred_name:
+          description: The User's preferred name.
+          type: string
+          example: Jane
+          maxLength: 250
+        active:
+          description: Returns True if a user has verified their email address.
+          type: boolean
+          default: true
+          readOnly: true
+        inferred_region:
+          description: The Konnect region closest to the user's IP address. This property might only be set for users on signup through Konnect’s build-in native authentication.
+          type: string
+          example: us
+          readOnly: true
+        created_at:
+          description: The time stamp for the date the account was registered.
+          type: string
+          format: date-time
+          example: '2022-02-07T17:46:57.52Z'
+          readOnly: true
+        updated_at:
+          description: A Unix timestamp representation of the most recent change to the User account.
+          type: string
+          format: date-time
+          example: '2022-10-08T17:00:00.52Z'
+          readOnly: true
         account_type:
           description: The authorization strategy used to register the user.
           type: string
@@ -29087,6 +29146,22 @@ components:
         updated_at: '2022-10-08T17:00:00.52Z'
         account_type: google
       title: User
+    TeamUserMembership:
+      description: 'A user''s membership in a team, including the group claim that granted the membership.'
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - type: object
+          example:
+            claim_name:
+              - GroupClaimA
+              - GroupClaimB
+          properties:
+            claim_name:
+              description: An array of group claim names that gave this user membership to the team.
+              type: array
+              items:
+                type: string
+      title: TeamUserMembership
     Team:
       x-speakeasy-entity: Team
       description: The team object contains information about a group of users.
@@ -29149,6 +29224,22 @@ components:
             - labels
             - created_at
             - updated_at
+    UserTeamMembership:
+      description: 'A team that a user belongs to, including the group claim that granted the membership.'
+      allOf:
+        - $ref: '#/components/schemas/TeamResponse'
+        - type: object
+          example:
+            claim_name:
+              - GroupClaimA
+              - GroupClaimB
+          properties:
+            claim_name:
+              description: An array of group claim names that gave this user membership to the team.
+              type: array
+              items:
+                type: string
+      title: UserTeamMembership
     TeamMapping:
       description: A team assignment is a mapping of an IdP group to a Konnect Team.
       type: object
@@ -94024,6 +94115,174 @@ components:
       additionalProperties: false
       required:
         - host
+    ServiceRequest:
+      description: 'Service entities, as the name implies, are abstractions of each of your own upstream services. Examples of Services would be a data transformation microservice, a billing API, etc. The main attribute of a Service is its URL (where Kong should proxy traffic to), which can be set as a single string or by specifying its `protocol`, `host`, `port` and `path` individually. Services are associated to Routes (a Service can have many Routes associated with it). Routes are entry-points in Kong and define rules to match client requests. Once a Route is matched, Kong proxies the request to its associated Service. See the [Proxy Reference][proxy-reference] for a detailed explanation of how Kong proxies traffic.'
+      example:
+        host: example.internal
+        id: 49fd316e-c457-481c-9fc7-8079153e4f3c
+        name: example-service
+        path: /
+        port: 80
+        protocol: http
+      allOf:
+        - additionalProperties: false
+          properties:
+            ca_certificates:
+              description: 'Array of `CA Certificate` object UUIDs that are used to build the trust store while verifying upstream server''s TLS certificate. If set to `null` when Nginx default is respected. If default CA list in Nginx are not specified and TLS verification is enabled, then handshake with upstream server will always fail (because no CA are trusted).'
+              type: array
+              items:
+                type: string
+              nullable: true
+            client_certificate:
+              description: Certificate to be used as client certificate while TLS handshaking to the upstream server.
+              type: object
+              nullable: true
+              properties:
+                id:
+                  type: string
+              x-foreign: true
+            connect_timeout:
+              description: The timeout in milliseconds for establishing a connection to the upstream server.
+              type: integer
+              default: 60000
+              maximum: 2147483646
+              minimum: 1
+              nullable: true
+            created_at:
+              description: Unix epoch when the resource was created.
+              type: integer
+              nullable: true
+            description:
+              description: 'User-defined entity description. Konnect only field, not synced to the Gateway.'
+              type: string
+              nullable: true
+            enabled:
+              description: 'Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.'
+              type: boolean
+              default: true
+              nullable: true
+            host:
+              description: The host of the upstream server. Note that the host value is case sensitive.
+              type: string
+            id:
+              description: A string representing a UUID (universally unique identifier).
+              type: string
+              minLength: 1
+              nullable: true
+            managed_by:
+              description: |-
+                Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+
+                Keys must be 1–63 characters long and start with an alphanumeric character.
+              type: object
+              additionalProperties:
+                maxLength: 63
+                minLength: 1
+                pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
+                type: string
+              maxProperties: 5
+            name:
+              description: The Service name.
+              type: string
+              nullable: true
+            path:
+              description: The path to be used in requests to the upstream server.
+              type: string
+              nullable: true
+            port:
+              description: The upstream server port.
+              type: integer
+              default: 80
+              maximum: 65535
+              minimum: 0
+              nullable: true
+            protocol:
+              description: The protocol used to communicate with the upstream.
+              type: string
+              default: http
+              enum:
+                - grpc
+                - grpcs
+                - http
+                - https
+                - tcp
+                - tls
+                - tls_passthrough
+                - udp
+                - ws
+                - wss
+              nullable: true
+              x-speakeasy-unknown-values: allow
+            read_timeout:
+              description: The timeout in milliseconds between two successive read operations for transmitting a request to the upstream server.
+              type: integer
+              default: 60000
+              maximum: 2147483646
+              minimum: 1
+              nullable: true
+            retries:
+              description: The number of retries to execute upon failure to proxy.
+              type: integer
+              default: 5
+              maximum: 32767
+              minimum: 0
+              nullable: true
+            tags:
+              description: An optional set of strings associated with the Service for grouping and filtering.
+              type: array
+              items:
+                description: A string representing a tag.
+                type: string
+              nullable: true
+            tls_sans:
+              description: Additional Subject Alternative Names that can be matched on Upstream server's TLS certificate (in addition to `host`).
+              type: object
+              nullable: true
+              properties:
+                dnsnames:
+                  description: A dnsName for TLS verification.
+                  type: array
+                  items:
+                    description: A string representing an SNI (server name indication) value for TLS.
+                    type: string
+                uris:
+                  description: An URI for TLS verification.
+                  type: array
+                  items:
+                    description: 'A string representing a URL, such as https://example.com/path/to/resource?q=search.'
+                    type: string
+            tls_verify:
+              description: 'Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.'
+              type: boolean
+              nullable: true
+            tls_verify_depth:
+              description: 'Maximum depth of chain while verifying Upstream server''s TLS certificate. If set to `null`, then the Nginx default is respected.'
+              type: integer
+              maximum: 64
+              minimum: 0
+              nullable: true
+            updated_at:
+              description: Unix epoch when the resource was last updated.
+              type: integer
+              nullable: true
+            url:
+              description: 'Helper field to set `protocol`, `host`, `port` and `path` using a URL. This field is write-only and is not returned in responses.'
+              type: string
+              nullable: true
+              writeOnly: true
+            write_timeout:
+              description: The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
+              type: integer
+              default: 60000
+              maximum: 2147483646
+              minimum: 1
+              nullable: true
+          type: object
+        - anyOf:
+            - required:
+                - host
+            - required:
+                - url
     Target:
       description: 'A target is an ip address/hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly. To disable a target, post a new one with `weight=0`; alternatively, use the `DELETE` convenience method to accomplish the same. The current target object definition is the one with the latest `created_at`.'
       type: object
@@ -99018,8 +99277,22 @@ components:
               data:
                 type: array
                 items:
-                  $ref: '#/components/schemas/User'
+                  $ref: '#/components/schemas/UserCollectionItem'
             title: User Collection Response
+    TeamUserMembershipCollection:
+      description: A paginated list response for a collection of users belonging to a team.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamUserMembership'
+            title: Team User Membership Collection Response
     TeamSingle:
       description: A response including a single team.
       content:
@@ -99040,6 +99313,20 @@ components:
                 items:
                   $ref: '#/components/schemas/Team'
             title: Team Collection Response
+    UserTeamMembershipCollection:
+      description: A paginated list response for a collection of teams that a user belongs to.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserTeamMembership'
+            title: User Team Membership Collection Response
     TeamCollectionResponse:
       description: A paginated list response for a collection of teams.
       content:
@@ -104397,7 +104684,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.2.5
+    version: 2.2.7
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
@@ -104421,7 +104708,7 @@ x-input-schemas:
     version: 1.3.7
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.6.6
+    version: 3.7.1
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.46.0
