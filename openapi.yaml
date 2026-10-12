@@ -35033,6 +35033,36 @@ components:
           $ref: '#/components/schemas/ApiPublicationVisibility'
         auth_strategy_ids:
           $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
+        spec_renderer:
+          description: Customization settings for the API spec renderer in the portal.
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            try_it_ui:
+              description: Enable in-browser testing for your API. All linked gateways must have the CORS plugin configured.
+              type: boolean
+              nullable: true
+            try_it_ui_audience:
+              description: |
+                The audience for the Try It UI feature.
+
+                `all` means that the Try It UI will be available to all users, including unauthenticated users.
+
+                `authenticated` means that the Try It UI will only be available to authenticated users.
+
+                `registered` means that the Try It UI will only be available to users who have registered for the API.
+              type: string
+              enum:
+                - all
+                - authenticated
+                - registered
+              nullable: true
+              x-speakeasy-unknown-values: allow
+          required:
+            - try_it_ui
+            - try_it_ui_audience
+          title: ApiPublicationSpecRenderer
         form_id:
           description: |
             UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
@@ -35060,6 +35090,7 @@ components:
         - auto_approve_registrations
         - entity_type
         - form_id
+        - spec_renderer
       title: API Publication List Item
     PublicationListItem:
       description: An API or API Package publication in a portal
@@ -35088,6 +35119,36 @@ components:
           $ref: '#/components/schemas/ApiPublicationVisibility'
         auth_strategy_ids:
           $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
+        spec_renderer:
+          description: Customization settings for the API spec renderer in the portal.
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            try_it_ui:
+              description: Enable in-browser testing for your API. All linked gateways must have the CORS plugin configured.
+              type: boolean
+              nullable: true
+            try_it_ui_audience:
+              description: |
+                The audience for the Try It UI feature.
+
+                `all` means that the Try It UI will be available to all users, including unauthenticated users.
+
+                `authenticated` means that the Try It UI will only be available to authenticated users.
+
+                `registered` means that the Try It UI will only be available to users who have registered for the API.
+              type: string
+              enum:
+                - all
+                - authenticated
+                - registered
+              nullable: true
+              x-speakeasy-unknown-values: allow
+          required:
+            - try_it_ui
+            - try_it_ui_audience
+          title: ApiPublicationSpecRenderer
         form_id:
           description: |
             UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
@@ -35115,6 +35176,7 @@ components:
         - auto_approve_registrations
         - entity_type
         - form_id
+        - spec_renderer
       title: Publication List Item
     AutoApproveRegistrations:
       description: 'Whether the application registration auto approval on this portal for the api is enabled. If set to false, fallbacks on portal''s auto_approve_applications value.'
@@ -35130,6 +35192,8 @@ components:
           $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
         visibility:
           $ref: '#/components/schemas/ApiPublicationVisibility'
+        spec_renderer:
+          $ref: '#/components/schemas/ApiPublicationSpecRenderer'
         form_id:
           description: |
             UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
@@ -35159,6 +35223,8 @@ components:
           $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
         visibility:
           $ref: '#/components/schemas/ApiPublicationVisibility'
+        spec_renderer:
+          $ref: '#/components/schemas/ApiPublicationSpecRenderer'
         form_id:
           description: |
             UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
@@ -36058,6 +36124,21 @@ components:
         - instance
         - detail
       title: Error
+    TryItUIAudience:
+      description: |
+        The audience for the Try It UI feature.
+
+        `all` means that the Try It UI will be available to all users, including unauthenticated users.
+
+        `authenticated` means that the Try It UI will only be available to authenticated users.
+
+        `registered` means that the Try It UI will only be available to users who have registered for the API.
+      type: string
+      enum:
+        - all
+        - authenticated
+        - registered
+      x-speakeasy-unknown-values: allow
     ImagePNGDataUri:
       description: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
       type: string
@@ -39059,6 +39140,10 @@ components:
               description: Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
               type: boolean
               default: true
+            try_it_ui_audience:
+              allOf:
+                - $ref: '#/components/schemas/TryItUIAudience'
+                - default: all
           title: PortalCustomizationSpecRenderer
         robots:
           type: string
@@ -101407,23 +101492,6 @@ components:
                 $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
               visibility:
                 $ref: '#/components/schemas/ApiPublicationVisibility'
-              form_id:
-                description: |
-                  UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
-                type: string
-                format: uuid
-                nullable: true
-                x-speakeasy-param-computed: true
-              warnings:
-                description: Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
-                type: array
-                items:
-                  type: string
-                readOnly: true
-              created_at:
-                $ref: '#/components/schemas/CreatedAt'
-              updated_at:
-                $ref: '#/components/schemas/UpdatedAt'
               spec_renderer:
                 description: Customization settings for the API spec renderer in the portal.
                 type: object
@@ -101454,6 +101522,23 @@ components:
                   - try_it_ui
                   - try_it_ui_audience
                 title: ApiPublicationSpecRenderer
+              form_id:
+                description: |
+                  UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
+                type: string
+                format: uuid
+                nullable: true
+                x-speakeasy-param-computed: true
+              warnings:
+                description: Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
+                type: array
+                items:
+                  type: string
+                readOnly: true
+              created_at:
+                $ref: '#/components/schemas/CreatedAt'
+              updated_at:
+                $ref: '#/components/schemas/UpdatedAt'
             additionalProperties: false
             required:
               - visibility
@@ -101461,6 +101546,7 @@ components:
               - updated_at
               - auth_strategy_ids
               - form_id
+              - spec_renderer
             title: API Publication
     ListApiPublicationResponse:
       description: Paginated list of API publications
@@ -101512,22 +101598,6 @@ components:
                 $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
               visibility:
                 $ref: '#/components/schemas/ApiPublicationVisibility'
-              form_id:
-                description: |
-                  UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
-                type: string
-                format: uuid
-                nullable: true
-              warnings:
-                description: Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
-                type: array
-                items:
-                  type: string
-                readOnly: true
-              created_at:
-                $ref: '#/components/schemas/CreatedAt'
-              updated_at:
-                $ref: '#/components/schemas/UpdatedAt'
               spec_renderer:
                 description: Customization settings for the API spec renderer in the portal.
                 type: object
@@ -101558,6 +101628,22 @@ components:
                   - try_it_ui
                   - try_it_ui_audience
                 title: ApiPublicationSpecRenderer
+              form_id:
+                description: |
+                  UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
+                type: string
+                format: uuid
+                nullable: true
+              warnings:
+                description: Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
+                type: array
+                items:
+                  type: string
+                readOnly: true
+              created_at:
+                $ref: '#/components/schemas/CreatedAt'
+              updated_at:
+                $ref: '#/components/schemas/UpdatedAt'
             additionalProperties: false
             required:
               - visibility
@@ -104748,7 +104834,7 @@ x-input-schemas:
     version: 2.4.0
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.6.10
+    version: 3.6.11
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
     version: 2.1.3
