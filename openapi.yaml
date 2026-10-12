@@ -6616,6 +6616,34 @@ paths:
           $ref: '#/components/responses/Forbidden'
       tags:
         - Catalog Integrations
+  '/v1/mcp-cp/{controlPlaneId}/context-interfaces/{interfaceId}/skills/{skillId}/artifacts':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/interfaceId'
+      - $ref: '#/components/parameters/skillId'
+    get:
+      operationId: list-deployed-context-interface-skill-artifacts
+      summary: List Skill Artifacts By Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieve list of skill artifacts from deployed context interface
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListSkillArtifactsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Signaling APIs
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -85732,6 +85760,18 @@ components:
       required:
         - data
         - meta
+    ListSkillArtifactsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillArtifact'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
     SkillContentsResponse:
       type: object
       properties:
@@ -85864,6 +85904,18 @@ components:
         - validation_message
         - created_at
         - updated_at
+    SkillArtifact:
+      type: object
+      properties:
+        path:
+          description: Relative path to the skill artifact file.
+          type: string
+        url:
+          description: A presigned url to downalod the skill artifact.
+          type: string
+      required:
+        - path
+        - url
     AdvancedQuery:
       description: A query targeting the API usage analytics datasource.
       type: object
@@ -103617,6 +103669,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Skill'
+    ListSkillArtifactsResponse:
+      description: A response to listing skill artifacts.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListSkillArtifactsResponse'
     RetrieveMeshControlPlaneResponse:
       description: A response to creating a control plane.
       content:
@@ -104711,7 +104769,7 @@ x-input-schemas:
     version: 3.7.1
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
-    version: 1.46.0
+    version: 1.47.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Mesh Control Plane manager
     version: 0.3.0
