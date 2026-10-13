@@ -33,11 +33,14 @@ func TestServiceCreateGetDelete(t *testing.T) {
 	require.NotEmpty(t, respCreate.ControlPlane.Name)
 
 	reqSvc := sdkkonnectcomp.ServiceRequest{
-		Name:     sdkkonnectgo.Pointer(NamePrefix(t) + "-" + runID),
-		Protocol: new(sdkkonnectcomp.ServiceProtocolHTTP),
-		Host:     "example.com",
-		Port:     sdkkonnectgo.Pointer(int64(80)),
-		Path:     sdkkonnectgo.Pointer("/hello"),
+		Type: sdkkonnectcomp.ServiceRequestTypeServiceRequest1,
+		ServiceRequest1: &sdkkonnectcomp.ServiceRequest1{
+			Name:     sdkkonnectgo.Pointer(NamePrefix(t) + "-" + runID),
+			Protocol: sdkkonnectcomp.ServiceRequestProtocolHTTP.ToPointer(),
+			Host:     "example.com",
+			Port:     sdkkonnectgo.Pointer(int64(80)),
+			Path:     sdkkonnectgo.Pointer("/hello"),
+		},
 	}
 	respCreateSvc, err := sdk.Services.CreateService(ctx, respCreate.ControlPlane.ID, reqSvc)
 	require.NoError(t, err)
@@ -48,10 +51,10 @@ func TestServiceCreateGetDelete(t *testing.T) {
 		_, err := sdk.Services.DeleteService(ctx, respCreate.ControlPlane.ID, *respCreateSvc.Service.ID)
 		require.NoError(t, err)
 	})
-	require.Equal(t, *reqSvc.Name, *respCreateSvc.Service.Name)
+	require.Equal(t, *reqSvc.ServiceRequest1.Name, *respCreateSvc.Service.Name)
 	t.Run("path", func(t *testing.T) {
 		t.Skip("Skipping as .path is not set in response from Konnect API: https://github.com/Kong/sdk-konnect-go/issues/190")
-		require.Equal(t, *reqSvc.Path, *respCreateSvc.Service.Path)
+		require.Equal(t, *reqSvc.ServiceRequest1.Path, *respCreateSvc.Service.Path)
 	})
 
 	respGetSvc, err := sdk.Services.GetService(ctx, *respCreateSvc.Service.ID, respCreate.ControlPlane.ID)
