@@ -2509,6 +2509,7 @@ func (s *AuthSettings) CreateIdentityProvider(ctx context.Context, request compo
 		defer cancel()
 	}
 
+	ctx = utils.WithOperation(ctx, "create-identity-provider")
 	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
@@ -3103,6 +3104,7 @@ func (s *AuthSettings) UpdateIdentityProvider(ctx context.Context, id string, up
 		defer cancel()
 	}
 
+	ctx = utils.WithOperation(ctx, "update-identity-provider")
 	req, err := http.NewRequestWithContext(ctx, "PATCH", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)

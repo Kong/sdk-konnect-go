@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.15.0 and generator version 2.946.0
+// Generated from OpenAPI doc version 3.15.0 and generator version 2.948.4
 
 import (
 	"context"
@@ -238,6 +238,7 @@ type SDK struct {
 	// To set up and view a list of all the integrations we support please view our [documentation](https://developer.konghq.com/service-catalog/integrations/).
 	//
 	CatalogIntegrations *CatalogIntegrations
+	SignalingAPIs       *SignalingAPIs
 	MCPServers          *MCPServers
 	MCPServerRuntime    *MCPServerRuntime
 	// Manage MCPs - a catalogable proxy for AI Gateway MCPs
@@ -547,11 +548,11 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.73.1",
+		SDKVersion: "0.74.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.73.1 2.946.0 3.15.0 github.com/Kong/sdk-konnect-go",
-			SDKVersion:        "0.73.1",
-			GenVersion:        "2.946.0",
+			UserAgent:         "speakeasy-sdk/go 0.74.0 2.948.4 3.15.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.74.0",
+			GenVersion:        "2.948.4",
 			OpenAPIDocVersion: "3.15.0",
 			ServerList:        ServerList,
 		},
@@ -624,6 +625,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.IntegrationInstanceAuthCredentials = newIntegrationInstanceAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResources = newCatalogResources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SignalingAPIs = newSignalingAPIs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MCPServerRuntime = newMCPServerRuntime(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogMCPs = newCatalogMCPs(sdk, sdk.sdkConfiguration, sdk.hooks)

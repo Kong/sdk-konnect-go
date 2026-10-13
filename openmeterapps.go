@@ -662,6 +662,7 @@ func (s *OpenMeterApps) InstallApp(ctx context.Context, request components.Billi
 		defer cancel()
 	}
 
+	ctx = utils.WithOperation(ctx, "install-app")
 	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
@@ -1787,6 +1788,7 @@ func (s *OpenMeterApps) UpdateApp(ctx context.Context, appID string, billingUpda
 		defer cancel()
 	}
 
+	ctx = utils.WithOperation(ctx, "update-app")
 	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
