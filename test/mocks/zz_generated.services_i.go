@@ -49,12 +49,12 @@ func (_m *MockServicesSDK) EXPECT() *MockServicesSDK_Expecter {
 }
 
 // CreateService provides a mock function for the type MockServicesSDK
-func (_mock *MockServicesSDK) CreateService(ctx context.Context, controlPlaneID string, service components.Service, opts ...operations.Option) (*operations.CreateServiceResponse, error) {
+func (_mock *MockServicesSDK) CreateService(ctx context.Context, controlPlaneID string, serviceRequest components.ServiceRequest, opts ...operations.Option) (*operations.CreateServiceResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, service, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, serviceRequest, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, service)
+		tmpRet = _mock.Called(ctx, controlPlaneID, serviceRequest)
 	}
 	ret := tmpRet
 
@@ -64,18 +64,18 @@ func (_mock *MockServicesSDK) CreateService(ctx context.Context, controlPlaneID 
 
 	var r0 *operations.CreateServiceResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Service, ...operations.Option) (*operations.CreateServiceResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, service, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.ServiceRequest, ...operations.Option) (*operations.CreateServiceResponse, error)); ok {
+		return returnFunc(ctx, controlPlaneID, serviceRequest, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Service, ...operations.Option) *operations.CreateServiceResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, service, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.ServiceRequest, ...operations.Option) *operations.CreateServiceResponse); ok {
+		r0 = returnFunc(ctx, controlPlaneID, serviceRequest, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.CreateServiceResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.Service, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, service, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.ServiceRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, controlPlaneID, serviceRequest, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -90,14 +90,14 @@ type MockServicesSDK_CreateService_Call struct {
 // CreateService is a helper method to define mock.On call
 //   - ctx context.Context
 //   - controlPlaneID string
-//   - service components.Service
+//   - serviceRequest components.ServiceRequest
 //   - opts ...operations.Option
-func (_e *MockServicesSDK_Expecter) CreateService(ctx any, controlPlaneID any, service any, opts ...any) *MockServicesSDK_CreateService_Call {
+func (_e *MockServicesSDK_Expecter) CreateService(ctx any, controlPlaneID any, serviceRequest any, opts ...any) *MockServicesSDK_CreateService_Call {
 	return &MockServicesSDK_CreateService_Call{Call: _e.mock.On("CreateService",
-		append([]any{ctx, controlPlaneID, service}, opts...)...)}
+		append([]any{ctx, controlPlaneID, serviceRequest}, opts...)...)}
 }
 
-func (_c *MockServicesSDK_CreateService_Call) Run(run func(ctx context.Context, controlPlaneID string, service components.Service, opts ...operations.Option)) *MockServicesSDK_CreateService_Call {
+func (_c *MockServicesSDK_CreateService_Call) Run(run func(ctx context.Context, controlPlaneID string, serviceRequest components.ServiceRequest, opts ...operations.Option)) *MockServicesSDK_CreateService_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -107,9 +107,9 @@ func (_c *MockServicesSDK_CreateService_Call) Run(run func(ctx context.Context, 
 		if args[1] != nil {
 			arg1 = args[1].(string)
 		}
-		var arg2 components.Service
+		var arg2 components.ServiceRequest
 		if args[2] != nil {
-			arg2 = args[2].(components.Service)
+			arg2 = args[2].(components.ServiceRequest)
 		}
 		var arg3 []operations.Option
 		var variadicArgs []operations.Option
@@ -132,7 +132,7 @@ func (_c *MockServicesSDK_CreateService_Call) Return(createServiceResponse *oper
 	return _c
 }
 
-func (_c *MockServicesSDK_CreateService_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, service components.Service, opts ...operations.Option) (*operations.CreateServiceResponse, error)) *MockServicesSDK_CreateService_Call {
+func (_c *MockServicesSDK_CreateService_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, serviceRequest components.ServiceRequest, opts ...operations.Option) (*operations.CreateServiceResponse, error)) *MockServicesSDK_CreateService_Call {
 	_c.Call.Return(run)
 	return _c
 }

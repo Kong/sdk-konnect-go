@@ -8,27 +8,27 @@ import (
 	"time"
 )
 
-// TryItUIAudience - The audience for the Try It UI feature.
+// APIPackagePublicationResponseTryItUIAudience - The audience for the Try It UI feature.
 //
 // `all` means that the Try It UI will be available to all users, including unauthenticated users.
 //
 // `authenticated` means that the Try It UI will only be available to authenticated users.
 //
 // `registered` means that the Try It UI will only be available to users who have registered for the API.
-type TryItUIAudience string
+type APIPackagePublicationResponseTryItUIAudience string
 
 const (
-	TryItUIAudienceAll           TryItUIAudience = "all"
-	TryItUIAudienceAuthenticated TryItUIAudience = "authenticated"
-	TryItUIAudienceRegistered    TryItUIAudience = "registered"
+	APIPackagePublicationResponseTryItUIAudienceAll           APIPackagePublicationResponseTryItUIAudience = "all"
+	APIPackagePublicationResponseTryItUIAudienceAuthenticated APIPackagePublicationResponseTryItUIAudience = "authenticated"
+	APIPackagePublicationResponseTryItUIAudienceRegistered    APIPackagePublicationResponseTryItUIAudience = "registered"
 )
 
-func (e TryItUIAudience) ToPointer() *TryItUIAudience {
+func (e APIPackagePublicationResponseTryItUIAudience) ToPointer() *APIPackagePublicationResponseTryItUIAudience {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *TryItUIAudience) IsExact() bool {
+func (e *APIPackagePublicationResponseTryItUIAudience) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "all", "authenticated", "registered":
@@ -38,8 +38,8 @@ func (e *TryItUIAudience) IsExact() bool {
 	return false
 }
 
-// APIPublicationSpecRenderer - Customization settings for the API spec renderer in the portal.
-type APIPublicationSpecRenderer struct {
+// APIPackagePublicationResponseAPIPublicationSpecRenderer - Customization settings for the API spec renderer in the portal.
+type APIPackagePublicationResponseAPIPublicationSpecRenderer struct {
 	// Enable in-browser testing for your API. All linked gateways must have the CORS plugin configured.
 	TryItUI *bool `json:"try_it_ui"`
 	// The audience for the Try It UI feature.
@@ -50,17 +50,17 @@ type APIPublicationSpecRenderer struct {
 	//
 	// `registered` means that the Try It UI will only be available to users who have registered for the API.
 	//
-	TryItUIAudience *TryItUIAudience `json:"try_it_ui_audience"`
+	TryItUIAudience *APIPackagePublicationResponseTryItUIAudience `json:"try_it_ui_audience"`
 }
 
-func (a *APIPublicationSpecRenderer) GetTryItUI() *bool {
+func (a *APIPackagePublicationResponseAPIPublicationSpecRenderer) GetTryItUI() *bool {
 	if a == nil {
 		return nil
 	}
 	return a.TryItUI
 }
 
-func (a *APIPublicationSpecRenderer) GetTryItUIAudience() *TryItUIAudience {
+func (a *APIPackagePublicationResponseAPIPublicationSpecRenderer) GetTryItUIAudience() *APIPackagePublicationResponseTryItUIAudience {
 	if a == nil {
 		return nil
 	}
@@ -83,6 +83,8 @@ type APIPackagePublicationResponse struct {
 	// If omitted, this defaults to the target portal's configured default API visibility.
 	//
 	Visibility APIPublicationVisibility `json:"visibility"`
+	// Customization settings for the API spec renderer in the portal.
+	SpecRenderer *APIPackagePublicationResponseAPIPublicationSpecRenderer `json:"spec_renderer,omitempty"`
 	// UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
 	//
 	FormID *string `json:"form_id"`
@@ -92,8 +94,6 @@ type APIPackagePublicationResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
-	// Customization settings for the API spec renderer in the portal.
-	SpecRenderer *APIPublicationSpecRenderer `json:"spec_renderer,omitempty"`
 }
 
 func (a APIPackagePublicationResponse) MarshalJSON() ([]byte, error) {
@@ -128,6 +128,13 @@ func (a *APIPackagePublicationResponse) GetVisibility() APIPublicationVisibility
 	return a.Visibility
 }
 
+func (a *APIPackagePublicationResponse) GetSpecRenderer() *APIPackagePublicationResponseAPIPublicationSpecRenderer {
+	if a == nil {
+		return nil
+	}
+	return a.SpecRenderer
+}
+
 func (a *APIPackagePublicationResponse) GetFormID() *string {
 	if a == nil {
 		return nil
@@ -154,11 +161,4 @@ func (a *APIPackagePublicationResponse) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-func (a *APIPackagePublicationResponse) GetSpecRenderer() *APIPublicationSpecRenderer {
-	if a == nil {
-		return nil
-	}
-	return a.SpecRenderer
 }

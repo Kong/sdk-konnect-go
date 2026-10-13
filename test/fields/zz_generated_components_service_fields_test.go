@@ -30,6 +30,5 @@ func TestComponentsServiceFieldTypes(t *testing.T) {
 	var _ *bool = value.TLSVerify
 	var _ *int64 = value.TLSVerifyDepth
 	var _ *int64 = value.UpdatedAt
-	var _ *string = value.URL
 	var _ *int64 = value.WriteTimeout
 }

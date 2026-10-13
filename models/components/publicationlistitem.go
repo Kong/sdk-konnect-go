@@ -8,6 +8,65 @@ import (
 	"time"
 )
 
+// PublicationListItemTryItUIAudience - The audience for the Try It UI feature.
+//
+// `all` means that the Try It UI will be available to all users, including unauthenticated users.
+//
+// `authenticated` means that the Try It UI will only be available to authenticated users.
+//
+// `registered` means that the Try It UI will only be available to users who have registered for the API.
+type PublicationListItemTryItUIAudience string
+
+const (
+	PublicationListItemTryItUIAudienceAll           PublicationListItemTryItUIAudience = "all"
+	PublicationListItemTryItUIAudienceAuthenticated PublicationListItemTryItUIAudience = "authenticated"
+	PublicationListItemTryItUIAudienceRegistered    PublicationListItemTryItUIAudience = "registered"
+)
+
+func (e PublicationListItemTryItUIAudience) ToPointer() *PublicationListItemTryItUIAudience {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PublicationListItemTryItUIAudience) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "all", "authenticated", "registered":
+			return true
+		}
+	}
+	return false
+}
+
+// PublicationListItemAPIPublicationSpecRenderer - Customization settings for the API spec renderer in the portal.
+type PublicationListItemAPIPublicationSpecRenderer struct {
+	// Enable in-browser testing for your API. All linked gateways must have the CORS plugin configured.
+	TryItUI *bool `json:"try_it_ui"`
+	// The audience for the Try It UI feature.
+	//
+	// `all` means that the Try It UI will be available to all users, including unauthenticated users.
+	//
+	// `authenticated` means that the Try It UI will only be available to authenticated users.
+	//
+	// `registered` means that the Try It UI will only be available to users who have registered for the API.
+	//
+	TryItUIAudience *PublicationListItemTryItUIAudience `json:"try_it_ui_audience"`
+}
+
+func (p *PublicationListItemAPIPublicationSpecRenderer) GetTryItUI() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.TryItUI
+}
+
+func (p *PublicationListItemAPIPublicationSpecRenderer) GetTryItUIAudience() *PublicationListItemTryItUIAudience {
+	if p == nil {
+		return nil
+	}
+	return p.TryItUIAudience
+}
+
 // PublicationListItem - An API or API Package publication in a portal
 type PublicationListItem struct {
 	// The API identifier.
@@ -30,6 +89,8 @@ type PublicationListItem struct {
 	// DCR support for application registration is currently in development.
 	//
 	AuthStrategyIds []string `json:"auth_strategy_ids"`
+	// Customization settings for the API spec renderer in the portal.
+	SpecRenderer *PublicationListItemAPIPublicationSpecRenderer `json:"spec_renderer"`
 	// UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
 	//
 	FormID *string `json:"form_id"`
@@ -92,6 +153,13 @@ func (p *PublicationListItem) GetAuthStrategyIds() []string {
 		return nil
 	}
 	return p.AuthStrategyIds
+}
+
+func (p *PublicationListItem) GetSpecRenderer() *PublicationListItemAPIPublicationSpecRenderer {
+	if p == nil {
+		return nil
+	}
+	return p.SpecRenderer
 }
 
 func (p *PublicationListItem) GetFormID() *string {

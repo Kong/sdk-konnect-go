@@ -21,6 +21,18 @@ invalidParameters := components.CreateInvalidParametersInvalidParameterMinimumLe
 invalidParameters := components.CreateInvalidParametersInvalidParameterMaximumLength(components.InvalidParameterMaximumLength{/* values here */})
 ```
 
+### InvalidParameterMinimumTime
+
+```go
+invalidParameters := components.CreateInvalidParametersInvalidParameterMinimumTime(components.InvalidParameterMinimumTime{/* values here */})
+```
+
+### InvalidParameterMaximumTime
+
+```go
+invalidParameters := components.CreateInvalidParametersInvalidParameterMaximumTime(components.InvalidParameterMaximumTime{/* values here */})
+```
+
 ### InvalidParameterChoiceItem
 
 ```go
@@ -45,6 +57,10 @@ switch invalidParameters.Type {
 		// invalidParameters.InvalidParameterMinimumLength is populated
 	case components.InvalidParametersTypeInvalidParameterMaximumLength:
 		// invalidParameters.InvalidParameterMaximumLength is populated
+	case components.InvalidParametersTypeInvalidParameterMinimumTime:
+		// invalidParameters.InvalidParameterMinimumTime is populated
+	case components.InvalidParametersTypeInvalidParameterMaximumTime:
+		// invalidParameters.InvalidParameterMaximumTime is populated
 	case components.InvalidParametersTypeInvalidParameterChoiceItem:
 		// invalidParameters.InvalidParameterChoiceItem is populated
 	case components.InvalidParametersTypeInvalidParameterDependentItem:
