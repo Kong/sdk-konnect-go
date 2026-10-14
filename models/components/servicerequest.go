@@ -102,7 +102,8 @@ func (s *ServiceRequest2TLSSans) GetUris() []string {
 // #region class-body-servicerequest2tlssans
 // #endregion class-body-servicerequest2tlssans
 
-type ServiceRequest2 struct {
+// ServiceWithURL - Service defined by its URL.
+type ServiceWithURL struct {
 	// Array of `CA Certificate` object UUIDs that are used to build the trust store while verifying upstream server's TLS certificate. If set to `null` when Nginx default is respected. If default CA list in Nginx are not specified and TLS verification is enabled, then handshake with upstream server will always fail (because no CA are trusted).
 	CaCertificates []string `json:"ca_certificates,omitempty"`
 	// Certificate to be used as client certificate while TLS handshaking to the upstream server.
@@ -151,173 +152,170 @@ type ServiceRequest2 struct {
 	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
 }
 
-func (s ServiceRequest2) MarshalJSON() ([]byte, error) {
+func (s ServiceWithURL) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(s, "", false)
 }
 
-func (s *ServiceRequest2) UnmarshalJSON(data []byte) error {
+func (s *ServiceWithURL) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (s *ServiceRequest2) GetCaCertificates() []string {
+func (s *ServiceWithURL) GetCaCertificates() []string {
 	if s == nil {
 		return nil
 	}
 	return s.CaCertificates
 }
 
-func (s *ServiceRequest2) GetClientCertificate() *ServiceRequest2ClientCertificate {
+func (s *ServiceWithURL) GetClientCertificate() *ServiceRequest2ClientCertificate {
 	if s == nil {
 		return nil
 	}
 	return s.ClientCertificate
 }
 
-func (s *ServiceRequest2) GetConnectTimeout() *int64 {
+func (s *ServiceWithURL) GetConnectTimeout() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.ConnectTimeout
 }
 
-func (s *ServiceRequest2) GetCreatedAt() *int64 {
+func (s *ServiceWithURL) GetCreatedAt() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.CreatedAt
 }
 
-func (s *ServiceRequest2) GetDescription() *string {
+func (s *ServiceWithURL) GetDescription() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Description
 }
 
-func (s *ServiceRequest2) GetEnabled() *bool {
+func (s *ServiceWithURL) GetEnabled() *bool {
 	if s == nil {
 		return nil
 	}
 	return s.Enabled
 }
 
-func (s *ServiceRequest2) GetHost() *string {
+func (s *ServiceWithURL) GetHost() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Host
 }
 
-func (s *ServiceRequest2) GetID() *string {
+func (s *ServiceWithURL) GetID() *string {
 	if s == nil {
 		return nil
 	}
 	return s.ID
 }
 
-func (s *ServiceRequest2) GetManagedBy() map[string]string {
+func (s *ServiceWithURL) GetManagedBy() map[string]string {
 	if s == nil {
 		return nil
 	}
 	return s.ManagedBy
 }
 
-func (s *ServiceRequest2) GetName() *string {
+func (s *ServiceWithURL) GetName() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Name
 }
 
-func (s *ServiceRequest2) GetPath() *string {
+func (s *ServiceWithURL) GetPath() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Path
 }
 
-func (s *ServiceRequest2) GetPort() *int64 {
+func (s *ServiceWithURL) GetPort() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.Port
 }
 
-func (s *ServiceRequest2) GetProtocol() *ServiceRequest2Protocol {
+func (s *ServiceWithURL) GetProtocol() *ServiceRequest2Protocol {
 	if s == nil {
 		return nil
 	}
 	return s.Protocol
 }
 
-func (s *ServiceRequest2) GetReadTimeout() *int64 {
+func (s *ServiceWithURL) GetReadTimeout() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.ReadTimeout
 }
 
-func (s *ServiceRequest2) GetRetries() *int64 {
+func (s *ServiceWithURL) GetRetries() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.Retries
 }
 
-func (s *ServiceRequest2) GetTags() []string {
+func (s *ServiceWithURL) GetTags() []string {
 	if s == nil {
 		return nil
 	}
 	return s.Tags
 }
 
-func (s *ServiceRequest2) GetTLSSans() *ServiceRequest2TLSSans {
+func (s *ServiceWithURL) GetTLSSans() *ServiceRequest2TLSSans {
 	if s == nil {
 		return nil
 	}
 	return s.TLSSans
 }
 
-func (s *ServiceRequest2) GetTLSVerify() *bool {
+func (s *ServiceWithURL) GetTLSVerify() *bool {
 	if s == nil {
 		return nil
 	}
 	return s.TLSVerify
 }
 
-func (s *ServiceRequest2) GetTLSVerifyDepth() *int64 {
+func (s *ServiceWithURL) GetTLSVerifyDepth() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.TLSVerifyDepth
 }
 
-func (s *ServiceRequest2) GetUpdatedAt() *int64 {
+func (s *ServiceWithURL) GetUpdatedAt() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.UpdatedAt
 }
 
-func (s *ServiceRequest2) GetURL() *string {
+func (s *ServiceWithURL) GetURL() *string {
 	if s == nil {
 		return nil
 	}
 	return s.URL
 }
 
-func (s *ServiceRequest2) GetWriteTimeout() *int64 {
+func (s *ServiceWithURL) GetWriteTimeout() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.WriteTimeout
 }
-
-// #region class-body-servicerequest2
-// #endregion class-body-servicerequest2
 
 // ServiceRequestClientCertificate - Certificate to be used as client certificate while TLS handshaking to the upstream server.
 type ServiceRequestClientCertificate struct {
@@ -406,7 +404,8 @@ func (s *ServiceRequestTLSSans) GetUris() []string {
 	return s.Uris
 }
 
-type ServiceRequest1 struct {
+// ServiceWithHost - Service defined by its host.
+type ServiceWithHost struct {
 	// Array of `CA Certificate` object UUIDs that are used to build the trust store while verifying upstream server's TLS certificate. If set to `null` when Nginx default is respected. If default CA list in Nginx are not specified and TLS verification is enabled, then handshake with upstream server will always fail (because no CA are trusted).
 	CaCertificates []string `json:"ca_certificates,omitempty"`
 	// Certificate to be used as client certificate while TLS handshaking to the upstream server.
@@ -455,204 +454,201 @@ type ServiceRequest1 struct {
 	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
 }
 
-func (s ServiceRequest1) MarshalJSON() ([]byte, error) {
+func (s ServiceWithHost) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(s, "", false)
 }
 
-func (s *ServiceRequest1) UnmarshalJSON(data []byte) error {
+func (s *ServiceWithHost) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"host"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (s *ServiceRequest1) GetCaCertificates() []string {
+func (s *ServiceWithHost) GetCaCertificates() []string {
 	if s == nil {
 		return nil
 	}
 	return s.CaCertificates
 }
 
-func (s *ServiceRequest1) GetClientCertificate() *ServiceRequestClientCertificate {
+func (s *ServiceWithHost) GetClientCertificate() *ServiceRequestClientCertificate {
 	if s == nil {
 		return nil
 	}
 	return s.ClientCertificate
 }
 
-func (s *ServiceRequest1) GetConnectTimeout() *int64 {
+func (s *ServiceWithHost) GetConnectTimeout() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.ConnectTimeout
 }
 
-func (s *ServiceRequest1) GetCreatedAt() *int64 {
+func (s *ServiceWithHost) GetCreatedAt() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.CreatedAt
 }
 
-func (s *ServiceRequest1) GetDescription() *string {
+func (s *ServiceWithHost) GetDescription() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Description
 }
 
-func (s *ServiceRequest1) GetEnabled() *bool {
+func (s *ServiceWithHost) GetEnabled() *bool {
 	if s == nil {
 		return nil
 	}
 	return s.Enabled
 }
 
-func (s *ServiceRequest1) GetHost() string {
+func (s *ServiceWithHost) GetHost() string {
 	if s == nil {
 		return ""
 	}
 	return s.Host
 }
 
-func (s *ServiceRequest1) GetID() *string {
+func (s *ServiceWithHost) GetID() *string {
 	if s == nil {
 		return nil
 	}
 	return s.ID
 }
 
-func (s *ServiceRequest1) GetManagedBy() map[string]string {
+func (s *ServiceWithHost) GetManagedBy() map[string]string {
 	if s == nil {
 		return nil
 	}
 	return s.ManagedBy
 }
 
-func (s *ServiceRequest1) GetName() *string {
+func (s *ServiceWithHost) GetName() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Name
 }
 
-func (s *ServiceRequest1) GetPath() *string {
+func (s *ServiceWithHost) GetPath() *string {
 	if s == nil {
 		return nil
 	}
 	return s.Path
 }
 
-func (s *ServiceRequest1) GetPort() *int64 {
+func (s *ServiceWithHost) GetPort() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.Port
 }
 
-func (s *ServiceRequest1) GetProtocol() *ServiceRequestProtocol {
+func (s *ServiceWithHost) GetProtocol() *ServiceRequestProtocol {
 	if s == nil {
 		return nil
 	}
 	return s.Protocol
 }
 
-func (s *ServiceRequest1) GetReadTimeout() *int64 {
+func (s *ServiceWithHost) GetReadTimeout() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.ReadTimeout
 }
 
-func (s *ServiceRequest1) GetRetries() *int64 {
+func (s *ServiceWithHost) GetRetries() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.Retries
 }
 
-func (s *ServiceRequest1) GetTags() []string {
+func (s *ServiceWithHost) GetTags() []string {
 	if s == nil {
 		return nil
 	}
 	return s.Tags
 }
 
-func (s *ServiceRequest1) GetTLSSans() *ServiceRequestTLSSans {
+func (s *ServiceWithHost) GetTLSSans() *ServiceRequestTLSSans {
 	if s == nil {
 		return nil
 	}
 	return s.TLSSans
 }
 
-func (s *ServiceRequest1) GetTLSVerify() *bool {
+func (s *ServiceWithHost) GetTLSVerify() *bool {
 	if s == nil {
 		return nil
 	}
 	return s.TLSVerify
 }
 
-func (s *ServiceRequest1) GetTLSVerifyDepth() *int64 {
+func (s *ServiceWithHost) GetTLSVerifyDepth() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.TLSVerifyDepth
 }
 
-func (s *ServiceRequest1) GetUpdatedAt() *int64 {
+func (s *ServiceWithHost) GetUpdatedAt() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.UpdatedAt
 }
 
-func (s *ServiceRequest1) GetURL() *string {
+func (s *ServiceWithHost) GetURL() *string {
 	if s == nil {
 		return nil
 	}
 	return s.URL
 }
 
-func (s *ServiceRequest1) GetWriteTimeout() *int64 {
+func (s *ServiceWithHost) GetWriteTimeout() *int64 {
 	if s == nil {
 		return nil
 	}
 	return s.WriteTimeout
 }
 
-// #region class-body-servicerequest1
-// #endregion class-body-servicerequest1
-
 type ServiceRequestType string
 
 const (
-	ServiceRequestTypeServiceRequest1 ServiceRequestType = "ServiceRequest_1"
-	ServiceRequestTypeServiceRequest2 ServiceRequestType = "ServiceRequest_2"
+	ServiceRequestTypeServiceWithHost ServiceRequestType = "ServiceWithHost"
+	ServiceRequestTypeServiceWithURL  ServiceRequestType = "ServiceWithURL"
 )
 
 // ServiceRequest - Service entities, as the name implies, are abstractions of each of your own upstream services. Examples of Services would be a data transformation microservice, a billing API, etc. The main attribute of a Service is its URL (where Kong should proxy traffic to), which can be set as a single string or by specifying its `protocol`, `host`, `port` and `path` individually. Services are associated to Routes (a Service can have many Routes associated with it). Routes are entry-points in Kong and define rules to match client requests. Once a Route is matched, Kong proxies the request to its associated Service. See the [Proxy Reference][proxy-reference] for a detailed explanation of how Kong proxies traffic.
 type ServiceRequest struct {
-	ServiceRequest1 *ServiceRequest1 `queryParam:"inline" union:"member"`
-	ServiceRequest2 *ServiceRequest2 `queryParam:"inline" union:"member"`
+	ServiceWithHost *ServiceWithHost `queryParam:"inline" union:"member"`
+	ServiceWithURL  *ServiceWithURL  `queryParam:"inline" union:"member"`
 
 	Type ServiceRequestType
 }
 
-func CreateServiceRequestServiceRequest1(serviceRequest1 ServiceRequest1) ServiceRequest {
-	typ := ServiceRequestTypeServiceRequest1
+func CreateServiceRequestServiceWithHost(serviceWithHost ServiceWithHost) ServiceRequest {
+	typ := ServiceRequestTypeServiceWithHost
 
 	return ServiceRequest{
-		ServiceRequest1: &serviceRequest1,
+		ServiceWithHost: &serviceWithHost,
 		Type:            typ,
 	}
 }
 
-func CreateServiceRequestServiceRequest2(serviceRequest2 ServiceRequest2) ServiceRequest {
-	typ := ServiceRequestTypeServiceRequest2
+func CreateServiceRequestServiceWithURL(serviceWithURL ServiceWithURL) ServiceRequest {
+	typ := ServiceRequestTypeServiceWithURL
 
 	return ServiceRequest{
-		ServiceRequest2: &serviceRequest2,
-		Type:            typ,
+		ServiceWithURL: &serviceWithURL,
+		Type:           typ,
 	}
 }
 
@@ -665,17 +661,17 @@ func (u *ServiceRequest) UnmarshalJSON(data []byte) (err error) {
 		}
 	}()
 
-	var serviceRequest1 ServiceRequest1 = ServiceRequest1{}
-	if err := utils.UnmarshalJSON(data, &serviceRequest1, "", true, nil); err == nil {
-		u.ServiceRequest1 = &serviceRequest1
-		u.Type = ServiceRequestTypeServiceRequest1
+	var serviceWithHost ServiceWithHost = ServiceWithHost{}
+	if err := utils.UnmarshalJSON(data, &serviceWithHost, "", true, nil); err == nil {
+		u.ServiceWithHost = &serviceWithHost
+		u.Type = ServiceRequestTypeServiceWithHost
 		return nil
 	}
 
-	var serviceRequest2 ServiceRequest2 = ServiceRequest2{}
-	if err := utils.UnmarshalJSON(data, &serviceRequest2, "", true, nil); err == nil {
-		u.ServiceRequest2 = &serviceRequest2
-		u.Type = ServiceRequestTypeServiceRequest2
+	var serviceWithURL ServiceWithURL = ServiceWithURL{}
+	if err := utils.UnmarshalJSON(data, &serviceWithURL, "", true, nil); err == nil {
+		u.ServiceWithURL = &serviceWithURL
+		u.Type = ServiceRequestTypeServiceWithURL
 		return nil
 	}
 
@@ -683,12 +679,12 @@ func (u *ServiceRequest) UnmarshalJSON(data []byte) (err error) {
 }
 
 func (u ServiceRequest) MarshalJSON() ([]byte, error) {
-	if u.ServiceRequest1 != nil {
-		return utils.MarshalJSON(u.ServiceRequest1, "", true)
+	if u.ServiceWithHost != nil {
+		return utils.MarshalJSON(u.ServiceWithHost, "", true)
 	}
 
-	if u.ServiceRequest2 != nil {
-		return utils.MarshalJSON(u.ServiceRequest2, "", true)
+	if u.ServiceWithURL != nil {
+		return utils.MarshalJSON(u.ServiceWithURL, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ServiceRequest: all fields are null")
