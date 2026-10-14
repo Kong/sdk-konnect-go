@@ -24,6 +24,7 @@ workflow:
             overlays:
                 - location: ./.speakeasy/overlays/backend-cluster-tls-defaults.yaml
                 - location: ./.speakeasy/overlays/patch-custom-portal-email-template-defaults.yaml
+                - location: ./.speakeasy/overlays/portal-customization-theme-defaults.yaml
                 - location: ./.speakeasy/overlays/portal-team-konnect-managed-defaults.yaml
                 - location: ./.speakeasy/overlays/update-dcr-config-http-defaults.yaml
                 - location: ./.speakeasy/overlays/update-portal-audit-log-webhook-patch-defaults.yaml

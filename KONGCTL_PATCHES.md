@@ -10,12 +10,14 @@ The original public patches span `16ace680`, `7e77ff86`, and `4d68939e`
 on `patch/v0.68.1/targeted-patch-defaults`. They were subsequently ported
 to internal SDK v0.5.0 at `ae595d8c3fcea65864b67cfc76abe8970b2751fe`,
 then public SDK v0.71.0 at `288b6e157cf052ca2c6a0a70a90d0ca2aaa0e624`.
-This branch carries those seven overlays onto public SDK v0.73.1.
+This branch carries those seven overlays onto public SDK v0.73.1 and adds
+a theme-name overlay for a newly introduced customization default.
 
-Seven overlays preserve omission of optional request fields:
+Eight overlays preserve omission of optional request fields:
 
 - Backend-cluster TLS `insecure_skip_verify`.
 - Custom portal email-template PATCH `enabled`.
+- Portal customization PATCH `theme.name` (new in v0.73.1).
 - Portal team create/update `konnect_managed`.
 - HTTP DCR PATCH `allow_multiple_credentials`.
 - Portal audit-webhook PATCH `enabled`.
@@ -32,6 +34,10 @@ The `RouteJSON.strip_path` and `GroupMembership.members` post-generation
 fixes are already upstream. No duplicate fixes are added. The original
 handwritten JSON wrappers are unnecessary with Speakeasy 1.801.0 and the
 overlays; regression tests check request omission and explicit values.
+
+The new `ocean` theme-name default otherwise appears in customization
+PATCHes that only specify colors or mode. The overlay preserves omission
+and explicit `ocean`/`glacier` values, avoiding an implicit theme reset.
 
 ## Reproduction
 
