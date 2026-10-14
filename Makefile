@@ -163,6 +163,7 @@ generate.sdk:
 	git add --update .
 	$(MAKE) generate.deepcopy
 	$(MAKE) _generate.omitempty
+	python3 kongctl-patches/apply.py post-generate .
 	go mod tidy
 	$(MAKE) lint.sdk
 
@@ -284,7 +285,7 @@ verify.diff:
 
 .PHONY: validate.kongctl-overlays
 validate.kongctl-overlays:
-	@for overlay in $(sort $(wildcard .speakeasy/overlays/*.yaml)); do \
+	@for overlay in $(sort $(wildcard kongctl-patches/overlays/*.yaml)); do \
 		speakeasy overlay validate --overlay $$overlay; \
 		speakeasy overlay apply --strict --schema $(OPENAPI_FILE) --overlay $$overlay --out /dev/null; \
 	done

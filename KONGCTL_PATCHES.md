@@ -11,7 +11,10 @@ on `patch/v0.68.1/targeted-patch-defaults`. They were subsequently ported
 to internal SDK v0.5.0 at `ae595d8c3fcea65864b67cfc76abe8970b2751fe`,
 then public SDK v0.71.0 at `288b6e157cf052ca2c6a0a70a90d0ca2aaa0e624`.
 This branch carries those seven overlays onto public SDK v0.73.1 and adds
-a theme-name overlay for a newly introduced customization default.
+a theme-name overlay for a newly introduced customization default. The canonical
+patch definitions now live in [Kong/kongctl tools/sdk-patches](https://github.com/Kong/kongctl/tree/51d3ea3f7f5752b9ee7a8c38bcbd86004ff04390/tools/sdk-patches).
+This SDK contains the generated `kongctl-patches/` snapshot; its
+`provenance.json` records the source commit and file hashes.
 
 Eight overlays preserve omission of optional request fields:
 
@@ -39,7 +42,17 @@ The new `ocean` theme-name default otherwise appears in customization
 PATCHes that only specify colors or mode. The overlay preserves omission
 and explicit `ocean`/`glacier` values, avoiding an implicit theme reset.
 
+The AI Gateway key-auth `identity_realms` field also receives a targeted
+post-generation patch: `omitempty` becomes `omitzero`. An unset slice remains
+omitted, an explicitly empty slice is sent as `[]`, and populated slices retain
+their entries. This preserves the API requirement to clear identity realms when
+Kong Identity principals are enabled. Request-level tests cover create/update.
+
 ## Reproduction
+
+The snapshot is installed from kongctl with
+`python3 tools/sdk-patches/apply.py prepare /absolute/path/to/sdk-konnect-go`.
+From the prepared SDK checkout:
 
 ```sh
 mise trust
@@ -61,7 +74,7 @@ The snapshot preserves upstream persistent edits, including import formatting.
 The workflow and mise pins match the baseline generation lockfile
 (1.801.0). Baseline generator settings are preserved. All overlays must apply strictly before
 generation. The normal workflow generates code, DeepCopy methods, applies
-upstream fixes, tidies modules, and lints the specification.
+upstream fixes and the kongctl post-generation patch, tidies modules, and lints the specification.
 
 AI Gateway tests cover passthrough, skills, multiple aliases, Typesafe
 provider/target configuration, decisions, and custom-policy CRUD. Mock
