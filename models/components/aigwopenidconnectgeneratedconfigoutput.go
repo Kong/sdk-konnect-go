@@ -2780,7 +2780,8 @@ type AIGWOpenIDConnectGeneratedConfigOutput struct {
 	// Verify plugin configuration against discovery.
 	VerifyParameters *bool `default:"false" json:"verify_parameters"`
 	// Verify the cryptographic signature of tokens. Disabling this skips verification for every token source, including tokens presented directly by clients (bearer); this is insecure for that path. To trust only tokens fetched from the identity provider for specific grants, use `ignore_signature` instead, which never affects bearer tokens.
-	VerifySignature *bool `default:"true" json:"verify_signature"`
+	VerifySignature      *bool          `default:"true" json:"verify_signature"`
+	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigOutput) MarshalJSON() ([]byte, error) {
@@ -4397,6 +4398,13 @@ func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetVerifySignature() *bool {
 	return a.VerifySignature
 }
 
+func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetAdditionalProperties() map[string]any {
+	if a == nil {
+		return nil
+	}
+	return a.AdditionalProperties
+}
+
 type AIGWOpenIDConnectGeneratedConfig struct {
 	// An optional string (consumer UUID or username) value that functions as an “anonymous” consumer if authentication fails. If empty (default null), requests that fail authentication will return a `4xx` HTTP status code. This value must refer to the consumer `id` or `username` attribute, and **not** its `custom_id`.
 	Anonymous *string `json:"anonymous,omitempty"`
@@ -4861,7 +4869,8 @@ type AIGWOpenIDConnectGeneratedConfig struct {
 	// Verify plugin configuration against discovery.
 	VerifyParameters *bool `default:"false" json:"verify_parameters"`
 	// Verify the cryptographic signature of tokens. Disabling this skips verification for every token source, including tokens presented directly by clients (bearer); this is insecure for that path. To trust only tokens fetched from the identity provider for specific grants, use `ignore_signature` instead, which never affects bearer tokens.
-	VerifySignature *bool `default:"true" json:"verify_signature"`
+	VerifySignature      *bool          `default:"true" json:"verify_signature"`
+	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfig) MarshalJSON() ([]byte, error) {
@@ -6497,4 +6506,11 @@ func (a *AIGWOpenIDConnectGeneratedConfig) GetVerifySignature() *bool {
 		return nil
 	}
 	return a.VerifySignature
+}
+
+func (a *AIGWOpenIDConnectGeneratedConfig) GetAdditionalProperties() map[string]any {
+	if a == nil {
+		return nil
+	}
+	return a.AdditionalProperties
 }

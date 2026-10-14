@@ -128,7 +128,8 @@ type AIGWKeyAuthGeneratedConfig struct {
 	// When authentication fails the plugin sends `WWW-Authenticate` header with `realm` attribute value.
 	Realm *string `json:"realm,omitempty"`
 	// A boolean value that indicates whether the plugin should run (and try to authenticate) on `OPTIONS` preflight requests. If set to `false`, then `OPTIONS` requests are always allowed.
-	RunOnPreflight *bool `default:"true" json:"run_on_preflight"`
+	RunOnPreflight       *bool          `default:"true" json:"run_on_preflight"`
+	AdditionalProperties map[string]any `additionalProperties:"true" json:"-"`
 }
 
 func (a AIGWKeyAuthGeneratedConfig) MarshalJSON() ([]byte, error) {
@@ -210,4 +211,11 @@ func (a *AIGWKeyAuthGeneratedConfig) GetRunOnPreflight() *bool {
 		return nil
 	}
 	return a.RunOnPreflight
+}
+
+func (a *AIGWKeyAuthGeneratedConfig) GetAdditionalProperties() map[string]any {
+	if a == nil {
+		return nil
+	}
+	return a.AdditionalProperties
 }
