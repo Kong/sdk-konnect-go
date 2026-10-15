@@ -12,14 +12,18 @@ import (
 type AIGatewayACLSType string
 
 const (
-	AIGatewayACLSTypeAIGatewayAllowACL AIGatewayACLSType = "AIGatewayAllowACL"
-	AIGatewayACLSTypeAIGatewayDenyACL  AIGatewayACLSType = "AIGatewayDenyACL"
+	AIGatewayACLSTypeAIGatewayAllowACL     AIGatewayACLSType = "AIGatewayAllowACL"
+	AIGatewayACLSTypeAIGatewayDenyACL      AIGatewayACLSType = "AIGatewayDenyACL"
+	AIGatewayACLSTypeAIGatewayAllowWhenACL AIGatewayACLSType = "AIGatewayAllowWhenACL"
+	AIGatewayACLSTypeAIGatewayDenyWhenACL  AIGatewayACLSType = "AIGatewayDenyWhenACL"
 )
 
-// AIGatewayACLS - Access control rules. Configure exactly one of `allow` or `deny`.
+// AIGatewayACLS - Access control rules. Configure exactly one of `allow`, `deny`, `allow_when`, or `deny_when`.
 type AIGatewayACLS struct {
-	AIGatewayAllowACL *AIGatewayAllowACL `queryParam:"inline" union:"member"`
-	AIGatewayDenyACL  *AIGatewayDenyACL  `queryParam:"inline" union:"member"`
+	AIGatewayAllowACL     *AIGatewayAllowACL     `queryParam:"inline" union:"member"`
+	AIGatewayDenyACL      *AIGatewayDenyACL      `queryParam:"inline" union:"member"`
+	AIGatewayAllowWhenACL *AIGatewayAllowWhenACL `queryParam:"inline" union:"member"`
+	AIGatewayDenyWhenACL  *AIGatewayDenyWhenACL  `queryParam:"inline" union:"member"`
 
 	Type AIGatewayACLSType
 }
@@ -39,6 +43,24 @@ func CreateAIGatewayACLSAIGatewayDenyACL(aiGatewayDenyACL AIGatewayDenyACL) AIGa
 	return AIGatewayACLS{
 		AIGatewayDenyACL: &aiGatewayDenyACL,
 		Type:             typ,
+	}
+}
+
+func CreateAIGatewayACLSAIGatewayAllowWhenACL(aiGatewayAllowWhenACL AIGatewayAllowWhenACL) AIGatewayACLS {
+	typ := AIGatewayACLSTypeAIGatewayAllowWhenACL
+
+	return AIGatewayACLS{
+		AIGatewayAllowWhenACL: &aiGatewayAllowWhenACL,
+		Type:                  typ,
+	}
+}
+
+func CreateAIGatewayACLSAIGatewayDenyWhenACL(aiGatewayDenyWhenACL AIGatewayDenyWhenACL) AIGatewayACLS {
+	typ := AIGatewayACLSTypeAIGatewayDenyWhenACL
+
+	return AIGatewayACLS{
+		AIGatewayDenyWhenACL: &aiGatewayDenyWhenACL,
+		Type:                 typ,
 	}
 }
 
@@ -65,6 +87,20 @@ func (u *AIGatewayACLS) UnmarshalJSON(data []byte) (err error) {
 		return nil
 	}
 
+	var aiGatewayAllowWhenACL AIGatewayAllowWhenACL = AIGatewayAllowWhenACL{}
+	if err := utils.UnmarshalJSON(data, &aiGatewayAllowWhenACL, "", true, nil); err == nil {
+		u.AIGatewayAllowWhenACL = &aiGatewayAllowWhenACL
+		u.Type = AIGatewayACLSTypeAIGatewayAllowWhenACL
+		return nil
+	}
+
+	var aiGatewayDenyWhenACL AIGatewayDenyWhenACL = AIGatewayDenyWhenACL{}
+	if err := utils.UnmarshalJSON(data, &aiGatewayDenyWhenACL, "", true, nil); err == nil {
+		u.AIGatewayDenyWhenACL = &aiGatewayDenyWhenACL
+		u.Type = AIGatewayACLSTypeAIGatewayDenyWhenACL
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayACLS", string(data))
 }
 
@@ -75,6 +111,14 @@ func (u AIGatewayACLS) MarshalJSON() ([]byte, error) {
 
 	if u.AIGatewayDenyACL != nil {
 		return utils.MarshalJSON(u.AIGatewayDenyACL, "", true)
+	}
+
+	if u.AIGatewayAllowWhenACL != nil {
+		return utils.MarshalJSON(u.AIGatewayAllowWhenACL, "", true)
+	}
+
+	if u.AIGatewayDenyWhenACL != nil {
+		return utils.MarshalJSON(u.AIGatewayDenyWhenACL, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AIGatewayACLS: all fields are null")

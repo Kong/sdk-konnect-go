@@ -1,6 +1,6 @@
 # AIGatewayACLS
 
-Access control rules. Configure exactly one of `allow` or `deny`.
+Access control rules. Configure exactly one of `allow`, `deny`, `allow_when`, or `deny_when`.
 
 
 ## Supported Types
@@ -17,6 +17,18 @@ aiGatewayACLS := components.CreateAIGatewayACLSAIGatewayAllowACL(components.AIGa
 aiGatewayACLS := components.CreateAIGatewayACLSAIGatewayDenyACL(components.AIGatewayDenyACL{/* values here */})
 ```
 
+### AIGatewayAllowWhenACL
+
+```go
+aiGatewayACLS := components.CreateAIGatewayACLSAIGatewayAllowWhenACL(components.AIGatewayAllowWhenACL{/* values here */})
+```
+
+### AIGatewayDenyWhenACL
+
+```go
+aiGatewayACLS := components.CreateAIGatewayACLSAIGatewayDenyWhenACL(components.AIGatewayDenyWhenACL{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -27,5 +39,9 @@ switch aiGatewayACLS.Type {
 		// aiGatewayACLS.AIGatewayAllowACL is populated
 	case components.AIGatewayACLSTypeAIGatewayDenyACL:
 		// aiGatewayACLS.AIGatewayDenyACL is populated
+	case components.AIGatewayACLSTypeAIGatewayAllowWhenACL:
+		// aiGatewayACLS.AIGatewayAllowWhenACL is populated
+	case components.AIGatewayACLSTypeAIGatewayDenyWhenACL:
+		// aiGatewayACLS.AIGatewayDenyWhenACL is populated
 }
 ```
