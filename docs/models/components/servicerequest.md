@@ -5,16 +5,16 @@ Service entities, as the name implies, are abstractions of each of your own upst
 
 ## Supported Types
 
-### ServiceRequest1
+### ServiceWithHost
 
 ```go
-serviceRequest := components.CreateServiceRequestServiceRequest1(components.ServiceRequest1{/* values here */})
+serviceRequest := components.CreateServiceRequestServiceWithHost(components.ServiceWithHost{/* values here */})
 ```
 
-### ServiceRequest2
+### ServiceWithURL
 
 ```go
-serviceRequest := components.CreateServiceRequestServiceRequest2(components.ServiceRequest2{/* values here */})
+serviceRequest := components.CreateServiceRequestServiceWithURL(components.ServiceWithURL{/* values here */})
 ```
 
 ## Union Discrimination
@@ -23,9 +23,9 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch serviceRequest.Type {
-	case components.ServiceRequestTypeServiceRequest1:
-		// serviceRequest.ServiceRequest1 is populated
-	case components.ServiceRequestTypeServiceRequest2:
-		// serviceRequest.ServiceRequest2 is populated
+	case components.ServiceRequestTypeServiceWithHost:
+		// serviceRequest.ServiceWithHost is populated
+	case components.ServiceRequestTypeServiceWithURL:
+		// serviceRequest.ServiceWithURL is populated
 }
 ```

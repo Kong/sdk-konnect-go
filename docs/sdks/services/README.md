@@ -106,8 +106,8 @@ func main() {
         }),
     )
 
-    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateServiceRequestServiceRequest1(
-        components.ServiceRequest1{
+    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateServiceRequestServiceWithHost(
+        components.ServiceWithHost{
             Host: "example.internal",
             ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
             Name: sdkkonnectgo.Pointer("example-service"),
@@ -144,8 +144,8 @@ func main() {
         }),
     )
 
-    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateServiceRequestServiceRequest1(
-        components.ServiceRequest1{
+    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateServiceRequestServiceWithHost(
+        components.ServiceWithHost{
             Host: "example.internal",
             ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
             Name: sdkkonnectgo.Pointer("example-service"),
@@ -182,8 +182,8 @@ func main() {
         }),
     )
 
-    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateServiceRequestServiceRequest1(
-        components.ServiceRequest1{
+    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateServiceRequestServiceWithHost(
+        components.ServiceWithHost{
             Host: "example.internal",
             ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
             Name: sdkkonnectgo.Pointer("example-service"),
@@ -361,8 +361,8 @@ func main() {
     res, err := s.Services.UpsertService(ctx, operations.UpsertServiceRequest{
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        ServiceRequest: components.CreateServiceRequestServiceRequest1(
-            components.ServiceRequest1{
+        ServiceRequest: components.CreateServiceRequestServiceWithHost(
+            components.ServiceWithHost{
                 Host: "example.internal",
                 ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
                 Name: sdkkonnectgo.Pointer("example-service"),
@@ -404,8 +404,8 @@ func main() {
     res, err := s.Services.UpsertService(ctx, operations.UpsertServiceRequest{
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        ServiceRequest: components.CreateServiceRequestServiceRequest1(
-            components.ServiceRequest1{
+        ServiceRequest: components.CreateServiceRequestServiceWithHost(
+            components.ServiceWithHost{
                 Host: "example.internal",
                 ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
                 Name: sdkkonnectgo.Pointer("example-service"),
@@ -447,8 +447,8 @@ func main() {
     res, err := s.Services.UpsertService(ctx, operations.UpsertServiceRequest{
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        ServiceRequest: components.CreateServiceRequestServiceRequest1(
-            components.ServiceRequest1{
+        ServiceRequest: components.CreateServiceRequestServiceWithHost(
+            components.ServiceWithHost{
                 Host: "example.internal",
                 ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
                 Name: sdkkonnectgo.Pointer("example-service"),
