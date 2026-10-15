@@ -47421,6 +47421,9 @@ components:
                 description: An associative array of header key value pairs.
       required:
         - type
+        - schema_registry
+        - subject
+        - version
     EventGatewayParsedRecordTranscodeSchemaRefDestination:
       description: |
         Defines how to record the schema id for the transcoded output data. See the
