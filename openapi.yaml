@@ -91340,11 +91340,15 @@ components:
               writeOnly: true
           type: object
         - anyOf:
-            - required:
+            - description: Certificate defined by its vault.
+              required:
                 - vault
-            - required:
+              title: CertificateWithVault
+            - description: 'Certificate defined by its cert, key.'
+              required:
                 - cert
                 - key
+              title: CertificateWithCertAndKey
     Consumer:
       description: 'The Consumer object represents a consumer - or a user - of a Service. You can either rely on Kong as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong and your existing primary datastore.'
       type: object
@@ -94546,10 +94550,14 @@ components:
               nullable: true
           type: object
         - anyOf:
-            - required:
+            - description: Service defined by its host.
+              required:
                 - host
-            - required:
+              title: ServiceWithHost
+            - description: Service defined by its URL.
+              required:
                 - url
+              title: ServiceWithURL
     Target:
       description: 'A target is an ip address/hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly. To disable a target, post a new one with `weight=0`; alternatively, use the `DELETE` convenience method to accomplish the same. The current target object definition is the one with the latest `created_at`.'
       type: object
