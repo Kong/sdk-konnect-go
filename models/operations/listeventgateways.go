@@ -13,8 +13,11 @@ type ListEventGatewaysRequest struct {
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Request the next page of data, starting with the item after this parameter.
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
-	// Filter documents returned in the response.
-	Filter *components.EventGatewayCommonFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	// Filter event gateways returned in the response.
+	//
+	// Filtering by `labels` is currently in beta and is subject to change.
+	//
+	Filter *components.EventGatewaysFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListEventGatewaysRequest) GetPageSize() *int64 {
@@ -31,7 +34,7 @@ func (l *ListEventGatewaysRequest) GetPageAfter() *string {
 	return l.PageAfter
 }
 
-func (l *ListEventGatewaysRequest) GetFilter() *components.EventGatewayCommonFilter {
+func (l *ListEventGatewaysRequest) GetFilter() *components.EventGatewaysFilter {
 	if l == nil {
 		return nil
 	}
