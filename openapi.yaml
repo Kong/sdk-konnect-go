@@ -47462,6 +47462,7 @@ components:
               description: The name is compatible with Confluent's serializer by default but can be changed.
               type: string
               default: __value_schema_id
+              minLength: 1
       required:
         - type
     EventGatewayParsedRecordTranscodeSchemaRefDestinationNone:
