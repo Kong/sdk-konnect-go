@@ -546,6 +546,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
@@ -671,6 +673,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
@@ -4390,7 +4394,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageAfter'
-        - $ref: '#/components/parameters/EventGatewayCommonFilter'
+        - $ref: '#/components/parameters/EventGatewaysFilter'
       responses:
         '200':
           $ref: '#/components/responses/ListEventGatewaysResponse'
@@ -26649,6 +26653,22 @@ components:
       description: Filter policies returned in the response.
       required: false
       style: deepObject
+    EventGatewaysFilter:
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/StringFieldContainsFilter'
+          labels:
+            $ref: '#/components/schemas/LabelsFieldFilter'
+      in: query
+      name: filter
+      description: |
+        Filter event gateways returned in the response.
+
+        Filtering by `labels` is currently in beta and is subject to change.
+      required: false
+      style: deepObject
     eventId:
       name: eventId
       in: path
@@ -39127,7 +39147,7 @@ components:
           additionalProperties: false
           properties:
             name:
-              description: 'The theme name to apply to this portal. Supported names are ''ocean'' and ''glacier''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
+              description: 'The theme name to apply to this portal. Supported names are ''ocean'', ''mesa'', and ''grove''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
               type: string
               default: ocean
               nullable: false
@@ -77215,11 +77235,55 @@ components:
           - consumer-group-1
       required:
         - deny
+    AIGatewayAllowWhenACL:
+      type: object
+      properties:
+        allow_when:
+          description: |-
+            Allow the request if it matches any of these CEL boolean expressions evaluated against the request context (consumer, principal, HTTP attributes, consumer groups, etc.). Exactly one of `allow`, `deny`, `allow_when`, or `deny_when` must be specified.
+
+            **Requires a minimum runtime version of `2.2`**.
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 1024
+            x-expression:
+              type: boolean
+          x-min-runtime-version: '2.2'
+      example:
+        allow_when:
+          - has(principal.metadata.tier) && principal.metadata.tier == 'partner'
+      required:
+        - allow_when
+    AIGatewayDenyWhenACL:
+      type: object
+      properties:
+        deny_when:
+          description: |-
+            Deny the request if it matches any of these CEL boolean expressions evaluated against the request context (consumer, principal, HTTP attributes, consumer groups, etc.). Exactly one of `allow`, `deny`, `allow_when`, or `deny_when` must be specified.
+
+            **Requires a minimum runtime version of `2.2`**.
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 1024
+            x-expression:
+              type: boolean
+          x-min-runtime-version: '2.2'
+      example:
+        deny_when:
+          - has(principal.metadata.status) && principal.metadata.status == 'suspended'
+      required:
+        - deny_when
     AIGatewayACLS:
-      description: Access control rules. Configure exactly one of `allow` or `deny`.
+      description: 'Access control rules. Configure exactly one of `allow`, `deny`, `allow_when`, or `deny_when`.'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayAllowACL'
         - $ref: '#/components/schemas/AIGatewayDenyACL'
+        - $ref: '#/components/schemas/AIGatewayAllowWhenACL'
+        - $ref: '#/components/schemas/AIGatewayDenyWhenACL'
     AIGatewayAgentAccess:
       description: Access control configuration for an agent.
       type: object
@@ -104894,7 +104958,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.2.8
+    version: 2.2.15
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
@@ -104915,13 +104979,13 @@ x-input-schemas:
     version: 2.1.1
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
-    version: 1.3.7
+    version: 1.3.8
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
     version: 3.7.1
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
-    version: 1.47.0
+    version: 1.48.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Mesh Control Plane manager
     version: 0.3.0
@@ -104933,7 +104997,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.13.1
+    version: 3.13.2
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2
