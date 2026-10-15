@@ -29266,11 +29266,11 @@ components:
         - $ref: '#/components/schemas/User'
         - type: object
           example:
-            claim_name:
+            claim_names:
               - GroupClaimA
               - GroupClaimB
           properties:
-            claim_name:
+            claim_names:
               description: An array of group claim names that gave this user membership to the team.
               type: array
               items:
@@ -29344,11 +29344,11 @@ components:
         - $ref: '#/components/schemas/TeamResponse'
         - type: object
           example:
-            claim_name:
+            claim_names:
               - GroupClaimA
               - GroupClaimB
           properties:
-            claim_name:
+            claim_names:
               description: An array of group claim names that gave this user membership to the team.
               type: array
               items:
@@ -104990,7 +104990,7 @@ x-input-schemas:
     version: 1.3.8
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.7.1
+    version: 3.8.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.48.0
