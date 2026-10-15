@@ -1415,6 +1415,7 @@ func (s *PortalAuthSettings) CreatePortalIdentityProvider(ctx context.Context, p
 		defer cancel()
 	}
 
+	ctx = utils.WithOperation(ctx, "create-portal-identity-provider")
 	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
@@ -2007,6 +2008,7 @@ func (s *PortalAuthSettings) UpdatePortalIdentityProvider(ctx context.Context, r
 		defer cancel()
 	}
 
+	ctx = utils.WithOperation(ctx, "update-portal-identity-provider")
 	req, err := http.NewRequestWithContext(ctx, "PATCH", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)

@@ -339,5 +339,6 @@ func main() {
 | sdkerrors.UnauthorizedError    | 401                            | application/problem+json       |
 | sdkerrors.ForbiddenError       | 403                            | application/problem+json       |
 | sdkerrors.NotFoundError        | 404                            | application/problem+json       |
+| sdkerrors.ConflictError        | 409                            | application/problem+json       |
 | sdkerrors.TooManyRequestsError | 429                            | application/problem+json       |
 | sdkerrors.SDKError             | 4XX, 5XX                       | \*/\*                          |

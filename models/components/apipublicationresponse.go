@@ -83,6 +83,8 @@ type APIPublicationResponse struct {
 	// If omitted, this defaults to the target portal's configured default API visibility.
 	//
 	Visibility APIPublicationVisibility `json:"visibility"`
+	// Customization settings for the API spec renderer in the portal.
+	SpecRenderer *APIPublicationResponseAPIPublicationSpecRenderer `json:"spec_renderer"`
 	// UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
 	//
 	FormID *string `json:"form_id"`
@@ -92,8 +94,6 @@ type APIPublicationResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
-	// Customization settings for the API spec renderer in the portal.
-	SpecRenderer *APIPublicationResponseAPIPublicationSpecRenderer `json:"spec_renderer,omitempty"`
 }
 
 func (a APIPublicationResponse) MarshalJSON() ([]byte, error) {
@@ -128,6 +128,13 @@ func (a *APIPublicationResponse) GetVisibility() APIPublicationVisibility {
 	return a.Visibility
 }
 
+func (a *APIPublicationResponse) GetSpecRenderer() *APIPublicationResponseAPIPublicationSpecRenderer {
+	if a == nil {
+		return nil
+	}
+	return a.SpecRenderer
+}
+
 func (a *APIPublicationResponse) GetFormID() *string {
 	if a == nil {
 		return nil
@@ -154,11 +161,4 @@ func (a *APIPublicationResponse) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
-}
-
-func (a *APIPublicationResponse) GetSpecRenderer() *APIPublicationResponseAPIPublicationSpecRenderer {
-	if a == nil {
-		return nil
-	}
-	return a.SpecRenderer
 }

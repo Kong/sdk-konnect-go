@@ -270,10 +270,10 @@ func (s *Services) ListService(ctx context.Context, request operations.ListServi
 
 // CreateService - Create a new Service
 // Create a new Service
-func (s *Services) CreateService(ctx context.Context, controlPlaneID string, service components.Service, opts ...operations.Option) (*operations.CreateServiceResponse, error) {
+func (s *Services) CreateService(ctx context.Context, controlPlaneID string, serviceRequest components.ServiceRequest, opts ...operations.Option) (*operations.CreateServiceResponse, error) {
 	request := operations.CreateServiceRequest{
 		ControlPlaneID: controlPlaneID,
-		Service:        service,
+		ServiceRequest: serviceRequest,
 	}
 
 	o := operations.Options{}
@@ -308,7 +308,7 @@ func (s *Services) CreateService(ctx context.Context, controlPlaneID string, ser
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Service", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ServiceRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -448,7 +448,7 @@ func (s *Services) CreateService(ctx context.Context, controlPlaneID string, ser
 				return nil, err
 			}
 
-			var out components.ServiceOutput
+			var out components.Service
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -891,7 +891,7 @@ func (s *Services) GetService(ctx context.Context, serviceID string, controlPlan
 				return nil, err
 			}
 
-			var out components.ServiceOutput
+			var out components.Service
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -986,7 +986,7 @@ func (s *Services) UpsertService(ctx context.Context, request operations.UpsertS
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Service", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ServiceRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -1126,7 +1126,7 @@ func (s *Services) UpsertService(ctx context.Context, request operations.UpsertS
 				return nil, err
 			}
 
-			var out components.ServiceOutput
+			var out components.Service
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

@@ -102,8 +102,8 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateRequest2(
-        components.CertificateRequest2{
+    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateWithCertAndKey(
+        components.CertificateWithCertAndKey{
             Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
             ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
             Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
@@ -139,8 +139,8 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateRequest2(
-        components.CertificateRequest2{
+    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateWithCertAndKey(
+        components.CertificateWithCertAndKey{
             Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
             ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
             Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
@@ -176,8 +176,8 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateRequest2(
-        components.CertificateRequest2{
+    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateWithCertAndKey(
+        components.CertificateWithCertAndKey{
             Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
             ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
             Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
@@ -354,8 +354,8 @@ func main() {
     res, err := s.Certificates.UpsertCertificate(ctx, operations.UpsertCertificateRequest{
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        CertificateRequest: components.CreateCertificateRequestCertificateRequest2(
-            components.CertificateRequest2{
+        CertificateRequest: components.CreateCertificateRequestCertificateWithCertAndKey(
+            components.CertificateWithCertAndKey{
                 Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
                 ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
                 Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
@@ -396,8 +396,8 @@ func main() {
     res, err := s.Certificates.UpsertCertificate(ctx, operations.UpsertCertificateRequest{
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        CertificateRequest: components.CreateCertificateRequestCertificateRequest2(
-            components.CertificateRequest2{
+        CertificateRequest: components.CreateCertificateRequestCertificateWithCertAndKey(
+            components.CertificateWithCertAndKey{
                 Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
                 ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
                 Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
@@ -438,8 +438,8 @@ func main() {
     res, err := s.Certificates.UpsertCertificate(ctx, operations.UpsertCertificateRequest{
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        CertificateRequest: components.CreateCertificateRequestCertificateRequest2(
-            components.CertificateRequest2{
+        CertificateRequest: components.CreateCertificateRequestCertificateWithCertAndKey(
+            components.CertificateWithCertAndKey{
                 Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
                 ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
                 Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",

@@ -5,16 +5,16 @@ A certificate object represents a public certificate, and can be optionally pair
 
 ## Supported Types
 
-### CertificateRequest1
+### CertificateWithVault
 
 ```go
-certificateRequest := components.CreateCertificateRequestCertificateRequest1(components.CertificateRequest1{/* values here */})
+certificateRequest := components.CreateCertificateRequestCertificateWithVault(components.CertificateWithVault{/* values here */})
 ```
 
-### CertificateRequest2
+### CertificateWithCertAndKey
 
 ```go
-certificateRequest := components.CreateCertificateRequestCertificateRequest2(components.CertificateRequest2{/* values here */})
+certificateRequest := components.CreateCertificateRequestCertificateWithCertAndKey(components.CertificateWithCertAndKey{/* values here */})
 ```
 
 ## Union Discrimination
@@ -23,9 +23,9 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch certificateRequest.Type {
-	case components.CertificateRequestTypeCertificateRequest1:
-		// certificateRequest.CertificateRequest1 is populated
-	case components.CertificateRequestTypeCertificateRequest2:
-		// certificateRequest.CertificateRequest2 is populated
+	case components.CertificateRequestTypeCertificateWithVault:
+		// certificateRequest.CertificateWithVault is populated
+	case components.CertificateRequestTypeCertificateWithCertAndKey:
+		// certificateRequest.CertificateWithCertAndKey is populated
 }
 ```

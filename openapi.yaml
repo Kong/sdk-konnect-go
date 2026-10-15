@@ -546,6 +546,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
@@ -671,6 +673,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
         '429':
           $ref: '#/components/responses/TooManyRequests'
       tags:
@@ -4390,7 +4394,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageAfter'
-        - $ref: '#/components/parameters/EventGatewayCommonFilter'
+        - $ref: '#/components/parameters/EventGatewaysFilter'
       responses:
         '200':
           $ref: '#/components/responses/ListEventGatewaysResponse'
@@ -6616,6 +6620,34 @@ paths:
           $ref: '#/components/responses/Forbidden'
       tags:
         - Catalog Integrations
+  '/v1/mcp-cp/{controlPlaneId}/context-interfaces/{interfaceId}/skills/{skillId}/artifacts':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/interfaceId'
+      - $ref: '#/components/parameters/skillId'
+    get:
+      operationId: list-deployed-context-interface-skill-artifacts
+      summary: List Skill Artifacts By Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieve list of skill artifacts from deployed context interface
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListSkillArtifactsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Signaling APIs
   '/v1/mcp-cp/{controlPlaneId}/mcp-servers':
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -12906,7 +12938,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Service'
+              $ref: '#/components/schemas/ServiceRequest'
       responses:
         '201':
           description: Successfully created Service
@@ -12962,7 +12994,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Service'
+              $ref: '#/components/schemas/ServiceRequest'
       responses:
         '200':
           description: Successfully upserted Service
@@ -25197,7 +25229,7 @@ paths:
           style: deepObject
       responses:
         '200':
-          $ref: '#/components/responses/UserCollection'
+          $ref: '#/components/responses/TeamUserMembershipCollection'
         '400':
           $ref: '#/components/responses/IdentityBadRequest'
         '404':
@@ -25670,7 +25702,7 @@ paths:
           style: deepObject
       responses:
         '200':
-          $ref: '#/components/responses/TeamCollection'
+          $ref: '#/components/responses/UserTeamMembershipCollection'
         '404':
           $ref: '#/components/responses/IdentityNotFound'
       servers:
@@ -26619,6 +26651,22 @@ components:
       in: query
       name: filter
       description: Filter policies returned in the response.
+      required: false
+      style: deepObject
+    EventGatewaysFilter:
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/StringFieldContainsFilter'
+          labels:
+            $ref: '#/components/schemas/LabelsFieldFilter'
+      in: query
+      name: filter
+      description: |
+        Filter event gateways returned in the response.
+
+        Filtering by `labels` is currently in beta and is subject to change.
       required: false
       style: deepObject
     eventId:
@@ -28241,6 +28289,7 @@ components:
       type: string
       enum:
         - required
+        - unique
         - is_array
         - is_base64
         - is_boolean
@@ -28256,6 +28305,7 @@ components:
         - unknown_property
         - missing_reference
         - is_label
+        - key_invalid
         - matches_regex
         - invalid
         - is_supported_network_availability_zone_list
@@ -28355,6 +28405,68 @@ components:
         - reason
         - rule
         - maximum
+    InvalidParameterMinimumTime:
+      type: object
+      properties:
+        field:
+          type: string
+          example: to
+          readOnly: true
+        rule:
+          description: invalid parameters rules
+          type: string
+          enum:
+            - min_time
+          nullable: false
+          readOnly: true
+        minimum:
+          type: string
+          format: date-time
+          example: '2026-10-01T00:00:00Z'
+        source:
+          type: string
+          example: body
+        reason:
+          type: string
+          example: 'must be no earlier than 2026-10-01T00:00:00Z'
+          readOnly: true
+      additionalProperties: false
+      required:
+        - field
+        - reason
+        - rule
+        - minimum
+    InvalidParameterMaximumTime:
+      type: object
+      properties:
+        field:
+          type: string
+          example: to
+          readOnly: true
+        rule:
+          description: invalid parameters rules
+          type: string
+          enum:
+            - max_time
+          nullable: false
+          readOnly: true
+        maximum:
+          type: string
+          format: date-time
+          example: '2026-10-31T23:59:59Z'
+        source:
+          type: string
+          example: body
+        reason:
+          type: string
+          example: 'must be no later than 2026-10-31T23:59:59Z'
+          readOnly: true
+      additionalProperties: false
+      required:
+        - field
+        - reason
+        - rule
+        - maximum
     InvalidParameterChoiceItem:
       type: object
       properties:
@@ -28432,6 +28544,8 @@ components:
           - $ref: '#/components/schemas/InvalidParameterStandard'
           - $ref: '#/components/schemas/InvalidParameterMinimumLength'
           - $ref: '#/components/schemas/InvalidParameterMaximumLength'
+          - $ref: '#/components/schemas/InvalidParameterMinimumTime'
+          - $ref: '#/components/schemas/InvalidParameterMaximumTime'
           - $ref: '#/components/schemas/InvalidParameterChoiceItem'
           - $ref: '#/components/schemas/InvalidParameterDependentItem'
       minItems: 1
@@ -29066,6 +29180,65 @@ components:
           format: date-time
           example: '2022-10-08T17:00:00.52Z'
           readOnly: true
+      example:
+        id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+        email: user@email.com
+        full_name: Test User
+        preferred_name: test
+        active: true
+        inferred_region: us
+        created_at: '2022-02-07T17:46:57.52Z'
+        updated_at: '2022-10-08T17:00:00.52Z'
+      title: User
+    UserCollectionItem:
+      description: 'A user as returned when listing users, including the account type used to register.'
+      type: object
+      properties:
+        id:
+          description: The User ID.
+          type: string
+          format: uuid
+          example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+          readOnly: true
+        email:
+          description: The email registered to the user.
+          type: string
+          format: email
+          example: user@email.com
+          maxLength: 250
+        full_name:
+          description: The User's full name.
+          type: string
+          example: Jane Doe
+          maxLength: 250
+          pattern: '^[\w \W]+$'
+        preferred_name:
+          description: The User's preferred name.
+          type: string
+          example: Jane
+          maxLength: 250
+        active:
+          description: Returns True if a user has verified their email address.
+          type: boolean
+          default: true
+          readOnly: true
+        inferred_region:
+          description: The Konnect region closest to the user's IP address. This property might only be set for users on signup through Konnect’s build-in native authentication.
+          type: string
+          example: us
+          readOnly: true
+        created_at:
+          description: The time stamp for the date the account was registered.
+          type: string
+          format: date-time
+          example: '2022-02-07T17:46:57.52Z'
+          readOnly: true
+        updated_at:
+          description: A Unix timestamp representation of the most recent change to the User account.
+          type: string
+          format: date-time
+          example: '2022-10-08T17:00:00.52Z'
+          readOnly: true
         account_type:
           description: The authorization strategy used to register the user.
           type: string
@@ -29087,6 +29260,22 @@ components:
         updated_at: '2022-10-08T17:00:00.52Z'
         account_type: google
       title: User
+    TeamUserMembership:
+      description: 'A user''s membership in a team, including the group claim that granted the membership.'
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - type: object
+          example:
+            claim_name:
+              - GroupClaimA
+              - GroupClaimB
+          properties:
+            claim_name:
+              description: An array of group claim names that gave this user membership to the team.
+              type: array
+              items:
+                type: string
+      title: TeamUserMembership
     Team:
       x-speakeasy-entity: Team
       description: The team object contains information about a group of users.
@@ -29149,6 +29338,22 @@ components:
             - labels
             - created_at
             - updated_at
+    UserTeamMembership:
+      description: 'A team that a user belongs to, including the group claim that granted the membership.'
+      allOf:
+        - $ref: '#/components/schemas/TeamResponse'
+        - type: object
+          example:
+            claim_name:
+              - GroupClaimA
+              - GroupClaimB
+          properties:
+            claim_name:
+              description: An array of group claim names that gave this user membership to the team.
+              type: array
+              items:
+                type: string
+      title: UserTeamMembership
     TeamMapping:
       description: A team assignment is a mapping of an IdP group to a Konnect Team.
       type: object
@@ -34914,6 +35119,36 @@ components:
           $ref: '#/components/schemas/ApiPublicationVisibility'
         auth_strategy_ids:
           $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
+        spec_renderer:
+          description: Customization settings for the API spec renderer in the portal.
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            try_it_ui:
+              description: Enable in-browser testing for your API. All linked gateways must have the CORS plugin configured.
+              type: boolean
+              nullable: true
+            try_it_ui_audience:
+              description: |
+                The audience for the Try It UI feature.
+
+                `all` means that the Try It UI will be available to all users, including unauthenticated users.
+
+                `authenticated` means that the Try It UI will only be available to authenticated users.
+
+                `registered` means that the Try It UI will only be available to users who have registered for the API.
+              type: string
+              enum:
+                - all
+                - authenticated
+                - registered
+              nullable: true
+              x-speakeasy-unknown-values: allow
+          required:
+            - try_it_ui
+            - try_it_ui_audience
+          title: ApiPublicationSpecRenderer
         form_id:
           description: |
             UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
@@ -34941,6 +35176,7 @@ components:
         - auto_approve_registrations
         - entity_type
         - form_id
+        - spec_renderer
       title: API Publication List Item
     PublicationListItem:
       description: An API or API Package publication in a portal
@@ -34969,6 +35205,36 @@ components:
           $ref: '#/components/schemas/ApiPublicationVisibility'
         auth_strategy_ids:
           $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
+        spec_renderer:
+          description: Customization settings for the API spec renderer in the portal.
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            try_it_ui:
+              description: Enable in-browser testing for your API. All linked gateways must have the CORS plugin configured.
+              type: boolean
+              nullable: true
+            try_it_ui_audience:
+              description: |
+                The audience for the Try It UI feature.
+
+                `all` means that the Try It UI will be available to all users, including unauthenticated users.
+
+                `authenticated` means that the Try It UI will only be available to authenticated users.
+
+                `registered` means that the Try It UI will only be available to users who have registered for the API.
+              type: string
+              enum:
+                - all
+                - authenticated
+                - registered
+              nullable: true
+              x-speakeasy-unknown-values: allow
+          required:
+            - try_it_ui
+            - try_it_ui_audience
+          title: ApiPublicationSpecRenderer
         form_id:
           description: |
             UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
@@ -34996,6 +35262,7 @@ components:
         - auto_approve_registrations
         - entity_type
         - form_id
+        - spec_renderer
       title: Publication List Item
     AutoApproveRegistrations:
       description: 'Whether the application registration auto approval on this portal for the api is enabled. If set to false, fallbacks on portal''s auto_approve_applications value.'
@@ -35011,6 +35278,8 @@ components:
           $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
         visibility:
           $ref: '#/components/schemas/ApiPublicationVisibility'
+        spec_renderer:
+          $ref: '#/components/schemas/ApiPublicationSpecRenderer'
         form_id:
           description: |
             UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
@@ -35040,6 +35309,8 @@ components:
           $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
         visibility:
           $ref: '#/components/schemas/ApiPublicationVisibility'
+        spec_renderer:
+          $ref: '#/components/schemas/ApiPublicationSpecRenderer'
         form_id:
           description: |
             UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
@@ -35939,6 +36210,21 @@ components:
         - instance
         - detail
       title: Error
+    TryItUIAudience:
+      description: |
+        The audience for the Try It UI feature.
+
+        `all` means that the Try It UI will be available to all users, including unauthenticated users.
+
+        `authenticated` means that the Try It UI will only be available to authenticated users.
+
+        `registered` means that the Try It UI will only be available to users who have registered for the API.
+      type: string
+      enum:
+        - all
+        - authenticated
+        - registered
+      x-speakeasy-unknown-values: allow
     ImagePNGDataUri:
       description: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
       type: string
@@ -38861,7 +39147,7 @@ components:
           additionalProperties: false
           properties:
             name:
-              description: 'The theme name to apply to this portal. Supported names are ''ocean'' and ''glacier''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
+              description: 'The theme name to apply to this portal. Supported names are ''ocean'', ''mesa'', and ''grove''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
               type: string
               default: ocean
               nullable: false
@@ -38940,6 +39226,10 @@ components:
               description: Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
               type: boolean
               default: true
+            try_it_ui_audience:
+              allOf:
+                - $ref: '#/components/schemas/TryItUIAudience'
+                - default: all
           title: PortalCustomizationSpecRenderer
         robots:
           type: string
@@ -76945,11 +77235,55 @@ components:
           - consumer-group-1
       required:
         - deny
+    AIGatewayAllowWhenACL:
+      type: object
+      properties:
+        allow_when:
+          description: |-
+            Allow the request if it matches any of these CEL boolean expressions evaluated against the request context (consumer, principal, HTTP attributes, consumer groups, etc.). Exactly one of `allow`, `deny`, `allow_when`, or `deny_when` must be specified.
+
+            **Requires a minimum runtime version of `2.2`**.
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 1024
+            x-expression:
+              type: boolean
+          x-min-runtime-version: '2.2'
+      example:
+        allow_when:
+          - has(principal.metadata.tier) && principal.metadata.tier == 'partner'
+      required:
+        - allow_when
+    AIGatewayDenyWhenACL:
+      type: object
+      properties:
+        deny_when:
+          description: |-
+            Deny the request if it matches any of these CEL boolean expressions evaluated against the request context (consumer, principal, HTTP attributes, consumer groups, etc.). Exactly one of `allow`, `deny`, `allow_when`, or `deny_when` must be specified.
+
+            **Requires a minimum runtime version of `2.2`**.
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 1024
+            x-expression:
+              type: boolean
+          x-min-runtime-version: '2.2'
+      example:
+        deny_when:
+          - has(principal.metadata.status) && principal.metadata.status == 'suspended'
+      required:
+        - deny_when
     AIGatewayACLS:
-      description: Access control rules. Configure exactly one of `allow` or `deny`.
+      description: 'Access control rules. Configure exactly one of `allow`, `deny`, `allow_when`, or `deny_when`.'
       oneOf:
         - $ref: '#/components/schemas/AIGatewayAllowACL'
         - $ref: '#/components/schemas/AIGatewayDenyACL'
+        - $ref: '#/components/schemas/AIGatewayAllowWhenACL'
+        - $ref: '#/components/schemas/AIGatewayDenyWhenACL'
     AIGatewayAgentAccess:
       description: Access control configuration for an agent.
       type: object
@@ -85641,6 +85975,18 @@ components:
       required:
         - data
         - meta
+    ListSkillArtifactsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillArtifact'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
     SkillContentsResponse:
       type: object
       properties:
@@ -85773,6 +86119,18 @@ components:
         - validation_message
         - created_at
         - updated_at
+    SkillArtifact:
+      type: object
+      properties:
+        path:
+          description: Relative path to the skill artifact file.
+          type: string
+        url:
+          description: A presigned url to downalod the skill artifact.
+          type: string
+      required:
+        - path
+        - url
     AdvancedQuery:
       description: A query targeting the API usage analytics datasource.
       type: object
@@ -90982,11 +91340,15 @@ components:
               writeOnly: true
           type: object
         - anyOf:
-            - required:
+            - description: Certificate defined by its vault.
+              required:
                 - vault
-            - required:
+              title: CertificateWithVault
+            - description: 'Certificate defined by its cert, key.'
+              required:
                 - cert
                 - key
+              title: CertificateWithCertAndKey
     Consumer:
       description: 'The Consumer object represents a consumer - or a user - of a Service. You can either rely on Kong as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong and your existing primary datastore.'
       type: object
@@ -94024,6 +94386,178 @@ components:
       additionalProperties: false
       required:
         - host
+    ServiceRequest:
+      description: 'Service entities, as the name implies, are abstractions of each of your own upstream services. Examples of Services would be a data transformation microservice, a billing API, etc. The main attribute of a Service is its URL (where Kong should proxy traffic to), which can be set as a single string or by specifying its `protocol`, `host`, `port` and `path` individually. Services are associated to Routes (a Service can have many Routes associated with it). Routes are entry-points in Kong and define rules to match client requests. Once a Route is matched, Kong proxies the request to its associated Service. See the [Proxy Reference][proxy-reference] for a detailed explanation of how Kong proxies traffic.'
+      example:
+        host: example.internal
+        id: 49fd316e-c457-481c-9fc7-8079153e4f3c
+        name: example-service
+        path: /
+        port: 80
+        protocol: http
+      allOf:
+        - additionalProperties: false
+          properties:
+            ca_certificates:
+              description: 'Array of `CA Certificate` object UUIDs that are used to build the trust store while verifying upstream server''s TLS certificate. If set to `null` when Nginx default is respected. If default CA list in Nginx are not specified and TLS verification is enabled, then handshake with upstream server will always fail (because no CA are trusted).'
+              type: array
+              items:
+                type: string
+              nullable: true
+            client_certificate:
+              description: Certificate to be used as client certificate while TLS handshaking to the upstream server.
+              type: object
+              nullable: true
+              properties:
+                id:
+                  type: string
+              x-foreign: true
+            connect_timeout:
+              description: The timeout in milliseconds for establishing a connection to the upstream server.
+              type: integer
+              default: 60000
+              maximum: 2147483646
+              minimum: 1
+              nullable: true
+            created_at:
+              description: Unix epoch when the resource was created.
+              type: integer
+              nullable: true
+            description:
+              description: 'User-defined entity description. Konnect only field, not synced to the Gateway.'
+              type: string
+              nullable: true
+            enabled:
+              description: 'Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.'
+              type: boolean
+              default: true
+              nullable: true
+            host:
+              description: The host of the upstream server. Note that the host value is case sensitive.
+              type: string
+            id:
+              description: A string representing a UUID (universally unique identifier).
+              type: string
+              minLength: 1
+              nullable: true
+            managed_by:
+              description: |-
+                Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+
+                Keys must be 1–63 characters long and start with an alphanumeric character.
+              type: object
+              additionalProperties:
+                maxLength: 63
+                minLength: 1
+                pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
+                type: string
+              maxProperties: 5
+            name:
+              description: The Service name.
+              type: string
+              nullable: true
+            path:
+              description: The path to be used in requests to the upstream server.
+              type: string
+              nullable: true
+            port:
+              description: The upstream server port.
+              type: integer
+              default: 80
+              maximum: 65535
+              minimum: 0
+              nullable: true
+            protocol:
+              description: The protocol used to communicate with the upstream.
+              type: string
+              default: http
+              enum:
+                - grpc
+                - grpcs
+                - http
+                - https
+                - tcp
+                - tls
+                - tls_passthrough
+                - udp
+                - ws
+                - wss
+              nullable: true
+              x-speakeasy-unknown-values: allow
+            read_timeout:
+              description: The timeout in milliseconds between two successive read operations for transmitting a request to the upstream server.
+              type: integer
+              default: 60000
+              maximum: 2147483646
+              minimum: 1
+              nullable: true
+            retries:
+              description: The number of retries to execute upon failure to proxy.
+              type: integer
+              default: 5
+              maximum: 32767
+              minimum: 0
+              nullable: true
+            tags:
+              description: An optional set of strings associated with the Service for grouping and filtering.
+              type: array
+              items:
+                description: A string representing a tag.
+                type: string
+              nullable: true
+            tls_sans:
+              description: Additional Subject Alternative Names that can be matched on Upstream server's TLS certificate (in addition to `host`).
+              type: object
+              nullable: true
+              properties:
+                dnsnames:
+                  description: A dnsName for TLS verification.
+                  type: array
+                  items:
+                    description: A string representing an SNI (server name indication) value for TLS.
+                    type: string
+                uris:
+                  description: An URI for TLS verification.
+                  type: array
+                  items:
+                    description: 'A string representing a URL, such as https://example.com/path/to/resource?q=search.'
+                    type: string
+            tls_verify:
+              description: 'Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.'
+              type: boolean
+              nullable: true
+            tls_verify_depth:
+              description: 'Maximum depth of chain while verifying Upstream server''s TLS certificate. If set to `null`, then the Nginx default is respected.'
+              type: integer
+              maximum: 64
+              minimum: 0
+              nullable: true
+            updated_at:
+              description: Unix epoch when the resource was last updated.
+              type: integer
+              nullable: true
+            url:
+              description: 'Helper field to set `protocol`, `host`, `port` and `path` using a URL. This field is write-only and is not returned in responses.'
+              type: string
+              nullable: true
+              writeOnly: true
+            write_timeout:
+              description: The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
+              type: integer
+              default: 60000
+              maximum: 2147483646
+              minimum: 1
+              nullable: true
+          type: object
+        - anyOf:
+            - description: Service defined by its host.
+              required:
+                - host
+              title: ServiceWithHost
+            - description: Service defined by its URL.
+              required:
+                - url
+              title: ServiceWithURL
     Target:
       description: 'A target is an ip address/hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly. To disable a target, post a new one with `weight=0`; alternatively, use the `DELETE` convenience method to accomplish the same. The current target object definition is the one with the latest `created_at`.'
       type: object
@@ -99018,8 +99552,22 @@ components:
               data:
                 type: array
                 items:
-                  $ref: '#/components/schemas/User'
+                  $ref: '#/components/schemas/UserCollectionItem'
             title: User Collection Response
+    TeamUserMembershipCollection:
+      description: A paginated list response for a collection of users belonging to a team.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamUserMembership'
+            title: Team User Membership Collection Response
     TeamSingle:
       description: A response including a single team.
       content:
@@ -99040,6 +99588,20 @@ components:
                 items:
                   $ref: '#/components/schemas/Team'
             title: Team Collection Response
+    UserTeamMembershipCollection:
+      description: A paginated list response for a collection of teams that a user belongs to.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserTeamMembership'
+            title: User Team Membership Collection Response
     TeamCollectionResponse:
       description: A paginated list response for a collection of teams.
       content:
@@ -101068,23 +101630,6 @@ components:
                 $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
               visibility:
                 $ref: '#/components/schemas/ApiPublicationVisibility'
-              form_id:
-                description: |
-                  UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
-                type: string
-                format: uuid
-                nullable: true
-                x-speakeasy-param-computed: true
-              warnings:
-                description: Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
-                type: array
-                items:
-                  type: string
-                readOnly: true
-              created_at:
-                $ref: '#/components/schemas/CreatedAt'
-              updated_at:
-                $ref: '#/components/schemas/UpdatedAt'
               spec_renderer:
                 description: Customization settings for the API spec renderer in the portal.
                 type: object
@@ -101115,6 +101660,23 @@ components:
                   - try_it_ui
                   - try_it_ui_audience
                 title: ApiPublicationSpecRenderer
+              form_id:
+                description: |
+                  UUID of portal form associated with API publication, must be linked to given portal and have type of 'api_registration'
+                type: string
+                format: uuid
+                nullable: true
+                x-speakeasy-param-computed: true
+              warnings:
+                description: Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
+                type: array
+                items:
+                  type: string
+                readOnly: true
+              created_at:
+                $ref: '#/components/schemas/CreatedAt'
+              updated_at:
+                $ref: '#/components/schemas/UpdatedAt'
             additionalProperties: false
             required:
               - visibility
@@ -101122,6 +101684,7 @@ components:
               - updated_at
               - auth_strategy_ids
               - form_id
+              - spec_renderer
             title: API Publication
     ListApiPublicationResponse:
       description: Paginated list of API publications
@@ -101173,22 +101736,6 @@ components:
                 $ref: '#/components/schemas/ApiPublicationAuthStrategyIds'
               visibility:
                 $ref: '#/components/schemas/ApiPublicationVisibility'
-              form_id:
-                description: |
-                  UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
-                type: string
-                format: uuid
-                nullable: true
-              warnings:
-                description: Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
-                type: array
-                items:
-                  type: string
-                readOnly: true
-              created_at:
-                $ref: '#/components/schemas/CreatedAt'
-              updated_at:
-                $ref: '#/components/schemas/UpdatedAt'
               spec_renderer:
                 description: Customization settings for the API spec renderer in the portal.
                 type: object
@@ -101219,6 +101766,22 @@ components:
                   - try_it_ui
                   - try_it_ui_audience
                 title: ApiPublicationSpecRenderer
+              form_id:
+                description: |
+                  UUID of custom form associated with API publication, must be linked to given portal and have type of 'api_registration'
+                type: string
+                format: uuid
+                nullable: true
+              warnings:
+                description: Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
+                type: array
+                items:
+                  type: string
+                readOnly: true
+              created_at:
+                $ref: '#/components/schemas/CreatedAt'
+              updated_at:
+                $ref: '#/components/schemas/UpdatedAt'
             additionalProperties: false
             required:
               - visibility
@@ -103330,6 +103893,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Skill'
+    ListSkillArtifactsResponse:
+      description: A response to listing skill artifacts.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListSkillArtifactsResponse'
     RetrieveMeshControlPlaneResponse:
       description: A response to creating a control plane.
       content:
@@ -104397,13 +104966,13 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.2.5
+    version: 2.2.15
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
     path: src/konnect/definitions/analytics-dashboards/v2/openapi.yaml
   - title: Konnect API Catalog
-    version: 3.6.10
+    version: 3.6.11
     path: src/konnect/definitions/api-builder/v3/openapi.yaml
   - title: Konnect Application Auth Strategies
     version: 2.1.3
@@ -104418,13 +104987,13 @@ x-input-schemas:
     version: 2.1.1
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
-    version: 1.3.7
+    version: 1.3.8
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.6.6
+    version: 3.7.1
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
-    version: 1.46.0
+    version: 1.48.0
     path: src/konnect/definitions/mcp-servers/v1/openapi.yaml
   - title: Konnect Mesh Control Plane manager
     version: 0.3.0
@@ -104436,7 +105005,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.13.1
+    version: 3.13.2
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2

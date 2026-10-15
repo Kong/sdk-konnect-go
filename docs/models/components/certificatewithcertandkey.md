@@ -1,4 +1,6 @@
-# CertificateRequest2
+# CertificateWithCertAndKey
+
+Certificate defined by its cert, key.
 
 
 ## Fields

@@ -21,6 +21,7 @@ custom := components.InvalidRules("custom_value")
 | Name                                                 | Value                                                |
 | ---------------------------------------------------- | ---------------------------------------------------- |
 | `InvalidRulesRequired`                               | required                                             |
+| `InvalidRulesUnique`                                 | unique                                               |
 | `InvalidRulesIsArray`                                | is_array                                             |
 | `InvalidRulesIsBase64`                               | is_base64                                            |
 | `InvalidRulesIsBoolean`                              | is_boolean                                           |
@@ -36,6 +37,7 @@ custom := components.InvalidRules("custom_value")
 | `InvalidRulesUnknownProperty`                        | unknown_property                                     |
 | `InvalidRulesMissingReference`                       | missing_reference                                    |
 | `InvalidRulesIsLabel`                                | is_label                                             |
+| `InvalidRulesKeyInvalid`                             | key_invalid                                          |
 | `InvalidRulesMatchesRegex`                           | matches_regex                                        |
 | `InvalidRulesInvalid`                                | invalid                                              |
 | `InvalidRulesIsSupportedNetworkAvailabilityZoneList` | is_supported_network_availability_zone_list          |

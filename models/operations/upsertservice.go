@@ -14,7 +14,7 @@ type UpsertServiceRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the Service
-	Service components.Service `request:"mediaType=application/json"`
+	ServiceRequest components.ServiceRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpsertServiceRequest) GetServiceID() string {
@@ -31,11 +31,11 @@ func (u *UpsertServiceRequest) GetControlPlaneID() string {
 	return u.ControlPlaneID
 }
 
-func (u *UpsertServiceRequest) GetService() components.Service {
+func (u *UpsertServiceRequest) GetServiceRequest() components.ServiceRequest {
 	if u == nil {
-		return components.Service{}
+		return components.ServiceRequest{}
 	}
-	return u.Service
+	return u.ServiceRequest
 }
 
 type UpsertServiceResponse struct {
@@ -46,7 +46,7 @@ type UpsertServiceResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Successfully upserted Service
-	Service *components.ServiceOutput
+	Service *components.Service
 }
 
 func (u *UpsertServiceResponse) GetContentType() string {
@@ -70,7 +70,7 @@ func (u *UpsertServiceResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpsertServiceResponse) GetService() *components.ServiceOutput {
+func (u *UpsertServiceResponse) GetService() *components.Service {
 	if u == nil {
 		return nil
 	}

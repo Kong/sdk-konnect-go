@@ -16,7 +16,7 @@ type ServicesSDK interface {
 	ListService(ctx context.Context, request operations.ListServiceRequest, opts ...operations.Option) (*operations.ListServiceResponse, error)
 	// CreateService - Create a new Service
 	// Create a new Service
-	CreateService(ctx context.Context, controlPlaneID string, service components.Service, opts ...operations.Option) (*operations.CreateServiceResponse, error)
+	CreateService(ctx context.Context, controlPlaneID string, serviceRequest components.ServiceRequest, opts ...operations.Option) (*operations.CreateServiceResponse, error)
 	// DeleteService - Delete a Service
 	// Delete a Service
 	DeleteService(ctx context.Context, controlPlaneID string, serviceID string, opts ...operations.Option) (*operations.DeleteServiceResponse, error)

@@ -1,4 +1,6 @@
-# CertificateRequest1
+# CertificateWithVault
+
+Certificate defined by its vault.
 
 
 ## Fields

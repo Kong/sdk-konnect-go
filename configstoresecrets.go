@@ -83,6 +83,7 @@ func (s *ConfigStoreSecrets) CreateConfigStoreSecret(ctx context.Context, reques
 		defer cancel()
 	}
 
+	ctx = utils.WithOperation(ctx, "create-config-store-secret")
 	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
@@ -961,6 +962,7 @@ func (s *ConfigStoreSecrets) UpdateConfigStoreSecret(ctx context.Context, reques
 		defer cancel()
 	}
 
+	ctx = utils.WithOperation(ctx, "update-config-store-secret")
 	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
