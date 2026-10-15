@@ -6,7 +6,6 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	sdkkonnectcomp "github.com/Kong/sdk-konnect-go/models/components"
 )
 
@@ -33,13 +32,13 @@ func TestServiceCreateGetDelete(t *testing.T) {
 	require.NotEmpty(t, respCreate.ControlPlane.Name)
 
 	reqSvc := sdkkonnectcomp.ServiceRequest{
-		Type: sdkkonnectcomp.ServiceRequestTypeServiceRequest1,
-		ServiceRequest1: &sdkkonnectcomp.ServiceRequest1{
-			Name:     sdkkonnectgo.Pointer(NamePrefix(t) + "-" + runID),
+		Type: sdkkonnectcomp.ServiceRequestTypeServiceWithHost,
+		ServiceWithHost: &sdkkonnectcomp.ServiceWithHost{
+			Name:     new(NamePrefix(t) + "-" + runID),
 			Protocol: sdkkonnectcomp.ServiceRequestProtocolHTTP.ToPointer(),
 			Host:     "example.com",
-			Port:     sdkkonnectgo.Pointer(int64(80)),
-			Path:     sdkkonnectgo.Pointer("/hello"),
+			Port:     new(int64(80)),
+			Path:     new("/hello"),
 		},
 	}
 	respCreateSvc, err := sdk.Services.CreateService(ctx, respCreate.ControlPlane.ID, reqSvc)
@@ -51,10 +50,10 @@ func TestServiceCreateGetDelete(t *testing.T) {
 		_, err := sdk.Services.DeleteService(ctx, respCreate.ControlPlane.ID, *respCreateSvc.Service.ID)
 		require.NoError(t, err)
 	})
-	require.Equal(t, *reqSvc.ServiceRequest1.Name, *respCreateSvc.Service.Name)
+	require.Equal(t, *reqSvc.ServiceWithHost.Name, *respCreateSvc.Service.Name)
 	t.Run("path", func(t *testing.T) {
 		t.Skip("Skipping as .path is not set in response from Konnect API: https://github.com/Kong/sdk-konnect-go/issues/190")
-		require.Equal(t, *reqSvc.ServiceRequest1.Path, *respCreateSvc.Service.Path)
+		require.Equal(t, *reqSvc.ServiceWithHost.Path, *respCreateSvc.Service.Path)
 	})
 
 	respGetSvc, err := sdk.Services.GetService(ctx, *respCreateSvc.Service.ID, respCreate.ControlPlane.ID)

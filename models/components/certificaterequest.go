@@ -9,7 +9,8 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type CertificateRequest2 struct {
+// CertificateWithCertAndKey - Certificate defined by its cert, key.
+type CertificateWithCertAndKey struct {
 	// PEM-encoded public certificate chain of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
 	Cert string `json:"cert"`
 	// PEM-encoded public certificate chain of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
@@ -39,112 +40,110 @@ type CertificateRequest2 struct {
 	VaultAlt *string `json:"vault_alt,omitempty"`
 }
 
-func (c CertificateRequest2) MarshalJSON() ([]byte, error) {
+func (c CertificateWithCertAndKey) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CertificateRequest2) UnmarshalJSON(data []byte) error {
+func (c *CertificateWithCertAndKey) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"cert", "key"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *CertificateRequest2) GetCert() string {
+func (c *CertificateWithCertAndKey) GetCert() string {
 	if c == nil {
 		return ""
 	}
 	return c.Cert
 }
 
-func (c *CertificateRequest2) GetCertAlt() *string {
+func (c *CertificateWithCertAndKey) GetCertAlt() *string {
 	if c == nil {
 		return nil
 	}
 	return c.CertAlt
 }
 
-func (c *CertificateRequest2) GetCreatedAt() *int64 {
+func (c *CertificateWithCertAndKey) GetCreatedAt() *int64 {
 	if c == nil {
 		return nil
 	}
 	return c.CreatedAt
 }
 
-func (c *CertificateRequest2) GetDescription() *string {
+func (c *CertificateWithCertAndKey) GetDescription() *string {
 	if c == nil {
 		return nil
 	}
 	return c.Description
 }
 
-func (c *CertificateRequest2) GetID() *string {
+func (c *CertificateWithCertAndKey) GetID() *string {
 	if c == nil {
 		return nil
 	}
 	return c.ID
 }
 
-func (c *CertificateRequest2) GetKey() string {
+func (c *CertificateWithCertAndKey) GetKey() string {
 	if c == nil {
 		return ""
 	}
 	return c.Key
 }
 
-func (c *CertificateRequest2) GetKeyAlt() *string {
+func (c *CertificateWithCertAndKey) GetKeyAlt() *string {
 	if c == nil {
 		return nil
 	}
 	return c.KeyAlt
 }
 
-func (c *CertificateRequest2) GetManagedBy() map[string]string {
+func (c *CertificateWithCertAndKey) GetManagedBy() map[string]string {
 	if c == nil {
 		return nil
 	}
 	return c.ManagedBy
 }
 
-func (c *CertificateRequest2) GetSnis() []string {
+func (c *CertificateWithCertAndKey) GetSnis() []string {
 	if c == nil {
 		return nil
 	}
 	return c.Snis
 }
 
-func (c *CertificateRequest2) GetTags() []string {
+func (c *CertificateWithCertAndKey) GetTags() []string {
 	if c == nil {
 		return nil
 	}
 	return c.Tags
 }
 
-func (c *CertificateRequest2) GetUpdatedAt() *int64 {
+func (c *CertificateWithCertAndKey) GetUpdatedAt() *int64 {
 	if c == nil {
 		return nil
 	}
 	return c.UpdatedAt
 }
 
-func (c *CertificateRequest2) GetVault() *string {
+func (c *CertificateWithCertAndKey) GetVault() *string {
 	if c == nil {
 		return nil
 	}
 	return c.Vault
 }
 
-func (c *CertificateRequest2) GetVaultAlt() *string {
+func (c *CertificateWithCertAndKey) GetVaultAlt() *string {
 	if c == nil {
 		return nil
 	}
 	return c.VaultAlt
 }
 
-// #region class-body-certificaterequest2
-// #endregion class-body-certificaterequest2
-
-type CertificateRequest1 struct {
+// CertificateWithVault - Certificate defined by its vault.
+type CertificateWithVault struct {
 	// PEM-encoded public certificate chain of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
 	Cert *string `json:"cert,omitempty"`
 	// PEM-encoded public certificate chain of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
@@ -174,141 +173,138 @@ type CertificateRequest1 struct {
 	VaultAlt *string `json:"vault_alt,omitempty"`
 }
 
-func (c CertificateRequest1) MarshalJSON() ([]byte, error) {
+func (c CertificateWithVault) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CertificateRequest1) UnmarshalJSON(data []byte) error {
+func (c *CertificateWithVault) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *CertificateRequest1) GetCert() *string {
+func (c *CertificateWithVault) GetCert() *string {
 	if c == nil {
 		return nil
 	}
 	return c.Cert
 }
 
-func (c *CertificateRequest1) GetCertAlt() *string {
+func (c *CertificateWithVault) GetCertAlt() *string {
 	if c == nil {
 		return nil
 	}
 	return c.CertAlt
 }
 
-func (c *CertificateRequest1) GetCreatedAt() *int64 {
+func (c *CertificateWithVault) GetCreatedAt() *int64 {
 	if c == nil {
 		return nil
 	}
 	return c.CreatedAt
 }
 
-func (c *CertificateRequest1) GetDescription() *string {
+func (c *CertificateWithVault) GetDescription() *string {
 	if c == nil {
 		return nil
 	}
 	return c.Description
 }
 
-func (c *CertificateRequest1) GetID() *string {
+func (c *CertificateWithVault) GetID() *string {
 	if c == nil {
 		return nil
 	}
 	return c.ID
 }
 
-func (c *CertificateRequest1) GetKey() *string {
+func (c *CertificateWithVault) GetKey() *string {
 	if c == nil {
 		return nil
 	}
 	return c.Key
 }
 
-func (c *CertificateRequest1) GetKeyAlt() *string {
+func (c *CertificateWithVault) GetKeyAlt() *string {
 	if c == nil {
 		return nil
 	}
 	return c.KeyAlt
 }
 
-func (c *CertificateRequest1) GetManagedBy() map[string]string {
+func (c *CertificateWithVault) GetManagedBy() map[string]string {
 	if c == nil {
 		return nil
 	}
 	return c.ManagedBy
 }
 
-func (c *CertificateRequest1) GetSnis() []string {
+func (c *CertificateWithVault) GetSnis() []string {
 	if c == nil {
 		return nil
 	}
 	return c.Snis
 }
 
-func (c *CertificateRequest1) GetTags() []string {
+func (c *CertificateWithVault) GetTags() []string {
 	if c == nil {
 		return nil
 	}
 	return c.Tags
 }
 
-func (c *CertificateRequest1) GetUpdatedAt() *int64 {
+func (c *CertificateWithVault) GetUpdatedAt() *int64 {
 	if c == nil {
 		return nil
 	}
 	return c.UpdatedAt
 }
 
-func (c *CertificateRequest1) GetVault() *string {
+func (c *CertificateWithVault) GetVault() *string {
 	if c == nil {
 		return nil
 	}
 	return c.Vault
 }
 
-func (c *CertificateRequest1) GetVaultAlt() *string {
+func (c *CertificateWithVault) GetVaultAlt() *string {
 	if c == nil {
 		return nil
 	}
 	return c.VaultAlt
 }
 
-// #region class-body-certificaterequest1
-// #endregion class-body-certificaterequest1
-
 type CertificateRequestType string
 
 const (
-	CertificateRequestTypeCertificateRequest1 CertificateRequestType = "CertificateRequest_1"
-	CertificateRequestTypeCertificateRequest2 CertificateRequestType = "CertificateRequest_2"
+	CertificateRequestTypeCertificateWithVault      CertificateRequestType = "CertificateWithVault"
+	CertificateRequestTypeCertificateWithCertAndKey CertificateRequestType = "CertificateWithCertAndKey"
 )
 
 // CertificateRequest - A certificate object represents a public certificate, and can be optionally paired with the corresponding private key. These objects are used by Kong to handle SSL/TLS termination for encrypted requests, or for use as a trusted CA store when validating peer certificate of client/service. Certificates are optionally associated with SNI objects to tie a cert/key pair to one or more hostnames. If intermediate certificates are required in addition to the main certificate, they should be concatenated together into one string according to the following order: main certificate on the top, followed by any intermediates.
 type CertificateRequest struct {
-	CertificateRequest1 *CertificateRequest1 `queryParam:"inline" union:"member"`
-	CertificateRequest2 *CertificateRequest2 `queryParam:"inline" union:"member"`
+	CertificateWithVault      *CertificateWithVault      `queryParam:"inline" union:"member"`
+	CertificateWithCertAndKey *CertificateWithCertAndKey `queryParam:"inline" union:"member"`
 
 	Type CertificateRequestType
 }
 
-func CreateCertificateRequestCertificateRequest1(certificateRequest1 CertificateRequest1) CertificateRequest {
-	typ := CertificateRequestTypeCertificateRequest1
+func CreateCertificateRequestCertificateWithVault(certificateWithVault CertificateWithVault) CertificateRequest {
+	typ := CertificateRequestTypeCertificateWithVault
 
 	return CertificateRequest{
-		CertificateRequest1: &certificateRequest1,
-		Type:                typ,
+		CertificateWithVault: &certificateWithVault,
+		Type:                 typ,
 	}
 }
 
-func CreateCertificateRequestCertificateRequest2(certificateRequest2 CertificateRequest2) CertificateRequest {
-	typ := CertificateRequestTypeCertificateRequest2
+func CreateCertificateRequestCertificateWithCertAndKey(certificateWithCertAndKey CertificateWithCertAndKey) CertificateRequest {
+	typ := CertificateRequestTypeCertificateWithCertAndKey
 
 	return CertificateRequest{
-		CertificateRequest2: &certificateRequest2,
-		Type:                typ,
+		CertificateWithCertAndKey: &certificateWithCertAndKey,
+		Type:                      typ,
 	}
 }
 
@@ -321,17 +317,17 @@ func (u *CertificateRequest) UnmarshalJSON(data []byte) (err error) {
 		}
 	}()
 
-	var certificateRequest2 CertificateRequest2 = CertificateRequest2{}
-	if err := utils.UnmarshalJSON(data, &certificateRequest2, "", true, nil); err == nil {
-		u.CertificateRequest2 = &certificateRequest2
-		u.Type = CertificateRequestTypeCertificateRequest2
+	var certificateWithCertAndKey CertificateWithCertAndKey = CertificateWithCertAndKey{}
+	if err := utils.UnmarshalJSON(data, &certificateWithCertAndKey, "", true, nil); err == nil {
+		u.CertificateWithCertAndKey = &certificateWithCertAndKey
+		u.Type = CertificateRequestTypeCertificateWithCertAndKey
 		return nil
 	}
 
-	var certificateRequest1 CertificateRequest1 = CertificateRequest1{}
-	if err := utils.UnmarshalJSON(data, &certificateRequest1, "", true, nil); err == nil {
-		u.CertificateRequest1 = &certificateRequest1
-		u.Type = CertificateRequestTypeCertificateRequest1
+	var certificateWithVault CertificateWithVault = CertificateWithVault{}
+	if err := utils.UnmarshalJSON(data, &certificateWithVault, "", true, nil); err == nil {
+		u.CertificateWithVault = &certificateWithVault
+		u.Type = CertificateRequestTypeCertificateWithVault
 		return nil
 	}
 
@@ -339,12 +335,12 @@ func (u *CertificateRequest) UnmarshalJSON(data []byte) (err error) {
 }
 
 func (u CertificateRequest) MarshalJSON() ([]byte, error) {
-	if u.CertificateRequest1 != nil {
-		return utils.MarshalJSON(u.CertificateRequest1, "", true)
+	if u.CertificateWithVault != nil {
+		return utils.MarshalJSON(u.CertificateWithVault, "", true)
 	}
 
-	if u.CertificateRequest2 != nil {
-		return utils.MarshalJSON(u.CertificateRequest2, "", true)
+	if u.CertificateWithCertAndKey != nil {
+		return utils.MarshalJSON(u.CertificateWithCertAndKey, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CertificateRequest: all fields are null")
