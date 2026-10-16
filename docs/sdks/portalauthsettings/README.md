@@ -1624,8 +1624,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1674,8 +1674,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1724,8 +1724,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1774,8 +1774,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1824,8 +1824,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1874,8 +1874,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1968,17 +1968,21 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
-                components.OIDCIdentityProviderConfig{
-                    IssuerURL: "https://konghq.okta.com/oauth2/default",
-                    ClientID: "0oaqhb43ckTZ02j1F357",
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateOIDCIdentityProviderConfig(
+                components.UpdateOIDCIdentityProviderConfig{
+                    IssuerURL: sdkkonnectgo.Pointer("https://konghq.okta.com/oauth2/default"),
+                    ClientID: sdkkonnectgo.Pointer("0oaqhb43ckTZ02j1F357"),
                     ClientSecret: sdkkonnectgo.Pointer("BbqwI8xP9E4evOK"),
                     Scopes: []string{
                         "openid",
                         "email",
                         "profile",
                     },
-                    ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                    ClaimMappings: &components.UpdateOIDCIdentityProviderClaimMappings{
+                        Name: sdkkonnectgo.Pointer("name"),
+                        Email: sdkkonnectgo.Pointer("email"),
+                        Groups: sdkkonnectgo.Pointer("groups"),
+                    },
                 },
             )),
         },
@@ -2025,8 +2029,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                 },
             )),
