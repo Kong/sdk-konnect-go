@@ -28269,21 +28269,6 @@ components:
         - page
       title: PaginatedMeta
       x-speakeasy-terraform-ignore: true
-    ManagedBy:
-      description: |
-        Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-
-        Keys must be 1–63 characters long and start with an alphanumeric character.
-      type: object
-      example:
-        owner: terraform
-      additionalProperties:
-        type: string
-        pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
-        minLength: 1
-        maxLength: 63
-      maxProperties: 5
-      title: ManagedBy
     InvalidRules:
       description: invalid parameters rules
       type: string
@@ -28898,6 +28883,21 @@ components:
         - instance
         - detail
       title: Error
+    ManagedBy:
+      description: |
+        Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+
+        Keys must be 1–63 characters long and start with an alphanumeric character.
+      type: object
+      example:
+        owner: terraform
+      additionalProperties:
+        type: string
+        pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
+        minLength: 1
+        maxLength: 63
+      maxProperties: 5
+      title: ManagedBy
     PaginationNextResponse:
       description: URI to the next page (may be null)
       type: string
@@ -29007,7 +29007,7 @@ components:
       type: object
       properties:
         enabled:
-          $ref: '#/components/schemas/IdentityProviderEnabled'
+          $ref: '#/components/schemas/UpdateIdentityProviderEnabled'
         login_path:
           $ref: '#/components/schemas/IdentityProviderLoginPath'
         config:
@@ -29266,11 +29266,11 @@ components:
         - $ref: '#/components/schemas/User'
         - type: object
           example:
-            claim_name:
+            claim_names:
               - GroupClaimA
               - GroupClaimB
           properties:
-            claim_name:
+            claim_names:
               description: An array of group claim names that gave this user membership to the team.
               type: array
               items:
@@ -29344,11 +29344,11 @@ components:
         - $ref: '#/components/schemas/TeamResponse'
         - type: object
           example:
-            claim_name:
+            claim_names:
               - GroupClaimA
               - GroupClaimB
           properties:
-            claim_name:
+            claim_names:
               description: An array of group claim names that gave this user membership to the team.
               type: array
               items:
@@ -29638,6 +29638,14 @@ components:
       type: boolean
       example: true
       default: false
+      title: Identity Provider Enabled Property
+    UpdateIdentityProviderEnabled:
+      description: |
+        Indicates whether the identity provider is enabled.
+        Only one identity provider can be active at a time, such as SAML or OIDC.
+        When omitted, the current value is left unchanged.
+      type: boolean
+      example: true
       title: Identity Provider Enabled Property
     CursorMetaPage:
       type: object
@@ -39956,17 +39964,109 @@ components:
             - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/PortalSAMLIdentityProviderConfig'
       title: Portal Identity Provider
+    UpdateOIDCIdentityProviderClaimMappings:
+      description: |
+        Defines the mappings between OpenID Connect (OIDC) claims and local claims used by your application for
+        authentication. Only the provided mappings are updated and provided values cannot be empty.
+      type: object
+      properties:
+        name:
+          description: The claim mapping for the user's name.
+          type: string
+          example: name
+          minLength: 1
+          pattern: \S
+        email:
+          description: The claim mapping for the user's email address.
+          type: string
+          example: email
+          minLength: 1
+          pattern: \S
+        groups:
+          description: The claim mapping for the user's group membership information.
+          type: string
+          example: groups
+          minLength: 1
+          pattern: \S
+      additionalProperties: false
+      title: Update OIDC Claim Mappings
+    UpdateOIDCIdentityProviderConfig:
+      description: |
+        The properties of an OIDC identity provider to update. Only the provided properties are updated. When
+        provided, `scopes` must include `openid`.
+      type: object
+      properties:
+        issuer_url:
+          description: The issuer URI of the identity provider. This is the URL where the provider's metadata can be obtained.
+          type: string
+          example: 'https://konghq.okta.com/oauth2/default'
+          minLength: 1
+          pattern: '^https?://\S+$'
+        client_id:
+          description: The client ID assigned to your application by the identity provider.
+          type: string
+          example: YOUR_CLIENT_ID
+          minLength: 1
+          pattern: \S
+        client_secret:
+          description: The Client Secret assigned to your application by the identity provider.
+          type: string
+          example: YOUR_CLIENT_SECRET
+          minLength: 1
+          pattern: \S
+          writeOnly: true
+          x-speakeasy-param-sensitive: true
+          x-speakeasy-terraform-plan-only: true
+        scopes:
+          description: The scopes requested by your application when authenticating with the identity provider. Must include `openid`.
+          type: array
+          items:
+            type: string
+          example:
+            - openid
+            - email
+            - profile
+          minItems: 1
+        claim_mappings:
+          $ref: '#/components/schemas/UpdateOIDCIdentityProviderClaimMappings'
+      additionalProperties: false
+      minProperties: 1
+      title: Update OIDC Identity Provider Config
+    UpdateSAMLIdentityProviderConfig:
+      description: |
+        The properties of a SAML identity provider to update. Exactly one of `idp_metadata_url` or
+        `idp_metadata_xml` must be provided.
+      type: object
+      properties:
+        idp_metadata_url:
+          description: The identity provider's metadata URL where the identity provider's metadata can be obtained.
+          type: string
+          example: 'https://mocksaml.com/api/saml/metadata'
+          minLength: 1
+          pattern: '^https?://\S+$'
+        idp_metadata_xml:
+          description: |
+            The identity provider's SAML metadata. If the identity provider supports a metadata URL, you can use the `idp_metadata_url` field instead.
+          type: string
+          minLength: 1
+      additionalProperties: false
+      maxProperties: 1
+      minProperties: 1
+      title: Update SAML Identity Provider Config
     PortalUpdateIdentityProvider:
       description: The identity provider that contains configuration data for updating an authentication integration.
       type: object
       properties:
         enabled:
-          $ref: '#/components/schemas/IdentityProviderEnabled'
+          $ref: '#/components/schemas/UpdateIdentityProviderEnabled'
         config:
           type: object
+          minProperties: 1
           oneOf:
-            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
-            - $ref: '#/components/schemas/PortalSAMLIdentityProviderConfig'
+            - $ref: '#/components/schemas/UpdateOIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/UpdateSAMLIdentityProviderConfig'
+      additionalProperties: false
+      minProperties: 1
       title: Portal Identity Provider
     PortalAllowedIPs:
       description: The list of allowed ips for the portal.
@@ -47421,6 +47521,9 @@ components:
                 description: An associative array of header key value pairs.
       required:
         - type
+        - schema_registry
+        - subject
+        - version
     EventGatewayParsedRecordTranscodeSchemaRefDestination:
       description: |
         Defines how to record the schema id for the transcoded output data. See the
@@ -47459,6 +47562,7 @@ components:
               description: The name is compatible with Confluent's serializer by default but can be changed.
               type: string
               default: __value_schema_id
+              minLength: 1
       required:
         - type
     EventGatewayParsedRecordTranscodeSchemaRefDestinationNone:
@@ -104966,7 +105070,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.2.15
+    version: 2.2.16
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
@@ -104984,13 +105088,13 @@ x-input-schemas:
     version: 3.15.0
     path: src/konnect/definitions/control-planes-config/v2/openapi.yaml
   - title: Konnect Control Planes
-    version: 2.1.1
+    version: 2.1.2
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
     version: 1.3.8
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.7.1
+    version: 3.9.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.48.0
@@ -105005,7 +105109,7 @@ x-input-schemas:
     version: 1.0.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.13.2
+    version: 3.14.0
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.2

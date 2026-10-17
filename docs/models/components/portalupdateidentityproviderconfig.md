@@ -3,16 +3,16 @@
 
 ## Supported Types
 
-### OIDCIdentityProviderConfig
+### UpdateOIDCIdentityProviderConfig
 
 ```go
-portalUpdateIdentityProviderConfig := components.CreatePortalUpdateIdentityProviderConfigOIDCIdentityProviderConfig(components.OIDCIdentityProviderConfig{/* values here */})
+portalUpdateIdentityProviderConfig := components.CreatePortalUpdateIdentityProviderConfigUpdateOIDCIdentityProviderConfig(components.UpdateOIDCIdentityProviderConfig{/* values here */})
 ```
 
-### PortalSAMLIdentityProviderConfigInput
+### UpdateSAMLIdentityProviderConfig
 
 ```go
-portalUpdateIdentityProviderConfig := components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(components.PortalSAMLIdentityProviderConfigInput{/* values here */})
+portalUpdateIdentityProviderConfig := components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(components.UpdateSAMLIdentityProviderConfig{/* values here */})
 ```
 
 ## Union Discrimination
@@ -21,9 +21,9 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch portalUpdateIdentityProviderConfig.Type {
-	case components.PortalUpdateIdentityProviderConfigTypeOIDCIdentityProviderConfig:
-		// portalUpdateIdentityProviderConfig.OIDCIdentityProviderConfig is populated
-	case components.PortalUpdateIdentityProviderConfigTypePortalSAMLIdentityProviderConfigInput:
-		// portalUpdateIdentityProviderConfig.PortalSAMLIdentityProviderConfigInput is populated
+	case components.PortalUpdateIdentityProviderConfigTypeUpdateOIDCIdentityProviderConfig:
+		// portalUpdateIdentityProviderConfig.UpdateOIDCIdentityProviderConfig is populated
+	case components.PortalUpdateIdentityProviderConfigTypeUpdateSAMLIdentityProviderConfig:
+		// portalUpdateIdentityProviderConfig.UpdateSAMLIdentityProviderConfig is populated
 }
 ```
