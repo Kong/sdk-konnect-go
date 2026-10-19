@@ -40021,7 +40021,10 @@ components:
           description: The scopes requested by your application when authenticating with the identity provider. Must include `openid`.
           type: array
           items:
+            description: A scope. Cannot be empty or contain whitespace.
             type: string
+            minLength: 1
+            pattern: ^\S+$
           example:
             - openid
             - email
