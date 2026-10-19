@@ -7,34 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type Replace struct {
-	// The phrase to replace the value with.
-	Phrase string `json:"phrase"`
-}
-
-func (r Replace) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *Replace) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"phrase"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (r *Replace) GetPhrase() string {
-	if r == nil {
-		return ""
-	}
-	return r.Phrase
-}
-
 // EventGatewayMaskStrategyReplace - Replaces the whole value with a fixed phrase. The masked length does not reflect the original value length.
 type EventGatewayMaskStrategyReplace struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_   string  `const:"replace" json:"type"`
-	Replace Replace `json:"replace"`
+	type_ string `const:"replace" json:"type"`
+	// The phrase to replace the value with.
+	Phrase string `json:"phrase"`
 }
 
 func (e EventGatewayMaskStrategyReplace) MarshalJSON() ([]byte, error) {
@@ -42,7 +20,7 @@ func (e EventGatewayMaskStrategyReplace) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EventGatewayMaskStrategyReplace) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "replace"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "phrase"}); err != nil {
 		return err
 	}
 	return nil
@@ -52,9 +30,9 @@ func (e *EventGatewayMaskStrategyReplace) GetType() string {
 	return "replace"
 }
 
-func (e *EventGatewayMaskStrategyReplace) GetReplace() Replace {
+func (e *EventGatewayMaskStrategyReplace) GetPhrase() string {
 	if e == nil {
-		return Replace{}
+		return ""
 	}
-	return e.Replace
+	return e.Phrase
 }

@@ -6,7 +6,9 @@ If `first + last` is greater than or equal to the value length, the whole value 
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `Type`                                                       | `string`                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `KeepChars`                                                  | [components.KeepChars](../../models/components/keepchars.md) | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `Type`                                                   | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `First`                                                  | `*int64`                                                 | :heavy_minus_sign:                                       | Number of leading characters to keep unmasked.           |
+| `Last`                                                   | `*int64`                                                 | :heavy_minus_sign:                                       | Number of trailing characters to keep unmasked.          |
+| `Phrase`                                                 | `string`                                                 | :heavy_check_mark:                                       | The phrase that replaces the masked middle of the value. |
