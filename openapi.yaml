@@ -39899,6 +39899,25 @@ components:
           - type: array
             items:
               type: string
+    PortalOIDCIdentityProviderConfig:
+      description: The identity provider that contains configuration data for the OIDC authentication integration.
+      type: object
+      properties:
+        issuer_url:
+          $ref: '#/components/schemas/OIDCIdentityProviderIssuer'
+        client_id:
+          $ref: '#/components/schemas/OIDCIdentityProviderClientId'
+        client_secret:
+          $ref: '#/components/schemas/OIDCIdentityProviderClientSecret'
+        scopes:
+          $ref: '#/components/schemas/OIDCIdentityProviderScopes'
+        claim_mappings:
+          $ref: '#/components/schemas/OIDCIdentityProviderClaimMappings'
+      additionalProperties: false
+      required:
+        - issuer_url
+        - client_id
+      title: OIDC Identity Provider Config
     PortalSAMLIdentityProviderConfig:
       description: The identity provider that contains configuration data for the SAML authentication integration.
       type: object
@@ -39938,7 +39957,7 @@ components:
         config:
           type: object
           oneOf:
-            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/PortalOIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/PortalSAMLIdentityProviderConfig'
         created_at:
           $ref: '#/components/schemas/CreatedAt'
@@ -39961,7 +39980,7 @@ components:
         config:
           type: object
           oneOf:
-            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/PortalOIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/PortalSAMLIdentityProviderConfig'
       title: Portal Identity Provider
     UpdateOIDCIdentityProviderClaimMappings:
