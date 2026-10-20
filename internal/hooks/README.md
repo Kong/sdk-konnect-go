@@ -18,6 +18,10 @@ The rewrite is skipped when the server URL carries a path: a private entry point
 `https://us.svc.konghq.tech/api` serves the identity path itself, and the global host does not.
 A lone `/` is not a path, so `https://us.api.konghq.com/` keeps the global host.
 
+A private entry point has to be configured with its path prefix: a private host without one, such as
+`https://us.svc.konghq.tech`, cannot be told apart from a public host and is still sent to the global
+API.
+
 Such a URL has to be set per operation, e.g.
 `s.Me.GetOrganizationsMe(ctx, operations.WithServerURL("https://us.svc.konghq.tech/api"))`; the
 client-level `WithServerURL` option does not reach identity operations. The `KONG_CUSTOM_DOMAIN` swap
