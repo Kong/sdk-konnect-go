@@ -105133,5 +105133,5 @@ x-input-schemas:
     version: 3.14.0
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
-    version: 1.3.2
+    version: 1.3.3
     path: src/konnect/definitions/service-catalog/v1/openapi.yaml
