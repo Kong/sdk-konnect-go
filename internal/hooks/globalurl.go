@@ -2,6 +2,7 @@ package hooks
 
 import (
 	"net/http"
+	"net/url"
 	"strings"
 )
 
@@ -159,7 +160,11 @@ func (i *GlobalAPIURLRequestHook) BeforeRequest(hookCtx BeforeRequestContext, re
 		// NOTE(pmalek): This is because we merge OpenAPI specs and /organizations/me
 		// is only served by the global API.
 		// @mheap mentioned that we can add operation specific URLs to do away with this.
-		if strings.HasSuffix(req.URL.Host, "api.konghq.tech") {
+		// NOTE(matteogastaldello): a base URL with a path is a private entry point that serves the identity path itself, so leave the request alone.
+		if base, err := url.Parse(hookCtx.BaseURL); err == nil && base.Path != "" && base.Path != "/" {
+			return req, nil
+		}
+		if strings.HasSuffix(req.URL.Hostname(), "api.konghq.tech") {
 			req.URL.Host = "global.api.konghq.tech"
 			req.Host = "global.api.konghq.tech"
 		} else {
