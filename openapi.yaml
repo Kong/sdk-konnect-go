@@ -88906,27 +88906,29 @@ components:
         x-speakeasy-unknown-values: allow
       default:
         - control_plane_count
+    PlatformFilterField:
+      description: The field to filter.
+      type: string
+      enum:
+        - control_plane
+        - data_plane_node_version
+        - env
+        - gateway_service
+        - hostname
+        - plugin
+        - plugin_name
+        - plugin_scope
+        - realm
+        - region
+        - route
+        - team
+      x-speakeasy-unknown-values: allow
     PlatformFilter:
       description: A filter to apply to a platform usage query.
       type: object
       properties:
         field:
-          description: The field to filter.
-          type: string
-          enum:
-            - control_plane
-            - data_plane_node_version
-            - env
-            - gateway_service
-            - hostname
-            - plugin
-            - plugin_name
-            - plugin_scope
-            - realm
-            - region
-            - route
-            - team
-          x-speakeasy-unknown-values: allow
+          $ref: '#/components/schemas/PlatformFilterField'
         operator:
           type: string
           enum:
@@ -88989,9 +88991,17 @@ components:
           enum:
             - relative
         time_range:
+          description: |
+            Platform usage data is not available at sub-day granularity. A sub-day duration
+            (`15m`, `1h`, `6h`, `12h`) is accepted but silently coerced up to `24h` rather
+            than rejected.
           type: string
           default: 30d
           enum:
+            - 15m
+            - 1h
+            - 6h
+            - 12h
             - 24h
             - 7d
             - 30d
@@ -89011,9 +89021,6 @@ components:
       title: Relative time range
     PlatformTimeRange:
       description: The time range to query for platform data.
-      default:
-        type: relative
-        time_range: 30d
       discriminator:
         propertyName: type
         mapping:
