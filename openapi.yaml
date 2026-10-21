@@ -83984,6 +83984,10 @@ components:
           example: my-config-store
           allOf:
             - $ref: '#/components/schemas/AIGatewayConfigStoreName'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
       additionalProperties: false
       required:
         - name
@@ -84013,6 +84017,10 @@ components:
           example: my-config-store
           allOf:
             - $ref: '#/components/schemas/AIGatewayConfigStoreName'
+        labels:
+          $ref: '#/components/schemas/PublicLabels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
         id:
           $ref: '#/components/schemas/UUID'
         created_at:
@@ -105083,7 +105091,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.2.19
+    version: 2.2.20
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
