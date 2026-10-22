@@ -21,11 +21,6 @@ type EventGatewayParsedRecordTranscodeConsumeConfigJSON struct {
 	// Leave this unset if the output data schema isn't needed.
 	//
 	SchemaSource *EventGatewayParsedRecordTranscodeSchemaSource `json:"schema_source,omitempty"`
-	// Defines how to record the schema id for the transcoded output data. See the
-	// [Confluent docs](https://docs.confluent.io/platform/current/schema-registry/fundamentals/serdes-develop/index.html#wire-format)
-	// for more about the wire format.
-	//
-	SchemaRefDestination EventGatewayParsedRecordTranscodeSchemaRefDestination `json:"schema_ref_destination"`
 	// The serialization format to convert the record value into.
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	outputFormat string `const:"json" json:"output_format"`
@@ -36,7 +31,7 @@ func (e EventGatewayParsedRecordTranscodeConsumeConfigJSON) MarshalJSON() ([]byt
 }
 
 func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"failure_mode", "schema_ref_destination", "output_format"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"failure_mode", "output_format"}); err != nil {
 		return err
 	}
 	return nil
@@ -68,25 +63,6 @@ func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) GetSchemaSourceInli
 		return v.EventGatewayParsedRecordTranscodeSchemaSourceInline
 	}
 	return nil
-}
-
-func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) GetSchemaRefDestination() EventGatewayParsedRecordTranscodeSchemaRefDestination {
-	if e == nil {
-		return EventGatewayParsedRecordTranscodeSchemaRefDestination{}
-	}
-	return e.SchemaRefDestination
-}
-
-func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) GetSchemaRefDestinationConfluentFormat() *EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat {
-	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat
-}
-
-func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) GetSchemaRefDestinationRecordHeader() *EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader {
-	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader
-}
-
-func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) GetSchemaRefDestinationNone() *EventGatewayParsedRecordTranscodeSchemaRefDestinationNone {
-	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationNone
 }
 
 func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) GetOutputFormat() string {

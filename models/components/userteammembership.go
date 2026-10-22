@@ -29,7 +29,7 @@ type UserTeamMembership struct {
 	//
 	UpdatedAt time.Time `json:"updated_at"`
 	// An array of group claim names that gave this user membership to the team.
-	ClaimName []string `json:"claim_name,omitempty"`
+	ClaimNames []string `json:"claim_names,omitempty"`
 }
 
 func (u UserTeamMembership) MarshalJSON() ([]byte, error) {
@@ -92,9 +92,9 @@ func (u *UserTeamMembership) GetUpdatedAt() time.Time {
 	return u.UpdatedAt
 }
 
-func (u *UserTeamMembership) GetClaimName() []string {
+func (u *UserTeamMembership) GetClaimNames() []string {
 	if u == nil {
 		return nil
 	}
-	return u.ClaimName
+	return u.ClaimNames
 }

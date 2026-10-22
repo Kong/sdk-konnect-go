@@ -109,6 +109,12 @@ func main() {
     res, err := s.AIGatewayConfigStores.CreateAiGatewayConfigStore(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateAIGatewayConfigStoreRequest{
         DisplayName: sdkkonnectgo.Pointer("my-config-store"),
         Name: "my-config-store",
+        Labels: map[string]string{
+            "category": "finance",
+        },
+        ManagedBy: map[string]string{
+            "owner": "terraform",
+        },
     })
     if err != nil {
         log.Fatal(err)

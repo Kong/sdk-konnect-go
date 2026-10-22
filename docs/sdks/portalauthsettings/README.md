@@ -1089,8 +1089,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1123,8 +1123,8 @@ func main() {
     res, err := s.PortalAuthSettings.CreatePortalIdentityProvider(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PortalCreateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        Config: sdkkonnectgo.Pointer(components.CreatePortalCreateIdentityProviderConfigOIDCIdentityProviderConfig(
-            components.OIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreatePortalCreateIdentityProviderConfigPortalOIDCIdentityProviderConfig(
+            components.PortalOIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "0oaqhb43ckTZ02j1F357",
                 ClientSecret: sdkkonnectgo.Pointer("BbqwI8xP9E4evOK"),
@@ -1142,8 +1142,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1187,8 +1187,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1232,8 +1232,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1278,8 +1278,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1324,8 +1324,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1370,8 +1370,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1416,8 +1416,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1483,8 +1483,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1520,8 +1520,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1557,8 +1557,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1624,8 +1624,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1637,8 +1637,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1674,8 +1674,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1687,8 +1687,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1724,8 +1724,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1737,8 +1737,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1774,8 +1774,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1787,8 +1787,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1824,8 +1824,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1837,8 +1837,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1874,8 +1874,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                     IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
@@ -1887,8 +1887,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1931,8 +1931,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -1968,17 +1968,21 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
-                components.OIDCIdentityProviderConfig{
-                    IssuerURL: "https://konghq.okta.com/oauth2/default",
-                    ClientID: "0oaqhb43ckTZ02j1F357",
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateOIDCIdentityProviderConfig(
+                components.UpdateOIDCIdentityProviderConfig{
+                    IssuerURL: sdkkonnectgo.Pointer("https://konghq.okta.com/oauth2/default"),
+                    ClientID: sdkkonnectgo.Pointer("0oaqhb43ckTZ02j1F357"),
                     ClientSecret: sdkkonnectgo.Pointer("BbqwI8xP9E4evOK"),
                     Scopes: []string{
                         "openid",
                         "email",
                         "profile",
                     },
-                    ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+                    ClaimMappings: &components.UpdateOIDCIdentityProviderClaimMappings{
+                        Name: sdkkonnectgo.Pointer("name"),
+                        Email: sdkkonnectgo.Pointer("email"),
+                        Groups: sdkkonnectgo.Pointer("groups"),
+                    },
                 },
             )),
         },
@@ -1988,8 +1992,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
@@ -2025,8 +2029,8 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
-                components.PortalSAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigUpdateSAMLIdentityProviderConfig(
+                components.UpdateSAMLIdentityProviderConfig{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
                 },
             )),
@@ -2037,8 +2041,8 @@ func main() {
     }
     if res.PortalIdentityProvider != nil {
         switch res.PortalIdentityProvider.Config.Type {
-            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
-                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.PortalOIDCIdentityProviderConfigOutput is populated
             case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
                 // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
         }
