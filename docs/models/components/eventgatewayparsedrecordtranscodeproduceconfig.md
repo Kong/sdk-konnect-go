@@ -5,12 +5,6 @@ The configuration of the transcode parsed record policy applied to produced reco
 
 ## Supported Types
 
-### EventGatewayParsedRecordTranscodeProduceConfigJSON
-
-```go
-eventGatewayParsedRecordTranscodeProduceConfig := components.CreateEventGatewayParsedRecordTranscodeProduceConfigJSON(components.EventGatewayParsedRecordTranscodeProduceConfigJSON{/* values here */})
-```
-
 ### EventGatewayParsedRecordTranscodeProduceConfigAvro
 
 ```go
@@ -23,8 +17,6 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch eventGatewayParsedRecordTranscodeProduceConfig.Type {
-	case components.EventGatewayParsedRecordTranscodeProduceConfigTypeJSON:
-		// eventGatewayParsedRecordTranscodeProduceConfig.EventGatewayParsedRecordTranscodeProduceConfigJSON is populated
 	case components.EventGatewayParsedRecordTranscodeProduceConfigTypeAvro:
 		// eventGatewayParsedRecordTranscodeProduceConfig.EventGatewayParsedRecordTranscodeProduceConfigAvro is populated
 }
