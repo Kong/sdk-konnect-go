@@ -17,6 +17,11 @@ type EventGatewayParsedRecordTranscodeSchemaSourceReference struct {
 	Subject string `json:"subject"`
 	// An expression that computes the schema registry version of the output data's schema.
 	Version string `json:"version"`
+	// Defines how to record the schema id for the transcoded output data. See the
+	// [Confluent docs](https://docs.confluent.io/platform/current/schema-registry/fundamentals/serdes-develop/index.html#wire-format)
+	// for more about the wire format.
+	//
+	SchemaRefDestination EventGatewayParsedRecordTranscodeSchemaRefDestination `json:"schema_ref_destination"`
 }
 
 func (e EventGatewayParsedRecordTranscodeSchemaSourceReference) MarshalJSON() ([]byte, error) {
@@ -24,7 +29,7 @@ func (e EventGatewayParsedRecordTranscodeSchemaSourceReference) MarshalJSON() ([
 }
 
 func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "schema_registry", "subject", "version"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "schema_registry", "subject", "version", "schema_ref_destination"}); err != nil {
 		return err
 	}
 	return nil
@@ -53,4 +58,23 @@ func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetVersion() st
 		return ""
 	}
 	return e.Version
+}
+
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetSchemaRefDestination() EventGatewayParsedRecordTranscodeSchemaRefDestination {
+	if e == nil {
+		return EventGatewayParsedRecordTranscodeSchemaRefDestination{}
+	}
+	return e.SchemaRefDestination
+}
+
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetSchemaRefDestinationConfluentFormat() *EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat {
+	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat
+}
+
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetSchemaRefDestinationRecordHeader() *EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader {
+	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader
+}
+
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetSchemaRefDestinationNone() *EventGatewayParsedRecordTranscodeSchemaRefDestinationNone {
+	return e.GetSchemaRefDestination().EventGatewayParsedRecordTranscodeSchemaRefDestinationNone
 }

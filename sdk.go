@@ -549,11 +549,11 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.74.1",
+		SDKVersion: "0.75.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.74.1 2.948.4 3.15.0 github.com/Kong/sdk-konnect-go",
-			SDKVersion:        "0.74.1",
-			GenVersion:        "2.948.4",
+			UserAgent:         "speakeasy-sdk/go 0.75.0 2.950.2 3.15.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.75.0",
+			GenVersion:        "2.950.2",
 			OpenAPIDocVersion: "3.15.0",
 			ServerList:        ServerList,
 		},
