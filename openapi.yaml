@@ -48824,8 +48824,6 @@ components:
         **Requires a minimum runtime version of `1.3`**.
       type: object
       properties:
-        schema_registry:
-          $ref: '#/components/schemas/SchemaRegistryReference'
         failure_mode:
           $ref: '#/components/schemas/ConsumeFailureMode'
         validate_key:
@@ -48859,8 +48857,6 @@ components:
         **Requires a minimum runtime version of `1.3`**.
       type: object
       properties:
-        schema_registry:
-          $ref: '#/components/schemas/SchemaRegistryReference'
         failure_mode:
           $ref: '#/components/schemas/ProduceFailureMode'
         validate_key:
