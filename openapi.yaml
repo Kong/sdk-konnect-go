@@ -47246,27 +47246,9 @@ components:
       discriminator:
         propertyName: output_format
         mapping:
-          json: '#/components/schemas/EventGatewayParsedRecordTranscodeProduceConfigJson'
           avro: '#/components/schemas/EventGatewayParsedRecordTranscodeProduceConfigAvro'
       oneOf:
-        - $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeProduceConfigJson'
         - $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeProduceConfigAvro'
-    EventGatewayParsedRecordTranscodeProduceConfigJson:
-      description: The configuration of the transcode parsed record policy when converting produced records to JSON.
-      type: object
-      properties:
-        failure_mode:
-          $ref: '#/components/schemas/ProduceFailureMode'
-        schema_source:
-          $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeSchemaSource'
-        output_format:
-          description: The serialization format to convert the record value into.
-          type: string
-          const: json
-      required:
-        - failure_mode
-        - output_format
-      title: Transcode Parsed Record to JSON
     EventGatewayParsedRecordTranscodeProduceConfigAvro:
       description: |
         The configuration of the transcode parsed record policy when converting produced records to Avro.
@@ -105104,7 +105086,7 @@ x-input-schemas:
     version: 2.1.2
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
-    version: 1.3.11
+    version: 1.3.12
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
     version: 3.9.0
