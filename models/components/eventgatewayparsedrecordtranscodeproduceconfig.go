@@ -13,25 +13,14 @@ import (
 type EventGatewayParsedRecordTranscodeProduceConfigType string
 
 const (
-	EventGatewayParsedRecordTranscodeProduceConfigTypeJSON EventGatewayParsedRecordTranscodeProduceConfigType = "json"
 	EventGatewayParsedRecordTranscodeProduceConfigTypeAvro EventGatewayParsedRecordTranscodeProduceConfigType = "avro"
 )
 
 // EventGatewayParsedRecordTranscodeProduceConfig - The configuration of the transcode parsed record policy applied to produced records.
 type EventGatewayParsedRecordTranscodeProduceConfig struct {
-	EventGatewayParsedRecordTranscodeProduceConfigJSON *EventGatewayParsedRecordTranscodeProduceConfigJSON `queryParam:"inline" union:"member"`
 	EventGatewayParsedRecordTranscodeProduceConfigAvro *EventGatewayParsedRecordTranscodeProduceConfigAvro `queryParam:"inline" union:"member"`
 
 	Type EventGatewayParsedRecordTranscodeProduceConfigType
-}
-
-func CreateEventGatewayParsedRecordTranscodeProduceConfigJSON(json EventGatewayParsedRecordTranscodeProduceConfigJSON) EventGatewayParsedRecordTranscodeProduceConfig {
-	typ := EventGatewayParsedRecordTranscodeProduceConfigTypeJSON
-
-	return EventGatewayParsedRecordTranscodeProduceConfig{
-		EventGatewayParsedRecordTranscodeProduceConfigJSON: &json,
-		Type: typ,
-	}
 }
 
 func CreateEventGatewayParsedRecordTranscodeProduceConfigAvro(avro EventGatewayParsedRecordTranscodeProduceConfigAvro) EventGatewayParsedRecordTranscodeProduceConfig {
@@ -62,15 +51,6 @@ func (u *EventGatewayParsedRecordTranscodeProduceConfig) UnmarshalJSON(data []by
 	}
 
 	switch dis.OutputFormat {
-	case "json":
-		eventGatewayParsedRecordTranscodeProduceConfigJSON := new(EventGatewayParsedRecordTranscodeProduceConfigJSON)
-		if err := utils.UnmarshalJSON(data, &eventGatewayParsedRecordTranscodeProduceConfigJSON, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (OutputFormat == json) type EventGatewayParsedRecordTranscodeProduceConfigJSON within EventGatewayParsedRecordTranscodeProduceConfig: %w", string(data), err)
-		}
-
-		u.EventGatewayParsedRecordTranscodeProduceConfigJSON = eventGatewayParsedRecordTranscodeProduceConfigJSON
-		u.Type = EventGatewayParsedRecordTranscodeProduceConfigTypeJSON
-		return nil
 	case "avro":
 		eventGatewayParsedRecordTranscodeProduceConfigAvro := new(EventGatewayParsedRecordTranscodeProduceConfigAvro)
 		if err := utils.UnmarshalJSON(data, &eventGatewayParsedRecordTranscodeProduceConfigAvro, "", true, nil); err != nil {
@@ -86,10 +66,6 @@ func (u *EventGatewayParsedRecordTranscodeProduceConfig) UnmarshalJSON(data []by
 }
 
 func (u EventGatewayParsedRecordTranscodeProduceConfig) MarshalJSON() ([]byte, error) {
-	if u.EventGatewayParsedRecordTranscodeProduceConfigJSON != nil {
-		return utils.MarshalJSON(u.EventGatewayParsedRecordTranscodeProduceConfigJSON, "", true)
-	}
-
 	if u.EventGatewayParsedRecordTranscodeProduceConfigAvro != nil {
 		return utils.MarshalJSON(u.EventGatewayParsedRecordTranscodeProduceConfigAvro, "", true)
 	}
