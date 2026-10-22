@@ -7,7 +7,11 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type KeepChars struct {
+// EventGatewayMaskStrategyKeepChars - Keeps a number of leading and/or trailing characters and replaces the middle with a fixed phrase.
+// If `first + last` is greater than or equal to the value length, the whole value is replaced with the phrase, so it never shows more characters than the original value. The phrase is fixed, so the masked output does not leak the value length.
+type EventGatewayMaskStrategyKeepChars struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"keep_chars" json:"type"`
 	// Number of leading characters to keep unmasked.
 	First *int64 `default:"0" json:"first"`
 	// Number of trailing characters to keep unmasked.
@@ -16,52 +20,12 @@ type KeepChars struct {
 	Phrase string `json:"phrase"`
 }
 
-func (k KeepChars) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(k, "", false)
-}
-
-func (k *KeepChars) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &k, "", false, []string{"phrase"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (k *KeepChars) GetFirst() *int64 {
-	if k == nil {
-		return nil
-	}
-	return k.First
-}
-
-func (k *KeepChars) GetLast() *int64 {
-	if k == nil {
-		return nil
-	}
-	return k.Last
-}
-
-func (k *KeepChars) GetPhrase() string {
-	if k == nil {
-		return ""
-	}
-	return k.Phrase
-}
-
-// EventGatewayMaskStrategyKeepChars - Keeps a number of leading and/or trailing characters and replaces the middle with a fixed phrase.
-// If `first + last` is greater than or equal to the value length, the whole value is replaced with the phrase, so it never shows more characters than the original value. The phrase is fixed, so the masked output does not leak the value length.
-type EventGatewayMaskStrategyKeepChars struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_     string    `const:"keep_chars" json:"type"`
-	KeepChars KeepChars `json:"keep_chars"`
-}
-
 func (e EventGatewayMaskStrategyKeepChars) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
 func (e *EventGatewayMaskStrategyKeepChars) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "keep_chars"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "phrase"}); err != nil {
 		return err
 	}
 	return nil
@@ -71,9 +35,23 @@ func (e *EventGatewayMaskStrategyKeepChars) GetType() string {
 	return "keep_chars"
 }
 
-func (e *EventGatewayMaskStrategyKeepChars) GetKeepChars() KeepChars {
+func (e *EventGatewayMaskStrategyKeepChars) GetFirst() *int64 {
 	if e == nil {
-		return KeepChars{}
+		return nil
 	}
-	return e.KeepChars
+	return e.First
+}
+
+func (e *EventGatewayMaskStrategyKeepChars) GetLast() *int64 {
+	if e == nil {
+		return nil
+	}
+	return e.Last
+}
+
+func (e *EventGatewayMaskStrategyKeepChars) GetPhrase() string {
+	if e == nil {
+		return ""
+	}
+	return e.Phrase
 }

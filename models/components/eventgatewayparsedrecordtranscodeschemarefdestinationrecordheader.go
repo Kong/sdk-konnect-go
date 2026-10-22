@@ -7,34 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type RecordHeader struct {
-	// The name is compatible with Confluent's serializer by default but can be changed.
-	Name *string `default:"__value_schema_id" json:"name"`
-}
-
-func (r RecordHeader) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *RecordHeader) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (r *RecordHeader) GetName() *string {
-	if r == nil {
-		return nil
-	}
-	return r.Name
-}
-
 // EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader - Puts the schema reference in a record header.
 type EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader struct {
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_        string        `const:"record_header" json:"type"`
-	RecordHeader *RecordHeader `json:"record_header,omitempty"`
+	type_ string `const:"record_header" json:"type"`
+	// The name is compatible with Confluent's serializer by default but can be changed.
+	Name *string `default:"__value_schema_id" json:"name"`
 }
 
 func (e EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader) MarshalJSON() ([]byte, error) {
@@ -52,9 +30,9 @@ func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader) GetT
 	return "record_header"
 }
 
-func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader) GetRecordHeader() *RecordHeader {
+func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader) GetName() *string {
 	if e == nil {
 		return nil
 	}
-	return e.RecordHeader
+	return e.Name
 }

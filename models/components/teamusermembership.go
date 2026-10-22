@@ -27,7 +27,7 @@ type TeamUserMembership struct {
 	// A Unix timestamp representation of the most recent change to the User account.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// An array of group claim names that gave this user membership to the team.
-	ClaimName []string `json:"claim_name,omitempty"`
+	ClaimNames []string `json:"claim_names,omitempty"`
 }
 
 func (t TeamUserMembership) MarshalJSON() ([]byte, error) {
@@ -97,9 +97,9 @@ func (t *TeamUserMembership) GetUpdatedAt() *time.Time {
 	return t.UpdatedAt
 }
 
-func (t *TeamUserMembership) GetClaimName() []string {
+func (t *TeamUserMembership) GetClaimNames() []string {
 	if t == nil {
 		return nil
 	}
-	return t.ClaimName
+	return t.ClaimNames
 }

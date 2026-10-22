@@ -5,7 +5,7 @@ Replaces the whole value with a fixed phrase. The masked length does not reflect
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `Type`                                                   | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `Replace`                                                | [components.Replace](../../models/components/replace.md) | :heavy_check_mark:                                       | N/A                                                      |
+| Field                                 | Type                                  | Required                              | Description                           |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| `Type`                                | `string`                              | :heavy_check_mark:                    | N/A                                   |
+| `Phrase`                              | `string`                              | :heavy_check_mark:                    | The phrase to replace the value with. |

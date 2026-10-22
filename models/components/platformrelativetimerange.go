@@ -32,9 +32,16 @@ func (e *PlatformRelativeTimeRangeType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// PlatformRelativeTimeRangeTimeRange - Platform usage data is not available at sub-day granularity. A sub-day duration
+// (`15m`, `1h`, `6h`, `12h`) is accepted but silently coerced up to `24h` rather
+// than rejected.
 type PlatformRelativeTimeRangeTimeRange string
 
 const (
+	PlatformRelativeTimeRangeTimeRangeFifteenm                  PlatformRelativeTimeRangeTimeRange = "15m"
+	PlatformRelativeTimeRangeTimeRangeOneh                      PlatformRelativeTimeRangeTimeRange = "1h"
+	PlatformRelativeTimeRangeTimeRangeSixh                      PlatformRelativeTimeRangeTimeRange = "6h"
+	PlatformRelativeTimeRangeTimeRangeTwelveh                   PlatformRelativeTimeRangeTimeRange = "12h"
 	PlatformRelativeTimeRangeTimeRangeTwentyFourh               PlatformRelativeTimeRangeTimeRange = "24h"
 	PlatformRelativeTimeRangeTimeRangeSevend                    PlatformRelativeTimeRangeTimeRange = "7d"
 	PlatformRelativeTimeRangeTimeRangeThirtyd                   PlatformRelativeTimeRangeTimeRange = "30d"
@@ -57,7 +64,7 @@ func (e PlatformRelativeTimeRangeTimeRange) ToPointer() *PlatformRelativeTimeRan
 func (e *PlatformRelativeTimeRangeTimeRange) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "24h", "7d", "30d", "90d", "180d", "365d", "current_week", "current_month", "current_quarter", "previous_week", "previous_month", "previous_quarter":
+		case "15m", "1h", "6h", "12h", "24h", "7d", "30d", "90d", "180d", "365d", "current_week", "current_month", "current_quarter", "previous_week", "previous_month", "previous_quarter":
 			return true
 		}
 	}
@@ -66,8 +73,12 @@ func (e *PlatformRelativeTimeRangeTimeRange) IsExact() bool {
 
 // PlatformRelativeTimeRange - A duration representing a relative-to-now span of time for platform queries.
 type PlatformRelativeTimeRange struct {
-	Tz        *string                             `default:"Etc/UTC" json:"tz"`
-	Type      PlatformRelativeTimeRangeType       `json:"type"`
+	Tz   *string                       `default:"Etc/UTC" json:"tz"`
+	Type PlatformRelativeTimeRangeType `json:"type"`
+	// Platform usage data is not available at sub-day granularity. A sub-day duration
+	// (`15m`, `1h`, `6h`, `12h`) is accepted but silently coerced up to `24h` rather
+	// than rejected.
+	//
 	TimeRange *PlatformRelativeTimeRangeTimeRange `default:"30d" json:"time_range"`
 }
 
