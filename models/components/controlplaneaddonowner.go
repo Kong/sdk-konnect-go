@@ -27,6 +27,7 @@ type ControlPlaneAddOnOwner struct {
 	// - `me` — Middle East
 	// - `in` — India
 	// - `sg` — Singapore
+	// - `uk` — United Kingdom
 	//
 	ControlPlaneGeo ControlPlaneGeo `json:"control_plane_geo"`
 }
