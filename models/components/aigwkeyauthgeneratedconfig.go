@@ -115,7 +115,7 @@ type AIGWKeyAuthGeneratedConfig struct {
 	// An optional boolean value telling the plugin to show or hide the credential from the upstream service. If `true`, the plugin strips the credential from the request.
 	HideCredentials *bool `default:"true" json:"hide_credentials"`
 	// A configuration of Konnect Identity Realms that indicate where to source a consumer from.
-	IdentityRealms []IdentityRealms `json:"identity_realms,omitempty"`
+	IdentityRealms []IdentityRealms `json:"identity_realms,omitzero"`
 	// If enabled, the plugin reads the request body. Supported MIME types: `application/www-form-urlencoded`, `application/json`, and `multipart/form-data`.
 	KeyInBody *bool `default:"false" json:"key_in_body"`
 	// If enabled (default), the plugin reads the request header and tries to find the key in it.
