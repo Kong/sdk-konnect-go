@@ -7,6 +7,7 @@ Geographic region of the control plane. Supported values:
 - `me` — Middle East
 - `in` — India
 - `sg` — Singapore
+- `uk` — United Kingdom
 
 
 ## Example Usage
@@ -33,3 +34,4 @@ custom := components.ControlPlaneGeo("custom_value")
 | `ControlPlaneGeoMe` | me                  |
 | `ControlPlaneGeoIn` | in                  |
 | `ControlPlaneGeoSg` | sg                  |
+| `ControlPlaneGeoUk` | uk                  |
