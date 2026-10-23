@@ -29896,6 +29896,7 @@ components:
         - `me` — Middle East
         - `in` — India
         - `sg` — Singapore
+        - `uk` — United Kingdom
       type: string
       enum:
         - us
@@ -29904,6 +29905,7 @@ components:
         - me
         - in
         - sg
+        - uk
       title: Control-Plane Geo
       x-speakeasy-unknown-values: allow
     GatewayVersion:
@@ -105078,7 +105080,7 @@ x-input-schemas:
     version: 2.1.3
     path: src/konnect/definitions/application-auth-strategies/v2/openapi.yaml
   - title: Konnect Cloud Gateways
-    version: 2.5.0
+    version: 2.6.0
     path: src/konnect/definitions/cloud-gateways/v2/openapi.yaml
   - title: Konnect Control Planes Configuration
     version: 3.15.0
