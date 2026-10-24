@@ -144,7 +144,7 @@ type PortalCustomizationSpecRenderer struct {
 	HideDeprecated *bool `default:"false" json:"hide_deprecated"`
 	// Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
 	AllowCustomServerUrls *bool                               `default:"true" json:"allow_custom_server_urls"`
-	TryItUIAudience       *PortalCustomizationTryItUIAudience `default:"all" json:"try_it_ui_audience"`
+	TryItUIAudience       *PortalCustomizationTryItUIAudience `json:"try_it_ui_audience,omitempty"`
 }
 
 func (p PortalCustomizationSpecRenderer) MarshalJSON() ([]byte, error) {

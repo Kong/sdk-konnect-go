@@ -24,6 +24,7 @@ workflow:
             overlays:
                 - location: ./kongctl-patches/overlays/backend-cluster-tls-defaults.yaml
                 - location: ./kongctl-patches/overlays/patch-custom-portal-email-template-defaults.yaml
+                - location: ./kongctl-patches/overlays/portal-customization-spec-renderer-defaults.yaml
                 - location: ./kongctl-patches/overlays/portal-customization-theme-defaults.yaml
                 - location: ./kongctl-patches/overlays/portal-team-konnect-managed-defaults.yaml
                 - location: ./kongctl-patches/overlays/update-dcr-config-http-defaults.yaml

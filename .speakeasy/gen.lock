@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 310123d3a74f081fc4172e8e5c98f11f
+  docChecksum: 2765312af514a42998e0220551c5b81b
   docVersion: 3.15.0
   speakeasyVersion: 1.802.0
   generationVersion: 2.948.4
   releaseVersion: 0.74.0
   configChecksum: 7bc964ee9fe7df2cbd435e46018eb052
 persistentEdits:
-  generation_id: d1e01b8c-be35-4b57-8b73-8a29ab271b45
-  pristine_commit_hash: 367cd718d6f0cd317fe308d5aa7820ca4e9f5512
-  pristine_tree_hash: a3eba41ac4fddf2ee296f4c7c32d787ff7acaca5
+  generation_id: 00255c70-b7e6-40bd-aa76-2eb931ef422e
+  pristine_commit_hash: 2ea103ecc9531e8c06ee821b5659b66e5e4a405d
+  pristine_tree_hash: cfefc95736a2f71837d26ee31ebef46ff74c085e
 features:
   go:
     acceptHeaders: 2.81.2
@@ -29105,8 +29105,8 @@ trackedFiles:
     pristine_git_object: ab9cb4a5eb03cce7eb387de7cfed426ee4e22aee
   models/components/portalcustomization.go:
     id: c07dd4d97192
-    last_write_checksum: sha1:1524a1c6e7ca815256a73d32431afc355388c8ef
-    pristine_git_object: 5692f90ad9265b479efa0be593e2d48505142938
+    last_write_checksum: sha1:ec737beba9edc1beacb48fe7c9e0ddae1d27b72f
+    pristine_git_object: 3dc8e793be004a3edda230030a776695b13b4e9d
   models/components/portaldeveloper.go:
     id: bfbcb7635fbb
     last_write_checksum: sha1:fd80d9f7f016bda36399106d2ed23b9d8b19f20b
