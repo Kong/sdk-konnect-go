@@ -7455,7 +7455,7 @@ paths:
     get:
       operationId: list-user-configurations
       summary: List available user configurations
-      description: List available user configurations.
+      description: 'List the events that the user can configure. An org scoped event that has no user channel is not part of this list: see list-org-configurations.'
       parameters:
         - $ref: '#/components/parameters/ConfigurationFilter'
       responses:
@@ -7485,12 +7485,14 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
       tags:
         - Notifications
     post:
       operationId: create-event-subscription
       summary: Create a new subscription for an event
-      description: Create a new subscription for an event.
+      description: Create a new user scoped subscription for an event. A user subscription accepts the IN_APP and EMAIL channels only. A request with another channel answers 400. The http channel is available for org scoped notifications only.
       parameters:
         - $ref: '#/components/parameters/eventId'
       requestBody:
@@ -7532,7 +7534,7 @@ paths:
     patch:
       operationId: update-event-subscription
       summary: Update subscription for an event
-      description: Update subscription for an event.
+      description: Update a user scoped subscription for an event. A user subscription accepts the IN_APP and EMAIL channels only. A request with another channel answers 400.
       requestBody:
         $ref: '#/components/requestBodies/EventSubscriptionRequest'
       responses:
@@ -33309,6 +33311,7 @@ components:
         - type
         - enabled
     NotificationChannelType:
+      description: 'Channel of a user scoped subscription. The http channel is not a user channel: it belongs to org scoped notifications.'
       type: string
       enum:
         - EMAIL
@@ -33457,6 +33460,53 @@ components:
       required:
         - ids
         - status
+    TooManyRequestsError:
+      description: standard error
+      type: object
+      properties:
+        status:
+          description: |
+            The HTTP status code of the error. Useful when passing the response
+            body to child properties in a frontend UI. Must be returned as an integer.
+          type: integer
+          example: 429
+          readOnly: true
+        title:
+          description: |
+            A short, human-readable summary of the problem. It should not
+            change between occurences of a problem, except for localization.
+            Should be provided as "Sentence case" for direct use in the UI.
+          type: string
+          example: Too Many Requests
+          readOnly: true
+        type:
+          description: The error type.
+          type: string
+          example: 'https://httpstatuses.com/429'
+          readOnly: true
+        instance:
+          description: |
+            Used to return the correlation ID back to the user, in the format
+            kong:trace:<correlation_id>. This helps us find the relevant logs
+            when a customer reports an issue.
+          type: string
+          example: 'kong:trace:1234567890'
+          readOnly: true
+        detail:
+          description: |
+            A human readable explanation specific to this occurence of the problem.
+            This field may contain request/entity data to help the user understand
+            what went wrong. Enclose variable values in square brackets. Should be
+            provided as "Sentence case" for direct use in the UI.
+          type: string
+          example: Too Many Requests
+          readOnly: true
+      required:
+        - status
+        - title
+        - instance
+        - detail
+      title: Error
     DcrConfigPropertyInitialClientId:
       description: |
         This ID should be copied from your identity provider's settings after you create a client
@@ -84758,53 +84808,6 @@ components:
         maxLength: 63
       maxProperties: 50
       title: PublicLabels
-    TooManyRequestsError:
-      description: standard error
-      type: object
-      properties:
-        status:
-          description: |
-            The HTTP status code of the error. Useful when passing the response
-            body to child properties in a frontend UI. Must be returned as an integer.
-          type: integer
-          example: 429
-          readOnly: true
-        title:
-          description: |
-            A short, human-readable summary of the problem. It should not
-            change between occurences of a problem, except for localization.
-            Should be provided as "Sentence case" for direct use in the UI.
-          type: string
-          example: Too Many Requests
-          readOnly: true
-        type:
-          description: The error type.
-          type: string
-          example: 'https://httpstatuses.com/429'
-          readOnly: true
-        instance:
-          description: |
-            Used to return the correlation ID back to the user, in the format
-            kong:trace:<correlation_id>. This helps us find the relevant logs
-            when a customer reports an issue.
-          type: string
-          example: 'kong:trace:1234567890'
-          readOnly: true
-        detail:
-          description: |
-            A human readable explanation specific to this occurence of the problem.
-            This field may contain request/entity data to help the user understand
-            what went wrong. Enclose variable values in square brackets. Should be
-            provided as "Sentence case" for direct use in the UI.
-          type: string
-          example: Too Many Requests
-          readOnly: true
-      required:
-        - status
-        - title
-        - instance
-        - detail
-      title: Error
     CursorMetaWithTotal:
       description: Pagination metadata with exact total. Useful when the collection size is inexpensive to provide.
       type: object
@@ -101234,6 +101237,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EventSubscriptionResponse'
+    TooManyRequests:
+      description: Too Many Requests
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/TooManyRequestsError'
     CreateDcrProvider:
       description: A response containing the newly created DCR provider object.
       content:
@@ -103874,12 +103883,6 @@ components:
             required:
               - data
               - meta
-    TooManyRequests:
-      description: Too Many Requests
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/TooManyRequestsError'
     MCPServerSignalsResponse:
       description: The MCP server signals response.
       content:
@@ -105104,7 +105107,7 @@ x-input-schemas:
     version: 1.5.0
     path: src/konnect/definitions/metering-and-billing/v3/openapi.yaml
   - title: Konnect Notification Hub
-    version: 1.0.2
+    version: 1.1.0
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
     version: 3.14.1
