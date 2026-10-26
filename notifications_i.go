@@ -12,19 +12,19 @@ import (
 // NotificationsSDK is a generated interface.
 type NotificationsSDK interface {
 	// ListUserConfigurations - List available user configurations
-	// List available user configurations.
+	// List the events that the user can configure. An org scoped event that has no user channel is not part of this list: see list-org-configurations.
 	ListUserConfigurations(ctx context.Context, filter *components.ConfigurationFilterParameters, opts ...operations.Option) (*operations.ListUserConfigurationsResponse, error)
 	// ListEventSubscriptions - List event subscriptions
 	// List event subscriptions.
 	ListEventSubscriptions(ctx context.Context, eventID string, opts ...operations.Option) (*operations.ListEventSubscriptionsResponse, error)
 	// CreateEventSubscription - Create a new subscription for an event
-	// Create a new subscription for an event.
+	// Create a new user scoped subscription for an event. A user subscription accepts the IN_APP and EMAIL channels only. A request with another channel answers 400. The http channel is available for org scoped notifications only.
 	CreateEventSubscription(ctx context.Context, eventID string, eventSubscription *components.EventSubscription, opts ...operations.Option) (*operations.CreateEventSubscriptionResponse, error)
 	// GetEventSubscription - Get subscription for an event
 	// Get subscription for an event.
 	GetEventSubscription(ctx context.Context, eventID string, subscriptionID string, opts ...operations.Option) (*operations.GetEventSubscriptionResponse, error)
 	// UpdateEventSubscription - Update subscription for an event
-	// Update subscription for an event.
+	// Update a user scoped subscription for an event. A user subscription accepts the IN_APP and EMAIL channels only. A request with another channel answers 400.
 	UpdateEventSubscription(ctx context.Context, request operations.UpdateEventSubscriptionRequest, opts ...operations.Option) (*operations.UpdateEventSubscriptionResponse, error)
 	// DeleteEventSubscription - Delete subscription associated with event
 	// Delete subscription associated with event.

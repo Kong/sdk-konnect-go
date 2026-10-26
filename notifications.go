@@ -34,7 +34,7 @@ func newNotifications(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *ho
 }
 
 // ListUserConfigurations - List available user configurations
-// List available user configurations.
+// List the events that the user can configure. An org scoped event that has no user channel is not part of this list: see list-org-configurations.
 func (s *Notifications) ListUserConfigurations(ctx context.Context, filter *components.ConfigurationFilterParameters, opts ...operations.Option) (*operations.ListUserConfigurationsResponse, error) {
 	request := operations.ListUserConfigurationsRequest{
 		Filter: filter,
@@ -557,6 +557,27 @@ func (s *Notifications) ListEventSubscriptions(ctx context.Context, eventID stri
 			}
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode == 404:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.NotFoundError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
+			}
+
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -582,7 +603,7 @@ func (s *Notifications) ListEventSubscriptions(ctx context.Context, eventID stri
 }
 
 // CreateEventSubscription - Create a new subscription for an event
-// Create a new subscription for an event.
+// Create a new user scoped subscription for an event. A user subscription accepts the IN_APP and EMAIL channels only. A request with another channel answers 400. The http channel is available for org scoped notifications only.
 func (s *Notifications) CreateEventSubscription(ctx context.Context, eventID string, eventSubscription *components.EventSubscription, opts ...operations.Option) (*operations.CreateEventSubscriptionResponse, error) {
 	request := operations.CreateEventSubscriptionRequest{
 		EventID:           eventID,
@@ -1177,7 +1198,7 @@ func (s *Notifications) GetEventSubscription(ctx context.Context, eventID string
 }
 
 // UpdateEventSubscription - Update subscription for an event
-// Update subscription for an event.
+// Update a user scoped subscription for an event. A user subscription accepts the IN_APP and EMAIL channels only. A request with another channel answers 400.
 func (s *Notifications) UpdateEventSubscription(ctx context.Context, request operations.UpdateEventSubscriptionRequest, opts ...operations.Option) (*operations.UpdateEventSubscriptionResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
