@@ -12,9 +12,6 @@
 
 ## ListCustomPlugin
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 List all CustomPlugins
 
 ### Example Usage
@@ -73,9 +70,6 @@ func main() {
 | sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
 
 ## CreateCustomPlugin
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Create a new CustomPlugin
 
@@ -210,9 +204,6 @@ func main() {
 
 ## DeleteCustomPlugin
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Delete a CustomPlugin
 
 ### Example Usage
@@ -269,9 +260,6 @@ func main() {
 
 ## GetCustomPlugin
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Get a CustomPlugin using ID or name.
 
 ### Example Usage
@@ -327,9 +315,6 @@ func main() {
 | sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
 
 ## UpsertCustomPlugin
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Create or Update CustomPlugin using ID or name.
 

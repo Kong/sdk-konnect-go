@@ -4,15 +4,15 @@
 
 ### Available Operations
 
-* [ListPartialLink](#listpartiallink) - List partial links
+* [ListPartialLink](#listpartiallink) - List partial links in a workspace
 
 ## ListPartialLink
 
-List all plugins linked to the partial
+List all plugins linked to the partial in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-partial-link" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}/links" -->
+<!-- UsageSnippet language="go" operationID="list-partial-link" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials/{PartialId}/links" -->
 ```go
 package main
 
@@ -37,6 +37,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         PartialID: "",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)

@@ -7,24 +7,24 @@ A key object holds a representation of asymmetric keys in various formats. When 
 
 ### Available Operations
 
-* [ListKeyWithKeySet](#listkeywithkeyset) - List all Keys associated with a KeySet
-* [CreateKeyWithKeySet](#createkeywithkeyset) - Create a new Key associated with a KeySet
-* [DeleteKeyWithKeySet](#deletekeywithkeyset) - Delete a a Key associated with a KeySet
-* [GetKeyWithKeySet](#getkeywithkeyset) - Get a Key associated with a KeySet
-* [UpsertKeyWithKeySet](#upsertkeywithkeyset) - Upsert a Key associated with a KeySet
-* [ListKey](#listkey) - List all Keys
-* [CreateKey](#createkey) - Create a new Key
-* [DeleteKey](#deletekey) - Delete a Key
-* [GetKey](#getkey) - Get a Key
-* [UpsertKey](#upsertkey) - Upsert a Key
+* [ListKeyWithKeySet](#listkeywithkeyset) - List all Keys associated with a KeySet in a workspace
+* [CreateKeyWithKeySet](#createkeywithkeyset) - Create a new Key associated with a KeySet in a workspace
+* [DeleteKeyWithKeySet](#deletekeywithkeyset) - Delete a a Key associated with a KeySet in a workspace
+* [GetKeyWithKeySet](#getkeywithkeyset) - Get a Key associated with a KeySet in a workspace
+* [UpsertKeyWithKeySet](#upsertkeywithkeyset) - Upsert a Key associated with a KeySet in a workspace
+* [ListKey](#listkey) - List all Keys in a workspace
+* [CreateKey](#createkey) - Create a new Key in a workspace
+* [DeleteKey](#deletekey) - Delete a Key in a workspace
+* [GetKey](#getkey) - Get a Key in a workspace
+* [UpsertKey](#upsertkey) - Upsert a Key in a workspace
 
 ## ListKeyWithKeySet
 
-List all Keys associated with a KeySet
+List all Keys associated with a KeySet in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-key-with-key-set" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys" -->
+<!-- UsageSnippet language="go" operationID="list-key-with-key-set" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys" -->
 ```go
 package main
 
@@ -49,6 +49,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -79,11 +80,11 @@ func main() {
 
 ## CreateKeyWithKeySet
 
-Create a new Key associated with a KeySet
+Create a new Key associated with a KeySet in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-key-with-key-set" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys" -->
+<!-- UsageSnippet language="go" operationID="create-key-with-key-set" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys" -->
 ```go
 package main
 
@@ -107,6 +108,7 @@ func main() {
     res, err := s.Keys.CreateKeyWithKeySet(ctx, operations.CreateKeyWithKeySetRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
+        Workspace: "team-payments",
         KeyWithoutParents: components.KeyWithoutParents{
             ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
             Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
@@ -150,11 +152,11 @@ func main() {
 
 ## DeleteKeyWithKeySet
 
-Delete a a Key associated with a KeySet using ID or name.
+Delete a a Key associated with a KeySet using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-key-with-key-set" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys/{KeyId}" -->
+<!-- UsageSnippet language="go" operationID="delete-key-with-key-set" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys/{KeyId}" -->
 ```go
 package main
 
@@ -179,6 +181,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -209,11 +212,11 @@ func main() {
 
 ## GetKeyWithKeySet
 
-Get a Key associated with a KeySet using ID or name.
+Get a Key associated with a KeySet using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-key-with-key-set" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys/{KeyId}" -->
+<!-- UsageSnippet language="go" operationID="get-key-with-key-set" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys/{KeyId}" -->
 ```go
 package main
 
@@ -238,6 +241,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -268,11 +272,11 @@ func main() {
 
 ## UpsertKeyWithKeySet
 
-Create or Update a Key associated with a KeySet using ID or name.
+Create or Update a Key associated with a KeySet using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-key-with-key-set" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys/{KeyId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-key-with-key-set" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-sets/{KeySetId}/keys/{KeyId}" -->
 ```go
 package main
 
@@ -297,6 +301,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        Workspace: "team-payments",
         KeyWithoutParents: components.KeyWithoutParents{
             ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
             Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
@@ -340,11 +345,11 @@ func main() {
 
 ## ListKey
 
-List all Keys
+List all Keys in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-key" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" -->
+<!-- UsageSnippet language="go" operationID="list-key" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys" -->
 ```go
 package main
 
@@ -368,6 +373,7 @@ func main() {
     res, err := s.Keys.ListKey(ctx, operations.ListKeyRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -399,11 +405,11 @@ func main() {
 
 ## CreateKey
 
-Create a new Key
+Create a new Key in a workspace
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -411,6 +417,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -423,17 +430,21 @@ func main() {
         }),
     )
 
-    res, err := s.Keys.CreateKey(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Key{
-        ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-        Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
-        Kid: "42",
-        Name: sdkkonnectgo.Pointer("a-key"),
-        Pem: &components.Pem{
-            PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
-            PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-        },
-        Set: &components.Set{
-            ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+    res, err := s.Keys.CreateKey(ctx, operations.CreateKeyRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Key: components.Key{
+            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            Kid: "42",
+            Name: sdkkonnectgo.Pointer("a-key"),
+            Pem: &components.Pem{
+                PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+                PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            },
+            Set: &components.Set{
+                ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+            },
         },
     })
     if err != nil {
@@ -446,7 +457,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -454,6 +465,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -466,17 +478,21 @@ func main() {
         }),
     )
 
-    res, err := s.Keys.CreateKey(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Key{
-        ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-        Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
-        Kid: "42",
-        Name: sdkkonnectgo.Pointer("a-key"),
-        Pem: &components.Pem{
-            PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
-            PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-        },
-        Set: &components.Set{
-            ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+    res, err := s.Keys.CreateKey(ctx, operations.CreateKeyRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Key: components.Key{
+            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            Kid: "42",
+            Name: sdkkonnectgo.Pointer("a-key"),
+            Pem: &components.Pem{
+                PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+                PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            },
+            Set: &components.Set{
+                ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+            },
         },
     })
     if err != nil {
@@ -489,7 +505,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys" example="NoAPIKey" -->
 ```go
 package main
 
@@ -497,6 +513,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -509,17 +526,21 @@ func main() {
         }),
     )
 
-    res, err := s.Keys.CreateKey(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Key{
-        ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-        Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
-        Kid: "42",
-        Name: sdkkonnectgo.Pointer("a-key"),
-        Pem: &components.Pem{
-            PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
-            PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-        },
-        Set: &components.Set{
-            ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+    res, err := s.Keys.CreateKey(ctx, operations.CreateKeyRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Key: components.Key{
+            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            Kid: "42",
+            Name: sdkkonnectgo.Pointer("a-key"),
+            Pem: &components.Pem{
+                PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+                PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            },
+            Set: &components.Set{
+                ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+            },
         },
     })
     if err != nil {
@@ -533,12 +554,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                       | Type                                                                                                                                                                                                                                                            | Required                                                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                                                     | Example                                                                                                                                                                                                                                                         |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                                                                                                           | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                                                              | The context to use for the request.                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                 |
-| `controlPlaneID`                                                                                                                                                                                                                                                | `string`                                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                              | The UUID of your control plane. This variable is available in the Konnect manager.                                                                                                                                                                              | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                                                                                                                            |
-| `key`                                                                                                                                                                                                                                                           | [components.Key](../../models/components/key.md)                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                              | Description of the new Key for creation                                                                                                                                                                                                                         | {<br/>"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658",<br/>"jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}",<br/>"kid": "42",<br/>"name": "a-key",<br/>"pem": {<br/>"private_key": "-----BEGIN",<br/>"public_key": "-----BEGIN"<br/>},<br/>"set": {<br/>"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"<br/>}<br/>} |
-| `opts`                                                                                                                                                                                                                                                          | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                                                              | The options for this request.                                                                                                                                                                                                                                   |                                                                                                                                                                                                                                                                 |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `request`                                                                  | [operations.CreateKeyRequest](../../models/operations/createkeyrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |
 
 ### Response
 
@@ -553,11 +573,11 @@ func main() {
 
 ## DeleteKey
 
-Delete a Key
+Delete a Key in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-key" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" -->
+<!-- UsageSnippet language="go" operationID="delete-key" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys/{KeyId}" -->
 ```go
 package main
 
@@ -565,6 +585,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -577,7 +598,11 @@ func main() {
         }),
     )
 
-    res, err := s.Keys.DeleteKey(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "bba22c06-a632-42be-a018-1b9ff357b5b9")
+    res, err := s.Keys.DeleteKey(ctx, operations.DeleteKeyRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -589,12 +614,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `keyID`                                                                            | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Key to lookup                                                            | bba22c06-a632-42be-a018-1b9ff357b5b9                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `request`                                                                  | [operations.DeleteKeyRequest](../../models/operations/deletekeyrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |
 
 ### Response
 
@@ -609,11 +633,11 @@ func main() {
 
 ## GetKey
 
-Get a Key using ID or name.
+Get a Key using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-key" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" -->
+<!-- UsageSnippet language="go" operationID="get-key" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys/{KeyId}" -->
 ```go
 package main
 
@@ -621,6 +645,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -633,7 +658,11 @@ func main() {
         }),
     )
 
-    res, err := s.Keys.GetKey(ctx, "bba22c06-a632-42be-a018-1b9ff357b5b9", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.Keys.GetKey(ctx, operations.GetKeyRequest{
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -645,12 +674,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `keyID`                                                                            | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Key to lookup                                                            | bba22c06-a632-42be-a018-1b9ff357b5b9                                               |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `request`                                                            | [operations.GetKeyRequest](../../models/operations/getkeyrequest.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `opts`                                                               | [][operations.Option](../../models/operations/option.md)             | :heavy_minus_sign:                                                   | The options for this request.                                        |
 
 ### Response
 
@@ -665,11 +693,11 @@ func main() {
 
 ## UpsertKey
 
-Create or Update Key using ID or name.
+Create or Update Key using ID or name in a workspace.
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys/{KeyId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -693,6 +721,7 @@ func main() {
     res, err := s.Keys.UpsertKey(ctx, operations.UpsertKeyRequest{
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Key: components.Key{
             ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
             Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
@@ -717,7 +746,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys/{KeyId}" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -741,6 +770,7 @@ func main() {
     res, err := s.Keys.UpsertKey(ctx, operations.UpsertKeyRequest{
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Key: components.Key{
             ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
             Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
@@ -765,7 +795,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/keys/{KeyId}" example="NoAPIKey" -->
 ```go
 package main
 
@@ -789,6 +819,7 @@ func main() {
     res, err := s.Keys.UpsertKey(ctx, operations.UpsertKeyRequest{
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Key: components.Key{
             ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
             Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),

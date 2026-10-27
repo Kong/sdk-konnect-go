@@ -258,7 +258,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.TwoHundredImageJpegPortalImageAssetBlob != nil {
+    if res.TwoHundredImagePngPortalImageAssetBlob != nil {
         // handle response
     }
 }
@@ -529,7 +529,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.TwoHundredImageJpegPortalImageAssetBlob != nil {
+    if res.TwoHundredImagePngPortalImageAssetBlob != nil {
         // handle response
     }
 }

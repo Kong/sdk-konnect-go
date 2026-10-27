@@ -18,10 +18,8 @@ type ListServiceRequest struct {
 	Offset *string `queryParam:"style=form,explode=true,name=offset"`
 	// A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
 	Tags *string `queryParam:"style=form,explode=true,name=tags"`
-	// Filter routes by a substring of the name.
-	FilterNameContains *string `queryParam:"style=form,explode=true,name=filter[name][contains]"`
-	// Filter routes by their name.
-	FilterNameEq *string `queryParam:"style=form,explode=true,name=filter[name][eq]"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 }
 
 func (l ListServiceRequest) MarshalJSON() ([]byte, error) {
@@ -63,18 +61,11 @@ func (l *ListServiceRequest) GetTags() *string {
 	return l.Tags
 }
 
-func (l *ListServiceRequest) GetFilterNameContains() *string {
+func (l *ListServiceRequest) GetWorkspace() string {
 	if l == nil {
-		return nil
+		return ""
 	}
-	return l.FilterNameContains
-}
-
-func (l *ListServiceRequest) GetFilterNameEq() *string {
-	if l == nil {
-		return nil
-	}
-	return l.FilterNameEq
+	return l.Workspace
 }
 
 // ListServiceResponseBody - A successful response listing Services

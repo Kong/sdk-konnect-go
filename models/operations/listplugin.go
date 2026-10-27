@@ -18,10 +18,8 @@ type ListPluginRequest struct {
 	Offset *string `queryParam:"style=form,explode=true,name=offset"`
 	// A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
 	Tags *string `queryParam:"style=form,explode=true,name=tags"`
-	// Filter routes by a substring of the name.
-	FilterNameContains *string `queryParam:"style=form,explode=true,name=filter[name][contains]"`
-	// Filter routes by their name.
-	FilterNameEq *string `queryParam:"style=form,explode=true,name=filter[name][eq]"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 }
 
 func (l ListPluginRequest) MarshalJSON() ([]byte, error) {
@@ -63,18 +61,11 @@ func (l *ListPluginRequest) GetTags() *string {
 	return l.Tags
 }
 
-func (l *ListPluginRequest) GetFilterNameContains() *string {
+func (l *ListPluginRequest) GetWorkspace() string {
 	if l == nil {
-		return nil
+		return ""
 	}
-	return l.FilterNameContains
-}
-
-func (l *ListPluginRequest) GetFilterNameEq() *string {
-	if l == nil {
-		return nil
-	}
-	return l.FilterNameEq
+	return l.Workspace
 }
 
 // ListPluginResponseBody - A successful response listing Plugins

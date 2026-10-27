@@ -13,19 +13,19 @@ Services can be both [tagged and filtered by tags](https://developer.konghq.com/
 
 ### Available Operations
 
-* [ListService](#listservice) - List all Services
-* [CreateService](#createservice) - Create a new Service
-* [DeleteService](#deleteservice) - Delete a Service
-* [GetService](#getservice) - Get a Service
-* [UpsertService](#upsertservice) - Upsert a Service
+* [ListService](#listservice) - List all Services in a workspace
+* [CreateService](#createservice) - Create a new Service in a workspace
+* [DeleteService](#deleteservice) - Delete a Service in a workspace
+* [GetService](#getservice) - Get a Service in a workspace
+* [UpsertService](#upsertservice) - Upsert a Service in a workspace
 
 ## ListService
 
-List all Services
+List all Services in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services" -->
+<!-- UsageSnippet language="go" operationID="list-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services" -->
 ```go
 package main
 
@@ -49,8 +49,7 @@ func main() {
     res, err := s.Services.ListService(ctx, operations.ListServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
-        FilterNameContains: sdkkonnectgo.Pointer("john"),
-        FilterNameEq: sdkkonnectgo.Pointer("john"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -82,11 +81,11 @@ func main() {
 
 ## CreateService
 
-Create a new Service
+Create a new Service in a workspace
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -94,6 +93,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -106,14 +106,18 @@ func main() {
         }),
     )
 
-    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateServiceRequestServiceWithHost(
-        components.ServiceWithHost{
-            Host: "example.internal",
-            ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
-            Name: sdkkonnectgo.Pointer("example-service"),
-            Path: sdkkonnectgo.Pointer("/"),
-        },
-    ))
+    res, err := s.Services.CreateService(ctx, operations.CreateServiceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        ServiceRequest: components.CreateServiceRequestServiceWithHost(
+            components.ServiceWithHost{
+                Host: "example.internal",
+                ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
+                Name: sdkkonnectgo.Pointer("example-service"),
+                Path: sdkkonnectgo.Pointer("/"),
+            },
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -124,7 +128,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -132,6 +136,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -144,14 +149,18 @@ func main() {
         }),
     )
 
-    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateServiceRequestServiceWithHost(
-        components.ServiceWithHost{
-            Host: "example.internal",
-            ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
-            Name: sdkkonnectgo.Pointer("example-service"),
-            Path: sdkkonnectgo.Pointer("/"),
-        },
-    ))
+    res, err := s.Services.CreateService(ctx, operations.CreateServiceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        ServiceRequest: components.CreateServiceRequestServiceWithHost(
+            components.ServiceWithHost{
+                Host: "example.internal",
+                ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
+                Name: sdkkonnectgo.Pointer("example-service"),
+                Path: sdkkonnectgo.Pointer("/"),
+            },
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -162,7 +171,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services" example="NoAPIKey" -->
 ```go
 package main
 
@@ -170,6 +179,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -182,14 +192,18 @@ func main() {
         }),
     )
 
-    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateServiceRequestServiceWithHost(
-        components.ServiceWithHost{
-            Host: "example.internal",
-            ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
-            Name: sdkkonnectgo.Pointer("example-service"),
-            Path: sdkkonnectgo.Pointer("/"),
-        },
-    ))
+    res, err := s.Services.CreateService(ctx, operations.CreateServiceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        ServiceRequest: components.CreateServiceRequestServiceWithHost(
+            components.ServiceWithHost{
+                Host: "example.internal",
+                ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
+                Name: sdkkonnectgo.Pointer("example-service"),
+                Path: sdkkonnectgo.Pointer("/"),
+            },
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -201,12 +215,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                            | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          | Example                                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                                                | :heavy_check_mark:                                                                                                                                   | The context to use for the request.                                                                                                                  |                                                                                                                                                      |
-| `controlPlaneID`                                                                                                                                     | `string`                                                                                                                                             | :heavy_check_mark:                                                                                                                                   | The UUID of your control plane. This variable is available in the Konnect manager.                                                                   | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                 |
-| `serviceRequest`                                                                                                                                     | [components.ServiceRequest](../../models/components/servicerequest.md)                                                                               | :heavy_check_mark:                                                                                                                                   | Description of the new Service for creation                                                                                                          | {<br/>"host": "example.internal",<br/>"id": "49fd316e-c457-481c-9fc7-8079153e4f3c",<br/>"name": "example-service",<br/>"path": "/",<br/>"port": 80,<br/>"protocol": "http"<br/>} |
-| `opts`                                                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                                                             | :heavy_minus_sign:                                                                                                                                   | The options for this request.                                                                                                                        |                                                                                                                                                      |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
+| `request`                                                                          | [operations.CreateServiceRequest](../../models/operations/createservicerequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |
 
 ### Response
 
@@ -221,11 +234,11 @@ func main() {
 
 ## DeleteService
 
-Delete a Service
+Delete a Service in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" -->
+<!-- UsageSnippet language="go" operationID="delete-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}" -->
 ```go
 package main
 
@@ -233,6 +246,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -245,7 +259,11 @@ func main() {
         }),
     )
 
-    res, err := s.Services.DeleteService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "7fca84d6-7d37-4a74-a7b0-93e576089a41")
+    res, err := s.Services.DeleteService(ctx, operations.DeleteServiceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -257,12 +275,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `serviceID`                                                                        | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Service to lookup                                                        | 7fca84d6-7d37-4a74-a7b0-93e576089a41                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
+| `request`                                                                          | [operations.DeleteServiceRequest](../../models/operations/deleteservicerequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |
 
 ### Response
 
@@ -277,11 +294,11 @@ func main() {
 
 ## GetService
 
-Get a Service using ID or name.
+Get a Service using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" -->
+<!-- UsageSnippet language="go" operationID="get-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}" -->
 ```go
 package main
 
@@ -289,6 +306,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -301,7 +319,11 @@ func main() {
         }),
     )
 
-    res, err := s.Services.GetService(ctx, "7fca84d6-7d37-4a74-a7b0-93e576089a41", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.Services.GetService(ctx, operations.GetServiceRequest{
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -313,12 +335,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `serviceID`                                                                        | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Service to lookup                                                        | 7fca84d6-7d37-4a74-a7b0-93e576089a41                                               |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `request`                                                                    | [operations.GetServiceRequest](../../models/operations/getservicerequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |
 
 ### Response
 
@@ -333,11 +354,11 @@ func main() {
 
 ## UpsertService
 
-Create or Update Service using ID or name.
+Create or Update Service using ID or name in a workspace.
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -361,6 +382,7 @@ func main() {
     res, err := s.Services.UpsertService(ctx, operations.UpsertServiceRequest{
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         ServiceRequest: components.CreateServiceRequestServiceWithHost(
             components.ServiceWithHost{
                 Host: "example.internal",
@@ -380,7 +402,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -404,6 +426,7 @@ func main() {
     res, err := s.Services.UpsertService(ctx, operations.UpsertServiceRequest{
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         ServiceRequest: components.CreateServiceRequestServiceWithHost(
             components.ServiceWithHost{
                 Host: "example.internal",
@@ -423,7 +446,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}" example="NoAPIKey" -->
 ```go
 package main
 
@@ -447,6 +470,7 @@ func main() {
     res, err := s.Services.UpsertService(ctx, operations.UpsertServiceRequest{
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         ServiceRequest: components.CreateServiceRequestServiceWithHost(
             components.ServiceWithHost{
                 Host: "example.internal",

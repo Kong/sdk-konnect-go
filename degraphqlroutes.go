@@ -31,8 +31,8 @@ func newDegraphqlRoutes(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *
 	}
 }
 
-// ListDegraphqlRoute - List all Degraphql_routes
-// List all Degraphql_routes
+// ListDegraphqlRoute - List all Degraphql_routes in a workspace
+// List all Degraphql_routes in a workspace
 func (s *DegraphqlRoutes) ListDegraphqlRoute(ctx context.Context, request operations.ListDegraphqlRouteRequest, opts ...operations.Option) (*operations.ListDegraphqlRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -52,7 +52,7 @@ func (s *DegraphqlRoutes) ListDegraphqlRoute(ctx context.Context, request operat
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/degraphql_routes", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/degraphql_routes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -261,14 +261,9 @@ func (s *DegraphqlRoutes) ListDegraphqlRoute(ctx context.Context, request operat
 
 }
 
-// GetDegraphqlRoute - Get a Degraphql_route
-// Get a Degraphql_route using ID or name.
-func (s *DegraphqlRoutes) GetDegraphqlRoute(ctx context.Context, degraphqlRouteID string, controlPlaneID string, opts ...operations.Option) (*operations.GetDegraphqlRouteResponse, error) {
-	request := operations.GetDegraphqlRouteRequest{
-		DegraphqlRouteID: degraphqlRouteID,
-		ControlPlaneID:   controlPlaneID,
-	}
-
+// GetDegraphqlRoute - Get a Degraphql_route in a workspace
+// Get a Degraphql_route using ID or name in a workspace.
+func (s *DegraphqlRoutes) GetDegraphqlRoute(ctx context.Context, request operations.GetDegraphqlRouteRequest, opts ...operations.Option) (*operations.GetDegraphqlRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -287,7 +282,7 @@ func (s *DegraphqlRoutes) GetDegraphqlRoute(ctx context.Context, degraphqlRouteI
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/degraphql_routes/{Degraphql_routeId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/degraphql_routes/{Degraphql_routeId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -494,8 +489,8 @@ func (s *DegraphqlRoutes) GetDegraphqlRoute(ctx context.Context, degraphqlRouteI
 
 }
 
-// ListDegraphqlRouteWithService - List all Degraphql_routes associated with a Service
-// List all Degraphql_routes associated with a Service
+// ListDegraphqlRouteWithService - List all Degraphql_routes associated with a Service in a workspace
+// List all Degraphql_routes associated with a Service in a workspace
 func (s *DegraphqlRoutes) ListDegraphqlRouteWithService(ctx context.Context, request operations.ListDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.ListDegraphqlRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -515,7 +510,7 @@ func (s *DegraphqlRoutes) ListDegraphqlRouteWithService(ctx context.Context, req
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/degraphql/routes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -703,8 +698,8 @@ func (s *DegraphqlRoutes) ListDegraphqlRouteWithService(ctx context.Context, req
 
 }
 
-// CreateDegraphqlRouteWithService - Create a new Degraphql_route associated with a Service
-// Create a new Degraphql_route associated with a Service
+// CreateDegraphqlRouteWithService - Create a new Degraphql_route associated with a Service in a workspace
+// Create a new Degraphql_route associated with a Service in a workspace
 func (s *DegraphqlRoutes) CreateDegraphqlRouteWithService(ctx context.Context, request operations.CreateDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.CreateDegraphqlRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -724,7 +719,7 @@ func (s *DegraphqlRoutes) CreateDegraphqlRouteWithService(ctx context.Context, r
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/degraphql/routes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -915,8 +910,8 @@ func (s *DegraphqlRoutes) CreateDegraphqlRouteWithService(ctx context.Context, r
 
 }
 
-// DeleteDegraphqlRouteWithService - Delete a a Degraphql_route associated with a Service
-// Delete a a Degraphql_route associated with a Service using ID or name.
+// DeleteDegraphqlRouteWithService - Delete a a Degraphql_route associated with a Service in a workspace
+// Delete a a Degraphql_route associated with a Service using ID or name in a workspace.
 func (s *DegraphqlRoutes) DeleteDegraphqlRouteWithService(ctx context.Context, request operations.DeleteDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.DeleteDegraphqlRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -936,7 +931,7 @@ func (s *DegraphqlRoutes) DeleteDegraphqlRouteWithService(ctx context.Context, r
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1101,8 +1096,8 @@ func (s *DegraphqlRoutes) DeleteDegraphqlRouteWithService(ctx context.Context, r
 
 }
 
-// GetDegraphqlRouteWithService - Get a Degraphql_route associated with a Service
-// Get a Degraphql_route associated with a Service using ID or name.
+// GetDegraphqlRouteWithService - Get a Degraphql_route associated with a Service in a workspace
+// Get a Degraphql_route associated with a Service using ID or name in a workspace.
 func (s *DegraphqlRoutes) GetDegraphqlRouteWithService(ctx context.Context, request operations.GetDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.GetDegraphqlRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1122,7 +1117,7 @@ func (s *DegraphqlRoutes) GetDegraphqlRouteWithService(ctx context.Context, requ
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1308,8 +1303,8 @@ func (s *DegraphqlRoutes) GetDegraphqlRouteWithService(ctx context.Context, requ
 
 }
 
-// UpsertDegraphqlRouteWithService - Upsert a Degraphql_route associated with a Service
-// Create or Update a Degraphql_route associated with a Service using ID or name.
+// UpsertDegraphqlRouteWithService - Upsert a Degraphql_route associated with a Service in a workspace
+// Create or Update a Degraphql_route associated with a Service using ID or name in a workspace.
 func (s *DegraphqlRoutes) UpsertDegraphqlRouteWithService(ctx context.Context, request operations.UpsertDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.UpsertDegraphqlRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1329,7 +1324,7 @@ func (s *DegraphqlRoutes) UpsertDegraphqlRouteWithService(ctx context.Context, r
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

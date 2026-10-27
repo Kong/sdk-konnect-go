@@ -11,19 +11,19 @@ If intermediate certificates are required in addition to the main certificate, t
 
 ### Available Operations
 
-* [ListCertificate](#listcertificate) - List all Certificates
-* [CreateCertificate](#createcertificate) - Create a new Certificate
-* [DeleteCertificate](#deletecertificate) - Delete a Certificate
-* [GetCertificate](#getcertificate) - Get a Certificate
-* [UpsertCertificate](#upsertcertificate) - Upsert a Certificate
+* [ListCertificate](#listcertificate) - List all Certificates in a workspace
+* [CreateCertificate](#createcertificate) - Create a new Certificate in a workspace
+* [DeleteCertificate](#deletecertificate) - Delete a Certificate in a workspace
+* [GetCertificate](#getcertificate) - Get a Certificate in a workspace
+* [UpsertCertificate](#upsertcertificate) - Upsert a Certificate in a workspace
 
 ## ListCertificate
 
-List all Certificates
+List all Certificates in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates" -->
+<!-- UsageSnippet language="go" operationID="list-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates" -->
 ```go
 package main
 
@@ -47,6 +47,7 @@ func main() {
     res, err := s.Certificates.ListCertificate(ctx, operations.ListCertificateRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -78,11 +79,11 @@ func main() {
 
 ## CreateCertificate
 
-Create a new Certificate
+Create a new Certificate in a workspace
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="create-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -90,6 +91,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -102,13 +104,17 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateWithCertAndKey(
-        components.CertificateWithCertAndKey{
-            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
-        },
-    ))
+    res, err := s.Certificates.CreateCertificate(ctx, operations.CreateCertificateRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        CertificateRequest: components.CreateCertificateRequestCertificateWithCertAndKey(
+            components.CertificateWithCertAndKey{
+                Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+                ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+                Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+            },
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -119,7 +125,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="create-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="create-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -127,6 +133,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -139,13 +146,17 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateWithCertAndKey(
-        components.CertificateWithCertAndKey{
-            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
-        },
-    ))
+    res, err := s.Certificates.CreateCertificate(ctx, operations.CreateCertificateRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        CertificateRequest: components.CreateCertificateRequestCertificateWithCertAndKey(
+            components.CertificateWithCertAndKey{
+                Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+                ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+                Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+            },
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -156,7 +167,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="create-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="create-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates" example="NoAPIKey" -->
 ```go
 package main
 
@@ -164,6 +175,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -176,13 +188,17 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateWithCertAndKey(
-        components.CertificateWithCertAndKey{
-            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
-        },
-    ))
+    res, err := s.Certificates.CreateCertificate(ctx, operations.CreateCertificateRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        CertificateRequest: components.CreateCertificateRequestCertificateWithCertAndKey(
+            components.CertificateWithCertAndKey{
+                Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+                ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+                Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+            },
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -194,12 +210,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                     | Type                                                                                                                                                                                                                          | Required                                                                                                                                                                                                                      | Description                                                                                                                                                                                                                   | Example                                                                                                                                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                                                                            | The context to use for the request.                                                                                                                                                                                           |                                                                                                                                                                                                                               |
-| `controlPlaneID`                                                                                                                                                                                                              | `string`                                                                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                            | The UUID of your control plane. This variable is available in the Konnect manager.                                                                                                                                            | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                                                                                          |
-| `certificateRequest`                                                                                                                                                                                                          | [components.CertificateRequest](../../models/components/certificaterequest.md)                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                            | Description of the new Certificate for creation                                                                                                                                                                               | {<br/>"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",<br/>"id": "b2f34145-0343-41a4-9602-4c69dec2f269",<br/>"key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"<br/>} |
-| `opts`                                                                                                                                                                                                                        | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                            | The options for this request.                                                                                                                                                                                                 |                                                                                                                                                                                                                               |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [operations.CreateCertificateRequest](../../models/operations/createcertificaterequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
 
 ### Response
 
@@ -214,11 +229,11 @@ func main() {
 
 ## DeleteCertificate
 
-Delete a Certificate
+Delete a Certificate in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-certificate" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}" -->
+<!-- UsageSnippet language="go" operationID="delete-certificate" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}" -->
 ```go
 package main
 
@@ -226,6 +241,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -238,7 +254,11 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.DeleteCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "ddf3cdaa-3329-4961-822a-ce6dbd38eff7")
+    res, err := s.Certificates.DeleteCertificate(ctx, operations.DeleteCertificateRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -250,12 +270,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `certificateID`                                                                    | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Certificate to lookup                                                    | ddf3cdaa-3329-4961-822a-ce6dbd38eff7                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [operations.DeleteCertificateRequest](../../models/operations/deletecertificaterequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
 
 ### Response
 
@@ -270,11 +289,11 @@ func main() {
 
 ## GetCertificate
 
-Get a Certificate using ID.
+Get a Certificate using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}" -->
+<!-- UsageSnippet language="go" operationID="get-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}" -->
 ```go
 package main
 
@@ -282,6 +301,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -294,7 +314,11 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.GetCertificate(ctx, "ddf3cdaa-3329-4961-822a-ce6dbd38eff7", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.Certificates.GetCertificate(ctx, operations.GetCertificateRequest{
+        CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -306,12 +330,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `certificateID`                                                                    | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Certificate to lookup                                                    | ddf3cdaa-3329-4961-822a-ce6dbd38eff7                                               |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [operations.GetCertificateRequest](../../models/operations/getcertificaterequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
 
 ### Response
 
@@ -326,11 +349,11 @@ func main() {
 
 ## UpsertCertificate
 
-Create or Update Certificate using ID.
+Create or Update Certificate using ID in a workspace.
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -354,6 +377,7 @@ func main() {
     res, err := s.Certificates.UpsertCertificate(ctx, operations.UpsertCertificateRequest{
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         CertificateRequest: components.CreateCertificateRequestCertificateWithCertAndKey(
             components.CertificateWithCertAndKey{
                 Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
@@ -372,7 +396,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="upsert-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="upsert-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -396,6 +420,7 @@ func main() {
     res, err := s.Certificates.UpsertCertificate(ctx, operations.UpsertCertificateRequest{
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         CertificateRequest: components.CreateCertificateRequestCertificateWithCertAndKey(
             components.CertificateWithCertAndKey{
                 Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
@@ -414,7 +439,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="upsert-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}" example="NoAPIKey" -->
 ```go
 package main
 
@@ -438,6 +463,7 @@ func main() {
     res, err := s.Certificates.UpsertCertificate(ctx, operations.UpsertCertificateRequest{
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         CertificateRequest: components.CreateCertificateRequestCertificateWithCertAndKey(
             components.CertificateWithCertAndKey{
                 Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
