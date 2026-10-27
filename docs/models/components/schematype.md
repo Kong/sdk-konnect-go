@@ -2,6 +2,8 @@
 
 The format of the message.
 
+**`any` requires a minimum runtime version of `1.3`**.
+
 ## Example Usage
 
 ```go
@@ -22,3 +24,4 @@ custom := components.SchemaType("custom_value")
 | ---------------- | ---------------- |
 | `SchemaTypeAvro` | avro             |
 | `SchemaTypeJSON` | json             |
+| `SchemaTypeAny`  | any              |

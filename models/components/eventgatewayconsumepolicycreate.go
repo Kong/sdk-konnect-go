@@ -18,15 +18,19 @@ const (
 	EventGatewayConsumePolicyCreateTypeDecrypt          EventGatewayConsumePolicyCreateType = "decrypt"
 	EventGatewayConsumePolicyCreateTypeSkipRecord       EventGatewayConsumePolicyCreateType = "skip_record"
 	EventGatewayConsumePolicyCreateTypeDecryptFields    EventGatewayConsumePolicyCreateType = "decrypt_fields"
+	EventGatewayConsumePolicyCreateTypeTranscode        EventGatewayConsumePolicyCreateType = "transcode"
+	EventGatewayConsumePolicyCreateTypeMaskFields       EventGatewayConsumePolicyCreateType = "mask_fields"
 )
 
 // EventGatewayConsumePolicyCreate - The typed schema of the consume policy to modify it.
 type EventGatewayConsumePolicyCreate struct {
-	EventGatewayConsumeSchemaValidationPolicy         *EventGatewayConsumeSchemaValidationPolicy         `queryParam:"inline" union:"member"`
-	EventGatewayModifyHeadersPolicyCreate             *EventGatewayModifyHeadersPolicyCreate             `queryParam:"inline" union:"member"`
-	EventGatewaySkipRecordPolicyCreate                *EventGatewaySkipRecordPolicyCreate                `queryParam:"inline" union:"member"`
-	EventGatewayDecryptPolicy                         *EventGatewayDecryptPolicy                         `queryParam:"inline" union:"member"`
-	EventGatewayParsedRecordDecryptFieldsPolicyCreate *EventGatewayParsedRecordDecryptFieldsPolicyCreate `queryParam:"inline" union:"member"`
+	EventGatewayConsumeSchemaValidationPolicy             *EventGatewayConsumeSchemaValidationPolicy             `queryParam:"inline" union:"member"`
+	EventGatewayModifyHeadersPolicyCreate                 *EventGatewayModifyHeadersPolicyCreate                 `queryParam:"inline" union:"member"`
+	EventGatewaySkipRecordPolicyCreate                    *EventGatewaySkipRecordPolicyCreate                    `queryParam:"inline" union:"member"`
+	EventGatewayDecryptPolicy                             *EventGatewayDecryptPolicy                             `queryParam:"inline" union:"member"`
+	EventGatewayParsedRecordDecryptFieldsPolicyCreate     *EventGatewayParsedRecordDecryptFieldsPolicyCreate     `queryParam:"inline" union:"member"`
+	EventGatewayParsedRecordTranscodeConsumePolicyCreate  *EventGatewayParsedRecordTranscodeConsumePolicyCreate  `queryParam:"inline" union:"member"`
+	EventGatewayParsedRecordMaskFieldsConsumePolicyCreate *EventGatewayParsedRecordMaskFieldsConsumePolicyCreate `queryParam:"inline" union:"member"`
 
 	Type EventGatewayConsumePolicyCreateType
 }
@@ -72,6 +76,24 @@ func CreateEventGatewayConsumePolicyCreateDecryptFields(decryptFields EventGatew
 
 	return EventGatewayConsumePolicyCreate{
 		EventGatewayParsedRecordDecryptFieldsPolicyCreate: &decryptFields,
+		Type: typ,
+	}
+}
+
+func CreateEventGatewayConsumePolicyCreateTranscode(transcode EventGatewayParsedRecordTranscodeConsumePolicyCreate) EventGatewayConsumePolicyCreate {
+	typ := EventGatewayConsumePolicyCreateTypeTranscode
+
+	return EventGatewayConsumePolicyCreate{
+		EventGatewayParsedRecordTranscodeConsumePolicyCreate: &transcode,
+		Type: typ,
+	}
+}
+
+func CreateEventGatewayConsumePolicyCreateMaskFields(maskFields EventGatewayParsedRecordMaskFieldsConsumePolicyCreate) EventGatewayConsumePolicyCreate {
+	typ := EventGatewayConsumePolicyCreateTypeMaskFields
+
+	return EventGatewayConsumePolicyCreate{
+		EventGatewayParsedRecordMaskFieldsConsumePolicyCreate: &maskFields,
 		Type: typ,
 	}
 }
@@ -140,6 +162,24 @@ func (u *EventGatewayConsumePolicyCreate) UnmarshalJSON(data []byte) (err error)
 		u.EventGatewayParsedRecordDecryptFieldsPolicyCreate = eventGatewayParsedRecordDecryptFieldsPolicyCreate
 		u.Type = EventGatewayConsumePolicyCreateTypeDecryptFields
 		return nil
+	case "transcode":
+		eventGatewayParsedRecordTranscodeConsumePolicyCreate := new(EventGatewayParsedRecordTranscodeConsumePolicyCreate)
+		if err := utils.UnmarshalJSON(data, &eventGatewayParsedRecordTranscodeConsumePolicyCreate, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == transcode) type EventGatewayParsedRecordTranscodeConsumePolicyCreate within EventGatewayConsumePolicyCreate: %w", string(data), err)
+		}
+
+		u.EventGatewayParsedRecordTranscodeConsumePolicyCreate = eventGatewayParsedRecordTranscodeConsumePolicyCreate
+		u.Type = EventGatewayConsumePolicyCreateTypeTranscode
+		return nil
+	case "mask_fields":
+		eventGatewayParsedRecordMaskFieldsConsumePolicyCreate := new(EventGatewayParsedRecordMaskFieldsConsumePolicyCreate)
+		if err := utils.UnmarshalJSON(data, &eventGatewayParsedRecordMaskFieldsConsumePolicyCreate, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == mask_fields) type EventGatewayParsedRecordMaskFieldsConsumePolicyCreate within EventGatewayConsumePolicyCreate: %w", string(data), err)
+		}
+
+		u.EventGatewayParsedRecordMaskFieldsConsumePolicyCreate = eventGatewayParsedRecordMaskFieldsConsumePolicyCreate
+		u.Type = EventGatewayConsumePolicyCreateTypeMaskFields
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EventGatewayConsumePolicyCreate", string(data))
@@ -164,6 +204,14 @@ func (u EventGatewayConsumePolicyCreate) MarshalJSON() ([]byte, error) {
 
 	if u.EventGatewayParsedRecordDecryptFieldsPolicyCreate != nil {
 		return utils.MarshalJSON(u.EventGatewayParsedRecordDecryptFieldsPolicyCreate, "", true)
+	}
+
+	if u.EventGatewayParsedRecordTranscodeConsumePolicyCreate != nil {
+		return utils.MarshalJSON(u.EventGatewayParsedRecordTranscodeConsumePolicyCreate, "", true)
+	}
+
+	if u.EventGatewayParsedRecordMaskFieldsConsumePolicyCreate != nil {
+		return utils.MarshalJSON(u.EventGatewayParsedRecordMaskFieldsConsumePolicyCreate, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type EventGatewayConsumePolicyCreate: all fields are null")
