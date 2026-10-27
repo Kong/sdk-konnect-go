@@ -44,17 +44,17 @@ type PersonalAccessTokenCreateResponse struct {
 	// The Konnect token used to authenticate with Konnect.
 	KonnectToken string `json:"konnect_token"`
 	// Contains a unique identifier used for the user that revoked this token.
-	RevokedBy *string `json:"revoked_by,omitempty"`
+	RevokedBy *string `json:"revoked_by"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// An ISO-8601 timestamp representation of entity last used date.
-	LastUsedAt *time.Time `json:"last_used_at,omitempty"`
+	LastUsedAt *time.Time `json:"last_used_at"`
 	// An ISO-8601 timestamp representation of entity expiration date.
 	ExpiresAt *time.Time `json:"expires_at"`
 	// An ISO-8601 timestamp representation of entity revoked at date.
-	RevokedAt *time.Time `json:"revoked_at,omitempty"`
+	RevokedAt *time.Time `json:"revoked_at"`
 }
 
 func (p PersonalAccessTokenCreateResponse) MarshalJSON() ([]byte, error) {
