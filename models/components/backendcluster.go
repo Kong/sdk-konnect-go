@@ -88,6 +88,10 @@ func (b *BackendCluster) GetAuthenticationSaslScram() *BackendClusterAuthenticat
 	return b.GetAuthentication().BackendClusterAuthenticationSaslScramSensitiveDataAware
 }
 
+func (b *BackendCluster) GetAuthenticationSaslAwsIam() *BackendClusterAuthenticationSaslAwsIam {
+	return b.GetAuthentication().BackendClusterAuthenticationSaslAwsIam
+}
+
 func (b *BackendCluster) GetInsecureAllowAnonymousVirtualClusterAuth() *bool {
 	if b == nil {
 		return nil

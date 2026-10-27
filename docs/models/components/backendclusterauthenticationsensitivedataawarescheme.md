@@ -21,6 +21,12 @@ backendClusterAuthenticationSensitiveDataAwareScheme := components.CreateBackend
 backendClusterAuthenticationSensitiveDataAwareScheme := components.CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslScram(components.BackendClusterAuthenticationSaslScramSensitiveDataAware{/* values here */})
 ```
 
+### BackendClusterAuthenticationSaslAwsIam
+
+```go
+backendClusterAuthenticationSensitiveDataAwareScheme := components.CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslAwsIam(components.BackendClusterAuthenticationSaslAwsIam{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -33,5 +39,7 @@ switch backendClusterAuthenticationSensitiveDataAwareScheme.Type {
 		// backendClusterAuthenticationSensitiveDataAwareScheme.BackendClusterAuthenticationSaslPlainSensitiveDataAware is populated
 	case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslScram:
 		// backendClusterAuthenticationSensitiveDataAwareScheme.BackendClusterAuthenticationSaslScramSensitiveDataAware is populated
+	case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslAwsIam:
+		// backendClusterAuthenticationSensitiveDataAwareScheme.BackendClusterAuthenticationSaslAwsIam is populated
 }
 ```
