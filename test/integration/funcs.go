@@ -5,6 +5,9 @@ import (
 	"testing"
 )
 
+// workspace is the Konnect core-entities workspace targeted by the workspace-scoped endpoints.
+const workspace = "default"
+
 // NamePrefix returns a prefix for the test name.
 func NamePrefix(t *testing.T) string {
 	ret := "sdk-konnect-go-test-integration-" + strings.ReplaceAll(t.Name(), "/", "_")

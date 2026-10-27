@@ -11,8 +11,6 @@ import (
 	sdkkonnectops "github.com/Kong/sdk-konnect-go/models/operations"
 )
 
-const workspace = "default"
-
 func TestConsumerCreateGetDeleteList(t *testing.T) {
 	t.Parallel()
 
