@@ -21,6 +21,12 @@ backendClusterAuthenticationScheme := components.CreateBackendClusterAuthenticat
 backendClusterAuthenticationScheme := components.CreateBackendClusterAuthenticationSchemeSaslScram(components.BackendClusterAuthenticationSaslScram{/* values here */})
 ```
 
+### BackendClusterAuthenticationSaslAwsIam
+
+```go
+backendClusterAuthenticationScheme := components.CreateBackendClusterAuthenticationSchemeSaslAwsIam(components.BackendClusterAuthenticationSaslAwsIam{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -33,5 +39,7 @@ switch backendClusterAuthenticationScheme.Type {
 		// backendClusterAuthenticationScheme.BackendClusterAuthenticationSaslPlain is populated
 	case components.BackendClusterAuthenticationSchemeTypeSaslScram:
 		// backendClusterAuthenticationScheme.BackendClusterAuthenticationSaslScram is populated
+	case components.BackendClusterAuthenticationSchemeTypeSaslAwsIam:
+		// backendClusterAuthenticationScheme.BackendClusterAuthenticationSaslAwsIam is populated
 }
 ```

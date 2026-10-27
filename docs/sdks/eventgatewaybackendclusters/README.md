@@ -104,8 +104,12 @@ func main() {
 
     res, err := s.EventGatewayBackendClusters.CreateEventGatewayBackendCluster(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.CreateBackendClusterRequest{
         Name: "<value>",
-        Authentication: components.CreateBackendClusterAuthenticationSchemeAnonymous(
-            components.BackendClusterAuthenticationAnonymous{},
+        Authentication: components.CreateBackendClusterAuthenticationSchemeSaslAwsIam(
+            components.BackendClusterAuthenticationSaslAwsIam{
+                SaslAwsIam: components.CreateSaslAwsIamDefaultProviderChain(
+                    components.BackendClusterAuthenticationSaslAwsIamDefaultProviderChain{},
+                ),
+            },
         ),
         BootstrapServers: []string{
             "<value 1>",
@@ -133,6 +137,8 @@ func main() {
                 // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslPlainSensitiveDataAware is populated
             case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslScram:
                 // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslScramSensitiveDataAware is populated
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslAwsIam:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslAwsIam is populated
         }
 
     }
@@ -199,6 +205,8 @@ func main() {
                 // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslPlainSensitiveDataAware is populated
             case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslScram:
                 // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslScramSensitiveDataAware is populated
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslAwsIam:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslAwsIam is populated
         }
 
     }
@@ -259,9 +267,11 @@ func main() {
         BackendClusterID: "daa3274b-d11d-4c55-a802-1603cfec6a6c",
         UpdateBackendClusterRequest: &components.UpdateBackendClusterRequest{
             Name: "<value>",
-            Authentication: components.CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslPlain(
-                components.BackendClusterAuthenticationSaslPlainSensitiveDataAware{
-                    Username: "Yasmin66",
+            Authentication: components.CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslAwsIam(
+                components.BackendClusterAuthenticationSaslAwsIam{
+                    SaslAwsIam: components.CreateSaslAwsIamDefaultProviderChain(
+                        components.BackendClusterAuthenticationSaslAwsIamDefaultProviderChain{},
+                    ),
                 },
             ),
             BootstrapServers: []string{
@@ -292,6 +302,8 @@ func main() {
                 // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslPlainSensitiveDataAware is populated
             case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslScram:
                 // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslScramSensitiveDataAware is populated
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslAwsIam:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslAwsIam is populated
         }
 
     }

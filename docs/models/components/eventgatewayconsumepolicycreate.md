@@ -35,6 +35,18 @@ eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCre
 eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateDecryptFields(components.EventGatewayParsedRecordDecryptFieldsPolicyCreate{/* values here */})
 ```
 
+### EventGatewayParsedRecordTranscodeConsumePolicyCreate
+
+```go
+eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateTranscode(components.EventGatewayParsedRecordTranscodeConsumePolicyCreate{/* values here */})
+```
+
+### EventGatewayParsedRecordMaskFieldsConsumePolicyCreate
+
+```go
+eventGatewayConsumePolicyCreate := components.CreateEventGatewayConsumePolicyCreateMaskFields(components.EventGatewayParsedRecordMaskFieldsConsumePolicyCreate{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -51,5 +63,9 @@ switch eventGatewayConsumePolicyCreate.Type {
 		// eventGatewayConsumePolicyCreate.EventGatewaySkipRecordPolicyCreate is populated
 	case components.EventGatewayConsumePolicyCreateTypeDecryptFields:
 		// eventGatewayConsumePolicyCreate.EventGatewayParsedRecordDecryptFieldsPolicyCreate is populated
+	case components.EventGatewayConsumePolicyCreateTypeTranscode:
+		// eventGatewayConsumePolicyCreate.EventGatewayParsedRecordTranscodeConsumePolicyCreate is populated
+	case components.EventGatewayConsumePolicyCreateTypeMaskFields:
+		// eventGatewayConsumePolicyCreate.EventGatewayParsedRecordMaskFieldsConsumePolicyCreate is populated
 }
 ```

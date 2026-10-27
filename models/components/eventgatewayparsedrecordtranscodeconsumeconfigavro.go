@@ -18,6 +18,12 @@ type EventGatewayParsedRecordTranscodeConsumeConfigAvro struct {
 	//
 	// **Requires a minimum runtime version of `1.2`**.
 	FailureMode ConsumeFailureMode `json:"failure_mode"`
+	// Describes how to handle JSON fields that are not defined in the target schema.
+	// * `fail` - the transcoding fails. The policy `failure_mode` determines how the failure is handled.
+	// * `drop` - the unknown fields are removed from the transcoded value.
+	//
+	// **Requires a minimum runtime version of `1.3`**.
+	OnUnknownField *TranscodeOnUnknownField `default:"fail" json:"on_unknown_field"`
 	// Determines how to look up the schema to use for the transcoded output data.
 	// Leave this unset if the output data schema isn't needed.
 	//
@@ -43,6 +49,13 @@ func (e *EventGatewayParsedRecordTranscodeConsumeConfigAvro) GetFailureMode() Co
 		return ConsumeFailureMode("")
 	}
 	return e.FailureMode
+}
+
+func (e *EventGatewayParsedRecordTranscodeConsumeConfigAvro) GetOnUnknownField() *TranscodeOnUnknownField {
+	if e == nil {
+		return nil
+	}
+	return e.OnUnknownField
 }
 
 func (e *EventGatewayParsedRecordTranscodeConsumeConfigAvro) GetSchemaSource() EventGatewayParsedRecordTranscodeSchemaSource {

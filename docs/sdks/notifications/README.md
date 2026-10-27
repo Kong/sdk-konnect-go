@@ -20,7 +20,7 @@ Operations related to notifications
 
 ## ListUserConfigurations
 
-List available user configurations.
+List the events that the user can configure. An org scoped event that has no user channel is not part of this list: see list-org-configurations.
 
 ### Example Usage
 
@@ -136,11 +136,12 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## CreateEventSubscription
 
-Create a new subscription for an event.
+Create a new user scoped subscription for an event. A user subscription accepts the IN_APP and EMAIL channels only. A request with another channel answers 400. The http channel is available for org scoped notifications only.
 
 ### Example Usage: Event Subscription
 
@@ -310,7 +311,7 @@ func main() {
 
 ## UpdateEventSubscription
 
-Update subscription for an event.
+Update a user scoped subscription for an event. A user subscription accepts the IN_APP and EMAIL channels only. A request with another channel answers 400.
 
 ### Example Usage: Event Subscription
 

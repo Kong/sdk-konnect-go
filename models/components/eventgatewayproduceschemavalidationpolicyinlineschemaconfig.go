@@ -11,8 +11,6 @@ import (
 //
 // **Requires a minimum runtime version of `1.3`**.
 type EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig struct {
-	// A reference to a schema Registry.
-	SchemaRegistry *SchemaRegistryReference `json:"schema_registry,omitempty"`
 	// Describes how to handle a failure in a policy applied to produced records.
 	// * `reject` - rejects the record batch.
 	// * `passthrough` - passes the record silently to the backend cluster even though policy execution failed.
@@ -46,6 +44,14 @@ type EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig struct {
 	ValueValidationAction *ProduceValueValidationAction `json:"value_validation_action,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"inline_schema" json:"type"`
+	// Defines the schema for a record key or value, inline.
+	//
+	// **Requires a minimum runtime version of `1.3`**.
+	Key *SchemaValidationInlineSchemaConfig `json:"key,omitempty"`
+	// Defines the schema for a record key or value, inline.
+	//
+	// **Requires a minimum runtime version of `1.3`**.
+	Value *SchemaValidationInlineSchemaConfig `json:"value,omitempty"`
 }
 
 func (e EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) MarshalJSON() ([]byte, error) {
@@ -57,13 +63,6 @@ func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) UnmarshalJ
 		return err
 	}
 	return nil
-}
-
-func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetSchemaRegistry() *SchemaRegistryReference {
-	if e == nil {
-		return nil
-	}
-	return e.SchemaRegistry
 }
 
 func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetFailureMode() *ProduceFailureMode {
@@ -103,4 +102,46 @@ func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetValueVa
 
 func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetType() string {
 	return "inline_schema"
+}
+
+func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetKey() *SchemaValidationInlineSchemaConfig {
+	if e == nil {
+		return nil
+	}
+	return e.Key
+}
+
+func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetKeyJSON() *SchemaValidationInlineSchemaConfigJSON {
+	if v := e.GetKey(); v != nil {
+		return v.SchemaValidationInlineSchemaConfigJSON
+	}
+	return nil
+}
+
+func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetKeyAvro() *SchemaValidationInlineSchemaConfigAvro {
+	if v := e.GetKey(); v != nil {
+		return v.SchemaValidationInlineSchemaConfigAvro
+	}
+	return nil
+}
+
+func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetValue() *SchemaValidationInlineSchemaConfig {
+	if e == nil {
+		return nil
+	}
+	return e.Value
+}
+
+func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetValueJSON() *SchemaValidationInlineSchemaConfigJSON {
+	if v := e.GetValue(); v != nil {
+		return v.SchemaValidationInlineSchemaConfigJSON
+	}
+	return nil
+}
+
+func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetValueAvro() *SchemaValidationInlineSchemaConfigAvro {
+	if v := e.GetValue(); v != nil {
+		return v.SchemaValidationInlineSchemaConfigAvro
+	}
+	return nil
 }
