@@ -31,8 +31,8 @@ func newMTLSAuthCredentials(rootSDK *SDK, sdkConfig config.SDKConfiguration, hoo
 	}
 }
 
-// ListMtlsAuthWithConsumer - List all MTLS-auth credentials associated with a Consumer
-// List all MTLS-auth credentials associated with a Consumer
+// ListMtlsAuthWithConsumer - List all MTLS-auth credentials associated with a Consumer in a workspace
+// List all MTLS-auth credentials associated with a Consumer in a workspace
 func (s *MTLSAuthCredentials) ListMtlsAuthWithConsumer(ctx context.Context, request operations.ListMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListMtlsAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -52,7 +52,7 @@ func (s *MTLSAuthCredentials) ListMtlsAuthWithConsumer(ctx context.Context, requ
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -240,8 +240,8 @@ func (s *MTLSAuthCredentials) ListMtlsAuthWithConsumer(ctx context.Context, requ
 
 }
 
-// CreateMtlsAuthWithConsumer - Create a new MTLS-auth credential associated with a Consumer
-// Create a new MTLS-auth credential associated with a Consumer
+// CreateMtlsAuthWithConsumer - Create a new MTLS-auth credential associated with a Consumer in a workspace
+// Create a new MTLS-auth credential associated with a Consumer in a workspace
 func (s *MTLSAuthCredentials) CreateMtlsAuthWithConsumer(ctx context.Context, request operations.CreateMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.CreateMtlsAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -261,7 +261,7 @@ func (s *MTLSAuthCredentials) CreateMtlsAuthWithConsumer(ctx context.Context, re
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -452,8 +452,8 @@ func (s *MTLSAuthCredentials) CreateMtlsAuthWithConsumer(ctx context.Context, re
 
 }
 
-// DeleteMtlsAuthWithConsumer - Delete a a MTLS-auth credential associated with a Consumer
-// Delete a a MTLS-auth credential associated with a Consumer using ID.
+// DeleteMtlsAuthWithConsumer - Delete a a MTLS-auth credential associated with a Consumer in a workspace
+// Delete a a MTLS-auth credential associated with a Consumer using ID in a workspace.
 func (s *MTLSAuthCredentials) DeleteMtlsAuthWithConsumer(ctx context.Context, request operations.DeleteMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteMtlsAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -473,7 +473,7 @@ func (s *MTLSAuthCredentials) DeleteMtlsAuthWithConsumer(ctx context.Context, re
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -638,8 +638,8 @@ func (s *MTLSAuthCredentials) DeleteMtlsAuthWithConsumer(ctx context.Context, re
 
 }
 
-// GetMtlsAuthWithConsumer - Get a MTLS-auth credential associated with a Consumer
-// Get a MTLS-auth credential associated with a Consumer using ID.
+// GetMtlsAuthWithConsumer - Get a MTLS-auth credential associated with a Consumer in a workspace
+// Get a MTLS-auth credential associated with a Consumer using ID in a workspace.
 func (s *MTLSAuthCredentials) GetMtlsAuthWithConsumer(ctx context.Context, request operations.GetMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetMtlsAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -659,7 +659,7 @@ func (s *MTLSAuthCredentials) GetMtlsAuthWithConsumer(ctx context.Context, reque
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -845,8 +845,8 @@ func (s *MTLSAuthCredentials) GetMtlsAuthWithConsumer(ctx context.Context, reque
 
 }
 
-// UpsertMtlsAuthWithConsumer - Upsert a MTLS-auth credential associated with a Consumer
-// Create or Update a MTLS-auth credential associated with a Consumer using ID.
+// UpsertMtlsAuthWithConsumer - Upsert a MTLS-auth credential associated with a Consumer in a workspace
+// Create or Update a MTLS-auth credential associated with a Consumer using ID in a workspace.
 func (s *MTLSAuthCredentials) UpsertMtlsAuthWithConsumer(ctx context.Context, request operations.UpsertMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertMtlsAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -866,7 +866,7 @@ func (s *MTLSAuthCredentials) UpsertMtlsAuthWithConsumer(ctx context.Context, re
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1057,8 +1057,8 @@ func (s *MTLSAuthCredentials) UpsertMtlsAuthWithConsumer(ctx context.Context, re
 
 }
 
-// ListMtlsAuth - List all MTLS-auth credentials
-// List all MTLS-auth credentials
+// ListMtlsAuth - List all MTLS-auth credentials in a workspace
+// List all MTLS-auth credentials in a workspace
 func (s *MTLSAuthCredentials) ListMtlsAuth(ctx context.Context, request operations.ListMtlsAuthRequest, opts ...operations.Option) (*operations.ListMtlsAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1078,7 +1078,7 @@ func (s *MTLSAuthCredentials) ListMtlsAuth(ctx context.Context, request operatio
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/mtls-auths", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/mtls-auths", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1287,14 +1287,9 @@ func (s *MTLSAuthCredentials) ListMtlsAuth(ctx context.Context, request operatio
 
 }
 
-// GetMtlsAuth - Get a MTLS-auth credential
-// Get a MTLS-auth credential using ID.
-func (s *MTLSAuthCredentials) GetMtlsAuth(ctx context.Context, mtlsAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetMtlsAuthResponse, error) {
-	request := operations.GetMtlsAuthRequest{
-		MTLSAuthID:     mtlsAuthID,
-		ControlPlaneID: controlPlaneID,
-	}
-
+// GetMtlsAuth - Get a MTLS-auth credential in a workspace
+// Get a MTLS-auth credential using ID in a workspace.
+func (s *MTLSAuthCredentials) GetMtlsAuth(ctx context.Context, request operations.GetMtlsAuthRequest, opts ...operations.Option) (*operations.GetMtlsAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1313,7 +1308,7 @@ func (s *MTLSAuthCredentials) GetMtlsAuth(ctx context.Context, mtlsAuthID string
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/mtls-auths/{MTLSAuthId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/mtls-auths/{MTLSAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -12,6 +13,19 @@ type DeleteConsumerGroupRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Consumer Group to lookup
 	ConsumerGroupID string `pathParam:"style=simple,explode=false,name=ConsumerGroupId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeleteConsumerGroupRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteConsumerGroupRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeleteConsumerGroupRequest) GetControlPlaneID() string {
@@ -26,6 +40,13 @@ func (d *DeleteConsumerGroupRequest) GetConsumerGroupID() string {
 		return ""
 	}
 	return d.ConsumerGroupID
+}
+
+func (d *DeleteConsumerGroupRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeleteConsumerGroupResponse struct {

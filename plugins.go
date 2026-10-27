@@ -35,8 +35,8 @@ func newPlugins(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Ho
 	}
 }
 
-// ListPluginWithConsumerGroup - List all Plugins associated with a Consumer Group
-// List all Plugins associated with a Consumer Group
+// ListPluginWithConsumerGroup - List all Plugins associated with a Consumer Group in a workspace
+// List all Plugins associated with a Consumer Group in a workspace
 func (s *Plugins) ListPluginWithConsumerGroup(ctx context.Context, request operations.ListPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerGroupResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -56,7 +56,7 @@ func (s *Plugins) ListPluginWithConsumerGroup(ctx context.Context, request opera
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -244,8 +244,8 @@ func (s *Plugins) ListPluginWithConsumerGroup(ctx context.Context, request opera
 
 }
 
-// CreatePluginWithConsumerGroup - Create a new Plugin associated with a Consumer Group
-// Create a new Plugin associated with a Consumer Group
+// CreatePluginWithConsumerGroup - Create a new Plugin associated with a Consumer Group in a workspace
+// Create a new Plugin associated with a Consumer Group in a workspace
 func (s *Plugins) CreatePluginWithConsumerGroup(ctx context.Context, request operations.CreatePluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerGroupResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -265,7 +265,7 @@ func (s *Plugins) CreatePluginWithConsumerGroup(ctx context.Context, request ope
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -456,8 +456,8 @@ func (s *Plugins) CreatePluginWithConsumerGroup(ctx context.Context, request ope
 
 }
 
-// DeletePluginWithConsumerGroup - Delete a a Plugin associated with a Consumer Group
-// Delete a a Plugin associated with a Consumer Group using ID.
+// DeletePluginWithConsumerGroup - Delete a a Plugin associated with a Consumer Group in a workspace
+// Delete a a Plugin associated with a Consumer Group using ID in a workspace.
 func (s *Plugins) DeletePluginWithConsumerGroup(ctx context.Context, request operations.DeletePluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerGroupResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -477,7 +477,7 @@ func (s *Plugins) DeletePluginWithConsumerGroup(ctx context.Context, request ope
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -642,8 +642,8 @@ func (s *Plugins) DeletePluginWithConsumerGroup(ctx context.Context, request ope
 
 }
 
-// GetPluginWithConsumerGroup - Get a Plugin associated with a Consumer Group
-// Get a Plugin associated with a Consumer Group using ID.
+// GetPluginWithConsumerGroup - Get a Plugin associated with a Consumer Group in a workspace
+// Get a Plugin associated with a Consumer Group using ID in a workspace.
 func (s *Plugins) GetPluginWithConsumerGroup(ctx context.Context, request operations.GetPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerGroupResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -663,7 +663,7 @@ func (s *Plugins) GetPluginWithConsumerGroup(ctx context.Context, request operat
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -695,10 +695,6 @@ func (s *Plugins) GetPluginWithConsumerGroup(ctx context.Context, request operat
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
@@ -853,8 +849,8 @@ func (s *Plugins) GetPluginWithConsumerGroup(ctx context.Context, request operat
 
 }
 
-// UpsertPluginWithConsumerGroup - Upsert a Plugin associated with a Consumer Group
-// Create or Update a Plugin associated with a Consumer Group using ID.
+// UpsertPluginWithConsumerGroup - Upsert a Plugin associated with a Consumer Group in a workspace
+// Create or Update a Plugin associated with a Consumer Group using ID in a workspace.
 func (s *Plugins) UpsertPluginWithConsumerGroup(ctx context.Context, request operations.UpsertPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerGroupResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -874,7 +870,7 @@ func (s *Plugins) UpsertPluginWithConsumerGroup(ctx context.Context, request ope
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1065,8 +1061,8 @@ func (s *Plugins) UpsertPluginWithConsumerGroup(ctx context.Context, request ope
 
 }
 
-// ListPluginWithConsumer - List all Plugins associated with a Consumer
-// List all Plugins associated with a Consumer
+// ListPluginWithConsumer - List all Plugins associated with a Consumer in a workspace
+// List all Plugins associated with a Consumer in a workspace
 func (s *Plugins) ListPluginWithConsumer(ctx context.Context, request operations.ListPluginWithConsumerRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1086,7 +1082,7 @@ func (s *Plugins) ListPluginWithConsumer(ctx context.Context, request operations
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1274,8 +1270,8 @@ func (s *Plugins) ListPluginWithConsumer(ctx context.Context, request operations
 
 }
 
-// CreatePluginWithConsumer - Create a new Plugin associated with a Consumer
-// Create a new Plugin associated with a Consumer
+// CreatePluginWithConsumer - Create a new Plugin associated with a Consumer in a workspace
+// Create a new Plugin associated with a Consumer in a workspace
 func (s *Plugins) CreatePluginWithConsumer(ctx context.Context, request operations.CreatePluginWithConsumerRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1295,7 +1291,7 @@ func (s *Plugins) CreatePluginWithConsumer(ctx context.Context, request operatio
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1486,8 +1482,8 @@ func (s *Plugins) CreatePluginWithConsumer(ctx context.Context, request operatio
 
 }
 
-// DeletePluginWithConsumer - Delete a a Plugin associated with a Consumer
-// Delete a a Plugin associated with a Consumer using ID.
+// DeletePluginWithConsumer - Delete a a Plugin associated with a Consumer in a workspace
+// Delete a a Plugin associated with a Consumer using ID in a workspace.
 func (s *Plugins) DeletePluginWithConsumer(ctx context.Context, request operations.DeletePluginWithConsumerRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1507,7 +1503,7 @@ func (s *Plugins) DeletePluginWithConsumer(ctx context.Context, request operatio
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1672,8 +1668,8 @@ func (s *Plugins) DeletePluginWithConsumer(ctx context.Context, request operatio
 
 }
 
-// GetPluginWithConsumer - Get a Plugin associated with a Consumer
-// Get a Plugin associated with a Consumer using ID.
+// GetPluginWithConsumer - Get a Plugin associated with a Consumer in a workspace
+// Get a Plugin associated with a Consumer using ID in a workspace.
 func (s *Plugins) GetPluginWithConsumer(ctx context.Context, request operations.GetPluginWithConsumerRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1693,7 +1689,7 @@ func (s *Plugins) GetPluginWithConsumer(ctx context.Context, request operations.
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1725,10 +1721,6 @@ func (s *Plugins) GetPluginWithConsumer(ctx context.Context, request operations.
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
@@ -1883,8 +1875,8 @@ func (s *Plugins) GetPluginWithConsumer(ctx context.Context, request operations.
 
 }
 
-// UpsertPluginWithConsumer - Upsert a Plugin associated with a Consumer
-// Create or Update a Plugin associated with a Consumer using ID.
+// UpsertPluginWithConsumer - Upsert a Plugin associated with a Consumer in a workspace
+// Create or Update a Plugin associated with a Consumer using ID in a workspace.
 func (s *Plugins) UpsertPluginWithConsumer(ctx context.Context, request operations.UpsertPluginWithConsumerRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1904,7 +1896,7 @@ func (s *Plugins) UpsertPluginWithConsumer(ctx context.Context, request operatio
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2095,8 +2087,8 @@ func (s *Plugins) UpsertPluginWithConsumer(ctx context.Context, request operatio
 
 }
 
-// ListPlugin - List all Plugins
-// List all Plugins
+// ListPlugin - List all Plugins in a workspace
+// List all Plugins in a workspace
 func (s *Plugins) ListPlugin(ctx context.Context, request operations.ListPluginRequest, opts ...operations.Option) (*operations.ListPluginResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -2116,7 +2108,7 @@ func (s *Plugins) ListPlugin(ctx context.Context, request operations.ListPluginR
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugins", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2325,14 +2317,9 @@ func (s *Plugins) ListPlugin(ctx context.Context, request operations.ListPluginR
 
 }
 
-// CreatePlugin - Create a new Plugin
-// Create a new Plugin
-func (s *Plugins) CreatePlugin(ctx context.Context, controlPlaneID string, plugin components.Plugin, opts ...operations.Option) (*operations.CreatePluginResponse, error) {
-	request := operations.CreatePluginRequest{
-		ControlPlaneID: controlPlaneID,
-		Plugin:         plugin,
-	}
-
+// CreatePlugin - Create a new Plugin in a workspace
+// Create a new Plugin in a workspace
+func (s *Plugins) CreatePlugin(ctx context.Context, request operations.CreatePluginRequest, opts ...operations.Option) (*operations.CreatePluginResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2351,7 +2338,7 @@ func (s *Plugins) CreatePlugin(ctx context.Context, controlPlaneID string, plugi
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugins", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2563,14 +2550,9 @@ func (s *Plugins) CreatePlugin(ctx context.Context, controlPlaneID string, plugi
 
 }
 
-// DeletePlugin - Delete a Plugin
-// Delete a Plugin
-func (s *Plugins) DeletePlugin(ctx context.Context, controlPlaneID string, pluginID string, opts ...operations.Option) (*operations.DeletePluginResponse, error) {
-	request := operations.DeletePluginRequest{
-		ControlPlaneID: controlPlaneID,
-		PluginID:       pluginID,
-	}
-
+// DeletePlugin - Delete a Plugin in a workspace
+// Delete a Plugin in a workspace
+func (s *Plugins) DeletePlugin(ctx context.Context, request operations.DeletePluginRequest, opts ...operations.Option) (*operations.DeletePluginResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2589,7 +2571,7 @@ func (s *Plugins) DeletePlugin(ctx context.Context, controlPlaneID string, plugi
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2775,8 +2757,8 @@ func (s *Plugins) DeletePlugin(ctx context.Context, controlPlaneID string, plugi
 
 }
 
-// GetPlugin - Get a Plugin
-// Get a Plugin using ID.
+// GetPlugin - Get a Plugin in a workspace
+// Get a Plugin using ID in a workspace.
 func (s *Plugins) GetPlugin(ctx context.Context, request operations.GetPluginRequest, opts ...operations.Option) (*operations.GetPluginResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -2796,7 +2778,7 @@ func (s *Plugins) GetPlugin(ctx context.Context, request operations.GetPluginReq
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2828,10 +2810,6 @@ func (s *Plugins) GetPlugin(ctx context.Context, request operations.GetPluginReq
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
@@ -3007,8 +2985,8 @@ func (s *Plugins) GetPlugin(ctx context.Context, request operations.GetPluginReq
 
 }
 
-// UpsertPlugin - Upsert a Plugin
-// Create or Update Plugin using ID.
+// UpsertPlugin - Upsert a Plugin in a workspace
+// Create or Update Plugin using ID in a workspace.
 func (s *Plugins) UpsertPlugin(ctx context.Context, request operations.UpsertPluginRequest, opts ...operations.Option) (*operations.UpsertPluginResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -3028,7 +3006,7 @@ func (s *Plugins) UpsertPlugin(ctx context.Context, request operations.UpsertPlu
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -3240,8 +3218,8 @@ func (s *Plugins) UpsertPlugin(ctx context.Context, request operations.UpsertPlu
 
 }
 
-// ListPluginWithRoute - List all Plugins associated with a Route
-// List all Plugins associated with a Route
+// ListPluginWithRoute - List all Plugins associated with a Route in a workspace
+// List all Plugins associated with a Route in a workspace
 func (s *Plugins) ListPluginWithRoute(ctx context.Context, request operations.ListPluginWithRouteRequest, opts ...operations.Option) (*operations.ListPluginWithRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -3261,7 +3239,7 @@ func (s *Plugins) ListPluginWithRoute(ctx context.Context, request operations.Li
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -3449,8 +3427,8 @@ func (s *Plugins) ListPluginWithRoute(ctx context.Context, request operations.Li
 
 }
 
-// CreatePluginWithRoute - Create a new Plugin associated with a Route
-// Create a new Plugin associated with a Route
+// CreatePluginWithRoute - Create a new Plugin associated with a Route in a workspace
+// Create a new Plugin associated with a Route in a workspace
 func (s *Plugins) CreatePluginWithRoute(ctx context.Context, request operations.CreatePluginWithRouteRequest, opts ...operations.Option) (*operations.CreatePluginWithRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -3470,7 +3448,7 @@ func (s *Plugins) CreatePluginWithRoute(ctx context.Context, request operations.
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -3661,8 +3639,8 @@ func (s *Plugins) CreatePluginWithRoute(ctx context.Context, request operations.
 
 }
 
-// DeletePluginWithRoute - Delete a a Plugin associated with a Route
-// Delete a a Plugin associated with a Route using ID.
+// DeletePluginWithRoute - Delete a a Plugin associated with a Route in a workspace
+// Delete a a Plugin associated with a Route using ID in a workspace.
 func (s *Plugins) DeletePluginWithRoute(ctx context.Context, request operations.DeletePluginWithRouteRequest, opts ...operations.Option) (*operations.DeletePluginWithRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -3682,7 +3660,7 @@ func (s *Plugins) DeletePluginWithRoute(ctx context.Context, request operations.
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -3847,8 +3825,8 @@ func (s *Plugins) DeletePluginWithRoute(ctx context.Context, request operations.
 
 }
 
-// GetPluginWithRoute - Get a Plugin associated with a Route
-// Get a Plugin associated with a Route using ID.
+// GetPluginWithRoute - Get a Plugin associated with a Route in a workspace
+// Get a Plugin associated with a Route using ID in a workspace.
 func (s *Plugins) GetPluginWithRoute(ctx context.Context, request operations.GetPluginWithRouteRequest, opts ...operations.Option) (*operations.GetPluginWithRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -3868,7 +3846,7 @@ func (s *Plugins) GetPluginWithRoute(ctx context.Context, request operations.Get
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -3900,10 +3878,6 @@ func (s *Plugins) GetPluginWithRoute(ctx context.Context, request operations.Get
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
@@ -4058,8 +4032,8 @@ func (s *Plugins) GetPluginWithRoute(ctx context.Context, request operations.Get
 
 }
 
-// UpsertPluginWithRoute - Upsert a Plugin associated with a Route
-// Create or Update a Plugin associated with a Route using ID.
+// UpsertPluginWithRoute - Upsert a Plugin associated with a Route in a workspace
+// Create or Update a Plugin associated with a Route using ID in a workspace.
 func (s *Plugins) UpsertPluginWithRoute(ctx context.Context, request operations.UpsertPluginWithRouteRequest, opts ...operations.Option) (*operations.UpsertPluginWithRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -4079,7 +4053,7 @@ func (s *Plugins) UpsertPluginWithRoute(ctx context.Context, request operations.
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -4219,6 +4193,1032 @@ func (s *Plugins) UpsertPluginWithRoute(ctx context.Context, request operations.
 	}
 
 	res := &operations.UpsertPluginWithRouteResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out components.Plugin
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Plugin = &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+
+}
+
+// ListPluginWithService - List all Plugins associated with a Service in a workspace
+// List all Plugins associated with a Service in a workspace
+func (s *Plugins) ListPluginWithService(ctx context.Context, request operations.ListPluginWithServiceRequest, opts ...operations.Option) (*operations.ListPluginWithServiceResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionRetries,
+		operations.SupportedOptionTimeout,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
+
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "list-plugin-with-service",
+		OAuth2Scopes:     nil,
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
+
+	timeout := o.Timeout
+	if timeout == nil {
+		timeout = s.sdkConfiguration.Timeout
+	}
+
+	if timeout != nil {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, *timeout)
+		defer cancel()
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
+	}
+
+	globalRetryConfig := s.sdkConfiguration.RetryConfig
+	retryConfig := o.Retries
+	if retryConfig == nil {
+		if globalRetryConfig != nil {
+			retryConfig = globalRetryConfig
+		}
+	}
+
+	var httpRes *http.Response
+	if retryConfig != nil {
+		httpRes, err = utils.Retry(ctx, utils.Retries{
+			Config: retryConfig,
+			StatusCodes: []string{
+				"429",
+				"500",
+				"502",
+				"503",
+				"504",
+			},
+		}, func() (*http.Response, error) {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
+				copyBody, err := req.GetBody()
+
+				if err != nil {
+					return nil, err
+				}
+
+				req.Body = copyBody
+			}
+
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			if err != nil {
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
+			}
+
+			httpRes, err := s.sdkConfiguration.Client.Do(req)
+			if err != nil || httpRes == nil {
+				if err != nil {
+					err = fmt.Errorf("error sending request: %w", err)
+				} else {
+					err = fmt.Errorf("error sending request: no response")
+				}
+
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			}
+			return httpRes, err
+		})
+
+		if err != nil {
+			return nil, err
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	} else {
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		if err != nil {
+			return nil, err
+		}
+
+		httpRes, err = s.sdkConfiguration.Client.Do(req)
+		if err != nil || httpRes == nil {
+			if err != nil {
+				err = fmt.Errorf("error sending request: %w", err)
+			} else {
+				err = fmt.Errorf("error sending request: no response")
+			}
+
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			return nil, err
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			if err != nil {
+				return nil, err
+			} else if _httpRes != nil {
+				httpRes = _httpRes
+			}
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+
+	res := &operations.ListPluginWithServiceResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out operations.ListPluginWithServiceResponseBody
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Object = &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+
+}
+
+// CreatePluginWithService - Create a new Plugin associated with a Service in a workspace
+// Create a new Plugin associated with a Service in a workspace
+func (s *Plugins) CreatePluginWithService(ctx context.Context, request operations.CreatePluginWithServiceRequest, opts ...operations.Option) (*operations.CreatePluginWithServiceResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionRetries,
+		operations.SupportedOptionTimeout,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
+
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "create-plugin-with-service",
+		OAuth2Scopes:     nil,
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
+	if err != nil {
+		return nil, err
+	}
+
+	timeout := o.Timeout
+	if timeout == nil {
+		timeout = s.sdkConfiguration.Timeout
+	}
+
+	if timeout != nil {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, *timeout)
+		defer cancel()
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+	if reqContentType != "" {
+		req.Header.Set("Content-Type", reqContentType)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
+	}
+
+	globalRetryConfig := s.sdkConfiguration.RetryConfig
+	retryConfig := o.Retries
+	if retryConfig == nil {
+		if globalRetryConfig != nil {
+			retryConfig = globalRetryConfig
+		}
+	}
+
+	var httpRes *http.Response
+	if retryConfig != nil {
+		httpRes, err = utils.Retry(ctx, utils.Retries{
+			Config: retryConfig,
+			StatusCodes: []string{
+				"429",
+				"500",
+				"502",
+				"503",
+				"504",
+			},
+		}, func() (*http.Response, error) {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
+				copyBody, err := req.GetBody()
+
+				if err != nil {
+					return nil, err
+				}
+
+				req.Body = copyBody
+			}
+
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			if err != nil {
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
+			}
+
+			httpRes, err := s.sdkConfiguration.Client.Do(req)
+			if err != nil || httpRes == nil {
+				if err != nil {
+					err = fmt.Errorf("error sending request: %w", err)
+				} else {
+					err = fmt.Errorf("error sending request: no response")
+				}
+
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			}
+			return httpRes, err
+		})
+
+		if err != nil {
+			return nil, err
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	} else {
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		if err != nil {
+			return nil, err
+		}
+
+		httpRes, err = s.sdkConfiguration.Client.Do(req)
+		if err != nil || httpRes == nil {
+			if err != nil {
+				err = fmt.Errorf("error sending request: %w", err)
+			} else {
+				err = fmt.Errorf("error sending request: no response")
+			}
+
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			return nil, err
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			if err != nil {
+				return nil, err
+			} else if _httpRes != nil {
+				httpRes = _httpRes
+			}
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+
+	res := &operations.CreatePluginWithServiceResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
+	switch {
+	case httpRes.StatusCode == 201:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out components.Plugin
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Plugin = &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+
+}
+
+// DeletePluginWithService - Delete a a Plugin associated with a Service in a workspace
+// Delete a a Plugin associated with a Service using ID in a workspace.
+func (s *Plugins) DeletePluginWithService(ctx context.Context, request operations.DeletePluginWithServiceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionRetries,
+		operations.SupportedOptionTimeout,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
+
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins/{PluginId}", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "delete-plugin-with-service",
+		OAuth2Scopes:     nil,
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
+
+	timeout := o.Timeout
+	if timeout == nil {
+		timeout = s.sdkConfiguration.Timeout
+	}
+
+	if timeout != nil {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, *timeout)
+		defer cancel()
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "DELETE", opURL, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "*/*")
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
+	}
+
+	globalRetryConfig := s.sdkConfiguration.RetryConfig
+	retryConfig := o.Retries
+	if retryConfig == nil {
+		if globalRetryConfig != nil {
+			retryConfig = globalRetryConfig
+		}
+	}
+
+	var httpRes *http.Response
+	if retryConfig != nil {
+		httpRes, err = utils.Retry(ctx, utils.Retries{
+			Config: retryConfig,
+			StatusCodes: []string{
+				"429",
+				"500",
+				"502",
+				"503",
+				"504",
+			},
+		}, func() (*http.Response, error) {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
+				copyBody, err := req.GetBody()
+
+				if err != nil {
+					return nil, err
+				}
+
+				req.Body = copyBody
+			}
+
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			if err != nil {
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
+			}
+
+			httpRes, err := s.sdkConfiguration.Client.Do(req)
+			if err != nil || httpRes == nil {
+				if err != nil {
+					err = fmt.Errorf("error sending request: %w", err)
+				} else {
+					err = fmt.Errorf("error sending request: no response")
+				}
+
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			}
+			return httpRes, err
+		})
+
+		if err != nil {
+			return nil, err
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	} else {
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		if err != nil {
+			return nil, err
+		}
+
+		httpRes, err = s.sdkConfiguration.Client.Do(req)
+		if err != nil || httpRes == nil {
+			if err != nil {
+				err = fmt.Errorf("error sending request: %w", err)
+			} else {
+				err = fmt.Errorf("error sending request: no response")
+			}
+
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			return nil, err
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			if err != nil {
+				return nil, err
+			} else if _httpRes != nil {
+				httpRes = _httpRes
+			}
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+
+	res := &operations.DeletePluginWithServiceResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
+	switch {
+	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+
+}
+
+// GetPluginWithService - Get a Plugin associated with a Service in a workspace
+// Get a Plugin associated with a Service using ID in a workspace.
+func (s *Plugins) GetPluginWithService(ctx context.Context, request operations.GetPluginWithServiceRequest, opts ...operations.Option) (*operations.GetPluginWithServiceResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionRetries,
+		operations.SupportedOptionTimeout,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
+
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins/{PluginId}", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "get-plugin-with-service",
+		OAuth2Scopes:     nil,
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
+
+	timeout := o.Timeout
+	if timeout == nil {
+		timeout = s.sdkConfiguration.Timeout
+	}
+
+	if timeout != nil {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, *timeout)
+		defer cancel()
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
+	}
+
+	globalRetryConfig := s.sdkConfiguration.RetryConfig
+	retryConfig := o.Retries
+	if retryConfig == nil {
+		if globalRetryConfig != nil {
+			retryConfig = globalRetryConfig
+		}
+	}
+
+	var httpRes *http.Response
+	if retryConfig != nil {
+		httpRes, err = utils.Retry(ctx, utils.Retries{
+			Config: retryConfig,
+			StatusCodes: []string{
+				"429",
+				"500",
+				"502",
+				"503",
+				"504",
+			},
+		}, func() (*http.Response, error) {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
+				copyBody, err := req.GetBody()
+
+				if err != nil {
+					return nil, err
+				}
+
+				req.Body = copyBody
+			}
+
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			if err != nil {
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
+			}
+
+			httpRes, err := s.sdkConfiguration.Client.Do(req)
+			if err != nil || httpRes == nil {
+				if err != nil {
+					err = fmt.Errorf("error sending request: %w", err)
+				} else {
+					err = fmt.Errorf("error sending request: no response")
+				}
+
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			}
+			return httpRes, err
+		})
+
+		if err != nil {
+			return nil, err
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	} else {
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		if err != nil {
+			return nil, err
+		}
+
+		httpRes, err = s.sdkConfiguration.Client.Do(req)
+		if err != nil || httpRes == nil {
+			if err != nil {
+				err = fmt.Errorf("error sending request: %w", err)
+			} else {
+				err = fmt.Errorf("error sending request: no response")
+			}
+
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			return nil, err
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			if err != nil {
+				return nil, err
+			} else if _httpRes != nil {
+				httpRes = _httpRes
+			}
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+
+	res := &operations.GetPluginWithServiceResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out components.Plugin
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Plugin = &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 404:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+
+}
+
+// UpsertPluginWithService - Upsert a Plugin associated with a Service in a workspace
+// Create or Update a Plugin associated with a Service using ID in a workspace.
+func (s *Plugins) UpsertPluginWithService(ctx context.Context, request operations.UpsertPluginWithServiceRequest, opts ...operations.Option) (*operations.UpsertPluginWithServiceResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionRetries,
+		operations.SupportedOptionTimeout,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
+
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins/{PluginId}", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "upsert-plugin-with-service",
+		OAuth2Scopes:     nil,
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
+	if err != nil {
+		return nil, err
+	}
+
+	timeout := o.Timeout
+	if timeout == nil {
+		timeout = s.sdkConfiguration.Timeout
+	}
+
+	if timeout != nil {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, *timeout)
+		defer cancel()
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+	if reqContentType != "" {
+		req.Header.Set("Content-Type", reqContentType)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
+	}
+
+	globalRetryConfig := s.sdkConfiguration.RetryConfig
+	retryConfig := o.Retries
+	if retryConfig == nil {
+		if globalRetryConfig != nil {
+			retryConfig = globalRetryConfig
+		}
+	}
+
+	var httpRes *http.Response
+	if retryConfig != nil {
+		httpRes, err = utils.Retry(ctx, utils.Retries{
+			Config: retryConfig,
+			StatusCodes: []string{
+				"429",
+				"500",
+				"502",
+				"503",
+				"504",
+			},
+		}, func() (*http.Response, error) {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
+				copyBody, err := req.GetBody()
+
+				if err != nil {
+					return nil, err
+				}
+
+				req.Body = copyBody
+			}
+
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			if err != nil {
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
+			}
+
+			httpRes, err := s.sdkConfiguration.Client.Do(req)
+			if err != nil || httpRes == nil {
+				if err != nil {
+					err = fmt.Errorf("error sending request: %w", err)
+				} else {
+					err = fmt.Errorf("error sending request: no response")
+				}
+
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			}
+			return httpRes, err
+		})
+
+		if err != nil {
+			return nil, err
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	} else {
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		if err != nil {
+			return nil, err
+		}
+
+		httpRes, err = s.sdkConfiguration.Client.Do(req)
+		if err != nil || httpRes == nil {
+			if err != nil {
+				err = fmt.Errorf("error sending request: %w", err)
+			} else {
+				err = fmt.Errorf("error sending request: no response")
+			}
+
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			return nil, err
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			if err != nil {
+				return nil, err
+			} else if _httpRes != nil {
+				httpRes = _httpRes
+			}
+		} else {
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+
+	res := &operations.UpsertPluginWithServiceResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -4449,1036 +5449,6 @@ func (s *Plugins) FetchPluginSchema(ctx context.Context, pluginName string, cont
 			}
 
 			res.GetPluginSchemaResponse = &out
-		default:
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
-		}
-	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
-	}
-
-	return res, nil
-
-}
-
-// ListPluginWithService - List all Plugins associated with a Service
-// List all Plugins associated with a Service
-func (s *Plugins) ListPluginWithService(ctx context.Context, request operations.ListPluginWithServiceRequest, opts ...operations.Option) (*operations.ListPluginWithServiceResponse, error) {
-	o := operations.Options{}
-	supportedOptions := []string{
-		operations.SupportedOptionRetries,
-		operations.SupportedOptionTimeout,
-	}
-
-	for _, opt := range opts {
-		if err := opt(&o, supportedOptions...); err != nil {
-			return nil, fmt.Errorf("error applying option: %w", err)
-		}
-	}
-
-	var baseURL string
-	if o.ServerURL == nil {
-		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	} else {
-		baseURL = *o.ServerURL
-	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins", request, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		SDK:              s.rootSDK,
-		SDKConfiguration: s.sdkConfiguration,
-		BaseURL:          baseURL,
-		Context:          ctx,
-		OperationID:      "list-plugin-with-service",
-		OAuth2Scopes:     nil,
-		SecuritySource:   s.sdkConfiguration.Security,
-	}
-
-	timeout := o.Timeout
-	if timeout == nil {
-		timeout = s.sdkConfiguration.Timeout
-	}
-
-	if timeout != nil {
-		var cancel context.CancelFunc
-		ctx, cancel = context.WithTimeout(ctx, *timeout)
-		defer cancel()
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-	req.Header.Set("Accept", "application/json")
-	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
-
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
-		return nil, err
-	}
-
-	for k, v := range o.SetHeaders {
-		req.Header.Set(k, v)
-	}
-
-	globalRetryConfig := s.sdkConfiguration.RetryConfig
-	retryConfig := o.Retries
-	if retryConfig == nil {
-		if globalRetryConfig != nil {
-			retryConfig = globalRetryConfig
-		}
-	}
-
-	var httpRes *http.Response
-	if retryConfig != nil {
-		httpRes, err = utils.Retry(ctx, utils.Retries{
-			Config: retryConfig,
-			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
-			},
-		}, func() (*http.Response, error) {
-			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
-				copyBody, err := req.GetBody()
-
-				if err != nil {
-					return nil, err
-				}
-
-				req.Body = copyBody
-			}
-
-			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-			if err != nil {
-				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
-					return nil, err
-				}
-
-				return nil, retry.Permanent(err)
-			}
-
-			httpRes, err := s.sdkConfiguration.Client.Do(req)
-			if err != nil || httpRes == nil {
-				if err != nil {
-					err = fmt.Errorf("error sending request: %w", err)
-				} else {
-					err = fmt.Errorf("error sending request: no response")
-				}
-
-				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			}
-			return httpRes, err
-		})
-
-		if err != nil {
-			return nil, err
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-		if err != nil {
-			return nil, err
-		}
-
-		httpRes, err = s.sdkConfiguration.Client.Do(req)
-		if err != nil || httpRes == nil {
-			if err != nil {
-				err = fmt.Errorf("error sending request: %w", err)
-			} else {
-				err = fmt.Errorf("error sending request: no response")
-			}
-
-			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			return nil, err
-		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
-			if err != nil {
-				return nil, err
-			} else if _httpRes != nil {
-				httpRes = _httpRes
-			}
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	}
-
-	res := &operations.ListPluginWithServiceResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: httpRes.Header.Get("Content-Type"),
-		RawResponse: httpRes,
-	}
-
-	switch {
-	case httpRes.StatusCode == 200:
-		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-
-			var out operations.ListPluginWithServiceResponseBody
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
-			}
-
-			res.Object = &out
-		default:
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
-		}
-	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
-	}
-
-	return res, nil
-
-}
-
-// CreatePluginWithService - Create a new Plugin associated with a Service
-// Create a new Plugin associated with a Service
-func (s *Plugins) CreatePluginWithService(ctx context.Context, request operations.CreatePluginWithServiceRequest, opts ...operations.Option) (*operations.CreatePluginWithServiceResponse, error) {
-	o := operations.Options{}
-	supportedOptions := []string{
-		operations.SupportedOptionRetries,
-		operations.SupportedOptionTimeout,
-	}
-
-	for _, opt := range opts {
-		if err := opt(&o, supportedOptions...); err != nil {
-			return nil, fmt.Errorf("error applying option: %w", err)
-		}
-	}
-
-	var baseURL string
-	if o.ServerURL == nil {
-		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	} else {
-		baseURL = *o.ServerURL
-	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins", request, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		SDK:              s.rootSDK,
-		SDKConfiguration: s.sdkConfiguration,
-		BaseURL:          baseURL,
-		Context:          ctx,
-		OperationID:      "create-plugin-with-service",
-		OAuth2Scopes:     nil,
-		SecuritySource:   s.sdkConfiguration.Security,
-	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
-	if err != nil {
-		return nil, err
-	}
-
-	timeout := o.Timeout
-	if timeout == nil {
-		timeout = s.sdkConfiguration.Timeout
-	}
-
-	if timeout != nil {
-		var cancel context.CancelFunc
-		ctx, cancel = context.WithTimeout(ctx, *timeout)
-		defer cancel()
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-	req.Header.Set("Accept", "application/json")
-	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-	if reqContentType != "" {
-		req.Header.Set("Content-Type", reqContentType)
-	}
-
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
-		return nil, err
-	}
-
-	for k, v := range o.SetHeaders {
-		req.Header.Set(k, v)
-	}
-
-	globalRetryConfig := s.sdkConfiguration.RetryConfig
-	retryConfig := o.Retries
-	if retryConfig == nil {
-		if globalRetryConfig != nil {
-			retryConfig = globalRetryConfig
-		}
-	}
-
-	var httpRes *http.Response
-	if retryConfig != nil {
-		httpRes, err = utils.Retry(ctx, utils.Retries{
-			Config: retryConfig,
-			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
-			},
-		}, func() (*http.Response, error) {
-			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
-				copyBody, err := req.GetBody()
-
-				if err != nil {
-					return nil, err
-				}
-
-				req.Body = copyBody
-			}
-
-			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-			if err != nil {
-				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
-					return nil, err
-				}
-
-				return nil, retry.Permanent(err)
-			}
-
-			httpRes, err := s.sdkConfiguration.Client.Do(req)
-			if err != nil || httpRes == nil {
-				if err != nil {
-					err = fmt.Errorf("error sending request: %w", err)
-				} else {
-					err = fmt.Errorf("error sending request: no response")
-				}
-
-				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			}
-			return httpRes, err
-		})
-
-		if err != nil {
-			return nil, err
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-		if err != nil {
-			return nil, err
-		}
-
-		httpRes, err = s.sdkConfiguration.Client.Do(req)
-		if err != nil || httpRes == nil {
-			if err != nil {
-				err = fmt.Errorf("error sending request: %w", err)
-			} else {
-				err = fmt.Errorf("error sending request: no response")
-			}
-
-			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			return nil, err
-		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
-			if err != nil {
-				return nil, err
-			} else if _httpRes != nil {
-				httpRes = _httpRes
-			}
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	}
-
-	res := &operations.CreatePluginWithServiceResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: httpRes.Header.Get("Content-Type"),
-		RawResponse: httpRes,
-	}
-
-	switch {
-	case httpRes.StatusCode == 201:
-		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-
-			var out components.Plugin
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
-			}
-
-			res.Plugin = &out
-		default:
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
-		}
-	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
-	}
-
-	return res, nil
-
-}
-
-// DeletePluginWithService - Delete a a Plugin associated with a Service
-// Delete a a Plugin associated with a Service using ID.
-func (s *Plugins) DeletePluginWithService(ctx context.Context, request operations.DeletePluginWithServiceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceResponse, error) {
-	o := operations.Options{}
-	supportedOptions := []string{
-		operations.SupportedOptionRetries,
-		operations.SupportedOptionTimeout,
-	}
-
-	for _, opt := range opts {
-		if err := opt(&o, supportedOptions...); err != nil {
-			return nil, fmt.Errorf("error applying option: %w", err)
-		}
-	}
-
-	var baseURL string
-	if o.ServerURL == nil {
-		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	} else {
-		baseURL = *o.ServerURL
-	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}", request, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		SDK:              s.rootSDK,
-		SDKConfiguration: s.sdkConfiguration,
-		BaseURL:          baseURL,
-		Context:          ctx,
-		OperationID:      "delete-plugin-with-service",
-		OAuth2Scopes:     nil,
-		SecuritySource:   s.sdkConfiguration.Security,
-	}
-
-	timeout := o.Timeout
-	if timeout == nil {
-		timeout = s.sdkConfiguration.Timeout
-	}
-
-	if timeout != nil {
-		var cancel context.CancelFunc
-		ctx, cancel = context.WithTimeout(ctx, *timeout)
-		defer cancel()
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "DELETE", opURL, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-	req.Header.Set("Accept", "*/*")
-	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
-		return nil, err
-	}
-
-	for k, v := range o.SetHeaders {
-		req.Header.Set(k, v)
-	}
-
-	globalRetryConfig := s.sdkConfiguration.RetryConfig
-	retryConfig := o.Retries
-	if retryConfig == nil {
-		if globalRetryConfig != nil {
-			retryConfig = globalRetryConfig
-		}
-	}
-
-	var httpRes *http.Response
-	if retryConfig != nil {
-		httpRes, err = utils.Retry(ctx, utils.Retries{
-			Config: retryConfig,
-			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
-			},
-		}, func() (*http.Response, error) {
-			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
-				copyBody, err := req.GetBody()
-
-				if err != nil {
-					return nil, err
-				}
-
-				req.Body = copyBody
-			}
-
-			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-			if err != nil {
-				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
-					return nil, err
-				}
-
-				return nil, retry.Permanent(err)
-			}
-
-			httpRes, err := s.sdkConfiguration.Client.Do(req)
-			if err != nil || httpRes == nil {
-				if err != nil {
-					err = fmt.Errorf("error sending request: %w", err)
-				} else {
-					err = fmt.Errorf("error sending request: no response")
-				}
-
-				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			}
-			return httpRes, err
-		})
-
-		if err != nil {
-			return nil, err
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-		if err != nil {
-			return nil, err
-		}
-
-		httpRes, err = s.sdkConfiguration.Client.Do(req)
-		if err != nil || httpRes == nil {
-			if err != nil {
-				err = fmt.Errorf("error sending request: %w", err)
-			} else {
-				err = fmt.Errorf("error sending request: no response")
-			}
-
-			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			return nil, err
-		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
-			if err != nil {
-				return nil, err
-			} else if _httpRes != nil {
-				httpRes = _httpRes
-			}
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	}
-
-	res := &operations.DeletePluginWithServiceResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: httpRes.Header.Get("Content-Type"),
-		RawResponse: httpRes,
-	}
-
-	switch {
-	case httpRes.StatusCode == 204:
-		utils.DrainBody(httpRes)
-	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
-	}
-
-	return res, nil
-
-}
-
-// GetPluginWithService - Get a Plugin associated with a Service
-// Get a Plugin associated with a Service using ID.
-func (s *Plugins) GetPluginWithService(ctx context.Context, request operations.GetPluginWithServiceRequest, opts ...operations.Option) (*operations.GetPluginWithServiceResponse, error) {
-	o := operations.Options{}
-	supportedOptions := []string{
-		operations.SupportedOptionRetries,
-		operations.SupportedOptionTimeout,
-	}
-
-	for _, opt := range opts {
-		if err := opt(&o, supportedOptions...); err != nil {
-			return nil, fmt.Errorf("error applying option: %w", err)
-		}
-	}
-
-	var baseURL string
-	if o.ServerURL == nil {
-		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	} else {
-		baseURL = *o.ServerURL
-	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}", request, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		SDK:              s.rootSDK,
-		SDKConfiguration: s.sdkConfiguration,
-		BaseURL:          baseURL,
-		Context:          ctx,
-		OperationID:      "get-plugin-with-service",
-		OAuth2Scopes:     nil,
-		SecuritySource:   s.sdkConfiguration.Security,
-	}
-
-	timeout := o.Timeout
-	if timeout == nil {
-		timeout = s.sdkConfiguration.Timeout
-	}
-
-	if timeout != nil {
-		var cancel context.CancelFunc
-		ctx, cancel = context.WithTimeout(ctx, *timeout)
-		defer cancel()
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-	req.Header.Set("Accept", "application/json")
-	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
-
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
-		return nil, err
-	}
-
-	for k, v := range o.SetHeaders {
-		req.Header.Set(k, v)
-	}
-
-	globalRetryConfig := s.sdkConfiguration.RetryConfig
-	retryConfig := o.Retries
-	if retryConfig == nil {
-		if globalRetryConfig != nil {
-			retryConfig = globalRetryConfig
-		}
-	}
-
-	var httpRes *http.Response
-	if retryConfig != nil {
-		httpRes, err = utils.Retry(ctx, utils.Retries{
-			Config: retryConfig,
-			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
-			},
-		}, func() (*http.Response, error) {
-			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
-				copyBody, err := req.GetBody()
-
-				if err != nil {
-					return nil, err
-				}
-
-				req.Body = copyBody
-			}
-
-			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-			if err != nil {
-				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
-					return nil, err
-				}
-
-				return nil, retry.Permanent(err)
-			}
-
-			httpRes, err := s.sdkConfiguration.Client.Do(req)
-			if err != nil || httpRes == nil {
-				if err != nil {
-					err = fmt.Errorf("error sending request: %w", err)
-				} else {
-					err = fmt.Errorf("error sending request: no response")
-				}
-
-				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			}
-			return httpRes, err
-		})
-
-		if err != nil {
-			return nil, err
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-		if err != nil {
-			return nil, err
-		}
-
-		httpRes, err = s.sdkConfiguration.Client.Do(req)
-		if err != nil || httpRes == nil {
-			if err != nil {
-				err = fmt.Errorf("error sending request: %w", err)
-			} else {
-				err = fmt.Errorf("error sending request: no response")
-			}
-
-			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			return nil, err
-		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
-			if err != nil {
-				return nil, err
-			} else if _httpRes != nil {
-				httpRes = _httpRes
-			}
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	}
-
-	res := &operations.GetPluginWithServiceResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: httpRes.Header.Get("Content-Type"),
-		RawResponse: httpRes,
-	}
-
-	switch {
-	case httpRes.StatusCode == 200:
-		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-
-			var out components.Plugin
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
-			}
-
-			res.Plugin = &out
-		default:
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
-		}
-	case httpRes.StatusCode == 404:
-		fallthrough
-	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
-	}
-
-	return res, nil
-
-}
-
-// UpsertPluginWithService - Upsert a Plugin associated with a Service
-// Create or Update a Plugin associated with a Service using ID.
-func (s *Plugins) UpsertPluginWithService(ctx context.Context, request operations.UpsertPluginWithServiceRequest, opts ...operations.Option) (*operations.UpsertPluginWithServiceResponse, error) {
-	o := operations.Options{}
-	supportedOptions := []string{
-		operations.SupportedOptionRetries,
-		operations.SupportedOptionTimeout,
-	}
-
-	for _, opt := range opts {
-		if err := opt(&o, supportedOptions...); err != nil {
-			return nil, fmt.Errorf("error applying option: %w", err)
-		}
-	}
-
-	var baseURL string
-	if o.ServerURL == nil {
-		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	} else {
-		baseURL = *o.ServerURL
-	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}", request, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		SDK:              s.rootSDK,
-		SDKConfiguration: s.sdkConfiguration,
-		BaseURL:          baseURL,
-		Context:          ctx,
-		OperationID:      "upsert-plugin-with-service",
-		OAuth2Scopes:     nil,
-		SecuritySource:   s.sdkConfiguration.Security,
-	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
-	if err != nil {
-		return nil, err
-	}
-
-	timeout := o.Timeout
-	if timeout == nil {
-		timeout = s.sdkConfiguration.Timeout
-	}
-
-	if timeout != nil {
-		var cancel context.CancelFunc
-		ctx, cancel = context.WithTimeout(ctx, *timeout)
-		defer cancel()
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-	req.Header.Set("Accept", "application/json")
-	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-	if reqContentType != "" {
-		req.Header.Set("Content-Type", reqContentType)
-	}
-
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
-		return nil, err
-	}
-
-	for k, v := range o.SetHeaders {
-		req.Header.Set(k, v)
-	}
-
-	globalRetryConfig := s.sdkConfiguration.RetryConfig
-	retryConfig := o.Retries
-	if retryConfig == nil {
-		if globalRetryConfig != nil {
-			retryConfig = globalRetryConfig
-		}
-	}
-
-	var httpRes *http.Response
-	if retryConfig != nil {
-		httpRes, err = utils.Retry(ctx, utils.Retries{
-			Config: retryConfig,
-			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
-			},
-		}, func() (*http.Response, error) {
-			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
-				copyBody, err := req.GetBody()
-
-				if err != nil {
-					return nil, err
-				}
-
-				req.Body = copyBody
-			}
-
-			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-			if err != nil {
-				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
-					return nil, err
-				}
-
-				return nil, retry.Permanent(err)
-			}
-
-			httpRes, err := s.sdkConfiguration.Client.Do(req)
-			if err != nil || httpRes == nil {
-				if err != nil {
-					err = fmt.Errorf("error sending request: %w", err)
-				} else {
-					err = fmt.Errorf("error sending request: no response")
-				}
-
-				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			}
-			return httpRes, err
-		})
-
-		if err != nil {
-			return nil, err
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-		if err != nil {
-			return nil, err
-		}
-
-		httpRes, err = s.sdkConfiguration.Client.Do(req)
-		if err != nil || httpRes == nil {
-			if err != nil {
-				err = fmt.Errorf("error sending request: %w", err)
-			} else {
-				err = fmt.Errorf("error sending request: no response")
-			}
-
-			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-			return nil, err
-		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
-			if err != nil {
-				return nil, err
-			} else if _httpRes != nil {
-				httpRes = _httpRes
-			}
-		} else {
-			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
-			if err != nil {
-				return nil, err
-			}
-		}
-	}
-
-	res := &operations.UpsertPluginWithServiceResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: httpRes.Header.Get("Content-Type"),
-		RawResponse: httpRes,
-	}
-
-	switch {
-	case httpRes.StatusCode == 200:
-		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-
-			var out components.Plugin
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
-			}
-
-			res.Plugin = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

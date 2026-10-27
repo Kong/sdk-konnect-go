@@ -6,19 +6,19 @@ Some entities in Kong Gateway share common configuration settings that often nee
 
 ### Available Operations
 
-* [ListPartial](#listpartial) - List all Partials
-* [CreatePartial](#createpartial) - Create a new Partial
-* [DeletePartial](#deletepartial) - Delete a Partial
-* [GetPartial](#getpartial) - Get a Partial
-* [UpsertPartial](#upsertpartial) - Upsert a Partial
+* [ListPartial](#listpartial) - List all Partials in a workspace
+* [CreatePartial](#createpartial) - Create a new Partial in a workspace
+* [DeletePartial](#deletepartial) - Delete a Partial in a workspace
+* [GetPartial](#getpartial) - Get a Partial in a workspace
+* [UpsertPartial](#upsertpartial) - Upsert a Partial in a workspace
 
 ## ListPartial
 
-List all Partials
+List all Partials in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-partial" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" -->
+<!-- UsageSnippet language="go" operationID="list-partial" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials" -->
 ```go
 package main
 
@@ -42,6 +42,7 @@ func main() {
     res, err := s.Partials.ListPartial(ctx, operations.ListPartialRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -73,11 +74,11 @@ func main() {
 
 ## CreatePartial
 
-Create a new Partial
+Create a new Partial in a workspace
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -85,6 +86,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -97,17 +99,21 @@ func main() {
         }),
     )
 
-    res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisCe(
-        components.PartialRedisCe{
-            Config: components.PartialRedisCeConfig{
-                Host: sdkkonnectgo.Pointer("localhost"),
-                Password: sdkkonnectgo.Pointer("password"),
-                ServerName: sdkkonnectgo.Pointer("redis"),
-                SslVerify: sdkkonnectgo.Pointer(false),
-                Username: sdkkonnectgo.Pointer("username"),
+    res, err := s.Partials.CreatePartial(ctx, operations.CreatePartialRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Partial: components.CreatePartialRedisCe(
+            components.PartialRedisCe{
+                Config: components.PartialRedisCeConfig{
+                    Host: sdkkonnectgo.Pointer("localhost"),
+                    Password: sdkkonnectgo.Pointer("password"),
+                    ServerName: sdkkonnectgo.Pointer("redis"),
+                    SslVerify: sdkkonnectgo.Pointer(false),
+                    Username: sdkkonnectgo.Pointer("username"),
+                },
             },
-        },
-    ))
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -130,7 +136,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -138,6 +144,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -150,34 +157,38 @@ func main() {
         }),
     )
 
-    res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisEe(
-        components.PartialRedisEe{
-            Config: components.PartialRedisEeConfig{
-                ClusterNodes: []components.PartialRedisEeClusterNodes{
-                    components.PartialRedisEeClusterNodes{
-                        IP: sdkkonnectgo.Pointer("192.168.1.10"),
-                        Port: sdkkonnectgo.Pointer[int64](6380),
+    res, err := s.Partials.CreatePartial(ctx, operations.CreatePartialRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Partial: components.CreatePartialRedisEe(
+            components.PartialRedisEe{
+                Config: components.PartialRedisEeConfig{
+                    ClusterNodes: []components.PartialRedisEeClusterNodes{
+                        components.PartialRedisEeClusterNodes{
+                            IP: sdkkonnectgo.Pointer("192.168.1.10"),
+                            Port: sdkkonnectgo.Pointer[int64](6380),
+                        },
                     },
-                },
-                Host: sdkkonnectgo.Pointer("localhost"),
-                Password: sdkkonnectgo.Pointer("password"),
-                Port: sdkkonnectgo.Pointer(components.CreatePartialRedisEePortInteger(
-                    6379,
-                )),
-                ReadTimeout: sdkkonnectgo.Pointer[int64](1000),
-                SendTimeout: sdkkonnectgo.Pointer[int64](1000),
-                SentinelNodes: []components.PartialRedisEeSentinelNodes{
-                    components.PartialRedisEeSentinelNodes{
-                        Host: sdkkonnectgo.Pointer("sentinel1.redis.server"),
-                        Port: sdkkonnectgo.Pointer[int64](26379),
+                    Host: sdkkonnectgo.Pointer("localhost"),
+                    Password: sdkkonnectgo.Pointer("password"),
+                    Port: sdkkonnectgo.Pointer(components.CreatePartialRedisEePortInteger(
+                        6379,
+                    )),
+                    ReadTimeout: sdkkonnectgo.Pointer[int64](1000),
+                    SendTimeout: sdkkonnectgo.Pointer[int64](1000),
+                    SentinelNodes: []components.PartialRedisEeSentinelNodes{
+                        components.PartialRedisEeSentinelNodes{
+                            Host: sdkkonnectgo.Pointer("sentinel1.redis.server"),
+                            Port: sdkkonnectgo.Pointer[int64](26379),
+                        },
                     },
+                    ServerName: sdkkonnectgo.Pointer("redis-ee"),
+                    SslVerify: sdkkonnectgo.Pointer(false),
+                    Username: sdkkonnectgo.Pointer("username"),
                 },
-                ServerName: sdkkonnectgo.Pointer("redis-ee"),
-                SslVerify: sdkkonnectgo.Pointer(false),
-                Username: sdkkonnectgo.Pointer("username"),
             },
-        },
-    ))
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -200,7 +211,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials" example="NoAPIKey" -->
 ```go
 package main
 
@@ -208,6 +219,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -220,17 +232,21 @@ func main() {
         }),
     )
 
-    res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisCe(
-        components.PartialRedisCe{
-            Config: components.PartialRedisCeConfig{
-                Host: sdkkonnectgo.Pointer("localhost"),
-                Password: sdkkonnectgo.Pointer("password"),
-                ServerName: sdkkonnectgo.Pointer("redis"),
-                SslVerify: sdkkonnectgo.Pointer(false),
-                Username: sdkkonnectgo.Pointer("username"),
+    res, err := s.Partials.CreatePartial(ctx, operations.CreatePartialRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Partial: components.CreatePartialRedisCe(
+            components.PartialRedisCe{
+                Config: components.PartialRedisCeConfig{
+                    Host: sdkkonnectgo.Pointer("localhost"),
+                    Password: sdkkonnectgo.Pointer("password"),
+                    ServerName: sdkkonnectgo.Pointer("redis"),
+                    SslVerify: sdkkonnectgo.Pointer(false),
+                    Username: sdkkonnectgo.Pointer("username"),
+                },
             },
-        },
-    ))
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -254,12 +270,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `partial`                                                                          | [components.Partial](../../models/components/partial.md)                           | :heavy_check_mark:                                                                 | Description of the new Partial for creation                                        |                                                                                    |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
+| `request`                                                                          | [operations.CreatePartialRequest](../../models/operations/createpartialrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |
 
 ### Response
 
@@ -274,11 +289,11 @@ func main() {
 
 ## DeletePartial
 
-Delete a Partial
+Delete a Partial in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-partial" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" -->
+<!-- UsageSnippet language="go" operationID="delete-partial" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials/{PartialId}" -->
 ```go
 package main
 
@@ -286,6 +301,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -298,7 +314,11 @@ func main() {
         }),
     )
 
-    res, err := s.Partials.DeletePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "")
+    res, err := s.Partials.DeletePartial(ctx, operations.DeletePartialRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        PartialID: "",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -310,12 +330,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `partialID`                                                                        | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Partial to lookup                                                        |                                                                                    |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
+| `request`                                                                          | [operations.DeletePartialRequest](../../models/operations/deletepartialrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |
 
 ### Response
 
@@ -330,11 +349,11 @@ func main() {
 
 ## GetPartial
 
-Get a Partial using ID.
+Get a Partial using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-partial" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" -->
+<!-- UsageSnippet language="go" operationID="get-partial" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials/{PartialId}" -->
 ```go
 package main
 
@@ -342,6 +361,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -354,7 +374,11 @@ func main() {
         }),
     )
 
-    res, err := s.Partials.GetPartial(ctx, "", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.Partials.GetPartial(ctx, operations.GetPartialRequest{
+        PartialID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -378,12 +402,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `partialID`                                                                        | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Partial to lookup                                                        |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `request`                                                                    | [operations.GetPartialRequest](../../models/operations/getpartialrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |
 
 ### Response
 
@@ -398,11 +421,11 @@ func main() {
 
 ## UpsertPartial
 
-Create or Update Partial using ID.
+Create or Update Partial using ID in a workspace.
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials/{PartialId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -426,6 +449,7 @@ func main() {
     res, err := s.Partials.UpsertPartial(ctx, operations.UpsertPartialRequest{
         PartialID: "",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Partial: components.CreatePartialRedisEe(
             components.PartialRedisEe{
                 Config: components.PartialRedisEeConfig{
@@ -477,7 +501,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials/{PartialId}" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -501,6 +525,7 @@ func main() {
     res, err := s.Partials.UpsertPartial(ctx, operations.UpsertPartialRequest{
         PartialID: "",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Partial: components.CreatePartialRedisCe(
             components.PartialRedisCe{
                 Config: components.PartialRedisCeConfig{
@@ -535,7 +560,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials/{PartialId}" example="NoAPIKey" -->
 ```go
 package main
 
@@ -559,6 +584,7 @@ func main() {
     res, err := s.Partials.UpsertPartial(ctx, operations.UpsertPartialRequest{
         PartialID: "",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Partial: components.CreatePartialRedisCe(
             components.PartialRedisCe{
                 Config: components.PartialRedisCeConfig{

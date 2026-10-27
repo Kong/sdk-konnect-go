@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -13,8 +14,21 @@ type CreateKeyAuthWithConsumerRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Consumer ID for nested entities
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of new API-key for creation
 	KeyAuthWithoutParents *components.KeyAuthWithoutParents `request:"mediaType=application/json"`
+}
+
+func (c CreateKeyAuthWithConsumerRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateKeyAuthWithConsumerRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreateKeyAuthWithConsumerRequest) GetControlPlaneID() string {
@@ -29,6 +43,13 @@ func (c *CreateKeyAuthWithConsumerRequest) GetConsumerIDForNestedEntities() stri
 		return ""
 	}
 	return c.ConsumerIDForNestedEntities
+}
+
+func (c *CreateKeyAuthWithConsumerRequest) GetWorkspace() string {
+	if c == nil {
+		return ""
+	}
+	return c.Workspace
 }
 
 func (c *CreateKeyAuthWithConsumerRequest) GetKeyAuthWithoutParents() *components.KeyAuthWithoutParents {

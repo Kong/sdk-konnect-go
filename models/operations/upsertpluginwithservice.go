@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,8 +16,21 @@ type UpsertPluginWithServiceRequest struct {
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// ID of the Plugin to lookup
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the Plugin
 	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
+}
+
+func (u UpsertPluginWithServiceRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertPluginWithServiceRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpsertPluginWithServiceRequest) GetControlPlaneID() string {
@@ -38,6 +52,13 @@ func (u *UpsertPluginWithServiceRequest) GetPluginID() string {
 		return ""
 	}
 	return u.PluginID
+}
+
+func (u *UpsertPluginWithServiceRequest) GetWorkspace() string {
+	if u == nil {
+		return ""
+	}
+	return u.Workspace
 }
 
 func (u *UpsertPluginWithServiceRequest) GetPluginWithoutParents() components.PluginWithoutParents {

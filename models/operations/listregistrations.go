@@ -47,8 +47,6 @@ type ListRegistrationsRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Sorts a collection of application registrations. Supported sort attributes are:
-	//
-	//
 	//   - created_at
 	//   - updated_at
 	//   - developer_id

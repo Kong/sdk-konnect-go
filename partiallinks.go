@@ -30,8 +30,8 @@ func newPartialLinks(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hoo
 	}
 }
 
-// ListPartialLink - List partial links
-// List all plugins linked to the partial
+// ListPartialLink - List partial links in a workspace
+// List all plugins linked to the partial in a workspace
 func (s *PartialLinks) ListPartialLink(ctx context.Context, request operations.ListPartialLinkRequest, opts ...operations.Option) (*operations.ListPartialLinkResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -51,7 +51,7 @@ func (s *PartialLinks) ListPartialLink(ctx context.Context, request operations.L
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}/links", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/partials/{PartialId}/links", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

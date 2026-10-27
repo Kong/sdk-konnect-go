@@ -8,24 +8,24 @@ A certificate object can have many hostnames associated with it. When Kong Gatew
 
 ### Available Operations
 
-* [ListSniWithCertificate](#listsniwithcertificate) - List all SNIs associated with a Certificate
-* [CreateSniWithCertificate](#createsniwithcertificate) - Create a new SNI associated with a Certificate
-* [DeleteSniWithCertificate](#deletesniwithcertificate) - Delete a an SNI associated with a Certificate
-* [GetSniWithCertificate](#getsniwithcertificate) - Get an SNI associated with a Certificate
-* [UpsertSniWithCertificate](#upsertsniwithcertificate) - Upsert an SNI associated with a Certificate
-* [ListSni](#listsni) - List all SNIs
-* [CreateSni](#createsni) - Create a new SNI
-* [DeleteSni](#deletesni) - Delete an SNI
-* [GetSni](#getsni) - Get an SNI
-* [UpsertSni](#upsertsni) - Upsert a SNI
+* [ListSniWithCertificate](#listsniwithcertificate) - List all SNIs associated with a Certificate in a workspace
+* [CreateSniWithCertificate](#createsniwithcertificate) - Create a new SNI associated with a Certificate in a workspace
+* [DeleteSniWithCertificate](#deletesniwithcertificate) - Delete a an SNI associated with a Certificate in a workspace
+* [GetSniWithCertificate](#getsniwithcertificate) - Get an SNI associated with a Certificate in a workspace
+* [UpsertSniWithCertificate](#upsertsniwithcertificate) - Upsert an SNI associated with a Certificate in a workspace
+* [ListSni](#listsni) - List all SNIs in a workspace
+* [CreateSni](#createsni) - Create a new SNI in a workspace
+* [DeleteSni](#deletesni) - Delete an SNI in a workspace
+* [GetSni](#getsni) - Get an SNI in a workspace
+* [UpsertSni](#upsertsni) - Upsert a SNI in a workspace
 
 ## ListSniWithCertificate
 
-List all SNIs associated with a Certificate
+List all SNIs associated with a Certificate in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-sni-with-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis" -->
+<!-- UsageSnippet language="go" operationID="list-sni-with-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}/snis" -->
 ```go
 package main
 
@@ -50,6 +50,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -80,11 +81,11 @@ func main() {
 
 ## CreateSniWithCertificate
 
-Create a new SNI associated with a Certificate
+Create a new SNI associated with a Certificate in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-sni-with-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis" -->
+<!-- UsageSnippet language="go" operationID="create-sni-with-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}/snis" -->
 ```go
 package main
 
@@ -108,6 +109,7 @@ func main() {
     res, err := s.SNIs.CreateSniWithCertificate(ctx, operations.CreateSniWithCertificateRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
+        Workspace: "team-payments",
         SNIWithoutParents: components.SNIWithoutParents{
             ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
             Name: "some.example.org",
@@ -142,11 +144,11 @@ func main() {
 
 ## DeleteSniWithCertificate
 
-Delete a an SNI associated with a Certificate using ID or name.
+Delete a an SNI associated with a Certificate using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-sni-with-certificate" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis/{SNIId}" -->
+<!-- UsageSnippet language="go" operationID="delete-sni-with-certificate" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}/snis/{SNIId}" -->
 ```go
 package main
 
@@ -171,6 +173,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -201,11 +204,11 @@ func main() {
 
 ## GetSniWithCertificate
 
-Get an SNI associated with a Certificate using ID or name.
+Get an SNI associated with a Certificate using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-sni-with-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis/{SNIId}" -->
+<!-- UsageSnippet language="go" operationID="get-sni-with-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}/snis/{SNIId}" -->
 ```go
 package main
 
@@ -230,6 +233,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -260,11 +264,11 @@ func main() {
 
 ## UpsertSniWithCertificate
 
-Create or Update an SNI associated with a Certificate using ID or name.
+Create or Update an SNI associated with a Certificate using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-sni-with-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis/{SNIId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-sni-with-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/certificates/{CertificateId}/snis/{SNIId}" -->
 ```go
 package main
 
@@ -289,6 +293,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
+        Workspace: "team-payments",
         SNIWithoutParents: components.SNIWithoutParents{
             ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
             Name: "some.example.org",
@@ -323,11 +328,11 @@ func main() {
 
 ## ListSni
 
-List all SNIs
+List all SNIs in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-sni" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" -->
+<!-- UsageSnippet language="go" operationID="list-sni" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/snis" -->
 ```go
 package main
 
@@ -351,6 +356,7 @@ func main() {
     res, err := s.SNIs.ListSni(ctx, operations.ListSniRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -382,11 +388,11 @@ func main() {
 
 ## CreateSni
 
-Create a new SNI
+Create a new SNI in a workspace
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/snis" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -394,6 +400,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -406,12 +413,16 @@ func main() {
         }),
     )
 
-    res, err := s.SNIs.CreateSni(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Sni{
-        Certificate: components.SNICertificate{
-            ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+    res, err := s.SNIs.CreateSni(ctx, operations.CreateSniRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Sni: components.Sni{
+            Certificate: components.SNICertificate{
+                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+            },
+            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            Name: "some.example.org",
         },
-        ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
-        Name: "some.example.org",
     })
     if err != nil {
         log.Fatal(err)
@@ -423,7 +434,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/snis" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -431,6 +442,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -443,12 +455,16 @@ func main() {
         }),
     )
 
-    res, err := s.SNIs.CreateSni(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Sni{
-        Certificate: components.SNICertificate{
-            ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+    res, err := s.SNIs.CreateSni(ctx, operations.CreateSniRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Sni: components.Sni{
+            Certificate: components.SNICertificate{
+                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+            },
+            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            Name: "some.example.org",
         },
-        ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
-        Name: "some.example.org",
     })
     if err != nil {
         log.Fatal(err)
@@ -460,7 +476,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/snis" example="NoAPIKey" -->
 ```go
 package main
 
@@ -468,6 +484,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -480,12 +497,16 @@ func main() {
         }),
     )
 
-    res, err := s.SNIs.CreateSni(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Sni{
-        Certificate: components.SNICertificate{
-            ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+    res, err := s.SNIs.CreateSni(ctx, operations.CreateSniRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Sni: components.Sni{
+            Certificate: components.SNICertificate{
+                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+            },
+            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            Name: "some.example.org",
         },
-        ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
-        Name: "some.example.org",
     })
     if err != nil {
         log.Fatal(err)
@@ -498,12 +519,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                     | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   | Example                                                                                                                                       |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                                                                         | :heavy_check_mark:                                                                                                                            | The context to use for the request.                                                                                                           |                                                                                                                                               |
-| `controlPlaneID`                                                                                                                              | `string`                                                                                                                                      | :heavy_check_mark:                                                                                                                            | The UUID of your control plane. This variable is available in the Konnect manager.                                                            | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                          |
-| `sni`                                                                                                                                         | [components.Sni](../../models/components/sni.md)                                                                                              | :heavy_check_mark:                                                                                                                            | Description of the new SNI for creation                                                                                                       | {<br/>"certificate": {<br/>"id": "bd380f99-659d-415e-b0e7-72ea05df3218"<br/>},<br/>"id": "36c4566c-14cc-4132-9011-4139fcbbe50a",<br/>"name": "some.example.org"<br/>} |
-| `opts`                                                                                                                                        | [][operations.Option](../../models/operations/option.md)                                                                                      | :heavy_minus_sign:                                                                                                                            | The options for this request.                                                                                                                 |                                                                                                                                               |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `request`                                                                  | [operations.CreateSniRequest](../../models/operations/createsnirequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |
 
 ### Response
 
@@ -518,11 +538,11 @@ func main() {
 
 ## DeleteSni
 
-Delete an SNI
+Delete an SNI in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-sni" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" -->
+<!-- UsageSnippet language="go" operationID="delete-sni" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/snis/{SNIId}" -->
 ```go
 package main
 
@@ -530,6 +550,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -542,7 +563,11 @@ func main() {
         }),
     )
 
-    res, err := s.SNIs.DeleteSni(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f")
+    res, err := s.SNIs.DeleteSni(ctx, operations.DeleteSniRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -554,12 +579,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `sniID`                                                                            | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the SNI to lookup                                                            | 64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `request`                                                                  | [operations.DeleteSniRequest](../../models/operations/deletesnirequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |
 
 ### Response
 
@@ -574,11 +598,11 @@ func main() {
 
 ## GetSni
 
-Get an SNI using ID or name.
+Get an SNI using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-sni" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" -->
+<!-- UsageSnippet language="go" operationID="get-sni" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/snis/{SNIId}" -->
 ```go
 package main
 
@@ -586,6 +610,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -598,7 +623,11 @@ func main() {
         }),
     )
 
-    res, err := s.SNIs.GetSni(ctx, "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.SNIs.GetSni(ctx, operations.GetSniRequest{
+        SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -610,12 +639,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `sniID`                                                                            | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the SNI to lookup                                                            | 64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f                                               |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `request`                                                            | [operations.GetSniRequest](../../models/operations/getsnirequest.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `opts`                                                               | [][operations.Option](../../models/operations/option.md)             | :heavy_minus_sign:                                                   | The options for this request.                                        |
 
 ### Response
 
@@ -630,11 +658,11 @@ func main() {
 
 ## UpsertSni
 
-Create or Update SNI using ID or name.
+Create or Update SNI using ID or name in a workspace.
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/snis/{SNIId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -658,6 +686,7 @@ func main() {
     res, err := s.SNIs.UpsertSni(ctx, operations.UpsertSniRequest{
         SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Sni: components.Sni{
             Certificate: components.SNICertificate{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
@@ -676,7 +705,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/snis/{SNIId}" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -700,6 +729,7 @@ func main() {
     res, err := s.SNIs.UpsertSni(ctx, operations.UpsertSniRequest{
         SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Sni: components.Sni{
             Certificate: components.SNICertificate{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
@@ -718,7 +748,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/snis/{SNIId}" example="NoAPIKey" -->
 ```go
 package main
 
@@ -742,6 +772,7 @@ func main() {
     res, err := s.SNIs.UpsertSni(ctx, operations.UpsertSniRequest{
         SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Sni: components.Sni{
             Certificate: components.SNICertificate{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),

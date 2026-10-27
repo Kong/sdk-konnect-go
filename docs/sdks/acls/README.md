@@ -4,21 +4,21 @@
 
 ### Available Operations
 
-* [ListACL](#listacl) - List all ACLs
-* [GetACL](#getacl) - Get an ACL
-* [ListACLWithConsumer](#listaclwithconsumer) - List all ACLs associated with a Consumer
-* [CreateACLWithConsumer](#createaclwithconsumer) - Create a new ACL associated with a Consumer
-* [DeleteACLWithConsumer](#deleteaclwithconsumer) - Delete a an ACL associated with a Consumer
-* [GetACLWithConsumer](#getaclwithconsumer) - Get an ACL associated with a Consumer
-* [UpsertACLWithConsumer](#upsertaclwithconsumer) - Upsert an ACL associated with a Consumer
+* [ListACL](#listacl) - List all ACLs in a workspace
+* [GetACL](#getacl) - Get an ACL in a workspace
+* [ListACLWithConsumer](#listaclwithconsumer) - List all ACLs associated with a Consumer in a workspace
+* [CreateACLWithConsumer](#createaclwithconsumer) - Create a new ACL associated with a Consumer in a workspace
+* [DeleteACLWithConsumer](#deleteaclwithconsumer) - Delete a an ACL associated with a Consumer in a workspace
+* [GetACLWithConsumer](#getaclwithconsumer) - Get an ACL associated with a Consumer in a workspace
+* [UpsertACLWithConsumer](#upsertaclwithconsumer) - Upsert an ACL associated with a Consumer in a workspace
 
 ## ListACL
 
-List all ACLs
+List all ACLs in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-acl" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/acls" -->
+<!-- UsageSnippet language="go" operationID="list-acl" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/acls" -->
 ```go
 package main
 
@@ -42,6 +42,7 @@ func main() {
     res, err := s.ACLs.ListACL(ctx, operations.ListACLRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -73,11 +74,11 @@ func main() {
 
 ## GetACL
 
-Get an ACL using ID.
+Get an ACL using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-acl" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/acls/{ACLId}" -->
+<!-- UsageSnippet language="go" operationID="get-acl" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/acls/{ACLId}" -->
 ```go
 package main
 
@@ -85,6 +86,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -97,7 +99,11 @@ func main() {
         }),
     )
 
-    res, err := s.ACLs.GetACL(ctx, "f28acbfa-c866-4587-b688-0208ac24df21", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.ACLs.GetACL(ctx, operations.GetACLRequest{
+        ACLID: "f28acbfa-c866-4587-b688-0208ac24df21",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -109,12 +115,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `aclID`                                                                            | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the ACL to lookup                                                            | f28acbfa-c866-4587-b688-0208ac24df21                                               |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `request`                                                            | [operations.GetACLRequest](../../models/operations/getaclrequest.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `opts`                                                               | [][operations.Option](../../models/operations/option.md)             | :heavy_minus_sign:                                                   | The options for this request.                                        |
 
 ### Response
 
@@ -129,11 +134,11 @@ func main() {
 
 ## ListACLWithConsumer
 
-List all ACLs associated with a Consumer
+List all ACLs associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-acl-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls" -->
+<!-- UsageSnippet language="go" operationID="list-acl-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls" -->
 ```go
 package main
 
@@ -158,6 +163,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -188,11 +194,11 @@ func main() {
 
 ## CreateACLWithConsumer
 
-Create a new ACL associated with a Consumer
+Create a new ACL associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-acl-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls" -->
+<!-- UsageSnippet language="go" operationID="create-acl-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls" -->
 ```go
 package main
 
@@ -216,6 +222,7 @@ func main() {
     res, err := s.ACLs.CreateACLWithConsumer(ctx, operations.CreateACLWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Workspace: "team-payments",
         ACLWithoutParents: components.ACLWithoutParents{
             Group: "foo",
             ID: sdkkonnectgo.Pointer("b1f34145-0343-41a4-9602-4c69dec2f269"),
@@ -250,11 +257,11 @@ func main() {
 
 ## DeleteACLWithConsumer
 
-Delete a an ACL associated with a Consumer using ID.
+Delete a an ACL associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-acl-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}" -->
+<!-- UsageSnippet language="go" operationID="delete-acl-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}" -->
 ```go
 package main
 
@@ -279,6 +286,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         ACLID: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -309,11 +317,11 @@ func main() {
 
 ## GetACLWithConsumer
 
-Get an ACL associated with a Consumer using ID.
+Get an ACL associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-acl-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}" -->
+<!-- UsageSnippet language="go" operationID="get-acl-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}" -->
 ```go
 package main
 
@@ -338,6 +346,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         ACLID: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -368,11 +377,11 @@ func main() {
 
 ## UpsertACLWithConsumer
 
-Create or Update an ACL associated with a Consumer using ID.
+Create or Update an ACL associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-acl-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-acl-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}" -->
 ```go
 package main
 
@@ -397,6 +406,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         ACLID: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Workspace: "team-payments",
         ACLWithoutParents: components.ACLWithoutParents{
             Group: "foo",
             ID: sdkkonnectgo.Pointer("b1f34145-0343-41a4-9602-4c69dec2f269"),

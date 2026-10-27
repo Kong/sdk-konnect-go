@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -13,8 +14,21 @@ type CreatePluginWithRouteRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Route to lookup
 	RouteID string `pathParam:"style=simple,explode=false,name=RouteId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of new Plugin for creation
 	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
+}
+
+func (c CreatePluginWithRouteRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreatePluginWithRouteRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreatePluginWithRouteRequest) GetControlPlaneID() string {
@@ -29,6 +43,13 @@ func (c *CreatePluginWithRouteRequest) GetRouteID() string {
 		return ""
 	}
 	return c.RouteID
+}
+
+func (c *CreatePluginWithRouteRequest) GetWorkspace() string {
+	if c == nil {
+		return ""
+	}
+	return c.Workspace
 }
 
 func (c *CreatePluginWithRouteRequest) GetPluginWithoutParents() components.PluginWithoutParents {

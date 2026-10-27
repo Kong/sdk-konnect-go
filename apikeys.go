@@ -31,8 +31,8 @@ func newAPIKeys(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Ho
 	}
 }
 
-// ListKeyAuthWithConsumer - List all API-keys associated with a Consumer
-// List all API-keys associated with a Consumer
+// ListKeyAuthWithConsumer - List all API-keys associated with a Consumer in a workspace
+// List all API-keys associated with a Consumer in a workspace
 func (s *APIKeys) ListKeyAuthWithConsumer(ctx context.Context, request operations.ListKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListKeyAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -52,7 +52,7 @@ func (s *APIKeys) ListKeyAuthWithConsumer(ctx context.Context, request operation
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -240,8 +240,8 @@ func (s *APIKeys) ListKeyAuthWithConsumer(ctx context.Context, request operation
 
 }
 
-// CreateKeyAuthWithConsumer - Create a new API-key associated with a Consumer
-// Create a new API-key associated with a Consumer
+// CreateKeyAuthWithConsumer - Create a new API-key associated with a Consumer in a workspace
+// Create a new API-key associated with a Consumer in a workspace
 func (s *APIKeys) CreateKeyAuthWithConsumer(ctx context.Context, request operations.CreateKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.CreateKeyAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -261,7 +261,7 @@ func (s *APIKeys) CreateKeyAuthWithConsumer(ctx context.Context, request operati
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -452,8 +452,8 @@ func (s *APIKeys) CreateKeyAuthWithConsumer(ctx context.Context, request operati
 
 }
 
-// DeleteKeyAuthWithConsumer - Delete a an API-key associated with a Consumer
-// Delete a an API-key associated with a Consumer using ID.
+// DeleteKeyAuthWithConsumer - Delete a an API-key associated with a Consumer in a workspace
+// Delete a an API-key associated with a Consumer using ID in a workspace.
 func (s *APIKeys) DeleteKeyAuthWithConsumer(ctx context.Context, request operations.DeleteKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteKeyAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -473,7 +473,7 @@ func (s *APIKeys) DeleteKeyAuthWithConsumer(ctx context.Context, request operati
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -638,8 +638,8 @@ func (s *APIKeys) DeleteKeyAuthWithConsumer(ctx context.Context, request operati
 
 }
 
-// GetKeyAuthWithConsumer - Get an API-key associated with a Consumer
-// Get an API-key associated with a Consumer using ID.
+// GetKeyAuthWithConsumer - Get an API-key associated with a Consumer in a workspace
+// Get an API-key associated with a Consumer using ID in a workspace.
 func (s *APIKeys) GetKeyAuthWithConsumer(ctx context.Context, request operations.GetKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetKeyAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -659,7 +659,7 @@ func (s *APIKeys) GetKeyAuthWithConsumer(ctx context.Context, request operations
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -845,8 +845,8 @@ func (s *APIKeys) GetKeyAuthWithConsumer(ctx context.Context, request operations
 
 }
 
-// UpsertKeyAuthWithConsumer - Upsert an API-key associated with a Consumer
-// Create or Update an API-key associated with a Consumer using ID.
+// UpsertKeyAuthWithConsumer - Upsert an API-key associated with a Consumer in a workspace
+// Create or Update an API-key associated with a Consumer using ID in a workspace.
 func (s *APIKeys) UpsertKeyAuthWithConsumer(ctx context.Context, request operations.UpsertKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertKeyAuthWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -866,7 +866,7 @@ func (s *APIKeys) UpsertKeyAuthWithConsumer(ctx context.Context, request operati
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1057,8 +1057,8 @@ func (s *APIKeys) UpsertKeyAuthWithConsumer(ctx context.Context, request operati
 
 }
 
-// ListKeyAuth - List all API-keys
-// List all API-keys
+// ListKeyAuth - List all API-keys in a workspace
+// List all API-keys in a workspace
 func (s *APIKeys) ListKeyAuth(ctx context.Context, request operations.ListKeyAuthRequest, opts ...operations.Option) (*operations.ListKeyAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1078,7 +1078,7 @@ func (s *APIKeys) ListKeyAuth(ctx context.Context, request operations.ListKeyAut
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/key-auths", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-auths", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1287,14 +1287,9 @@ func (s *APIKeys) ListKeyAuth(ctx context.Context, request operations.ListKeyAut
 
 }
 
-// GetKeyAuth - Get an API-key
-// Get an API-key using ID.
-func (s *APIKeys) GetKeyAuth(ctx context.Context, keyAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeyAuthResponse, error) {
-	request := operations.GetKeyAuthRequest{
-		KeyAuthID:      keyAuthID,
-		ControlPlaneID: controlPlaneID,
-	}
-
+// GetKeyAuth - Get an API-key in a workspace
+// Get an API-key using ID in a workspace.
+func (s *APIKeys) GetKeyAuth(ctx context.Context, request operations.GetKeyAuthRequest, opts ...operations.Option) (*operations.GetKeyAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1313,7 +1308,7 @@ func (s *APIKeys) GetKeyAuth(ctx context.Context, keyAuthID string, controlPlane
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/key-auths/{KeyAuthId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-auths/{KeyAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

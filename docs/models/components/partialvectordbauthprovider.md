@@ -23,3 +23,4 @@ custom := components.PartialVectordbAuthProvider("custom_value")
 | `PartialVectordbAuthProviderAws`   | aws                                |
 | `PartialVectordbAuthProviderAzure` | azure                              |
 | `PartialVectordbAuthProviderGcp`   | gcp                                |
+| `PartialVectordbAuthProviderOauth` | oauth                              |
