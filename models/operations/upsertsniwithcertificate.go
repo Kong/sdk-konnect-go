@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,8 +16,21 @@ type UpsertSniWithCertificateRequest struct {
 	CertificateID string `pathParam:"style=simple,explode=false,name=CertificateId"`
 	// ID of the SNI to lookup
 	SNIID string `pathParam:"style=simple,explode=false,name=SNIId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the SNI
 	SNIWithoutParents components.SNIWithoutParents `request:"mediaType=application/json"`
+}
+
+func (u UpsertSniWithCertificateRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertSniWithCertificateRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpsertSniWithCertificateRequest) GetControlPlaneID() string {
@@ -38,6 +52,13 @@ func (u *UpsertSniWithCertificateRequest) GetSNIID() string {
 		return ""
 	}
 	return u.SNIID
+}
+
+func (u *UpsertSniWithCertificateRequest) GetWorkspace() string {
+	if u == nil {
+		return ""
+	}
+	return u.Workspace
 }
 
 func (u *UpsertSniWithCertificateRequest) GetSNIWithoutParents() components.SNIWithoutParents {

@@ -24,22 +24,20 @@ import (
 // Depending on the protocol, one of the following attributes must be set:
 // <br>
 //
-// - `http`: At least one of `methods`, `hosts`, `headers`, or `paths`
-// - `https`: At least one of `methods`, `hosts`, `headers`, `paths`, or `snis`
-// - `tcp`: At least one of `sources` or `destinations`
-// - `tls`: at least one of `sources`, `destinations`, or `snis`
-// - `tls_passthrough`: set `snis`
-// - `grpc`: At least one of `hosts`, `headers`, or `paths`
-// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
-// - `ws`: At least one of `hosts`, `headers`, or `paths`
-// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-//
-//	<br>
-//	A route can't have both `tls` and `tls_passthrough` protocols at same time.
-//	<br><br>
-//	Learn more about the router:
-//
-// - [Configure routes using expressions](https://developer.konghq.com/gateway/routing/expressions/)
+//   - `http`: At least one of `methods`, `hosts`, `headers`, or `paths`
+//   - `https`: At least one of `methods`, `hosts`, `headers`, `paths`, or `snis`
+//   - `tcp`: At least one of `sources` or `destinations`
+//   - `tls`: at least one of `sources`, `destinations`, or `snis`
+//   - `tls_passthrough`: set `snis`
+//   - `grpc`: At least one of `hosts`, `headers`, or `paths`
+//   - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
+//   - `ws`: At least one of `hosts`, `headers`, or `paths`
+//   - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
+//     <br>
+//     A route can't have both `tls` and `tls_passthrough` protocols at same time.
+//     <br><br>
+//     Learn more about the router:
+//   - [Configure routes using expressions](https://developer.konghq.com/gateway/routing/expressions/)
 type Routes struct {
 	rootSDK          *SDK
 	sdkConfiguration config.SDKConfiguration
@@ -54,8 +52,8 @@ func newRoutes(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hoo
 	}
 }
 
-// ListRoute - List all Routes
-// List all Routes
+// ListRoute - List all Routes in a workspace
+// List all Routes in a workspace
 func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequest, opts ...operations.Option) (*operations.ListRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -75,7 +73,7 @@ func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequ
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -284,14 +282,9 @@ func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequ
 
 }
 
-// CreateRoute - Create a new Route
-// Create a new Route
-func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route components.Route, opts ...operations.Option) (*operations.CreateRouteResponse, error) {
-	request := operations.CreateRouteRequest{
-		ControlPlaneID: controlPlaneID,
-		Route:          route,
-	}
-
+// CreateRoute - Create a new Route in a workspace
+// Create a new Route in a workspace
+func (s *Routes) CreateRoute(ctx context.Context, request operations.CreateRouteRequest, opts ...operations.Option) (*operations.CreateRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -310,7 +303,7 @@ func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route c
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -522,14 +515,9 @@ func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route c
 
 }
 
-// DeleteRoute - Delete a Route
-// Delete a Route
-func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID string, opts ...operations.Option) (*operations.DeleteRouteResponse, error) {
-	request := operations.DeleteRouteRequest{
-		ControlPlaneID: controlPlaneID,
-		RouteID:        routeID,
-	}
-
+// DeleteRoute - Delete a Route in a workspace
+// Delete a Route in a workspace
+func (s *Routes) DeleteRoute(ctx context.Context, request operations.DeleteRouteRequest, opts ...operations.Option) (*operations.DeleteRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -548,7 +536,7 @@ func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -734,14 +722,9 @@ func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID
 
 }
 
-// GetRoute - Get a Route
-// Get a Route using ID or name.
-func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID string, opts ...operations.Option) (*operations.GetRouteResponse, error) {
-	request := operations.GetRouteRequest{
-		RouteID:        routeID,
-		ControlPlaneID: controlPlaneID,
-	}
-
+// GetRoute - Get a Route in a workspace
+// Get a Route using ID or name in a workspace.
+func (s *Routes) GetRoute(ctx context.Context, request operations.GetRouteRequest, opts ...operations.Option) (*operations.GetRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -760,7 +743,7 @@ func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID st
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -967,8 +950,8 @@ func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID st
 
 }
 
-// UpsertRoute - Upsert a Route
-// Create or Update Route using ID or name.
+// UpsertRoute - Upsert a Route in a workspace
+// Create or Update Route using ID or name in a workspace.
 func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRouteRequest, opts ...operations.Option) (*operations.UpsertRouteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -988,7 +971,7 @@ func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRoute
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1200,8 +1183,8 @@ func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRoute
 
 }
 
-// ListRouteWithService - List all Routes associated with a Service
-// List all Routes associated with a Service
+// ListRouteWithService - List all Routes associated with a Service in a workspace
+// List all Routes associated with a Service in a workspace
 func (s *Routes) ListRouteWithService(ctx context.Context, request operations.ListRouteWithServiceRequest, opts ...operations.Option) (*operations.ListRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1221,7 +1204,7 @@ func (s *Routes) ListRouteWithService(ctx context.Context, request operations.Li
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1409,8 +1392,8 @@ func (s *Routes) ListRouteWithService(ctx context.Context, request operations.Li
 
 }
 
-// CreateRouteWithService - Create a new Route associated with a Service
-// Create a new Route associated with a Service
+// CreateRouteWithService - Create a new Route associated with a Service in a workspace
+// Create a new Route associated with a Service in a workspace
 func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.CreateRouteWithServiceRequest, opts ...operations.Option) (*operations.CreateRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1430,7 +1413,7 @@ func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1621,8 +1604,8 @@ func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.
 
 }
 
-// DeleteRouteWithService - Delete a a Route associated with a Service
-// Delete a a Route associated with a Service using ID or name.
+// DeleteRouteWithService - Delete a a Route associated with a Service in a workspace
+// Delete a a Route associated with a Service using ID or name in a workspace.
 func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.DeleteRouteWithServiceRequest, opts ...operations.Option) (*operations.DeleteRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1642,7 +1625,7 @@ func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1807,8 +1790,8 @@ func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.
 
 }
 
-// GetRouteWithService - Get a Route associated with a Service
-// Get a Route associated with a Service using ID or name.
+// GetRouteWithService - Get a Route associated with a Service in a workspace
+// Get a Route associated with a Service using ID or name in a workspace.
 func (s *Routes) GetRouteWithService(ctx context.Context, request operations.GetRouteWithServiceRequest, opts ...operations.Option) (*operations.GetRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1828,7 +1811,7 @@ func (s *Routes) GetRouteWithService(ctx context.Context, request operations.Get
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2014,8 +1997,8 @@ func (s *Routes) GetRouteWithService(ctx context.Context, request operations.Get
 
 }
 
-// UpsertRouteWithService - Upsert a Route associated with a Service
-// Create or Update a Route associated with a Service using ID or name.
+// UpsertRouteWithService - Upsert a Route associated with a Service in a workspace
+// Create or Update a Route associated with a Service using ID or name in a workspace.
 func (s *Routes) UpsertRouteWithService(ctx context.Context, request operations.UpsertRouteWithServiceRequest, opts ...operations.Option) (*operations.UpsertRouteWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -2035,7 +2018,7 @@ func (s *Routes) UpsertRouteWithService(ctx context.Context, request operations.
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

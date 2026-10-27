@@ -18,8 +18,6 @@ Depending on the protocol, one of the following attributes must be set:
 - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
 - `ws`: At least one of `hosts`, `headers`, or `paths`
 - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-
-
   <br>
   A route can't have both `tls` and `tls_passthrough` protocols at same time.
   <br><br>
@@ -29,24 +27,24 @@ Depending on the protocol, one of the following attributes must be set:
 
 ### Available Operations
 
-* [ListRoute](#listroute) - List all Routes
-* [CreateRoute](#createroute) - Create a new Route
-* [DeleteRoute](#deleteroute) - Delete a Route
-* [GetRoute](#getroute) - Get a Route
-* [UpsertRoute](#upsertroute) - Upsert a Route
-* [ListRouteWithService](#listroutewithservice) - List all Routes associated with a Service
-* [CreateRouteWithService](#createroutewithservice) - Create a new Route associated with a Service
-* [DeleteRouteWithService](#deleteroutewithservice) - Delete a a Route associated with a Service
-* [GetRouteWithService](#getroutewithservice) - Get a Route associated with a Service
-* [UpsertRouteWithService](#upsertroutewithservice) - Upsert a Route associated with a Service
+* [ListRoute](#listroute) - List all Routes in a workspace
+* [CreateRoute](#createroute) - Create a new Route in a workspace
+* [DeleteRoute](#deleteroute) - Delete a Route in a workspace
+* [GetRoute](#getroute) - Get a Route in a workspace
+* [UpsertRoute](#upsertroute) - Upsert a Route in a workspace
+* [ListRouteWithService](#listroutewithservice) - List all Routes associated with a Service in a workspace
+* [CreateRouteWithService](#createroutewithservice) - Create a new Route associated with a Service in a workspace
+* [DeleteRouteWithService](#deleteroutewithservice) - Delete a a Route associated with a Service in a workspace
+* [GetRouteWithService](#getroutewithservice) - Get a Route associated with a Service in a workspace
+* [UpsertRouteWithService](#upsertroutewithservice) - Upsert a Route associated with a Service in a workspace
 
 ## ListRoute
 
-List all Routes
+List all Routes in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" -->
+<!-- UsageSnippet language="go" operationID="list-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes" -->
 ```go
 package main
 
@@ -70,8 +68,7 @@ func main() {
     res, err := s.Routes.ListRoute(ctx, operations.ListRouteRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
-        FilterNameContains: sdkkonnectgo.Pointer("john"),
-        FilterNameEq: sdkkonnectgo.Pointer("john"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -103,11 +100,11 @@ func main() {
 
 ## CreateRoute
 
-Create a new Route
+Create a new Route in a workspace
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -115,6 +112,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -127,23 +125,27 @@ func main() {
         }),
     )
 
-    res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteRouteJSON(
-        components.RouteJSON{
-            Hosts: []string{
-                "foo.example.com",
-                "foo.example.us",
+    res, err := s.Routes.CreateRoute(ctx, operations.CreateRouteRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Route: components.CreateRouteRouteJSON(
+            components.RouteJSON{
+                Hosts: []string{
+                    "foo.example.com",
+                    "foo.example.us",
+                },
+                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.Pointer("example-route"),
+                Paths: []string{
+                    "/v1",
+                    "/v2",
+                },
+                Service: &components.RouteJSONService{
+                    ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                },
             },
-            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.Pointer("example-route"),
-            Paths: []string{
-                "/v1",
-                "/v2",
-            },
-            Service: &components.RouteJSONService{
-                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-            },
-        },
-    ))
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -160,7 +162,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -168,6 +170,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -180,23 +183,27 @@ func main() {
         }),
     )
 
-    res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteRouteJSON(
-        components.RouteJSON{
-            Hosts: []string{
-                "foo.example.com",
-                "foo.example.us",
+    res, err := s.Routes.CreateRoute(ctx, operations.CreateRouteRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Route: components.CreateRouteRouteJSON(
+            components.RouteJSON{
+                Hosts: []string{
+                    "foo.example.com",
+                    "foo.example.us",
+                },
+                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.Pointer("example-route"),
+                Paths: []string{
+                    "/v1",
+                    "/v2",
+                },
+                Service: &components.RouteJSONService{
+                    ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                },
             },
-            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.Pointer("example-route"),
-            Paths: []string{
-                "/v1",
-                "/v2",
-            },
-            Service: &components.RouteJSONService{
-                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-            },
-        },
-    ))
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -213,7 +220,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes" example="NoAPIKey" -->
 ```go
 package main
 
@@ -221,6 +228,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -233,23 +241,27 @@ func main() {
         }),
     )
 
-    res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteRouteJSON(
-        components.RouteJSON{
-            Hosts: []string{
-                "foo.example.com",
-                "foo.example.us",
+    res, err := s.Routes.CreateRoute(ctx, operations.CreateRouteRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Route: components.CreateRouteRouteJSON(
+            components.RouteJSON{
+                Hosts: []string{
+                    "foo.example.com",
+                    "foo.example.us",
+                },
+                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.Pointer("example-route"),
+                Paths: []string{
+                    "/v1",
+                    "/v2",
+                },
+                Service: &components.RouteJSONService{
+                    ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                },
             },
-            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.Pointer("example-route"),
-            Paths: []string{
-                "/v1",
-                "/v2",
-            },
-            Service: &components.RouteJSONService{
-                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-            },
-        },
-    ))
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -267,12 +279,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `route`                                                                            | [components.Route](../../models/components/route.md)                               | :heavy_check_mark:                                                                 | Description of the new Route for creation                                          |                                                                                    |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.CreateRouteRequest](../../models/operations/createrouterequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
 
 ### Response
 
@@ -287,11 +298,11 @@ func main() {
 
 ## DeleteRoute
 
-Delete a Route
+Delete a Route in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-route" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" -->
+<!-- UsageSnippet language="go" operationID="delete-route" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}" -->
 ```go
 package main
 
@@ -299,6 +310,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -311,7 +323,11 @@ func main() {
         }),
     )
 
-    res, err := s.Routes.DeleteRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7")
+    res, err := s.Routes.DeleteRoute(ctx, operations.DeleteRouteRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -323,12 +339,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `routeID`                                                                          | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Route to lookup                                                          | a4326a41-aa12-44e3-93e4-6b6e58bfb9d7                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.DeleteRouteRequest](../../models/operations/deleterouterequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
 
 ### Response
 
@@ -343,11 +358,11 @@ func main() {
 
 ## GetRoute
 
-Get a Route using ID or name.
+Get a Route using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" -->
+<!-- UsageSnippet language="go" operationID="get-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}" -->
 ```go
 package main
 
@@ -355,6 +370,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -367,7 +383,11 @@ func main() {
         }),
     )
 
-    res, err := s.Routes.GetRoute(ctx, "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.Routes.GetRoute(ctx, operations.GetRouteRequest{
+        RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -385,12 +405,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `routeID`                                                                          | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Route to lookup                                                          | a4326a41-aa12-44e3-93e4-6b6e58bfb9d7                                               |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |
+| `request`                                                                | [operations.GetRouteRequest](../../models/operations/getrouterequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
+| `opts`                                                                   | [][operations.Option](../../models/operations/option.md)                 | :heavy_minus_sign:                                                       | The options for this request.                                            |
 
 ### Response
 
@@ -405,11 +424,11 @@ func main() {
 
 ## UpsertRoute
 
-Create or Update Route using ID or name.
+Create or Update Route using ID or name in a workspace.
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -433,6 +452,7 @@ func main() {
     res, err := s.Routes.UpsertRoute(ctx, operations.UpsertRouteRequest{
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Route: components.CreateRouteRouteJSON(
             components.RouteJSON{
                 Hosts: []string{
@@ -467,7 +487,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -491,6 +511,7 @@ func main() {
     res, err := s.Routes.UpsertRoute(ctx, operations.UpsertRouteRequest{
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Route: components.CreateRouteRouteJSON(
             components.RouteJSON{
                 Hosts: []string{
@@ -525,7 +546,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}" example="NoAPIKey" -->
 ```go
 package main
 
@@ -549,6 +570,7 @@ func main() {
     res, err := s.Routes.UpsertRoute(ctx, operations.UpsertRouteRequest{
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Route: components.CreateRouteRouteJSON(
             components.RouteJSON{
                 Hosts: []string{
@@ -603,11 +625,11 @@ func main() {
 
 ## ListRouteWithService
 
-List all Routes associated with a Service
+List all Routes associated with a Service in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-route-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes" -->
+<!-- UsageSnippet language="go" operationID="list-route-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes" -->
 ```go
 package main
 
@@ -632,6 +654,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -662,11 +685,11 @@ func main() {
 
 ## CreateRouteWithService
 
-Create a new Route associated with a Service
+Create a new Route associated with a Service in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-route-with-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes" -->
+<!-- UsageSnippet language="go" operationID="create-route-with-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes" -->
 ```go
 package main
 
@@ -690,6 +713,7 @@ func main() {
     res, err := s.Routes.CreateRouteWithService(ctx, operations.CreateRouteWithServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        Workspace: "team-payments",
         RouteWithoutParents: components.CreateRouteWithoutParentsRouteJSON(
             components.RouteJSON{
                 Hosts: []string{
@@ -743,11 +767,11 @@ func main() {
 
 ## DeleteRouteWithService
 
-Delete a a Route associated with a Service using ID or name.
+Delete a a Route associated with a Service using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-route-with-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}" -->
+<!-- UsageSnippet language="go" operationID="delete-route-with-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes/{RouteId}" -->
 ```go
 package main
 
@@ -772,6 +796,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -802,11 +827,11 @@ func main() {
 
 ## GetRouteWithService
 
-Get a Route associated with a Service using ID or name.
+Get a Route associated with a Service using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-route-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}" -->
+<!-- UsageSnippet language="go" operationID="get-route-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes/{RouteId}" -->
 ```go
 package main
 
@@ -831,6 +856,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -867,11 +893,11 @@ func main() {
 
 ## UpsertRouteWithService
 
-Create or Update a Route associated with a Service using ID or name.
+Create or Update a Route associated with a Service using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-route-with-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-route-with-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/routes/{RouteId}" -->
 ```go
 package main
 
@@ -896,6 +922,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        Workspace: "team-payments",
         RouteWithoutParents: components.CreateRouteWithoutParentsRouteJSON(
             components.RouteJSON{
                 Hosts: []string{

@@ -41,18 +41,30 @@ func TestConsumerCreateGetDeleteList(t *testing.T) {
 			"test_run_id:" + runID,
 		},
 	}
-	respCreateConsumer, err := sdk.Consumers.CreateConsumer(ctx, respCreate.ControlPlane.ID, reqConsumer)
+	respCreateConsumer, err := sdk.Consumers.CreateConsumer(ctx, sdkkonnectops.CreateConsumerRequest{
+		ControlPlaneID: respCreate.ControlPlane.ID,
+		Workspace:      workspace,
+		Consumer:       reqConsumer,
+	})
 	require.NoError(t, err)
 	require.NotNil(t, respCreateConsumer)
 	require.NotNil(t, respCreateConsumer.Consumer)
 	require.NotEmpty(t, respCreateConsumer.Consumer.ID)
 	t.Cleanup(func() {
-		_, err := sdk.Consumers.DeleteConsumer(ctx, respCreate.ControlPlane.ID, *respCreateConsumer.Consumer.ID)
+		_, err := sdk.Consumers.DeleteConsumer(ctx, sdkkonnectops.DeleteConsumerRequest{
+			ControlPlaneID: respCreate.ControlPlane.ID,
+			ConsumerID:     *respCreateConsumer.Consumer.ID,
+			Workspace:      workspace,
+		})
 		require.NoError(t, err)
 	})
 	require.Equal(t, *reqConsumer.Username, *respCreateConsumer.Consumer.Username)
 
-	respGetConsumer, err := sdk.Consumers.GetConsumer(ctx, *respCreateConsumer.Consumer.ID, respCreate.ControlPlane.ID)
+	respGetConsumer, err := sdk.Consumers.GetConsumer(ctx, sdkkonnectops.GetConsumerRequest{
+		ConsumerID:     *respCreateConsumer.Consumer.ID,
+		ControlPlaneID: respCreate.ControlPlane.ID,
+		Workspace:      workspace,
+	})
 	require.NoError(t, err)
 	require.NotNil(t, respGetConsumer)
 	require.NotNil(t, respGetConsumer.Consumer)
@@ -64,6 +76,7 @@ func TestConsumerCreateGetDeleteList(t *testing.T) {
 
 	listReq := sdkkonnectops.ListConsumerRequest{
 		ControlPlaneID: respCreate.ControlPlane.ID,
+		Workspace:      workspace,
 		Tags:           sdkkonnectgo.String("sdk-konnect-go,test_run_id:" + runID),
 	}
 	respListConsumer, err := sdk.Consumers.ListConsumer(ctx, listReq)

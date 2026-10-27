@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -12,6 +13,19 @@ type DeletePartialRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Partial to lookup
 	PartialID string `pathParam:"style=simple,explode=false,name=PartialId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeletePartialRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeletePartialRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeletePartialRequest) GetControlPlaneID() string {
@@ -26,6 +40,13 @@ func (d *DeletePartialRequest) GetPartialID() string {
 		return ""
 	}
 	return d.PartialID
+}
+
+func (d *DeletePartialRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeletePartialResponse struct {

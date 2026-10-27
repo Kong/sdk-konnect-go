@@ -5,8 +5,6 @@ Force time grouping into buckets of the specified duration. Only has an effect i
 If granularity is not specified and "time" is in the dimensions list, a default will be chosen based on the time range requested.
 
 Different relative times support different granularities:
-
-
   - 24h                                          => daily
   - 7d, current_week, previous_week              => daily, weekly
   - 30d, current_month, previous_month           => daily, weekly, monthly
@@ -16,8 +14,6 @@ Different relative times support different granularities:
 For absolute time ranges, daily will be used.
 
 Granularity values:
-
-
   - `daily`: Groups data into 24-hour buckets.
   - `weekly`: Groups data into 7-day buckets.
   - `monthly`: Groups data into calendar month buckets.

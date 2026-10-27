@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -14,6 +15,19 @@ type DeleteSniWithCertificateRequest struct {
 	CertificateID string `pathParam:"style=simple,explode=false,name=CertificateId"`
 	// ID of the SNI to lookup
 	SNIID string `pathParam:"style=simple,explode=false,name=SNIId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeleteSniWithCertificateRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteSniWithCertificateRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeleteSniWithCertificateRequest) GetControlPlaneID() string {
@@ -35,6 +49,13 @@ func (d *DeleteSniWithCertificateRequest) GetSNIID() string {
 		return ""
 	}
 	return d.SNIID
+}
+
+func (d *DeleteSniWithCertificateRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeleteSniWithCertificateResponse struct {

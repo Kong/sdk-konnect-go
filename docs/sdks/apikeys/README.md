@@ -4,21 +4,21 @@
 
 ### Available Operations
 
-* [ListKeyAuthWithConsumer](#listkeyauthwithconsumer) - List all API-keys associated with a Consumer
-* [CreateKeyAuthWithConsumer](#createkeyauthwithconsumer) - Create a new API-key associated with a Consumer
-* [DeleteKeyAuthWithConsumer](#deletekeyauthwithconsumer) - Delete a an API-key associated with a Consumer
-* [GetKeyAuthWithConsumer](#getkeyauthwithconsumer) - Get an API-key associated with a Consumer
-* [UpsertKeyAuthWithConsumer](#upsertkeyauthwithconsumer) - Upsert an API-key associated with a Consumer
-* [ListKeyAuth](#listkeyauth) - List all API-keys
-* [GetKeyAuth](#getkeyauth) - Get an API-key
+* [ListKeyAuthWithConsumer](#listkeyauthwithconsumer) - List all API-keys associated with a Consumer in a workspace
+* [CreateKeyAuthWithConsumer](#createkeyauthwithconsumer) - Create a new API-key associated with a Consumer in a workspace
+* [DeleteKeyAuthWithConsumer](#deletekeyauthwithconsumer) - Delete a an API-key associated with a Consumer in a workspace
+* [GetKeyAuthWithConsumer](#getkeyauthwithconsumer) - Get an API-key associated with a Consumer in a workspace
+* [UpsertKeyAuthWithConsumer](#upsertkeyauthwithconsumer) - Upsert an API-key associated with a Consumer in a workspace
+* [ListKeyAuth](#listkeyauth) - List all API-keys in a workspace
+* [GetKeyAuth](#getkeyauth) - Get an API-key in a workspace
 
 ## ListKeyAuthWithConsumer
 
-List all API-keys associated with a Consumer
+List all API-keys associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-key-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth" -->
+<!-- UsageSnippet language="go" operationID="list-key-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth" -->
 ```go
 package main
 
@@ -43,6 +43,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -73,11 +74,11 @@ func main() {
 
 ## CreateKeyAuthWithConsumer
 
-Create a new API-key associated with a Consumer
+Create a new API-key associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-key-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth" -->
+<!-- UsageSnippet language="go" operationID="create-key-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth" -->
 ```go
 package main
 
@@ -101,6 +102,7 @@ func main() {
     res, err := s.APIKeys.CreateKeyAuthWithConsumer(ctx, operations.CreateKeyAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Workspace: "team-payments",
         KeyAuthWithoutParents: &components.KeyAuthWithoutParents{
             ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
             Key: sdkkonnectgo.Pointer("IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"),
@@ -135,11 +137,11 @@ func main() {
 
 ## DeleteKeyAuthWithConsumer
 
-Delete a an API-key associated with a Consumer using ID.
+Delete a an API-key associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-key-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}" -->
+<!-- UsageSnippet language="go" operationID="delete-key-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}" -->
 ```go
 package main
 
@@ -164,6 +166,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         KeyAuthID: "",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -194,11 +197,11 @@ func main() {
 
 ## GetKeyAuthWithConsumer
 
-Get an API-key associated with a Consumer using ID.
+Get an API-key associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-key-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}" -->
+<!-- UsageSnippet language="go" operationID="get-key-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}" -->
 ```go
 package main
 
@@ -223,6 +226,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         KeyAuthID: "",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -253,11 +257,11 @@ func main() {
 
 ## UpsertKeyAuthWithConsumer
 
-Create or Update an API-key associated with a Consumer using ID.
+Create or Update an API-key associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-key-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-key-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}" -->
 ```go
 package main
 
@@ -282,6 +286,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         KeyAuthID: "",
+        Workspace: "team-payments",
         KeyAuthWithoutParents: &components.KeyAuthWithoutParents{
             ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
             Key: sdkkonnectgo.Pointer("IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"),
@@ -316,11 +321,11 @@ func main() {
 
 ## ListKeyAuth
 
-List all API-keys
+List all API-keys in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-key-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-auths" -->
+<!-- UsageSnippet language="go" operationID="list-key-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-auths" -->
 ```go
 package main
 
@@ -344,6 +349,7 @@ func main() {
     res, err := s.APIKeys.ListKeyAuth(ctx, operations.ListKeyAuthRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -375,11 +381,11 @@ func main() {
 
 ## GetKeyAuth
 
-Get an API-key using ID.
+Get an API-key using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-key-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-auths/{KeyAuthId}" -->
+<!-- UsageSnippet language="go" operationID="get-key-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/key-auths/{KeyAuthId}" -->
 ```go
 package main
 
@@ -387,6 +393,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -399,7 +406,11 @@ func main() {
         }),
     )
 
-    res, err := s.APIKeys.GetKeyAuth(ctx, "", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.APIKeys.GetKeyAuth(ctx, operations.GetKeyAuthRequest{
+        KeyAuthID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -411,12 +422,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `keyAuthID`                                                                        | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the API-key to lookup                                                        |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `request`                                                                    | [operations.GetKeyAuthRequest](../../models/operations/getkeyauthrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |
 
 ### Response
 
