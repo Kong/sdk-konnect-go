@@ -45280,10 +45280,12 @@ components:
           anonymous: '#/components/schemas/BackendClusterAuthenticationAnonymous'
           sasl_plain: '#/components/schemas/BackendClusterAuthenticationSaslPlain'
           sasl_scram: '#/components/schemas/BackendClusterAuthenticationSaslScram'
+          sasl_aws_iam: '#/components/schemas/BackendClusterAuthenticationSaslAwsIam'
       oneOf:
         - $ref: '#/components/schemas/BackendClusterAuthenticationAnonymous'
         - $ref: '#/components/schemas/BackendClusterAuthenticationSaslPlain'
         - $ref: '#/components/schemas/BackendClusterAuthenticationSaslScram'
+        - $ref: '#/components/schemas/BackendClusterAuthenticationSaslAwsIam'
     BackendClusterAuthenticationSensitiveDataAwareScheme:
       discriminator:
         propertyName: type
@@ -45291,10 +45293,12 @@ components:
           anonymous: '#/components/schemas/BackendClusterAuthenticationAnonymous'
           sasl_plain: '#/components/schemas/BackendClusterAuthenticationSaslPlainSensitiveDataAware'
           sasl_scram: '#/components/schemas/BackendClusterAuthenticationSaslScramSensitiveDataAware'
+          sasl_aws_iam: '#/components/schemas/BackendClusterAuthenticationSaslAwsIam'
       oneOf:
         - $ref: '#/components/schemas/BackendClusterAuthenticationAnonymous'
         - $ref: '#/components/schemas/BackendClusterAuthenticationSaslPlainSensitiveDataAware'
         - $ref: '#/components/schemas/BackendClusterAuthenticationSaslScramSensitiveDataAware'
+        - $ref: '#/components/schemas/BackendClusterAuthenticationSaslAwsIam'
     BackendClusterAuthenticationAnonymous:
       description: Anonymous authentication scheme for the backend cluster.
       type: object
@@ -45386,6 +45390,79 @@ components:
         - username
         - algorithm
         - password
+    BackendClusterAuthenticationSaslAwsIam:
+      description: |-
+        AWS IAM-based OAUTHBEARER authentication scheme for the backend cluster, for example when connecting to
+        Amazon MSK with IAM authentication.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        type:
+          type: string
+          const: sasl_aws_iam
+        sasl_aws_iam:
+          type: object
+          discriminator:
+            propertyName: type
+            mapping:
+              default_provider_chain: '#/components/schemas/BackendClusterAuthenticationSaslAwsIamDefaultProviderChain'
+              assume_role: '#/components/schemas/BackendClusterAuthenticationSaslAwsIamAssumeRole'
+          oneOf:
+            - $ref: '#/components/schemas/BackendClusterAuthenticationSaslAwsIamDefaultProviderChain'
+            - $ref: '#/components/schemas/BackendClusterAuthenticationSaslAwsIamAssumeRole'
+      example:
+        type: sasl_aws_iam
+        sasl_aws_iam:
+          type: default_provider_chain
+      additionalProperties: false
+      required:
+        - type
+        - sasl_aws_iam
+      x-min-runtime-version: '1.3'
+    BackendClusterAuthenticationSaslAwsIamDefaultProviderChain:
+      description: |-
+        Configures whether to authenticate using credentials obtained from the AWS default credentials provider chain
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        type:
+          type: string
+          const: default_provider_chain
+      additionalProperties: false
+      required:
+        - type
+      x-min-runtime-version: '1.3'
+    BackendClusterAuthenticationSaslAwsIamAssumeRole:
+      description: |-
+        Configures whether to authenticate using credentials obtained by first assuming a role, using the AWS default credentials provider chain
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        type:
+          type: string
+          const: assume_role
+        arn:
+          description: |
+            The [ARN](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns)
+            of the IAM role to assume, formatted as `arn:aws:iam::<account-id>:role/<role-name>`.
+          type: string
+          example: 'arn:aws:iam::123456789012:role/example-role'
+          maxLength: 2048
+          minLength: 10
+          pattern: '^arn:aws(-[a-z-]+)?:iam:.+'
+        session_name:
+          description: |
+            The session name to attach to the assumed role session. The value becomes part of the assumed
+            role user ARN, queryable as `arn:aws:sts::<account-id>:assumed-role/<role-name>/<session-name>`.
+          type: string
+      additionalProperties: false
+      required:
+        - type
+        - arn
+      x-min-runtime-version: '1.3'
     SchemaRegistry:
       description: A schema registry that contains schemas.
       type: object
@@ -45487,11 +45564,17 @@ components:
       type: object
       properties:
         schema_type:
-          description: The format of the message.
+          description: |-
+            The format of the message.
+
+            **`any` requires a minimum runtime version of `1.3`**.
           type: string
           enum:
             - avro
             - json
+            - any
+          x-enum-min-runtime-version:
+            any: '1.3'
           x-speakeasy-unknown-values: allow
         endpoint:
           description: The endpoint of the Confluent schema registry.
@@ -45515,11 +45598,17 @@ components:
       type: object
       properties:
         schema_type:
-          description: The format of the message.
+          description: |-
+            The format of the message.
+
+            **`any` requires a minimum runtime version of `1.3`**.
           type: string
           enum:
             - avro
             - json
+            - any
+          x-enum-min-runtime-version:
+            any: '1.3'
           x-speakeasy-unknown-values: allow
         endpoint:
           description: The endpoint of the Confluent schema registry.
@@ -46266,12 +46355,16 @@ components:
           decrypt: '#/components/schemas/EventGatewayDecryptPolicy'
           skip_record: '#/components/schemas/EventGatewaySkipRecordPolicyCreate'
           decrypt_fields: '#/components/schemas/EventGatewayParsedRecordDecryptFieldsPolicyCreate'
+          transcode: '#/components/schemas/EventGatewayParsedRecordTranscodeConsumePolicyCreate'
+          mask_fields: '#/components/schemas/EventGatewayParsedRecordMaskFieldsConsumePolicyCreate'
       oneOf:
         - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicy'
         - $ref: '#/components/schemas/EventGatewayModifyHeadersPolicyCreate'
         - $ref: '#/components/schemas/EventGatewaySkipRecordPolicyCreate'
         - $ref: '#/components/schemas/EventGatewayDecryptPolicy'
         - $ref: '#/components/schemas/EventGatewayParsedRecordDecryptFieldsPolicyCreate'
+        - $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeConsumePolicyCreate'
+        - $ref: '#/components/schemas/EventGatewayParsedRecordMaskFieldsConsumePolicyCreate'
     EventGatewayConsumePolicyUpdate:
       description: The typed schema of the consume policy to modify it.
       discriminator:
@@ -46301,11 +46394,15 @@ components:
           schema_validation: '#/components/schemas/EventGatewayProduceSchemaValidationPolicy'
           encrypt: '#/components/schemas/EventGatewayEncryptPolicy'
           encrypt_fields: '#/components/schemas/EventGatewayParsedRecordEncryptFieldsPolicyCreate'
+          transcode: '#/components/schemas/EventGatewayParsedRecordTranscodeProducePolicyCreate'
+          mask_fields: '#/components/schemas/EventGatewayParsedRecordMaskFieldsProducePolicyCreate'
       oneOf:
         - $ref: '#/components/schemas/EventGatewayModifyHeadersPolicyCreate'
         - $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicy'
         - $ref: '#/components/schemas/EventGatewayEncryptPolicy'
         - $ref: '#/components/schemas/EventGatewayParsedRecordEncryptFieldsPolicyCreate'
+        - $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeProducePolicyCreate'
+        - $ref: '#/components/schemas/EventGatewayParsedRecordMaskFieldsProducePolicyCreate'
     EventGatewayProducePolicyUpdate:
       description: The typed schema of the produce policy to modify it.
       discriminator:
@@ -47162,6 +47259,20 @@ components:
             - $ref: '#/components/schemas/EventGatewayParsedRecordFieldPathsExpression'
       required:
         - paths
+    TranscodeOnUnknownField:
+      description: |-
+        Describes how to handle JSON fields that are not defined in the target schema.
+        * `fail` - the transcoding fails. The policy `failure_mode` determines how the failure is handled.
+        * `drop` - the unknown fields are removed from the transcoded value.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: string
+      default: fail
+      enum:
+        - fail
+        - drop
+      x-min-runtime-version: '1.3'
+      x-speakeasy-unknown-values: allow
     EventGatewayParsedRecordTranscodeProducePolicy:
       description: |-
         Converts an already schema-validated record value into a different serialization
@@ -47294,6 +47405,143 @@ components:
         - config
       title: Transcode Parsed Record
       x-min-runtime-version: '1.3'
+    EventGatewayParsedRecordTranscodeProducePolicyCreate:
+      description: |-
+        Converts an already schema-validated record value into a different serialization
+        format before it is produced to the backend cluster.
+
+        Note this policy can only be used as a child of a `EventGatewayProduceSchemaValidationPolicy` policy.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        type:
+          description: The type name of the policy.
+          type: string
+          const: transcode
+          maxLength: 255
+          minLength: 1
+        name:
+          description: A unique user-defined name of the policy.
+          type: string
+          maxLength: 255
+          x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
+        description:
+          description: A human-readable description of the policy.
+          type: string
+          default: ''
+          maxLength: 512
+        enabled:
+          description: Whether the policy is enabled.
+          type: boolean
+          default: true
+        labels:
+          $ref: '#/components/schemas/Labels'
+        config:
+          description: The configuration of the policy.
+          type: object
+          $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeProduceConfig'
+        condition:
+          description: |
+            A string containing the boolean expression that determines whether the policy is applied.
+
+            When the policy is applied as a child policy of schema_validation, the expression can also reference
+            `record.value` fields.
+          type: string
+          example: record.value.content.foo.bar == "a-value"
+          default: ''
+          maxLength: 1000
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
+              - name: record.value.validated
+                type: boolean
+                description: Indicates whether the record value was successfully validated.
+              - name: record.value.content
+                type: object
+                description: The content of the record value.
+              - name: record.value.schema
+                type: object
+                x-min-runtime-version: '1.2'
+                description: |-
+                  Registry-supplied schema metadata for the record value. Populated when the value
+                  was validated by a Confluent schema registry. Fields: `id` (uint), `version` (uint,
+                  when returned by the registry), `format` ("avro"|"json"), and either
+                  `avro.{name, namespace}` or `json.{title, id}`. Sub-fields are absent when not
+                  applicable; use `has()` to test presence. Registry `metadata` (tags and properties)
+                  is available from runtime 1.3 via `record.value.schema.metadata`.
+
+                  **Requires a minimum runtime version of `1.2`**.
+              - name: record.value.schema.metadata
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  Confluent schema-registry metadata for the record value. Present (as empty maps)
+                  whenever `record.value.schema` is present. Fields:
+                  * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
+
+
+                    empty map when the registry omits it.
+                  * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
+
+
+                    of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
+                    empty map when the registry omits it.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: record.key.schema
+                type: object
+                x-min-runtime-version: '1.2'
+                description: |-
+                  Same shape as `record.value.schema`, populated when the record key has
+                  schema_validation configured.
+
+                  **Requires a minimum runtime version of `1.2`**.
+              - name: record.key.schema.metadata
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  Same shape as `record.value.schema.metadata`, populated when the record key has
+                  schema_validation configured.
+
+                  **Requires a minimum runtime version of `1.3`**.
+        parent_policy_id:
+          description: The unique identifier of the parent schema validation policy.
+          type: string
+          format: uuid
+      required:
+        - type
+        - config
+        - parent_policy_id
+      title: Transcode Parsed Record
+      x-min-runtime-version: '1.3'
     EventGatewayParsedRecordTranscodeProduceConfig:
       description: The configuration of the transcode parsed record policy applied to produced records.
       discriminator:
@@ -47310,6 +47558,8 @@ components:
       properties:
         failure_mode:
           $ref: '#/components/schemas/ProduceFailureMode'
+        on_unknown_field:
+          $ref: '#/components/schemas/TranscodeOnUnknownField'
         schema_source:
           $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeSchemaSource'
         output_format:
@@ -47453,6 +47703,143 @@ components:
         - config
       title: Transcode Parsed Record
       x-min-runtime-version: '1.3'
+    EventGatewayParsedRecordTranscodeConsumePolicyCreate:
+      description: |-
+        Converts an already schema-validated record value into a different serialization
+        format before it is returned to the consumer.
+
+        Note this policy can only be used as a child of a `EventGatewayConsumeSchemaValidationPolicy` policy.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        type:
+          description: The type name of the policy.
+          type: string
+          const: transcode
+          maxLength: 255
+          minLength: 1
+        name:
+          description: A unique user-defined name of the policy.
+          type: string
+          maxLength: 255
+          x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
+        description:
+          description: A human-readable description of the policy.
+          type: string
+          default: ''
+          maxLength: 512
+        enabled:
+          description: Whether the policy is enabled.
+          type: boolean
+          default: true
+        labels:
+          $ref: '#/components/schemas/Labels'
+        config:
+          description: The configuration of the policy.
+          type: object
+          $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeConsumeConfig'
+        condition:
+          description: |
+            A string containing the boolean expression that determines whether the policy is applied.
+
+            When the policy is applied as a child policy of schema_validation, the expression can also reference
+            `record.value` fields.
+          type: string
+          example: record.value.content.foo.bar == "a-value"
+          default: ''
+          maxLength: 1000
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
+              - name: record.value.validated
+                type: boolean
+                description: Indicates whether the record value was successfully validated.
+              - name: record.value.content
+                type: object
+                description: The content of the record value.
+              - name: record.value.schema
+                type: object
+                x-min-runtime-version: '1.2'
+                description: |-
+                  Registry-supplied schema metadata for the record value. Populated when the value
+                  was validated by a Confluent schema registry. Fields: `id` (uint), `version` (uint,
+                  when returned by the registry), `format` ("avro"|"json"), and either
+                  `avro.{name, namespace}` or `json.{title, id}`. Sub-fields are absent when not
+                  applicable; use `has()` to test presence. Registry `metadata` (tags and properties)
+                  is available from runtime 1.3 via `record.value.schema.metadata`.
+
+                  **Requires a minimum runtime version of `1.2`**.
+              - name: record.value.schema.metadata
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  Confluent schema-registry metadata for the record value. Present (as empty maps)
+                  whenever `record.value.schema` is present. Fields:
+                  * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
+
+
+                    empty map when the registry omits it.
+                  * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
+
+
+                    of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
+                    empty map when the registry omits it.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: record.key.schema
+                type: object
+                x-min-runtime-version: '1.2'
+                description: |-
+                  Same shape as `record.value.schema`, populated when the record key has
+                  schema_validation configured.
+
+                  **Requires a minimum runtime version of `1.2`**.
+              - name: record.key.schema.metadata
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  Same shape as `record.value.schema.metadata`, populated when the record key has
+                  schema_validation configured.
+
+                  **Requires a minimum runtime version of `1.3`**.
+        parent_policy_id:
+          description: The unique identifier of the parent schema validation policy.
+          type: string
+          format: uuid
+      required:
+        - type
+        - config
+        - parent_policy_id
+      title: Transcode Parsed Record
+      x-min-runtime-version: '1.3'
     EventGatewayParsedRecordTranscodeConsumeConfig:
       description: The configuration of the transcode parsed record policy applied to consumed records.
       discriminator:
@@ -47469,6 +47856,8 @@ components:
       properties:
         failure_mode:
           $ref: '#/components/schemas/ConsumeFailureMode'
+        on_unknown_field:
+          $ref: '#/components/schemas/TranscodeOnUnknownField'
         schema_source:
           $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeSchemaSource'
         output_format:
@@ -47487,6 +47876,8 @@ components:
       properties:
         failure_mode:
           $ref: '#/components/schemas/ConsumeFailureMode'
+        on_unknown_field:
+          $ref: '#/components/schemas/TranscodeOnUnknownField'
         schema_source:
           $ref: '#/components/schemas/EventGatewayParsedRecordTranscodeSchemaSource'
         output_format:
@@ -47753,6 +48144,145 @@ components:
         - config
       title: Mask Record Fields
       x-min-runtime-version: '1.3'
+    EventGatewayParsedRecordMaskFieldsProducePolicyCreate:
+      description: |-
+        Redacts string fields of parsed Kafka records using a configurable masking strategy.
+
+        Only string fields may be selected. Selecting a field that does not exist is ignored;
+        selecting a field that is not a string is a policy error handled by `failure_mode`.
+
+        Note this policy can only be used as a child of a `EventGatewayProduceSchemaValidationPolicy` policy.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        type:
+          description: The type name of the policy.
+          type: string
+          const: mask_fields
+          maxLength: 255
+          minLength: 1
+        name:
+          description: A unique user-defined name of the policy.
+          type: string
+          maxLength: 255
+          x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
+        description:
+          description: A human-readable description of the policy.
+          type: string
+          default: ''
+          maxLength: 512
+        enabled:
+          description: Whether the policy is enabled.
+          type: boolean
+          default: true
+        labels:
+          $ref: '#/components/schemas/Labels'
+        config:
+          description: The configuration of the policy.
+          type: object
+          $ref: '#/components/schemas/EventGatewayParsedRecordMaskFieldsProduceConfig'
+        condition:
+          description: |
+            A string containing the boolean expression that determines whether the policy is applied.
+
+            When the policy is applied as a child policy of schema_validation, the expression can also reference
+            `record.value` fields.
+          type: string
+          example: record.value.content.foo.bar == "a-value"
+          default: ''
+          maxLength: 1000
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
+              - name: record.value.validated
+                type: boolean
+                description: Indicates whether the record value was successfully validated.
+              - name: record.value.content
+                type: object
+                description: The content of the record value.
+              - name: record.value.schema
+                type: object
+                x-min-runtime-version: '1.2'
+                description: |-
+                  Registry-supplied schema metadata for the record value. Populated when the value
+                  was validated by a Confluent schema registry. Fields: `id` (uint), `version` (uint,
+                  when returned by the registry), `format` ("avro"|"json"), and either
+                  `avro.{name, namespace}` or `json.{title, id}`. Sub-fields are absent when not
+                  applicable; use `has()` to test presence. Registry `metadata` (tags and properties)
+                  is available from runtime 1.3 via `record.value.schema.metadata`.
+
+                  **Requires a minimum runtime version of `1.2`**.
+              - name: record.value.schema.metadata
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  Confluent schema-registry metadata for the record value. Present (as empty maps)
+                  whenever `record.value.schema` is present. Fields:
+                  * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
+
+
+                    empty map when the registry omits it.
+                  * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
+
+
+                    of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
+                    empty map when the registry omits it.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: record.key.schema
+                type: object
+                x-min-runtime-version: '1.2'
+                description: |-
+                  Same shape as `record.value.schema`, populated when the record key has
+                  schema_validation configured.
+
+                  **Requires a minimum runtime version of `1.2`**.
+              - name: record.key.schema.metadata
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  Same shape as `record.value.schema.metadata`, populated when the record key has
+                  schema_validation configured.
+
+                  **Requires a minimum runtime version of `1.3`**.
+        parent_policy_id:
+          description: The unique identifier of the parent schema validation policy.
+          type: string
+          format: uuid
+      required:
+        - type
+        - config
+        - parent_policy_id
+      title: Mask Record Fields
+      x-min-runtime-version: '1.3'
     EventGatewayParsedRecordMaskFieldsProduceConfig:
       description: The configuration of the mask record fields produce policy.
       type: object
@@ -47901,6 +48431,145 @@ components:
       required:
         - type
         - config
+      title: Mask Parsed Record Fields
+      x-min-runtime-version: '1.3'
+    EventGatewayParsedRecordMaskFieldsConsumePolicyCreate:
+      description: |-
+        Redacts string fields of parsed Kafka records using a configurable masking strategy.
+
+        Only string fields may be selected. Selecting a field that does not exist is ignored;
+        selecting a field that is not a string is a policy error handled by `failure_mode`.
+
+        Note this policy can only be used as a child of a `EventGatewayConsumeSchemaValidationPolicy` policy.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        type:
+          description: The type name of the policy.
+          type: string
+          const: mask_fields
+          maxLength: 255
+          minLength: 1
+        name:
+          description: A unique user-defined name of the policy.
+          type: string
+          maxLength: 255
+          x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
+        description:
+          description: A human-readable description of the policy.
+          type: string
+          default: ''
+          maxLength: 512
+        enabled:
+          description: Whether the policy is enabled.
+          type: boolean
+          default: true
+        labels:
+          $ref: '#/components/schemas/Labels'
+        config:
+          description: The configuration of the policy.
+          type: object
+          $ref: '#/components/schemas/EventGatewayParsedRecordMaskFieldsConsumeConfig'
+        condition:
+          description: |
+            A string containing the boolean expression that determines whether the policy is applied.
+
+            When the policy is applied as a child policy of schema_validation, the expression can also reference
+            `record.value` fields.
+          type: string
+          example: record.value.content.foo.bar == "a-value"
+          default: ''
+          maxLength: 1000
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
+              - name: record.value.validated
+                type: boolean
+                description: Indicates whether the record value was successfully validated.
+              - name: record.value.content
+                type: object
+                description: The content of the record value.
+              - name: record.value.schema
+                type: object
+                x-min-runtime-version: '1.2'
+                description: |-
+                  Registry-supplied schema metadata for the record value. Populated when the value
+                  was validated by a Confluent schema registry. Fields: `id` (uint), `version` (uint,
+                  when returned by the registry), `format` ("avro"|"json"), and either
+                  `avro.{name, namespace}` or `json.{title, id}`. Sub-fields are absent when not
+                  applicable; use `has()` to test presence. Registry `metadata` (tags and properties)
+                  is available from runtime 1.3 via `record.value.schema.metadata`.
+
+                  **Requires a minimum runtime version of `1.2`**.
+              - name: record.value.schema.metadata
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  Confluent schema-registry metadata for the record value. Present (as empty maps)
+                  whenever `record.value.schema` is present. Fields:
+                  * `properties` (`map` of `string` to `string`) - Confluent `metadata.properties`;
+
+
+                    empty map when the registry omits it.
+                  * `tags` (`map` of `string` to list of `string`) - keyed by tag, value is the list
+
+
+                    of Confluent schema paths (e.g. `io.confluent.field.<name>`) carrying that tag;
+                    empty map when the registry omits it.
+
+                  **Requires a minimum runtime version of `1.3`**.
+              - name: record.key.schema
+                type: object
+                x-min-runtime-version: '1.2'
+                description: |-
+                  Same shape as `record.value.schema`, populated when the record key has
+                  schema_validation configured.
+
+                  **Requires a minimum runtime version of `1.2`**.
+              - name: record.key.schema.metadata
+                type: object
+                x-min-runtime-version: '1.3'
+                description: |-
+                  Same shape as `record.value.schema.metadata`, populated when the record key has
+                  schema_validation configured.
+
+                  **Requires a minimum runtime version of `1.3`**.
+        parent_policy_id:
+          description: The unique identifier of the parent schema validation policy.
+          type: string
+          format: uuid
+      required:
+        - type
+        - config
+        - parent_policy_id
       title: Mask Parsed Record Fields
       x-min-runtime-version: '1.3'
     EventGatewayParsedRecordMaskFieldsConsumeConfig:
@@ -48900,6 +49569,10 @@ components:
         type:
           type: string
           const: inline_schema
+        key:
+          $ref: '#/components/schemas/SchemaValidationInlineSchemaConfig'
+        value:
+          $ref: '#/components/schemas/SchemaValidationInlineSchemaConfig'
       required:
         - type
       x-min-runtime-version: '1.3'
@@ -48933,8 +49606,60 @@ components:
         type:
           type: string
           const: inline_schema
+        key:
+          $ref: '#/components/schemas/SchemaValidationInlineSchemaConfig'
+        value:
+          $ref: '#/components/schemas/SchemaValidationInlineSchemaConfig'
       required:
         - type
+      x-min-runtime-version: '1.3'
+    SchemaValidationInlineSchemaConfig:
+      description: |-
+        Defines the schema for a record key or value, inline.
+
+        **Requires a minimum runtime version of `1.3`**.
+      discriminator:
+        propertyName: schema_type
+        mapping:
+          json: '#/components/schemas/SchemaValidationInlineSchemaConfigJson'
+          avro: '#/components/schemas/SchemaValidationInlineSchemaConfigAvro'
+      oneOf:
+        - $ref: '#/components/schemas/SchemaValidationInlineSchemaConfigJson'
+        - $ref: '#/components/schemas/SchemaValidationInlineSchemaConfigAvro'
+      x-min-runtime-version: '1.3'
+    SchemaValidationInlineSchemaConfigJson:
+      description: |-
+        The configuration of an inline schema when using JSON.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        schema:
+          description: A schema that applies according to `schema_type`.
+          type: string
+        schema_type:
+          type: string
+          const: json
+      required:
+        - schema
+        - schema_type
+      x-min-runtime-version: '1.3'
+    SchemaValidationInlineSchemaConfigAvro:
+      description: |-
+        The configuration of an inline schema when using Avro.
+
+        **Requires a minimum runtime version of `1.3`**.
+      type: object
+      properties:
+        schema:
+          description: A schema that applies according to `schema_type`.
+          type: string
+        schema_type:
+          type: string
+          const: avro
+      required:
+        - schema
+        - schema_type
       x-min-runtime-version: '1.3'
     EventGatewayACLsPolicy:
       description: Apply Kafka ACLs to virtual cluster traffic.
@@ -105092,7 +105817,7 @@ x-input-schemas:
     version: 2.1.2
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
-    version: 1.3.14
+    version: 1.3.15
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
     version: 3.9.1
