@@ -8,9 +8,9 @@ management:
   releaseVersion: 0.76.0
   configChecksum: 3b86d224a978e1d9882918a864ea5152
 persistentEdits:
-  generation_id: 9920475d-c418-4c73-aa17-26b196e590fd
-  pristine_commit_hash: 227c2d9896f58c8363234af5a8c0fba0d13631d6
-  pristine_tree_hash: e0256f23e6ac344aaa14f2ed3ee91f6393121a56
+  generation_id: ef1f3d91-7c58-41e5-aa34-7d4f03a43fa2
+  pristine_commit_hash: 93f7bc3a8fd1c0c0effbe2dfcb764506f660fff8
+  pristine_tree_hash: bd0d376a1e220fd16a191d694cfc9b4faef1c501
 features:
   go:
     acceptHeaders: 2.81.2
@@ -23817,8 +23817,8 @@ trackedFiles:
     pristine_git_object: 9fb95c1b1d234f90e3da1674cc1fff7a87f622c3
   go.mod:
     id: c47645c391ad
-    last_write_checksum: sha1:009494539158183ee0c61a2e9fc5fd64e19de988
-    pristine_git_object: e6c47111462f561ead6424738446d7dd0db95fe9
+    last_write_checksum: sha1:1594b7def71968dd4b3223dc9e0b5cf0929b2579
+    pristine_git_object: 873bb7434a4e3a60feb7e8d86e33d38027698d4e
   graphqlcostdecorations.go:
     id: fd81fca74e5a
     last_write_checksum: sha1:a5fa25a38e74e8454088e28cef9835cd9109774d
