@@ -17861,6 +17861,10 @@ paths:
     put:
       operationId: update-customer-billing
       summary: Update customer billing data
+      description: |-
+        Update billing data while preserving the current profile selection when
+        billing_profile is omitted or null. Use the dedicated billing profile endpoint
+        to remove the selection.
       parameters:
         - name: customerId
           in: path
@@ -17915,6 +17919,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BillingAppCustomerData'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '410':
+          $ref: '#/components/responses/Gone'
+      tags:
+        - OpenMeter Customers
+  '/v3/openmeter/customers/{customerId}/billing/profile':
+    put:
+      operationId: update-customer-billing-profile
+      summary: Update customer billing profile
+      description: |-
+        Set the customer's explicit billing profile selection. Omitting billing_profile
+        or setting it to null removes the selection and uses the current namespace
+        default.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertCustomerBillingProfileRequest'
+      responses:
+        '200':
+          description: CustomerBillingProfile upsert response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingCustomerProfile'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -18204,7 +18247,9 @@ paths:
         - name: timestamp
           in: query
           description: |-
-            Return the credit balance as of this timestamp.
+            Return credit balances at this timestamp using all currently recorded postings,
+            including corrections recorded later. This is not a snapshot of what was known
+            at the requested time.
 
             Defaults to the current time. Historical responses return `live` as zero because
             live charge impacts are only available for current balances.
@@ -18292,6 +18337,17 @@ paths:
           schema:
             $ref: '#/components/schemas/ULID'
         - $ref: '#/components/parameters/PagePaginationQuery'
+        - name: sort
+          in: query
+          description: |-
+            Sort credit grants by `created_at`, `updated_at`, `name`, or `id`. Defaults to
+            `created_at desc`. The `asc` suffix is optional when a sort attribute is
+            supplied. Supports one attribute; ties are broken by `id` in the same direction.
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+          explode: false
+          style: form
         - name: filter
           in: query
           description: Filter credit grants returned in the response.
@@ -20117,7 +20173,7 @@ paths:
         - Meters
   /v3/openmeter/notification/channels:
     get:
-      operationId: list-notification-channels
+      operationId: list-billing-notification-channels
       summary: List notification channels
       description: |-
         **Pre-release Endpoint**
@@ -20171,7 +20227,7 @@ paths:
       tags:
         - OpenMeter Notifications
     post:
-      operationId: create-notification-channel
+      operationId: create-billing-notification-channel
       summary: Create notification channel
       description: |-
         **Pre-release Endpoint**
@@ -20201,7 +20257,7 @@ paths:
         - OpenMeter Notifications
   '/v3/openmeter/notification/channels/{notificationChannelId}':
     get:
-      operationId: get-notification-channel
+      operationId: get-billing-notification-channel
       summary: Get notification channel
       description: |-
         **Pre-release Endpoint**
@@ -20232,7 +20288,7 @@ paths:
       tags:
         - OpenMeter Notifications
     put:
-      operationId: update-notification-channel
+      operationId: update-billing-notification-channel
       summary: Update notification channel
       description: |-
         **Pre-release Endpoint**
@@ -20271,7 +20327,7 @@ paths:
       tags:
         - OpenMeter Notifications
     delete:
-      operationId: delete-notification-channel
+      operationId: delete-billing-notification-channel
       summary: Delete notification channel
       description: |-
         **Pre-release Endpoint**
@@ -52147,6 +52203,22 @@ components:
         - $ref: '#/components/schemas/BillingAppStripe'
         - $ref: '#/components/schemas/BillingAppSandbox'
         - $ref: '#/components/schemas/BillingAppExternalInvoicing'
+    BillingAppAction:
+      description: An action the operator should take on an installed app.
+      type: object
+      properties:
+        type:
+          description: The action type.
+          type: string
+          enum:
+            - reconcile_webhook_events
+        description:
+          description: Human readable explanation of why the action is needed.
+          type: string
+      additionalProperties: false
+      required:
+        - type
+        - description
     BillingAppCapability:
       description: App capability describes a function that an App can perform.
       type: object
@@ -52464,6 +52536,14 @@ components:
             - unauthorized
           readOnly: true
           x-speakeasy-unknown-values: allow
+        actions:
+          description: |-
+            Actions the operator should take to bring the app up to date. Omitted when no
+            action is required.
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingAppAction'
+          readOnly: true
         enable_draft_sync_hook:
           description: |-
             Enable draft synchronization hook.
@@ -52643,6 +52723,14 @@ components:
             - unauthorized
           readOnly: true
           x-speakeasy-unknown-values: allow
+        actions:
+          description: |-
+            Actions the operator should take to bring the app up to date. Omitted when no
+            action is required.
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingAppAction'
+          readOnly: true
       additionalProperties: false
       required:
         - id
@@ -52775,6 +52863,14 @@ components:
             - unauthorized
           readOnly: true
           x-speakeasy-unknown-values: allow
+        actions:
+          description: |-
+            Actions the operator should take to bring the app up to date. Omitted when no
+            action is required.
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingAppAction'
+          readOnly: true
         account_id:
           description: The Stripe account ID associated with the connected Stripe account.
           type: string
@@ -56106,6 +56202,16 @@ components:
           oneOf:
             - $ref: '#/components/schemas/CurrencyCode'
             - $ref: '#/components/schemas/BillingCurrencyCodeCustom'
+        custom_currency:
+          description: Managed currency reference. Present only for custom currencies.
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              $ref: '#/components/schemas/ULID'
+          readOnly: true
+          required:
+            - id
         amount:
           description: Granted credit amount.
           type: string
@@ -56510,7 +56616,9 @@ components:
           pattern: '^\-?[0-9]+(\.[0-9]+)?$'
           readOnly: true
         available_balance:
-          description: The available balance before and after the transaction.
+          description: |-
+            The booked credit balance before and after the transaction, including
+            credit-only advance debt.
           type: object
           additionalProperties: false
           properties:
@@ -56869,11 +56977,13 @@ components:
       properties:
         billing_profile:
           description: |-
-            The billing profile for the customer.
+            The billing profile explicitly selected for the customer.
 
-            If not provided, the default billing profile will be used.
+            Unpinned customers use the current namespace default. Selecting the current
+            default explicitly pins the customer to that profile.
           type: object
           additionalProperties: false
+          nullable: true
           properties:
             id:
               description: The ID of the billing profile.
@@ -56884,6 +56994,23 @@ components:
           required:
             - id
           title: Billing profile
+        effective_billing_profile:
+          description: |-
+            The effective billing profile for the customer. Uses the explicitly selected
+            billing profile when pinned, otherwise the current default billing profile.
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              description: The ID of the billing profile.
+              type: string
+              example: 01G65Z755AFWAKHE12NY0CQ9FH
+              pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+              title: ULID
+          readOnly: true
+          required:
+            - id
+          title: Effective billing profile
         app_data:
           description: App customer data.
           type: object
@@ -56947,6 +57074,51 @@ components:
               title: External invoicing
           title: App customer data
       additionalProperties: false
+      required:
+        - effective_billing_profile
+    BillingCustomerProfile:
+      description: Customer billing profile selection.
+      type: object
+      properties:
+        billing_profile:
+          description: |-
+            The billing profile explicitly selected for the customer.
+
+            Unpinned customers use the current namespace default. Selecting the current
+            default explicitly pins the customer to that profile.
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            id:
+              description: The ID of the billing profile.
+              type: string
+              example: 01G65Z755AFWAKHE12NY0CQ9FH
+              pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+              title: ULID
+          required:
+            - id
+          title: Billing profile
+        effective_billing_profile:
+          description: |-
+            The effective billing profile for the customer. Uses the explicitly selected
+            billing profile when pinned, otherwise the current default billing profile.
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              description: The ID of the billing profile.
+              type: string
+              example: 01G65Z755AFWAKHE12NY0CQ9FH
+              pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+              title: ULID
+          readOnly: true
+          required:
+            - id
+          title: Effective billing profile
+      additionalProperties: false
+      required:
+        - effective_billing_profile
     BillingCustomerStripeCreateCheckoutSessionRequest:
       description: |-
         Request to create a Stripe Checkout Session for the customer.
@@ -58653,7 +58825,7 @@ components:
         - type
         - amount
     BillingInstallAppExternalInvoicing:
-      description: Base model for installing an app from the catalog.
+      description: Model for installing an External Invoicing app from the catalog.
       type: object
       properties:
         type:
@@ -58666,8 +58838,8 @@ components:
           type: string
         create_billing_profile:
           description: |-
-            If true, a billing profile will be created for the app. The Stripe app will be
-            also set as the default billing profile if the current default is a Sandbox app.
+            If true, creates the Auto Collection preset with an OpenMeter supplier in the US
+            (postal code 94114), without replacing the default profile.
           type: boolean
       additionalProperties: false
       required:
@@ -58862,6 +59034,13 @@ components:
             - ready
             - unauthorized
           x-speakeasy-unknown-values: allow
+        actions:
+          description: |-
+            Actions the operator should take to bring the app up to date. Omitted when no
+            action is required.
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingAppAction'
         enable_draft_sync_hook:
           description: |-
             Enable draft synchronization hook.
@@ -59016,6 +59195,13 @@ components:
             - ready
             - unauthorized
           x-speakeasy-unknown-values: allow
+        actions:
+          description: |-
+            Actions the operator should take to bring the app up to date. Omitted when no
+            action is required.
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingAppAction'
         default_for_capability_types:
           description: Default capabilities of the installed app.
           type: array
@@ -59144,6 +59330,13 @@ components:
             - ready
             - unauthorized
           x-speakeasy-unknown-values: allow
+        actions:
+          description: |-
+            Actions the operator should take to bring the app up to date. Omitted when no
+            action is required.
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingAppAction'
         account_id:
           description: The Stripe account ID associated with the connected Stripe account.
           type: string
@@ -67821,7 +68014,8 @@ components:
             - id
         live:
           description: |-
-            Credits available after applying currently live charge impacts.
+            Spendable balance after applying currently live, unbooked charge impacts. Can be
+            negative when usage exceeds available credit.
 
             Always zero for historical balance queries using the `timestamp` parameter
             because live charge impacts cannot be reconstructed historically.
@@ -67829,10 +68023,29 @@ components:
           example: '200.00'
           pattern: '^\-?[0-9]+(\.[0-9]+)?$'
           readOnly: true
-        settled:
-          description: Credits that have been booked on the ledger as of the balance timestamp.
+        booked:
+          description: |-
+            Credits that have been booked on the ledger as of the balance timestamp,
+            including credit-only advance debt. Can be negative.
           type: string
           example: '150.00'
+          pattern: '^\-?[0-9]+(\.[0-9]+)?$'
+          readOnly: true
+        settled:
+          description: Deprecated alias for `booked`. Always returns the same value.
+          type: string
+          example: '150.00'
+          deprecated: true
+          pattern: '^\-?[0-9]+(\.[0-9]+)?$'
+          readOnly: true
+        spendable:
+          description: |-
+            Spendable credit at the balance timestamp, including any credit-only advance
+            debt. Preserves credit already committed to later usage. Future grants cannot be
+            spent early; scheduled expiry reduces availability when it takes effect. Can be
+            negative when advance debt exceeds spendable credit.
+          type: string
+          example: '120.00'
           pattern: '^\-?[0-9]+(\.[0-9]+)?$'
           readOnly: true
         pending:
@@ -67847,7 +68060,9 @@ components:
       required:
         - currency
         - live
+        - booked
         - settled
+        - spendable
         - pending
       title: Credit balance
     CreditGrantPagePaginatedResponse:
@@ -69094,14 +69309,37 @@ components:
           title: Credit grant lifecycle status
           x-speakeasy-unknown-values: allow
         currency:
-          description: Filter credit grants by currency.
-          type: string
-          example: USD
-          maxLength: 3
-          minLength: 3
-          pattern: '^[A-Z]{3}$'
+          description: Filter credit grants by fiat or custom currency code.
+          oneOf:
+            - $ref: '#/components/schemas/CurrencyCode'
+            - $ref: '#/components/schemas/BillingCurrencyCodeCustom'
         key:
           description: Filter credit grants by key.
+          type: object
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+            contains:
+              type: string
+            ocontains:
+              type: string
+            oeq:
+              type: string
+            neq:
+              type: string
+          required:
+            - contains
+            - ocontains
+            - oeq
+            - neq
+          title: StringFieldNEQFilter
+        feature_key:
+          description: |-
+            Select grants spendable on any requested feature, including grants without
+            feature restrictions. Keys are case-sensitive. Supports `eq` (or shorthand) and
+            `oeq` with comma-separated keys. Omit to include all features; use
+            `exists=false` for grants without feature restrictions.
           type: object
           additionalProperties: false
           properties:
@@ -73093,11 +73331,13 @@ components:
       properties:
         billing_profile:
           description: |-
-            The billing profile for the customer.
+            The billing profile explicitly selected for the customer.
 
-            If not provided, the default billing profile will be used.
+            Unpinned customers use the current namespace default. Selecting the current
+            default explicitly pins the customer to that profile.
           type: object
           additionalProperties: false
+          nullable: true
           properties:
             id:
               description: The ID of the billing profile.
@@ -73170,6 +73410,30 @@ components:
                   title: Labels
               title: External invoicing
           title: App customer data
+      additionalProperties: false
+    UpsertCustomerBillingProfileRequest:
+      description: CustomerBillingProfile upsert request.
+      type: object
+      properties:
+        billing_profile:
+          description: |-
+            The billing profile explicitly selected for the customer.
+
+            Unpinned customers use the current namespace default. Selecting the current
+            default explicitly pins the customer to that profile.
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            id:
+              description: The ID of the billing profile.
+              type: string
+              example: 01G65Z755AFWAKHE12NY0CQ9FH
+              pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+              title: ULID
+          required:
+            - id
+          title: Billing profile
       additionalProperties: false
     UpsertCustomerRequest:
       description: Customer upsert request.
@@ -105592,7 +105856,7 @@ tags:
       determine which client certificates are accepted.
   - name: Event Gateway Nodes
   - name: OpenMeter Notifications
-    description: 'Notification channels deliver notification events, such as entitlement balance threshold crossings, to external systems.'
+    description: 'Notification rules generate notification events, such as entitlement balance threshold crossings, and notification channels deliver them to external systems.'
   - name: OpenMeter Defaults
     description: Organization-level default configuration.
   - name: OpenMeter Product Catalog
@@ -105835,7 +106099,7 @@ x-input-schemas:
     version: 0.3.0
     path: src/konnect/definitions/mesh-control-planes/v0/openapi.yaml
   - title: Konnect Metering & Billing
-    version: 1.5.0
+    version: 1.6.0
     path: src/konnect/definitions/metering-and-billing/v3/openapi.yaml
   - title: Konnect Notification Hub
     version: 1.1.1
