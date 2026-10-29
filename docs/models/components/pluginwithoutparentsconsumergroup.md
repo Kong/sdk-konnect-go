@@ -1,6 +1,6 @@
 # PluginWithoutParentsConsumerGroup
 
-If set, the plugin will activate only for requests where the specified group has been authenticated
+If set, the plugin will activate only for requests where the specified group has been authenticated.
 
 
 ## Fields

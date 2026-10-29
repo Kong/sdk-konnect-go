@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -14,6 +15,19 @@ type DeleteMtlsAuthWithConsumerRequest struct {
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
 	// ID of the MTLS-auth credential to lookup
 	MTLSAuthID string `pathParam:"style=simple,explode=false,name=MTLSAuthId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeleteMtlsAuthWithConsumerRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteMtlsAuthWithConsumerRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeleteMtlsAuthWithConsumerRequest) GetControlPlaneID() string {
@@ -35,6 +49,13 @@ func (d *DeleteMtlsAuthWithConsumerRequest) GetMTLSAuthID() string {
 		return ""
 	}
 	return d.MTLSAuthID
+}
+
+func (d *DeleteMtlsAuthWithConsumerRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeleteMtlsAuthWithConsumerResponse struct {

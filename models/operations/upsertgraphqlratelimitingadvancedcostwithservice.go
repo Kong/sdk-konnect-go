@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,8 +16,21 @@ type UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest struct {
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// ID of the GraphQL Cost Decoration to lookup
 	GraphQLCostDecorationID string `pathParam:"style=simple,explode=false,name=GraphQLCostDecorationId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the GraphQL Cost Decoration
 	GraphQLCostDecorationWithoutParents components.GraphQLCostDecorationWithoutParents `request:"mediaType=application/json"`
+}
+
+func (u UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest) GetControlPlaneID() string {
@@ -38,6 +52,13 @@ func (u *UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest) GetGraphQLCost
 		return ""
 	}
 	return u.GraphQLCostDecorationID
+}
+
+func (u *UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest) GetWorkspace() string {
+	if u == nil {
+		return ""
+	}
+	return u.Workspace
 }
 
 func (u *UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest) GetGraphQLCostDecorationWithoutParents() components.GraphQLCostDecorationWithoutParents {

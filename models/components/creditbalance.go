@@ -22,13 +22,24 @@ type CreditBalance struct {
 	Currency string `json:"currency"`
 	// Managed currency reference. Present only for custom currencies.
 	CustomCurrency *CustomCurrency `json:"custom_currency,omitempty"`
-	// Credits available after applying currently live charge impacts.
+	// Spendable balance after applying currently live, unbooked charge impacts. Can be
+	// negative when usage exceeds available credit.
 	//
 	// Always zero for historical balance queries using the `timestamp` parameter
 	// because live charge impacts cannot be reconstructed historically.
 	Live string `json:"live"`
-	// Credits that have been booked on the ledger as of the balance timestamp.
+	// Credits that have been booked on the ledger as of the balance timestamp,
+	// including credit-only advance debt. Can be negative.
+	Booked string `json:"booked"`
+	// Deprecated alias for `booked`. Always returns the same value.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Settled string `json:"settled"`
+	// Spendable credit at the balance timestamp, including any credit-only advance
+	// debt. Preserves credit already committed to later usage. Future grants cannot be
+	// spent early; scheduled expiry reduces availability when it takes effect. Can be
+	// negative when advance debt exceeds spendable credit.
+	Spendable string `json:"spendable"`
 	// Credits that have been granted but are not yet written to the ledger, or are
 	// written to the ledger with a future booked time.
 	Pending string `json:"pending"`
@@ -55,11 +66,25 @@ func (c *CreditBalance) GetLive() string {
 	return c.Live
 }
 
+func (c *CreditBalance) GetBooked() string {
+	if c == nil {
+		return ""
+	}
+	return c.Booked
+}
+
 func (c *CreditBalance) GetSettled() string {
 	if c == nil {
 		return ""
 	}
 	return c.Settled
+}
+
+func (c *CreditBalance) GetSpendable() string {
+	if c == nil {
+		return ""
+	}
+	return c.Spendable
 }
 
 func (c *CreditBalance) GetPending() string {

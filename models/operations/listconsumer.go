@@ -18,6 +18,8 @@ type ListConsumerRequest struct {
 	Offset *string `queryParam:"style=form,explode=true,name=offset"`
 	// A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
 	Tags *string `queryParam:"style=form,explode=true,name=tags"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Filter consumers by their custom_id.
 	CustomID *string `queryParam:"style=form,explode=true,name=custom_id"`
 	// Filter routes by a substring of the name.
@@ -63,6 +65,13 @@ func (l *ListConsumerRequest) GetTags() *string {
 		return nil
 	}
 	return l.Tags
+}
+
+func (l *ListConsumerRequest) GetWorkspace() string {
+	if l == nil {
+		return ""
+	}
+	return l.Workspace
 }
 
 func (l *ListConsumerRequest) GetCustomID() *string {

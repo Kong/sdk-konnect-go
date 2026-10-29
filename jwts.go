@@ -31,8 +31,8 @@ func newJWTs(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hooks
 	}
 }
 
-// ListJwtWithConsumer - List all JWTs associated with a Consumer
-// List all JWTs associated with a Consumer
+// ListJwtWithConsumer - List all JWTs associated with a Consumer in a workspace
+// List all JWTs associated with a Consumer in a workspace
 func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJwtWithConsumerRequest, opts ...operations.Option) (*operations.ListJwtWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -52,7 +52,7 @@ func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJ
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/jwt", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -240,8 +240,8 @@ func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJ
 
 }
 
-// CreateJwtWithConsumer - Create a new JWT associated with a Consumer
-// Create a new JWT associated with a Consumer
+// CreateJwtWithConsumer - Create a new JWT associated with a Consumer in a workspace
+// Create a new JWT associated with a Consumer in a workspace
 func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.CreateJwtWithConsumerRequest, opts ...operations.Option) (*operations.CreateJwtWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -261,7 +261,7 @@ func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.Cre
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/jwt", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -452,8 +452,8 @@ func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.Cre
 
 }
 
-// DeleteJwtWithConsumer - Delete a a JWT associated with a Consumer
-// Delete a a JWT associated with a Consumer using ID.
+// DeleteJwtWithConsumer - Delete a a JWT associated with a Consumer in a workspace
+// Delete a a JWT associated with a Consumer using ID in a workspace.
 func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.DeleteJwtWithConsumerRequest, opts ...operations.Option) (*operations.DeleteJwtWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -473,7 +473,7 @@ func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.Del
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -638,8 +638,8 @@ func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.Del
 
 }
 
-// GetJwtWithConsumer - Get a JWT associated with a Consumer
-// Get a JWT associated with a Consumer using ID.
+// GetJwtWithConsumer - Get a JWT associated with a Consumer in a workspace
+// Get a JWT associated with a Consumer using ID in a workspace.
 func (s *JWTs) GetJwtWithConsumer(ctx context.Context, request operations.GetJwtWithConsumerRequest, opts ...operations.Option) (*operations.GetJwtWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -659,7 +659,7 @@ func (s *JWTs) GetJwtWithConsumer(ctx context.Context, request operations.GetJwt
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -845,8 +845,8 @@ func (s *JWTs) GetJwtWithConsumer(ctx context.Context, request operations.GetJwt
 
 }
 
-// UpsertJwtWithConsumer - Upsert a JWT associated with a Consumer
-// Create or Update a JWT associated with a Consumer using ID.
+// UpsertJwtWithConsumer - Upsert a JWT associated with a Consumer in a workspace
+// Create or Update a JWT associated with a Consumer using ID in a workspace.
 func (s *JWTs) UpsertJwtWithConsumer(ctx context.Context, request operations.UpsertJwtWithConsumerRequest, opts ...operations.Option) (*operations.UpsertJwtWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -866,7 +866,7 @@ func (s *JWTs) UpsertJwtWithConsumer(ctx context.Context, request operations.Ups
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1057,8 +1057,8 @@ func (s *JWTs) UpsertJwtWithConsumer(ctx context.Context, request operations.Ups
 
 }
 
-// ListJwt - List all JWTs
-// List all JWTs
+// ListJwt - List all JWTs in a workspace
+// List all JWTs in a workspace
 func (s *JWTs) ListJwt(ctx context.Context, request operations.ListJwtRequest, opts ...operations.Option) (*operations.ListJwtResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1078,7 +1078,7 @@ func (s *JWTs) ListJwt(ctx context.Context, request operations.ListJwtRequest, o
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/jwts", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/jwts", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1287,14 +1287,9 @@ func (s *JWTs) ListJwt(ctx context.Context, request operations.ListJwtRequest, o
 
 }
 
-// GetJwt - Get a JWT
-// Get a JWT using ID.
-func (s *JWTs) GetJwt(ctx context.Context, jwtID string, controlPlaneID string, opts ...operations.Option) (*operations.GetJwtResponse, error) {
-	request := operations.GetJwtRequest{
-		JWTID:          jwtID,
-		ControlPlaneID: controlPlaneID,
-	}
-
+// GetJwt - Get a JWT in a workspace
+// Get a JWT using ID in a workspace.
+func (s *JWTs) GetJwt(ctx context.Context, request operations.GetJwtRequest, opts ...operations.Option) (*operations.GetJwtResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1313,7 +1308,7 @@ func (s *JWTs) GetJwt(ctx context.Context, jwtID string, controlPlaneID string, 
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/jwts/{JWTId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/jwts/{JWTId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

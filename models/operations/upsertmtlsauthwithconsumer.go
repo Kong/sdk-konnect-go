@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,8 +16,21 @@ type UpsertMtlsAuthWithConsumerRequest struct {
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
 	// ID of the MTLS-auth credential to lookup
 	MTLSAuthID string `pathParam:"style=simple,explode=false,name=MTLSAuthId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the MTLS-auth credential
 	MTLSAuthWithoutParents components.MTLSAuthWithoutParents `request:"mediaType=application/json"`
+}
+
+func (u UpsertMtlsAuthWithConsumerRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertMtlsAuthWithConsumerRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpsertMtlsAuthWithConsumerRequest) GetControlPlaneID() string {
@@ -38,6 +52,13 @@ func (u *UpsertMtlsAuthWithConsumerRequest) GetMTLSAuthID() string {
 		return ""
 	}
 	return u.MTLSAuthID
+}
+
+func (u *UpsertMtlsAuthWithConsumerRequest) GetWorkspace() string {
+	if u == nil {
+		return ""
+	}
+	return u.Workspace
 }
 
 func (u *UpsertMtlsAuthWithConsumerRequest) GetMTLSAuthWithoutParents() components.MTLSAuthWithoutParents {

@@ -4,21 +4,21 @@
 
 ### Available Operations
 
-* [ListMtlsAuthWithConsumer](#listmtlsauthwithconsumer) - List all MTLS-auth credentials associated with a Consumer
-* [CreateMtlsAuthWithConsumer](#createmtlsauthwithconsumer) - Create a new MTLS-auth credential associated with a Consumer
-* [DeleteMtlsAuthWithConsumer](#deletemtlsauthwithconsumer) - Delete a a MTLS-auth credential associated with a Consumer
-* [GetMtlsAuthWithConsumer](#getmtlsauthwithconsumer) - Get a MTLS-auth credential associated with a Consumer
-* [UpsertMtlsAuthWithConsumer](#upsertmtlsauthwithconsumer) - Upsert a MTLS-auth credential associated with a Consumer
-* [ListMtlsAuth](#listmtlsauth) - List all MTLS-auth credentials
-* [GetMtlsAuth](#getmtlsauth) - Get a MTLS-auth credential
+* [ListMtlsAuthWithConsumer](#listmtlsauthwithconsumer) - List all MTLS-auth credentials associated with a Consumer in a workspace
+* [CreateMtlsAuthWithConsumer](#createmtlsauthwithconsumer) - Create a new MTLS-auth credential associated with a Consumer in a workspace
+* [DeleteMtlsAuthWithConsumer](#deletemtlsauthwithconsumer) - Delete a a MTLS-auth credential associated with a Consumer in a workspace
+* [GetMtlsAuthWithConsumer](#getmtlsauthwithconsumer) - Get a MTLS-auth credential associated with a Consumer in a workspace
+* [UpsertMtlsAuthWithConsumer](#upsertmtlsauthwithconsumer) - Upsert a MTLS-auth credential associated with a Consumer in a workspace
+* [ListMtlsAuth](#listmtlsauth) - List all MTLS-auth credentials in a workspace
+* [GetMtlsAuth](#getmtlsauth) - Get a MTLS-auth credential in a workspace
 
 ## ListMtlsAuthWithConsumer
 
-List all MTLS-auth credentials associated with a Consumer
+List all MTLS-auth credentials associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-mtls-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth" -->
+<!-- UsageSnippet language="go" operationID="list-mtls-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth" -->
 ```go
 package main
 
@@ -43,6 +43,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -73,11 +74,11 @@ func main() {
 
 ## CreateMtlsAuthWithConsumer
 
-Create a new MTLS-auth credential associated with a Consumer
+Create a new MTLS-auth credential associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-mtls-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth" -->
+<!-- UsageSnippet language="go" operationID="create-mtls-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth" -->
 ```go
 package main
 
@@ -101,6 +102,7 @@ func main() {
     res, err := s.MTLSAuthCredentials.CreateMtlsAuthWithConsumer(ctx, operations.CreateMtlsAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Workspace: "team-payments",
         MTLSAuthWithoutParents: components.MTLSAuthWithoutParents{
             CaCertificate: &components.MTLSAuthWithoutParentsCaCertificate{
                 ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
@@ -138,11 +140,11 @@ func main() {
 
 ## DeleteMtlsAuthWithConsumer
 
-Delete a a MTLS-auth credential associated with a Consumer using ID.
+Delete a a MTLS-auth credential associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-mtls-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}" -->
+<!-- UsageSnippet language="go" operationID="delete-mtls-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}" -->
 ```go
 package main
 
@@ -167,6 +169,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         MTLSAuthID: "",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -197,11 +200,11 @@ func main() {
 
 ## GetMtlsAuthWithConsumer
 
-Get a MTLS-auth credential associated with a Consumer using ID.
+Get a MTLS-auth credential associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-mtls-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}" -->
+<!-- UsageSnippet language="go" operationID="get-mtls-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}" -->
 ```go
 package main
 
@@ -226,6 +229,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         MTLSAuthID: "",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -256,11 +260,11 @@ func main() {
 
 ## UpsertMtlsAuthWithConsumer
 
-Create or Update a MTLS-auth credential associated with a Consumer using ID.
+Create or Update a MTLS-auth credential associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-mtls-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-mtls-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}" -->
 ```go
 package main
 
@@ -285,6 +289,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         MTLSAuthID: "",
+        Workspace: "team-payments",
         MTLSAuthWithoutParents: components.MTLSAuthWithoutParents{
             CaCertificate: &components.MTLSAuthWithoutParentsCaCertificate{
                 ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
@@ -322,11 +327,11 @@ func main() {
 
 ## ListMtlsAuth
 
-List all MTLS-auth credentials
+List all MTLS-auth credentials in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-mtls-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/mtls-auths" -->
+<!-- UsageSnippet language="go" operationID="list-mtls-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/mtls-auths" -->
 ```go
 package main
 
@@ -350,6 +355,7 @@ func main() {
     res, err := s.MTLSAuthCredentials.ListMtlsAuth(ctx, operations.ListMtlsAuthRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -381,11 +387,11 @@ func main() {
 
 ## GetMtlsAuth
 
-Get a MTLS-auth credential using ID.
+Get a MTLS-auth credential using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-mtls-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/mtls-auths/{MTLSAuthId}" -->
+<!-- UsageSnippet language="go" operationID="get-mtls-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/mtls-auths/{MTLSAuthId}" -->
 ```go
 package main
 
@@ -393,6 +399,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -405,7 +412,11 @@ func main() {
         }),
     )
 
-    res, err := s.MTLSAuthCredentials.GetMtlsAuth(ctx, "", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.MTLSAuthCredentials.GetMtlsAuth(ctx, operations.GetMtlsAuthRequest{
+        MTLSAuthID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -417,12 +428,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `mtlsAuthID`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the MTLS-auth credential to lookup                                           |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.GetMtlsAuthRequest](../../models/operations/getmtlsauthrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
 
 ### Response
 

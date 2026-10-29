@@ -9,40 +9,40 @@ When adding a plugin configuration to a service, the plugin will run on every re
 
 ### Available Operations
 
-* [ListPluginWithConsumerGroup](#listpluginwithconsumergroup) - List all Plugins associated with a Consumer Group
-* [CreatePluginWithConsumerGroup](#createpluginwithconsumergroup) - Create a new Plugin associated with a Consumer Group
-* [DeletePluginWithConsumerGroup](#deletepluginwithconsumergroup) - Delete a a Plugin associated with a Consumer Group
-* [GetPluginWithConsumerGroup](#getpluginwithconsumergroup) - Get a Plugin associated with a Consumer Group
-* [UpsertPluginWithConsumerGroup](#upsertpluginwithconsumergroup) - Upsert a Plugin associated with a Consumer Group
-* [ListPluginWithConsumer](#listpluginwithconsumer) - List all Plugins associated with a Consumer
-* [CreatePluginWithConsumer](#createpluginwithconsumer) - Create a new Plugin associated with a Consumer
-* [DeletePluginWithConsumer](#deletepluginwithconsumer) - Delete a a Plugin associated with a Consumer
-* [GetPluginWithConsumer](#getpluginwithconsumer) - Get a Plugin associated with a Consumer
-* [UpsertPluginWithConsumer](#upsertpluginwithconsumer) - Upsert a Plugin associated with a Consumer
-* [ListPlugin](#listplugin) - List all Plugins
-* [CreatePlugin](#createplugin) - Create a new Plugin
-* [DeletePlugin](#deleteplugin) - Delete a Plugin
-* [GetPlugin](#getplugin) - Get a Plugin
-* [UpsertPlugin](#upsertplugin) - Upsert a Plugin
-* [ListPluginWithRoute](#listpluginwithroute) - List all Plugins associated with a Route
-* [CreatePluginWithRoute](#createpluginwithroute) - Create a new Plugin associated with a Route
-* [DeletePluginWithRoute](#deletepluginwithroute) - Delete a a Plugin associated with a Route
-* [GetPluginWithRoute](#getpluginwithroute) - Get a Plugin associated with a Route
-* [UpsertPluginWithRoute](#upsertpluginwithroute) - Upsert a Plugin associated with a Route
+* [ListPluginWithConsumerGroup](#listpluginwithconsumergroup) - List all Plugins associated with a Consumer Group in a workspace
+* [CreatePluginWithConsumerGroup](#createpluginwithconsumergroup) - Create a new Plugin associated with a Consumer Group in a workspace
+* [DeletePluginWithConsumerGroup](#deletepluginwithconsumergroup) - Delete a a Plugin associated with a Consumer Group in a workspace
+* [GetPluginWithConsumerGroup](#getpluginwithconsumergroup) - Get a Plugin associated with a Consumer Group in a workspace
+* [UpsertPluginWithConsumerGroup](#upsertpluginwithconsumergroup) - Upsert a Plugin associated with a Consumer Group in a workspace
+* [ListPluginWithConsumer](#listpluginwithconsumer) - List all Plugins associated with a Consumer in a workspace
+* [CreatePluginWithConsumer](#createpluginwithconsumer) - Create a new Plugin associated with a Consumer in a workspace
+* [DeletePluginWithConsumer](#deletepluginwithconsumer) - Delete a a Plugin associated with a Consumer in a workspace
+* [GetPluginWithConsumer](#getpluginwithconsumer) - Get a Plugin associated with a Consumer in a workspace
+* [UpsertPluginWithConsumer](#upsertpluginwithconsumer) - Upsert a Plugin associated with a Consumer in a workspace
+* [ListPlugin](#listplugin) - List all Plugins in a workspace
+* [CreatePlugin](#createplugin) - Create a new Plugin in a workspace
+* [DeletePlugin](#deleteplugin) - Delete a Plugin in a workspace
+* [GetPlugin](#getplugin) - Get a Plugin in a workspace
+* [UpsertPlugin](#upsertplugin) - Upsert a Plugin in a workspace
+* [ListPluginWithRoute](#listpluginwithroute) - List all Plugins associated with a Route in a workspace
+* [CreatePluginWithRoute](#createpluginwithroute) - Create a new Plugin associated with a Route in a workspace
+* [DeletePluginWithRoute](#deletepluginwithroute) - Delete a a Plugin associated with a Route in a workspace
+* [GetPluginWithRoute](#getpluginwithroute) - Get a Plugin associated with a Route in a workspace
+* [UpsertPluginWithRoute](#upsertpluginwithroute) - Upsert a Plugin associated with a Route in a workspace
+* [ListPluginWithService](#listpluginwithservice) - List all Plugins associated with a Service in a workspace
+* [CreatePluginWithService](#createpluginwithservice) - Create a new Plugin associated with a Service in a workspace
+* [DeletePluginWithService](#deletepluginwithservice) - Delete a a Plugin associated with a Service in a workspace
+* [GetPluginWithService](#getpluginwithservice) - Get a Plugin associated with a Service in a workspace
+* [UpsertPluginWithService](#upsertpluginwithservice) - Upsert a Plugin associated with a Service in a workspace
 * [FetchPluginSchema](#fetchpluginschema) - Get plugin schema
-* [ListPluginWithService](#listpluginwithservice) - List all Plugins associated with a Service
-* [CreatePluginWithService](#createpluginwithservice) - Create a new Plugin associated with a Service
-* [DeletePluginWithService](#deletepluginwithservice) - Delete a a Plugin associated with a Service
-* [GetPluginWithService](#getpluginwithservice) - Get a Plugin associated with a Service
-* [UpsertPluginWithService](#upsertpluginwithservice) - Upsert a Plugin associated with a Service
 
 ## ListPluginWithConsumerGroup
 
-List all Plugins associated with a Consumer Group
+List all Plugins associated with a Consumer Group in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-plugin-with-consumer_group" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins" -->
+<!-- UsageSnippet language="go" operationID="list-plugin-with-consumer_group" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins" -->
 ```go
 package main
 
@@ -67,6 +67,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerGroupID: "",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -97,11 +98,11 @@ func main() {
 
 ## CreatePluginWithConsumerGroup
 
-Create a new Plugin associated with a Consumer Group
+Create a new Plugin associated with a Consumer Group in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-plugin-with-consumer_group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins" -->
+<!-- UsageSnippet language="go" operationID="create-plugin-with-consumer_group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins" -->
 ```go
 package main
 
@@ -125,6 +126,7 @@ func main() {
     res, err := s.Plugins.CreatePluginWithConsumerGroup(ctx, operations.CreatePluginWithConsumerGroupRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerGroupID: "",
+        Workspace: "team-payments",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -188,11 +190,11 @@ func main() {
 
 ## DeletePluginWithConsumerGroup
 
-Delete a a Plugin associated with a Consumer Group using ID.
+Delete a a Plugin associated with a Consumer Group using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-plugin-with-consumer_group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-consumer_group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -217,6 +219,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerGroupID: "",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -247,11 +250,11 @@ func main() {
 
 ## GetPluginWithConsumerGroup
 
-Get a Plugin associated with a Consumer Group using ID.
+Get a Plugin associated with a Consumer Group using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-plugin-with-consumer_group" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="get-plugin-with-consumer_group" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -276,6 +279,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerGroupID: "",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
         ExpandPartials: sdkkonnectgo.Pointer(true),
     })
     if err != nil {
@@ -307,11 +311,11 @@ func main() {
 
 ## UpsertPluginWithConsumerGroup
 
-Create or Update a Plugin associated with a Consumer Group using ID.
+Create or Update a Plugin associated with a Consumer Group using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-plugin-with-consumer_group" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-consumer_group" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -336,6 +340,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerGroupID: "",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -399,11 +404,11 @@ func main() {
 
 ## ListPluginWithConsumer
 
-List all Plugins associated with a Consumer
+List all Plugins associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-plugin-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins" -->
+<!-- UsageSnippet language="go" operationID="list-plugin-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins" -->
 ```go
 package main
 
@@ -428,6 +433,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -458,11 +464,11 @@ func main() {
 
 ## CreatePluginWithConsumer
 
-Create a new Plugin associated with a Consumer
+Create a new Plugin associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-plugin-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins" -->
+<!-- UsageSnippet language="go" operationID="create-plugin-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins" -->
 ```go
 package main
 
@@ -486,6 +492,7 @@ func main() {
     res, err := s.Plugins.CreatePluginWithConsumer(ctx, operations.CreatePluginWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Workspace: "team-payments",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -549,11 +556,11 @@ func main() {
 
 ## DeletePluginWithConsumer
 
-Delete a a Plugin associated with a Consumer using ID.
+Delete a a Plugin associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-plugin-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -578,6 +585,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -608,11 +616,11 @@ func main() {
 
 ## GetPluginWithConsumer
 
-Get a Plugin associated with a Consumer using ID.
+Get a Plugin associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-plugin-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="get-plugin-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -637,6 +645,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
         ExpandPartials: sdkkonnectgo.Pointer(true),
     })
     if err != nil {
@@ -668,11 +677,11 @@ func main() {
 
 ## UpsertPluginWithConsumer
 
-Create or Update a Plugin associated with a Consumer using ID.
+Create or Update a Plugin associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-plugin-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -697,6 +706,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -760,11 +770,11 @@ func main() {
 
 ## ListPlugin
 
-List all Plugins
+List all Plugins in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" -->
+<!-- UsageSnippet language="go" operationID="list-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins" -->
 ```go
 package main
 
@@ -788,6 +798,7 @@ func main() {
     res, err := s.Plugins.ListPlugin(ctx, operations.ListPluginRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
         FilterNameContains: sdkkonnectgo.Pointer("john"),
         FilterNameEq: sdkkonnectgo.Pointer("john"),
     })
@@ -821,11 +832,11 @@ func main() {
 
 ## CreatePlugin
 
-Create a new Plugin
+Create a new Plugin in a workspace
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -833,6 +844,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -845,37 +857,41 @@ func main() {
         }),
     )
 
-    res, err := s.Plugins.CreatePlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Plugin{
-        Config: map[string]any{
-            "anonymous": "<value>",
-            "hide_credentials": false,
-            "key_in_body": false,
-            "key_in_header": true,
-            "key_in_query": true,
-            "key_names": []any{
-                "apikey",
+    res, err := s.Plugins.CreatePlugin(ctx, operations.CreatePluginRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Plugin: components.Plugin{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
             },
-            "run_on_preflight": true,
-        },
-        ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
-        Name: "key-auth",
-        Partials: []components.Partials{
-            components.Partials{
-                ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                Name: sdkkonnectgo.Pointer("foo-partial"),
-                Path: sdkkonnectgo.Pointer("config.redis"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.Partials{
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
             },
-            components.Partials{
-                ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                Name: sdkkonnectgo.Pointer("bar-partial"),
-                Path: sdkkonnectgo.Pointer("config.redis"),
+            Protocols: []components.Protocols{
+                components.ProtocolsGrpc,
+                components.ProtocolsGrpcs,
+                components.ProtocolsHTTP,
+                components.ProtocolsHTTPS,
             },
-        },
-        Protocols: []components.Protocols{
-            components.ProtocolsGrpc,
-            components.ProtocolsGrpcs,
-            components.ProtocolsHTTP,
-            components.ProtocolsHTTPS,
         },
     })
     if err != nil {
@@ -888,7 +904,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -896,6 +912,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -908,37 +925,41 @@ func main() {
         }),
     )
 
-    res, err := s.Plugins.CreatePlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Plugin{
-        Config: map[string]any{
-            "anonymous": "<value>",
-            "hide_credentials": false,
-            "key_in_body": false,
-            "key_in_header": true,
-            "key_in_query": true,
-            "key_names": []any{
-                "apikey",
+    res, err := s.Plugins.CreatePlugin(ctx, operations.CreatePluginRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Plugin: components.Plugin{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
             },
-            "run_on_preflight": true,
-        },
-        ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
-        Name: "key-auth",
-        Partials: []components.Partials{
-            components.Partials{
-                ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                Name: sdkkonnectgo.Pointer("foo-partial"),
-                Path: sdkkonnectgo.Pointer("config.redis"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.Partials{
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
             },
-            components.Partials{
-                ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                Name: sdkkonnectgo.Pointer("bar-partial"),
-                Path: sdkkonnectgo.Pointer("config.redis"),
+            Protocols: []components.Protocols{
+                components.ProtocolsGrpc,
+                components.ProtocolsGrpcs,
+                components.ProtocolsHTTP,
+                components.ProtocolsHTTPS,
             },
-        },
-        Protocols: []components.Protocols{
-            components.ProtocolsGrpc,
-            components.ProtocolsGrpcs,
-            components.ProtocolsHTTP,
-            components.ProtocolsHTTPS,
         },
     })
     if err != nil {
@@ -951,7 +972,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins" example="NoAPIKey" -->
 ```go
 package main
 
@@ -959,6 +980,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -971,37 +993,41 @@ func main() {
         }),
     )
 
-    res, err := s.Plugins.CreatePlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Plugin{
-        Config: map[string]any{
-            "anonymous": "<value>",
-            "hide_credentials": false,
-            "key_in_body": false,
-            "key_in_header": true,
-            "key_in_query": true,
-            "key_names": []any{
-                "apikey",
+    res, err := s.Plugins.CreatePlugin(ctx, operations.CreatePluginRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Plugin: components.Plugin{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
             },
-            "run_on_preflight": true,
-        },
-        ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
-        Name: "key-auth",
-        Partials: []components.Partials{
-            components.Partials{
-                ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                Name: sdkkonnectgo.Pointer("foo-partial"),
-                Path: sdkkonnectgo.Pointer("config.redis"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.Partials{
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
             },
-            components.Partials{
-                ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                Name: sdkkonnectgo.Pointer("bar-partial"),
-                Path: sdkkonnectgo.Pointer("config.redis"),
+            Protocols: []components.Protocols{
+                components.ProtocolsGrpc,
+                components.ProtocolsGrpcs,
+                components.ProtocolsHTTP,
+                components.ProtocolsHTTPS,
             },
-        },
-        Protocols: []components.Protocols{
-            components.ProtocolsGrpc,
-            components.ProtocolsGrpcs,
-            components.ProtocolsHTTP,
-            components.ProtocolsHTTPS,
         },
     })
     if err != nil {
@@ -1015,12 +1041,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Required                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Example                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | The context to use for the request.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| `controlPlaneID`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | The UUID of your control plane. This variable is available in the Konnect manager.                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `plugin`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | [components.Plugin](../../models/components/plugin.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Description of the new Plugin for creation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | {<br/>"config": {<br/>"anonymous": null,<br/>"hide_credentials": false,<br/>"key_in_body": false,<br/>"key_in_header": true,<br/>"key_in_query": true,<br/>"key_names": [<br/>"apikey"<br/>],<br/>"run_on_preflight": true<br/>},<br/>"enabled": true,<br/>"id": "3fd1eea1-885a-4011-b986-289943ff8177",<br/>"name": "key-auth",<br/>"partials": [<br/>{<br/>"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",<br/>"name": "foo-partial",<br/>"path": "config.redis"<br/>},<br/>{<br/>"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",<br/>"name": "bar-partial",<br/>"path": "config.redis"<br/>}<br/>],<br/>"protocols": [<br/>"grpc",<br/>"grpcs",<br/>"http",<br/>"https"<br/>]<br/>} |
-| `opts`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | The options for this request.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
+| `request`                                                                        | [operations.CreatePluginRequest](../../models/operations/createpluginrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |
 
 ### Response
 
@@ -1035,11 +1060,11 @@ func main() {
 
 ## DeletePlugin
 
-Delete a Plugin
+Delete a Plugin in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-plugin" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="delete-plugin" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1047,6 +1072,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -1059,7 +1085,11 @@ func main() {
         }),
     )
 
-    res, err := s.Plugins.DeletePlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "3473c251-5b6c-4f45-b1ff-7ede735a366d")
+    res, err := s.Plugins.DeletePlugin(ctx, operations.DeletePluginRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -1071,12 +1101,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `pluginID`                                                                         | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Plugin to lookup                                                         | 3473c251-5b6c-4f45-b1ff-7ede735a366d                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
+| `request`                                                                        | [operations.DeletePluginRequest](../../models/operations/deletepluginrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |
 
 ### Response
 
@@ -1091,11 +1120,11 @@ func main() {
 
 ## GetPlugin
 
-Get a Plugin using ID.
+Get a Plugin using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="get-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1119,6 +1148,7 @@ func main() {
     res, err := s.Plugins.GetPlugin(ctx, operations.GetPluginRequest{
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         ExpandPartials: sdkkonnectgo.Pointer(true),
     })
     if err != nil {
@@ -1151,11 +1181,11 @@ func main() {
 
 ## UpsertPlugin
 
-Create or Update Plugin using ID.
+Create or Update Plugin using ID in a workspace.
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -1179,6 +1209,7 @@ func main() {
     res, err := s.Plugins.UpsertPlugin(ctx, operations.UpsertPluginRequest{
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Plugin: components.Plugin{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -1223,7 +1254,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -1247,6 +1278,7 @@ func main() {
     res, err := s.Plugins.UpsertPlugin(ctx, operations.UpsertPluginRequest{
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Plugin: components.Plugin{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -1291,7 +1323,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/plugins/{PluginId}" example="NoAPIKey" -->
 ```go
 package main
 
@@ -1315,6 +1347,7 @@ func main() {
     res, err := s.Plugins.UpsertPlugin(ctx, operations.UpsertPluginRequest{
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Plugin: components.Plugin{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -1379,11 +1412,11 @@ func main() {
 
 ## ListPluginWithRoute
 
-List all Plugins associated with a Route
+List all Plugins associated with a Route in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-plugin-with-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins" -->
+<!-- UsageSnippet language="go" operationID="list-plugin-with-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins" -->
 ```go
 package main
 
@@ -1408,6 +1441,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -1438,11 +1472,11 @@ func main() {
 
 ## CreatePluginWithRoute
 
-Create a new Plugin associated with a Route
+Create a new Plugin associated with a Route in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-plugin-with-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins" -->
+<!-- UsageSnippet language="go" operationID="create-plugin-with-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins" -->
 ```go
 package main
 
@@ -1466,6 +1500,7 @@ func main() {
     res, err := s.Plugins.CreatePluginWithRoute(ctx, operations.CreatePluginWithRouteRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        Workspace: "team-payments",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -1529,11 +1564,11 @@ func main() {
 
 ## DeletePluginWithRoute
 
-Delete a a Plugin associated with a Route using ID.
+Delete a a Plugin associated with a Route using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-plugin-with-route" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-route" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1558,6 +1593,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -1588,11 +1624,11 @@ func main() {
 
 ## GetPluginWithRoute
 
-Get a Plugin associated with a Route using ID.
+Get a Plugin associated with a Route using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-plugin-with-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="get-plugin-with-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1617,6 +1653,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
         ExpandPartials: sdkkonnectgo.Pointer(true),
     })
     if err != nil {
@@ -1648,11 +1685,11 @@ func main() {
 
 ## UpsertPluginWithRoute
 
-Create or Update a Plugin associated with a Route using ID.
+Create or Update a Plugin associated with a Route using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-plugin-with-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/routes/{RouteId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1677,6 +1714,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -1738,68 +1776,13 @@ func main() {
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
-## FetchPluginSchema
-
-Get the schema for a plugin
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="fetch-plugin-schema" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/schemas/plugins/{pluginName}" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.Plugins.FetchPluginSchema(ctx, "<value>", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.GetPluginSchemaResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `pluginName`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | The name of the plugin                                                             |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
-
-### Response
-
-**[*operations.FetchPluginSchemaResponse](../../models/operations/fetchpluginschemaresponse.md), error**
-
-### Errors
-
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
-
 ## ListPluginWithService
 
-List all Plugins associated with a Service
+List all Plugins associated with a Service in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-plugin-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins" -->
+<!-- UsageSnippet language="go" operationID="list-plugin-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins" -->
 ```go
 package main
 
@@ -1824,6 +1807,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -1854,11 +1838,11 @@ func main() {
 
 ## CreatePluginWithService
 
-Create a new Plugin associated with a Service
+Create a new Plugin associated with a Service in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-plugin-with-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins" -->
+<!-- UsageSnippet language="go" operationID="create-plugin-with-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins" -->
 ```go
 package main
 
@@ -1882,6 +1866,7 @@ func main() {
     res, err := s.Plugins.CreatePluginWithService(ctx, operations.CreatePluginWithServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        Workspace: "team-payments",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -1945,11 +1930,11 @@ func main() {
 
 ## DeletePluginWithService
 
-Delete a a Plugin associated with a Service using ID.
+Delete a a Plugin associated with a Service using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-plugin-with-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1974,6 +1959,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -2004,11 +1990,11 @@ func main() {
 
 ## GetPluginWithService
 
-Get a Plugin associated with a Service using ID.
+Get a Plugin associated with a Service using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-plugin-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="get-plugin-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -2033,6 +2019,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
         ExpandPartials: sdkkonnectgo.Pointer(true),
     })
     if err != nil {
@@ -2064,11 +2051,11 @@ func main() {
 
 ## UpsertPluginWithService
 
-Create or Update a Plugin associated with a Service using ID.
+Create or Update a Plugin associated with a Service using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-plugin-with-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -2093,6 +2080,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        Workspace: "team-payments",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
                 "anonymous": "<value>",
@@ -2147,6 +2135,61 @@ func main() {
 ### Response
 
 **[*operations.UpsertPluginWithServiceResponse](../../models/operations/upsertpluginwithserviceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## FetchPluginSchema
+
+Get the schema for a plugin
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="fetch-plugin-schema" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/schemas/plugins/{pluginName}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.FetchPluginSchema(ctx, "<value>", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetPluginSchemaResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `pluginName`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | The name of the plugin                                                             |                                                                                    |
+| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+
+### Response
+
+**[*operations.FetchPluginSchemaResponse](../../models/operations/fetchpluginschemaresponse.md), error**
 
 ### Errors
 

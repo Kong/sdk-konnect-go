@@ -38,8 +38,8 @@ func newVaults(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hoo
 	}
 }
 
-// ListVault - List all Vaults
-// List all Vaults
+// ListVault - List all Vaults in a workspace
+// List all Vaults in a workspace
 func (s *Vaults) ListVault(ctx context.Context, request operations.ListVaultRequest, opts ...operations.Option) (*operations.ListVaultResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -59,7 +59,7 @@ func (s *Vaults) ListVault(ctx context.Context, request operations.ListVaultRequ
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/vaults", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/vaults", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -268,14 +268,9 @@ func (s *Vaults) ListVault(ctx context.Context, request operations.ListVaultRequ
 
 }
 
-// CreateVault - Create a new Vault
-// Create a new Vault
-func (s *Vaults) CreateVault(ctx context.Context, controlPlaneID string, vault components.Vault, opts ...operations.Option) (*operations.CreateVaultResponse, error) {
-	request := operations.CreateVaultRequest{
-		ControlPlaneID: controlPlaneID,
-		Vault:          vault,
-	}
-
+// CreateVault - Create a new Vault in a workspace
+// Create a new Vault in a workspace
+func (s *Vaults) CreateVault(ctx context.Context, request operations.CreateVaultRequest, opts ...operations.Option) (*operations.CreateVaultResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -294,7 +289,7 @@ func (s *Vaults) CreateVault(ctx context.Context, controlPlaneID string, vault c
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/vaults", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/vaults", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -506,14 +501,9 @@ func (s *Vaults) CreateVault(ctx context.Context, controlPlaneID string, vault c
 
 }
 
-// DeleteVault - Delete a Vault
-// Delete a Vault
-func (s *Vaults) DeleteVault(ctx context.Context, controlPlaneID string, vaultID string, opts ...operations.Option) (*operations.DeleteVaultResponse, error) {
-	request := operations.DeleteVaultRequest{
-		ControlPlaneID: controlPlaneID,
-		VaultID:        vaultID,
-	}
-
+// DeleteVault - Delete a Vault in a workspace
+// Delete a Vault in a workspace
+func (s *Vaults) DeleteVault(ctx context.Context, request operations.DeleteVaultRequest, opts ...operations.Option) (*operations.DeleteVaultResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -532,7 +522,7 @@ func (s *Vaults) DeleteVault(ctx context.Context, controlPlaneID string, vaultID
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/vaults/{VaultId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -718,14 +708,9 @@ func (s *Vaults) DeleteVault(ctx context.Context, controlPlaneID string, vaultID
 
 }
 
-// GetVault - Get a Vault
-// Get a Vault using ID or prefix.
-func (s *Vaults) GetVault(ctx context.Context, vaultID string, controlPlaneID string, opts ...operations.Option) (*operations.GetVaultResponse, error) {
-	request := operations.GetVaultRequest{
-		VaultID:        vaultID,
-		ControlPlaneID: controlPlaneID,
-	}
-
+// GetVault - Get a Vault in a workspace
+// Get a Vault using ID or prefix in a workspace.
+func (s *Vaults) GetVault(ctx context.Context, request operations.GetVaultRequest, opts ...operations.Option) (*operations.GetVaultResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -744,7 +729,7 @@ func (s *Vaults) GetVault(ctx context.Context, vaultID string, controlPlaneID st
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/vaults/{VaultId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -951,8 +936,8 @@ func (s *Vaults) GetVault(ctx context.Context, vaultID string, controlPlaneID st
 
 }
 
-// UpsertVault - Upsert a Vault
-// Create or Update Vault using ID or prefix.
+// UpsertVault - Upsert a Vault in a workspace
+// Create or Update Vault using ID or prefix in a workspace.
 func (s *Vaults) UpsertVault(ctx context.Context, request operations.UpsertVaultRequest, opts ...operations.Option) (*operations.UpsertVaultResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -972,7 +957,7 @@ func (s *Vaults) UpsertVault(ctx context.Context, request operations.UpsertVault
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/vaults/{VaultId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

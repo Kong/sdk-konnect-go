@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -11,8 +12,21 @@ import (
 type CreateServiceRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the new Service for creation
 	ServiceRequest components.ServiceRequest `request:"mediaType=application/json"`
+}
+
+func (c CreateServiceRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateServiceRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreateServiceRequest) GetControlPlaneID() string {
@@ -20,6 +34,13 @@ func (c *CreateServiceRequest) GetControlPlaneID() string {
 		return ""
 	}
 	return c.ControlPlaneID
+}
+
+func (c *CreateServiceRequest) GetWorkspace() string {
+	if c == nil {
+		return ""
+	}
+	return c.Workspace
 }
 
 func (c *CreateServiceRequest) GetServiceRequest() components.ServiceRequest {

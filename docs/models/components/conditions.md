@@ -1,13 +1,13 @@
 # Conditions
 
-A tokens will only be exchange when it matches all these criteria. To exchanging tokens issued from a different issuer, conditions must not be defined; On the contrary, to exchange tokens issued from the target issuer itself, conditions must be defined.
+A token will only be exchanged when it matches all these criteria. To exchange tokens issued by a different issuer, `conditions` must not be defined -- every token from that issuer is exchanged unconditionally, since a foreign-issued token that isn't exchanged can never pass normal verification against the target issuer anyway. In contrast, to exchange tokens issued by the target issuer itself, `conditions` must be defined.
 
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `HasAudience`      | []`string`         | :heavy_minus_sign: | N/A                |
-| `HasScopes`        | []`string`         | :heavy_minus_sign: | N/A                |
-| `MissingAudience`  | []`string`         | :heavy_minus_sign: | N/A                |
-| `MissingScopes`    | []`string`         | :heavy_minus_sign: | N/A                |
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `HasAudience`                                                                             | []`string`                                                                                | :heavy_minus_sign:                                                                        | Audience values that must all be present in the token, matched against `audience_claim`.  |
+| `HasScopes`                                                                               | []`string`                                                                                | :heavy_minus_sign:                                                                        | Scope values that must all be present in the token, matched against `scopes_claim`.       |
+| `MissingAudience`                                                                         | []`string`                                                                                | :heavy_minus_sign:                                                                        | Audience values that must all be absent from the token, matched against `audience_claim`. |
+| `MissingScopes`                                                                           | []`string`                                                                                | :heavy_minus_sign:                                                                        | Scope values that must all be absent from the token, matched against `scopes_claim`.      |

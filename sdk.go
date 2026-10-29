@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.15.0 and generator version 2.954.8
+// Generated from OpenAPI doc version 3.16.0 and generator version 2.954.8
 
 import (
 	"context"
@@ -273,9 +273,6 @@ type SDK struct {
 	ConfigStoreSecrets   *ConfigStoreSecrets
 	ACLs                 *ACLs
 	BasicAuthCredentials *BasicAuthCredentials
-	// A CA certificate object represents a trusted certificate authority.
-	// These objects are used by Kong Gateway to verify the validity of a client or server certificate.
-	CACertificates *CACertificates
 	// A certificate object represents a public certificate, and can be optionally paired with the corresponding private key. These objects are used by Kong Gateway to handle SSL/TLS termination for encrypted requests, or for use as a trusted CA store when validating peer certificate of client/service.
 	// <br><br>
 	// Certificates are optionally associated with SNI objects to tie a cert/key pair to one or more hostnames.
@@ -303,7 +300,6 @@ type SDK struct {
 	JWTs                   *JWTs
 	APIKeys                *APIKeys
 	MTLSAuthCredentials    *MTLSAuthCredentials
-	CustomPlugins          *CustomPlugins
 	DegraphqlRoutes        *DegraphqlRoutes
 	GraphQLCostDecorations *GraphQLCostDecorations
 	// A JSON Web key set. Key sets are the preferred way to expose keys to plugins because they tell the plugin where to look for keys or have a scoping mechanism to restrict plugins to specific keys.
@@ -315,8 +311,6 @@ type SDK struct {
 	// Some entities in Kong Gateway share common configuration settings that often need to be repeated. For example, multiple plugins that connect to Redis may require the same connection settings. Without Partials, you would need to replicate this configuration across all plugins. If the settings change, you would need to update each plugin individually.
 	Partials     *Partials
 	PartialLinks *PartialLinks
-	// Custom Plugin Schemas
-	CustomPluginSchemas *CustomPluginSchemas
 	// Route entities define rules to match client requests. Each route is associated with a service, and a service may have multiple routes associated to it. Every request matching a given route will be proxied to the associated service. You need at least one matching rule that applies to the protocol being matched by the route.
 	// <br><br>
 	// The combination of routes and services, and the separation of concerns between them, offers a powerful routing mechanism with which it is possible to define fine-grained entrypoints in Kong Gateway leading to different upstream services of your infrastructure.
@@ -341,8 +335,7 @@ type SDK struct {
 	//   Learn more about the router:
 	// - [Configure routes using expressions](https://developer.konghq.com/gateway/routing/expressions/)
 	//
-	Routes  *Routes
-	Schemas *Schemas
+	Routes *Routes
 	// Service entities are abstractions of your microservice interfaces or formal APIs. For example, a service could be a data transformation microservice or a billing API.
 	// <br><br>
 	// The main attribute of a service is the destination URL for proxying traffic. This URL can be set as a single string or by specifying its protocol, host, port and path individually.
@@ -352,16 +345,16 @@ type SDK struct {
 	// Services can be both [tagged and filtered by tags](https://developer.konghq.com/admin-api/).
 	//
 	Services *Services
-	// A target is an IP address or hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly.
-	// <br><br>
-	// To disable a target, post a new one with `weight=0`, or use the `DELETE` method to accomplish the same.
-	//
-	Targets *Targets
 	// The upstream object represents a virtual hostname and can be used to load balance incoming requests over multiple services (targets).
 	// <br><br>
 	// An upstream also includes a [health checker](https://developer.konghq.com/gateway/traffic-control/health-checks-circuit-breakers/), which can enable and disable targets based on their ability or inability to serve requests.
 	// The configuration for the health checker is stored in the upstream object, and applies to all of its targets.
 	Upstreams *Upstreams
+	// A target is an IP address or hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly.
+	// <br><br>
+	// To disable a target, post a new one with `weight=0`, or use the `DELETE` method to accomplish the same.
+	//
+	Targets *Targets
 	// Vault objects are used to configure different vault connectors for [managing secrets](https://developer.konghq.com/gateway/secrets-management/).
 	// Configuring a vault lets you reference secrets from other entities.
 	// This allows for a proper separation of secrets and configuration and prevents secret sprawl.
@@ -371,6 +364,15 @@ type SDK struct {
 	// Secrets rotation can be managed using [TTLs](https://developer.konghq.com/gateway/entities/vault/).
 	//
 	Vaults *Vaults
+	// A CA certificate object represents a trusted certificate authority.
+	// These objects are used by Kong Gateway to verify the validity of a client or server certificate.
+	CACertificates *CACertificates
+	ClonedPlugins  *ClonedPlugins
+	CustomPlugins  *CustomPlugins
+	// Custom Plugin Schemas
+	CustomPluginSchemas *CustomPluginSchemas
+	Schemas             *Schemas
+	Workspaces          *Workspaces
 	// DP Certificates
 	DPCertificates *DPCertificates
 	// DP Nodes
@@ -423,7 +425,7 @@ type SDK struct {
 	OpenMeterLLMCost *OpenMeterLLMCost
 	// Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.
 	Meters *Meters
-	// Notification channels deliver notification events, such as entitlement balance threshold crossings, to external systems.
+	// Notification rules generate notification events, such as entitlement balance threshold crossings, and notification channels deliver them to external systems.
 	OpenMeterNotifications *OpenMeterNotifications
 	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterSubscriptions *OpenMeterSubscriptions
@@ -550,10 +552,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.76.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.76.1 2.954.8 3.15.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.76.1 2.954.8 3.16.0 github.com/Kong/sdk-konnect-go",
 			SDKVersion:        "0.76.1",
 			GenVersion:        "2.954.8",
-			OpenAPIDocVersion: "3.15.0",
+			OpenAPIDocVersion: "3.16.0",
 			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),
@@ -642,7 +644,6 @@ func New(opts ...SDKOption) *SDK {
 	sdk.ConfigStoreSecrets = newConfigStoreSecrets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ACLs = newACLs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.BasicAuthCredentials = newBasicAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.CACertificates = newCACertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Certificates = newCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.SNIs = newSNIs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ConsumerGroups = newConsumerGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -652,20 +653,23 @@ func New(opts ...SDKOption) *SDK {
 	sdk.JWTs = newJWTs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIKeys = newAPIKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.MTLSAuthCredentials = newMTLSAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.CustomPlugins = newCustomPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DegraphqlRoutes = newDegraphqlRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.GraphQLCostDecorations = newGraphQLCostDecorations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.KeySets = newKeySets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Keys = newKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Partials = newPartials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PartialLinks = newPartialLinks(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.CustomPluginSchemas = newCustomPluginSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Targets = newTargets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Upstreams = newUpstreams(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Targets = newTargets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Vaults = newVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CACertificates = newCACertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ClonedPlugins = newClonedPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CustomPlugins = newCustomPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CustomPluginSchemas = newCustomPluginSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Workspaces = newWorkspaces(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPCertificates = newDPCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk, sdk.sdkConfiguration, sdk.hooks)

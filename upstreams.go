@@ -35,8 +35,8 @@ func newUpstreams(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.
 	}
 }
 
-// ListUpstream - List all Upstreams
-// List all Upstreams
+// ListUpstream - List all Upstreams in a workspace
+// List all Upstreams in a workspace
 func (s *Upstreams) ListUpstream(ctx context.Context, request operations.ListUpstreamRequest, opts ...operations.Option) (*operations.ListUpstreamResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -56,7 +56,7 @@ func (s *Upstreams) ListUpstream(ctx context.Context, request operations.ListUps
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/upstreams", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -265,14 +265,9 @@ func (s *Upstreams) ListUpstream(ctx context.Context, request operations.ListUps
 
 }
 
-// CreateUpstream - Create a new Upstream
-// Create a new Upstream
-func (s *Upstreams) CreateUpstream(ctx context.Context, controlPlaneID string, upstream components.Upstream, opts ...operations.Option) (*operations.CreateUpstreamResponse, error) {
-	request := operations.CreateUpstreamRequest{
-		ControlPlaneID: controlPlaneID,
-		Upstream:       upstream,
-	}
-
+// CreateUpstream - Create a new Upstream in a workspace
+// Create a new Upstream in a workspace
+func (s *Upstreams) CreateUpstream(ctx context.Context, request operations.CreateUpstreamRequest, opts ...operations.Option) (*operations.CreateUpstreamResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -291,7 +286,7 @@ func (s *Upstreams) CreateUpstream(ctx context.Context, controlPlaneID string, u
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/upstreams", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -503,14 +498,9 @@ func (s *Upstreams) CreateUpstream(ctx context.Context, controlPlaneID string, u
 
 }
 
-// DeleteUpstream - Delete an Upstream
-// Delete an Upstream
-func (s *Upstreams) DeleteUpstream(ctx context.Context, controlPlaneID string, upstreamID string, opts ...operations.Option) (*operations.DeleteUpstreamResponse, error) {
-	request := operations.DeleteUpstreamRequest{
-		ControlPlaneID: controlPlaneID,
-		UpstreamID:     upstreamID,
-	}
-
+// DeleteUpstream - Delete an Upstream in a workspace
+// Delete an Upstream in a workspace
+func (s *Upstreams) DeleteUpstream(ctx context.Context, request operations.DeleteUpstreamRequest, opts ...operations.Option) (*operations.DeleteUpstreamResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -529,7 +519,7 @@ func (s *Upstreams) DeleteUpstream(ctx context.Context, controlPlaneID string, u
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -715,14 +705,9 @@ func (s *Upstreams) DeleteUpstream(ctx context.Context, controlPlaneID string, u
 
 }
 
-// GetUpstream - Get an Upstream
-// Get an Upstream using ID or name.
-func (s *Upstreams) GetUpstream(ctx context.Context, upstreamID string, controlPlaneID string, opts ...operations.Option) (*operations.GetUpstreamResponse, error) {
-	request := operations.GetUpstreamRequest{
-		UpstreamID:     upstreamID,
-		ControlPlaneID: controlPlaneID,
-	}
-
+// GetUpstream - Get an Upstream in a workspace
+// Get an Upstream using ID or name in a workspace.
+func (s *Upstreams) GetUpstream(ctx context.Context, request operations.GetUpstreamRequest, opts ...operations.Option) (*operations.GetUpstreamResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -741,7 +726,7 @@ func (s *Upstreams) GetUpstream(ctx context.Context, upstreamID string, controlP
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -948,8 +933,8 @@ func (s *Upstreams) GetUpstream(ctx context.Context, upstreamID string, controlP
 
 }
 
-// UpsertUpstream - Upsert a Upstream
-// Create or Update Upstream using ID or name.
+// UpsertUpstream - Upsert a Upstream in a workspace
+// Create or Update Upstream using ID or name in a workspace.
 func (s *Upstreams) UpsertUpstream(ctx context.Context, request operations.UpsertUpstreamRequest, opts ...operations.Option) (*operations.UpsertUpstreamResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -969,7 +954,7 @@ func (s *Upstreams) UpsertUpstream(ctx context.Context, request operations.Upser
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

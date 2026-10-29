@@ -20,6 +20,8 @@ type ListMtlsAuthWithConsumerRequest struct {
 	Offset *string `queryParam:"style=form,explode=true,name=offset"`
 	// A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
 	Tags *string `queryParam:"style=form,explode=true,name=tags"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 }
 
 func (l ListMtlsAuthWithConsumerRequest) MarshalJSON() ([]byte, error) {
@@ -66,6 +68,13 @@ func (l *ListMtlsAuthWithConsumerRequest) GetTags() *string {
 		return nil
 	}
 	return l.Tags
+}
+
+func (l *ListMtlsAuthWithConsumerRequest) GetWorkspace() string {
+	if l == nil {
+		return ""
+	}
+	return l.Workspace
 }
 
 // ListMtlsAuthWithConsumerResponseBody - A successful response listing MTLS-auth credentials

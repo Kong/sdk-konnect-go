@@ -19,7 +19,7 @@ func (p *PluginWithoutParentsConsumer) GetID() *string {
 	return p.ID
 }
 
-// PluginWithoutParentsConsumerGroup - If set, the plugin will activate only for requests where the specified group has been authenticated
+// PluginWithoutParentsConsumerGroup - If set, the plugin will activate only for requests where the specified group has been authenticated.
 type PluginWithoutParentsConsumerGroup struct {
 	ID *string `json:"id,omitempty"`
 }
@@ -164,7 +164,7 @@ type PluginWithoutParents struct {
 	Config map[string]any `json:"config,omitempty"`
 	// If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
 	Consumer *PluginWithoutParentsConsumer `json:"consumer,omitempty"`
-	// If set, the plugin will activate only for requests where the specified group has been authenticated
+	// If set, the plugin will activate only for requests where the specified group has been authenticated.
 	ConsumerGroup *PluginWithoutParentsConsumerGroup `json:"consumer_group,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`

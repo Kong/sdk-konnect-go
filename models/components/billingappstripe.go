@@ -170,6 +170,9 @@ type BillingAppStripe struct {
 	Definition BillingAppStripeDefinition `json:"definition"`
 	// Status of the app connection.
 	Status BillingAppStripeStatus `json:"status"`
+	// Actions the operator should take to bring the app up to date. Omitted when no
+	// action is required.
+	Actions []BillingAppAction `json:"actions,omitempty"`
 	// The Stripe account ID associated with the connected Stripe account.
 	AccountID string `json:"account_id"`
 	// Indicates whether the app is connected to a live Stripe account.
@@ -257,6 +260,13 @@ func (b *BillingAppStripe) GetStatus() BillingAppStripeStatus {
 		return BillingAppStripeStatus("")
 	}
 	return b.Status
+}
+
+func (b *BillingAppStripe) GetActions() []BillingAppAction {
+	if b == nil {
+		return nil
+	}
+	return b.Actions
 }
 
 func (b *BillingAppStripe) GetAccountID() string {

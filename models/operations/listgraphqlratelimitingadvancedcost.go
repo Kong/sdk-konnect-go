@@ -18,6 +18,8 @@ type ListGraphqlRateLimitingAdvancedCostRequest struct {
 	Offset *string `queryParam:"style=form,explode=true,name=offset"`
 	// A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
 	Tags *string `queryParam:"style=form,explode=true,name=tags"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 }
 
 func (l ListGraphqlRateLimitingAdvancedCostRequest) MarshalJSON() ([]byte, error) {
@@ -57,6 +59,13 @@ func (l *ListGraphqlRateLimitingAdvancedCostRequest) GetTags() *string {
 		return nil
 	}
 	return l.Tags
+}
+
+func (l *ListGraphqlRateLimitingAdvancedCostRequest) GetWorkspace() string {
+	if l == nil {
+		return ""
+	}
+	return l.Workspace
 }
 
 // ListGraphqlRateLimitingAdvancedCostResponseBody - A successful response listing GraphQL Cost Decorations

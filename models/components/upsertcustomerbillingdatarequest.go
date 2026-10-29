@@ -3,9 +3,10 @@
 
 package components
 
-// UpsertCustomerBillingDataRequestBillingProfile - The billing profile for the customer.
+// UpsertCustomerBillingDataRequestBillingProfile - The billing profile explicitly selected for the customer.
 //
-// If not provided, the default billing profile will be used.
+// Unpinned customers use the current namespace default. Selecting the current
+// default explicitly pins the customer to that profile.
 type UpsertCustomerBillingDataRequestBillingProfile struct {
 	// The ID of the billing profile.
 	ID string `json:"id"`
@@ -98,9 +99,10 @@ func (u *UpsertCustomerBillingDataRequestAppCustomerData) GetExternalInvoicing()
 
 // UpsertCustomerBillingDataRequest - CustomerBillingData upsert request.
 type UpsertCustomerBillingDataRequest struct {
-	// The billing profile for the customer.
+	// The billing profile explicitly selected for the customer.
 	//
-	// If not provided, the default billing profile will be used.
+	// Unpinned customers use the current namespace default. Selecting the current
+	// default explicitly pins the customer to that profile.
 	BillingProfile *UpsertCustomerBillingDataRequestBillingProfile `json:"billing_profile,omitempty"`
 	// App customer data.
 	AppData *UpsertCustomerBillingDataRequestAppCustomerData `json:"app_data,omitempty"`

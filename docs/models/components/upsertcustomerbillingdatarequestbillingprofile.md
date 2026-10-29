@@ -1,8 +1,9 @@
 # UpsertCustomerBillingDataRequestBillingProfile
 
-The billing profile for the customer.
+The billing profile explicitly selected for the customer.
 
-If not provided, the default billing profile will be used.
+Unpinned customers use the current namespace default. Selecting the current
+default explicitly pins the customer to that profile.
 
 
 ## Fields

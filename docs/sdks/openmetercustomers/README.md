@@ -14,6 +14,7 @@ Customers are used to track usage of your product or service. Customers can be i
 * [GetCustomerBilling](#getcustomerbilling) - Get customer billing data
 * [UpdateCustomerBilling](#updatecustomerbilling) - Update customer billing data
 * [UpdateCustomerBillingAppData](#updatecustomerbillingappdata) - Update customer billing app data
+* [UpdateCustomerBillingProfile](#updatecustomerbillingprofile) - Update customer billing profile
 * [CreateCustomerStripeCheckoutSession](#createcustomerstripecheckoutsession) - Create Stripe Checkout Session
 * [CreateCustomerStripePortalSession](#createcustomerstripeportalsession) - Create Stripe customer portal session
 * [ListCustomerCharges](#listcustomercharges) - List customer charges
@@ -404,7 +405,9 @@ func main() {
 
 ## UpdateCustomerBilling
 
-Update customer billing data
+Update billing data while preserving the current profile selection when
+billing_profile is omitted or null. Use the dedicated billing profile endpoint
+to remove the selection.
 
 ### Example Usage
 
@@ -541,6 +544,72 @@ func main() {
 ### Response
 
 **[*operations.UpdateCustomerBillingAppDataResponse](../../models/operations/updatecustomerbillingappdataresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.GoneError         | 410                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateCustomerBillingProfile
+
+Set the customer's explicit billing profile selection. Omitting billing_profile
+or setting it to null removes the selection and uses the current namespace
+default.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-customer-billing-profile" method="put" path="/v3/openmeter/customers/{customerId}/billing/profile" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.OpenMeterCustomers.UpdateCustomerBillingProfile(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpsertCustomerBillingProfileRequest{
+        BillingProfile: &components.UpsertCustomerBillingProfileRequestBillingProfile{
+            ID: "01G65Z755AFWAKHE12NY0CQ9FH",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.BillingCustomerProfile != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      | Example                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |                                                                                                                  |
+| `customerID`                                                                                                     | `string`                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              | 01G65Z755AFWAKHE12NY0CQ9FH                                                                                       |
+| `upsertCustomerBillingProfileRequest`                                                                            | [components.UpsertCustomerBillingProfileRequest](../../models/components/upsertcustomerbillingprofilerequest.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |                                                                                                                  |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |                                                                                                                  |
+
+### Response
+
+**[*operations.UpdateCustomerBillingProfileResponse](../../models/operations/updatecustomerbillingprofileresponse.md), error**
 
 ### Errors
 
@@ -1143,6 +1212,7 @@ func main() {
 
     res, err := s.OpenMeterCustomers.ListCreditGrants(ctx, operations.ListCreditGrantsRequest{
         CustomerID: "01G65Z755AFWAKHE12NY0CQ9FH",
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
         Filter: &components.ListCreditGrantsParamsFilter{
             Currency: sdkkonnectgo.Pointer("USD"),
         },

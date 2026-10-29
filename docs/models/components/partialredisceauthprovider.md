@@ -23,3 +23,4 @@ custom := components.PartialRedisCeAuthProvider("custom_value")
 | `PartialRedisCeAuthProviderAws`   | aws                               |
 | `PartialRedisCeAuthProviderAzure` | azure                             |
 | `PartialRedisCeAuthProviderGcp`   | gcp                               |
+| `PartialRedisCeAuthProviderOauth` | oauth                             |
