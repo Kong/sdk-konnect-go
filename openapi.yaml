@@ -29208,7 +29208,6 @@ components:
         - instance
         - detail
         - invalid_parameters
-      title: Error
     UnauthorizedError:
       description: standard error
       type: object
@@ -29257,7 +29256,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     ForbiddenError:
       description: standard error
       type: object
@@ -29306,7 +29304,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     InternalError:
       description: standard error
       type: object
@@ -29351,7 +29348,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     ConflictError:
       description: standard error
       type: object
@@ -29400,7 +29396,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     NotFoundError:
       description: standard error
       type: object
@@ -29449,7 +29444,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     NotImplementedError:
       description: standard error
       type: object
@@ -29496,7 +29490,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     CreatedAt:
       description: An ISO-8601 timestamp representation of entity creation date.
       type: string
@@ -29555,7 +29548,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     ManagedBy:
       description: |
         Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
@@ -29604,7 +29596,6 @@ components:
           type: string
           example: ERROR_TYPE_FIELD
           readOnly: true
-      title: Error Detail
     KonnectCPLegacyBadRequestError:
       description: standard error
       type: object
@@ -29630,7 +29621,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     KonnectCPLegacyUnauthorizedError:
       description: standard error
       type: object
@@ -29656,7 +29646,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     KonnectCPLegacyForbiddenError:
       description: standard error
       type: object
@@ -29682,7 +29671,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     KonnectCPLegacyNotFoundError:
       description: standard error
       type: object
@@ -29708,7 +29696,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     KonnectCPLegacyConflictError:
       description: standard error
       type: object
@@ -29734,7 +29721,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     IdentityProviderType:
       description: Specifies the type of identity provider.
       type: string
@@ -34344,7 +34330,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     DcrConfigPropertyInitialClientId:
       description: |
         This ID should be copied from your identity provider's settings after you create a client
@@ -37108,7 +37093,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     TryItUIAudience:
       description: |
         The audience for the Try It UI feature.
@@ -74503,7 +74487,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     AIGatewayEntityIdentifier:
       description: 'Identifier for an AI Gateway entity. In some cases, this may be the entity name or ID.'
       type: string
