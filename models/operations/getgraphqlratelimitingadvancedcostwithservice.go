@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,6 +16,19 @@ type GetGraphqlRateLimitingAdvancedCostWithServiceRequest struct {
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// ID of the GraphQL Cost Decoration to lookup
 	GraphQLCostDecorationID string `pathParam:"style=simple,explode=false,name=GraphQLCostDecorationId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (g GetGraphqlRateLimitingAdvancedCostWithServiceRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetGraphqlRateLimitingAdvancedCostWithServiceRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (g *GetGraphqlRateLimitingAdvancedCostWithServiceRequest) GetControlPlaneID() string {
@@ -36,6 +50,13 @@ func (g *GetGraphqlRateLimitingAdvancedCostWithServiceRequest) GetGraphQLCostDec
 		return ""
 	}
 	return g.GraphQLCostDecorationID
+}
+
+func (g *GetGraphqlRateLimitingAdvancedCostWithServiceRequest) GetWorkspace() string {
+	if g == nil {
+		return ""
+	}
+	return g.Workspace
 }
 
 type GetGraphqlRateLimitingAdvancedCostWithServiceResponse struct {

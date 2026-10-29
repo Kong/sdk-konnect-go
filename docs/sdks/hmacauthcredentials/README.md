@@ -4,21 +4,21 @@
 
 ### Available Operations
 
-* [ListHmacAuthWithConsumer](#listhmacauthwithconsumer) - List all HMAC-auth credentials associated with a Consumer
-* [CreateHmacAuthWithConsumer](#createhmacauthwithconsumer) - Create a new HMAC-auth credential associated with a Consumer
-* [DeleteHmacAuthWithConsumer](#deletehmacauthwithconsumer) - Delete a a HMAC-auth credential associated with a Consumer
-* [GetHmacAuthWithConsumer](#gethmacauthwithconsumer) - Get a HMAC-auth credential associated with a Consumer
-* [UpsertHmacAuthWithConsumer](#upserthmacauthwithconsumer) - Upsert a HMAC-auth credential associated with a Consumer
-* [ListHmacAuth](#listhmacauth) - List all HMAC-auth credentials
-* [GetHmacAuth](#gethmacauth) - Get a HMAC-auth credential
+* [ListHmacAuthWithConsumer](#listhmacauthwithconsumer) - List all HMAC-auth credentials associated with a Consumer in a workspace
+* [CreateHmacAuthWithConsumer](#createhmacauthwithconsumer) - Create a new HMAC-auth credential associated with a Consumer in a workspace
+* [DeleteHmacAuthWithConsumer](#deletehmacauthwithconsumer) - Delete a a HMAC-auth credential associated with a Consumer in a workspace
+* [GetHmacAuthWithConsumer](#gethmacauthwithconsumer) - Get a HMAC-auth credential associated with a Consumer in a workspace
+* [UpsertHmacAuthWithConsumer](#upserthmacauthwithconsumer) - Upsert a HMAC-auth credential associated with a Consumer in a workspace
+* [ListHmacAuth](#listhmacauth) - List all HMAC-auth credentials in a workspace
+* [GetHmacAuth](#gethmacauth) - Get a HMAC-auth credential in a workspace
 
 ## ListHmacAuthWithConsumer
 
-List all HMAC-auth credentials associated with a Consumer
+List all HMAC-auth credentials associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-hmac-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth" -->
+<!-- UsageSnippet language="go" operationID="list-hmac-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth" -->
 ```go
 package main
 
@@ -43,6 +43,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -73,11 +74,11 @@ func main() {
 
 ## CreateHmacAuthWithConsumer
 
-Create a new HMAC-auth credential associated with a Consumer
+Create a new HMAC-auth credential associated with a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-hmac-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth" -->
+<!-- UsageSnippet language="go" operationID="create-hmac-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth" -->
 ```go
 package main
 
@@ -101,6 +102,7 @@ func main() {
     res, err := s.HMACAuthCredentials.CreateHmacAuthWithConsumer(ctx, operations.CreateHmacAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Workspace: "team-payments",
         HMACAuthWithoutParents: components.HMACAuthWithoutParents{
             ID: sdkkonnectgo.Pointer("75695322-e8a0-4109-aed4-5416b0308d85"),
             Secret: sdkkonnectgo.Pointer("wQazJ304DW5huJklHgUfjfiSyCyTAEDZ"),
@@ -136,11 +138,11 @@ func main() {
 
 ## DeleteHmacAuthWithConsumer
 
-Delete a a HMAC-auth credential associated with a Consumer using ID.
+Delete a a HMAC-auth credential associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-hmac-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
+<!-- UsageSnippet language="go" operationID="delete-hmac-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
 ```go
 package main
 
@@ -165,6 +167,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         HMACAuthID: "70e7b00b-72f2-471b-a5ce-9c4171775360",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -195,11 +198,11 @@ func main() {
 
 ## GetHmacAuthWithConsumer
 
-Get a HMAC-auth credential associated with a Consumer using ID.
+Get a HMAC-auth credential associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-hmac-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
+<!-- UsageSnippet language="go" operationID="get-hmac-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
 ```go
 package main
 
@@ -224,6 +227,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         HMACAuthID: "70e7b00b-72f2-471b-a5ce-9c4171775360",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -254,11 +258,11 @@ func main() {
 
 ## UpsertHmacAuthWithConsumer
 
-Create or Update a HMAC-auth credential associated with a Consumer using ID.
+Create or Update a HMAC-auth credential associated with a Consumer using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-hmac-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-hmac-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
 ```go
 package main
 
@@ -283,6 +287,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         HMACAuthID: "70e7b00b-72f2-471b-a5ce-9c4171775360",
+        Workspace: "team-payments",
         HMACAuthWithoutParents: components.HMACAuthWithoutParents{
             ID: sdkkonnectgo.Pointer("75695322-e8a0-4109-aed4-5416b0308d85"),
             Secret: sdkkonnectgo.Pointer("wQazJ304DW5huJklHgUfjfiSyCyTAEDZ"),
@@ -318,11 +323,11 @@ func main() {
 
 ## ListHmacAuth
 
-List all HMAC-auth credentials
+List all HMAC-auth credentials in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-hmac-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/hmac-auths" -->
+<!-- UsageSnippet language="go" operationID="list-hmac-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/hmac-auths" -->
 ```go
 package main
 
@@ -346,6 +351,7 @@ func main() {
     res, err := s.HMACAuthCredentials.ListHmacAuth(ctx, operations.ListHmacAuthRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -377,11 +383,11 @@ func main() {
 
 ## GetHmacAuth
 
-Get a HMAC-auth credential using ID.
+Get a HMAC-auth credential using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-hmac-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/hmac-auths/{HMACAuthId}" -->
+<!-- UsageSnippet language="go" operationID="get-hmac-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/hmac-auths/{HMACAuthId}" -->
 ```go
 package main
 
@@ -389,6 +395,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -401,7 +408,11 @@ func main() {
         }),
     )
 
-    res, err := s.HMACAuthCredentials.GetHmacAuth(ctx, "70e7b00b-72f2-471b-a5ce-9c4171775360", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.HMACAuthCredentials.GetHmacAuth(ctx, operations.GetHmacAuthRequest{
+        HMACAuthID: "70e7b00b-72f2-471b-a5ce-9c4171775360",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -413,12 +424,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `hmacAuthID`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the HMAC-auth credential to lookup                                           | 70e7b00b-72f2-471b-a5ce-9c4171775360                                               |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.GetHmacAuthRequest](../../models/operations/gethmacauthrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
 
 ### Response
 

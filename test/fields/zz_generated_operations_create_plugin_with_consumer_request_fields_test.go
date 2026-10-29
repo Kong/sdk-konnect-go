@@ -15,5 +15,6 @@ func TestOperationsCreatePluginWithConsumerRequestFieldTypes(t *testing.T) {
 	var value operations.CreatePluginWithConsumerRequest
 	var _ string = value.ControlPlaneID
 	var _ string = value.ConsumerIDForNestedEntities
+	var _ string = value.Workspace
 	var _ components.PluginWithoutParents = value.PluginWithoutParents
 }

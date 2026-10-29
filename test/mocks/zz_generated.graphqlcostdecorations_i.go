@@ -214,12 +214,12 @@ func (_c *MockGraphQLCostDecorationsSDK_DeleteGraphqlRateLimitingAdvancedCostWit
 }
 
 // GetGraphqlRateLimitingAdvancedCost provides a mock function for the type MockGraphQLCostDecorationsSDK
-func (_mock *MockGraphQLCostDecorationsSDK) GetGraphqlRateLimitingAdvancedCost(ctx context.Context, graphQLCostDecorationID string, controlPlaneID string, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostResponse, error) {
+func (_mock *MockGraphQLCostDecorationsSDK) GetGraphqlRateLimitingAdvancedCost(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, graphQLCostDecorationID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, graphQLCostDecorationID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -229,18 +229,18 @@ func (_mock *MockGraphQLCostDecorationsSDK) GetGraphqlRateLimitingAdvancedCost(c
 
 	var r0 *operations.GetGraphqlRateLimitingAdvancedCostResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostResponse, error)); ok {
-		return returnFunc(ctx, graphQLCostDecorationID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetGraphqlRateLimitingAdvancedCostRequest, ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetGraphqlRateLimitingAdvancedCostResponse); ok {
-		r0 = returnFunc(ctx, graphQLCostDecorationID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetGraphqlRateLimitingAdvancedCostRequest, ...operations.Option) *operations.GetGraphqlRateLimitingAdvancedCostResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetGraphqlRateLimitingAdvancedCostResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, graphQLCostDecorationID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetGraphqlRateLimitingAdvancedCostRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -254,39 +254,33 @@ type MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call struc
 
 // GetGraphqlRateLimitingAdvancedCost is a helper method to define mock.On call
 //   - ctx context.Context
-//   - graphQLCostDecorationID string
-//   - controlPlaneID string
+//   - request operations.GetGraphqlRateLimitingAdvancedCostRequest
 //   - opts ...operations.Option
-func (_e *MockGraphQLCostDecorationsSDK_Expecter) GetGraphqlRateLimitingAdvancedCost(ctx any, graphQLCostDecorationID any, controlPlaneID any, opts ...any) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call {
+func (_e *MockGraphQLCostDecorationsSDK_Expecter) GetGraphqlRateLimitingAdvancedCost(ctx any, request any, opts ...any) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call {
 	return &MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call{Call: _e.mock.On("GetGraphqlRateLimitingAdvancedCost",
-		append([]any{ctx, graphQLCostDecorationID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call) Run(run func(ctx context.Context, graphQLCostDecorationID string, controlPlaneID string, opts ...operations.Option)) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call {
+func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call) Run(run func(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostRequest, opts ...operations.Option)) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetGraphqlRateLimitingAdvancedCostRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetGraphqlRateLimitingAdvancedCostRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -297,7 +291,7 @@ func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call)
 	return _c
 }
 
-func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call) RunAndReturn(run func(ctx context.Context, graphQLCostDecorationID string, controlPlaneID string, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostResponse, error)) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call {
+func (_c *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call) RunAndReturn(run func(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostResponse, error)) *MockGraphQLCostDecorationsSDK_GetGraphqlRateLimitingAdvancedCost_Call {
 	_c.Call.Return(run)
 	return _c
 }

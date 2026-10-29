@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -13,8 +14,21 @@ type CreatePluginWithConsumerGroupRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Consumer Group to lookup
 	ConsumerGroupID string `pathParam:"style=simple,explode=false,name=ConsumerGroupId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of new Plugin for creation
 	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
+}
+
+func (c CreatePluginWithConsumerGroupRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreatePluginWithConsumerGroupRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreatePluginWithConsumerGroupRequest) GetControlPlaneID() string {
@@ -29,6 +43,13 @@ func (c *CreatePluginWithConsumerGroupRequest) GetConsumerGroupID() string {
 		return ""
 	}
 	return c.ConsumerGroupID
+}
+
+func (c *CreatePluginWithConsumerGroupRequest) GetWorkspace() string {
+	if c == nil {
+		return ""
+	}
+	return c.Workspace
 }
 
 func (c *CreatePluginWithConsumerGroupRequest) GetPluginWithoutParents() components.PluginWithoutParents {

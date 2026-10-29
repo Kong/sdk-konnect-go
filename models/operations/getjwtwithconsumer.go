@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,6 +16,19 @@ type GetJwtWithConsumerRequest struct {
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
 	// ID of the JWT to lookup
 	JWTID string `pathParam:"style=simple,explode=false,name=JWTId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (g GetJwtWithConsumerRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetJwtWithConsumerRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (g *GetJwtWithConsumerRequest) GetControlPlaneID() string {
@@ -36,6 +50,13 @@ func (g *GetJwtWithConsumerRequest) GetJWTID() string {
 		return ""
 	}
 	return g.JWTID
+}
+
+func (g *GetJwtWithConsumerRequest) GetWorkspace() string {
+	if g == nil {
+		return ""
+	}
+	return g.Workspace
 }
 
 type GetJwtWithConsumerResponse struct {

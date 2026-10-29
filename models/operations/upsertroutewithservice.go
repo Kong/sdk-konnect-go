@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,8 +16,21 @@ type UpsertRouteWithServiceRequest struct {
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// ID of the Route to lookup
 	RouteID string `pathParam:"style=simple,explode=false,name=RouteId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the Route
 	RouteWithoutParents components.RouteWithoutParents `request:"mediaType=application/json"`
+}
+
+func (u UpsertRouteWithServiceRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertRouteWithServiceRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpsertRouteWithServiceRequest) GetControlPlaneID() string {
@@ -38,6 +52,13 @@ func (u *UpsertRouteWithServiceRequest) GetRouteID() string {
 		return ""
 	}
 	return u.RouteID
+}
+
+func (u *UpsertRouteWithServiceRequest) GetWorkspace() string {
+	if u == nil {
+		return ""
+	}
+	return u.Workspace
 }
 
 func (u *UpsertRouteWithServiceRequest) GetRouteWithoutParents() components.RouteWithoutParents {

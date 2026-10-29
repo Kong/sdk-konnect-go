@@ -12,6 +12,10 @@ type ListCreditGrantsRequest struct {
 	CustomerID string `pathParam:"style=simple,explode=false,name=customerId"`
 	// Determines which page of the collection to retrieve.
 	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	// Sort credit grants by `created_at`, `updated_at`, `name`, or `id`. Defaults to
+	// `created_at desc`. The `asc` suffix is optional when a sort attribute is
+	// supplied. Supports one attribute; ties are broken by `id` in the same direction.
+	Sort *string `queryParam:"style=form,explode=false,name=sort"`
 	// Filter credit grants returned in the response.
 	Filter *components.ListCreditGrantsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
@@ -28,6 +32,13 @@ func (l *ListCreditGrantsRequest) GetPage() *components.PagePaginationQuery {
 		return nil
 	}
 	return l.Page
+}
+
+func (l *ListCreditGrantsRequest) GetSort() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Sort
 }
 
 func (l *ListCreditGrantsRequest) GetFilter() *components.ListCreditGrantsParamsFilter {

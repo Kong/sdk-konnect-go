@@ -7,7 +7,6 @@ package mocks
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -49,12 +48,12 @@ func (_m *MockKeySetsSDK) EXPECT() *MockKeySetsSDK_Expecter {
 }
 
 // CreateKeySet provides a mock function for the type MockKeySetsSDK
-func (_mock *MockKeySetsSDK) CreateKeySet(ctx context.Context, controlPlaneID string, keySet *components.KeySet, opts ...operations.Option) (*operations.CreateKeySetResponse, error) {
+func (_mock *MockKeySetsSDK) CreateKeySet(ctx context.Context, request operations.CreateKeySetRequest, opts ...operations.Option) (*operations.CreateKeySetResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, keySet, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, keySet)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -64,18 +63,18 @@ func (_mock *MockKeySetsSDK) CreateKeySet(ctx context.Context, controlPlaneID st
 
 	var r0 *operations.CreateKeySetResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.KeySet, ...operations.Option) (*operations.CreateKeySetResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, keySet, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateKeySetRequest, ...operations.Option) (*operations.CreateKeySetResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.KeySet, ...operations.Option) *operations.CreateKeySetResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, keySet, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateKeySetRequest, ...operations.Option) *operations.CreateKeySetResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.CreateKeySetResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.KeySet, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, keySet, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateKeySetRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -89,39 +88,33 @@ type MockKeySetsSDK_CreateKeySet_Call struct {
 
 // CreateKeySet is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - keySet *components.KeySet
+//   - request operations.CreateKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeySetsSDK_Expecter) CreateKeySet(ctx any, controlPlaneID any, keySet any, opts ...any) *MockKeySetsSDK_CreateKeySet_Call {
+func (_e *MockKeySetsSDK_Expecter) CreateKeySet(ctx any, request any, opts ...any) *MockKeySetsSDK_CreateKeySet_Call {
 	return &MockKeySetsSDK_CreateKeySet_Call{Call: _e.mock.On("CreateKeySet",
-		append([]any{ctx, controlPlaneID, keySet}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockKeySetsSDK_CreateKeySet_Call) Run(run func(ctx context.Context, controlPlaneID string, keySet *components.KeySet, opts ...operations.Option)) *MockKeySetsSDK_CreateKeySet_Call {
+func (_c *MockKeySetsSDK_CreateKeySet_Call) Run(run func(ctx context.Context, request operations.CreateKeySetRequest, opts ...operations.Option)) *MockKeySetsSDK_CreateKeySet_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.CreateKeySetRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.CreateKeySetRequest)
 		}
-		var arg2 *components.KeySet
-		if args[2] != nil {
-			arg2 = args[2].(*components.KeySet)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -132,18 +125,18 @@ func (_c *MockKeySetsSDK_CreateKeySet_Call) Return(createKeySetResponse *operati
 	return _c
 }
 
-func (_c *MockKeySetsSDK_CreateKeySet_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, keySet *components.KeySet, opts ...operations.Option) (*operations.CreateKeySetResponse, error)) *MockKeySetsSDK_CreateKeySet_Call {
+func (_c *MockKeySetsSDK_CreateKeySet_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateKeySetRequest, opts ...operations.Option) (*operations.CreateKeySetResponse, error)) *MockKeySetsSDK_CreateKeySet_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // DeleteKeySet provides a mock function for the type MockKeySetsSDK
-func (_mock *MockKeySetsSDK) DeleteKeySet(ctx context.Context, controlPlaneID string, keySetID string, opts ...operations.Option) (*operations.DeleteKeySetResponse, error) {
+func (_mock *MockKeySetsSDK) DeleteKeySet(ctx context.Context, request operations.DeleteKeySetRequest, opts ...operations.Option) (*operations.DeleteKeySetResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, keySetID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, keySetID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -153,18 +146,18 @@ func (_mock *MockKeySetsSDK) DeleteKeySet(ctx context.Context, controlPlaneID st
 
 	var r0 *operations.DeleteKeySetResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.DeleteKeySetResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, keySetID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteKeySetRequest, ...operations.Option) (*operations.DeleteKeySetResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.DeleteKeySetResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, keySetID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteKeySetRequest, ...operations.Option) *operations.DeleteKeySetResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.DeleteKeySetResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, keySetID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteKeySetRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -178,39 +171,33 @@ type MockKeySetsSDK_DeleteKeySet_Call struct {
 
 // DeleteKeySet is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - keySetID string
+//   - request operations.DeleteKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeySetsSDK_Expecter) DeleteKeySet(ctx any, controlPlaneID any, keySetID any, opts ...any) *MockKeySetsSDK_DeleteKeySet_Call {
+func (_e *MockKeySetsSDK_Expecter) DeleteKeySet(ctx any, request any, opts ...any) *MockKeySetsSDK_DeleteKeySet_Call {
 	return &MockKeySetsSDK_DeleteKeySet_Call{Call: _e.mock.On("DeleteKeySet",
-		append([]any{ctx, controlPlaneID, keySetID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockKeySetsSDK_DeleteKeySet_Call) Run(run func(ctx context.Context, controlPlaneID string, keySetID string, opts ...operations.Option)) *MockKeySetsSDK_DeleteKeySet_Call {
+func (_c *MockKeySetsSDK_DeleteKeySet_Call) Run(run func(ctx context.Context, request operations.DeleteKeySetRequest, opts ...operations.Option)) *MockKeySetsSDK_DeleteKeySet_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.DeleteKeySetRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.DeleteKeySetRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -221,18 +208,18 @@ func (_c *MockKeySetsSDK_DeleteKeySet_Call) Return(deleteKeySetResponse *operati
 	return _c
 }
 
-func (_c *MockKeySetsSDK_DeleteKeySet_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, keySetID string, opts ...operations.Option) (*operations.DeleteKeySetResponse, error)) *MockKeySetsSDK_DeleteKeySet_Call {
+func (_c *MockKeySetsSDK_DeleteKeySet_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteKeySetRequest, opts ...operations.Option) (*operations.DeleteKeySetResponse, error)) *MockKeySetsSDK_DeleteKeySet_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // GetKeySet provides a mock function for the type MockKeySetsSDK
-func (_mock *MockKeySetsSDK) GetKeySet(ctx context.Context, keySetID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeySetResponse, error) {
+func (_mock *MockKeySetsSDK) GetKeySet(ctx context.Context, request operations.GetKeySetRequest, opts ...operations.Option) (*operations.GetKeySetResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, keySetID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, keySetID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -242,18 +229,18 @@ func (_mock *MockKeySetsSDK) GetKeySet(ctx context.Context, keySetID string, con
 
 	var r0 *operations.GetKeySetResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetKeySetResponse, error)); ok {
-		return returnFunc(ctx, keySetID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeySetRequest, ...operations.Option) (*operations.GetKeySetResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetKeySetResponse); ok {
-		r0 = returnFunc(ctx, keySetID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeySetRequest, ...operations.Option) *operations.GetKeySetResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetKeySetResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, keySetID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetKeySetRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -267,39 +254,33 @@ type MockKeySetsSDK_GetKeySet_Call struct {
 
 // GetKeySet is a helper method to define mock.On call
 //   - ctx context.Context
-//   - keySetID string
-//   - controlPlaneID string
+//   - request operations.GetKeySetRequest
 //   - opts ...operations.Option
-func (_e *MockKeySetsSDK_Expecter) GetKeySet(ctx any, keySetID any, controlPlaneID any, opts ...any) *MockKeySetsSDK_GetKeySet_Call {
+func (_e *MockKeySetsSDK_Expecter) GetKeySet(ctx any, request any, opts ...any) *MockKeySetsSDK_GetKeySet_Call {
 	return &MockKeySetsSDK_GetKeySet_Call{Call: _e.mock.On("GetKeySet",
-		append([]any{ctx, keySetID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockKeySetsSDK_GetKeySet_Call) Run(run func(ctx context.Context, keySetID string, controlPlaneID string, opts ...operations.Option)) *MockKeySetsSDK_GetKeySet_Call {
+func (_c *MockKeySetsSDK_GetKeySet_Call) Run(run func(ctx context.Context, request operations.GetKeySetRequest, opts ...operations.Option)) *MockKeySetsSDK_GetKeySet_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetKeySetRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetKeySetRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -310,7 +291,7 @@ func (_c *MockKeySetsSDK_GetKeySet_Call) Return(getKeySetResponse *operations.Ge
 	return _c
 }
 
-func (_c *MockKeySetsSDK_GetKeySet_Call) RunAndReturn(run func(ctx context.Context, keySetID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeySetResponse, error)) *MockKeySetsSDK_GetKeySet_Call {
+func (_c *MockKeySetsSDK_GetKeySet_Call) RunAndReturn(run func(ctx context.Context, request operations.GetKeySetRequest, opts ...operations.Option) (*operations.GetKeySetResponse, error)) *MockKeySetsSDK_GetKeySet_Call {
 	_c.Call.Return(run)
 	return _c
 }

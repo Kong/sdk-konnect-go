@@ -31,7 +31,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 go:
-  version: 0.76.1
+  version: 0.77.0
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   baseErrorName: SDKBaseError
@@ -40,7 +40,7 @@ go:
   enableCustomCodeRegions: false
   enableSkipDeserialization: false
   fixFlags:
-    applyPathParamDefaults: false
+    applyPathParamDefaults: true
     encodePathParams: false
   flattenGlobalSecurity: true
   forwardCompatibleEnumsByDefault: false

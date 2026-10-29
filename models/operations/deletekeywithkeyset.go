@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -14,6 +15,19 @@ type DeleteKeyWithKeySetRequest struct {
 	KeySetID string `pathParam:"style=simple,explode=false,name=KeySetId"`
 	// ID of the Key to lookup
 	KeyID string `pathParam:"style=simple,explode=false,name=KeyId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeleteKeyWithKeySetRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteKeyWithKeySetRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeleteKeyWithKeySetRequest) GetControlPlaneID() string {
@@ -35,6 +49,13 @@ func (d *DeleteKeyWithKeySetRequest) GetKeyID() string {
 		return ""
 	}
 	return d.KeyID
+}
+
+func (d *DeleteKeyWithKeySetRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeleteKeyWithKeySetResponse struct {

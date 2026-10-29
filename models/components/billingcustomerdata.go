@@ -3,9 +3,10 @@
 
 package components
 
-// BillingCustomerDataBillingProfile - The billing profile for the customer.
+// BillingCustomerDataBillingProfile - The billing profile explicitly selected for the customer.
 //
-// If not provided, the default billing profile will be used.
+// Unpinned customers use the current namespace default. Selecting the current
+// default explicitly pins the customer to that profile.
 type BillingCustomerDataBillingProfile struct {
 	// The ID of the billing profile.
 	ID string `json:"id"`
@@ -16,6 +17,20 @@ func (b *BillingCustomerDataBillingProfile) GetID() string {
 		return ""
 	}
 	return b.ID
+}
+
+// EffectiveBillingProfile - The effective billing profile for the customer. Uses the explicitly selected
+// billing profile when pinned, otherwise the current default billing profile.
+type EffectiveBillingProfile struct {
+	// The ID of the billing profile.
+	ID string `json:"id"`
+}
+
+func (e *EffectiveBillingProfile) GetID() string {
+	if e == nil {
+		return ""
+	}
+	return e.ID
 }
 
 // BillingCustomerDataStripe - Used if the customer has a linked Stripe app.
@@ -98,10 +113,14 @@ func (a *AppCustomerData) GetExternalInvoicing() *BillingCustomerDataExternalInv
 
 // BillingCustomerData - Billing customer data.
 type BillingCustomerData struct {
-	// The billing profile for the customer.
+	// The billing profile explicitly selected for the customer.
 	//
-	// If not provided, the default billing profile will be used.
+	// Unpinned customers use the current namespace default. Selecting the current
+	// default explicitly pins the customer to that profile.
 	BillingProfile *BillingCustomerDataBillingProfile `json:"billing_profile,omitempty"`
+	// The effective billing profile for the customer. Uses the explicitly selected
+	// billing profile when pinned, otherwise the current default billing profile.
+	EffectiveBillingProfile EffectiveBillingProfile `json:"effective_billing_profile"`
 	// App customer data.
 	AppData *AppCustomerData `json:"app_data,omitempty"`
 }
@@ -111,6 +130,13 @@ func (b *BillingCustomerData) GetBillingProfile() *BillingCustomerDataBillingPro
 		return nil
 	}
 	return b.BillingProfile
+}
+
+func (b *BillingCustomerData) GetEffectiveBillingProfile() EffectiveBillingProfile {
+	if b == nil {
+		return EffectiveBillingProfile{}
+	}
+	return b.EffectiveBillingProfile
 }
 
 func (b *BillingCustomerData) GetAppData() *AppCustomerData {

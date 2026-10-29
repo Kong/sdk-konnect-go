@@ -7,7 +7,6 @@ package mocks
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -132,12 +131,12 @@ func (_c *MockConsumersSDK_AddConsumerToSpecificConsumerGroup_Call) RunAndReturn
 }
 
 // CreateConsumer provides a mock function for the type MockConsumersSDK
-func (_mock *MockConsumersSDK) CreateConsumer(ctx context.Context, controlPlaneID string, consumer components.Consumer, opts ...operations.Option) (*operations.CreateConsumerResponse, error) {
+func (_mock *MockConsumersSDK) CreateConsumer(ctx context.Context, request operations.CreateConsumerRequest, opts ...operations.Option) (*operations.CreateConsumerResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, consumer, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, consumer)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -147,18 +146,18 @@ func (_mock *MockConsumersSDK) CreateConsumer(ctx context.Context, controlPlaneI
 
 	var r0 *operations.CreateConsumerResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Consumer, ...operations.Option) (*operations.CreateConsumerResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, consumer, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateConsumerRequest, ...operations.Option) (*operations.CreateConsumerResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Consumer, ...operations.Option) *operations.CreateConsumerResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, consumer, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateConsumerRequest, ...operations.Option) *operations.CreateConsumerResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.CreateConsumerResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.Consumer, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, consumer, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateConsumerRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -172,39 +171,33 @@ type MockConsumersSDK_CreateConsumer_Call struct {
 
 // CreateConsumer is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - consumer components.Consumer
+//   - request operations.CreateConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) CreateConsumer(ctx any, controlPlaneID any, consumer any, opts ...any) *MockConsumersSDK_CreateConsumer_Call {
+func (_e *MockConsumersSDK_Expecter) CreateConsumer(ctx any, request any, opts ...any) *MockConsumersSDK_CreateConsumer_Call {
 	return &MockConsumersSDK_CreateConsumer_Call{Call: _e.mock.On("CreateConsumer",
-		append([]any{ctx, controlPlaneID, consumer}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockConsumersSDK_CreateConsumer_Call) Run(run func(ctx context.Context, controlPlaneID string, consumer components.Consumer, opts ...operations.Option)) *MockConsumersSDK_CreateConsumer_Call {
+func (_c *MockConsumersSDK_CreateConsumer_Call) Run(run func(ctx context.Context, request operations.CreateConsumerRequest, opts ...operations.Option)) *MockConsumersSDK_CreateConsumer_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.CreateConsumerRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.CreateConsumerRequest)
 		}
-		var arg2 components.Consumer
-		if args[2] != nil {
-			arg2 = args[2].(components.Consumer)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -215,18 +208,18 @@ func (_c *MockConsumersSDK_CreateConsumer_Call) Return(createConsumerResponse *o
 	return _c
 }
 
-func (_c *MockConsumersSDK_CreateConsumer_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, consumer components.Consumer, opts ...operations.Option) (*operations.CreateConsumerResponse, error)) *MockConsumersSDK_CreateConsumer_Call {
+func (_c *MockConsumersSDK_CreateConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateConsumerRequest, opts ...operations.Option) (*operations.CreateConsumerResponse, error)) *MockConsumersSDK_CreateConsumer_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // DeleteConsumer provides a mock function for the type MockConsumersSDK
-func (_mock *MockConsumersSDK) DeleteConsumer(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option) (*operations.DeleteConsumerResponse, error) {
+func (_mock *MockConsumersSDK) DeleteConsumer(ctx context.Context, request operations.DeleteConsumerRequest, opts ...operations.Option) (*operations.DeleteConsumerResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, consumerID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, consumerID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -236,18 +229,18 @@ func (_mock *MockConsumersSDK) DeleteConsumer(ctx context.Context, controlPlaneI
 
 	var r0 *operations.DeleteConsumerResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.DeleteConsumerResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, consumerID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteConsumerRequest, ...operations.Option) (*operations.DeleteConsumerResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.DeleteConsumerResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, consumerID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteConsumerRequest, ...operations.Option) *operations.DeleteConsumerResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.DeleteConsumerResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, consumerID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteConsumerRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -261,39 +254,33 @@ type MockConsumersSDK_DeleteConsumer_Call struct {
 
 // DeleteConsumer is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - consumerID string
+//   - request operations.DeleteConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) DeleteConsumer(ctx any, controlPlaneID any, consumerID any, opts ...any) *MockConsumersSDK_DeleteConsumer_Call {
+func (_e *MockConsumersSDK_Expecter) DeleteConsumer(ctx any, request any, opts ...any) *MockConsumersSDK_DeleteConsumer_Call {
 	return &MockConsumersSDK_DeleteConsumer_Call{Call: _e.mock.On("DeleteConsumer",
-		append([]any{ctx, controlPlaneID, consumerID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockConsumersSDK_DeleteConsumer_Call) Run(run func(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option)) *MockConsumersSDK_DeleteConsumer_Call {
+func (_c *MockConsumersSDK_DeleteConsumer_Call) Run(run func(ctx context.Context, request operations.DeleteConsumerRequest, opts ...operations.Option)) *MockConsumersSDK_DeleteConsumer_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.DeleteConsumerRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.DeleteConsumerRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -304,18 +291,18 @@ func (_c *MockConsumersSDK_DeleteConsumer_Call) Return(deleteConsumerResponse *o
 	return _c
 }
 
-func (_c *MockConsumersSDK_DeleteConsumer_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option) (*operations.DeleteConsumerResponse, error)) *MockConsumersSDK_DeleteConsumer_Call {
+func (_c *MockConsumersSDK_DeleteConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteConsumerRequest, opts ...operations.Option) (*operations.DeleteConsumerResponse, error)) *MockConsumersSDK_DeleteConsumer_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // GetConsumer provides a mock function for the type MockConsumersSDK
-func (_mock *MockConsumersSDK) GetConsumer(ctx context.Context, consumerID string, controlPlaneID string, opts ...operations.Option) (*operations.GetConsumerResponse, error) {
+func (_mock *MockConsumersSDK) GetConsumer(ctx context.Context, request operations.GetConsumerRequest, opts ...operations.Option) (*operations.GetConsumerResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, consumerID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, consumerID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -325,18 +312,18 @@ func (_mock *MockConsumersSDK) GetConsumer(ctx context.Context, consumerID strin
 
 	var r0 *operations.GetConsumerResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetConsumerResponse, error)); ok {
-		return returnFunc(ctx, consumerID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetConsumerRequest, ...operations.Option) (*operations.GetConsumerResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetConsumerResponse); ok {
-		r0 = returnFunc(ctx, consumerID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetConsumerRequest, ...operations.Option) *operations.GetConsumerResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetConsumerResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, consumerID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetConsumerRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -350,39 +337,33 @@ type MockConsumersSDK_GetConsumer_Call struct {
 
 // GetConsumer is a helper method to define mock.On call
 //   - ctx context.Context
-//   - consumerID string
-//   - controlPlaneID string
+//   - request operations.GetConsumerRequest
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) GetConsumer(ctx any, consumerID any, controlPlaneID any, opts ...any) *MockConsumersSDK_GetConsumer_Call {
+func (_e *MockConsumersSDK_Expecter) GetConsumer(ctx any, request any, opts ...any) *MockConsumersSDK_GetConsumer_Call {
 	return &MockConsumersSDK_GetConsumer_Call{Call: _e.mock.On("GetConsumer",
-		append([]any{ctx, consumerID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockConsumersSDK_GetConsumer_Call) Run(run func(ctx context.Context, consumerID string, controlPlaneID string, opts ...operations.Option)) *MockConsumersSDK_GetConsumer_Call {
+func (_c *MockConsumersSDK_GetConsumer_Call) Run(run func(ctx context.Context, request operations.GetConsumerRequest, opts ...operations.Option)) *MockConsumersSDK_GetConsumer_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetConsumerRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetConsumerRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -393,7 +374,7 @@ func (_c *MockConsumersSDK_GetConsumer_Call) Return(getConsumerResponse *operati
 	return _c
 }
 
-func (_c *MockConsumersSDK_GetConsumer_Call) RunAndReturn(run func(ctx context.Context, consumerID string, controlPlaneID string, opts ...operations.Option) (*operations.GetConsumerResponse, error)) *MockConsumersSDK_GetConsumer_Call {
+func (_c *MockConsumersSDK_GetConsumer_Call) RunAndReturn(run func(ctx context.Context, request operations.GetConsumerRequest, opts ...operations.Option) (*operations.GetConsumerResponse, error)) *MockConsumersSDK_GetConsumer_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -565,12 +546,12 @@ func (_c *MockConsumersSDK_ListConsumerGroupsForConsumer_Call) RunAndReturn(run 
 }
 
 // RemoveConsumerFromAllConsumerGroups provides a mock function for the type MockConsumersSDK
-func (_mock *MockConsumersSDK) RemoveConsumerFromAllConsumerGroups(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error) {
+func (_mock *MockConsumersSDK) RemoveConsumerFromAllConsumerGroups(ctx context.Context, request operations.RemoveConsumerFromAllConsumerGroupsRequest, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, consumerID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, consumerID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -580,18 +561,18 @@ func (_mock *MockConsumersSDK) RemoveConsumerFromAllConsumerGroups(ctx context.C
 
 	var r0 *operations.RemoveConsumerFromAllConsumerGroupsResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, consumerID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.RemoveConsumerFromAllConsumerGroupsRequest, ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.RemoveConsumerFromAllConsumerGroupsResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, consumerID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.RemoveConsumerFromAllConsumerGroupsRequest, ...operations.Option) *operations.RemoveConsumerFromAllConsumerGroupsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.RemoveConsumerFromAllConsumerGroupsResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, consumerID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.RemoveConsumerFromAllConsumerGroupsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -605,39 +586,33 @@ type MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call struct {
 
 // RemoveConsumerFromAllConsumerGroups is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - consumerID string
+//   - request operations.RemoveConsumerFromAllConsumerGroupsRequest
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) RemoveConsumerFromAllConsumerGroups(ctx any, controlPlaneID any, consumerID any, opts ...any) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
+func (_e *MockConsumersSDK_Expecter) RemoveConsumerFromAllConsumerGroups(ctx any, request any, opts ...any) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
 	return &MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call{Call: _e.mock.On("RemoveConsumerFromAllConsumerGroups",
-		append([]any{ctx, controlPlaneID, consumerID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) Run(run func(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option)) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
+func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) Run(run func(ctx context.Context, request operations.RemoveConsumerFromAllConsumerGroupsRequest, opts ...operations.Option)) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.RemoveConsumerFromAllConsumerGroupsRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.RemoveConsumerFromAllConsumerGroupsRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -648,7 +623,7 @@ func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) Return(remo
 	return _c
 }
 
-func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
+func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) RunAndReturn(run func(ctx context.Context, request operations.RemoveConsumerFromAllConsumerGroupsRequest, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
 	_c.Call.Return(run)
 	return _c
 }

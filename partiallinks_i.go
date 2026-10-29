@@ -10,7 +10,7 @@ import (
 
 // PartialLinksSDK is a generated interface.
 type PartialLinksSDK interface {
-	// ListPartialLink - List partial links
-	// List all plugins linked to the partial
+	// ListPartialLink - List partial links in a workspace
+	// List all plugins linked to the partial in a workspace
 	ListPartialLink(ctx context.Context, request operations.ListPartialLinkRequest, opts ...operations.Option) (*operations.ListPartialLinkResponse, error)
 }

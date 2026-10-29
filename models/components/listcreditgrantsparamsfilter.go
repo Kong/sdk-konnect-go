@@ -72,14 +72,66 @@ func (l *ListCreditGrantsParamsFilterStringFieldNEQFilter) GetNeq() string {
 	return l.Neq
 }
 
+// ListCreditGrantsParamsFilterFeatureKeyStringFieldNEQFilter - Select grants spendable on any requested feature, including grants without
+// feature restrictions. Keys are case-sensitive. Supports `eq` (or shorthand) and
+// `oeq` with comma-separated keys. Omit to include all features; use
+// `exists=false` for grants without feature restrictions.
+type ListCreditGrantsParamsFilterFeatureKeyStringFieldNEQFilter struct {
+	Eq        *string `queryParam:"name=eq"`
+	Contains  string  `queryParam:"name=contains"`
+	Ocontains string  `queryParam:"name=ocontains"`
+	Oeq       string  `queryParam:"name=oeq"`
+	Neq       string  `queryParam:"name=neq"`
+}
+
+func (l *ListCreditGrantsParamsFilterFeatureKeyStringFieldNEQFilter) GetEq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Eq
+}
+
+func (l *ListCreditGrantsParamsFilterFeatureKeyStringFieldNEQFilter) GetContains() string {
+	if l == nil {
+		return ""
+	}
+	return l.Contains
+}
+
+func (l *ListCreditGrantsParamsFilterFeatureKeyStringFieldNEQFilter) GetOcontains() string {
+	if l == nil {
+		return ""
+	}
+	return l.Ocontains
+}
+
+func (l *ListCreditGrantsParamsFilterFeatureKeyStringFieldNEQFilter) GetOeq() string {
+	if l == nil {
+		return ""
+	}
+	return l.Oeq
+}
+
+func (l *ListCreditGrantsParamsFilterFeatureKeyStringFieldNEQFilter) GetNeq() string {
+	if l == nil {
+		return ""
+	}
+	return l.Neq
+}
+
 // ListCreditGrantsParamsFilter - Filter options for listing credit grants.
 type ListCreditGrantsParamsFilter struct {
 	// Filter credit grants by status.
 	Status *ListCreditGrantsParamsFilterCreditGrantLifecycleStatus `queryParam:"name=status"`
-	// Filter credit grants by currency.
+	// Filter credit grants by fiat or custom currency code.
 	Currency *string `queryParam:"name=currency"`
 	// Filter credit grants by key.
 	Key *ListCreditGrantsParamsFilterStringFieldNEQFilter `queryParam:"name=key"`
+	// Select grants spendable on any requested feature, including grants without
+	// feature restrictions. Keys are case-sensitive. Supports `eq` (or shorthand) and
+	// `oeq` with comma-separated keys. Omit to include all features; use
+	// `exists=false` for grants without feature restrictions.
+	FeatureKey *ListCreditGrantsParamsFilterFeatureKeyStringFieldNEQFilter `queryParam:"name=feature_key"`
 }
 
 func (l *ListCreditGrantsParamsFilter) GetStatus() *ListCreditGrantsParamsFilterCreditGrantLifecycleStatus {
@@ -101,4 +153,11 @@ func (l *ListCreditGrantsParamsFilter) GetKey() *ListCreditGrantsParamsFilterStr
 		return nil
 	}
 	return l.Key
+}
+
+func (l *ListCreditGrantsParamsFilter) GetFeatureKey() *ListCreditGrantsParamsFilterFeatureKeyStringFieldNEQFilter {
+	if l == nil {
+		return nil
+	}
+	return l.FeatureKey
 }

@@ -33,14 +33,14 @@ func (e *BillingInstallAppExternalInvoicingType) UnmarshalJSON(data []byte) erro
 	}
 }
 
-// BillingInstallAppExternalInvoicing - Base model for installing an app from the catalog.
+// BillingInstallAppExternalInvoicing - Model for installing an External Invoicing app from the catalog.
 type BillingInstallAppExternalInvoicing struct {
 	// Type of the app.
 	Type BillingInstallAppExternalInvoicingType `json:"type"`
 	// Name of the app.
 	Name string `json:"name"`
-	// If true, a billing profile will be created for the app. The Stripe app will be
-	// also set as the default billing profile if the current default is a Sandbox app.
+	// If true, creates the Auto Collection preset with an OpenMeter supplier in the US
+	// (postal code 94114), without replacing the default profile.
 	CreateBillingProfile bool `json:"create_billing_profile"`
 }
 

@@ -1,6 +1,7 @@
 # AvailableBalance
 
-The available balance before and after the transaction.
+The booked credit balance before and after the transaction, including
+credit-only advance debt.
 
 
 ## Fields

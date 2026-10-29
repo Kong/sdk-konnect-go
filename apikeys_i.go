@@ -10,25 +10,25 @@ import (
 
 // APIKeysSDK is a generated interface.
 type APIKeysSDK interface {
-	// ListKeyAuthWithConsumer - List all API-keys associated with a Consumer
-	// List all API-keys associated with a Consumer
+	// ListKeyAuthWithConsumer - List all API-keys associated with a Consumer in a workspace
+	// List all API-keys associated with a Consumer in a workspace
 	ListKeyAuthWithConsumer(ctx context.Context, request operations.ListKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListKeyAuthWithConsumerResponse, error)
-	// CreateKeyAuthWithConsumer - Create a new API-key associated with a Consumer
-	// Create a new API-key associated with a Consumer
+	// CreateKeyAuthWithConsumer - Create a new API-key associated with a Consumer in a workspace
+	// Create a new API-key associated with a Consumer in a workspace
 	CreateKeyAuthWithConsumer(ctx context.Context, request operations.CreateKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.CreateKeyAuthWithConsumerResponse, error)
-	// DeleteKeyAuthWithConsumer - Delete a an API-key associated with a Consumer
-	// Delete a an API-key associated with a Consumer using ID.
+	// DeleteKeyAuthWithConsumer - Delete a an API-key associated with a Consumer in a workspace
+	// Delete a an API-key associated with a Consumer using ID in a workspace.
 	DeleteKeyAuthWithConsumer(ctx context.Context, request operations.DeleteKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteKeyAuthWithConsumerResponse, error)
-	// GetKeyAuthWithConsumer - Get an API-key associated with a Consumer
-	// Get an API-key associated with a Consumer using ID.
+	// GetKeyAuthWithConsumer - Get an API-key associated with a Consumer in a workspace
+	// Get an API-key associated with a Consumer using ID in a workspace.
 	GetKeyAuthWithConsumer(ctx context.Context, request operations.GetKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetKeyAuthWithConsumerResponse, error)
-	// UpsertKeyAuthWithConsumer - Upsert an API-key associated with a Consumer
-	// Create or Update an API-key associated with a Consumer using ID.
+	// UpsertKeyAuthWithConsumer - Upsert an API-key associated with a Consumer in a workspace
+	// Create or Update an API-key associated with a Consumer using ID in a workspace.
 	UpsertKeyAuthWithConsumer(ctx context.Context, request operations.UpsertKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertKeyAuthWithConsumerResponse, error)
-	// ListKeyAuth - List all API-keys
-	// List all API-keys
+	// ListKeyAuth - List all API-keys in a workspace
+	// List all API-keys in a workspace
 	ListKeyAuth(ctx context.Context, request operations.ListKeyAuthRequest, opts ...operations.Option) (*operations.ListKeyAuthResponse, error)
-	// GetKeyAuth - Get an API-key
-	// Get an API-key using ID.
-	GetKeyAuth(ctx context.Context, keyAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeyAuthResponse, error)
+	// GetKeyAuth - Get an API-key in a workspace
+	// Get an API-key using ID in a workspace.
+	GetKeyAuth(ctx context.Context, request operations.GetKeyAuthRequest, opts ...operations.Option) (*operations.GetKeyAuthResponse, error)
 }

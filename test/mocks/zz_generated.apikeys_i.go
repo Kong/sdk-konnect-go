@@ -214,12 +214,12 @@ func (_c *MockAPIKeysSDK_DeleteKeyAuthWithConsumer_Call) RunAndReturn(run func(c
 }
 
 // GetKeyAuth provides a mock function for the type MockAPIKeysSDK
-func (_mock *MockAPIKeysSDK) GetKeyAuth(ctx context.Context, keyAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeyAuthResponse, error) {
+func (_mock *MockAPIKeysSDK) GetKeyAuth(ctx context.Context, request operations.GetKeyAuthRequest, opts ...operations.Option) (*operations.GetKeyAuthResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, keyAuthID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, keyAuthID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -229,18 +229,18 @@ func (_mock *MockAPIKeysSDK) GetKeyAuth(ctx context.Context, keyAuthID string, c
 
 	var r0 *operations.GetKeyAuthResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetKeyAuthResponse, error)); ok {
-		return returnFunc(ctx, keyAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeyAuthRequest, ...operations.Option) (*operations.GetKeyAuthResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetKeyAuthResponse); ok {
-		r0 = returnFunc(ctx, keyAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeyAuthRequest, ...operations.Option) *operations.GetKeyAuthResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetKeyAuthResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, keyAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetKeyAuthRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -254,39 +254,33 @@ type MockAPIKeysSDK_GetKeyAuth_Call struct {
 
 // GetKeyAuth is a helper method to define mock.On call
 //   - ctx context.Context
-//   - keyAuthID string
-//   - controlPlaneID string
+//   - request operations.GetKeyAuthRequest
 //   - opts ...operations.Option
-func (_e *MockAPIKeysSDK_Expecter) GetKeyAuth(ctx any, keyAuthID any, controlPlaneID any, opts ...any) *MockAPIKeysSDK_GetKeyAuth_Call {
+func (_e *MockAPIKeysSDK_Expecter) GetKeyAuth(ctx any, request any, opts ...any) *MockAPIKeysSDK_GetKeyAuth_Call {
 	return &MockAPIKeysSDK_GetKeyAuth_Call{Call: _e.mock.On("GetKeyAuth",
-		append([]any{ctx, keyAuthID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockAPIKeysSDK_GetKeyAuth_Call) Run(run func(ctx context.Context, keyAuthID string, controlPlaneID string, opts ...operations.Option)) *MockAPIKeysSDK_GetKeyAuth_Call {
+func (_c *MockAPIKeysSDK_GetKeyAuth_Call) Run(run func(ctx context.Context, request operations.GetKeyAuthRequest, opts ...operations.Option)) *MockAPIKeysSDK_GetKeyAuth_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetKeyAuthRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetKeyAuthRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -297,7 +291,7 @@ func (_c *MockAPIKeysSDK_GetKeyAuth_Call) Return(getKeyAuthResponse *operations.
 	return _c
 }
 
-func (_c *MockAPIKeysSDK_GetKeyAuth_Call) RunAndReturn(run func(ctx context.Context, keyAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeyAuthResponse, error)) *MockAPIKeysSDK_GetKeyAuth_Call {
+func (_c *MockAPIKeysSDK_GetKeyAuth_Call) RunAndReturn(run func(ctx context.Context, request operations.GetKeyAuthRequest, opts ...operations.Option) (*operations.GetKeyAuthResponse, error)) *MockAPIKeysSDK_GetKeyAuth_Call {
 	_c.Call.Return(run)
 	return _c
 }

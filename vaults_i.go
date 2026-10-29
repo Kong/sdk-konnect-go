@@ -5,25 +5,24 @@ package sdkkonnectgo
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // VaultsSDK is a generated interface.
 type VaultsSDK interface {
-	// ListVault - List all Vaults
-	// List all Vaults
+	// ListVault - List all Vaults in a workspace
+	// List all Vaults in a workspace
 	ListVault(ctx context.Context, request operations.ListVaultRequest, opts ...operations.Option) (*operations.ListVaultResponse, error)
-	// CreateVault - Create a new Vault
-	// Create a new Vault
-	CreateVault(ctx context.Context, controlPlaneID string, vault components.Vault, opts ...operations.Option) (*operations.CreateVaultResponse, error)
-	// DeleteVault - Delete a Vault
-	// Delete a Vault
-	DeleteVault(ctx context.Context, controlPlaneID string, vaultID string, opts ...operations.Option) (*operations.DeleteVaultResponse, error)
-	// GetVault - Get a Vault
-	// Get a Vault using ID or prefix.
-	GetVault(ctx context.Context, vaultID string, controlPlaneID string, opts ...operations.Option) (*operations.GetVaultResponse, error)
-	// UpsertVault - Upsert a Vault
-	// Create or Update Vault using ID or prefix.
+	// CreateVault - Create a new Vault in a workspace
+	// Create a new Vault in a workspace
+	CreateVault(ctx context.Context, request operations.CreateVaultRequest, opts ...operations.Option) (*operations.CreateVaultResponse, error)
+	// DeleteVault - Delete a Vault in a workspace
+	// Delete a Vault in a workspace
+	DeleteVault(ctx context.Context, request operations.DeleteVaultRequest, opts ...operations.Option) (*operations.DeleteVaultResponse, error)
+	// GetVault - Get a Vault in a workspace
+	// Get a Vault using ID or prefix in a workspace.
+	GetVault(ctx context.Context, request operations.GetVaultRequest, opts ...operations.Option) (*operations.GetVaultResponse, error)
+	// UpsertVault - Upsert a Vault in a workspace
+	// Create or Update Vault using ID or prefix in a workspace.
 	UpsertVault(ctx context.Context, request operations.UpsertVaultRequest, opts ...operations.Option) (*operations.UpsertVaultResponse, error)
 }

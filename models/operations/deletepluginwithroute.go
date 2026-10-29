@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -14,6 +15,19 @@ type DeletePluginWithRouteRequest struct {
 	RouteID string `pathParam:"style=simple,explode=false,name=RouteId"`
 	// ID of the Plugin to lookup
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeletePluginWithRouteRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeletePluginWithRouteRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeletePluginWithRouteRequest) GetControlPlaneID() string {
@@ -35,6 +49,13 @@ func (d *DeletePluginWithRouteRequest) GetPluginID() string {
 		return ""
 	}
 	return d.PluginID
+}
+
+func (d *DeletePluginWithRouteRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeletePluginWithRouteResponse struct {

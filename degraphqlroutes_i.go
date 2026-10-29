@@ -10,25 +10,25 @@ import (
 
 // DegraphqlRoutesSDK is a generated interface.
 type DegraphqlRoutesSDK interface {
-	// ListDegraphqlRoute - List all Degraphql_routes
-	// List all Degraphql_routes
+	// ListDegraphqlRoute - List all Degraphql_routes in a workspace
+	// List all Degraphql_routes in a workspace
 	ListDegraphqlRoute(ctx context.Context, request operations.ListDegraphqlRouteRequest, opts ...operations.Option) (*operations.ListDegraphqlRouteResponse, error)
-	// GetDegraphqlRoute - Get a Degraphql_route
-	// Get a Degraphql_route using ID or name.
-	GetDegraphqlRoute(ctx context.Context, degraphqlRouteID string, controlPlaneID string, opts ...operations.Option) (*operations.GetDegraphqlRouteResponse, error)
-	// ListDegraphqlRouteWithService - List all Degraphql_routes associated with a Service
-	// List all Degraphql_routes associated with a Service
+	// GetDegraphqlRoute - Get a Degraphql_route in a workspace
+	// Get a Degraphql_route using ID or name in a workspace.
+	GetDegraphqlRoute(ctx context.Context, request operations.GetDegraphqlRouteRequest, opts ...operations.Option) (*operations.GetDegraphqlRouteResponse, error)
+	// ListDegraphqlRouteWithService - List all Degraphql_routes associated with a Service in a workspace
+	// List all Degraphql_routes associated with a Service in a workspace
 	ListDegraphqlRouteWithService(ctx context.Context, request operations.ListDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.ListDegraphqlRouteWithServiceResponse, error)
-	// CreateDegraphqlRouteWithService - Create a new Degraphql_route associated with a Service
-	// Create a new Degraphql_route associated with a Service
+	// CreateDegraphqlRouteWithService - Create a new Degraphql_route associated with a Service in a workspace
+	// Create a new Degraphql_route associated with a Service in a workspace
 	CreateDegraphqlRouteWithService(ctx context.Context, request operations.CreateDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.CreateDegraphqlRouteWithServiceResponse, error)
-	// DeleteDegraphqlRouteWithService - Delete a a Degraphql_route associated with a Service
-	// Delete a a Degraphql_route associated with a Service using ID or name.
+	// DeleteDegraphqlRouteWithService - Delete a a Degraphql_route associated with a Service in a workspace
+	// Delete a a Degraphql_route associated with a Service using ID or name in a workspace.
 	DeleteDegraphqlRouteWithService(ctx context.Context, request operations.DeleteDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.DeleteDegraphqlRouteWithServiceResponse, error)
-	// GetDegraphqlRouteWithService - Get a Degraphql_route associated with a Service
-	// Get a Degraphql_route associated with a Service using ID or name.
+	// GetDegraphqlRouteWithService - Get a Degraphql_route associated with a Service in a workspace
+	// Get a Degraphql_route associated with a Service using ID or name in a workspace.
 	GetDegraphqlRouteWithService(ctx context.Context, request operations.GetDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.GetDegraphqlRouteWithServiceResponse, error)
-	// UpsertDegraphqlRouteWithService - Upsert a Degraphql_route associated with a Service
-	// Create or Update a Degraphql_route associated with a Service using ID or name.
+	// UpsertDegraphqlRouteWithService - Upsert a Degraphql_route associated with a Service in a workspace
+	// Create or Update a Degraphql_route associated with a Service using ID or name in a workspace.
 	UpsertDegraphqlRouteWithService(ctx context.Context, request operations.UpsertDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.UpsertDegraphqlRouteWithServiceResponse, error)
 }

@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -13,8 +14,21 @@ type CreateKeyWithKeySetRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the KeySet to lookup
 	KeySetID string `pathParam:"style=simple,explode=false,name=KeySetId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of new Key for creation
 	KeyWithoutParents components.KeyWithoutParents `request:"mediaType=application/json"`
+}
+
+func (c CreateKeyWithKeySetRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateKeyWithKeySetRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreateKeyWithKeySetRequest) GetControlPlaneID() string {
@@ -29,6 +43,13 @@ func (c *CreateKeyWithKeySetRequest) GetKeySetID() string {
 		return ""
 	}
 	return c.KeySetID
+}
+
+func (c *CreateKeyWithKeySetRequest) GetWorkspace() string {
+	if c == nil {
+		return ""
+	}
+	return c.Workspace
 }
 
 func (c *CreateKeyWithKeySetRequest) GetKeyWithoutParents() components.KeyWithoutParents {

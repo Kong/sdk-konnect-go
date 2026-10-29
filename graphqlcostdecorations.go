@@ -31,8 +31,8 @@ func newGraphQLCostDecorations(rootSDK *SDK, sdkConfig config.SDKConfiguration, 
 	}
 }
 
-// ListGraphqlRateLimitingAdvancedCost - List all GraphQL Cost Decorations
-// List all GraphQL Cost Decorations
+// ListGraphqlRateLimitingAdvancedCost - List all GraphQL Cost Decorations in a workspace
+// List all GraphQL Cost Decorations in a workspace
 func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCost(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -52,7 +52,7 @@ func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCost(ctx context
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/graphql-rate-limiting-advanced/costs", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/graphql-rate-limiting-advanced/costs", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -261,14 +261,9 @@ func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCost(ctx context
 
 }
 
-// GetGraphqlRateLimitingAdvancedCost - Get a GraphQL Cost Decoration
-// Get a GraphQL Cost Decoration using ID.
-func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCost(ctx context.Context, graphQLCostDecorationID string, controlPlaneID string, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostResponse, error) {
-	request := operations.GetGraphqlRateLimitingAdvancedCostRequest{
-		GraphQLCostDecorationID: graphQLCostDecorationID,
-		ControlPlaneID:          controlPlaneID,
-	}
-
+// GetGraphqlRateLimitingAdvancedCost - Get a GraphQL Cost Decoration in a workspace
+// Get a GraphQL Cost Decoration using ID in a workspace.
+func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCost(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -287,7 +282,7 @@ func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCost(ctx context.
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -494,8 +489,8 @@ func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCost(ctx context.
 
 }
 
-// ListGraphqlRateLimitingAdvancedCostWithService - List all GraphQL Cost Decorations associated with a Service
-// List all GraphQL Cost Decorations associated with a Service
+// ListGraphqlRateLimitingAdvancedCostWithService - List all GraphQL Cost Decorations associated with a Service in a workspace
+// List all GraphQL Cost Decorations associated with a Service in a workspace
 func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCostWithService(ctx context.Context, request operations.ListGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.ListGraphqlRateLimitingAdvancedCostWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -515,7 +510,7 @@ func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCostWithService(
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -703,8 +698,8 @@ func (s *GraphQLCostDecorations) ListGraphqlRateLimitingAdvancedCostWithService(
 
 }
 
-// CreateGraphqlRateLimitingAdvancedCostWithService - Create a new GraphQL Cost Decoration associated with a Service
-// Create a new GraphQL Cost Decoration associated with a Service
+// CreateGraphqlRateLimitingAdvancedCostWithService - Create a new GraphQL Cost Decoration associated with a Service in a workspace
+// Create a new GraphQL Cost Decoration associated with a Service in a workspace
 func (s *GraphQLCostDecorations) CreateGraphqlRateLimitingAdvancedCostWithService(ctx context.Context, request operations.CreateGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.CreateGraphqlRateLimitingAdvancedCostWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -724,7 +719,7 @@ func (s *GraphQLCostDecorations) CreateGraphqlRateLimitingAdvancedCostWithServic
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -915,8 +910,8 @@ func (s *GraphQLCostDecorations) CreateGraphqlRateLimitingAdvancedCostWithServic
 
 }
 
-// DeleteGraphqlRateLimitingAdvancedCostWithService - Delete a a GraphQL Cost Decoration associated with a Service
-// Delete a a GraphQL Cost Decoration associated with a Service using ID.
+// DeleteGraphqlRateLimitingAdvancedCostWithService - Delete a a GraphQL Cost Decoration associated with a Service in a workspace
+// Delete a a GraphQL Cost Decoration associated with a Service using ID in a workspace.
 func (s *GraphQLCostDecorations) DeleteGraphqlRateLimitingAdvancedCostWithService(ctx context.Context, request operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -936,7 +931,7 @@ func (s *GraphQLCostDecorations) DeleteGraphqlRateLimitingAdvancedCostWithServic
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1101,8 +1096,8 @@ func (s *GraphQLCostDecorations) DeleteGraphqlRateLimitingAdvancedCostWithServic
 
 }
 
-// GetGraphqlRateLimitingAdvancedCostWithService - Get a GraphQL Cost Decoration associated with a Service
-// Get a GraphQL Cost Decoration associated with a Service using ID.
+// GetGraphqlRateLimitingAdvancedCostWithService - Get a GraphQL Cost Decoration associated with a Service in a workspace
+// Get a GraphQL Cost Decoration associated with a Service using ID in a workspace.
 func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCostWithService(ctx context.Context, request operations.GetGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.GetGraphqlRateLimitingAdvancedCostWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1122,7 +1117,7 @@ func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCostWithService(c
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1308,8 +1303,8 @@ func (s *GraphQLCostDecorations) GetGraphqlRateLimitingAdvancedCostWithService(c
 
 }
 
-// UpsertGraphqlRateLimitingAdvancedCostWithService - Upsert a GraphQL Cost Decoration associated with a Service
-// Create or Update a GraphQL Cost Decoration associated with a Service using ID.
+// UpsertGraphqlRateLimitingAdvancedCostWithService - Upsert a GraphQL Cost Decoration associated with a Service in a workspace
+// Create or Update a GraphQL Cost Decoration associated with a Service using ID in a workspace.
 func (s *GraphQLCostDecorations) UpsertGraphqlRateLimitingAdvancedCostWithService(ctx context.Context, request operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceRequest, opts ...operations.Option) (*operations.UpsertGraphqlRateLimitingAdvancedCostWithServiceResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1329,7 +1324,7 @@ func (s *GraphQLCostDecorations) UpsertGraphqlRateLimitingAdvancedCostWithServic
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

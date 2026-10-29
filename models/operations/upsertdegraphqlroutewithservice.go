@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,8 +16,21 @@ type UpsertDegraphqlRouteWithServiceRequest struct {
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// ID of the Degraphql_route to lookup
 	DegraphqlRouteID string `pathParam:"style=simple,explode=false,name=Degraphql_routeId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the Degraphql_route
 	DegraphqlRouteWithoutParents components.DegraphqlRouteWithoutParents `request:"mediaType=application/json"`
+}
+
+func (u UpsertDegraphqlRouteWithServiceRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertDegraphqlRouteWithServiceRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpsertDegraphqlRouteWithServiceRequest) GetControlPlaneID() string {
@@ -38,6 +52,13 @@ func (u *UpsertDegraphqlRouteWithServiceRequest) GetDegraphqlRouteID() string {
 		return ""
 	}
 	return u.DegraphqlRouteID
+}
+
+func (u *UpsertDegraphqlRouteWithServiceRequest) GetWorkspace() string {
+	if u == nil {
+		return ""
+	}
+	return u.Workspace
 }
 
 func (u *UpsertDegraphqlRouteWithServiceRequest) GetDegraphqlRouteWithoutParents() components.DegraphqlRouteWithoutParents {

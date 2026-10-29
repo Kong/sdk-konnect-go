@@ -31,8 +31,8 @@ func newACLs(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hooks
 	}
 }
 
-// ListACL - List all ACLs
-// List all ACLs
+// ListACL - List all ACLs in a workspace
+// List all ACLs in a workspace
 func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, opts ...operations.Option) (*operations.ListACLResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -52,7 +52,7 @@ func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, o
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/acls", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/acls", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -261,14 +261,9 @@ func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, o
 
 }
 
-// GetACL - Get an ACL
-// Get an ACL using ID.
-func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, opts ...operations.Option) (*operations.GetACLResponse, error) {
-	request := operations.GetACLRequest{
-		ACLID:          aclID,
-		ControlPlaneID: controlPlaneID,
-	}
-
+// GetACL - Get an ACL in a workspace
+// Get an ACL using ID in a workspace.
+func (s *ACLs) GetACL(ctx context.Context, request operations.GetACLRequest, opts ...operations.Option) (*operations.GetACLResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -287,7 +282,7 @@ func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, 
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/acls/{ACLId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/acls/{ACLId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -494,8 +489,8 @@ func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, 
 
 }
 
-// ListACLWithConsumer - List all ACLs associated with a Consumer
-// List all ACLs associated with a Consumer
+// ListACLWithConsumer - List all ACLs associated with a Consumer in a workspace
+// List all ACLs associated with a Consumer in a workspace
 func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListACLWithConsumerRequest, opts ...operations.Option) (*operations.ListACLWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -515,7 +510,7 @@ func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListA
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -703,8 +698,8 @@ func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListA
 
 }
 
-// CreateACLWithConsumer - Create a new ACL associated with a Consumer
-// Create a new ACL associated with a Consumer
+// CreateACLWithConsumer - Create a new ACL associated with a Consumer in a workspace
+// Create a new ACL associated with a Consumer in a workspace
 func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.CreateACLWithConsumerRequest, opts ...operations.Option) (*operations.CreateACLWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -724,7 +719,7 @@ func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.Cre
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -915,8 +910,8 @@ func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.Cre
 
 }
 
-// DeleteACLWithConsumer - Delete a an ACL associated with a Consumer
-// Delete a an ACL associated with a Consumer using ID.
+// DeleteACLWithConsumer - Delete a an ACL associated with a Consumer in a workspace
+// Delete a an ACL associated with a Consumer using ID in a workspace.
 func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.DeleteACLWithConsumerRequest, opts ...operations.Option) (*operations.DeleteACLWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -936,7 +931,7 @@ func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.Del
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1101,8 +1096,8 @@ func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.Del
 
 }
 
-// GetACLWithConsumer - Get an ACL associated with a Consumer
-// Get an ACL associated with a Consumer using ID.
+// GetACLWithConsumer - Get an ACL associated with a Consumer in a workspace
+// Get an ACL associated with a Consumer using ID in a workspace.
 func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACLWithConsumerRequest, opts ...operations.Option) (*operations.GetACLWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1122,7 +1117,7 @@ func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACL
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1308,8 +1303,8 @@ func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACL
 
 }
 
-// UpsertACLWithConsumer - Upsert an ACL associated with a Consumer
-// Create or Update an ACL associated with a Consumer using ID.
+// UpsertACLWithConsumer - Upsert an ACL associated with a Consumer in a workspace
+// Create or Update an ACL associated with a Consumer using ID in a workspace.
 func (s *ACLs) UpsertACLWithConsumer(ctx context.Context, request operations.UpsertACLWithConsumerRequest, opts ...operations.Option) (*operations.UpsertACLWithConsumerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1329,7 +1324,7 @@ func (s *ACLs) UpsertACLWithConsumer(ctx context.Context, request operations.Ups
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

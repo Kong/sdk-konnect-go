@@ -18,6 +18,8 @@ type ListSniRequest struct {
 	Offset *string `queryParam:"style=form,explode=true,name=offset"`
 	// A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
 	Tags *string `queryParam:"style=form,explode=true,name=tags"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 }
 
 func (l ListSniRequest) MarshalJSON() ([]byte, error) {
@@ -57,6 +59,13 @@ func (l *ListSniRequest) GetTags() *string {
 		return nil
 	}
 	return l.Tags
+}
+
+func (l *ListSniRequest) GetWorkspace() string {
+	if l == nil {
+		return ""
+	}
+	return l.Workspace
 }
 
 // ListSniResponseBody - A successful response listing SNIs

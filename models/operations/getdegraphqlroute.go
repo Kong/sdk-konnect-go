@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -13,6 +14,19 @@ type GetDegraphqlRouteRequest struct {
 	DegraphqlRouteID string `pathParam:"style=simple,explode=false,name=Degraphql_routeId"`
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (g GetDegraphqlRouteRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDegraphqlRouteRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (g *GetDegraphqlRouteRequest) GetDegraphqlRouteID() string {
@@ -27,6 +41,13 @@ func (g *GetDegraphqlRouteRequest) GetControlPlaneID() string {
 		return ""
 	}
 	return g.ControlPlaneID
+}
+
+func (g *GetDegraphqlRouteRequest) GetWorkspace() string {
+	if g == nil {
+		return ""
+	}
+	return g.Workspace
 }
 
 type GetDegraphqlRouteResponse struct {

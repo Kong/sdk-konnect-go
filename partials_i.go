@@ -5,25 +5,24 @@ package sdkkonnectgo
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // PartialsSDK is a generated interface.
 type PartialsSDK interface {
-	// ListPartial - List all Partials
-	// List all Partials
+	// ListPartial - List all Partials in a workspace
+	// List all Partials in a workspace
 	ListPartial(ctx context.Context, request operations.ListPartialRequest, opts ...operations.Option) (*operations.ListPartialResponse, error)
-	// CreatePartial - Create a new Partial
-	// Create a new Partial
-	CreatePartial(ctx context.Context, controlPlaneID string, partial components.Partial, opts ...operations.Option) (*operations.CreatePartialResponse, error)
-	// DeletePartial - Delete a Partial
-	// Delete a Partial
-	DeletePartial(ctx context.Context, controlPlaneID string, partialID string, opts ...operations.Option) (*operations.DeletePartialResponse, error)
-	// GetPartial - Get a Partial
-	// Get a Partial using ID.
-	GetPartial(ctx context.Context, partialID string, controlPlaneID string, opts ...operations.Option) (*operations.GetPartialResponse, error)
-	// UpsertPartial - Upsert a Partial
-	// Create or Update Partial using ID.
+	// CreatePartial - Create a new Partial in a workspace
+	// Create a new Partial in a workspace
+	CreatePartial(ctx context.Context, request operations.CreatePartialRequest, opts ...operations.Option) (*operations.CreatePartialResponse, error)
+	// DeletePartial - Delete a Partial in a workspace
+	// Delete a Partial in a workspace
+	DeletePartial(ctx context.Context, request operations.DeletePartialRequest, opts ...operations.Option) (*operations.DeletePartialResponse, error)
+	// GetPartial - Get a Partial in a workspace
+	// Get a Partial using ID in a workspace.
+	GetPartial(ctx context.Context, request operations.GetPartialRequest, opts ...operations.Option) (*operations.GetPartialResponse, error)
+	// UpsertPartial - Upsert a Partial in a workspace
+	// Create or Update Partial using ID in a workspace.
 	UpsertPartial(ctx context.Context, request operations.UpsertPartialRequest, opts ...operations.Option) (*operations.UpsertPartialResponse, error)
 }

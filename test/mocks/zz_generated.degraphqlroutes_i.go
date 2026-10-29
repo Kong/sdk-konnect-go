@@ -214,12 +214,12 @@ func (_c *MockDegraphqlRoutesSDK_DeleteDegraphqlRouteWithService_Call) RunAndRet
 }
 
 // GetDegraphqlRoute provides a mock function for the type MockDegraphqlRoutesSDK
-func (_mock *MockDegraphqlRoutesSDK) GetDegraphqlRoute(ctx context.Context, degraphqlRouteID string, controlPlaneID string, opts ...operations.Option) (*operations.GetDegraphqlRouteResponse, error) {
+func (_mock *MockDegraphqlRoutesSDK) GetDegraphqlRoute(ctx context.Context, request operations.GetDegraphqlRouteRequest, opts ...operations.Option) (*operations.GetDegraphqlRouteResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, degraphqlRouteID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, degraphqlRouteID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -229,18 +229,18 @@ func (_mock *MockDegraphqlRoutesSDK) GetDegraphqlRoute(ctx context.Context, degr
 
 	var r0 *operations.GetDegraphqlRouteResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetDegraphqlRouteResponse, error)); ok {
-		return returnFunc(ctx, degraphqlRouteID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetDegraphqlRouteRequest, ...operations.Option) (*operations.GetDegraphqlRouteResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetDegraphqlRouteResponse); ok {
-		r0 = returnFunc(ctx, degraphqlRouteID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetDegraphqlRouteRequest, ...operations.Option) *operations.GetDegraphqlRouteResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetDegraphqlRouteResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, degraphqlRouteID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetDegraphqlRouteRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -254,39 +254,33 @@ type MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call struct {
 
 // GetDegraphqlRoute is a helper method to define mock.On call
 //   - ctx context.Context
-//   - degraphqlRouteID string
-//   - controlPlaneID string
+//   - request operations.GetDegraphqlRouteRequest
 //   - opts ...operations.Option
-func (_e *MockDegraphqlRoutesSDK_Expecter) GetDegraphqlRoute(ctx any, degraphqlRouteID any, controlPlaneID any, opts ...any) *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call {
+func (_e *MockDegraphqlRoutesSDK_Expecter) GetDegraphqlRoute(ctx any, request any, opts ...any) *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call {
 	return &MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call{Call: _e.mock.On("GetDegraphqlRoute",
-		append([]any{ctx, degraphqlRouteID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call) Run(run func(ctx context.Context, degraphqlRouteID string, controlPlaneID string, opts ...operations.Option)) *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call {
+func (_c *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call) Run(run func(ctx context.Context, request operations.GetDegraphqlRouteRequest, opts ...operations.Option)) *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetDegraphqlRouteRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetDegraphqlRouteRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -297,7 +291,7 @@ func (_c *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call) Return(getDegraphqlRout
 	return _c
 }
 
-func (_c *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call) RunAndReturn(run func(ctx context.Context, degraphqlRouteID string, controlPlaneID string, opts ...operations.Option) (*operations.GetDegraphqlRouteResponse, error)) *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call {
+func (_c *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call) RunAndReturn(run func(ctx context.Context, request operations.GetDegraphqlRouteRequest, opts ...operations.Option) (*operations.GetDegraphqlRouteResponse, error)) *MockDegraphqlRoutesSDK_GetDegraphqlRoute_Call {
 	_c.Call.Return(run)
 	return _c
 }
