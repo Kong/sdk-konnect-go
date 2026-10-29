@@ -45,20 +45,9 @@ func (c *Colors) GetPrimary() *string {
 // Theme - The theme settings for this portal.
 type Theme struct {
 	// The theme name to apply to this portal. Supported names are 'ocean', 'mesa', and 'grove'. If another name is provided or this property is omitted, the portal uses the default 'ocean' theme.
-	Name   *string                  `default:"ocean" json:"name"`
+	Name   *string                  `json:"name,omitempty"`
 	Mode   *PortalCustomizationMode `json:"mode,omitempty"`
 	Colors *Colors                  `json:"colors,omitempty"`
-}
-
-func (t Theme) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(t, "", false)
-}
-
-func (t *Theme) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (t *Theme) GetName() *string {
@@ -155,7 +144,7 @@ type PortalCustomizationSpecRenderer struct {
 	HideDeprecated *bool `default:"false" json:"hide_deprecated"`
 	// Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
 	AllowCustomServerUrls *bool                               `default:"true" json:"allow_custom_server_urls"`
-	TryItUIAudience       *PortalCustomizationTryItUIAudience `default:"all" json:"try_it_ui_audience"`
+	TryItUIAudience       *PortalCustomizationTryItUIAudience `json:"try_it_ui_audience,omitempty"`
 }
 
 func (p PortalCustomizationSpecRenderer) MarshalJSON() ([]byte, error) {

@@ -1,0 +1,24 @@
+{
+  "repository": "Kong/kongctl",
+  "commit": "74c186b0e7a68030824fbe6db3fb11e183efc002",
+  "path": "tools/sdk-patches",
+  "sha256": {
+    "apply.py": "78508e99dd9a890711743f707fc70d0cc4e66f0c564ad8c00a63204fd3995d09",
+    "manifest.json": "a78f4f854418e5c2727cf164939beaa246670bb7f46c25f9e499405d973cc54a",
+    "README.md": "4c2bcd65504884be7fa04c5ea889be2c0617c045ff4bb6876c6dc2395845bd5c",
+    "overlays/backend-cluster-tls-defaults.yaml": "3c5f065ec53cb0ab53345ac0407af11944433ae6730328adf1bead7a4d5c03ae",
+    "overlays/organization-team-konnect-managed-defaults.yaml": "12116260ea58670f19c4e39a220a103e8f729d2a2255fdae8e49b2a620237a01",
+    "overlays/patch-custom-portal-email-template-defaults.yaml": "fab2a9d6a26ad0b29200ae45fbcb365b3ed1322018f314686134e686937d3ed3",
+    "overlays/portal-customization-spec-renderer-defaults.yaml": "f14bc9f737c083545c8ea7e5675be6d57d3e673e01639988957cd5b432c7b4e2",
+    "overlays/portal-customization-theme-defaults.yaml": "0dffc269b5c7e9385e5f90aa94d433ea585d6223a32e3345733aa351af9bc4e8",
+    "overlays/portal-team-konnect-managed-defaults.yaml": "eef215555377a17aca3ddc59f85cb682e241c9977f882ed83f1cce2513f2d1fa",
+    "overlays/update-dcr-config-http-defaults.yaml": "39640db584e8551aa51459504acc87b0637e6e9189eca11ff13989058e3b9ab8",
+    "overlays/update-portal-audit-log-webhook-patch-defaults.yaml": "f6875ceb0d297ef660b97bd0a10b9597ddc28b940c9d2ea5645ac9da3a94aabe",
+    "overlays/update-portal-identity-provider-defaults.yaml": "c1ddec820fb3a29cd198b20813cdcd483dffd633a75e59565bde14872e06d6b5",
+    "overlays/update-portal-patch-defaults.yaml": "7e0294cd76accc7b96b0241d3fe89fb25fe14063386dec29f9f232d940e36d3d",
+    "tests/kongctl_boolean_defaults_test.go.txt": "6fa523e7218b8dc0e1b6a5fee08582a667736dd519c3c1c3dbb5b664093296fa",
+    "tests/portal_customization_defaults_test.go.txt": "27c407f677a622af5cd7ad6ff28c19c1a161c31a08e2587b10af276f6dc5b4e2",
+    "tests/portalteam_defaults_test.go.txt": "be989438672463102aa6496346ea9e96deab27d61071807637bff61561a34497",
+    "tests/identity_realms_test.go.txt": "52cecf934f692d3155ce058eb914133dad12863b1d58ddd89735c1ce1f7d20d2"
+  }
+}
