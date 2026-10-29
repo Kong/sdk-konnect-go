@@ -5,6 +5,7 @@ package sdkkonnectgo
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
@@ -12,5 +13,5 @@ import (
 type PagesSDK interface {
 	// CreateDefaultContent - Create Boilerplate Content
 	// Creates a default collection of pages, snippets, and customization config for a portal if they do not already exist. This endpoint is optional, you can call it to populate a newly created developer portal with default content, but it is not required. Existing pages and snippets will not be modified or deleted. If used, it is typically called once per portal shortly after creation.
-	CreateDefaultContent(ctx context.Context, portalID string, opts ...operations.Option) (*operations.CreateDefaultContentResponse, error)
+	CreateDefaultContent(ctx context.Context, portalID string, createDefaultContentRequest *components.CreateDefaultContentRequest, opts ...operations.Option) (*operations.CreateDefaultContentResponse, error)
 }

@@ -11,6 +11,8 @@ import (
 type CreateDefaultContentRequest struct {
 	// ID of the portal.
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
+	// Options for creating boilerplate content.
+	CreateDefaultContentRequest *components.CreateDefaultContentRequest `request:"mediaType=application/json"`
 }
 
 func (c *CreateDefaultContentRequest) GetPortalID() string {
@@ -18,6 +20,13 @@ func (c *CreateDefaultContentRequest) GetPortalID() string {
 		return ""
 	}
 	return c.PortalID
+}
+
+func (c *CreateDefaultContentRequest) GetCreateDefaultContentRequest() *components.CreateDefaultContentRequest {
+	if c == nil {
+		return nil
+	}
+	return c.CreateDefaultContentRequest
 }
 
 type CreateDefaultContentResponse struct {
