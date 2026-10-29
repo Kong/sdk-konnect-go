@@ -40,7 +40,7 @@ go:
   enableCustomCodeRegions: false
   enableSkipDeserialization: false
   fixFlags:
-    applyPathParamDefaults: false
+    applyPathParamDefaults: true
     encodePathParams: false
   flattenGlobalSecurity: true
   forwardCompatibleEnumsByDefault: false
