@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -13,8 +14,21 @@ type CreateJwtWithConsumerRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Consumer ID for nested entities
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of new JWT for creation
 	JWTWithoutParents *components.JWTWithoutParents `request:"mediaType=application/json"`
+}
+
+func (c CreateJwtWithConsumerRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateJwtWithConsumerRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreateJwtWithConsumerRequest) GetControlPlaneID() string {
@@ -29,6 +43,13 @@ func (c *CreateJwtWithConsumerRequest) GetConsumerIDForNestedEntities() string {
 		return ""
 	}
 	return c.ConsumerIDForNestedEntities
+}
+
+func (c *CreateJwtWithConsumerRequest) GetWorkspace() string {
+	if c == nil {
+		return ""
+	}
+	return c.Workspace
 }
 
 func (c *CreateJwtWithConsumerRequest) GetJWTWithoutParents() *components.JWTWithoutParents {

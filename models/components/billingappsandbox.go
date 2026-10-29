@@ -170,6 +170,9 @@ type BillingAppSandbox struct {
 	Definition BillingAppSandboxDefinition `json:"definition"`
 	// Status of the app connection.
 	Status BillingAppSandboxStatus `json:"status"`
+	// Actions the operator should take to bring the app up to date. Omitted when no
+	// action is required.
+	Actions []BillingAppAction `json:"actions,omitempty"`
 }
 
 func (b BillingAppSandbox) MarshalJSON() ([]byte, error) {
@@ -251,4 +254,11 @@ func (b *BillingAppSandbox) GetStatus() BillingAppSandboxStatus {
 		return BillingAppSandboxStatus("")
 	}
 	return b.Status
+}
+
+func (b *BillingAppSandbox) GetActions() []BillingAppAction {
+	if b == nil {
+		return nil
+	}
+	return b.Actions
 }

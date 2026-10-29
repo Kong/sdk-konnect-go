@@ -18,7 +18,7 @@ import (
 	"net/url"
 )
 
-// OpenMeterNotifications - Notification channels deliver notification events, such as entitlement balance threshold crossings, to external systems.
+// OpenMeterNotifications - Notification rules generate notification events, such as entitlement balance threshold crossings, and notification channels deliver them to external systems.
 type OpenMeterNotifications struct {
 	rootSDK          *SDK
 	sdkConfiguration config.SDKConfiguration
@@ -33,12 +33,12 @@ func newOpenMeterNotifications(rootSDK *SDK, sdkConfig config.SDKConfiguration, 
 	}
 }
 
-// ListNotificationChannels - List notification channels
+// ListBillingNotificationChannels - List notification channels
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // List all notification channels.
-func (s *OpenMeterNotifications) ListNotificationChannels(ctx context.Context, request operations.ListNotificationChannelsRequest, opts ...operations.Option) (*operations.ListNotificationChannelsResponse, error) {
+func (s *OpenMeterNotifications) ListBillingNotificationChannels(ctx context.Context, request operations.ListBillingNotificationChannelsRequest, opts ...operations.Option) (*operations.ListBillingNotificationChannelsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -67,7 +67,7 @@ func (s *OpenMeterNotifications) ListNotificationChannels(ctx context.Context, r
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "list-notification-channels",
+		OperationID:      "list-billing-notification-channels",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -193,7 +193,7 @@ func (s *OpenMeterNotifications) ListNotificationChannels(ctx context.Context, r
 		}
 	}
 
-	res := &operations.ListNotificationChannelsResponse{
+	res := &operations.ListBillingNotificationChannelsResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -308,12 +308,12 @@ func (s *OpenMeterNotifications) ListNotificationChannels(ctx context.Context, r
 
 }
 
-// CreateNotificationChannel - Create notification channel
+// CreateBillingNotificationChannel - Create notification channel
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Create a notification channel.
-func (s *OpenMeterNotifications) CreateNotificationChannel(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option) (*operations.CreateNotificationChannelResponse, error) {
+func (s *OpenMeterNotifications) CreateBillingNotificationChannel(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option) (*operations.CreateBillingNotificationChannelResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -342,7 +342,7 @@ func (s *OpenMeterNotifications) CreateNotificationChannel(ctx context.Context, 
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "create-notification-channel",
+		OperationID:      "create-billing-notification-channel",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -471,7 +471,7 @@ func (s *OpenMeterNotifications) CreateNotificationChannel(ctx context.Context, 
 		}
 	}
 
-	res := &operations.CreateNotificationChannelResponse{
+	res := &operations.CreateBillingNotificationChannelResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -586,13 +586,13 @@ func (s *OpenMeterNotifications) CreateNotificationChannel(ctx context.Context, 
 
 }
 
-// GetNotificationChannel - Get notification channel
+// GetBillingNotificationChannel - Get notification channel
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Get a notification channel by id.
-func (s *OpenMeterNotifications) GetNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.GetNotificationChannelResponse, error) {
-	request := operations.GetNotificationChannelRequest{
+func (s *OpenMeterNotifications) GetBillingNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.GetBillingNotificationChannelResponse, error) {
+	request := operations.GetBillingNotificationChannelRequest{
 		NotificationChannelID: notificationChannelID,
 	}
 
@@ -624,7 +624,7 @@ func (s *OpenMeterNotifications) GetNotificationChannel(ctx context.Context, not
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "get-notification-channel",
+		OperationID:      "get-billing-notification-channel",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -746,7 +746,7 @@ func (s *OpenMeterNotifications) GetNotificationChannel(ctx context.Context, not
 		}
 	}
 
-	res := &operations.GetNotificationChannelResponse{
+	res := &operations.GetBillingNotificationChannelResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -882,13 +882,13 @@ func (s *OpenMeterNotifications) GetNotificationChannel(ctx context.Context, not
 
 }
 
-// UpdateNotificationChannel - Update notification channel
+// UpdateBillingNotificationChannel - Update notification channel
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Update a notification channel by id.
-func (s *OpenMeterNotifications) UpdateNotificationChannel(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option) (*operations.UpdateNotificationChannelResponse, error) {
-	request := operations.UpdateNotificationChannelRequest{
+func (s *OpenMeterNotifications) UpdateBillingNotificationChannel(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option) (*operations.UpdateBillingNotificationChannelResponse, error) {
+	request := operations.UpdateBillingNotificationChannelRequest{
 		NotificationChannelID:                   notificationChannelID,
 		UpdateBillingNotificationChannelRequest: updateBillingNotificationChannelRequest,
 	}
@@ -921,7 +921,7 @@ func (s *OpenMeterNotifications) UpdateNotificationChannel(ctx context.Context, 
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "update-notification-channel",
+		OperationID:      "update-billing-notification-channel",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -1050,7 +1050,7 @@ func (s *OpenMeterNotifications) UpdateNotificationChannel(ctx context.Context, 
 		}
 	}
 
-	res := &operations.UpdateNotificationChannelResponse{
+	res := &operations.UpdateBillingNotificationChannelResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -1207,13 +1207,13 @@ func (s *OpenMeterNotifications) UpdateNotificationChannel(ctx context.Context, 
 
 }
 
-// DeleteNotificationChannel - Delete notification channel
+// DeleteBillingNotificationChannel - Delete notification channel
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
 // Delete a notification channel by id.
-func (s *OpenMeterNotifications) DeleteNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.DeleteNotificationChannelResponse, error) {
-	request := operations.DeleteNotificationChannelRequest{
+func (s *OpenMeterNotifications) DeleteBillingNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.DeleteBillingNotificationChannelResponse, error) {
+	request := operations.DeleteBillingNotificationChannelRequest{
 		NotificationChannelID: notificationChannelID,
 	}
 
@@ -1245,7 +1245,7 @@ func (s *OpenMeterNotifications) DeleteNotificationChannel(ctx context.Context, 
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "delete-notification-channel",
+		OperationID:      "delete-billing-notification-channel",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -1367,7 +1367,7 @@ func (s *OpenMeterNotifications) DeleteNotificationChannel(ctx context.Context, 
 		}
 	}
 
-	res := &operations.DeleteNotificationChannelResponse{
+	res := &operations.DeleteBillingNotificationChannelResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,

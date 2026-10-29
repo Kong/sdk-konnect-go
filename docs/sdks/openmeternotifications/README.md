@@ -2,17 +2,17 @@
 
 ## Overview
 
-Notification channels deliver notification events, such as entitlement balance threshold crossings, to external systems.
+Notification rules generate notification events, such as entitlement balance threshold crossings, and notification channels deliver them to external systems.
 
 ### Available Operations
 
-* [ListNotificationChannels](#listnotificationchannels) - List notification channels
-* [CreateNotificationChannel](#createnotificationchannel) - Create notification channel
-* [GetNotificationChannel](#getnotificationchannel) - Get notification channel
-* [UpdateNotificationChannel](#updatenotificationchannel) - Update notification channel
-* [DeleteNotificationChannel](#deletenotificationchannel) - Delete notification channel
+* [ListBillingNotificationChannels](#listbillingnotificationchannels) - List notification channels
+* [CreateBillingNotificationChannel](#createbillingnotificationchannel) - Create notification channel
+* [GetBillingNotificationChannel](#getbillingnotificationchannel) - Get notification channel
+* [UpdateBillingNotificationChannel](#updatebillingnotificationchannel) - Update notification channel
+* [DeleteBillingNotificationChannel](#deletebillingnotificationchannel) - Delete notification channel
 
-## ListNotificationChannels
+## ListBillingNotificationChannels
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -21,7 +21,7 @@ List all notification channels.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-notification-channels" method="get" path="/v3/openmeter/notification/channels" -->
+<!-- UsageSnippet language="go" operationID="list-billing-notification-channels" method="get" path="/v3/openmeter/notification/channels" -->
 ```go
 package main
 
@@ -43,20 +43,20 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterNotifications.ListNotificationChannels(ctx, operations.ListNotificationChannelsRequest{
+    res, err := s.OpenMeterNotifications.ListBillingNotificationChannels(ctx, operations.ListBillingNotificationChannelsRequest{
         Sort: sdkkonnectgo.Pointer("created_at desc"),
         Filter: &components.ListNotificationChannelsParamsFilter{
             ID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
                 "01G65Z755AFWAKHE12NY0CQ9FH",
             )),
-            CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldGTFilter(
-                components.DateTimeFieldGTFilter{
-                    Gt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
-                },
-            )),
-            UpdatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldGTEFilter(
+            CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldGTEFilter(
                 components.DateTimeFieldGTEFilter{
                     Gte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            UpdatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTFilter(
+                components.DateTimeFieldLTFilter{
+                    Lt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
         },
@@ -72,15 +72,15 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |
-| `request`                                                                                                | [operations.ListNotificationChannelsRequest](../../models/operations/listnotificationchannelsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-| `opts`                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                 | :heavy_minus_sign:                                                                                       | The options for this request.                                                                            |
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.ListBillingNotificationChannelsRequest](../../models/operations/listbillingnotificationchannelsrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                               | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
 
 ### Response
 
-**[*operations.ListNotificationChannelsResponse](../../models/operations/listnotificationchannelsresponse.md), error**
+**[*operations.ListBillingNotificationChannelsResponse](../../models/operations/listbillingnotificationchannelsresponse.md), error**
 
 ### Errors
 
@@ -91,7 +91,7 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## CreateNotificationChannel
+## CreateBillingNotificationChannel
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -100,7 +100,7 @@ Create a notification channel.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-notification-channel" method="post" path="/v3/openmeter/notification/channels" -->
+<!-- UsageSnippet language="go" operationID="create-billing-notification-channel" method="post" path="/v3/openmeter/notification/channels" -->
 ```go
 package main
 
@@ -120,13 +120,13 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterNotifications.CreateNotificationChannel(ctx, components.CreateNotificationChannelRequest{
+    res, err := s.OpenMeterNotifications.CreateBillingNotificationChannel(ctx, components.CreateNotificationChannelRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
         Type: components.CreateNotificationChannelRequestTypeWebhook,
-        URL: "https://linear-repeat.com/",
+        URL: "https://grubby-gift.name/",
     })
     if err != nil {
         log.Fatal(err)
@@ -147,7 +147,7 @@ func main() {
 
 ### Response
 
-**[*operations.CreateNotificationChannelResponse](../../models/operations/createnotificationchannelresponse.md), error**
+**[*operations.CreateBillingNotificationChannelResponse](../../models/operations/createbillingnotificationchannelresponse.md), error**
 
 ### Errors
 
@@ -158,7 +158,7 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## GetNotificationChannel
+## GetBillingNotificationChannel
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -167,7 +167,7 @@ Get a notification channel by id.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-notification-channel" method="get" path="/v3/openmeter/notification/channels/{notificationChannelId}" -->
+<!-- UsageSnippet language="go" operationID="get-billing-notification-channel" method="get" path="/v3/openmeter/notification/channels/{notificationChannelId}" -->
 ```go
 package main
 
@@ -187,7 +187,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterNotifications.GetNotificationChannel(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    res, err := s.OpenMeterNotifications.GetBillingNotificationChannel(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
     if err != nil {
         log.Fatal(err)
     }
@@ -207,7 +207,7 @@ func main() {
 
 ### Response
 
-**[*operations.GetNotificationChannelResponse](../../models/operations/getnotificationchannelresponse.md), error**
+**[*operations.GetBillingNotificationChannelResponse](../../models/operations/getbillingnotificationchannelresponse.md), error**
 
 ### Errors
 
@@ -219,7 +219,7 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## UpdateNotificationChannel
+## UpdateBillingNotificationChannel
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -228,7 +228,7 @@ Update a notification channel by id.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="update-notification-channel" method="put" path="/v3/openmeter/notification/channels/{notificationChannelId}" -->
+<!-- UsageSnippet language="go" operationID="update-billing-notification-channel" method="put" path="/v3/openmeter/notification/channels/{notificationChannelId}" -->
 ```go
 package main
 
@@ -248,10 +248,10 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterNotifications.UpdateNotificationChannel(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpdateBillingNotificationChannelRequest{
+    res, err := s.OpenMeterNotifications.UpdateBillingNotificationChannel(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpdateBillingNotificationChannelRequest{
         Name: "<value>",
         Type: components.UpdateBillingNotificationChannelRequestTypeWebhook,
-        URL: "https://agitated-cardboard.name/",
+        URL: "https://ironclad-taxicab.com/",
         Labels: map[string]string{
             "env": "test",
         },
@@ -276,7 +276,7 @@ func main() {
 
 ### Response
 
-**[*operations.UpdateNotificationChannelResponse](../../models/operations/updatenotificationchannelresponse.md), error**
+**[*operations.UpdateBillingNotificationChannelResponse](../../models/operations/updatebillingnotificationchannelresponse.md), error**
 
 ### Errors
 
@@ -289,7 +289,7 @@ func main() {
 | sdkerrors.ConflictError     | 409                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## DeleteNotificationChannel
+## DeleteBillingNotificationChannel
 
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
@@ -298,7 +298,7 @@ Delete a notification channel by id.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-notification-channel" method="delete" path="/v3/openmeter/notification/channels/{notificationChannelId}" -->
+<!-- UsageSnippet language="go" operationID="delete-billing-notification-channel" method="delete" path="/v3/openmeter/notification/channels/{notificationChannelId}" -->
 ```go
 package main
 
@@ -318,7 +318,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterNotifications.DeleteNotificationChannel(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
+    res, err := s.OpenMeterNotifications.DeleteBillingNotificationChannel(ctx, "01G65Z755AFWAKHE12NY0CQ9FH")
     if err != nil {
         log.Fatal(err)
     }
@@ -338,7 +338,7 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteNotificationChannelResponse](../../models/operations/deletenotificationchannelresponse.md), error**
+**[*operations.DeleteBillingNotificationChannelResponse](../../models/operations/deletebillingnotificationchannelresponse.md), error**
 
 ### Errors
 

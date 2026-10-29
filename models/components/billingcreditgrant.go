@@ -34,6 +34,19 @@ func (e *BillingCreditGrantCreditFundingMethod) IsExact() bool {
 	return false
 }
 
+// BillingCreditGrantCustomCurrency - Managed currency reference. Present only for custom currencies.
+type BillingCreditGrantCustomCurrency struct {
+	// ULID (Universally Unique Lexicographically Sortable Identifier).
+	ID string `json:"id"`
+}
+
+func (b *BillingCreditGrantCustomCurrency) GetID() string {
+	if b == nil {
+		return ""
+	}
+	return b.ID
+}
+
 // BillingCreditGrantResolvedCostBasis - The rate the purchase is settled at in the purchase `currency`. Present once the
 // cost basis is resolved.
 type BillingCreditGrantResolvedCostBasis struct {
@@ -389,6 +402,8 @@ type BillingCreditGrant struct {
 	// Funded custom-currency grants must define `purchase.cost_basis` to settle in a
 	// fiat currency.
 	Currency string `json:"currency"`
+	// Managed currency reference. Present only for custom currencies.
+	CustomCurrency *BillingCreditGrantCustomCurrency `json:"custom_currency,omitempty"`
 	// Granted credit amount.
 	Amount string `json:"amount"`
 	// Present when a funding workflow applies (funding_method is not `none`).
@@ -503,6 +518,13 @@ func (b *BillingCreditGrant) GetCurrency() string {
 		return ""
 	}
 	return b.Currency
+}
+
+func (b *BillingCreditGrant) GetCustomCurrency() *BillingCreditGrantCustomCurrency {
+	if b == nil {
+		return nil
+	}
+	return b.CustomCurrency
 }
 
 func (b *BillingCreditGrant) GetAmount() string {

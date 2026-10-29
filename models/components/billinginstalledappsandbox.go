@@ -170,6 +170,9 @@ type BillingInstalledAppSandbox struct {
 	Definition BillingInstalledAppSandboxDefinition `json:"definition"`
 	// Status of the app connection.
 	Status BillingInstalledAppSandboxStatus `json:"status"`
+	// Actions the operator should take to bring the app up to date. Omitted when no
+	// action is required.
+	Actions []BillingAppAction `json:"actions,omitempty"`
 	// Default capabilities of the installed app.
 	DefaultForCapabilityTypes []BillingAppCapabilityType `json:"default_for_capability_types"`
 }
@@ -253,6 +256,13 @@ func (b *BillingInstalledAppSandbox) GetStatus() BillingInstalledAppSandboxStatu
 		return BillingInstalledAppSandboxStatus("")
 	}
 	return b.Status
+}
+
+func (b *BillingInstalledAppSandbox) GetActions() []BillingAppAction {
+	if b == nil {
+		return nil
+	}
+	return b.Actions
 }
 
 func (b *BillingInstalledAppSandbox) GetDefaultForCapabilityTypes() []BillingAppCapabilityType {

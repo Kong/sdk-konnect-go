@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,6 +16,19 @@ type GetKeyWithKeySetRequest struct {
 	KeySetID string `pathParam:"style=simple,explode=false,name=KeySetId"`
 	// ID of the Key to lookup
 	KeyID string `pathParam:"style=simple,explode=false,name=KeyId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (g GetKeyWithKeySetRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetKeyWithKeySetRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (g *GetKeyWithKeySetRequest) GetControlPlaneID() string {
@@ -36,6 +50,13 @@ func (g *GetKeyWithKeySetRequest) GetKeyID() string {
 		return ""
 	}
 	return g.KeyID
+}
+
+func (g *GetKeyWithKeySetRequest) GetWorkspace() string {
+	if g == nil {
+		return ""
+	}
+	return g.Workspace
 }
 
 type GetKeyWithKeySetResponse struct {

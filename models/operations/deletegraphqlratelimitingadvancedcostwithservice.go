@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -14,6 +15,19 @@ type DeleteGraphqlRateLimitingAdvancedCostWithServiceRequest struct {
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// ID of the GraphQL Cost Decoration to lookup
 	GraphQLCostDecorationID string `pathParam:"style=simple,explode=false,name=GraphQLCostDecorationId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeleteGraphqlRateLimitingAdvancedCostWithServiceRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteGraphqlRateLimitingAdvancedCostWithServiceRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeleteGraphqlRateLimitingAdvancedCostWithServiceRequest) GetControlPlaneID() string {
@@ -35,6 +49,13 @@ func (d *DeleteGraphqlRateLimitingAdvancedCostWithServiceRequest) GetGraphQLCost
 		return ""
 	}
 	return d.GraphQLCostDecorationID
+}
+
+func (d *DeleteGraphqlRateLimitingAdvancedCostWithServiceRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeleteGraphqlRateLimitingAdvancedCostWithServiceResponse struct {

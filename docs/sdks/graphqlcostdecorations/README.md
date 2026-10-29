@@ -4,21 +4,21 @@
 
 ### Available Operations
 
-* [ListGraphqlRateLimitingAdvancedCost](#listgraphqlratelimitingadvancedcost) - List all GraphQL Cost Decorations
-* [GetGraphqlRateLimitingAdvancedCost](#getgraphqlratelimitingadvancedcost) - Get a GraphQL Cost Decoration
-* [ListGraphqlRateLimitingAdvancedCostWithService](#listgraphqlratelimitingadvancedcostwithservice) - List all GraphQL Cost Decorations associated with a Service
-* [CreateGraphqlRateLimitingAdvancedCostWithService](#creategraphqlratelimitingadvancedcostwithservice) - Create a new GraphQL Cost Decoration associated with a Service
-* [DeleteGraphqlRateLimitingAdvancedCostWithService](#deletegraphqlratelimitingadvancedcostwithservice) - Delete a a GraphQL Cost Decoration associated with a Service
-* [GetGraphqlRateLimitingAdvancedCostWithService](#getgraphqlratelimitingadvancedcostwithservice) - Get a GraphQL Cost Decoration associated with a Service
-* [UpsertGraphqlRateLimitingAdvancedCostWithService](#upsertgraphqlratelimitingadvancedcostwithservice) - Upsert a GraphQL Cost Decoration associated with a Service
+* [ListGraphqlRateLimitingAdvancedCost](#listgraphqlratelimitingadvancedcost) - List all GraphQL Cost Decorations in a workspace
+* [GetGraphqlRateLimitingAdvancedCost](#getgraphqlratelimitingadvancedcost) - Get a GraphQL Cost Decoration in a workspace
+* [ListGraphqlRateLimitingAdvancedCostWithService](#listgraphqlratelimitingadvancedcostwithservice) - List all GraphQL Cost Decorations associated with a Service in a workspace
+* [CreateGraphqlRateLimitingAdvancedCostWithService](#creategraphqlratelimitingadvancedcostwithservice) - Create a new GraphQL Cost Decoration associated with a Service in a workspace
+* [DeleteGraphqlRateLimitingAdvancedCostWithService](#deletegraphqlratelimitingadvancedcostwithservice) - Delete a a GraphQL Cost Decoration associated with a Service in a workspace
+* [GetGraphqlRateLimitingAdvancedCostWithService](#getgraphqlratelimitingadvancedcostwithservice) - Get a GraphQL Cost Decoration associated with a Service in a workspace
+* [UpsertGraphqlRateLimitingAdvancedCostWithService](#upsertgraphqlratelimitingadvancedcostwithservice) - Upsert a GraphQL Cost Decoration associated with a Service in a workspace
 
 ## ListGraphqlRateLimitingAdvancedCost
 
-List all GraphQL Cost Decorations
+List all GraphQL Cost Decorations in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-graphql-rate-limiting-advanced-cost" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/graphql-rate-limiting-advanced/costs" -->
+<!-- UsageSnippet language="go" operationID="list-graphql-rate-limiting-advanced-cost" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/graphql-rate-limiting-advanced/costs" -->
 ```go
 package main
 
@@ -42,6 +42,7 @@ func main() {
     res, err := s.GraphQLCostDecorations.ListGraphqlRateLimitingAdvancedCost(ctx, operations.ListGraphqlRateLimitingAdvancedCostRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -73,11 +74,11 @@ func main() {
 
 ## GetGraphqlRateLimitingAdvancedCost
 
-Get a GraphQL Cost Decoration using ID.
+Get a GraphQL Cost Decoration using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-graphql-rate-limiting-advanced-cost" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}" -->
+<!-- UsageSnippet language="go" operationID="get-graphql-rate-limiting-advanced-cost" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}" -->
 ```go
 package main
 
@@ -85,6 +86,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -97,7 +99,11 @@ func main() {
         }),
     )
 
-    res, err := s.GraphQLCostDecorations.GetGraphqlRateLimitingAdvancedCost(ctx, "", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.GraphQLCostDecorations.GetGraphqlRateLimitingAdvancedCost(ctx, operations.GetGraphqlRateLimitingAdvancedCostRequest{
+        GraphQLCostDecorationID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -109,12 +115,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `graphQLCostDecorationID`                                                          | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the GraphQL Cost Decoration to lookup                                        |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
+| `request`                                                                                                                    | [operations.GetGraphqlRateLimitingAdvancedCostRequest](../../models/operations/getgraphqlratelimitingadvancedcostrequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+| `opts`                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                     | :heavy_minus_sign:                                                                                                           | The options for this request.                                                                                                |
 
 ### Response
 
@@ -129,11 +134,11 @@ func main() {
 
 ## ListGraphqlRateLimitingAdvancedCostWithService
 
-List all GraphQL Cost Decorations associated with a Service
+List all GraphQL Cost Decorations associated with a Service in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-graphql-rate-limiting-advanced-cost-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs" -->
+<!-- UsageSnippet language="go" operationID="list-graphql-rate-limiting-advanced-cost-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs" -->
 ```go
 package main
 
@@ -158,6 +163,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -188,11 +194,11 @@ func main() {
 
 ## CreateGraphqlRateLimitingAdvancedCostWithService
 
-Create a new GraphQL Cost Decoration associated with a Service
+Create a new GraphQL Cost Decoration associated with a Service in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-graphql-rate-limiting-advanced-cost-with-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs" -->
+<!-- UsageSnippet language="go" operationID="create-graphql-rate-limiting-advanced-cost-with-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs" -->
 ```go
 package main
 
@@ -216,6 +222,7 @@ func main() {
     res, err := s.GraphQLCostDecorations.CreateGraphqlRateLimitingAdvancedCostWithService(ctx, operations.CreateGraphqlRateLimitingAdvancedCostWithServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        Workspace: "team-payments",
         GraphQLCostDecorationWithoutParents: components.GraphQLCostDecorationWithoutParents{
             TypePath: "<value>",
         },
@@ -249,11 +256,11 @@ func main() {
 
 ## DeleteGraphqlRateLimitingAdvancedCostWithService
 
-Delete a a GraphQL Cost Decoration associated with a Service using ID.
+Delete a a GraphQL Cost Decoration associated with a Service using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-graphql-rate-limiting-advanced-cost-with-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}" -->
+<!-- UsageSnippet language="go" operationID="delete-graphql-rate-limiting-advanced-cost-with-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}" -->
 ```go
 package main
 
@@ -278,6 +285,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         GraphQLCostDecorationID: "",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -308,11 +316,11 @@ func main() {
 
 ## GetGraphqlRateLimitingAdvancedCostWithService
 
-Get a GraphQL Cost Decoration associated with a Service using ID.
+Get a GraphQL Cost Decoration associated with a Service using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-graphql-rate-limiting-advanced-cost-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}" -->
+<!-- UsageSnippet language="go" operationID="get-graphql-rate-limiting-advanced-cost-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}" -->
 ```go
 package main
 
@@ -337,6 +345,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         GraphQLCostDecorationID: "",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -367,11 +376,11 @@ func main() {
 
 ## UpsertGraphqlRateLimitingAdvancedCostWithService
 
-Create or Update a GraphQL Cost Decoration associated with a Service using ID.
+Create or Update a GraphQL Cost Decoration associated with a Service using ID in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-graphql-rate-limiting-advanced-cost-with-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-graphql-rate-limiting-advanced-cost-with-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}" -->
 ```go
 package main
 
@@ -396,6 +405,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         GraphQLCostDecorationID: "",
+        Workspace: "team-payments",
         GraphQLCostDecorationWithoutParents: components.GraphQLCostDecorationWithoutParents{
             TypePath: "<value>",
         },

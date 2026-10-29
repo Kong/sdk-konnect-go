@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,8 +16,21 @@ type UpsertACLWithConsumerRequest struct {
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
 	// ID of the ACL to lookup
 	ACLID string `pathParam:"style=simple,explode=false,name=ACLId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the ACL
 	ACLWithoutParents components.ACLWithoutParents `request:"mediaType=application/json"`
+}
+
+func (u UpsertACLWithConsumerRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertACLWithConsumerRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpsertACLWithConsumerRequest) GetControlPlaneID() string {
@@ -38,6 +52,13 @@ func (u *UpsertACLWithConsumerRequest) GetACLID() string {
 		return ""
 	}
 	return u.ACLID
+}
+
+func (u *UpsertACLWithConsumerRequest) GetWorkspace() string {
+	if u == nil {
+		return ""
+	}
+	return u.Workspace
 }
 
 func (u *UpsertACLWithConsumerRequest) GetACLWithoutParents() components.ACLWithoutParents {
