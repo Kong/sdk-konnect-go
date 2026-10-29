@@ -7,6 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	sdkkonnectcomp "github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectops "github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 func TestServiceCreateGetDelete(t *testing.T) {
@@ -41,13 +42,19 @@ func TestServiceCreateGetDelete(t *testing.T) {
 			Path:     new("/hello"),
 		},
 	}
-	respCreateSvc, err := sdk.Services.CreateService(ctx, respCreate.ControlPlane.ID, reqSvc)
+	respCreateSvc, err := sdk.Services.CreateService(ctx, sdkkonnectops.CreateServiceRequest{
+		ControlPlaneID: respCreate.ControlPlane.ID,
+		ServiceRequest: reqSvc,
+	})
 	require.NoError(t, err)
 	require.NotNil(t, respCreateSvc)
 	require.NotNil(t, respCreateSvc.Service)
 	require.NotEmpty(t, respCreateSvc.Service.ID)
 	t.Cleanup(func() {
-		_, err := sdk.Services.DeleteService(ctx, respCreate.ControlPlane.ID, *respCreateSvc.Service.ID)
+		_, err := sdk.Services.DeleteService(ctx, sdkkonnectops.DeleteServiceRequest{
+			ControlPlaneID: respCreate.ControlPlane.ID,
+			ServiceID:      *respCreateSvc.Service.ID,
+		})
 		require.NoError(t, err)
 	})
 	require.Equal(t, *reqSvc.ServiceWithHost.Name, *respCreateSvc.Service.Name)
@@ -56,7 +63,10 @@ func TestServiceCreateGetDelete(t *testing.T) {
 		require.Equal(t, *reqSvc.ServiceWithHost.Path, *respCreateSvc.Service.Path)
 	})
 
-	respGetSvc, err := sdk.Services.GetService(ctx, *respCreateSvc.Service.ID, respCreate.ControlPlane.ID)
+	respGetSvc, err := sdk.Services.GetService(ctx, sdkkonnectops.GetServiceRequest{
+		ControlPlaneID: respCreate.ControlPlane.ID,
+		ServiceID:      *respCreateSvc.Service.ID,
+	})
 	require.NoError(t, err)
 	require.NotNil(t, respGetSvc)
 	require.NotNil(t, respGetSvc.Service)
