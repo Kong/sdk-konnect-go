@@ -2075,9 +2075,9 @@ func (c *Cache) GetTTL() *int64 {
 type Request struct {
 	// Audiences used in the token exchange request. Values defined here override those defined in `config.audience`.
 	Audience []string `json:"audience,omitempty"`
-	// Use empty audiences. Use this field to override audiences defined in `config.audience`.
+	// Use empty audiences. Use this field to remove audiences defined in `config.audience`.
 	EmptyAudience *bool `default:"false" json:"empty_audience"`
-	// Use empty scopes. Use this field to override scopes defined in `config.scopes`.
+	// Use empty scopes. Use this field to remove scopes defined in `config.scopes`.
 	EmptyScopes *bool `default:"false" json:"empty_scopes"`
 	// Scopes used in the token exchange request. Values defined here override those defined in `config.scopes`.
 	Scopes []string `json:"scopes,omitempty"`
@@ -2122,12 +2122,16 @@ func (r *Request) GetScopes() []string {
 	return r.Scopes
 }
 
-// Conditions - A tokens will only be exchange when it matches all these criteria. To exchanging tokens issued from a different issuer, conditions must not be defined; On the contrary, to exchange tokens issued from the target issuer itself, conditions must be defined.
+// Conditions - A token will only be exchanged when it matches all these criteria. To exchange tokens issued by a different issuer, `conditions` must not be defined -- every token from that issuer is exchanged unconditionally, since a foreign-issued token that isn't exchanged can never pass normal verification against the target issuer anyway. In contrast, to exchange tokens issued by the target issuer itself, `conditions` must be defined.
 type Conditions struct {
-	HasAudience     []string `json:"has_audience,omitempty"`
-	HasScopes       []string `json:"has_scopes,omitempty"`
+	// Audience values that must all be present in the token, matched against `audience_claim`.
+	HasAudience []string `json:"has_audience,omitempty"`
+	// Scope values that must all be present in the token, matched against `scopes_claim`.
+	HasScopes []string `json:"has_scopes,omitempty"`
+	// Audience values that must all be absent from the token, matched against `audience_claim`.
 	MissingAudience []string `json:"missing_audience,omitempty"`
-	MissingScopes   []string `json:"missing_scopes,omitempty"`
+	// Scope values that must all be absent from the token, matched against `scopes_claim`.
+	MissingScopes []string `json:"missing_scopes,omitempty"`
 }
 
 func (c Conditions) MarshalJSON() ([]byte, error) {
@@ -2170,7 +2174,7 @@ func (c *Conditions) GetMissingScopes() []string {
 }
 
 type SubjectTokenIssuers struct {
-	// A tokens will only be exchange when it matches all these criteria. To exchanging tokens issued from a different issuer, conditions must not be defined; On the contrary, to exchange tokens issued from the target issuer itself, conditions must be defined.
+	// A token will only be exchanged when it matches all these criteria. To exchange tokens issued by a different issuer, `conditions` must not be defined -- every token from that issuer is exchanged unconditionally, since a foreign-issued token that isn't exchanged can never pass normal verification against the target issuer anyway. In contrast, to exchange tokens issued by the target issuer itself, `conditions` must be defined.
 	Conditions *Conditions `json:"conditions,omitempty"`
 	// Tokens of whose iss claim matches this value will be exchanged.
 	Issuer string `json:"issuer"`
@@ -2360,6 +2364,8 @@ type AIGWOpenIDConnectGeneratedConfigOutput struct {
 	// The name of the cookie in which the bearer token is passed.
 	BearerTokenCookieName *string `json:"bearer_token_cookie_name,omitempty"`
 	// The name of the HTTP header from which the bearer token is retrieved. The default value is `authorization:bearer`, which reads the token from the `Authorization: Bearer <token>` header. Accepts plain header names such as `x-my-token` as well as Kong's special `authorization:bearer` notation. The `access-token` and `x-access-token` headers are also checked as a fallback for backward compatibility regardless of this setting.
+	//
+	// **Requires a minimum runtime version of `2.1`**.
 	BearerTokenHeaderName *string `default:"authorization:bearer" json:"bearer_token_header_name"`
 	// Where to look for the bearer token: - `header`: search the `Authorization`, `access-token`, and `x-access-token` HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body - `cookie`: search the HTTP request cookies specified with `config.bearer_token_cookie_name`.
 	BearerTokenParamType []BearerTokenParamType `json:"bearer_token_param_type,omitempty"`
@@ -2412,8 +2418,6 @@ type AIGWOpenIDConnectGeneratedConfigOutput struct {
 	ConsumerGroupsOptional *bool `default:"false" json:"consumer_groups_optional"`
 	// Do not terminate the request if consumer mapping fails.
 	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
-	// The claim used to derive virtual credentials (e.g. to be consumed by the rate-limiting plugin), in case the consumer mapping is not used. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	CredentialClaim []string `json:"credential_claim,omitempty"`
 	// Disable issuing the session cookie with the specified grants.
 	DisableSession []DisableSession `json:"disable_session,omitempty"`
 	// Extra header names passed to the discovery endpoint.
@@ -2781,6 +2785,8 @@ type AIGWOpenIDConnectGeneratedConfigOutput struct {
 	VerifyParameters *bool `default:"false" json:"verify_parameters"`
 	// Verify the cryptographic signature of tokens. Disabling this skips verification for every token source, including tokens presented directly by clients (bearer); this is insecure for that path. To trust only tokens fetched from the identity provider for specific grants, use `ignore_signature` instead, which never affects bearer tokens.
 	VerifySignature *bool `default:"true" json:"verify_signature"`
+	// Claim path used to derive virtual credentials when consumer mapping is not used.
+	CredentialClaim []string `json:"credential_claim,omitempty"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfigOutput) MarshalJSON() ([]byte, error) {
@@ -3107,13 +3113,6 @@ func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetConsumerOptional() *bool {
 		return nil
 	}
 	return a.ConsumerOptional
-}
-
-func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCredentialClaim() []string {
-	if a == nil {
-		return nil
-	}
-	return a.CredentialClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetDisableSession() []DisableSession {
@@ -4397,6 +4396,13 @@ func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetVerifySignature() *bool {
 	return a.VerifySignature
 }
 
+func (a *AIGWOpenIDConnectGeneratedConfigOutput) GetCredentialClaim() []string {
+	if a == nil {
+		return nil
+	}
+	return a.CredentialClaim
+}
+
 type AIGWOpenIDConnectGeneratedConfig struct {
 	// An optional string (consumer UUID or username) value that functions as an “anonymous” consumer if authentication fails. If empty (default null), requests that fail authentication will return a `4xx` HTTP status code. This value must refer to the consumer `id` or `username` attribute, and **not** its `custom_id`.
 	Anonymous *string `json:"anonymous,omitempty"`
@@ -4435,6 +4441,8 @@ type AIGWOpenIDConnectGeneratedConfig struct {
 	// The name of the cookie in which the bearer token is passed.
 	BearerTokenCookieName *string `json:"bearer_token_cookie_name,omitempty"`
 	// The name of the HTTP header from which the bearer token is retrieved. The default value is `authorization:bearer`, which reads the token from the `Authorization: Bearer <token>` header. Accepts plain header names such as `x-my-token` as well as Kong's special `authorization:bearer` notation. The `access-token` and `x-access-token` headers are also checked as a fallback for backward compatibility regardless of this setting.
+	//
+	// **Requires a minimum runtime version of `2.1`**.
 	BearerTokenHeaderName *string `default:"authorization:bearer" json:"bearer_token_header_name"`
 	// Where to look for the bearer token: - `header`: search the `Authorization`, `access-token`, and `x-access-token` HTTP headers - `query`: search the URL's query string - `body`: search the HTTP request body - `cookie`: search the HTTP request cookies specified with `config.bearer_token_cookie_name`.
 	BearerTokenParamType []BearerTokenParamType `json:"bearer_token_param_type,omitempty"`
@@ -4489,8 +4497,6 @@ type AIGWOpenIDConnectGeneratedConfig struct {
 	ConsumerGroupsOptional *bool `default:"false" json:"consumer_groups_optional"`
 	// Do not terminate the request if consumer mapping fails.
 	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
-	// The claim used to derive virtual credentials (e.g. to be consumed by the rate-limiting plugin), in case the consumer mapping is not used. If multiple values are set, it means the claim is inside a nested object of the token payload.
-	CredentialClaim []string `json:"credential_claim,omitempty"`
 	// Disable issuing the session cookie with the specified grants.
 	DisableSession []DisableSession `json:"disable_session,omitempty"`
 	// Extra header names passed to the discovery endpoint.
@@ -4862,6 +4868,8 @@ type AIGWOpenIDConnectGeneratedConfig struct {
 	VerifyParameters *bool `default:"false" json:"verify_parameters"`
 	// Verify the cryptographic signature of tokens. Disabling this skips verification for every token source, including tokens presented directly by clients (bearer); this is insecure for that path. To trust only tokens fetched from the identity provider for specific grants, use `ignore_signature` instead, which never affects bearer tokens.
 	VerifySignature *bool `default:"true" json:"verify_signature"`
+	// Claim path used to derive virtual credentials when consumer mapping is not used.
+	CredentialClaim []string `json:"credential_claim,omitempty"`
 }
 
 func (a AIGWOpenIDConnectGeneratedConfig) MarshalJSON() ([]byte, error) {
@@ -5195,13 +5203,6 @@ func (a *AIGWOpenIDConnectGeneratedConfig) GetConsumerOptional() *bool {
 		return nil
 	}
 	return a.ConsumerOptional
-}
-
-func (a *AIGWOpenIDConnectGeneratedConfig) GetCredentialClaim() []string {
-	if a == nil {
-		return nil
-	}
-	return a.CredentialClaim
 }
 
 func (a *AIGWOpenIDConnectGeneratedConfig) GetDisableSession() []DisableSession {
@@ -6497,4 +6498,11 @@ func (a *AIGWOpenIDConnectGeneratedConfig) GetVerifySignature() *bool {
 		return nil
 	}
 	return a.VerifySignature
+}
+
+func (a *AIGWOpenIDConnectGeneratedConfig) GetCredentialClaim() []string {
+	if a == nil {
+		return nil
+	}
+	return a.CredentialClaim
 }

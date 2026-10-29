@@ -10,25 +10,25 @@ import (
 
 // MTLSAuthCredentialsSDK is a generated interface.
 type MTLSAuthCredentialsSDK interface {
-	// ListMtlsAuthWithConsumer - List all MTLS-auth credentials associated with a Consumer
-	// List all MTLS-auth credentials associated with a Consumer
+	// ListMtlsAuthWithConsumer - List all MTLS-auth credentials associated with a Consumer in a workspace
+	// List all MTLS-auth credentials associated with a Consumer in a workspace
 	ListMtlsAuthWithConsumer(ctx context.Context, request operations.ListMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListMtlsAuthWithConsumerResponse, error)
-	// CreateMtlsAuthWithConsumer - Create a new MTLS-auth credential associated with a Consumer
-	// Create a new MTLS-auth credential associated with a Consumer
+	// CreateMtlsAuthWithConsumer - Create a new MTLS-auth credential associated with a Consumer in a workspace
+	// Create a new MTLS-auth credential associated with a Consumer in a workspace
 	CreateMtlsAuthWithConsumer(ctx context.Context, request operations.CreateMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.CreateMtlsAuthWithConsumerResponse, error)
-	// DeleteMtlsAuthWithConsumer - Delete a a MTLS-auth credential associated with a Consumer
-	// Delete a a MTLS-auth credential associated with a Consumer using ID.
+	// DeleteMtlsAuthWithConsumer - Delete a a MTLS-auth credential associated with a Consumer in a workspace
+	// Delete a a MTLS-auth credential associated with a Consumer using ID in a workspace.
 	DeleteMtlsAuthWithConsumer(ctx context.Context, request operations.DeleteMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteMtlsAuthWithConsumerResponse, error)
-	// GetMtlsAuthWithConsumer - Get a MTLS-auth credential associated with a Consumer
-	// Get a MTLS-auth credential associated with a Consumer using ID.
+	// GetMtlsAuthWithConsumer - Get a MTLS-auth credential associated with a Consumer in a workspace
+	// Get a MTLS-auth credential associated with a Consumer using ID in a workspace.
 	GetMtlsAuthWithConsumer(ctx context.Context, request operations.GetMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetMtlsAuthWithConsumerResponse, error)
-	// UpsertMtlsAuthWithConsumer - Upsert a MTLS-auth credential associated with a Consumer
-	// Create or Update a MTLS-auth credential associated with a Consumer using ID.
+	// UpsertMtlsAuthWithConsumer - Upsert a MTLS-auth credential associated with a Consumer in a workspace
+	// Create or Update a MTLS-auth credential associated with a Consumer using ID in a workspace.
 	UpsertMtlsAuthWithConsumer(ctx context.Context, request operations.UpsertMtlsAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertMtlsAuthWithConsumerResponse, error)
-	// ListMtlsAuth - List all MTLS-auth credentials
-	// List all MTLS-auth credentials
+	// ListMtlsAuth - List all MTLS-auth credentials in a workspace
+	// List all MTLS-auth credentials in a workspace
 	ListMtlsAuth(ctx context.Context, request operations.ListMtlsAuthRequest, opts ...operations.Option) (*operations.ListMtlsAuthResponse, error)
-	// GetMtlsAuth - Get a MTLS-auth credential
-	// Get a MTLS-auth credential using ID.
-	GetMtlsAuth(ctx context.Context, mtlsAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetMtlsAuthResponse, error)
+	// GetMtlsAuth - Get a MTLS-auth credential in a workspace
+	// Get a MTLS-auth credential using ID in a workspace.
+	GetMtlsAuth(ctx context.Context, request operations.GetMtlsAuthRequest, opts ...operations.Option) (*operations.GetMtlsAuthResponse, error)
 }

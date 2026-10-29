@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -14,6 +15,19 @@ type DeleteJwtWithConsumerRequest struct {
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
 	// ID of the JWT to lookup
 	JWTID string `pathParam:"style=simple,explode=false,name=JWTId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeleteJwtWithConsumerRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteJwtWithConsumerRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeleteJwtWithConsumerRequest) GetControlPlaneID() string {
@@ -35,6 +49,13 @@ func (d *DeleteJwtWithConsumerRequest) GetJWTID() string {
 		return ""
 	}
 	return d.JWTID
+}
+
+func (d *DeleteJwtWithConsumerRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeleteJwtWithConsumerResponse struct {

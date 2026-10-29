@@ -7,7 +7,6 @@ package mocks
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -49,12 +48,12 @@ func (_m *MockKeysSDK) EXPECT() *MockKeysSDK_Expecter {
 }
 
 // CreateKey provides a mock function for the type MockKeysSDK
-func (_mock *MockKeysSDK) CreateKey(ctx context.Context, controlPlaneID string, key components.Key, opts ...operations.Option) (*operations.CreateKeyResponse, error) {
+func (_mock *MockKeysSDK) CreateKey(ctx context.Context, request operations.CreateKeyRequest, opts ...operations.Option) (*operations.CreateKeyResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, key, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, key)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -64,18 +63,18 @@ func (_mock *MockKeysSDK) CreateKey(ctx context.Context, controlPlaneID string, 
 
 	var r0 *operations.CreateKeyResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Key, ...operations.Option) (*operations.CreateKeyResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, key, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateKeyRequest, ...operations.Option) (*operations.CreateKeyResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Key, ...operations.Option) *operations.CreateKeyResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, key, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateKeyRequest, ...operations.Option) *operations.CreateKeyResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.CreateKeyResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.Key, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, key, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateKeyRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -89,39 +88,33 @@ type MockKeysSDK_CreateKey_Call struct {
 
 // CreateKey is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - key components.Key
+//   - request operations.CreateKeyRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) CreateKey(ctx any, controlPlaneID any, key any, opts ...any) *MockKeysSDK_CreateKey_Call {
+func (_e *MockKeysSDK_Expecter) CreateKey(ctx any, request any, opts ...any) *MockKeysSDK_CreateKey_Call {
 	return &MockKeysSDK_CreateKey_Call{Call: _e.mock.On("CreateKey",
-		append([]any{ctx, controlPlaneID, key}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockKeysSDK_CreateKey_Call) Run(run func(ctx context.Context, controlPlaneID string, key components.Key, opts ...operations.Option)) *MockKeysSDK_CreateKey_Call {
+func (_c *MockKeysSDK_CreateKey_Call) Run(run func(ctx context.Context, request operations.CreateKeyRequest, opts ...operations.Option)) *MockKeysSDK_CreateKey_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.CreateKeyRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.CreateKeyRequest)
 		}
-		var arg2 components.Key
-		if args[2] != nil {
-			arg2 = args[2].(components.Key)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -132,7 +125,7 @@ func (_c *MockKeysSDK_CreateKey_Call) Return(createKeyResponse *operations.Creat
 	return _c
 }
 
-func (_c *MockKeysSDK_CreateKey_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, key components.Key, opts ...operations.Option) (*operations.CreateKeyResponse, error)) *MockKeysSDK_CreateKey_Call {
+func (_c *MockKeysSDK_CreateKey_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateKeyRequest, opts ...operations.Option) (*operations.CreateKeyResponse, error)) *MockKeysSDK_CreateKey_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -221,12 +214,12 @@ func (_c *MockKeysSDK_CreateKeyWithKeySet_Call) RunAndReturn(run func(ctx contex
 }
 
 // DeleteKey provides a mock function for the type MockKeysSDK
-func (_mock *MockKeysSDK) DeleteKey(ctx context.Context, controlPlaneID string, keyID string, opts ...operations.Option) (*operations.DeleteKeyResponse, error) {
+func (_mock *MockKeysSDK) DeleteKey(ctx context.Context, request operations.DeleteKeyRequest, opts ...operations.Option) (*operations.DeleteKeyResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, keyID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, keyID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -236,18 +229,18 @@ func (_mock *MockKeysSDK) DeleteKey(ctx context.Context, controlPlaneID string, 
 
 	var r0 *operations.DeleteKeyResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.DeleteKeyResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, keyID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteKeyRequest, ...operations.Option) (*operations.DeleteKeyResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.DeleteKeyResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, keyID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteKeyRequest, ...operations.Option) *operations.DeleteKeyResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.DeleteKeyResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, keyID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteKeyRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -261,39 +254,33 @@ type MockKeysSDK_DeleteKey_Call struct {
 
 // DeleteKey is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - keyID string
+//   - request operations.DeleteKeyRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) DeleteKey(ctx any, controlPlaneID any, keyID any, opts ...any) *MockKeysSDK_DeleteKey_Call {
+func (_e *MockKeysSDK_Expecter) DeleteKey(ctx any, request any, opts ...any) *MockKeysSDK_DeleteKey_Call {
 	return &MockKeysSDK_DeleteKey_Call{Call: _e.mock.On("DeleteKey",
-		append([]any{ctx, controlPlaneID, keyID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockKeysSDK_DeleteKey_Call) Run(run func(ctx context.Context, controlPlaneID string, keyID string, opts ...operations.Option)) *MockKeysSDK_DeleteKey_Call {
+func (_c *MockKeysSDK_DeleteKey_Call) Run(run func(ctx context.Context, request operations.DeleteKeyRequest, opts ...operations.Option)) *MockKeysSDK_DeleteKey_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.DeleteKeyRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.DeleteKeyRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -304,7 +291,7 @@ func (_c *MockKeysSDK_DeleteKey_Call) Return(deleteKeyResponse *operations.Delet
 	return _c
 }
 
-func (_c *MockKeysSDK_DeleteKey_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, keyID string, opts ...operations.Option) (*operations.DeleteKeyResponse, error)) *MockKeysSDK_DeleteKey_Call {
+func (_c *MockKeysSDK_DeleteKey_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteKeyRequest, opts ...operations.Option) (*operations.DeleteKeyResponse, error)) *MockKeysSDK_DeleteKey_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -393,12 +380,12 @@ func (_c *MockKeysSDK_DeleteKeyWithKeySet_Call) RunAndReturn(run func(ctx contex
 }
 
 // GetKey provides a mock function for the type MockKeysSDK
-func (_mock *MockKeysSDK) GetKey(ctx context.Context, keyID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeyResponse, error) {
+func (_mock *MockKeysSDK) GetKey(ctx context.Context, request operations.GetKeyRequest, opts ...operations.Option) (*operations.GetKeyResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, keyID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, keyID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -408,18 +395,18 @@ func (_mock *MockKeysSDK) GetKey(ctx context.Context, keyID string, controlPlane
 
 	var r0 *operations.GetKeyResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetKeyResponse, error)); ok {
-		return returnFunc(ctx, keyID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeyRequest, ...operations.Option) (*operations.GetKeyResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetKeyResponse); ok {
-		r0 = returnFunc(ctx, keyID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetKeyRequest, ...operations.Option) *operations.GetKeyResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetKeyResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, keyID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetKeyRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -433,39 +420,33 @@ type MockKeysSDK_GetKey_Call struct {
 
 // GetKey is a helper method to define mock.On call
 //   - ctx context.Context
-//   - keyID string
-//   - controlPlaneID string
+//   - request operations.GetKeyRequest
 //   - opts ...operations.Option
-func (_e *MockKeysSDK_Expecter) GetKey(ctx any, keyID any, controlPlaneID any, opts ...any) *MockKeysSDK_GetKey_Call {
+func (_e *MockKeysSDK_Expecter) GetKey(ctx any, request any, opts ...any) *MockKeysSDK_GetKey_Call {
 	return &MockKeysSDK_GetKey_Call{Call: _e.mock.On("GetKey",
-		append([]any{ctx, keyID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockKeysSDK_GetKey_Call) Run(run func(ctx context.Context, keyID string, controlPlaneID string, opts ...operations.Option)) *MockKeysSDK_GetKey_Call {
+func (_c *MockKeysSDK_GetKey_Call) Run(run func(ctx context.Context, request operations.GetKeyRequest, opts ...operations.Option)) *MockKeysSDK_GetKey_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetKeyRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetKeyRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -476,7 +457,7 @@ func (_c *MockKeysSDK_GetKey_Call) Return(getKeyResponse *operations.GetKeyRespo
 	return _c
 }
 
-func (_c *MockKeysSDK_GetKey_Call) RunAndReturn(run func(ctx context.Context, keyID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeyResponse, error)) *MockKeysSDK_GetKey_Call {
+func (_c *MockKeysSDK_GetKey_Call) RunAndReturn(run func(ctx context.Context, request operations.GetKeyRequest, opts ...operations.Option) (*operations.GetKeyResponse, error)) *MockKeysSDK_GetKey_Call {
 	_c.Call.Return(run)
 	return _c
 }

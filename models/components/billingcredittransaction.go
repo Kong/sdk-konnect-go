@@ -46,7 +46,8 @@ func (b *BillingCreditTransactionCustomCurrency) GetID() string {
 	return b.ID
 }
 
-// AvailableBalance - The available balance before and after the transaction.
+// AvailableBalance - The booked credit balance before and after the transaction, including
+// credit-only advance debt.
 type AvailableBalance struct {
 	// Numeric represents an arbitrary precision number.
 	Before string `json:"before"`
@@ -101,7 +102,8 @@ type BillingCreditTransaction struct {
 	// Signed amount of the credit movement. Positive values add balance, negative
 	// values reduce balance.
 	Amount string `json:"amount"`
-	// The available balance before and after the transaction.
+	// The booked credit balance before and after the transaction, including
+	// credit-only advance debt.
 	AvailableBalance AvailableBalance `json:"available_balance"`
 }
 

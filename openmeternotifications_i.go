@@ -11,34 +11,34 @@ import (
 
 // OpenMeterNotificationsSDK is a generated interface.
 type OpenMeterNotificationsSDK interface {
-	// ListNotificationChannels - List notification channels
+	// ListBillingNotificationChannels - List notification channels
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// List all notification channels.
-	ListNotificationChannels(ctx context.Context, request operations.ListNotificationChannelsRequest, opts ...operations.Option) (*operations.ListNotificationChannelsResponse, error)
-	// CreateNotificationChannel - Create notification channel
+	ListBillingNotificationChannels(ctx context.Context, request operations.ListBillingNotificationChannelsRequest, opts ...operations.Option) (*operations.ListBillingNotificationChannelsResponse, error)
+	// CreateBillingNotificationChannel - Create notification channel
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Create a notification channel.
-	CreateNotificationChannel(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option) (*operations.CreateNotificationChannelResponse, error)
-	// GetNotificationChannel - Get notification channel
+	CreateBillingNotificationChannel(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option) (*operations.CreateBillingNotificationChannelResponse, error)
+	// GetBillingNotificationChannel - Get notification channel
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Get a notification channel by id.
-	GetNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.GetNotificationChannelResponse, error)
-	// UpdateNotificationChannel - Update notification channel
+	GetBillingNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.GetBillingNotificationChannelResponse, error)
+	// UpdateBillingNotificationChannel - Update notification channel
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Update a notification channel by id.
-	UpdateNotificationChannel(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option) (*operations.UpdateNotificationChannelResponse, error)
-	// DeleteNotificationChannel - Delete notification channel
+	UpdateBillingNotificationChannel(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option) (*operations.UpdateBillingNotificationChannelResponse, error)
+	// DeleteBillingNotificationChannel - Delete notification channel
 	// **Pre-release Endpoint**
 	// This endpoint is currently in beta and is subject to change.
 	//
 	// Delete a notification channel by id.
-	DeleteNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.DeleteNotificationChannelResponse, error)
+	DeleteBillingNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.DeleteBillingNotificationChannelResponse, error)
 }

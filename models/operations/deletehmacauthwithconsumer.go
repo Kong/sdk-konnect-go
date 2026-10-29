@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -14,6 +15,19 @@ type DeleteHmacAuthWithConsumerRequest struct {
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
 	// ID of the HMAC-auth credential to lookup
 	HMACAuthID string `pathParam:"style=simple,explode=false,name=HMACAuthId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeleteHmacAuthWithConsumerRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteHmacAuthWithConsumerRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeleteHmacAuthWithConsumerRequest) GetControlPlaneID() string {
@@ -35,6 +49,13 @@ func (d *DeleteHmacAuthWithConsumerRequest) GetHMACAuthID() string {
 		return ""
 	}
 	return d.HMACAuthID
+}
+
+func (d *DeleteHmacAuthWithConsumerRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeleteHmacAuthWithConsumerResponse struct {

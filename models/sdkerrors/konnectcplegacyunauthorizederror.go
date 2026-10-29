@@ -5,13 +5,22 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
 // KonnectCPLegacyUnauthorizedError - standard error
 type KonnectCPLegacyUnauthorizedError struct {
+	// The Kong error code for this failure. `3` indicates a validation
+	// error and `5` a missing resource.
+	//
+	Code *int64 `json:"code,omitempty"`
 	// A short summary of the problem.
 	//
 	Message *string `json:"message,omitempty"`
+	// The fields that caused the request to be rejected, when the failure
+	// is attributable to values in the request.
+	//
+	Details []components.KonnectCPLegacyErrorDetail `json:"details,omitempty"`
 }
 
 var _ error = &KonnectCPLegacyUnauthorizedError{}

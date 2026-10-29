@@ -5,40 +5,39 @@ package sdkkonnectgo
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // SNIsSDK is a generated interface.
 type SNIsSDK interface {
-	// ListSniWithCertificate - List all SNIs associated with a Certificate
-	// List all SNIs associated with a Certificate
+	// ListSniWithCertificate - List all SNIs associated with a Certificate in a workspace
+	// List all SNIs associated with a Certificate in a workspace
 	ListSniWithCertificate(ctx context.Context, request operations.ListSniWithCertificateRequest, opts ...operations.Option) (*operations.ListSniWithCertificateResponse, error)
-	// CreateSniWithCertificate - Create a new SNI associated with a Certificate
-	// Create a new SNI associated with a Certificate
+	// CreateSniWithCertificate - Create a new SNI associated with a Certificate in a workspace
+	// Create a new SNI associated with a Certificate in a workspace
 	CreateSniWithCertificate(ctx context.Context, request operations.CreateSniWithCertificateRequest, opts ...operations.Option) (*operations.CreateSniWithCertificateResponse, error)
-	// DeleteSniWithCertificate - Delete a an SNI associated with a Certificate
-	// Delete a an SNI associated with a Certificate using ID or name.
+	// DeleteSniWithCertificate - Delete a an SNI associated with a Certificate in a workspace
+	// Delete a an SNI associated with a Certificate using ID or name in a workspace.
 	DeleteSniWithCertificate(ctx context.Context, request operations.DeleteSniWithCertificateRequest, opts ...operations.Option) (*operations.DeleteSniWithCertificateResponse, error)
-	// GetSniWithCertificate - Get an SNI associated with a Certificate
-	// Get an SNI associated with a Certificate using ID or name.
+	// GetSniWithCertificate - Get an SNI associated with a Certificate in a workspace
+	// Get an SNI associated with a Certificate using ID or name in a workspace.
 	GetSniWithCertificate(ctx context.Context, request operations.GetSniWithCertificateRequest, opts ...operations.Option) (*operations.GetSniWithCertificateResponse, error)
-	// UpsertSniWithCertificate - Upsert an SNI associated with a Certificate
-	// Create or Update an SNI associated with a Certificate using ID or name.
+	// UpsertSniWithCertificate - Upsert an SNI associated with a Certificate in a workspace
+	// Create or Update an SNI associated with a Certificate using ID or name in a workspace.
 	UpsertSniWithCertificate(ctx context.Context, request operations.UpsertSniWithCertificateRequest, opts ...operations.Option) (*operations.UpsertSniWithCertificateResponse, error)
-	// ListSni - List all SNIs
-	// List all SNIs
+	// ListSni - List all SNIs in a workspace
+	// List all SNIs in a workspace
 	ListSni(ctx context.Context, request operations.ListSniRequest, opts ...operations.Option) (*operations.ListSniResponse, error)
-	// CreateSni - Create a new SNI
-	// Create a new SNI
-	CreateSni(ctx context.Context, controlPlaneID string, sni components.Sni, opts ...operations.Option) (*operations.CreateSniResponse, error)
-	// DeleteSni - Delete an SNI
-	// Delete an SNI
-	DeleteSni(ctx context.Context, controlPlaneID string, sniID string, opts ...operations.Option) (*operations.DeleteSniResponse, error)
-	// GetSni - Get an SNI
-	// Get an SNI using ID or name.
-	GetSni(ctx context.Context, sniID string, controlPlaneID string, opts ...operations.Option) (*operations.GetSniResponse, error)
-	// UpsertSni - Upsert a SNI
-	// Create or Update SNI using ID or name.
+	// CreateSni - Create a new SNI in a workspace
+	// Create a new SNI in a workspace
+	CreateSni(ctx context.Context, request operations.CreateSniRequest, opts ...operations.Option) (*operations.CreateSniResponse, error)
+	// DeleteSni - Delete an SNI in a workspace
+	// Delete an SNI in a workspace
+	DeleteSni(ctx context.Context, request operations.DeleteSniRequest, opts ...operations.Option) (*operations.DeleteSniResponse, error)
+	// GetSni - Get an SNI in a workspace
+	// Get an SNI using ID or name in a workspace.
+	GetSni(ctx context.Context, request operations.GetSniRequest, opts ...operations.Option) (*operations.GetSniResponse, error)
+	// UpsertSni - Upsert a SNI in a workspace
+	// Create or Update SNI using ID or name in a workspace.
 	UpsertSni(ctx context.Context, request operations.UpsertSniRequest, opts ...operations.Option) (*operations.UpsertSniResponse, error)
 }

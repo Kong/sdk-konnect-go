@@ -5,25 +5,24 @@ package sdkkonnectgo
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // ServicesSDK is a generated interface.
 type ServicesSDK interface {
-	// ListService - List all Services
-	// List all Services
+	// ListService - List all Services in a workspace
+	// List all Services in a workspace
 	ListService(ctx context.Context, request operations.ListServiceRequest, opts ...operations.Option) (*operations.ListServiceResponse, error)
-	// CreateService - Create a new Service
-	// Create a new Service
-	CreateService(ctx context.Context, controlPlaneID string, serviceRequest components.ServiceRequest, opts ...operations.Option) (*operations.CreateServiceResponse, error)
-	// DeleteService - Delete a Service
-	// Delete a Service
-	DeleteService(ctx context.Context, controlPlaneID string, serviceID string, opts ...operations.Option) (*operations.DeleteServiceResponse, error)
-	// GetService - Get a Service
-	// Get a Service using ID or name.
-	GetService(ctx context.Context, serviceID string, controlPlaneID string, opts ...operations.Option) (*operations.GetServiceResponse, error)
-	// UpsertService - Upsert a Service
-	// Create or Update Service using ID or name.
+	// CreateService - Create a new Service in a workspace
+	// Create a new Service in a workspace
+	CreateService(ctx context.Context, request operations.CreateServiceRequest, opts ...operations.Option) (*operations.CreateServiceResponse, error)
+	// DeleteService - Delete a Service in a workspace
+	// Delete a Service in a workspace
+	DeleteService(ctx context.Context, request operations.DeleteServiceRequest, opts ...operations.Option) (*operations.DeleteServiceResponse, error)
+	// GetService - Get a Service in a workspace
+	// Get a Service using ID or name in a workspace.
+	GetService(ctx context.Context, request operations.GetServiceRequest, opts ...operations.Option) (*operations.GetServiceResponse, error)
+	// UpsertService - Upsert a Service in a workspace
+	// Create or Update Service using ID or name in a workspace.
 	UpsertService(ctx context.Context, request operations.UpsertServiceRequest, opts ...operations.Option) (*operations.UpsertServiceResponse, error)
 }

@@ -5,88 +5,87 @@ package sdkkonnectgo
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // PluginsSDK is a generated interface.
 type PluginsSDK interface {
-	// ListPluginWithConsumerGroup - List all Plugins associated with a Consumer Group
-	// List all Plugins associated with a Consumer Group
+	// ListPluginWithConsumerGroup - List all Plugins associated with a Consumer Group in a workspace
+	// List all Plugins associated with a Consumer Group in a workspace
 	ListPluginWithConsumerGroup(ctx context.Context, request operations.ListPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerGroupResponse, error)
-	// CreatePluginWithConsumerGroup - Create a new Plugin associated with a Consumer Group
-	// Create a new Plugin associated with a Consumer Group
+	// CreatePluginWithConsumerGroup - Create a new Plugin associated with a Consumer Group in a workspace
+	// Create a new Plugin associated with a Consumer Group in a workspace
 	CreatePluginWithConsumerGroup(ctx context.Context, request operations.CreatePluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerGroupResponse, error)
-	// DeletePluginWithConsumerGroup - Delete a a Plugin associated with a Consumer Group
-	// Delete a a Plugin associated with a Consumer Group using ID.
+	// DeletePluginWithConsumerGroup - Delete a a Plugin associated with a Consumer Group in a workspace
+	// Delete a a Plugin associated with a Consumer Group using ID in a workspace.
 	DeletePluginWithConsumerGroup(ctx context.Context, request operations.DeletePluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerGroupResponse, error)
-	// GetPluginWithConsumerGroup - Get a Plugin associated with a Consumer Group
-	// Get a Plugin associated with a Consumer Group using ID.
+	// GetPluginWithConsumerGroup - Get a Plugin associated with a Consumer Group in a workspace
+	// Get a Plugin associated with a Consumer Group using ID in a workspace.
 	GetPluginWithConsumerGroup(ctx context.Context, request operations.GetPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerGroupResponse, error)
-	// UpsertPluginWithConsumerGroup - Upsert a Plugin associated with a Consumer Group
-	// Create or Update a Plugin associated with a Consumer Group using ID.
+	// UpsertPluginWithConsumerGroup - Upsert a Plugin associated with a Consumer Group in a workspace
+	// Create or Update a Plugin associated with a Consumer Group using ID in a workspace.
 	UpsertPluginWithConsumerGroup(ctx context.Context, request operations.UpsertPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerGroupResponse, error)
-	// ListPluginWithConsumer - List all Plugins associated with a Consumer
-	// List all Plugins associated with a Consumer
+	// ListPluginWithConsumer - List all Plugins associated with a Consumer in a workspace
+	// List all Plugins associated with a Consumer in a workspace
 	ListPluginWithConsumer(ctx context.Context, request operations.ListPluginWithConsumerRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerResponse, error)
-	// CreatePluginWithConsumer - Create a new Plugin associated with a Consumer
-	// Create a new Plugin associated with a Consumer
+	// CreatePluginWithConsumer - Create a new Plugin associated with a Consumer in a workspace
+	// Create a new Plugin associated with a Consumer in a workspace
 	CreatePluginWithConsumer(ctx context.Context, request operations.CreatePluginWithConsumerRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerResponse, error)
-	// DeletePluginWithConsumer - Delete a a Plugin associated with a Consumer
-	// Delete a a Plugin associated with a Consumer using ID.
+	// DeletePluginWithConsumer - Delete a a Plugin associated with a Consumer in a workspace
+	// Delete a a Plugin associated with a Consumer using ID in a workspace.
 	DeletePluginWithConsumer(ctx context.Context, request operations.DeletePluginWithConsumerRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerResponse, error)
-	// GetPluginWithConsumer - Get a Plugin associated with a Consumer
-	// Get a Plugin associated with a Consumer using ID.
+	// GetPluginWithConsumer - Get a Plugin associated with a Consumer in a workspace
+	// Get a Plugin associated with a Consumer using ID in a workspace.
 	GetPluginWithConsumer(ctx context.Context, request operations.GetPluginWithConsumerRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerResponse, error)
-	// UpsertPluginWithConsumer - Upsert a Plugin associated with a Consumer
-	// Create or Update a Plugin associated with a Consumer using ID.
+	// UpsertPluginWithConsumer - Upsert a Plugin associated with a Consumer in a workspace
+	// Create or Update a Plugin associated with a Consumer using ID in a workspace.
 	UpsertPluginWithConsumer(ctx context.Context, request operations.UpsertPluginWithConsumerRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerResponse, error)
-	// ListPlugin - List all Plugins
-	// List all Plugins
+	// ListPlugin - List all Plugins in a workspace
+	// List all Plugins in a workspace
 	ListPlugin(ctx context.Context, request operations.ListPluginRequest, opts ...operations.Option) (*operations.ListPluginResponse, error)
-	// CreatePlugin - Create a new Plugin
-	// Create a new Plugin
-	CreatePlugin(ctx context.Context, controlPlaneID string, plugin components.Plugin, opts ...operations.Option) (*operations.CreatePluginResponse, error)
-	// DeletePlugin - Delete a Plugin
-	// Delete a Plugin
-	DeletePlugin(ctx context.Context, controlPlaneID string, pluginID string, opts ...operations.Option) (*operations.DeletePluginResponse, error)
-	// GetPlugin - Get a Plugin
-	// Get a Plugin using ID.
+	// CreatePlugin - Create a new Plugin in a workspace
+	// Create a new Plugin in a workspace
+	CreatePlugin(ctx context.Context, request operations.CreatePluginRequest, opts ...operations.Option) (*operations.CreatePluginResponse, error)
+	// DeletePlugin - Delete a Plugin in a workspace
+	// Delete a Plugin in a workspace
+	DeletePlugin(ctx context.Context, request operations.DeletePluginRequest, opts ...operations.Option) (*operations.DeletePluginResponse, error)
+	// GetPlugin - Get a Plugin in a workspace
+	// Get a Plugin using ID in a workspace.
 	GetPlugin(ctx context.Context, request operations.GetPluginRequest, opts ...operations.Option) (*operations.GetPluginResponse, error)
-	// UpsertPlugin - Upsert a Plugin
-	// Create or Update Plugin using ID.
+	// UpsertPlugin - Upsert a Plugin in a workspace
+	// Create or Update Plugin using ID in a workspace.
 	UpsertPlugin(ctx context.Context, request operations.UpsertPluginRequest, opts ...operations.Option) (*operations.UpsertPluginResponse, error)
-	// ListPluginWithRoute - List all Plugins associated with a Route
-	// List all Plugins associated with a Route
+	// ListPluginWithRoute - List all Plugins associated with a Route in a workspace
+	// List all Plugins associated with a Route in a workspace
 	ListPluginWithRoute(ctx context.Context, request operations.ListPluginWithRouteRequest, opts ...operations.Option) (*operations.ListPluginWithRouteResponse, error)
-	// CreatePluginWithRoute - Create a new Plugin associated with a Route
-	// Create a new Plugin associated with a Route
+	// CreatePluginWithRoute - Create a new Plugin associated with a Route in a workspace
+	// Create a new Plugin associated with a Route in a workspace
 	CreatePluginWithRoute(ctx context.Context, request operations.CreatePluginWithRouteRequest, opts ...operations.Option) (*operations.CreatePluginWithRouteResponse, error)
-	// DeletePluginWithRoute - Delete a a Plugin associated with a Route
-	// Delete a a Plugin associated with a Route using ID.
+	// DeletePluginWithRoute - Delete a a Plugin associated with a Route in a workspace
+	// Delete a a Plugin associated with a Route using ID in a workspace.
 	DeletePluginWithRoute(ctx context.Context, request operations.DeletePluginWithRouteRequest, opts ...operations.Option) (*operations.DeletePluginWithRouteResponse, error)
-	// GetPluginWithRoute - Get a Plugin associated with a Route
-	// Get a Plugin associated with a Route using ID.
+	// GetPluginWithRoute - Get a Plugin associated with a Route in a workspace
+	// Get a Plugin associated with a Route using ID in a workspace.
 	GetPluginWithRoute(ctx context.Context, request operations.GetPluginWithRouteRequest, opts ...operations.Option) (*operations.GetPluginWithRouteResponse, error)
-	// UpsertPluginWithRoute - Upsert a Plugin associated with a Route
-	// Create or Update a Plugin associated with a Route using ID.
+	// UpsertPluginWithRoute - Upsert a Plugin associated with a Route in a workspace
+	// Create or Update a Plugin associated with a Route using ID in a workspace.
 	UpsertPluginWithRoute(ctx context.Context, request operations.UpsertPluginWithRouteRequest, opts ...operations.Option) (*operations.UpsertPluginWithRouteResponse, error)
+	// ListPluginWithService - List all Plugins associated with a Service in a workspace
+	// List all Plugins associated with a Service in a workspace
+	ListPluginWithService(ctx context.Context, request operations.ListPluginWithServiceRequest, opts ...operations.Option) (*operations.ListPluginWithServiceResponse, error)
+	// CreatePluginWithService - Create a new Plugin associated with a Service in a workspace
+	// Create a new Plugin associated with a Service in a workspace
+	CreatePluginWithService(ctx context.Context, request operations.CreatePluginWithServiceRequest, opts ...operations.Option) (*operations.CreatePluginWithServiceResponse, error)
+	// DeletePluginWithService - Delete a a Plugin associated with a Service in a workspace
+	// Delete a a Plugin associated with a Service using ID in a workspace.
+	DeletePluginWithService(ctx context.Context, request operations.DeletePluginWithServiceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceResponse, error)
+	// GetPluginWithService - Get a Plugin associated with a Service in a workspace
+	// Get a Plugin associated with a Service using ID in a workspace.
+	GetPluginWithService(ctx context.Context, request operations.GetPluginWithServiceRequest, opts ...operations.Option) (*operations.GetPluginWithServiceResponse, error)
+	// UpsertPluginWithService - Upsert a Plugin associated with a Service in a workspace
+	// Create or Update a Plugin associated with a Service using ID in a workspace.
+	UpsertPluginWithService(ctx context.Context, request operations.UpsertPluginWithServiceRequest, opts ...operations.Option) (*operations.UpsertPluginWithServiceResponse, error)
 	// FetchPluginSchema - Get plugin schema
 	// Get the schema for a plugin
 	FetchPluginSchema(ctx context.Context, pluginName string, controlPlaneID string, opts ...operations.Option) (*operations.FetchPluginSchemaResponse, error)
-	// ListPluginWithService - List all Plugins associated with a Service
-	// List all Plugins associated with a Service
-	ListPluginWithService(ctx context.Context, request operations.ListPluginWithServiceRequest, opts ...operations.Option) (*operations.ListPluginWithServiceResponse, error)
-	// CreatePluginWithService - Create a new Plugin associated with a Service
-	// Create a new Plugin associated with a Service
-	CreatePluginWithService(ctx context.Context, request operations.CreatePluginWithServiceRequest, opts ...operations.Option) (*operations.CreatePluginWithServiceResponse, error)
-	// DeletePluginWithService - Delete a a Plugin associated with a Service
-	// Delete a a Plugin associated with a Service using ID.
-	DeletePluginWithService(ctx context.Context, request operations.DeletePluginWithServiceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceResponse, error)
-	// GetPluginWithService - Get a Plugin associated with a Service
-	// Get a Plugin associated with a Service using ID.
-	GetPluginWithService(ctx context.Context, request operations.GetPluginWithServiceRequest, opts ...operations.Option) (*operations.GetPluginWithServiceResponse, error)
-	// UpsertPluginWithService - Upsert a Plugin associated with a Service
-	// Create or Update a Plugin associated with a Service using ID.
-	UpsertPluginWithService(ctx context.Context, request operations.UpsertPluginWithServiceRequest, opts ...operations.Option) (*operations.UpsertPluginWithServiceResponse, error)
 }

@@ -7,7 +7,6 @@ package mocks
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -49,12 +48,12 @@ func (_m *MockVaultsSDK) EXPECT() *MockVaultsSDK_Expecter {
 }
 
 // CreateVault provides a mock function for the type MockVaultsSDK
-func (_mock *MockVaultsSDK) CreateVault(ctx context.Context, controlPlaneID string, vault components.Vault, opts ...operations.Option) (*operations.CreateVaultResponse, error) {
+func (_mock *MockVaultsSDK) CreateVault(ctx context.Context, request operations.CreateVaultRequest, opts ...operations.Option) (*operations.CreateVaultResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, vault, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, vault)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -64,18 +63,18 @@ func (_mock *MockVaultsSDK) CreateVault(ctx context.Context, controlPlaneID stri
 
 	var r0 *operations.CreateVaultResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Vault, ...operations.Option) (*operations.CreateVaultResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, vault, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateVaultRequest, ...operations.Option) (*operations.CreateVaultResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Vault, ...operations.Option) *operations.CreateVaultResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, vault, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateVaultRequest, ...operations.Option) *operations.CreateVaultResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.CreateVaultResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.Vault, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, vault, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateVaultRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -89,39 +88,33 @@ type MockVaultsSDK_CreateVault_Call struct {
 
 // CreateVault is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - vault components.Vault
+//   - request operations.CreateVaultRequest
 //   - opts ...operations.Option
-func (_e *MockVaultsSDK_Expecter) CreateVault(ctx any, controlPlaneID any, vault any, opts ...any) *MockVaultsSDK_CreateVault_Call {
+func (_e *MockVaultsSDK_Expecter) CreateVault(ctx any, request any, opts ...any) *MockVaultsSDK_CreateVault_Call {
 	return &MockVaultsSDK_CreateVault_Call{Call: _e.mock.On("CreateVault",
-		append([]any{ctx, controlPlaneID, vault}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockVaultsSDK_CreateVault_Call) Run(run func(ctx context.Context, controlPlaneID string, vault components.Vault, opts ...operations.Option)) *MockVaultsSDK_CreateVault_Call {
+func (_c *MockVaultsSDK_CreateVault_Call) Run(run func(ctx context.Context, request operations.CreateVaultRequest, opts ...operations.Option)) *MockVaultsSDK_CreateVault_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.CreateVaultRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.CreateVaultRequest)
 		}
-		var arg2 components.Vault
-		if args[2] != nil {
-			arg2 = args[2].(components.Vault)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -132,18 +125,18 @@ func (_c *MockVaultsSDK_CreateVault_Call) Return(createVaultResponse *operations
 	return _c
 }
 
-func (_c *MockVaultsSDK_CreateVault_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, vault components.Vault, opts ...operations.Option) (*operations.CreateVaultResponse, error)) *MockVaultsSDK_CreateVault_Call {
+func (_c *MockVaultsSDK_CreateVault_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateVaultRequest, opts ...operations.Option) (*operations.CreateVaultResponse, error)) *MockVaultsSDK_CreateVault_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // DeleteVault provides a mock function for the type MockVaultsSDK
-func (_mock *MockVaultsSDK) DeleteVault(ctx context.Context, controlPlaneID string, vaultID string, opts ...operations.Option) (*operations.DeleteVaultResponse, error) {
+func (_mock *MockVaultsSDK) DeleteVault(ctx context.Context, request operations.DeleteVaultRequest, opts ...operations.Option) (*operations.DeleteVaultResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, vaultID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, vaultID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -153,18 +146,18 @@ func (_mock *MockVaultsSDK) DeleteVault(ctx context.Context, controlPlaneID stri
 
 	var r0 *operations.DeleteVaultResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.DeleteVaultResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, vaultID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteVaultRequest, ...operations.Option) (*operations.DeleteVaultResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.DeleteVaultResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, vaultID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteVaultRequest, ...operations.Option) *operations.DeleteVaultResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.DeleteVaultResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, vaultID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteVaultRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -178,39 +171,33 @@ type MockVaultsSDK_DeleteVault_Call struct {
 
 // DeleteVault is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - vaultID string
+//   - request operations.DeleteVaultRequest
 //   - opts ...operations.Option
-func (_e *MockVaultsSDK_Expecter) DeleteVault(ctx any, controlPlaneID any, vaultID any, opts ...any) *MockVaultsSDK_DeleteVault_Call {
+func (_e *MockVaultsSDK_Expecter) DeleteVault(ctx any, request any, opts ...any) *MockVaultsSDK_DeleteVault_Call {
 	return &MockVaultsSDK_DeleteVault_Call{Call: _e.mock.On("DeleteVault",
-		append([]any{ctx, controlPlaneID, vaultID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockVaultsSDK_DeleteVault_Call) Run(run func(ctx context.Context, controlPlaneID string, vaultID string, opts ...operations.Option)) *MockVaultsSDK_DeleteVault_Call {
+func (_c *MockVaultsSDK_DeleteVault_Call) Run(run func(ctx context.Context, request operations.DeleteVaultRequest, opts ...operations.Option)) *MockVaultsSDK_DeleteVault_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.DeleteVaultRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.DeleteVaultRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -221,18 +208,18 @@ func (_c *MockVaultsSDK_DeleteVault_Call) Return(deleteVaultResponse *operations
 	return _c
 }
 
-func (_c *MockVaultsSDK_DeleteVault_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, vaultID string, opts ...operations.Option) (*operations.DeleteVaultResponse, error)) *MockVaultsSDK_DeleteVault_Call {
+func (_c *MockVaultsSDK_DeleteVault_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteVaultRequest, opts ...operations.Option) (*operations.DeleteVaultResponse, error)) *MockVaultsSDK_DeleteVault_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // GetVault provides a mock function for the type MockVaultsSDK
-func (_mock *MockVaultsSDK) GetVault(ctx context.Context, vaultID string, controlPlaneID string, opts ...operations.Option) (*operations.GetVaultResponse, error) {
+func (_mock *MockVaultsSDK) GetVault(ctx context.Context, request operations.GetVaultRequest, opts ...operations.Option) (*operations.GetVaultResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, vaultID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, vaultID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -242,18 +229,18 @@ func (_mock *MockVaultsSDK) GetVault(ctx context.Context, vaultID string, contro
 
 	var r0 *operations.GetVaultResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetVaultResponse, error)); ok {
-		return returnFunc(ctx, vaultID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetVaultRequest, ...operations.Option) (*operations.GetVaultResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetVaultResponse); ok {
-		r0 = returnFunc(ctx, vaultID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetVaultRequest, ...operations.Option) *operations.GetVaultResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetVaultResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, vaultID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetVaultRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -267,39 +254,33 @@ type MockVaultsSDK_GetVault_Call struct {
 
 // GetVault is a helper method to define mock.On call
 //   - ctx context.Context
-//   - vaultID string
-//   - controlPlaneID string
+//   - request operations.GetVaultRequest
 //   - opts ...operations.Option
-func (_e *MockVaultsSDK_Expecter) GetVault(ctx any, vaultID any, controlPlaneID any, opts ...any) *MockVaultsSDK_GetVault_Call {
+func (_e *MockVaultsSDK_Expecter) GetVault(ctx any, request any, opts ...any) *MockVaultsSDK_GetVault_Call {
 	return &MockVaultsSDK_GetVault_Call{Call: _e.mock.On("GetVault",
-		append([]any{ctx, vaultID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockVaultsSDK_GetVault_Call) Run(run func(ctx context.Context, vaultID string, controlPlaneID string, opts ...operations.Option)) *MockVaultsSDK_GetVault_Call {
+func (_c *MockVaultsSDK_GetVault_Call) Run(run func(ctx context.Context, request operations.GetVaultRequest, opts ...operations.Option)) *MockVaultsSDK_GetVault_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetVaultRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetVaultRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -310,7 +291,7 @@ func (_c *MockVaultsSDK_GetVault_Call) Return(getVaultResponse *operations.GetVa
 	return _c
 }
 
-func (_c *MockVaultsSDK_GetVault_Call) RunAndReturn(run func(ctx context.Context, vaultID string, controlPlaneID string, opts ...operations.Option) (*operations.GetVaultResponse, error)) *MockVaultsSDK_GetVault_Call {
+func (_c *MockVaultsSDK_GetVault_Call) RunAndReturn(run func(ctx context.Context, request operations.GetVaultRequest, opts ...operations.Option) (*operations.GetVaultResponse, error)) *MockVaultsSDK_GetVault_Call {
 	_c.Call.Return(run)
 	return _c
 }

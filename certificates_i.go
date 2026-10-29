@@ -5,25 +5,24 @@ package sdkkonnectgo
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // CertificatesSDK is a generated interface.
 type CertificatesSDK interface {
-	// ListCertificate - List all Certificates
-	// List all Certificates
+	// ListCertificate - List all Certificates in a workspace
+	// List all Certificates in a workspace
 	ListCertificate(ctx context.Context, request operations.ListCertificateRequest, opts ...operations.Option) (*operations.ListCertificateResponse, error)
-	// CreateCertificate - Create a new Certificate
-	// Create a new Certificate
-	CreateCertificate(ctx context.Context, controlPlaneID string, certificateRequest components.CertificateRequest, opts ...operations.Option) (*operations.CreateCertificateResponse, error)
-	// DeleteCertificate - Delete a Certificate
-	// Delete a Certificate
-	DeleteCertificate(ctx context.Context, controlPlaneID string, certificateID string, opts ...operations.Option) (*operations.DeleteCertificateResponse, error)
-	// GetCertificate - Get a Certificate
-	// Get a Certificate using ID.
-	GetCertificate(ctx context.Context, certificateID string, controlPlaneID string, opts ...operations.Option) (*operations.GetCertificateResponse, error)
-	// UpsertCertificate - Upsert a Certificate
-	// Create or Update Certificate using ID.
+	// CreateCertificate - Create a new Certificate in a workspace
+	// Create a new Certificate in a workspace
+	CreateCertificate(ctx context.Context, request operations.CreateCertificateRequest, opts ...operations.Option) (*operations.CreateCertificateResponse, error)
+	// DeleteCertificate - Delete a Certificate in a workspace
+	// Delete a Certificate in a workspace
+	DeleteCertificate(ctx context.Context, request operations.DeleteCertificateRequest, opts ...operations.Option) (*operations.DeleteCertificateResponse, error)
+	// GetCertificate - Get a Certificate in a workspace
+	// Get a Certificate using ID in a workspace.
+	GetCertificate(ctx context.Context, request operations.GetCertificateRequest, opts ...operations.Option) (*operations.GetCertificateResponse, error)
+	// UpsertCertificate - Upsert a Certificate in a workspace
+	// Create or Update Certificate using ID in a workspace.
 	UpsertCertificate(ctx context.Context, request operations.UpsertCertificateRequest, opts ...operations.Option) (*operations.UpsertCertificateResponse, error)
 }

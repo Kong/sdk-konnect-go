@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,8 +16,21 @@ type UpsertTargetWithUpstreamRequest struct {
 	UpstreamIDForTarget string `pathParam:"style=simple,explode=false,name=UpstreamIdForTarget"`
 	// ID of the Target to lookup
 	TargetID string `pathParam:"style=simple,explode=false,name=TargetId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Description of the Target
 	TargetWithoutParents components.TargetWithoutParents `request:"mediaType=application/json"`
+}
+
+func (u UpsertTargetWithUpstreamRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertTargetWithUpstreamRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpsertTargetWithUpstreamRequest) GetControlPlaneID() string {
@@ -38,6 +52,13 @@ func (u *UpsertTargetWithUpstreamRequest) GetTargetID() string {
 		return ""
 	}
 	return u.TargetID
+}
+
+func (u *UpsertTargetWithUpstreamRequest) GetWorkspace() string {
+	if u == nil {
+		return ""
+	}
+	return u.Workspace
 }
 
 func (u *UpsertTargetWithUpstreamRequest) GetTargetWithoutParents() components.TargetWithoutParents {

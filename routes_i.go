@@ -5,40 +5,39 @@ package sdkkonnectgo
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // RoutesSDK is a generated interface.
 type RoutesSDK interface {
-	// ListRoute - List all Routes
-	// List all Routes
+	// ListRoute - List all Routes in a workspace
+	// List all Routes in a workspace
 	ListRoute(ctx context.Context, request operations.ListRouteRequest, opts ...operations.Option) (*operations.ListRouteResponse, error)
-	// CreateRoute - Create a new Route
-	// Create a new Route
-	CreateRoute(ctx context.Context, controlPlaneID string, route components.Route, opts ...operations.Option) (*operations.CreateRouteResponse, error)
-	// DeleteRoute - Delete a Route
-	// Delete a Route
-	DeleteRoute(ctx context.Context, controlPlaneID string, routeID string, opts ...operations.Option) (*operations.DeleteRouteResponse, error)
-	// GetRoute - Get a Route
-	// Get a Route using ID or name.
-	GetRoute(ctx context.Context, routeID string, controlPlaneID string, opts ...operations.Option) (*operations.GetRouteResponse, error)
-	// UpsertRoute - Upsert a Route
-	// Create or Update Route using ID or name.
+	// CreateRoute - Create a new Route in a workspace
+	// Create a new Route in a workspace
+	CreateRoute(ctx context.Context, request operations.CreateRouteRequest, opts ...operations.Option) (*operations.CreateRouteResponse, error)
+	// DeleteRoute - Delete a Route in a workspace
+	// Delete a Route in a workspace
+	DeleteRoute(ctx context.Context, request operations.DeleteRouteRequest, opts ...operations.Option) (*operations.DeleteRouteResponse, error)
+	// GetRoute - Get a Route in a workspace
+	// Get a Route using ID or name in a workspace.
+	GetRoute(ctx context.Context, request operations.GetRouteRequest, opts ...operations.Option) (*operations.GetRouteResponse, error)
+	// UpsertRoute - Upsert a Route in a workspace
+	// Create or Update Route using ID or name in a workspace.
 	UpsertRoute(ctx context.Context, request operations.UpsertRouteRequest, opts ...operations.Option) (*operations.UpsertRouteResponse, error)
-	// ListRouteWithService - List all Routes associated with a Service
-	// List all Routes associated with a Service
+	// ListRouteWithService - List all Routes associated with a Service in a workspace
+	// List all Routes associated with a Service in a workspace
 	ListRouteWithService(ctx context.Context, request operations.ListRouteWithServiceRequest, opts ...operations.Option) (*operations.ListRouteWithServiceResponse, error)
-	// CreateRouteWithService - Create a new Route associated with a Service
-	// Create a new Route associated with a Service
+	// CreateRouteWithService - Create a new Route associated with a Service in a workspace
+	// Create a new Route associated with a Service in a workspace
 	CreateRouteWithService(ctx context.Context, request operations.CreateRouteWithServiceRequest, opts ...operations.Option) (*operations.CreateRouteWithServiceResponse, error)
-	// DeleteRouteWithService - Delete a a Route associated with a Service
-	// Delete a a Route associated with a Service using ID or name.
+	// DeleteRouteWithService - Delete a a Route associated with a Service in a workspace
+	// Delete a a Route associated with a Service using ID or name in a workspace.
 	DeleteRouteWithService(ctx context.Context, request operations.DeleteRouteWithServiceRequest, opts ...operations.Option) (*operations.DeleteRouteWithServiceResponse, error)
-	// GetRouteWithService - Get a Route associated with a Service
-	// Get a Route associated with a Service using ID or name.
+	// GetRouteWithService - Get a Route associated with a Service in a workspace
+	// Get a Route associated with a Service using ID or name in a workspace.
 	GetRouteWithService(ctx context.Context, request operations.GetRouteWithServiceRequest, opts ...operations.Option) (*operations.GetRouteWithServiceResponse, error)
-	// UpsertRouteWithService - Upsert a Route associated with a Service
-	// Create or Update a Route associated with a Service using ID or name.
+	// UpsertRouteWithService - Upsert a Route associated with a Service in a workspace
+	// Create or Update a Route associated with a Service using ID or name in a workspace.
 	UpsertRouteWithService(ctx context.Context, request operations.UpsertRouteWithServiceRequest, opts ...operations.Option) (*operations.UpsertRouteWithServiceResponse, error)
 }

@@ -8,23 +8,23 @@ You can either rely on Kong Gateway as the primary datastore, or you can map the
 
 ### Available Operations
 
-* [ListConsumer](#listconsumer) - List all Consumers
-* [CreateConsumer](#createconsumer) - Create a new Consumer
-* [DeleteConsumer](#deleteconsumer) - Delete a Consumer
-* [GetConsumer](#getconsumer) - Get a Consumer
-* [UpsertConsumer](#upsertconsumer) - Upsert a Consumer
-* [RemoveConsumerFromAllConsumerGroups](#removeconsumerfromallconsumergroups) - Remove consumer from all consumer groups
-* [ListConsumerGroupsForConsumer](#listconsumergroupsforconsumer) - List all Consumer Groups a Consumer belongs to
-* [AddConsumerToSpecificConsumerGroup](#addconsumertospecificconsumergroup) - Add consumer to a specific consumer group
-* [RemoveConsumerFromConsumerGroup](#removeconsumerfromconsumergroup) - Remove consumer from consumer group
+* [ListConsumer](#listconsumer) - List all Consumers in a workspace
+* [CreateConsumer](#createconsumer) - Create a new Consumer in a workspace
+* [DeleteConsumer](#deleteconsumer) - Delete a Consumer in a workspace
+* [GetConsumer](#getconsumer) - Get a Consumer in a workspace
+* [UpsertConsumer](#upsertconsumer) - Upsert a Consumer in a workspace
+* [RemoveConsumerFromAllConsumerGroups](#removeconsumerfromallconsumergroups) - Remove consumer from all consumer groups in a workspace
+* [ListConsumerGroupsForConsumer](#listconsumergroupsforconsumer) - List all Consumer Groups a Consumer belongs to in a workspace
+* [AddConsumerToSpecificConsumerGroup](#addconsumertospecificconsumergroup) - Add consumer to a specific consumer group in a workspace
+* [RemoveConsumerFromConsumerGroup](#removeconsumerfromconsumergroup) - Remove consumer from consumer group in a workspace
 
 ## ListConsumer
 
-List all Consumers
+List all Consumers in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" -->
+<!-- UsageSnippet language="go" operationID="list-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers" -->
 ```go
 package main
 
@@ -48,6 +48,7 @@ func main() {
     res, err := s.Consumers.ListConsumer(ctx, operations.ListConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
         CustomID: sdkkonnectgo.Pointer("my-custom-id"),
         FilterNameContains: sdkkonnectgo.Pointer("john"),
         FilterNameEq: sdkkonnectgo.Pointer("john"),
@@ -82,11 +83,11 @@ func main() {
 
 ## CreateConsumer
 
-Create a new Consumer
+Create a new Consumer in a workspace
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -94,6 +95,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -106,13 +108,17 @@ func main() {
         }),
     )
 
-    res, err := s.Consumers.CreateConsumer(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Consumer{
-        CustomID: sdkkonnectgo.Pointer("4200"),
-        ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
-        Tags: []string{
-            "silver-tier",
+    res, err := s.Consumers.CreateConsumer(ctx, operations.CreateConsumerRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Consumer: components.Consumer{
+            CustomID: sdkkonnectgo.Pointer("4200"),
+            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
+            Tags: []string{
+                "silver-tier",
+            },
+            Username: sdkkonnectgo.Pointer("bob-the-builder"),
         },
-        Username: sdkkonnectgo.Pointer("bob-the-builder"),
     })
     if err != nil {
         log.Fatal(err)
@@ -124,7 +130,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -132,6 +138,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -144,13 +151,17 @@ func main() {
         }),
     )
 
-    res, err := s.Consumers.CreateConsumer(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Consumer{
-        CustomID: sdkkonnectgo.Pointer("4200"),
-        ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
-        Tags: []string{
-            "silver-tier",
+    res, err := s.Consumers.CreateConsumer(ctx, operations.CreateConsumerRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Consumer: components.Consumer{
+            CustomID: sdkkonnectgo.Pointer("4200"),
+            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
+            Tags: []string{
+                "silver-tier",
+            },
+            Username: sdkkonnectgo.Pointer("bob-the-builder"),
         },
-        Username: sdkkonnectgo.Pointer("bob-the-builder"),
     })
     if err != nil {
         log.Fatal(err)
@@ -162,7 +173,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers" example="NoAPIKey" -->
 ```go
 package main
 
@@ -170,6 +181,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -182,13 +194,17 @@ func main() {
         }),
     )
 
-    res, err := s.Consumers.CreateConsumer(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Consumer{
-        CustomID: sdkkonnectgo.Pointer("4200"),
-        ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
-        Tags: []string{
-            "silver-tier",
+    res, err := s.Consumers.CreateConsumer(ctx, operations.CreateConsumerRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Consumer: components.Consumer{
+            CustomID: sdkkonnectgo.Pointer("4200"),
+            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
+            Tags: []string{
+                "silver-tier",
+            },
+            Username: sdkkonnectgo.Pointer("bob-the-builder"),
         },
-        Username: sdkkonnectgo.Pointer("bob-the-builder"),
     })
     if err != nil {
         log.Fatal(err)
@@ -201,12 +217,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     | Example                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                           | [context.Context](https://pkg.go.dev/context#Context)                                                                           | :heavy_check_mark:                                                                                                              | The context to use for the request.                                                                                             |                                                                                                                                 |
-| `controlPlaneID`                                                                                                                | `string`                                                                                                                        | :heavy_check_mark:                                                                                                              | The UUID of your control plane. This variable is available in the Konnect manager.                                              | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                            |
-| `consumer`                                                                                                                      | [components.Consumer](../../models/components/consumer.md)                                                                      | :heavy_check_mark:                                                                                                              | Description of the new Consumer for creation                                                                                    | {<br/>"custom_id": "4200",<br/>"id": "8a388226-80e8-4027-a486-25e4f7db5d21",<br/>"tags": [<br/>"silver-tier"<br/>],<br/>"username": "bob-the-builder"<br/>} |
-| `opts`                                                                                                                          | [][operations.Option](../../models/operations/option.md)                                                                        | :heavy_minus_sign:                                                                                                              | The options for this request.                                                                                                   |                                                                                                                                 |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [operations.CreateConsumerRequest](../../models/operations/createconsumerrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
 
 ### Response
 
@@ -221,11 +236,11 @@ func main() {
 
 ## DeleteConsumer
 
-Delete a Consumer
+Delete a Consumer in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" -->
+<!-- UsageSnippet language="go" operationID="delete-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}" -->
 ```go
 package main
 
@@ -233,6 +248,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -245,7 +261,11 @@ func main() {
         }),
     )
 
-    res, err := s.Consumers.DeleteConsumer(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "c1059869-6fa7-4329-a5f5-5946d14ca2c5")
+    res, err := s.Consumers.DeleteConsumer(ctx, operations.DeleteConsumerRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -257,12 +277,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `consumerID`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Consumer to lookup                                                       | c1059869-6fa7-4329-a5f5-5946d14ca2c5                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [operations.DeleteConsumerRequest](../../models/operations/deleteconsumerrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
 
 ### Response
 
@@ -277,11 +296,11 @@ func main() {
 
 ## GetConsumer
 
-Get a Consumer using ID or username.
+Get a Consumer using ID or username in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" -->
+<!-- UsageSnippet language="go" operationID="get-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}" -->
 ```go
 package main
 
@@ -289,6 +308,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -301,7 +321,11 @@ func main() {
         }),
     )
 
-    res, err := s.Consumers.GetConsumer(ctx, "c1059869-6fa7-4329-a5f5-5946d14ca2c5", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.Consumers.GetConsumer(ctx, operations.GetConsumerRequest{
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -313,12 +337,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `consumerID`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Consumer to lookup                                                       | c1059869-6fa7-4329-a5f5-5946d14ca2c5                                               |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.GetConsumerRequest](../../models/operations/getconsumerrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
 
 ### Response
 
@@ -333,11 +356,11 @@ func main() {
 
 ## UpsertConsumer
 
-Create or Update Consumer using ID or username.
+Create or Update Consumer using ID or username in a workspace.
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -361,6 +384,7 @@ func main() {
     res, err := s.Consumers.UpsertConsumer(ctx, operations.UpsertConsumerRequest{
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Consumer: components.Consumer{
             CustomID: sdkkonnectgo.Pointer("4200"),
             ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
@@ -380,7 +404,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -404,6 +428,7 @@ func main() {
     res, err := s.Consumers.UpsertConsumer(ctx, operations.UpsertConsumerRequest{
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Consumer: components.Consumer{
             CustomID: sdkkonnectgo.Pointer("4200"),
             ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
@@ -423,7 +448,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}" example="NoAPIKey" -->
 ```go
 package main
 
@@ -447,6 +472,7 @@ func main() {
     res, err := s.Consumers.UpsertConsumer(ctx, operations.UpsertConsumerRequest{
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Consumer: components.Consumer{
             CustomID: sdkkonnectgo.Pointer("4200"),
             ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
@@ -486,11 +512,11 @@ func main() {
 
 ## RemoveConsumerFromAllConsumerGroups
 
-Removes a consumer from all Consumer Groups. This operation does not delete the consumer group.
+Removes a consumer from all Consumer Groups. This operation does not delete the consumer group in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="remove-consumer-from-all-consumer-groups" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups" -->
+<!-- UsageSnippet language="go" operationID="remove-consumer-from-all-consumer-groups" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups" -->
 ```go
 package main
 
@@ -498,6 +524,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -510,7 +537,11 @@ func main() {
         }),
     )
 
-    res, err := s.Consumers.RemoveConsumerFromAllConsumerGroups(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "c1059869-6fa7-4329-a5f5-5946d14ca2c5")
+    res, err := s.Consumers.RemoveConsumerFromAllConsumerGroups(ctx, operations.RemoveConsumerFromAllConsumerGroupsRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -522,12 +553,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `consumerID`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Consumer to lookup                                                       | c1059869-6fa7-4329-a5f5-5946d14ca2c5                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
+| `request`                                                                                                                      | [operations.RemoveConsumerFromAllConsumerGroupsRequest](../../models/operations/removeconsumerfromallconsumergroupsrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
 
 ### Response
 
@@ -541,11 +571,11 @@ func main() {
 
 ## ListConsumerGroupsForConsumer
 
-List all Consumer Groups a Consumer belongs to
+List all Consumer Groups a Consumer belongs to in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-consumer-groups-for-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups" -->
+<!-- UsageSnippet language="go" operationID="list-consumer-groups-for-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups" -->
 ```go
 package main
 
@@ -570,6 +600,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -600,11 +631,11 @@ func main() {
 
 ## AddConsumerToSpecificConsumerGroup
 
-Add a consumer to a consumer group
+Add a consumer to a consumer group in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="add-consumer-to-specific-consumer-group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups" -->
+<!-- UsageSnippet language="go" operationID="add-consumer-to-specific-consumer-group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups" -->
 ```go
 package main
 
@@ -628,6 +659,7 @@ func main() {
     res, err := s.Consumers.AddConsumerToSpecificConsumerGroup(ctx, operations.AddConsumerToSpecificConsumerGroupRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        Workspace: "team-payments",
         RequestBody: &operations.AddConsumerToSpecificConsumerGroupRequestBody{
             Group: sdkkonnectgo.Pointer("fedee695-2ae2-4e45-877a-776d9b2fc793"),
         },
@@ -661,11 +693,11 @@ func main() {
 
 ## RemoveConsumerFromConsumerGroup
 
-Removes a consumer from a Consumer Group. This operation does not delete the consumer group.
+Removes a consumer from a Consumer Group. This operation does not delete the consumer group in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="remove-consumer-from-consumer-group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}" -->
+<!-- UsageSnippet language="go" operationID="remove-consumer-from-consumer-group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}" -->
 ```go
 package main
 
@@ -690,6 +722,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         ConsumerGroupID: "",
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)

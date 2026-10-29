@@ -48,8 +48,8 @@ func (_m *MockOpenMeterNotificationsSDK) EXPECT() *MockOpenMeterNotificationsSDK
 	return &MockOpenMeterNotificationsSDK_Expecter{mock: &_m.Mock}
 }
 
-// CreateNotificationChannel provides a mock function for the type MockOpenMeterNotificationsSDK
-func (_mock *MockOpenMeterNotificationsSDK) CreateNotificationChannel(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option) (*operations.CreateNotificationChannelResponse, error) {
+// CreateBillingNotificationChannel provides a mock function for the type MockOpenMeterNotificationsSDK
+func (_mock *MockOpenMeterNotificationsSDK) CreateBillingNotificationChannel(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option) (*operations.CreateBillingNotificationChannelResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
 		tmpRet = _mock.Called(ctx, request, opts)
@@ -59,19 +59,19 @@ func (_mock *MockOpenMeterNotificationsSDK) CreateNotificationChannel(ctx contex
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateNotificationChannel")
+		panic("no return value specified for CreateBillingNotificationChannel")
 	}
 
-	var r0 *operations.CreateNotificationChannelResponse
+	var r0 *operations.CreateBillingNotificationChannelResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateNotificationChannelRequest, ...operations.Option) (*operations.CreateNotificationChannelResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateNotificationChannelRequest, ...operations.Option) (*operations.CreateBillingNotificationChannelResponse, error)); ok {
 		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateNotificationChannelRequest, ...operations.Option) *operations.CreateNotificationChannelResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateNotificationChannelRequest, ...operations.Option) *operations.CreateBillingNotificationChannelResponse); ok {
 		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.CreateNotificationChannelResponse)
+			r0 = ret.Get(0).(*operations.CreateBillingNotificationChannelResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, components.CreateNotificationChannelRequest, ...operations.Option) error); ok {
@@ -82,21 +82,21 @@ func (_mock *MockOpenMeterNotificationsSDK) CreateNotificationChannel(ctx contex
 	return r0, r1
 }
 
-// MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateNotificationChannel'
-type MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call struct {
+// MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateBillingNotificationChannel'
+type MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call struct {
 	*mock.Call
 }
 
-// CreateNotificationChannel is a helper method to define mock.On call
+// CreateBillingNotificationChannel is a helper method to define mock.On call
 //   - ctx context.Context
 //   - request components.CreateNotificationChannelRequest
 //   - opts ...operations.Option
-func (_e *MockOpenMeterNotificationsSDK_Expecter) CreateNotificationChannel(ctx any, request any, opts ...any) *MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call {
-	return &MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call{Call: _e.mock.On("CreateNotificationChannel",
+func (_e *MockOpenMeterNotificationsSDK_Expecter) CreateBillingNotificationChannel(ctx any, request any, opts ...any) *MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call {
+	return &MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call{Call: _e.mock.On("CreateBillingNotificationChannel",
 		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call) Run(run func(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call {
+func (_c *MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call) Run(run func(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -121,18 +121,18 @@ func (_c *MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call) Run(run 
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call) Return(createNotificationChannelResponse *operations.CreateNotificationChannelResponse, err error) *MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call {
-	_c.Call.Return(createNotificationChannelResponse, err)
+func (_c *MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call) Return(createBillingNotificationChannelResponse *operations.CreateBillingNotificationChannelResponse, err error) *MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call {
+	_c.Call.Return(createBillingNotificationChannelResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call) RunAndReturn(run func(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option) (*operations.CreateNotificationChannelResponse, error)) *MockOpenMeterNotificationsSDK_CreateNotificationChannel_Call {
+func (_c *MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call) RunAndReturn(run func(ctx context.Context, request components.CreateNotificationChannelRequest, opts ...operations.Option) (*operations.CreateBillingNotificationChannelResponse, error)) *MockOpenMeterNotificationsSDK_CreateBillingNotificationChannel_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteNotificationChannel provides a mock function for the type MockOpenMeterNotificationsSDK
-func (_mock *MockOpenMeterNotificationsSDK) DeleteNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.DeleteNotificationChannelResponse, error) {
+// DeleteBillingNotificationChannel provides a mock function for the type MockOpenMeterNotificationsSDK
+func (_mock *MockOpenMeterNotificationsSDK) DeleteBillingNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.DeleteBillingNotificationChannelResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
 		tmpRet = _mock.Called(ctx, notificationChannelID, opts)
@@ -142,19 +142,19 @@ func (_mock *MockOpenMeterNotificationsSDK) DeleteNotificationChannel(ctx contex
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteNotificationChannel")
+		panic("no return value specified for DeleteBillingNotificationChannel")
 	}
 
-	var r0 *operations.DeleteNotificationChannelResponse
+	var r0 *operations.DeleteBillingNotificationChannelResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteNotificationChannelResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteBillingNotificationChannelResponse, error)); ok {
 		return returnFunc(ctx, notificationChannelID, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteNotificationChannelResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteBillingNotificationChannelResponse); ok {
 		r0 = returnFunc(ctx, notificationChannelID, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.DeleteNotificationChannelResponse)
+			r0 = ret.Get(0).(*operations.DeleteBillingNotificationChannelResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
@@ -165,21 +165,21 @@ func (_mock *MockOpenMeterNotificationsSDK) DeleteNotificationChannel(ctx contex
 	return r0, r1
 }
 
-// MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteNotificationChannel'
-type MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call struct {
+// MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteBillingNotificationChannel'
+type MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call struct {
 	*mock.Call
 }
 
-// DeleteNotificationChannel is a helper method to define mock.On call
+// DeleteBillingNotificationChannel is a helper method to define mock.On call
 //   - ctx context.Context
 //   - notificationChannelID string
 //   - opts ...operations.Option
-func (_e *MockOpenMeterNotificationsSDK_Expecter) DeleteNotificationChannel(ctx any, notificationChannelID any, opts ...any) *MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call {
-	return &MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call{Call: _e.mock.On("DeleteNotificationChannel",
+func (_e *MockOpenMeterNotificationsSDK_Expecter) DeleteBillingNotificationChannel(ctx any, notificationChannelID any, opts ...any) *MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call {
+	return &MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call{Call: _e.mock.On("DeleteBillingNotificationChannel",
 		append([]any{ctx, notificationChannelID}, opts...)...)}
 }
 
-func (_c *MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call) Run(run func(ctx context.Context, notificationChannelID string, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call {
+func (_c *MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call) Run(run func(ctx context.Context, notificationChannelID string, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -204,18 +204,18 @@ func (_c *MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call) Run(run 
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call) Return(deleteNotificationChannelResponse *operations.DeleteNotificationChannelResponse, err error) *MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call {
-	_c.Call.Return(deleteNotificationChannelResponse, err)
+func (_c *MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call) Return(deleteBillingNotificationChannelResponse *operations.DeleteBillingNotificationChannelResponse, err error) *MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call {
+	_c.Call.Return(deleteBillingNotificationChannelResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call) RunAndReturn(run func(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.DeleteNotificationChannelResponse, error)) *MockOpenMeterNotificationsSDK_DeleteNotificationChannel_Call {
+func (_c *MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call) RunAndReturn(run func(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.DeleteBillingNotificationChannelResponse, error)) *MockOpenMeterNotificationsSDK_DeleteBillingNotificationChannel_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetNotificationChannel provides a mock function for the type MockOpenMeterNotificationsSDK
-func (_mock *MockOpenMeterNotificationsSDK) GetNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.GetNotificationChannelResponse, error) {
+// GetBillingNotificationChannel provides a mock function for the type MockOpenMeterNotificationsSDK
+func (_mock *MockOpenMeterNotificationsSDK) GetBillingNotificationChannel(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.GetBillingNotificationChannelResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
 		tmpRet = _mock.Called(ctx, notificationChannelID, opts)
@@ -225,19 +225,19 @@ func (_mock *MockOpenMeterNotificationsSDK) GetNotificationChannel(ctx context.C
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetNotificationChannel")
+		panic("no return value specified for GetBillingNotificationChannel")
 	}
 
-	var r0 *operations.GetNotificationChannelResponse
+	var r0 *operations.GetBillingNotificationChannelResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetNotificationChannelResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetBillingNotificationChannelResponse, error)); ok {
 		return returnFunc(ctx, notificationChannelID, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetNotificationChannelResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetBillingNotificationChannelResponse); ok {
 		r0 = returnFunc(ctx, notificationChannelID, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.GetNotificationChannelResponse)
+			r0 = ret.Get(0).(*operations.GetBillingNotificationChannelResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
@@ -248,21 +248,21 @@ func (_mock *MockOpenMeterNotificationsSDK) GetNotificationChannel(ctx context.C
 	return r0, r1
 }
 
-// MockOpenMeterNotificationsSDK_GetNotificationChannel_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetNotificationChannel'
-type MockOpenMeterNotificationsSDK_GetNotificationChannel_Call struct {
+// MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetBillingNotificationChannel'
+type MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call struct {
 	*mock.Call
 }
 
-// GetNotificationChannel is a helper method to define mock.On call
+// GetBillingNotificationChannel is a helper method to define mock.On call
 //   - ctx context.Context
 //   - notificationChannelID string
 //   - opts ...operations.Option
-func (_e *MockOpenMeterNotificationsSDK_Expecter) GetNotificationChannel(ctx any, notificationChannelID any, opts ...any) *MockOpenMeterNotificationsSDK_GetNotificationChannel_Call {
-	return &MockOpenMeterNotificationsSDK_GetNotificationChannel_Call{Call: _e.mock.On("GetNotificationChannel",
+func (_e *MockOpenMeterNotificationsSDK_Expecter) GetBillingNotificationChannel(ctx any, notificationChannelID any, opts ...any) *MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call {
+	return &MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call{Call: _e.mock.On("GetBillingNotificationChannel",
 		append([]any{ctx, notificationChannelID}, opts...)...)}
 }
 
-func (_c *MockOpenMeterNotificationsSDK_GetNotificationChannel_Call) Run(run func(ctx context.Context, notificationChannelID string, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_GetNotificationChannel_Call {
+func (_c *MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call) Run(run func(ctx context.Context, notificationChannelID string, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -287,18 +287,18 @@ func (_c *MockOpenMeterNotificationsSDK_GetNotificationChannel_Call) Run(run fun
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_GetNotificationChannel_Call) Return(getNotificationChannelResponse *operations.GetNotificationChannelResponse, err error) *MockOpenMeterNotificationsSDK_GetNotificationChannel_Call {
-	_c.Call.Return(getNotificationChannelResponse, err)
+func (_c *MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call) Return(getBillingNotificationChannelResponse *operations.GetBillingNotificationChannelResponse, err error) *MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call {
+	_c.Call.Return(getBillingNotificationChannelResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_GetNotificationChannel_Call) RunAndReturn(run func(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.GetNotificationChannelResponse, error)) *MockOpenMeterNotificationsSDK_GetNotificationChannel_Call {
+func (_c *MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call) RunAndReturn(run func(ctx context.Context, notificationChannelID string, opts ...operations.Option) (*operations.GetBillingNotificationChannelResponse, error)) *MockOpenMeterNotificationsSDK_GetBillingNotificationChannel_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListNotificationChannels provides a mock function for the type MockOpenMeterNotificationsSDK
-func (_mock *MockOpenMeterNotificationsSDK) ListNotificationChannels(ctx context.Context, request operations.ListNotificationChannelsRequest, opts ...operations.Option) (*operations.ListNotificationChannelsResponse, error) {
+// ListBillingNotificationChannels provides a mock function for the type MockOpenMeterNotificationsSDK
+func (_mock *MockOpenMeterNotificationsSDK) ListBillingNotificationChannels(ctx context.Context, request operations.ListBillingNotificationChannelsRequest, opts ...operations.Option) (*operations.ListBillingNotificationChannelsResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
 		tmpRet = _mock.Called(ctx, request, opts)
@@ -308,22 +308,22 @@ func (_mock *MockOpenMeterNotificationsSDK) ListNotificationChannels(ctx context
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListNotificationChannels")
+		panic("no return value specified for ListBillingNotificationChannels")
 	}
 
-	var r0 *operations.ListNotificationChannelsResponse
+	var r0 *operations.ListBillingNotificationChannelsResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListNotificationChannelsRequest, ...operations.Option) (*operations.ListNotificationChannelsResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListBillingNotificationChannelsRequest, ...operations.Option) (*operations.ListBillingNotificationChannelsResponse, error)); ok {
 		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListNotificationChannelsRequest, ...operations.Option) *operations.ListNotificationChannelsResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListBillingNotificationChannelsRequest, ...operations.Option) *operations.ListBillingNotificationChannelsResponse); ok {
 		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.ListNotificationChannelsResponse)
+			r0 = ret.Get(0).(*operations.ListBillingNotificationChannelsResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListNotificationChannelsRequest, ...operations.Option) error); ok {
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListBillingNotificationChannelsRequest, ...operations.Option) error); ok {
 		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
@@ -331,29 +331,29 @@ func (_mock *MockOpenMeterNotificationsSDK) ListNotificationChannels(ctx context
 	return r0, r1
 }
 
-// MockOpenMeterNotificationsSDK_ListNotificationChannels_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListNotificationChannels'
-type MockOpenMeterNotificationsSDK_ListNotificationChannels_Call struct {
+// MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListBillingNotificationChannels'
+type MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call struct {
 	*mock.Call
 }
 
-// ListNotificationChannels is a helper method to define mock.On call
+// ListBillingNotificationChannels is a helper method to define mock.On call
 //   - ctx context.Context
-//   - request operations.ListNotificationChannelsRequest
+//   - request operations.ListBillingNotificationChannelsRequest
 //   - opts ...operations.Option
-func (_e *MockOpenMeterNotificationsSDK_Expecter) ListNotificationChannels(ctx any, request any, opts ...any) *MockOpenMeterNotificationsSDK_ListNotificationChannels_Call {
-	return &MockOpenMeterNotificationsSDK_ListNotificationChannels_Call{Call: _e.mock.On("ListNotificationChannels",
+func (_e *MockOpenMeterNotificationsSDK_Expecter) ListBillingNotificationChannels(ctx any, request any, opts ...any) *MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call {
+	return &MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call{Call: _e.mock.On("ListBillingNotificationChannels",
 		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockOpenMeterNotificationsSDK_ListNotificationChannels_Call) Run(run func(ctx context.Context, request operations.ListNotificationChannelsRequest, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_ListNotificationChannels_Call {
+func (_c *MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call) Run(run func(ctx context.Context, request operations.ListBillingNotificationChannelsRequest, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 operations.ListNotificationChannelsRequest
+		var arg1 operations.ListBillingNotificationChannelsRequest
 		if args[1] != nil {
-			arg1 = args[1].(operations.ListNotificationChannelsRequest)
+			arg1 = args[1].(operations.ListBillingNotificationChannelsRequest)
 		}
 		var arg2 []operations.Option
 		var variadicArgs []operations.Option
@@ -370,18 +370,18 @@ func (_c *MockOpenMeterNotificationsSDK_ListNotificationChannels_Call) Run(run f
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_ListNotificationChannels_Call) Return(listNotificationChannelsResponse *operations.ListNotificationChannelsResponse, err error) *MockOpenMeterNotificationsSDK_ListNotificationChannels_Call {
-	_c.Call.Return(listNotificationChannelsResponse, err)
+func (_c *MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call) Return(listBillingNotificationChannelsResponse *operations.ListBillingNotificationChannelsResponse, err error) *MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call {
+	_c.Call.Return(listBillingNotificationChannelsResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_ListNotificationChannels_Call) RunAndReturn(run func(ctx context.Context, request operations.ListNotificationChannelsRequest, opts ...operations.Option) (*operations.ListNotificationChannelsResponse, error)) *MockOpenMeterNotificationsSDK_ListNotificationChannels_Call {
+func (_c *MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call) RunAndReturn(run func(ctx context.Context, request operations.ListBillingNotificationChannelsRequest, opts ...operations.Option) (*operations.ListBillingNotificationChannelsResponse, error)) *MockOpenMeterNotificationsSDK_ListBillingNotificationChannels_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateNotificationChannel provides a mock function for the type MockOpenMeterNotificationsSDK
-func (_mock *MockOpenMeterNotificationsSDK) UpdateNotificationChannel(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option) (*operations.UpdateNotificationChannelResponse, error) {
+// UpdateBillingNotificationChannel provides a mock function for the type MockOpenMeterNotificationsSDK
+func (_mock *MockOpenMeterNotificationsSDK) UpdateBillingNotificationChannel(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option) (*operations.UpdateBillingNotificationChannelResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
 		tmpRet = _mock.Called(ctx, notificationChannelID, updateBillingNotificationChannelRequest, opts)
@@ -391,19 +391,19 @@ func (_mock *MockOpenMeterNotificationsSDK) UpdateNotificationChannel(ctx contex
 	ret := tmpRet
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateNotificationChannel")
+		panic("no return value specified for UpdateBillingNotificationChannel")
 	}
 
-	var r0 *operations.UpdateNotificationChannelResponse
+	var r0 *operations.UpdateBillingNotificationChannelResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateBillingNotificationChannelRequest, ...operations.Option) (*operations.UpdateNotificationChannelResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateBillingNotificationChannelRequest, ...operations.Option) (*operations.UpdateBillingNotificationChannelResponse, error)); ok {
 		return returnFunc(ctx, notificationChannelID, updateBillingNotificationChannelRequest, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateBillingNotificationChannelRequest, ...operations.Option) *operations.UpdateNotificationChannelResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateBillingNotificationChannelRequest, ...operations.Option) *operations.UpdateBillingNotificationChannelResponse); ok {
 		r0 = returnFunc(ctx, notificationChannelID, updateBillingNotificationChannelRequest, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*operations.UpdateNotificationChannelResponse)
+			r0 = ret.Get(0).(*operations.UpdateBillingNotificationChannelResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpdateBillingNotificationChannelRequest, ...operations.Option) error); ok {
@@ -414,22 +414,22 @@ func (_mock *MockOpenMeterNotificationsSDK) UpdateNotificationChannel(ctx contex
 	return r0, r1
 }
 
-// MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateNotificationChannel'
-type MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call struct {
+// MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateBillingNotificationChannel'
+type MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call struct {
 	*mock.Call
 }
 
-// UpdateNotificationChannel is a helper method to define mock.On call
+// UpdateBillingNotificationChannel is a helper method to define mock.On call
 //   - ctx context.Context
 //   - notificationChannelID string
 //   - updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest
 //   - opts ...operations.Option
-func (_e *MockOpenMeterNotificationsSDK_Expecter) UpdateNotificationChannel(ctx any, notificationChannelID any, updateBillingNotificationChannelRequest any, opts ...any) *MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call {
-	return &MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call{Call: _e.mock.On("UpdateNotificationChannel",
+func (_e *MockOpenMeterNotificationsSDK_Expecter) UpdateBillingNotificationChannel(ctx any, notificationChannelID any, updateBillingNotificationChannelRequest any, opts ...any) *MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call {
+	return &MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call{Call: _e.mock.On("UpdateBillingNotificationChannel",
 		append([]any{ctx, notificationChannelID, updateBillingNotificationChannelRequest}, opts...)...)}
 }
 
-func (_c *MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call) Run(run func(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call {
+func (_c *MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call) Run(run func(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option)) *MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -459,12 +459,12 @@ func (_c *MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call) Run(run 
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call) Return(updateNotificationChannelResponse *operations.UpdateNotificationChannelResponse, err error) *MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call {
-	_c.Call.Return(updateNotificationChannelResponse, err)
+func (_c *MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call) Return(updateBillingNotificationChannelResponse *operations.UpdateBillingNotificationChannelResponse, err error) *MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call {
+	_c.Call.Return(updateBillingNotificationChannelResponse, err)
 	return _c
 }
 
-func (_c *MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call) RunAndReturn(run func(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option) (*operations.UpdateNotificationChannelResponse, error)) *MockOpenMeterNotificationsSDK_UpdateNotificationChannel_Call {
+func (_c *MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call) RunAndReturn(run func(ctx context.Context, notificationChannelID string, updateBillingNotificationChannelRequest components.UpdateBillingNotificationChannelRequest, opts ...operations.Option) (*operations.UpdateBillingNotificationChannelResponse, error)) *MockOpenMeterNotificationsSDK_UpdateBillingNotificationChannel_Call {
 	_c.Call.Return(run)
 	return _c
 }

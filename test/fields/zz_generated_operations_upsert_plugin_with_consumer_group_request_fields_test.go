@@ -16,5 +16,6 @@ func TestOperationsUpsertPluginWithConsumerGroupRequestFieldTypes(t *testing.T) 
 	var _ string = value.ControlPlaneID
 	var _ string = value.ConsumerGroupID
 	var _ string = value.PluginID
+	var _ string = value.Workspace
 	var _ components.PluginWithoutParents = value.PluginWithoutParents
 }

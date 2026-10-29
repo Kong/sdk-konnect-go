@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"net/http"
 )
 
@@ -12,6 +13,19 @@ type DeleteVaultRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Vault to lookup
 	VaultID string `pathParam:"style=simple,explode=false,name=VaultId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+}
+
+func (d DeleteVaultRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteVaultRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (d *DeleteVaultRequest) GetControlPlaneID() string {
@@ -26,6 +40,13 @@ func (d *DeleteVaultRequest) GetVaultID() string {
 		return ""
 	}
 	return d.VaultID
+}
+
+func (d *DeleteVaultRequest) GetWorkspace() string {
+	if d == nil {
+		return ""
+	}
+	return d.Workspace
 }
 
 type DeleteVaultResponse struct {

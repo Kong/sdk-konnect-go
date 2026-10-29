@@ -28,6 +28,8 @@ type UserTeamMembership struct {
 	// A Unix timestamp representation of the most recent change to the team object in Konnect.
 	//
 	UpdatedAt time.Time `json:"updated_at"`
+	// Whether the team's membership is managed by Konnect instead of being synced from an identity provider's team mappings. Set to `false` (default) to let identity provider team mappings keep syncing members into this team. Set to `true` to manage membership directly in Konnect and prevent identity provider team mappings from syncing to this team.
+	KonnectManaged *bool `default:"false" json:"konnect_managed"`
 	// An array of group claim names that gave this user membership to the team.
 	ClaimNames []string `json:"claim_names,omitempty"`
 }
@@ -90,6 +92,13 @@ func (u *UserTeamMembership) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return u.UpdatedAt
+}
+
+func (u *UserTeamMembership) GetKonnectManaged() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.KonnectManaged
 }
 
 func (u *UserTeamMembership) GetClaimNames() []string {

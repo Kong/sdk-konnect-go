@@ -10,25 +10,25 @@ import (
 
 // JWTsSDK is a generated interface.
 type JWTsSDK interface {
-	// ListJwtWithConsumer - List all JWTs associated with a Consumer
-	// List all JWTs associated with a Consumer
+	// ListJwtWithConsumer - List all JWTs associated with a Consumer in a workspace
+	// List all JWTs associated with a Consumer in a workspace
 	ListJwtWithConsumer(ctx context.Context, request operations.ListJwtWithConsumerRequest, opts ...operations.Option) (*operations.ListJwtWithConsumerResponse, error)
-	// CreateJwtWithConsumer - Create a new JWT associated with a Consumer
-	// Create a new JWT associated with a Consumer
+	// CreateJwtWithConsumer - Create a new JWT associated with a Consumer in a workspace
+	// Create a new JWT associated with a Consumer in a workspace
 	CreateJwtWithConsumer(ctx context.Context, request operations.CreateJwtWithConsumerRequest, opts ...operations.Option) (*operations.CreateJwtWithConsumerResponse, error)
-	// DeleteJwtWithConsumer - Delete a a JWT associated with a Consumer
-	// Delete a a JWT associated with a Consumer using ID.
+	// DeleteJwtWithConsumer - Delete a a JWT associated with a Consumer in a workspace
+	// Delete a a JWT associated with a Consumer using ID in a workspace.
 	DeleteJwtWithConsumer(ctx context.Context, request operations.DeleteJwtWithConsumerRequest, opts ...operations.Option) (*operations.DeleteJwtWithConsumerResponse, error)
-	// GetJwtWithConsumer - Get a JWT associated with a Consumer
-	// Get a JWT associated with a Consumer using ID.
+	// GetJwtWithConsumer - Get a JWT associated with a Consumer in a workspace
+	// Get a JWT associated with a Consumer using ID in a workspace.
 	GetJwtWithConsumer(ctx context.Context, request operations.GetJwtWithConsumerRequest, opts ...operations.Option) (*operations.GetJwtWithConsumerResponse, error)
-	// UpsertJwtWithConsumer - Upsert a JWT associated with a Consumer
-	// Create or Update a JWT associated with a Consumer using ID.
+	// UpsertJwtWithConsumer - Upsert a JWT associated with a Consumer in a workspace
+	// Create or Update a JWT associated with a Consumer using ID in a workspace.
 	UpsertJwtWithConsumer(ctx context.Context, request operations.UpsertJwtWithConsumerRequest, opts ...operations.Option) (*operations.UpsertJwtWithConsumerResponse, error)
-	// ListJwt - List all JWTs
-	// List all JWTs
+	// ListJwt - List all JWTs in a workspace
+	// List all JWTs in a workspace
 	ListJwt(ctx context.Context, request operations.ListJwtRequest, opts ...operations.Option) (*operations.ListJwtResponse, error)
-	// GetJwt - Get a JWT
-	// Get a JWT using ID.
-	GetJwt(ctx context.Context, jwtID string, controlPlaneID string, opts ...operations.Option) (*operations.GetJwtResponse, error)
+	// GetJwt - Get a JWT in a workspace
+	// Get a JWT using ID in a workspace.
+	GetJwt(ctx context.Context, request operations.GetJwtRequest, opts ...operations.Option) (*operations.GetJwtResponse, error)
 }

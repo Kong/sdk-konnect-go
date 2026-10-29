@@ -214,12 +214,12 @@ func (_c *MockMTLSAuthCredentialsSDK_DeleteMtlsAuthWithConsumer_Call) RunAndRetu
 }
 
 // GetMtlsAuth provides a mock function for the type MockMTLSAuthCredentialsSDK
-func (_mock *MockMTLSAuthCredentialsSDK) GetMtlsAuth(ctx context.Context, mtlsAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetMtlsAuthResponse, error) {
+func (_mock *MockMTLSAuthCredentialsSDK) GetMtlsAuth(ctx context.Context, request operations.GetMtlsAuthRequest, opts ...operations.Option) (*operations.GetMtlsAuthResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, mtlsAuthID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, mtlsAuthID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -229,18 +229,18 @@ func (_mock *MockMTLSAuthCredentialsSDK) GetMtlsAuth(ctx context.Context, mtlsAu
 
 	var r0 *operations.GetMtlsAuthResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetMtlsAuthResponse, error)); ok {
-		return returnFunc(ctx, mtlsAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetMtlsAuthRequest, ...operations.Option) (*operations.GetMtlsAuthResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetMtlsAuthResponse); ok {
-		r0 = returnFunc(ctx, mtlsAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetMtlsAuthRequest, ...operations.Option) *operations.GetMtlsAuthResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetMtlsAuthResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, mtlsAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetMtlsAuthRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -254,39 +254,33 @@ type MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call struct {
 
 // GetMtlsAuth is a helper method to define mock.On call
 //   - ctx context.Context
-//   - mtlsAuthID string
-//   - controlPlaneID string
+//   - request operations.GetMtlsAuthRequest
 //   - opts ...operations.Option
-func (_e *MockMTLSAuthCredentialsSDK_Expecter) GetMtlsAuth(ctx any, mtlsAuthID any, controlPlaneID any, opts ...any) *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call {
+func (_e *MockMTLSAuthCredentialsSDK_Expecter) GetMtlsAuth(ctx any, request any, opts ...any) *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call {
 	return &MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call{Call: _e.mock.On("GetMtlsAuth",
-		append([]any{ctx, mtlsAuthID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call) Run(run func(ctx context.Context, mtlsAuthID string, controlPlaneID string, opts ...operations.Option)) *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call {
+func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call) Run(run func(ctx context.Context, request operations.GetMtlsAuthRequest, opts ...operations.Option)) *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetMtlsAuthRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetMtlsAuthRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -297,7 +291,7 @@ func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call) Return(getMtlsAuthRespons
 	return _c
 }
 
-func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call) RunAndReturn(run func(ctx context.Context, mtlsAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetMtlsAuthResponse, error)) *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call {
+func (_c *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call) RunAndReturn(run func(ctx context.Context, request operations.GetMtlsAuthRequest, opts ...operations.Option) (*operations.GetMtlsAuthResponse, error)) *MockMTLSAuthCredentialsSDK_GetMtlsAuth_Call {
 	_c.Call.Return(run)
 	return _c
 }

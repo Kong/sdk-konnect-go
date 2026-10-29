@@ -24,9 +24,17 @@ type OpenMeterCustomersSDK interface {
 	// GetCustomerBilling - Get customer billing data
 	GetCustomerBilling(ctx context.Context, customerID string, opts ...operations.Option) (*operations.GetCustomerBillingResponse, error)
 	// UpdateCustomerBilling - Update customer billing data
+	// Update billing data while preserving the current profile selection when
+	// billing_profile is omitted or null. Use the dedicated billing profile endpoint
+	// to remove the selection.
 	UpdateCustomerBilling(ctx context.Context, customerID string, upsertCustomerBillingDataRequest components.UpsertCustomerBillingDataRequest, opts ...operations.Option) (*operations.UpdateCustomerBillingResponse, error)
 	// UpdateCustomerBillingAppData - Update customer billing app data
 	UpdateCustomerBillingAppData(ctx context.Context, customerID string, upsertAppCustomerDataRequest components.UpsertAppCustomerDataRequest, opts ...operations.Option) (*operations.UpdateCustomerBillingAppDataResponse, error)
+	// UpdateCustomerBillingProfile - Update customer billing profile
+	// Set the customer's explicit billing profile selection. Omitting billing_profile
+	// or setting it to null removes the selection and uses the current namespace
+	// default.
+	UpdateCustomerBillingProfile(ctx context.Context, customerID string, upsertCustomerBillingProfileRequest components.UpsertCustomerBillingProfileRequest, opts ...operations.Option) (*operations.UpdateCustomerBillingProfileResponse, error)
 	// CreateCustomerStripeCheckoutSession - Create Stripe Checkout Session
 	// Create a [Stripe Checkout Session](https://docs.stripe.com/payments/checkout)
 	// for the customer.

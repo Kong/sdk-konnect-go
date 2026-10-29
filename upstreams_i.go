@@ -5,25 +5,24 @@ package sdkkonnectgo
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // UpstreamsSDK is a generated interface.
 type UpstreamsSDK interface {
-	// ListUpstream - List all Upstreams
-	// List all Upstreams
+	// ListUpstream - List all Upstreams in a workspace
+	// List all Upstreams in a workspace
 	ListUpstream(ctx context.Context, request operations.ListUpstreamRequest, opts ...operations.Option) (*operations.ListUpstreamResponse, error)
-	// CreateUpstream - Create a new Upstream
-	// Create a new Upstream
-	CreateUpstream(ctx context.Context, controlPlaneID string, upstream components.Upstream, opts ...operations.Option) (*operations.CreateUpstreamResponse, error)
-	// DeleteUpstream - Delete an Upstream
-	// Delete an Upstream
-	DeleteUpstream(ctx context.Context, controlPlaneID string, upstreamID string, opts ...operations.Option) (*operations.DeleteUpstreamResponse, error)
-	// GetUpstream - Get an Upstream
-	// Get an Upstream using ID or name.
-	GetUpstream(ctx context.Context, upstreamID string, controlPlaneID string, opts ...operations.Option) (*operations.GetUpstreamResponse, error)
-	// UpsertUpstream - Upsert a Upstream
-	// Create or Update Upstream using ID or name.
+	// CreateUpstream - Create a new Upstream in a workspace
+	// Create a new Upstream in a workspace
+	CreateUpstream(ctx context.Context, request operations.CreateUpstreamRequest, opts ...operations.Option) (*operations.CreateUpstreamResponse, error)
+	// DeleteUpstream - Delete an Upstream in a workspace
+	// Delete an Upstream in a workspace
+	DeleteUpstream(ctx context.Context, request operations.DeleteUpstreamRequest, opts ...operations.Option) (*operations.DeleteUpstreamResponse, error)
+	// GetUpstream - Get an Upstream in a workspace
+	// Get an Upstream using ID or name in a workspace.
+	GetUpstream(ctx context.Context, request operations.GetUpstreamRequest, opts ...operations.Option) (*operations.GetUpstreamResponse, error)
+	// UpsertUpstream - Upsert a Upstream in a workspace
+	// Create or Update Upstream using ID or name in a workspace.
 	UpsertUpstream(ctx context.Context, request operations.UpsertUpstreamRequest, opts ...operations.Option) (*operations.UpsertUpstreamResponse, error)
 }

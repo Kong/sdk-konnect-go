@@ -7,7 +7,6 @@ package mocks
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -49,12 +48,12 @@ func (_m *MockUpstreamsSDK) EXPECT() *MockUpstreamsSDK_Expecter {
 }
 
 // CreateUpstream provides a mock function for the type MockUpstreamsSDK
-func (_mock *MockUpstreamsSDK) CreateUpstream(ctx context.Context, controlPlaneID string, upstream components.Upstream, opts ...operations.Option) (*operations.CreateUpstreamResponse, error) {
+func (_mock *MockUpstreamsSDK) CreateUpstream(ctx context.Context, request operations.CreateUpstreamRequest, opts ...operations.Option) (*operations.CreateUpstreamResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, upstream, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, upstream)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -64,18 +63,18 @@ func (_mock *MockUpstreamsSDK) CreateUpstream(ctx context.Context, controlPlaneI
 
 	var r0 *operations.CreateUpstreamResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Upstream, ...operations.Option) (*operations.CreateUpstreamResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, upstream, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateUpstreamRequest, ...operations.Option) (*operations.CreateUpstreamResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Upstream, ...operations.Option) *operations.CreateUpstreamResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, upstream, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreateUpstreamRequest, ...operations.Option) *operations.CreateUpstreamResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.CreateUpstreamResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.Upstream, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, upstream, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreateUpstreamRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -89,39 +88,33 @@ type MockUpstreamsSDK_CreateUpstream_Call struct {
 
 // CreateUpstream is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - upstream components.Upstream
+//   - request operations.CreateUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockUpstreamsSDK_Expecter) CreateUpstream(ctx any, controlPlaneID any, upstream any, opts ...any) *MockUpstreamsSDK_CreateUpstream_Call {
+func (_e *MockUpstreamsSDK_Expecter) CreateUpstream(ctx any, request any, opts ...any) *MockUpstreamsSDK_CreateUpstream_Call {
 	return &MockUpstreamsSDK_CreateUpstream_Call{Call: _e.mock.On("CreateUpstream",
-		append([]any{ctx, controlPlaneID, upstream}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockUpstreamsSDK_CreateUpstream_Call) Run(run func(ctx context.Context, controlPlaneID string, upstream components.Upstream, opts ...operations.Option)) *MockUpstreamsSDK_CreateUpstream_Call {
+func (_c *MockUpstreamsSDK_CreateUpstream_Call) Run(run func(ctx context.Context, request operations.CreateUpstreamRequest, opts ...operations.Option)) *MockUpstreamsSDK_CreateUpstream_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.CreateUpstreamRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.CreateUpstreamRequest)
 		}
-		var arg2 components.Upstream
-		if args[2] != nil {
-			arg2 = args[2].(components.Upstream)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -132,18 +125,18 @@ func (_c *MockUpstreamsSDK_CreateUpstream_Call) Return(createUpstreamResponse *o
 	return _c
 }
 
-func (_c *MockUpstreamsSDK_CreateUpstream_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, upstream components.Upstream, opts ...operations.Option) (*operations.CreateUpstreamResponse, error)) *MockUpstreamsSDK_CreateUpstream_Call {
+func (_c *MockUpstreamsSDK_CreateUpstream_Call) RunAndReturn(run func(ctx context.Context, request operations.CreateUpstreamRequest, opts ...operations.Option) (*operations.CreateUpstreamResponse, error)) *MockUpstreamsSDK_CreateUpstream_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // DeleteUpstream provides a mock function for the type MockUpstreamsSDK
-func (_mock *MockUpstreamsSDK) DeleteUpstream(ctx context.Context, controlPlaneID string, upstreamID string, opts ...operations.Option) (*operations.DeleteUpstreamResponse, error) {
+func (_mock *MockUpstreamsSDK) DeleteUpstream(ctx context.Context, request operations.DeleteUpstreamRequest, opts ...operations.Option) (*operations.DeleteUpstreamResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, upstreamID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, upstreamID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -153,18 +146,18 @@ func (_mock *MockUpstreamsSDK) DeleteUpstream(ctx context.Context, controlPlaneI
 
 	var r0 *operations.DeleteUpstreamResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.DeleteUpstreamResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, upstreamID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteUpstreamRequest, ...operations.Option) (*operations.DeleteUpstreamResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.DeleteUpstreamResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, upstreamID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeleteUpstreamRequest, ...operations.Option) *operations.DeleteUpstreamResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.DeleteUpstreamResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, upstreamID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeleteUpstreamRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -178,39 +171,33 @@ type MockUpstreamsSDK_DeleteUpstream_Call struct {
 
 // DeleteUpstream is a helper method to define mock.On call
 //   - ctx context.Context
-//   - controlPlaneID string
-//   - upstreamID string
+//   - request operations.DeleteUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockUpstreamsSDK_Expecter) DeleteUpstream(ctx any, controlPlaneID any, upstreamID any, opts ...any) *MockUpstreamsSDK_DeleteUpstream_Call {
+func (_e *MockUpstreamsSDK_Expecter) DeleteUpstream(ctx any, request any, opts ...any) *MockUpstreamsSDK_DeleteUpstream_Call {
 	return &MockUpstreamsSDK_DeleteUpstream_Call{Call: _e.mock.On("DeleteUpstream",
-		append([]any{ctx, controlPlaneID, upstreamID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockUpstreamsSDK_DeleteUpstream_Call) Run(run func(ctx context.Context, controlPlaneID string, upstreamID string, opts ...operations.Option)) *MockUpstreamsSDK_DeleteUpstream_Call {
+func (_c *MockUpstreamsSDK_DeleteUpstream_Call) Run(run func(ctx context.Context, request operations.DeleteUpstreamRequest, opts ...operations.Option)) *MockUpstreamsSDK_DeleteUpstream_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.DeleteUpstreamRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.DeleteUpstreamRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -221,18 +208,18 @@ func (_c *MockUpstreamsSDK_DeleteUpstream_Call) Return(deleteUpstreamResponse *o
 	return _c
 }
 
-func (_c *MockUpstreamsSDK_DeleteUpstream_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, upstreamID string, opts ...operations.Option) (*operations.DeleteUpstreamResponse, error)) *MockUpstreamsSDK_DeleteUpstream_Call {
+func (_c *MockUpstreamsSDK_DeleteUpstream_Call) RunAndReturn(run func(ctx context.Context, request operations.DeleteUpstreamRequest, opts ...operations.Option) (*operations.DeleteUpstreamResponse, error)) *MockUpstreamsSDK_DeleteUpstream_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // GetUpstream provides a mock function for the type MockUpstreamsSDK
-func (_mock *MockUpstreamsSDK) GetUpstream(ctx context.Context, upstreamID string, controlPlaneID string, opts ...operations.Option) (*operations.GetUpstreamResponse, error) {
+func (_mock *MockUpstreamsSDK) GetUpstream(ctx context.Context, request operations.GetUpstreamRequest, opts ...operations.Option) (*operations.GetUpstreamResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, upstreamID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, upstreamID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -242,18 +229,18 @@ func (_mock *MockUpstreamsSDK) GetUpstream(ctx context.Context, upstreamID strin
 
 	var r0 *operations.GetUpstreamResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetUpstreamResponse, error)); ok {
-		return returnFunc(ctx, upstreamID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetUpstreamRequest, ...operations.Option) (*operations.GetUpstreamResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetUpstreamResponse); ok {
-		r0 = returnFunc(ctx, upstreamID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetUpstreamRequest, ...operations.Option) *operations.GetUpstreamResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetUpstreamResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, upstreamID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetUpstreamRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -267,39 +254,33 @@ type MockUpstreamsSDK_GetUpstream_Call struct {
 
 // GetUpstream is a helper method to define mock.On call
 //   - ctx context.Context
-//   - upstreamID string
-//   - controlPlaneID string
+//   - request operations.GetUpstreamRequest
 //   - opts ...operations.Option
-func (_e *MockUpstreamsSDK_Expecter) GetUpstream(ctx any, upstreamID any, controlPlaneID any, opts ...any) *MockUpstreamsSDK_GetUpstream_Call {
+func (_e *MockUpstreamsSDK_Expecter) GetUpstream(ctx any, request any, opts ...any) *MockUpstreamsSDK_GetUpstream_Call {
 	return &MockUpstreamsSDK_GetUpstream_Call{Call: _e.mock.On("GetUpstream",
-		append([]any{ctx, upstreamID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockUpstreamsSDK_GetUpstream_Call) Run(run func(ctx context.Context, upstreamID string, controlPlaneID string, opts ...operations.Option)) *MockUpstreamsSDK_GetUpstream_Call {
+func (_c *MockUpstreamsSDK_GetUpstream_Call) Run(run func(ctx context.Context, request operations.GetUpstreamRequest, opts ...operations.Option)) *MockUpstreamsSDK_GetUpstream_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetUpstreamRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetUpstreamRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -310,7 +291,7 @@ func (_c *MockUpstreamsSDK_GetUpstream_Call) Return(getUpstreamResponse *operati
 	return _c
 }
 
-func (_c *MockUpstreamsSDK_GetUpstream_Call) RunAndReturn(run func(ctx context.Context, upstreamID string, controlPlaneID string, opts ...operations.Option) (*operations.GetUpstreamResponse, error)) *MockUpstreamsSDK_GetUpstream_Call {
+func (_c *MockUpstreamsSDK_GetUpstream_Call) RunAndReturn(run func(ctx context.Context, request operations.GetUpstreamRequest, opts ...operations.Option) (*operations.GetUpstreamResponse, error)) *MockUpstreamsSDK_GetUpstream_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -9,19 +9,19 @@ The configuration for the health checker is stored in the upstream object, and a
 
 ### Available Operations
 
-* [ListUpstream](#listupstream) - List all Upstreams
-* [CreateUpstream](#createupstream) - Create a new Upstream
-* [DeleteUpstream](#deleteupstream) - Delete an Upstream
-* [GetUpstream](#getupstream) - Get an Upstream
-* [UpsertUpstream](#upsertupstream) - Upsert a Upstream
+* [ListUpstream](#listupstream) - List all Upstreams in a workspace
+* [CreateUpstream](#createupstream) - Create a new Upstream in a workspace
+* [DeleteUpstream](#deleteupstream) - Delete an Upstream in a workspace
+* [GetUpstream](#getupstream) - Get an Upstream in a workspace
+* [UpsertUpstream](#upsertupstream) - Upsert a Upstream in a workspace
 
 ## ListUpstream
 
-List all Upstreams
+List all Upstreams in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-upstream" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" -->
+<!-- UsageSnippet language="go" operationID="list-upstream" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams" -->
 ```go
 package main
 
@@ -45,6 +45,7 @@ func main() {
     res, err := s.Upstreams.ListUpstream(ctx, operations.ListUpstreamRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -76,11 +77,11 @@ func main() {
 
 ## CreateUpstream
 
-Create a new Upstream
+Create a new Upstream in a workspace
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -88,6 +89,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -100,63 +102,67 @@ func main() {
         }),
     )
 
-    res, err := s.Upstreams.CreateUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Upstream{
-        Healthchecks: &components.Healthchecks{
-            Active: &components.Active{
-                Healthy: &components.Healthy{
-                    HTTPStatuses: []int64{
-                        200,
-                        302,
+    res, err := s.Upstreams.CreateUpstream(ctx, operations.CreateUpstreamRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Upstream: components.Upstream{
+            Healthchecks: &components.Healthchecks{
+                Active: &components.Active{
+                    Healthy: &components.Healthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            302,
+                        },
+                    },
+                    Unhealthy: &components.Unhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            404,
+                            500,
+                            501,
+                            502,
+                            503,
+                            504,
+                            505,
+                        },
                     },
                 },
-                Unhealthy: &components.Unhealthy{
-                    HTTPStatuses: []int64{
-                        429,
-                        404,
-                        500,
-                        501,
-                        502,
-                        503,
-                        504,
-                        505,
+                Passive: &components.Passive{
+                    Healthy: &components.UpstreamHealthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            201,
+                            202,
+                            203,
+                            204,
+                            205,
+                            206,
+                            207,
+                            208,
+                            226,
+                            300,
+                            301,
+                            302,
+                            303,
+                            304,
+                            305,
+                            306,
+                            307,
+                            308,
+                        },
+                    },
+                    Unhealthy: &components.UpstreamUnhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            500,
+                            503,
+                        },
                     },
                 },
             },
-            Passive: &components.Passive{
-                Healthy: &components.UpstreamHealthy{
-                    HTTPStatuses: []int64{
-                        200,
-                        201,
-                        202,
-                        203,
-                        204,
-                        205,
-                        206,
-                        207,
-                        208,
-                        226,
-                        300,
-                        301,
-                        302,
-                        303,
-                        304,
-                        305,
-                        306,
-                        307,
-                        308,
-                    },
-                },
-                Unhealthy: &components.UpstreamUnhealthy{
-                    HTTPStatuses: []int64{
-                        429,
-                        500,
-                        503,
-                    },
-                },
-            },
+            ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+            Name: "api.example.internal",
         },
-        ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
-        Name: "api.example.internal",
     })
     if err != nil {
         log.Fatal(err)
@@ -168,7 +174,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -176,6 +182,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -188,63 +195,67 @@ func main() {
         }),
     )
 
-    res, err := s.Upstreams.CreateUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Upstream{
-        Healthchecks: &components.Healthchecks{
-            Active: &components.Active{
-                Healthy: &components.Healthy{
-                    HTTPStatuses: []int64{
-                        200,
-                        302,
+    res, err := s.Upstreams.CreateUpstream(ctx, operations.CreateUpstreamRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Upstream: components.Upstream{
+            Healthchecks: &components.Healthchecks{
+                Active: &components.Active{
+                    Healthy: &components.Healthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            302,
+                        },
+                    },
+                    Unhealthy: &components.Unhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            404,
+                            500,
+                            501,
+                            502,
+                            503,
+                            504,
+                            505,
+                        },
                     },
                 },
-                Unhealthy: &components.Unhealthy{
-                    HTTPStatuses: []int64{
-                        429,
-                        404,
-                        500,
-                        501,
-                        502,
-                        503,
-                        504,
-                        505,
+                Passive: &components.Passive{
+                    Healthy: &components.UpstreamHealthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            201,
+                            202,
+                            203,
+                            204,
+                            205,
+                            206,
+                            207,
+                            208,
+                            226,
+                            300,
+                            301,
+                            302,
+                            303,
+                            304,
+                            305,
+                            306,
+                            307,
+                            308,
+                        },
+                    },
+                    Unhealthy: &components.UpstreamUnhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            500,
+                            503,
+                        },
                     },
                 },
             },
-            Passive: &components.Passive{
-                Healthy: &components.UpstreamHealthy{
-                    HTTPStatuses: []int64{
-                        200,
-                        201,
-                        202,
-                        203,
-                        204,
-                        205,
-                        206,
-                        207,
-                        208,
-                        226,
-                        300,
-                        301,
-                        302,
-                        303,
-                        304,
-                        305,
-                        306,
-                        307,
-                        308,
-                    },
-                },
-                Unhealthy: &components.UpstreamUnhealthy{
-                    HTTPStatuses: []int64{
-                        429,
-                        500,
-                        503,
-                    },
-                },
-            },
+            ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+            Name: "api.example.internal",
         },
-        ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
-        Name: "api.example.internal",
     })
     if err != nil {
         log.Fatal(err)
@@ -256,7 +267,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams" example="NoAPIKey" -->
 ```go
 package main
 
@@ -264,6 +275,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -276,63 +288,67 @@ func main() {
         }),
     )
 
-    res, err := s.Upstreams.CreateUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Upstream{
-        Healthchecks: &components.Healthchecks{
-            Active: &components.Active{
-                Healthy: &components.Healthy{
-                    HTTPStatuses: []int64{
-                        200,
-                        302,
+    res, err := s.Upstreams.CreateUpstream(ctx, operations.CreateUpstreamRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+        Upstream: components.Upstream{
+            Healthchecks: &components.Healthchecks{
+                Active: &components.Active{
+                    Healthy: &components.Healthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            302,
+                        },
+                    },
+                    Unhealthy: &components.Unhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            404,
+                            500,
+                            501,
+                            502,
+                            503,
+                            504,
+                            505,
+                        },
                     },
                 },
-                Unhealthy: &components.Unhealthy{
-                    HTTPStatuses: []int64{
-                        429,
-                        404,
-                        500,
-                        501,
-                        502,
-                        503,
-                        504,
-                        505,
+                Passive: &components.Passive{
+                    Healthy: &components.UpstreamHealthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            201,
+                            202,
+                            203,
+                            204,
+                            205,
+                            206,
+                            207,
+                            208,
+                            226,
+                            300,
+                            301,
+                            302,
+                            303,
+                            304,
+                            305,
+                            306,
+                            307,
+                            308,
+                        },
+                    },
+                    Unhealthy: &components.UpstreamUnhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            500,
+                            503,
+                        },
                     },
                 },
             },
-            Passive: &components.Passive{
-                Healthy: &components.UpstreamHealthy{
-                    HTTPStatuses: []int64{
-                        200,
-                        201,
-                        202,
-                        203,
-                        204,
-                        205,
-                        206,
-                        207,
-                        208,
-                        226,
-                        300,
-                        301,
-                        302,
-                        303,
-                        304,
-                        305,
-                        306,
-                        307,
-                        308,
-                    },
-                },
-                Unhealthy: &components.UpstreamUnhealthy{
-                    HTTPStatuses: []int64{
-                        429,
-                        500,
-                        503,
-                    },
-                },
-            },
+            ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+            Name: "api.example.internal",
         },
-        ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
-        Name: "api.example.internal",
     })
     if err != nil {
         log.Fatal(err)
@@ -345,12 +361,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Required                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Example                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | The context to use for the request.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `controlPlaneID`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | The UUID of your control plane. This variable is available in the Konnect manager.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| `upstream`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | [components.Upstream](../../models/components/upstream.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Description of the new Upstream for creation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | {<br/>"algorithm": "round-robin",<br/>"hash_fallback": "none",<br/>"hash_on": "none",<br/>"hash_on_cookie_path": "/",<br/>"healthchecks": {<br/>"active": {<br/>"concurrency": 10,<br/>"healthy": {<br/>"http_statuses": [<br/>200,<br/>302<br/>],<br/>"interval": 0,<br/>"successes": 0<br/>},<br/>"http_path": "/",<br/>"https_verify_certificate": true,<br/>"timeout": 1,<br/>"type": "http",<br/>"unhealthy": {<br/>"http_failures": 0,<br/>"http_statuses": [<br/>429,<br/>404,<br/>500,<br/>501,<br/>502,<br/>503,<br/>504,<br/>505<br/>],<br/>"interval": 0,<br/>"tcp_failures": 0,<br/>"timeouts": 0<br/>}<br/>},<br/>"passive": {<br/>"healthy": {<br/>"http_statuses": [<br/>200,<br/>201,<br/>202,<br/>203,<br/>204,<br/>205,<br/>206,<br/>207,<br/>208,<br/>226,<br/>300,<br/>301,<br/>302,<br/>303,<br/>304,<br/>305,<br/>306,<br/>307,<br/>308<br/>],<br/>"successes": 0<br/>},<br/>"type": "http",<br/>"unhealthy": {<br/>"http_failures": 0,<br/>"http_statuses": [<br/>429,<br/>500,<br/>503<br/>],<br/>"tcp_failures": 0,<br/>"timeouts": 0<br/>}<br/>},<br/>"threshold": 0<br/>},<br/>"id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e",<br/>"name": "api.example.internal",<br/>"slots": 10000<br/>} |
-| `opts`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | The options for this request.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [operations.CreateUpstreamRequest](../../models/operations/createupstreamrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
 
 ### Response
 
@@ -365,11 +380,11 @@ func main() {
 
 ## DeleteUpstream
 
-Delete an Upstream
+Delete an Upstream in a workspace
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-upstream" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" -->
+<!-- UsageSnippet language="go" operationID="delete-upstream" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamId}" -->
 ```go
 package main
 
@@ -377,6 +392,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -389,7 +405,11 @@ func main() {
         }),
     )
 
-    res, err := s.Upstreams.DeleteUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "426d620c-7058-4ae6-aacc-f85a3204a2c5")
+    res, err := s.Upstreams.DeleteUpstream(ctx, operations.DeleteUpstreamRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -401,12 +421,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `upstreamID`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Upstream to lookup                                                       | 426d620c-7058-4ae6-aacc-f85a3204a2c5                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [operations.DeleteUpstreamRequest](../../models/operations/deleteupstreamrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
 
 ### Response
 
@@ -421,11 +440,11 @@ func main() {
 
 ## GetUpstream
 
-Get an Upstream using ID or name.
+Get an Upstream using ID or name in a workspace.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-upstream" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" -->
+<!-- UsageSnippet language="go" operationID="get-upstream" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamId}" -->
 ```go
 package main
 
@@ -433,6 +452,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -445,7 +465,11 @@ func main() {
         }),
     )
 
-    res, err := s.Upstreams.GetUpstream(ctx, "426d620c-7058-4ae6-aacc-f85a3204a2c5", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.Upstreams.GetUpstream(ctx, operations.GetUpstreamRequest{
+        UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -457,12 +481,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `upstreamID`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Upstream to lookup                                                       | 426d620c-7058-4ae6-aacc-f85a3204a2c5                                               |
-| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.GetUpstreamRequest](../../models/operations/getupstreamrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
 
 ### Response
 
@@ -477,11 +500,11 @@ func main() {
 
 ## UpsertUpstream
 
-Create or Update Upstream using ID or name.
+Create or Update Upstream using ID or name in a workspace.
 
 ### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" example="DuplicateApiKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -505,6 +528,7 @@ func main() {
     res, err := s.Upstreams.UpsertUpstream(ctx, operations.UpsertUpstreamRequest{
         UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Upstream: components.Upstream{
             Healthchecks: &components.Healthchecks{
                 Active: &components.Active{
@@ -574,7 +598,7 @@ func main() {
 ```
 ### Example Usage: InvalidAuthCred
 
-<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" example="InvalidAuthCred" -->
+<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamId}" example="InvalidAuthCred" -->
 ```go
 package main
 
@@ -598,6 +622,7 @@ func main() {
     res, err := s.Upstreams.UpsertUpstream(ctx, operations.UpsertUpstreamRequest{
         UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Upstream: components.Upstream{
             Healthchecks: &components.Healthchecks{
                 Active: &components.Active{
@@ -667,7 +692,7 @@ func main() {
 ```
 ### Example Usage: NoAPIKey
 
-<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" example="NoAPIKey" -->
+<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/upstreams/{UpstreamId}" example="NoAPIKey" -->
 ```go
 package main
 
@@ -691,6 +716,7 @@ func main() {
     res, err := s.Upstreams.UpsertUpstream(ctx, operations.UpsertUpstreamRequest{
         UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Workspace: "team-payments",
         Upstream: components.Upstream{
             Healthchecks: &components.Healthchecks{
                 Active: &components.Active{

@@ -214,12 +214,12 @@ func (_c *MockBasicAuthCredentialsSDK_DeleteBasicAuthWithConsumer_Call) RunAndRe
 }
 
 // GetBasicAuth provides a mock function for the type MockBasicAuthCredentialsSDK
-func (_mock *MockBasicAuthCredentialsSDK) GetBasicAuth(ctx context.Context, basicAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetBasicAuthResponse, error) {
+func (_mock *MockBasicAuthCredentialsSDK) GetBasicAuth(ctx context.Context, request operations.GetBasicAuthRequest, opts ...operations.Option) (*operations.GetBasicAuthResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, basicAuthID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, basicAuthID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -229,18 +229,18 @@ func (_mock *MockBasicAuthCredentialsSDK) GetBasicAuth(ctx context.Context, basi
 
 	var r0 *operations.GetBasicAuthResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetBasicAuthResponse, error)); ok {
-		return returnFunc(ctx, basicAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetBasicAuthRequest, ...operations.Option) (*operations.GetBasicAuthResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetBasicAuthResponse); ok {
-		r0 = returnFunc(ctx, basicAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetBasicAuthRequest, ...operations.Option) *operations.GetBasicAuthResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetBasicAuthResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, basicAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetBasicAuthRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -254,39 +254,33 @@ type MockBasicAuthCredentialsSDK_GetBasicAuth_Call struct {
 
 // GetBasicAuth is a helper method to define mock.On call
 //   - ctx context.Context
-//   - basicAuthID string
-//   - controlPlaneID string
+//   - request operations.GetBasicAuthRequest
 //   - opts ...operations.Option
-func (_e *MockBasicAuthCredentialsSDK_Expecter) GetBasicAuth(ctx any, basicAuthID any, controlPlaneID any, opts ...any) *MockBasicAuthCredentialsSDK_GetBasicAuth_Call {
+func (_e *MockBasicAuthCredentialsSDK_Expecter) GetBasicAuth(ctx any, request any, opts ...any) *MockBasicAuthCredentialsSDK_GetBasicAuth_Call {
 	return &MockBasicAuthCredentialsSDK_GetBasicAuth_Call{Call: _e.mock.On("GetBasicAuth",
-		append([]any{ctx, basicAuthID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockBasicAuthCredentialsSDK_GetBasicAuth_Call) Run(run func(ctx context.Context, basicAuthID string, controlPlaneID string, opts ...operations.Option)) *MockBasicAuthCredentialsSDK_GetBasicAuth_Call {
+func (_c *MockBasicAuthCredentialsSDK_GetBasicAuth_Call) Run(run func(ctx context.Context, request operations.GetBasicAuthRequest, opts ...operations.Option)) *MockBasicAuthCredentialsSDK_GetBasicAuth_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetBasicAuthRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetBasicAuthRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -297,7 +291,7 @@ func (_c *MockBasicAuthCredentialsSDK_GetBasicAuth_Call) Return(getBasicAuthResp
 	return _c
 }
 
-func (_c *MockBasicAuthCredentialsSDK_GetBasicAuth_Call) RunAndReturn(run func(ctx context.Context, basicAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetBasicAuthResponse, error)) *MockBasicAuthCredentialsSDK_GetBasicAuth_Call {
+func (_c *MockBasicAuthCredentialsSDK_GetBasicAuth_Call) RunAndReturn(run func(ctx context.Context, request operations.GetBasicAuthRequest, opts ...operations.Option) (*operations.GetBasicAuthResponse, error)) *MockBasicAuthCredentialsSDK_GetBasicAuth_Call {
 	_c.Call.Return(run)
 	return _c
 }

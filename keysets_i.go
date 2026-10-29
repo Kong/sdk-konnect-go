@@ -5,25 +5,24 @@ package sdkkonnectgo
 import (
 	"context"
 
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 )
 
 // KeySetsSDK is a generated interface.
 type KeySetsSDK interface {
-	// ListKeySet - List all KeySets
-	// List all KeySets
+	// ListKeySet - List all KeySets in a workspace
+	// List all KeySets in a workspace
 	ListKeySet(ctx context.Context, request operations.ListKeySetRequest, opts ...operations.Option) (*operations.ListKeySetResponse, error)
-	// CreateKeySet - Create a new KeySet
-	// Create a new KeySet
-	CreateKeySet(ctx context.Context, controlPlaneID string, keySet *components.KeySet, opts ...operations.Option) (*operations.CreateKeySetResponse, error)
-	// DeleteKeySet - Delete a KeySet
-	// Delete a KeySet
-	DeleteKeySet(ctx context.Context, controlPlaneID string, keySetID string, opts ...operations.Option) (*operations.DeleteKeySetResponse, error)
-	// GetKeySet - Get a KeySet
-	// Get a KeySet using ID or name.
-	GetKeySet(ctx context.Context, keySetID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeySetResponse, error)
-	// UpsertKeySet - Upsert a KeySet
-	// Create or Update KeySet using ID or name.
+	// CreateKeySet - Create a new KeySet in a workspace
+	// Create a new KeySet in a workspace
+	CreateKeySet(ctx context.Context, request operations.CreateKeySetRequest, opts ...operations.Option) (*operations.CreateKeySetResponse, error)
+	// DeleteKeySet - Delete a KeySet in a workspace
+	// Delete a KeySet in a workspace
+	DeleteKeySet(ctx context.Context, request operations.DeleteKeySetRequest, opts ...operations.Option) (*operations.DeleteKeySetResponse, error)
+	// GetKeySet - Get a KeySet in a workspace
+	// Get a KeySet using ID or name in a workspace.
+	GetKeySet(ctx context.Context, request operations.GetKeySetRequest, opts ...operations.Option) (*operations.GetKeySetResponse, error)
+	// UpsertKeySet - Upsert a KeySet in a workspace
+	// Create or Update KeySet using ID or name in a workspace.
 	UpsertKeySet(ctx context.Context, request operations.UpsertKeySetRequest, opts ...operations.Option) (*operations.UpsertKeySetResponse, error)
 }

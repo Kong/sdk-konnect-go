@@ -214,12 +214,12 @@ func (_c *MockHMACAuthCredentialsSDK_DeleteHmacAuthWithConsumer_Call) RunAndRetu
 }
 
 // GetHmacAuth provides a mock function for the type MockHMACAuthCredentialsSDK
-func (_mock *MockHMACAuthCredentialsSDK) GetHmacAuth(ctx context.Context, hmacAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetHmacAuthResponse, error) {
+func (_mock *MockHMACAuthCredentialsSDK) GetHmacAuth(ctx context.Context, request operations.GetHmacAuthRequest, opts ...operations.Option) (*operations.GetHmacAuthResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, hmacAuthID, controlPlaneID, opts)
+		tmpRet = _mock.Called(ctx, request, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, hmacAuthID, controlPlaneID)
+		tmpRet = _mock.Called(ctx, request)
 	}
 	ret := tmpRet
 
@@ -229,18 +229,18 @@ func (_mock *MockHMACAuthCredentialsSDK) GetHmacAuth(ctx context.Context, hmacAu
 
 	var r0 *operations.GetHmacAuthResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetHmacAuthResponse, error)); ok {
-		return returnFunc(ctx, hmacAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetHmacAuthRequest, ...operations.Option) (*operations.GetHmacAuthResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetHmacAuthResponse); ok {
-		r0 = returnFunc(ctx, hmacAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetHmacAuthRequest, ...operations.Option) *operations.GetHmacAuthResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetHmacAuthResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, hmacAuthID, controlPlaneID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetHmacAuthRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -254,39 +254,33 @@ type MockHMACAuthCredentialsSDK_GetHmacAuth_Call struct {
 
 // GetHmacAuth is a helper method to define mock.On call
 //   - ctx context.Context
-//   - hmacAuthID string
-//   - controlPlaneID string
+//   - request operations.GetHmacAuthRequest
 //   - opts ...operations.Option
-func (_e *MockHMACAuthCredentialsSDK_Expecter) GetHmacAuth(ctx any, hmacAuthID any, controlPlaneID any, opts ...any) *MockHMACAuthCredentialsSDK_GetHmacAuth_Call {
+func (_e *MockHMACAuthCredentialsSDK_Expecter) GetHmacAuth(ctx any, request any, opts ...any) *MockHMACAuthCredentialsSDK_GetHmacAuth_Call {
 	return &MockHMACAuthCredentialsSDK_GetHmacAuth_Call{Call: _e.mock.On("GetHmacAuth",
-		append([]any{ctx, hmacAuthID, controlPlaneID}, opts...)...)}
+		append([]any{ctx, request}, opts...)...)}
 }
 
-func (_c *MockHMACAuthCredentialsSDK_GetHmacAuth_Call) Run(run func(ctx context.Context, hmacAuthID string, controlPlaneID string, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_GetHmacAuth_Call {
+func (_c *MockHMACAuthCredentialsSDK_GetHmacAuth_Call) Run(run func(ctx context.Context, request operations.GetHmacAuthRequest, opts ...operations.Option)) *MockHMACAuthCredentialsSDK_GetHmacAuth_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 string
+		var arg1 operations.GetHmacAuthRequest
 		if args[1] != nil {
-			arg1 = args[1].(string)
+			arg1 = args[1].(operations.GetHmacAuthRequest)
 		}
-		var arg2 string
-		if args[2] != nil {
-			arg2 = args[2].(string)
-		}
-		var arg3 []operations.Option
+		var arg2 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 3 {
-			variadicArgs = args[3].([]operations.Option)
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
 		}
-		arg3 = variadicArgs
+		arg2 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2,
-			arg3...,
+			arg2...,
 		)
 	})
 	return _c
@@ -297,7 +291,7 @@ func (_c *MockHMACAuthCredentialsSDK_GetHmacAuth_Call) Return(getHmacAuthRespons
 	return _c
 }
 
-func (_c *MockHMACAuthCredentialsSDK_GetHmacAuth_Call) RunAndReturn(run func(ctx context.Context, hmacAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetHmacAuthResponse, error)) *MockHMACAuthCredentialsSDK_GetHmacAuth_Call {
+func (_c *MockHMACAuthCredentialsSDK_GetHmacAuth_Call) RunAndReturn(run func(ctx context.Context, request operations.GetHmacAuthRequest, opts ...operations.Option) (*operations.GetHmacAuthResponse, error)) *MockHMACAuthCredentialsSDK_GetHmacAuth_Call {
 	_c.Call.Return(run)
 	return _c
 }

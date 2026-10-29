@@ -10,25 +10,25 @@ import (
 
 // HMACAuthCredentialsSDK is a generated interface.
 type HMACAuthCredentialsSDK interface {
-	// ListHmacAuthWithConsumer - List all HMAC-auth credentials associated with a Consumer
-	// List all HMAC-auth credentials associated with a Consumer
+	// ListHmacAuthWithConsumer - List all HMAC-auth credentials associated with a Consumer in a workspace
+	// List all HMAC-auth credentials associated with a Consumer in a workspace
 	ListHmacAuthWithConsumer(ctx context.Context, request operations.ListHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListHmacAuthWithConsumerResponse, error)
-	// CreateHmacAuthWithConsumer - Create a new HMAC-auth credential associated with a Consumer
-	// Create a new HMAC-auth credential associated with a Consumer
+	// CreateHmacAuthWithConsumer - Create a new HMAC-auth credential associated with a Consumer in a workspace
+	// Create a new HMAC-auth credential associated with a Consumer in a workspace
 	CreateHmacAuthWithConsumer(ctx context.Context, request operations.CreateHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.CreateHmacAuthWithConsumerResponse, error)
-	// DeleteHmacAuthWithConsumer - Delete a a HMAC-auth credential associated with a Consumer
-	// Delete a a HMAC-auth credential associated with a Consumer using ID.
+	// DeleteHmacAuthWithConsumer - Delete a a HMAC-auth credential associated with a Consumer in a workspace
+	// Delete a a HMAC-auth credential associated with a Consumer using ID in a workspace.
 	DeleteHmacAuthWithConsumer(ctx context.Context, request operations.DeleteHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteHmacAuthWithConsumerResponse, error)
-	// GetHmacAuthWithConsumer - Get a HMAC-auth credential associated with a Consumer
-	// Get a HMAC-auth credential associated with a Consumer using ID.
+	// GetHmacAuthWithConsumer - Get a HMAC-auth credential associated with a Consumer in a workspace
+	// Get a HMAC-auth credential associated with a Consumer using ID in a workspace.
 	GetHmacAuthWithConsumer(ctx context.Context, request operations.GetHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetHmacAuthWithConsumerResponse, error)
-	// UpsertHmacAuthWithConsumer - Upsert a HMAC-auth credential associated with a Consumer
-	// Create or Update a HMAC-auth credential associated with a Consumer using ID.
+	// UpsertHmacAuthWithConsumer - Upsert a HMAC-auth credential associated with a Consumer in a workspace
+	// Create or Update a HMAC-auth credential associated with a Consumer using ID in a workspace.
 	UpsertHmacAuthWithConsumer(ctx context.Context, request operations.UpsertHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertHmacAuthWithConsumerResponse, error)
-	// ListHmacAuth - List all HMAC-auth credentials
-	// List all HMAC-auth credentials
+	// ListHmacAuth - List all HMAC-auth credentials in a workspace
+	// List all HMAC-auth credentials in a workspace
 	ListHmacAuth(ctx context.Context, request operations.ListHmacAuthRequest, opts ...operations.Option) (*operations.ListHmacAuthResponse, error)
-	// GetHmacAuth - Get a HMAC-auth credential
-	// Get a HMAC-auth credential using ID.
-	GetHmacAuth(ctx context.Context, hmacAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetHmacAuthResponse, error)
+	// GetHmacAuth - Get a HMAC-auth credential in a workspace
+	// Get a HMAC-auth credential using ID in a workspace.
+	GetHmacAuth(ctx context.Context, request operations.GetHmacAuthRequest, opts ...operations.Option) (*operations.GetHmacAuthResponse, error)
 }

@@ -1590,6 +1590,95 @@ func (_c *MockOpenMeterCustomersSDK_UpdateCustomerBillingAppData_Call) RunAndRet
 	return _c
 }
 
+// UpdateCustomerBillingProfile provides a mock function for the type MockOpenMeterCustomersSDK
+func (_mock *MockOpenMeterCustomersSDK) UpdateCustomerBillingProfile(ctx context.Context, customerID string, upsertCustomerBillingProfileRequest components.UpsertCustomerBillingProfileRequest, opts ...operations.Option) (*operations.UpdateCustomerBillingProfileResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, customerID, upsertCustomerBillingProfileRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, customerID, upsertCustomerBillingProfileRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateCustomerBillingProfile")
+	}
+
+	var r0 *operations.UpdateCustomerBillingProfileResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpsertCustomerBillingProfileRequest, ...operations.Option) (*operations.UpdateCustomerBillingProfileResponse, error)); ok {
+		return returnFunc(ctx, customerID, upsertCustomerBillingProfileRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpsertCustomerBillingProfileRequest, ...operations.Option) *operations.UpdateCustomerBillingProfileResponse); ok {
+		r0 = returnFunc(ctx, customerID, upsertCustomerBillingProfileRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateCustomerBillingProfileResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpsertCustomerBillingProfileRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, customerID, upsertCustomerBillingProfileRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateCustomerBillingProfile'
+type MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call struct {
+	*mock.Call
+}
+
+// UpdateCustomerBillingProfile is a helper method to define mock.On call
+//   - ctx context.Context
+//   - customerID string
+//   - upsertCustomerBillingProfileRequest components.UpsertCustomerBillingProfileRequest
+//   - opts ...operations.Option
+func (_e *MockOpenMeterCustomersSDK_Expecter) UpdateCustomerBillingProfile(ctx any, customerID any, upsertCustomerBillingProfileRequest any, opts ...any) *MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call {
+	return &MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call{Call: _e.mock.On("UpdateCustomerBillingProfile",
+		append([]any{ctx, customerID, upsertCustomerBillingProfileRequest}, opts...)...)}
+}
+
+func (_c *MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call) Run(run func(ctx context.Context, customerID string, upsertCustomerBillingProfileRequest components.UpsertCustomerBillingProfileRequest, opts ...operations.Option)) *MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.UpsertCustomerBillingProfileRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.UpsertCustomerBillingProfileRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call) Return(updateCustomerBillingProfileResponse *operations.UpdateCustomerBillingProfileResponse, err error) *MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call {
+	_c.Call.Return(updateCustomerBillingProfileResponse, err)
+	return _c
+}
+
+func (_c *MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call) RunAndReturn(run func(ctx context.Context, customerID string, upsertCustomerBillingProfileRequest components.UpsertCustomerBillingProfileRequest, opts ...operations.Option) (*operations.UpdateCustomerBillingProfileResponse, error)) *MockOpenMeterCustomersSDK_UpdateCustomerBillingProfile_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpsertCustomer provides a mock function for the type MockOpenMeterCustomersSDK
 func (_mock *MockOpenMeterCustomersSDK) UpsertCustomer(ctx context.Context, customerID string, upsertCustomerRequest components.UpsertCustomerRequest, opts ...operations.Option) (*operations.UpsertCustomerResponse, error) {
 	var tmpRet mock.Arguments

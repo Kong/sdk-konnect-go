@@ -4,6 +4,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -15,8 +16,21 @@ type GetPluginWithConsumerRequest struct {
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
 	// ID of the Plugin to lookup
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
+	// The name of the workspace
+	Workspace string `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
 	// Expand partials for the plugin.
 	ExpandPartials *bool `queryParam:"style=form,explode=true,name=expand_partials"`
+}
+
+func (g GetPluginWithConsumerRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetPluginWithConsumerRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (g *GetPluginWithConsumerRequest) GetControlPlaneID() string {
@@ -38,6 +52,13 @@ func (g *GetPluginWithConsumerRequest) GetPluginID() string {
 		return ""
 	}
 	return g.PluginID
+}
+
+func (g *GetPluginWithConsumerRequest) GetWorkspace() string {
+	if g == nil {
+		return ""
+	}
+	return g.Workspace
 }
 
 func (g *GetPluginWithConsumerRequest) GetExpandPartials() *bool {
