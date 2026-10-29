@@ -23105,6 +23105,8 @@ paths:
       description: 'Creates a default collection of pages, snippets, and customization config for a portal if they do not already exist. This endpoint is optional, you can call it to populate a newly created developer portal with default content, but it is not required. Existing pages and snippets will not be modified or deleted. If used, it is typically called once per portal shortly after creation.'
       parameters:
         - $ref: '#/components/parameters/PortalId'
+      requestBody:
+        $ref: '#/components/requestBodies/CreateDefaultContent'
       responses:
         '201':
           $ref: '#/components/responses/DefaultContentResponse'
@@ -37694,6 +37696,12 @@ components:
         - pages
         - snippets
       title: DefaultContent
+    CreateDefaultContentRequest:
+      description: Options for creating default content.
+      type: object
+      properties: {}
+      additionalProperties: false
+      title: CreateDefaultContentRequest
     PortalPageResponse:
       description: Details about a page in a portal.
       type: object
@@ -40044,7 +40052,7 @@ components:
           additionalProperties: false
           properties:
             name:
-              description: 'The theme name to apply to this portal. Supported names are ''ocean'', ''mesa'', and ''grove''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
+              description: 'The theme name to apply to this portal. Supported names are ''mesa'', ''grove'', ''pebble'', or ''ocean''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
               type: string
               default: ocean
               nullable: false
@@ -100426,6 +100434,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ReplaceImageRequestSchema'
+    CreateDefaultContent:
+      description: Options for creating boilerplate content.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateDefaultContentRequest'
     CreatePortalForm:
       description: Create a custom form for a portal.
       required: true
@@ -107214,7 +107229,7 @@ x-input-schemas:
     version: 1.1.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.14.1
+    version: 3.15.0
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.3
