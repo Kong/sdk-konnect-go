@@ -34,9 +34,10 @@ func newPages(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hook
 
 // CreateDefaultContent - Create Boilerplate Content
 // Creates a default collection of pages, snippets, and customization config for a portal if they do not already exist. This endpoint is optional, you can call it to populate a newly created developer portal with default content, but it is not required. Existing pages and snippets will not be modified or deleted. If used, it is typically called once per portal shortly after creation.
-func (s *Pages) CreateDefaultContent(ctx context.Context, portalID string, opts ...operations.Option) (*operations.CreateDefaultContentResponse, error) {
+func (s *Pages) CreateDefaultContent(ctx context.Context, portalID string, createDefaultContentRequest *components.CreateDefaultContentRequest, opts ...operations.Option) (*operations.CreateDefaultContentResponse, error) {
 	request := operations.CreateDefaultContentRequest{
-		PortalID: portalID,
+		PortalID:                    portalID,
+		CreateDefaultContentRequest: createDefaultContentRequest,
 	}
 
 	o := operations.Options{}
@@ -71,6 +72,10 @@ func (s *Pages) CreateDefaultContent(ctx context.Context, portalID string, opts 
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreateDefaultContentRequest", "json", `request:"mediaType=application/json"`)
+	if err != nil {
+		return nil, err
+	}
 
 	timeout := o.Timeout
 	if timeout == nil {
@@ -83,12 +88,15 @@ func (s *Pages) CreateDefaultContent(ctx context.Context, portalID string, opts 
 		defer cancel()
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", opURL, nil)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+	if reqContentType != "" {
+		req.Header.Set("Content-Type", reqContentType)
+	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err

@@ -25,16 +25,16 @@ type ConsumersSDK interface {
 	// UpsertConsumer - Upsert a Consumer in a workspace
 	// Create or Update Consumer using ID or username in a workspace.
 	UpsertConsumer(ctx context.Context, request operations.UpsertConsumerRequest, opts ...operations.Option) (*operations.UpsertConsumerResponse, error)
-	// RemoveConsumerFromAllConsumerGroups - Remove consumer from all consumer groups in a workspace
-	// Removes a consumer from all Consumer Groups. This operation does not delete the consumer group in a workspace.
-	RemoveConsumerFromAllConsumerGroups(ctx context.Context, request operations.RemoveConsumerFromAllConsumerGroupsRequest, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)
-	// ListConsumerGroupsForConsumer - List all Consumer Groups a Consumer belongs to in a workspace
-	// List all Consumer Groups a Consumer belongs to in a workspace
+	// RemoveConsumerFromAllConsumerGroups - Remove consumer from all consumer groups
+	// Removes a consumer from all Consumer Groups. This operation does not delete the consumer group.
+	RemoveConsumerFromAllConsumerGroups(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)
+	// ListConsumerGroupsForConsumer - List all Consumer Groups a Consumer belongs to
+	// List all Consumer Groups a Consumer belongs to
 	ListConsumerGroupsForConsumer(ctx context.Context, request operations.ListConsumerGroupsForConsumerRequest, opts ...operations.Option) (*operations.ListConsumerGroupsForConsumerResponse, error)
-	// AddConsumerToSpecificConsumerGroup - Add consumer to a specific consumer group in a workspace
-	// Add a consumer to a consumer group in a workspace
+	// AddConsumerToSpecificConsumerGroup - Add consumer to a specific consumer group
+	// Add a consumer to a consumer group
 	AddConsumerToSpecificConsumerGroup(ctx context.Context, request operations.AddConsumerToSpecificConsumerGroupRequest, opts ...operations.Option) (*operations.AddConsumerToSpecificConsumerGroupResponse, error)
-	// RemoveConsumerFromConsumerGroup - Remove consumer from consumer group in a workspace
-	// Removes a consumer from a Consumer Group. This operation does not delete the consumer group in a workspace.
+	// RemoveConsumerFromConsumerGroup - Remove consumer from consumer group
+	// Removes a consumer from a Consumer Group. This operation does not delete the consumer group.
 	RemoveConsumerFromConsumerGroup(ctx context.Context, request operations.RemoveConsumerFromConsumerGroupRequest, opts ...operations.Option) (*operations.RemoveConsumerFromConsumerGroupResponse, error)
 }

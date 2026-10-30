@@ -34,7 +34,7 @@ func main() {
         }),
     )
 
-    res, err := s.Pages.CreateDefaultContent(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a")
+    res, err := s.Pages.CreateDefaultContent(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -46,11 +46,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       | Example                                                                                           |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                             | [context.Context](https://pkg.go.dev/context#Context)                                             | :heavy_check_mark:                                                                                | The context to use for the request.                                                               |                                                                                                   |
+| `portalID`                                                                                        | `string`                                                                                          | :heavy_check_mark:                                                                                | ID of the portal.                                                                                 | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                              |
+| `createDefaultContentRequest`                                                                     | [*components.CreateDefaultContentRequest](../../models/components/createdefaultcontentrequest.md) | :heavy_minus_sign:                                                                                | Options for creating boilerplate content.                                                         |                                                                                                   |
+| `opts`                                                                                            | [][operations.Option](../../models/operations/option.md)                                          | :heavy_minus_sign:                                                                                | The options for this request.                                                                     |                                                                                                   |
 
 ### Response
 

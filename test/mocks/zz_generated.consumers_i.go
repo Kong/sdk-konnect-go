@@ -546,12 +546,12 @@ func (_c *MockConsumersSDK_ListConsumerGroupsForConsumer_Call) RunAndReturn(run 
 }
 
 // RemoveConsumerFromAllConsumerGroups provides a mock function for the type MockConsumersSDK
-func (_mock *MockConsumersSDK) RemoveConsumerFromAllConsumerGroups(ctx context.Context, request operations.RemoveConsumerFromAllConsumerGroupsRequest, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error) {
+func (_mock *MockConsumersSDK) RemoveConsumerFromAllConsumerGroups(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, request, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, consumerID, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, request)
+		tmpRet = _mock.Called(ctx, controlPlaneID, consumerID)
 	}
 	ret := tmpRet
 
@@ -561,18 +561,18 @@ func (_mock *MockConsumersSDK) RemoveConsumerFromAllConsumerGroups(ctx context.C
 
 	var r0 *operations.RemoveConsumerFromAllConsumerGroupsResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.RemoveConsumerFromAllConsumerGroupsRequest, ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)); ok {
-		return returnFunc(ctx, request, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)); ok {
+		return returnFunc(ctx, controlPlaneID, consumerID, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.RemoveConsumerFromAllConsumerGroupsRequest, ...operations.Option) *operations.RemoveConsumerFromAllConsumerGroupsResponse); ok {
-		r0 = returnFunc(ctx, request, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.RemoveConsumerFromAllConsumerGroupsResponse); ok {
+		r0 = returnFunc(ctx, controlPlaneID, consumerID, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.RemoveConsumerFromAllConsumerGroupsResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.RemoveConsumerFromAllConsumerGroupsRequest, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, request, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, controlPlaneID, consumerID, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -586,33 +586,39 @@ type MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call struct {
 
 // RemoveConsumerFromAllConsumerGroups is a helper method to define mock.On call
 //   - ctx context.Context
-//   - request operations.RemoveConsumerFromAllConsumerGroupsRequest
+//   - controlPlaneID string
+//   - consumerID string
 //   - opts ...operations.Option
-func (_e *MockConsumersSDK_Expecter) RemoveConsumerFromAllConsumerGroups(ctx any, request any, opts ...any) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
+func (_e *MockConsumersSDK_Expecter) RemoveConsumerFromAllConsumerGroups(ctx any, controlPlaneID any, consumerID any, opts ...any) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
 	return &MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call{Call: _e.mock.On("RemoveConsumerFromAllConsumerGroups",
-		append([]any{ctx, request}, opts...)...)}
+		append([]any{ctx, controlPlaneID, consumerID}, opts...)...)}
 }
 
-func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) Run(run func(ctx context.Context, request operations.RemoveConsumerFromAllConsumerGroupsRequest, opts ...operations.Option)) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
+func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) Run(run func(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option)) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 operations.RemoveConsumerFromAllConsumerGroupsRequest
+		var arg1 string
 		if args[1] != nil {
-			arg1 = args[1].(operations.RemoveConsumerFromAllConsumerGroupsRequest)
+			arg1 = args[1].(string)
 		}
-		var arg2 []operations.Option
+		var arg2 string
+		if args[2] != nil {
+			arg2 = args[2].(string)
+		}
+		var arg3 []operations.Option
 		var variadicArgs []operations.Option
-		if len(args) > 2 {
-			variadicArgs = args[2].([]operations.Option)
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
 		}
-		arg2 = variadicArgs
+		arg3 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2...,
+			arg2,
+			arg3...,
 		)
 	})
 	return _c
@@ -623,7 +629,7 @@ func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) Return(remo
 	return _c
 }
 
-func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) RunAndReturn(run func(ctx context.Context, request operations.RemoveConsumerFromAllConsumerGroupsRequest, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
+func (_c *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, consumerID string, opts ...operations.Option) (*operations.RemoveConsumerFromAllConsumerGroupsResponse, error)) *MockConsumersSDK_RemoveConsumerFromAllConsumerGroups_Call {
 	_c.Call.Return(run)
 	return _c
 }

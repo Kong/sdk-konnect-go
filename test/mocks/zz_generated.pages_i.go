@@ -7,6 +7,7 @@ package mocks
 import (
 	"context"
 
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -48,12 +49,12 @@ func (_m *MockPagesSDK) EXPECT() *MockPagesSDK_Expecter {
 }
 
 // CreateDefaultContent provides a mock function for the type MockPagesSDK
-func (_mock *MockPagesSDK) CreateDefaultContent(ctx context.Context, portalID string, opts ...operations.Option) (*operations.CreateDefaultContentResponse, error) {
+func (_mock *MockPagesSDK) CreateDefaultContent(ctx context.Context, portalID string, createDefaultContentRequest *components.CreateDefaultContentRequest, opts ...operations.Option) (*operations.CreateDefaultContentResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, portalID, opts)
+		tmpRet = _mock.Called(ctx, portalID, createDefaultContentRequest, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, portalID)
+		tmpRet = _mock.Called(ctx, portalID, createDefaultContentRequest)
 	}
 	ret := tmpRet
 
@@ -63,18 +64,18 @@ func (_mock *MockPagesSDK) CreateDefaultContent(ctx context.Context, portalID st
 
 	var r0 *operations.CreateDefaultContentResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.CreateDefaultContentResponse, error)); ok {
-		return returnFunc(ctx, portalID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.CreateDefaultContentRequest, ...operations.Option) (*operations.CreateDefaultContentResponse, error)); ok {
+		return returnFunc(ctx, portalID, createDefaultContentRequest, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.CreateDefaultContentResponse); ok {
-		r0 = returnFunc(ctx, portalID, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.CreateDefaultContentRequest, ...operations.Option) *operations.CreateDefaultContentResponse); ok {
+		r0 = returnFunc(ctx, portalID, createDefaultContentRequest, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.CreateDefaultContentResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, portalID, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.CreateDefaultContentRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, portalID, createDefaultContentRequest, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -89,13 +90,14 @@ type MockPagesSDK_CreateDefaultContent_Call struct {
 // CreateDefaultContent is a helper method to define mock.On call
 //   - ctx context.Context
 //   - portalID string
+//   - createDefaultContentRequest *components.CreateDefaultContentRequest
 //   - opts ...operations.Option
-func (_e *MockPagesSDK_Expecter) CreateDefaultContent(ctx any, portalID any, opts ...any) *MockPagesSDK_CreateDefaultContent_Call {
+func (_e *MockPagesSDK_Expecter) CreateDefaultContent(ctx any, portalID any, createDefaultContentRequest any, opts ...any) *MockPagesSDK_CreateDefaultContent_Call {
 	return &MockPagesSDK_CreateDefaultContent_Call{Call: _e.mock.On("CreateDefaultContent",
-		append([]any{ctx, portalID}, opts...)...)}
+		append([]any{ctx, portalID, createDefaultContentRequest}, opts...)...)}
 }
 
-func (_c *MockPagesSDK_CreateDefaultContent_Call) Run(run func(ctx context.Context, portalID string, opts ...operations.Option)) *MockPagesSDK_CreateDefaultContent_Call {
+func (_c *MockPagesSDK_CreateDefaultContent_Call) Run(run func(ctx context.Context, portalID string, createDefaultContentRequest *components.CreateDefaultContentRequest, opts ...operations.Option)) *MockPagesSDK_CreateDefaultContent_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -105,16 +107,21 @@ func (_c *MockPagesSDK_CreateDefaultContent_Call) Run(run func(ctx context.Conte
 		if args[1] != nil {
 			arg1 = args[1].(string)
 		}
-		var arg2 []operations.Option
-		var variadicArgs []operations.Option
-		if len(args) > 2 {
-			variadicArgs = args[2].([]operations.Option)
+		var arg2 *components.CreateDefaultContentRequest
+		if args[2] != nil {
+			arg2 = args[2].(*components.CreateDefaultContentRequest)
 		}
-		arg2 = variadicArgs
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
 		run(
 			arg0,
 			arg1,
-			arg2...,
+			arg2,
+			arg3...,
 		)
 	})
 	return _c
@@ -125,7 +132,7 @@ func (_c *MockPagesSDK_CreateDefaultContent_Call) Return(createDefaultContentRes
 	return _c
 }
 
-func (_c *MockPagesSDK_CreateDefaultContent_Call) RunAndReturn(run func(ctx context.Context, portalID string, opts ...operations.Option) (*operations.CreateDefaultContentResponse, error)) *MockPagesSDK_CreateDefaultContent_Call {
+func (_c *MockPagesSDK_CreateDefaultContent_Call) RunAndReturn(run func(ctx context.Context, portalID string, createDefaultContentRequest *components.CreateDefaultContentRequest, opts ...operations.Option) (*operations.CreateDefaultContentResponse, error)) *MockPagesSDK_CreateDefaultContent_Call {
 	_c.Call.Return(run)
 	return _c
 }

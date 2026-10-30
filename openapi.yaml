@@ -10577,100 +10577,6 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - Consumers
-  '/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups':
-    delete:
-      operationId: remove-consumer-from-all-consumer-groups
-      summary: Remove consumer from all consumer groups in a workspace
-      description: Removes a consumer from all Consumer Groups. This operation does not delete the consumer group in a workspace.
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/Workspace'
-      responses:
-        '204':
-          description: Consumer removed from all groups
-        '404':
-          description: Consumer does not exist
-      tags:
-        - Consumers
-    get:
-      operationId: list-consumer-groups-for-consumer
-      summary: List all Consumer Groups a Consumer belongs to in a workspace
-      description: List all Consumer Groups a Consumer belongs to in a workspace
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/PaginationSize'
-        - $ref: '#/components/parameters/PaginationOffset'
-        - $ref: '#/components/parameters/PaginationTagsFilter'
-        - $ref: '#/components/parameters/Workspace'
-      responses:
-        '200':
-          description: A successful response listing Consumer Groups
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ConsumerGroup'
-                  next:
-                    $ref: '#/components/schemas/PaginationNextResponse'
-                  offset:
-                    $ref: '#/components/schemas/PaginationOffsetResponse'
-      tags:
-        - Consumers
-    parameters:
-      - $ref: '#/components/parameters/controlPlaneId'
-    post:
-      operationId: add-consumer-to-specific-consumer-group
-      summary: Add consumer to a specific consumer group in a workspace
-      description: Add a consumer to a consumer group in a workspace
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/Workspace'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                group:
-                  type: string
-                  example: fedee695-2ae2-4e45-877a-776d9b2fc793
-                  x-speakeasy-name-override: group
-      responses:
-        '201':
-          description: Consumer added to a specific group
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  consumer:
-                    $ref: '#/components/schemas/Consumer'
-                  consumer_groups:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ConsumerGroup'
-      tags:
-        - Consumers
-  '/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}':
-    delete:
-      operationId: remove-consumer-from-consumer-group
-      summary: Remove consumer from consumer group in a workspace
-      description: Removes a consumer from a Consumer Group. This operation does not delete the consumer group in a workspace.
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/ConsumerGroupId'
-        - $ref: '#/components/parameters/Workspace'
-      responses:
-        '204':
-          description: Consumer removed from group
-      tags:
-        - Consumers
-    parameters:
-      - $ref: '#/components/parameters/controlPlaneId'
   '/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls':
     get:
       operationId: list-acl-with-consumer
@@ -13893,6 +13799,96 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - Cloned Plugins
+  '/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups':
+    delete:
+      operationId: remove-consumer-from-all-consumer-groups
+      summary: Remove consumer from all consumer groups
+      description: Removes a consumer from all Consumer Groups. This operation does not delete the consumer group.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+      responses:
+        '204':
+          description: Consumer removed from all groups
+        '404':
+          description: Consumer does not exist
+      tags:
+        - Consumers
+    get:
+      operationId: list-consumer-groups-for-consumer
+      summary: List all Consumer Groups a Consumer belongs to
+      description: List all Consumer Groups a Consumer belongs to
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing Consumer Groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConsumerGroup'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - Consumers
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    post:
+      operationId: add-consumer-to-specific-consumer-group
+      summary: Add consumer to a specific consumer group
+      description: Add a consumer to a consumer group
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group:
+                  type: string
+                  example: fedee695-2ae2-4e45-877a-776d9b2fc793
+                  x-speakeasy-name-override: group
+      responses:
+        '201':
+          description: Consumer added to a specific group
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumer:
+                    $ref: '#/components/schemas/Consumer'
+                  consumer_groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConsumerGroup'
+      tags:
+        - Consumers
+  '/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}':
+    delete:
+      operationId: remove-consumer-from-consumer-group
+      summary: Remove consumer from consumer group
+      description: Removes a consumer from a Consumer Group. This operation does not delete the consumer group.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+        - $ref: '#/components/parameters/ConsumerGroupId'
+      responses:
+        '204':
+          description: Consumer removed from group
+      tags:
+        - Consumers
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
   '/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins':
     get:
       operationId: list-custom-plugin
@@ -23105,6 +23101,8 @@ paths:
       description: 'Creates a default collection of pages, snippets, and customization config for a portal if they do not already exist. This endpoint is optional, you can call it to populate a newly created developer portal with default content, but it is not required. Existing pages and snippets will not be modified or deleted. If used, it is typically called once per portal shortly after creation.'
       parameters:
         - $ref: '#/components/parameters/PortalId'
+      requestBody:
+        $ref: '#/components/requestBodies/CreateDefaultContent'
       responses:
         '201':
           $ref: '#/components/responses/DefaultContentResponse'
@@ -29206,7 +29204,6 @@ components:
         - instance
         - detail
         - invalid_parameters
-      title: Error
     UnauthorizedError:
       description: standard error
       type: object
@@ -29255,7 +29252,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     ForbiddenError:
       description: standard error
       type: object
@@ -29304,7 +29300,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     InternalError:
       description: standard error
       type: object
@@ -29349,7 +29344,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     ConflictError:
       description: standard error
       type: object
@@ -29398,7 +29392,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     NotFoundError:
       description: standard error
       type: object
@@ -29447,7 +29440,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     NotImplementedError:
       description: standard error
       type: object
@@ -29494,7 +29486,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     CreatedAt:
       description: An ISO-8601 timestamp representation of entity creation date.
       type: string
@@ -29553,7 +29544,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     ManagedBy:
       description: |
         Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
@@ -29602,7 +29592,6 @@ components:
           type: string
           example: ERROR_TYPE_FIELD
           readOnly: true
-      title: Error Detail
     KonnectCPLegacyBadRequestError:
       description: standard error
       type: object
@@ -29628,7 +29617,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     KonnectCPLegacyUnauthorizedError:
       description: standard error
       type: object
@@ -29654,7 +29642,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     KonnectCPLegacyForbiddenError:
       description: standard error
       type: object
@@ -29680,7 +29667,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     KonnectCPLegacyNotFoundError:
       description: standard error
       type: object
@@ -29706,7 +29692,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     KonnectCPLegacyConflictError:
       description: standard error
       type: object
@@ -29732,7 +29717,6 @@ components:
           items:
             $ref: '#/components/schemas/KonnectCPLegacyErrorDetail'
           readOnly: true
-      title: Error
     IdentityProviderType:
       description: Specifies the type of identity provider.
       type: string
@@ -34342,7 +34326,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     DcrConfigPropertyInitialClientId:
       description: |
         This ID should be copied from your identity provider's settings after you create a client
@@ -37106,7 +37089,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     TryItUIAudience:
       description: |
         The audience for the Try It UI feature.
@@ -37694,6 +37676,12 @@ components:
         - pages
         - snippets
       title: DefaultContent
+    CreateDefaultContentRequest:
+      description: Options for creating default content.
+      type: object
+      properties: {}
+      additionalProperties: false
+      title: CreateDefaultContentRequest
     PortalPageResponse:
       description: Details about a page in a portal.
       type: object
@@ -40044,7 +40032,7 @@ components:
           additionalProperties: false
           properties:
             name:
-              description: 'The theme name to apply to this portal. Supported names are ''ocean'', ''mesa'', and ''grove''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
+              description: 'The theme name to apply to this portal. Supported names are ''mesa'', ''grove'', ''pebble'', or ''ocean''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
               type: string
               default: ocean
               nullable: false
@@ -74495,7 +74483,6 @@ components:
         - title
         - instance
         - detail
-      title: Error
     AIGatewayEntityIdentifier:
       description: 'Identifier for an AI Gateway entity. In some cases, this may be the entity name or ID.'
       type: string
@@ -100426,6 +100413,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ReplaceImageRequestSchema'
+    CreateDefaultContent:
+      description: Options for creating boilerplate content.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateDefaultContentRequest'
     CreatePortalForm:
       description: Create a custom form for a portal.
       required: true
@@ -107175,7 +107169,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.2.29
+    version: 2.2.31
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
@@ -107214,7 +107208,7 @@ x-input-schemas:
     version: 1.1.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.14.1
+    version: 3.15.1
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.3
