@@ -104,8 +104,8 @@ func main() {
     res, err := s.AIGatewayMCPServers.CreateAiGatewayMcpServer(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayMCPServerRequestUpstreamServer(
         components.AIGatewayMCPServerUpstreamServer{
             Config: components.AIGatewayMCPServerUpstreamServerConfig{
-                Route: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerRouteWithMatcherOne(
-                    components.One{
+                Route: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher1(
+                    components.AIGatewayMCPServerRouteWithMatcher1{
                         Hosts: []string{
                             "foo.example.com",
                         },
@@ -120,7 +120,7 @@ func main() {
                 Server: &components.AIGatewayMCPServerUpstreamServerServerConfig{
                     Session: &components.AIGatewayMCPServerUpstreamServerServerConfigSession{
                         Redis: &components.AIGatewayRedisCloudConfiguration{
-                            Port: sdkkonnectgo.Pointer(components.CreatePortInteger(
+                            Port: sdkkonnectgo.Pointer(components.CreateAIGatewayRedisCloudConfigurationPortInteger(
                                 6379,
                             )),
                         },
@@ -283,8 +283,8 @@ func main() {
         UpdateAIGatewayMCPServerRequest: components.CreateUpdateAIGatewayMCPServerRequestUpstreamServer(
             components.AIGatewayMCPServerUpstreamServer{
                 Config: components.AIGatewayMCPServerUpstreamServerConfig{
-                    Route: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerRouteWithMatcherOne(
-                        components.One{
+                    Route: sdkkonnectgo.Pointer(components.CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher1(
+                        components.AIGatewayMCPServerRouteWithMatcher1{
                             Hosts: []string{
                                 "foo.example.com",
                             },
@@ -299,7 +299,7 @@ func main() {
                     Server: &components.AIGatewayMCPServerUpstreamServerServerConfig{
                         Session: &components.AIGatewayMCPServerUpstreamServerServerConfigSession{
                             Redis: &components.AIGatewayRedisCloudConfiguration{
-                                Port: sdkkonnectgo.Pointer(components.CreatePortInteger(
+                                Port: sdkkonnectgo.Pointer(components.CreateAIGatewayRedisCloudConfigurationPortInteger(
                                     6379,
                                 )),
                             },

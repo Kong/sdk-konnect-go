@@ -15,6 +15,12 @@ createAIGatewayModelProviderRequest := components.CreateCreateAIGatewayModelProv
 createAIGatewayModelProviderRequest := components.CreateCreateAIGatewayModelProviderRequestAzure(components.AIGatewayModelProviderAzure{/* values here */})
 ```
 
+### AIGatewayModelProviderBaseten
+
+```go
+createAIGatewayModelProviderRequest := components.CreateCreateAIGatewayModelProviderRequestBaseten(components.AIGatewayModelProviderBaseten{/* values here */})
+```
+
 ### AIGatewayModelProviderBedrock
 
 ```go
@@ -133,6 +139,8 @@ switch createAIGatewayModelProviderRequest.Type {
 		// createAIGatewayModelProviderRequest.AIGatewayModelProviderAnthropic is populated
 	case components.CreateAIGatewayModelProviderRequestTypeAzure:
 		// createAIGatewayModelProviderRequest.AIGatewayModelProviderAzure is populated
+	case components.CreateAIGatewayModelProviderRequestTypeBaseten:
+		// createAIGatewayModelProviderRequest.AIGatewayModelProviderBaseten is populated
 	case components.CreateAIGatewayModelProviderRequestTypeBedrock:
 		// createAIGatewayModelProviderRequest.AIGatewayModelProviderBedrock is populated
 	case components.CreateAIGatewayModelProviderRequestTypeCerebras:

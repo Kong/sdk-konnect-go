@@ -26,4 +26,9 @@ type AIGatewayAuthStrategiesSDK interface {
 	// DeleteAiGatewayAuthStrategy - Delete an AI Gateway Auth Strategy
 	// Removes a specific AI Gateway auth strategy.
 	DeleteAiGatewayAuthStrategy(ctx context.Context, gatewayID string, authStrategyIDOrName string, opts ...operations.Option) (*operations.DeleteAiGatewayAuthStrategyResponse, error)
+	// ListAiGatewayAuthStrategyUsage - List AI Gateway Auth Strategy Usage
+	// Returns the entities that reference a specific AI Gateway auth strategy, so dependencies can be identified before the auth strategy is deleted.
+	//
+	// Each entity list is limited to the first N records per entity type.
+	ListAiGatewayAuthStrategyUsage(ctx context.Context, gatewayID string, authStrategyIDOrName string, opts ...operations.Option) (*operations.ListAiGatewayAuthStrategyUsageResponse, error)
 }

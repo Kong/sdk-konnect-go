@@ -112,6 +112,9 @@ func main() {
         Labels: map[string]string{
             "category": "finance",
         },
+        ManagedBy: map[string]string{
+            "owner": "terraform",
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -244,6 +247,9 @@ func main() {
         Labels: map[string]string{
             "category": "finance",
         },
+        ManagedBy: map[string]string{
+            "owner": "terraform",
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -317,6 +323,9 @@ func main() {
         MinRuntimeVersion: sdkkonnectgo.Pointer("2.0"),
         Labels: map[string]string{
             "category": "finance",
+        },
+        ManagedBy: map[string]string{
+            "owner": "terraform",
         },
     })
     if err != nil {

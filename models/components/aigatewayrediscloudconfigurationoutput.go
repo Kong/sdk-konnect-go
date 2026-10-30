@@ -121,179 +121,9 @@ func (u AIGatewayRedisCloudConfigurationCloudAuthentication) MarshalJSON() ([]by
 	return nil, errors.New("could not marshal union type AIGatewayRedisCloudConfigurationCloudAuthentication: all fields are null")
 }
 
-type Nodes struct {
-	// A string representing a host name, such as example.com.
-	IP *string `default:"127.0.0.1" json:"ip"`
-	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `default:"6379" json:"port"`
-}
-
-func (n Nodes) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(n, "", false)
-}
-
-func (n *Nodes) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (n *Nodes) GetIP() *string {
-	if n == nil {
-		return nil
-	}
-	return n.IP
-}
-
-func (n *Nodes) GetPort() *int64 {
-	if n == nil {
-		return nil
-	}
-	return n.Port
-}
-
-// Cluster configuration for the Redis connection.
-type Cluster struct {
-	// Maximum retry attempts for redirection.
-	MaxRedirections *int64 `default:"5" json:"max_redirections"`
-	// Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
-	Nodes []Nodes `json:"nodes,omitempty"`
-}
-
-func (c Cluster) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *Cluster) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (c *Cluster) GetMaxRedirections() *int64 {
-	if c == nil {
-		return nil
-	}
-	return c.MaxRedirections
-}
-
-func (c *Cluster) GetNodes() []Nodes {
-	if c == nil {
-		return nil
-	}
-	return c.Nodes
-}
-
-// Keepalive configuration for the Redis connection.
-type Keepalive struct {
-	// Limits the total number of opened connections for a pool. If the connection pool is full, connection queues above the limit go into the backlog queue. If the backlog queue is full, subsequent connect operations fail and return `nil`. Queued operations (subject to set timeouts) resume once the number of connections in the pool is less than `pool_size`. If latency is high or throughput is low, try increasing this value. Empirically, this value is larger than `pool_size`.
-	Backlog *int64 `json:"backlog,omitempty"`
-	// The size limit for every cosocket connection pool associated with every remote server, per worker process. If neither `pool_size` nor `backlog` is specified, no pool is created. If `pool_size` isn't specified but `backlog` is specified, then the pool uses the default value. Try to increase (e.g. 512) this value if latency is high or throughput is low.
-	PoolSize *int64 `default:"256" json:"pool_size"`
-}
-
-func (k Keepalive) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(k, "", false)
-}
-
-func (k *Keepalive) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &k, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (k *Keepalive) GetBacklog() *int64 {
-	if k == nil {
-		return nil
-	}
-	return k.Backlog
-}
-
-func (k *Keepalive) GetPoolSize() *int64 {
-	if k == nil {
-		return nil
-	}
-	return k.PoolSize
-}
-
-type PortType string
-
-const (
-	PortTypeInteger PortType = "integer"
-	PortTypeStr     PortType = "str"
-)
-
-// Port - An integer representing a port number between 0 and 65535, inclusive.
-// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
-type Port struct {
-	Integer *int64  `queryParam:"inline" union:"member"`
-	Str     *string `queryParam:"inline" union:"member"`
-
-	Type PortType
-}
-
-func CreatePortInteger(integer int64) Port {
-	typ := PortTypeInteger
-
-	return Port{
-		Integer: &integer,
-		Type:    typ,
-	}
-}
-
-func CreatePortStr(str string) Port {
-	typ := PortTypeStr
-
-	return Port{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func (u *Port) UnmarshalJSON(data []byte) (err error) {
-	previous := *u
-	*u = Port{}
-	defer func() {
-		if err != nil {
-			*u = previous
-		}
-	}()
-
-	var integer int64 = int64(0)
-	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
-		u.Integer = &integer
-		u.Type = PortTypeInteger
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = PortTypeStr
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Port", string(data))
-}
-
-func (u Port) MarshalJSON() ([]byte, error) {
-	if u.Integer != nil {
-		return utils.MarshalJSON(u.Integer, "", true)
-	}
-
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type Port: all fields are null")
-}
-
 type AIGatewayRedisCloudConfigurationNodes struct {
 	// A string representing a host name, such as example.com.
-	Host *string `default:"127.0.0.1" json:"host"`
+	IP *string `default:"127.0.0.1" json:"ip"`
 	// An integer representing a port number between 0 and 65535, inclusive.
 	Port *int64 `default:"6379" json:"port"`
 }
@@ -309,11 +139,11 @@ func (a *AIGatewayRedisCloudConfigurationNodes) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (a *AIGatewayRedisCloudConfigurationNodes) GetHost() *string {
+func (a *AIGatewayRedisCloudConfigurationNodes) GetIP() *string {
 	if a == nil {
 		return nil
 	}
-	return a.Host
+	return a.IP
 }
 
 func (a *AIGatewayRedisCloudConfigurationNodes) GetPort() *int64 {
@@ -323,21 +153,191 @@ func (a *AIGatewayRedisCloudConfigurationNodes) GetPort() *int64 {
 	return a.Port
 }
 
-// Role - Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
-type Role string
+// AIGatewayRedisCloudConfigurationCluster - Cluster configuration for the Redis connection.
+type AIGatewayRedisCloudConfigurationCluster struct {
+	// Maximum retry attempts for redirection.
+	MaxRedirections *int64 `default:"5" json:"max_redirections"`
+	// Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
+	Nodes []AIGatewayRedisCloudConfigurationNodes `json:"nodes,omitempty"`
+}
+
+func (a AIGatewayRedisCloudConfigurationCluster) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayRedisCloudConfigurationCluster) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayRedisCloudConfigurationCluster) GetMaxRedirections() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.MaxRedirections
+}
+
+func (a *AIGatewayRedisCloudConfigurationCluster) GetNodes() []AIGatewayRedisCloudConfigurationNodes {
+	if a == nil {
+		return nil
+	}
+	return a.Nodes
+}
+
+// AIGatewayRedisCloudConfigurationKeepalive - Keepalive configuration for the Redis connection.
+type AIGatewayRedisCloudConfigurationKeepalive struct {
+	// Limits the total number of opened connections for a pool. If the connection pool is full, connection queues above the limit go into the backlog queue. If the backlog queue is full, subsequent connect operations fail and return `nil`. Queued operations (subject to set timeouts) resume once the number of connections in the pool is less than `pool_size`. If latency is high or throughput is low, try increasing this value. Empirically, this value is larger than `pool_size`.
+	Backlog *int64 `json:"backlog,omitempty"`
+	// The size limit for every cosocket connection pool associated with every remote server, per worker process. If neither `pool_size` nor `backlog` is specified, no pool is created. If `pool_size` isn't specified but `backlog` is specified, then the pool uses the default value. Try to increase (e.g. 512) this value if latency is high or throughput is low.
+	PoolSize *int64 `default:"256" json:"pool_size"`
+}
+
+func (a AIGatewayRedisCloudConfigurationKeepalive) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayRedisCloudConfigurationKeepalive) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayRedisCloudConfigurationKeepalive) GetBacklog() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.Backlog
+}
+
+func (a *AIGatewayRedisCloudConfigurationKeepalive) GetPoolSize() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.PoolSize
+}
+
+type AIGatewayRedisCloudConfigurationPortType string
 
 const (
-	RoleAny    Role = "any"
-	RoleMaster Role = "master"
-	RoleSlave  Role = "slave"
+	AIGatewayRedisCloudConfigurationPortTypeInteger AIGatewayRedisCloudConfigurationPortType = "integer"
+	AIGatewayRedisCloudConfigurationPortTypeStr     AIGatewayRedisCloudConfigurationPortType = "str"
 )
 
-func (e Role) ToPointer() *Role {
+// AIGatewayRedisCloudConfigurationPort - An integer representing a port number between 0 and 65535, inclusive.
+// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+type AIGatewayRedisCloudConfigurationPort struct {
+	Integer *int64  `queryParam:"inline" union:"member"`
+	Str     *string `queryParam:"inline" union:"member"`
+
+	Type AIGatewayRedisCloudConfigurationPortType
+}
+
+func CreateAIGatewayRedisCloudConfigurationPortInteger(integer int64) AIGatewayRedisCloudConfigurationPort {
+	typ := AIGatewayRedisCloudConfigurationPortTypeInteger
+
+	return AIGatewayRedisCloudConfigurationPort{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func CreateAIGatewayRedisCloudConfigurationPortStr(str string) AIGatewayRedisCloudConfigurationPort {
+	typ := AIGatewayRedisCloudConfigurationPortTypeStr
+
+	return AIGatewayRedisCloudConfigurationPort{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *AIGatewayRedisCloudConfigurationPort) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayRedisCloudConfigurationPort{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
+		u.Integer = &integer
+		u.Type = AIGatewayRedisCloudConfigurationPortTypeInteger
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = AIGatewayRedisCloudConfigurationPortTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayRedisCloudConfigurationPort", string(data))
+}
+
+func (u AIGatewayRedisCloudConfigurationPort) MarshalJSON() ([]byte, error) {
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type AIGatewayRedisCloudConfigurationPort: all fields are null")
+}
+
+type AIGatewayRedisCloudConfigurationSentinelNodes struct {
+	// A string representing a host name, such as example.com.
+	Host *string `default:"127.0.0.1" json:"host"`
+	// An integer representing a port number between 0 and 65535, inclusive.
+	Port *int64 `default:"6379" json:"port"`
+}
+
+func (a AIGatewayRedisCloudConfigurationSentinelNodes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayRedisCloudConfigurationSentinelNodes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayRedisCloudConfigurationSentinelNodes) GetHost() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Host
+}
+
+func (a *AIGatewayRedisCloudConfigurationSentinelNodes) GetPort() *int64 {
+	if a == nil {
+		return nil
+	}
+	return a.Port
+}
+
+// AIGatewayRedisCloudConfigurationRole - Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
+type AIGatewayRedisCloudConfigurationRole string
+
+const (
+	AIGatewayRedisCloudConfigurationRoleAny    AIGatewayRedisCloudConfigurationRole = "any"
+	AIGatewayRedisCloudConfigurationRoleMaster AIGatewayRedisCloudConfigurationRole = "master"
+	AIGatewayRedisCloudConfigurationRoleSlave  AIGatewayRedisCloudConfigurationRole = "slave"
+)
+
+func (e AIGatewayRedisCloudConfigurationRole) ToPointer() *AIGatewayRedisCloudConfigurationRole {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Role) IsExact() bool {
+func (e *AIGatewayRedisCloudConfigurationRole) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "any", "master", "slave":
@@ -347,68 +347,68 @@ func (e *Role) IsExact() bool {
 	return false
 }
 
-// Sentinel - Configuration for Redis Sentinel.
-type Sentinel struct {
+// AIGatewayRedisCloudConfigurationSentinel - Configuration for Redis Sentinel.
+type AIGatewayRedisCloudConfigurationSentinel struct {
 	// Sentinel master to use for Redis connections. Defining this value implies using Redis Sentinel.
 	Master *string `json:"master,omitempty"`
 	// Sentinel node addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Sentinel. The minimum length of the array is 1 element.
-	Nodes []AIGatewayRedisCloudConfigurationNodes `json:"nodes,omitempty"`
+	Nodes []AIGatewayRedisCloudConfigurationSentinelNodes `json:"nodes,omitempty"`
 	// Sentinel password to authenticate with a Redis Sentinel instance. If undefined, no AUTH commands are sent to Redis Sentinels.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
 	Password *string `json:"password,omitempty"`
 	// Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
-	Role *Role `json:"role,omitempty"`
+	Role *AIGatewayRedisCloudConfigurationRole `json:"role,omitempty"`
 	// Sentinel username to authenticate with a Redis Sentinel instance. If undefined, ACL authentication won't be performed. This requires Redis v6.2.0+.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
 	Username *string `json:"username,omitempty"`
 }
 
-func (s Sentinel) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
+func (a AIGatewayRedisCloudConfigurationSentinel) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
 }
 
-func (s *Sentinel) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+func (a *AIGatewayRedisCloudConfigurationSentinel) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (s *Sentinel) GetMaster() *string {
-	if s == nil {
+func (a *AIGatewayRedisCloudConfigurationSentinel) GetMaster() *string {
+	if a == nil {
 		return nil
 	}
-	return s.Master
+	return a.Master
 }
 
-func (s *Sentinel) GetNodes() []AIGatewayRedisCloudConfigurationNodes {
-	if s == nil {
+func (a *AIGatewayRedisCloudConfigurationSentinel) GetNodes() []AIGatewayRedisCloudConfigurationSentinelNodes {
+	if a == nil {
 		return nil
 	}
-	return s.Nodes
+	return a.Nodes
 }
 
-func (s *Sentinel) GetPassword() *string {
-	if s == nil {
+func (a *AIGatewayRedisCloudConfigurationSentinel) GetPassword() *string {
+	if a == nil {
 		return nil
 	}
-	return s.Password
+	return a.Password
 }
 
-func (s *Sentinel) GetRole() *Role {
-	if s == nil {
+func (a *AIGatewayRedisCloudConfigurationSentinel) GetRole() *AIGatewayRedisCloudConfigurationRole {
+	if a == nil {
 		return nil
 	}
-	return s.Role
+	return a.Role
 }
 
-func (s *Sentinel) GetUsername() *string {
-	if s == nil {
+func (a *AIGatewayRedisCloudConfigurationSentinel) GetUsername() *string {
+	if a == nil {
 		return nil
 	}
-	return s.Username
+	return a.Username
 }
 
 // AIGatewayRedisCloudConfigurationOutput - Config for connecting to a Cloud Provider's Redis instance.
@@ -416,7 +416,7 @@ type AIGatewayRedisCloudConfigurationOutput struct {
 	// Auth related config for connecting to a Cloud Provider's Redis instance.
 	CloudAuthentication *AIGatewayRedisCloudConfigurationCloudAuthentication `json:"cloud_authentication,omitempty"`
 	// Cluster configuration for the Redis connection.
-	Cluster *Cluster `json:"cluster,omitempty"`
+	Cluster *AIGatewayRedisCloudConfigurationCluster `json:"cluster,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ConnectTimeout *int64 `default:"2000" json:"connect_timeout"`
 	// If the connection to Redis is proxied (e.g. Envoy), set it `true`. Set the `host` and `port` to point to the proxy address.
@@ -428,7 +428,7 @@ type AIGatewayRedisCloudConfigurationOutput struct {
 	//
 	Host *string `default:"127.0.0.1" json:"host"`
 	// Keepalive configuration for the Redis connection.
-	Keepalive *Keepalive `json:"keepalive,omitempty"`
+	Keepalive *AIGatewayRedisCloudConfigurationKeepalive `json:"keepalive,omitempty"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -436,13 +436,13 @@ type AIGatewayRedisCloudConfigurationOutput struct {
 	// An integer representing a port number between 0 and 65535, inclusive.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	Port *Port `json:"port,omitempty"`
+	Port *AIGatewayRedisCloudConfigurationPort `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	SendTimeout *int64 `default:"2000" json:"send_timeout"`
 	// Configuration for Redis Sentinel.
-	Sentinel *Sentinel `json:"sentinel,omitempty"`
+	Sentinel *AIGatewayRedisCloudConfigurationSentinel `json:"sentinel,omitempty"`
 	// A string representing an SNI (server name indication) value for TLS.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -496,7 +496,7 @@ func (a *AIGatewayRedisCloudConfigurationOutput) GetCloudAuthenticationGcp() *AI
 	return nil
 }
 
-func (a *AIGatewayRedisCloudConfigurationOutput) GetCluster() *Cluster {
+func (a *AIGatewayRedisCloudConfigurationOutput) GetCluster() *AIGatewayRedisCloudConfigurationCluster {
 	if a == nil {
 		return nil
 	}
@@ -531,7 +531,7 @@ func (a *AIGatewayRedisCloudConfigurationOutput) GetHost() *string {
 	return a.Host
 }
 
-func (a *AIGatewayRedisCloudConfigurationOutput) GetKeepalive() *Keepalive {
+func (a *AIGatewayRedisCloudConfigurationOutput) GetKeepalive() *AIGatewayRedisCloudConfigurationKeepalive {
 	if a == nil {
 		return nil
 	}
@@ -545,7 +545,7 @@ func (a *AIGatewayRedisCloudConfigurationOutput) GetPassword() *string {
 	return a.Password
 }
 
-func (a *AIGatewayRedisCloudConfigurationOutput) GetPort() *Port {
+func (a *AIGatewayRedisCloudConfigurationOutput) GetPort() *AIGatewayRedisCloudConfigurationPort {
 	if a == nil {
 		return nil
 	}
@@ -566,7 +566,7 @@ func (a *AIGatewayRedisCloudConfigurationOutput) GetSendTimeout() *int64 {
 	return a.SendTimeout
 }
 
-func (a *AIGatewayRedisCloudConfigurationOutput) GetSentinel() *Sentinel {
+func (a *AIGatewayRedisCloudConfigurationOutput) GetSentinel() *AIGatewayRedisCloudConfigurationSentinel {
 	if a == nil {
 		return nil
 	}
@@ -717,7 +717,7 @@ type AIGatewayRedisCloudConfiguration struct {
 	// Auth related config for connecting to a Cloud Provider's Redis instance.
 	CloudAuthentication *CloudAuthentication `json:"cloud_authentication,omitempty"`
 	// Cluster configuration for the Redis connection.
-	Cluster *Cluster `json:"cluster,omitempty"`
+	Cluster *AIGatewayRedisCloudConfigurationCluster `json:"cluster,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ConnectTimeout *int64 `default:"2000" json:"connect_timeout"`
 	// If the connection to Redis is proxied (e.g. Envoy), set it `true`. Set the `host` and `port` to point to the proxy address.
@@ -729,7 +729,7 @@ type AIGatewayRedisCloudConfiguration struct {
 	//
 	Host *string `default:"127.0.0.1" json:"host"`
 	// Keepalive configuration for the Redis connection.
-	Keepalive *Keepalive `json:"keepalive,omitempty"`
+	Keepalive *AIGatewayRedisCloudConfigurationKeepalive `json:"keepalive,omitempty"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -737,13 +737,13 @@ type AIGatewayRedisCloudConfiguration struct {
 	// An integer representing a port number between 0 and 65535, inclusive.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
-	Port *Port `json:"port,omitempty"`
+	Port *AIGatewayRedisCloudConfigurationPort `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	SendTimeout *int64 `default:"2000" json:"send_timeout"`
 	// Configuration for Redis Sentinel.
-	Sentinel *Sentinel `json:"sentinel,omitempty"`
+	Sentinel *AIGatewayRedisCloudConfigurationSentinel `json:"sentinel,omitempty"`
 	// A string representing an SNI (server name indication) value for TLS.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -797,7 +797,7 @@ func (a *AIGatewayRedisCloudConfiguration) GetCloudAuthenticationGcp() *AIGatewa
 	return nil
 }
 
-func (a *AIGatewayRedisCloudConfiguration) GetCluster() *Cluster {
+func (a *AIGatewayRedisCloudConfiguration) GetCluster() *AIGatewayRedisCloudConfigurationCluster {
 	if a == nil {
 		return nil
 	}
@@ -832,7 +832,7 @@ func (a *AIGatewayRedisCloudConfiguration) GetHost() *string {
 	return a.Host
 }
 
-func (a *AIGatewayRedisCloudConfiguration) GetKeepalive() *Keepalive {
+func (a *AIGatewayRedisCloudConfiguration) GetKeepalive() *AIGatewayRedisCloudConfigurationKeepalive {
 	if a == nil {
 		return nil
 	}
@@ -846,7 +846,7 @@ func (a *AIGatewayRedisCloudConfiguration) GetPassword() *string {
 	return a.Password
 }
 
-func (a *AIGatewayRedisCloudConfiguration) GetPort() *Port {
+func (a *AIGatewayRedisCloudConfiguration) GetPort() *AIGatewayRedisCloudConfigurationPort {
 	if a == nil {
 		return nil
 	}
@@ -867,7 +867,7 @@ func (a *AIGatewayRedisCloudConfiguration) GetSendTimeout() *int64 {
 	return a.SendTimeout
 }
 
-func (a *AIGatewayRedisCloudConfiguration) GetSentinel() *Sentinel {
+func (a *AIGatewayRedisCloudConfiguration) GetSentinel() *AIGatewayRedisCloudConfigurationSentinel {
 	if a == nil {
 		return nil
 	}

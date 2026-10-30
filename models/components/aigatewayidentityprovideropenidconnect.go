@@ -274,6 +274,11 @@ type AIGatewayIdentityProviderOpenIDConnectConfig struct {
 	ConsumerOptional *bool `default:"false" json:"consumer_optional"`
 	// Claim path used to derive virtual credentials when consumer mapping is not used.
 	CredentialClaim []string `json:"credential_claim,omitempty"`
+	// Claim paths used to derive virtual credentials when consumer mapping is not used.
+	// The paths are evaluated in order. The first matching claim is used.
+	//
+	// **Requires a minimum runtime version of `2.3`**.
+	CredentialClaims [][]string `json:"credential_claims,omitempty"`
 	// URL that identifies the OpenID Provider
 	Issuer *string `json:"issuer,omitempty"`
 	// Overrides the introspection endpoint returned by discovery.
@@ -406,6 +411,13 @@ func (a *AIGatewayIdentityProviderOpenIDConnectConfig) GetCredentialClaim() []st
 		return nil
 	}
 	return a.CredentialClaim
+}
+
+func (a *AIGatewayIdentityProviderOpenIDConnectConfig) GetCredentialClaims() [][]string {
+	if a == nil {
+		return nil
+	}
+	return a.CredentialClaims
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectConfig) GetIssuer() *string {

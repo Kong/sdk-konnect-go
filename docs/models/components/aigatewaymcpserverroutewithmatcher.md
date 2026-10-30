@@ -8,10 +8,10 @@ incoming requests.
 
 ## Supported Types
 
-### One
+### AIGatewayMCPServerRouteWithMatcher1
 
 ```go
-aiGatewayMCPServerRouteWithMatcher := components.CreateAIGatewayMCPServerRouteWithMatcherOne(components.One{/* values here */})
+aiGatewayMCPServerRouteWithMatcher := components.CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher1(components.AIGatewayMCPServerRouteWithMatcher1{/* values here */})
 ```
 
 ### Two
@@ -38,8 +38,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch aiGatewayMCPServerRouteWithMatcher.Type {
-	case components.AIGatewayMCPServerRouteWithMatcherTypeOne:
-		// aiGatewayMCPServerRouteWithMatcher.One is populated
+	case components.AIGatewayMCPServerRouteWithMatcherTypeAIGatewayMCPServerRouteWithMatcher1:
+		// aiGatewayMCPServerRouteWithMatcher.AIGatewayMCPServerRouteWithMatcher1 is populated
 	case components.AIGatewayMCPServerRouteWithMatcherTypeTwo:
 		// aiGatewayMCPServerRouteWithMatcher.Two is populated
 	case components.AIGatewayMCPServerRouteWithMatcherTypeThree:

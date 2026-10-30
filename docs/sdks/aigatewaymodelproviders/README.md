@@ -123,6 +123,8 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderAnthropic is populated
             case components.AIGatewayModelProviderTypeAzure:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderAzure is populated
+            case components.AIGatewayModelProviderTypeBaseten:
+                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderBaseten is populated
             case components.AIGatewayModelProviderTypeBedrock:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderBedrock is populated
             case components.AIGatewayModelProviderTypeCerebras:
@@ -225,6 +227,8 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderAnthropic is populated
             case components.AIGatewayModelProviderTypeAzure:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderAzure is populated
+            case components.AIGatewayModelProviderTypeBaseten:
+                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderBaseten is populated
             case components.AIGatewayModelProviderTypeBedrock:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderBedrock is populated
             case components.AIGatewayModelProviderTypeCerebras:
@@ -339,6 +343,8 @@ func main() {
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderAnthropic is populated
             case components.AIGatewayModelProviderTypeAzure:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderAzure is populated
+            case components.AIGatewayModelProviderTypeBaseten:
+                // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderBaseten is populated
             case components.AIGatewayModelProviderTypeBedrock:
                 // res.AIGatewayModelProvider.AIGatewayModelProviderAIGatewayModelProviderBedrock is populated
             case components.AIGatewayModelProviderTypeCerebras:

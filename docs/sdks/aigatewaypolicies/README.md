@@ -118,6 +118,11 @@ func main() {
         ManagedBy: map[string]string{
             "owner": "terraform",
         },
+        Datastores: []components.AIGatewayDatastoreRef{
+            components.AIGatewayDatastoreRef{
+                Name: "kong-managed",
+            },
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -258,6 +263,11 @@ func main() {
             },
             ManagedBy: map[string]string{
                 "owner": "terraform",
+            },
+            Datastores: []components.AIGatewayDatastoreRef{
+                components.AIGatewayDatastoreRef{
+                    Name: "kong-managed",
+                },
             },
         },
     })

@@ -12,7 +12,7 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `ListAiGateways` function may return the following errors:
+For example, the `GetCostManagementTags` function may return the following errors:
 
 | Error Type                     | Status Code | Content Type             |
 | ------------------------------ | ----------- | ------------------------ |
@@ -44,7 +44,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGateways.ListAiGateways(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
 	if err != nil {
 
 		var e *sdkerrors.UnauthorizedError
@@ -112,11 +112,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGateways.ListAiGateways(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAIGatewaysResponse != nil {
+	if res.CostManagementTags != nil {
 		// handle response
 	}
 }
@@ -146,11 +146,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGateways.ListAiGateways(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAIGatewaysResponse != nil {
+	if res.CostManagementTags != nil {
 		// handle response
 	}
 }
@@ -279,11 +279,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGateways.ListAiGateways(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAIGatewaysResponse != nil {
+	if res.CostManagementTags != nil {
 		// handle response
 	}
 }
@@ -394,7 +394,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGateways.ListAiGateways(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1), operations.WithRetries(
+	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -408,7 +408,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAIGatewaysResponse != nil {
+	if res.CostManagementTags != nil {
 		// handle response
 	}
 }
@@ -447,11 +447,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGateways.ListAiGateways(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAIGatewaysResponse != nil {
+	if res.CostManagementTags != nil {
 		// handle response
 	}
 }
