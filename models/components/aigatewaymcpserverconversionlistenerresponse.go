@@ -118,6 +118,27 @@ type AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerC
 	URL string `json:"url"`
 	// Configuration applied when proxying to the upstream service, including authentication.
 	Upstream *AIGatewayUpstreamConfigOutput `json:"upstream,omitempty"`
+	// Client certificates used for mutual TLS (mTLS) authentication with the upstream MCP server,
+	// referenced by name. Each entry must be the `name` of an existing AI Certificate on the same
+	// AI Gateway.
+	//
+	// The certificates are applied to the Kong Gateway Service generated for this MCP Server, which
+	// proxies requests to the upstream MCP server. The generated Service presents a single client
+	// certificate (`client_certificate`) during the TLS handshake with the upstream, so at most one
+	// certificate may be configured.
+	//
+	// If unset, no client certificate is presented to the upstream.
+	//
+	Certificates []string `json:"certificates,omitempty"`
+	// CA certificates used to verify the TLS certificate of the upstream MCP server, referenced by
+	// name. Each entry must be the `name` of an existing AI CA Certificate on the same AI Gateway.
+	//
+	// The CA certificates build the trust store (`ca_certificates`) of the Kong Gateway Service
+	// generated for this MCP Server, which proxies requests to the upstream MCP server.
+	//
+	// If unset, the default trust store is used to verify the upstream's TLS certificate.
+	//
+	CaCertificates []string `json:"ca_certificates,omitempty"`
 	// The MCP protocol revisions this server accepts. Leave unset to accept every revision Kong
 	// implements, which is the default. When set, `server/discover` advertises exactly this
 	// list and a request declaring anything else is rejected. Listing only per-request
@@ -185,6 +206,20 @@ func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListe
 	return a.Upstream
 }
 
+func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig) GetCertificates() []string {
+	if a == nil {
+		return nil
+	}
+	return a.Certificates
+}
+
+func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig) GetCaCertificates() []string {
+	if a == nil {
+		return nil
+	}
+	return a.CaCertificates
+}
+
 func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig) GetAllowedVersions() []AllowedVersions {
 	if a == nil {
 		return nil
@@ -210,6 +245,11 @@ type AIGatewayMCPServerConversionListenerResponse struct {
 	//
 	Tools  []AIGatewayMCPConversionTool      `json:"tools"`
 	Access *AIGatewayMCPServerListenerAccess `json:"access,omitempty"`
+	// Rate limits applied to requests to this MCP Server, matched by MCP method or tool name.
+	// Each AI Gateway node counts and enforces the limits independently.
+	//
+	// **Requires a minimum runtime version of `2.3`**.
+	RateLimiting *AIGatewayMCPServerRateLimiting `json:"rate_limiting,omitempty"`
 	// The display name for the MCP Server.
 	DisplayName string `json:"display_name"`
 	// A user-defined unique identifier for this MCP server, used as a stable human-readable reference. This value is immutable after creation.
@@ -230,6 +270,23 @@ type AIGatewayMCPServerConversionListenerResponse struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	// The Token Vault Datastore holding this entity's credential storage: the directory credentials
+	// are written to, and the encryption keys that seal them. Required when `token_vault` is set
+	// (on an auth strategy, when its credential manager is enabled), and the referenced Datastore
+	// must have type `token-vault`. Only one Datastore can be referenced.
+	//
+	// **Requires a minimum runtime version of `2.3`**.
+	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
+	// Resolves an upstream credential per request via Kong's Token Vault instead of sending a static
+	// credential. The directory credentials live in, and the keys that encrypt them, come from the
+	// `token-vault` Datastore this entity references, and are returned read-only in `storage`.
+	//
+	// Callers must enroll with the configured Token Vault provider before the credential can be
+	// resolved. Until enrollment completes, an MCP Server serves virtual `authenticate` and
+	// `check_authentication_status` tools that guide the caller through the enrollment flow.
+	//
+	// **Requires a minimum runtime version of `2.3`**.
+	TokenVault *AIGatewayTokenVault `json:"token_vault,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -288,6 +345,13 @@ func (a *AIGatewayMCPServerConversionListenerResponse) GetAccessOauthAccessToken
 	return nil
 }
 
+func (a *AIGatewayMCPServerConversionListenerResponse) GetRateLimiting() *AIGatewayMCPServerRateLimiting {
+	if a == nil {
+		return nil
+	}
+	return a.RateLimiting
+}
+
 func (a *AIGatewayMCPServerConversionListenerResponse) GetDisplayName() string {
 	if a == nil {
 		return ""
@@ -328,6 +392,20 @@ func (a *AIGatewayMCPServerConversionListenerResponse) GetManagedBy() map[string
 		return nil
 	}
 	return a.ManagedBy
+}
+
+func (a *AIGatewayMCPServerConversionListenerResponse) GetDatastores() []AIGatewayDatastoreRef {
+	if a == nil {
+		return nil
+	}
+	return a.Datastores
+}
+
+func (a *AIGatewayMCPServerConversionListenerResponse) GetTokenVault() *AIGatewayTokenVault {
+	if a == nil {
+		return nil
+	}
+	return a.TokenVault
 }
 
 func (a *AIGatewayMCPServerConversionListenerResponse) GetID() string {

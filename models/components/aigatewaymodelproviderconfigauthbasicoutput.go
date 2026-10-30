@@ -32,20 +32,20 @@ func (a *AIGatewayModelProviderConfigAuthBasicHeaders) GetName() string {
 	return a.Name
 }
 
-// Location - Specify whether the param name and value options go in a query string, or the POST form/JSON body.
-type Location string
+// AIGatewayModelProviderConfigAuthBasicLocation - Specify whether the param name and value options go in a query string, or the POST form/JSON body.
+type AIGatewayModelProviderConfigAuthBasicLocation string
 
 const (
-	LocationBody  Location = "body"
-	LocationQuery Location = "query"
+	AIGatewayModelProviderConfigAuthBasicLocationBody  AIGatewayModelProviderConfigAuthBasicLocation = "body"
+	AIGatewayModelProviderConfigAuthBasicLocationQuery AIGatewayModelProviderConfigAuthBasicLocation = "query"
 )
 
-func (e Location) ToPointer() *Location {
+func (e AIGatewayModelProviderConfigAuthBasicLocation) ToPointer() *AIGatewayModelProviderConfigAuthBasicLocation {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Location) IsExact() bool {
+func (e *AIGatewayModelProviderConfigAuthBasicLocation) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "body", "query":
@@ -60,7 +60,7 @@ type AIGatewayModelProviderConfigAuthBasicParams struct {
 	//
 	Name string `json:"name"`
 	// Specify whether the param name and value options go in a query string, or the POST form/JSON body.
-	Location Location `json:"location"`
+	Location AIGatewayModelProviderConfigAuthBasicLocation `json:"location"`
 }
 
 func (a AIGatewayModelProviderConfigAuthBasicParams) MarshalJSON() ([]byte, error) {
@@ -81,9 +81,9 @@ func (a *AIGatewayModelProviderConfigAuthBasicParams) GetName() string {
 	return a.Name
 }
 
-func (a *AIGatewayModelProviderConfigAuthBasicParams) GetLocation() Location {
+func (a *AIGatewayModelProviderConfigAuthBasicParams) GetLocation() AIGatewayModelProviderConfigAuthBasicLocation {
 	if a == nil {
-		return Location("")
+		return AIGatewayModelProviderConfigAuthBasicLocation("")
 	}
 	return a.Location
 }
@@ -169,7 +169,7 @@ type Params struct {
 	//
 	Value *string `json:"value,omitempty"`
 	// Specify whether the param name and value options go in a query string, or the POST form/JSON body.
-	Location Location `json:"location"`
+	Location AIGatewayModelProviderConfigAuthBasicLocation `json:"location"`
 }
 
 func (p Params) MarshalJSON() ([]byte, error) {
@@ -197,9 +197,9 @@ func (p *Params) GetValue() *string {
 	return p.Value
 }
 
-func (p *Params) GetLocation() Location {
+func (p *Params) GetLocation() AIGatewayModelProviderConfigAuthBasicLocation {
 	if p == nil {
-		return Location("")
+		return AIGatewayModelProviderConfigAuthBasicLocation("")
 	}
 	return p.Location
 }

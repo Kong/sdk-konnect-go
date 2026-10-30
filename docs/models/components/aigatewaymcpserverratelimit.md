@@ -1,0 +1,13 @@
+# AIGatewayMCPServerRateLimit
+
+A rate limit on an MCP method or tool. Exactly one of `method` or `tool` must be set.
+
+
+## Fields
+
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `Method`                                                                  | `*string`                                                                 | :heavy_minus_sign:                                                        | The MCP method this limit applies to.                                     | tools/call                                                                |
+| `Tool`                                                                    | `*string`                                                                 | :heavy_minus_sign:                                                        | The name of the tool this limit applies to.                               | search_flights                                                            |
+| `Limit`                                                                   | `int64`                                                                   | :heavy_check_mark:                                                        | The number of requests allowed per window.                                | 100                                                                       |
+| `WindowSize`                                                              | [components.WindowSize](../../models/components/windowsize.md)            | :heavy_check_mark:                                                        | The window size in seconds, one of a second, a minute, an hour, or a day. | 60                                                                        |

@@ -11,9 +11,10 @@ import (
 type Capabilities string
 
 const (
-	CapabilitiesBatches Capabilities = "batches"
-	CapabilitiesFiles   Capabilities = "files"
-	CapabilitiesSkills  Capabilities = "skills"
+	CapabilitiesWildcard Capabilities = "*"
+	CapabilitiesBatches  Capabilities = "batches"
+	CapabilitiesFiles    Capabilities = "files"
+	CapabilitiesSkills   Capabilities = "skills"
 )
 
 func (e Capabilities) ToPointer() *Capabilities {
@@ -24,7 +25,7 @@ func (e Capabilities) ToPointer() *Capabilities {
 func (e *Capabilities) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "batches", "files", "skills":
+		case "*", "batches", "files", "skills":
 			return true
 		}
 	}
@@ -59,11 +60,18 @@ type AIGatewayModelAPI struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	// Names of the Datastores this model references.
+	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"api" json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelAPIConfig `json:"config"`
-	// List of AI capabilities enabled for this API model.
+	// The capabilities this model supports. Set to a specific capability to
+	// restrict the model to that capability only, or to `*` to allow all
+	// capabilities that the targets support at the gateway's
+	// min_runtime_version. A capability that needs a newer
+	// min_runtime_version is left out of `*`.
+	//
 	Capabilities []Capabilities `json:"capabilities"`
 }
 
@@ -139,6 +147,13 @@ func (a *AIGatewayModelAPI) GetManagedBy() map[string]string {
 		return nil
 	}
 	return a.ManagedBy
+}
+
+func (a *AIGatewayModelAPI) GetDatastores() []AIGatewayDatastoreRef {
+	if a == nil {
+		return nil
+	}
+	return a.Datastores
 }
 
 func (a *AIGatewayModelAPI) GetType() string {

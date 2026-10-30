@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.AIGatewayModelAPICapabilitiesBatches
+value := components.AIGatewayModelAPICapabilitiesWildcard
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.AIGatewayModelAPICapabilities("custom_value")
@@ -18,8 +18,9 @@ custom := components.AIGatewayModelAPICapabilities("custom_value")
 
 ## Values
 
-| Name                                   | Value                                  |
-| -------------------------------------- | -------------------------------------- |
-| `AIGatewayModelAPICapabilitiesBatches` | batches                                |
-| `AIGatewayModelAPICapabilitiesFiles`   | files                                  |
-| `AIGatewayModelAPICapabilitiesSkills`  | skills                                 |
+| Name                                    | Value                                   |
+| --------------------------------------- | --------------------------------------- |
+| `AIGatewayModelAPICapabilitiesWildcard` | *                                       |
+| `AIGatewayModelAPICapabilitiesBatches`  | batches                                 |
+| `AIGatewayModelAPICapabilitiesFiles`    | files                                   |
+| `AIGatewayModelAPICapabilitiesSkills`   | skills                                  |

@@ -141,6 +141,12 @@ func main() {
             Logging: &components.CreateAIGatewayAgentRequestLogging{
                 MaxPayloadSize: sdkkonnectgo.Pointer[int64](524288),
             },
+            Certificates: []string{
+                "my-certificate",
+            },
+            CaCertificates: []string{
+                "my-ca-certificate",
+            },
         },
         Labels: map[string]string{
             "category": "finance",
@@ -311,6 +317,12 @@ func main() {
                 },
                 Logging: &components.UpdateAIGatewayAgentRequestLogging{
                     MaxPayloadSize: sdkkonnectgo.Pointer[int64](524288),
+                },
+                Certificates: []string{
+                    "my-certificate",
+                },
+                CaCertificates: []string{
+                    "my-ca-certificate",
                 },
             },
             Labels: map[string]string{

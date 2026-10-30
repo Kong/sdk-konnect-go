@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AIGatewayTargetSagemakerConfigAws struct {
+type Aws struct {
 	// Overrides the AWS_REGION environment variable for SageMaker requests.
 	Region *string `json:"region,omitempty"`
 	// Assume a different IAM role after authenticating; mutually required with role_session_name.
@@ -18,39 +18,39 @@ type AIGatewayTargetSagemakerConfigAws struct {
 	StsEndpointURL *string `json:"sts_endpoint_url,omitempty"`
 }
 
-func (a AIGatewayTargetSagemakerConfigAws) MarshalJSON() ([]byte, error) {
+func (a Aws) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(a, "", false)
 }
 
-func (a *AIGatewayTargetSagemakerConfigAws) UnmarshalJSON(data []byte) error {
+func (a *Aws) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayTargetSagemakerConfigAws) GetRegion() *string {
+func (a *Aws) GetRegion() *string {
 	if a == nil {
 		return nil
 	}
 	return a.Region
 }
 
-func (a *AIGatewayTargetSagemakerConfigAws) GetAssumeRoleArn() *string {
+func (a *Aws) GetAssumeRoleArn() *string {
 	if a == nil {
 		return nil
 	}
 	return a.AssumeRoleArn
 }
 
-func (a *AIGatewayTargetSagemakerConfigAws) GetRoleSessionName() *string {
+func (a *Aws) GetRoleSessionName() *string {
 	if a == nil {
 		return nil
 	}
 	return a.RoleSessionName
 }
 
-func (a *AIGatewayTargetSagemakerConfigAws) GetStsEndpointURL() *string {
+func (a *Aws) GetStsEndpointURL() *string {
 	if a == nil {
 		return nil
 	}
@@ -140,7 +140,7 @@ type AIGatewayTargetSagemakerConfig struct {
 	UpstreamURL *string `json:"upstream_url,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_  string                                `const:"sagemaker" json:"type"`
-	Aws    *AIGatewayTargetSagemakerConfigAws    `json:"aws,omitempty"`
+	Aws    *Aws                                  `json:"aws,omitempty"`
 	Target *AIGatewayTargetSagemakerConfigTarget `json:"target,omitempty"`
 }
 
@@ -271,7 +271,7 @@ func (a *AIGatewayTargetSagemakerConfig) GetType() string {
 	return "sagemaker"
 }
 
-func (a *AIGatewayTargetSagemakerConfig) GetAws() *AIGatewayTargetSagemakerConfigAws {
+func (a *AIGatewayTargetSagemakerConfig) GetAws() *Aws {
 	if a == nil {
 		return nil
 	}

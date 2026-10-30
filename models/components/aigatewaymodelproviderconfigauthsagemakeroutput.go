@@ -32,23 +32,23 @@ func (e *AIGatewayModelProviderConfigAuthSagemakerType) UnmarshalJSON(data []byt
 	}
 }
 
-type AIGatewayModelProviderConfigAuthSagemakerAws struct {
+type AIGatewayModelProviderConfigAuthSagemakerAwsOutput struct {
 	// static IAM user credential; overrides AWS_ACCESS_KEY_ID env var
 	AccessKeyID *string `json:"access_key_id,omitempty"`
 }
 
-func (a AIGatewayModelProviderConfigAuthSagemakerAws) MarshalJSON() ([]byte, error) {
+func (a AIGatewayModelProviderConfigAuthSagemakerAwsOutput) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(a, "", false)
 }
 
-func (a *AIGatewayModelProviderConfigAuthSagemakerAws) UnmarshalJSON(data []byte) error {
+func (a *AIGatewayModelProviderConfigAuthSagemakerAwsOutput) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayModelProviderConfigAuthSagemakerAws) GetAccessKeyID() *string {
+func (a *AIGatewayModelProviderConfigAuthSagemakerAwsOutput) GetAccessKeyID() *string {
 	if a == nil {
 		return nil
 	}
@@ -57,8 +57,8 @@ func (a *AIGatewayModelProviderConfigAuthSagemakerAws) GetAccessKeyID() *string 
 
 // AIGatewayModelProviderConfigAuthSagemakerOutput - Auth configuration for Sagemaker model provider.
 type AIGatewayModelProviderConfigAuthSagemakerOutput struct {
-	Type AIGatewayModelProviderConfigAuthSagemakerType `json:"type"`
-	Aws  *AIGatewayModelProviderConfigAuthSagemakerAws `json:"aws,omitempty"`
+	Type AIGatewayModelProviderConfigAuthSagemakerType       `json:"type"`
+	Aws  *AIGatewayModelProviderConfigAuthSagemakerAwsOutput `json:"aws,omitempty"`
 }
 
 func (a AIGatewayModelProviderConfigAuthSagemakerOutput) MarshalJSON() ([]byte, error) {
@@ -79,14 +79,14 @@ func (a *AIGatewayModelProviderConfigAuthSagemakerOutput) GetType() AIGatewayMod
 	return a.Type
 }
 
-func (a *AIGatewayModelProviderConfigAuthSagemakerOutput) GetAws() *AIGatewayModelProviderConfigAuthSagemakerAws {
+func (a *AIGatewayModelProviderConfigAuthSagemakerOutput) GetAws() *AIGatewayModelProviderConfigAuthSagemakerAwsOutput {
 	if a == nil {
 		return nil
 	}
 	return a.Aws
 }
 
-type Aws struct {
+type AIGatewayModelProviderConfigAuthSagemakerAws struct {
 	// static IAM user credential; overrides AWS_ACCESS_KEY_ID env var
 	AccessKeyID *string `json:"access_key_id,omitempty"`
 	// static IAM user credential; overrides AWS_SECRET_ACCESS_KEY env var
@@ -95,32 +95,32 @@ type Aws struct {
 	SessionToken *string `json:"session_token,omitempty"`
 }
 
-func (a Aws) MarshalJSON() ([]byte, error) {
+func (a AIGatewayModelProviderConfigAuthSagemakerAws) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(a, "", false)
 }
 
-func (a *Aws) UnmarshalJSON(data []byte) error {
+func (a *AIGatewayModelProviderConfigAuthSagemakerAws) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *Aws) GetAccessKeyID() *string {
+func (a *AIGatewayModelProviderConfigAuthSagemakerAws) GetAccessKeyID() *string {
 	if a == nil {
 		return nil
 	}
 	return a.AccessKeyID
 }
 
-func (a *Aws) GetSecretAccessKey() *string {
+func (a *AIGatewayModelProviderConfigAuthSagemakerAws) GetSecretAccessKey() *string {
 	if a == nil {
 		return nil
 	}
 	return a.SecretAccessKey
 }
 
-func (a *Aws) GetSessionToken() *string {
+func (a *AIGatewayModelProviderConfigAuthSagemakerAws) GetSessionToken() *string {
 	if a == nil {
 		return nil
 	}
@@ -130,7 +130,7 @@ func (a *Aws) GetSessionToken() *string {
 // AIGatewayModelProviderConfigAuthSagemaker - Auth configuration for Sagemaker model provider.
 type AIGatewayModelProviderConfigAuthSagemaker struct {
 	Type AIGatewayModelProviderConfigAuthSagemakerType `json:"type"`
-	Aws  *Aws                                          `json:"aws,omitempty"`
+	Aws  *AIGatewayModelProviderConfigAuthSagemakerAws `json:"aws,omitempty"`
 }
 
 func (a AIGatewayModelProviderConfigAuthSagemaker) MarshalJSON() ([]byte, error) {
@@ -151,7 +151,7 @@ func (a *AIGatewayModelProviderConfigAuthSagemaker) GetType() AIGatewayModelProv
 	return a.Type
 }
 
-func (a *AIGatewayModelProviderConfigAuthSagemaker) GetAws() *Aws {
+func (a *AIGatewayModelProviderConfigAuthSagemaker) GetAws() *AIGatewayModelProviderConfigAuthSagemakerAws {
 	if a == nil {
 		return nil
 	}
