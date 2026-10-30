@@ -4,7 +4,6 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
@@ -24,21 +23,8 @@ type AddConsumerToSpecificConsumerGroupRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Consumer to lookup
-	ConsumerID string `pathParam:"style=simple,explode=false,name=ConsumerId"`
-	// The name of the workspace
-	Workspace   string                                         `default:"default" pathParam:"style=simple,explode=false,name=workspace"`
+	ConsumerID  string                                         `pathParam:"style=simple,explode=false,name=ConsumerId"`
 	RequestBody *AddConsumerToSpecificConsumerGroupRequestBody `request:"mediaType=application/json"`
-}
-
-func (a AddConsumerToSpecificConsumerGroupRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AddConsumerToSpecificConsumerGroupRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (a *AddConsumerToSpecificConsumerGroupRequest) GetControlPlaneID() string {
@@ -53,13 +39,6 @@ func (a *AddConsumerToSpecificConsumerGroupRequest) GetConsumerID() string {
 		return ""
 	}
 	return a.ConsumerID
-}
-
-func (a *AddConsumerToSpecificConsumerGroupRequest) GetWorkspace() string {
-	if a == nil {
-		return ""
-	}
-	return a.Workspace
 }
 
 func (a *AddConsumerToSpecificConsumerGroupRequest) GetRequestBody() *AddConsumerToSpecificConsumerGroupRequestBody {

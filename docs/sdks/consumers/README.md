@@ -13,10 +13,10 @@ You can either rely on Kong Gateway as the primary datastore, or you can map the
 * [DeleteConsumer](#deleteconsumer) - Delete a Consumer in a workspace
 * [GetConsumer](#getconsumer) - Get a Consumer in a workspace
 * [UpsertConsumer](#upsertconsumer) - Upsert a Consumer in a workspace
-* [RemoveConsumerFromAllConsumerGroups](#removeconsumerfromallconsumergroups) - Remove consumer from all consumer groups in a workspace
-* [ListConsumerGroupsForConsumer](#listconsumergroupsforconsumer) - List all Consumer Groups a Consumer belongs to in a workspace
-* [AddConsumerToSpecificConsumerGroup](#addconsumertospecificconsumergroup) - Add consumer to a specific consumer group in a workspace
-* [RemoveConsumerFromConsumerGroup](#removeconsumerfromconsumergroup) - Remove consumer from consumer group in a workspace
+* [RemoveConsumerFromAllConsumerGroups](#removeconsumerfromallconsumergroups) - Remove consumer from all consumer groups
+* [ListConsumerGroupsForConsumer](#listconsumergroupsforconsumer) - List all Consumer Groups a Consumer belongs to
+* [AddConsumerToSpecificConsumerGroup](#addconsumertospecificconsumergroup) - Add consumer to a specific consumer group
+* [RemoveConsumerFromConsumerGroup](#removeconsumerfromconsumergroup) - Remove consumer from consumer group
 
 ## ListConsumer
 
@@ -512,11 +512,11 @@ func main() {
 
 ## RemoveConsumerFromAllConsumerGroups
 
-Removes a consumer from all Consumer Groups. This operation does not delete the consumer group in a workspace.
+Removes a consumer from all Consumer Groups. This operation does not delete the consumer group.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="remove-consumer-from-all-consumer-groups" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups" -->
+<!-- UsageSnippet language="go" operationID="remove-consumer-from-all-consumer-groups" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups" -->
 ```go
 package main
 
@@ -524,7 +524,6 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -537,11 +536,7 @@ func main() {
         }),
     )
 
-    res, err := s.Consumers.RemoveConsumerFromAllConsumerGroups(ctx, operations.RemoveConsumerFromAllConsumerGroupsRequest{
-        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
-        Workspace: "team-payments",
-    })
+    res, err := s.Consumers.RemoveConsumerFromAllConsumerGroups(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "c1059869-6fa7-4329-a5f5-5946d14ca2c5")
     if err != nil {
         log.Fatal(err)
     }
@@ -553,11 +548,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
-| `request`                                                                                                                      | [operations.RemoveConsumerFromAllConsumerGroupsRequest](../../models/operations/removeconsumerfromallconsumergroupsrequest.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
-| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `consumerID`                                                                       | `string`                                                                           | :heavy_check_mark:                                                                 | ID of the Consumer to lookup                                                       | c1059869-6fa7-4329-a5f5-5946d14ca2c5                                               |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response
 
@@ -571,11 +567,11 @@ func main() {
 
 ## ListConsumerGroupsForConsumer
 
-List all Consumer Groups a Consumer belongs to in a workspace
+List all Consumer Groups a Consumer belongs to
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-consumer-groups-for-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups" -->
+<!-- UsageSnippet language="go" operationID="list-consumer-groups-for-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups" -->
 ```go
 package main
 
@@ -600,7 +596,6 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
-        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
@@ -631,11 +626,11 @@ func main() {
 
 ## AddConsumerToSpecificConsumerGroup
 
-Add a consumer to a consumer group in a workspace
+Add a consumer to a consumer group
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="add-consumer-to-specific-consumer-group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups" -->
+<!-- UsageSnippet language="go" operationID="add-consumer-to-specific-consumer-group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups" -->
 ```go
 package main
 
@@ -659,7 +654,6 @@ func main() {
     res, err := s.Consumers.AddConsumerToSpecificConsumerGroup(ctx, operations.AddConsumerToSpecificConsumerGroupRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
-        Workspace: "team-payments",
         RequestBody: &operations.AddConsumerToSpecificConsumerGroupRequestBody{
             Group: sdkkonnectgo.Pointer("fedee695-2ae2-4e45-877a-776d9b2fc793"),
         },
@@ -693,11 +687,11 @@ func main() {
 
 ## RemoveConsumerFromConsumerGroup
 
-Removes a consumer from a Consumer Group. This operation does not delete the consumer group in a workspace.
+Removes a consumer from a Consumer Group. This operation does not delete the consumer group.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="remove-consumer-from-consumer-group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}" -->
+<!-- UsageSnippet language="go" operationID="remove-consumer-from-consumer-group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}" -->
 ```go
 package main
 
@@ -722,7 +716,6 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         ConsumerGroupID: "",
-        Workspace: "team-payments",
     })
     if err != nil {
         log.Fatal(err)
