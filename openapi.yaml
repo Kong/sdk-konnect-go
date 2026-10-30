@@ -10577,100 +10577,6 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - Consumers
-  '/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups':
-    delete:
-      operationId: remove-consumer-from-all-consumer-groups
-      summary: Remove consumer from all consumer groups in a workspace
-      description: Removes a consumer from all Consumer Groups. This operation does not delete the consumer group in a workspace.
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/Workspace'
-      responses:
-        '204':
-          description: Consumer removed from all groups
-        '404':
-          description: Consumer does not exist
-      tags:
-        - Consumers
-    get:
-      operationId: list-consumer-groups-for-consumer
-      summary: List all Consumer Groups a Consumer belongs to in a workspace
-      description: List all Consumer Groups a Consumer belongs to in a workspace
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/PaginationSize'
-        - $ref: '#/components/parameters/PaginationOffset'
-        - $ref: '#/components/parameters/PaginationTagsFilter'
-        - $ref: '#/components/parameters/Workspace'
-      responses:
-        '200':
-          description: A successful response listing Consumer Groups
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ConsumerGroup'
-                  next:
-                    $ref: '#/components/schemas/PaginationNextResponse'
-                  offset:
-                    $ref: '#/components/schemas/PaginationOffsetResponse'
-      tags:
-        - Consumers
-    parameters:
-      - $ref: '#/components/parameters/controlPlaneId'
-    post:
-      operationId: add-consumer-to-specific-consumer-group
-      summary: Add consumer to a specific consumer group in a workspace
-      description: Add a consumer to a consumer group in a workspace
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/Workspace'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                group:
-                  type: string
-                  example: fedee695-2ae2-4e45-877a-776d9b2fc793
-                  x-speakeasy-name-override: group
-      responses:
-        '201':
-          description: Consumer added to a specific group
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  consumer:
-                    $ref: '#/components/schemas/Consumer'
-                  consumer_groups:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ConsumerGroup'
-      tags:
-        - Consumers
-  '/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}':
-    delete:
-      operationId: remove-consumer-from-consumer-group
-      summary: Remove consumer from consumer group in a workspace
-      description: Removes a consumer from a Consumer Group. This operation does not delete the consumer group in a workspace.
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/ConsumerGroupId'
-        - $ref: '#/components/parameters/Workspace'
-      responses:
-        '204':
-          description: Consumer removed from group
-      tags:
-        - Consumers
-    parameters:
-      - $ref: '#/components/parameters/controlPlaneId'
   '/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls':
     get:
       operationId: list-acl-with-consumer
@@ -13893,6 +13799,96 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - Cloned Plugins
+  '/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups':
+    delete:
+      operationId: remove-consumer-from-all-consumer-groups
+      summary: Remove consumer from all consumer groups
+      description: Removes a consumer from all Consumer Groups. This operation does not delete the consumer group.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+      responses:
+        '204':
+          description: Consumer removed from all groups
+        '404':
+          description: Consumer does not exist
+      tags:
+        - Consumers
+    get:
+      operationId: list-consumer-groups-for-consumer
+      summary: List all Consumer Groups a Consumer belongs to
+      description: List all Consumer Groups a Consumer belongs to
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing Consumer Groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConsumerGroup'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - Consumers
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    post:
+      operationId: add-consumer-to-specific-consumer-group
+      summary: Add consumer to a specific consumer group
+      description: Add a consumer to a consumer group
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group:
+                  type: string
+                  example: fedee695-2ae2-4e45-877a-776d9b2fc793
+                  x-speakeasy-name-override: group
+      responses:
+        '201':
+          description: Consumer added to a specific group
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumer:
+                    $ref: '#/components/schemas/Consumer'
+                  consumer_groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConsumerGroup'
+      tags:
+        - Consumers
+  '/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}':
+    delete:
+      operationId: remove-consumer-from-consumer-group
+      summary: Remove consumer from consumer group
+      description: Removes a consumer from a Consumer Group. This operation does not delete the consumer group.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+        - $ref: '#/components/parameters/ConsumerGroupId'
+      responses:
+        '204':
+          description: Consumer removed from group
+      tags:
+        - Consumers
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
   '/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins':
     get:
       operationId: list-custom-plugin
