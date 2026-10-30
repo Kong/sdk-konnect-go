@@ -82,6 +82,13 @@ func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderAzure() *co
 	return nil
 }
 
+func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderBaseten() *components.AIGatewayModelProviderAIGatewayModelProviderBaseten {
+	if v := g.GetAIGatewayModelProvider(); v != nil {
+		return v.AIGatewayModelProviderAIGatewayModelProviderBaseten
+	}
+	return nil
+}
+
 func (g *GetAiGatewayModelProviderResponse) GetAIGatewayModelProviderBedrock() *components.AIGatewayModelProviderAIGatewayModelProviderBedrock {
 	if v := g.GetAIGatewayModelProvider(); v != nil {
 		return v.AIGatewayModelProviderAIGatewayModelProviderBedrock

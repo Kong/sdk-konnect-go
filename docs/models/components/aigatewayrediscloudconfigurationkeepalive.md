@@ -1,4 +1,4 @@
-# AIGatewayModelVectorDBConfigRedisKeepalive
+# AIGatewayRedisCloudConfigurationKeepalive
 
 Keepalive configuration for the Redis connection.
 

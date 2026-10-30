@@ -17,6 +17,12 @@ aiGatewayTargetConfig := components.CreateAIGatewayTargetConfigAnthropic(compone
 aiGatewayTargetConfig := components.CreateAIGatewayTargetConfigAzure(components.AIGatewayTargetAzureConfig{/* values here */})
 ```
 
+### AIGatewayTargetBasetenConfig
+
+```go
+aiGatewayTargetConfig := components.CreateAIGatewayTargetConfigBaseten(components.AIGatewayTargetBasetenConfig{/* values here */})
+```
+
 ### AIGatewayTargetBedrockConfig
 
 ```go
@@ -135,6 +141,8 @@ switch aiGatewayTargetConfig.Type {
 		// aiGatewayTargetConfig.AIGatewayTargetAnthropicConfig is populated
 	case components.AIGatewayTargetConfigTypeAzure:
 		// aiGatewayTargetConfig.AIGatewayTargetAzureConfig is populated
+	case components.AIGatewayTargetConfigTypeBaseten:
+		// aiGatewayTargetConfig.AIGatewayTargetBasetenConfig is populated
 	case components.AIGatewayTargetConfigTypeBedrock:
 		// aiGatewayTargetConfig.AIGatewayTargetBedrockConfig is populated
 	case components.AIGatewayTargetConfigTypeCerebras:

@@ -375,7 +375,7 @@ func (t *Two) GetTags() []string {
 	return t.Tags
 }
 
-type One struct {
+type AIGatewayMCPServerRouteWithMatcher1 struct {
 	// A list of domain names that match this route. Note that the hosts value is case sensitive.
 	Hosts []string `json:"hosts"`
 	// One or more lists of values indexed by header name that will cause this route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.
@@ -402,128 +402,131 @@ type One struct {
 	Tags []string `json:"tags,omitempty"`
 }
 
-func (o One) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(o, "", false)
+func (a AIGatewayMCPServerRouteWithMatcher1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
 }
 
-func (o *One) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"hosts"}); err != nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"hosts"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *One) GetHosts() []string {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetHosts() []string {
+	if a == nil {
 		return []string{}
 	}
-	return o.Hosts
+	return a.Hosts
 }
 
-func (o *One) GetHeaders() map[string]any {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetHeaders() map[string]any {
+	if a == nil {
 		return nil
 	}
-	return o.Headers
+	return a.Headers
 }
 
-func (o *One) GetHTTPSRedirectStatusCode() *int64 {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetHTTPSRedirectStatusCode() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.HTTPSRedirectStatusCode
+	return a.HTTPSRedirectStatusCode
 }
 
-func (o *One) GetMethods() []string {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetMethods() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Methods
+	return a.Methods
 }
 
-func (o *One) GetPaths() []string {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetPaths() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Paths
+	return a.Paths
 }
 
-func (o *One) GetPreserveHost() *bool {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetPreserveHost() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.PreserveHost
+	return a.PreserveHost
 }
 
-func (o *One) GetProtocols() []string {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetProtocols() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Protocols
+	return a.Protocols
 }
 
-func (o *One) GetRegexPriority() *int64 {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetRegexPriority() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.RegexPriority
+	return a.RegexPriority
 }
 
-func (o *One) GetRequestBuffering() *bool {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetRequestBuffering() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.RequestBuffering
+	return a.RequestBuffering
 }
 
-func (o *One) GetResponseBuffering() *bool {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetResponseBuffering() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.ResponseBuffering
+	return a.ResponseBuffering
 }
 
-func (o *One) GetStripPath() *bool {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetStripPath() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.StripPath
+	return a.StripPath
 }
 
-func (o *One) GetTags() []string {
-	if o == nil {
+func (a *AIGatewayMCPServerRouteWithMatcher1) GetTags() []string {
+	if a == nil {
 		return nil
 	}
-	return o.Tags
+	return a.Tags
 }
+
+// #region class-body-aigatewaymcpserverroutewithmatcher1
+// #endregion class-body-aigatewaymcpserverroutewithmatcher1
 
 type AIGatewayMCPServerRouteWithMatcherType string
 
 const (
-	AIGatewayMCPServerRouteWithMatcherTypeOne   AIGatewayMCPServerRouteWithMatcherType = "1"
-	AIGatewayMCPServerRouteWithMatcherTypeTwo   AIGatewayMCPServerRouteWithMatcherType = "2"
-	AIGatewayMCPServerRouteWithMatcherTypeThree AIGatewayMCPServerRouteWithMatcherType = "3"
-	AIGatewayMCPServerRouteWithMatcherTypeFour  AIGatewayMCPServerRouteWithMatcherType = "4"
+	AIGatewayMCPServerRouteWithMatcherTypeAIGatewayMCPServerRouteWithMatcher1 AIGatewayMCPServerRouteWithMatcherType = "AIGatewayMCPServerRouteWithMatcher_1"
+	AIGatewayMCPServerRouteWithMatcherTypeTwo                                 AIGatewayMCPServerRouteWithMatcherType = "2"
+	AIGatewayMCPServerRouteWithMatcherTypeThree                               AIGatewayMCPServerRouteWithMatcherType = "3"
+	AIGatewayMCPServerRouteWithMatcherTypeFour                                AIGatewayMCPServerRouteWithMatcherType = "4"
 )
 
 // AIGatewayMCPServerRouteWithMatcher - Route configuration for an MCP Server that terminates its own listener. At least one
 // of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 // incoming requests.
 type AIGatewayMCPServerRouteWithMatcher struct {
-	One   *One   `queryParam:"inline" union:"member"`
-	Two   *Two   `queryParam:"inline" union:"member"`
-	Three *Three `queryParam:"inline" union:"member"`
-	Four  *Four  `queryParam:"inline" union:"member"`
+	AIGatewayMCPServerRouteWithMatcher1 *AIGatewayMCPServerRouteWithMatcher1 `queryParam:"inline" union:"member"`
+	Two                                 *Two                                 `queryParam:"inline" union:"member"`
+	Three                               *Three                               `queryParam:"inline" union:"member"`
+	Four                                *Four                                `queryParam:"inline" union:"member"`
 
 	Type AIGatewayMCPServerRouteWithMatcherType
 }
 
-func CreateAIGatewayMCPServerRouteWithMatcherOne(one One) AIGatewayMCPServerRouteWithMatcher {
-	typ := AIGatewayMCPServerRouteWithMatcherTypeOne
+func CreateAIGatewayMCPServerRouteWithMatcherAIGatewayMCPServerRouteWithMatcher1(aiGatewayMCPServerRouteWithMatcher1 AIGatewayMCPServerRouteWithMatcher1) AIGatewayMCPServerRouteWithMatcher {
+	typ := AIGatewayMCPServerRouteWithMatcherTypeAIGatewayMCPServerRouteWithMatcher1
 
 	return AIGatewayMCPServerRouteWithMatcher{
-		One:  &one,
-		Type: typ,
+		AIGatewayMCPServerRouteWithMatcher1: &aiGatewayMCPServerRouteWithMatcher1,
+		Type:                                typ,
 	}
 }
 
@@ -563,10 +566,10 @@ func (u *AIGatewayMCPServerRouteWithMatcher) UnmarshalJSON(data []byte) (err err
 		}
 	}()
 
-	var one One = One{}
-	if err := utils.UnmarshalJSON(data, &one, "", true, nil); err == nil {
-		u.One = &one
-		u.Type = AIGatewayMCPServerRouteWithMatcherTypeOne
+	var aiGatewayMCPServerRouteWithMatcher1 AIGatewayMCPServerRouteWithMatcher1 = AIGatewayMCPServerRouteWithMatcher1{}
+	if err := utils.UnmarshalJSON(data, &aiGatewayMCPServerRouteWithMatcher1, "", true, nil); err == nil {
+		u.AIGatewayMCPServerRouteWithMatcher1 = &aiGatewayMCPServerRouteWithMatcher1
+		u.Type = AIGatewayMCPServerRouteWithMatcherTypeAIGatewayMCPServerRouteWithMatcher1
 		return nil
 	}
 
@@ -595,8 +598,8 @@ func (u *AIGatewayMCPServerRouteWithMatcher) UnmarshalJSON(data []byte) (err err
 }
 
 func (u AIGatewayMCPServerRouteWithMatcher) MarshalJSON() ([]byte, error) {
-	if u.One != nil {
-		return utils.MarshalJSON(u.One, "", true)
+	if u.AIGatewayMCPServerRouteWithMatcher1 != nil {
+		return utils.MarshalJSON(u.AIGatewayMCPServerRouteWithMatcher1, "", true)
 	}
 
 	if u.Two != nil {

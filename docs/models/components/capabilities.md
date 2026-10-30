@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.CapabilitiesBatches
+value := components.CapabilitiesWildcard
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.Capabilities("custom_value")
@@ -18,8 +18,9 @@ custom := components.Capabilities("custom_value")
 
 ## Values
 
-| Name                  | Value                 |
-| --------------------- | --------------------- |
-| `CapabilitiesBatches` | batches               |
-| `CapabilitiesFiles`   | files                 |
-| `CapabilitiesSkills`  | skills                |
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `CapabilitiesWildcard` | *                      |
+| `CapabilitiesBatches`  | batches                |
+| `CapabilitiesFiles`    | files                  |
+| `CapabilitiesSkills`   | skills                 |

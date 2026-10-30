@@ -18,11 +18,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.AIGateways.ListAiGateways(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+	res, err := s.AIGatewayCostManagementTags.GetCostManagementTags(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAIGatewaysResponse != nil {
+	if res.CostManagementTags != nil {
 		// handle response
 	}
 }

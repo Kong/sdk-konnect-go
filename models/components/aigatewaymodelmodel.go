@@ -11,6 +11,7 @@ import (
 type AIGatewayModelModelCapabilities string
 
 const (
+	AIGatewayModelModelCapabilitiesWildcard           AIGatewayModelModelCapabilities = "*"
 	AIGatewayModelModelCapabilitiesGenerate           AIGatewayModelModelCapabilities = "generate"
 	AIGatewayModelModelCapabilitiesAgentic            AIGatewayModelModelCapabilities = "agentic"
 	AIGatewayModelModelCapabilitiesRealtime           AIGatewayModelModelCapabilities = "realtime"
@@ -32,7 +33,7 @@ func (e AIGatewayModelModelCapabilities) ToPointer() *AIGatewayModelModelCapabil
 func (e *AIGatewayModelModelCapabilities) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "generate", "agentic", "realtime", "embeddings", "image", "audio/speech", "audio/transcription", "audio/translation", "video", "rerank", "decisions":
+		case "*", "generate", "agentic", "realtime", "embeddings", "image", "audio/speech", "audio/transcription", "audio/translation", "video", "rerank", "decisions":
 			return true
 		}
 	}
@@ -67,11 +68,18 @@ type AIGatewayModelModel struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
+	// Names of the Datastores this model references.
+	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"model" json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelModelConfig `json:"config"`
-	// List of AI capabilities enabled for this model.
+	// The capabilities this model supports. Set to a specific capability to
+	// restrict the model to that capability only, or to `*` to allow all
+	// capabilities that the targets support at the gateway's
+	// min_runtime_version. A capability that needs a newer
+	// min_runtime_version is left out of `*`.
+	//
 	Capabilities []AIGatewayModelModelCapabilities `json:"capabilities"`
 }
 
@@ -147,6 +155,13 @@ func (a *AIGatewayModelModel) GetManagedBy() map[string]string {
 		return nil
 	}
 	return a.ManagedBy
+}
+
+func (a *AIGatewayModelModel) GetDatastores() []AIGatewayDatastoreRef {
+	if a == nil {
+		return nil
+	}
+	return a.Datastores
 }
 
 func (a *AIGatewayModelModel) GetType() string {
