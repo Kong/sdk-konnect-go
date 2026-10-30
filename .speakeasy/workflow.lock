@@ -13,14 +13,25 @@ targets:
         sourceRevisionDigest: sha256:c639a509989846db09eb72fa0384d9d4cc7717a96710ef0075f7e4f85d3e5bed
         sourceBlobDigest: sha256:1d37bad2d56ec14c07aa336eab140bce5c3865b8072372dbd43c751527fa0e1d
         codeSamplesNamespace: konnect-go-code-samples
-        codeSamplesRevisionDigest: sha256:0f2cc138df1329477bf17dc9d0b89828b7caca9f621a56c0b0c76edc214dfcda
+        codeSamplesRevisionDigest: sha256:74ca7621a35e30436b6afe67e016c800dbc6c941f295804573969674db552c19
 workflow:
     workflowVersion: 1.0.0
-    speakeasyVersion: latest
+    speakeasyVersion: 1.805.0
     sources:
         konnect:
             inputs:
                 - location: ./openapi.yaml
+            overlays:
+                - location: ./kongctl-patches/overlays/backend-cluster-tls-defaults.yaml
+                - location: ./kongctl-patches/overlays/organization-team-konnect-managed-defaults.yaml
+                - location: ./kongctl-patches/overlays/patch-custom-portal-email-template-defaults.yaml
+                - location: ./kongctl-patches/overlays/portal-customization-spec-renderer-defaults.yaml
+                - location: ./kongctl-patches/overlays/portal-customization-theme-defaults.yaml
+                - location: ./kongctl-patches/overlays/portal-team-konnect-managed-defaults.yaml
+                - location: ./kongctl-patches/overlays/update-dcr-config-http-defaults.yaml
+                - location: ./kongctl-patches/overlays/update-portal-audit-log-webhook-patch-defaults.yaml
+                - location: ./kongctl-patches/overlays/update-portal-identity-provider-defaults.yaml
+                - location: ./kongctl-patches/overlays/update-portal-patch-defaults.yaml
             registry:
                 location: registry.speakeasyapi.dev/kong/kong/konnect
     targets:
