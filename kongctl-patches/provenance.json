@@ -1,9 +1,9 @@
 {
   "repository": "Kong/kongctl",
-  "commit": "af17290382c5b1f93b76a713085632984609ad65",
+  "commit": "b734e481468c76b58b97f7624a53d08793bde8de",
   "path": "tools/sdk-patches",
   "sha256": {
-    "apply.py": "e0269aed5c1acaa1ec1333d864aa84366a33af3da152ff879ba4d853f8b8b2b1",
+    "apply.py": "f6a22953199a071a68c4ff060924896356160c4605e5cb6b13b8652a258896d9",
     "manifest.json": "0e1457ac3f16d9c76f61a3661331251b02fa1cf85588af0ba7cf2b9c8b211f5e",
     "README.md": "4aeb723010d8481091b11671e1cf7956f851baafa54fca9ae6a11099f335d9c2",
     "overlays/backend-cluster-tls-defaults.yaml": "3c5f065ec53cb0ab53345ac0407af11944433ae6730328adf1bead7a4d5c03ae",

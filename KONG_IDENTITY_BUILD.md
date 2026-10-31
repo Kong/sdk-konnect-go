@@ -135,7 +135,8 @@ Build logs and the temporary module files are saved locally under
 ## Auth server PATCH array preservation
 
 The preview additionally includes the KongCTL patch bundle from
-`af17290382c5b1f93b76a713085632984609ad65`. The targeted
+`b734e481468c76b58b97f7624a53d08793bde8de` (including the origins patch
+from `af17290382c5b1f93b76a713085632984609ad65`). The targeted
 `UpdateAuthServer.trusted_origins` tag uses `omitzero`, preserving an explicitly
 empty array while leaving nil omitted. This enables PATCH clearing without a
 custom HTTP client. The wire regression fails before the patch and passes
