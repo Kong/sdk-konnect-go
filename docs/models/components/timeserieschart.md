@@ -5,7 +5,7 @@ A chart that can render timeseries data -- data from a query that has `time` as 
 This type of chart can support:
 
 - One or more metrics: `{ metrics: ["response_latency_p99", "response_latency_p95"], dimensions: ["time"] }`
-- One metric plus one non-time dimension: `{ metrics: ["request_count"], dimensions: ["time", "gateway_service"] }` 
+- One metric plus one non-time dimension: `{ metrics: ["request_count"], dimensions: ["time", "gateway_service"] }`
 
 Either way, ensure that `time` is in the list of query dimensions.
 

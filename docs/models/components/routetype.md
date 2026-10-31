@@ -1,6 +1,6 @@
 # RouteType
 
-The model's operation implementation, for this provider. 
+The model's operation implementation, for this provider.
 
 ## Example Usage
 

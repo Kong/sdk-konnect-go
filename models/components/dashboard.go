@@ -13,7 +13,7 @@ type Dashboard struct {
 	Tiles []Tile `json:"tiles"`
 	// An optional array of filters that are applied globally to all relevant tiles in the dashboard.
 	//
-	// Whether or not a preset filter applies to a tile depends on the filter's dimension.  Some dimensions, like `control_plane`, are common to all datasources; other dimensions may only apply to one datasource.
+	// Whether or not a preset filter applies to a tile depends on the filter's dimension. Some dimensions, like `control_plane`, are common to all datasources; other dimensions may only apply to one datasource.
 	//
 	PresetFilters []AllFilterItems `json:"preset_filters,omitempty"`
 }

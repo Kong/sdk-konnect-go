@@ -90,7 +90,7 @@ type LLMQuery struct {
 	Filters []LLMFilters `json:"filters,omitempty"`
 	// Force time grouping into buckets of the specified duration.  Only has an effect if "time" is in the "dimensions" list.
 	//
-	// The granularity of the result may be coarser than requested.  The finest allowed granularity depends on the query's time range: data farther in the past may have coarser granularity.  The exact result granularity will be reported in the response `meta.granularity_ms` field.
+	// The granularity of the result may be coarser than requested.  The finest allowed granularity depends on the query's time range: data farther in the past may have coarser granularity. The exact result granularity will be reported in the response `meta.granularity_ms` field.
 	//
 	// If granularity is not specified and "time" is in the dimensions list, a default will be chosen based on the time range requested.
 	//

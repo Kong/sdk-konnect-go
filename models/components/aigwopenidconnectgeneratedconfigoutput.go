@@ -3121,7 +3121,7 @@ type AIGWOpenIDConnectGeneratedConfigOutput struct {
 	TokenHeadersReplay []string `json:"token_headers_replay,omitempty"`
 	// Extra header values passed to the token endpoint.
 	TokenHeadersValues []string `json:"token_headers_values,omitempty"`
-	// Pass extra arguments from the client to the OpenID-Connect plugin. If arguments exist, the client can pass them using: - Query parameters - Request Body - Request Header  This parameter can be used with `scope` values, like this:  `config.token_post_args_client=scope`  In this case, the token would take the `scope` value from the query parameter or from the request body or from the header and send it to the token endpoint.
+	// Pass extra arguments from the client to the OpenID-Connect plugin. If arguments exist, the client can pass them using: - Query parameters - Request Body - Request Header  This parameter can be used with `scope` values, like this: `config.token_post_args_client=scope`  In this case, the token would take the `scope` value from the query parameter or from the request body or from the header and send it to the token endpoint.
 	TokenPostArgsClient []string `json:"token_post_args_client,omitempty"`
 	// Extra post argument names passed to the token endpoint.
 	TokenPostArgsNames []string `json:"token_post_args_names,omitempty"`
@@ -5226,7 +5226,7 @@ type AIGWOpenIDConnectGeneratedConfig struct {
 	TokenHeadersReplay []string `json:"token_headers_replay,omitempty"`
 	// Extra header values passed to the token endpoint.
 	TokenHeadersValues []string `json:"token_headers_values,omitempty"`
-	// Pass extra arguments from the client to the OpenID-Connect plugin. If arguments exist, the client can pass them using: - Query parameters - Request Body - Request Header  This parameter can be used with `scope` values, like this:  `config.token_post_args_client=scope`  In this case, the token would take the `scope` value from the query parameter or from the request body or from the header and send it to the token endpoint.
+	// Pass extra arguments from the client to the OpenID-Connect plugin. If arguments exist, the client can pass them using: - Query parameters - Request Body - Request Header  This parameter can be used with `scope` values, like this: `config.token_post_args_client=scope`  In this case, the token would take the `scope` value from the query parameter or from the request body or from the header and send it to the token endpoint.
 	TokenPostArgsClient []string `json:"token_post_args_client,omitempty"`
 	// Extra post argument names passed to the token endpoint.
 	TokenPostArgsNames []string `json:"token_post_args_names,omitempty"`

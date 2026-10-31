@@ -1,6 +1,6 @@
 # OIDCIdentityProviderClaimMappings
 
-Defines the mappings between OpenID Connect (OIDC) claims and local claims used by your application for 
+Defines the mappings between OpenID Connect (OIDC) claims and local claims used by your application for
 authentication.
 
 

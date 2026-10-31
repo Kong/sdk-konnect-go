@@ -84,7 +84,7 @@ func main() {
 
 ## CreateTeam
 
-Creates a team in the Konnect Organization. 
+Creates a team in the Konnect Organization.
 
 ### Example Usage: Authentication Settings cannot be all Disabled
 
