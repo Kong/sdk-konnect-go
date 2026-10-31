@@ -18,7 +18,7 @@ type ListPrincipalBasicAuthsRequest struct {
 	// Unique identifier of the principal (UUID format)
 	PrincipalID string `pathParam:"style=simple,explode=false,name=principalId"`
 	// Determines which page of the collection to retrieve.
-	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
+	Page *components.CursorPageParameters `queryParam:"style=deepObject,explode=true,name=page"`
 }
 
 func (l *ListPrincipalBasicAuthsRequest) GetDirectoryID() string {

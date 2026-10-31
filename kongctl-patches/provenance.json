@@ -1,11 +1,11 @@
 {
   "repository": "Kong/kongctl",
-  "commit": "f79e767d24b6c5cd749d2b3a60596f753582b0de",
+  "commit": "d15373927f432be4ab7da870b398c54c1d972717",
   "path": "tools/sdk-patches",
   "sha256": {
     "apply.py": "14032b579196827a672d4c0d514283da23807c9988071260cea14153c547cc0a",
-    "manifest.json": "d0ac4be773c10a530e7708b1505ee19b62ccd0830a26f180aad3f16db862ac81",
-    "README.md": "3f3d4de33612b01984a6fdaad0b0e47fa04e393dccddbe07016aec0d0d40765c",
+    "manifest.json": "3ad7730ecb757c8d318cf090063204828d921ed967700e3ae06dc23b4e09cd61",
+    "README.md": "06efb9c2b866f6c03ea564812d573fe354a84b992bdd889cf9a78e0c9d684a00",
     "overlays/backend-cluster-tls-defaults.yaml": "3c5f065ec53cb0ab53345ac0407af11944433ae6730328adf1bead7a4d5c03ae",
     "overlays/organization-team-konnect-managed-defaults.yaml": "12116260ea58670f19c4e39a220a103e8f729d2a2255fdae8e49b2a620237a01",
     "overlays/patch-custom-portal-email-template-defaults.yaml": "fab2a9d6a26ad0b29200ae45fbcb365b3ed1322018f314686134e686937d3ed3",
@@ -24,6 +24,6 @@
     "tests/auth_server_arrays_test.go.txt": "c45f8e63ba640077ee8d44ce33d4c29fa14c028f34976faf9582b6ed8a5bbe64",
     "tests/auth_server_claim_arrays_test.go.txt": "e5834f7a6e78ec0c1d54c178818882f563974dbfcad865309e5edcf6208faf8a",
     "tests/auth_server_client_fields_test.go.txt": "60d620e3e7175607f12cbe87929411c9366d71fd72c662b86a5da2c3595ba785",
-    "tests/identity_cursor_query_test.go.txt": "a0e3bb311e3b81c5da70b55e0338a91c2b2258a7f7a995c08f990984582cedca"
+    "tests/identity_cursor_query_test.go.txt": "9325735a584176c95cc37bb3db24a1a915801f0702eec61137a310d1efc0206f"
   }
 }

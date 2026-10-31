@@ -20,7 +20,7 @@ type ListPasswordsRequest struct {
 	// Unique identifier of the basic auth credential (UUID format)
 	BasicAuthID string `pathParam:"style=simple,explode=false,name=basicAuthId"`
 	// Determines which page of the collection to retrieve.
-	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
+	Page *components.CursorPageParameters `queryParam:"style=deepObject,explode=true,name=page"`
 }
 
 func (l *ListPasswordsRequest) GetDirectoryID() string {
