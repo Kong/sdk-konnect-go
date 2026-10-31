@@ -131,3 +131,13 @@ vendor snapshot during this check.
 
 Build logs and the temporary module files are saved locally under
 `/home/rspurgeon/.cache/kong-identity-public-sdk/`.
+
+## Auth server PATCH array preservation
+
+The preview additionally includes the KongCTL patch bundle from
+`af17290382c5b1f93b76a713085632984609ad65`. The targeted
+`UpdateAuthServer.trusted_origins` tag uses `omitzero`, preserving an explicitly
+empty array while leaving nil omitted. This enables PATCH clearing without a
+custom HTTP client. The wire regression fails before the patch and passes
+after it; root, model, internal, and package tests pass. API surface and
+visibility selection remain unchanged.
