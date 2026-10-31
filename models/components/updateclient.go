@@ -14,11 +14,11 @@ type UpdateClient struct {
 	// Secret of the client
 	ClientSecret *string `json:"client_secret,omitempty"`
 	// List of OAuth 2.0 grant types
-	GrantTypes []AuthServerGrantType `json:"grant_types,omitempty"`
+	GrantTypes []AuthServerGrantType `json:"grant_types,omitzero"`
 	// List of OAuth 2.0 response types
-	ResponseTypes []ResponseType `json:"response_types,omitempty"`
+	ResponseTypes []ResponseType `json:"response_types,omitzero"`
 	// The URIs that the client is allowed to redirect to after authentication in interactive flows. All redirect URIs must be absolute URIs, be secure (HTTPS), and must not include a fragment component.
-	RedirectUris []string `json:"redirect_uris,omitempty"`
+	RedirectUris []string `json:"redirect_uris,omitzero"`
 	// The URI of the login page where the user is redirected to authenticate in interactive flows. The login page must be secure (HTTPS).
 	LoginURI *string `json:"login_uri,omitempty"`
 	// The duration of the minted token is valid for, in seconds
@@ -28,9 +28,9 @@ type UpdateClient struct {
 	// Specifies whether the client is allowed to request all scopes
 	AllowAllScopes *bool `json:"allow_all_scopes,omitempty"`
 	// Specifies the scopes IDs that the client is allowed to request
-	AllowScopes []string `json:"allow_scopes,omitempty"`
+	AllowScopes []string `json:"allow_scopes,omitzero"`
 	// Requested authentication method for OAuth 2.0 endpoints.
-	TokenEndpointAuthMethod *AuthServerTokenEndpointAuthMethod `default:"client_secret_post" json:"token_endpoint_auth_method"`
+	TokenEndpointAuthMethod *AuthServerTokenEndpointAuthMethod `json:"token_endpoint_auth_method,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Labels are intended to store **INTERNAL** metadata.

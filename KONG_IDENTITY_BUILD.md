@@ -11,7 +11,7 @@ local module replacement. It has no release, tag, or pull request.
   `57350ae722c69faa20a740b72549cef6cbc70fee`.
 - Identity v2 spec: PR #3877 at
   `98137d7be3772b67693cc1ceb0469e77f8ecf0f5`.
-- KongCTL patch bundle: `b7e43b8d8d0821d8f0934e919e564daac3142b4b`.
+- KongCTL patch bundle: `2489716c3eeb8e437b13336cd682fc8d5580b0db`.
 - Speakeasy: `1.805.0`.
 
 The public SDK's `.speakeasy/gen.yaml` is unchanged, including persistent

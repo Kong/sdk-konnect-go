@@ -3,7 +3,7 @@
   "platform_api_revision": "57350ae722c69faa20a740b72549cef6cbc70fee",
   "identity_pr": 3877,
   "identity_pr_revision": "98137d7be3772b67693cc1ceb0469e77f8ecf0f5",
-  "kongctl_patch_revision": "2beef7beeab6b3abd1e0d39978a1c48c203d83dd",
+  "kongctl_patch_revision": "2489716c3eeb8e437b13336cd682fc8d5580b0db",
   "speakeasy_version": "1.805.0",
   "generation_config_sha256": "19f9aa4e82f8f7fbfd2737c959600b8f312b877b941b4dd5485cb4ef1a781d58",
   "preview_operations": 1102,
