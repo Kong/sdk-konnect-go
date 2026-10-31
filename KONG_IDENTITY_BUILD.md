@@ -11,7 +11,7 @@ local module replacement. It has no release, tag, or pull request.
   `57350ae722c69faa20a740b72549cef6cbc70fee`.
 - Identity v2 spec: PR #3877 at
   `98137d7be3772b67693cc1ceb0469e77f8ecf0f5`.
-- KongCTL patch bundle: `2489716c3eeb8e437b13336cd682fc8d5580b0db`.
+- KongCTL patch bundle: `ef232ca00977a4587d941ad6e1f49f73830bacff`.
 - Speakeasy: `1.805.0`.
 
 The public SDK's `.speakeasy/gen.yaml` is unchanged, including persistent
@@ -147,3 +147,14 @@ empty array while leaving nil omitted. This enables PATCH clearing without a
 custom HTTP client. The wire regression fails before the patch and passes
 after it; root, model, internal, and package tests pass. API surface and
 visibility selection remain unchanged.
+
+### Cursor request serialization correction
+
+The deployed directory, principal and principal-identity lists use bracketed
+`page[size]` and `page[after]` parameters. The shared source parameter omits
+`style: deepObject`, so default form/explode generation emitted flat keys
+ignored by the service. The KongCTL patch bundle corrects only these three
+request tags. No APIs, response models, public generation settings or
+unrelated existing operations change. The wire test fails on all three
+methods before the patch and passes afterward, including opaque cursor
+encoding. All prior KongCTL patches remain installed.
