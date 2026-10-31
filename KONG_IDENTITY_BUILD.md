@@ -11,7 +11,7 @@ local module replacement. It has no release, tag, or pull request.
   `57350ae722c69faa20a740b72549cef6cbc70fee`.
 - Identity v2 spec: PR #3877 at
   `98137d7be3772b67693cc1ceb0469e77f8ecf0f5`.
-- KongCTL patch bundle: `2beef7beeab6b3abd1e0d39978a1c48c203d83dd`.
+- KongCTL patch bundle: `b7e43b8d8d0821d8f0934e919e564daac3142b4b`.
 - Speakeasy: `1.805.0`.
 
 The public SDK's `.speakeasy/gen.yaml` is unchanged, including persistent
@@ -105,6 +105,11 @@ Generation uses `--skip-versioning --skip-upload-spec`. Live API integration
 tests are outside this experiment.
 
 ## KongCTL compatibility
+
+Claim PATCH now preserves explicit empty `include_in_scopes` arrays. The
+targeted `omitzero` patch keeps nil arrays omitted; its HTTP wire regression
+fails on the original serializer and passes after patching. The public preview
+keeps all previous KongCTL overlays and post-generation fixes.
 
 Validation passed:
 
