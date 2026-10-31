@@ -42,7 +42,7 @@ type ListGroupMembershipRequest struct {
 	// Unique identifier of the group (UUID format)
 	GroupID string `pathParam:"style=simple,explode=false,name=groupId"`
 	// Determines which page of the collection to retrieve.
-	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
+	Page *components.CursorPageParameters `queryParam:"style=deepObject,explode=true,name=page"`
 	// Filter group membership entries by field. Supported filter fields:
 	// - `id`: exact match on the membership entry id. Example: `filter[id]="<uuid>"`
 	// - `display_name`: exact match or contains on the member's display name, case-insensitive. Example: `filter[display_name]="jane.doe"` or `filter[display_name][contains]="jane"`
