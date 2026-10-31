@@ -20,6 +20,14 @@ Depending on the protocol, one of the following attributes must be set:
 - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
 
 
+
+
+
+
+
+
+
+
   <br>
   A route can't have both `tls` and `tls_passthrough` protocols at same time.
   <br><br>

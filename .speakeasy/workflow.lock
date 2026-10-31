@@ -12,8 +12,6 @@ targets:
         sourceNamespace: konnect
         sourceRevisionDigest: sha256:c639a509989846db09eb72fa0384d9d4cc7717a96710ef0075f7e4f85d3e5bed
         sourceBlobDigest: sha256:1d37bad2d56ec14c07aa336eab140bce5c3865b8072372dbd43c751527fa0e1d
-        codeSamplesNamespace: konnect-go-code-samples
-        codeSamplesRevisionDigest: sha256:74ca7621a35e30436b6afe67e016c800dbc6c941f295804573969674db552c19
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: 1.805.0
@@ -39,9 +37,3 @@ workflow:
             target: go
             source: konnect
             output: .
-            codeSamples:
-                registry:
-                    location: registry.speakeasyapi.dev/kong/kong/konnect-go-code-samples
-                labelOverride:
-                    fixedValue: Go (SDK)
-                blocking: false

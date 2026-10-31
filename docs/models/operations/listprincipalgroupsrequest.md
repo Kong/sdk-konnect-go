@@ -1,0 +1,10 @@
+# ListPrincipalGroupsRequest
+
+
+## Fields
+
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `DirectoryID`                                                                       | `string`                                                                            | :heavy_check_mark:                                                                  | ID of the directory                                                                 |
+| `PrincipalID`                                                                       | `string`                                                                            | :heavy_check_mark:                                                                  | Unique identifier of the principal (UUID format)                                    |
+| `Page`                                                                              | [*components.CursorPageParameters](../../models/components/cursorpageparameters.md) | :heavy_minus_sign:                                                                  | Determines which page of the collection to retrieve.                                |

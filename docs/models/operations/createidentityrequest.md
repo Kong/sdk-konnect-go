@@ -1,0 +1,10 @@
+# CreateIdentityRequest
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `DirectoryID`                                                                                | `string`                                                                                     | :heavy_check_mark:                                                                           | ID of the directory                                                                          |
+| `PrincipalID`                                                                                | `string`                                                                                     | :heavy_check_mark:                                                                           | Unique identifier of the principal (UUID format)                                             |
+| `KongPrincipalIdentityBody`                                                                  | [components.KongPrincipalIdentityBody](../../models/components/kongprincipalidentitybody.md) | :heavy_check_mark:                                                                           | Identity to be created                                                                       |

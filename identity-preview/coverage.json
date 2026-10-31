@@ -1,0 +1,572 @@
+{
+  "baseline_operations": 990,
+  "preview_operations": 1102,
+  "unchanged_globals": {
+    "servers": true,
+    "security": true,
+    "securitySchemes": true
+  },
+  "changed_existing_operations": [],
+  "new_operations": [
+    {
+      "path": "/v1/auth-servers",
+      "method": "get",
+      "operationId": "listAuthServers"
+    },
+    {
+      "path": "/v1/auth-servers",
+      "method": "post",
+      "operationId": "createAuthServer"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}",
+      "method": "get",
+      "operationId": "getAuthServer"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}",
+      "method": "patch",
+      "operationId": "updateAuthServer"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}",
+      "method": "delete",
+      "operationId": "deleteAuthServer"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/claims",
+      "method": "get",
+      "operationId": "listAuthServerClaims"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/claims",
+      "method": "post",
+      "operationId": "createAuthServerClaim"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/claims/{claimId}",
+      "method": "get",
+      "operationId": "getAuthServerClaim"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/claims/{claimId}",
+      "method": "patch",
+      "operationId": "updateAuthServerClaim"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/claims/{claimId}",
+      "method": "delete",
+      "operationId": "deleteAuthServerClaim"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients",
+      "method": "get",
+      "operationId": "listAuthServerClients"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients",
+      "method": "post",
+      "operationId": "createAuthServerClient"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}",
+      "method": "get",
+      "operationId": "getAuthServerClient"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}",
+      "method": "patch",
+      "operationId": "updateAuthServerClient"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}",
+      "method": "put",
+      "operationId": "replaceAuthServerClient"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}",
+      "method": "delete",
+      "operationId": "deleteAuthServerClient"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/secrets",
+      "method": "get",
+      "operationId": "listClientSecrets"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/secrets",
+      "method": "post",
+      "operationId": "createClientSecret"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/secrets/{clientSecretId}",
+      "method": "get",
+      "operationId": "getClientSecret"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/secrets/{clientSecretId}",
+      "method": "patch",
+      "operationId": "updateClientSecret"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/secrets/{clientSecretId}",
+      "method": "delete",
+      "operationId": "deleteClientSecret"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/test-claim",
+      "method": "post",
+      "operationId": "testClaimForClient"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/tokens",
+      "method": "get",
+      "operationId": "listAuthServerClientTokens"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/tokens",
+      "method": "delete",
+      "operationId": "deleteAllAuthServerClientTokens"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/tokens/{tokenId}",
+      "method": "get",
+      "operationId": "getAuthServerClientToken"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/clients/{clientId}/tokens/{tokenId}",
+      "method": "delete",
+      "operationId": "deleteAuthServerClientToken"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/scopes",
+      "method": "get",
+      "operationId": "listAuthServerScopes"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/scopes",
+      "method": "post",
+      "operationId": "createAuthServerScope"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/scopes/{scopeId}",
+      "method": "get",
+      "operationId": "getAuthServerScope"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/scopes/{scopeId}",
+      "method": "patch",
+      "operationId": "updateAuthServerScope"
+    },
+    {
+      "path": "/v1/auth-servers/{authServerId}/scopes/{scopeId}",
+      "method": "delete",
+      "operationId": "deleteAuthServerScope"
+    },
+    {
+      "path": "/v2/credential-provider-templates",
+      "method": "get",
+      "operationId": "listCredentialProviderTemplates"
+    },
+    {
+      "path": "/v2/credential-provider-templates/{credentialProviderTemplateName}",
+      "method": "get",
+      "operationId": "getCredentialProviderTemplate"
+    },
+    {
+      "path": "/v2/directories",
+      "method": "post",
+      "operationId": "createDirectory"
+    },
+    {
+      "path": "/v2/directories",
+      "method": "get",
+      "operationId": "ListKongDirectories"
+    },
+    {
+      "path": "/v2/directories/{directoryId}",
+      "method": "patch",
+      "operationId": "updateDirectory"
+    },
+    {
+      "path": "/v2/directories/{directoryId}",
+      "method": "put",
+      "operationId": "replaceDirectory"
+    },
+    {
+      "path": "/v2/directories/{directoryId}",
+      "method": "get",
+      "operationId": "getDirectory"
+    },
+    {
+      "path": "/v2/directories/{directoryId}",
+      "method": "delete",
+      "operationId": "deleteDirectory"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups",
+      "method": "post",
+      "operationId": "createGroup"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups",
+      "method": "get",
+      "operationId": "listGroups"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}",
+      "method": "get",
+      "operationId": "getGroup"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}",
+      "method": "put",
+      "operationId": "replaceGroup"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}",
+      "method": "delete",
+      "operationId": "deleteGroup"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/api-keys",
+      "method": "post",
+      "operationId": "create-group-key"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/api-keys",
+      "method": "get",
+      "operationId": "list-group-keys"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/api-keys/{apiKeyId}",
+      "method": "patch",
+      "operationId": "update-group-key"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/api-keys/{apiKeyId}",
+      "method": "get",
+      "operationId": "get-group-key"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/api-keys/{apiKeyId}",
+      "method": "delete",
+      "operationId": "delete-group-key"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/membership",
+      "method": "get",
+      "operationId": "listGroupMembership"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/membership",
+      "method": "post",
+      "operationId": "createGroupMembershipEntry"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/membership/{groupMembershipId}",
+      "method": "get",
+      "operationId": "getGroupMembershipEntry"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/membership/{groupMembershipId}",
+      "method": "delete",
+      "operationId": "deleteGroupMembershipEntry"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/groups/{groupId}/membership/batch",
+      "method": "post",
+      "operationId": "batchCreateGroupMembershipEntries"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/org-chart/import",
+      "method": "post",
+      "operationId": "importOrgChart"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals",
+      "method": "post",
+      "operationId": "createPrincipal"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals",
+      "method": "get",
+      "operationId": "listPrincipals"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}",
+      "method": "patch",
+      "operationId": "updatePrincipal"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}",
+      "method": "put",
+      "operationId": "replacePrincipal"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}",
+      "method": "get",
+      "operationId": "getPrincipal"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}",
+      "method": "delete",
+      "operationId": "deletePrincipal"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/api-keys",
+      "method": "post",
+      "operationId": "create-principal-key"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/api-keys",
+      "method": "get",
+      "operationId": "list-principal-keys"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/api-keys/{apiKeyId}",
+      "method": "patch",
+      "operationId": "update-principal-key"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/api-keys/{apiKeyId}",
+      "method": "get",
+      "operationId": "get-identity-key"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/api-keys/{apiKeyId}",
+      "method": "delete",
+      "operationId": "delete-principal-key"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths",
+      "method": "get",
+      "operationId": "list-principal-basic-auths"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths",
+      "method": "post",
+      "operationId": "create-principal-basic-auth"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}",
+      "method": "get",
+      "operationId": "get-principal-basic-auth"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}",
+      "method": "patch",
+      "operationId": "update-principal-basic-auth"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}",
+      "method": "put",
+      "operationId": "replace-principal-basic-auth"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}",
+      "method": "delete",
+      "operationId": "delete-principal-basic-auth"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}/passwords",
+      "method": "get",
+      "operationId": "listPasswords"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}/passwords",
+      "method": "post",
+      "operationId": "createPassword"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}/passwords",
+      "method": "delete",
+      "operationId": "deleteAllPasswords"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}/passwords/{passwordId}",
+      "method": "get",
+      "operationId": "getPassword"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}/passwords/{passwordId}",
+      "method": "patch",
+      "operationId": "updatePassword"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}/passwords/{passwordId}",
+      "method": "put",
+      "operationId": "replacePassword"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/basic-auths/{basicAuthId}/passwords/{passwordId}",
+      "method": "delete",
+      "operationId": "deletePassword"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/groups",
+      "method": "get",
+      "operationId": "listPrincipalGroups"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/identities",
+      "method": "get",
+      "operationId": "listIdentities"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/identities",
+      "method": "post",
+      "operationId": "createIdentity"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/identities/{identityId}",
+      "method": "get",
+      "operationId": "getIdentity"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/identities/{identityId}",
+      "method": "put",
+      "operationId": "replaceIdentity"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/identities/{identityId}",
+      "method": "patch",
+      "operationId": "updateIdentity"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/identities/{identityId}",
+      "method": "delete",
+      "operationId": "deleteIdentity"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/vault-credentials",
+      "method": "get",
+      "operationId": "listVaultCredentials"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/vault-credentials/{vaultCredentialId}",
+      "method": "get",
+      "operationId": "getVaultCredential"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/principals/{principalId}/vault-credentials/{vaultCredentialId}",
+      "method": "delete",
+      "operationId": "deleteVaultCredential"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/trusted-idps",
+      "method": "get",
+      "operationId": "listTrustedIdps"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/trusted-idps",
+      "method": "post",
+      "operationId": "createTrustedIdp"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/trusted-idps/{trustedIdpId}",
+      "method": "get",
+      "operationId": "getTrustedIdp"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/trusted-idps/{trustedIdpId}",
+      "method": "put",
+      "operationId": "updateTrustedIdp"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/trusted-idps/{trustedIdpId}",
+      "method": "patch",
+      "operationId": "patchTrustedIdp"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/trusted-idps/{trustedIdpId}",
+      "method": "delete",
+      "operationId": "deleteTrustedIdp"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/trusted-idps/{trustedIdpId}/principals",
+      "method": "get",
+      "operationId": "listTrustedIdpPrincipals"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/keys",
+      "method": "post",
+      "operationId": "createVaultKey"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/keys",
+      "method": "get",
+      "operationId": "listVaultKeys"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/keys/{keyId}",
+      "method": "get",
+      "operationId": "getVaultKey"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/keys/{keyId}",
+      "method": "patch",
+      "operationId": "updateVaultKey"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/keys/{keyId}",
+      "method": "delete",
+      "operationId": "deleteVaultKey"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers",
+      "method": "post",
+      "operationId": "createVaultProvider"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers",
+      "method": "get",
+      "operationId": "listVaultProviders"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers/{providerId}",
+      "method": "get",
+      "operationId": "getVaultProvider"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers/{providerId}",
+      "method": "patch",
+      "operationId": "updateVaultProvider"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers/{providerId}",
+      "method": "put",
+      "operationId": "replaceVaultProvider"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers/{providerId}",
+      "method": "delete",
+      "operationId": "deleteVaultProvider"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials",
+      "method": "post",
+      "operationId": "createVaultProviderCredential"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials",
+      "method": "get",
+      "operationId": "listVaultProviderCredentials"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials/{credentialId}",
+      "method": "get",
+      "operationId": "getVaultProviderCredential"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials/{credentialId}",
+      "method": "put",
+      "operationId": "updateVaultProviderCredential"
+    },
+    {
+      "path": "/v2/directories/{directoryId}/vault/providers/{providerId}/credentials/{credentialId}",
+      "method": "delete",
+      "operationId": "deleteVaultProviderCredential"
+    }
+  ]
+}

@@ -100,6 +100,14 @@ type AdvancedQuery struct {
 	// Different relative times support different granularities:
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//   - 15m => tenSecondly, thirtySecondly, minutely
 	//   - 1h  => tenSecondly, thirtySecondly, minutely, fiveMinutely, tenMinutely
 	//   - 6h  => thirtySecondly, minutely, fiveMinutely, tenMinutely, thirtyMinutely, hourly
@@ -109,6 +117,14 @@ type AdvancedQuery struct {
 	//   - 30d => hourly, twoHourly, twelveHourly, daily, weekly
 	//
 	// For special time ranges:
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//   - current_week, previous_week   => thirtyMinutely, hourly, twoHourly, twelveHourly, daily

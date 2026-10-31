@@ -1,0 +1,11 @@
+# UpdateGroupKeyRequest
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `DirectoryID`                                                                          | `string`                                                                               | :heavy_check_mark:                                                                     | ID of the directory                                                                    |
+| `GroupID`                                                                              | `string`                                                                               | :heavy_check_mark:                                                                     | Unique identifier of the group (UUID format)                                           |
+| `APIKeyID`                                                                             | `string`                                                                               | :heavy_check_mark:                                                                     | Unique identifier of the API key (UUID format)                                         |
+| `UpdatePrincipalKeyBody`                                                               | [components.UpdatePrincipalKeyBody](../../models/components/updateprincipalkeybody.md) | :heavy_check_mark:                                                                     | Key to be updated                                                                      |

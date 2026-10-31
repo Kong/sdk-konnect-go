@@ -111,6 +111,14 @@ type SDK struct {
 	// If a mapped API is unlinked from a Service, the mapping will be deleted.
 	//
 	CatalogServiceAPIMappings *CatalogServiceAPIMappings
+	// Auth Servers expose an OAuth 2.0 and OpenID Connect server interface for generating access tokens. The management API will give you the ability to create, configure and manage multiple Auth Servers per Konnect organization. Auth Servers are a regional Konnect entity.
+	AuthServer *AuthServer
+	// Claims are statements about the Client, included in tokens issued by the Auth Server. The management API will give you the ability to create, configure and manage multiple Claims per Auth Server, and include them in tokens based on the requested Scopes.
+	AuthServerClaims *AuthServerClaims
+	// Clients represent the identity of machines, such as microservices, mobile apps, or scripts entity. The management API will give you the ability to create, configure and manage multiple Clients per Auth Server.
+	AuthServerClients *AuthServerClients
+	// Scopes define the extent of access that an access token grants to a Client. The management API will give you the ability to create, configure and manage multiple Scopes per Auth Server, and restrict their usage by Client.
+	AuthServerScopes *AuthServerScopes
 	// Create and maintain a centralized catalog of all services running in your organization.
 	// Add custom fields and map resources from across your organization to provide a 360-degree overview of your services.
 	//
@@ -334,6 +342,14 @@ type SDK struct {
 	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//   <br>
 	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
 	//   <br><br>
@@ -383,12 +399,48 @@ type SDK struct {
 	// DP Nodes
 	DPNodes            *DPNodes
 	ControlPlaneGroups *ControlPlaneGroups
-	Dashboards         *Dashboards
+	// Vault providers configure credential providers for token-vault enabled directories.
+	//
+	TokenVaultProviders *TokenVaultProviders
+	Dashboards          *Dashboards
 	// Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
 	// For instance, they will be able to perform dynamic client registration (DCR) with the provider.
 	// The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
 	//
-	DCRProviders            *DCRProviders
+	DCRProviders *DCRProviders
+	// Use a directory to group consumers around an identity, defined by organizational boundaries,
+	// such as a production directory or a development directory. Directories are connected to a
+	// [geographic region](https://docs.konghq.com/konnect/geo/) in Konnect. Centrally managed consumers defined in
+	// directories can be used across multiple control planes.
+	//
+	KongIdentityDirectories *KongIdentityDirectories
+	// Groups organize principals, or other groups, within a directory for authorization purposes.
+	//
+	PrincipalGroup *PrincipalGroup
+	// Principals represent identities within a directory that can be authenticated and authorized.
+	// Each principal can have associated metadata and API keys for authentication purposes.
+	//
+	KongPrincipal *KongPrincipal
+	// Credentials are authentication secrets associated with principals. Supported credential types are
+	// API keys (system-generated or imported) and basic auth username/password pairs.
+	//
+	KongPrincipalCredential *KongPrincipalCredential
+	// Identities represent external authentication associations for a principal. Each identity links a principal
+	// to an external system such as an OIDC provider, an auth server client, a control plane consumer, or a custom identifier.
+	//
+	KongPrincipalIdentity *KongPrincipalIdentity
+	// Token vault credentials are the credentials that a principal has obtained by authorizing a token-vault provider. This resource is read-only: providers are authorized through the enrollment
+	// flow, not through this API, so only listing, retrieving, and de-authorizing (delete) are supported.
+	//
+	TokenVaultCredentials *TokenVaultCredentials
+	// Trusted IdPs configure the external identity providers a token-vault enabled directory trusts when
+	// validating tokens. A directory can trust several IdPs, each with a distinct issuer.
+	//
+	TrustedIDPs *TrustedIDPs
+	// Vault keys are the public encryption keys used to protect token vault data for
+	// a token-vault enabled directory.
+	//
+	TokenVaultKeys          *TokenVaultKeys
 	APIAttributes           *APIAttributes
 	APIImplementation       *APIImplementation
 	APIPackages             *APIPackages
@@ -606,6 +658,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogAIModelSpecs = newCatalogAIModelSpecs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogAIModelVersions = newCatalogAIModelVersions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AuthServer = newAuthServer(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AuthServerClaims = newAuthServerClaims(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AuthServerClients = newAuthServerClients(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AuthServerScopes = newAuthServerScopes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Scorecards = newScorecards(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -680,8 +736,17 @@ func New(opts ...SDKOption) *SDK {
 	sdk.DPCertificates = newDPCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TokenVaultProviders = newTokenVaultProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Dashboards = newDashboards(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DCRProviders = newDCRProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.KongIdentityDirectories = newKongIdentityDirectories(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PrincipalGroup = newPrincipalGroup(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.KongPrincipal = newKongPrincipal(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.KongPrincipalCredential = newKongPrincipalCredential(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.KongPrincipalIdentity = newKongPrincipalIdentity(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TokenVaultCredentials = newTokenVaultCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TrustedIDPs = newTrustedIDPs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TokenVaultKeys = newTokenVaultKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIAttributes = newAPIAttributes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIImplementation = newAPIImplementation(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIPackages = newAPIPackages(sdk, sdk.sdkConfiguration, sdk.hooks)
