@@ -1,0 +1,9 @@
+# RolesAuditLogsAdmin
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `Name`                                                                                       | [components.RolesAuditLogsRolesName](../../models/components/rolesauditlogsrolesname.md)     | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
+| `Description`                                                                                | [components.RolesAuditLogsDescription](../../models/components/rolesauditlogsdescription.md) | :heavy_check_mark:                                                                           | N/A                                                                                          | This role grants full write access to the Audit log configuration.                           |

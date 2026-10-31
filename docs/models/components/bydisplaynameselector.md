@@ -1,0 +1,11 @@
+# ByDisplayNameSelector
+
+Entity selector that includes entities by `display_name`.
+
+
+## Fields
+
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `Selector`                                                                                                                         | [components.ByDisplayNameSelectorServiceSelectorSelector](../../models/components/bydisplaynameselectorserviceselectorselector.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `SelectorParameters`                                                                                                               | [components.StringFieldSelectorParams](../../models/components/stringfieldselectorparams.md)                                       | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

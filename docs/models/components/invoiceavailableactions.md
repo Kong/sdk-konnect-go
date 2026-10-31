@@ -1,0 +1,14 @@
+# InvoiceAvailableActions
+
+The set of state-transition actions currently available for this invoice.
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `Advance`                                                                                     | [*components.InvoiceAdvance](../../models/components/invoiceadvance.md)                       | :heavy_minus_sign:                                                                            | Advance the invoice to the next workflow step.                                                |
+| `Approve`                                                                                     | [*components.InvoiceApprove](../../models/components/invoiceapprove.md)                       | :heavy_minus_sign:                                                                            | Approve the invoice for issuance.                                                             |
+| `Delete`                                                                                      | [*components.InvoiceDelete](../../models/components/invoicedelete.md)                         | :heavy_minus_sign:                                                                            | Delete the invoice.                                                                           |
+| `Retry`                                                                                       | [*components.InvoiceRetry](../../models/components/invoiceretry.md)                           | :heavy_minus_sign:                                                                            | Retry a failed workflow step.                                                                 |
+| `SnapshotQuantities`                                                                          | [*components.InvoiceSnapshotQuantities](../../models/components/invoicesnapshotquantities.md) | :heavy_minus_sign:                                                                            | Snapshot the current usage quantities.                                                        |

@@ -1,0 +1,9 @@
+# MeshControlPlaneFilterParameters
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `Name`                                                                                                              | [*components.MeshControlPlaneFilterParametersName](../../models/components/meshcontrolplanefilterparametersname.md) | :heavy_minus_sign:                                                                                                  | Filter using **one** of the following operators: `eq`, `contains`                                                   |
+| `Labels`                                                                                                            | [*components.LabelsFieldFilter](../../models/components/labelsfieldfilter.md)                                       | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |

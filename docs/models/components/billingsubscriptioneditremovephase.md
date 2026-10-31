@@ -1,0 +1,12 @@
+# BillingSubscriptionEditRemovePhase
+
+Remove a phase from the subscription.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                 | [components.BillingSubscriptionEditRemovePhaseType](../../models/components/billingsubscriptioneditremovephasetype.md) | :heavy_check_mark:                                                                                                     | Discriminator for the remove-phase operation.                                                                          |
+| `PhaseKey`                                                                                                             | `string`                                                                                                               | :heavy_check_mark:                                                                                                     | The key of the phase to remove.                                                                                        |
+| `Shift`                                                                                                                | [components.Shift](../../models/components/shift.md)                                                                   | :heavy_check_mark:                                                                                                     | The direction to shift surrounding phases to fill the removed phase's span.                                            |

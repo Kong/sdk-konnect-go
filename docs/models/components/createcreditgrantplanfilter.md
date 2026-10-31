@@ -1,0 +1,11 @@
+# CreateCreditGrantPlanFilter
+
+A plan key and an optional version constraint for matching credit grants.
+
+
+## Fields
+
+| Field                                                     | Type                                                      | Required                                                  | Description                                               | Example                                                   |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `Key`                                                     | `string`                                                  | :heavy_check_mark:                                        | The plan key in the customer's namespace.                 | resource_key                                              |
+| `Version`                                                 | [*components.Version](../../models/components/version.md) | :heavy_minus_sign:                                        | Omission matches all versions, including future versions. |                                                           |

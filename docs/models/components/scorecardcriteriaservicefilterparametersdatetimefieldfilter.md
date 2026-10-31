@@ -1,0 +1,55 @@
+# ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter
+
+Filters on the given datetime (RFC-3339) field value.
+
+
+## Supported Types
+
+### DateTimeFieldFilterDateTimeFieldEqualsFilter
+
+```go
+scorecardCriteriaServiceFilterParametersDateTimeFieldFilter := components.CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldEqualsFilter(components.DateTimeFieldFilterDateTimeFieldEqualsFilter{/* values here */})
+```
+
+### DateTimeFieldFilterDateTimeFieldLTFilter
+
+```go
+scorecardCriteriaServiceFilterParametersDateTimeFieldFilter := components.CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldLTFilter(components.DateTimeFieldFilterDateTimeFieldLTFilter{/* values here */})
+```
+
+### DateTimeFieldFilterDateTimeFieldLTEFilter
+
+```go
+scorecardCriteriaServiceFilterParametersDateTimeFieldFilter := components.CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldLTEFilter(components.DateTimeFieldFilterDateTimeFieldLTEFilter{/* values here */})
+```
+
+### DateTimeFieldFilterDateTimeFieldGTFilter
+
+```go
+scorecardCriteriaServiceFilterParametersDateTimeFieldFilter := components.CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldGTFilter(components.DateTimeFieldFilterDateTimeFieldGTFilter{/* values here */})
+```
+
+### DateTimeFieldFilterDateTimeFieldGTEFilter
+
+```go
+scorecardCriteriaServiceFilterParametersDateTimeFieldFilter := components.CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldGTEFilter(components.DateTimeFieldFilterDateTimeFieldGTEFilter{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch scorecardCriteriaServiceFilterParametersDateTimeFieldFilter.Type {
+	case components.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldEqualsFilter:
+		// scorecardCriteriaServiceFilterParametersDateTimeFieldFilter.DateTimeFieldFilterDateTimeFieldEqualsFilter is populated
+	case components.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldLTFilter:
+		// scorecardCriteriaServiceFilterParametersDateTimeFieldFilter.DateTimeFieldFilterDateTimeFieldLTFilter is populated
+	case components.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldLTEFilter:
+		// scorecardCriteriaServiceFilterParametersDateTimeFieldFilter.DateTimeFieldFilterDateTimeFieldLTEFilter is populated
+	case components.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldGTFilter:
+		// scorecardCriteriaServiceFilterParametersDateTimeFieldFilter.DateTimeFieldFilterDateTimeFieldGTFilter is populated
+	case components.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldGTEFilter:
+		// scorecardCriteriaServiceFilterParametersDateTimeFieldFilter.DateTimeFieldFilterDateTimeFieldGTEFilter is populated
+}
+```

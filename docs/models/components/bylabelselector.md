@@ -1,0 +1,11 @@
+# ByLabelSelector
+
+Entity selector that includes entities by `label` value.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Selector`                                                                                                             | [components.ByLabelSelectorServiceSelectorSelector](../../models/components/bylabelselectorserviceselectorselector.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `SelectorParameters`                                                                                                   | [components.LabelSelectorParams](../../models/components/labelselectorparams.md)                                       | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |

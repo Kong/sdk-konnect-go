@@ -1,0 +1,11 @@
+# EventGatewayParsedRecordMaskSelector
+
+Selects fields of a parsed record for masking and defines the strategy used to redact them.
+
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `Paths`                                                                                                                      | [components.EventGatewayParsedRecordMaskSelectorPaths](../../models/components/eventgatewayparsedrecordmaskselectorpaths.md) | :heavy_check_mark:                                                                                                           | Selects which fields of the parsed record to mask. A maximum of 50 path entries are allowed.                                 |
+| `Strategy`                                                                                                                   | [components.EventGatewayMaskStrategy](../../models/components/eventgatewaymaskstrategy.md)                                   | :heavy_check_mark:                                                                                                           | The strategy used to redact a matched field value.                                                                           |

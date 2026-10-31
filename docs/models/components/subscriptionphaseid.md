@@ -1,0 +1,11 @@
+# SubscriptionPhaseID
+
+The phase of the subscription.
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ID`                                                                           | `string`                                                                       | :heavy_check_mark:                                                             | The ID of the phase.                                                           | 01G65Z755AFWAKHE12NY0CQ9FH                                                     |
+| `Item`                                                                         | [components.SubscriptionItemID](../../models/components/subscriptionitemid.md) | :heavy_check_mark:                                                             | The item of the phase.                                                         |                                                                                |

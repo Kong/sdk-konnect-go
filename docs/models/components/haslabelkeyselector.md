@@ -1,0 +1,11 @@
+# HasLabelKeySelector
+
+Entity selector that includes entities by inclusion of a `label` key.
+
+
+## Fields
+
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `Selector`                                                                                                                     | [components.HasLabelKeySelectorServiceSelectorSelector](../../models/components/haslabelkeyselectorserviceselectorselector.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
+| `SelectorParameters`                                                                                                           | [components.HasLabelKeySelectorParams](../../models/components/haslabelkeyselectorparams.md)                                   | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |

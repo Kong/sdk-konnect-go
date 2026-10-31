@@ -1,0 +1,11 @@
+# MCPResourceRemoteMCPServerPayloadConfig
+
+Configuration of a remote MCP Server.
+
+
+## Fields
+
+| Field                                                                                                                   | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `URL`                                                                                                                   | `string`                                                                                                                | :heavy_check_mark:                                                                                                      | URL to a remote MCP Server that must include a protocol (http/https), and cannot contain query parameters or fragments. |
+| `Headers`                                                                                                               | map[string]`string`                                                                                                     | :heavy_check_mark:                                                                                                      | Headers to be used when making proxying requests to a MCP Server                                                        |

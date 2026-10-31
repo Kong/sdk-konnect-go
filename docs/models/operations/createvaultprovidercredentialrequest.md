@@ -1,0 +1,10 @@
+# CreateVaultProviderCredentialRequest
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `DirectoryID`                                                                                          | `string`                                                                                               | :heavy_check_mark:                                                                                     | ID of the directory                                                                                    |
+| `ProviderID`                                                                                           | `string`                                                                                               | :heavy_check_mark:                                                                                     | ID of the vault provider                                                                               |
+| `SetVaultProviderCredentialBody`                                                                       | [components.SetVaultProviderCredentialBody](../../models/components/setvaultprovidercredentialbody.md) | :heavy_check_mark:                                                                                     | Shared credential to be created for a vault provider                                                   |

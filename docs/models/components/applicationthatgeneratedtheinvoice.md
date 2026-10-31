@@ -1,0 +1,12 @@
+# ApplicationThatGeneratedTheInvoice
+
+The apps that will be used to orchestrate the invoice's workflow.
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `Tax`                                                                                                    | [components.BillingInvoiceStandardTax](../../models/components/billinginvoicestandardtax.md)             | :heavy_check_mark:                                                                                       | The tax app used for this workflow                                                                       |
+| `Invoicing`                                                                                              | [components.BillingInvoiceStandardInvoicing](../../models/components/billinginvoicestandardinvoicing.md) | :heavy_check_mark:                                                                                       | The invoicing app used for this workflow                                                                 |
+| `Payment`                                                                                                | [components.BillingInvoiceStandardPayment](../../models/components/billinginvoicestandardpayment.md)     | :heavy_check_mark:                                                                                       | The payment app used for this workflow                                                                   |

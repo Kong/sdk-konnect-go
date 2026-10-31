@@ -1,0 +1,10 @@
+# UpdateVaultProviderRequest
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `DirectoryID`                                                                          | `string`                                                                               | :heavy_check_mark:                                                                     | ID of the directory                                                                    |
+| `ProviderID`                                                                           | `string`                                                                               | :heavy_check_mark:                                                                     | ID of the vault provider                                                               |
+| `PatchVaultProviderBody`                                                               | [components.PatchVaultProviderBody](../../models/components/patchvaultproviderbody.md) | :heavy_check_mark:                                                                     | Fields to update on a vault provider                                                   |

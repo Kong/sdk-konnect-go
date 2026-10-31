@@ -1,0 +1,9 @@
+# RolesIdentityAdmin
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `Name`                                                                                     | [components.RolesIdentityRolesName](../../models/components/rolesidentityrolesname.md)     | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
+| `Description`                                                                              | [components.RolesIdentityDescription](../../models/components/rolesidentitydescription.md) | :heavy_check_mark:                                                                         | N/A                                                                                        | This role grants full write access to the Identity configuration.                          |

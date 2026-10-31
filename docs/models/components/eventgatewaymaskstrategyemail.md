@@ -1,0 +1,12 @@
+# EventGatewayMaskStrategyEmail
+
+Masks an email address by applying a separate strategy to the local part and to the domain.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                 | `string`                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `LocalPart`                                                                                                            | [components.EventGatewayMaskEmailLocalPartStrategy](../../models/components/eventgatewaymaskemaillocalpartstrategy.md) | :heavy_check_mark:                                                                                                     | The strategy used to redact the local part of an email address.                                                        |
+| `Domain`                                                                                                               | [components.EventGatewayMaskEmailDomainStrategy](../../models/components/eventgatewaymaskemaildomainstrategy.md)       | :heavy_check_mark:                                                                                                     | The strategy used to redact the domain of an email address.                                                            |

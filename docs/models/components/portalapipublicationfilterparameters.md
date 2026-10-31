@@ -1,0 +1,13 @@
+# PortalAPIPublicationFilterParameters
+
+API Publication filters excluding portal-specific fields (since portal is already specified in path)
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `APIID`                                                                                      | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)                    | :heavy_minus_sign:                                                                           | Filter using **one** of the following operators: `eq`, `oeq`, `neq`                          |
+| `APIName`                                                                                    | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md)                | :heavy_minus_sign:                                                                           | Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains` |
+| `AuthStrategyID`                                                                             | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)                    | :heavy_minus_sign:                                                                           | Filter using **one** of the following operators: `eq`, `oeq`, `neq`                          |
+| `EntityType`                                                                                 | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md)                | :heavy_minus_sign:                                                                           | Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains` |

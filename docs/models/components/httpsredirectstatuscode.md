@@ -1,0 +1,27 @@
+# HTTPSRedirectStatusCode
+
+The status code Kong responds with when all properties of a Route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the Route is configured to only accept the `https` protocol.
+
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.HTTPSRedirectStatusCodeThreeHundredAndOne
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.HTTPSRedirectStatusCode(999)
+```
+
+
+## Values
+
+| Name                                             | Value                                            |
+| ------------------------------------------------ | ------------------------------------------------ |
+| `HTTPSRedirectStatusCodeThreeHundredAndOne`      | 301                                              |
+| `HTTPSRedirectStatusCodeThreeHundredAndTwo`      | 302                                              |
+| `HTTPSRedirectStatusCodeThreeHundredAndSeven`    | 307                                              |
+| `HTTPSRedirectStatusCodeThreeHundredAndEight`    | 308                                              |
+| `HTTPSRedirectStatusCodeFourHundredAndTwentySix` | 426                                              |

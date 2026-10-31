@@ -1,0 +1,11 @@
+# APIRegistrationApplication
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ID`                                                                       | `string`                                                                   | :heavy_check_mark:                                                         | Contains a unique identifier used for this resource.                       | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                       |
+| `Name`                                                                     | `string`                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |                                                                            |
+| `Description`                                                              | `*string`                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |                                                                            |
+| `Owner`                                                                    | [components.ApplicationOwner](../../models/components/applicationowner.md) | :heavy_check_mark:                                                         | N/A                                                                        |                                                                            |

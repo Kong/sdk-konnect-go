@@ -1,0 +1,12 @@
+# UpdateMeshControlPlaneRequest
+
+a payload to update parts of the control plane
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `Name`                                                                                        | `*string`                                                                                     | :heavy_minus_sign:                                                                            | The name of the control plane.                                                                | Test control plane                                                                            |
+| `Description`                                                                                 | `*string`                                                                                     | :heavy_minus_sign:                                                                            | N/A                                                                                           | A control plane to handle traffic on development environment.                                 |
+| `Labels`                                                                                      | map[string]`*string`                                                                          | :heavy_minus_sign:                                                                            | Labels to facilitate tagged search on control planes. Keys must be of length 1-63 characters. | {<br/>"test": "true"<br/>}                                                                    |

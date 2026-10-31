@@ -1,0 +1,12 @@
+# CreateBillingProfileRequestApps
+
+The applications used by this billing profile.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Tax`                                                                                                                  | [components.CreateBillingProfileRequestTax](../../models/components/createbillingprofilerequesttax.md)                 | :heavy_check_mark:                                                                                                     | The tax app used for this workflow.                                                                                    |
+| `Invoicing`                                                                                                            | [components.CreateBillingProfileRequestInvoicing](../../models/components/createbillingprofilerequestinvoicing.md)     | :heavy_check_mark:                                                                                                     | The invoicing app used for this workflow.                                                                              |
+| `Payment`                                                                                                              | [components.CreateBillingProfileRequestAppsPayment](../../models/components/createbillingprofilerequestappspayment.md) | :heavy_check_mark:                                                                                                     | The payment app used for this workflow.                                                                                |

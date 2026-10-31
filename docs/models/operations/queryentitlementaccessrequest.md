@@ -1,0 +1,9 @@
+# QueryEntitlementAccessRequest
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `Page`                                                                                               | [*components.CursorPaginationQueryPage](../../models/components/cursorpaginationquerypage.md)        | :heavy_minus_sign:                                                                                   | Determines which page of the collection to retrieve.                                                 |
+| `EntitlementAccessQueryRequest`                                                                      | [components.EntitlementAccessQueryRequest](../../models/components/entitlementaccessqueryrequest.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
