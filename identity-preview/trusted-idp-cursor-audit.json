@@ -1,0 +1,14 @@
+{
+  "baseline_commit": "79bc3dbbb928b1129be0687d6fa8acd37c560ba1",
+  "kongctl_patch_revision": "280bdeccb5e107286904184d84484e05efcc3e38",
+  "changed_requests": [
+    "models/operations/listtrustedidps.go",
+    "models/operations/listtrustedidpprincipals.go"
+  ],
+  "changes": "Page query tags only: form to deepObject",
+  "operation_count": 1102,
+  "schema_changes": 0,
+  "response_model_changes": 0,
+  "global_generator_configuration_changed": false,
+  "prior_expiration_correction_retained": true
+}

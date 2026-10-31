@@ -16,7 +16,7 @@ type ListTrustedIdpsRequest struct {
 	// ID of the directory
 	DirectoryID string `pathParam:"style=simple,explode=false,name=directoryId"`
 	// Determines which page of the collection to retrieve.
-	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
+	Page *components.CursorPageParameters `queryParam:"style=deepObject,explode=true,name=page"`
 }
 
 func (l *ListTrustedIdpsRequest) GetDirectoryID() string {
