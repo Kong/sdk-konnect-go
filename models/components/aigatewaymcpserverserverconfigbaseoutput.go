@@ -7,30 +7,30 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// Client - The configuration for client-side session storage.
-type Client struct {
+// AIGatewayMCPServerServerConfigBaseClient - The configuration for client-side session storage.
+type AIGatewayMCPServerServerConfigBaseClient struct {
 	// The secrets that are used in session encryption. Required when the strategy is 'client'.
 	// The first secret is used for encryption, while all secrets are used for decryption to support key rotation.
 	//
 	Secrets []string `json:"secrets,omitempty"`
 }
 
-func (c Client) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (a AIGatewayMCPServerServerConfigBaseClient) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
 }
 
-func (c *Client) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+func (a *AIGatewayMCPServerServerConfigBaseClient) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *Client) GetSecrets() []string {
-	if c == nil {
+func (a *AIGatewayMCPServerServerConfigBaseClient) GetSecrets() []string {
+	if a == nil {
 		return nil
 	}
-	return c.Secrets
+	return a.Secrets
 }
 
 // Strategy - The strategy for the session. If the value is 'client', the session is encrypted into MCP session id assigned to the client. If the value is not 'client', the session is stored in the configured database.
@@ -60,7 +60,7 @@ func (e *Strategy) IsExact() bool {
 // This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 type AIGatewayMCPServerServerConfigBaseSession struct {
 	// The configuration for client-side session storage.
-	Client *Client `json:"client,omitempty"`
+	Client *AIGatewayMCPServerServerConfigBaseClient `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
 	Managed *bool `default:"true" json:"managed"`
 	// Config for connecting to a Cloud Provider's Redis instance.
@@ -82,7 +82,7 @@ func (a *AIGatewayMCPServerServerConfigBaseSession) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (a *AIGatewayMCPServerServerConfigBaseSession) GetClient() *Client {
+func (a *AIGatewayMCPServerServerConfigBaseSession) GetClient() *AIGatewayMCPServerServerConfigBaseClient {
 	if a == nil {
 		return nil
 	}
@@ -165,7 +165,7 @@ func (a *AIGatewayMCPServerServerConfigBaseOutput) GetTimeout() *int64 {
 // This doesn't affect the passthrough-listener mode as the state in that mode is maintained by the upstream MCP servers.
 type Session struct {
 	// The configuration for client-side session storage.
-	Client *Client `json:"client,omitempty"`
+	Client *AIGatewayMCPServerServerConfigBaseClient `json:"client,omitempty"`
 	// If enabled, Kong will maintain managed sessions with the MCP server.
 	Managed *bool `default:"true" json:"managed"`
 	// Config for connecting to a Cloud Provider's Redis instance.
@@ -187,7 +187,7 @@ func (s *Session) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (s *Session) GetClient() *Client {
+func (s *Session) GetClient() *AIGatewayMCPServerServerConfigBaseClient {
 	if s == nil {
 		return nil
 	}

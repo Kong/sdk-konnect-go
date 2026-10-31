@@ -10,18 +10,18 @@ import (
 	"net/http"
 )
 
-// Force - If true, delete specified config store and all secrets, even if there are secrets linked to the config store If false, do not allow deletion if there are secrets linked to the config store
-type Force string
+// QueryParamForce - If true, delete specified config store and all secrets, even if there are secrets linked to the config store If false, do not allow deletion if there are secrets linked to the config store
+type QueryParamForce string
 
 const (
-	ForceTrue  Force = "true"
-	ForceFalse Force = "false"
+	QueryParamForceTrue  QueryParamForce = "true"
+	QueryParamForceFalse QueryParamForce = "false"
 )
 
-func (e Force) ToPointer() *Force {
+func (e QueryParamForce) ToPointer() *QueryParamForce {
 	return &e
 }
-func (e *Force) UnmarshalJSON(data []byte) error {
+func (e *QueryParamForce) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -30,10 +30,10 @@ func (e *Force) UnmarshalJSON(data []byte) error {
 	case "true":
 		fallthrough
 	case "false":
-		*e = Force(v)
+		*e = QueryParamForce(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Force: %v", v)
+		return fmt.Errorf("invalid value for QueryParamForce: %v", v)
 	}
 }
 
@@ -43,7 +43,7 @@ type DeleteConfigStoreRequest struct {
 	// Config Store identifier
 	ConfigStoreID string `pathParam:"style=simple,explode=false,name=configStoreId"`
 	// If true, delete specified config store and all secrets, even if there are secrets linked to the config store If false, do not allow deletion if there are secrets linked to the config store
-	Force *Force `default:"false" queryParam:"style=form,explode=true,name=force"`
+	Force *QueryParamForce `default:"false" queryParam:"style=form,explode=true,name=force"`
 }
 
 func (d DeleteConfigStoreRequest) MarshalJSON() ([]byte, error) {
@@ -71,7 +71,7 @@ func (d *DeleteConfigStoreRequest) GetConfigStoreID() string {
 	return d.ConfigStoreID
 }
 
-func (d *DeleteConfigStoreRequest) GetForce() *Force {
+func (d *DeleteConfigStoreRequest) GetForce() *QueryParamForce {
 	if d == nil {
 		return nil
 	}
