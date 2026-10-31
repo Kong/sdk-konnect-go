@@ -7,19 +7,19 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type Scope string
+type AIGWKeyAuthGeneratedConfigScope string
 
 const (
-	ScopeCp    Scope = "cp"
-	ScopeRealm Scope = "realm"
+	AIGWKeyAuthGeneratedConfigScopeCp    AIGWKeyAuthGeneratedConfigScope = "cp"
+	AIGWKeyAuthGeneratedConfigScopeRealm AIGWKeyAuthGeneratedConfigScope = "realm"
 )
 
-func (e Scope) ToPointer() *Scope {
+func (e AIGWKeyAuthGeneratedConfigScope) ToPointer() *AIGWKeyAuthGeneratedConfigScope {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Scope) IsExact() bool {
+func (e *AIGWKeyAuthGeneratedConfigScope) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "cp", "realm":
@@ -31,9 +31,9 @@ func (e *Scope) IsExact() bool {
 
 type IdentityRealms struct {
 	// A string representing a UUID (universally unique identifier).
-	ID     *string `json:"id,omitempty"`
-	Region *string `json:"region,omitempty"`
-	Scope  *Scope  `default:"cp" json:"scope"`
+	ID     *string                          `json:"id,omitempty"`
+	Region *string                          `json:"region,omitempty"`
+	Scope  *AIGWKeyAuthGeneratedConfigScope `default:"cp" json:"scope"`
 }
 
 func (i IdentityRealms) MarshalJSON() ([]byte, error) {
@@ -61,7 +61,7 @@ func (i *IdentityRealms) GetRegion() *string {
 	return i.Region
 }
 
-func (i *IdentityRealms) GetScope() *Scope {
+func (i *IdentityRealms) GetScope() *AIGWKeyAuthGeneratedConfigScope {
 	if i == nil {
 		return nil
 	}

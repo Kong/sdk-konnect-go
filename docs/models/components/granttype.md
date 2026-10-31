@@ -1,8 +1,6 @@
 # GrantType
 
-The token exchange grant. `token_exchange` (default) uses the OAuth 2.0 Token Exchange grant (RFC 8693). `jwt_bearer` uses the JWT Bearer authorization-grant flow (RFC 7523); see `token_exchange.provider` for provider-specific defaults in this mode.
-
-**Requires a minimum runtime version of `2.3`**.
+OAuth 2.0 grant type
 
 ## Example Usage
 
@@ -11,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.GrantTypeJwtBearer
+value := components.GrantTypeImplicit
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.GrantType("custom_value")
@@ -20,7 +18,8 @@ custom := components.GrantType("custom_value")
 
 ## Values
 
-| Name                     | Value                    |
-| ------------------------ | ------------------------ |
-| `GrantTypeJwtBearer`     | jwt_bearer               |
-| `GrantTypeTokenExchange` | token_exchange           |
+| Name                                            | Value                                           |
+| ----------------------------------------------- | ----------------------------------------------- |
+| `GrantTypeImplicit`                             | implicit                                        |
+| `GrantTypeClientCredentials`                    | client_credentials                              |
+| `GrantTypeUrnIetfParamsOauthGrantTypeJwtBearer` | urn:ietf:params:oauth:grant-type:jwt-bearer     |

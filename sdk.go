@@ -110,6 +110,14 @@ type SDK struct {
 	// If a mapped API is unlinked from a Service, the mapping will be deleted.
 	//
 	CatalogServiceAPIMappings *CatalogServiceAPIMappings
+	// Auth Servers expose an OAuth 2.0 and OpenID Connect server interface for generating access tokens. The management API will give you the ability to create, configure and manage multiple Auth Servers per Konnect organization. Auth Servers are a regional Konnect entity.
+	AuthServer *AuthServer
+	// Claims are statements about the Client, included in tokens issued by the Auth Server. The management API will give you the ability to create, configure and manage multiple Claims per Auth Server, and include them in tokens based on the requested Scopes.
+	AuthServerClaims *AuthServerClaims
+	// Clients represent the identity of machines, such as microservices, mobile apps, or scripts entity. The management API will give you the ability to create, configure and manage multiple Clients per Auth Server.
+	AuthServerClients *AuthServerClients
+	// Scopes define the extent of access that an access token grants to a Client. The management API will give you the ability to create, configure and manage multiple Scopes per Auth Server, and restrict their usage by Client.
+	AuthServerScopes *AuthServerScopes
 	// Create and maintain a centralized catalog of all services running in your organization.
 	// Add custom fields and map resources from across your organization to provide a 360-degree overview of your services.
 	//
@@ -135,7 +143,9 @@ type SDK struct {
 	// From the scorecard, you can view details on either a per-service or per-criteria basis.
 	// Learn more about scorecards by visiting our [documentation](https://developer.konghq.com/service-catalog/scorecards/).
 	//
-	Scorecards                         *Scorecards
+	Scorecards *Scorecards
+	// Connected Apps enable third-party applications to access Konnect APIs on behalf of an organization using OAuth 2.0. When enabled, a reserved auth server is created with predefined scopes.
+	ConnectedApps                      *ConnectedApps
 	ContextInterfaces                  *ContextInterfaces
 	ContextSourceMappings              *ContextSourceMappings
 	ContextInterfaceCapabilityControls *ContextInterfaceCapabilityControls
@@ -387,7 +397,25 @@ type SDK struct {
 	// For instance, they will be able to perform dynamic client registration (DCR) with the provider.
 	// The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
 	//
-	DCRProviders            *DCRProviders
+	DCRProviders *DCRProviders
+	// Use a directory to group consumers around an identity, defined by organizational boundaries,
+	// such as a production directory or a development directory. Directories are connected to a
+	// [geographic region](https://docs.konghq.com/konnect/geo/) in Konnect. Centrally managed consumers defined in
+	// directories can be used across multiple control planes.
+	//
+	KongIdentityDirectories *KongIdentityDirectories
+	// Principals represent identities within a directory that can be authenticated and authorized.
+	// Each principal can have associated metadata and API keys for authentication purposes.
+	//
+	KongPrincipal *KongPrincipal
+	// Credentials are authentication secrets associated with principals. Supported credential types are
+	// API keys (system-generated or imported) and basic auth username/password pairs.
+	//
+	KongPrincipalCredential *KongPrincipalCredential
+	// Identities represent external authentication associations for a principal. Each identity links a principal
+	// to an external system such as an OIDC provider, an auth server client, a control plane consumer, or a custom identifier.
+	//
+	KongPrincipalIdentity   *KongPrincipalIdentity
 	APIAttributes           *APIAttributes
 	APIImplementation       *APIImplementation
 	APIPackages             *APIPackages
@@ -605,9 +633,14 @@ func New(opts ...SDKOption) *SDK {
 	sdk.CatalogAIModelSpecs = newCatalogAIModelSpecs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogAIModelVersions = newCatalogAIModelVersions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AuthServer = newAuthServer(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AuthServerClaims = newAuthServerClaims(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AuthServerClients = newAuthServerClients(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AuthServerScopes = newAuthServerScopes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Scorecards = newScorecards(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ConnectedApps = newConnectedApps(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ContextInterfaces = newContextInterfaces(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ContextSourceMappings = newContextSourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ContextInterfaceCapabilityControls = newContextInterfaceCapabilityControls(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -681,6 +714,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Dashboards = newDashboards(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DCRProviders = newDCRProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.KongIdentityDirectories = newKongIdentityDirectories(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.KongPrincipal = newKongPrincipal(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.KongPrincipalCredential = newKongPrincipalCredential(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.KongPrincipalIdentity = newKongPrincipalIdentity(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIAttributes = newAPIAttributes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIImplementation = newAPIImplementation(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIPackages = newAPIPackages(sdk, sdk.sdkConfiguration, sdk.hooks)
