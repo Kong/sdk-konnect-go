@@ -47138,7 +47138,7 @@ components:
           minLength: 1
           maxLength: 255
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/KongIdentityCredentialExpiresAt'
     CreatePrincipalKeyBodyv1:
       additionalProperties: false
       required:
@@ -47151,7 +47151,7 @@ components:
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/KongIdentityCredentialExpiresAt'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
     UpdatePrincipalKeyBody:
@@ -47161,7 +47161,7 @@ components:
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/KongIdentityCredentialExpiresAt'
         managed_by:
           $ref: '#/components/schemas/ManagedByUpdate'
     CreateBasicAuthBody:
@@ -47208,7 +47208,7 @@ components:
           minLength: 1
           maxLength: 255
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/KongIdentityCredentialExpiresAt'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
     UpdatePasswordBody:
@@ -47216,7 +47216,7 @@ components:
       description: Request body for partially updating a password
       properties:
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/KongIdentityCredentialExpiresAt'
         managed_by:
           $ref: '#/components/schemas/ManagedByUpdate'
     ReplacePasswordBody:
@@ -47233,7 +47233,7 @@ components:
           minLength: 1
           maxLength: 255
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/KongIdentityCredentialExpiresAt'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
     KongBasicAuth:
@@ -107040,9 +107040,9 @@ components:
             dashboard.
 
 
-            Whether or not a preset filter applies to a tile depends on the filter's dimension.
-            Some dimensions, like `control_plane`, are common to all datasources; other dimensions
-            may only apply to one datasource.
+            Whether or not a preset filter applies to a tile depends on the filter's dimension. Some
+            dimensions, like `control_plane`, are common to all datasources; other dimensions may
+            only apply to one datasource.
           items:
             $ref: '#/components/schemas/AllFilterItems'
           example:
@@ -119535,6 +119535,12 @@ components:
       type: string
       enum:
         - user
+    KongIdentityCredentialExpiresAt:
+      type: string
+      format: date-time
+      example: '2022-11-04T20:10:06.927Z'
+      description: An ISO-8601 timestamp representation of entity expiration date.
+      nullable: true
   securitySchemes:
     personalAccessToken:
       type: http

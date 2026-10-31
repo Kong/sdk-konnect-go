@@ -3,8 +3,16 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+	"time"
+)
+
 // UpdatePasswordBody - Request body for partially updating a password
 type UpdatePasswordBody struct {
+	// An ISO-8601 timestamp representation of entity expiration date.
+	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
 	// Set a key's value to `null` to remove it.
@@ -12,6 +20,24 @@ type UpdatePasswordBody struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]*string `json:"managed_by,omitempty"`
+}
+
+func (u UpdatePasswordBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdatePasswordBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (u *UpdatePasswordBody) GetExpiresAt() optionalnullable.OptionalNullable[time.Time] {
+	if u == nil {
+		return nil
+	}
+	return u.ExpiresAt
 }
 
 func (u *UpdatePasswordBody) GetManagedBy() map[string]*string {

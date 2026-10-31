@@ -508,10 +508,12 @@ Note: The key secret cannot be modified after creation.
 ```go
 package main
 
-import(
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -530,6 +532,7 @@ func main() {
         GroupID: "dfe79694-0010-43f0-bff6-6fc3fe8581c3",
         APIKeyID: "ef777c9a-e52d-4c42-95d9-a8833d75cfdd",
         UpdatePrincipalKeyBody: components.UpdatePrincipalKeyBody{
+            ExpiresAt: optionalnullable.From(types.MustNewTimeFromString("2022-11-04T20:10:06.927Z")),
             ManagedBy: map[string]*string{
                 "owner": sdkkonnectgo.Pointer("terraform"),
             },

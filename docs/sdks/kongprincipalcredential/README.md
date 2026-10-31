@@ -176,10 +176,12 @@ Note: The key secret cannot be modified after creation.
 ```go
 package main
 
-import(
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -198,6 +200,7 @@ func main() {
         PrincipalID: "7136f099-1c3b-48b2-aad2-a4532ad54772",
         APIKeyID: "4ae93307-c032-4675-bc67-60797bf74224",
         UpdatePrincipalKeyBody: components.UpdatePrincipalKeyBody{
+            ExpiresAt: optionalnullable.From(types.MustNewTimeFromString("2022-11-04T20:10:06.927Z")),
             ManagedBy: map[string]*string{
                 "owner": sdkkonnectgo.Pointer("terraform"),
             },
@@ -844,10 +847,12 @@ The password value is only returned on creation and cannot be retrieved again.
 ```go
 package main
 
-import(
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -866,6 +871,7 @@ func main() {
         PrincipalID: "bf882789-3b05-49ea-a4ef-8fe35a1edb51",
         BasicAuthID: "b923c4ad-bc12-4dc4-b128-97fc6ed52548",
         CreatePasswordBody: components.CreatePasswordBody{
+            ExpiresAt: optionalnullable.From(types.MustNewTimeFromString("2022-11-04T20:10:06.927Z")),
             ManagedBy: map[string]string{
                 "owner": "terraform",
             },
@@ -1042,10 +1048,12 @@ Partially updates a password's expiration date.
 ```go
 package main
 
-import(
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1065,6 +1073,7 @@ func main() {
         BasicAuthID: "4b4f2381-f061-40f6-aa6b-e77793362610",
         PasswordID: "1974cebf-191e-47b0-b226-a516d285c2a1",
         UpdatePasswordBody: components.UpdatePasswordBody{
+            ExpiresAt: optionalnullable.From(types.MustNewTimeFromString("2022-11-04T20:10:06.927Z")),
             ManagedBy: map[string]*string{
                 "owner": sdkkonnectgo.Pointer("terraform"),
             },
@@ -1116,6 +1125,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1136,6 +1146,7 @@ func main() {
         PasswordID: "df80a2b7-ceda-467f-a25e-a0a2eff68690",
         ReplacePasswordBody: components.ReplacePasswordBody{
             Secret: "<value>",
+            ExpiresAt: types.MustNewTimeFromString("2022-11-04T20:10:06.927Z"),
             ManagedBy: map[string]string{
                 "owner": "terraform",
             },

@@ -8,6 +8,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+	"time"
 )
 
 type CreatePrincipalKeyBodyv1Type string
@@ -38,6 +40,8 @@ type CreatePrincipalKeyBodyv1 struct {
 	// Human-readable name of the API key. `null` if the key has no name.
 	//
 	Name *string `json:"name,omitempty"`
+	// An ISO-8601 timestamp representation of entity expiration date.
+	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
@@ -68,6 +72,13 @@ func (c *CreatePrincipalKeyBodyv1) GetName() *string {
 		return nil
 	}
 	return c.Name
+}
+
+func (c *CreatePrincipalKeyBodyv1) GetExpiresAt() optionalnullable.OptionalNullable[time.Time] {
+	if c == nil {
+		return nil
+	}
+	return c.ExpiresAt
 }
 
 func (c *CreatePrincipalKeyBodyv1) GetManagedBy() map[string]string {
@@ -109,6 +120,8 @@ type CreatePrincipalKeyBodyImported struct {
 	//
 	Name   *string `json:"name,omitempty"`
 	Secret string  `json:"secret"`
+	// An ISO-8601 timestamp representation of entity expiration date.
+	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 }
 
 func (c CreatePrincipalKeyBodyImported) MarshalJSON() ([]byte, error) {
@@ -141,6 +154,13 @@ func (c *CreatePrincipalKeyBodyImported) GetSecret() string {
 		return ""
 	}
 	return c.Secret
+}
+
+func (c *CreatePrincipalKeyBodyImported) GetExpiresAt() optionalnullable.OptionalNullable[time.Time] {
+	if c == nil {
+		return nil
+	}
+	return c.ExpiresAt
 }
 
 type CreatePrincipalKeyBodyType string

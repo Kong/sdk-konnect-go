@@ -3,11 +3,19 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+	"time"
+)
+
 // UpdatePrincipalKeyBody - Request body for updating an API key's metadata
 type UpdatePrincipalKeyBody struct {
 	// Human-readable name of the API key. `null` if the key has no name.
 	//
 	Name *string `json:"name,omitempty"`
+	// An ISO-8601 timestamp representation of entity expiration date.
+	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
 	// Set a key's value to `null` to remove it.
@@ -17,11 +25,29 @@ type UpdatePrincipalKeyBody struct {
 	ManagedBy map[string]*string `json:"managed_by,omitempty"`
 }
 
+func (u UpdatePrincipalKeyBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdatePrincipalKeyBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (u *UpdatePrincipalKeyBody) GetName() *string {
 	if u == nil {
 		return nil
 	}
 	return u.Name
+}
+
+func (u *UpdatePrincipalKeyBody) GetExpiresAt() optionalnullable.OptionalNullable[time.Time] {
+	if u == nil {
+		return nil
+	}
+	return u.ExpiresAt
 }
 
 func (u *UpdatePrincipalKeyBody) GetManagedBy() map[string]*string {

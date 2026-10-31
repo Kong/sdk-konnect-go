@@ -39,6 +39,13 @@ function rewrite(node) {
 }
 rewrite(spec);
 
+// The merge combines a read-only IAM ExpiresAt with the writable common
+// ExpiresAt used by credential requests. Preserve the canonical request schema
+// without changing IAM responses or unrelated public SDK models.
+const propertiesPath = path.resolve(__dirname, '../../platform-api/src/common/definitions/properties.yaml');
+const writableExpiration = yaml.load(fs.readFileSync(propertiesPath, 'utf8')).components.schemas.ExpiresAt;
+require("./credential-expiration.cjs").prepareCredentialExpiration(schemas, writableExpiration);
+
 for (const variant of ['Shared', 'User']) {
   const credential = schemas['VaultProviderCredential' + variant].allOf.find(
     item => item.properties?.credential_type,
