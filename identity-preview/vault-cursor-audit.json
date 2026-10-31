@@ -1,0 +1,19 @@
+{
+  "baseline": "30c3834c9846636c6866e818f8085b46c237dc23",
+  "generated_go_changes": [
+    "models/operations/listvaultkeys.go",
+    "models/operations/listvaultproviders.go",
+    "models/operations/listcredentialprovidertemplates.go"
+  ],
+  "regression": "identity_cursor_query_kongctl_test.go",
+  "only_page_query_tag_changes": true,
+  "unchanged": [
+    "openapi.yaml",
+    ".speakeasy/gen.yaml",
+    "go.mod",
+    "go.sum"
+  ],
+  "preview_operations": 1102,
+  "new_identity_operations": 112,
+  "kongctl_patch_revision": "bd2ee64085b0b02eeaca800780d9d3d3b3837cdd"
+}

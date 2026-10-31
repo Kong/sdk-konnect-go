@@ -3,7 +3,7 @@
   "platform_api_revision": "57350ae722c69faa20a740b72549cef6cbc70fee",
   "identity_pr": 3877,
   "identity_pr_revision": "98137d7be3772b67693cc1ceb0469e77f8ecf0f5",
-  "kongctl_patch_revision": "280bdeccb5e107286904184d84484e05efcc3e38",
+  "kongctl_patch_revision": "bd2ee64085b0b02eeaca800780d9d3d3b3837cdd",
   "speakeasy_version": "1.805.0",
   "generation_config_sha256": "19f9aa4e82f8f7fbfd2737c959600b8f312b877b941b4dd5485cb4ef1a781d58",
   "preview_operations": 1102,
@@ -13,5 +13,6 @@
   "credential_expiration_preparation_sha256": "9e36a82cd88d6170bad7eef6c6569651800c34c755edbc985883ea980e528b1a",
   "credential_expiration_test_sha256": "6fbff491bb6819503a8c6f55061576807c9ce5f07c4eef50412784ffbe18cf8d",
   "credential_expiration_baseline": "995778a1c448a0f4290de804f3facb9edb5b4fb4",
-  "trusted_idp_cursor_baseline": "79bc3dbbb928b1129be0687d6fa8acd37c560ba1"
+  "trusted_idp_cursor_baseline": "79bc3dbbb928b1129be0687d6fa8acd37c560ba1",
+  "vault_cursor_baseline": "30c3834c9846636c6866e818f8085b46c237dc23"
 }

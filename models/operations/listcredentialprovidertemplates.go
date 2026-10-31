@@ -14,7 +14,7 @@ var ListCredentialProviderTemplatesServerList = []string{
 
 type ListCredentialProviderTemplatesRequest struct {
 	// Determines which page of the collection to retrieve.
-	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
+	Page *components.CursorPageParameters `queryParam:"style=deepObject,explode=true,name=page"`
 }
 
 func (l *ListCredentialProviderTemplatesRequest) GetPage() *components.CursorPageParameters {
