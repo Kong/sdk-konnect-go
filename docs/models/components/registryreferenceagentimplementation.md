@@ -1,0 +1,16 @@
+# RegistryReferenceAgentImplementation
+
+An agent's link to the AI Gateway agent that backs it — the stored reference plus its own id and timestamps. The registry never resolves the reference; clients resolve it against AI Gateway.
+
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `ID`                                                                    | `string`                                                                | :heavy_check_mark:                                                      | The implementation's own id (`.../implementations/{implementationId}`). | 323e4567-e89b-12d3-a456-426614174aaa                                    |
+| `AgentID`                                                               | `string`                                                                | :heavy_check_mark:                                                      | The id of the agent this implementation belongs to.                     | 123e4567-e89b-12d3-a456-426614174000                                    |
+| `GatewayControlPlaneID`                                                 | `string`                                                                | :heavy_check_mark:                                                      | The AI Gateway control plane uuid that hosts the linked agent.          | 223e4567-e89b-12d3-a456-426614174999                                    |
+| `GatewayAgentID`                                                        | `string`                                                                | :heavy_check_mark:                                                      | The text or uuid identifier of the AI Gateway agent.                    | gw-agent-abc                                                            |
+| `CreatedAt`                                                             | [time.Time](https://pkg.go.dev/time#Time)                               | :heavy_check_mark:                                                      | When the link was created.                                              |                                                                         |
+| `UpdatedAt`                                                             | [time.Time](https://pkg.go.dev/time#Time)                               | :heavy_check_mark:                                                      | When the link was last updated.                                         |                                                                         |

@@ -1,0 +1,7 @@
+{
+  "operations": 2,
+  "methods": [
+    "GET"
+  ],
+  "componentPrefix": "RegistryReference"
+}

@@ -1,0 +1,55 @@
+# RegistryReferenceAgentFilterParametersStringFieldFilter
+
+Filters on the given string field value by either exact or fuzzy match.
+
+
+## Supported Types
+
+### StringFieldFilterStringFieldEqualsFilter
+
+```go
+registryReferenceAgentFilterParametersStringFieldFilter := components.CreateRegistryReferenceAgentFilterParametersStringFieldFilterStringFieldFilterStringFieldEqualsFilter(components.StringFieldFilterStringFieldEqualsFilter{/* values here */})
+```
+
+### StringFieldFilterStringFieldContainsFilter
+
+```go
+registryReferenceAgentFilterParametersStringFieldFilter := components.CreateRegistryReferenceAgentFilterParametersStringFieldFilterStringFieldFilterStringFieldContainsFilter(components.StringFieldFilterStringFieldContainsFilter{/* values here */})
+```
+
+### StringFieldFilterStringFieldOContainsFilter
+
+```go
+registryReferenceAgentFilterParametersStringFieldFilter := components.CreateRegistryReferenceAgentFilterParametersStringFieldFilterStringFieldFilterStringFieldOContainsFilter(components.StringFieldFilterStringFieldOContainsFilter{/* values here */})
+```
+
+### StringFieldFilterStringFieldOEQFilter
+
+```go
+registryReferenceAgentFilterParametersStringFieldFilter := components.CreateRegistryReferenceAgentFilterParametersStringFieldFilterStringFieldFilterStringFieldOEQFilter(components.StringFieldFilterStringFieldOEQFilter{/* values here */})
+```
+
+### StringFieldFilterStringFieldNEQFilter
+
+```go
+registryReferenceAgentFilterParametersStringFieldFilter := components.CreateRegistryReferenceAgentFilterParametersStringFieldFilterStringFieldFilterStringFieldNEQFilter(components.StringFieldFilterStringFieldNEQFilter{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch registryReferenceAgentFilterParametersStringFieldFilter.Type {
+	case components.RegistryReferenceAgentFilterParametersStringFieldFilterTypeStringFieldFilterStringFieldEqualsFilter:
+		// registryReferenceAgentFilterParametersStringFieldFilter.StringFieldFilterStringFieldEqualsFilter is populated
+	case components.RegistryReferenceAgentFilterParametersStringFieldFilterTypeStringFieldFilterStringFieldContainsFilter:
+		// registryReferenceAgentFilterParametersStringFieldFilter.StringFieldFilterStringFieldContainsFilter is populated
+	case components.RegistryReferenceAgentFilterParametersStringFieldFilterTypeStringFieldFilterStringFieldOContainsFilter:
+		// registryReferenceAgentFilterParametersStringFieldFilter.StringFieldFilterStringFieldOContainsFilter is populated
+	case components.RegistryReferenceAgentFilterParametersStringFieldFilterTypeStringFieldFilterStringFieldOEQFilter:
+		// registryReferenceAgentFilterParametersStringFieldFilter.StringFieldFilterStringFieldOEQFilter is populated
+	case components.RegistryReferenceAgentFilterParametersStringFieldFilterTypeStringFieldFilterStringFieldNEQFilter:
+		// registryReferenceAgentFilterParametersStringFieldFilter.StringFieldFilterStringFieldNEQFilter is populated
+}
+```

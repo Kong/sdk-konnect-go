@@ -532,6 +532,7 @@ type SDK struct {
 	TeamMembership               *TeamMembership
 	Users                        *Users
 	PersonalAccessTokens         *PersonalAccessTokens
+	RegistryAgentReferences      *RegistryAgentReferences
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -808,6 +809,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.TeamMembership = newTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Users = newUsers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PersonalAccessTokens = newPersonalAccessTokens(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.RegistryAgentReferences = newRegistryAgentReferences(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

@@ -1,0 +1,1295 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Internal Agent Registry v1",
+    "version": "1.9.0",
+    "description": "Konnect Agent Registry APIs: inventory and governance of agents within an organization.\n",
+    "contact": {
+      "name": "Kong",
+      "url": "https://cloud.konghq.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://us.api.konghq.com/v1",
+      "description": "US Region Base URL"
+    },
+    {
+      "url": "https://eu.api.konghq.com/v1",
+      "description": "EU Region Base URL"
+    },
+    {
+      "url": "https://au.api.konghq.com/v1",
+      "description": "AU Region Base URL"
+    },
+    {
+      "url": "https://me.api.konghq.com/v1",
+      "description": "ME Region Base URL"
+    },
+    {
+      "url": "https://in.api.konghq.com/v1",
+      "description": "IN Region Base URL"
+    }
+  ],
+  "security": [
+    {
+      "konnectAccessToken": []
+    },
+    {
+      "personalAccessToken": []
+    },
+    {
+      "systemAccountAccessToken": []
+    }
+  ],
+  "paths": {
+    "/agents": {
+      "get": {
+        "x-unstable": true,
+        "x-internal": true,
+        "tags": [
+          "Agents"
+        ],
+        "summary": "List agents",
+        "description": "Returns a paginated list of agents. Default order is most recently created first (`created_at DESC, id DESC`).\n",
+        "operationId": "list-agents",
+        "parameters": [
+          {
+            "name": "page[size]",
+            "description": "The maximum number of items to include per page. The last page of a collection may include fewer items.",
+            "required": false,
+            "in": "query",
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "example": 10
+            },
+            "x-speakeasy-terraform-ignore": true
+          },
+          {
+            "name": "page[number]",
+            "description": "Determines which page of the entities to retrieve.",
+            "required": false,
+            "in": "query",
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            },
+            "x-speakeasy-terraform-ignore": true
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "Filter agents returned in the response.",
+            "required": false,
+            "style": "deepObject",
+            "schema": {
+              "$ref": "#/components/schemas/AgentFilterParameters"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/AgentSort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of agents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "x-flatten-allOf": true,
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "title": "Error",
+                      "description": "standard error",
+                      "required": [
+                        "status",
+                        "title",
+                        "instance",
+                        "detail"
+                      ],
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "description": "The HTTP status code of the error. Useful when passing the response\nbody to child properties in a frontend UI. Must be returned as an integer.\n",
+                          "readOnly": true
+                        },
+                        "title": {
+                          "type": "string",
+                          "description": "A short, human-readable summary of the problem. It should not\nchange between occurences of a problem, except for localization.\nShould be provided as \"Sentence case\" for direct use in the UI.\n",
+                          "readOnly": true
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "The error type.",
+                          "readOnly": true
+                        },
+                        "instance": {
+                          "type": "string",
+                          "description": "Used to return the correlation ID back to the user, in the format\nkong:trace:<correlation_id>. This helps us find the relevant logs\nwhen a customer reports an issue.\n",
+                          "readOnly": true
+                        },
+                        "detail": {
+                          "type": "string",
+                          "description": "A human readable explanation specific to this occurence of the problem.\nThis field may contain request/entity data to help the user understand\nwhat went wrong. Enclose variable values in square brackets. Should be\nprovided as \"Sentence case\" for direct use in the UI.\n",
+                          "readOnly": true
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "invalid_parameters"
+                      ],
+                      "properties": {
+                        "invalid_parameters": {
+                          "type": "array",
+                          "nullable": false,
+                          "uniqueItems": true,
+                          "minItems": 1,
+                          "description": "invalid parameters",
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "example": "name",
+                                    "readOnly": true
+                                  },
+                                  "rule": {
+                                    "description": "invalid parameters rules",
+                                    "type": "string",
+                                    "readOnly": true,
+                                    "nullable": true,
+                                    "enum": [
+                                      "required",
+                                      "unique",
+                                      "is_array",
+                                      "is_base64",
+                                      "is_boolean",
+                                      "is_date_time",
+                                      "is_integer",
+                                      "is_null",
+                                      "is_number",
+                                      "is_object",
+                                      "is_string",
+                                      "is_uuid",
+                                      "is_fqdn",
+                                      "is_arn",
+                                      "unknown_property",
+                                      "missing_reference",
+                                      "is_label",
+                                      "key_invalid",
+                                      "matches_regex",
+                                      "invalid",
+                                      "is_supported_network_availability_zone_list",
+                                      "is_supported_network_cidr_block",
+                                      "is_supported_provider_region",
+                                      "type"
+                                    ]
+                                  },
+                                  "source": {
+                                    "type": "string",
+                                    "example": "body"
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "example": "is a required field",
+                                    "readOnly": true
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "example": "name",
+                                    "readOnly": true
+                                  },
+                                  "rule": {
+                                    "description": "invalid parameters rules",
+                                    "type": "string",
+                                    "readOnly": true,
+                                    "nullable": false,
+                                    "enum": [
+                                      "min_length",
+                                      "min_digits",
+                                      "min_lowercase",
+                                      "min_uppercase",
+                                      "min_symbols",
+                                      "min_items",
+                                      "min"
+                                    ]
+                                  },
+                                  "minimum": {
+                                    "type": "integer",
+                                    "example": 8
+                                  },
+                                  "source": {
+                                    "type": "string",
+                                    "example": "body"
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "example": "must have at least 8 characters",
+                                    "readOnly": true
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason",
+                                  "rule",
+                                  "minimum"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "example": "name",
+                                    "readOnly": true
+                                  },
+                                  "rule": {
+                                    "description": "invalid parameters rules",
+                                    "type": "string",
+                                    "readOnly": true,
+                                    "nullable": false,
+                                    "enum": [
+                                      "max_length",
+                                      "max_items",
+                                      "max"
+                                    ]
+                                  },
+                                  "maximum": {
+                                    "type": "integer",
+                                    "example": 8
+                                  },
+                                  "source": {
+                                    "type": "string",
+                                    "example": "body"
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "example": "must not have more than 8 characters",
+                                    "readOnly": true
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason",
+                                  "rule",
+                                  "maximum"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "example": "to",
+                                    "readOnly": true
+                                  },
+                                  "rule": {
+                                    "description": "invalid parameters rules",
+                                    "type": "string",
+                                    "readOnly": true,
+                                    "nullable": false,
+                                    "enum": [
+                                      "min_time"
+                                    ]
+                                  },
+                                  "minimum": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2026-10-01T00:00:00Z"
+                                  },
+                                  "source": {
+                                    "type": "string",
+                                    "example": "body"
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "example": "must be no earlier than 2026-10-01T00:00:00Z",
+                                    "readOnly": true
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason",
+                                  "rule",
+                                  "minimum"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "example": "to",
+                                    "readOnly": true
+                                  },
+                                  "rule": {
+                                    "description": "invalid parameters rules",
+                                    "type": "string",
+                                    "readOnly": true,
+                                    "nullable": false,
+                                    "enum": [
+                                      "max_time"
+                                    ]
+                                  },
+                                  "maximum": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2026-10-31T23:59:59Z"
+                                  },
+                                  "source": {
+                                    "type": "string",
+                                    "example": "body"
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "example": "must be no later than 2026-10-31T23:59:59Z",
+                                    "readOnly": true
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason",
+                                  "rule",
+                                  "maximum"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "example": "name",
+                                    "readOnly": true
+                                  },
+                                  "rule": {
+                                    "description": "invalid parameters rules",
+                                    "type": "string",
+                                    "readOnly": true,
+                                    "nullable": false,
+                                    "enum": [
+                                      "enum"
+                                    ]
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "example": "is a required field",
+                                    "readOnly": true
+                                  },
+                                  "choices": {
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                    "readOnly": true,
+                                    "nullable": false,
+                                    "minItems": 1,
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "source": {
+                                    "type": "string",
+                                    "example": "body"
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason",
+                                  "rule",
+                                  "choices"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "example": "name",
+                                    "readOnly": true
+                                  },
+                                  "rule": {
+                                    "description": "invalid parameters rules",
+                                    "type": "string",
+                                    "readOnly": true,
+                                    "nullable": true,
+                                    "enum": [
+                                      "dependent_fields"
+                                    ]
+                                  },
+                                  "reason": {
+                                    "type": "string",
+                                    "example": "is a required field",
+                                    "readOnly": true
+                                  },
+                                  "dependents": {
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                    "nullable": true,
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "readOnly": true
+                                  },
+                                  "source": {
+                                    "type": "string",
+                                    "example": "body"
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "rule",
+                                  "reason",
+                                  "dependents"
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "status": {
+                          "enum": [
+                            400
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "x-flatten-allOf": true,
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1agents/get/responses/400/content/application~1problem+json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "example": 401,
+                          "enum": [
+                            401
+                          ]
+                        },
+                        "title": {
+                          "example": "Unauthorized"
+                        },
+                        "type": {
+                          "example": "https://httpstatuses.com/401"
+                        },
+                        "instance": {
+                          "example": "kong:trace:1234567890"
+                        },
+                        "detail": {
+                          "example": "Invalid credentials"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "UnauthorizedExample": {
+                    "value": {
+                      "status": 401,
+                      "title": "Unauthorized",
+                      "instance": "kong:trace:8347343766220159418",
+                      "detail": "Unauthorized"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "x-flatten-allOf": true,
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1agents/get/responses/400/content/application~1problem+json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "example": 403,
+                          "enum": [
+                            403
+                          ]
+                        },
+                        "title": {
+                          "example": "Forbidden"
+                        },
+                        "type": {
+                          "example": "https://httpstatuses.com/403"
+                        },
+                        "instance": {
+                          "example": "kong:trace:1234567890"
+                        },
+                        "detail": {
+                          "example": "Forbidden"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "UnauthorizedExample": {
+                    "value": {
+                      "status": 403,
+                      "title": "Forbidden",
+                      "instance": "kong:trace:2723154947768991354",
+                      "detail": "You do not have permission to perform this action"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/{agentId}/principals": {
+      "get": {
+        "x-unstable": true,
+        "x-internal": true,
+        "tags": [
+          "Agent Principals"
+        ],
+        "summary": "List agent principals",
+        "description": "Returns the agent's identity principals (0 or 1). An agent has at most one linked principal.\n",
+        "operationId": "list-agent-principals",
+        "parameters": [
+          {
+            "$ref": "#/paths/~1agents/get/parameters/0"
+          },
+          {
+            "$ref": "#/paths/~1agents/get/parameters/1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The agent's principals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentPrincipalList"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/paths/~1agents/get/responses/401"
+          },
+          "403": {
+            "$ref": "#/paths/~1agents/get/responses/403"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "x-flatten-allOf": true,
+                  "allOf": [
+                    {
+                      "$ref": "#/paths/~1agents/get/responses/400/content/application~1problem+json/schema/allOf/0"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "example": 404,
+                          "enum": [
+                            404
+                          ]
+                        },
+                        "title": {
+                          "example": "Not Found"
+                        },
+                        "type": {
+                          "example": "https://httpstatuses.com/404"
+                        },
+                        "instance": {
+                          "example": "kong:trace:1234567890"
+                        },
+                        "detail": {
+                          "example": "Not found"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "NotFoundExample": {
+                    "value": {
+                      "status": 404,
+                      "title": "Not Found",
+                      "instance": "kong:trace:6816496025408232265",
+                      "detail": "Not Found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AgentIdPath"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "AgentFilterParameters": {
+        "title": "AgentFilterParameters",
+        "type": "object",
+        "description": "Filter parameters for the agent list endpoint. `name` matches the agent's display name; `slug` is the agent-level org-unique handle; `source_type` is `manual` or `remote`; `labels` filters on agent-level labels by key, e.g. `filter[labels.env]=prod`.\n",
+        "properties": {
+          "name": {
+            "title": "StringFieldFilter",
+            "description": "Filters on the given string field value by either exact or fuzzy match.",
+            "oneOf": [
+              {
+                "title": "StringFieldEqualsFilter",
+                "description": "Filters on the given string field value by exact match.",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "title": "StringFieldEqualsComparison",
+                    "additionalProperties": false,
+                    "properties": {
+                      "eq": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "eq"
+                    ]
+                  }
+                ],
+                "x-examples": {
+                  "example-1": "equals-some-value",
+                  "example-2": {
+                    "eq": "some-value"
+                  }
+                }
+              },
+              {
+                "title": "StringFieldContainsFilter",
+                "description": "Filters on the given string field value by fuzzy match.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "contains": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "contains"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "contains": "some-value"
+                  }
+                }
+              },
+              {
+                "title": "StringFieldOContainsFilter",
+                "description": "Returns entities that fuzzy-match any of the comma-delimited phrases in the filter string.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "ocontains": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "ocontains"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "ocontains": "this-value,or-that-value"
+                  }
+                }
+              },
+              {
+                "title": "StringFieldOEQFilter",
+                "description": "Returns entities that exact match any of the comma-delimited phrases in the filter string.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "oeq": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "oeq"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "oeq": "some-value,some-other-value"
+                  }
+                }
+              },
+              {
+                "title": "StringFieldNEQFilter",
+                "description": "Filters on the given string field value by exact match inequality.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "neq": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "neq"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "neq": "not-this-value"
+                  }
+                }
+              }
+            ],
+            "x-examples": {
+              "example-1": "equals-some-value",
+              "example-2": {
+                "eq": "some-value"
+              },
+              "example-3": {
+                "contains": "some-value"
+              },
+              "example-4": {
+                "ocontains": "some-potential,value"
+              },
+              "example-5": {
+                "oeq": "some-potential,value"
+              },
+              "example-6": {
+                "neq": "not-this-value"
+              }
+            }
+          },
+          "slug": {
+            "$ref": "#/components/schemas/AgentFilterParameters/properties/name"
+          },
+          "source_type": {
+            "$ref": "#/components/schemas/AgentFilterParameters/properties/name"
+          },
+          "labels": {
+            "allOf": [
+              {
+                "title": "LabelsFieldFilter",
+                "description": "Filters on the resource's `labels` field. Filters must use dot-notation to identify\nthe label key that will be used to filter the results. For example:\n  - `filter[labels.owner]`\n  - `filter[labels.owner][neq]=kong`\n  - `filter[labels.env]=dev`\n  - `filter[labels.env][ocontains]=dev,test`\n"
+              },
+              {
+                "$ref": "#/components/schemas/AgentFilterParameters/properties/name"
+              }
+            ]
+          },
+          "created_at": {
+            "title": "DateTimeFieldFilter",
+            "description": "Filters on the given datetime (RFC-3339) field value.",
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "DateTimeFieldImplicitEqualsFilter",
+                "format": "date-time",
+                "description": "Value strictly equals given RFC-3339 formatted timestamp in UTC",
+                "example": "2022-03-30T07:20:50Z"
+              },
+              {
+                "type": "object",
+                "title": "DateTimeFieldEqualsFilter",
+                "additionalProperties": false,
+                "properties": {
+                  "eq": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Value strictly equals given RFC-3339 formatted timestamp in UTC",
+                    "example": "2022-03-30T07:20:50Z"
+                  }
+                },
+                "required": [
+                  "eq"
+                ]
+              },
+              {
+                "type": "object",
+                "title": "DateTimeFieldLTFilter",
+                "additionalProperties": false,
+                "properties": {
+                  "lt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Value is less than the given RFC-3339 formatted timestamp in UTC",
+                    "example": "2022-03-30T07:20:50Z"
+                  }
+                },
+                "required": [
+                  "lt"
+                ]
+              },
+              {
+                "type": "object",
+                "title": "DateTimeFieldLTEFilter",
+                "additionalProperties": false,
+                "properties": {
+                  "lte": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Value is less than or equal to the given RFC-3339 formatted timestamp in UTC",
+                    "example": "2022-03-30T07:20:50Z"
+                  }
+                },
+                "required": [
+                  "lte"
+                ]
+              },
+              {
+                "type": "object",
+                "title": "DateTimeFieldGTFilter",
+                "additionalProperties": false,
+                "properties": {
+                  "gt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Value is greater than the given RFC-3339 formatted timestamp in UTC",
+                    "example": "2022-03-30T07:20:50Z"
+                  }
+                },
+                "required": [
+                  "gt"
+                ]
+              },
+              {
+                "type": "object",
+                "title": "DateTimeFieldGTEFilter",
+                "additionalProperties": false,
+                "properties": {
+                  "gte": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Value is greater than or equal to the given RFC-3339 formatted timestamp in UTC",
+                    "example": "2022-03-30T07:20:50Z"
+                  }
+                },
+                "required": [
+                  "gte"
+                ]
+              }
+            ],
+            "x-examples": {
+              "datetime_field_1": "2022-03-30T07:20:50Z",
+              "datetime_field_2": {
+                "eq": "2022-03-30T07:20:50Z"
+              },
+              "datetime_field_3": {
+                "lt": "2022-03-30T07:20:50Z"
+              },
+              "datetime_field_4": {
+                "lte": "2022-03-30T07:20:50Z"
+              },
+              "datetime_field_5": {
+                "gt": "2022-03-30T07:20:50Z"
+              },
+              "datetime_field_6": {
+                "gte": "2022-03-30T07:20:50Z"
+              }
+            }
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/AgentFilterParameters/properties/created_at"
+          }
+        }
+      },
+      "AgentList": {
+        "type": "object",
+        "required": [
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentListItem"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "title": "PaginatedMeta",
+            "x-speakeasy-terraform-ignore": true,
+            "description": "returns the pagination information",
+            "properties": {
+              "page": {
+                "type": "object",
+                "description": "Contains pagination query parameters and the total number of objects returned.",
+                "required": [
+                  "number",
+                  "size",
+                  "total"
+                ],
+                "properties": {
+                  "number": {
+                    "type": "number",
+                    "example": 1,
+                    "x-speakeasy-terraform-ignore": true
+                  },
+                  "size": {
+                    "type": "number",
+                    "example": 10,
+                    "x-speakeasy-terraform-ignore": true
+                  },
+                  "total": {
+                    "type": "number",
+                    "example": 100,
+                    "x-speakeasy-terraform-ignore": true
+                  }
+                }
+              }
+            },
+            "required": [
+              "page"
+            ]
+          }
+        }
+      },
+      "AgentListItem": {
+        "type": "object",
+        "description": "A list item — a logical agent. See `Agent`.",
+        "required": [
+          "id",
+          "name",
+          "slug",
+          "display_name",
+          "source_type",
+          "labels",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Stable logical-agent id (shared across versions).",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "name": {
+            "type": "string",
+            "description": "Equals `display_name`. See `Agent.name`.",
+            "example": "Weather Agent"
+          },
+          "description": {
+            "type": "string",
+            "description": "Equals `overview`. See `Agent.description`.",
+            "example": "Reports current weather and short-term forecasts."
+          },
+          "slug": {
+            "$ref": "#/components/schemas/AgentSlug"
+          },
+          "display_name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AgentDisplayName"
+              }
+            ],
+            "description": "The catalog display label. See `Agent.display_name`."
+          },
+          "overview": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AgentOverview"
+              }
+            ],
+            "description": "The optional catalog-owned overview, if set. See `Agent.overview`."
+          },
+          "source_type": {
+            "$ref": "#/components/schemas/AgentSourceType"
+          },
+          "hostname": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AgentHostname"
+              }
+            ],
+            "description": "The normalized hostname — see `Agent.hostname`."
+          },
+          "store_authorization": {
+            "type": "boolean",
+            "description": "Whether a fetch credential is stored — see `Agent.store_authorization`.\n",
+            "example": true
+          },
+          "labels": {
+            "title": "Labels",
+            "type": "object",
+            "example": {
+              "env": "test"
+            },
+            "maxProperties": 50,
+            "description": "Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types. \n\nKeys must be of length 1-63 characters, and cannot start with \"kong\", \"konnect\", \"mesh\", \"kic\", or \"_\".\n",
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$",
+              "minLength": 1,
+              "maxLength": 63
+            }
+          },
+          "implementation": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AgentImplementation"
+              }
+            ],
+            "description": "The referenced AI Gateway agent — see `Agent.implementation`."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the logical agent was first registered."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the agent itself was last updated. Version writes, including refresh, do not change it.\n"
+          }
+        }
+      },
+      "AgentSlug": {
+        "type": "string",
+        "pattern": "^[0-9a-z.-]+$",
+        "minLength": 1,
+        "maxLength": 120,
+        "example": "weather-agent",
+        "description": "Org-unique, human-readable handle for the agent. Required on create, and mutable via `PATCH /agents/{agentId}` (kept org-unique). Used for lookup and declarative/config reference (filter by it, then operate by `id`); a rename invalidates any config that referenced the old slug. Identity for authz and links remains the UUID `id`.\n"
+      },
+      "AgentDisplayName": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120,
+        "example": "Weather Agent",
+        "description": "Catalog-owned display name for the agent, agent-level and mutable. Required on create.\n"
+      },
+      "AgentOverview": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2048,
+        "example": "Reports current weather and short-term forecasts.",
+        "description": "Optional catalog-owned overview for the agent, agent-level and mutable. It is the agent's `description`; when unset, `description` is absent.\n"
+      },
+      "AgentSourceType": {
+        "type": "string",
+        "description": "The agent-level source set through create and `PATCH /agents/{agentId}`. `manual`: the card is pasted through the version endpoints, and no remote host is configured. `remote`: the card is fetched from a host (see `hostname`) and refreshable.\n\nThis reflects only that agent-level setting. It does not reflect a source created through `/agents/{agentId}/source`, so an agent with an `ai_gateway` source there still reads `manual`.\n",
+        "enum": [
+          "manual",
+          "remote"
+        ],
+        "example": "manual"
+      },
+      "AgentHostname": {
+        "type": "string",
+        "format": "hostname",
+        "minLength": 1,
+        "maxLength": 253,
+        "example": "agent.example.com",
+        "description": "Hostname a `remote` source's card is fetched from. A bare ASCII hostname: no scheme, port, path or userinfo, and not a bare IP address. A port is rejected as an invalid `hostname` rather than ignored, since the fetch is always HTTPS on port 443. An internationalized name must be supplied as its A-label (punycode) form — `xn--r8jz45g.jp`, not `例え.jp`, which is rejected as an invalid `hostname`. Callers convert it; the API does not.\n\nThe stored value is normalized — lowercased, with any trailing dot removed — and responses return that normalized value, which is the hostname that will actually be fetched. Comparison is against the normalized form: submitting a hostname that normalizes to the stored one is not a change. `maxLength` applies to the normalized value.\n"
+      },
+      "AgentImplementation": {
+        "type": "object",
+        "description": "An agent's link to the AI Gateway agent that backs it — the stored reference plus its own id and timestamps. The registry never resolves the reference; clients resolve it against AI Gateway.\n",
+        "required": [
+          "id",
+          "agent_id",
+          "gateway_control_plane_id",
+          "gateway_agent_id",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The implementation's own id (`.../implementations/{implementationId}`).",
+            "example": "323e4567-e89b-12d3-a456-426614174aaa"
+          },
+          "agent_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The id of the agent this implementation belongs to.",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "gateway_control_plane_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The AI Gateway control plane uuid that hosts the linked agent.",
+            "example": "223e4567-e89b-12d3-a456-426614174999"
+          },
+          "gateway_agent_id": {
+            "type": "string",
+            "description": "The text or uuid identifier of the AI Gateway agent.",
+            "example": "gw-agent-abc"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the link was created."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the link was last updated."
+          }
+        }
+      },
+      "AgentPrincipalList": {
+        "type": "object",
+        "description": "A paginated page of an agent's principals (0 or 1).",
+        "required": [
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentPrincipal"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/AgentList/properties/meta"
+          }
+        }
+      },
+      "AgentPrincipal": {
+        "type": "object",
+        "description": "An agent's link to the Kong Identity principal that represents it — the stored reference plus its own id and timestamps. The registry does not manage the principal itself; clients manage it via Kong Identity.\n",
+        "required": [
+          "id",
+          "principal_id",
+          "directory_id",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The principal link's own id.",
+            "example": "423e4567-e89b-12d3-a456-426614174bbb"
+          },
+          "principal_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The linked Kong Identity principal's id, scoped to `directory_id`.",
+            "example": "523e4567-e89b-12d3-a456-426614174ccc"
+          },
+          "directory_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The id of the directory that hosts the principal.",
+            "example": "623e4567-e89b-12d3-a456-426614174ddd"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the link was created."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the link was last updated."
+          }
+        }
+      }
+    },
+    "parameters": {
+      "AgentSort": {
+        "name": "sort",
+        "description": "Sort agents by specified fields. Supported sort attributes are:\n- name\n- created_at\n- updated_at\n\n`name` sorts on the agent's display name. Defaults to `created_at`, most\nrecent first (ties broken by id).\n",
+        "required": false,
+        "in": "query",
+        "schema": {
+          "title": "SortQuery",
+          "type": "string",
+          "example": "created_at desc",
+          "description": "The `asc` suffix is optional as the default sort order is ascending.\nThe `desc` suffix is used to specify a descending order.\nMultiple sort attributes may be provided via a comma separated list.\nJSONPath notation may be used to specify a sub-attribute (eg: 'foo.bar desc').\n"
+        }
+      },
+      "AgentIdPath": {
+        "name": "agentId",
+        "in": "path",
+        "required": true,
+        "description": "Stable logical-agent identifier (shared across all versions of the agent).",
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "123e4567-e89b-12d3-a456-426614174000"
+        }
+      }
+    },
+    "securitySchemes": {
+      "konnectAccessToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "The Konnect access token is meant to be used by the Konnect dashboard and the decK CLI authenticate with.\n"
+      },
+      "personalAccessToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Token",
+        "description": "The personal access token is meant to be used as an alternative to basic-auth when accessing Konnect via APIs.\nYou can generate a Personal Access Token (PAT) from the [personal access token page](https://cloud.konghq.com/global/account/tokens/) in the Konnect dashboard.\nThe PAT token must be passed in the header of a request, for example:\n`curl -X GET 'https://global.api.konghq.com/v2/users/' --header 'Authorization: Bearer kpat_xgfT...'`\n"
+      },
+      "systemAccountAccessToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Token",
+        "description": "The system account access token is meant for automations and integrations that are not directly associated with a human identity.\nYou can generate a system account Access Token by creating a system account and then obtaining a system account access token for that account.\nThe access token must be passed in the header of a request, for example:\n`curl -X GET 'https://global.api.konghq.com/v2/users/' --header 'Authorization: Bearer spat_i2Ej...'`\n"
+      }
+    }
+  }
+}

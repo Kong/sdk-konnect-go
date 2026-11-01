@@ -1,0 +1,9 @@
+# RegistryReferenceAgentList
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `Data`                                                                                                   | [][components.RegistryReferenceAgentListItem](../../models/components/registryreferenceagentlistitem.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `Meta`                                                                                                   | [components.RegistryReferencePaginationMeta](../../models/components/registryreferencepaginationmeta.md) | :heavy_check_mark:                                                                                       | returns the pagination information                                                                       |
