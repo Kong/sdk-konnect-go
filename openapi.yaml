@@ -15739,6 +15739,47 @@ paths:
         - DP Nodes
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
+  /v2/credential-provider-templates:
+    get:
+      operationId: listCredentialProviderTemplates
+      summary: List credential provider templates
+      description: |
+        Returns a paginated list of vault credential provider templates available to base a provider on.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListCredentialProviderTemplatesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+  '/v2/credential-provider-templates/{credentialProviderTemplateName}':
+    parameters:
+      - $ref: '#/components/parameters/credentialProviderTemplateName'
+    get:
+      operationId: getCredentialProviderTemplate
+      summary: Get a credential provider template
+      description: Retrieves a single vault credential provider template by its name.
+      responses:
+        '200':
+          $ref: '#/components/responses/CredentialProviderTemplateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
   /v2/dashboards:
     get:
       operationId: dashboards-list
@@ -16179,6 +16220,468 @@ paths:
         - url: 'https://us.api.konghq.com/'
       tags:
         - Kong Identity Directories
+  '/v2/directories/{directoryId}/groups':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+    post:
+      operationId: createGroup
+      summary: Create a Group in a Directory
+      description: |
+        Creates a new group within the specified directory. Groups organize principals, or other groups,
+        for authorization purposes.
+
+        `name` must be unique within the directory; creating a group
+        with a `name` already in use returns 409.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateGroupRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/KongGroupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+    get:
+      operationId: listGroups
+      summary: List all the Groups of a Directory
+      description: |
+        Retrieves a paginated list of all groups within the specified directory.
+        Results can be sorted by name, created_at, or updated_at, and filtered by name, description, id, labels, or type.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - name: sort
+          in: query
+          description: |
+            Sorts a collection of groups. Supported sort attributes are:
+            - `name`
+            - `created_at`
+            - `updated_at`
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+        - name: filter
+          in: query
+          description: |
+            Filter groups by field. Supported filter fields:
+            - `name`: exact match or contains. Example: `filter[name]="PlatformEngineers"` or `filter[name][contains]="Platform"`
+            - `description`: exact match or contains. Example: `filter[description]="platform team"`
+            - `id`: exact match. Example: `filter[id]="<uuid>"`
+            - `labels.<key>`: exact match on a specific label key. Example: `filter[labels.env]="prod"`
+            - `type`: exact match on one or more group types. Accepted values: `group`, `team`, `project`. Example: `filter[type]="team"` or `filter[type][oeq]="group,team"`
+          required: false
+          schema:
+            type: object
+            properties:
+              name:
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
+              description:
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
+              id:
+                $ref: '#/components/schemas/StringFieldEqualsFilter'
+              labels:
+                $ref: '#/components/schemas/StringFieldEqualsFilter'
+              type:
+                description: 'Filter using **one** of the following operators: `eq`, `oeq`'
+                type: object
+                additionalProperties: false
+                properties:
+                  eq:
+                    description: The field exactly matches the provided value.
+                    type: string
+                  oeq:
+                    description: The field matches any of the provided values.
+                    type: string
+          explode: true
+          style: deepObject
+      responses:
+        '200':
+          $ref: '#/components/responses/ListKongGroupsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+  '/v2/directories/{directoryId}/groups/{groupId}':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/groupId'
+    get:
+      operationId: getGroup
+      summary: Get a Group
+      description: Retrieves detailed information about a specific group by its ID.
+      responses:
+        '200':
+          $ref: '#/components/responses/KongGroupResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+    put:
+      operationId: replaceGroup
+      summary: Replace a Group
+      description: |
+        Completely replaces an existing group with the provided data.
+        All fields must be specified; any omitted fields will be reset to their defaults.
+
+        `name` must be unique within the directory; replacing a group
+        with a `name` already used by another group returns 409.
+      requestBody:
+        $ref: '#/components/requestBodies/ReplaceGroupRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/KongGroupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+    delete:
+      operationId: deleteGroup
+      summary: Delete a Group
+      description: |
+        Permanently deletes a group from the directory.
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+  '/v2/directories/{directoryId}/groups/{groupId}/api-keys':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/groupId'
+    post:
+      operationId: create-group-key
+      summary: Create a group API key
+      description: |
+        Creates a new API key for the specified group.
+        Keys can be system-generated (v1) or imported with a custom secret, and may have an optional expiration date.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateKeyRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/KongPrincipalCreateKeyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+    get:
+      operationId: list-group-keys
+      summary: List all API keys for a group
+      description: |
+        Retrieves a paginated list of all API keys associated with the specified group.
+        Results can be sorted by created_at, updated_at, or name.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - name: sort
+          in: query
+          description: |
+            Sorts a collection of group Keys. Supported sort attributes are:
+            - created_at
+            - updated_at
+            - name
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListKongPrincipalKeysResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+  '/v2/directories/{directoryId}/groups/{groupId}/api-keys/{apiKeyId}':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/apiKeyId'
+    patch:
+      operationId: update-group-key
+      summary: Update a group API key
+      description: |
+        Partially updates an existing API key's metadata.
+        Note: The key secret cannot be modified after creation.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateKeyRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/KongPrincipalKeyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+    get:
+      operationId: get-group-key
+      summary: Get a group API key
+      description: |
+        Retrieves detailed information about a specific API key.
+        Note: The key secret is not returned; it is only available when the key is first created.
+      responses:
+        '200':
+          $ref: '#/components/responses/KongPrincipalKeyResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+    delete:
+      operationId: delete-group-key
+      summary: Delete an API key
+      description: |
+        Permanently deletes an API key, immediately revoking its access.
+        This operation cannot be undone.
+      responses:
+        '204':
+          description: Success
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+  '/v2/directories/{directoryId}/groups/{groupId}/membership':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/groupId'
+    get:
+      operationId: listGroupMembership
+      summary: List a Group's membership
+      description: |
+        Retrieves a paginated list of members (principals or groups) belonging to a group.
+        Results can be filtered by membership entry id or by the member's display name.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - name: filter
+          in: query
+          description: |
+            Filter group membership entries by field. Supported filter fields:
+            - `id`: exact match on the membership entry id. Example: `filter[id]="<uuid>"`
+            - `display_name`: exact match or contains on the member's display name, case-insensitive. Example: `filter[display_name]="jane.doe"` or `filter[display_name][contains]="jane"`
+          required: false
+          schema:
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/StringFieldEqualsFilter'
+              display_name:
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
+          explode: true
+          style: deepObject
+      responses:
+        '200':
+          $ref: '#/components/responses/ListKongGroupMembershipResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+    post:
+      operationId: createGroupMembershipEntry
+      summary: Add a member to a Group
+      description: |
+        Adds a single member, either a principal or another group, to a group's membership.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateGroupMembershipEntryRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/KongGroupMembershipEntryResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+  '/v2/directories/{directoryId}/groups/{groupId}/membership/{groupMembershipId}':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupMembershipId'
+    get:
+      operationId: getGroupMembershipEntry
+      summary: Get a Group membership entry
+      description: Retrieves a specific group membership entry by the member's ID.
+      responses:
+        '200':
+          $ref: '#/components/responses/KongGroupMembershipEntryResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+    delete:
+      operationId: deleteGroupMembershipEntry
+      summary: Remove a member from a Group
+      description: |
+        Removes a single member, either a principal or another group, from a group's membership.
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+  '/v2/directories/{directoryId}/groups/{groupId}/membership/batch':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/groupId'
+    post:
+      operationId: batchCreateGroupMembershipEntries
+      summary: Add multiple members to a Group
+      description: |
+        Adds multiple members (principals or groups) to a group's membership in a single request.
+        Either the entire batch is added or none of it is; body validation failures are reported per item.
+      requestBody:
+        $ref: '#/components/requestBodies/BatchCreateGroupMembershipEntriesRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/BatchKongGroupMembershipResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - PrincipalGroup
+  '/v2/directories/{directoryId}/org-chart/import':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+    post:
+      operationId: importOrgChart
+      summary: Import user principals from a canonical CSV
+      description: |
+        Imports user principals in bulk from a canonical CSV file. Each row
+        creates one user principal — tagged hris_import, stamped with the
+        row's external_id — plus its email custom identity. The optional
+        cost_center column is stored in the principal's metadata as
+        cost_center; rows matched to existing principals adopt the file's
+        value, and a blank cell clears the stored one, while a file without
+        the column leaves existing cost centers untouched. The file is
+        validated in full before anything is written; the response is a
+        report of counts and per-row errors, never the created rows.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ImportPrincipalsRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/KongImportReportResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - KongPrincipal
   '/v2/directories/{directoryId}/principals':
     parameters:
       - $ref: '#/components/parameters/directoryId'
@@ -16245,6 +16748,10 @@ paths:
                 $ref: '#/components/schemas/StringFieldEqualsFilter'
               labels:
                 $ref: '#/components/schemas/StringFieldEqualsFilter'
+              active:
+                oneOf:
+                  - $ref: '#/components/schemas/BooleanFieldFilter'
+                  - $ref: '#/components/schemas/StringFieldOEQFilter'
           explode: true
           style: deepObject
       responses:
@@ -16757,6 +17264,32 @@ paths:
         - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalCredential
+  '/v2/directories/{directoryId}/principals/{principalId}/groups':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/principalId'
+    get:
+      operationId: listPrincipalGroups
+      summary: List the groups of a principal
+      description: |
+        Retrieves a paginated list of every group the principal belongs to, of any type, including memberships inherited through nested teams. Results are ordered by when the membership was created, oldest first.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListKongPrincipalGroupsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - KongPrincipal
   '/v2/directories/{directoryId}/principals/{principalId}/identities':
     parameters:
       - $ref: '#/components/parameters/directoryId'
@@ -16932,6 +17465,680 @@ paths:
         - url: 'https://us.api.konghq.com/'
       tags:
         - KongPrincipalIdentity
+  '/v2/directories/{directoryId}/principals/{principalId}/vault-credentials':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/principalId'
+    get:
+      operationId: listVaultCredentials
+      summary: List vault credentials for a principal
+      description: |
+        Returns a paginated list of token-vault credentials that the principal has obtained by
+        authorizing providers.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - name: sort
+          in: query
+          description: |
+            Sorts vault credentials. Supported sort attributes are:
+            - created_at
+            - updated_at
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListVaultCredentialsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultCredentials
+  '/v2/directories/{directoryId}/principals/{principalId}/vault-credentials/{vaultCredentialId}':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/principalId'
+      - $ref: '#/components/parameters/vaultCredentialId'
+    get:
+      operationId: getVaultCredential
+      summary: Get a vault credential
+      description: Retrieves detailed information about the credentials the principal has obtained from a single provider.
+      responses:
+        '200':
+          $ref: '#/components/responses/VaultCredentialResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultCredentials
+    delete:
+      operationId: deleteVaultCredential
+      summary: De-authorize a provider from a principal
+      description: |
+        Removes the principal's link to the provider, deleting its stored credential. The principal must re-enroll to link the provider again.
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultCredentials
+  '/v2/directories/{directoryId}/trusted-idps':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+    get:
+      operationId: listTrustedIdps
+      summary: List all trusted IdPs
+      description: List all trusted IdPs for a given directory.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/TrustedIdpListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - Trusted IdPs
+    post:
+      operationId: createTrustedIdp
+      summary: Create a new trusted IdP
+      description: |
+        Create a trusted IdP for a given directory. The `issuer_url` must be unique within the directory.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateTrustedIdpRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/TrustedIdpResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - Trusted IdPs
+  '/v2/directories/{directoryId}/trusted-idps/{trustedIdpId}':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/trustedIdpId'
+    get:
+      operationId: getTrustedIdp
+      summary: Get a trusted IdP
+      description: Get a trusted IdP for a directory.
+      responses:
+        '200':
+          $ref: '#/components/responses/TrustedIdpResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - Trusted IdPs
+    put:
+      operationId: updateTrustedIdp
+      summary: Update a trusted IdP
+      description: |
+        Replace a trusted IdP for a given directory. The request body is the full representation; omitted optional fields are reset to their defaults.
+      requestBody:
+        $ref: '#/components/requestBodies/ReplaceTrustedIdpRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/TrustedIdpResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - Trusted IdPs
+    patch:
+      operationId: patchTrustedIdp
+      summary: Partially update a trusted IdP
+      description: |
+        Partially updates a trusted IdP. Only the fields present in the request body are changed; omitted fields keep their current values. This is the only way to modify `vault_access_enabled`.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateTrustedIdpRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/TrustedIdpResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - Trusted IdPs
+    delete:
+      operationId: deleteTrustedIdp
+      summary: Delete a trusted IdP
+      description: Delete a trusted IdP for a given directory.
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - Trusted IdPs
+  '/v2/directories/{directoryId}/trusted-idps/{trustedIdpId}/principals':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/trustedIdpId'
+    get:
+      operationId: listTrustedIdpPrincipals
+      summary: List principals of a trusted IdP
+      description: |
+        Retrieves a paginated list of principals whose identity is linked to this trusted IdP.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - name: sort
+          in: query
+          description: |
+            Sorts a collection of principals. Supported sort attributes are:
+            - `display_name`
+            - `created_at`
+            - `updated_at`
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+        - name: filter
+          in: query
+          description: |
+            Filter principals by field. Supported filter fields:
+            - `display_name`: exact match or contains
+          required: false
+          schema:
+            type: object
+            properties:
+              display_name:
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
+          explode: true
+          style: deepObject
+      responses:
+        '200':
+          $ref: '#/components/responses/ListKongPrincipalsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - Trusted IdPs
+  '/v2/directories/{directoryId}/vault/keys':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+    post:
+      operationId: createVaultKey
+      summary: Create a vault key
+      description: |
+        Adds a PEM-encoded RSA or EC public key used to encrypt token vault data for a
+        vault-enabled directory. Keys must be at least 2048 bits (RSA) or 256 bits (EC).
+        A directory can hold at most 5 vault keys.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateVaultKeyRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/VaultKeyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultKeys
+    get:
+      operationId: listVaultKeys
+      summary: List vault keys
+      description: |
+        Returns a paginated list of the public encryption keys registered for a
+        vault-enabled directory.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - name: sort
+          in: query
+          description: |
+            Sorts vault keys. Supported sort attributes are:
+            - created_at
+            - updated_at
+            - name
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListVaultKeysResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultKeys
+  '/v2/directories/{directoryId}/vault/keys/{keyId}':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/vaultKeyId'
+    get:
+      operationId: getVaultKey
+      summary: Get a vault key
+      description: Retrieves a single vault key by its ID.
+      responses:
+        '200':
+          $ref: '#/components/responses/VaultKeyResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultKeys
+    patch:
+      operationId: updateVaultKey
+      summary: Update a vault key
+      description: |
+        Partially updates an existing vault key. Only the key's name can be changed;
+        the public key material is immutable. A PUT operation is not offered because
+        key material cannot be replaced.
+      requestBody:
+        $ref: '#/components/requestBodies/PatchVaultKeyRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/VaultKeyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultKeys
+    delete:
+      operationId: deleteVaultKey
+      summary: Delete a vault key
+      description: |
+        Deletes a vault key from a directory. Deleting a key does not affect
+        credentials that were already encrypted with it; the key simply stops
+        receiving newly encrypted credentials.
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultKeys
+  '/v2/directories/{directoryId}/vault/providers':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+    post:
+      operationId: createVaultProvider
+      summary: Create a vault provider
+      description: |
+        Creates a new credential provider configuration for a vault-enabled directory.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateVaultProviderRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/VaultProviderResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+    get:
+      operationId: listVaultProviders
+      summary: List vault providers
+      description: |
+        Returns a paginated list of credential providers for a vault-enabled directory.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - name: sort
+          in: query
+          description: |
+            Sorts vault providers. Supported sort attributes are:
+            - created_at
+            - updated_at
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+        - name: filter
+          in: query
+          description: |
+            Filter vault providers by field. Supported filter fields:
+            - `name`: exact match or contains. Example: `filter[name]="my-provider"` or `filter[name][contains]="my-provider"`
+            - `template_name`: exact match on one or more template names. Example: `filter[template_name]="github"` or `filter[template_name][oeq]="github,slack"`
+          required: false
+          schema:
+            type: object
+            properties:
+              name:
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
+              template_name:
+                description: 'Filter using **one** of the following operators: `eq`, `oeq`'
+                type: object
+                additionalProperties: false
+                properties:
+                  eq:
+                    description: The field exactly matches the provided value.
+                    type: string
+                  oeq:
+                    description: The field matches any of the provided values.
+                    type: string
+          explode: true
+          style: deepObject
+      responses:
+        '200':
+          $ref: '#/components/responses/ListVaultProvidersResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+  '/v2/directories/{directoryId}/vault/providers/{providerId}':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/providerId'
+    get:
+      operationId: getVaultProvider
+      summary: Get a vault provider
+      description: Retrieves a single vault provider by its ID.
+      responses:
+        '200':
+          $ref: '#/components/responses/VaultProviderResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+    patch:
+      operationId: updateVaultProvider
+      summary: Update a vault provider
+      description: Partially updates an existing vault provider.
+      requestBody:
+        $ref: '#/components/requestBodies/PatchVaultProviderRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/VaultProviderResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+    put:
+      operationId: replaceVaultProvider
+      summary: Replace a vault provider
+      description: |
+        Completely replaces an existing vault provider's configuration.
+        All fields must be specified; any omitted fields will be reset to their defaults.
+      requestBody:
+        $ref: '#/components/requestBodies/ReplaceVaultProviderRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/VaultProviderResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+    delete:
+      operationId: deleteVaultProvider
+      summary: Delete a vault provider
+      description: Deletes a vault provider from a directory.
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+  '/v2/directories/{directoryId}/vault/providers/{providerId}/credentials':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/providerId'
+    post:
+      operationId: createVaultProviderCredential
+      summary: Create a shared credential for a provider
+      description: |
+        Creates a shared credential for a provider. For a static_secret provider, stores
+        a literal secret value (at most one, a second create returns 409). For a shared
+        authorization_code provider, mints an OAuth enrollment URL for an
+        admin to complete once instead of accepting a secret value.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateVaultProviderCredentialRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/VaultProviderCredentialSharedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+    get:
+      operationId: listVaultProviderCredentials
+      summary: List credential metadata for a provider
+      description: |
+        Returns a paginated list of credential metadata for a provider. Each
+        item's shape depends on its credential_type. shared items are the
+        provider's shared credential: the admin-configured secret. Never include
+        enrollment_url (fetch by id to mint one; shared authorization_code
+        credentials only). user items
+        are each principal's individual authorization, embedding principal id
+        and display_name. Credential values are never returned.
+      parameters:
+        - $ref: '#/components/parameters/CursorPageQuery'
+        - name: sort
+          in: query
+          description: |
+            Sorts vault provider credentials. Supported sort attributes are:
+            - created_at
+            - updated_at
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListVaultProviderCredentialsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+  '/v2/directories/{directoryId}/vault/providers/{providerId}/credentials/{credentialId}':
+    parameters:
+      - $ref: '#/components/parameters/directoryId'
+      - $ref: '#/components/parameters/providerId'
+      - $ref: '#/components/parameters/vaultProviderCredentialId'
+    get:
+      operationId: getVaultProviderCredential
+      summary: Get a specific credential
+      description: |
+        Returns a single credential by id. For a shared authorization_code
+        credential, always mints a fresh enrollment_url on every call,
+        regardless of whether the credential is pending or active, so an
+        admin can re-enroll at any time.
+      responses:
+        '200':
+          $ref: '#/components/responses/VaultProviderCredentialResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+    put:
+      operationId: updateVaultProviderCredential
+      summary: Update a shared credential's value
+      description: |
+        Replaces the value of an existing credential and returns 200 with the
+        updated credential body, for both static_secret providers and shared
+        authorization_code providers (the latter re-mints a fresh enrollment URL).
+        Returns 404 when no secret/credential exists yet for this provider.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateVaultProviderCredentialRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/VaultProviderCredentialSharedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
+    delete:
+      operationId: deleteVaultProviderCredential
+      summary: Delete a specific provider credential
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://us.api.konghq.com/'
+      tags:
+        - TokenVaultProviders
   /v3/api-attributes:
     get:
       operationId: list-api-attributes
@@ -28959,6 +30166,13 @@ components:
       in: query
       schema:
         $ref: '#/components/schemas/SortQuery'
+    credentialProviderTemplateName:
+      name: credentialProviderTemplateName
+      in: path
+      required: true
+      description: Name of the vault credential provider template
+      schema:
+        $ref: '#/components/schemas/ProviderTemplateName'
     CriteriaTemplateFilter:
       name: filter
       description: Filters a collection of criteria templates.
@@ -29379,6 +30593,22 @@ components:
       required: true
       schema:
         type: string
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      description: Unique identifier of the group (UUID format)
+      schema:
+        type: string
+        format: uuid
+    groupMembershipId:
+      name: groupMembershipId
+      in: path
+      required: true
+      description: Unique identifier of the group membership entry
+      schema:
+        type: string
+        format: uuid
     HMACAuthId:
       description: ID of the HMAC-auth credential to lookup
       example: 70e7b00b-72f2-471b-a5ce-9c4171775360
@@ -29905,6 +31135,14 @@ components:
       schema:
         $ref: '#/components/schemas/ProviderAccountsFilterParameters'
       style: deepObject
+    providerId:
+      name: providerId
+      in: path
+      required: true
+      description: ID of the vault provider
+      schema:
+        type: string
+        format: uuid
     RegistrationId:
       name: registrationId
       in: path
@@ -30356,6 +31594,14 @@ components:
       schema:
         $ref: '#/components/schemas/TransitGatewaysFilterParameters'
       style: deepObject
+    trustedIdpId:
+      name: trustedIdpId
+      in: path
+      required: true
+      description: Unique identifier of the trusted idp for the vault
+      schema:
+        type: string
+        format: uuid
     UpstreamId:
       description: ID of the Upstream to lookup
       example: 426d620c-7058-4ae6-aacc-f85a3204a2c5
@@ -30380,6 +31626,14 @@ components:
       x-go-name: userIdParam
       schema:
         $ref: '#/components/schemas/UUID'
+    vaultCredentialId:
+      name: vaultCredentialId
+      in: path
+      required: true
+      description: Unique identifier of the principal's vault credential (UUID format)
+      schema:
+        type: string
+        format: uuid
     VaultId:
       description: ID of the Vault to lookup
       example: 9d4d6d19-77c6-428e-a965-9bc9647633e9
@@ -30388,6 +31642,22 @@ components:
       required: true
       schema:
         type: string
+    vaultKeyId:
+      name: keyId
+      in: path
+      required: true
+      description: ID of the vault key
+      schema:
+        type: string
+        format: uuid
+    vaultProviderCredentialId:
+      name: credentialId
+      in: path
+      required: true
+      description: ID of the shared credential
+      schema:
+        type: string
+        format: uuid
     VersionId:
       schema:
         type: string
@@ -30895,6 +32165,16 @@ components:
         eq:
           type: string
       title: StringFieldEqualsFilter
+    StringFieldOEQFilter:
+      description: Returns entities that exact match any of the comma-delimited phrases in the filter string.
+      type: object
+      properties:
+        oeq:
+          type: string
+      additionalProperties: false
+      required:
+        - oeq
+      title: StringFieldOEQFilter
     StringFieldContainsFilter:
       description: Filters on the given string field value by fuzzy match.
       type: object
@@ -38318,10 +39598,16 @@ components:
           $ref: '#/components/schemas/KongIdentityAllowedControlPlanes'
         allow_all_control_planes:
           $ref: '#/components/schemas/KongIdentityAllowAllControlPlanes'
+        ttl_secs:
+          $ref: '#/components/schemas/DirectoryTTLSecs'
+        negative_ttl_secs:
+          $ref: '#/components/schemas/DirectoryNegativeTTLSecs'
         labels:
           $ref: '#/components/schemas/Labels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
+        vault_enabled:
+          $ref: '#/components/schemas/DirectoryVaultEnabled'
       additionalProperties: false
       required:
         - name
@@ -38336,13 +39622,24 @@ components:
           $ref: '#/components/schemas/KongIdentityAllowedControlPlanes'
         allow_all_control_planes:
           $ref: '#/components/schemas/KongIdentityAllowAllControlPlanes'
+        ttl_secs:
+          $ref: '#/components/schemas/DirectoryTTLSecs'
+        negative_ttl_secs:
+          $ref: '#/components/schemas/DirectoryNegativeTTLSecs'
         labels:
           $ref: '#/components/schemas/Labels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
+        vault_enabled:
+          $ref: '#/components/schemas/DirectoryVaultEnabled'
       additionalProperties: false
       required:
         - name
+    DirectoryVaultEnabled:
+      description: |
+        Set to enabled to enable the Token Vault for this directory.
+        Defaults to disabled when omitted.
+      type: boolean
     UpdateDirectoryBody:
       type: object
       properties:
@@ -38356,8 +39653,14 @@ components:
             This overrides the allowed_control_planes list. When omitted, the existing value is preserved.
           type: boolean
           nullable: false
+        ttl_secs:
+          $ref: '#/components/schemas/DirectoryTTLSecs'
+        negative_ttl_secs:
+          $ref: '#/components/schemas/DirectoryNegativeTTLSecs'
         labels:
           $ref: '#/components/schemas/Labels'
+        vault_enabled:
+          $ref: '#/components/schemas/DirectoryVaultEnabled'
       additionalProperties: false
     CreatePrincipalBody:
       type: object
@@ -38366,12 +39669,16 @@ components:
           $ref: '#/components/schemas/KongPrincipalDisplayName'
         description:
           $ref: '#/components/schemas/KongPrincipalDescription'
+        type:
+          $ref: '#/components/schemas/KongPrincipalType'
         metadata:
           $ref: '#/components/schemas/KongIdentityMetadata'
         labels:
           $ref: '#/components/schemas/Labels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
+        active:
+          $ref: '#/components/schemas/KongPrincipalActive'
     ReplacePrincipalBody:
       type: object
       properties:
@@ -38379,12 +39686,16 @@ components:
           $ref: '#/components/schemas/KongPrincipalDisplayName'
         description:
           $ref: '#/components/schemas/KongPrincipalDescription'
+        type:
+          $ref: '#/components/schemas/KongPrincipalType'
         metadata:
           $ref: '#/components/schemas/KongIdentityMetadata'
         labels:
           $ref: '#/components/schemas/Labels'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
+        active:
+          $ref: '#/components/schemas/KongPrincipalActive'
     UpdatePrincipalBody:
       type: object
       properties:
@@ -38392,12 +39703,99 @@ components:
           $ref: '#/components/schemas/KongPrincipalDisplayName'
         description:
           $ref: '#/components/schemas/KongPrincipalDescription'
+        type:
+          $ref: '#/components/schemas/KongPrincipalType'
         metadata:
           $ref: '#/components/schemas/KongIdentityMetadata'
         labels:
           $ref: '#/components/schemas/Labels'
         managed_by:
           $ref: '#/components/schemas/ManagedByUpdate'
+        active:
+          $ref: '#/components/schemas/KongPrincipalActive'
+    CreateGroupBody:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/KongGroupName'
+        description:
+          $ref: '#/components/schemas/KongGroupDescription'
+        type:
+          description: |
+            Type of the group. Immutable after creation.
+          allOf:
+            - $ref: '#/components/schemas/KongGroupType'
+        metadata:
+          $ref: '#/components/schemas/KongIdentityMetadata'
+        labels:
+          $ref: '#/components/schemas/Labels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+      required:
+        - name
+    ReplaceGroupBody:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/KongGroupName'
+        description:
+          $ref: '#/components/schemas/KongGroupDescription'
+        type:
+          description: |
+            Type of the group. Immutable after creation.
+          allOf:
+            - $ref: '#/components/schemas/KongGroupType'
+        metadata:
+          $ref: '#/components/schemas/KongIdentityMetadata'
+        labels:
+          $ref: '#/components/schemas/Labels'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+      required:
+        - name
+    KongGroupMembershipType:
+      description: |
+        Classifies the kind of member referenced by a group membership entry.
+      type: string
+      enum:
+        - principal
+        - group
+      x-speakeasy-unknown-values: allow
+    KongGroupMember:
+      description: |
+        Identifies a single member (principal or group) of a group.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID_RW'
+        type:
+          $ref: '#/components/schemas/KongGroupMembershipType'
+        display_name:
+          description: 'Human-readable name of the member. For a principal, its `display_name`; for a group, its `name`.'
+          type: string
+          nullable: true
+          readOnly: true
+      required:
+        - id
+        - type
+    CreateGroupMembershipEntryBody:
+      type: object
+      properties:
+        member:
+          $ref: '#/components/schemas/KongGroupMember'
+      required:
+        - member
+    BatchCreateGroupMembershipEntriesBody:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateGroupMembershipEntryBody'
+          maxItems: 100
+          minItems: 1
+      required:
+        - data
     CreatePrincipalKeyBody:
       type: object
       discriminator:
@@ -38414,10 +39812,13 @@ components:
           type: string
           enum:
             - imported
+        name:
+          $ref: '#/components/schemas/KongPrincipalKeyName'
         secret:
           type: string
           maxLength: 255
           minLength: 1
+          writeOnly: true
           x-sensitive: true
         expires_at:
           $ref: '#/components/schemas/ExpiresAt'
@@ -38431,6 +39832,8 @@ components:
           type: string
           enum:
             - v1
+        name:
+          $ref: '#/components/schemas/KongPrincipalKeyName'
         expires_at:
           $ref: '#/components/schemas/ExpiresAt'
         managed_by:
@@ -38442,6 +39845,8 @@ components:
       description: Request body for updating an API key's metadata
       type: object
       properties:
+        name:
+          $ref: '#/components/schemas/KongPrincipalKeyName'
         expires_at:
           $ref: '#/components/schemas/ExpiresAt'
         managed_by:
@@ -38487,6 +39892,7 @@ components:
           type: string
           maxLength: 255
           minLength: 1
+          writeOnly: true
           x-sensitive: true
         expires_at:
           $ref: '#/components/schemas/ExpiresAt'
@@ -38508,6 +39914,7 @@ components:
           type: string
           maxLength: 255
           minLength: 1
+          writeOnly: true
           x-sensitive: true
         expires_at:
           $ref: '#/components/schemas/ExpiresAt'
@@ -38650,6 +40057,55 @@ components:
       required:
         - meta
         - data
+    ListKongGroups:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KongGroup'
+      required:
+        - meta
+        - data
+    KongGroupMembershipEntry:
+      description: |
+        A single group membership entry, referencing either a principal or another group.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        member:
+          $ref: '#/components/schemas/KongGroupMember'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+      required:
+        - id
+        - member
+        - created_at
+    BatchKongGroupMembership:
+      type: object
+      properties:
+        data:
+          description: 'Membership entries created, in request order.'
+          type: array
+          items:
+            $ref: '#/components/schemas/KongGroupMembershipEntry'
+      required:
+        - data
+    ListKongGroupMembership:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KongGroupMembershipEntry'
+      required:
+        - meta
+        - data
     ListKongPrincipalKeys:
       type: object
       properties:
@@ -38667,6 +40123,8 @@ components:
       properties:
         id:
           $ref: '#/components/schemas/UUID'
+        name:
+          $ref: '#/components/schemas/KongPrincipalKeyName'
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
@@ -38677,6 +40135,7 @@ components:
           $ref: '#/components/schemas/ManagedBy'
       required:
         - id
+        - name
         - created_at
         - updated_at
         - expires_at
@@ -38686,6 +40145,8 @@ components:
       properties:
         id:
           $ref: '#/components/schemas/UUID'
+        name:
+          $ref: '#/components/schemas/KongPrincipalKeyName'
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
@@ -38702,11 +40163,37 @@ components:
           x-sensitive: true
       required:
         - id
+        - name
         - secret
         - created_at
         - updated_at
         - expires_at
         - managed_by
+    KongPrincipalKeyName:
+      description: |
+        Human-readable name of the API key. `null` if the key has no name.
+      type: string
+      maxLength: 255
+      nullable: true
+    DirectoryTTLSecs:
+      description: |
+        The time in seconds that a principal will be cached in memory on a running Gateway if it is
+        successfully authenticated from this directory. Maximum is 86400 seconds (24 hours).
+      type: integer
+      default: 600
+      maximum: 86400
+      minimum: 300
+    DirectoryNegativeTTLSecs:
+      description: |
+        If a running Gateway triggers a lookup for a principal that cannot be authenticated in this directory,
+        a `negative_ttl_secs` is set. The Gateway will not try to look up the principal in Konnect for `negative_ttl_secs` seconds.
+
+        A principal will be cached for `negative_ttl_secs` if it does not exist in the directory, or if the provided credentials are invalid.
+        Maximum is 86400 seconds (24 hours).
+      type: integer
+      default: 600
+      maximum: 86400
+      minimum: 300
     KongDirectory:
       description: |
         A directory represents an organizational boundary for grouping principals and managing their identities.
@@ -38723,6 +40210,10 @@ components:
           $ref: '#/components/schemas/KongIdentityAllowedControlPlanes'
         allow_all_control_planes:
           $ref: '#/components/schemas/KongIdentityAllowAllControlPlanes'
+        ttl_secs:
+          $ref: '#/components/schemas/DirectoryTTLSecs'
+        negative_ttl_secs:
+          $ref: '#/components/schemas/DirectoryNegativeTTLSecs'
         labels:
           $ref: '#/components/schemas/Labels'
         managed_by:
@@ -38731,6 +40222,8 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
+        vault_enabled:
+          $ref: '#/components/schemas/DirectoryVaultEnabled'
       required:
         - id
         - name
@@ -38738,9 +40231,134 @@ components:
         - labels
         - allowed_control_planes
         - allow_all_control_planes
+        - ttl_secs
+        - negative_ttl_secs
         - managed_by
         - created_at
         - updated_at
+    ImportPrincipalsRequest:
+      type: object
+      properties:
+        file:
+          description: 'The canonical CSV file (UTF-8, comma-separated, RFC 4180 quoting)'
+          type: string
+          format: binary
+        dry_run:
+          description: |
+            Validate the file and return the report without applying anything — no principals created, updated, or made inactive.
+          type: boolean
+      required:
+        - file
+    KongImportReport:
+      description: Result of an import run.
+      type: object
+      properties:
+        counts:
+          type: object
+          properties:
+            users:
+              type: object
+              properties:
+                created:
+                  description: Number of user principals created by the run.
+                  type: integer
+                  minimum: 0
+                updated:
+                  description: Number of matched user principals updated by the run.
+                  type: integer
+                  minimum: 0
+                unchanged:
+                  description: Number of matched user principals that required no change.
+                  type: integer
+                  minimum: 0
+                inactive:
+                  description: Number of previously imported principals made inactive because the file no longer carries them.
+                  type: integer
+                  minimum: 0
+              required:
+                - created
+                - updated
+                - unchanged
+                - inactive
+            teams:
+              type: object
+              properties:
+                created:
+                  description: Number of teams created by the run.
+                  type: integer
+                  minimum: 0
+                deleted:
+                  description: Number of importer-created teams deleted by the run after their rosters emptied.
+                  type: integer
+                  minimum: 0
+              required:
+                - created
+                - deleted
+            memberships:
+              type: object
+              properties:
+                added:
+                  description: Number of team memberships the run added.
+                  type: integer
+                  minimum: 0
+                removed:
+                  description: 'Number of team memberships the run removed (manager changes, departures).'
+                  type: integer
+                  minimum: 0
+              required:
+                - added
+                - removed
+          required:
+            - users
+            - teams
+            - memberships
+        warnings:
+          description: 'The run succeeded, but a human should look at these rows.'
+          type: array
+          items:
+            $ref: '#/components/schemas/KongImportWarning'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/KongImportRowError'
+      required:
+        - counts
+        - warnings
+        - errors
+    KongImportWarning:
+      description: One row of an import run that succeeded but deserves attention.
+      type: object
+      properties:
+        row:
+          description: 1-based data-row number within the uploaded file; null for run-level warnings.
+          type: integer
+          minimum: 1
+          nullable: true
+        type:
+          description: 'The warning kind (for example, email_changed or quota_shortfall).'
+          type: string
+        detail:
+          type: string
+      required:
+        - type
+        - detail
+    KongImportRowError:
+      description: 'One failing row of an import run, located within the uploaded file.'
+      type: object
+      properties:
+        row:
+          description: 1-based data-row number within the uploaded file.
+          type: integer
+          minimum: 1
+        field:
+          description: 'The column the row failed on, when the failure is column-specific.'
+          type: string
+          nullable: true
+        reason:
+          type: string
+      required:
+        - row
+        - reason
     KongPrincipalDisplayName:
       description: |
         Human-readable name of the principal.
@@ -38751,6 +40369,17 @@ components:
         Optional description providing additional context about the principal's purpose or role.
       type: string
       maxLength: 255
+    KongPrincipalType:
+      description: |
+        Classifies the kind of principal. `agent` is a deployed AI agent,
+        `user` is a human in the organization.
+        When omitted or null, the principal is not classified.
+      type: string
+      enum:
+        - agent
+        - user
+      nullable: true
+      x-speakeasy-unknown-values: allow
     KongPrincipal:
       description: |
         A principal represents an authenticated identity within a directory.
@@ -38763,6 +40392,8 @@ components:
           $ref: '#/components/schemas/KongPrincipalDisplayName'
         description:
           $ref: '#/components/schemas/KongPrincipalDescription'
+        type:
+          $ref: '#/components/schemas/KongPrincipalType'
         metadata:
           $ref: '#/components/schemas/KongIdentityMetadata'
         labels:
@@ -38775,6 +40406,10 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         provisioned_by:
           $ref: '#/components/schemas/ProvisionedBy'
+        active:
+          $ref: '#/components/schemas/KongPrincipalActive'
+        groups:
+          $ref: '#/components/schemas/KongGroups'
       required:
         - id
         - description
@@ -38784,6 +40419,149 @@ components:
         - updated_at
         - managed_by
         - provisioned_by
+        - active
+    KongPrincipalActive:
+      description: |
+        Whether the principal is active. Inactive principals are treated as nonexistent when authenticating.
+        Defaults to `true` on create; omitting it on update or replace keeps the current value.
+        Setting it to `false` sets `provisioned_by` to `konnect_user`. Principals provisioned by the developer portal cannot be deactivated.
+      type: boolean
+      example: true
+    ListKongPrincipalGroups:
+      description: A paginated list of the groups a principal belongs to.
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KongPrincipalGroup'
+      required:
+        - meta
+        - data
+    KongPrincipalGroup:
+      description: |
+        A group the principal belongs to, with the team's manager and how the group was provisioned.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        name:
+          description: Name of the group.
+          type: string
+          example: Engineering
+        type:
+          $ref: '#/components/schemas/KongGroupType'
+        direct:
+          description: |
+            `true` when the principal was added to the group directly, `false` when the membership is inherited through a nested team.
+          type: boolean
+          example: true
+        provisioned_by:
+          $ref: '#/components/schemas/ProvisionedBy'
+        team_manager:
+          $ref: '#/components/schemas/KongTeamManager'
+        membership_id:
+          description: |
+            ID of the principal's direct membership in this group, for `deleteGroupMembershipEntry`. Null when the membership is inherited through a nested team. Team membership is importer-managed, so `deleteGroupMembershipEntry` rejects a direct team membership with 400.
+          type: string
+          format: uuid
+          example: 7e1c2a3b-4d5e-4f60-8a7b-9c0d1e2f3a4b
+          nullable: true
+          readOnly: true
+      required:
+        - id
+        - name
+        - type
+        - direct
+        - provisioned_by
+        - team_manager
+        - membership_id
+    KongTeamManager:
+      description: |
+        The manager of a team, set through the team's `team_manager` custom identity. Always null for plain groups, and for teams without a manager.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        display_name:
+          description: Display name of the manager.
+          type: string
+          example: josh
+        email:
+          description: |
+            Value of the manager's `email` custom identity, or null when the manager has none.
+          type: string
+          example: josh@acme.com
+          nullable: true
+      nullable: true
+      required:
+        - id
+        - display_name
+        - email
+    KongGroupName:
+      description: |
+        Human-readable name of the group. Must be alphanumeric, with no spaces.
+      type: string
+      maxLength: 255
+      pattern: '^[A-Za-z0-9]+$'
+    KongGroupDescription:
+      description: |
+        Optional description providing additional context about the group's purpose.
+      type: string
+      maxLength: 255
+    KongGroups:
+      description: |
+        List of IDs of the groups this principal is a member of.
+      type: array
+      items:
+        type: string
+        format: uuid
+      nullable: false
+      readOnly: true
+    KongGroup:
+      description: |
+        A group organizes principals, or other groups, within a directory for authorization purposes.
+        Plain groups (`group`) accept members of any principal type.
+        Teams (`team`) are nodes of the organization chart whose members are
+        principals of type `user` and other `team` groups; they may carry an
+        `team_manager` custom identity referencing a principal of type `user`.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        name:
+          $ref: '#/components/schemas/KongGroupName'
+        description:
+          $ref: '#/components/schemas/KongGroupDescription'
+        type:
+          $ref: '#/components/schemas/KongGroupType'
+        metadata:
+          $ref: '#/components/schemas/KongIdentityMetadata'
+        labels:
+          $ref: '#/components/schemas/Labels'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        managed_by:
+          $ref: '#/components/schemas/ManagedBy'
+        provisioned_by:
+          $ref: '#/components/schemas/ProvisionedBy'
+        team_manager:
+          $ref: '#/components/schemas/KongTeamManager'
+      required:
+        - id
+        - name
+        - description
+        - metadata
+        - labels
+        - created_at
+        - updated_at
+        - managed_by
+        - provisioned_by
+        - team_manager
     KongPrincipalIdentityBody:
       discriminator:
         propertyName: type
@@ -38996,10 +40774,19 @@ components:
               type: string
             workspace_id:
               type: string
+            control_plane_type:
+              description: The kind of control plane the linked consumer was found in.
+              type: string
+              enum:
+                - api_gateway
+                - ai_gateway
+              readOnly: true
+              x-speakeasy-unknown-values: allow
           required:
             - type
             - control_plane_id
             - consumer_id
+            - control_plane_type
     KongPrincipalIdentityCustomResponse:
       allOf:
         - $ref: '#/components/schemas/KongPrincipalIdentityResponseBase'
@@ -39030,6 +40817,745 @@ components:
         - $ref: '#/components/schemas/KongPrincipalIdentityAuthServerClientResponse'
         - $ref: '#/components/schemas/KongPrincipalIdentityCPConsumerResponse'
         - $ref: '#/components/schemas/KongPrincipalIdentityCustomResponse'
+    VaultProviderEnabled:
+      description: Defines if the provider is enabled or not
+      type: boolean
+    VaultProvider:
+      description: |
+        An credential provider configuration for a token-vault enabled directory.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        directory_id:
+          $ref: '#/components/schemas/UUID'
+        name:
+          type: string
+          pattern: '^[a-zA-Z0-9_-]+$'
+        template_name:
+          $ref: '#/components/schemas/ProviderTemplateName'
+        bearer_methods_supported:
+          type: array
+          items:
+            type: string
+          example:
+            - header
+        enabled:
+          $ref: '#/components/schemas/VaultProviderEnabled'
+        client_id:
+          type: string
+          nullable: true
+        scopes:
+          type: array
+          items:
+            type: string
+        token_endpoint_effective:
+          description: Resolved token endpoint (provider override or template default).
+          type: string
+          nullable: true
+        authorization_endpoint_effective:
+          description: Resolved authorization endpoint (provider override or template default).
+          type: string
+          nullable: true
+        registration_endpoint_effective:
+          description: Resolved DCR registration endpoint (provider override or template default).
+          type: string
+          nullable: true
+        dcr_enabled:
+          description: |
+            True if this provider's OAuth client is obtained via Dynamic Client Registration (RFC 7591) rather than a statically-supplied client_id. When true, client_id is null on this provider -- each principal gets its own dynamically-registered client on first use.
+          type: boolean
+        credential_type:
+          type: string
+          example: user
+        pkce_enabled:
+          type: boolean
+        refresh_buffer_seconds:
+          type: integer
+          minimum: 0
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - directory_id
+        - name
+        - template_name
+        - bearer_methods_supported
+        - enabled
+        - scopes
+        - credential_type
+        - pkce_enabled
+        - dcr_enabled
+        - refresh_buffer_seconds
+        - created_at
+        - updated_at
+    ListVaultProviders:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VaultProvider'
+      required:
+        - meta
+        - data
+    VaultKeyAlgorithm:
+      description: The asymmetric algorithm of the vault key.
+      type: string
+      enum:
+        - RSA
+        - EC
+      x-speakeasy-unknown-values: allow
+    VaultKey:
+      description: |
+        A PEM-encoded RSA or EC public key registered to encrypt token vault data for a
+        token-vault enabled directory.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        directory_id:
+          $ref: '#/components/schemas/UUID'
+        name:
+          type: string
+          pattern: '^[a-zA-Z0-9_-]+$'
+        public_key:
+          description: The PEM-encoded public key.
+          type: string
+          example: |-
+            -----BEGIN PUBLIC KEY-----
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+            -----END PUBLIC KEY-----
+        kid:
+          description: RFC 7638 JWK thumbprint (base64url-encoded SHA-256 digest) of the public key.
+          type: string
+          example: NzbLsXh8uDCcd-6MNwXF4W_7noWXFZAfHkxZsRGC9Xs
+          readOnly: true
+        algorithm:
+          $ref: '#/components/schemas/VaultKeyAlgorithm'
+        key_size:
+          description: 'Size of the key in bits (for example 2048 for RSA, 256 for EC P-256).'
+          type: integer
+          example: 2048
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - directory_id
+        - name
+        - public_key
+        - kid
+        - algorithm
+        - key_size
+        - created_at
+        - updated_at
+    ListVaultKeys:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VaultKey'
+      required:
+        - meta
+        - data
+    CreateVaultKeyBody:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          pattern: '^[a-zA-Z0-9_-]+$'
+        public_key:
+          description: PEM-encoded RSA or EC public key used to encrypt token vault data. Keys must be at least 2048 bits (RSA) or 256 bits (EC).
+          type: string
+          example: |-
+            -----BEGIN PUBLIC KEY-----
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+            -----END PUBLIC KEY-----
+          maxLength: 8192
+      required:
+        - name
+        - public_key
+    PatchVaultKeyBody:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          pattern: '^[a-zA-Z0-9_-]+$'
+    SetVaultProviderCredentialBody:
+      description: 'The secret to store. Required and used verbatim for a static_secret provider. Must be omitted for a shared authorization_code provider, where the response instead carries an enrollment_url for an admin to complete OAuth consent.'
+      type: object
+      properties:
+        secret:
+          description: 'Pre-issued static credential (API key, PAT, etc.). Stored encrypted, never returned in read APIs.'
+          type: string
+          writeOnly: true
+        selector:
+          $ref: '#/components/schemas/VaultCredentialSelector'
+        priority:
+          $ref: '#/components/schemas/VaultCredentialPriority'
+    VaultCredentialSelector:
+      description: 'CEL expression deciding which callers this credential applies to. Omit to make it the provider''s default, which applies to every caller and is considered after all the others.'
+      type: string
+    VaultCredentialPriority:
+      description: 'Order in which this credential is considered, lowest first. Required with a selector, and must be omitted without one.'
+      type: integer
+      minimum: 0
+    VaultProviderCredentialBase:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    VaultProviderCredentialShared:
+      description: 'The provider''s shared secret: a static value, or a shared OAuth enrollment (pending or active).'
+      allOf:
+        - $ref: '#/components/schemas/VaultProviderCredentialBase'
+        - type: object
+          properties:
+            credential_type:
+              type: string
+              enum:
+                - shared
+            selector:
+              allOf:
+                - $ref: '#/components/schemas/VaultCredentialSelector'
+              nullable: true
+            priority:
+              allOf:
+                - $ref: '#/components/schemas/VaultCredentialPriority'
+              nullable: true
+            status:
+              description: '"pending" until admin enrollment completes; "active" once the secret exists.'
+              type: string
+              enum:
+                - pending
+                - active
+              x-speakeasy-unknown-values: allow
+            enrollment_url:
+              description: URL to complete OAuth consent. Fresh on every get-by-id call; set on create for a shared authorization_code provider. Omitted from list responses.
+              type: string
+          required:
+            - credential_type
+            - status
+    VaultProviderCredentialUser:
+      description: One principal's individual authorization of this provider.
+      allOf:
+        - $ref: '#/components/schemas/VaultProviderCredentialBase'
+        - type: object
+          properties:
+            credential_type:
+              type: string
+              enum:
+                - user
+            principal:
+              type: object
+              properties:
+                id:
+                  description: The principal's ID.
+                  type: string
+                  format: uuid
+                display_name:
+                  description: The principal's display name.
+                  type: string
+              required:
+                - id
+                - display_name
+            status:
+              description: 'A user credential exists only once authorization has completed, so this is always "active".'
+              type: string
+              enum:
+                - active
+            expires_at:
+              description: 'Expiry of the current access token, if any.'
+              type: string
+              format: date-time
+              nullable: true
+          required:
+            - id
+            - created_at
+            - updated_at
+            - credential_type
+            - principal
+            - status
+    VaultProviderCredential:
+      description: 'A provider''s shared secret, or one principal''s authorization of the provider, indicated by credential_type. Credential values are never returned.'
+      discriminator:
+        propertyName: credential_type
+        mapping:
+          shared: '#/components/schemas/VaultProviderCredentialShared'
+          user: '#/components/schemas/VaultProviderCredentialUser'
+      oneOf:
+        - $ref: '#/components/schemas/VaultProviderCredentialShared'
+        - $ref: '#/components/schemas/VaultProviderCredentialUser'
+    ListVaultProviderCredentials:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VaultProviderCredential'
+      required:
+        - meta
+        - data
+    CreateVaultProviderBody:
+      type: object
+      properties:
+        template_name:
+          $ref: '#/components/schemas/ProviderTemplateName'
+        name:
+          type: string
+          pattern: '^[a-zA-Z0-9_-]+$'
+        client_id:
+          description: |
+            OAuth client identifier. Applies only to OAuth templates (authorization_code). Rejected with 400 for static_secret templates.
+          type: string
+        client_secret:
+          description: |
+            OAuth client secret. Applies only to OAuth templates. Rejected with 400 for static_secret templates. Write-only; never returned in read APIs.
+          type: string
+          writeOnly: true
+          x-sensitive: true
+        token_endpoint:
+          description: Overrides the template token endpoint.
+          type: string
+        authorization_endpoint:
+          description: Overrides the template authorization endpoint.
+          type: string
+        registration_endpoint:
+          description: Overrides the template DCR registration endpoint.
+          type: string
+        dcr_enabled:
+          description: |
+            When true, requests Dynamic Client Registration (RFC 7591) instead of a static client_id. Requires a resolvable registration_endpoint (provider override or template default) and that client_id is omitted. Each principal using this provider is registered its own upstream OAuth client lazily, on first use. Templates that ship their own registration endpoint (e.g. datadog) are DCR-based: dcr_enabled defaults to true when neither dcr_enabled nor client_id is supplied, and supplying a client_id selects a static client.
+          type: boolean
+        scopes:
+          description: Requested OAuth scopes. Defaults to the full set of template default scopes when omitted. Each scope must be a valid RFC 6749 §3.3 scope-token.
+          type: array
+          items:
+            type: string
+        credential_type:
+          description: |
+            Credential scope. Defaults to "user" for authorization_code templates when omitted; static_secret templates require "shared".
+          type: string
+        pkce_enabled:
+          description: |
+            Use PKCE (S256) on the authorization-code flow. Templates whose authorization server mandates PKCE (pkce_required, e.g. datadog) imply true when this field is omitted; setting it explicitly to false is rejected with 400.
+          type: boolean
+        refresh_buffer_seconds:
+          type: integer
+          default: 0
+          minimum: 0
+      required:
+        - template_name
+        - name
+    ProviderTemplateName:
+      description: |
+        The static name of the vault provider template to base this provider on (e.g. "github"). For static_secret, provide only name and credential_type ("shared"); the credential is provisioned separately via the vault provider credentials API, and client_id/client_secret are rejected.
+      type: string
+      example: github
+      enum:
+        - github
+        - slack
+        - static_secret
+        - google
+        - atlassian-rovo
+        - datadog
+        - custom-oauth
+        - miro
+      x-speakeasy-unknown-values: allow
+    CredentialProviderTemplate:
+      description: |
+        A built-in vault credential provider template describing how to connect to a well-known OAuth provider.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/ProviderTemplateName'
+        display_name:
+          description: Human-readable name of the provider template.
+          type: string
+          example: GitHub MCP Server
+        secret_type:
+          $ref: '#/components/schemas/CredentialProviderTemplateSecretType'
+        bearer_methods_supported:
+          description: Methods supported for presenting the bearer token to the provider.
+          type: array
+          items:
+            $ref: '#/components/schemas/CredentialProviderTemplateBearerMethod'
+        default_scopes:
+          description: Default OAuth scopes requested for this provider when the provider config does not override them. Provider scopes are not restricted to this set.
+          type: array
+          items:
+            type: string
+          example:
+            - repo
+            - 'read:org'
+        pkce_required:
+          description: |
+            True when the provider's authorization server mandates PKCE (S256). Providers based on such a template must set pkce_enabled; creating or updating them with pkce_enabled=false is rejected.
+          type: boolean
+        token_endpoint:
+          description: Default OAuth token endpoint for the provider.
+          type: string
+          example: 'https://github.com/login/oauth/access_token'
+          nullable: true
+        authorization_endpoint:
+          description: Default OAuth authorization endpoint for the provider.
+          type: string
+          example: 'https://github.com/login/oauth/authorize'
+          nullable: true
+        registration_endpoint:
+          description: Default DCR (RFC 7591) registration endpoint for the provider.
+          type: string
+          nullable: true
+      required:
+        - name
+        - display_name
+        - secret_type
+        - bearer_methods_supported
+        - default_scopes
+        - token_endpoint
+        - authorization_endpoint
+    CredentialProviderTemplateSecretType:
+      description: The OAuth grant type used to obtain credentials for this provider template.
+      type: string
+      enum:
+        - authorization_code
+        - static_secret
+      x-speakeasy-unknown-values: allow
+    CredentialProviderTemplateBearerMethod:
+      description: Method used to present the bearer token to the provider.
+      type: string
+      enum:
+        - header
+        - form
+      x-speakeasy-unknown-values: allow
+    ListCredentialProviderTemplates:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CredentialProviderTemplate'
+      required:
+        - meta
+        - data
+    ReplaceVaultProviderBody:
+      type: object
+      properties:
+        template_name:
+          $ref: '#/components/schemas/ProviderTemplateName'
+        name:
+          type: string
+          pattern: '^[a-zA-Z0-9_-]+$'
+        client_id:
+          type: string
+        client_secret:
+          description: OAuth client secret. Write-only; never returned in read APIs.
+          type: string
+          writeOnly: true
+          x-sensitive: true
+        enabled:
+          $ref: '#/components/schemas/VaultProviderEnabled'
+        token_endpoint:
+          description: Overrides the template token endpoint.
+          type: string
+        authorization_endpoint:
+          description: Overrides the template authorization endpoint.
+          type: string
+        scopes:
+          description: Requested OAuth scopes. Defaults to the full set of template default scopes when omitted. Each scope must be a valid RFC 6749 §3.3 scope-token.
+          type: array
+          items:
+            type: string
+        credential_type:
+          type: string
+          default: user
+        pkce_enabled:
+          description: |
+            Use PKCE (S256) on the authorization-code flow. Templates whose authorization server mandates PKCE (pkce_required, e.g. datadog) imply true when this field is omitted; setting it explicitly to false is rejected with 400.
+          type: boolean
+        refresh_buffer_seconds:
+          type: integer
+          default: 0
+          minimum: 0
+      required:
+        - template_name
+        - name
+    PatchVaultProviderBody:
+      type: object
+      properties:
+        name:
+          type: string
+          pattern: '^[a-zA-Z0-9_-]+$'
+        enabled:
+          $ref: '#/components/schemas/VaultProviderEnabled'
+        client_secret:
+          description: Replaces the stored OAuth client secret. Never returned in read APIs.
+          type: string
+          writeOnly: true
+          x-sensitive: true
+        scopes:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        token_endpoint:
+          type: string
+        authorization_endpoint:
+          type: string
+        pkce_enabled:
+          type: boolean
+        refresh_buffer_seconds:
+          type: integer
+          minimum: 0
+    CreateTrustedIdpPayload:
+      description: Fields required to create a trusted IdP for a vault.
+      type: object
+      properties:
+        issuer_url:
+          $ref: '#/components/schemas/TrustedIdpIssuerUrl'
+        display_name:
+          $ref: '#/components/schemas/TrustedIdpDisplayName'
+        jwks_uri:
+          $ref: '#/components/schemas/TrustedIdpJwksUri'
+        jit_provisioning_enabled:
+          $ref: '#/components/schemas/TrustedIdpJitProvisioningEnabled'
+        vault_access_enabled:
+          $ref: '#/components/schemas/TrustedIdpVaultAccessEnabled'
+        jit:
+          $ref: '#/components/schemas/TrustedIdpJit'
+      required:
+        - issuer_url
+    ReplaceTrustedIdpBody:
+      description: |
+        Replacement representation of a trusted IdP. This operation replaces the stored configuration: `display_name`, `jwks_uri` and the `jit` mapping are cleared when omitted, and `jit_provisioning_enabled` and `vault_access_enabled` reset to their defaults (`true` and `false`) when omitted. To change only some fields, use the patch operation instead.
+      type: object
+      properties:
+        issuer_url:
+          $ref: '#/components/schemas/TrustedIdpIssuerUrl'
+        display_name:
+          $ref: '#/components/schemas/TrustedIdpDisplayName'
+        jwks_uri:
+          $ref: '#/components/schemas/TrustedIdpJwksUri'
+        jit_provisioning_enabled:
+          $ref: '#/components/schemas/TrustedIdpJitProvisioningEnabled'
+        vault_access_enabled:
+          $ref: '#/components/schemas/TrustedIdpVaultAccessEnabled'
+        jit:
+          $ref: '#/components/schemas/TrustedIdpJit'
+      required:
+        - issuer_url
+    UpdateTrustedIdpBody:
+      description: |
+        Partial update of a trusted IdP. Only the fields present in the body are changed; omitted fields keep their current values.
+      type: object
+      properties:
+        issuer_url:
+          $ref: '#/components/schemas/TrustedIdpIssuerUrl'
+        display_name:
+          $ref: '#/components/schemas/TrustedIdpDisplayName'
+        jwks_uri:
+          $ref: '#/components/schemas/TrustedIdpJwksUri'
+        jit_provisioning_enabled:
+          $ref: '#/components/schemas/UpdateTrustedIdpJitProvisioningEnabled'
+        vault_access_enabled:
+          $ref: '#/components/schemas/UpdateTrustedIdpVaultAccessEnabled'
+        jit:
+          $ref: '#/components/schemas/TrustedIdpJit'
+    UpdateTrustedIdpJitProvisioningEnabled:
+      description: |
+        New value for `jit_provisioning_enabled`. Omit to leave the current value unchanged.
+      type: boolean
+    UpdateTrustedIdpVaultAccessEnabled:
+      description: |
+        New value for `vault_access_enabled`. Omit to leave the current value unchanged.
+      type: boolean
+    TrustedIdpIssuerUrl:
+      description: The issuer URL of the trusted IdP. Unique per vault.
+      type: string
+      format: uri
+      example: 'https://acme.okta.com/oauth2/default'
+    TrustedIdpJwksUri:
+      description: JWKS URI of the trusted IdP. Overrides OIDC discovery when set.
+      type: string
+      format: uri
+      example: 'https://acme.okta.com/oauth2/default/v1/keys'
+      nullable: true
+    TrustedIdpJitProvisioningEnabled:
+      description: |
+        Whether a principal is provisioned just-in-time on first exchange when no principal matches the subject_token's issuer and sub claim.
+      type: boolean
+      default: true
+    TrustedIdpVaultAccessEnabled:
+      description: |
+        Whether vault token exchange is enabled for principals provisioned by this trusted IdP. Defaults to false; it can be set on create, is reset to false when omitted in the replace operation, and can be changed via the patch operation.
+      type: boolean
+      default: false
+    TrustedIdpDisplayName:
+      description: 'A human-friendly display name for the trusted IdP, distinct from its unique `issuer_url`.'
+      type: string
+      maxLength: 255
+      nullable: true
+    TrustedIdpJit:
+      description: |
+        Just-in-time provisioning configuration for this trusted IdP. The `mapping` decides how the OIDC claims a client presents to fetch-principal shape a principal provisioned just in time.
+      type: object
+      properties:
+        mapping:
+          $ref: '#/components/schemas/TrustedIdpJitMapping'
+    TrustedIdpJitMapping:
+      description: |
+        How the OIDC claims a client presents to fetch-principal map onto a principal provisioned just in time for this trusted IdP. Every field names one of those claims and is optional; a claim the mapping names but the lookup does not carry contributes nothing. An absent `mapping` — or an absent `jit` — means no claim mapping: provisioned principals get empty metadata and the lookup's claim value as display name.
+      type: object
+      properties:
+        metadata:
+          description: |
+            Maps a principal metadata key to the name of the claim whose value populates it: `metadata[key] = claims[claim]`, values narrowed to the shapes the metadata render paths accept. At most 64 entries.
+          type: object
+          example:
+            department: department
+          additionalProperties:
+            type: string
+        email:
+          description: |
+            Name of the claim whose string value is attached to the provisioned principal as a custom identity keyed `email`. When a principal already carries it, that principal adopts the looked-up identity instead of a new one being provisioned.
+          type: string
+          example: email
+        groups:
+          description: |
+            Name of the claim carrying the names of the groups the provisioned principal joins — a string is one group, an array is many. Groups that do not exist yet are created. At most 100 groups per token.
+          type: string
+          example: groups
+        display_name:
+          description: |
+            Name of the claim whose string value becomes the provisioned principal's display name. When absent from the token, the lookup's claim value is used instead.
+          type: string
+          example: name
+    TrustedIdp:
+      description: |
+        A trusted external IdP for a token-vault enabled directory.
+      type: object
+      properties:
+        id:
+          description: The ID of the trusted IdP.
+          type: string
+          format: uuid
+        issuer_url:
+          $ref: '#/components/schemas/TrustedIdpIssuerUrl'
+        display_name:
+          $ref: '#/components/schemas/TrustedIdpDisplayName'
+        jwks_uri:
+          $ref: '#/components/schemas/TrustedIdpJwksUri'
+        jit_provisioning_enabled:
+          $ref: '#/components/schemas/TrustedIdpJitProvisioningEnabled'
+        vault_access_enabled:
+          $ref: '#/components/schemas/TrustedIdpVaultAccessEnabled'
+        jit:
+          $ref: '#/components/schemas/TrustedIdpJit'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - issuer_url
+        - jwks_uri
+        - jit_provisioning_enabled
+        - vault_access_enabled
+        - created_at
+        - updated_at
+    ListTrustedIdps:
+      description: A paginated list of trusted IdPs.
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrustedIdp'
+      required:
+        - meta
+        - data
+    VaultCredential:
+      description: |
+        A token-vault provider a principal has authorized via the OAuth 2.0 authorization_code flow.
+      type: object
+      properties:
+        id:
+          description: The ID of the vault credential record.
+          type: string
+          format: uuid
+        provider:
+          description: The authorized vault provider.
+          type: object
+          properties:
+            id:
+              description: The ID of the authorized vault provider.
+              type: string
+              format: uuid
+            name:
+              description: The name of the authorized vault provider.
+              type: string
+          required:
+            - id
+            - name
+        template_name:
+          description: The provider template this vault provider is based on.
+          type: string
+          example: github
+        status:
+          description: The status of the authorized credential.
+          type: string
+          example: active
+        expires_at:
+          description: 'Expiry of the current access token, if any.'
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - provider
+        - template_name
+        - status
+        - created_at
+        - updated_at
+    ListVaultCredentials:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VaultCredential'
+      required:
+        - meta
+        - data
     CursorPageParameters:
       type: object
       properties:
@@ -39078,6 +41604,20 @@ components:
         - trusted_idp
       readOnly: true
       x-speakeasy-unknown-values: allow
+    KongGroupType:
+      description: |-
+        Classifies the kind of group. `group` is the default policy-attachment
+        point for access across principals. `team` is a node of the
+        organization chart: its members are principals of type `user` and other
+        `team` groups, and it may carry an `owner` custom identity
+        referencing a principal of type `user`. When omitted or null, the
+        group is a `group`.
+      type: string
+      enum:
+        - group
+        - team
+      nullable: true
+      x-speakeasy-unknown-values: allow
     ManagedByUpdate:
       description: |
         Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
@@ -39103,6 +41643,11 @@ components:
       format: date-time
       example: '2022-11-04T20:10:06.927Z'
       nullable: true
+    UUID_RW:
+      description: Contains a unique identifier used for this resource.
+      type: string
+      format: uuid
+      example: 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7
     ImageDataUri:
       example: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA'
       oneOf:
@@ -106095,6 +108640,34 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdatePrincipalBody'
+    CreateGroupRequest:
+      description: Group to be created
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateGroupBody'
+    ReplaceGroupRequest:
+      description: Group to be replaced
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplaceGroupBody'
+    CreateGroupMembershipEntryRequest:
+      description: Member to add to a group's membership
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateGroupMembershipEntryBody'
+    BatchCreateGroupMembershipEntriesRequest:
+      description: Members to add to a group's membership
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchCreateGroupMembershipEntriesBody'
     CreateKeyRequest:
       description: Key to be created
       required: true
@@ -106172,6 +108745,76 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdatePrincipalIdentityBody'
+    CreateVaultProviderRequest:
+      description: Vault provider to be created
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateVaultProviderBody'
+    PatchVaultProviderRequest:
+      description: Fields to update on a vault provider
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PatchVaultProviderBody'
+    ReplaceVaultProviderRequest:
+      description: Vault provider configuration to replace the existing one
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplaceVaultProviderBody'
+    CreateVaultProviderCredentialRequest:
+      description: Shared credential to be created for a vault provider
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SetVaultProviderCredentialBody'
+    UpdateVaultProviderCredentialRequest:
+      description: Shared credential value to replace the existing one
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SetVaultProviderCredentialBody'
+    CreateVaultKeyRequest:
+      description: Vault key to be created
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateVaultKeyBody'
+    PatchVaultKeyRequest:
+      description: Fields to update on a vault key
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PatchVaultKeyBody'
+    CreateTrustedIdpRequest:
+      description: Trusted IdP to be created
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateTrustedIdpPayload'
+    UpdateTrustedIdpRequest:
+      description: Fields to update on a trusted IdP
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateTrustedIdpBody'
+    ReplaceTrustedIdpRequest:
+      description: Trusted IdP to be replaced
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplaceTrustedIdpBody'
     CreateApiRequest:
       required: true
       content:
@@ -109764,12 +112407,54 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/KongPrincipal'
+    KongImportReportResponse:
+      description: 'Import report — counts, warnings, and per-row errors'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KongImportReport'
     ListKongPrincipalsResponse:
       description: List of Kong Principals
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ListKongPrincipals'
+    ListKongPrincipalGroupsResponse:
+      description: List of the groups of a principal
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListKongPrincipalGroups'
+    KongGroupResponse:
+      description: Response containing a single group object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KongGroup'
+    ListKongGroupsResponse:
+      description: List of Kong Groups
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListKongGroups'
+    KongGroupMembershipEntryResponse:
+      description: Response containing a single group membership entry
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KongGroupMembershipEntry'
+    BatchKongGroupMembershipResponse:
+      description: Members were added to the group
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchKongGroupMembership'
+    ListKongGroupMembershipResponse:
+      description: List of a Group's membership entries
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListKongGroupMembership'
     KongPrincipalCreateKeyResponse:
       description: A Kong Principal Key
       content:
@@ -109830,6 +112515,84 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ListKongPrincipalIdentities'
+    VaultProviderResponse:
+      description: A vault provider
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VaultProvider'
+    ListVaultProvidersResponse:
+      description: List of vault providers
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListVaultProviders'
+    VaultKeyResponse:
+      description: A vault key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VaultKey'
+    ListVaultKeysResponse:
+      description: List of vault keys
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListVaultKeys'
+    VaultProviderCredentialResponse:
+      description: Shared credential metadata (never includes the value)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VaultProviderCredential'
+    VaultProviderCredentialSharedResponse:
+      description: Shared credential metadata (never includes the value)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VaultProviderCredentialShared'
+    ListVaultProviderCredentialsResponse:
+      description: List of shared credential metadata for a provider
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListVaultProviderCredentials'
+    CredentialProviderTemplateResponse:
+      description: A credential provider template
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CredentialProviderTemplate'
+    ListCredentialProviderTemplatesResponse:
+      description: List of credential provider templates
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListCredentialProviderTemplates'
+    TrustedIdpResponse:
+      description: A trusted IdP
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TrustedIdp'
+    TrustedIdpListResponse:
+      description: List of trusted IdPs
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListTrustedIdps'
+    VaultCredentialResponse:
+      description: A credential held by a principal
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VaultCredential'
+    ListVaultCredentialsResponse:
+      description: List of credentials held by a principal
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListVaultCredentials'
     ApiSlugConflict:
       description: Conflict - `slug` property must be unique
       content:
@@ -113291,6 +116054,24 @@ tags:
     description: |
       Identities represent external authentication associations for a principal. Each identity links a principal
       to an external system such as an OIDC provider, an auth server client, a control plane consumer, or a custom identifier.
+  - name: TokenVaultProviders
+    description: |
+      Vault providers configure credential providers for token-vault enabled directories.
+  - name: TokenVaultKeys
+    description: |
+      Vault keys are the public encryption keys used to protect token vault data for
+      a token-vault enabled directory.
+  - name: PrincipalGroup
+    description: |
+      Groups organize principals, or other groups, within a directory for authorization purposes.
+  - name: Trusted IdPs
+    description: |
+      Trusted IdPs configure the external identity providers a token-vault enabled directory trusts when
+      validating tokens. A directory can trust several IdPs, each with a distinct issuer.
+  - name: TokenVaultCredentials
+    description: |
+      Token vault credentials are the credentials that a principal has obtained by authorizing a token-vault provider. This resource is read-only: providers are authorized through the enrollment
+      flow, not through this API, so only listing, retrieving, and de-authorizing (delete) are supported.
   - name: API
   - name: API Documentation
   - name: API Specification
@@ -113720,7 +116501,7 @@ x-input-schemas:
     version: 3.10.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
-    version: 1.27.2
+    version: 1.28.1
     path: src/konnect/definitions/kong-identity/v2/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.49.0
