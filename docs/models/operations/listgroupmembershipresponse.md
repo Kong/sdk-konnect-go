@@ -1,0 +1,11 @@
+# ListGroupMembershipResponse
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `ContentType`                                                                             | `string`                                                                                  | :heavy_check_mark:                                                                        | HTTP response content type for this operation                                             |
+| `StatusCode`                                                                              | `int`                                                                                     | :heavy_check_mark:                                                                        | HTTP response status code for this operation                                              |
+| `RawResponse`                                                                             | [*http.Response](https://pkg.go.dev/net/http#Response)                                    | :heavy_check_mark:                                                                        | Raw HTTP response; suitable for custom response parsing                                   |
+| `ListKongGroupMembership`                                                                 | [*components.ListKongGroupMembership](../../models/components/listkonggroupmembership.md) | :heavy_minus_sign:                                                                        | List of a Group's membership entries                                                      |

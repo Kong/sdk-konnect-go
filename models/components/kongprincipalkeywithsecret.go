@@ -12,6 +12,9 @@ import (
 type KongPrincipalKeyWithSecret struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
+	// Human-readable name of the API key. `null` if the key has no name.
+	//
+	Name *string `json:"name"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -45,6 +48,13 @@ func (k *KongPrincipalKeyWithSecret) GetID() string {
 		return ""
 	}
 	return k.ID
+}
+
+func (k *KongPrincipalKeyWithSecret) GetName() *string {
+	if k == nil {
+		return nil
+	}
+	return k.Name
 }
 
 func (k *KongPrincipalKeyWithSecret) GetCreatedAt() time.Time {

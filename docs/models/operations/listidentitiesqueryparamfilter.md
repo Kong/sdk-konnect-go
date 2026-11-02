@@ -9,6 +9,6 @@ Example: `filter[type]="oidc"`
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `Type`                                                       | [*operations.Type](../../models/operations/type.md)          | :heavy_minus_sign:                                           | Filter using **one** of the following operators: `eq`, `oeq` |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `Type`                                                                  | [*operations.QueryParamType](../../models/operations/queryparamtype.md) | :heavy_minus_sign:                                                      | Filter using **one** of the following operators: `eq`, `oeq`            |

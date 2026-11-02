@@ -35,6 +35,9 @@ func (e *CreatePrincipalKeyBodyv1Type) UnmarshalJSON(data []byte) error {
 
 type CreatePrincipalKeyBodyv1 struct {
 	Type CreatePrincipalKeyBodyv1Type `json:"type"`
+	// Human-readable name of the API key. `null` if the key has no name.
+	//
+	Name *string `json:"name,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
@@ -58,6 +61,13 @@ func (c *CreatePrincipalKeyBodyv1) GetType() CreatePrincipalKeyBodyv1Type {
 		return CreatePrincipalKeyBodyv1Type("")
 	}
 	return c.Type
+}
+
+func (c *CreatePrincipalKeyBodyv1) GetName() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Name
 }
 
 func (c *CreatePrincipalKeyBodyv1) GetManagedBy() map[string]string {
@@ -94,8 +104,11 @@ func (e *CreatePrincipalKeyBodyImportedType) UnmarshalJSON(data []byte) error {
 }
 
 type CreatePrincipalKeyBodyImported struct {
-	Type   CreatePrincipalKeyBodyImportedType `json:"type"`
-	Secret string                             `json:"secret"`
+	Type CreatePrincipalKeyBodyImportedType `json:"type"`
+	// Human-readable name of the API key. `null` if the key has no name.
+	//
+	Name   *string `json:"name,omitempty"`
+	Secret string  `json:"secret"`
 }
 
 func (c CreatePrincipalKeyBodyImported) MarshalJSON() ([]byte, error) {
@@ -114,6 +127,13 @@ func (c *CreatePrincipalKeyBodyImported) GetType() CreatePrincipalKeyBodyImporte
 		return CreatePrincipalKeyBodyImportedType("")
 	}
 	return c.Type
+}
+
+func (c *CreatePrincipalKeyBodyImported) GetName() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Name
 }
 
 func (c *CreatePrincipalKeyBodyImported) GetSecret() string {

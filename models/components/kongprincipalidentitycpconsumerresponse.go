@@ -33,6 +33,29 @@ func (e *KongPrincipalIdentityCPConsumerResponseType) UnmarshalJSON(data []byte)
 	}
 }
 
+// ControlPlaneType - The kind of control plane the linked consumer was found in.
+type ControlPlaneType string
+
+const (
+	ControlPlaneTypeAPIGateway ControlPlaneType = "api_gateway"
+	ControlPlaneTypeAiGateway  ControlPlaneType = "ai_gateway"
+)
+
+func (e ControlPlaneType) ToPointer() *ControlPlaneType {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ControlPlaneType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "api_gateway", "ai_gateway":
+			return true
+		}
+	}
+	return false
+}
+
 type KongPrincipalIdentityCPConsumerResponse struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
@@ -54,6 +77,8 @@ type KongPrincipalIdentityCPConsumerResponse struct {
 	ControlPlaneID string                                      `json:"control_plane_id"`
 	ConsumerID     string                                      `json:"consumer_id"`
 	WorkspaceID    *string                                     `json:"workspace_id,omitempty"`
+	// The kind of control plane the linked consumer was found in.
+	ControlPlaneType ControlPlaneType `json:"control_plane_type"`
 }
 
 func (k KongPrincipalIdentityCPConsumerResponse) MarshalJSON() ([]byte, error) {
@@ -61,7 +86,7 @@ func (k KongPrincipalIdentityCPConsumerResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (k *KongPrincipalIdentityCPConsumerResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &k, "", false, []string{"id", "labels", "managed_by", "created_at", "updated_at", "type", "control_plane_id", "consumer_id"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &k, "", false, []string{"id", "labels", "managed_by", "created_at", "updated_at", "type", "control_plane_id", "consumer_id", "control_plane_type"}); err != nil {
 		return err
 	}
 	return nil
@@ -128,4 +153,11 @@ func (k *KongPrincipalIdentityCPConsumerResponse) GetWorkspaceID() *string {
 		return nil
 	}
 	return k.WorkspaceID
+}
+
+func (k *KongPrincipalIdentityCPConsumerResponse) GetControlPlaneType() ControlPlaneType {
+	if k == nil {
+		return ControlPlaneType("")
+	}
+	return k.ControlPlaneType
 }

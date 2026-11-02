@@ -12,26 +12,26 @@ var ListIdentitiesServerList = []string{
 	"https://us.api.konghq.com/",
 }
 
-// Type - Filter using **one** of the following operators: `eq`, `oeq`
-type Type struct {
+// QueryParamType - Filter using **one** of the following operators: `eq`, `oeq`
+type QueryParamType struct {
 	// The field exactly matches the provided value.
 	Eq *string `queryParam:"name=eq"`
 	// The field matches any of the provided values.
 	Oeq *string `queryParam:"name=oeq"`
 }
 
-func (t *Type) GetEq() *string {
-	if t == nil {
+func (q *QueryParamType) GetEq() *string {
+	if q == nil {
 		return nil
 	}
-	return t.Eq
+	return q.Eq
 }
 
-func (t *Type) GetOeq() *string {
-	if t == nil {
+func (q *QueryParamType) GetOeq() *string {
+	if q == nil {
 		return nil
 	}
-	return t.Oeq
+	return q.Oeq
 }
 
 // ListIdentitiesQueryParamFilter - Filter identities by field. Supported filter field:
@@ -40,10 +40,10 @@ func (t *Type) GetOeq() *string {
 // Example: `filter[type]="oidc"`
 type ListIdentitiesQueryParamFilter struct {
 	// Filter using **one** of the following operators: `eq`, `oeq`
-	Type *Type `queryParam:"name=type"`
+	Type *QueryParamType `queryParam:"name=type"`
 }
 
-func (l *ListIdentitiesQueryParamFilter) GetType() *Type {
+func (l *ListIdentitiesQueryParamFilter) GetType() *QueryParamType {
 	if l == nil {
 		return nil
 	}
