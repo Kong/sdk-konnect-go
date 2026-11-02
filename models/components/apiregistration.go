@@ -27,24 +27,24 @@ func (e *APIRegistrationStatus) IsExact() bool {
 	return false
 }
 
-type Portal struct {
+type APIRegistrationPortal struct {
 	// Contains a unique identifier used for this resource.
 	ID   string `json:"id"`
 	Name string `json:"name"`
 }
 
-func (p *Portal) GetID() string {
-	if p == nil {
+func (a *APIRegistrationPortal) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return p.ID
+	return a.ID
 }
 
-func (p *Portal) GetName() string {
-	if p == nil {
+func (a *APIRegistrationPortal) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return p.Name
+	return a.Name
 }
 
 type APIRegistrationApplication struct {
@@ -88,7 +88,7 @@ type APIRegistration struct {
 	// Contains a unique identifier used for this resource.
 	ID          string                     `json:"id"`
 	Status      APIRegistrationStatus      `json:"status"`
-	Portal      Portal                     `json:"portal"`
+	Portal      APIRegistrationPortal      `json:"portal"`
 	Application APIRegistrationApplication `json:"application"`
 }
 
@@ -106,9 +106,9 @@ func (a *APIRegistration) GetStatus() APIRegistrationStatus {
 	return a.Status
 }
 
-func (a *APIRegistration) GetPortal() Portal {
+func (a *APIRegistration) GetPortal() APIRegistrationPortal {
 	if a == nil {
-		return Portal{}
+		return APIRegistrationPortal{}
 	}
 	return a.Portal
 }
