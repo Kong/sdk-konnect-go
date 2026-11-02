@@ -146,7 +146,7 @@ generate.deepcopy: controller-gen
 		$(shell git ls-files docs/models/components/healthchecks*.md)
 
 .PHONY: generate.sdk.speakeasy
-generate.sdk.speakeasy: speakeasy
+generate.sdk.speakeasy: speakeasy validate.kongctl-overlays
 	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
 
 .PHONY: lint.sdk
@@ -163,6 +163,7 @@ generate.sdk:
 	git add --update .
 	$(MAKE) generate.deepcopy
 	$(MAKE) _generate.omitempty
+	python3 kongctl-patches/apply.py post-generate .
 	go mod tidy
 	$(MAKE) lint.sdk
 
@@ -281,3 +282,10 @@ test.fields:
 .PHONY: verify.diff
 verify.diff:
 	@$(PROJECT_DIR)/scripts/verify-diff.sh $(PROJECT_DIR)
+
+.PHONY: validate.kongctl-overlays
+validate.kongctl-overlays:
+	@for overlay in $(sort $(wildcard kongctl-patches/overlays/*.yaml)); do \
+		speakeasy overlay validate --overlay $$overlay; \
+		speakeasy overlay apply --strict --schema $(OPENAPI_FILE) --overlay $$overlay --out /dev/null; \
+	done
