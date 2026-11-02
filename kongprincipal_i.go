@@ -11,6 +11,17 @@ import (
 
 // KongPrincipalSDK is a generated interface.
 type KongPrincipalSDK interface {
+	// ImportOrgChart - Import user principals from a canonical CSV
+	// Imports user principals in bulk from a canonical CSV file. Each row
+	// creates one user principal — tagged hris_import, stamped with the
+	// row's external_id — plus its email custom identity. The optional
+	// cost_center column is stored in the principal's metadata as
+	// cost_center; rows matched to existing principals adopt the file's
+	// value, and a blank cell clears the stored one, while a file without
+	// the column leaves existing cost centers untouched. The file is
+	// validated in full before anything is written; the response is a
+	// report of counts and per-row errors, never the created rows.
+	ImportOrgChart(ctx context.Context, directoryID string, importPrincipalsRequest components.ImportPrincipalsRequest, opts ...operations.Option) (*operations.ImportOrgChartResponse, error)
 	// CreatePrincipal - Create a Principal in a Directory
 	// Creates a new principal identity within the specified directory.
 	// Principals can be configured with metadata and labels for organizational purposes.
@@ -33,4 +44,7 @@ type KongPrincipalSDK interface {
 	// DeletePrincipal - Delete a Principal
 	// Permanently deletes a principal from the directory.
 	DeletePrincipal(ctx context.Context, directoryID string, principalID string, opts ...operations.Option) (*operations.DeletePrincipalResponse, error)
+	// ListPrincipalGroups - List the groups of a principal
+	// Retrieves a paginated list of every group the principal belongs to, of any type, including memberships inherited through nested teams. Results are ordered by when the membership was created, oldest first.
+	ListPrincipalGroups(ctx context.Context, request operations.ListPrincipalGroupsRequest, opts ...operations.Option) (*operations.ListPrincipalGroupsResponse, error)
 }

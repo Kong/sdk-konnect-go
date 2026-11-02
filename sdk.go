@@ -393,7 +393,10 @@ type SDK struct {
 	// DP Nodes
 	DPNodes            *DPNodes
 	ControlPlaneGroups *ControlPlaneGroups
-	Dashboards         *Dashboards
+	// Vault providers configure credential providers for token-vault enabled directories.
+	//
+	TokenVaultProviders *TokenVaultProviders
+	Dashboards          *Dashboards
 	// Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
 	// For instance, they will be able to perform dynamic client registration (DCR) with the provider.
 	// The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
@@ -405,6 +408,9 @@ type SDK struct {
 	// directories can be used across multiple control planes.
 	//
 	KongIdentityDirectories *KongIdentityDirectories
+	// Groups organize principals, or other groups, within a directory for authorization purposes.
+	//
+	PrincipalGroup *PrincipalGroup
 	// Principals represent identities within a directory that can be authenticated and authorized.
 	// Each principal can have associated metadata and API keys for authentication purposes.
 	//
@@ -416,7 +422,19 @@ type SDK struct {
 	// Identities represent external authentication associations for a principal. Each identity links a principal
 	// to an external system such as an OIDC provider, an auth server client, a control plane consumer, or a custom identifier.
 	//
-	KongPrincipalIdentity   *KongPrincipalIdentity
+	KongPrincipalIdentity *KongPrincipalIdentity
+	// Token vault credentials are the credentials that a principal has obtained by authorizing a token-vault provider. This resource is read-only: providers are authorized through the enrollment
+	// flow, not through this API, so only listing, retrieving, and de-authorizing (delete) are supported.
+	//
+	TokenVaultCredentials *TokenVaultCredentials
+	// Trusted IdPs configure the external identity providers a token-vault enabled directory trusts when
+	// validating tokens. A directory can trust several IdPs, each with a distinct issuer.
+	//
+	TrustedIDPs *TrustedIDPs
+	// Vault keys are the public encryption keys used to protect token vault data for
+	// a token-vault enabled directory.
+	//
+	TokenVaultKeys          *TokenVaultKeys
 	APIAttributes           *APIAttributes
 	APIImplementation       *APIImplementation
 	APIPackages             *APIPackages
@@ -713,12 +731,17 @@ func New(opts ...SDKOption) *SDK {
 	sdk.DPCertificates = newDPCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TokenVaultProviders = newTokenVaultProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Dashboards = newDashboards(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DCRProviders = newDCRProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.KongIdentityDirectories = newKongIdentityDirectories(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PrincipalGroup = newPrincipalGroup(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.KongPrincipal = newKongPrincipal(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.KongPrincipalCredential = newKongPrincipalCredential(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.KongPrincipalIdentity = newKongPrincipalIdentity(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TokenVaultCredentials = newTokenVaultCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TrustedIDPs = newTrustedIDPs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TokenVaultKeys = newTokenVaultKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIAttributes = newAPIAttributes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIImplementation = newAPIImplementation(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIPackages = newAPIPackages(sdk, sdk.sdkConfiguration, sdk.hooks)

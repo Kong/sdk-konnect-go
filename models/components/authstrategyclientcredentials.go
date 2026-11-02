@@ -7,19 +7,19 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type CredentialType string
+type AuthStrategyClientCredentialsCredentialType string
 
 const (
-	CredentialTypeClientCredentials            CredentialType = "client_credentials"
-	CredentialTypeSelfManagedClientCredentials CredentialType = "self_managed_client_credentials"
+	AuthStrategyClientCredentialsCredentialTypeClientCredentials            AuthStrategyClientCredentialsCredentialType = "client_credentials"
+	AuthStrategyClientCredentialsCredentialTypeSelfManagedClientCredentials AuthStrategyClientCredentialsCredentialType = "self_managed_client_credentials"
 )
 
-func (e CredentialType) ToPointer() *CredentialType {
+func (e AuthStrategyClientCredentialsCredentialType) ToPointer() *AuthStrategyClientCredentialsCredentialType {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *CredentialType) IsExact() bool {
+func (e *AuthStrategyClientCredentialsCredentialType) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "client_credentials", "self_managed_client_credentials":
@@ -32,10 +32,10 @@ func (e *CredentialType) IsExact() bool {
 // AuthStrategyClientCredentials - Client Credential Auth strategy that the application uses.
 type AuthStrategyClientCredentials struct {
 	// The Application Auth Strategy ID.
-	ID             string         `json:"id"`
-	Name           *string        `default:"name" json:"name"`
-	CredentialType CredentialType `json:"credential_type"`
-	AuthMethods    []string       `json:"auth_methods"`
+	ID             string                                      `json:"id"`
+	Name           *string                                     `default:"name" json:"name"`
+	CredentialType AuthStrategyClientCredentialsCredentialType `json:"credential_type"`
+	AuthMethods    []string                                    `json:"auth_methods"`
 	// Possible developer selectable scopes for an application. Only present when using DCR Provider that supports it.
 	AvailableScopes []string `json:"available_scopes,omitempty"`
 }
@@ -65,9 +65,9 @@ func (a *AuthStrategyClientCredentials) GetName() *string {
 	return a.Name
 }
 
-func (a *AuthStrategyClientCredentials) GetCredentialType() CredentialType {
+func (a *AuthStrategyClientCredentials) GetCredentialType() AuthStrategyClientCredentialsCredentialType {
 	if a == nil {
-		return CredentialType("")
+		return AuthStrategyClientCredentialsCredentialType("")
 	}
 	return a.CredentialType
 }

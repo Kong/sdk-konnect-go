@@ -1,0 +1,10 @@
+# ReplaceVaultProviderRequest
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `DirectoryID`                                                                              | `string`                                                                                   | :heavy_check_mark:                                                                         | ID of the directory                                                                        |
+| `ProviderID`                                                                               | `string`                                                                                   | :heavy_check_mark:                                                                         | ID of the vault provider                                                                   |
+| `ReplaceVaultProviderBody`                                                                 | [components.ReplaceVaultProviderBody](../../models/components/replacevaultproviderbody.md) | :heavy_check_mark:                                                                         | Vault provider configuration to replace the existing one                                   |

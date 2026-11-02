@@ -1,0 +1,10 @@
+# ReplaceGroupRequest
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `DirectoryID`                                                              | `string`                                                                   | :heavy_check_mark:                                                         | ID of the directory                                                        |
+| `GroupID`                                                                  | `string`                                                                   | :heavy_check_mark:                                                         | Unique identifier of the group (UUID format)                               |
+| `ReplaceGroupBody`                                                         | [components.ReplaceGroupBody](../../models/components/replacegroupbody.md) | :heavy_check_mark:                                                         | Group to be replaced                                                       |
