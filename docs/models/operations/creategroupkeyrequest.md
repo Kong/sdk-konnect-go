@@ -1,0 +1,10 @@
+# CreateGroupKeyRequest
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `DirectoryID`                                                                          | `string`                                                                               | :heavy_check_mark:                                                                     | ID of the directory                                                                    |
+| `GroupID`                                                                              | `string`                                                                               | :heavy_check_mark:                                                                     | Unique identifier of the group (UUID format)                                           |
+| `CreatePrincipalKeyBody`                                                               | [components.CreatePrincipalKeyBody](../../models/components/createprincipalkeybody.md) | :heavy_check_mark:                                                                     | Key to be created                                                                      |

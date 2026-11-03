@@ -315,6 +315,178 @@ func (_c *MockKongPrincipalSDK_GetPrincipal_Call) RunAndReturn(run func(ctx cont
 	return _c
 }
 
+// ImportOrgChart provides a mock function for the type MockKongPrincipalSDK
+func (_mock *MockKongPrincipalSDK) ImportOrgChart(ctx context.Context, directoryID string, importPrincipalsRequest components.ImportPrincipalsRequest, opts ...operations.Option) (*operations.ImportOrgChartResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, directoryID, importPrincipalsRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, directoryID, importPrincipalsRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ImportOrgChart")
+	}
+
+	var r0 *operations.ImportOrgChartResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.ImportPrincipalsRequest, ...operations.Option) (*operations.ImportOrgChartResponse, error)); ok {
+		return returnFunc(ctx, directoryID, importPrincipalsRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.ImportPrincipalsRequest, ...operations.Option) *operations.ImportOrgChartResponse); ok {
+		r0 = returnFunc(ctx, directoryID, importPrincipalsRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ImportOrgChartResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.ImportPrincipalsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, directoryID, importPrincipalsRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockKongPrincipalSDK_ImportOrgChart_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ImportOrgChart'
+type MockKongPrincipalSDK_ImportOrgChart_Call struct {
+	*mock.Call
+}
+
+// ImportOrgChart is a helper method to define mock.On call
+//   - ctx context.Context
+//   - directoryID string
+//   - importPrincipalsRequest components.ImportPrincipalsRequest
+//   - opts ...operations.Option
+func (_e *MockKongPrincipalSDK_Expecter) ImportOrgChart(ctx any, directoryID any, importPrincipalsRequest any, opts ...any) *MockKongPrincipalSDK_ImportOrgChart_Call {
+	return &MockKongPrincipalSDK_ImportOrgChart_Call{Call: _e.mock.On("ImportOrgChart",
+		append([]any{ctx, directoryID, importPrincipalsRequest}, opts...)...)}
+}
+
+func (_c *MockKongPrincipalSDK_ImportOrgChart_Call) Run(run func(ctx context.Context, directoryID string, importPrincipalsRequest components.ImportPrincipalsRequest, opts ...operations.Option)) *MockKongPrincipalSDK_ImportOrgChart_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.ImportPrincipalsRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.ImportPrincipalsRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockKongPrincipalSDK_ImportOrgChart_Call) Return(importOrgChartResponse *operations.ImportOrgChartResponse, err error) *MockKongPrincipalSDK_ImportOrgChart_Call {
+	_c.Call.Return(importOrgChartResponse, err)
+	return _c
+}
+
+func (_c *MockKongPrincipalSDK_ImportOrgChart_Call) RunAndReturn(run func(ctx context.Context, directoryID string, importPrincipalsRequest components.ImportPrincipalsRequest, opts ...operations.Option) (*operations.ImportOrgChartResponse, error)) *MockKongPrincipalSDK_ImportOrgChart_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListPrincipalGroups provides a mock function for the type MockKongPrincipalSDK
+func (_mock *MockKongPrincipalSDK) ListPrincipalGroups(ctx context.Context, request operations.ListPrincipalGroupsRequest, opts ...operations.Option) (*operations.ListPrincipalGroupsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPrincipalGroups")
+	}
+
+	var r0 *operations.ListPrincipalGroupsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPrincipalGroupsRequest, ...operations.Option) (*operations.ListPrincipalGroupsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPrincipalGroupsRequest, ...operations.Option) *operations.ListPrincipalGroupsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListPrincipalGroupsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListPrincipalGroupsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockKongPrincipalSDK_ListPrincipalGroups_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrincipalGroups'
+type MockKongPrincipalSDK_ListPrincipalGroups_Call struct {
+	*mock.Call
+}
+
+// ListPrincipalGroups is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListPrincipalGroupsRequest
+//   - opts ...operations.Option
+func (_e *MockKongPrincipalSDK_Expecter) ListPrincipalGroups(ctx any, request any, opts ...any) *MockKongPrincipalSDK_ListPrincipalGroups_Call {
+	return &MockKongPrincipalSDK_ListPrincipalGroups_Call{Call: _e.mock.On("ListPrincipalGroups",
+		append([]any{ctx, request}, opts...)...)}
+}
+
+func (_c *MockKongPrincipalSDK_ListPrincipalGroups_Call) Run(run func(ctx context.Context, request operations.ListPrincipalGroupsRequest, opts ...operations.Option)) *MockKongPrincipalSDK_ListPrincipalGroups_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListPrincipalGroupsRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListPrincipalGroupsRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockKongPrincipalSDK_ListPrincipalGroups_Call) Return(listPrincipalGroupsResponse *operations.ListPrincipalGroupsResponse, err error) *MockKongPrincipalSDK_ListPrincipalGroups_Call {
+	_c.Call.Return(listPrincipalGroupsResponse, err)
+	return _c
+}
+
+func (_c *MockKongPrincipalSDK_ListPrincipalGroups_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPrincipalGroupsRequest, opts ...operations.Option) (*operations.ListPrincipalGroupsResponse, error)) *MockKongPrincipalSDK_ListPrincipalGroups_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListPrincipals provides a mock function for the type MockKongPrincipalSDK
 func (_mock *MockKongPrincipalSDK) ListPrincipals(ctx context.Context, request operations.ListPrincipalsRequest, opts ...operations.Option) (*operations.ListPrincipalsResponse, error) {
 	var tmpRet mock.Arguments
