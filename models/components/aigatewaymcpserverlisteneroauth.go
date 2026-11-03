@@ -30,7 +30,7 @@ type AIGatewayMCPServerListenerOauth struct {
 	// exposed by this MCP Server unless a specific tool overrides it via that tool's own
 	// `access.acls`.
 	//
-	DefaultToolAcls *AIGatewayMCPACLs `json:"default_tool_acls,omitempty"`
+	DefaultToolAcls *AIGatewayMCPDefaultToolACLs `json:"default_tool_acls,omitempty"`
 	// List of identity providers for granting access to the MCP server.
 	// At most 1 identity provider of each identity provider type can be referenced.
 	//
@@ -76,7 +76,7 @@ func (a *AIGatewayMCPServerListenerOauth) GetAcls() *AIGatewayMCPACLs {
 	return a.Acls
 }
 
-func (a *AIGatewayMCPServerListenerOauth) GetDefaultToolAcls() *AIGatewayMCPACLs {
+func (a *AIGatewayMCPServerListenerOauth) GetDefaultToolAcls() *AIGatewayMCPDefaultToolACLs {
 	if a == nil {
 		return nil
 	}

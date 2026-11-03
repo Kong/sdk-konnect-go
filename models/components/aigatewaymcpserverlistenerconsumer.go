@@ -25,7 +25,7 @@ type AIGatewayMCPServerListenerConsumer struct {
 	// Applies to every tool exposed by this MCP Server unless a specific tool overrides it via
 	// that tool's own `access.acls`.
 	//
-	DefaultToolAcls *AIGatewayMCPACLs `json:"default_tool_acls,omitempty"`
+	DefaultToolAcls *AIGatewayMCPDefaultToolACLs `json:"default_tool_acls,omitempty"`
 	// List of identity providers for granting access to the MCP server.
 	// At most 1 identity provider of each identity provider type can be referenced.
 	//
@@ -64,7 +64,7 @@ func (a *AIGatewayMCPServerListenerConsumer) GetAcls() *AIGatewayMCPACLs {
 	return a.Acls
 }
 
-func (a *AIGatewayMCPServerListenerConsumer) GetDefaultToolAcls() *AIGatewayMCPACLs {
+func (a *AIGatewayMCPServerListenerConsumer) GetDefaultToolAcls() *AIGatewayMCPDefaultToolACLs {
 	if a == nil {
 		return nil
 	}
