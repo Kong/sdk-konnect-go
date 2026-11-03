@@ -85938,7 +85938,7 @@ components:
           items:
             $ref: '#/components/schemas/AIGatewayAuthStrategyReference'
       additionalProperties: false
-    AIGatewayMCPACLs:
+    AIGatewayMCPDefaultToolACLs:
       description: 'Access control rules for MCP resources. Configure `allow`, `deny`, or both.'
       type: object
       properties:
@@ -85987,6 +85987,57 @@ components:
           - has(principal.metadata.tier) && principal.metadata.tier == 'partner'
         deny_when:
           - has(principal.metadata.role) && principal.metadata.role != 'admin'
+    AIGatewayMCPACLs:
+      description: 'Access control rules for MCP resources. Configure exactly one of `allow`, `deny`, `allow_when`, or `deny_when`.'
+      oneOf:
+        - $ref: '#/components/schemas/AIGatewayAllowACL'
+        - $ref: '#/components/schemas/AIGatewayDenyACL'
+        - $ref: '#/components/schemas/AIGatewayMCPAllowWhenACL'
+        - $ref: '#/components/schemas/AIGatewayMCPDenyWhenACL'
+    AIGatewayMCPAllowWhenACL:
+      type: object
+      properties:
+        allow_when:
+          description: |-
+            Allow the request if it matches any of these CEL boolean expressions evaluated against the request context.
+
+            **Requires a minimum runtime version of `2.3`**.
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 1024
+            x-expression:
+              type: boolean
+          x-min-runtime-version: '2.3'
+      example:
+        allow_when:
+          - has(principal.metadata.tier) && principal.metadata.tier == 'partner'
+      additionalProperties: false
+      required:
+        - allow_when
+    AIGatewayMCPDenyWhenACL:
+      type: object
+      properties:
+        deny_when:
+          description: |-
+            Deny the request if it matches any of these CEL boolean expressions evaluated against the request context.
+
+            **Requires a minimum runtime version of `2.3`**.
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 1024
+            x-expression:
+              type: boolean
+          x-min-runtime-version: '2.3'
+      example:
+        deny_when:
+          - has(principal.metadata.role) && principal.metadata.role != 'admin'
+      additionalProperties: false
+      required:
+        - deny_when
     AIGatewayPolicyReferences:
       description: List of policy references.
       type: array
@@ -90067,7 +90118,7 @@ components:
             Applies to every tool exposed by this MCP Server unless a specific tool overrides it via
             that tool's own `access.acls`.
           allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPACLs'
+            - $ref: '#/components/schemas/AIGatewayMCPDefaultToolACLs'
         identity_providers:
           description: |
             List of identity providers for granting access to the MCP server.
@@ -90128,7 +90179,7 @@ components:
             exposed by this MCP Server unless a specific tool overrides it via that tool's own
             `access.acls`.
           allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPACLs'
+            - $ref: '#/components/schemas/AIGatewayMCPDefaultToolACLs'
         identity_providers:
           description: |
             List of identity providers for granting access to the MCP server.
@@ -116494,7 +116545,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.1
+    version: 2.3.2
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
