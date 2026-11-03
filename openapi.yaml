@@ -17873,12 +17873,15 @@ paths:
       summary: List vault providers
       description: |
         Returns a paginated list of credential providers for a vault-enabled directory.
+
+        Results are sorted by name in ascending order by default.
       parameters:
         - $ref: '#/components/parameters/CursorPageQuery'
         - name: sort
           in: query
           description: |
             Sorts vault providers. Supported sort attributes are:
+            - name
             - created_at
             - updated_at
           required: false
@@ -116518,7 +116521,7 @@ x-input-schemas:
     version: 3.10.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
-    version: 1.28.1
+    version: 1.28.2
     path: src/konnect/definitions/kong-identity/v2/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.49.0
