@@ -4,60 +4,122 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AIGatewayMCPACLs - Access control rules for MCP resources. Configure `allow`, `deny`, or both.
+type AIGatewayMCPACLsType string
+
+const (
+	AIGatewayMCPACLsTypeAIGatewayAllowACL        AIGatewayMCPACLsType = "AIGatewayAllowACL"
+	AIGatewayMCPACLsTypeAIGatewayDenyACL         AIGatewayMCPACLsType = "AIGatewayDenyACL"
+	AIGatewayMCPACLsTypeAIGatewayMCPAllowWhenACL AIGatewayMCPACLsType = "AIGatewayMCPAllowWhenACL"
+	AIGatewayMCPACLsTypeAIGatewayMCPDenyWhenACL  AIGatewayMCPACLsType = "AIGatewayMCPDenyWhenACL"
+)
+
+// AIGatewayMCPACLs - Access control rules for MCP resources. Configure exactly one of `allow`, `deny`, `allow_when`, or `deny_when`.
 type AIGatewayMCPACLs struct {
-	// List of consumer groups that are permitted access.
-	Allow []string `json:"allow,omitempty"`
-	// List of consumer groups that are denied access.
-	Deny []string `json:"deny,omitempty"`
-	// Allow the request if it matches any of these CEL boolean expressions evaluated against the request context.
-	//
-	// **Requires a minimum runtime version of `2.3`**.
-	AllowWhen []string `json:"allow_when,omitempty"`
-	// Deny the request if it matches any of these CEL boolean expressions evaluated against the request context.
-	//
-	// **Requires a minimum runtime version of `2.3`**.
-	DenyWhen []string `json:"deny_when,omitempty"`
+	AIGatewayAllowACL        *AIGatewayAllowACL        `queryParam:"inline" union:"member"`
+	AIGatewayDenyACL         *AIGatewayDenyACL         `queryParam:"inline" union:"member"`
+	AIGatewayMCPAllowWhenACL *AIGatewayMCPAllowWhenACL `queryParam:"inline" union:"member"`
+	AIGatewayMCPDenyWhenACL  *AIGatewayMCPDenyWhenACL  `queryParam:"inline" union:"member"`
+
+	Type AIGatewayMCPACLsType
 }
 
-func (a AIGatewayMCPACLs) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
+func CreateAIGatewayMCPACLsAIGatewayAllowACL(aiGatewayAllowACL AIGatewayAllowACL) AIGatewayMCPACLs {
+	typ := AIGatewayMCPACLsTypeAIGatewayAllowACL
 
-func (a *AIGatewayMCPACLs) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
+	return AIGatewayMCPACLs{
+		AIGatewayAllowACL: &aiGatewayAllowACL,
+		Type:              typ,
 	}
-	return nil
 }
 
-func (a *AIGatewayMCPACLs) GetAllow() []string {
-	if a == nil {
+func CreateAIGatewayMCPACLsAIGatewayDenyACL(aiGatewayDenyACL AIGatewayDenyACL) AIGatewayMCPACLs {
+	typ := AIGatewayMCPACLsTypeAIGatewayDenyACL
+
+	return AIGatewayMCPACLs{
+		AIGatewayDenyACL: &aiGatewayDenyACL,
+		Type:             typ,
+	}
+}
+
+func CreateAIGatewayMCPACLsAIGatewayMCPAllowWhenACL(aiGatewayMCPAllowWhenACL AIGatewayMCPAllowWhenACL) AIGatewayMCPACLs {
+	typ := AIGatewayMCPACLsTypeAIGatewayMCPAllowWhenACL
+
+	return AIGatewayMCPACLs{
+		AIGatewayMCPAllowWhenACL: &aiGatewayMCPAllowWhenACL,
+		Type:                     typ,
+	}
+}
+
+func CreateAIGatewayMCPACLsAIGatewayMCPDenyWhenACL(aiGatewayMCPDenyWhenACL AIGatewayMCPDenyWhenACL) AIGatewayMCPACLs {
+	typ := AIGatewayMCPACLsTypeAIGatewayMCPDenyWhenACL
+
+	return AIGatewayMCPACLs{
+		AIGatewayMCPDenyWhenACL: &aiGatewayMCPDenyWhenACL,
+		Type:                    typ,
+	}
+}
+
+func (u *AIGatewayMCPACLs) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = AIGatewayMCPACLs{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var aiGatewayAllowACL AIGatewayAllowACL = AIGatewayAllowACL{}
+	if err := utils.UnmarshalJSON(data, &aiGatewayAllowACL, "", true, nil); err == nil {
+		u.AIGatewayAllowACL = &aiGatewayAllowACL
+		u.Type = AIGatewayMCPACLsTypeAIGatewayAllowACL
 		return nil
 	}
-	return a.Allow
-}
 
-func (a *AIGatewayMCPACLs) GetDeny() []string {
-	if a == nil {
+	var aiGatewayDenyACL AIGatewayDenyACL = AIGatewayDenyACL{}
+	if err := utils.UnmarshalJSON(data, &aiGatewayDenyACL, "", true, nil); err == nil {
+		u.AIGatewayDenyACL = &aiGatewayDenyACL
+		u.Type = AIGatewayMCPACLsTypeAIGatewayDenyACL
 		return nil
 	}
-	return a.Deny
-}
 
-func (a *AIGatewayMCPACLs) GetAllowWhen() []string {
-	if a == nil {
+	var aiGatewayMCPAllowWhenACL AIGatewayMCPAllowWhenACL = AIGatewayMCPAllowWhenACL{}
+	if err := utils.UnmarshalJSON(data, &aiGatewayMCPAllowWhenACL, "", true, nil); err == nil {
+		u.AIGatewayMCPAllowWhenACL = &aiGatewayMCPAllowWhenACL
+		u.Type = AIGatewayMCPACLsTypeAIGatewayMCPAllowWhenACL
 		return nil
 	}
-	return a.AllowWhen
-}
 
-func (a *AIGatewayMCPACLs) GetDenyWhen() []string {
-	if a == nil {
+	var aiGatewayMCPDenyWhenACL AIGatewayMCPDenyWhenACL = AIGatewayMCPDenyWhenACL{}
+	if err := utils.UnmarshalJSON(data, &aiGatewayMCPDenyWhenACL, "", true, nil); err == nil {
+		u.AIGatewayMCPDenyWhenACL = &aiGatewayMCPDenyWhenACL
+		u.Type = AIGatewayMCPACLsTypeAIGatewayMCPDenyWhenACL
 		return nil
 	}
-	return a.DenyWhen
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AIGatewayMCPACLs", string(data))
+}
+
+func (u AIGatewayMCPACLs) MarshalJSON() ([]byte, error) {
+	if u.AIGatewayAllowACL != nil {
+		return utils.MarshalJSON(u.AIGatewayAllowACL, "", true)
+	}
+
+	if u.AIGatewayDenyACL != nil {
+		return utils.MarshalJSON(u.AIGatewayDenyACL, "", true)
+	}
+
+	if u.AIGatewayMCPAllowWhenACL != nil {
+		return utils.MarshalJSON(u.AIGatewayMCPAllowWhenACL, "", true)
+	}
+
+	if u.AIGatewayMCPDenyWhenACL != nil {
+		return utils.MarshalJSON(u.AIGatewayMCPDenyWhenACL, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type AIGatewayMCPACLs: all fields are null")
 }
