@@ -64,6 +64,7 @@ type ListVaultProvidersRequest struct {
 	// Determines which page of the collection to retrieve.
 	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
 	// Sorts vault providers. Supported sort attributes are:
+	// - name
 	// - created_at
 	// - updated_at
 	//

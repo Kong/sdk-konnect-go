@@ -22,6 +22,8 @@ type TokenVaultProvidersSDK interface {
 	CreateVaultProvider(ctx context.Context, directoryID string, createVaultProviderBody components.CreateVaultProviderBody, opts ...operations.Option) (*operations.CreateVaultProviderResponse, error)
 	// ListVaultProviders - List vault providers
 	// Returns a paginated list of credential providers for a vault-enabled directory.
+	//
+	// Results are sorted by name in ascending order by default.
 	ListVaultProviders(ctx context.Context, request operations.ListVaultProvidersRequest, opts ...operations.Option) (*operations.ListVaultProvidersResponse, error)
 	// GetVaultProvider - Get a vault provider
 	// Retrieves a single vault provider by its ID.
