@@ -69,37 +69,13 @@ jobs:
         with:
           egress-policy: audit
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Tags name the previous release that the input OAS versions compare against.
+          fetch-depth: 0
       - name: Build Slack payload
-        # shortcut: one Slack section holds 3000 characters; the input table is about 1900 characters today.
         run: |
-          VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
-          RELEASE_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/releases/tag/v${VERSION}"
-          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-          # Three aligned columns, padded to the longest value. Slack has no table block.
-          INPUTS=$(yq -r '.x-input-schemas[] | [.title, .version, .path] | @tsv' openapi.yaml | awk -F'\t' '
-            {
-              w1 = length($1) > w1 ? length($1) : w1
-              w2 = length($2) > w2 ? length($2) : w2
-              n++; title[n] = $1; ver[n] = $2; path[n] = $3
-            }
-            END { for (i = 1; i <= n; i++) printf "%-*s %-*s %s\n", w1, title[i], w2, ver[i], path[i] }')
-
-          jq -n \
-            --arg channel "project-konnect-sdks" \
-            --arg version "v${VERSION}" \
-            --arg release_url "$RELEASE_URL" \
-            --arg run_number "$GITHUB_RUN_NUMBER" \
-            --arg run_url "$RUN_URL" \
-            --arg inputs "$INPUTS" \
-            '{
-              channel: $channel,
-              text: "🎉 sdk-konnect-go \($version) released: \($release_url)",
-              blocks: [
-                { type: "section", text: { type: "mrkdwn", text: "🎉 *sdk-konnect-go <\($release_url)|\($version)>* released 🎉" } },
-                { type: "section", text: { type: "mrkdwn", text: "*Workflow run:* <\($run_url)|Run #\($run_number)>" } },
-                { type: "section", text: { type: "mrkdwn", text: "*Input OAS versions*\n```\n\($inputs)\n```" } }
-              ]
-            }' > slack-payload.json
+          PREV_TAG=$(git describe --tags --abbrev=0 --match 'v[0-9]*' 'HEAD^' 2>/dev/null || true)
+          ./scripts/slack-release-payload.sh "${PREV_TAG}" > slack-payload.json
       - name: Post release notification
         uses: slackapi/slack-github-action@dcb1066f776dd043e64d0e8ba94ca15cc7e1875d # v4.0.0
         with:
