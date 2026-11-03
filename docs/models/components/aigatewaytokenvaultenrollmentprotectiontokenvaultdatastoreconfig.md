@@ -1,4 +1,4 @@
-# AIGatewayTokenVaultCredentialManagerTokenVaultDatastoreConfig
+# AIGatewayTokenVaultEnrollmentProtectionTokenVaultDatastoreConfig
 
 Read-only. The directory and encryption key versions this entity's credentials are stored
 with, resolved from the `token-vault` Datastore referenced in `datastores`; change them on
