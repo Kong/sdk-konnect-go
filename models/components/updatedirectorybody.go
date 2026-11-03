@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateDirectoryBody - Request body for partially updating a directory
 type UpdateDirectoryBody struct {
 	// Human-readable name of the directory, used to identify the organizational boundary.
@@ -21,37 +17,11 @@ type UpdateDirectoryBody struct {
 	// This overrides the allowed_control_planes list. When omitted, the existing value is preserved.
 	//
 	AllowAllControlPlanes *bool `json:"allow_all_control_planes,omitempty"`
-	// The time in seconds that a principal will be cached in memory on a running Gateway if it is
-	// successfully authenticated from this directory. Maximum is 86400 seconds (24 hours).
-	//
-	TTLSecs *int64 `default:"600" json:"ttl_secs"`
-	// If a running Gateway triggers a lookup for a principal that cannot be authenticated in this directory,
-	// a `negative_ttl_secs` is set. The Gateway will not try to look up the principal in Konnect for `negative_ttl_secs` seconds.
-	//
-	// A principal will be cached for `negative_ttl_secs` if it does not exist in the directory, or if the provided credentials are invalid.
-	// Maximum is 86400 seconds (24 hours).
-	//
-	NegativeTTLSecs *int64 `default:"600" json:"negative_ttl_secs"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
-	// Set to enabled to enable the Token Vault for this directory.
-	// Defaults to disabled when omitted.
-	//
-	VaultEnabled *bool `json:"vault_enabled,omitempty"`
-}
-
-func (u UpdateDirectoryBody) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateDirectoryBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UpdateDirectoryBody) GetName() *string {
@@ -75,30 +45,9 @@ func (u *UpdateDirectoryBody) GetAllowAllControlPlanes() *bool {
 	return u.AllowAllControlPlanes
 }
 
-func (u *UpdateDirectoryBody) GetTTLSecs() *int64 {
-	if u == nil {
-		return nil
-	}
-	return u.TTLSecs
-}
-
-func (u *UpdateDirectoryBody) GetNegativeTTLSecs() *int64 {
-	if u == nil {
-		return nil
-	}
-	return u.NegativeTTLSecs
-}
-
 func (u *UpdateDirectoryBody) GetLabels() map[string]string {
 	if u == nil {
 		return nil
 	}
 	return u.Labels
-}
-
-func (u *UpdateDirectoryBody) GetVaultEnabled() *bool {
-	if u == nil {
-		return nil
-	}
-	return u.VaultEnabled
 }

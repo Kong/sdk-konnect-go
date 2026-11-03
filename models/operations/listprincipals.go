@@ -4,85 +4,12 @@
 package operations
 
 import (
-	"errors"
-	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
 
 var ListPrincipalsServerList = []string{
 	"https://us.api.konghq.com/",
-}
-
-type ActiveType string
-
-const (
-	ActiveTypeBoolean              ActiveType = "boolean"
-	ActiveTypeStringFieldOEQFilter ActiveType = "StringFieldOEQFilter"
-)
-
-type Active struct {
-	Boolean              *bool                            `queryParam:"inline" union:"member"`
-	StringFieldOEQFilter *components.StringFieldOEQFilter `queryParam:"inline" union:"member"`
-
-	Type ActiveType
-}
-
-func CreateActiveBoolean(boolean bool) Active {
-	typ := ActiveTypeBoolean
-
-	return Active{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func CreateActiveStringFieldOEQFilter(stringFieldOEQFilter components.StringFieldOEQFilter) Active {
-	typ := ActiveTypeStringFieldOEQFilter
-
-	return Active{
-		StringFieldOEQFilter: &stringFieldOEQFilter,
-		Type:                 typ,
-	}
-}
-
-func (u *Active) UnmarshalJSON(data []byte) (err error) {
-	previous := *u
-	*u = Active{}
-	defer func() {
-		if err != nil {
-			*u = previous
-		}
-	}()
-
-	var stringFieldOEQFilter components.StringFieldOEQFilter = components.StringFieldOEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldOEQFilter, "", true, nil); err == nil {
-		u.StringFieldOEQFilter = &stringFieldOEQFilter
-		u.Type = ActiveTypeStringFieldOEQFilter
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = ActiveTypeBoolean
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Active", string(data))
-}
-
-func (u Active) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	if u.StringFieldOEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldOEQFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type Active: all fields are null")
 }
 
 // ListPrincipalsQueryParamFilter - Filter principals by field. Supported filter fields:
@@ -99,7 +26,6 @@ type ListPrincipalsQueryParamFilter struct {
 	ID *components.StringFieldEqualsFilter `queryParam:"name=id"`
 	// Filters on the given string field value by exact match.
 	Labels *components.StringFieldEqualsFilter `queryParam:"name=labels"`
-	Active *Active                             `queryParam:"name=active"`
 }
 
 func (l *ListPrincipalsQueryParamFilter) GetDisplayName() *components.LegacyStringFieldFilter {
@@ -128,13 +54,6 @@ func (l *ListPrincipalsQueryParamFilter) GetLabels() *components.StringFieldEqua
 		return nil
 	}
 	return l.Labels
-}
-
-func (l *ListPrincipalsQueryParamFilter) GetActive() *Active {
-	if l == nil {
-		return nil
-	}
-	return l.Active
 }
 
 type ListPrincipalsRequest struct {

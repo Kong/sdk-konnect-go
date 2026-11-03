@@ -11,11 +11,6 @@ type UpdatePrincipalBody struct {
 	// Optional description providing additional context about the principal's purpose or role.
 	//
 	Description *string `json:"description,omitempty"`
-	// Classifies the kind of principal. `agent` is a deployed AI agent,
-	// `user` is a human in the organization.
-	// When omitted or null, the principal is not classified.
-	//
-	Type *KongPrincipalType `json:"type,omitempty"`
 	// A map of metadata key-value pairs associated with this entity. This metadata is passed to the data plane to enrich the execution context. During authentication, metadata is inherited and overridden in a hierarchical manner: Directory metadata is inherited by Principals, which is then inherited and overridden by Credentials.
 	Metadata map[string]KongIdentityMetadata `json:"metadata,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -30,11 +25,6 @@ type UpdatePrincipalBody struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]*string `json:"managed_by,omitempty"`
-	// Whether the principal is active. Inactive principals are treated as nonexistent when authenticating.
-	// Defaults to `true` on create; omitting it on update or replace keeps the current value.
-	// Setting it to `false` sets `provisioned_by` to `konnect_user`. Principals provisioned by the developer portal cannot be deactivated.
-	//
-	Active *bool `json:"active,omitempty"`
 }
 
 func (u *UpdatePrincipalBody) GetDisplayName() *string {
@@ -49,13 +39,6 @@ func (u *UpdatePrincipalBody) GetDescription() *string {
 		return nil
 	}
 	return u.Description
-}
-
-func (u *UpdatePrincipalBody) GetType() *KongPrincipalType {
-	if u == nil {
-		return nil
-	}
-	return u.Type
 }
 
 func (u *UpdatePrincipalBody) GetMetadata() map[string]KongIdentityMetadata {
@@ -77,11 +60,4 @@ func (u *UpdatePrincipalBody) GetManagedBy() map[string]*string {
 		return nil
 	}
 	return u.ManagedBy
-}
-
-func (u *UpdatePrincipalBody) GetActive() *bool {
-	if u == nil {
-		return nil
-	}
-	return u.Active
 }

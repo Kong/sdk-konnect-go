@@ -19,11 +19,6 @@ type KongPrincipal struct {
 	// Optional description providing additional context about the principal's purpose or role.
 	//
 	Description string `json:"description"`
-	// Classifies the kind of principal. `agent` is a deployed AI agent,
-	// `user` is a human in the organization.
-	// When omitted or null, the principal is not classified.
-	//
-	Type *KongPrincipalType `json:"type,omitempty"`
 	// A map of metadata key-value pairs associated with this entity. This metadata is passed to the data plane to enrich the execution context. During authentication, metadata is inherited and overridden in a hierarchical manner: Directory metadata is inherited by Principals, which is then inherited and overridden by Credentials.
 	Metadata map[string]KongIdentityMetadata `json:"metadata"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -42,14 +37,6 @@ type KongPrincipal struct {
 	ManagedBy map[string]string `json:"managed_by"`
 	// Identifies the actor that provisioned this principal. Defaults to `konnect_user` for principals created directly by a user; other values identify a service that provisioned the principal on a user's behalf (for example, `developer_portal` or `trusted_idp`).
 	ProvisionedBy *ProvisionedBy `default:"konnect_user" json:"provisioned_by"`
-	// Whether the principal is active. Inactive principals are treated as nonexistent when authenticating.
-	// Defaults to `true` on create; omitting it on update or replace keeps the current value.
-	// Setting it to `false` sets `provisioned_by` to `konnect_user`. Principals provisioned by the developer portal cannot be deactivated.
-	//
-	Active bool `json:"active"`
-	// List of IDs of the groups this principal is a member of.
-	//
-	Groups []string `json:"groups,omitempty"`
 }
 
 func (k KongPrincipal) MarshalJSON() ([]byte, error) {
@@ -82,13 +69,6 @@ func (k *KongPrincipal) GetDescription() string {
 		return ""
 	}
 	return k.Description
-}
-
-func (k *KongPrincipal) GetType() *KongPrincipalType {
-	if k == nil {
-		return nil
-	}
-	return k.Type
 }
 
 func (k *KongPrincipal) GetMetadata() map[string]KongIdentityMetadata {
@@ -131,18 +111,4 @@ func (k *KongPrincipal) GetProvisionedBy() *ProvisionedBy {
 		return nil
 	}
 	return k.ProvisionedBy
-}
-
-func (k *KongPrincipal) GetActive() bool {
-	if k == nil {
-		return false
-	}
-	return k.Active
-}
-
-func (k *KongPrincipal) GetGroups() []string {
-	if k == nil {
-		return nil
-	}
-	return k.Groups
 }

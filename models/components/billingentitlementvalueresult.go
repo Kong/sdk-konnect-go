@@ -33,16 +33,16 @@ type BillingEntitlementValueResultValue struct {
 	// The remaining balance of the entitlement in the usage period at the evaluation
 	// time.
 	Balance string `json:"balance"`
-	// The remaining balance of each grant, keyed by grant ID.
-	GrantBalances map[string]string `json:"grant_balances"`
+	// The usage recorded in the usage period at the evaluation time.
+	Usage string `json:"usage"`
 	// The usage exceeding the available balance in the usage period at the evaluation
 	// time.
 	Overage string `json:"overage"`
 	// The total amount granted and available to the entitlement at the evaluation
 	// time.
 	TotalAvailableGrantAmount string `json:"total_available_grant_amount"`
-	// The usage recorded in the usage period at the evaluation time.
-	Usage string `json:"usage"`
+	// The remaining balance of each grant, keyed by grant ID.
+	GrantBalances map[string]string `json:"grant_balances"`
 }
 
 func (b *BillingEntitlementValueResultValue) GetBalance() string {
@@ -52,11 +52,11 @@ func (b *BillingEntitlementValueResultValue) GetBalance() string {
 	return b.Balance
 }
 
-func (b *BillingEntitlementValueResultValue) GetGrantBalances() map[string]string {
+func (b *BillingEntitlementValueResultValue) GetUsage() string {
 	if b == nil {
-		return map[string]string{}
+		return ""
 	}
-	return b.GrantBalances
+	return b.Usage
 }
 
 func (b *BillingEntitlementValueResultValue) GetOverage() string {
@@ -73,11 +73,11 @@ func (b *BillingEntitlementValueResultValue) GetTotalAvailableGrantAmount() stri
 	return b.TotalAvailableGrantAmount
 }
 
-func (b *BillingEntitlementValueResultValue) GetUsage() string {
+func (b *BillingEntitlementValueResultValue) GetGrantBalances() map[string]string {
 	if b == nil {
-		return ""
+		return map[string]string{}
 	}
-	return b.Usage
+	return b.GrantBalances
 }
 
 // BillingEntitlementValueResult - Entitlement value result.

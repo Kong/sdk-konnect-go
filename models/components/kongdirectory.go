@@ -28,17 +28,6 @@ type KongDirectory struct {
 	// This overrides the allowed_control_planes list. Defaults to false for security.
 	//
 	AllowAllControlPlanes *bool `default:"false" json:"allow_all_control_planes"`
-	// The time in seconds that a principal will be cached in memory on a running Gateway if it is
-	// successfully authenticated from this directory. Maximum is 86400 seconds (24 hours).
-	//
-	TTLSecs *int64 `default:"600" json:"ttl_secs"`
-	// If a running Gateway triggers a lookup for a principal that cannot be authenticated in this directory,
-	// a `negative_ttl_secs` is set. The Gateway will not try to look up the principal in Konnect for `negative_ttl_secs` seconds.
-	//
-	// A principal will be cached for `negative_ttl_secs` if it does not exist in the directory, or if the provided credentials are invalid.
-	// Maximum is 86400 seconds (24 hours).
-	//
-	NegativeTTLSecs *int64 `default:"600" json:"negative_ttl_secs"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -53,10 +42,6 @@ type KongDirectory struct {
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
-	// Set to enabled to enable the Token Vault for this directory.
-	// Defaults to disabled when omitted.
-	//
-	VaultEnabled *bool `json:"vault_enabled,omitempty"`
 }
 
 func (k KongDirectory) MarshalJSON() ([]byte, error) {
@@ -105,20 +90,6 @@ func (k *KongDirectory) GetAllowAllControlPlanes() *bool {
 	return k.AllowAllControlPlanes
 }
 
-func (k *KongDirectory) GetTTLSecs() *int64 {
-	if k == nil {
-		return nil
-	}
-	return k.TTLSecs
-}
-
-func (k *KongDirectory) GetNegativeTTLSecs() *int64 {
-	if k == nil {
-		return nil
-	}
-	return k.NegativeTTLSecs
-}
-
 func (k *KongDirectory) GetLabels() map[string]string {
 	if k == nil {
 		return map[string]string{}
@@ -145,11 +116,4 @@ func (k *KongDirectory) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return k.UpdatedAt
-}
-
-func (k *KongDirectory) GetVaultEnabled() *bool {
-	if k == nil {
-		return nil
-	}
-	return k.VaultEnabled
 }
