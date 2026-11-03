@@ -881,6 +881,8 @@ func (s *TokenVaultProviders) CreateVaultProvider(ctx context.Context, directory
 
 // ListVaultProviders - List vault providers
 // Returns a paginated list of credential providers for a vault-enabled directory.
+//
+// Results are sorted by name in ascending order by default.
 func (s *TokenVaultProviders) ListVaultProviders(ctx context.Context, request operations.ListVaultProvidersRequest, opts ...operations.Option) (*operations.ListVaultProvidersResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
