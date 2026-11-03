@@ -207,6 +207,8 @@ func main() {
 
 Returns a paginated list of credential providers for a vault-enabled directory.
 
+Results are sorted by name in ascending order by default.
+
 
 ### Example Usage
 
