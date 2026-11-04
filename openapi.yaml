@@ -1861,6 +1861,9 @@ paths:
       tags:
         - AI Gateway Datastores
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayDatastore#create
+        terraform-datasource: null
       operationId: create-ai-gateway-datastore
       summary: Create an AI Gateway Datastore
       description: Creates a new Datastore for the AI Gateway.
@@ -1892,6 +1895,9 @@ paths:
       - $ref: '#/components/parameters/AIGatewayId'
       - $ref: '#/components/parameters/AIGatewayDatastoreIdOrName'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayDatastore#read
+        terraform-datasource: null
       operationId: get-ai-gateway-datastore
       summary: Get an AI Gateway Datastore
       description: Returns the details of a specific AI Gateway Datastore.
@@ -1909,6 +1915,9 @@ paths:
       tags:
         - AI Gateway Datastores
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayDatastore#update
+        terraform-datasource: null
       operationId: update-ai-gateway-datastore
       summary: Update an AI Gateway Datastore
       description: |
@@ -1939,6 +1948,9 @@ paths:
       tags:
         - AI Gateway Datastores
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayDatastore#delete
+        terraform-datasource: null
       operationId: delete-ai-gateway-datastore
       summary: Delete an AI Gateway Datastore
       description: Deletes an AI Gateway Datastore. Rejected with a 409 if the Datastore is still referenced by a policy or model.
@@ -116577,7 +116589,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.3
+    version: 2.3.4
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
