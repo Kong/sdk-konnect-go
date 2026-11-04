@@ -40274,6 +40274,10 @@ components:
                   description: Number of matched user principals that required no change.
                   type: integer
                   minimum: 0
+                adopted:
+                  description: Number of existing principals adopted by email instead of created.
+                  type: integer
+                  minimum: 0
                 inactive:
                   description: Number of previously imported principals made inactive because the file no longer carries them.
                   type: integer
@@ -85938,7 +85942,7 @@ components:
           items:
             $ref: '#/components/schemas/AIGatewayAuthStrategyReference'
       additionalProperties: false
-    AIGatewayMCPDefaultToolACLs:
+    AIGatewayMCPACLs:
       description: 'Access control rules for MCP resources. Configure `allow`, `deny`, or both.'
       type: object
       properties:
@@ -85987,13 +85991,41 @@ components:
           - has(principal.metadata.tier) && principal.metadata.tier == 'partner'
         deny_when:
           - has(principal.metadata.role) && principal.metadata.role != 'admin'
-    AIGatewayMCPACLs:
+    AIGatewayMCPServerACLs:
       description: 'Access control rules for MCP resources. Configure exactly one of `allow`, `deny`, `allow_when`, or `deny_when`.'
       oneOf:
-        - $ref: '#/components/schemas/AIGatewayAllowACL'
-        - $ref: '#/components/schemas/AIGatewayDenyACL'
+        - $ref: '#/components/schemas/AIGatewayMCPAllowACL'
+        - $ref: '#/components/schemas/AIGatewayMCPDenyACL'
         - $ref: '#/components/schemas/AIGatewayMCPAllowWhenACL'
         - $ref: '#/components/schemas/AIGatewayMCPDenyWhenACL'
+    AIGatewayMCPAllowACL:
+      type: object
+      properties:
+        allow:
+          description: List of consumer groups that are permitted access.
+          type: array
+          items:
+            type: string
+      example:
+        allow:
+          - gold-partner
+      additionalProperties: false
+      required:
+        - allow
+    AIGatewayMCPDenyACL:
+      type: object
+      properties:
+        deny:
+          description: List of consumer groups that are denied access.
+          type: array
+          items:
+            type: string
+      example:
+        deny:
+          - bronze-partner
+      additionalProperties: false
+      required:
+        - deny
     AIGatewayMCPAllowWhenACL:
       type: object
       properties:
@@ -90110,7 +90142,7 @@ components:
             operation (`initialize`, `tools/list`, `tools/call`) is allowed, and before any tool-level
             `default_tool_acls` or per-tool `access.acls` check is evaluated.
           allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPACLs'
+            - $ref: '#/components/schemas/AIGatewayMCPServerACLs'
         default_tool_acls:
           description: |
             Default per-tool access control rules for allowing or denying consumer groups access to
@@ -90118,7 +90150,7 @@ components:
             Applies to every tool exposed by this MCP Server unless a specific tool overrides it via
             that tool's own `access.acls`.
           allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPDefaultToolACLs'
+            - $ref: '#/components/schemas/AIGatewayMCPACLs'
         identity_providers:
           description: |
             List of identity providers for granting access to the MCP server.
@@ -90170,7 +90202,7 @@ components:
             `tools/call`) is allowed, and before any tool-level `default_tool_acls` or per-tool
             `access.acls` check is evaluated.
           allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPACLs'
+            - $ref: '#/components/schemas/AIGatewayMCPServerACLs'
         default_tool_acls:
           description: |
             Default per-tool access control rules for allowing or denying callers access to tools,
@@ -90179,7 +90211,7 @@ components:
             exposed by this MCP Server unless a specific tool overrides it via that tool's own
             `access.acls`.
           allOf:
-            - $ref: '#/components/schemas/AIGatewayMCPDefaultToolACLs'
+            - $ref: '#/components/schemas/AIGatewayMCPACLs'
         identity_providers:
           description: |
             List of identity providers for granting access to the MCP server.
@@ -116545,7 +116577,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.2
+    version: 2.3.3
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
@@ -116572,7 +116604,7 @@ x-input-schemas:
     version: 3.10.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
-    version: 1.28.2
+    version: 1.28.3
     path: src/konnect/definitions/kong-identity/v2/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.49.0

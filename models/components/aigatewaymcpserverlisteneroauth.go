@@ -23,14 +23,14 @@ type AIGatewayMCPServerListenerOauth struct {
 	// `tools/call`) is allowed, and before any tool-level `default_tool_acls` or per-tool
 	// `access.acls` check is evaluated.
 	//
-	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
+	Acls *AIGatewayMCPServerACLs `json:"acls,omitempty"`
 	// Default per-tool access control rules for allowing or denying callers access to tools,
 	// evaluated against the value of the configured `access_token_claim_field`. Evaluated only
 	// for callers that already passed the server-level `acls` check above. Applies to every tool
 	// exposed by this MCP Server unless a specific tool overrides it via that tool's own
 	// `access.acls`.
 	//
-	DefaultToolAcls *AIGatewayMCPDefaultToolACLs `json:"default_tool_acls,omitempty"`
+	DefaultToolAcls *AIGatewayMCPACLs `json:"default_tool_acls,omitempty"`
 	// List of identity providers for granting access to the MCP server.
 	// At most 1 identity provider of each identity provider type can be referenced.
 	//
@@ -69,14 +69,14 @@ func (a *AIGatewayMCPServerListenerOauth) GetAccessTokenClaimField() string {
 	return a.AccessTokenClaimField
 }
 
-func (a *AIGatewayMCPServerListenerOauth) GetAcls() *AIGatewayMCPACLs {
+func (a *AIGatewayMCPServerListenerOauth) GetAcls() *AIGatewayMCPServerACLs {
 	if a == nil {
 		return nil
 	}
 	return a.Acls
 }
 
-func (a *AIGatewayMCPServerListenerOauth) GetDefaultToolAcls() *AIGatewayMCPDefaultToolACLs {
+func (a *AIGatewayMCPServerListenerOauth) GetDefaultToolAcls() *AIGatewayMCPACLs {
 	if a == nil {
 		return nil
 	}
