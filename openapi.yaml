@@ -40274,6 +40274,10 @@ components:
                   description: Number of matched user principals that required no change.
                   type: integer
                   minimum: 0
+                adopted:
+                  description: Number of existing principals adopted by email instead of created.
+                  type: integer
+                  minimum: 0
                 inactive:
                   description: Number of previously imported principals made inactive because the file no longer carries them.
                   type: integer
@@ -116572,7 +116576,7 @@ x-input-schemas:
     version: 3.10.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
-    version: 1.28.2
+    version: 1.28.3
     path: src/konnect/definitions/kong-identity/v2/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.49.0
