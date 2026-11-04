@@ -16236,6 +16236,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/directoryId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroup#create
+        terraform-datasource: null
       operationId: createGroup
       summary: Create a Group in a Directory
       description: |
@@ -16331,6 +16334,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/groupId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroup#read
+        terraform-datasource: null
       operationId: getGroup
       summary: Get a Group
       description: Retrieves detailed information about a specific group by its ID.
@@ -16348,6 +16354,9 @@ paths:
       tags:
         - PrincipalGroup
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroup#update
+        terraform-datasource: null
       operationId: replaceGroup
       summary: Replace a Group
       description: |
@@ -16376,6 +16385,9 @@ paths:
       tags:
         - PrincipalGroup
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroup#delete
+        terraform-datasource: null
       operationId: deleteGroup
       summary: Delete a Group
       description: |
@@ -16398,6 +16410,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/groupId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupAPIKey#create
+        terraform-datasource: null
       operationId: create-group-key
       summary: Create a group API key
       description: |
@@ -16459,6 +16474,9 @@ paths:
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/apiKeyId'
     patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupAPIKey#update
+        terraform-datasource: null
       operationId: update-group-key
       summary: Update a group API key
       description: |
@@ -16484,6 +16502,9 @@ paths:
       tags:
         - PrincipalGroup
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupAPIKey#read
+        terraform-datasource: null
       operationId: get-group-key
       summary: Get a group API key
       description: |
@@ -16503,6 +16524,9 @@ paths:
       tags:
         - PrincipalGroup
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupAPIKey#delete
+        terraform-datasource: null
       operationId: delete-group-key
       summary: Delete an API key
       description: |
@@ -16565,6 +16589,9 @@ paths:
       tags:
         - PrincipalGroup
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupMembership#create
+        terraform-datasource: null
       operationId: createGroupMembershipEntry
       summary: Add a member to a Group
       description: |
@@ -16594,6 +16621,9 @@ paths:
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/groupMembershipId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupMembership#read
+        terraform-datasource: null
       operationId: getGroupMembershipEntry
       summary: Get a Group membership entry
       description: Retrieves a specific group membership entry by the member's ID.
@@ -16611,6 +16641,9 @@ paths:
       tags:
         - PrincipalGroup
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupMembership#delete
+        terraform-datasource: null
       operationId: deleteGroupMembershipEntry
       summary: Remove a member from a Group
       description: |
@@ -16698,6 +16731,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/directoryId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipal#create
+        terraform-datasource: null
       operationId: createPrincipal
       summary: Create a Principal in a Directory
       description: |
@@ -16805,6 +16841,9 @@ paths:
       tags:
         - KongPrincipal
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipal#update
+        terraform-datasource: null
       operationId: replacePrincipal
       summary: Replace a Principal
       description: |
@@ -16828,6 +16867,9 @@ paths:
       tags:
         - KongPrincipal
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipal#read
+        terraform-datasource: null
       operationId: getPrincipal
       summary: Get a Principal
       description: Retrieves detailed information about a specific principal by its ID.
@@ -16845,6 +16887,9 @@ paths:
       tags:
         - KongPrincipal
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipal#delete
+        terraform-datasource: null
       operationId: deletePrincipal
       summary: Delete a Principal
       description: |
@@ -16869,6 +16914,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/principalId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalAPIKey#create
+        terraform-datasource: null
       operationId: create-principal-key
       summary: Create a principal API key
       description: |
@@ -16926,6 +16974,9 @@ paths:
       - $ref: '#/components/parameters/principalId'
       - $ref: '#/components/parameters/apiKeyId'
     patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalAPIKey#update
+        terraform-datasource: null
       operationId: update-principal-key
       summary: Update a principal API key
       description: |
@@ -16949,6 +17000,9 @@ paths:
       tags:
         - KongPrincipalCredential
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalAPIKey#read
+        terraform-datasource: null
       operationId: get-identity-key
       summary: Get a principal API key
       description: |
@@ -16968,6 +17022,9 @@ paths:
       tags:
         - KongPrincipalCredential
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalAPIKey#delete
+        terraform-datasource: null
       operationId: delete-principal-key
       summary: Delete an API key
       description: |
@@ -17011,6 +17068,9 @@ paths:
       tags:
         - KongPrincipalCredential
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuth#create
+        terraform-datasource: null
       operationId: create-principal-basic-auth
       summary: Create a basic auth credential
       description: |
@@ -17038,6 +17098,9 @@ paths:
       - $ref: '#/components/parameters/principalId'
       - $ref: '#/components/parameters/basicAuthId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuth#read
+        terraform-datasource: null
       operationId: get-principal-basic-auth
       summary: Get a basic auth credential
       description: |
@@ -17078,6 +17141,9 @@ paths:
       tags:
         - KongPrincipalCredential
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuth#update
+        terraform-datasource: null
       operationId: replace-principal-basic-auth
       summary: Replace a basic auth credential
       description: |
@@ -17100,6 +17166,9 @@ paths:
       tags:
         - KongPrincipalCredential
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuth#delete
+        terraform-datasource: null
       operationId: delete-principal-basic-auth
       summary: Delete a basic auth credential
       description: |
@@ -17144,6 +17213,9 @@ paths:
       tags:
         - KongPrincipalCredential
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuthPassword#create
+        terraform-datasource: null
       operationId: createPassword
       summary: Create a password for a basic auth credential
       description: |
@@ -17194,6 +17266,9 @@ paths:
       - $ref: '#/components/parameters/basicAuthId'
       - $ref: '#/components/parameters/passwordId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuthPassword#read
+        terraform-datasource: null
       operationId: getPassword
       summary: Get a password
       description: |
@@ -17234,6 +17309,9 @@ paths:
       tags:
         - KongPrincipalCredential
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuthPassword#update
+        terraform-datasource: null
       operationId: replacePassword
       summary: Replace a password
       description: |
@@ -17256,6 +17334,9 @@ paths:
       tags:
         - KongPrincipalCredential
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuthPassword#delete
+        terraform-datasource: null
       operationId: deletePassword
       summary: Delete a password
       description: |
@@ -17361,6 +17442,9 @@ paths:
       tags:
         - KongPrincipalIdentity
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalIdentity#create
+        terraform-datasource: null
       operationId: createIdentity
       summary: Create an identity for a principal
       description: |
@@ -17390,6 +17474,9 @@ paths:
       - $ref: '#/components/parameters/principalId'
       - $ref: '#/components/parameters/identityId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalIdentity#read
+        terraform-datasource: null
       operationId: getIdentity
       summary: Get an identity
       description: Retrieves detailed information about a specific principal identity by its ID.
@@ -17407,6 +17494,9 @@ paths:
       tags:
         - KongPrincipalIdentity
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalIdentity#update
+        terraform-datasource: null
       operationId: replaceIdentity
       summary: Replace an identity
       description: |
@@ -17457,6 +17547,9 @@ paths:
       tags:
         - KongPrincipalIdentity
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalIdentity#delete
+        terraform-datasource: null
       operationId: deleteIdentity
       summary: Delete an identity
       description: |
@@ -17574,6 +17667,9 @@ paths:
       tags:
         - Trusted IdPs
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityTrustedIdp#create
+        terraform-datasource: null
       operationId: createTrustedIdp
       summary: Create a new trusted IdP
       description: |
@@ -17602,6 +17698,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/trustedIdpId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityTrustedIdp#read
+        terraform-datasource: null
       operationId: getTrustedIdp
       summary: Get a trusted IdP
       description: Get a trusted IdP for a directory.
@@ -17619,6 +17718,9 @@ paths:
       tags:
         - Trusted IdPs
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityTrustedIdp#update
+        terraform-datasource: null
       operationId: updateTrustedIdp
       summary: Update a trusted IdP
       description: |
@@ -17665,6 +17767,9 @@ paths:
       tags:
         - Trusted IdPs
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityTrustedIdp#delete
+        terraform-datasource: null
       operationId: deleteTrustedIdp
       summary: Delete a trusted IdP
       description: Delete a trusted IdP for a given directory.
@@ -17732,6 +17837,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/directoryId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultKey#create
+        terraform-datasource: null
       operationId: createVaultKey
       summary: Create a vault key
       description: |
@@ -17795,6 +17903,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/vaultKeyId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultKey#read
+        terraform-datasource: null
       operationId: getVaultKey
       summary: Get a vault key
       description: Retrieves a single vault key by its ID.
@@ -17812,6 +17923,9 @@ paths:
       tags:
         - TokenVaultKeys
     patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultKey#update
+        terraform-datasource: null
       operationId: updateVaultKey
       summary: Update a vault key
       description: |
@@ -17836,6 +17950,9 @@ paths:
       tags:
         - TokenVaultKeys
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultKey#delete
+        terraform-datasource: null
       operationId: deleteVaultKey
       summary: Delete a vault key
       description: |
@@ -17859,6 +17976,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/directoryId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProvider#create
+        terraform-datasource: null
       operationId: createVaultProvider
       summary: Create a vault provider
       description: |
@@ -17942,6 +18062,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/providerId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProvider#read
+        terraform-datasource: null
       operationId: getVaultProvider
       summary: Get a vault provider
       description: Retrieves a single vault provider by its ID.
@@ -17980,6 +18103,9 @@ paths:
       tags:
         - TokenVaultProviders
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProvider#update
+        terraform-datasource: null
       operationId: replaceVaultProvider
       summary: Replace a vault provider
       description: |
@@ -18003,6 +18129,9 @@ paths:
       tags:
         - TokenVaultProviders
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProvider#delete
+        terraform-datasource: null
       operationId: deleteVaultProvider
       summary: Delete a vault provider
       description: Deletes a vault provider from a directory.
@@ -18024,6 +18153,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/providerId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProviderCredential#create
+        terraform-datasource: null
       operationId: createVaultProviderCredential
       summary: Create a shared credential for a provider
       description: |
@@ -18093,6 +18225,9 @@ paths:
       - $ref: '#/components/parameters/providerId'
       - $ref: '#/components/parameters/vaultProviderCredentialId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProviderCredential#read
+        terraform-datasource: null
       operationId: getVaultProviderCredential
       summary: Get a specific credential
       description: |
@@ -18114,6 +18249,9 @@ paths:
       tags:
         - TokenVaultProviders
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProviderCredential#update
+        terraform-datasource: null
       operationId: updateVaultProviderCredential
       summary: Update a shared credential's value
       description: |
@@ -18139,6 +18277,9 @@ paths:
       tags:
         - TokenVaultProviders
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProviderCredential#delete
+        terraform-datasource: null
       operationId: deleteVaultProviderCredential
       summary: Delete a specific provider credential
       responses:
@@ -30472,7 +30613,6 @@ components:
       in: path
       required: true
       description: ID of the directory
-      x-speakeasy-match: id
       schema:
         type: string
         format: uuid
@@ -39991,7 +40131,6 @@ components:
       required:
         - data
     CreatePrincipalKeyBody:
-      type: object
       discriminator:
         propertyName: type
         mapping:
@@ -40000,12 +40139,14 @@ components:
       oneOf:
         - $ref: '#/components/schemas/CreatePrincipalKeyBodyImported'
         - $ref: '#/components/schemas/CreatePrincipalKeyBodyv1'
+      x-terraform-collapse-oneof: true
+      x-terraform-no-default-null: true
     CreatePrincipalKeyBodyImported:
+      type: object
       properties:
         type:
           type: string
-          enum:
-            - imported
+          const: imported
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         secret:
@@ -40015,21 +40156,21 @@ components:
           writeOnly: true
           x-sensitive: true
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
       additionalProperties: false
       required:
         - type
         - secret
     CreatePrincipalKeyBodyv1:
+      type: object
       properties:
         type:
           type: string
-          enum:
-            - v1
+          const: v1
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
       additionalProperties: false
@@ -40042,7 +40183,7 @@ components:
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedByUpdate'
     CreateBasicAuthBody:
@@ -40089,7 +40230,7 @@ components:
           writeOnly: true
           x-sensitive: true
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
     UpdatePasswordBody:
@@ -40097,7 +40238,7 @@ components:
       type: object
       properties:
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedByUpdate'
     ReplacePasswordBody:
@@ -40111,7 +40252,7 @@ components:
           writeOnly: true
           x-sensitive: true
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
       required:
@@ -40843,8 +40984,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - oidc
+              const: oidc
             issuer:
               type: string
             claim:
@@ -40868,8 +41008,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - auth_server_client
+              const: auth_server_client
             auth_server_id:
               type: string
               format: uuid
@@ -40886,8 +41025,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - control_plane_consumer
+              const: control_plane_consumer
             control_plane_id:
               type: string
             consumer_id:
@@ -40905,8 +41043,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - custom
+              const: custom
             key:
               type: string
             value:
@@ -40922,8 +41059,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - oidc
+              const: oidc
             issuer:
               type: string
             claim:
@@ -40947,8 +41083,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - auth_server_client
+              const: auth_server_client
             auth_server_id:
               type: string
               format: uuid
@@ -40965,8 +41100,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - control_plane_consumer
+              const: control_plane_consumer
             control_plane_id:
               type: string
             consumer_id:
@@ -40993,8 +41127,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - custom
+              const: custom
             key:
               type: string
             value:
@@ -41199,6 +41332,7 @@ components:
           description: 'Pre-issued static credential (API key, PAT, etc.). Stored encrypted, never returned in read APIs.'
           type: string
           writeOnly: true
+          x-sensitive: true
         selector:
           $ref: '#/components/schemas/VaultCredentialSelector'
         priority:
@@ -41229,8 +41363,7 @@ components:
           properties:
             credential_type:
               type: string
-              enum:
-                - shared
+              const: shared
             selector:
               allOf:
                 - $ref: '#/components/schemas/VaultCredentialSelector'
@@ -41260,8 +41393,7 @@ components:
           properties:
             credential_type:
               type: string
-              enum:
-                - user
+              const: user
               x-enum-varnames:
                 - VaultProviderCredentialUserCredentialTypeUser
             principal:
@@ -41844,6 +41976,13 @@ components:
       format: date-time
       example: '2022-11-04T20:10:06.927Z'
       nullable: true
+    ExpiresAtWritable:
+      description: An ISO-8601 timestamp representation of entity expiration date.
+      type: string
+      format: date-time
+      example: '2022-11-04T20:10:06.927Z'
+      nullable: true
+      title: ExpiresAt
     UUID_RW:
       description: Contains a unique identifier used for this resource.
       type: string
@@ -117263,7 +117402,7 @@ x-input-schemas:
     version: 3.10.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
-    version: 1.28.4
+    version: 1.28.5
     path: src/konnect/definitions/kong-identity/v2/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.49.0
