@@ -25350,6 +25350,58 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Portals
+  '/v3/portals/{portalId}/ai-settings':
+    parameters:
+      - $ref: '#/components/parameters/PortalId'
+    get:
+      operationId: get-ai-settings
+      summary: Get AI Settings by Portal
+      description: Gets AI settings for a given portal including the configuration of all AI features.
+      responses:
+        '200':
+          $ref: '#/components/responses/AISettingsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - AI Settings
+    put:
+      operationId: replace-ai-settings
+      summary: Replace AI Settings by Portal
+      description: Replaces AI settings for a given portal including the configuration of all AI features.
+      requestBody:
+        $ref: '#/components/requestBodies/ReplaceAISettingsRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/AISettingsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - AI Settings
+    patch:
+      operationId: patch-ai-settings
+      summary: Patch AI Settings by Portal
+      description: Patches AI settings for a given portal including the configuration of all AI features.
+      requestBody:
+        $ref: '#/components/requestBodies/PatchAISettingsRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/AISettingsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - AI Settings
   '/v3/portals/{portalId}/api-publications':
     parameters:
       - $ref: '#/components/parameters/PortalId'
@@ -44023,6 +44075,166 @@ components:
         - name
         - content
       title: CreatePortalSnippetRequest
+    AISettingsResponseBody:
+      type: object
+      properties:
+        enabled:
+          description: Is AI enabled?
+          type: boolean
+          default: false
+        features:
+          $ref: '#/components/schemas/AISettingsResponseFeatures'
+      additionalProperties: false
+      required:
+        - enabled
+        - features
+      title: AISettingsResponseBody
+    AISettingsResponseFeatures:
+      description: 'AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.'
+      type: object
+      properties:
+        ai_search:
+          description: AI Search configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether AI Search is enabled or not
+              type: boolean
+              default: false
+          required:
+            - enabled
+        mcp_server:
+          description: MCP Server configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the Portal MCP Server is enabled or not
+              type: boolean
+              default: false
+            write_operations_enabled:
+              description: Whether write operations are enabled or not for the Portal MCP Server enabled
+              type: boolean
+              default: false
+          required:
+            - enabled
+            - write_operations_enabled
+        portal_agent:
+          required:
+            - display_name
+            - audience
+      additionalProperties: false
+      required:
+        - mcp_server
+        - ai_search
+    PatchAISettingsRequest:
+      type: object
+      properties:
+        enabled:
+          description: Whether AI is enabled or not
+          type: boolean
+          default: false
+        features:
+          $ref: '#/components/schemas/AISettingsRequestFeatures'
+      additionalProperties: false
+      required:
+        - enabled
+      title: PatchAISettingsRequest
+    ReplaceAISettingsRequest:
+      type: object
+      properties:
+        enabled:
+          description: Whether AI is enabled or not
+          type: boolean
+          default: false
+        features:
+          $ref: '#/components/schemas/ReplaceAISettingsRequestFeatures'
+      additionalProperties: false
+      required:
+        - enabled
+        - features
+      title: ReplaceAISettingsRequest
+    AISettingsRequestFeatures:
+      description: 'AI Features configuration. Only nullable when top-level `enabled` is false. When top-level `enabled` is false, every feature toggle here is automatically reset to false.'
+      type: object
+      properties:
+        ai_search:
+          description: AI Search configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether AI Search is enabled or not
+              type: boolean
+              default: false
+          required:
+            - enabled
+        mcp_server:
+          description: MCP Server configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the Portal MCP Server is enabled or not
+              type: boolean
+              default: false
+            write_operations_enabled:
+              description: Whether write operations are enabled or not for the Portal MCP Server enabled
+              type: boolean
+              default: false
+          required:
+            - enabled
+        portal_agent:
+          properties:
+            display_name:
+              $ref: '#/components/schemas/PortalAgentDisplayNameNullable'
+            audience:
+              $ref: '#/components/schemas/PortalAgentAudienceNullable'
+      additionalProperties: false
+      minProperties: 1
+      nullable: true
+    ReplaceAISettingsRequestFeatures:
+      description: 'AI Features configuration. When top-level `enabled` is false, every feature toggle here must be automatically reset to false.'
+      type: object
+      properties:
+        ai_search:
+          description: AI Search configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether AI Search is enabled or not
+              type: boolean
+              default: false
+          required:
+            - enabled
+        mcp_server:
+          description: MCP Server configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the Portal MCP Server is enabled or not
+              type: boolean
+              default: false
+            write_operations_enabled:
+              description: Whether write operations are enabled or not for the Portal MCP Server enabled
+              type: boolean
+              default: false
+          required:
+            - enabled
+            - write_operations_enabled
+        portal_agent:
+          properties:
+            display_name:
+              $ref: '#/components/schemas/PortalAgentDisplayNameNullable'
+            audience:
+              $ref: '#/components/schemas/PortalAgentAudienceNullable'
+      additionalProperties: false
+      required:
+        - mcp_server
+        - ai_search
     CreatePortalFormRequest:
       description: |-
         Request body for creating a form, discriminated by `type`.
@@ -46097,6 +46309,54 @@ components:
           $ref: '#/components/schemas/StringFieldFilter'
         team_id:
           $ref: '#/components/schemas/UuidFieldFilter'
+    AISettingsFeatures:
+      description: 'AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.'
+      type: object
+      properties:
+        ai_search:
+          description: AI Search config
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether AI Search is enabled or not
+              type: boolean
+              default: false
+          required:
+            - enabled
+        mcp_server:
+          description: AI Features config
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the MCP Server is enabled or not
+              type: boolean
+              default: false
+            write_operations_enabled:
+              description: Whether write operations are enabled or not for the Portal MCP Server enabled
+              type: boolean
+              default: false
+          required:
+            - enabled
+            - write_operations_enabled
+      additionalProperties: false
+      required:
+        - mcp_server
+        - ai_search
+    AISettings:
+      type: object
+      properties:
+        enabled:
+          description: Is AI enabled?
+          type: boolean
+          default: false
+        features:
+          $ref: '#/components/schemas/AISettingsFeatures'
+      additionalProperties: false
+      required:
+        - enabled
+        - features
     SourceIPEnabled:
       description: Whether ip allow list is enabled for the organization.
       type: boolean
@@ -46851,6 +47111,21 @@ components:
       required:
         - data
         - meta
+    PortalAgentDisplayNameNullable:
+      description: 'The display name for the Portal Agent, shown to developers in the portal'
+      type: string
+      example: AI
+      default: AI
+      maxLength: 120
+      minLength: 1
+      nullable: true
+    PortalAgentAudienceNullable:
+      description: 'The audience allowed to interact with the Portal Agent. Currently only `all` (available to every developer, including unauthenticated ones) is supported. `authenticated` (restricted to signed-in developers only) is planned for a future release.'
+      type: string
+      default: all
+      enum:
+        - all
+      nullable: true
     CustomFormFieldName:
       description: |
         A stable, URL-safe slug identifying the field (letters, digits,
@@ -109406,6 +109681,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/CreateDefaultContentRequest'
+    PatchAISettingsRequest:
+      description: Patch AI settings for a portal.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PatchAISettingsRequest'
+    ReplaceAISettingsRequest:
+      description: Replaces AI settings for a portal.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplaceAISettingsRequest'
     CreatePortalForm:
       description: Create a custom form for a portal.
       required: true
@@ -109480,6 +109769,8 @@ components:
                 description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                 type: boolean
                 default: false
+              ai:
+                $ref: '#/components/schemas/AISettings'
               sipr_enabled:
                 description: Whether ip allow list is enabled for the portal.
                 type: boolean
@@ -109572,6 +109863,8 @@ components:
                 description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                 type: boolean
                 default: false
+              ai:
+                $ref: '#/components/schemas/AISettings'
               sipr_enabled:
                 description: Whether ip allow list is enabled for the portal.
                 type: boolean
@@ -113474,6 +113767,12 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/UnsupportedMediaTypeError'
+    AISettingsResponse:
+      description: AI settings for a given portal.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AISettingsResponseBody'
     PortalForm:
       description: A custom form belonging to a portal.
       content:
@@ -113621,6 +113920,8 @@ components:
                       description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                       type: boolean
                       default: false
+                    ai:
+                      $ref: '#/components/schemas/AISettings'
                     sipr_enabled:
                       description: Whether ip allow list is enabled for the portal.
                       type: boolean
@@ -113731,6 +114032,8 @@ components:
                 description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                 type: boolean
                 default: false
+              ai:
+                $ref: '#/components/schemas/AISettings'
               sipr_enabled:
                 description: Whether ip allow list is enabled for the portal.
                 type: boolean
@@ -116226,6 +116529,8 @@ tags:
     description: APIs related to Konnect Developer Portal Custom Pages.
   - name: Snippets
     description: APIs related to Konnect Developer Portal Custom Snippets.
+  - name: AI Settings
+    description: APIs related to Konnect Developer Portal AI Settings.
   - name: Applications
     description: APIs related to Konnect Developer Portal Applications.
   - name: Application Registrations
@@ -116634,7 +116939,7 @@ x-input-schemas:
     version: 1.1.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.15.1
+    version: 3.16.0
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.4
