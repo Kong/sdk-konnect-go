@@ -3,6 +3,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type File struct {
 	FileName string `multipartForm:"name=fileName"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
@@ -26,9 +30,20 @@ func (f *File) GetContent() any {
 type ImportPrincipalsRequest struct {
 	// The canonical CSV file (UTF-8, comma-separated, RFC 4180 quoting)
 	File File `multipartForm:"file,name=file"`
-	// Validate the file and return the report without applying anything — no principals created, updated, or made inactive.
+	// Validate the file and return the report without applying anything — no principals created, updated, or made inactive. Defaults to true; pass false to apply the import.
 	//
-	DryRun *bool `multipartForm:"name=dry_run"`
+	DryRun *bool `default:"true" multipartForm:"name=dry_run"`
+}
+
+func (i ImportPrincipalsRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *ImportPrincipalsRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (i *ImportPrincipalsRequest) GetFile() File {
