@@ -5,4 +5,13 @@ package components
 
 // CreateDefaultContentRequest - Options for creating default content.
 type CreateDefaultContentRequest struct {
+	// Name of the theme to use for the default content. Must match an available theme name; if omitted or unrecognized, the default theme is used.
+	ThemeName *string `json:"theme_name,omitempty"`
+}
+
+func (c *CreateDefaultContentRequest) GetThemeName() *string {
+	if c == nil {
+		return nil
+	}
+	return c.ThemeName
 }
