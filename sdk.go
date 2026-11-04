@@ -488,6 +488,8 @@ type SDK struct {
 	PortalTeamRoles *PortalTeamRoles
 	// APIs related to configuration of Konnect Developer Portals.
 	Portals *Portals
+	// APIs related to Konnect Developer Portal AI Settings.
+	AISettings *AISettings
 	// APIs related to Konnect Developer Portal Application Registrations.
 	ApplicationRegistrations *ApplicationRegistrations
 	// APIs for managing static assets for Konnect Developer Portals.
@@ -778,6 +780,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Me = newMe(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamRoles = newPortalTeamRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Portals = newPortals(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AISettings = newAISettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ApplicationRegistrations = newApplicationRegistrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Assets = newAssets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalAuditLogs = newPortalAuditLogs(sdk, sdk.sdkConfiguration, sdk.hooks)

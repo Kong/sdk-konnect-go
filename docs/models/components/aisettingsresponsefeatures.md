@@ -1,0 +1,12 @@
+# AISettingsResponseFeatures
+
+AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `AiSearch`                                                                                                       | [components.AISettingsResponseFeaturesAISearch](../../models/components/aisettingsresponsefeaturesaisearch.md)   | :heavy_check_mark:                                                                                               | AI Search configuration                                                                                          |
+| `McpServer`                                                                                                      | [components.AISettingsResponseFeaturesMcpServer](../../models/components/aisettingsresponsefeaturesmcpserver.md) | :heavy_check_mark:                                                                                               | MCP Server configuration                                                                                         |
+| `PortalAgent`                                                                                                    | `any`                                                                                                            | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |

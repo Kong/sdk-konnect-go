@@ -1,0 +1,11 @@
+# AISettingsResponseBody
+
+AI settings for a given portal.
+
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `Enabled`                                                                                                                | `*bool`                                                                                                                  | :heavy_minus_sign:                                                                                                       | Is AI enabled?                                                                                                           |
+| `Features`                                                                                                               | [components.AISettingsResponseFeatures](../../models/components/aisettingsresponsefeatures.md)                           | :heavy_check_mark:                                                                                                       | AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false. |
