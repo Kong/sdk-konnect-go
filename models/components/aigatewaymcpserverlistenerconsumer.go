@@ -19,13 +19,13 @@ type AIGatewayMCPServerListenerConsumer struct {
 	// operation (`initialize`, `tools/list`, `tools/call`) is allowed, and before any tool-level
 	// `default_tool_acls` or per-tool `access.acls` check is evaluated.
 	//
-	Acls *AIGatewayMCPACLs `json:"acls,omitempty"`
+	Acls *AIGatewayMCPServerACLs `json:"acls,omitempty"`
 	// Default per-tool access control rules for allowing or denying consumer groups access to
 	// tools. Evaluated only for callers that already passed the server-level `acls` check above.
 	// Applies to every tool exposed by this MCP Server unless a specific tool overrides it via
 	// that tool's own `access.acls`.
 	//
-	DefaultToolAcls *AIGatewayMCPDefaultToolACLs `json:"default_tool_acls,omitempty"`
+	DefaultToolAcls *AIGatewayMCPACLs `json:"default_tool_acls,omitempty"`
 	// List of identity providers for granting access to the MCP server.
 	// At most 1 identity provider of each identity provider type can be referenced.
 	//
@@ -57,14 +57,14 @@ func (a *AIGatewayMCPServerListenerConsumer) GetACLAttributeType() *string {
 	return types.Pointer("consumer")
 }
 
-func (a *AIGatewayMCPServerListenerConsumer) GetAcls() *AIGatewayMCPACLs {
+func (a *AIGatewayMCPServerListenerConsumer) GetAcls() *AIGatewayMCPServerACLs {
 	if a == nil {
 		return nil
 	}
 	return a.Acls
 }
 
-func (a *AIGatewayMCPServerListenerConsumer) GetDefaultToolAcls() *AIGatewayMCPDefaultToolACLs {
+func (a *AIGatewayMCPServerListenerConsumer) GetDefaultToolAcls() *AIGatewayMCPACLs {
 	if a == nil {
 		return nil
 	}

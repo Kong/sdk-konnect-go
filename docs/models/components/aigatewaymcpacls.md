@@ -1,47 +1,13 @@
 # AIGatewayMCPACLs
 
-Access control rules for MCP resources. Configure exactly one of `allow`, `deny`, `allow_when`, or `deny_when`.
+Access control rules for MCP resources. Configure `allow`, `deny`, or both.
 
 
-## Supported Types
+## Fields
 
-### AIGatewayAllowACL
-
-```go
-aiGatewayMCPACLs := components.CreateAIGatewayMCPACLsAIGatewayAllowACL(components.AIGatewayAllowACL{/* values here */})
-```
-
-### AIGatewayDenyACL
-
-```go
-aiGatewayMCPACLs := components.CreateAIGatewayMCPACLsAIGatewayDenyACL(components.AIGatewayDenyACL{/* values here */})
-```
-
-### AIGatewayMCPAllowWhenACL
-
-```go
-aiGatewayMCPACLs := components.CreateAIGatewayMCPACLsAIGatewayMCPAllowWhenACL(components.AIGatewayMCPAllowWhenACL{/* values here */})
-```
-
-### AIGatewayMCPDenyWhenACL
-
-```go
-aiGatewayMCPACLs := components.CreateAIGatewayMCPACLsAIGatewayMCPDenyWhenACL(components.AIGatewayMCPDenyWhenACL{/* values here */})
-```
-
-## Union Discrimination
-
-Use the `Type` field to determine which variant is active, then access the corresponding field:
-
-```go
-switch aiGatewayMCPACLs.Type {
-	case components.AIGatewayMCPACLsTypeAIGatewayAllowACL:
-		// aiGatewayMCPACLs.AIGatewayAllowACL is populated
-	case components.AIGatewayMCPACLsTypeAIGatewayDenyACL:
-		// aiGatewayMCPACLs.AIGatewayDenyACL is populated
-	case components.AIGatewayMCPACLsTypeAIGatewayMCPAllowWhenACL:
-		// aiGatewayMCPACLs.AIGatewayMCPAllowWhenACL is populated
-	case components.AIGatewayMCPACLsTypeAIGatewayMCPDenyWhenACL:
-		// aiGatewayMCPACLs.AIGatewayMCPDenyWhenACL is populated
-}
-```
+| Field                                                                                                                                                         | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Allow`                                                                                                                                                       | []`string`                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                            | List of consumer groups that are permitted access.                                                                                                            |
+| `Deny`                                                                                                                                                        | []`string`                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                            | List of consumer groups that are denied access.                                                                                                               |
+| `AllowWhen`                                                                                                                                                   | []`string`                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                            | Allow the request if it matches any of these CEL boolean expressions evaluated against the request context.<br/><br/>**Requires a minimum runtime version of `2.3`**. |
+| `DenyWhen`                                                                                                                                                    | []`string`                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                            | Deny the request if it matches any of these CEL boolean expressions evaluated against the request context.<br/><br/>**Requires a minimum runtime version of `2.3`**. |
