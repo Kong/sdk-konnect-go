@@ -10,139 +10,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type CreatePrincipalKeyBodyv1Type string
-
-const (
-	CreatePrincipalKeyBodyv1TypeV1 CreatePrincipalKeyBodyv1Type = "v1"
-)
-
-func (e CreatePrincipalKeyBodyv1Type) ToPointer() *CreatePrincipalKeyBodyv1Type {
-	return &e
-}
-func (e *CreatePrincipalKeyBodyv1Type) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "v1":
-		*e = CreatePrincipalKeyBodyv1Type(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreatePrincipalKeyBodyv1Type: %v", v)
-	}
-}
-
-type CreatePrincipalKeyBodyv1 struct {
-	Type CreatePrincipalKeyBodyv1Type `json:"type"`
-	// Human-readable name of the API key. `null` if the key has no name.
-	//
-	Name *string `json:"name,omitempty"`
-	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
-	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-}
-
-func (c CreatePrincipalKeyBodyv1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreatePrincipalKeyBodyv1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (c *CreatePrincipalKeyBodyv1) GetType() CreatePrincipalKeyBodyv1Type {
-	if c == nil {
-		return CreatePrincipalKeyBodyv1Type("")
-	}
-	return c.Type
-}
-
-func (c *CreatePrincipalKeyBodyv1) GetName() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Name
-}
-
-func (c *CreatePrincipalKeyBodyv1) GetManagedBy() map[string]string {
-	if c == nil {
-		return nil
-	}
-	return c.ManagedBy
-}
-
-// #region class-body-createprincipalkeybodyv1
-// #endregion class-body-createprincipalkeybodyv1
-
-type CreatePrincipalKeyBodyImportedType string
-
-const (
-	CreatePrincipalKeyBodyImportedTypeImported CreatePrincipalKeyBodyImportedType = "imported"
-)
-
-func (e CreatePrincipalKeyBodyImportedType) ToPointer() *CreatePrincipalKeyBodyImportedType {
-	return &e
-}
-func (e *CreatePrincipalKeyBodyImportedType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "imported":
-		*e = CreatePrincipalKeyBodyImportedType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreatePrincipalKeyBodyImportedType: %v", v)
-	}
-}
-
-type CreatePrincipalKeyBodyImported struct {
-	Type CreatePrincipalKeyBodyImportedType `json:"type"`
-	// Human-readable name of the API key. `null` if the key has no name.
-	//
-	Name   *string `json:"name,omitempty"`
-	Secret string  `json:"secret"`
-}
-
-func (c CreatePrincipalKeyBodyImported) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreatePrincipalKeyBodyImported) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "secret"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (c *CreatePrincipalKeyBodyImported) GetType() CreatePrincipalKeyBodyImportedType {
-	if c == nil {
-		return CreatePrincipalKeyBodyImportedType("")
-	}
-	return c.Type
-}
-
-func (c *CreatePrincipalKeyBodyImported) GetName() *string {
-	if c == nil {
-		return nil
-	}
-	return c.Name
-}
-
-func (c *CreatePrincipalKeyBodyImported) GetSecret() string {
-	if c == nil {
-		return ""
-	}
-	return c.Secret
-}
-
 type CreatePrincipalKeyBodyType string
 
 const (
@@ -161,9 +28,6 @@ type CreatePrincipalKeyBody struct {
 func CreateCreatePrincipalKeyBodyImported(imported CreatePrincipalKeyBodyImported) CreatePrincipalKeyBody {
 	typ := CreatePrincipalKeyBodyTypeImported
 
-	typStr := CreatePrincipalKeyBodyImportedType(typ)
-	imported.Type = typStr
-
 	return CreatePrincipalKeyBody{
 		CreatePrincipalKeyBodyImported: &imported,
 		Type:                           typ,
@@ -172,9 +36,6 @@ func CreateCreatePrincipalKeyBodyImported(imported CreatePrincipalKeyBodyImporte
 
 func CreateCreatePrincipalKeyBodyV1(v1 CreatePrincipalKeyBodyv1) CreatePrincipalKeyBody {
 	typ := CreatePrincipalKeyBodyTypeV1
-
-	typStr := CreatePrincipalKeyBodyv1Type(typ)
-	v1.Type = typStr
 
 	return CreatePrincipalKeyBody{
 		CreatePrincipalKeyBodyv1: &v1,

@@ -390,9 +390,7 @@ func main() {
         DirectoryID: "f6cd2cb2-efde-4ac3-801f-c24253cac0df",
         GroupID: "8fe53b37-b65e-4ab7-b8f7-d71fafc853d8",
         CreatePrincipalKeyBody: components.CreateCreatePrincipalKeyBodyV1(
-            components.CreatePrincipalKeyBodyv1{
-                Type: components.CreatePrincipalKeyBodyv1TypeV1,
-            },
+            components.CreatePrincipalKeyBodyv1{},
         ),
     })
     if err != nil {
@@ -512,6 +510,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -530,6 +529,7 @@ func main() {
         GroupID: "dfe79694-0010-43f0-bff6-6fc3fe8581c3",
         APIKeyID: "ef777c9a-e52d-4c42-95d9-a8833d75cfdd",
         UpdatePrincipalKeyBody: components.UpdatePrincipalKeyBody{
+            ExpiresAt: types.MustNewTimeFromString("2022-11-04T20:10:06.927Z"),
             ManagedBy: map[string]*string{
                 "owner": sdkkonnectgo.Pointer("terraform"),
             },

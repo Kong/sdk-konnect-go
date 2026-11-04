@@ -10,29 +10,6 @@ import (
 	"time"
 )
 
-type VaultProviderCredentialUserCredentialType string
-
-const (
-	VaultProviderCredentialUserCredentialTypeUser VaultProviderCredentialUserCredentialType = "user"
-)
-
-func (e VaultProviderCredentialUserCredentialType) ToPointer() *VaultProviderCredentialUserCredentialType {
-	return &e
-}
-func (e *VaultProviderCredentialUserCredentialType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "user":
-		*e = VaultProviderCredentialUserCredentialType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for VaultProviderCredentialUserCredentialType: %v", v)
-	}
-}
-
 type Principal struct {
 	// The principal's ID.
 	ID string `json:"id"`
@@ -92,11 +69,12 @@ func (e *VaultProviderCredentialUserStatus) UnmarshalJSON(data []byte) error {
 // VaultProviderCredentialUser - One principal's individual authorization of this provider.
 type VaultProviderCredentialUser struct {
 	// Contains a unique identifier used for this resource.
-	ID             string                                    `json:"id"`
-	CreatedAt      time.Time                                 `json:"created_at"`
-	UpdatedAt      time.Time                                 `json:"updated_at"`
-	CredentialType VaultProviderCredentialUserCredentialType `json:"credential_type"`
-	Principal      Principal                                 `json:"principal"`
+	ID        string    `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	credentialType string    `const:"user" json:"credential_type"`
+	Principal      Principal `json:"principal"`
 	// A user credential exists only once authorization has completed, so this is always "active".
 	Status VaultProviderCredentialUserStatus `json:"status"`
 	// Expiry of the current access token, if any.
@@ -135,11 +113,8 @@ func (v *VaultProviderCredentialUser) GetUpdatedAt() time.Time {
 	return v.UpdatedAt
 }
 
-func (v *VaultProviderCredentialUser) GetCredentialType() VaultProviderCredentialUserCredentialType {
-	if v == nil {
-		return VaultProviderCredentialUserCredentialType("")
-	}
-	return v.CredentialType
+func (v *VaultProviderCredentialUser) GetCredentialType() string {
+	return "user"
 }
 
 func (v *VaultProviderCredentialUser) GetPrincipal() Principal {
