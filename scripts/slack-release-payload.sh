@@ -27,43 +27,9 @@ set -o pipefail
 PREV_TAG="${1:-}"
 VERSION="${2:-$(yq '.management.releaseVersion' .speakeasy/gen.lock)}"
 
-# Input OAS title, version and path for the previous release. Empty when there is no previous tag.
-PREV=""
-if [[ -n "${PREV_TAG}" ]]; then
-  if ! PREV=$(git show "${PREV_TAG}:openapi.yaml" 2>/dev/null | yq -r '.x-input-schemas[] | [.title, .version, .path] | @tsv'); then
-    echo "No openapi.yaml at ${PREV_TAG}. The message has no change list." >&2
-    PREV=""
-  fi
-fi
-export PREV
-
-# Entries match by path, which is stable when a title changes.
-# The awk output holds the changes table, then a marker, then the versions table.
-# ENVIRON keeps the newlines out of awk escaping.
+# Changes table, then the marker @@TABLE@@, then the versions table.
 # shortcut: all markdown blocks together hold 12000 characters; both tables are about 4000 today.
-OUTPUT=$(yq -r '.x-input-schemas[] | [.title, .version, .path] | @tsv' openapi.yaml | awk -F'\t' '
-  BEGIN {
-    prev = ENVIRON["PREV"]
-    n = split(prev, rows, "\n")
-    for (i = 1; i <= n; i++) {
-      split(rows[i], f, "\t")
-      oldtitle[f[3]] = f[1]; oldver[f[3]] = f[2]
-    }
-  }
-  {
-    seen[$3] = 1
-    versions = versions sprintf("| %s | %s | %s |\n", $1, $2, $3)
-    if (prev != "") {
-      if (!($3 in oldver)) changes = changes sprintf("| %s | (new) | %s | %s |\n", $1, $2, $3)
-      else if (oldver[$3] != $2) changes = changes sprintf("| %s | ~~%s~~ | %s | %s |\n", $1, oldver[$3], $2, $3)
-    }
-  }
-  END {
-    for (p in oldver) if (!(p in seen)) changes = changes sprintf("| %s | ~~%s~~ | (removed) | %s |\n", oldtitle[p], oldver[p], p)
-    if (changes == "") changes = "No input OAS changes\n"
-    else changes = "| Input OAS | Old version | Version | Path |\n| --- | --- | --- | --- |\n" changes
-    printf "%s@@TABLE@@| Input OAS | Version | Path |\n| --- | --- | --- |\n%s", changes, versions
-  }')
+OUTPUT=$(./scripts/oas-versions.sh "${PREV_TAG}")
 
 CHANGES="${OUTPUT%%@@TABLE@@*}"
 CHANGES="${CHANGES%$'\n'}"
