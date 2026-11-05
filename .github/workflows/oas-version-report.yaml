@@ -49,13 +49,14 @@ jobs:
 
           {
             echo "<!-- oas-version-report -->"
-            echo "Input OAS versions at \`${HEAD_SHA}\`, compared with \`${BASE_REF}\` at \`${BASE_SHA}\`."
             echo
-            echo "**Changes**"
+            echo "Input OAS versions at ${HEAD_SHA}, compared with \`${BASE_REF}\` at ${BASE_SHA}."
+            echo
+            echo "## Changes"
             echo
             echo "${CHANGES}"
             echo
-            echo "**Input OAS versions**"
+            echo "## Input OAS versions"
             echo
             echo "${TABLE}"
           } > comment.md
