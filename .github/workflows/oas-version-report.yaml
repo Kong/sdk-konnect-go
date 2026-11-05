@@ -1,0 +1,76 @@
+name: OAS version report
+
+on:
+  pull_request:
+    paths:
+      - openapi.yaml
+    types:
+    - opened
+    - synchronize
+    - reopened
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  report:
+    # Fork pull requests get a read-only token, so they cannot write the comment.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      # Checkout reads the files. The comment is the only write.
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Fetch base commit
+        run: git fetch --no-tags --depth=1 origin '${{ github.event.pull_request.base.sha }}'
+
+      - name: Build comment
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+        run: |
+          OUTPUT=$(./scripts/oas-versions.sh "${BASE_SHA}")
+          CHANGES="${OUTPUT%%@@TABLE@@*}"
+          CHANGES="${CHANGES%$'\n'}"
+          TABLE="${OUTPUT#*@@TABLE@@}"
+
+          {
+            echo "<!-- oas-version-report -->"
+            echo "Input OAS versions at \`${HEAD_SHA}\`, compared with \`${BASE_REF}\` at \`${BASE_SHA}\`."
+            echo
+            echo "**Changes**"
+            echo
+            echo "${CHANGES}"
+            echo
+            echo "**Input OAS versions**"
+            echo
+            echo "${TABLE}"
+          } > comment.md
+
+      - name: Create or update comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # The marker keeps one comment per pull request.
+          COMMENT_ID=$(gh api --paginate "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" \
+            --jq '[.[] | select(.body | contains("<!-- oas-version-report -->")) | .id][0] // empty')
+
+          if [[ -n "${COMMENT_ID}" ]]; then
+            gh api -X PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}" -F body=@comment.md
+          else
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" -F body=@comment.md
+          fi
