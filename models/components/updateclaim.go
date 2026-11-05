@@ -14,7 +14,7 @@ type UpdateClaim struct {
 	// Specifies whether to include the claim in all scopes. If the value is set to 'false' for a claim, the claim is only included in the scopes that explicitly list it.
 	IncludeInAllScopes *bool `json:"include_in_all_scopes,omitempty"`
 	// Specifies the scopes IDs in which the claim is included
-	IncludeInScopes []string `json:"include_in_scopes,omitempty"`
+	IncludeInScopes []string `json:"include_in_scopes,omitzero"`
 	// Specifies whether the claim is enabled. If the claim is not enabled, it will not be included in the token or the '/userinfo' endpoint.
 	Enabled *bool `json:"enabled,omitempty"`
 }

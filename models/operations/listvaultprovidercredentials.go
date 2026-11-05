@@ -18,7 +18,7 @@ type ListVaultProviderCredentialsRequest struct {
 	// ID of the vault provider
 	ProviderID string `pathParam:"style=simple,explode=false,name=providerId"`
 	// Determines which page of the collection to retrieve.
-	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
+	Page *components.CursorPageParameters `queryParam:"style=deepObject,explode=true,name=page"`
 	// Sorts vault provider credentials. Supported sort attributes are:
 	// - created_at
 	// - updated_at

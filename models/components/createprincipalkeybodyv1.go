@@ -5,6 +5,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -15,7 +16,7 @@ type CreatePrincipalKeyBodyv1 struct {
 	//
 	Name *string `json:"name,omitempty"`
 	// An ISO-8601 timestamp representation of entity expiration date.
-	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
@@ -45,7 +46,7 @@ func (c *CreatePrincipalKeyBodyv1) GetName() *string {
 	return c.Name
 }
 
-func (c *CreatePrincipalKeyBodyv1) GetExpiresAt() *time.Time {
+func (c *CreatePrincipalKeyBodyv1) GetExpiresAt() optionalnullable.OptionalNullable[time.Time] {
 	if c == nil {
 		return nil
 	}
