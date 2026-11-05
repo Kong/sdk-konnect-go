@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: f0710553d8b814bc72a0c3c3dda7a45e
+  docChecksum: 69157a395b2c71972fef58200042151a
   docVersion: 3.17.0
   speakeasyVersion: 1.806.0
   generationVersion: 2.956.1
   releaseVersion: 0.83.0
   configChecksum: a13498c75b0529582f519eef003dd934
 persistentEdits:
-  generation_id: f51fd3d2-83bf-4d4d-98a2-2849b0d28011
-  pristine_commit_hash: ae92a7bf93b2cb83ab32a0e220f7f8a9a462f10e
-  pristine_tree_hash: 0ddcd4a8f28efa85959826f0083a99190d5ca67b
+  generation_id: 95937aa4-b628-4ea9-b1fd-9c453e507fc8
+  pristine_commit_hash: 80976ed68a2f9b4b659e05d14f813f740fe8c59b
+  pristine_tree_hash: 7031011c92437eaf32af729ddf15ffed9e8f0a20
 features:
   go:
     acceptHeaders: 2.81.2
@@ -15554,8 +15554,8 @@ trackedFiles:
     pristine_git_object: 8daf0c97e857c169cadce93ae93de76f652b5792
   docs/models/components/updatesamlidentityproviderconfig.md:
     id: f70acd8ab06b
-    last_write_checksum: sha1:c2fb311aa390901bffb9bc576a675e3070716cd0
-    pristine_git_object: dbb4ca0cb92cefced14b7a65a4522c44cd97b38a
+    last_write_checksum: sha1:9e658e32b84102f3d78ab2352cb5bd9c21cff1a1
+    pristine_git_object: b718062387632b30c5df474e426b9733d5f3186d
   docs/models/components/updatescope.md:
     id: 90ac033808e2
     last_write_checksum: sha1:06b78886bfdde48bcb0761cd5800a7e309a0ecd4
@@ -33538,8 +33538,8 @@ trackedFiles:
     pristine_git_object: 9b62aa512797ae420e520917a77db9987eeb8884
   models/components/updatesamlidentityproviderconfig.go:
     id: a662aa6913f7
-    last_write_checksum: sha1:03e33781eeecbd56c655cdf5bff2c8a59b0ef5b6
-    pristine_git_object: fca696d7143d2e191a748bb1ec56cc13240a1d1b
+    last_write_checksum: sha1:af0e6cd93cdbffbe5e0d9f3f7d26ea45ef0bdd45
+    pristine_git_object: 73b9bc7980438dae6fdc6a394e1a354d62654118
   models/components/updatescope.go:
     id: bd30c8aaf4b6
     last_write_checksum: sha1:dd69d60b805de834c5cabec5985cf98c06d98411
