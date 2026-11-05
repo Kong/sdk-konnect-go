@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.16.0 and generator version 2.956.1
+// Generated from OpenAPI doc version 3.17.0 and generator version 2.956.1
 
 import (
 	"context"
@@ -488,6 +488,8 @@ type SDK struct {
 	PortalTeamRoles *PortalTeamRoles
 	// APIs related to configuration of Konnect Developer Portals.
 	Portals *Portals
+	// APIs related to Konnect Developer Portal AI Settings.
+	AISettings *AISettings
 	// APIs related to Konnect Developer Portal Application Registrations.
 	ApplicationRegistrations *ApplicationRegistrations
 	// APIs for managing static assets for Konnect Developer Portals.
@@ -499,6 +501,8 @@ type SDK struct {
 	PortalCustomDomains *PortalCustomDomains
 	// APIs related to customization of Konnect Developer Portals.
 	PortalCustomization *PortalCustomization
+	// APIs related to Konnect Developer Portal sidebar navigation configuration.
+	PortalNavigation *PortalNavigation
 	// APIs related to Konnect Developer Portal Custom Pages.
 	Pages *Pages
 	// APIs related to Konnect Developer Portal developers.
@@ -601,12 +605,12 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.82.2",
+		SDKVersion: "0.83.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.82.2 2.956.1 3.16.0 github.com/Kong/sdk-konnect-go",
-			SDKVersion:        "0.82.2",
+			UserAgent:         "speakeasy-sdk/go 0.83.0 2.956.1 3.17.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.83.0",
 			GenVersion:        "2.956.1",
-			OpenAPIDocVersion: "3.16.0",
+			OpenAPIDocVersion: "3.17.0",
 			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),
@@ -778,12 +782,14 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Me = newMe(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamRoles = newPortalTeamRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Portals = newPortals(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AISettings = newAISettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ApplicationRegistrations = newApplicationRegistrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Assets = newAssets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalAuditLogs = newPortalAuditLogs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalAuthSettings = newPortalAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalCustomDomains = newPortalCustomDomains(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalCustomization = newPortalCustomization(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalNavigation = newPortalNavigation(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Pages = newPages(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalDevelopers = newPortalDevelopers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)

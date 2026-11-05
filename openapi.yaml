@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.16.0
+  version: 3.17.0
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -1861,6 +1861,9 @@ paths:
       tags:
         - AI Gateway Datastores
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayDatastore#create
+        terraform-datasource: null
       operationId: create-ai-gateway-datastore
       summary: Create an AI Gateway Datastore
       description: Creates a new Datastore for the AI Gateway.
@@ -1892,6 +1895,9 @@ paths:
       - $ref: '#/components/parameters/AIGatewayId'
       - $ref: '#/components/parameters/AIGatewayDatastoreIdOrName'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayDatastore#read
+        terraform-datasource: null
       operationId: get-ai-gateway-datastore
       summary: Get an AI Gateway Datastore
       description: Returns the details of a specific AI Gateway Datastore.
@@ -1909,6 +1915,9 @@ paths:
       tags:
         - AI Gateway Datastores
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayDatastore#update
+        terraform-datasource: null
       operationId: update-ai-gateway-datastore
       summary: Update an AI Gateway Datastore
       description: |
@@ -1939,6 +1948,9 @@ paths:
       tags:
         - AI Gateway Datastores
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: AIGatewayDatastore#delete
+        terraform-datasource: null
       operationId: delete-ai-gateway-datastore
       summary: Delete an AI Gateway Datastore
       description: Deletes an AI Gateway Datastore. Rejected with a 409 if the Datastore is still referenced by a policy or model.
@@ -16224,6 +16236,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/directoryId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroup#create
+        terraform-datasource: null
       operationId: createGroup
       summary: Create a Group in a Directory
       description: |
@@ -16319,6 +16334,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/groupId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroup#read
+        terraform-datasource: null
       operationId: getGroup
       summary: Get a Group
       description: Retrieves detailed information about a specific group by its ID.
@@ -16336,6 +16354,9 @@ paths:
       tags:
         - PrincipalGroup
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroup#update
+        terraform-datasource: null
       operationId: replaceGroup
       summary: Replace a Group
       description: |
@@ -16364,6 +16385,9 @@ paths:
       tags:
         - PrincipalGroup
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroup#delete
+        terraform-datasource: null
       operationId: deleteGroup
       summary: Delete a Group
       description: |
@@ -16386,6 +16410,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/groupId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupAPIKey#create
+        terraform-datasource: null
       operationId: create-group-key
       summary: Create a group API key
       description: |
@@ -16447,6 +16474,9 @@ paths:
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/apiKeyId'
     patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupAPIKey#update
+        terraform-datasource: null
       operationId: update-group-key
       summary: Update a group API key
       description: |
@@ -16472,6 +16502,9 @@ paths:
       tags:
         - PrincipalGroup
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupAPIKey#read
+        terraform-datasource: null
       operationId: get-group-key
       summary: Get a group API key
       description: |
@@ -16491,6 +16524,9 @@ paths:
       tags:
         - PrincipalGroup
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupAPIKey#delete
+        terraform-datasource: null
       operationId: delete-group-key
       summary: Delete an API key
       description: |
@@ -16553,6 +16589,9 @@ paths:
       tags:
         - PrincipalGroup
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupMembership#create
+        terraform-datasource: null
       operationId: createGroupMembershipEntry
       summary: Add a member to a Group
       description: |
@@ -16582,6 +16621,9 @@ paths:
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/groupMembershipId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupMembership#read
+        terraform-datasource: null
       operationId: getGroupMembershipEntry
       summary: Get a Group membership entry
       description: Retrieves a specific group membership entry by the member's ID.
@@ -16599,6 +16641,9 @@ paths:
       tags:
         - PrincipalGroup
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityGroupMembership#delete
+        terraform-datasource: null
       operationId: deleteGroupMembershipEntry
       summary: Remove a member from a Group
       description: |
@@ -16686,6 +16731,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/directoryId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipal#create
+        terraform-datasource: null
       operationId: createPrincipal
       summary: Create a Principal in a Directory
       description: |
@@ -16793,6 +16841,9 @@ paths:
       tags:
         - KongPrincipal
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipal#update
+        terraform-datasource: null
       operationId: replacePrincipal
       summary: Replace a Principal
       description: |
@@ -16816,6 +16867,9 @@ paths:
       tags:
         - KongPrincipal
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipal#read
+        terraform-datasource: null
       operationId: getPrincipal
       summary: Get a Principal
       description: Retrieves detailed information about a specific principal by its ID.
@@ -16833,6 +16887,9 @@ paths:
       tags:
         - KongPrincipal
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipal#delete
+        terraform-datasource: null
       operationId: deletePrincipal
       summary: Delete a Principal
       description: |
@@ -16857,6 +16914,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/principalId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalAPIKey#create
+        terraform-datasource: null
       operationId: create-principal-key
       summary: Create a principal API key
       description: |
@@ -16914,6 +16974,9 @@ paths:
       - $ref: '#/components/parameters/principalId'
       - $ref: '#/components/parameters/apiKeyId'
     patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalAPIKey#update
+        terraform-datasource: null
       operationId: update-principal-key
       summary: Update a principal API key
       description: |
@@ -16937,6 +17000,9 @@ paths:
       tags:
         - KongPrincipalCredential
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalAPIKey#read
+        terraform-datasource: null
       operationId: get-identity-key
       summary: Get a principal API key
       description: |
@@ -16956,6 +17022,9 @@ paths:
       tags:
         - KongPrincipalCredential
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalAPIKey#delete
+        terraform-datasource: null
       operationId: delete-principal-key
       summary: Delete an API key
       description: |
@@ -16999,6 +17068,9 @@ paths:
       tags:
         - KongPrincipalCredential
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuth#create
+        terraform-datasource: null
       operationId: create-principal-basic-auth
       summary: Create a basic auth credential
       description: |
@@ -17026,6 +17098,9 @@ paths:
       - $ref: '#/components/parameters/principalId'
       - $ref: '#/components/parameters/basicAuthId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuth#read
+        terraform-datasource: null
       operationId: get-principal-basic-auth
       summary: Get a basic auth credential
       description: |
@@ -17066,6 +17141,9 @@ paths:
       tags:
         - KongPrincipalCredential
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuth#update
+        terraform-datasource: null
       operationId: replace-principal-basic-auth
       summary: Replace a basic auth credential
       description: |
@@ -17088,6 +17166,9 @@ paths:
       tags:
         - KongPrincipalCredential
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuth#delete
+        terraform-datasource: null
       operationId: delete-principal-basic-auth
       summary: Delete a basic auth credential
       description: |
@@ -17132,6 +17213,9 @@ paths:
       tags:
         - KongPrincipalCredential
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuthPassword#create
+        terraform-datasource: null
       operationId: createPassword
       summary: Create a password for a basic auth credential
       description: |
@@ -17182,6 +17266,9 @@ paths:
       - $ref: '#/components/parameters/basicAuthId'
       - $ref: '#/components/parameters/passwordId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuthPassword#read
+        terraform-datasource: null
       operationId: getPassword
       summary: Get a password
       description: |
@@ -17222,6 +17309,9 @@ paths:
       tags:
         - KongPrincipalCredential
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuthPassword#update
+        terraform-datasource: null
       operationId: replacePassword
       summary: Replace a password
       description: |
@@ -17244,6 +17334,9 @@ paths:
       tags:
         - KongPrincipalCredential
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalBasicAuthPassword#delete
+        terraform-datasource: null
       operationId: deletePassword
       summary: Delete a password
       description: |
@@ -17349,6 +17442,9 @@ paths:
       tags:
         - KongPrincipalIdentity
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalIdentity#create
+        terraform-datasource: null
       operationId: createIdentity
       summary: Create an identity for a principal
       description: |
@@ -17378,6 +17474,9 @@ paths:
       - $ref: '#/components/parameters/principalId'
       - $ref: '#/components/parameters/identityId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalIdentity#read
+        terraform-datasource: null
       operationId: getIdentity
       summary: Get an identity
       description: Retrieves detailed information about a specific principal identity by its ID.
@@ -17395,6 +17494,9 @@ paths:
       tags:
         - KongPrincipalIdentity
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalIdentity#update
+        terraform-datasource: null
       operationId: replaceIdentity
       summary: Replace an identity
       description: |
@@ -17445,6 +17547,9 @@ paths:
       tags:
         - KongPrincipalIdentity
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityPrincipalIdentity#delete
+        terraform-datasource: null
       operationId: deleteIdentity
       summary: Delete an identity
       description: |
@@ -17562,6 +17667,9 @@ paths:
       tags:
         - Trusted IdPs
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityTrustedIdp#create
+        terraform-datasource: null
       operationId: createTrustedIdp
       summary: Create a new trusted IdP
       description: |
@@ -17590,6 +17698,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/trustedIdpId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityTrustedIdp#read
+        terraform-datasource: null
       operationId: getTrustedIdp
       summary: Get a trusted IdP
       description: Get a trusted IdP for a directory.
@@ -17607,6 +17718,9 @@ paths:
       tags:
         - Trusted IdPs
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityTrustedIdp#update
+        terraform-datasource: null
       operationId: updateTrustedIdp
       summary: Update a trusted IdP
       description: |
@@ -17653,6 +17767,9 @@ paths:
       tags:
         - Trusted IdPs
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityTrustedIdp#delete
+        terraform-datasource: null
       operationId: deleteTrustedIdp
       summary: Delete a trusted IdP
       description: Delete a trusted IdP for a given directory.
@@ -17720,6 +17837,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/directoryId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultKey#create
+        terraform-datasource: null
       operationId: createVaultKey
       summary: Create a vault key
       description: |
@@ -17783,6 +17903,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/vaultKeyId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultKey#read
+        terraform-datasource: null
       operationId: getVaultKey
       summary: Get a vault key
       description: Retrieves a single vault key by its ID.
@@ -17800,6 +17923,9 @@ paths:
       tags:
         - TokenVaultKeys
     patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultKey#update
+        terraform-datasource: null
       operationId: updateVaultKey
       summary: Update a vault key
       description: |
@@ -17824,6 +17950,9 @@ paths:
       tags:
         - TokenVaultKeys
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultKey#delete
+        terraform-datasource: null
       operationId: deleteVaultKey
       summary: Delete a vault key
       description: |
@@ -17847,6 +17976,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/directoryId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProvider#create
+        terraform-datasource: null
       operationId: createVaultProvider
       summary: Create a vault provider
       description: |
@@ -17930,6 +18062,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/providerId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProvider#read
+        terraform-datasource: null
       operationId: getVaultProvider
       summary: Get a vault provider
       description: Retrieves a single vault provider by its ID.
@@ -17968,6 +18103,9 @@ paths:
       tags:
         - TokenVaultProviders
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProvider#update
+        terraform-datasource: null
       operationId: replaceVaultProvider
       summary: Replace a vault provider
       description: |
@@ -17991,6 +18129,9 @@ paths:
       tags:
         - TokenVaultProviders
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProvider#delete
+        terraform-datasource: null
       operationId: deleteVaultProvider
       summary: Delete a vault provider
       description: Deletes a vault provider from a directory.
@@ -18012,6 +18153,9 @@ paths:
       - $ref: '#/components/parameters/directoryId'
       - $ref: '#/components/parameters/providerId'
     post:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProviderCredential#create
+        terraform-datasource: null
       operationId: createVaultProviderCredential
       summary: Create a shared credential for a provider
       description: |
@@ -18081,6 +18225,9 @@ paths:
       - $ref: '#/components/parameters/providerId'
       - $ref: '#/components/parameters/vaultProviderCredentialId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProviderCredential#read
+        terraform-datasource: null
       operationId: getVaultProviderCredential
       summary: Get a specific credential
       description: |
@@ -18102,6 +18249,9 @@ paths:
       tags:
         - TokenVaultProviders
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProviderCredential#update
+        terraform-datasource: null
       operationId: updateVaultProviderCredential
       summary: Update a shared credential's value
       description: |
@@ -18127,6 +18277,9 @@ paths:
       tags:
         - TokenVaultProviders
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityVaultProviderCredential#delete
+        terraform-datasource: null
       operationId: deleteVaultProviderCredential
       summary: Delete a specific provider credential
       responses:
@@ -25338,6 +25491,58 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Portals
+  '/v3/portals/{portalId}/ai-settings':
+    parameters:
+      - $ref: '#/components/parameters/PortalId'
+    get:
+      operationId: get-ai-settings
+      summary: Get AI Settings by Portal
+      description: Gets AI settings for a given portal including the configuration of all AI features.
+      responses:
+        '200':
+          $ref: '#/components/responses/AISettingsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - AI Settings
+    put:
+      operationId: replace-ai-settings
+      summary: Replace AI Settings by Portal
+      description: Replaces AI settings for a given portal including the configuration of all AI features.
+      requestBody:
+        $ref: '#/components/requestBodies/ReplaceAISettingsRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/AISettingsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - AI Settings
+    patch:
+      operationId: patch-ai-settings
+      summary: Patch AI Settings by Portal
+      description: Patches AI settings for a given portal including the configuration of all AI features.
+      requestBody:
+        $ref: '#/components/requestBodies/PatchAISettingsRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/AISettingsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - AI Settings
   '/v3/portals/{portalId}/api-publications':
     parameters:
       - $ref: '#/components/parameters/PortalId'
@@ -26225,6 +26430,112 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Portal Customization
+  '/v3/portals/{portalId}/customization/navigations':
+    get:
+      operationId: list-portal-navigations
+      summary: List Navigation configurations
+      description: Returns a paginated list of the portal's sidebar navigation configurations. Each navigation is matched to pages by its `show_on_path_prefixes` and displayed automatically when using a named page layout that supports the sidebar UX.
+      parameters:
+        - $ref: '#/components/parameters/SortPortalNavigations'
+        - $ref: '#/components/parameters/PortalId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+        - name: filter
+          in: query
+          description: Filter navigations returned in the response.
+          required: false
+          schema:
+            $ref: '#/components/schemas/PortalNavigationsFilterParameters'
+          style: deepObject
+      responses:
+        '200':
+          $ref: '#/components/responses/ListPortalNavigations'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Navigation
+    post:
+      operationId: create-portal-navigation
+      summary: Create Navigation configuration
+      description: 'Creates a sidebar navigation configuration for this portal. A navigation claims every page under its `show_on_path_prefixes`, and the longest matching entry wins when more than one navigation is configured.'
+      parameters:
+        - $ref: '#/components/parameters/PortalId'
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePortalNavigation'
+      responses:
+        '201':
+          $ref: '#/components/responses/PortalNavigation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Navigation
+  '/v3/portals/{portalId}/customization/navigations/{navigationId}':
+    get:
+      operationId: get-portal-navigation
+      summary: Get a Navigation configuration
+      description: Returns the configuration of a single sidebar navigation for this portal.
+      parameters:
+        - $ref: '#/components/parameters/PortalId'
+        - $ref: '#/components/parameters/NavigationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PortalNavigation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Navigation
+    put:
+      operationId: replace-portal-navigation
+      summary: Replace Navigation configuration
+      description: Replaces the configuration of a single sidebar navigation for this portal. This is a full replacement; partial updates are not supported.
+      parameters:
+        - $ref: '#/components/parameters/PortalId'
+        - $ref: '#/components/parameters/NavigationId'
+      requestBody:
+        $ref: '#/components/requestBodies/ReplacePortalNavigation'
+      responses:
+        '200':
+          $ref: '#/components/responses/PortalNavigation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Navigation
+    delete:
+      operationId: delete-portal-navigation
+      summary: Delete Navigation configuration
+      description: Deletes a single sidebar navigation configuration for this portal.
+      parameters:
+        - $ref: '#/components/parameters/PortalId'
+        - $ref: '#/components/parameters/NavigationId'
+      responses:
+        '204':
+          description: No Content
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Navigation
   '/v3/portals/{portalId}/default-content':
     post:
       operationId: create-default-content
@@ -30302,7 +30613,6 @@ components:
       in: path
       required: true
       description: ID of the directory
-      x-speakeasy-match: id
       schema:
         type: string
         format: uuid
@@ -30868,6 +31178,15 @@ components:
       name: 'filter[name][eq]'
       schema:
         type: string
+    NavigationId:
+      schema:
+        type: string
+        format: uuid
+        example: ebbac5b0-ac89-45c3-9d2e-c4542c657e79
+      name: navigationId
+      in: path
+      required: true
+      description: ID of the navigation configuration.
     NetworkId:
       name: networkId
       in: path
@@ -31485,6 +31804,18 @@ components:
       required: false
       schema:
         type: string
+    SortPortalNavigations:
+      name: sort
+      description: |
+        Sorts a collection of portal navigations. Supported sort attributes are:
+          - created_at
+          - updated_at
+          - name
+      in: query
+      required: false
+      schema:
+        type: string
+        default: name
     SortPortalPages:
       name: sort
       description: |
@@ -33785,6 +34116,34 @@ components:
         - revoked_at
         - revoked_by
         - last_used_at
+    LegacyStringFieldFilter:
+      description: 'Filter using **one** of the following operators: `eq`, `contains`'
+      type: object
+      properties:
+        eq:
+          description: The field exactly matches the provided value.
+          type: string
+        contains:
+          description: The field contains the provided value.
+          type: string
+      additionalProperties: false
+    StringFieldExistsFilter:
+      description: Filters on whether the given field exists.
+      type: object
+      properties:
+        exists:
+          type: boolean
+      additionalProperties: false
+      deprecated: true
+      required:
+        - exists
+      title: StringFieldExistsFilter
+    LegacyStringFieldFilterWithExists:
+      description: 'Filter a string value field by exact match, partial contains, or existence.'
+      oneOf:
+        - $ref: '#/components/schemas/LegacyStringFieldFilter'
+        - $ref: '#/components/schemas/StringFieldExistsFilter'
+      title: StringFieldFilterWithExists
     UUID:
       description: Contains a unique identifier used for this resource.
       type: string
@@ -33807,6 +34166,25 @@ components:
       type: boolean
       example: true
       title: Identity Provider Enabled Property
+    ManagedByUpdate:
+      description: |
+        Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
+
+        Set a key's value to `null` to remove it.
+
+        Keys must be 1–63 characters long and start with an alphanumeric character.
+      type: object
+      example:
+        owner: terraform
+      additionalProperties:
+        type: string
+        pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
+        minLength: 1
+        maxLength: 63
+        nullable: true
+      maxProperties: 5
+      title: ManagedByUpdate
+      writeOnly: true
     CursorMetaPage:
       type: object
       properties:
@@ -33844,34 +34222,6 @@ components:
           $ref: '#/components/schemas/CursorMetaPage'
       required:
         - page
-    LegacyStringFieldFilter:
-      description: 'Filter using **one** of the following operators: `eq`, `contains`'
-      type: object
-      properties:
-        eq:
-          description: The field exactly matches the provided value.
-          type: string
-        contains:
-          description: The field contains the provided value.
-          type: string
-      additionalProperties: false
-    StringFieldExistsFilter:
-      description: Filters on whether the given field exists.
-      type: object
-      properties:
-        exists:
-          type: boolean
-      additionalProperties: false
-      deprecated: true
-      required:
-        - exists
-      title: StringFieldExistsFilter
-    LegacyStringFieldFilterWithExists:
-      description: 'Filter a string value field by exact match, partial contains, or existence.'
-      oneOf:
-        - $ref: '#/components/schemas/LegacyStringFieldFilter'
-        - $ref: '#/components/schemas/StringFieldExistsFilter'
-      title: StringFieldFilterWithExists
     TeamName:
       description: The name of the team.
       type: string
@@ -39800,7 +40150,6 @@ components:
       required:
         - data
     CreatePrincipalKeyBody:
-      type: object
       discriminator:
         propertyName: type
         mapping:
@@ -39809,12 +40158,14 @@ components:
       oneOf:
         - $ref: '#/components/schemas/CreatePrincipalKeyBodyImported'
         - $ref: '#/components/schemas/CreatePrincipalKeyBodyv1'
+      x-terraform-collapse-oneof: true
+      x-terraform-no-default-null: true
     CreatePrincipalKeyBodyImported:
+      type: object
       properties:
         type:
           type: string
-          enum:
-            - imported
+          const: imported
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         secret:
@@ -39824,21 +40175,21 @@ components:
           writeOnly: true
           x-sensitive: true
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
       additionalProperties: false
       required:
         - type
         - secret
     CreatePrincipalKeyBodyv1:
+      type: object
       properties:
         type:
           type: string
-          enum:
-            - v1
+          const: v1
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
       additionalProperties: false
@@ -39851,7 +40202,7 @@ components:
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedByUpdate'
     CreateBasicAuthBody:
@@ -39898,7 +40249,7 @@ components:
           writeOnly: true
           x-sensitive: true
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
     UpdatePasswordBody:
@@ -39906,7 +40257,7 @@ components:
       type: object
       properties:
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedByUpdate'
     ReplacePasswordBody:
@@ -39920,7 +40271,7 @@ components:
           writeOnly: true
           x-sensitive: true
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: '#/components/schemas/ExpiresAtWritable'
         managed_by:
           $ref: '#/components/schemas/ManagedBy'
       required:
@@ -40248,8 +40599,9 @@ components:
           format: binary
         dry_run:
           description: |
-            Validate the file and return the report without applying anything — no principals created, updated, or made inactive.
+            Validate the file and return the report without applying anything — no principals created, updated, or made inactive. Defaults to true; pass false to apply the import.
           type: boolean
+          default: true
       required:
         - file
     KongImportReport:
@@ -40509,10 +40861,10 @@ components:
         - email
     KongGroupName:
       description: |
-        Human-readable name of the group. Must be alphanumeric, with no spaces.
+        Human-readable name of the group. Must start and end with a letter or a digit. Letters, digits, and hyphens are allowed in between.
       type: string
       maxLength: 255
-      pattern: '^[A-Za-z0-9]+$'
+      pattern: '^[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?$'
     KongGroupDescription:
       description: |
         Optional description providing additional context about the group's purpose.
@@ -40651,8 +41003,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - oidc
+              const: oidc
             issuer:
               type: string
             claim:
@@ -40676,8 +41027,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - auth_server_client
+              const: auth_server_client
             auth_server_id:
               type: string
               format: uuid
@@ -40694,8 +41044,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - control_plane_consumer
+              const: control_plane_consumer
             control_plane_id:
               type: string
             consumer_id:
@@ -40713,8 +41062,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - custom
+              const: custom
             key:
               type: string
             value:
@@ -40730,8 +41078,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - oidc
+              const: oidc
             issuer:
               type: string
             claim:
@@ -40755,8 +41102,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - auth_server_client
+              const: auth_server_client
             auth_server_id:
               type: string
               format: uuid
@@ -40773,8 +41119,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - control_plane_consumer
+              const: control_plane_consumer
             control_plane_id:
               type: string
             consumer_id:
@@ -40801,8 +41146,7 @@ components:
           properties:
             type:
               type: string
-              enum:
-                - custom
+              const: custom
             key:
               type: string
             value:
@@ -41007,6 +41351,7 @@ components:
           description: 'Pre-issued static credential (API key, PAT, etc.). Stored encrypted, never returned in read APIs.'
           type: string
           writeOnly: true
+          x-sensitive: true
         selector:
           $ref: '#/components/schemas/VaultCredentialSelector'
         priority:
@@ -41037,8 +41382,7 @@ components:
           properties:
             credential_type:
               type: string
-              enum:
-                - shared
+              const: shared
             selector:
               allOf:
                 - $ref: '#/components/schemas/VaultCredentialSelector'
@@ -41068,8 +41412,9 @@ components:
           properties:
             credential_type:
               type: string
-              enum:
-                - user
+              const: user
+              x-enum-varnames:
+                - VaultProviderCredentialUserCredentialTypeUser
             principal:
               type: object
               properties:
@@ -41625,31 +41970,19 @@ components:
         - team
       nullable: true
       x-speakeasy-unknown-values: allow
-    ManagedByUpdate:
-      description: |
-        Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
-
-        Set a key's value to `null` to remove it.
-
-        Keys must be 1–63 characters long and start with an alphanumeric character.
-      type: object
-      example:
-        owner: terraform
-      additionalProperties:
-        type: string
-        pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
-        minLength: 1
-        maxLength: 63
-        nullable: true
-      maxProperties: 5
-      title: ManagedByUpdate
-      writeOnly: true
     ExpiresAtNullable:
       description: An ISO-8601 timestamp representation of entity expiration date.
       type: string
       format: date-time
       example: '2022-11-04T20:10:06.927Z'
       nullable: true
+    ExpiresAtWritable:
+      description: An ISO-8601 timestamp representation of entity expiration date.
+      type: string
+      format: date-time
+      example: '2022-11-04T20:10:06.927Z'
+      nullable: true
+      title: ExpiresAt
     UUID_RW:
       description: Contains a unique identifier used for this resource.
       type: string
@@ -43844,7 +44177,10 @@ components:
     CreateDefaultContentRequest:
       description: Options for creating default content.
       type: object
-      properties: {}
+      properties:
+        theme_name:
+          description: 'Name of the theme to use for the default content. Must match an available theme name; if omitted or unrecognized, the default theme is used.'
+          type: string
       additionalProperties: false
       title: CreateDefaultContentRequest
     PortalPageResponse:
@@ -44008,6 +44344,166 @@ components:
         - name
         - content
       title: CreatePortalSnippetRequest
+    AISettingsResponseBody:
+      type: object
+      properties:
+        enabled:
+          description: Is AI enabled?
+          type: boolean
+          default: false
+        features:
+          $ref: '#/components/schemas/AISettingsResponseFeatures'
+      additionalProperties: false
+      required:
+        - enabled
+        - features
+      title: AISettingsResponseBody
+    AISettingsResponseFeatures:
+      description: 'AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.'
+      type: object
+      properties:
+        ai_search:
+          description: AI Search configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether AI Search is enabled or not
+              type: boolean
+              default: false
+          required:
+            - enabled
+        mcp_server:
+          description: MCP Server configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the Portal MCP Server is enabled or not
+              type: boolean
+              default: false
+            write_operations_enabled:
+              description: Whether write operations are enabled or not for the Portal MCP Server enabled
+              type: boolean
+              default: false
+          required:
+            - enabled
+            - write_operations_enabled
+        portal_agent:
+          required:
+            - display_name
+            - audience
+      additionalProperties: false
+      required:
+        - mcp_server
+        - ai_search
+    PatchAISettingsRequest:
+      type: object
+      properties:
+        enabled:
+          description: Whether AI is enabled or not
+          type: boolean
+          default: false
+        features:
+          $ref: '#/components/schemas/AISettingsRequestFeatures'
+      additionalProperties: false
+      required:
+        - enabled
+      title: PatchAISettingsRequest
+    ReplaceAISettingsRequest:
+      type: object
+      properties:
+        enabled:
+          description: Whether AI is enabled or not
+          type: boolean
+          default: false
+        features:
+          $ref: '#/components/schemas/ReplaceAISettingsRequestFeatures'
+      additionalProperties: false
+      required:
+        - enabled
+        - features
+      title: ReplaceAISettingsRequest
+    AISettingsRequestFeatures:
+      description: 'AI Features configuration. Only nullable when top-level `enabled` is false. When top-level `enabled` is false, every feature toggle here is automatically reset to false.'
+      type: object
+      properties:
+        ai_search:
+          description: AI Search configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether AI Search is enabled or not
+              type: boolean
+              default: false
+          required:
+            - enabled
+        mcp_server:
+          description: MCP Server configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the Portal MCP Server is enabled or not
+              type: boolean
+              default: false
+            write_operations_enabled:
+              description: Whether write operations are enabled or not for the Portal MCP Server enabled
+              type: boolean
+              default: false
+          required:
+            - enabled
+        portal_agent:
+          properties:
+            display_name:
+              $ref: '#/components/schemas/PortalAgentDisplayNameNullable'
+            audience:
+              $ref: '#/components/schemas/PortalAgentAudienceNullable'
+      additionalProperties: false
+      minProperties: 1
+      nullable: true
+    ReplaceAISettingsRequestFeatures:
+      description: 'AI Features configuration. When top-level `enabled` is false, every feature toggle here must be automatically reset to false.'
+      type: object
+      properties:
+        ai_search:
+          description: AI Search configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether AI Search is enabled or not
+              type: boolean
+              default: false
+          required:
+            - enabled
+        mcp_server:
+          description: MCP Server configuration
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the Portal MCP Server is enabled or not
+              type: boolean
+              default: false
+            write_operations_enabled:
+              description: Whether write operations are enabled or not for the Portal MCP Server enabled
+              type: boolean
+              default: false
+          required:
+            - enabled
+            - write_operations_enabled
+        portal_agent:
+          properties:
+            display_name:
+              $ref: '#/components/schemas/PortalAgentDisplayNameNullable'
+            audience:
+              $ref: '#/components/schemas/PortalAgentAudienceNullable'
+      additionalProperties: false
+      required:
+        - mcp_server
+        - ai_search
     CreatePortalFormRequest:
       description: |-
         Request body for creating a form, discriminated by `type`.
@@ -44828,6 +45324,184 @@ components:
           $ref: '#/components/schemas/DateTimeFieldFilter'
       additionalProperties: false
       title: PortalSnippetsFilterParameters
+    NavigationShowOnPathPrefix:
+      description: 'A route prefix this navigation claims. Use `/` for a portal-wide navigation, or a deeper prefix such as `/guides` to override it on those routes only. Must start with `/`, contain only lowercase letters, numbers, hyphens, and slashes, and must be unique per portal.'
+      type: string
+      example: /guides
+      maxLength: 512
+      pattern: '^/[a-z0-9/-]*$'
+      title: NavigationShowOnPathPrefix
+    NavigationShowOnPathPrefixes:
+      description: Route prefixes this navigation claims. The longest matching prefix across all of a portal's navigations wins.
+      type: array
+      items:
+        $ref: '#/components/schemas/NavigationShowOnPathPrefix'
+      example:
+        - /guides
+      minItems: 1
+      title: NavigationShowOnPathPrefixes
+      uniqueItems: true
+    NavigationName:
+      description: Names the navigation in the Konnect UI. Must be unique per portal.
+      type: string
+      example: Main
+      maxLength: 512
+      title: NavigationName
+    NavigationLinkText:
+      description: The link label.
+      type: string
+      example: Overview
+      maxLength: 512
+      title: NavigationLinkText
+    NavigationLinkHref:
+      description: 'The link target: a portal path (`/guides`), an anchor (`/getting-started#section`), a query (`?tab=1`), or a full `https://` URL.'
+      type: string
+      example: /getting-started
+      maxLength: 2048
+      title: NavigationLinkHref
+    NavigationLinkVisibility:
+      description: 'Who sees the link. `public` for every visitor, `private` for signed-in developers only.'
+      type: string
+      example: public
+      enum:
+        - public
+        - private
+      title: NavigationLinkVisibility
+      x-speakeasy-unknown-values: allow
+    NavigationLink:
+      description: 'A single navigation link, optionally with nested children.'
+      type: object
+      properties:
+        text:
+          $ref: '#/components/schemas/NavigationLinkText'
+        href:
+          $ref: '#/components/schemas/NavigationLinkHref'
+        visibility:
+          $ref: '#/components/schemas/NavigationLinkVisibility'
+        external:
+          description: 'When true, the link opens in a new tab.'
+          type: boolean
+          default: false
+        expanded:
+          description: 'When true, the link''s children start expanded.'
+          type: boolean
+          default: false
+        children:
+          description: 'Nested links, up to three levels total, including this link.'
+          type: array
+          items:
+            $ref: '#/components/schemas/NavigationLink'
+          example: []
+      additionalProperties: false
+      required:
+        - text
+        - href
+        - visibility
+      title: NavigationLink
+    NavigationLinkGroup:
+      description: 'A group of navigation links, rendered in order, with an optional header.'
+      type: object
+      properties:
+        header:
+          description: Heading text displayed above the group's links. Omit it for an unlabeled group.
+          type: string
+          example: Getting started
+          maxLength: 512
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/NavigationLink'
+      additionalProperties: false
+      required:
+        - links
+      title: NavigationLinkGroup
+    CreatePortalNavigationRequest:
+      description: Create a sidebar navigation configuration for a portal.
+      type: object
+      properties:
+        show_on_path_prefixes:
+          $ref: '#/components/schemas/NavigationShowOnPathPrefixes'
+        name:
+          $ref: '#/components/schemas/NavigationName'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/NavigationLinkGroup'
+      additionalProperties: false
+      required:
+        - show_on_path_prefixes
+        - name
+        - groups
+      title: CreatePortalNavigationRequest
+    ReplacePortalNavigationRequest:
+      description: Replace a sidebar navigation configuration for a portal. This is a full replacement; partial updates are not supported.
+      type: object
+      properties:
+        show_on_path_prefixes:
+          $ref: '#/components/schemas/NavigationShowOnPathPrefixes'
+        name:
+          $ref: '#/components/schemas/NavigationName'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/NavigationLinkGroup'
+      additionalProperties: false
+      required:
+        - show_on_path_prefixes
+        - name
+        - groups
+      title: ReplacePortalNavigationRequest
+    PortalNavigationResponse:
+      description: Details about a sidebar navigation configuration for a portal.
+      type: object
+      properties:
+        show_on_path_prefixes:
+          $ref: '#/components/schemas/NavigationShowOnPathPrefixes'
+        name:
+          $ref: '#/components/schemas/NavigationName'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/NavigationLinkGroup'
+        id:
+          $ref: '#/components/schemas/UUID'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - show_on_path_prefixes
+        - name
+        - groups
+        - id
+        - created_at
+        - updated_at
+      title: PortalNavigationResponse
+    ListPortalNavigationsResponse:
+      description: A paginated list of sidebar navigation configurations for a portal.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PortalNavigationResponse'
+        meta:
+          $ref: '#/components/schemas/PaginatedMeta'
+      additionalProperties: false
+      required:
+        - data
+        - meta
+      title: ListPortalNavigationsResponse
+    PortalNavigationsFilterParameters:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+        name:
+          $ref: '#/components/schemas/StringFieldFilter'
+      additionalProperties: false
+      title: PortalNavigationsFilterParameters
     PortalCustomDomain:
       type: object
       properties:
@@ -46082,6 +46756,54 @@ components:
           $ref: '#/components/schemas/StringFieldFilter'
         team_id:
           $ref: '#/components/schemas/UuidFieldFilter'
+    AISettingsFeatures:
+      description: 'AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.'
+      type: object
+      properties:
+        ai_search:
+          description: AI Search config
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether AI Search is enabled or not
+              type: boolean
+              default: false
+          required:
+            - enabled
+        mcp_server:
+          description: AI Features config
+          type: object
+          additionalProperties: false
+          properties:
+            enabled:
+              description: Whether the MCP Server is enabled or not
+              type: boolean
+              default: false
+            write_operations_enabled:
+              description: Whether write operations are enabled or not for the Portal MCP Server enabled
+              type: boolean
+              default: false
+          required:
+            - enabled
+            - write_operations_enabled
+      additionalProperties: false
+      required:
+        - mcp_server
+        - ai_search
+    AISettings:
+      type: object
+      properties:
+        enabled:
+          description: Is AI enabled?
+          type: boolean
+          default: false
+        features:
+          $ref: '#/components/schemas/AISettingsFeatures'
+      additionalProperties: false
+      required:
+        - enabled
+        - features
     SourceIPEnabled:
       description: Whether ip allow list is enabled for the organization.
       type: boolean
@@ -46836,6 +47558,21 @@ components:
       required:
         - data
         - meta
+    PortalAgentDisplayNameNullable:
+      description: 'The display name for the Portal Agent, shown to developers in the portal'
+      type: string
+      example: AI
+      default: AI
+      maxLength: 120
+      minLength: 1
+      nullable: true
+    PortalAgentAudienceNullable:
+      description: 'The audience allowed to interact with the Portal Agent. Currently only `all` (available to every developer, including unauthenticated ones) is supported. `authenticated` (restricted to signed-in developers only) is planned for a future release.'
+      type: string
+      default: all
+      enum:
+        - all
+      nullable: true
     CustomFormFieldName:
       description: |
         A stable, URL-safe slug identifying the field (letters, digits,
@@ -109391,6 +110128,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/CreateDefaultContentRequest'
+    PatchAISettingsRequest:
+      description: Patch AI settings for a portal.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PatchAISettingsRequest'
+    ReplaceAISettingsRequest:
+      description: Replaces AI settings for a portal.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplaceAISettingsRequest'
     CreatePortalForm:
       description: Create a custom form for a portal.
       required: true
@@ -109465,6 +110216,8 @@ components:
                 description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                 type: boolean
                 default: false
+              ai:
+                $ref: '#/components/schemas/AISettings'
               sipr_enabled:
                 description: Whether ip allow list is enabled for the portal.
                 type: boolean
@@ -109514,6 +110267,9 @@ components:
                 description: 'When enabled, portal registration notifications include the registering developer''s identifying information (such as name and email).'
                 type: boolean
                 default: false
+              theme_name:
+                description: 'Name of the theme to use for the default content created upon creation of this portal. Must match an available theme name; if omitted or unrecognized, the default theme is used. Only applies when `create_default_content` is true.'
+                type: string
             additionalProperties: false
             required:
               - name
@@ -109557,6 +110313,8 @@ components:
                 description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                 type: boolean
                 default: false
+              ai:
+                $ref: '#/components/schemas/AISettings'
               sipr_enabled:
                 description: Whether ip allow list is enabled for the portal.
                 type: boolean
@@ -109657,6 +110415,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/MovePageRequestPayload'
+    CreatePortalNavigation:
+      description: Create a sidebar navigation configuration for a portal.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePortalNavigationRequest'
+    ReplacePortalNavigation:
+      description: Replace a sidebar navigation configuration for a portal.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplacePortalNavigationRequest'
     CreatePortalSnippet:
       description: Create a snippet in a portal.
       required: true
@@ -113459,6 +114231,12 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/UnsupportedMediaTypeError'
+    AISettingsResponse:
+      description: AI settings for a given portal.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AISettingsResponseBody'
     PortalForm:
       description: A custom form belonging to a portal.
       content:
@@ -113606,6 +114384,8 @@ components:
                       description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                       type: boolean
                       default: false
+                    ai:
+                      $ref: '#/components/schemas/AISettings'
                     sipr_enabled:
                       description: Whether ip allow list is enabled for the portal.
                       type: boolean
@@ -113716,6 +114496,8 @@ components:
                 description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                 type: boolean
                 default: false
+              ai:
+                $ref: '#/components/schemas/AISettings'
               sipr_enabled:
                 description: Whether ip allow list is enabled for the portal.
                 type: boolean
@@ -113838,6 +114620,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ListPortalPagesResponse'
+    ListPortalNavigations:
+      description: A paginated list of sidebar navigation configurations for a portal.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListPortalNavigationsResponse'
+    PortalNavigation:
+      description: Details about a sidebar navigation configuration for a portal.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PortalNavigationResponse'
     PortalSnippet:
       description: Details about a snippet in a portal.
       content:
@@ -116211,6 +117005,10 @@ tags:
     description: APIs related to Konnect Developer Portal Custom Pages.
   - name: Snippets
     description: APIs related to Konnect Developer Portal Custom Snippets.
+  - name: Portal Navigation
+    description: APIs related to Konnect Developer Portal sidebar navigation configuration.
+  - name: AI Settings
+    description: APIs related to Konnect Developer Portal AI Settings.
   - name: Applications
     description: APIs related to Konnect Developer Portal Applications.
   - name: Application Registrations
@@ -116577,7 +117375,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.3
+    version: 2.3.4
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
@@ -116601,10 +117399,10 @@ x-input-schemas:
     version: 1.3.15
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.10.0
+    version: 3.11.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
-    version: 1.28.3
+    version: 1.28.5
     path: src/konnect/definitions/kong-identity/v2/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.49.0
@@ -116619,7 +117417,7 @@ x-input-schemas:
     version: 1.1.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.15.1
+    version: 3.17.0
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.4
