@@ -1,7 +1,7 @@
 # UpdateSAMLIdentityProviderConfig
 
 The properties of a SAML identity provider to update. Exactly one of `idp_metadata_url` or
-`idp_metadata_xml` must be provided.
+`idp_metadata_xml` must be provided with a non-empty value. An empty string is treated as not provided.
 
 
 

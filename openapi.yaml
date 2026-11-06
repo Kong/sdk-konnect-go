@@ -47836,22 +47836,20 @@ components:
     UpdateSAMLIdentityProviderConfig:
       description: |
         The properties of a SAML identity provider to update. Exactly one of `idp_metadata_url` or
-        `idp_metadata_xml` must be provided.
+        `idp_metadata_xml` must be provided with a non-empty value. An empty string is treated as not provided.
       type: object
       properties:
         idp_metadata_url:
           description: The identity provider's metadata URL where the identity provider's metadata can be obtained.
           type: string
           example: 'https://mocksaml.com/api/saml/metadata'
-          minLength: 1
-          pattern: '^https?://\S+$'
+          pattern: '^(https?://\S+)?$'
         idp_metadata_xml:
           description: |
             The identity provider's SAML metadata. If the identity provider supports a metadata URL, you can use the `idp_metadata_url` field instead.
           type: string
-          minLength: 1
       additionalProperties: false
-      maxProperties: 1
+      maxProperties: 2
       minProperties: 1
       title: Update SAML Identity Provider Config
     PortalUpdateIdentityProvider:
