@@ -24,9 +24,8 @@ OAuth client PATCH has the same nil-versus-empty requirement for grant types,
 response types, redirect URIs and allowed scopes. A targeted request patch
 also removes the automatic endpoint-authentication-method default. An omitted
 method must stay omitted in the serialized request; explicit methods remain
-supported. This does not fix the deployed API's omission behavior (Q15).
-Writers must still preserve the fresh current method explicitly until that
-API behavior is resolved. Actual SDK wire tests cover empty, omitted and
+supported. Writers explicitly preserve the fresh current method; this remains valid
+against the corrected development API. Actual SDK wire tests cover empty, omitted and
 populated fields. These patches skip SDKs without auth-server clients.
 
 Directory, principal, principal-group, principal-identity, principal API-key,
@@ -142,3 +141,10 @@ python3 -m unittest discover -s tools/sdk-patches -p '*_test.py'
 
 Live scenarios can create or delete Konnect resources. Use the configured test
 profile and scope cleanup to the scenario's resources.
+
+Development Identity APIs accept `managed_by` when importing principal/group
+keys, and support explicit null for key names on PATCH. Targeted model patches
+add the imported-key map and use `optionalnullable.OptionalNullable[string]`
+for update names. Wire tests verify imported metadata, null-key removal, and
+omitted/null/scalar names. The client retains its existing ownership convention;
+API mutability alone does not authorize adoption or ownership transfer.

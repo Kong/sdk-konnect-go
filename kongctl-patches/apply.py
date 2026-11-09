@@ -54,7 +54,7 @@ def replace_tag(text, patch):
         return text
     if text.count(before) == 1 and after not in text:
         return text.replace(before, after, 1)
-    if before not in text and text.count(after) == 1:
+    if text.count(after) == 1 and before not in text.replace(after, "", 1):
         return text
     raise ValueError(f"{patch['file']}: expected exactly one original or patched field; SDK schema may have changed")
 

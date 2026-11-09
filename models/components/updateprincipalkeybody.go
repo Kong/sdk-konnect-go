@@ -13,7 +13,7 @@ import (
 type UpdatePrincipalKeyBody struct {
 	// Human-readable name of the API key. `null` if the key has no name.
 	//
-	Name *string `json:"name,omitempty"`
+	Name optionalnullable.OptionalNullable[string] `json:"name,omitempty"`
 	// An ISO-8601 timestamp representation of entity expiration date.
 	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
@@ -36,7 +36,7 @@ func (u *UpdatePrincipalKeyBody) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (u *UpdatePrincipalKeyBody) GetName() *string {
+func (u *UpdatePrincipalKeyBody) GetName() optionalnullable.OptionalNullable[string] {
 	if u == nil {
 		return nil
 	}

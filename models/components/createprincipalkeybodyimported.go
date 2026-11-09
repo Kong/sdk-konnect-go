@@ -16,6 +16,8 @@ type CreatePrincipalKeyBodyImported struct {
 	//
 	Name   *string `json:"name,omitempty"`
 	Secret string  `json:"secret"`
+	// Management metadata accepted by the Identity API for imported keys.
+	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// An ISO-8601 timestamp representation of entity expiration date.
 	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 }
