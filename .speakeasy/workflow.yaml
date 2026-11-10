@@ -6,6 +6,7 @@ sources:
             - location: ./openapi.yaml
         overlays:
             - location: ./kongctl-patches/overlays/ai-gateway-pgvector-connection-defaults.yaml
+            - location: ./kongctl-patches/overlays/ai-gateway-update-runtime-defaults.yaml
             - location: ./kongctl-patches/overlays/backend-cluster-tls-defaults.yaml
             - location: ./kongctl-patches/overlays/organization-team-konnect-managed-defaults.yaml
             - location: ./kongctl-patches/overlays/patch-custom-portal-email-template-defaults.yaml
