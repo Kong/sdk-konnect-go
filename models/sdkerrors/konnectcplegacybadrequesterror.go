@@ -26,6 +26,12 @@ type KonnectCPLegacyBadRequestError struct {
 var _ error = &KonnectCPLegacyBadRequestError{}
 
 func (e *KonnectCPLegacyBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != nil {
+			return *e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

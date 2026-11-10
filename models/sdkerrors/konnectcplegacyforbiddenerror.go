@@ -26,6 +26,12 @@ type KonnectCPLegacyForbiddenError struct {
 var _ error = &KonnectCPLegacyForbiddenError{}
 
 func (e *KonnectCPLegacyForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != nil {
+			return *e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
