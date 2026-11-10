@@ -4,14 +4,38 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type CatalogMCPGatewayImplementationBlockType string
+
+const (
+	CatalogMCPGatewayImplementationBlockTypeAiGateway CatalogMCPGatewayImplementationBlockType = "ai-gateway"
+)
+
+func (e CatalogMCPGatewayImplementationBlockType) ToPointer() *CatalogMCPGatewayImplementationBlockType {
+	return &e
+}
+func (e *CatalogMCPGatewayImplementationBlockType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ai-gateway":
+		*e = CatalogMCPGatewayImplementationBlockType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CatalogMCPGatewayImplementationBlockType: %v", v)
+	}
+}
 
 // CatalogMCPGatewayImplementationBlock - Schema to describe the type and configuration typing for an MCP implementation linked to an AI Gateway MCP
 // Server.
 type CatalogMCPGatewayImplementationBlock struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"ai-gateway" json:"type"`
+	Type CatalogMCPGatewayImplementationBlockType `json:"type"`
 	// Configuration for an MCP implementation linked to an AI Gateway MCP Server.
 	Config CatalogMCPGatewayImplementationConfig `json:"config"`
 }
@@ -27,8 +51,11 @@ func (c *CatalogMCPGatewayImplementationBlock) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (c *CatalogMCPGatewayImplementationBlock) GetType() string {
-	return "ai-gateway"
+func (c *CatalogMCPGatewayImplementationBlock) GetType() CatalogMCPGatewayImplementationBlockType {
+	if c == nil {
+		return CatalogMCPGatewayImplementationBlockType("")
+	}
+	return c.Type
 }
 
 func (c *CatalogMCPGatewayImplementationBlock) GetConfig() CatalogMCPGatewayImplementationConfig {

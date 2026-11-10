@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetSagemakerConfigType string
+
+const (
+	AIGatewayTargetSagemakerConfigTypeSagemaker AIGatewayTargetSagemakerConfigType = "sagemaker"
+)
+
+func (e AIGatewayTargetSagemakerConfigType) ToPointer() *AIGatewayTargetSagemakerConfigType {
+	return &e
+}
+func (e *AIGatewayTargetSagemakerConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sagemaker":
+		*e = AIGatewayTargetSagemakerConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetSagemakerConfigType: %v", v)
+	}
+}
 
 type Aws struct {
 	// Overrides the AWS_REGION environment variable for SageMaker requests.
@@ -137,11 +162,10 @@ type AIGatewayTargetSagemakerConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                                `const:"sagemaker" json:"type"`
-	Aws    *Aws                                  `json:"aws,omitempty"`
-	Target *AIGatewayTargetSagemakerConfigTarget `json:"target,omitempty"`
+	UpstreamURL *string                               `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetSagemakerConfigType    `json:"type"`
+	Aws         *Aws                                  `json:"aws,omitempty"`
+	Target      *AIGatewayTargetSagemakerConfigTarget `json:"target,omitempty"`
 }
 
 func (a AIGatewayTargetSagemakerConfig) MarshalJSON() ([]byte, error) {
@@ -267,8 +291,11 @@ func (a *AIGatewayTargetSagemakerConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetSagemakerConfig) GetType() string {
-	return "sagemaker"
+func (a *AIGatewayTargetSagemakerConfig) GetType() AIGatewayTargetSagemakerConfigType {
+	if a == nil {
+		return AIGatewayTargetSagemakerConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetSagemakerConfig) GetAws() *Aws {

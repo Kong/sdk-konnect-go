@@ -111,6 +111,7 @@ func main() {
                     SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
+                Type: components.PartialRedisCeTypeRedisCe,
             },
         ),
     })
@@ -186,6 +187,7 @@ func main() {
                     SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
+                Type: components.PartialRedisEeTypeRedisEe,
             },
         ),
     })
@@ -244,6 +246,7 @@ func main() {
                     SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
+                Type: components.PartialRedisCeTypeRedisCe,
             },
         ),
     })
@@ -476,6 +479,7 @@ func main() {
                     SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
+                Type: components.PartialRedisEeTypeRedisEe,
             },
         ),
     })
@@ -535,6 +539,7 @@ func main() {
                     SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
+                Type: components.PartialRedisCeTypeRedisCe,
             },
         ),
     })
@@ -594,6 +599,7 @@ func main() {
                     SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
+                Type: components.PartialRedisCeTypeRedisCe,
             },
         ),
     })

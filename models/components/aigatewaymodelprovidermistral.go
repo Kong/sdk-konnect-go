@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayModelProviderMistralType string
+
+const (
+	AIGatewayModelProviderMistralTypeMistral AIGatewayModelProviderMistralType = "mistral"
+)
+
+func (e AIGatewayModelProviderMistralType) ToPointer() *AIGatewayModelProviderMistralType {
+	return &e
+}
+func (e *AIGatewayModelProviderMistralType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "mistral":
+		*e = AIGatewayModelProviderMistralType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelProviderMistralType: %v", v)
+	}
+}
 
 // AIGatewayModelProviderMistralConfig - Configuration for the model provider.
 type AIGatewayModelProviderMistralConfig struct {
@@ -34,8 +59,7 @@ func (a *AIGatewayModelProviderMistralConfig) GetAuth() AIGatewayModelProviderCo
 
 // AIGatewayModelProviderMistral - Configuration for an upstream model provider.
 type AIGatewayModelProviderMistral struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"mistral" json:"type"`
+	Type AIGatewayModelProviderMistralType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
@@ -84,8 +108,11 @@ func (a *AIGatewayModelProviderMistral) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderMistral) GetType() string {
-	return "mistral"
+func (a *AIGatewayModelProviderMistral) GetType() AIGatewayModelProviderMistralType {
+	if a == nil {
+		return AIGatewayModelProviderMistralType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelProviderMistral) GetDisplayName() string {

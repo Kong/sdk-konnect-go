@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetBasetenConfigType string
+
+const (
+	AIGatewayTargetBasetenConfigTypeBaseten AIGatewayTargetBasetenConfigType = "baseten"
+)
+
+func (e AIGatewayTargetBasetenConfigType) ToPointer() *AIGatewayTargetBasetenConfigType {
+	return &e
+}
+func (e *AIGatewayTargetBasetenConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "baseten":
+		*e = AIGatewayTargetBasetenConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetBasetenConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetBasetenConfig - Baseten-specific configuration for a model. Requests are sent to Baseten Model APIs at
 // `https://inference.baseten.co/v1` by default, and the target `name` is the Baseten model
@@ -52,9 +77,8 @@ type AIGatewayTargetBasetenConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"baseten" json:"type"`
+	UpstreamURL *string                          `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetBasetenConfigType `json:"type"`
 }
 
 func (a AIGatewayTargetBasetenConfig) MarshalJSON() ([]byte, error) {
@@ -180,6 +204,9 @@ func (a *AIGatewayTargetBasetenConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetBasetenConfig) GetType() string {
-	return "baseten"
+func (a *AIGatewayTargetBasetenConfig) GetType() AIGatewayTargetBasetenConfigType {
+	if a == nil {
+		return AIGatewayTargetBasetenConfigType("")
+	}
+	return a.Type
 }

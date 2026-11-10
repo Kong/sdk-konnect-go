@@ -31,6 +31,9 @@ type KongPrincipalIdentity struct {
 func CreateKongPrincipalIdentityOidc(oidc KongPrincipalIdentityOIDCResponse) KongPrincipalIdentity {
 	typ := KongPrincipalIdentityTypeOidc
 
+	typStr := KongPrincipalIdentityOIDCResponseType(typ)
+	oidc.Type = typStr
+
 	return KongPrincipalIdentity{
 		KongPrincipalIdentityOIDCResponse: &oidc,
 		Type:                              typ,
@@ -39,6 +42,9 @@ func CreateKongPrincipalIdentityOidc(oidc KongPrincipalIdentityOIDCResponse) Kon
 
 func CreateKongPrincipalIdentityAuthServerClient(authServerClient KongPrincipalIdentityAuthServerClientResponse) KongPrincipalIdentity {
 	typ := KongPrincipalIdentityTypeAuthServerClient
+
+	typStr := KongPrincipalIdentityAuthServerClientResponseType(typ)
+	authServerClient.Type = typStr
 
 	return KongPrincipalIdentity{
 		KongPrincipalIdentityAuthServerClientResponse: &authServerClient,
@@ -49,6 +55,9 @@ func CreateKongPrincipalIdentityAuthServerClient(authServerClient KongPrincipalI
 func CreateKongPrincipalIdentityControlPlaneConsumer(controlPlaneConsumer KongPrincipalIdentityCPConsumerResponse) KongPrincipalIdentity {
 	typ := KongPrincipalIdentityTypeControlPlaneConsumer
 
+	typStr := KongPrincipalIdentityCPConsumerResponseType(typ)
+	controlPlaneConsumer.Type = typStr
+
 	return KongPrincipalIdentity{
 		KongPrincipalIdentityCPConsumerResponse: &controlPlaneConsumer,
 		Type:                                    typ,
@@ -57,6 +66,9 @@ func CreateKongPrincipalIdentityControlPlaneConsumer(controlPlaneConsumer KongPr
 
 func CreateKongPrincipalIdentityCustom(custom KongPrincipalIdentityCustomResponse) KongPrincipalIdentity {
 	typ := KongPrincipalIdentityTypeCustom
+
+	typStr := KongPrincipalIdentityCustomResponseType(typ)
+	custom.Type = typStr
 
 	return KongPrincipalIdentity{
 		KongPrincipalIdentityCustomResponse: &custom,

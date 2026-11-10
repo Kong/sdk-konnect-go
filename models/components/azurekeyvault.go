@@ -12,7 +12,7 @@ import (
 type AzureKeyVaultType string
 
 const (
-	AzureKeyVaultTypeSecrets AzureKeyVaultType = "secrets"
+	AzureKeyVaultTypeAzure AzureKeyVaultType = "azure"
 )
 
 func (e AzureKeyVaultType) ToPointer() *AzureKeyVaultType {
@@ -24,11 +24,34 @@ func (e *AzureKeyVaultType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "secrets":
+	case "azure":
 		*e = AzureKeyVaultType(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for AzureKeyVaultType: %v", v)
+	}
+}
+
+type AzureKeyVaultConfigType string
+
+const (
+	AzureKeyVaultConfigTypeSecrets AzureKeyVaultConfigType = "secrets"
+)
+
+func (e AzureKeyVaultConfigType) ToPointer() *AzureKeyVaultConfigType {
+	return &e
+}
+func (e *AzureKeyVaultConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "secrets":
+		*e = AzureKeyVaultConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AzureKeyVaultConfigType: %v", v)
 	}
 }
 
@@ -70,8 +93,8 @@ type AzureKeyVaultConfig struct {
 	// The DirectoryId and TenantId are the same: both refer to the GUID representing your Azure Active Directory tenant.
 	// Microsoft documentation and products may use either term depending on context.
 	//
-	TenantID *string            `json:"tenant_id,omitempty"`
-	Type     *AzureKeyVaultType `default:"secrets" json:"type"`
+	TenantID *string                  `json:"tenant_id,omitempty"`
+	Type     *AzureKeyVaultConfigType `default:"secrets" json:"type"`
 }
 
 func (a AzureKeyVaultConfig) MarshalJSON() ([]byte, error) {
@@ -148,7 +171,7 @@ func (a *AzureKeyVaultConfig) GetTenantID() *string {
 	return a.TenantID
 }
 
-func (a *AzureKeyVaultConfig) GetType() *AzureKeyVaultType {
+func (a *AzureKeyVaultConfig) GetType() *AzureKeyVaultConfigType {
 	if a == nil {
 		return nil
 	}
@@ -174,10 +197,9 @@ type AzureKeyVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string              `const:"azure" json:"type"`
-	Config AzureKeyVaultConfig `json:"config"`
+	ManagedBy map[string]string   `json:"managed_by,omitempty"`
+	Type      AzureKeyVaultType   `json:"type"`
+	Config    AzureKeyVaultConfig `json:"config"`
 }
 
 func (a AzureKeyVault) MarshalJSON() ([]byte, error) {
@@ -219,8 +241,11 @@ func (a *AzureKeyVault) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AzureKeyVault) GetType() string {
-	return "azure"
+func (a *AzureKeyVault) GetType() AzureKeyVaultType {
+	if a == nil {
+		return AzureKeyVaultType("")
+	}
+	return a.Type
 }
 
 func (a *AzureKeyVault) GetConfig() AzureKeyVaultConfig {

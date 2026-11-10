@@ -121,7 +121,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -168,7 +167,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -215,7 +213,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -261,7 +258,6 @@ func main() {
         Name: "Test Control Plane",
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -308,7 +304,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -355,7 +350,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -402,7 +396,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -449,7 +442,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -496,7 +488,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -543,7 +534,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -590,7 +580,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -637,7 +626,6 @@ func main() {
         Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",

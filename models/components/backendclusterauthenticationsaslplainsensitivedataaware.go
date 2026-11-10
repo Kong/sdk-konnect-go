@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type BackendClusterAuthenticationSaslPlainSensitiveDataAwareType string
+
+const (
+	BackendClusterAuthenticationSaslPlainSensitiveDataAwareTypeSaslPlain BackendClusterAuthenticationSaslPlainSensitiveDataAwareType = "sasl_plain"
+)
+
+func (e BackendClusterAuthenticationSaslPlainSensitiveDataAwareType) ToPointer() *BackendClusterAuthenticationSaslPlainSensitiveDataAwareType {
+	return &e
+}
+func (e *BackendClusterAuthenticationSaslPlainSensitiveDataAwareType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sasl_plain":
+		*e = BackendClusterAuthenticationSaslPlainSensitiveDataAwareType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BackendClusterAuthenticationSaslPlainSensitiveDataAwareType: %v", v)
+	}
+}
+
 // BackendClusterAuthenticationSaslPlainSensitiveDataAware - SASL/PLAIN authentication scheme for the backend cluster without requiring sensitive password data.
 type BackendClusterAuthenticationSaslPlainSensitiveDataAware struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sasl_plain" json:"type"`
+	Type BackendClusterAuthenticationSaslPlainSensitiveDataAwareType `json:"type"`
 	// A literal value or a reference to an existing secret as a template string expression.
 	// The value is stored and returned by the API as-is, not treated as sensitive information.
 	//
@@ -33,8 +57,11 @@ func (b *BackendClusterAuthenticationSaslPlainSensitiveDataAware) UnmarshalJSON(
 	return nil
 }
 
-func (b *BackendClusterAuthenticationSaslPlainSensitiveDataAware) GetType() string {
-	return "sasl_plain"
+func (b *BackendClusterAuthenticationSaslPlainSensitiveDataAware) GetType() BackendClusterAuthenticationSaslPlainSensitiveDataAwareType {
+	if b == nil {
+		return BackendClusterAuthenticationSaslPlainSensitiveDataAwareType("")
+	}
+	return b.Type
 }
 
 func (b *BackendClusterAuthenticationSaslPlainSensitiveDataAware) GetUsername() string {

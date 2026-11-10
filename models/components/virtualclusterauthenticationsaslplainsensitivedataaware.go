@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType string
+
+const (
+	VirtualClusterAuthenticationSaslPlainSensitiveDataAwareTypeSaslPlain VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType = "sasl_plain"
+)
+
+func (e VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType) ToPointer() *VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType {
+	return &e
+}
+func (e *VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sasl_plain":
+		*e = VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType: %v", v)
+	}
+}
 
 // Mediation - The mediation type for SASL/PLAIN authentication.
 type Mediation string
@@ -32,8 +57,7 @@ func (e *Mediation) IsExact() bool {
 
 // VirtualClusterAuthenticationSaslPlainSensitiveDataAware - SASL/PLAIN authentication scheme for the virtual cluster.
 type VirtualClusterAuthenticationSaslPlainSensitiveDataAware struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sasl_plain" json:"type"`
+	Type VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType `json:"type"`
 	// The mediation type for SASL/PLAIN authentication.
 	Mediation Mediation `json:"mediation"`
 	// List of principals to be able to authenticate with, used with `terminate` mediation.
@@ -56,8 +80,11 @@ func (v *VirtualClusterAuthenticationSaslPlainSensitiveDataAware) UnmarshalJSON(
 	return nil
 }
 
-func (v *VirtualClusterAuthenticationSaslPlainSensitiveDataAware) GetType() string {
-	return "sasl_plain"
+func (v *VirtualClusterAuthenticationSaslPlainSensitiveDataAware) GetType() VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType {
+	if v == nil {
+		return VirtualClusterAuthenticationSaslPlainSensitiveDataAwareType("")
+	}
+	return v.Type
 }
 
 func (v *VirtualClusterAuthenticationSaslPlainSensitiveDataAware) GetMediation() Mediation {

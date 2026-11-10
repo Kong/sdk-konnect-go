@@ -27,6 +27,9 @@ type VirtualClusterNamespaceIDSelector struct {
 func CreateVirtualClusterNamespaceIDSelectorGlob(glob VirtualClusterNamespaceIDSelectorGlob) VirtualClusterNamespaceIDSelector {
 	typ := VirtualClusterNamespaceIDSelectorTypeGlob
 
+	typStr := VirtualClusterNamespaceIDSelectorGlobType(typ)
+	glob.Type = typStr
+
 	return VirtualClusterNamespaceIDSelector{
 		VirtualClusterNamespaceIDSelectorGlob: &glob,
 		Type:                                  typ,
@@ -35,6 +38,9 @@ func CreateVirtualClusterNamespaceIDSelectorGlob(glob VirtualClusterNamespaceIDS
 
 func CreateVirtualClusterNamespaceIDSelectorExactList(exactList VirtualClusterNamespaceIDSelectorExactList) VirtualClusterNamespaceIDSelector {
 	typ := VirtualClusterNamespaceIDSelectorTypeExactList
+
+	typStr := VirtualClusterNamespaceIDSelectorExactListType(typ)
+	exactList.Type = typStr
 
 	return VirtualClusterNamespaceIDSelector{
 		VirtualClusterNamespaceIDSelectorExactList: &exactList,

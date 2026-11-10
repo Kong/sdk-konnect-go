@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
 
+type CreatePrincipalKeyBodyImportedType string
+
+const (
+	CreatePrincipalKeyBodyImportedTypeImported CreatePrincipalKeyBodyImportedType = "imported"
+)
+
+func (e CreatePrincipalKeyBodyImportedType) ToPointer() *CreatePrincipalKeyBodyImportedType {
+	return &e
+}
+func (e *CreatePrincipalKeyBodyImportedType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "imported":
+		*e = CreatePrincipalKeyBodyImportedType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreatePrincipalKeyBodyImportedType: %v", v)
+	}
+}
+
 type CreatePrincipalKeyBodyImported struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"imported" json:"type"`
+	Type CreatePrincipalKeyBodyImportedType `json:"type"`
 	// Human-readable name of the API key. `null` if the key has no name.
 	//
 	Name   *string `json:"name,omitempty"`
@@ -30,8 +54,11 @@ func (c *CreatePrincipalKeyBodyImported) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *CreatePrincipalKeyBodyImported) GetType() string {
-	return "imported"
+func (c *CreatePrincipalKeyBodyImported) GetType() CreatePrincipalKeyBodyImportedType {
+	if c == nil {
+		return CreatePrincipalKeyBodyImportedType("")
+	}
+	return c.Type
 }
 
 func (c *CreatePrincipalKeyBodyImported) GetName() *string {

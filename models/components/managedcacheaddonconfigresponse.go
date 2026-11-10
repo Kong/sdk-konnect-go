@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// ManagedCacheAddOnConfigResponseKind - Type of add-on configuration.
+type ManagedCacheAddOnConfigResponseKind string
+
+const (
+	ManagedCacheAddOnConfigResponseKindManagedCacheV0 ManagedCacheAddOnConfigResponseKind = "managed-cache.v0"
+)
+
+func (e ManagedCacheAddOnConfigResponseKind) ToPointer() *ManagedCacheAddOnConfigResponseKind {
+	return &e
+}
+func (e *ManagedCacheAddOnConfigResponseKind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "managed-cache.v0":
+		*e = ManagedCacheAddOnConfigResponseKind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ManagedCacheAddOnConfigResponseKind: %v", v)
+	}
+}
 
 // ManagedCacheAddOnConfigResponseCloudAuthentication - Metadata describing the cloud authentication details for managed cache add-on.
 type ManagedCacheAddOnConfigResponseCloudAuthentication struct {
@@ -140,8 +166,7 @@ func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCloudAuthentication() 
 // ManagedCacheAddOnConfigResponse - Configuration for managed cache add-on.
 type ManagedCacheAddOnConfigResponse struct {
 	// Type of add-on configuration.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	kind string `const:"managed-cache.v0" json:"kind"`
+	Kind ManagedCacheAddOnConfigResponseKind `json:"kind"`
 	// Configuration for managed cache capacity and performance characteristics.
 	CapacityConfig ManagedCacheCapacityConfig `json:"capacity_config"`
 	// List of data-plane groups where the managed cache is deployed.
@@ -162,8 +187,11 @@ func (m *ManagedCacheAddOnConfigResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (m *ManagedCacheAddOnConfigResponse) GetKind() string {
-	return "managed-cache.v0"
+func (m *ManagedCacheAddOnConfigResponse) GetKind() ManagedCacheAddOnConfigResponseKind {
+	if m == nil {
+		return ManagedCacheAddOnConfigResponseKind("")
+	}
+	return m.Kind
 }
 
 func (m *ManagedCacheAddOnConfigResponse) GetCapacityConfig() ManagedCacheCapacityConfig {

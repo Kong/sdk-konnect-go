@@ -243,6 +243,7 @@ func main() {
             Authentication: []components.VirtualClusterAuthenticationSensitiveDataAwareScheme{
                 components.CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeSaslPlain(
                     components.VirtualClusterAuthenticationSaslPlainSensitiveDataAware{
+                        Type: components.VirtualClusterAuthenticationSaslPlainSensitiveDataAwareTypeSaslPlain,
                         Mediation: components.MediationPassthrough,
                     },
                 ),

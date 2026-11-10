@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetCohereConfigType string
+
+const (
+	AIGatewayTargetCohereConfigTypeCohere AIGatewayTargetCohereConfigType = "cohere"
+)
+
+func (e AIGatewayTargetCohereConfigType) ToPointer() *AIGatewayTargetCohereConfigType {
+	return &e
+}
+func (e *AIGatewayTargetCohereConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cohere":
+		*e = AIGatewayTargetCohereConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetCohereConfigType: %v", v)
+	}
+}
 
 // APIVersion - Cohere API version. `v1` uses the legacy `/v1/chat` endpoint; `v2` (default)
 // uses `/v2/chat` and supports tool calling.
@@ -96,9 +121,8 @@ type AIGatewayTargetCohereConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"cohere" json:"type"`
+	UpstreamURL *string                         `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetCohereConfigType `json:"type"`
 	// Cohere API version. `v1` uses the legacy `/v1/chat` endpoint; `v2` (default)
 	// uses `/v2/chat` and supports tool calling.
 	//
@@ -232,8 +256,11 @@ func (a *AIGatewayTargetCohereConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetCohereConfig) GetType() string {
-	return "cohere"
+func (a *AIGatewayTargetCohereConfig) GetType() AIGatewayTargetCohereConfigType {
+	if a == nil {
+		return AIGatewayTargetCohereConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetCohereConfig) GetAPIVersion() *APIVersion {

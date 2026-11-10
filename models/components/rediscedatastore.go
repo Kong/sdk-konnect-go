@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type RedisCEDatastoreType string
+
+const (
+	RedisCEDatastoreTypeRedisCe RedisCEDatastoreType = "redis-ce"
+)
+
+func (e RedisCEDatastoreType) ToPointer() *RedisCEDatastoreType {
+	return &e
+}
+func (e *RedisCEDatastoreType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "redis-ce":
+		*e = RedisCEDatastoreType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RedisCEDatastoreType: %v", v)
+	}
+}
 
 type RedisCEDatastore struct {
 	// A user-defined unique identifier for this Datastore, used as a stable human-readable reference.
@@ -27,10 +52,9 @@ type RedisCEDatastore struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                 `const:"redis-ce" json:"type"`
-	Config RedisCEDatastoreConfig `json:"config"`
+	ManagedBy map[string]string      `json:"managed_by,omitempty"`
+	Type      RedisCEDatastoreType   `json:"type"`
+	Config    RedisCEDatastoreConfig `json:"config"`
 }
 
 func (r RedisCEDatastore) MarshalJSON() ([]byte, error) {
@@ -79,8 +103,11 @@ func (r *RedisCEDatastore) GetManagedBy() map[string]string {
 	return r.ManagedBy
 }
 
-func (r *RedisCEDatastore) GetType() string {
-	return "redis-ce"
+func (r *RedisCEDatastore) GetType() RedisCEDatastoreType {
+	if r == nil {
+		return RedisCEDatastoreType("")
+	}
+	return r.Type
 }
 
 func (r *RedisCEDatastore) GetConfig() RedisCEDatastoreConfig {

@@ -4,14 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// BackendClusterAuthenticationAnonymousType - The type of authentication scheme.
+type BackendClusterAuthenticationAnonymousType string
+
+const (
+	BackendClusterAuthenticationAnonymousTypeAnonymous BackendClusterAuthenticationAnonymousType = "anonymous"
+)
+
+func (e BackendClusterAuthenticationAnonymousType) ToPointer() *BackendClusterAuthenticationAnonymousType {
+	return &e
+}
+func (e *BackendClusterAuthenticationAnonymousType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "anonymous":
+		*e = BackendClusterAuthenticationAnonymousType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BackendClusterAuthenticationAnonymousType: %v", v)
+	}
+}
 
 // BackendClusterAuthenticationAnonymous - Anonymous authentication scheme for the backend cluster.
 type BackendClusterAuthenticationAnonymous struct {
 	// The type of authentication scheme.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"anonymous" json:"type"`
+	Type BackendClusterAuthenticationAnonymousType `json:"type"`
 }
 
 func (b BackendClusterAuthenticationAnonymous) MarshalJSON() ([]byte, error) {
@@ -25,6 +50,9 @@ func (b *BackendClusterAuthenticationAnonymous) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (b *BackendClusterAuthenticationAnonymous) GetType() string {
-	return "anonymous"
+func (b *BackendClusterAuthenticationAnonymous) GetType() BackendClusterAuthenticationAnonymousType {
+	if b == nil {
+		return BackendClusterAuthenticationAnonymousType("")
+	}
+	return b.Type
 }

@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetMistralConfigType string
+
+const (
+	AIGatewayTargetMistralConfigTypeMistral AIGatewayTargetMistralConfigType = "mistral"
+)
+
+func (e AIGatewayTargetMistralConfigType) ToPointer() *AIGatewayTargetMistralConfigType {
+	return &e
+}
+func (e *AIGatewayTargetMistralConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "mistral":
+		*e = AIGatewayTargetMistralConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetMistralConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetMistralConfigFormat - The request format to use when communicating with the Mistral model.
 type AIGatewayTargetMistralConfigFormat string
@@ -69,9 +94,8 @@ type AIGatewayTargetMistralConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"mistral" json:"type"`
+	UpstreamURL *string                          `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetMistralConfigType `json:"type"`
 	// The request format to use when communicating with the Mistral model.
 	Format AIGatewayTargetMistralConfigFormat `json:"format"`
 }
@@ -199,8 +223,11 @@ func (a *AIGatewayTargetMistralConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetMistralConfig) GetType() string {
-	return "mistral"
+func (a *AIGatewayTargetMistralConfig) GetType() AIGatewayTargetMistralConfigType {
+	if a == nil {
+		return AIGatewayTargetMistralConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetMistralConfig) GetFormat() AIGatewayTargetMistralConfigFormat {

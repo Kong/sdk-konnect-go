@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type EventGatewayConsumeSchemaValidationPolicyJSONConfigType string
+
+const (
+	EventGatewayConsumeSchemaValidationPolicyJSONConfigTypeJSON EventGatewayConsumeSchemaValidationPolicyJSONConfigType = "json"
+)
+
+func (e EventGatewayConsumeSchemaValidationPolicyJSONConfigType) ToPointer() *EventGatewayConsumeSchemaValidationPolicyJSONConfigType {
+	return &e
+}
+func (e *EventGatewayConsumeSchemaValidationPolicyJSONConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "json":
+		*e = EventGatewayConsumeSchemaValidationPolicyJSONConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayConsumeSchemaValidationPolicyJSONConfigType: %v", v)
+	}
+}
 
 // EventGatewayConsumeSchemaValidationPolicyJSONConfig - The configuration of the consume schema validation policy when using JSON parsing without schema.
 type EventGatewayConsumeSchemaValidationPolicyJSONConfig struct {
@@ -46,9 +71,8 @@ type EventGatewayConsumeSchemaValidationPolicyJSONConfig struct {
 	//
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	ValueValidationAction *ConsumeValueValidationAction `json:"value_validation_action,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"json" json:"type"`
+	ValueValidationAction *ConsumeValueValidationAction                           `json:"value_validation_action,omitempty"`
+	Type                  EventGatewayConsumeSchemaValidationPolicyJSONConfigType `json:"type"`
 }
 
 func (e EventGatewayConsumeSchemaValidationPolicyJSONConfig) MarshalJSON() ([]byte, error) {
@@ -104,6 +128,9 @@ func (e *EventGatewayConsumeSchemaValidationPolicyJSONConfig) GetValueValidation
 	return e.ValueValidationAction
 }
 
-func (e *EventGatewayConsumeSchemaValidationPolicyJSONConfig) GetType() string {
-	return "json"
+func (e *EventGatewayConsumeSchemaValidationPolicyJSONConfig) GetType() EventGatewayConsumeSchemaValidationPolicyJSONConfigType {
+	if e == nil {
+		return EventGatewayConsumeSchemaValidationPolicyJSONConfigType("")
+	}
+	return e.Type
 }

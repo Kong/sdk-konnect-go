@@ -4,13 +4,38 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// MCPSseTransportType - Transport type
+type MCPSseTransportType string
+
+const (
+	MCPSseTransportTypeSse MCPSseTransportType = "sse"
+)
+
+func (e MCPSseTransportType) ToPointer() *MCPSseTransportType {
+	return &e
+}
+func (e *MCPSseTransportType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sse":
+		*e = MCPSseTransportType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MCPSseTransportType: %v", v)
+	}
+}
+
 type MCPSseTransport struct {
 	// Transport type
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sse" json:"type"`
+	Type MCPSseTransportType `json:"type"`
 	// Server-Sent Events endpoint URL template.
 	URL string `json:"url"`
 	// HTTP headers to include
@@ -28,8 +53,11 @@ func (m *MCPSseTransport) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (m *MCPSseTransport) GetType() string {
-	return "sse"
+func (m *MCPSseTransport) GetType() MCPSseTransportType {
+	if m == nil {
+		return MCPSseTransportType("")
+	}
+	return m.Type
 }
 
 func (m *MCPSseTransport) GetURL() string {

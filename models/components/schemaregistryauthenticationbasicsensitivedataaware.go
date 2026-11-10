@@ -4,12 +4,36 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type SchemaRegistryAuthenticationBasicSensitiveDataAwareType string
+
+const (
+	SchemaRegistryAuthenticationBasicSensitiveDataAwareTypeBasic SchemaRegistryAuthenticationBasicSensitiveDataAwareType = "basic"
+)
+
+func (e SchemaRegistryAuthenticationBasicSensitiveDataAwareType) ToPointer() *SchemaRegistryAuthenticationBasicSensitiveDataAwareType {
+	return &e
+}
+func (e *SchemaRegistryAuthenticationBasicSensitiveDataAwareType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "basic":
+		*e = SchemaRegistryAuthenticationBasicSensitiveDataAwareType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemaRegistryAuthenticationBasicSensitiveDataAwareType: %v", v)
+	}
+}
+
 type SchemaRegistryAuthenticationBasicSensitiveDataAware struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"basic" json:"type"`
+	Type SchemaRegistryAuthenticationBasicSensitiveDataAwareType `json:"type"`
 	// A literal value or a reference to an existing secret as a template string expression.
 	// The value is stored and returned by the API as-is, not treated as sensitive information.
 	//
@@ -32,8 +56,11 @@ func (s *SchemaRegistryAuthenticationBasicSensitiveDataAware) UnmarshalJSON(data
 	return nil
 }
 
-func (s *SchemaRegistryAuthenticationBasicSensitiveDataAware) GetType() string {
-	return "basic"
+func (s *SchemaRegistryAuthenticationBasicSensitiveDataAware) GetType() SchemaRegistryAuthenticationBasicSensitiveDataAwareType {
+	if s == nil {
+		return SchemaRegistryAuthenticationBasicSensitiveDataAwareType("")
+	}
+	return s.Type
 }
 
 func (s *SchemaRegistryAuthenticationBasicSensitiveDataAware) GetUsername() string {

@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type AIGatewayAuthStrategyKeyAuthResponseType string
+
+const (
+	AIGatewayAuthStrategyKeyAuthResponseTypeKeyAuth AIGatewayAuthStrategyKeyAuthResponseType = "key-auth"
+)
+
+func (e AIGatewayAuthStrategyKeyAuthResponseType) ToPointer() *AIGatewayAuthStrategyKeyAuthResponseType {
+	return &e
+}
+func (e *AIGatewayAuthStrategyKeyAuthResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "key-auth":
+		*e = AIGatewayAuthStrategyKeyAuthResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayAuthStrategyKeyAuthResponseType: %v", v)
+	}
+}
 
 // AIGatewayAuthStrategyKeyAuthResponse - Configuration for an auth strategy.
 type AIGatewayAuthStrategyKeyAuthResponse struct {
@@ -32,10 +57,9 @@ type AIGatewayAuthStrategyKeyAuthResponse struct {
 	// must have type `token-vault`. Only one Datastore can be referenced.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                      `const:"key-auth" json:"type"`
-	Config *AIGWKeyAuthGeneratedConfig `json:"config,omitempty"`
+	Datastores []AIGatewayDatastoreRef                  `json:"datastores,omitempty"`
+	Type       AIGatewayAuthStrategyKeyAuthResponseType `json:"type"`
+	Config     *AIGWKeyAuthGeneratedConfig              `json:"config,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -90,8 +114,11 @@ func (a *AIGatewayAuthStrategyKeyAuthResponse) GetDatastores() []AIGatewayDatast
 	return a.Datastores
 }
 
-func (a *AIGatewayAuthStrategyKeyAuthResponse) GetType() string {
-	return "key-auth"
+func (a *AIGatewayAuthStrategyKeyAuthResponse) GetType() AIGatewayAuthStrategyKeyAuthResponseType {
+	if a == nil {
+		return AIGatewayAuthStrategyKeyAuthResponseType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayAuthStrategyKeyAuthResponse) GetConfig() *AIGWKeyAuthGeneratedConfig {

@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayTxnOffsetCommitRequestRulesType string
+
+const (
+	EventGatewayTxnOffsetCommitRequestRulesTypeTxnOffsetCommit EventGatewayTxnOffsetCommitRequestRulesType = "txn_offset_commit"
+)
+
+func (e EventGatewayTxnOffsetCommitRequestRulesType) ToPointer() *EventGatewayTxnOffsetCommitRequestRulesType {
+	return &e
+}
+func (e *EventGatewayTxnOffsetCommitRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "txn_offset_commit":
+		*e = EventGatewayTxnOffsetCommitRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayTxnOffsetCommitRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayTxnOffsetCommitRequestRules - The rules to apply to Kafka `TxnOffsetCommit` requests.
 type EventGatewayTxnOffsetCommitRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"txn_offset_commit" json:"type"`
+	Type EventGatewayTxnOffsetCommitRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayTxnOffsetCommitRequestRules) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (e *EventGatewayTxnOffsetCommitRequestRules) GetType() string {
-	return "txn_offset_commit"
+func (e *EventGatewayTxnOffsetCommitRequestRules) GetType() EventGatewayTxnOffsetCommitRequestRulesType {
+	if e == nil {
+		return EventGatewayTxnOffsetCommitRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayTxnOffsetCommitRequestRules) GetRules() []EventGatewayTxnOffsetCommitRule {

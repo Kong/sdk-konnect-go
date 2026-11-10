@@ -113,7 +113,7 @@ func main() {
 
     res, err := s.APIPackageOperations.UpdateAPIPackageOperations(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", []components.APIPackageJSONPatchItem{
         components.APIPackageJSONPatchItem{
-            Op: components.OpRemove,
+            Op: components.APIPackageJSONPatchItemOpRemove,
             Path: "/var/spool",
         },
     })

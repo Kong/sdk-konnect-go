@@ -10,6 +10,30 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// ForwardToVirtualClusterPolicyType - The type name of the policy.
+type ForwardToVirtualClusterPolicyType string
+
+const (
+	ForwardToVirtualClusterPolicyTypeForwardToVirtualCluster ForwardToVirtualClusterPolicyType = "forward_to_virtual_cluster"
+)
+
+func (e ForwardToVirtualClusterPolicyType) ToPointer() *ForwardToVirtualClusterPolicyType {
+	return &e
+}
+func (e *ForwardToVirtualClusterPolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "forward_to_virtual_cluster":
+		*e = ForwardToVirtualClusterPolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ForwardToVirtualClusterPolicyType: %v", v)
+	}
+}
+
 type ForwardToVirtualClusterPolicyConfigType string
 
 const (
@@ -28,6 +52,9 @@ type ForwardToVirtualClusterPolicyConfig struct {
 func CreateForwardToVirtualClusterPolicyConfigPortMapping(portMapping ForwardToClusterByPortMappingConfig) ForwardToVirtualClusterPolicyConfig {
 	typ := ForwardToVirtualClusterPolicyConfigTypePortMapping
 
+	typStr := ForwardToClusterByPortMappingConfigType(typ)
+	portMapping.Type = typStr
+
 	return ForwardToVirtualClusterPolicyConfig{
 		ForwardToClusterByPortMappingConfig: &portMapping,
 		Type:                                typ,
@@ -36,6 +63,9 @@ func CreateForwardToVirtualClusterPolicyConfigPortMapping(portMapping ForwardToC
 
 func CreateForwardToVirtualClusterPolicyConfigSni(sni ForwardToClusterBySNIConfig) ForwardToVirtualClusterPolicyConfig {
 	typ := ForwardToVirtualClusterPolicyConfigTypeSni
+
+	typStr := ForwardToClusterBySNIConfigType(typ)
+	sni.Type = typStr
 
 	return ForwardToVirtualClusterPolicyConfig{
 		ForwardToClusterBySNIConfig: &sni,
@@ -107,8 +137,7 @@ func (u ForwardToVirtualClusterPolicyConfig) MarshalJSON() ([]byte, error) {
 // `ForwardToClusterBySNIConfig` for more details.
 type ForwardToVirtualClusterPolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"forward_to_virtual_cluster" json:"type"`
+	Type ForwardToVirtualClusterPolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -135,8 +164,11 @@ func (f *ForwardToVirtualClusterPolicy) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (f *ForwardToVirtualClusterPolicy) GetType() string {
-	return "forward_to_virtual_cluster"
+func (f *ForwardToVirtualClusterPolicy) GetType() ForwardToVirtualClusterPolicyType {
+	if f == nil {
+		return ForwardToVirtualClusterPolicyType("")
+	}
+	return f.Type
 }
 
 func (f *ForwardToVirtualClusterPolicy) GetName() *string {

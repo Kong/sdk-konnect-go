@@ -4,13 +4,38 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// MCPStdioTransportType - Transport type
+type MCPStdioTransportType string
+
+const (
+	MCPStdioTransportTypeStdio MCPStdioTransportType = "stdio"
+)
+
+func (e MCPStdioTransportType) ToPointer() *MCPStdioTransportType {
+	return &e
+}
+func (e *MCPStdioTransportType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "stdio":
+		*e = MCPStdioTransportType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MCPStdioTransportType: %v", v)
+	}
+}
+
 type MCPStdioTransport struct {
 	// Transport type
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"stdio" json:"type"`
+	Type MCPStdioTransportType `json:"type"`
 }
 
 func (m MCPStdioTransport) MarshalJSON() ([]byte, error) {
@@ -24,6 +49,9 @@ func (m *MCPStdioTransport) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (m *MCPStdioTransport) GetType() string {
-	return "stdio"
+func (m *MCPStdioTransport) GetType() MCPStdioTransportType {
+	if m == nil {
+		return MCPStdioTransportType("")
+	}
+	return m.Type
 }

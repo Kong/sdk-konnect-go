@@ -4,15 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetTypesafeConfigType string
+
+const (
+	AIGatewayTargetTypesafeConfigTypeTypesafe AIGatewayTargetTypesafeConfigType = "typesafe"
+)
+
+func (e AIGatewayTargetTypesafeConfigType) ToPointer() *AIGatewayTargetTypesafeConfigType {
+	return &e
+}
+func (e *AIGatewayTargetTypesafeConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "typesafe":
+		*e = AIGatewayTargetTypesafeConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetTypesafeConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetTypesafeConfig - Typesafe-specific configuration for a model.
 //
 // **Requires a minimum runtime version of `2.2`**.
 type AIGatewayTargetTypesafeConfig struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"typesafe" json:"type"`
+	Type AIGatewayTargetTypesafeConfigType `json:"type"`
 	// Cost per 1M input tokens for billing and cost tracking.
 	InputCost *float64 `json:"input_cost,omitempty"`
 	// Cost per 1M output tokens for billing and cost tracking.
@@ -32,8 +56,11 @@ func (a *AIGatewayTargetTypesafeConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayTargetTypesafeConfig) GetType() string {
-	return "typesafe"
+func (a *AIGatewayTargetTypesafeConfig) GetType() AIGatewayTargetTypesafeConfigType {
+	if a == nil {
+		return AIGatewayTargetTypesafeConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetTypesafeConfig) GetInputCost() *float64 {

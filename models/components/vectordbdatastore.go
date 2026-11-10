@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type VectorDBDatastoreType string
+
+const (
+	VectorDBDatastoreTypeVectordb VectorDBDatastoreType = "vectordb"
+)
+
+func (e VectorDBDatastoreType) ToPointer() *VectorDBDatastoreType {
+	return &e
+}
+func (e *VectorDBDatastoreType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vectordb":
+		*e = VectorDBDatastoreType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for VectorDBDatastoreType: %v", v)
+	}
+}
 
 // VectorDBDatastore - Carries the pgvector connection only. `strategy`, `dimensions`, `distance_metric`, and `threshold`
 // belong to the policy or model referencing this Datastore, not the Datastore itself.
@@ -29,10 +54,9 @@ type VectorDBDatastore struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                  `const:"vectordb" json:"type"`
-	Config VectorDBDatastoreConfig `json:"config"`
+	ManagedBy map[string]string       `json:"managed_by,omitempty"`
+	Type      VectorDBDatastoreType   `json:"type"`
+	Config    VectorDBDatastoreConfig `json:"config"`
 }
 
 func (v VectorDBDatastore) MarshalJSON() ([]byte, error) {
@@ -81,8 +105,11 @@ func (v *VectorDBDatastore) GetManagedBy() map[string]string {
 	return v.ManagedBy
 }
 
-func (v *VectorDBDatastore) GetType() string {
-	return "vectordb"
+func (v *VectorDBDatastore) GetType() VectorDBDatastoreType {
+	if v == nil {
+		return VectorDBDatastoreType("")
+	}
+	return v.Type
 }
 
 func (v *VectorDBDatastore) GetConfig() VectorDBDatastoreConfig {

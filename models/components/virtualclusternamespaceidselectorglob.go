@@ -4,12 +4,36 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type VirtualClusterNamespaceIDSelectorGlobType string
+
+const (
+	VirtualClusterNamespaceIDSelectorGlobTypeGlob VirtualClusterNamespaceIDSelectorGlobType = "glob"
+)
+
+func (e VirtualClusterNamespaceIDSelectorGlobType) ToPointer() *VirtualClusterNamespaceIDSelectorGlobType {
+	return &e
+}
+func (e *VirtualClusterNamespaceIDSelectorGlobType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "glob":
+		*e = VirtualClusterNamespaceIDSelectorGlobType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for VirtualClusterNamespaceIDSelectorGlobType: %v", v)
+	}
+}
+
 type VirtualClusterNamespaceIDSelectorGlob struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"glob" json:"type"`
+	Type VirtualClusterNamespaceIDSelectorGlobType `json:"type"`
 	// Expose any id that matches this glob pattern (e.g., `my_id_*`).
 	Glob string `json:"glob"`
 }
@@ -25,8 +49,11 @@ func (v *VirtualClusterNamespaceIDSelectorGlob) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (v *VirtualClusterNamespaceIDSelectorGlob) GetType() string {
-	return "glob"
+func (v *VirtualClusterNamespaceIDSelectorGlob) GetType() VirtualClusterNamespaceIDSelectorGlobType {
+	if v == nil {
+		return VirtualClusterNamespaceIDSelectorGlobType("")
+	}
+	return v.Type
 }
 
 func (v *VirtualClusterNamespaceIDSelectorGlob) GetGlob() string {

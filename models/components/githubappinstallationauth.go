@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type GitHubAppInstallationAuthType string
+
+const (
+	GitHubAppInstallationAuthTypeGithubAppInstallation GitHubAppInstallationAuthType = "github_app_installation"
+)
+
+func (e GitHubAppInstallationAuthType) ToPointer() *GitHubAppInstallationAuthType {
+	return &e
+}
+func (e *GitHubAppInstallationAuthType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github_app_installation":
+		*e = GitHubAppInstallationAuthType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GitHubAppInstallationAuthType: %v", v)
+	}
+}
 
 type AppInstallURL struct {
 	// The URL where customers are directed to install the GitHub App into their
@@ -156,8 +181,7 @@ func (g *GitHubAppInstallationAuthConfig) GetPendingAppInstallsEndpoint() Pendin
 // Unlike standard OAuth flows, this strategy leverages GitHub's custom app installation flow
 // and token lifecycle, making it ideal for deep, organization-level GitHub integration.
 type GitHubAppInstallationAuth struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                          `const:"github_app_installation" json:"type"`
+	Type   GitHubAppInstallationAuthType   `json:"type"`
 	Config GitHubAppInstallationAuthConfig `json:"config"`
 }
 
@@ -172,8 +196,11 @@ func (g *GitHubAppInstallationAuth) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (g *GitHubAppInstallationAuth) GetType() string {
-	return "github_app_installation"
+func (g *GitHubAppInstallationAuth) GetType() GitHubAppInstallationAuthType {
+	if g == nil {
+		return GitHubAppInstallationAuthType("")
+	}
+	return g.Type
 }
 
 func (g *GitHubAppInstallationAuth) GetConfig() GitHubAppInstallationAuthConfig {

@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type KongPrincipalIdentityCustomResponseType string
+
+const (
+	KongPrincipalIdentityCustomResponseTypeCustom KongPrincipalIdentityCustomResponseType = "custom"
+)
+
+func (e KongPrincipalIdentityCustomResponseType) ToPointer() *KongPrincipalIdentityCustomResponseType {
+	return &e
+}
+func (e *KongPrincipalIdentityCustomResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "custom":
+		*e = KongPrincipalIdentityCustomResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for KongPrincipalIdentityCustomResponseType: %v", v)
+	}
+}
 
 type KongPrincipalIdentityCustomResponse struct {
 	// Contains a unique identifier used for this resource.
@@ -24,11 +49,10 @@ type KongPrincipalIdentityCustomResponse struct {
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt time.Time `json:"updated_at"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"custom" json:"type"`
-	Key   string `json:"key"`
-	Value string `json:"value"`
+	UpdatedAt time.Time                               `json:"updated_at"`
+	Type      KongPrincipalIdentityCustomResponseType `json:"type"`
+	Key       string                                  `json:"key"`
+	Value     string                                  `json:"value"`
 }
 
 func (k KongPrincipalIdentityCustomResponse) MarshalJSON() ([]byte, error) {
@@ -77,8 +101,11 @@ func (k *KongPrincipalIdentityCustomResponse) GetUpdatedAt() time.Time {
 	return k.UpdatedAt
 }
 
-func (k *KongPrincipalIdentityCustomResponse) GetType() string {
-	return "custom"
+func (k *KongPrincipalIdentityCustomResponse) GetType() KongPrincipalIdentityCustomResponseType {
+	if k == nil {
+		return KongPrincipalIdentityCustomResponseType("")
+	}
+	return k.Type
 }
 
 func (k *KongPrincipalIdentityCustomResponse) GetKey() string {

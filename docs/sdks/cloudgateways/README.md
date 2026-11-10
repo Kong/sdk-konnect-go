@@ -77,14 +77,17 @@ func main() {
         Name: "my-add-on",
         Owner: components.CreateAddOnOwnerControlPlaneGroupAddOnOwner(
             components.ControlPlaneGroupAddOnOwner{
+                Kind: components.ControlPlaneGroupAddOnOwnerKindControlPlaneGroup,
                 ControlPlaneGroupID: "123e4567-e89b-12d3-a456-426614174000",
                 ControlPlaneGroupGeo: components.ControlPlaneGeoSg,
             },
         ),
         Config: components.CreateCreateAddOnConfigManagedCache(
             components.ManagedCache{
+                Kind: components.ManagedCacheKindManagedCacheV0,
                 CapacityConfig: components.CreateManagedCacheCapacityConfigTiered(
                     components.Tiered{
+                        Kind: components.TieredKindTiered,
                         Tier: components.TierSmall,
                     },
                 ),
@@ -346,8 +349,10 @@ func main() {
     res, err := s.CloudGateways.UpdateAddOn(ctx, "550e8400-e29b-41d4-a716-446655440000", components.UpdateAddOnRequest{
         Config: components.CreateUpdateAddOnConfigManagedCache(
             components.ManagedCache{
+                Kind: components.ManagedCacheKindManagedCacheV0,
                 CapacityConfig: components.CreateManagedCacheCapacityConfigTiered(
                     components.Tiered{
+                        Kind: components.TieredKindTiered,
                         Tier: components.TierSmall,
                     },
                 ),

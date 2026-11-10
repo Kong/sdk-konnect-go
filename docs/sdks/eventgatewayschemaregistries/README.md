@@ -103,11 +103,13 @@ func main() {
     res, err := s.EventGatewaySchemaRegistries.CreateEventGatewaySchemaRegistry(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", sdkkonnectgo.Pointer(components.CreateSchemaRegistryCreateConfluent(
         components.SchemaRegistryConfluent{
             Name: "<value>",
+            Type: components.SchemaRegistryConfluentTypeConfluent,
             Config: components.SchemaRegistryConfluentConfig{
                 SchemaType: components.SchemaTypeAvro,
                 Endpoint: "https://broken-tuber.net/",
                 Authentication: sdkkonnectgo.Pointer(components.CreateSchemaRegistryAuthenticationSchemeBasic(
                     components.SchemaRegistryAuthenticationBasic{
+                        Type: components.SchemaRegistryAuthenticationBasicTypeBasic,
                         Username: "Stanley71",
                         Password: "${vault.env['MY_ENV_VAR']}",
                     },
@@ -237,11 +239,13 @@ func main() {
         SchemaRegistryUpdate: sdkkonnectgo.Pointer(components.CreateSchemaRegistryUpdateConfluent(
             components.SchemaRegistryConfluentSensitiveDataAware{
                 Name: "<value>",
+                Type: components.SchemaRegistryConfluentSensitiveDataAwareTypeConfluent,
                 Config: components.SchemaRegistryConfluentConfigSensitiveDataAware{
                     SchemaType: components.SchemaRegistryConfluentConfigSensitiveDataAwareSchemaTypeAvro,
                     Endpoint: "https://polished-caption.info/",
                     Authentication: sdkkonnectgo.Pointer(components.CreateSchemaRegistryAuthenticationSensitiveDataAwareSchemeBasic(
                         components.SchemaRegistryAuthenticationBasicSensitiveDataAware{
+                            Type: components.SchemaRegistryAuthenticationBasicSensitiveDataAwareTypeBasic,
                             Username: "Kelton_Lind-Spencer42",
                         },
                     )),

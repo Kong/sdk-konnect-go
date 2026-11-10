@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayModifyHeadersPolicyType - The type name of the policy.
+type EventGatewayModifyHeadersPolicyType string
+
+const (
+	EventGatewayModifyHeadersPolicyTypeModifyHeaders EventGatewayModifyHeadersPolicyType = "modify_headers"
+)
+
+func (e EventGatewayModifyHeadersPolicyType) ToPointer() *EventGatewayModifyHeadersPolicyType {
+	return &e
+}
+func (e *EventGatewayModifyHeadersPolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "modify_headers":
+		*e = EventGatewayModifyHeadersPolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayModifyHeadersPolicyType: %v", v)
+	}
+}
 
 // EventGatewayModifyHeadersPolicyConfig - The configuration of the modify headers policy.
 type EventGatewayModifyHeadersPolicyConfig struct {
@@ -34,8 +60,7 @@ func (e *EventGatewayModifyHeadersPolicyConfig) GetActions() []EventGatewayModif
 // EventGatewayModifyHeadersPolicy - A policy that modifies headers for requests.
 type EventGatewayModifyHeadersPolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"modify_headers" json:"type"`
+	Type EventGatewayModifyHeadersPolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -68,8 +93,11 @@ func (e *EventGatewayModifyHeadersPolicy) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayModifyHeadersPolicy) GetType() string {
-	return "modify_headers"
+func (e *EventGatewayModifyHeadersPolicy) GetType() EventGatewayModifyHeadersPolicyType {
+	if e == nil {
+		return EventGatewayModifyHeadersPolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayModifyHeadersPolicy) GetName() *string {

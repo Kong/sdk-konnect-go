@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// OutputFormat - The serialization format to convert the record value into.
+type OutputFormat string
+
+const (
+	OutputFormatJSON OutputFormat = "json"
+)
+
+func (e OutputFormat) ToPointer() *OutputFormat {
+	return &e
+}
+func (e *OutputFormat) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "json":
+		*e = OutputFormat(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OutputFormat: %v", v)
+	}
+}
 
 // EventGatewayParsedRecordTranscodeConsumeConfigJSON - The configuration of the transcode parsed record policy when converting consumed records to JSON.
 type EventGatewayParsedRecordTranscodeConsumeConfigJSON struct {
@@ -28,8 +54,7 @@ type EventGatewayParsedRecordTranscodeConsumeConfigJSON struct {
 	//
 	SchemaSource *EventGatewayParsedRecordTranscodeSchemaSource `json:"schema_source,omitempty"`
 	// The serialization format to convert the record value into.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	outputFormat string `const:"json" json:"output_format"`
+	OutputFormat OutputFormat `json:"output_format"`
 }
 
 func (e EventGatewayParsedRecordTranscodeConsumeConfigJSON) MarshalJSON() ([]byte, error) {
@@ -78,6 +103,9 @@ func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) GetSchemaSourceInli
 	return nil
 }
 
-func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) GetOutputFormat() string {
-	return "json"
+func (e *EventGatewayParsedRecordTranscodeConsumeConfigJSON) GetOutputFormat() OutputFormat {
+	if e == nil {
+		return OutputFormat("")
+	}
+	return e.OutputFormat
 }

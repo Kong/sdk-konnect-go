@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// SchemaRegistryConfluentSensitiveDataAwareType - The type of the schema registry.
+type SchemaRegistryConfluentSensitiveDataAwareType string
+
+const (
+	SchemaRegistryConfluentSensitiveDataAwareTypeConfluent SchemaRegistryConfluentSensitiveDataAwareType = "confluent"
+)
+
+func (e SchemaRegistryConfluentSensitiveDataAwareType) ToPointer() *SchemaRegistryConfluentSensitiveDataAwareType {
+	return &e
+}
+func (e *SchemaRegistryConfluentSensitiveDataAwareType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "confluent":
+		*e = SchemaRegistryConfluentSensitiveDataAwareType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemaRegistryConfluentSensitiveDataAwareType: %v", v)
+	}
+}
 
 // SchemaRegistryConfluentSensitiveDataAware - A Confluent schema registry.
 type SchemaRegistryConfluentSensitiveDataAware struct {
@@ -14,8 +40,7 @@ type SchemaRegistryConfluentSensitiveDataAware struct {
 	// A human-readable description of the virtual cluster.
 	Description *string `default:"" json:"description"`
 	// The type of the schema registry.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"confluent" json:"type"`
+	Type SchemaRegistryConfluentSensitiveDataAwareType `json:"type"`
 	// The configuration of [Confluent Schema Registry](https://github.com/confluentinc/schema-registry)
 	//
 	Config SchemaRegistryConfluentConfigSensitiveDataAware `json:"config"`
@@ -51,8 +76,11 @@ func (s *SchemaRegistryConfluentSensitiveDataAware) GetDescription() *string {
 	return s.Description
 }
 
-func (s *SchemaRegistryConfluentSensitiveDataAware) GetType() string {
-	return "confluent"
+func (s *SchemaRegistryConfluentSensitiveDataAware) GetType() SchemaRegistryConfluentSensitiveDataAwareType {
+	if s == nil {
+		return SchemaRegistryConfluentSensitiveDataAwareType("")
+	}
+	return s.Type
 }
 
 func (s *SchemaRegistryConfluentSensitiveDataAware) GetConfig() SchemaRegistryConfluentConfigSensitiveDataAware {

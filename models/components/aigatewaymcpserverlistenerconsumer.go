@@ -4,16 +4,40 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/types"
 )
+
+// ACLAttributeType - The type of attributes that ACL is evaluated with.
+type ACLAttributeType string
+
+const (
+	ACLAttributeTypeConsumer ACLAttributeType = "consumer"
+)
+
+func (e ACLAttributeType) ToPointer() *ACLAttributeType {
+	return &e
+}
+func (e *ACLAttributeType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "consumer":
+		*e = ACLAttributeType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ACLAttributeType: %v", v)
+	}
+}
 
 // AIGatewayMCPServerListenerConsumer - Auth strategy and OAuth 2.0 Protected Resource Metadata configuration
 // for granting access to an MCP server.
 type AIGatewayMCPServerListenerConsumer struct {
 	// The type of attributes that ACL is evaluated with.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	aclAttributeType *string `const:"consumer" json:"acl_attribute_type"`
+	ACLAttributeType *ACLAttributeType `default:"consumer" json:"acl_attribute_type"`
 	// Server-level access control rules for allowing or denying consumer groups. This is the
 	// top-level gate: a caller's consumer group must pass this check before any MCP protocol
 	// operation (`initialize`, `tools/list`, `tools/call`) is allowed, and before any tool-level
@@ -53,8 +77,11 @@ func (a *AIGatewayMCPServerListenerConsumer) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPServerListenerConsumer) GetACLAttributeType() *string {
-	return types.Pointer("consumer")
+func (a *AIGatewayMCPServerListenerConsumer) GetACLAttributeType() *ACLAttributeType {
+	if a == nil {
+		return nil
+	}
+	return a.ACLAttributeType
 }
 
 func (a *AIGatewayMCPServerListenerConsumer) GetAcls() *AIGatewayMCPServerACLs {

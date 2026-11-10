@@ -4,6 +4,8 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -53,6 +55,29 @@ func (e *Protocol) IsExact() bool {
 	return false
 }
 
+type AuthMethod string
+
+const (
+	AuthMethodToken AuthMethod = "token"
+)
+
+func (e AuthMethod) ToPointer() *AuthMethod {
+	return &e
+}
+func (e *AuthMethod) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "token":
+		*e = AuthMethod(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AuthMethod: %v", v)
+	}
+}
+
 type HashiCorpVaultTokenConfigOutput struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
 	// If some of the secrets in the vault are not base64-encoded, an error will occur when using them.
@@ -86,9 +111,8 @@ type HashiCorpVaultTokenConfigOutput struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace *string `json:"namespace,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	authMethod string `const:"token" json:"auth_method"`
+	Namespace  *string    `json:"namespace,omitempty"`
+	AuthMethod AuthMethod `json:"auth_method"`
 }
 
 func (h HashiCorpVaultTokenConfigOutput) MarshalJSON() ([]byte, error) {
@@ -179,8 +203,11 @@ func (h *HashiCorpVaultTokenConfigOutput) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultTokenConfigOutput) GetAuthMethod() string {
-	return "token"
+func (h *HashiCorpVaultTokenConfigOutput) GetAuthMethod() AuthMethod {
+	if h == nil {
+		return AuthMethod("")
+	}
+	return h.AuthMethod
 }
 
 type HashiCorpVaultTokenConfig struct {
@@ -216,9 +243,8 @@ type HashiCorpVaultTokenConfig struct {
 	// Whether to verify the TLS certificate of the vault when connecting.
 	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Namespace for the Vault. Vault Enterprise requires a namespace to connect successfully.
-	Namespace *string `json:"namespace,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	authMethod string `const:"token" json:"auth_method"`
+	Namespace  *string    `json:"namespace,omitempty"`
+	AuthMethod AuthMethod `json:"auth_method"`
 	// The token string to be used for authentication.
 	Token *string `json:"token,omitempty"`
 }
@@ -311,8 +337,11 @@ func (h *HashiCorpVaultTokenConfig) GetNamespace() *string {
 	return h.Namespace
 }
 
-func (h *HashiCorpVaultTokenConfig) GetAuthMethod() string {
-	return "token"
+func (h *HashiCorpVaultTokenConfig) GetAuthMethod() AuthMethod {
+	if h == nil {
+		return AuthMethod("")
+	}
+	return h.AuthMethod
 }
 
 func (h *HashiCorpVaultTokenConfig) GetToken() *string {

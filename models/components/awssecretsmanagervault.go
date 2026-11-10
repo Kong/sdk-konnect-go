@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AwsSecretsManagerVaultType string
+
+const (
+	AwsSecretsManagerVaultTypeAws AwsSecretsManagerVaultType = "aws"
+)
+
+func (e AwsSecretsManagerVaultType) ToPointer() *AwsSecretsManagerVaultType {
+	return &e
+}
+func (e *AwsSecretsManagerVaultType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "aws":
+		*e = AwsSecretsManagerVaultType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AwsSecretsManagerVaultType: %v", v)
+	}
+}
 
 type AwsSecretsManagerVaultConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
@@ -139,10 +164,9 @@ type AwsSecretsManagerVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                       `const:"aws" json:"type"`
-	Config AwsSecretsManagerVaultConfig `json:"config"`
+	ManagedBy map[string]string            `json:"managed_by,omitempty"`
+	Type      AwsSecretsManagerVaultType   `json:"type"`
+	Config    AwsSecretsManagerVaultConfig `json:"config"`
 }
 
 func (a AwsSecretsManagerVault) MarshalJSON() ([]byte, error) {
@@ -184,8 +208,11 @@ func (a *AwsSecretsManagerVault) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AwsSecretsManagerVault) GetType() string {
-	return "aws"
+func (a *AwsSecretsManagerVault) GetType() AwsSecretsManagerVaultType {
+	if a == nil {
+		return AwsSecretsManagerVaultType("")
+	}
+	return a.Type
 }
 
 func (a *AwsSecretsManagerVault) GetConfig() AwsSecretsManagerVaultConfig {

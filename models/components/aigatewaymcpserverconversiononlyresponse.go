@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
 
+type AIGatewayMCPServerConversionOnlyResponseType string
+
+const (
+	AIGatewayMCPServerConversionOnlyResponseTypeConversionOnly AIGatewayMCPServerConversionOnlyResponseType = "conversion-only"
+)
+
+func (e AIGatewayMCPServerConversionOnlyResponseType) ToPointer() *AIGatewayMCPServerConversionOnlyResponseType {
+	return &e
+}
+func (e *AIGatewayMCPServerConversionOnlyResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "conversion-only":
+		*e = AIGatewayMCPServerConversionOnlyResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayMCPServerConversionOnlyResponseType: %v", v)
+	}
+}
+
 type AIGatewayMCPServerConversionOnlyResponse struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"conversion-only" json:"type"`
+	Type AIGatewayMCPServerConversionOnlyResponseType `json:"type"`
 	// Routing, logging, and request body size limits for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
@@ -71,8 +95,11 @@ func (a *AIGatewayMCPServerConversionOnlyResponse) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (a *AIGatewayMCPServerConversionOnlyResponse) GetType() string {
-	return "conversion-only"
+func (a *AIGatewayMCPServerConversionOnlyResponse) GetType() AIGatewayMCPServerConversionOnlyResponseType {
+	if a == nil {
+		return AIGatewayMCPServerConversionOnlyResponseType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayMCPServerConversionOnlyResponse) GetConfig() AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfigOutput {

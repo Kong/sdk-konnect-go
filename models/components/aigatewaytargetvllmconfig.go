@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetVllmConfigType string
+
+const (
+	AIGatewayTargetVllmConfigTypeVllm AIGatewayTargetVllmConfigType = "vllm"
+)
+
+func (e AIGatewayTargetVllmConfigType) ToPointer() *AIGatewayTargetVllmConfigType {
+	return &e
+}
+func (e *AIGatewayTargetVllmConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vllm":
+		*e = AIGatewayTargetVllmConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetVllmConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetVllmConfig - Vllm-specific configuration for a model.
 type AIGatewayTargetVllmConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetVllmConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL string `json:"upstream_url"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"vllm" json:"type"`
+	UpstreamURL string                        `json:"upstream_url"`
+	Type        AIGatewayTargetVllmConfigType `json:"type"`
 }
 
 func (a AIGatewayTargetVllmConfig) MarshalJSON() ([]byte, error) {
@@ -174,6 +198,9 @@ func (a *AIGatewayTargetVllmConfig) GetUpstreamURL() string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetVllmConfig) GetType() string {
-	return "vllm"
+func (a *AIGatewayTargetVllmConfig) GetType() AIGatewayTargetVllmConfigType {
+	if a == nil {
+		return AIGatewayTargetVllmConfigType("")
+	}
+	return a.Type
 }

@@ -4,14 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayConsumeSchemaValidationPolicyType - The type name of the policy.
+type EventGatewayConsumeSchemaValidationPolicyType string
+
+const (
+	EventGatewayConsumeSchemaValidationPolicyTypeSchemaValidation EventGatewayConsumeSchemaValidationPolicyType = "schema_validation"
+)
+
+func (e EventGatewayConsumeSchemaValidationPolicyType) ToPointer() *EventGatewayConsumeSchemaValidationPolicyType {
+	return &e
+}
+func (e *EventGatewayConsumeSchemaValidationPolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "schema_validation":
+		*e = EventGatewayConsumeSchemaValidationPolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayConsumeSchemaValidationPolicyType: %v", v)
+	}
+}
 
 // EventGatewayConsumeSchemaValidationPolicy - A policy that validates consume messages against a schema registry.
 type EventGatewayConsumeSchemaValidationPolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"schema_validation" json:"type"`
+	Type EventGatewayConsumeSchemaValidationPolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -40,8 +65,11 @@ func (e *EventGatewayConsumeSchemaValidationPolicy) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (e *EventGatewayConsumeSchemaValidationPolicy) GetType() string {
-	return "schema_validation"
+func (e *EventGatewayConsumeSchemaValidationPolicy) GetType() EventGatewayConsumeSchemaValidationPolicyType {
+	if e == nil {
+		return EventGatewayConsumeSchemaValidationPolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayConsumeSchemaValidationPolicy) GetName() *string {

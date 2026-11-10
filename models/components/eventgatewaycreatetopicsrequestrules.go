@@ -4,16 +4,40 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type EventGatewayCreateTopicsRequestRulesType string
+
+const (
+	EventGatewayCreateTopicsRequestRulesTypeCreateTopics EventGatewayCreateTopicsRequestRulesType = "create_topics"
+)
+
+func (e EventGatewayCreateTopicsRequestRulesType) ToPointer() *EventGatewayCreateTopicsRequestRulesType {
+	return &e
+}
+func (e *EventGatewayCreateTopicsRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "create_topics":
+		*e = EventGatewayCreateTopicsRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayCreateTopicsRequestRulesType: %v", v)
+	}
+}
 
 // EventGatewayCreateTopicsRequestRules - The rules to apply to Kafka `CreateTopics` requests.
 //
 // When at least one `create_topics` rule is configured, Event Gateway turns auto topic
 // creation off on `Metadata` requests, because clients could use it to bypass the rules.
 type EventGatewayCreateTopicsRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"create_topics" json:"type"`
+	Type EventGatewayCreateTopicsRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against each topic in the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -32,8 +56,11 @@ func (e *EventGatewayCreateTopicsRequestRules) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (e *EventGatewayCreateTopicsRequestRules) GetType() string {
-	return "create_topics"
+func (e *EventGatewayCreateTopicsRequestRules) GetType() EventGatewayCreateTopicsRequestRulesType {
+	if e == nil {
+		return EventGatewayCreateTopicsRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayCreateTopicsRequestRules) GetRules() []EventGatewayCreateTopicsRule {

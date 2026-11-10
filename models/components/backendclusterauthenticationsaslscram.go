@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type BackendClusterAuthenticationSaslScramType string
+
+const (
+	BackendClusterAuthenticationSaslScramTypeSaslScram BackendClusterAuthenticationSaslScramType = "sasl_scram"
+)
+
+func (e BackendClusterAuthenticationSaslScramType) ToPointer() *BackendClusterAuthenticationSaslScramType {
+	return &e
+}
+func (e *BackendClusterAuthenticationSaslScramType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sasl_scram":
+		*e = BackendClusterAuthenticationSaslScramType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BackendClusterAuthenticationSaslScramType: %v", v)
+	}
+}
 
 // BackendClusterAuthenticationSaslScramAlgorithm - The algorithm used for SASL/SCRAM authentication.
 type BackendClusterAuthenticationSaslScramAlgorithm string
@@ -32,8 +57,7 @@ func (e *BackendClusterAuthenticationSaslScramAlgorithm) IsExact() bool {
 
 // BackendClusterAuthenticationSaslScram - SASL/SCRAM authentication scheme for the backend cluster.
 type BackendClusterAuthenticationSaslScram struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sasl_scram" json:"type"`
+	Type BackendClusterAuthenticationSaslScramType `json:"type"`
 	// The algorithm used for SASL/SCRAM authentication.
 	Algorithm BackendClusterAuthenticationSaslScramAlgorithm `json:"algorithm"`
 	// A literal value or a reference to an existing secret as a template string expression.
@@ -58,8 +82,11 @@ func (b *BackendClusterAuthenticationSaslScram) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (b *BackendClusterAuthenticationSaslScram) GetType() string {
-	return "sasl_scram"
+func (b *BackendClusterAuthenticationSaslScram) GetType() BackendClusterAuthenticationSaslScramType {
+	if b == nil {
+		return BackendClusterAuthenticationSaslScramType("")
+	}
+	return b.Type
 }
 
 func (b *BackendClusterAuthenticationSaslScram) GetAlgorithm() BackendClusterAuthenticationSaslScramAlgorithm {

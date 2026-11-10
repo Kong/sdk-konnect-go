@@ -4,6 +4,8 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -32,6 +34,29 @@ func (e *MCPNamedArgumentFormat) IsExact() bool {
 	return false
 }
 
+type MCPNamedArgumentType string
+
+const (
+	MCPNamedArgumentTypeNamed MCPNamedArgumentType = "named"
+)
+
+func (e MCPNamedArgumentType) ToPointer() *MCPNamedArgumentType {
+	return &e
+}
+func (e *MCPNamedArgumentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "named":
+		*e = MCPNamedArgumentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MCPNamedArgumentType: %v", v)
+	}
+}
+
 // MCPNamedArgument - A command-line `--flag={value}`.
 type MCPNamedArgument struct {
 	// A description of the input.
@@ -50,9 +75,8 @@ type MCPNamedArgument struct {
 	// A list of possible values for the input.
 	Choices []string `json:"choices,omitempty"`
 	// A map of variable names to their values.
-	Variables map[string]MCPInput `json:"variables,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"named" json:"type"`
+	Variables map[string]MCPInput  `json:"variables,omitempty"`
+	Type      MCPNamedArgumentType `json:"type"`
 	// The flag name, including any leading dashes.
 	Name string `json:"name"`
 	// Whether the argument can be repeated multiple times.
@@ -133,8 +157,11 @@ func (m *MCPNamedArgument) GetVariables() map[string]MCPInput {
 	return m.Variables
 }
 
-func (m *MCPNamedArgument) GetType() string {
-	return "named"
+func (m *MCPNamedArgument) GetType() MCPNamedArgumentType {
+	if m == nil {
+		return MCPNamedArgumentType("")
+	}
+	return m.Type
 }
 
 func (m *MCPNamedArgument) GetName() string {

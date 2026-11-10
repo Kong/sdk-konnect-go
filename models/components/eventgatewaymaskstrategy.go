@@ -30,6 +30,9 @@ type EventGatewayMaskStrategy struct {
 func CreateEventGatewayMaskStrategyKeepChars(keepChars EventGatewayMaskStrategyKeepChars) EventGatewayMaskStrategy {
 	typ := EventGatewayMaskStrategyTypeKeepChars
 
+	typStr := EventGatewayMaskStrategyKeepCharsType(typ)
+	keepChars.Type = typStr
+
 	return EventGatewayMaskStrategy{
 		EventGatewayMaskStrategyKeepChars: &keepChars,
 		Type:                              typ,
@@ -39,6 +42,9 @@ func CreateEventGatewayMaskStrategyKeepChars(keepChars EventGatewayMaskStrategyK
 func CreateEventGatewayMaskStrategyEmail(email EventGatewayMaskStrategyEmail) EventGatewayMaskStrategy {
 	typ := EventGatewayMaskStrategyTypeEmail
 
+	typStr := EventGatewayMaskStrategyEmailType(typ)
+	email.Type = typStr
+
 	return EventGatewayMaskStrategy{
 		EventGatewayMaskStrategyEmail: &email,
 		Type:                          typ,
@@ -47,6 +53,9 @@ func CreateEventGatewayMaskStrategyEmail(email EventGatewayMaskStrategyEmail) Ev
 
 func CreateEventGatewayMaskStrategyReplace(replace EventGatewayMaskStrategyReplace) EventGatewayMaskStrategy {
 	typ := EventGatewayMaskStrategyTypeReplace
+
+	typStr := EventGatewayMaskStrategyReplaceType(typ)
+	replace.Type = typStr
 
 	return EventGatewayMaskStrategy{
 		EventGatewayMaskStrategyReplace: &replace,

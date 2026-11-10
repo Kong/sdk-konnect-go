@@ -28,6 +28,9 @@ type EventGatewayListenerPolicyUpdate struct {
 func CreateEventGatewayListenerPolicyUpdateTLSServer(tlsServer EventGatewayTLSListenerSensitiveDataAwarePolicy) EventGatewayListenerPolicyUpdate {
 	typ := EventGatewayListenerPolicyUpdateTypeTLSServer
 
+	typStr := EventGatewayTLSListenerSensitiveDataAwarePolicyType(typ)
+	tlsServer.Type = typStr
+
 	return EventGatewayListenerPolicyUpdate{
 		EventGatewayTLSListenerSensitiveDataAwarePolicy: &tlsServer,
 		Type: typ,
@@ -36,6 +39,9 @@ func CreateEventGatewayListenerPolicyUpdateTLSServer(tlsServer EventGatewayTLSLi
 
 func CreateEventGatewayListenerPolicyUpdateForwardToVirtualCluster(forwardToVirtualCluster ForwardToVirtualClusterPolicy) EventGatewayListenerPolicyUpdate {
 	typ := EventGatewayListenerPolicyUpdateTypeForwardToVirtualCluster
+
+	typStr := ForwardToVirtualClusterPolicyType(typ)
+	forwardToVirtualCluster.Type = typStr
 
 	return EventGatewayListenerPolicyUpdate{
 		ForwardToVirtualClusterPolicy: &forwardToVirtualCluster,

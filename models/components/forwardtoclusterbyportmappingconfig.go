@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type ForwardToClusterByPortMappingConfigType string
+
+const (
+	ForwardToClusterByPortMappingConfigTypePortMapping ForwardToClusterByPortMappingConfigType = "port_mapping"
+)
+
+func (e ForwardToClusterByPortMappingConfigType) ToPointer() *ForwardToClusterByPortMappingConfigType {
+	return &e
+}
+func (e *ForwardToClusterByPortMappingConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "port_mapping":
+		*e = ForwardToClusterByPortMappingConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ForwardToClusterByPortMappingConfigType: %v", v)
+	}
+}
 
 // BootstrapPort - If set to `at_start`, the first port will be used as a bootstrap port.
 // It provides a stable endpoint to use as the bootstrap server for clients, regardless of broker
@@ -53,8 +78,7 @@ func (e *BootstrapPort) IsExact() bool {
 //
 // It is strongly discouraged to use port mapping in production.
 type ForwardToClusterByPortMappingConfig struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"port_mapping" json:"type"`
+	Type ForwardToClusterByPortMappingConfigType `json:"type"`
 	// A reference to a virtual cluster.
 	Destination VirtualClusterReference `json:"destination"`
 	// Virtual brokers are advertised to clients using this host. Any kind of host supported by kafka can be used. If not defined, it's listen_address. If listen_address is `0.0.0.0` it's the destination IP of the TCP connection.
@@ -83,8 +107,11 @@ func (f *ForwardToClusterByPortMappingConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (f *ForwardToClusterByPortMappingConfig) GetType() string {
-	return "port_mapping"
+func (f *ForwardToClusterByPortMappingConfig) GetType() ForwardToClusterByPortMappingConfigType {
+	if f == nil {
+		return ForwardToClusterByPortMappingConfigType("")
+	}
+	return f.Type
 }
 
 func (f *ForwardToClusterByPortMappingConfig) GetDestination() VirtualClusterReference {

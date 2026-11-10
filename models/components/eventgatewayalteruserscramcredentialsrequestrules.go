@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayAlterUserScramCredentialsRequestRulesType string
+
+const (
+	EventGatewayAlterUserScramCredentialsRequestRulesTypeAlterUserScramCredentials EventGatewayAlterUserScramCredentialsRequestRulesType = "alter_user_scram_credentials"
+)
+
+func (e EventGatewayAlterUserScramCredentialsRequestRulesType) ToPointer() *EventGatewayAlterUserScramCredentialsRequestRulesType {
+	return &e
+}
+func (e *EventGatewayAlterUserScramCredentialsRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "alter_user_scram_credentials":
+		*e = EventGatewayAlterUserScramCredentialsRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayAlterUserScramCredentialsRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayAlterUserScramCredentialsRequestRules - The rules to apply to Kafka `AlterUserScramCredentials` requests.
 type EventGatewayAlterUserScramCredentialsRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"alter_user_scram_credentials" json:"type"`
+	Type EventGatewayAlterUserScramCredentialsRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against each credential in the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayAlterUserScramCredentialsRequestRules) UnmarshalJSON(data [
 	return nil
 }
 
-func (e *EventGatewayAlterUserScramCredentialsRequestRules) GetType() string {
-	return "alter_user_scram_credentials"
+func (e *EventGatewayAlterUserScramCredentialsRequestRules) GetType() EventGatewayAlterUserScramCredentialsRequestRulesType {
+	if e == nil {
+		return EventGatewayAlterUserScramCredentialsRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayAlterUserScramCredentialsRequestRules) GetRules() []EventGatewayAlterUserScramCredentialsRule {

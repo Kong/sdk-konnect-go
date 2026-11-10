@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type EventGatewayProduceSchemaValidationPolicyJSONConfigType string
+
+const (
+	EventGatewayProduceSchemaValidationPolicyJSONConfigTypeJSON EventGatewayProduceSchemaValidationPolicyJSONConfigType = "json"
+)
+
+func (e EventGatewayProduceSchemaValidationPolicyJSONConfigType) ToPointer() *EventGatewayProduceSchemaValidationPolicyJSONConfigType {
+	return &e
+}
+func (e *EventGatewayProduceSchemaValidationPolicyJSONConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "json":
+		*e = EventGatewayProduceSchemaValidationPolicyJSONConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayProduceSchemaValidationPolicyJSONConfigType: %v", v)
+	}
+}
 
 // EventGatewayProduceSchemaValidationPolicyJSONConfig - The configuration of the produce schema validation policy when using JSON parsing without schema.
 type EventGatewayProduceSchemaValidationPolicyJSONConfig struct {
@@ -41,9 +66,8 @@ type EventGatewayProduceSchemaValidationPolicyJSONConfig struct {
 	//
 	//   to help to identify the clients violating schema.
 	//
-	ValueValidationAction *ProduceValueValidationAction `json:"value_validation_action,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"json" json:"type"`
+	ValueValidationAction *ProduceValueValidationAction                           `json:"value_validation_action,omitempty"`
+	Type                  EventGatewayProduceSchemaValidationPolicyJSONConfigType `json:"type"`
 }
 
 func (e EventGatewayProduceSchemaValidationPolicyJSONConfig) MarshalJSON() ([]byte, error) {
@@ -99,6 +123,9 @@ func (e *EventGatewayProduceSchemaValidationPolicyJSONConfig) GetValueValidation
 	return e.ValueValidationAction
 }
 
-func (e *EventGatewayProduceSchemaValidationPolicyJSONConfig) GetType() string {
-	return "json"
+func (e *EventGatewayProduceSchemaValidationPolicyJSONConfig) GetType() EventGatewayProduceSchemaValidationPolicyJSONConfigType {
+	if e == nil {
+		return EventGatewayProduceSchemaValidationPolicyJSONConfigType("")
+	}
+	return e.Type
 }

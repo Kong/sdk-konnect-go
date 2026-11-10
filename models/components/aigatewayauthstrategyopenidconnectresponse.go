@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type AIGatewayAuthStrategyOpenIDConnectResponseType string
+
+const (
+	AIGatewayAuthStrategyOpenIDConnectResponseTypeOpenidConnect AIGatewayAuthStrategyOpenIDConnectResponseType = "openid-connect"
+)
+
+func (e AIGatewayAuthStrategyOpenIDConnectResponseType) ToPointer() *AIGatewayAuthStrategyOpenIDConnectResponseType {
+	return &e
+}
+func (e *AIGatewayAuthStrategyOpenIDConnectResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "openid-connect":
+		*e = AIGatewayAuthStrategyOpenIDConnectResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayAuthStrategyOpenIDConnectResponseType: %v", v)
+	}
+}
 
 // AIGatewayAuthStrategyOpenIDConnectResponse - Configuration for an auth strategy.
 type AIGatewayAuthStrategyOpenIDConnectResponse struct {
@@ -32,9 +57,8 @@ type AIGatewayAuthStrategyOpenIDConnectResponse struct {
 	// must have type `token-vault`. Only one Datastore can be referenced.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"openid-connect" json:"type"`
+	Datastores []AIGatewayDatastoreRef                        `json:"datastores,omitempty"`
+	Type       AIGatewayAuthStrategyOpenIDConnectResponseType `json:"type"`
 	// Enables enrollment protection for the Token Vault datastore linked to this auth strategy.
 	// Users of the linked Token Vault will need to authenticate using this OIDC auth strategy
 	// before completing enrollment with upstream providers. Enrollment links always store upstream
@@ -106,8 +130,11 @@ func (a *AIGatewayAuthStrategyOpenIDConnectResponse) GetDatastores() []AIGateway
 	return a.Datastores
 }
 
-func (a *AIGatewayAuthStrategyOpenIDConnectResponse) GetType() string {
-	return "openid-connect"
+func (a *AIGatewayAuthStrategyOpenIDConnectResponse) GetType() AIGatewayAuthStrategyOpenIDConnectResponseType {
+	if a == nil {
+		return AIGatewayAuthStrategyOpenIDConnectResponseType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayAuthStrategyOpenIDConnectResponse) GetTokenVault() *AIGatewayTokenVaultEnrollmentProtection {

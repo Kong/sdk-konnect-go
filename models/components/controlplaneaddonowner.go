@@ -4,14 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// Kind - Type of owner for the add-on.
+type Kind string
+
+const (
+	KindControlPlane Kind = "control-plane"
+)
+
+func (e Kind) ToPointer() *Kind {
+	return &e
+}
+func (e *Kind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "control-plane":
+		*e = Kind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Kind: %v", v)
+	}
+}
 
 // ControlPlaneAddOnOwner - Control Plane is the owner for the add-on.
 type ControlPlaneAddOnOwner struct {
 	// Type of owner for the add-on.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	kind string `const:"control-plane" json:"kind"`
+	Kind Kind `json:"kind"`
 	// **Pre-release Feature**
 	// This feature is currently in beta and is subject to change.
 	//
@@ -43,8 +68,11 @@ func (c *ControlPlaneAddOnOwner) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *ControlPlaneAddOnOwner) GetKind() string {
-	return "control-plane"
+func (c *ControlPlaneAddOnOwner) GetKind() Kind {
+	if c == nil {
+		return Kind("")
+	}
+	return c.Kind
 }
 
 func (c *ControlPlaneAddOnOwner) GetType() *ControlPlaneAddOnOwnerType {

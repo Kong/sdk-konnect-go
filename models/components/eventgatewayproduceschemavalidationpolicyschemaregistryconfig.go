@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType string
+
+const (
+	EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigTypeConfluentSchemaRegistry EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType = "confluent_schema_registry"
+)
+
+func (e EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType) ToPointer() *EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType {
+	return &e
+}
+func (e *EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "confluent_schema_registry":
+		*e = EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType: %v", v)
+	}
+}
 
 // EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig - The configuration of the produce schema validation policy when using a schema registry.
 type EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig struct {
@@ -41,9 +66,8 @@ type EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig struct {
 	//
 	//   to help to identify the clients violating schema.
 	//
-	ValueValidationAction *ProduceValueValidationAction `json:"value_validation_action,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"confluent_schema_registry" json:"type"`
+	ValueValidationAction *ProduceValueValidationAction                                     `json:"value_validation_action,omitempty"`
+	Type                  EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType `json:"type"`
 }
 
 func (e EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig) MarshalJSON() ([]byte, error) {
@@ -99,6 +123,9 @@ func (e *EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig) GetValue
 	return e.ValueValidationAction
 }
 
-func (e *EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig) GetType() string {
-	return "confluent_schema_registry"
+func (e *EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig) GetType() EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType {
+	if e == nil {
+		return EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType("")
+	}
+	return e.Type
 }

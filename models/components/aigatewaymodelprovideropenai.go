@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayModelProviderOpenaiType string
+
+const (
+	AIGatewayModelProviderOpenaiTypeOpenai AIGatewayModelProviderOpenaiType = "openai"
+)
+
+func (e AIGatewayModelProviderOpenaiType) ToPointer() *AIGatewayModelProviderOpenaiType {
+	return &e
+}
+func (e *AIGatewayModelProviderOpenaiType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "openai":
+		*e = AIGatewayModelProviderOpenaiType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelProviderOpenaiType: %v", v)
+	}
+}
 
 // AIGatewayModelProviderOpenaiConfig - Configuration for the model provider.
 type AIGatewayModelProviderOpenaiConfig struct {
@@ -34,8 +59,7 @@ func (a *AIGatewayModelProviderOpenaiConfig) GetAuth() AIGatewayModelProviderCon
 
 // AIGatewayModelProviderOpenai - Configuration for an upstream model provider.
 type AIGatewayModelProviderOpenai struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"openai" json:"type"`
+	Type AIGatewayModelProviderOpenaiType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
@@ -84,8 +108,11 @@ func (a *AIGatewayModelProviderOpenai) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderOpenai) GetType() string {
-	return "openai"
+func (a *AIGatewayModelProviderOpenai) GetType() AIGatewayModelProviderOpenaiType {
+	if a == nil {
+		return AIGatewayModelProviderOpenaiType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelProviderOpenai) GetDisplayName() string {

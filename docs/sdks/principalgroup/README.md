@@ -390,7 +390,9 @@ func main() {
         DirectoryID: "f6cd2cb2-efde-4ac3-801f-c24253cac0df",
         GroupID: "8fe53b37-b65e-4ab7-b8f7-d71fafc853d8",
         CreatePrincipalKeyBody: components.CreateCreatePrincipalKeyBodyV1(
-            components.CreatePrincipalKeyBodyv1{},
+            components.CreatePrincipalKeyBodyv1{
+                Type: components.CreatePrincipalKeyBodyv1TypeV1,
+            },
         ),
     })
     if err != nil {

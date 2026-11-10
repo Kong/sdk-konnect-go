@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type MultiKeyAuthType1 string
+
+const (
+	MultiKeyAuthType1MultiKeyAuth MultiKeyAuthType1 = "multi_key_auth"
+)
+
+func (e MultiKeyAuthType1) ToPointer() *MultiKeyAuthType1 {
+	return &e
+}
+func (e *MultiKeyAuthType1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "multi_key_auth":
+		*e = MultiKeyAuthType1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MultiKeyAuthType1: %v", v)
+	}
+}
 
 type KeyAuthHeader struct {
 	// The exact name of the HTTP request header where the credential should be inserted.
@@ -77,8 +102,7 @@ func (m *MultiKeyAuthConfig) GetHeaders() []KeyAuthHeader {
 // This strategy supports integrations that require custom headers for credential-based access,
 // allowing flexibility across providers with different authentication header requirements.
 type MultiKeyAuth1 struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string             `const:"multi_key_auth" json:"type"`
+	Type   MultiKeyAuthType1  `json:"type"`
 	Config MultiKeyAuthConfig `json:"config"`
 }
 
@@ -93,8 +117,11 @@ func (m *MultiKeyAuth1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (m *MultiKeyAuth1) GetType() string {
-	return "multi_key_auth"
+func (m *MultiKeyAuth1) GetType() MultiKeyAuthType1 {
+	if m == nil {
+		return MultiKeyAuthType1("")
+	}
+	return m.Type
 }
 
 func (m *MultiKeyAuth1) GetConfig() MultiKeyAuthConfig {

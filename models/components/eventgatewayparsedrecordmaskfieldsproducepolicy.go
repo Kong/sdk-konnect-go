@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayParsedRecordMaskFieldsProducePolicyType - The type name of the policy.
+type EventGatewayParsedRecordMaskFieldsProducePolicyType string
+
+const (
+	EventGatewayParsedRecordMaskFieldsProducePolicyTypeMaskFields EventGatewayParsedRecordMaskFieldsProducePolicyType = "mask_fields"
+)
+
+func (e EventGatewayParsedRecordMaskFieldsProducePolicyType) ToPointer() *EventGatewayParsedRecordMaskFieldsProducePolicyType {
+	return &e
+}
+func (e *EventGatewayParsedRecordMaskFieldsProducePolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "mask_fields":
+		*e = EventGatewayParsedRecordMaskFieldsProducePolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayParsedRecordMaskFieldsProducePolicyType: %v", v)
+	}
+}
 
 // EventGatewayParsedRecordMaskFieldsProducePolicy - Redacts string fields of parsed Kafka records using a configurable masking strategy.
 //
@@ -17,8 +43,7 @@ import (
 // **Requires a minimum runtime version of `1.3`**.
 type EventGatewayParsedRecordMaskFieldsProducePolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"mask_fields" json:"type"`
+	Type EventGatewayParsedRecordMaskFieldsProducePolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -51,8 +76,11 @@ func (e *EventGatewayParsedRecordMaskFieldsProducePolicy) UnmarshalJSON(data []b
 	return nil
 }
 
-func (e *EventGatewayParsedRecordMaskFieldsProducePolicy) GetType() string {
-	return "mask_fields"
+func (e *EventGatewayParsedRecordMaskFieldsProducePolicy) GetType() EventGatewayParsedRecordMaskFieldsProducePolicyType {
+	if e == nil {
+		return EventGatewayParsedRecordMaskFieldsProducePolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayParsedRecordMaskFieldsProducePolicy) GetName() *string {

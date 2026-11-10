@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayTLSListenerSensitiveDataAwarePolicyType - The type name of the policy.
+type EventGatewayTLSListenerSensitiveDataAwarePolicyType string
+
+const (
+	EventGatewayTLSListenerSensitiveDataAwarePolicyTypeTLSServer EventGatewayTLSListenerSensitiveDataAwarePolicyType = "tls_server"
+)
+
+func (e EventGatewayTLSListenerSensitiveDataAwarePolicyType) ToPointer() *EventGatewayTLSListenerSensitiveDataAwarePolicyType {
+	return &e
+}
+func (e *EventGatewayTLSListenerSensitiveDataAwarePolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "tls_server":
+		*e = EventGatewayTLSListenerSensitiveDataAwarePolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayTLSListenerSensitiveDataAwarePolicyType: %v", v)
+	}
+}
 
 // EventGatewayTLSListenerSensitiveDataAwarePolicy - The TLS Server policy defines the certificates and keys used by the gateway server when the client connects
 // to the gateway over TLS.
@@ -13,8 +39,7 @@ import (
 // While it is possible to have multiple TLS policies on a listener, only one can be active at a time.
 type EventGatewayTLSListenerSensitiveDataAwarePolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"tls_server" json:"type"`
+	Type EventGatewayTLSListenerSensitiveDataAwarePolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -40,8 +65,11 @@ func (e *EventGatewayTLSListenerSensitiveDataAwarePolicy) UnmarshalJSON(data []b
 	return nil
 }
 
-func (e *EventGatewayTLSListenerSensitiveDataAwarePolicy) GetType() string {
-	return "tls_server"
+func (e *EventGatewayTLSListenerSensitiveDataAwarePolicy) GetType() EventGatewayTLSListenerSensitiveDataAwarePolicyType {
+	if e == nil {
+		return EventGatewayTLSListenerSensitiveDataAwarePolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayTLSListenerSensitiveDataAwarePolicy) GetName() *string {

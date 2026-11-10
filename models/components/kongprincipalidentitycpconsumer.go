@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type KongPrincipalIdentityCPConsumerType string
+
+const (
+	KongPrincipalIdentityCPConsumerTypeControlPlaneConsumer KongPrincipalIdentityCPConsumerType = "control_plane_consumer"
+)
+
+func (e KongPrincipalIdentityCPConsumerType) ToPointer() *KongPrincipalIdentityCPConsumerType {
+	return &e
+}
+func (e *KongPrincipalIdentityCPConsumerType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "control_plane_consumer":
+		*e = KongPrincipalIdentityCPConsumerType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for KongPrincipalIdentityCPConsumerType: %v", v)
+	}
+}
 
 type KongPrincipalIdentityCPConsumer struct {
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -17,12 +42,11 @@ type KongPrincipalIdentityCPConsumer struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_          string  `const:"control_plane_consumer" json:"type"`
-	ControlPlaneID string  `json:"control_plane_id"`
-	ConsumerID     string  `json:"consumer_id"`
-	WorkspaceID    *string `json:"workspace_id,omitempty"`
+	ManagedBy      map[string]string                   `json:"managed_by,omitempty"`
+	Type           KongPrincipalIdentityCPConsumerType `json:"type"`
+	ControlPlaneID string                              `json:"control_plane_id"`
+	ConsumerID     string                              `json:"consumer_id"`
+	WorkspaceID    *string                             `json:"workspace_id,omitempty"`
 }
 
 func (k KongPrincipalIdentityCPConsumer) MarshalJSON() ([]byte, error) {
@@ -50,8 +74,11 @@ func (k *KongPrincipalIdentityCPConsumer) GetManagedBy() map[string]string {
 	return k.ManagedBy
 }
 
-func (k *KongPrincipalIdentityCPConsumer) GetType() string {
-	return "control_plane_consumer"
+func (k *KongPrincipalIdentityCPConsumer) GetType() KongPrincipalIdentityCPConsumerType {
+	if k == nil {
+		return KongPrincipalIdentityCPConsumerType("")
+	}
+	return k.Type
 }
 
 func (k *KongPrincipalIdentityCPConsumer) GetControlPlaneID() string {

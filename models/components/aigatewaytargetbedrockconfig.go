@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetBedrockConfigType string
+
+const (
+	AIGatewayTargetBedrockConfigTypeBedrock AIGatewayTargetBedrockConfigType = "bedrock"
+)
+
+func (e AIGatewayTargetBedrockConfigType) ToPointer() *AIGatewayTargetBedrockConfigType {
+	return &e
+}
+func (e *AIGatewayTargetBedrockConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bedrock":
+		*e = AIGatewayTargetBedrockConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetBedrockConfigType: %v", v)
+	}
+}
 
 // EndpointType - The AWS Bedrock inference endpoint that requests to this target are sent to.
 // `runtime` sends requests to the Bedrock Runtime endpoint
@@ -79,9 +104,8 @@ type AIGatewayTargetBedrockConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"bedrock" json:"type"`
+	UpstreamURL *string                          `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetBedrockConfigType `json:"type"`
 	// The AWS region for the model.
 	// Setting this option overrides the AWS_REGION environment variable.
 	//
@@ -236,8 +260,11 @@ func (a *AIGatewayTargetBedrockConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetBedrockConfig) GetType() string {
-	return "bedrock"
+func (a *AIGatewayTargetBedrockConfig) GetType() AIGatewayTargetBedrockConfigType {
+	if a == nil {
+		return AIGatewayTargetBedrockConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetBedrockConfig) GetRegion() *string {

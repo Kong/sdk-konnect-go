@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type VirtualClusterAuthenticationSaslScramType string
+
+const (
+	VirtualClusterAuthenticationSaslScramTypeSaslScram VirtualClusterAuthenticationSaslScramType = "sasl_scram"
+)
+
+func (e VirtualClusterAuthenticationSaslScramType) ToPointer() *VirtualClusterAuthenticationSaslScramType {
+	return &e
+}
+func (e *VirtualClusterAuthenticationSaslScramType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sasl_scram":
+		*e = VirtualClusterAuthenticationSaslScramType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for VirtualClusterAuthenticationSaslScramType: %v", v)
+	}
+}
 
 // VirtualClusterAuthenticationSaslScramAlgorithm - The algorithm used for SASL/SCRAM authentication.
 type VirtualClusterAuthenticationSaslScramAlgorithm string
@@ -32,8 +57,7 @@ func (e *VirtualClusterAuthenticationSaslScramAlgorithm) IsExact() bool {
 
 // VirtualClusterAuthenticationSaslScram - SASL/SCRAM authentication scheme for the virtual cluster.
 type VirtualClusterAuthenticationSaslScram struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sasl_scram" json:"type"`
+	Type VirtualClusterAuthenticationSaslScramType `json:"type"`
 	// The algorithm used for SASL/SCRAM authentication.
 	Algorithm VirtualClusterAuthenticationSaslScramAlgorithm `json:"algorithm"`
 	// Fetches principal metadata from Kong Identity after successful authentication.
@@ -54,8 +78,11 @@ func (v *VirtualClusterAuthenticationSaslScram) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (v *VirtualClusterAuthenticationSaslScram) GetType() string {
-	return "sasl_scram"
+func (v *VirtualClusterAuthenticationSaslScram) GetType() VirtualClusterAuthenticationSaslScramType {
+	if v == nil {
+		return VirtualClusterAuthenticationSaslScramType("")
+	}
+	return v.Type
 }
 
 func (v *VirtualClusterAuthenticationSaslScram) GetAlgorithm() VirtualClusterAuthenticationSaslScramAlgorithm {

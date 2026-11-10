@@ -4,14 +4,38 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type EventGatewayMaskStrategyKeepCharsType string
+
+const (
+	EventGatewayMaskStrategyKeepCharsTypeKeepChars EventGatewayMaskStrategyKeepCharsType = "keep_chars"
+)
+
+func (e EventGatewayMaskStrategyKeepCharsType) ToPointer() *EventGatewayMaskStrategyKeepCharsType {
+	return &e
+}
+func (e *EventGatewayMaskStrategyKeepCharsType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "keep_chars":
+		*e = EventGatewayMaskStrategyKeepCharsType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayMaskStrategyKeepCharsType: %v", v)
+	}
+}
 
 // EventGatewayMaskStrategyKeepChars - Keeps a number of leading and/or trailing characters and replaces the middle with a fixed phrase.
 // If `first + last` is greater than or equal to the value length, the whole value is replaced with the phrase, so it never shows more characters than the original value. The phrase is fixed, so the masked output does not leak the value length.
 type EventGatewayMaskStrategyKeepChars struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"keep_chars" json:"type"`
+	Type EventGatewayMaskStrategyKeepCharsType `json:"type"`
 	// Number of leading characters to keep unmasked.
 	First *int64 `default:"0" json:"first"`
 	// Number of trailing characters to keep unmasked.
@@ -31,8 +55,11 @@ func (e *EventGatewayMaskStrategyKeepChars) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayMaskStrategyKeepChars) GetType() string {
-	return "keep_chars"
+func (e *EventGatewayMaskStrategyKeepChars) GetType() EventGatewayMaskStrategyKeepCharsType {
+	if e == nil {
+		return EventGatewayMaskStrategyKeepCharsType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayMaskStrategyKeepChars) GetFirst() *int64 {

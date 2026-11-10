@@ -4,6 +4,8 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -942,6 +944,29 @@ func (p *PartialVectordbConfig) GetThreshold() *float64 {
 	return p.Threshold
 }
 
+type PartialVectordbType string
+
+const (
+	PartialVectordbTypeVectordb PartialVectordbType = "vectordb"
+)
+
+func (e PartialVectordbType) ToPointer() *PartialVectordbType {
+	return &e
+}
+func (e *PartialVectordbType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vectordb":
+		*e = PartialVectordbType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PartialVectordbType: %v", v)
+	}
+}
+
 type PartialVectordb struct {
 	Config PartialVectordbConfig `json:"config"`
 	// Unix epoch when the resource was created.
@@ -951,9 +976,8 @@ type PartialVectordb struct {
 	// A unique string representing a UTF-8 encoded name.
 	Name *string `json:"name,omitempty"`
 	// A set of strings representing tags.
-	Tags []string `json:"tags,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"vectordb" json:"type"`
+	Tags []string            `json:"tags,omitempty"`
+	Type PartialVectordbType `json:"type"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
@@ -1004,8 +1028,11 @@ func (p *PartialVectordb) GetTags() []string {
 	return p.Tags
 }
 
-func (p *PartialVectordb) GetType() string {
-	return "vectordb"
+func (p *PartialVectordb) GetType() PartialVectordbType {
+	if p == nil {
+		return PartialVectordbType("")
+	}
+	return p.Type
 }
 
 func (p *PartialVectordb) GetUpdatedAt() *int64 {

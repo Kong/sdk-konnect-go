@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayRequestRuleValidatorPolicyType - The type name of the policy.
+type EventGatewayRequestRuleValidatorPolicyType string
+
+const (
+	EventGatewayRequestRuleValidatorPolicyTypeRequestRuleValidator EventGatewayRequestRuleValidatorPolicyType = "request_rule_validator"
+)
+
+func (e EventGatewayRequestRuleValidatorPolicyType) ToPointer() *EventGatewayRequestRuleValidatorPolicyType {
+	return &e
+}
+func (e *EventGatewayRequestRuleValidatorPolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "request_rule_validator":
+		*e = EventGatewayRequestRuleValidatorPolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayRequestRuleValidatorPolicyType: %v", v)
+	}
+}
 
 // EventGatewayRequestRuleValidatorPolicy - Validates the content of Kafka requests against a list of rules.
 //
@@ -19,8 +45,7 @@ import (
 // **Requires a minimum runtime version of `1.3`**.
 type EventGatewayRequestRuleValidatorPolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"request_rule_validator" json:"type"`
+	Type EventGatewayRequestRuleValidatorPolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -49,8 +74,11 @@ func (e *EventGatewayRequestRuleValidatorPolicy) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (e *EventGatewayRequestRuleValidatorPolicy) GetType() string {
-	return "request_rule_validator"
+func (e *EventGatewayRequestRuleValidatorPolicy) GetType() EventGatewayRequestRuleValidatorPolicyType {
+	if e == nil {
+		return EventGatewayRequestRuleValidatorPolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayRequestRuleValidatorPolicy) GetName() *string {

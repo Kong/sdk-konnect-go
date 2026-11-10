@@ -26,6 +26,9 @@ type SchemaRegistryAuthenticationSensitiveDataAwareScheme struct {
 func CreateSchemaRegistryAuthenticationSensitiveDataAwareSchemeBasic(basic SchemaRegistryAuthenticationBasicSensitiveDataAware) SchemaRegistryAuthenticationSensitiveDataAwareScheme {
 	typ := SchemaRegistryAuthenticationSensitiveDataAwareSchemeTypeBasic
 
+	typStr := SchemaRegistryAuthenticationBasicSensitiveDataAwareType(typ)
+	basic.Type = typStr
+
 	return SchemaRegistryAuthenticationSensitiveDataAwareScheme{
 		SchemaRegistryAuthenticationBasicSensitiveDataAware: &basic,
 		Type: typ,

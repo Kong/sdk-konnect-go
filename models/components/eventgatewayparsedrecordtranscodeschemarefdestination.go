@@ -32,6 +32,9 @@ type EventGatewayParsedRecordTranscodeSchemaRefDestination struct {
 func CreateEventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat(confluentFormat EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat) EventGatewayParsedRecordTranscodeSchemaRefDestination {
 	typ := EventGatewayParsedRecordTranscodeSchemaRefDestinationTypeConfluentFormat
 
+	typStr := EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType(typ)
+	confluentFormat.Type = typStr
+
 	return EventGatewayParsedRecordTranscodeSchemaRefDestination{
 		EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat: &confluentFormat,
 		Type: typ,
@@ -41,6 +44,9 @@ func CreateEventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat(
 func CreateEventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader(recordHeader EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader) EventGatewayParsedRecordTranscodeSchemaRefDestination {
 	typ := EventGatewayParsedRecordTranscodeSchemaRefDestinationTypeRecordHeader
 
+	typStr := EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeaderType(typ)
+	recordHeader.Type = typStr
+
 	return EventGatewayParsedRecordTranscodeSchemaRefDestination{
 		EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader: &recordHeader,
 		Type: typ,
@@ -49,6 +55,9 @@ func CreateEventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader(rec
 
 func CreateEventGatewayParsedRecordTranscodeSchemaRefDestinationNone(none EventGatewayParsedRecordTranscodeSchemaRefDestinationNone) EventGatewayParsedRecordTranscodeSchemaRefDestination {
 	typ := EventGatewayParsedRecordTranscodeSchemaRefDestinationTypeNone
+
+	typStr := EventGatewayParsedRecordTranscodeSchemaRefDestinationNoneType(typ)
+	none.Type = typStr
 
 	return EventGatewayParsedRecordTranscodeSchemaRefDestination{
 		EventGatewayParsedRecordTranscodeSchemaRefDestinationNone: &none,

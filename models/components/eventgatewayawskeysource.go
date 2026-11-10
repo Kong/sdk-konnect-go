@@ -4,16 +4,40 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type EventGatewayAWSKeySourceType string
+
+const (
+	EventGatewayAWSKeySourceTypeAws EventGatewayAWSKeySourceType = "aws"
+)
+
+func (e EventGatewayAWSKeySourceType) ToPointer() *EventGatewayAWSKeySourceType {
+	return &e
+}
+func (e *EventGatewayAWSKeySourceType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "aws":
+		*e = EventGatewayAWSKeySourceType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayAWSKeySourceType: %v", v)
+	}
+}
 
 // EventGatewayAWSKeySource - A key source that uses an AWS KMS to find a symmetric key. Load KMS credentials from the environment.
 //
 // See [aws docs](https://docs.aws.amazon.com/sdk-for-rust/latest/dg/credproviders.html#credproviders-default-credentials-provider-chain)
 // for more information about how credential retrieval.
 type EventGatewayAWSKeySource struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"aws" json:"type"`
+	Type EventGatewayAWSKeySourceType `json:"type"`
 }
 
 func (e EventGatewayAWSKeySource) MarshalJSON() ([]byte, error) {
@@ -27,6 +51,9 @@ func (e *EventGatewayAWSKeySource) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayAWSKeySource) GetType() string {
-	return "aws"
+func (e *EventGatewayAWSKeySource) GetType() EventGatewayAWSKeySourceType {
+	if e == nil {
+		return EventGatewayAWSKeySourceType("")
+	}
+	return e.Type
 }

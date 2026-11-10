@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayAlterConfigsRequestRulesType string
+
+const (
+	EventGatewayAlterConfigsRequestRulesTypeAlterConfigs EventGatewayAlterConfigsRequestRulesType = "alter_configs"
+)
+
+func (e EventGatewayAlterConfigsRequestRulesType) ToPointer() *EventGatewayAlterConfigsRequestRulesType {
+	return &e
+}
+func (e *EventGatewayAlterConfigsRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "alter_configs":
+		*e = EventGatewayAlterConfigsRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayAlterConfigsRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayAlterConfigsRequestRules - The rules to apply to Kafka `AlterConfigs` requests.
 type EventGatewayAlterConfigsRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"alter_configs" json:"type"`
+	Type EventGatewayAlterConfigsRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against each resource in the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayAlterConfigsRequestRules) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (e *EventGatewayAlterConfigsRequestRules) GetType() string {
-	return "alter_configs"
+func (e *EventGatewayAlterConfigsRequestRules) GetType() EventGatewayAlterConfigsRequestRulesType {
+	if e == nil {
+		return EventGatewayAlterConfigsRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayAlterConfigsRequestRules) GetRules() []EventGatewayAlterConfigsRule {
