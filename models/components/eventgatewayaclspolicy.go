@@ -4,14 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayACLsPolicyType - The type name of the policy.
+type EventGatewayACLsPolicyType string
+
+const (
+	EventGatewayACLsPolicyTypeAcls EventGatewayACLsPolicyType = "acls"
+)
+
+func (e EventGatewayACLsPolicyType) ToPointer() *EventGatewayACLsPolicyType {
+	return &e
+}
+func (e *EventGatewayACLsPolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "acls":
+		*e = EventGatewayACLsPolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayACLsPolicyType: %v", v)
+	}
+}
 
 // EventGatewayACLsPolicy - Apply Kafka ACLs to virtual cluster traffic.
 type EventGatewayACLsPolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"acls" json:"type"`
+	Type EventGatewayACLsPolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -40,8 +65,11 @@ func (e *EventGatewayACLsPolicy) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayACLsPolicy) GetType() string {
-	return "acls"
+func (e *EventGatewayACLsPolicy) GetType() EventGatewayACLsPolicyType {
+	if e == nil {
+		return EventGatewayACLsPolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayACLsPolicy) GetName() *string {

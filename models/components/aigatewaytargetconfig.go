@@ -66,6 +66,9 @@ type AIGatewayTargetConfig struct {
 func CreateAIGatewayTargetConfigAnthropic(anthropic AIGatewayTargetAnthropicConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeAnthropic
 
+	typStr := AIGatewayTargetAnthropicConfigType(typ)
+	anthropic.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetAnthropicConfig: &anthropic,
 		Type:                           typ,
@@ -74,6 +77,9 @@ func CreateAIGatewayTargetConfigAnthropic(anthropic AIGatewayTargetAnthropicConf
 
 func CreateAIGatewayTargetConfigAzure(azure AIGatewayTargetAzureConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeAzure
+
+	typStr := AIGatewayTargetAzureConfigType(typ)
+	azure.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetAzureConfig: &azure,
@@ -84,6 +90,9 @@ func CreateAIGatewayTargetConfigAzure(azure AIGatewayTargetAzureConfig) AIGatewa
 func CreateAIGatewayTargetConfigBaseten(baseten AIGatewayTargetBasetenConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeBaseten
 
+	typStr := AIGatewayTargetBasetenConfigType(typ)
+	baseten.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetBasetenConfig: &baseten,
 		Type:                         typ,
@@ -92,6 +101,9 @@ func CreateAIGatewayTargetConfigBaseten(baseten AIGatewayTargetBasetenConfig) AI
 
 func CreateAIGatewayTargetConfigBedrock(bedrock AIGatewayTargetBedrockConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeBedrock
+
+	typStr := AIGatewayTargetBedrockConfigType(typ)
+	bedrock.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetBedrockConfig: &bedrock,
@@ -102,6 +114,9 @@ func CreateAIGatewayTargetConfigBedrock(bedrock AIGatewayTargetBedrockConfig) AI
 func CreateAIGatewayTargetConfigCerebras(cerebras AIGatewayTargetCerebrasConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeCerebras
 
+	typStr := AIGatewayTargetCerebrasConfigType(typ)
+	cerebras.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetCerebrasConfig: &cerebras,
 		Type:                          typ,
@@ -110,6 +125,9 @@ func CreateAIGatewayTargetConfigCerebras(cerebras AIGatewayTargetCerebrasConfig)
 
 func CreateAIGatewayTargetConfigCohere(cohere AIGatewayTargetCohereConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeCohere
+
+	typStr := AIGatewayTargetCohereConfigType(typ)
+	cohere.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetCohereConfig: &cohere,
@@ -120,6 +138,9 @@ func CreateAIGatewayTargetConfigCohere(cohere AIGatewayTargetCohereConfig) AIGat
 func CreateAIGatewayTargetConfigDashscope(dashscope AIGatewayTargetDashscopeConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeDashscope
 
+	typStr := AIGatewayTargetDashscopeConfigType(typ)
+	dashscope.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetDashscopeConfig: &dashscope,
 		Type:                           typ,
@@ -128,6 +149,9 @@ func CreateAIGatewayTargetConfigDashscope(dashscope AIGatewayTargetDashscopeConf
 
 func CreateAIGatewayTargetConfigDatabricks(databricks AIGatewayTargetDatabricksConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeDatabricks
+
+	typStr := AIGatewayTargetDatabricksConfigType(typ)
+	databricks.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetDatabricksConfig: &databricks,
@@ -138,6 +162,9 @@ func CreateAIGatewayTargetConfigDatabricks(databricks AIGatewayTargetDatabricksC
 func CreateAIGatewayTargetConfigDeepseek(deepseek AIGatewayTargetDeepseekConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeDeepseek
 
+	typStr := AIGatewayTargetDeepseekConfigType(typ)
+	deepseek.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetDeepseekConfig: &deepseek,
 		Type:                          typ,
@@ -146,6 +173,9 @@ func CreateAIGatewayTargetConfigDeepseek(deepseek AIGatewayTargetDeepseekConfig)
 
 func CreateAIGatewayTargetConfigGemini(gemini AIGatewayTargetGeminiConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeGemini
+
+	typStr := AIGatewayTargetGeminiConfigType(typ)
+	gemini.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetGeminiConfig: &gemini,
@@ -156,6 +186,9 @@ func CreateAIGatewayTargetConfigGemini(gemini AIGatewayTargetGeminiConfig) AIGat
 func CreateAIGatewayTargetConfigHuggingface(huggingface AIGatewayTargetHuggingfaceConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeHuggingface
 
+	typStr := AIGatewayTargetHuggingfaceConfigType(typ)
+	huggingface.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetHuggingfaceConfig: &huggingface,
 		Type:                             typ,
@@ -164,6 +197,9 @@ func CreateAIGatewayTargetConfigHuggingface(huggingface AIGatewayTargetHuggingfa
 
 func CreateAIGatewayTargetConfigKimi(kimi AIGatewayTargetKimiConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeKimi
+
+	typStr := AIGatewayTargetKimiConfigType(typ)
+	kimi.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetKimiConfig: &kimi,
@@ -174,6 +210,9 @@ func CreateAIGatewayTargetConfigKimi(kimi AIGatewayTargetKimiConfig) AIGatewayTa
 func CreateAIGatewayTargetConfigLlama2(llama2 AIGatewayTargetLlama2Config) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeLlama2
 
+	typStr := AIGatewayTargetLlama2ConfigType(typ)
+	llama2.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetLlama2Config: &llama2,
 		Type:                        typ,
@@ -182,6 +221,9 @@ func CreateAIGatewayTargetConfigLlama2(llama2 AIGatewayTargetLlama2Config) AIGat
 
 func CreateAIGatewayTargetConfigMistral(mistral AIGatewayTargetMistralConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeMistral
+
+	typStr := AIGatewayTargetMistralConfigType(typ)
+	mistral.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetMistralConfig: &mistral,
@@ -192,6 +234,9 @@ func CreateAIGatewayTargetConfigMistral(mistral AIGatewayTargetMistralConfig) AI
 func CreateAIGatewayTargetConfigOllama(ollama AIGatewayTargetOllamaConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeOllama
 
+	typStr := AIGatewayTargetOllamaConfigType(typ)
+	ollama.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetOllamaConfig: &ollama,
 		Type:                        typ,
@@ -200,6 +245,9 @@ func CreateAIGatewayTargetConfigOllama(ollama AIGatewayTargetOllamaConfig) AIGat
 
 func CreateAIGatewayTargetConfigOpenai(openai AIGatewayTargetOpenaiConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeOpenai
+
+	typStr := AIGatewayTargetOpenaiConfigType(typ)
+	openai.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetOpenaiConfig: &openai,
@@ -210,6 +258,9 @@ func CreateAIGatewayTargetConfigOpenai(openai AIGatewayTargetOpenaiConfig) AIGat
 func CreateAIGatewayTargetConfigVercel(vercel AIGatewayTargetVercelConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeVercel
 
+	typStr := AIGatewayTargetVercelConfigType(typ)
+	vercel.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetVercelConfig: &vercel,
 		Type:                        typ,
@@ -218,6 +269,9 @@ func CreateAIGatewayTargetConfigVercel(vercel AIGatewayTargetVercelConfig) AIGat
 
 func CreateAIGatewayTargetConfigVllm(vllm AIGatewayTargetVllmConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeVllm
+
+	typStr := AIGatewayTargetVllmConfigType(typ)
+	vllm.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetVllmConfig: &vllm,
@@ -228,6 +282,9 @@ func CreateAIGatewayTargetConfigVllm(vllm AIGatewayTargetVllmConfig) AIGatewayTa
 func CreateAIGatewayTargetConfigXai(xai AIGatewayTargetXaiConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeXai
 
+	typStr := AIGatewayTargetXaiConfigType(typ)
+	xai.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetXaiConfig: &xai,
 		Type:                     typ,
@@ -237,6 +294,9 @@ func CreateAIGatewayTargetConfigXai(xai AIGatewayTargetXaiConfig) AIGatewayTarge
 func CreateAIGatewayTargetConfigSagemaker(sagemaker AIGatewayTargetSagemakerConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeSagemaker
 
+	typStr := AIGatewayTargetSagemakerConfigType(typ)
+	sagemaker.Type = typStr
+
 	return AIGatewayTargetConfig{
 		AIGatewayTargetSagemakerConfig: &sagemaker,
 		Type:                           typ,
@@ -245,6 +305,9 @@ func CreateAIGatewayTargetConfigSagemaker(sagemaker AIGatewayTargetSagemakerConf
 
 func CreateAIGatewayTargetConfigTypesafe(typesafe AIGatewayTargetTypesafeConfig) AIGatewayTargetConfig {
 	typ := AIGatewayTargetConfigTypeTypesafe
+
+	typStr := AIGatewayTargetTypesafeConfigType(typ)
+	typesafe.Type = typStr
 
 	return AIGatewayTargetConfig{
 		AIGatewayTargetTypesafeConfig: &typesafe,

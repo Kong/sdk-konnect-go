@@ -30,6 +30,9 @@ type EventGatewayProduceSchemaValidationPolicyConfig struct {
 func CreateEventGatewayProduceSchemaValidationPolicyConfigConfluentSchemaRegistry(confluentSchemaRegistry EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig) EventGatewayProduceSchemaValidationPolicyConfig {
 	typ := EventGatewayProduceSchemaValidationPolicyConfigTypeConfluentSchemaRegistry
 
+	typStr := EventGatewayProduceSchemaValidationPolicySchemaRegistryConfigType(typ)
+	confluentSchemaRegistry.Type = typStr
+
 	return EventGatewayProduceSchemaValidationPolicyConfig{
 		EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig: &confluentSchemaRegistry,
 		Type: typ,
@@ -39,6 +42,9 @@ func CreateEventGatewayProduceSchemaValidationPolicyConfigConfluentSchemaRegistr
 func CreateEventGatewayProduceSchemaValidationPolicyConfigJSON(json EventGatewayProduceSchemaValidationPolicyJSONConfig) EventGatewayProduceSchemaValidationPolicyConfig {
 	typ := EventGatewayProduceSchemaValidationPolicyConfigTypeJSON
 
+	typStr := EventGatewayProduceSchemaValidationPolicyJSONConfigType(typ)
+	json.Type = typStr
+
 	return EventGatewayProduceSchemaValidationPolicyConfig{
 		EventGatewayProduceSchemaValidationPolicyJSONConfig: &json,
 		Type: typ,
@@ -47,6 +53,9 @@ func CreateEventGatewayProduceSchemaValidationPolicyConfigJSON(json EventGateway
 
 func CreateEventGatewayProduceSchemaValidationPolicyConfigInlineSchema(inlineSchema EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) EventGatewayProduceSchemaValidationPolicyConfig {
 	typ := EventGatewayProduceSchemaValidationPolicyConfigTypeInlineSchema
+
+	typStr := EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType(typ)
+	inlineSchema.Type = typStr
 
 	return EventGatewayProduceSchemaValidationPolicyConfig{
 		EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig: &inlineSchema,

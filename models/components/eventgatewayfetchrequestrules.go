@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayFetchRequestRulesType string
+
+const (
+	EventGatewayFetchRequestRulesTypeFetch EventGatewayFetchRequestRulesType = "fetch"
+)
+
+func (e EventGatewayFetchRequestRulesType) ToPointer() *EventGatewayFetchRequestRulesType {
+	return &e
+}
+func (e *EventGatewayFetchRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fetch":
+		*e = EventGatewayFetchRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayFetchRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayFetchRequestRules - The rules to apply to Kafka `Fetch` requests.
 type EventGatewayFetchRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"fetch" json:"type"`
+	Type EventGatewayFetchRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayFetchRequestRules) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayFetchRequestRules) GetType() string {
-	return "fetch"
+func (e *EventGatewayFetchRequestRules) GetType() EventGatewayFetchRequestRulesType {
+	if e == nil {
+		return EventGatewayFetchRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayFetchRequestRules) GetRules() []EventGatewayFetchRule {

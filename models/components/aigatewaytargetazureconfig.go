@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetAzureConfigType string
+
+const (
+	AIGatewayTargetAzureConfigTypeAzure AIGatewayTargetAzureConfigType = "azure"
+)
+
+func (e AIGatewayTargetAzureConfigType) ToPointer() *AIGatewayTargetAzureConfigType {
+	return &e
+}
+func (e *AIGatewayTargetAzureConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "azure":
+		*e = AIGatewayTargetAzureConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetAzureConfigType: %v", v)
+	}
+}
 
 // FoundryPathPrefix - The API path prefix for the Azure AI Foundry endpoint, selecting the model's
 // API surface. `/openai/v1` targets the OpenAI-compatible surface; `/anthropic/v1`
@@ -72,9 +97,8 @@ type AIGatewayTargetAzureConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"azure" json:"type"`
+	UpstreamURL *string                        `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetAzureConfigType `json:"type"`
 	// The Azure deployment ID for the model. Applies when the Azure provider's
 	// `service` is `azure-openai`; not used for `azure-foundry`.
 	//
@@ -212,8 +236,11 @@ func (a *AIGatewayTargetAzureConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetAzureConfig) GetType() string {
-	return "azure"
+func (a *AIGatewayTargetAzureConfig) GetType() AIGatewayTargetAzureConfigType {
+	if a == nil {
+		return AIGatewayTargetAzureConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetAzureConfig) GetDeploymentID() *string {

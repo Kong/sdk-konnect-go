@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetAnthropicConfigType string
+
+const (
+	AIGatewayTargetAnthropicConfigTypeAnthropic AIGatewayTargetAnthropicConfigType = "anthropic"
+)
+
+func (e AIGatewayTargetAnthropicConfigType) ToPointer() *AIGatewayTargetAnthropicConfigType {
+	return &e
+}
+func (e *AIGatewayTargetAnthropicConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "anthropic":
+		*e = AIGatewayTargetAnthropicConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetAnthropicConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetAnthropicConfig - Anthropic-specific configuration for a model.
 type AIGatewayTargetAnthropicConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetAnthropicConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"anthropic" json:"type"`
+	UpstreamURL *string                            `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetAnthropicConfigType `json:"type"`
 	// The Anthropic API version to use.
 	Version *string `default:"2023-06-01" json:"version"`
 }
@@ -176,8 +200,11 @@ func (a *AIGatewayTargetAnthropicConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetAnthropicConfig) GetType() string {
-	return "anthropic"
+func (a *AIGatewayTargetAnthropicConfig) GetType() AIGatewayTargetAnthropicConfigType {
+	if a == nil {
+		return AIGatewayTargetAnthropicConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetAnthropicConfig) GetVersion() *string {

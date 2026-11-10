@@ -4,14 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// ManagedCacheKind - Type of add-on configuration.
+type ManagedCacheKind string
+
+const (
+	ManagedCacheKindManagedCacheV0 ManagedCacheKind = "managed-cache.v0"
+)
+
+func (e ManagedCacheKind) ToPointer() *ManagedCacheKind {
+	return &e
+}
+func (e *ManagedCacheKind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "managed-cache.v0":
+		*e = ManagedCacheKind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ManagedCacheKind: %v", v)
+	}
+}
 
 // ManagedCache - Configuration for creating a managed cache add-on.
 type ManagedCache struct {
 	// Type of add-on configuration.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	kind string `const:"managed-cache.v0" json:"kind"`
+	Kind ManagedCacheKind `json:"kind"`
 	// Configuration for managed cache capacity and performance characteristics.
 	CapacityConfig ManagedCacheCapacityConfig `json:"capacity_config"`
 }
@@ -27,8 +52,11 @@ func (m *ManagedCache) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (m *ManagedCache) GetKind() string {
-	return "managed-cache.v0"
+func (m *ManagedCache) GetKind() ManagedCacheKind {
+	if m == nil {
+		return ManagedCacheKind("")
+	}
+	return m.Kind
 }
 
 func (m *ManagedCache) GetCapacityConfig() ManagedCacheCapacityConfig {

@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetOllamaConfigType string
+
+const (
+	AIGatewayTargetOllamaConfigTypeOllama AIGatewayTargetOllamaConfigType = "ollama"
+)
+
+func (e AIGatewayTargetOllamaConfigType) ToPointer() *AIGatewayTargetOllamaConfigType {
+	return &e
+}
+func (e *AIGatewayTargetOllamaConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ollama":
+		*e = AIGatewayTargetOllamaConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetOllamaConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetOllamaConfig - Ollama-specific configuration for a model.
 type AIGatewayTargetOllamaConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetOllamaConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"ollama" json:"type"`
+	UpstreamURL *string                         `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetOllamaConfigType `json:"type"`
 }
 
 func (a AIGatewayTargetOllamaConfig) MarshalJSON() ([]byte, error) {
@@ -174,6 +198,9 @@ func (a *AIGatewayTargetOllamaConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetOllamaConfig) GetType() string {
-	return "ollama"
+func (a *AIGatewayTargetOllamaConfig) GetType() AIGatewayTargetOllamaConfigType {
+	if a == nil {
+		return AIGatewayTargetOllamaConfigType("")
+	}
+	return a.Type
 }

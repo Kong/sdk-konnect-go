@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType string
+
+const (
+	EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigTypeInlineSchema EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType = "inline_schema"
+)
+
+func (e EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType) ToPointer() *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType {
+	return &e
+}
+func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "inline_schema":
+		*e = EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType: %v", v)
+	}
+}
 
 // EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig - The configuration of the produce schema validation policy when using an inline schema.
 //
@@ -41,9 +66,8 @@ type EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig struct {
 	//
 	//   to help to identify the clients violating schema.
 	//
-	ValueValidationAction *ProduceValueValidationAction `json:"value_validation_action,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"inline_schema" json:"type"`
+	ValueValidationAction *ProduceValueValidationAction                                   `json:"value_validation_action,omitempty"`
+	Type                  EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType `json:"type"`
 	// Defines the schema for a record key or value, inline.
 	//
 	// **Requires a minimum runtime version of `1.3`**.
@@ -100,8 +124,11 @@ func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetValueVa
 	return e.ValueValidationAction
 }
 
-func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetType() string {
-	return "inline_schema"
+func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetType() EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType {
+	if e == nil {
+		return EventGatewayProduceSchemaValidationPolicyInlineSchemaConfigType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayProduceSchemaValidationPolicyInlineSchemaConfig) GetKey() *SchemaValidationInlineSchemaConfig {

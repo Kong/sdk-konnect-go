@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type Op string
+
+const (
+	OpRemove Op = "remove"
+)
+
+func (e Op) ToPointer() *Op {
+	return &e
+}
+func (e *Op) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "remove":
+		*e = Op(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Op: %v", v)
+	}
+}
+
 // EventGatewayModifyHeaderRemoveAction - An action that removes a header by key.
 type EventGatewayModifyHeaderRemoveAction struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	op string `const:"remove" json:"op"`
+	Op Op `json:"op"`
 	// The key of the header to remove.
 	Key string `json:"key"`
 }
@@ -26,8 +50,11 @@ func (e *EventGatewayModifyHeaderRemoveAction) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (e *EventGatewayModifyHeaderRemoveAction) GetOp() string {
-	return "remove"
+func (e *EventGatewayModifyHeaderRemoveAction) GetOp() Op {
+	if e == nil {
+		return Op("")
+	}
+	return e.Op
 }
 
 func (e *EventGatewayModifyHeaderRemoveAction) GetKey() string {

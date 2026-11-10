@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// SchemaRegistryConfluentType - The type of the schema registry.
+type SchemaRegistryConfluentType string
+
+const (
+	SchemaRegistryConfluentTypeConfluent SchemaRegistryConfluentType = "confluent"
+)
+
+func (e SchemaRegistryConfluentType) ToPointer() *SchemaRegistryConfluentType {
+	return &e
+}
+func (e *SchemaRegistryConfluentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "confluent":
+		*e = SchemaRegistryConfluentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemaRegistryConfluentType: %v", v)
+	}
+}
 
 // SchemaRegistryConfluent - A Confluent schema registry.
 type SchemaRegistryConfluent struct {
@@ -14,8 +40,7 @@ type SchemaRegistryConfluent struct {
 	// A human-readable description of the virtual cluster.
 	Description *string `default:"" json:"description"`
 	// The type of the schema registry.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"confluent" json:"type"`
+	Type SchemaRegistryConfluentType `json:"type"`
 	// The configuration of [Confluent Schema Registry](https://github.com/confluentinc/schema-registry)
 	//
 	Config SchemaRegistryConfluentConfig `json:"config"`
@@ -51,8 +76,11 @@ func (s *SchemaRegistryConfluent) GetDescription() *string {
 	return s.Description
 }
 
-func (s *SchemaRegistryConfluent) GetType() string {
-	return "confluent"
+func (s *SchemaRegistryConfluent) GetType() SchemaRegistryConfluentType {
+	if s == nil {
+		return SchemaRegistryConfluentType("")
+	}
+	return s.Type
 }
 
 func (s *SchemaRegistryConfluent) GetConfig() SchemaRegistryConfluentConfig {

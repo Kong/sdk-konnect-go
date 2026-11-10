@@ -105,6 +105,7 @@ func main() {
     res, err := s.CatalogMCPImplementations.CreateMcpImplementation(ctx, "a0119846-f179-4d9f-a168-d701facce7fb", components.CreateCreateCatalogMCPImplementationCreateCatalogMCPGatewayImplementation(
         components.CreateCatalogMCPGatewayImplementation{
             Implementation: components.CatalogMCPGatewayImplementationBlock{
+                Type: components.CatalogMCPGatewayImplementationBlockTypeAiGateway,
                 Config: components.CatalogMCPGatewayImplementationConfig{
                     GatewayControlPlaneID: "223e4567-e89b-12d3-a456-426614174999",
                     GatewayMcpServerID: "79087145-0159-4811-9042-6a9365f234bc",

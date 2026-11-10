@@ -103,6 +103,7 @@ func main() {
 
     res, err := s.AIGatewayModelProviders.CreateAiGatewayModelProvider(ctx, "bf138ba2-c9b1-4229-b268-04d9d8a6410b", components.CreateCreateAIGatewayModelProviderRequestSagemaker(
         components.AIGatewayModelProviderSagemaker{
+            Type: components.AIGatewayModelProviderSagemakerTypeSagemaker,
             DisplayName: "Azure AI SE",
             Name: "azure-ai-se",
             Config: components.AIGatewayModelProviderSagemakerConfig{
@@ -326,10 +327,13 @@ func main() {
         ModelProviderIDOrName: "my-entity-name",
         UpdateAIGatewayModelProviderRequest: components.CreateUpdateAIGatewayModelProviderRequestDeepseek(
             components.AIGatewayModelProviderDeepseek{
+                Type: components.AIGatewayModelProviderDeepseekTypeDeepseek,
                 DisplayName: "Azure AI SE",
                 Name: "azure-ai-se",
                 Config: components.AIGatewayModelProviderDeepseekConfig{
-                    Auth: components.AIGatewayModelProviderConfigAuthBasic{},
+                    Auth: components.AIGatewayModelProviderConfigAuthBasic{
+                        Type: components.AIGatewayModelProviderConfigAuthBasicTypeBasic,
+                    },
                 },
             },
         ),

@@ -4,22 +4,47 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type ForwardToClusterBySNIConfigType string
 
 const (
-	ForwardToClusterBySNIConfigTypePerClusterSuffix ForwardToClusterBySNIConfigType = "per_cluster_suffix"
-	ForwardToClusterBySNIConfigTypeSharedSuffix     ForwardToClusterBySNIConfigType = "shared_suffix"
+	ForwardToClusterBySNIConfigTypeSni ForwardToClusterBySNIConfigType = "sni"
 )
 
 func (e ForwardToClusterBySNIConfigType) ToPointer() *ForwardToClusterBySNIConfigType {
 	return &e
 }
+func (e *ForwardToClusterBySNIConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sni":
+		*e = ForwardToClusterBySNIConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ForwardToClusterBySNIConfigType: %v", v)
+	}
+}
+
+type ForwardToClusterBySNIConfigBrokerHostFormatType string
+
+const (
+	ForwardToClusterBySNIConfigBrokerHostFormatTypePerClusterSuffix ForwardToClusterBySNIConfigBrokerHostFormatType = "per_cluster_suffix"
+	ForwardToClusterBySNIConfigBrokerHostFormatTypeSharedSuffix     ForwardToClusterBySNIConfigBrokerHostFormatType = "shared_suffix"
+)
+
+func (e ForwardToClusterBySNIConfigBrokerHostFormatType) ToPointer() *ForwardToClusterBySNIConfigBrokerHostFormatType {
+	return &e
+}
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *ForwardToClusterBySNIConfigType) IsExact() bool {
+func (e *ForwardToClusterBySNIConfigBrokerHostFormatType) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "per_cluster_suffix", "shared_suffix":
@@ -36,7 +61,7 @@ func (e *ForwardToClusterBySNIConfigType) IsExact() bool {
 //
 // **Requires a minimum runtime version of `1.1`**.
 type BrokerHostFormat struct {
-	Type *ForwardToClusterBySNIConfigType `default:"per_cluster_suffix" json:"type"`
+	Type *ForwardToClusterBySNIConfigBrokerHostFormatType `default:"per_cluster_suffix" json:"type"`
 }
 
 func (b BrokerHostFormat) MarshalJSON() ([]byte, error) {
@@ -50,7 +75,7 @@ func (b *BrokerHostFormat) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (b *BrokerHostFormat) GetType() *ForwardToClusterBySNIConfigType {
+func (b *BrokerHostFormat) GetType() *ForwardToClusterBySNIConfigBrokerHostFormatType {
 	if b == nil {
 		return nil
 	}
@@ -59,8 +84,7 @@ func (b *BrokerHostFormat) GetType() *ForwardToClusterBySNIConfigType {
 
 // ForwardToClusterBySNIConfig - The configuration to forward requests to virtual clusters configured with SNI routing.
 type ForwardToClusterBySNIConfig struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sni" json:"type"`
+	Type ForwardToClusterBySNIConfigType `json:"type"`
 	// Optional suffix for TLS SNI validation.
 	//
 	// This suffix is concatenated with the virtual cluster "dns.label" label to form the base name for the SNI.
@@ -100,8 +124,11 @@ func (f *ForwardToClusterBySNIConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (f *ForwardToClusterBySNIConfig) GetType() string {
-	return "sni"
+func (f *ForwardToClusterBySNIConfig) GetType() ForwardToClusterBySNIConfigType {
+	if f == nil {
+		return ForwardToClusterBySNIConfigType("")
+	}
+	return f.Type
 }
 
 func (f *ForwardToClusterBySNIConfig) GetSniSuffix() *string {

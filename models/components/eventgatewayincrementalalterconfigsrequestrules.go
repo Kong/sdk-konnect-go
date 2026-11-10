@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayIncrementalAlterConfigsRequestRulesType string
+
+const (
+	EventGatewayIncrementalAlterConfigsRequestRulesTypeIncrementalAlterConfigs EventGatewayIncrementalAlterConfigsRequestRulesType = "incremental_alter_configs"
+)
+
+func (e EventGatewayIncrementalAlterConfigsRequestRulesType) ToPointer() *EventGatewayIncrementalAlterConfigsRequestRulesType {
+	return &e
+}
+func (e *EventGatewayIncrementalAlterConfigsRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "incremental_alter_configs":
+		*e = EventGatewayIncrementalAlterConfigsRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayIncrementalAlterConfigsRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayIncrementalAlterConfigsRequestRules - The rules to apply to Kafka `IncrementalAlterConfigs` requests.
 type EventGatewayIncrementalAlterConfigsRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"incremental_alter_configs" json:"type"`
+	Type EventGatewayIncrementalAlterConfigsRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against each configuration entry in the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayIncrementalAlterConfigsRequestRules) UnmarshalJSON(data []b
 	return nil
 }
 
-func (e *EventGatewayIncrementalAlterConfigsRequestRules) GetType() string {
-	return "incremental_alter_configs"
+func (e *EventGatewayIncrementalAlterConfigsRequestRules) GetType() EventGatewayIncrementalAlterConfigsRequestRulesType {
+	if e == nil {
+		return EventGatewayIncrementalAlterConfigsRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayIncrementalAlterConfigsRequestRules) GetRules() []EventGatewayIncrementalAlterConfigsRule {

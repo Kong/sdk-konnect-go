@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type EnvironmentVariableVaultType string
+
+const (
+	EnvironmentVariableVaultTypeEnv EnvironmentVariableVaultType = "env"
+)
+
+func (e EnvironmentVariableVaultType) ToPointer() *EnvironmentVariableVaultType {
+	return &e
+}
+func (e *EnvironmentVariableVaultType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "env":
+		*e = EnvironmentVariableVaultType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvironmentVariableVaultType: %v", v)
+	}
+}
 
 type EnvironmentVariableVaultConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
@@ -62,10 +87,9 @@ type EnvironmentVariableVault struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                         `const:"env" json:"type"`
-	Config EnvironmentVariableVaultConfig `json:"config"`
+	ManagedBy map[string]string              `json:"managed_by,omitempty"`
+	Type      EnvironmentVariableVaultType   `json:"type"`
+	Config    EnvironmentVariableVaultConfig `json:"config"`
 }
 
 func (e EnvironmentVariableVault) MarshalJSON() ([]byte, error) {
@@ -107,8 +131,11 @@ func (e *EnvironmentVariableVault) GetManagedBy() map[string]string {
 	return e.ManagedBy
 }
 
-func (e *EnvironmentVariableVault) GetType() string {
-	return "env"
+func (e *EnvironmentVariableVault) GetType() EnvironmentVariableVaultType {
+	if e == nil {
+		return EnvironmentVariableVaultType("")
+	}
+	return e.Type
 }
 
 func (e *EnvironmentVariableVault) GetConfig() EnvironmentVariableVaultConfig {

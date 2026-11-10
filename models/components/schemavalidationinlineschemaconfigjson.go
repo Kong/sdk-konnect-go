@@ -4,17 +4,41 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type SchemaValidationInlineSchemaConfigJSONSchemaType string
+
+const (
+	SchemaValidationInlineSchemaConfigJSONSchemaTypeJSON SchemaValidationInlineSchemaConfigJSONSchemaType = "json"
+)
+
+func (e SchemaValidationInlineSchemaConfigJSONSchemaType) ToPointer() *SchemaValidationInlineSchemaConfigJSONSchemaType {
+	return &e
+}
+func (e *SchemaValidationInlineSchemaConfigJSONSchemaType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "json":
+		*e = SchemaValidationInlineSchemaConfigJSONSchemaType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemaValidationInlineSchemaConfigJSONSchemaType: %v", v)
+	}
+}
 
 // SchemaValidationInlineSchemaConfigJSON - The configuration of an inline schema when using JSON.
 //
 // **Requires a minimum runtime version of `1.3`**.
 type SchemaValidationInlineSchemaConfigJSON struct {
 	// A schema that applies according to `schema_type`.
-	Schema string `json:"schema"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	schemaType string `const:"json" json:"schema_type"`
+	Schema     string                                           `json:"schema"`
+	SchemaType SchemaValidationInlineSchemaConfigJSONSchemaType `json:"schema_type"`
 }
 
 func (s SchemaValidationInlineSchemaConfigJSON) MarshalJSON() ([]byte, error) {
@@ -35,6 +59,9 @@ func (s *SchemaValidationInlineSchemaConfigJSON) GetSchema() string {
 	return s.Schema
 }
 
-func (s *SchemaValidationInlineSchemaConfigJSON) GetSchemaType() string {
-	return "json"
+func (s *SchemaValidationInlineSchemaConfigJSON) GetSchemaType() SchemaValidationInlineSchemaConfigJSONSchemaType {
+	if s == nil {
+		return SchemaValidationInlineSchemaConfigJSONSchemaType("")
+	}
+	return s.SchemaType
 }

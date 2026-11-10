@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type KongPrincipalIdentityCustomType string
+
+const (
+	KongPrincipalIdentityCustomTypeCustom KongPrincipalIdentityCustomType = "custom"
+)
+
+func (e KongPrincipalIdentityCustomType) ToPointer() *KongPrincipalIdentityCustomType {
+	return &e
+}
+func (e *KongPrincipalIdentityCustomType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "custom":
+		*e = KongPrincipalIdentityCustomType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for KongPrincipalIdentityCustomType: %v", v)
+	}
+}
 
 type KongPrincipalIdentityCustom struct {
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -17,11 +42,10 @@ type KongPrincipalIdentityCustom struct {
 	//
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"custom" json:"type"`
-	Key   string `json:"key"`
-	Value string `json:"value"`
+	ManagedBy map[string]string               `json:"managed_by,omitempty"`
+	Type      KongPrincipalIdentityCustomType `json:"type"`
+	Key       string                          `json:"key"`
+	Value     string                          `json:"value"`
 }
 
 func (k KongPrincipalIdentityCustom) MarshalJSON() ([]byte, error) {
@@ -49,8 +73,11 @@ func (k *KongPrincipalIdentityCustom) GetManagedBy() map[string]string {
 	return k.ManagedBy
 }
 
-func (k *KongPrincipalIdentityCustom) GetType() string {
-	return "custom"
+func (k *KongPrincipalIdentityCustom) GetType() KongPrincipalIdentityCustomType {
+	if k == nil {
+		return KongPrincipalIdentityCustomType("")
+	}
+	return k.Type
 }
 
 func (k *KongPrincipalIdentityCustom) GetKey() string {

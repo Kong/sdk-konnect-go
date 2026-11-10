@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type VirtualClusterAuthenticationSaslPlainType string
+
+const (
+	VirtualClusterAuthenticationSaslPlainTypeSaslPlain VirtualClusterAuthenticationSaslPlainType = "sasl_plain"
+)
+
+func (e VirtualClusterAuthenticationSaslPlainType) ToPointer() *VirtualClusterAuthenticationSaslPlainType {
+	return &e
+}
+func (e *VirtualClusterAuthenticationSaslPlainType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sasl_plain":
+		*e = VirtualClusterAuthenticationSaslPlainType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for VirtualClusterAuthenticationSaslPlainType: %v", v)
+	}
+}
 
 // VirtualClusterAuthenticationSaslPlainMediation - The mediation type for SASL/PLAIN authentication.
 type VirtualClusterAuthenticationSaslPlainMediation string
@@ -32,8 +57,7 @@ func (e *VirtualClusterAuthenticationSaslPlainMediation) IsExact() bool {
 
 // VirtualClusterAuthenticationSaslPlain - SASL/PLAIN authentication scheme for the virtual cluster containing principals with username and password.
 type VirtualClusterAuthenticationSaslPlain struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sasl_plain" json:"type"`
+	Type VirtualClusterAuthenticationSaslPlainType `json:"type"`
 	// The mediation type for SASL/PLAIN authentication.
 	Mediation VirtualClusterAuthenticationSaslPlainMediation `json:"mediation"`
 	// List of principals to be able to authenticate with, used with `terminate` mediation.
@@ -56,8 +80,11 @@ func (v *VirtualClusterAuthenticationSaslPlain) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (v *VirtualClusterAuthenticationSaslPlain) GetType() string {
-	return "sasl_plain"
+func (v *VirtualClusterAuthenticationSaslPlain) GetType() VirtualClusterAuthenticationSaslPlainType {
+	if v == nil {
+		return VirtualClusterAuthenticationSaslPlainType("")
+	}
+	return v.Type
 }
 
 func (v *VirtualClusterAuthenticationSaslPlain) GetMediation() VirtualClusterAuthenticationSaslPlainMediation {

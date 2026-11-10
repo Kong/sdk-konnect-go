@@ -26,6 +26,9 @@ type SchemaRegistryAuthenticationScheme struct {
 func CreateSchemaRegistryAuthenticationSchemeBasic(basic SchemaRegistryAuthenticationBasic) SchemaRegistryAuthenticationScheme {
 	typ := SchemaRegistryAuthenticationSchemeTypeBasic
 
+	typStr := SchemaRegistryAuthenticationBasicType(typ)
+	basic.Type = typStr
+
 	return SchemaRegistryAuthenticationScheme{
 		SchemaRegistryAuthenticationBasic: &basic,
 		Type:                              typ,

@@ -69,8 +69,7 @@ type AISettingsResponseFeatures struct {
 	// AI Search configuration
 	AiSearch AISettingsResponseFeaturesAISearch `json:"ai_search"`
 	// MCP Server configuration
-	McpServer   AISettingsResponseFeaturesMcpServer `json:"mcp_server"`
-	PortalAgent any                                 `json:"portal_agent,omitempty"`
+	McpServer AISettingsResponseFeaturesMcpServer `json:"mcp_server"`
 }
 
 func (a *AISettingsResponseFeatures) GetAiSearch() AISettingsResponseFeaturesAISearch {
@@ -85,11 +84,4 @@ func (a *AISettingsResponseFeatures) GetMcpServer() AISettingsResponseFeaturesMc
 		return AISettingsResponseFeaturesMcpServer{}
 	}
 	return a.McpServer
-}
-
-func (a *AISettingsResponseFeatures) GetPortalAgent() any {
-	if a == nil {
-		return nil
-	}
-	return a.PortalAgent
 }

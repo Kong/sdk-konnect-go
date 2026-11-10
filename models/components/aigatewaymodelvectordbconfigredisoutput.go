@@ -10,6 +10,29 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type AIGatewayModelVectorDBConfigRedisType string
+
+const (
+	AIGatewayModelVectorDBConfigRedisTypeRedis AIGatewayModelVectorDBConfigRedisType = "redis"
+)
+
+func (e AIGatewayModelVectorDBConfigRedisType) ToPointer() *AIGatewayModelVectorDBConfigRedisType {
+	return &e
+}
+func (e *AIGatewayModelVectorDBConfigRedisType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "redis":
+		*e = AIGatewayModelVectorDBConfigRedisType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelVectorDBConfigRedisType: %v", v)
+	}
+}
+
 // AIGatewayModelVectorDBConfigRedisDistanceMetric - the distance metric to use for vector searches
 type AIGatewayModelVectorDBConfigRedisDistanceMetric string
 
@@ -53,6 +76,9 @@ type AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput struct {
 func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationOutputAws(aws AIGatewayRedisAWSAuthenticationOutput) AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput {
 	typ := AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutputTypeAws
 
+	typStr := AIGatewayRedisAWSAuthenticationType(typ)
+	aws.Type = typStr
+
 	return AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput{
 		AIGatewayRedisAWSAuthenticationOutput: &aws,
 		Type:                                  typ,
@@ -62,6 +88,9 @@ func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationOutputAws(aws AIG
 func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationOutputAzure(azure AIGatewayRedisAzureAuthenticationOutput) AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput {
 	typ := AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutputTypeAzure
 
+	typStr := AIGatewayRedisAzureAuthenticationType(typ)
+	azure.Type = typStr
+
 	return AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput{
 		AIGatewayRedisAzureAuthenticationOutput: &azure,
 		Type:                                    typ,
@@ -70,6 +99,9 @@ func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationOutputAzure(azure
 
 func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationOutputGcp(gcp AIGatewayRedisGCPAuthenticationOutput) AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput {
 	typ := AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutputTypeGcp
+
+	typStr := AIGatewayRedisGCPAuthenticationType(typ)
+	gcp.Type = typStr
 
 	return AIGatewayModelVectorDBConfigRedisCloudAuthenticationOutput{
 		AIGatewayRedisGCPAuthenticationOutput: &gcp,
@@ -436,8 +468,7 @@ func (s *Sentinel) GetUsername() *string {
 
 // AIGatewayModelVectorDBConfigRedisOutput - Config for connecting to a Cloud Provider's Redis instance.
 type AIGatewayModelVectorDBConfigRedisOutput struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"redis" json:"type"`
+	Type AIGatewayModelVectorDBConfigRedisType `json:"type"`
 	// the desired dimensionality for the vectors
 	Dimensions int64 `json:"dimensions"`
 	// the distance metric to use for vector searches
@@ -499,8 +530,11 @@ func (a *AIGatewayModelVectorDBConfigRedisOutput) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (a *AIGatewayModelVectorDBConfigRedisOutput) GetType() string {
-	return "redis"
+func (a *AIGatewayModelVectorDBConfigRedisOutput) GetType() AIGatewayModelVectorDBConfigRedisType {
+	if a == nil {
+		return AIGatewayModelVectorDBConfigRedisType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelVectorDBConfigRedisOutput) GetDimensions() int64 {
@@ -677,6 +711,9 @@ type AIGatewayModelVectorDBConfigRedisCloudAuthentication struct {
 func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationAws(aws AIGatewayRedisAWSAuthentication) AIGatewayModelVectorDBConfigRedisCloudAuthentication {
 	typ := AIGatewayModelVectorDBConfigRedisCloudAuthenticationTypeAws
 
+	typStr := AIGatewayRedisAWSAuthenticationType(typ)
+	aws.Type = typStr
+
 	return AIGatewayModelVectorDBConfigRedisCloudAuthentication{
 		AIGatewayRedisAWSAuthentication: &aws,
 		Type:                            typ,
@@ -686,6 +723,9 @@ func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationAws(aws AIGateway
 func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationAzure(azure AIGatewayRedisAzureAuthentication) AIGatewayModelVectorDBConfigRedisCloudAuthentication {
 	typ := AIGatewayModelVectorDBConfigRedisCloudAuthenticationTypeAzure
 
+	typStr := AIGatewayRedisAzureAuthenticationType(typ)
+	azure.Type = typStr
+
 	return AIGatewayModelVectorDBConfigRedisCloudAuthentication{
 		AIGatewayRedisAzureAuthentication: &azure,
 		Type:                              typ,
@@ -694,6 +734,9 @@ func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationAzure(azure AIGat
 
 func CreateAIGatewayModelVectorDBConfigRedisCloudAuthenticationGcp(gcp AIGatewayRedisGCPAuthentication) AIGatewayModelVectorDBConfigRedisCloudAuthentication {
 	typ := AIGatewayModelVectorDBConfigRedisCloudAuthenticationTypeGcp
+
+	typStr := AIGatewayRedisGCPAuthenticationType(typ)
+	gcp.Type = typStr
 
 	return AIGatewayModelVectorDBConfigRedisCloudAuthentication{
 		AIGatewayRedisGCPAuthentication: &gcp,
@@ -770,8 +813,7 @@ func (u AIGatewayModelVectorDBConfigRedisCloudAuthentication) MarshalJSON() ([]b
 
 // AIGatewayModelVectorDBConfigRedis - Config for connecting to a Cloud Provider's Redis instance.
 type AIGatewayModelVectorDBConfigRedis struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"redis" json:"type"`
+	Type AIGatewayModelVectorDBConfigRedisType `json:"type"`
 	// the desired dimensionality for the vectors
 	Dimensions int64 `json:"dimensions"`
 	// the distance metric to use for vector searches
@@ -833,8 +875,11 @@ func (a *AIGatewayModelVectorDBConfigRedis) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelVectorDBConfigRedis) GetType() string {
-	return "redis"
+func (a *AIGatewayModelVectorDBConfigRedis) GetType() AIGatewayModelVectorDBConfigRedisType {
+	if a == nil {
+		return AIGatewayModelVectorDBConfigRedisType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelVectorDBConfigRedis) GetDimensions() int64 {

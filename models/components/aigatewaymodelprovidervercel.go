@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayModelProviderVercelType string
+
+const (
+	AIGatewayModelProviderVercelTypeVercel AIGatewayModelProviderVercelType = "vercel"
+)
+
+func (e AIGatewayModelProviderVercelType) ToPointer() *AIGatewayModelProviderVercelType {
+	return &e
+}
+func (e *AIGatewayModelProviderVercelType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = AIGatewayModelProviderVercelType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelProviderVercelType: %v", v)
+	}
+}
 
 // AIGatewayModelProviderVercelConfig - Configuration for the model provider.
 type AIGatewayModelProviderVercelConfig struct {
@@ -34,8 +59,7 @@ func (a *AIGatewayModelProviderVercelConfig) GetAuth() AIGatewayModelProviderCon
 
 // AIGatewayModelProviderVercel - Configuration for an upstream model provider.
 type AIGatewayModelProviderVercel struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"vercel" json:"type"`
+	Type AIGatewayModelProviderVercelType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
@@ -84,8 +108,11 @@ func (a *AIGatewayModelProviderVercel) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderVercel) GetType() string {
-	return "vercel"
+func (a *AIGatewayModelProviderVercel) GetType() AIGatewayModelProviderVercelType {
+	if a == nil {
+		return AIGatewayModelProviderVercelType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelProviderVercel) GetDisplayName() string {

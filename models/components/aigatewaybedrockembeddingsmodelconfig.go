@@ -4,15 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayBedrockEmbeddingsModelConfigType string
+
+const (
+	AIGatewayBedrockEmbeddingsModelConfigTypeBedrock AIGatewayBedrockEmbeddingsModelConfigType = "bedrock"
+)
+
+func (e AIGatewayBedrockEmbeddingsModelConfigType) ToPointer() *AIGatewayBedrockEmbeddingsModelConfigType {
+	return &e
+}
+func (e *AIGatewayBedrockEmbeddingsModelConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bedrock":
+		*e = AIGatewayBedrockEmbeddingsModelConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayBedrockEmbeddingsModelConfigType: %v", v)
+	}
+}
 
 // AIGatewayBedrockEmbeddingsModelConfig - AWS Bedrock-specific configuration for a model.
 type AIGatewayBedrockEmbeddingsModelConfig struct {
 	// The URL of the embeddings model.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"bedrock" json:"type"`
+	UpstreamURL *string                                   `json:"upstream_url,omitempty"`
+	Type        AIGatewayBedrockEmbeddingsModelConfigType `json:"type"`
 	// The AWS region for the model.
 	// Setting this option overrides the AWS_REGION environment variable.
 	//
@@ -50,8 +74,11 @@ func (a *AIGatewayBedrockEmbeddingsModelConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayBedrockEmbeddingsModelConfig) GetType() string {
-	return "bedrock"
+func (a *AIGatewayBedrockEmbeddingsModelConfig) GetType() AIGatewayBedrockEmbeddingsModelConfigType {
+	if a == nil {
+		return AIGatewayBedrockEmbeddingsModelConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayBedrockEmbeddingsModelConfig) GetRegion() *string {

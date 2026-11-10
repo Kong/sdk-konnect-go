@@ -4,14 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// ControlPlaneGroupAddOnOwnerKind - Type of owner for the add-on.
+type ControlPlaneGroupAddOnOwnerKind string
+
+const (
+	ControlPlaneGroupAddOnOwnerKindControlPlaneGroup ControlPlaneGroupAddOnOwnerKind = "control-plane-group"
+)
+
+func (e ControlPlaneGroupAddOnOwnerKind) ToPointer() *ControlPlaneGroupAddOnOwnerKind {
+	return &e
+}
+func (e *ControlPlaneGroupAddOnOwnerKind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "control-plane-group":
+		*e = ControlPlaneGroupAddOnOwnerKind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ControlPlaneGroupAddOnOwnerKind: %v", v)
+	}
+}
 
 // ControlPlaneGroupAddOnOwner - Control Plane Group is the owner for the add-on.
 type ControlPlaneGroupAddOnOwner struct {
 	// Type of owner for the add-on.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	kind string `const:"control-plane-group" json:"kind"`
+	Kind ControlPlaneGroupAddOnOwnerKind `json:"kind"`
 	// ID of the control-plane group that owns this add-on.
 	ControlPlaneGroupID string `json:"control_plane_group_id"`
 	// Geographic region of the control plane. Supported values:
@@ -37,8 +62,11 @@ func (c *ControlPlaneGroupAddOnOwner) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *ControlPlaneGroupAddOnOwner) GetKind() string {
-	return "control-plane-group"
+func (c *ControlPlaneGroupAddOnOwner) GetKind() ControlPlaneGroupAddOnOwnerKind {
+	if c == nil {
+		return ControlPlaneGroupAddOnOwnerKind("")
+	}
+	return c.Kind
 }
 
 func (c *ControlPlaneGroupAddOnOwner) GetControlPlaneGroupID() string {

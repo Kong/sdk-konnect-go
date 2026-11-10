@@ -28,6 +28,9 @@ type EventGatewayModifyHeaderAction struct {
 func CreateEventGatewayModifyHeaderActionRemove(remove EventGatewayModifyHeaderRemoveAction) EventGatewayModifyHeaderAction {
 	typ := EventGatewayModifyHeaderActionTypeRemove
 
+	typStr := Op(typ)
+	remove.Op = typStr
+
 	return EventGatewayModifyHeaderAction{
 		EventGatewayModifyHeaderRemoveAction: &remove,
 		Type:                                 typ,
@@ -36,6 +39,9 @@ func CreateEventGatewayModifyHeaderActionRemove(remove EventGatewayModifyHeaderR
 
 func CreateEventGatewayModifyHeaderActionSet(set EventGatewayModifyHeaderSetAction) EventGatewayModifyHeaderAction {
 	typ := EventGatewayModifyHeaderActionTypeSet
+
+	typStr := EventGatewayModifyHeaderSetActionOp(typ)
+	set.Op = typStr
 
 	return EventGatewayModifyHeaderAction{
 		EventGatewayModifyHeaderSetAction: &set,

@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type AIGatewayMCPServerConversionListenerResponseType string
+
+const (
+	AIGatewayMCPServerConversionListenerResponseTypeConversionListener AIGatewayMCPServerConversionListenerResponseType = "conversion-listener"
+)
+
+func (e AIGatewayMCPServerConversionListenerResponseType) ToPointer() *AIGatewayMCPServerConversionListenerResponseType {
+	return &e
+}
+func (e *AIGatewayMCPServerConversionListenerResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "conversion-listener":
+		*e = AIGatewayMCPServerConversionListenerResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayMCPServerConversionListenerResponseType: %v", v)
+	}
+}
 
 // AIGatewayMCPServerConversionListenerResponseLogging - Configuration for AI Gateway logging.
 type AIGatewayMCPServerConversionListenerResponseLogging struct {
@@ -105,7 +130,7 @@ type AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerC
 	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 	// incoming requests.
 	//
-	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
+	Route AIGatewayMCPServerRouteWithMatcher `json:"route"`
 	// Configuration for AI Gateway logging.
 	Logging *AIGatewayMCPServerConversionListenerResponseLogging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
@@ -158,15 +183,15 @@ func (a AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListen
 }
 
 func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"url"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route", "url"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig) GetRoute() *AIGatewayMCPServerRouteWithMatcher {
+func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig) GetRoute() AIGatewayMCPServerRouteWithMatcher {
 	if a == nil {
-		return nil
+		return AIGatewayMCPServerRouteWithMatcher{}
 	}
 	return a.Route
 }
@@ -235,8 +260,7 @@ func (a *AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListe
 }
 
 type AIGatewayMCPServerConversionListenerResponse struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"conversion-listener" json:"type"`
+	Type AIGatewayMCPServerConversionListenerResponseType `json:"type"`
 	// Server-side configuration specific to modes where Kong answers as the MCP server.
 	Config AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig `json:"config"`
 	// List of tools exposed by this MCP Server. Each tool's `path`, `method`, and `host`
@@ -306,8 +330,11 @@ func (a *AIGatewayMCPServerConversionListenerResponse) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (a *AIGatewayMCPServerConversionListenerResponse) GetType() string {
-	return "conversion-listener"
+func (a *AIGatewayMCPServerConversionListenerResponse) GetType() AIGatewayMCPServerConversionListenerResponseType {
+	if a == nil {
+		return AIGatewayMCPServerConversionListenerResponseType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayMCPServerConversionListenerResponse) GetConfig() AIGatewayMCPServerConversionListenerResponseAIGatewayMCPServerKongListenerConfig {

@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayCreatePartitionsRequestRulesType string
+
+const (
+	EventGatewayCreatePartitionsRequestRulesTypeCreatePartitions EventGatewayCreatePartitionsRequestRulesType = "create_partitions"
+)
+
+func (e EventGatewayCreatePartitionsRequestRulesType) ToPointer() *EventGatewayCreatePartitionsRequestRulesType {
+	return &e
+}
+func (e *EventGatewayCreatePartitionsRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "create_partitions":
+		*e = EventGatewayCreatePartitionsRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayCreatePartitionsRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayCreatePartitionsRequestRules - The rules to apply to Kafka `CreatePartitions` requests.
 type EventGatewayCreatePartitionsRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"create_partitions" json:"type"`
+	Type EventGatewayCreatePartitionsRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against each topic in the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayCreatePartitionsRequestRules) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (e *EventGatewayCreatePartitionsRequestRules) GetType() string {
-	return "create_partitions"
+func (e *EventGatewayCreatePartitionsRequestRules) GetType() EventGatewayCreatePartitionsRequestRulesType {
+	if e == nil {
+		return EventGatewayCreatePartitionsRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayCreatePartitionsRequestRules) GetRules() []EventGatewayCreatePartitionsRule {

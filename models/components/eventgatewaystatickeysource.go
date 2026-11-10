@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayStaticKeySourceType string
+
+const (
+	EventGatewayStaticKeySourceTypeStatic EventGatewayStaticKeySourceType = "static"
+)
+
+func (e EventGatewayStaticKeySourceType) ToPointer() *EventGatewayStaticKeySourceType {
+	return &e
+}
+func (e *EventGatewayStaticKeySourceType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "static":
+		*e = EventGatewayStaticKeySourceType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayStaticKeySourceType: %v", v)
+	}
+}
+
 // EventGatewayStaticKeySource - A key source that uses static symmetric keys.
 type EventGatewayStaticKeySource struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"static" json:"type"`
+	Type EventGatewayStaticKeySourceType `json:"type"`
 }
 
 func (e EventGatewayStaticKeySource) MarshalJSON() ([]byte, error) {
@@ -24,6 +48,9 @@ func (e *EventGatewayStaticKeySource) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayStaticKeySource) GetType() string {
-	return "static"
+func (e *EventGatewayStaticKeySource) GetType() EventGatewayStaticKeySourceType {
+	if e == nil {
+		return EventGatewayStaticKeySourceType("")
+	}
+	return e.Type
 }

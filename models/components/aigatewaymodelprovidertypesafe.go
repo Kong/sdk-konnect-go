@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayModelProviderTypesafeType string
+
+const (
+	AIGatewayModelProviderTypesafeTypeTypesafe AIGatewayModelProviderTypesafeType = "typesafe"
+)
+
+func (e AIGatewayModelProviderTypesafeType) ToPointer() *AIGatewayModelProviderTypesafeType {
+	return &e
+}
+func (e *AIGatewayModelProviderTypesafeType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "typesafe":
+		*e = AIGatewayModelProviderTypesafeType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelProviderTypesafeType: %v", v)
+	}
+}
 
 // AIGatewayModelProviderTypesafeConfig - Configuration for the model provider.
 type AIGatewayModelProviderTypesafeConfig struct {
@@ -34,8 +59,7 @@ func (a *AIGatewayModelProviderTypesafeConfig) GetAuth() AIGatewayModelProviderC
 
 // AIGatewayModelProviderTypesafe - Configuration for an upstream model provider.
 type AIGatewayModelProviderTypesafe struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"typesafe" json:"type"`
+	Type AIGatewayModelProviderTypesafeType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
@@ -84,8 +108,11 @@ func (a *AIGatewayModelProviderTypesafe) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderTypesafe) GetType() string {
-	return "typesafe"
+func (a *AIGatewayModelProviderTypesafe) GetType() AIGatewayModelProviderTypesafeType {
+	if a == nil {
+		return AIGatewayModelProviderTypesafeType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelProviderTypesafe) GetDisplayName() string {

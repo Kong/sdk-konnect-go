@@ -64,45 +64,12 @@ func (r *ReplaceAISettingsRequestFeaturesMcpServer) GetWriteOperationsEnabled() 
 	return r.WriteOperationsEnabled
 }
 
-type PortalAgent struct {
-	// The display name for the Portal Agent, shown to developers in the portal
-	DisplayName *string `default:"AI" json:"display_name"`
-	// The audience allowed to interact with the Portal Agent. Currently only `all` (available to every developer, including unauthenticated ones) is supported. `authenticated` (restricted to signed-in developers only) is planned for a future release.
-	Audience *PortalAgentAudienceNullable `default:"all" json:"audience"`
-}
-
-func (p PortalAgent) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalAgent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (p *PortalAgent) GetDisplayName() *string {
-	if p == nil {
-		return nil
-	}
-	return p.DisplayName
-}
-
-func (p *PortalAgent) GetAudience() *PortalAgentAudienceNullable {
-	if p == nil {
-		return nil
-	}
-	return p.Audience
-}
-
 // ReplaceAISettingsRequestFeatures - AI Features configuration. When top-level `enabled` is false, every feature toggle here must be automatically reset to false.
 type ReplaceAISettingsRequestFeatures struct {
 	// AI Search configuration
 	AiSearch ReplaceAISettingsRequestFeaturesAISearch `json:"ai_search"`
 	// MCP Server configuration
-	McpServer   ReplaceAISettingsRequestFeaturesMcpServer `json:"mcp_server"`
-	PortalAgent *PortalAgent                              `json:"portal_agent,omitempty"`
+	McpServer ReplaceAISettingsRequestFeaturesMcpServer `json:"mcp_server"`
 }
 
 func (r *ReplaceAISettingsRequestFeatures) GetAiSearch() ReplaceAISettingsRequestFeaturesAISearch {
@@ -117,11 +84,4 @@ func (r *ReplaceAISettingsRequestFeatures) GetMcpServer() ReplaceAISettingsReque
 		return ReplaceAISettingsRequestFeaturesMcpServer{}
 	}
 	return r.McpServer
-}
-
-func (r *ReplaceAISettingsRequestFeatures) GetPortalAgent() *PortalAgent {
-	if r == nil {
-		return nil
-	}
-	return r.PortalAgent
 }

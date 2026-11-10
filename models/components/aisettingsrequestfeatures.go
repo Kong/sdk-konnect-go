@@ -64,45 +64,12 @@ func (a *AISettingsRequestFeaturesMcpServer) GetWriteOperationsEnabled() *bool {
 	return a.WriteOperationsEnabled
 }
 
-type AISettingsRequestFeaturesPortalAgent struct {
-	// The display name for the Portal Agent, shown to developers in the portal
-	DisplayName *string `default:"AI" json:"display_name"`
-	// The audience allowed to interact with the Portal Agent. Currently only `all` (available to every developer, including unauthenticated ones) is supported. `authenticated` (restricted to signed-in developers only) is planned for a future release.
-	Audience *PortalAgentAudienceNullable `default:"all" json:"audience"`
-}
-
-func (a AISettingsRequestFeaturesPortalAgent) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AISettingsRequestFeaturesPortalAgent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AISettingsRequestFeaturesPortalAgent) GetDisplayName() *string {
-	if a == nil {
-		return nil
-	}
-	return a.DisplayName
-}
-
-func (a *AISettingsRequestFeaturesPortalAgent) GetAudience() *PortalAgentAudienceNullable {
-	if a == nil {
-		return nil
-	}
-	return a.Audience
-}
-
 // AISettingsRequestFeatures - AI Features configuration. Only nullable when top-level `enabled` is false. When top-level `enabled` is false, every feature toggle here is automatically reset to false.
 type AISettingsRequestFeatures struct {
 	// AI Search configuration
 	AiSearch *AISettingsRequestFeaturesAISearch `json:"ai_search,omitempty"`
 	// MCP Server configuration
-	McpServer   *AISettingsRequestFeaturesMcpServer   `json:"mcp_server,omitempty"`
-	PortalAgent *AISettingsRequestFeaturesPortalAgent `json:"portal_agent,omitempty"`
+	McpServer *AISettingsRequestFeaturesMcpServer `json:"mcp_server,omitempty"`
 }
 
 func (a *AISettingsRequestFeatures) GetAiSearch() *AISettingsRequestFeaturesAISearch {
@@ -117,11 +84,4 @@ func (a *AISettingsRequestFeatures) GetMcpServer() *AISettingsRequestFeaturesMcp
 		return nil
 	}
 	return a.McpServer
-}
-
-func (a *AISettingsRequestFeatures) GetPortalAgent() *AISettingsRequestFeaturesPortalAgent {
-	if a == nil {
-		return nil
-	}
-	return a.PortalAgent
 }

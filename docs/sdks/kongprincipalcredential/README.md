@@ -60,7 +60,9 @@ func main() {
         DirectoryID: "57aa00d4-42e1-46f2-926d-eb1796773a80",
         PrincipalID: "28de680e-3db1-46f0-8de7-5f8b89b8f80b",
         CreatePrincipalKeyBody: components.CreateCreatePrincipalKeyBodyV1(
-            components.CreatePrincipalKeyBodyv1{},
+            components.CreatePrincipalKeyBodyv1{
+                Type: components.CreatePrincipalKeyBodyv1TypeV1,
+            },
         ),
     })
     if err != nil {

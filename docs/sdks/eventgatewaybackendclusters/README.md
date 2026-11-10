@@ -106,8 +106,11 @@ func main() {
         Name: "<value>",
         Authentication: components.CreateBackendClusterAuthenticationSchemeSaslAwsIam(
             components.BackendClusterAuthenticationSaslAwsIam{
+                Type: components.BackendClusterAuthenticationSaslAwsIamTypeSaslAwsIam,
                 SaslAwsIam: components.CreateSaslAwsIamDefaultProviderChain(
-                    components.BackendClusterAuthenticationSaslAwsIamDefaultProviderChain{},
+                    components.BackendClusterAuthenticationSaslAwsIamDefaultProviderChain{
+                        Type: components.BackendClusterAuthenticationSaslAwsIamDefaultProviderChainTypeDefaultProviderChain,
+                    },
                 ),
             },
         ),
@@ -269,8 +272,11 @@ func main() {
             Name: "<value>",
             Authentication: components.CreateBackendClusterAuthenticationSensitiveDataAwareSchemeSaslAwsIam(
                 components.BackendClusterAuthenticationSaslAwsIam{
+                    Type: components.BackendClusterAuthenticationSaslAwsIamTypeSaslAwsIam,
                     SaslAwsIam: components.CreateSaslAwsIamDefaultProviderChain(
-                        components.BackendClusterAuthenticationSaslAwsIamDefaultProviderChain{},
+                        components.BackendClusterAuthenticationSaslAwsIamDefaultProviderChain{
+                            Type: components.BackendClusterAuthenticationSaslAwsIamDefaultProviderChainTypeDefaultProviderChain,
+                        },
                     ),
                 },
             ),

@@ -4,6 +4,8 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -1089,6 +1091,29 @@ func (p *PartialModelConfig) GetWeight() *int64 {
 	return p.Weight
 }
 
+type PartialModelType string
+
+const (
+	PartialModelTypeModel PartialModelType = "model"
+)
+
+func (e PartialModelType) ToPointer() *PartialModelType {
+	return &e
+}
+func (e *PartialModelType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "model":
+		*e = PartialModelType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PartialModelType: %v", v)
+	}
+}
+
 type PartialModel struct {
 	Config PartialModelConfig `json:"config"`
 	// Unix epoch when the resource was created.
@@ -1098,9 +1123,8 @@ type PartialModel struct {
 	// A unique string representing a UTF-8 encoded name.
 	Name *string `json:"name,omitempty"`
 	// A set of strings representing tags.
-	Tags []string `json:"tags,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"model" json:"type"`
+	Tags []string         `json:"tags,omitempty"`
+	Type PartialModelType `json:"type"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
@@ -1151,8 +1175,11 @@ func (p *PartialModel) GetTags() []string {
 	return p.Tags
 }
 
-func (p *PartialModel) GetType() string {
-	return "model"
+func (p *PartialModel) GetType() PartialModelType {
+	if p == nil {
+		return PartialModelType("")
+	}
+	return p.Type
 }
 
 func (p *PartialModel) GetUpdatedAt() *int64 {

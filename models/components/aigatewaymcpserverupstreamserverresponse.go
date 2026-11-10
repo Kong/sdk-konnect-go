@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
 
+type AIGatewayMCPServerUpstreamServerResponseType string
+
+const (
+	AIGatewayMCPServerUpstreamServerResponseTypeUpstreamServer AIGatewayMCPServerUpstreamServerResponseType = "upstream-server"
+)
+
+func (e AIGatewayMCPServerUpstreamServerResponseType) ToPointer() *AIGatewayMCPServerUpstreamServerResponseType {
+	return &e
+}
+func (e *AIGatewayMCPServerUpstreamServerResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "upstream-server":
+		*e = AIGatewayMCPServerUpstreamServerResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayMCPServerUpstreamServerResponseType: %v", v)
+	}
+}
+
 type AIGatewayMCPServerUpstreamServerResponse struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"upstream-server" json:"type"`
+	Type AIGatewayMCPServerUpstreamServerResponseType `json:"type"`
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerUpstreamServerConfigOutput `json:"config"`
 	// List of tools exposed by this MCP Server.
@@ -72,8 +96,11 @@ func (a *AIGatewayMCPServerUpstreamServerResponse) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (a *AIGatewayMCPServerUpstreamServerResponse) GetType() string {
-	return "upstream-server"
+func (a *AIGatewayMCPServerUpstreamServerResponse) GetType() AIGatewayMCPServerUpstreamServerResponseType {
+	if a == nil {
+		return AIGatewayMCPServerUpstreamServerResponseType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayMCPServerUpstreamServerResponse) GetConfig() AIGatewayMCPServerUpstreamServerConfigOutput {

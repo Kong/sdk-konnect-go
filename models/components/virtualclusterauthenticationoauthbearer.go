@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type VirtualClusterAuthenticationOauthBearerType string
+
+const (
+	VirtualClusterAuthenticationOauthBearerTypeOauthBearer VirtualClusterAuthenticationOauthBearerType = "oauth_bearer"
+)
+
+func (e VirtualClusterAuthenticationOauthBearerType) ToPointer() *VirtualClusterAuthenticationOauthBearerType {
+	return &e
+}
+func (e *VirtualClusterAuthenticationOauthBearerType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "oauth_bearer":
+		*e = VirtualClusterAuthenticationOauthBearerType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for VirtualClusterAuthenticationOauthBearerType: %v", v)
+	}
+}
 
 // VirtualClusterAuthenticationOauthBearerMediation - Methods to mediate authentication:
 // * passthrough - pass authentication from the client through proxy to the backend cluster without any kind of
@@ -45,8 +70,7 @@ func (e *VirtualClusterAuthenticationOauthBearerMediation) IsExact() bool {
 
 // VirtualClusterAuthenticationOauthBearer - Oauth Bearer authentication scheme for the virtual cluster.
 type VirtualClusterAuthenticationOauthBearer struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"oauth_bearer" json:"type"`
+	Type VirtualClusterAuthenticationOauthBearerType `json:"type"`
 	// Methods to mediate authentication:
 	// * passthrough - pass authentication from the client through proxy to the backend cluster without any kind of
 	//
@@ -87,8 +111,11 @@ func (v *VirtualClusterAuthenticationOauthBearer) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (v *VirtualClusterAuthenticationOauthBearer) GetType() string {
-	return "oauth_bearer"
+func (v *VirtualClusterAuthenticationOauthBearer) GetType() VirtualClusterAuthenticationOauthBearerType {
+	if v == nil {
+		return VirtualClusterAuthenticationOauthBearerType("")
+	}
+	return v.Type
 }
 
 func (v *VirtualClusterAuthenticationOauthBearer) GetMediation() VirtualClusterAuthenticationOauthBearerMediation {

@@ -65,13 +65,24 @@ type ControlPlaneConfig struct {
 	// Telemetry Endpoint.
 	TelemetryEndpoint string `json:"telemetry_endpoint"`
 	// The ClusterType value of the cluster associated with the Control Plane.
-	ClusterType ControlPlaneClusterType `json:"cluster_type"`
+	ClusterType *ControlPlaneClusterType `default:"CLUSTER_TYPE_CONTROL_PLANE" json:"cluster_type"`
 	// The auth type value of the cluster associated with the Runtime Group.
-	AuthType ControlPlaneAuthType `json:"auth_type"`
+	AuthType *ControlPlaneAuthType `default:"pinned_client_certs" json:"auth_type"`
 	// Whether the Control Plane can be used for cloud-gateways.
-	CloudGateway bool `json:"cloud_gateway"`
+	CloudGateway *bool `default:"false" json:"cloud_gateway"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
 	ProxyUrls []ProxyURL `json:"proxy_urls"`
+}
+
+func (c ControlPlaneConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ControlPlaneConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *ControlPlaneConfig) GetControlPlaneEndpoint() string {
@@ -88,23 +99,23 @@ func (c *ControlPlaneConfig) GetTelemetryEndpoint() string {
 	return c.TelemetryEndpoint
 }
 
-func (c *ControlPlaneConfig) GetClusterType() ControlPlaneClusterType {
+func (c *ControlPlaneConfig) GetClusterType() *ControlPlaneClusterType {
 	if c == nil {
-		return ControlPlaneClusterType("")
+		return nil
 	}
 	return c.ClusterType
 }
 
-func (c *ControlPlaneConfig) GetAuthType() ControlPlaneAuthType {
+func (c *ControlPlaneConfig) GetAuthType() *ControlPlaneAuthType {
 	if c == nil {
-		return ControlPlaneAuthType("")
+		return nil
 	}
 	return c.AuthType
 }
 
-func (c *ControlPlaneConfig) GetCloudGateway() bool {
+func (c *ControlPlaneConfig) GetCloudGateway() *bool {
 	if c == nil {
-		return false
+		return nil
 	}
 	return c.CloudGateway
 }

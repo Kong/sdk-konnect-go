@@ -28,6 +28,9 @@ type VaultProviderCredential struct {
 func CreateVaultProviderCredentialShared(shared VaultProviderCredentialShared) VaultProviderCredential {
 	typ := VaultProviderCredentialTypeShared
 
+	typStr := CredentialType(typ)
+	shared.CredentialType = typStr
+
 	return VaultProviderCredential{
 		VaultProviderCredentialShared: &shared,
 		Type:                          typ,
@@ -36,6 +39,9 @@ func CreateVaultProviderCredentialShared(shared VaultProviderCredentialShared) V
 
 func CreateVaultProviderCredentialUser(user VaultProviderCredentialUser) VaultProviderCredential {
 	typ := VaultProviderCredentialTypeUser
+
+	typStr := VaultProviderCredentialUserCredentialType(typ)
+	user.CredentialType = typStr
 
 	return VaultProviderCredential{
 		VaultProviderCredentialUser: &user,

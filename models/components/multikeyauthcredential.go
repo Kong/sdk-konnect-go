@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type MultiKeyAuthCredentialType string
+
+const (
+	MultiKeyAuthCredentialTypeMultiKeyAuth MultiKeyAuthCredentialType = "multi_key_auth"
+)
+
+func (e MultiKeyAuthCredentialType) ToPointer() *MultiKeyAuthCredentialType {
+	return &e
+}
+func (e *MultiKeyAuthCredentialType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "multi_key_auth":
+		*e = MultiKeyAuthCredentialType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MultiKeyAuthCredentialType: %v", v)
+	}
+}
 
 // MultiKeyAuthCredential - Represents a credential scoped to an integration instance that supports the `Multi Key` authorization strategy.
 type MultiKeyAuthCredential struct {
@@ -24,9 +49,8 @@ type MultiKeyAuthCredential struct {
 	//
 	ExpiresAt *time.Time `json:"expires_at"`
 	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"multi_key_auth" json:"type"`
+	CreatedAt time.Time                  `json:"created_at"`
+	Type      MultiKeyAuthCredentialType `json:"type"`
 }
 
 func (m MultiKeyAuthCredential) MarshalJSON() ([]byte, error) {
@@ -82,6 +106,9 @@ func (m *MultiKeyAuthCredential) GetCreatedAt() time.Time {
 	return m.CreatedAt
 }
 
-func (m *MultiKeyAuthCredential) GetType() string {
-	return "multi_key_auth"
+func (m *MultiKeyAuthCredential) GetType() MultiKeyAuthCredentialType {
+	if m == nil {
+		return MultiKeyAuthCredentialType("")
+	}
+	return m.Type
 }

@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetDashscopeConfigType string
+
+const (
+	AIGatewayTargetDashscopeConfigTypeDashscope AIGatewayTargetDashscopeConfigType = "dashscope"
+)
+
+func (e AIGatewayTargetDashscopeConfigType) ToPointer() *AIGatewayTargetDashscopeConfigType {
+	return &e
+}
+func (e *AIGatewayTargetDashscopeConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "dashscope":
+		*e = AIGatewayTargetDashscopeConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetDashscopeConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetDashscopeConfig - Alibaba DashScope-specific configuration for a model.
 type AIGatewayTargetDashscopeConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetDashscopeConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"dashscope" json:"type"`
+	UpstreamURL *string                            `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetDashscopeConfigType `json:"type"`
 	// Whether to use the international DashScope endpoint.
 	International *bool `default:"true" json:"international"`
 }
@@ -176,8 +200,11 @@ func (a *AIGatewayTargetDashscopeConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetDashscopeConfig) GetType() string {
-	return "dashscope"
+func (a *AIGatewayTargetDashscopeConfig) GetType() AIGatewayTargetDashscopeConfigType {
+	if a == nil {
+		return AIGatewayTargetDashscopeConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetDashscopeConfig) GetInternational() *bool {

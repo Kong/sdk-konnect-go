@@ -9,6 +9,6 @@ for more information about how credential retrieval.
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `Type`             | `string`           | :heavy_check_mark: | N/A                |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                             | [components.EventGatewayAWSKeySourceType](../../models/components/eventgatewayawskeysourcetype.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type BackendClusterAuthenticationSaslPlainType string
+
+const (
+	BackendClusterAuthenticationSaslPlainTypeSaslPlain BackendClusterAuthenticationSaslPlainType = "sasl_plain"
+)
+
+func (e BackendClusterAuthenticationSaslPlainType) ToPointer() *BackendClusterAuthenticationSaslPlainType {
+	return &e
+}
+func (e *BackendClusterAuthenticationSaslPlainType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sasl_plain":
+		*e = BackendClusterAuthenticationSaslPlainType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BackendClusterAuthenticationSaslPlainType: %v", v)
+	}
+}
+
 // BackendClusterAuthenticationSaslPlain - SASL/PLAIN authentication scheme for the backend cluster.
 type BackendClusterAuthenticationSaslPlain struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sasl_plain" json:"type"`
+	Type BackendClusterAuthenticationSaslPlainType `json:"type"`
 	// A literal value or a reference to an existing secret as a template string expression.
 	// The value is stored and returned by the API as-is, not treated as sensitive information.
 	//
@@ -33,8 +57,11 @@ func (b *BackendClusterAuthenticationSaslPlain) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (b *BackendClusterAuthenticationSaslPlain) GetType() string {
-	return "sasl_plain"
+func (b *BackendClusterAuthenticationSaslPlain) GetType() BackendClusterAuthenticationSaslPlainType {
+	if b == nil {
+		return BackendClusterAuthenticationSaslPlainType("")
+	}
+	return b.Type
 }
 
 func (b *BackendClusterAuthenticationSaslPlain) GetUsername() string {

@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayParsedRecordTranscodeConsumePolicyType - The type name of the policy.
+type EventGatewayParsedRecordTranscodeConsumePolicyType string
+
+const (
+	EventGatewayParsedRecordTranscodeConsumePolicyTypeTranscode EventGatewayParsedRecordTranscodeConsumePolicyType = "transcode"
+)
+
+func (e EventGatewayParsedRecordTranscodeConsumePolicyType) ToPointer() *EventGatewayParsedRecordTranscodeConsumePolicyType {
+	return &e
+}
+func (e *EventGatewayParsedRecordTranscodeConsumePolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "transcode":
+		*e = EventGatewayParsedRecordTranscodeConsumePolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayParsedRecordTranscodeConsumePolicyType: %v", v)
+	}
+}
 
 // EventGatewayParsedRecordTranscodeConsumePolicy - Converts an already schema-validated record value into a different serialization
 // format before it is returned to the consumer.
@@ -15,8 +41,7 @@ import (
 // **Requires a minimum runtime version of `1.3`**.
 type EventGatewayParsedRecordTranscodeConsumePolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"transcode" json:"type"`
+	Type EventGatewayParsedRecordTranscodeConsumePolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -49,8 +74,11 @@ func (e *EventGatewayParsedRecordTranscodeConsumePolicy) UnmarshalJSON(data []by
 	return nil
 }
 
-func (e *EventGatewayParsedRecordTranscodeConsumePolicy) GetType() string {
-	return "transcode"
+func (e *EventGatewayParsedRecordTranscodeConsumePolicy) GetType() EventGatewayParsedRecordTranscodeConsumePolicyType {
+	if e == nil {
+		return EventGatewayParsedRecordTranscodeConsumePolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayParsedRecordTranscodeConsumePolicy) GetName() *string {

@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayJoinGroupRequestRulesType string
+
+const (
+	EventGatewayJoinGroupRequestRulesTypeJoinGroup EventGatewayJoinGroupRequestRulesType = "join_group"
+)
+
+func (e EventGatewayJoinGroupRequestRulesType) ToPointer() *EventGatewayJoinGroupRequestRulesType {
+	return &e
+}
+func (e *EventGatewayJoinGroupRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "join_group":
+		*e = EventGatewayJoinGroupRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayJoinGroupRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayJoinGroupRequestRules - The rules to apply to Kafka `JoinGroup` requests.
 type EventGatewayJoinGroupRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"join_group" json:"type"`
+	Type EventGatewayJoinGroupRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayJoinGroupRequestRules) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayJoinGroupRequestRules) GetType() string {
-	return "join_group"
+func (e *EventGatewayJoinGroupRequestRules) GetType() EventGatewayJoinGroupRequestRulesType {
+	if e == nil {
+		return EventGatewayJoinGroupRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayJoinGroupRequestRules) GetRules() []EventGatewayJoinGroupRule {

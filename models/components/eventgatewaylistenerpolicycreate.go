@@ -28,6 +28,9 @@ type EventGatewayListenerPolicyCreate struct {
 func CreateEventGatewayListenerPolicyCreateTLSServer(tlsServer EventGatewayTLSListenerPolicy) EventGatewayListenerPolicyCreate {
 	typ := EventGatewayListenerPolicyCreateTypeTLSServer
 
+	typStr := EventGatewayTLSListenerPolicyType(typ)
+	tlsServer.Type = typStr
+
 	return EventGatewayListenerPolicyCreate{
 		EventGatewayTLSListenerPolicy: &tlsServer,
 		Type:                          typ,
@@ -36,6 +39,9 @@ func CreateEventGatewayListenerPolicyCreateTLSServer(tlsServer EventGatewayTLSLi
 
 func CreateEventGatewayListenerPolicyCreateForwardToVirtualCluster(forwardToVirtualCluster ForwardToVirtualClusterPolicy) EventGatewayListenerPolicyCreate {
 	typ := EventGatewayListenerPolicyCreateTypeForwardToVirtualCluster
+
+	typStr := ForwardToVirtualClusterPolicyType(typ)
+	forwardToVirtualCluster.Type = typStr
 
 	return EventGatewayListenerPolicyCreate{
 		ForwardToVirtualClusterPolicy: &forwardToVirtualCluster,

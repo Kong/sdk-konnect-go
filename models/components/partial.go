@@ -33,6 +33,9 @@ type Partial struct {
 func CreatePartialEmbeddings(embeddings PartialEmbeddings) Partial {
 	typ := PartialTypeEmbeddings
 
+	typStr := PartialEmbeddingsType(typ)
+	embeddings.Type = typStr
+
 	return Partial{
 		PartialEmbeddings: &embeddings,
 		Type:              typ,
@@ -41,6 +44,9 @@ func CreatePartialEmbeddings(embeddings PartialEmbeddings) Partial {
 
 func CreatePartialModel(model PartialModel) Partial {
 	typ := PartialTypeModel
+
+	typStr := PartialModelType(typ)
+	model.Type = typStr
 
 	return Partial{
 		PartialModel: &model,
@@ -51,6 +57,9 @@ func CreatePartialModel(model PartialModel) Partial {
 func CreatePartialRedisCe(redisCe PartialRedisCe) Partial {
 	typ := PartialTypeRedisCe
 
+	typStr := PartialRedisCeType(typ)
+	redisCe.Type = typStr
+
 	return Partial{
 		PartialRedisCe: &redisCe,
 		Type:           typ,
@@ -60,6 +69,9 @@ func CreatePartialRedisCe(redisCe PartialRedisCe) Partial {
 func CreatePartialRedisEe(redisEe PartialRedisEe) Partial {
 	typ := PartialTypeRedisEe
 
+	typStr := PartialRedisEeType(typ)
+	redisEe.Type = typStr
+
 	return Partial{
 		PartialRedisEe: &redisEe,
 		Type:           typ,
@@ -68,6 +80,9 @@ func CreatePartialRedisEe(redisEe PartialRedisEe) Partial {
 
 func CreatePartialVectordb(vectordb PartialVectordb) Partial {
 	typ := PartialTypeVectordb
+
+	typStr := PartialVectordbType(typ)
+	vectordb.Type = typStr
 
 	return Partial{
 		PartialVectordb: &vectordb,

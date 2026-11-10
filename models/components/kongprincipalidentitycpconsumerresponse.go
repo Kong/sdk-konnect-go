@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type KongPrincipalIdentityCPConsumerResponseType string
+
+const (
+	KongPrincipalIdentityCPConsumerResponseTypeControlPlaneConsumer KongPrincipalIdentityCPConsumerResponseType = "control_plane_consumer"
+)
+
+func (e KongPrincipalIdentityCPConsumerResponseType) ToPointer() *KongPrincipalIdentityCPConsumerResponseType {
+	return &e
+}
+func (e *KongPrincipalIdentityCPConsumerResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "control_plane_consumer":
+		*e = KongPrincipalIdentityCPConsumerResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for KongPrincipalIdentityCPConsumerResponseType: %v", v)
+	}
+}
 
 // ControlPlaneType - The kind of control plane the linked consumer was found in.
 type ControlPlaneType string
@@ -47,12 +72,11 @@ type KongPrincipalIdentityCPConsumerResponse struct {
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt time.Time `json:"updated_at"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_          string  `const:"control_plane_consumer" json:"type"`
-	ControlPlaneID string  `json:"control_plane_id"`
-	ConsumerID     string  `json:"consumer_id"`
-	WorkspaceID    *string `json:"workspace_id,omitempty"`
+	UpdatedAt      time.Time                                   `json:"updated_at"`
+	Type           KongPrincipalIdentityCPConsumerResponseType `json:"type"`
+	ControlPlaneID string                                      `json:"control_plane_id"`
+	ConsumerID     string                                      `json:"consumer_id"`
+	WorkspaceID    *string                                     `json:"workspace_id,omitempty"`
 	// The kind of control plane the linked consumer was found in.
 	ControlPlaneType ControlPlaneType `json:"control_plane_type"`
 }
@@ -103,8 +127,11 @@ func (k *KongPrincipalIdentityCPConsumerResponse) GetUpdatedAt() time.Time {
 	return k.UpdatedAt
 }
 
-func (k *KongPrincipalIdentityCPConsumerResponse) GetType() string {
-	return "control_plane_consumer"
+func (k *KongPrincipalIdentityCPConsumerResponse) GetType() KongPrincipalIdentityCPConsumerResponseType {
+	if k == nil {
+		return KongPrincipalIdentityCPConsumerResponseType("")
+	}
+	return k.Type
 }
 
 func (k *KongPrincipalIdentityCPConsumerResponse) GetControlPlaneID() string {

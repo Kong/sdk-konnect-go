@@ -105,6 +105,7 @@ func main() {
         components.GoogleSecretManagerVault{
             Name: "my-awesome-vault",
             Description: sdkkonnectgo.Pointer("This vault is used to retrieve redis database access credentials"),
+            Type: components.GoogleSecretManagerVaultTypeGcp,
             Config: components.GoogleSecretManagerVaultConfig{
                 ProjectID: "<id>",
             },
@@ -269,6 +270,7 @@ func main() {
             components.EnvironmentVariableVault{
                 Name: "my-awesome-vault",
                 Description: sdkkonnectgo.Pointer("This vault is used to retrieve redis database access credentials"),
+                Type: components.EnvironmentVariableVaultTypeEnv,
                 Config: components.EnvironmentVariableVaultConfig{
                     Prefix: sdkkonnectgo.Pointer("MY_SECRET_"),
                 },

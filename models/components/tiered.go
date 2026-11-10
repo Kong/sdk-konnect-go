@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// TieredKind - Type of capacity configuration.
+type TieredKind string
+
+const (
+	TieredKindTiered TieredKind = "tiered"
+)
+
+func (e TieredKind) ToPointer() *TieredKind {
+	return &e
+}
+func (e *TieredKind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "tiered":
+		*e = TieredKind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TieredKind: %v", v)
+	}
+}
 
 // Tier - Capacity tier that determines both cache size and performance characteristics:
 // - micro: ~0.5 GiB capacity
@@ -53,8 +79,7 @@ func (e *Tier) IsExact() bool {
 // Tiered - Capacity tiers with pre-configured size and performance characteristics.
 type Tiered struct {
 	// Type of capacity configuration.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	kind string `const:"tiered" json:"kind"`
+	Kind TieredKind `json:"kind"`
 	// Capacity tier that determines both cache size and performance characteristics:
 	// - micro: ~0.5 GiB capacity
 	// - small: ~1 GiB capacity
@@ -82,8 +107,11 @@ func (t *Tiered) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (t *Tiered) GetKind() string {
-	return "tiered"
+func (t *Tiered) GetKind() TieredKind {
+	if t == nil {
+		return TieredKind("")
+	}
+	return t.Kind
 }
 
 func (t *Tiered) GetTier() Tier {

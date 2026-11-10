@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetOpenaiConfigType string
+
+const (
+	AIGatewayTargetOpenaiConfigTypeOpenai AIGatewayTargetOpenaiConfigType = "openai"
+)
+
+func (e AIGatewayTargetOpenaiConfigType) ToPointer() *AIGatewayTargetOpenaiConfigType {
+	return &e
+}
+func (e *AIGatewayTargetOpenaiConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "openai":
+		*e = AIGatewayTargetOpenaiConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetOpenaiConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetOpenaiConfig - Openai-specific configuration for a model.
 type AIGatewayTargetOpenaiConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetOpenaiConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"openai" json:"type"`
+	UpstreamURL *string                         `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetOpenaiConfigType `json:"type"`
 }
 
 func (a AIGatewayTargetOpenaiConfig) MarshalJSON() ([]byte, error) {
@@ -174,6 +198,9 @@ func (a *AIGatewayTargetOpenaiConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetOpenaiConfig) GetType() string {
-	return "openai"
+func (a *AIGatewayTargetOpenaiConfig) GetType() AIGatewayTargetOpenaiConfigType {
+	if a == nil {
+		return AIGatewayTargetOpenaiConfigType("")
+	}
+	return a.Type
 }

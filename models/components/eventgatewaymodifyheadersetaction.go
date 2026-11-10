@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayModifyHeaderSetActionOp string
+
+const (
+	EventGatewayModifyHeaderSetActionOpSet EventGatewayModifyHeaderSetActionOp = "set"
+)
+
+func (e EventGatewayModifyHeaderSetActionOp) ToPointer() *EventGatewayModifyHeaderSetActionOp {
+	return &e
+}
+func (e *EventGatewayModifyHeaderSetActionOp) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "set":
+		*e = EventGatewayModifyHeaderSetActionOp(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayModifyHeaderSetActionOp: %v", v)
+	}
+}
+
 // EventGatewayModifyHeaderSetAction - An action that sets a header key and value.
 type EventGatewayModifyHeaderSetAction struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	op string `const:"set" json:"op"`
+	Op EventGatewayModifyHeaderSetActionOp `json:"op"`
 	// The key of the header to set.
 	Key string `json:"key"`
 	// The value of the header to set.
@@ -28,8 +52,11 @@ func (e *EventGatewayModifyHeaderSetAction) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayModifyHeaderSetAction) GetOp() string {
-	return "set"
+func (e *EventGatewayModifyHeaderSetAction) GetOp() EventGatewayModifyHeaderSetActionOp {
+	if e == nil {
+		return EventGatewayModifyHeaderSetActionOp("")
+	}
+	return e.Op
 }
 
 func (e *EventGatewayModifyHeaderSetAction) GetKey() string {

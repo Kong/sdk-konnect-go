@@ -4,14 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayDecryptPolicyType - The type name of the policy.
+type EventGatewayDecryptPolicyType string
+
+const (
+	EventGatewayDecryptPolicyTypeDecrypt EventGatewayDecryptPolicyType = "decrypt"
+)
+
+func (e EventGatewayDecryptPolicyType) ToPointer() *EventGatewayDecryptPolicyType {
+	return &e
+}
+func (e *EventGatewayDecryptPolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "decrypt":
+		*e = EventGatewayDecryptPolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayDecryptPolicyType: %v", v)
+	}
+}
 
 // EventGatewayDecryptPolicy - Decrypts Kafka records or keys using AES_256_GCM. Keys are therefore 256 bits long.
 type EventGatewayDecryptPolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"decrypt" json:"type"`
+	Type EventGatewayDecryptPolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -40,8 +65,11 @@ func (e *EventGatewayDecryptPolicy) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayDecryptPolicy) GetType() string {
-	return "decrypt"
+func (e *EventGatewayDecryptPolicy) GetType() EventGatewayDecryptPolicyType {
+	if e == nil {
+		return EventGatewayDecryptPolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayDecryptPolicy) GetName() *string {

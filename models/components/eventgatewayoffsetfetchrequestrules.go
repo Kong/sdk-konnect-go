@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayOffsetFetchRequestRulesType string
+
+const (
+	EventGatewayOffsetFetchRequestRulesTypeOffsetFetch EventGatewayOffsetFetchRequestRulesType = "offset_fetch"
+)
+
+func (e EventGatewayOffsetFetchRequestRulesType) ToPointer() *EventGatewayOffsetFetchRequestRulesType {
+	return &e
+}
+func (e *EventGatewayOffsetFetchRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "offset_fetch":
+		*e = EventGatewayOffsetFetchRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayOffsetFetchRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayOffsetFetchRequestRules - The rules to apply to Kafka `OffsetFetch` requests.
 type EventGatewayOffsetFetchRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"offset_fetch" json:"type"`
+	Type EventGatewayOffsetFetchRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayOffsetFetchRequestRules) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayOffsetFetchRequestRules) GetType() string {
-	return "offset_fetch"
+func (e *EventGatewayOffsetFetchRequestRules) GetType() EventGatewayOffsetFetchRequestRulesType {
+	if e == nil {
+		return EventGatewayOffsetFetchRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayOffsetFetchRequestRules) GetRules() []EventGatewayOffsetFetchRule {

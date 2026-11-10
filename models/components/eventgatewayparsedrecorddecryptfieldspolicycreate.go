@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayParsedRecordDecryptFieldsPolicyCreateType - The type name of the policy.
+type EventGatewayParsedRecordDecryptFieldsPolicyCreateType string
+
+const (
+	EventGatewayParsedRecordDecryptFieldsPolicyCreateTypeDecryptFields EventGatewayParsedRecordDecryptFieldsPolicyCreateType = "decrypt_fields"
+)
+
+func (e EventGatewayParsedRecordDecryptFieldsPolicyCreateType) ToPointer() *EventGatewayParsedRecordDecryptFieldsPolicyCreateType {
+	return &e
+}
+func (e *EventGatewayParsedRecordDecryptFieldsPolicyCreateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "decrypt_fields":
+		*e = EventGatewayParsedRecordDecryptFieldsPolicyCreateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayParsedRecordDecryptFieldsPolicyCreateType: %v", v)
+	}
+}
 
 // EventGatewayParsedRecordDecryptFieldsPolicyCreate - Decrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
 //
@@ -14,8 +40,7 @@ import (
 // **Requires a minimum runtime version of `1.2`**.
 type EventGatewayParsedRecordDecryptFieldsPolicyCreate struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"decrypt_fields" json:"type"`
+	Type EventGatewayParsedRecordDecryptFieldsPolicyCreateType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -50,8 +75,11 @@ func (e *EventGatewayParsedRecordDecryptFieldsPolicyCreate) UnmarshalJSON(data [
 	return nil
 }
 
-func (e *EventGatewayParsedRecordDecryptFieldsPolicyCreate) GetType() string {
-	return "decrypt_fields"
+func (e *EventGatewayParsedRecordDecryptFieldsPolicyCreate) GetType() EventGatewayParsedRecordDecryptFieldsPolicyCreateType {
+	if e == nil {
+		return EventGatewayParsedRecordDecryptFieldsPolicyCreateType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayParsedRecordDecryptFieldsPolicyCreate) GetName() *string {

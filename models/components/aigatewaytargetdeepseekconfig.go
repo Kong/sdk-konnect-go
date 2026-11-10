@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetDeepseekConfigType string
+
+const (
+	AIGatewayTargetDeepseekConfigTypeDeepseek AIGatewayTargetDeepseekConfigType = "deepseek"
+)
+
+func (e AIGatewayTargetDeepseekConfigType) ToPointer() *AIGatewayTargetDeepseekConfigType {
+	return &e
+}
+func (e *AIGatewayTargetDeepseekConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deepseek":
+		*e = AIGatewayTargetDeepseekConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetDeepseekConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetDeepseekConfig - Deepseek-specific configuration for a model.
 type AIGatewayTargetDeepseekConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetDeepseekConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"deepseek" json:"type"`
+	UpstreamURL *string                           `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetDeepseekConfigType `json:"type"`
 }
 
 func (a AIGatewayTargetDeepseekConfig) MarshalJSON() ([]byte, error) {
@@ -174,6 +198,9 @@ func (a *AIGatewayTargetDeepseekConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetDeepseekConfig) GetType() string {
-	return "deepseek"
+func (a *AIGatewayTargetDeepseekConfig) GetType() AIGatewayTargetDeepseekConfigType {
+	if a == nil {
+		return AIGatewayTargetDeepseekConfigType("")
+	}
+	return a.Type
 }

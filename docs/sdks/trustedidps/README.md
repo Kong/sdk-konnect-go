@@ -116,6 +116,7 @@ func main() {
                 Email: sdkkonnectgo.Pointer("email"),
                 Groups: sdkkonnectgo.Pointer("groups"),
                 DisplayName: sdkkonnectgo.Pointer("name"),
+                Identifier: sdkkonnectgo.Pointer("oid"),
             },
         },
     })
@@ -252,6 +253,7 @@ func main() {
                     Email: sdkkonnectgo.Pointer("email"),
                     Groups: sdkkonnectgo.Pointer("groups"),
                     DisplayName: sdkkonnectgo.Pointer("name"),
+                    Identifier: sdkkonnectgo.Pointer("oid"),
                 },
             },
         },
@@ -330,6 +332,7 @@ func main() {
                     Email: sdkkonnectgo.Pointer("email"),
                     Groups: sdkkonnectgo.Pointer("groups"),
                     DisplayName: sdkkonnectgo.Pointer("name"),
+                    Identifier: sdkkonnectgo.Pointer("oid"),
                 },
             },
         },
