@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type UpdateAIGatewayRequest struct {
 	// The minimum AI Gateway runtime version supported by this AI Gateway. This is the lowest data plane version that may receive configuration from it, and it controls which features the API accepts.
 	//
@@ -17,8 +13,11 @@ type UpdateAIGatewayRequest struct {
 	// When runtime_auto_upgrade is enabled (the default), this value is raised automatically to track the minimum runtime version reported across connected data planes, so any value set here may be superseded as the fleet upgrades.
 	//
 	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
-	// Whether the control plane should automatically raise min_runtime_version to match the DP fleet's minimum runtime version (the lowest AI Gateway runtime version reported across all connected data planes) as that value increases.
-	RuntimeAutoUpgrade *bool `default:"true" json:"runtime_auto_upgrade"`
+	// Whether the control plane should automatically raise min_runtime_version
+	// to match the data plane fleet's minimum runtime version as it increases.
+	// Omit this field to preserve the current setting during an update.
+	//
+	RuntimeAutoUpgrade *bool `json:"runtime_auto_upgrade,omitempty"`
 	// The display name for this AI Gateway.
 	DisplayName string `json:"display_name"`
 	// The name for this AI Gateway. This value is immutable after creation.
@@ -39,17 +38,6 @@ type UpdateAIGatewayRequest struct {
 	// Keys must be 1–63 characters long and start with an alphanumeric character.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
-}
-
-func (u UpdateAIGatewayRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateAIGatewayRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UpdateAIGatewayRequest) GetMinRuntimeVersion() *string {
