@@ -36,7 +36,7 @@ type AISettingsRequestFeaturesMcpServer struct {
 	// Whether the Portal MCP Server is enabled or not
 	Enabled *bool `default:"false" json:"enabled"`
 	// Whether write operations are enabled or not for the Portal MCP Server enabled
-	WriteOperationsEnabled *bool `default:"false" json:"write_operations_enabled"`
+	WriteOperationsEnabled *bool `json:"write_operations_enabled,omitempty"`
 }
 
 func (a AISettingsRequestFeaturesMcpServer) MarshalJSON() ([]byte, error) {
@@ -66,20 +66,9 @@ func (a *AISettingsRequestFeaturesMcpServer) GetWriteOperationsEnabled() *bool {
 
 type AISettingsRequestFeaturesPortalAgent struct {
 	// The display name for the Portal Agent, shown to developers in the portal
-	DisplayName *string `default:"AI" json:"display_name"`
+	DisplayName *string `json:"display_name,omitempty"`
 	// The audience allowed to interact with the Portal Agent. Currently only `all` (available to every developer, including unauthenticated ones) is supported. `authenticated` (restricted to signed-in developers only) is planned for a future release.
-	Audience *PortalAgentAudienceNullable `default:"all" json:"audience"`
-}
-
-func (a AISettingsRequestFeaturesPortalAgent) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AISettingsRequestFeaturesPortalAgent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Audience *PortalAgentAudienceNullable `json:"audience,omitempty"`
 }
 
 func (a *AISettingsRequestFeaturesPortalAgent) GetDisplayName() *string {
