@@ -33831,6 +33831,16 @@ components:
             - sg
             - '*'
           x-speakeasy-unknown-values: allow
+        konnect_managed:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            Indicates that the role is assigned and removed only by Konnect.
+          type: boolean
+          example: false
+          default: false
+          readOnly: true
       example:
         id: 54cc6168-ebb1-4300-8168-d62a0dd08fc8
         role_name: Viewer
