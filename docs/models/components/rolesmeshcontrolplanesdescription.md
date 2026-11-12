@@ -7,7 +7,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesMeshControlPlanesDescriptionThisRoleGrantsFullWriteAccessToTheRelatedToMeshControlPlanes
+value := components.RolesMeshControlPlanesDescriptionAccessToAllReadAndWritePermissionsRelatedToMeshControlPlanes
 ```
 
 
@@ -15,4 +15,4 @@ value := components.RolesMeshControlPlanesDescriptionThisRoleGrantsFullWriteAcce
 
 | Name                                                                                            | Value                                                                                           |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `RolesMeshControlPlanesDescriptionThisRoleGrantsFullWriteAccessToTheRelatedToMeshControlPlanes` | This role grants full write access to the related to Mesh control planes.                       |
+| `RolesMeshControlPlanesDescriptionAccessToAllReadAndWritePermissionsRelatedToMeshControlPlanes` | Access to all read and write permissions related to Mesh control planes.                        |

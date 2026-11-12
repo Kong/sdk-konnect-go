@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesControlPlanesRolesDeployerDescriptionThisRoleGrantsFullWriteAccessToAdministerServicesRoutesAndPluginsNecessaryToDeployServicesInServiceHub
+value := components.RolesControlPlanesRolesDeployerDescriptionThisRoleGrantsFullWriteAccessToAdministerServicesRoutesAndPluginsNecessaryToDeployServicesInServiceCatalog
 ```
 
 
 ## Values
 
-| Name                                                                                                                                               | Value                                                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RolesControlPlanesRolesDeployerDescriptionThisRoleGrantsFullWriteAccessToAdministerServicesRoutesAndPluginsNecessaryToDeployServicesInServiceHub` | This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub.                         |
+| Name                                                                                                                                                   | Value                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `RolesControlPlanesRolesDeployerDescriptionThisRoleGrantsFullWriteAccessToAdministerServicesRoutesAndPluginsNecessaryToDeployServicesInServiceCatalog` | This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Catalog.                         |

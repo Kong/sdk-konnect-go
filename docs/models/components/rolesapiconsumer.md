@@ -1,0 +1,9 @@
+# RolesAPIConsumer
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `Name`                                                                                     | [components.RolesServicesRolesName](../../models/components/rolesservicesrolesname.md)     | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
+| `Description`                                                                              | [components.RolesServicesDescription](../../models/components/rolesservicesdescription.md) | :heavy_check_mark:                                                                         | N/A                                                                                        | API Consumers can make calls to the given API Product                                      |

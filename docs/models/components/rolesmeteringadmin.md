@@ -1,0 +1,9 @@
+# RolesMeteringAdmin
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `Name`                                                                                     | [components.RolesMeteringRolesName](../../models/components/rolesmeteringrolesname.md)     | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
+| `Description`                                                                              | [components.RolesMeteringDescription](../../models/components/rolesmeteringdescription.md) | :heavy_check_mark:                                                                         | N/A                                                                                        | Can manage all resources                                                                   |

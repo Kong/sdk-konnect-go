@@ -127,12 +127,14 @@ func (e *AssignRoleEntityRegion) IsExact() bool {
 	return false
 }
 
-// AssignRole - An assigned role is a role that has been assigned to a user or team.
+// AssignRole - An assigned role is a role that has been assigned to a user or team. Exactly one of `entity_id` or `entity_ids` must be provided.
 type AssignRole struct {
 	// The desired role.
 	RoleName *RoleName `json:"role_name,omitempty"`
-	// The ID of the entity.
+	// The ID of the entity. Mutually exclusive with `entity_ids`.
 	EntityID *string `json:"entity_id,omitempty"`
+	// The IDs of the entities associated with this role assignment. Mutually exclusive with entity_id; exactly one of entity_id or entity_ids must be provided.
+	EntityIds []string `json:"entity_ids,omitempty"`
 	// The type of entity.
 	EntityTypeName *EntityTypeName `json:"entity_type_name,omitempty"`
 	// Region of the team.
@@ -151,6 +153,13 @@ func (a *AssignRole) GetEntityID() *string {
 		return nil
 	}
 	return a.EntityID
+}
+
+func (a *AssignRole) GetEntityIds() []string {
+	if a == nil {
+		return nil
+	}
+	return a.EntityIds
 }
 
 func (a *AssignRole) GetEntityTypeName() *EntityTypeName {

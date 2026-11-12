@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesReportsDescriptionAllowsUsersToEditDeleteAndShareAReportInKonnectAnalytics
+value := components.RolesReportsDescriptionAllowsUsersToEditAndDeleteAReportInKonnectAnalytics
 ```
 
 
 ## Values
 
-| Name                                                                              | Value                                                                             |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `RolesReportsDescriptionAllowsUsersToEditDeleteAndShareAReportInKonnectAnalytics` | Allows users to edit, delete, and share a Report in Konnect Analytics.            |
+| Name                                                                         | Value                                                                        |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `RolesReportsDescriptionAllowsUsersToEditAndDeleteAReportInKonnectAnalytics` | Allows users to edit and delete a Report in Konnect Analytics.               |
