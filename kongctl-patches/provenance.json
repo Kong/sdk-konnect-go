@@ -1,11 +1,11 @@
 {
   "repository": "Kong/kongctl",
-  "commit": "1fd3800f12babc5d3245f3d0d85600f3e0e21850",
+  "commit": "d5c75ab7ffcf3f2b7b94959252aceafe895462ae",
   "path": "tools/sdk-patches",
   "sha256": {
-    "apply.py": "b3ae2b9f28a4e7043e6c693389a093173fdd83885990156d7a09deba7c70e67f",
-    "manifest.json": "75f12973a6cd8df4c28bc0c1504aa2a10658beb23469fea705ec5c83eae27de2",
-    "README.md": "b8231f3228af144a61440b1fe83d2237237bfa567a8d6be3ff3a0d7c13cf0224",
+    "apply.py": "9b383b7349c3bb2603cf5885fbc007adcb8aeede218323520ef812f7dbb5aab7",
+    "manifest.json": "5fc4c9101fde3a6b589cc28771204f4824837d31745d162bf6aa2e885221ec02",
+    "README.md": "98eefd9da56f0ea8cc5b6e45497ec319f0ef9918ed79f92f723098f65df4ff77",
     "overlays/ai-gateway-pgvector-connection-defaults.yaml": "e95b749c182ea219916960587eb5a697209191356121a3efbb13d67396de5dc1",
     "overlays/ai-gateway-update-runtime-defaults.yaml": "90cd581cf7a301c6270b4cfd63dca367610af20e7a31fa0db926ade10c3f4ce6",
     "overlays/backend-cluster-tls-defaults.yaml": "3c5f065ec53cb0ab53345ac0407af11944433ae6730328adf1bead7a4d5c03ae",
