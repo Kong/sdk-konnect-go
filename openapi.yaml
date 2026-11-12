@@ -81224,12 +81224,14 @@ components:
         host:
           description: Hostname of the proxy URL.
           type: string
+          minLength: 1
         port:
           description: Port of the proxy URL.
           type: integer
         protocol:
           description: Protocol of the proxy URL.
           type: string
+          minLength: 1
       example:
         host: example.com
         port: 443
@@ -81492,6 +81494,7 @@ components:
             -----BEGIN CERTIFICATE-----
             ...
             -----END CERTIFICATE-----
+          minLength: 1
           x-referenceable: true
         cert_digest:
           description: SHA256 hex digest of the public certificate. This field is read-only and is automatically computed; it cannot be set by the caller.
@@ -81522,6 +81525,7 @@ components:
             -----BEGIN CERTIFICATE-----
             ...
             -----END CERTIFICATE-----
+          minLength: 1
           x-referenceable: true
         cert_digest:
           description: SHA256 hex digest of the public certificate. This field is read-only and is automatically computed; it cannot be set by the caller.
@@ -81552,6 +81556,7 @@ components:
             -----BEGIN CERTIFICATE-----
             ...
             -----END CERTIFICATE-----
+          minLength: 1
           x-referenceable: true
         cert_digest:
           description: SHA256 hex digest of the public certificate. This field is read-only and is automatically computed; it cannot be set by the caller.
@@ -81593,6 +81598,7 @@ components:
             -----BEGIN CERTIFICATE-----
             ...
             -----END CERTIFICATE-----
+          minLength: 1
           x-referenceable: true
         key:
           description: PEM-encoded private key matching `cert`.
@@ -81601,6 +81607,7 @@ components:
             -----BEGIN PRIVATE KEY-----
             ...
             -----END PRIVATE KEY-----
+          minLength: 1
           writeOnly: true
           x-referenceable: true
         cert_alt:
@@ -81647,6 +81654,7 @@ components:
             -----BEGIN CERTIFICATE-----
             ...
             -----END CERTIFICATE-----
+          minLength: 1
           x-referenceable: true
         key:
           description: PEM-encoded private key matching `cert`.
@@ -81655,6 +81663,7 @@ components:
             -----BEGIN PRIVATE KEY-----
             ...
             -----END PRIVATE KEY-----
+          minLength: 1
           writeOnly: true
           x-referenceable: true
         cert_alt:
@@ -81701,6 +81710,7 @@ components:
             -----BEGIN CERTIFICATE-----
             ...
             -----END CERTIFICATE-----
+          minLength: 1
           x-referenceable: true
         key:
           description: PEM-encoded private key matching `cert`.
@@ -81709,6 +81719,7 @@ components:
             -----BEGIN PRIVATE KEY-----
             ...
             -----END PRIVATE KEY-----
+          minLength: 1
           writeOnly: true
           x-referenceable: true
         cert_alt:
@@ -81754,6 +81765,7 @@ components:
       description: 'A reference to the certificate with which to associate the SNI hostname, by certificate name. The certificate must have a valid private key to be used by the SNI.'
       type: string
       example: my-certificate
+      minLength: 1
     AIGatewayCertificateReference:
       description: 'A reference to an AI Certificate on the same AI Gateway, by certificate name. The certificate must have a valid private key to be presented as a client certificate to an upstream.'
       type: string
@@ -81935,6 +81947,7 @@ components:
         cert:
           description: JSON escaped string of the certificate.
           type: string
+          minLength: 1
         title:
           description: A human-readable name for the certificate.
           type: string
@@ -81958,6 +81971,7 @@ components:
         cert:
           description: JSON escaped string of the certificate.
           type: string
+          minLength: 1
         title:
           description: A human-readable name for the certificate.
           type: string
@@ -83527,6 +83541,7 @@ components:
             name:
               description: The name of the embeddings model.
               type: string
+              minLength: 1
             config:
               $ref: '#/components/schemas/AIGatewayEmbeddingsModelConfig'
           required:
@@ -83576,6 +83591,7 @@ components:
         deployment_id:
           description: The Azure OpenAI deployment ID for the embeddings model.
           type: string
+          minLength: 1
         api_version:
           description: The Azure OpenAI API version to use.
           type: string
@@ -84043,6 +84059,7 @@ components:
           description: The name of the model defined in the upstream provider that will be executed.
           type: string
           example: gpt-5-model
+          minLength: 1
         weight:
           description: The weight this target gets within the upstream load balancer
           type: integer
@@ -84123,6 +84140,7 @@ components:
         ttl:
           description: 'Cache TTL this price applies to, e.g. "5m" or "1h".'
           type: string
+          minLength: 1
           pattern: '^[0-9]+\.?[0-9]*[hm]$'
         cost:
           description: Cost per 1M cache-write prompt tokens for this TTL.
@@ -84160,6 +84178,7 @@ components:
         above:
           description: 'Input-token threshold above which the factors apply, e.g. "128k" or "1m".'
           type: string
+          minLength: 1
           pattern: '^[0-9]+\.?[0-9]*[km]$'
         input_factor:
           description: Multiplier applied to input pricing above the threshold.
@@ -85096,6 +85115,7 @@ components:
         workspace_instance_id:
           description: The Databricks workspace instance ID.
           type: string
+          minLength: 1
       required:
         - type
         - workspace_instance_id
@@ -85604,6 +85624,7 @@ components:
           description: The upstream URL for the model endpoint.
           type: string
           format: uri
+          minLength: 1
         type:
           type: string
           enum:
@@ -86117,6 +86138,7 @@ components:
           description: The upstream URL for the model endpoint.
           type: string
           format: uri
+          minLength: 1
         type:
           type: string
           enum:
@@ -86386,12 +86408,15 @@ components:
         api_endpoint:
           description: The custom API endpoint for the Gemini model.
           type: string
+          minLength: 1
         location_id:
           description: The Google Cloud location ID for the model endpoint.
           type: string
+          minLength: 1
         project_id:
           description: The Google Cloud project ID for the model endpoint.
           type: string
+          minLength: 1
       required:
         - api_endpoint
         - location_id
@@ -86727,6 +86752,7 @@ components:
                 The ID of the Konnect Config Store that contains the secrets.
               type: string
               example: 77426bee-2bca-4005-81af-284868fd3038
+              minLength: 1
           required:
             - config_store_id
       required:
@@ -86864,6 +86890,7 @@ components:
               description: The session name used when assuming a role.
               type: string
               default: KongVault
+              minLength: 1
             sts_endpoint_url:
               description: |
                 A custom STS endpoint URL used for IAM role assumption.
@@ -86898,6 +86925,7 @@ components:
           description: The session name used when assuming a role.
           type: string
           default: KongVault
+          minLength: 1
         sts_endpoint_url:
           description: |
             A custom STS endpoint URL used for IAM role assumption.
@@ -86972,6 +87000,7 @@ components:
                 The project ID from your Google API Console.
                 You can find it by visiting your Google API Console and selecting “Manage all projects” in the projects list.
               type: string
+              minLength: 1
           required:
             - project_id
           title: GoogleSecretManagerVaultConfig
@@ -86987,6 +87016,7 @@ components:
             The project ID from your Google API Console.
             You can find it by visiting your Google API Console and selecting “Manage all projects” in the projects list.
           type: string
+          minLength: 1
       required:
         - project_id
       title: GoogleSecretManagerVaultConfig
@@ -87060,11 +87090,13 @@ components:
                 The URI from which the vault is reachable.
                 This value can be found in your Azure Key Vault Dashboard under the Vault URI entry.
               type: string
+              minLength: 1
             location:
               description: |
                 Each Azure geography includes one or more regions
                 that meet specific data residency and compliance requirements.
               type: string
+              minLength: 1
             client_id:
               description: |
                 The client ID for your registered application.
@@ -87102,11 +87134,13 @@ components:
             The URI from which the vault is reachable.
             This value can be found in your Azure Key Vault Dashboard under the Vault URI entry.
           type: string
+          minLength: 1
         location:
           description: |
             Each Azure geography includes one or more regions
             that meet specific data residency and compliance requirements.
           type: string
+          minLength: 1
         client_id:
           description: |
             The client ID for your registered application.
@@ -87191,6 +87225,7 @@ components:
               description: |
                 The CyberArk Secrets Manager organization account name.
               type: string
+              minLength: 1
             api_key:
               description: |
                 The API key of the workload identity.
@@ -87200,10 +87235,12 @@ components:
               description: |
                 The CyberArk Secrets Manager backend URL to connect with. Accepts http or https protocols.
               type: string
+              minLength: 1
             login:
               description: |
                 The login name of the workload identity.
               type: string
+              minLength: 1
           required:
             - endpoint_url
             - login
@@ -87220,6 +87257,7 @@ components:
           description: |
             The CyberArk Secrets Manager organization account name.
           type: string
+          minLength: 1
         api_key:
           description: |
             The API key of the workload identity.
@@ -87229,10 +87267,12 @@ components:
           description: |
             The CyberArk Secrets Manager backend URL to connect with. Accepts http or https protocols.
           type: string
+          minLength: 1
         login:
           description: |
             The login name of the workload identity.
           type: string
+          minLength: 1
       required:
         - endpoint_url
         - login
@@ -87334,6 +87374,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -87341,6 +87382,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -87415,6 +87457,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -87422,6 +87465,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -87456,6 +87500,7 @@ components:
             -----BEGIN CERTIFICATE-----
             certificate-content
             -----END CERTIFICATE-----
+          minLength: 1
         key:
           description: The key for the client certificate.
           type: string
@@ -87511,6 +87556,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -87518,6 +87564,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -87552,12 +87599,15 @@ components:
             and the `token_policies` have permissions to read the secrets.
           type: string
           example: demo
+          minLength: 1
         token_endpoint:
           description: The OAuth2 token endpoint for Hashicorp Vault's OAuth2 auth method.
           type: string
+          minLength: 1
         client_id:
           description: The OAuth2 client ID.
           type: string
+          minLength: 1
         client_secret:
           description: The OAuth2 client secret.
           type: string
@@ -87611,6 +87661,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -87618,6 +87669,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -87713,6 +87765,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -87720,6 +87773,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -87804,6 +87858,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -87811,6 +87866,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -87841,9 +87897,11 @@ components:
         role:
           description: The role to use for GCP IAM auth.
           type: string
+          minLength: 1
         service_account:
           description: The GCP service account for GCE auth.
           type: string
+          minLength: 1
         jwt_exp:
           description: The JWT expiration time in seconds for GCP auth (0-900)
           type: integer
@@ -87895,6 +87953,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -87902,6 +87961,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -87932,6 +87992,7 @@ components:
         role:
           description: The role to use for GCP GCE auth.
           type: string
+          minLength: 1
         login_path:
           description: The login path for GCP auth in HashiCorp Vault.
           type: string
@@ -87980,6 +88041,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -87987,6 +88049,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -88017,6 +88080,7 @@ components:
         role:
           description: The role to use for Azure auth.
           type: string
+          minLength: 1
         login_path:
           description: The login path for Azure auth in HashiCorp Vault
           type: string
@@ -88065,6 +88129,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -88072,6 +88137,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -88102,9 +88168,11 @@ components:
         role:
           description: The role to use for AWS EC2 auth.
           type: string
+          minLength: 1
         nonce:
           description: The nonce for AWS EC2 auth.
           type: string
+          minLength: 1
         login_path:
           description: The login path for AWS auth in HashiCorp Vault.
           type: string
@@ -88154,6 +88222,7 @@ components:
         host:
           description: The hostname of your HashiCorp vault.
           type: string
+          minLength: 1
         port:
           description: The port number of your HashiCorp vault.
           type: integer
@@ -88161,6 +88230,7 @@ components:
           description: The mount point.
           type: string
           default: secret
+          minLength: 1
         kv:
           description: The secrets engine version.
           type: string
@@ -88191,9 +88261,11 @@ components:
         role:
           description: The role to use for AWS IAM auth.
           type: string
+          minLength: 1
         region:
           description: The AWS region for auth.
           type: string
+          minLength: 1
         login_path:
           description: The login path for AWS auth in HashiCorp Vault.
           type: string
@@ -88404,6 +88476,7 @@ components:
         host:
           type: string
           example: 127.0.0.1
+          minLength: 1
         port:
           type: integer
           maximum: 65535
@@ -88478,6 +88551,7 @@ components:
         host:
           type: string
           example: 127.0.0.1
+          minLength: 1
           x-referenceable: true
         port:
           description: |
@@ -88559,6 +88633,7 @@ components:
               host:
                 type: string
                 example: 127.0.0.1
+                minLength: 1
               port:
                 type: integer
                 example: 6379
@@ -88577,6 +88652,7 @@ components:
               ip:
                 type: string
                 example: 127.0.0.1
+                minLength: 1
               port:
                 type: integer
                 example: 6379
@@ -88637,6 +88713,7 @@ components:
         host:
           type: string
           example: 127.0.0.1
+          minLength: 1
         port:
           type: integer
           default: 5432
@@ -88653,6 +88730,7 @@ components:
         database:
           type: string
           example: kong-pgvector
+          minLength: 1
         timeout:
           description: 'Timeout in milliseconds for connecting, reading, and writing to the database.'
           type: integer
@@ -88727,10 +88805,12 @@ components:
           description: The name of the directory in which tokens are stored.
           type: string
           example: my-directory
+          minLength: 1
         current_version:
           description: The version of the encryption key used to encrypt new tokens.
           type: string
           example: v1
+          minLength: 1
         keys:
           description: The encryption keys used to protect stored tokens. Keep previous versions in the list so existing tokens can still be decrypted.
           type: array
@@ -88750,6 +88830,7 @@ components:
           description: The identifier of this key version.
           type: string
           example: v1
+          minLength: 1
         key:
           description: |
             A [vault reference](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault) to the encryption key. A literal key value is rejected.
@@ -88912,6 +88993,7 @@ components:
             Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
           type: string
           example: ai-sanitizer
+          minLength: 1
         enabled:
           description: Whether the policy is enabled.
           type: boolean
@@ -88989,6 +89071,7 @@ components:
             Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
           type: string
           example: ai-sanitizer
+          minLength: 1
         enabled:
           description: Whether the policy is enabled.
           type: boolean
@@ -89066,6 +89149,7 @@ components:
             Note: Plugins have been renamed to Policies in Kong AI Gateway. Policy types and configuration documentation can be found in the [Developer Docs](https://developer.konghq.com/plugins/).
           type: string
           example: ai-sanitizer
+          minLength: 1
         enabled:
           description: Whether the policy is enabled.
           type: boolean
@@ -89154,6 +89238,7 @@ components:
           description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
           type: string
           example: <lua_schema>
+          minLength: 1
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -89187,10 +89272,12 @@ components:
           description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
           type: string
           example: <lua_schema>
+          minLength: 1
         handler:
           description: 'The Lua handler implementation for the custom policy, equivalent to a Kong plugin''s `handler.lua`.'
           type: string
           example: <lua_handler>
+          minLength: 1
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -89236,6 +89323,7 @@ components:
           description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
           type: string
           example: <lua_schema>
+          minLength: 1
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -89269,10 +89357,12 @@ components:
           description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
           type: string
           example: <lua_schema>
+          minLength: 1
         handler:
           description: 'The Lua handler implementation for the custom policy, equivalent to a Kong plugin''s `handler.lua`.'
           type: string
           example: <lua_handler>
+          minLength: 1
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -89318,6 +89408,7 @@ components:
           description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
           type: string
           example: <lua_schema>
+          minLength: 1
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -89360,10 +89451,12 @@ components:
           description: 'The Lua schema definition for the custom policy, equivalent to a Kong plugin''s `schema.lua`.'
           type: string
           example: <lua_schema>
+          minLength: 1
         handler:
           description: 'The Lua handler implementation for the custom policy, equivalent to a Kong plugin''s `handler.lua`.'
           type: string
           example: <lua_handler>
+          minLength: 1
         labels:
           $ref: '#/components/schemas/PublicLabels'
         managed_by:
@@ -89438,6 +89531,7 @@ components:
               type: string
               format: uri
               example: 'https://booking-agent.internal.kongair.com'
+              minLength: 1
             upstream:
               $ref: '#/components/schemas/AIGatewayUpstreamConfig'
             route:
@@ -89550,6 +89644,7 @@ components:
               type: string
               format: uri
               example: 'https://booking-agent.internal.kongair.com'
+              minLength: 1
             upstream:
               $ref: '#/components/schemas/AIGatewayUpstreamConfig'
             route:
@@ -89662,6 +89757,7 @@ components:
               type: string
               format: uri
               example: 'https://booking-agent.internal.kongair.com'
+              minLength: 1
             upstream:
               $ref: '#/components/schemas/AIGatewayUpstreamConfig'
             route:
@@ -89866,6 +89962,7 @@ components:
           description: The display name for this credential instance.
           type: string
           example: Greg's Dev Key
+          minLength: 1
         name:
           description: 'A user-defined unique identifier for this credential, used as a stable human-readable reference. This value is immutable after creation.'
           example: gregs-dev-key
@@ -89906,6 +90003,7 @@ components:
           description: The display name for this credential instance.
           type: string
           example: Greg's Dev Key
+          minLength: 1
         name:
           description: 'A user-defined unique identifier for this credential, used as a stable human-readable reference. This value is immutable after creation.'
           example: gregs-dev-key
@@ -89951,6 +90049,7 @@ components:
           description: The display name for this credential instance.
           type: string
           example: Greg's Dev Key
+          minLength: 1
         name:
           description: 'A user-defined unique identifier for this credential, used as a stable human-readable reference. This value is immutable after creation.'
           example: gregs-dev-key
@@ -89987,6 +90086,7 @@ components:
           description: The display name for this credential instance.
           type: string
           example: Greg's Dev Key
+          minLength: 1
         name:
           description: 'A user-defined unique identifier for this credential, used as a stable human-readable reference. This value is immutable after creation.'
           example: gregs-dev-key
@@ -90006,6 +90106,7 @@ components:
           description: The display name for this credential instance.
           type: string
           example: Greg's Dev Key
+          minLength: 1
         name:
           description: 'A user-defined unique identifier for this credential, used as a stable human-readable reference. This value is immutable after creation.'
           example: gregs-dev-key
@@ -90084,6 +90185,7 @@ components:
           description: The ID or name of the consumer to add to the group.
           type: string
           example: cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b
+          minLength: 1
       additionalProperties: false
       required:
         - consumer
@@ -90207,6 +90309,7 @@ components:
               type: string
               format: uri
               example: 'https://mcp.internal.kongair.com'
+              minLength: 1
             upstream:
               $ref: '#/components/schemas/AIGatewayUpstreamConfig'
             certificates:
@@ -90660,6 +90763,7 @@ components:
         name:
           description: Tool identifier used to match remote MCP Server tools for ACL enforcement.
           type: string
+          minLength: 1
       additionalProperties: false
       required:
         - name
@@ -90916,6 +91020,7 @@ components:
         provider:
           description: Name of the upstream credential provider registered in the Token Vault directory.
           type: string
+          minLength: 1
         subject_token_type:
           description: |
             The kind of bearer token the caller presents, which the Token Vault exchanges for the
@@ -91532,6 +91637,7 @@ components:
           type: string
           format: uri
           example: 'https://mcp.internal.kongair.com'
+          minLength: 1
         upstream:
           $ref: '#/components/schemas/AIGatewayUpstreamConfig'
         certificates:
@@ -91597,6 +91703,7 @@ components:
           type: string
           format: uri
           example: 'https://mcp.internal.kongair.com'
+          minLength: 1
         upstream:
           $ref: '#/components/schemas/AIGatewayUpstreamConfig'
         certificates:
@@ -91719,6 +91826,7 @@ components:
           type: string
           format: uri
           example: 'https://mcp.internal.kongair.com'
+          minLength: 1
         upstream:
           $ref: '#/components/schemas/AIGatewayUpstreamConfig'
         certificates:
@@ -91816,6 +91924,7 @@ components:
           type: string
           format: uri
           example: 'https://mcp.internal.kongair.com'
+          minLength: 1
         upstream:
           $ref: '#/components/schemas/AIGatewayUpstreamConfig'
         certificates:
@@ -92144,12 +92253,14 @@ components:
             This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
           type: string
           format: uri
+          minLength: 1
           x-referenceable: true
         client_id:
           description: |
             The client ID for the OAuth 2.0 client-credentials.
             This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
           type: string
+          minLength: 1
           x-referenceable: true
         client_secret:
           description: |
@@ -92318,6 +92429,7 @@ components:
               type: string
               format: uri
               example: 'https://mcp.internal.kongair.com'
+              minLength: 1
             upstream:
               $ref: '#/components/schemas/AIGatewayUpstreamConfig'
             certificates:
@@ -92779,6 +92891,7 @@ components:
           description: The name of the parameter.
           type: string
           example: origin
+          minLength: 1
         in:
           description: The location of the parameter in the request.
           type: string
@@ -93153,6 +93266,7 @@ components:
                   header:
                     description: The name of the header.
                     type: string
+                    minLength: 1
                   path:
                     description: The path of the header value.
                     type: array
@@ -93163,6 +93277,7 @@ components:
               description: |
                 Salt used for generating the cache key that is used for caching the token endpoint requests.
               type: string
+              minLength: 1
             principals:
               description: Map a request to a Kong Identity principal after token verification.
               type: object
@@ -93290,6 +93405,7 @@ components:
       description: Reference to a model provider instance by name.
       type: string
       example: azure-ai-se
+      minLength: 1
     AIGatewayModelProviderAnthropic:
       description: |
         Configuration for an upstream model provider.
@@ -94028,6 +94144,7 @@ components:
                   The name of the header used for authentication.
                   This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
                 type: string
+                minLength: 1
                 x-referenceable: true
               value:
                 description: |
@@ -94051,6 +94168,7 @@ components:
                 description: |
                   This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
                 type: string
+                minLength: 1
                 x-referenceable: true
               value:
                 description: |
@@ -94308,6 +94426,7 @@ components:
                   description: The Azure AI Foundry resource name.
                   type: string
                   example: kong-foundry-east
+                  minLength: 1
                 domain:
                   description: The domain for Azure AI Foundry hosted models.
                   type: string
@@ -94629,6 +94748,7 @@ components:
       type: string
       example: my-secret-value
       maxLength: 8192
+      minLength: 1
       writeOnly: true
     CreateAIGatewayConfigStoreSecretRequest:
       type: object
@@ -95198,6 +95318,7 @@ components:
                   header:
                     description: The name of the header.
                     type: string
+                    minLength: 1
                   path:
                     description: The path of the header value.
                     type: array
@@ -95208,6 +95329,7 @@ components:
               description: |
                 Salt used for generating the cache key that is used for caching the token endpoint requests.
               type: string
+              minLength: 1
             principals:
               description: Map a request to a Kong Identity principal after token verification.
               type: object
@@ -95459,6 +95581,7 @@ components:
             `x-api-key` or `cookie`. Names are compared case-insensitively.
           type: string
           example: my-tenant-id
+          minLength: 1
           pattern: '^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$'
         tag_key:
           description: Key of the cost tag the header value is stored under.
@@ -95483,6 +95606,7 @@ components:
             compared case-insensitively.
           type: string
           example: my-co
+          minLength: 1
           pattern: '^[A-Za-z0-9]+(-[A-Za-z0-9]+)+$'
       required:
         - name
@@ -117290,7 +117414,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.12
+    version: 2.3.13
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
