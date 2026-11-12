@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 21d7fc977ebc9d63b096b8dfac500b42
+  docChecksum: b741bb49a8025f81a0036166e1acd275
   docVersion: 3.18.0
   speakeasyVersion: 1.808.1
   generationVersion: 2.960.8
-  releaseVersion: 0.85.0
-  configChecksum: deefc67c0f72952049a701e52cd1258d
+  releaseVersion: 0.85.2
+  configChecksum: 3e35bc2b6d8094623a3cf2b05deb1c25
 persistentEdits:
-  generation_id: 0fd7d926-e948-4eb5-a57d-d50c80036d56
-  pristine_commit_hash: 8010baaeb675fd52b7e07c9d80e43f51d4e94f28
-  pristine_tree_hash: f41be7b688e7003a498b26cf51195af099f99cff
+  generation_id: 6d8a2ad8-285d-4468-915f-8967ba6f2c8f
+  pristine_commit_hash: d579bf360ab722b6a13068ba9c8df373667e7216
+  pristine_tree_hash: 007be88c47bb87ef39e03a11dac071cfcc4a7547
 features:
   go:
     acceptHeaders: 2.81.2
@@ -28170,7 +28170,7 @@ trackedFiles:
     pristine_git_object: 6c42a0774175129a7af32c0007a36d0433dfbfe0
   models/components/aigwkeyauthgeneratedconfig.go:
     id: 8cd13d63639c
-    last_write_checksum: sha1:63d0a4326fe0f0c05a94c7f2d654b0645493c961
+    last_write_checksum: sha1:248435fb0b372078b5c3d7b295a6a85b46be89da
     pristine_git_object: 23cfb5b5fd8dacefd308f22c0b48c0d70e105e53
   models/components/aigwopenidconnectgeneratedconfigoutput.go:
     id: e716fa1794c8
@@ -39546,8 +39546,8 @@ trackedFiles:
     pristine_git_object: 769e0b766ed3fc44070c4f19daf4362f9cc965c0
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:9acd0abb95fc9edcdd5dc33d19e804c932c1ee51
-    pristine_git_object: d9f5a26792d74cc7b70e8cd1303e21decc845ae9
+    last_write_checksum: sha1:043884bf8555723fd56e5e8b750127806dddbbf2
+    pristine_git_object: a36531b7477348cbfa39d93d3ceb812d25778a26
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:cf293508cf861c0729c57332885a7772c8e4bdb7
