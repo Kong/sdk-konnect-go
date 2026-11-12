@@ -42,6 +42,11 @@ release:
     go get github.com/Kong/sdk-konnect-go@{{ .Tag }}
     ```
 
+    {{ if .Env.OAS_REPORT }}
+    {{ .Env.OAS_REPORT }}
+
+    {{ end }}
+
   footer: |
     ---
     🤖 Generated with GoReleaser
