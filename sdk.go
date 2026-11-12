@@ -341,6 +341,8 @@ type SDK struct {
 	// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
 	// - `ws`: At least one of `hosts`, `headers`, or `paths`
 	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
+	//
+	//
 	//   <br>
 	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
 	//   <br><br>
@@ -600,10 +602,10 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.85.2",
+		SDKVersion: "0.86.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.85.2 2.960.8 3.18.0 github.com/Kong/sdk-konnect-go",
-			SDKVersion:        "0.85.2",
+			UserAgent:         "speakeasy-sdk/go 0.86.0 2.960.8 3.18.0 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.86.0",
 			GenVersion:        "2.960.8",
 			OpenAPIDocVersion: "3.18.0",
 			ServerList:        ServerList,
