@@ -164,6 +164,7 @@ generate.sdk:
 	$(MAKE) generate.deepcopy
 	$(MAKE) _generate.omitempty
 	python3 kongctl-patches/apply.py post-generate .
+	$(MAKE) test.kongctl-patches
 	go mod tidy
 	$(MAKE) lint.sdk
 
@@ -289,3 +290,7 @@ validate.kongctl-overlays:
 		speakeasy overlay validate --overlay $$overlay; \
 		speakeasy overlay apply --strict --schema $(OPENAPI_FILE) --overlay $$overlay --out /dev/null; \
 	done
+
+.PHONY: test.kongctl-patches
+test.kongctl-patches:
+	CGO_ENABLED=0 go test -count=1 -tags=kongctl_sdk_patched .
