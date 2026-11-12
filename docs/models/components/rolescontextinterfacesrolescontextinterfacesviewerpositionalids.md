@@ -1,0 +1,8 @@
+# RolesContextInterfacesRolesContextInterfacesViewerPositionalIds
+
+
+## Fields
+
+| Field                                                                                                                       | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `ContextInterfaceID`                                                                                                        | [*components.RolesContextInterfacesContextInterfaceID](../../models/components/rolescontextinterfacescontextinterfaceid.md) | :heavy_minus_sign:                                                                                                          | N/A                                                                                                                         |

@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesAuditLogsRolesDescriptionThisRoleGrantsReadAccessToTheAuditLogConfiguration
+value := components.RolesAuditLogsRolesDescriptionThisRoleGrantsReadAccessToAllAuditLogResources
 ```
 
 
 ## Values
 
-| Name                                                                               | Value                                                                              |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `RolesAuditLogsRolesDescriptionThisRoleGrantsReadAccessToTheAuditLogConfiguration` | This role grants read access to the Audit log configuration.                       |
+| Name                                                                           | Value                                                                          |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `RolesAuditLogsRolesDescriptionThisRoleGrantsReadAccessToAllAuditLogResources` | This role grants read access to all audit log resources.                       |

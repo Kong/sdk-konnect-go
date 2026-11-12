@@ -1,0 +1,9 @@
+# ContextInterfaces
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `Name`                                                                                           | [components.RolesContextInterfacesName](../../models/components/rolescontextinterfacesname.md)   | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `Roles`                                                                                          | [components.RolesContextInterfacesRoles](../../models/components/rolescontextinterfacesroles.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |

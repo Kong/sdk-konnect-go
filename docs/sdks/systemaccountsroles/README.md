@@ -305,6 +305,7 @@ func main() {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401, 403                    | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.ConflictError     | 409                         | application/problem+json    |
