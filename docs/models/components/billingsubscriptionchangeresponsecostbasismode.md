@@ -1,0 +1,25 @@
+# BillingSubscriptionChangeResponseCostBasisMode
+
+Controls whether custom-currency cost bases are resolved dynamically or pinned
+when their currency pair is introduced to the subscription.
+
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.BillingSubscriptionChangeResponseCostBasisModeDynamic
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.BillingSubscriptionChangeResponseCostBasisMode("custom_value")
+```
+
+
+## Values
+
+| Name                                                    | Value                                                   |
+| ------------------------------------------------------- | ------------------------------------------------------- |
+| `BillingSubscriptionChangeResponseCostBasisModeDynamic` | dynamic                                                 |
+| `BillingSubscriptionChangeResponseCostBasisModePinned`  | pinned                                                  |

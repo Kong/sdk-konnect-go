@@ -1,0 +1,11 @@
+# ListBillingProfilesParamsFilter
+
+Filter options for listing billing profiles.
+
+
+## Fields
+
+| Field                                                                                                                             | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `ID`                                                                                                                              | [*components.ULIDFieldFilter](../../models/components/ulidfieldfilter.md)                                                         | :heavy_minus_sign:                                                                                                                | Filters on the given ULID field value by exact match. All properties are<br/>optional; provide exactly one to specify the comparison. |
+| `Name`                                                                                                                            | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md)                                                     | :heavy_minus_sign:                                                                                                                | Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`                                      |

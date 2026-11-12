@@ -1,0 +1,10 @@
+# AIGatewayLoggingConfig
+
+Configuration for AI Gateway logging.
+
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Payloads`         | `*bool`            | :heavy_minus_sign: | N/A                |

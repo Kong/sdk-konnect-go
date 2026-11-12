@@ -1,0 +1,12 @@
+# AiModelVersionSpecWrite
+
+Request body for creating or replacing a version's spec (upsert). The request body has a maximum size limit of 8MB.
+
+
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       | Example                                                                                                           |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `SpecContent`                                                                                                     | `string`                                                                                                          | :heavy_check_mark:                                                                                                | The raw content of the oas specification, in json or yaml format (for example, an<br/>OpenAPI document).<br/>     | {"openapi":"3.1.0","info":{"title":"My AI Model","version":"1.0.0"},"paths":{}}                                   |
+| `SpecProvider`                                                                                                    | [*components.AiModelVersionSpecWriteSpecProvider](../../models/components/aimodelversionspecwritespecprovider.md) | :heavy_minus_sign:                                                                                                | Optional provenance. Omit (or `null`) for a user-uploaded specification.<br/>                                     |                                                                                                                   |

@@ -1,0 +1,11 @@
+# NotificationChannel
+
+Channel subscription details for an event.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                 | [components.NotificationChannelType](../../models/components/notificationchanneltype.md)                               | :heavy_check_mark:                                                                                                     | Channel of a user scoped subscription. The http channel is not a user channel: it belongs to org scoped notifications. |
+| `Enabled`                                                                                                              | `bool`                                                                                                                 | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |

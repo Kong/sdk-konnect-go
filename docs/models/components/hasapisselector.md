@@ -1,0 +1,11 @@
+# HasApisSelector
+
+Entity selector that includes services by attached APIs.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Selector`                                                                                                             | [components.HasApisSelectorServiceSelectorSelector](../../models/components/hasapisselectorserviceselectorselector.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `SelectorParameters`                                                                                                   | [components.HasSelectorParams](../../models/components/hasselectorparams.md)                                           | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |

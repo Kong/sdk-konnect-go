@@ -1,0 +1,13 @@
+# BillingSubscriptionEditAddItem
+
+Add a new rate card to a phase. Adding an item to the current phase closes the
+active version of the same item key and appends a new version.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                 | [components.BillingSubscriptionEditAddItemType](../../models/components/billingsubscriptioneditadditemtype.md)         | :heavy_check_mark:                                                                                                     | Discriminator for the add-item operation.                                                                              |
+| `PhaseKey`                                                                                                             | `string`                                                                                                               | :heavy_check_mark:                                                                                                     | The key of the phase to add the item to.                                                                               |
+| `RateCard`                                                                                                             | [components.BillingSubscriptionEditAddItemRateCard](../../models/components/billingsubscriptioneditadditemratecard.md) | :heavy_check_mark:                                                                                                     | The rate card describing what the customer gets and pays for the new item.                                             |

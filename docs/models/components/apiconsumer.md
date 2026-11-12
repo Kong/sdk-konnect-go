@@ -1,0 +1,9 @@
+# Apiconsumer
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Name`                                                                                                         | [components.ListRolesResponseServicesRolesName](../../models/components/listrolesresponseservicesrolesname.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `Description`                                                                                                  | [components.ListRolesResponseDescription](../../models/components/listrolesresponsedescription.md)             | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

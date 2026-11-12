@@ -1,0 +1,8 @@
+# UpdateAppAuthStrategyRequestKeyAuth
+
+
+## Fields
+
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `KeyAuth`                                                                                                                      | [components.PartialAppAuthStrategyConfigKeyAuth](../../models/components/partialappauthstrategyconfigkeyauth.md)               | :heavy_check_mark:                                                                                                             | Key Auth configuration for updating an Application Auth Strategy.<br/>The ttl field can be set to null to unset the Time-To-Live.<br/> |

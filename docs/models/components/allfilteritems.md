@@ -1,0 +1,10 @@
+# AllFilterItems
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Field`                                                                                | [components.AllFilterItemsField](../../models/components/allfilteritemsfield.md)       | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `Operator`                                                                             | [components.AllFilterItemsOperator](../../models/components/allfilteritemsoperator.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `Value`                                                                                | `any`                                                                                  | :heavy_minus_sign:                                                                     | N/A                                                                                    |

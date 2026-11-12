@@ -1,0 +1,10 @@
+# Passive
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `Healthy`                                                                                   | [*components.UpstreamHealthy](../../models/components/upstreamhealthy.md)                   | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `Type`                                                                                      | [*components.UpstreamHealthchecksType](../../models/components/upstreamhealthcheckstype.md) | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `Unhealthy`                                                                                 | [*components.UpstreamUnhealthy](../../models/components/upstreamunhealthy.md)               | :heavy_minus_sign:                                                                          | N/A                                                                                         |

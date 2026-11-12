@@ -1,0 +1,11 @@
+# BillingChargeCostBasisDynamic
+
+Cost basis resolved at the charge's full service period start.
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `Type`                                                                                                       | [components.BillingChargeCostBasisDynamicType](../../models/components/billingchargecostbasisdynamictype.md) | :heavy_check_mark:                                                                                           | Discriminator selecting the cost basis mode.                                                                 |                                                                                                              |
+| `FiatCurrency`                                                                                               | `string`                                                                                                     | :heavy_check_mark:                                                                                           | The fiat currency the charge amount is converted into for invoicing.                                         | USD                                                                                                          |

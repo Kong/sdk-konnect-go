@@ -1,0 +1,9 @@
+# PatchPortalConnectedAppsRequest
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `PortalID`                                                                                 | `string`                                                                                   | :heavy_check_mark:                                                                         | The portal ID                                                                              | d32d905a-ed33-46a3-a093-d8f536af9a8a                                                       |
+| `PatchPortalConnectedApps`                                                                 | [components.PatchPortalConnectedApps](../../models/components/patchportalconnectedapps.md) | :heavy_check_mark:                                                                         | Portal Connected Apps configuration fields to patch                                        |                                                                                            |

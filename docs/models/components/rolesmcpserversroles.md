@@ -1,0 +1,11 @@
+# RolesMcpServersRoles
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `McpServerAdmin`                                                                  | [*components.McpServerAdmin](../../models/components/mcpserveradmin.md)           | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `McpServerCreator`                                                                | [*components.McpServerCreator](../../models/components/mcpservercreator.md)       | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `McpServerMaintainer`                                                             | [*components.McpServerMaintainer](../../models/components/mcpservermaintainer.md) | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `McpServerViewer`                                                                 | [*components.McpServerViewer](../../models/components/mcpserverviewer.md)         | :heavy_minus_sign:                                                                | N/A                                                                               |

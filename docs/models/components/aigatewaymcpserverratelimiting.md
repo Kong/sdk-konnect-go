@@ -1,0 +1,13 @@
+# AIGatewayMCPServerRateLimiting
+
+Rate limits applied to requests to this MCP Server, matched by MCP method or tool name.
+Each AI Gateway node counts and enforces the limits independently.
+
+**Requires a minimum runtime version of `2.3`**.
+
+
+## Fields
+
+| Field                                                                                                                                          | Type                                                                                                                                           | Required                                                                                                                                       | Description                                                                                                                                    | Example                                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Limits`                                                                                                                                       | [][components.AIGatewayMCPServerRateLimit](../../models/components/aigatewaymcpserverratelimit.md)                                             | :heavy_check_mark:                                                                                                                             | The rate limits to enforce. Each entry targets exactly one of `method` or `tool`. Two<br/>entries cannot share the same target and `window_size`.<br/> | [<br/>{<br/>"method": "tools/call",<br/>"limit": 100,<br/>"window_size": 60<br/>},<br/>{<br/>"tool": "search_flights",<br/>"limit": 10,<br/>"window_size": 1<br/>}<br/>] |

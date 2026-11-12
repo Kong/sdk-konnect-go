@@ -1,0 +1,13 @@
+# StatusDetails
+
+Detailed status information including available actions and workflow state.
+
+
+## Fields
+
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `Immutable`                                                                                                | `bool`                                                                                                     | :heavy_check_mark:                                                                                         | Whether the invoice is immutable (i.e. cannot be modified or deleted).                                     |
+| `Failed`                                                                                                   | `bool`                                                                                                     | :heavy_check_mark:                                                                                         | Whether the invoice is in a failed state.                                                                  |
+| `ExtendedStatus`                                                                                           | `string`                                                                                                   | :heavy_check_mark:                                                                                         | Fine-grained internal status string providing additional workflow detail beyond<br/>the top-level status enum. |
+| `AvailableActions`                                                                                         | [components.AvailableActions](../../models/components/availableactions.md)                                 | :heavy_check_mark:                                                                                         | The set of state-transition actions currently available for this invoice.                                  |

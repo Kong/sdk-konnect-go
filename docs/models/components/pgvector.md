@@ -1,0 +1,19 @@
+# Pgvector
+
+
+## Fields
+
+| Field                                                           | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `Database`                                                      | `*string`                                                       | :heavy_minus_sign:                                              | the database of the pgvector database                           |
+| `Host`                                                          | `*string`                                                       | :heavy_minus_sign:                                              | the host of the pgvector database                               |
+| `Password`                                                      | `*string`                                                       | :heavy_minus_sign:                                              | the password of the pgvector database                           |
+| `Port`                                                          | `*int64`                                                        | :heavy_minus_sign:                                              | the port of the pgvector database                               |
+| `Ssl`                                                           | `*bool`                                                         | :heavy_minus_sign:                                              | whether to use ssl for the pgvector database                    |
+| `SslCert`                                                       | `*string`                                                       | :heavy_minus_sign:                                              | the path of ssl cert to use for the pgvector database           |
+| `SslCertKey`                                                    | `*string`                                                       | :heavy_minus_sign:                                              | the path of ssl cert key to use for the pgvector database       |
+| `SslRequired`                                                   | `*bool`                                                         | :heavy_minus_sign:                                              | whether ssl is required for the pgvector database               |
+| `SslVerify`                                                     | `*bool`                                                         | :heavy_minus_sign:                                              | whether to verify ssl for the pgvector database                 |
+| `SslVersion`                                                    | [*components.SslVersion](../../models/components/sslversion.md) | :heavy_minus_sign:                                              | the ssl version to use for the pgvector database                |
+| `Timeout`                                                       | `*float64`                                                      | :heavy_minus_sign:                                              | the timeout of the pgvector database                            |
+| `User`                                                          | `*string`                                                       | :heavy_minus_sign:                                              | the user of the pgvector database                               |
