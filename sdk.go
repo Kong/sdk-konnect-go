@@ -3,7 +3,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.18.0 and generator version 2.960.8
+// Generated from OpenAPI doc version 3.19.0 and generator version 2.960.8
 
 import (
 	"context"
@@ -342,6 +342,8 @@ type SDK struct {
 	// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
 	// - `ws`: At least one of `hosts`, `headers`, or `paths`
 	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
+	//
+	//
 	//   <br>
 	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
 	//   <br><br>
@@ -499,6 +501,8 @@ type SDK struct {
 	PortalCustomDomains *PortalCustomDomains
 	// APIs related to customization of Konnect Developer Portals.
 	PortalCustomization *PortalCustomization
+	// APIs related to Konnect Developer Portal sidebar navigation configuration.
+	PortalNavigation *PortalNavigation
 	// APIs related to Konnect Developer Portal Custom Pages.
 	Pages *Pages
 	// APIs related to Konnect Developer Portal developers.
@@ -603,10 +607,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.86.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:         "speakeasy-sdk/go 0.86.1 2.960.8 3.18.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.86.1 2.960.8 3.19.0 github.com/Kong/sdk-konnect-go",
 			SDKVersion:        "0.86.1",
 			GenVersion:        "2.960.8",
-			OpenAPIDocVersion: "3.18.0",
+			OpenAPIDocVersion: "3.19.0",
 			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),
@@ -785,6 +789,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.PortalAuthSettings = newPortalAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalCustomDomains = newPortalCustomDomains(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalCustomization = newPortalCustomization(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalNavigation = newPortalNavigation(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Pages = newPages(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalDevelopers = newPortalDevelopers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
