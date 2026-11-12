@@ -51,7 +51,9 @@ type AIGatewayVaultHashiCorpVault struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string                `json:"managed_by,omitempty"`
 	Type      HashiCorpVaultAIGatewayVaultType `json:"type"`
@@ -310,7 +312,9 @@ type AIGatewayVaultConjurVault struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string             `json:"managed_by,omitempty"`
 	Type      ConjurVaultAIGatewayVaultType `json:"type"`
@@ -583,7 +587,9 @@ type AIGatewayVaultAzureKeyVault struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string                `json:"managed_by,omitempty"`
 	Type      AzureKeyVaultAIGatewayVaultType  `json:"type"`
@@ -782,7 +788,9 @@ type AIGatewayVaultGoogleSecretManagerVault struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string                                      `json:"managed_by,omitempty"`
 	Type      GoogleSecretManagerVaultAIGatewayVaultType             `json:"type"`
@@ -1022,7 +1030,9 @@ type AIGatewayVaultAwsSecretsManagerVault struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string                                  `json:"managed_by,omitempty"`
 	Type      AwsSecretsManagerVaultAIGatewayVaultType           `json:"type"`
@@ -1185,7 +1195,9 @@ type AIGatewayVaultEnvironmentVariableVault struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string                                      `json:"managed_by,omitempty"`
 	Type      EnvironmentVariableVaultAIGatewayVaultType             `json:"type"`
@@ -1336,7 +1348,9 @@ type AIGatewayVaultKonnectConfigStoreVault struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string                           `json:"managed_by,omitempty"`
 	Type      KonnectConfigStoreVaultAIGatewayVaultType   `json:"type"`

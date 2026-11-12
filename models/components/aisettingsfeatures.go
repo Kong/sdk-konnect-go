@@ -7,30 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AiSearch - AI Search config
-type AiSearch struct {
-	// Whether AI Search is enabled or not
-	Enabled *bool `default:"false" json:"enabled"`
-}
-
-func (a AiSearch) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AiSearch) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AiSearch) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
 // AISettingsFeaturesMcpServer - AI Features config
 type AISettingsFeaturesMcpServer struct {
 	// Whether the MCP Server is enabled or not
@@ -66,17 +42,8 @@ func (a *AISettingsFeaturesMcpServer) GetWriteOperationsEnabled() *bool {
 
 // AISettingsFeatures - AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.
 type AISettingsFeatures struct {
-	// AI Search config
-	AiSearch AiSearch `json:"ai_search"`
 	// AI Features config
 	McpServer AISettingsFeaturesMcpServer `json:"mcp_server"`
-}
-
-func (a *AISettingsFeatures) GetAiSearch() AiSearch {
-	if a == nil {
-		return AiSearch{}
-	}
-	return a.AiSearch
 }
 
 func (a *AISettingsFeatures) GetMcpServer() AISettingsFeaturesMcpServer {

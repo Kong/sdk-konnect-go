@@ -3,6 +3,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // AssignedRoleEntityRegion - Region of the entity.
 type AssignedRoleEntityRegion string
 
@@ -43,6 +47,22 @@ type AssignedRole struct {
 	EntityTypeName *string `json:"entity_type_name,omitempty"`
 	// Region of the entity.
 	EntityRegion *AssignedRoleEntityRegion `json:"entity_region,omitempty"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// Indicates that the role is assigned and removed only by Konnect.
+	KonnectManaged *bool `default:"false" json:"konnect_managed"`
+}
+
+func (a AssignedRole) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AssignedRole) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (a *AssignedRole) GetID() *string {
@@ -78,4 +98,11 @@ func (a *AssignedRole) GetEntityRegion() *AssignedRoleEntityRegion {
 		return nil
 	}
 	return a.EntityRegion
+}
+
+func (a *AssignedRole) GetKonnectManaged() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.KonnectManaged
 }
