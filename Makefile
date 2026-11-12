@@ -77,6 +77,10 @@ _generate.omitempty:
 	# validation for gRPC routes. Strip the default so the field is only sent when explicitly set.
 	$(SED) -i 's#StripPath \*bool `default:"true" json:"strip_path"`#StripPath *bool `json:"strip_path,omitempty"`#g' \
 		models/components/routejson.go
+	# An empty identity_realms list must reach Konnect to disable its default
+	# identity realm, but speakeasy emits omitempty for the field.
+	$(SED) -i 's#IdentityRealms \[\]IdentityRealms `json:"identity_realms,omitempty"`#IdentityRealms []IdentityRealms `json:"identity_realms,omitzero"`#g' \
+		models/components/aigwkeyauthgeneratedconfig.go
 
 .PHONY: generate.deepcopy
 generate.deepcopy: controller-gen
@@ -184,7 +188,8 @@ test: test.unit test.integration
 .PHONY: test.unit
 test.unit:
 	go test -v -race $(GOTESTFLAGS) \
-		./internal/...
+		./internal/... \
+		./models/components/...
 
 .PHONY: test.integration
 test.integration:
