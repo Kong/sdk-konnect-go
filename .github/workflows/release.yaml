@@ -52,6 +52,26 @@ jobs:
             echo "IS_PRERELEASE=false" >> $GITHUB_ENV
           fi
 
+      - name: Build the input OAS report
+        run: |
+          # Outside the work tree, because GoReleaser checks that the tree is clean.
+          REPORT="${RUNNER_TEMP}/oas-report.md"
+          PREV_TAG=$(git describe --tags --abbrev=0 --match 'v[0-9]*' 'HEAD^' 2>/dev/null || true)
+          if [[ -n "${PREV_TAG}" ]]; then
+            echo "Input OAS versions compared with \`${PREV_TAG}\`."
+          else
+            echo "There is no previous release to compare the input OAS versions with."
+          fi > "${REPORT}"
+          echo >> "${REPORT}"
+          ./scripts/oas-report.sh "${PREV_TAG}" >> "${REPORT}"
+
+          # GoReleaser prints this environment variable in the release header.
+          {
+            echo "OAS_REPORT<<GORELEASER_EOF"
+            cat "${REPORT}"
+            echo "GORELEASER_EOF"
+          } >> "$GITHUB_ENV"
+
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@f06c13b6b1a9625abc9e6e439d9c05a8f2190e94 # v7.2.3
         with:
