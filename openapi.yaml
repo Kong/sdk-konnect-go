@@ -46745,6 +46745,7 @@ components:
               allOf:
                 - $ref: '#/components/schemas/TryItUIAudience'
                 - default: all
+              x-flatten-allOf: true
           title: PortalCustomizationSpecRenderer
         robots:
           type: string
