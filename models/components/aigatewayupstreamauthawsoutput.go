@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type AIGatewayUpstreamAuthAWSType string
+
+const (
+	AIGatewayUpstreamAuthAWSTypeAws AIGatewayUpstreamAuthAWSType = "aws"
+)
+
+func (e AIGatewayUpstreamAuthAWSType) ToPointer() *AIGatewayUpstreamAuthAWSType {
+	return &e
+}
+func (e *AIGatewayUpstreamAuthAWSType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "aws":
+		*e = AIGatewayUpstreamAuthAWSType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayUpstreamAuthAWSType: %v", v)
+	}
+}
+
 // AIGatewayUpstreamAuthAWSOutput - AWS IAM (SigV4) authentication for the upstream service.
 type AIGatewayUpstreamAuthAWSOutput struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"aws" json:"type"`
+	Type AIGatewayUpstreamAuthAWSType `json:"type"`
 	// The access key id for authenticating with static IAM User credentials.
 	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
 	//
@@ -43,8 +67,11 @@ func (a *AIGatewayUpstreamAuthAWSOutput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayUpstreamAuthAWSOutput) GetType() string {
-	return "aws"
+func (a *AIGatewayUpstreamAuthAWSOutput) GetType() AIGatewayUpstreamAuthAWSType {
+	if a == nil {
+		return AIGatewayUpstreamAuthAWSType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayUpstreamAuthAWSOutput) GetAccessKeyID() *string {
@@ -76,6 +103,105 @@ func (a *AIGatewayUpstreamAuthAWSOutput) GetRoleSessionName() *string {
 }
 
 func (a *AIGatewayUpstreamAuthAWSOutput) GetStsEndpointURL() *string {
+	if a == nil {
+		return nil
+	}
+	return a.StsEndpointURL
+}
+
+// AIGatewayUpstreamAuthAWS - AWS IAM (SigV4) authentication for the upstream service.
+type AIGatewayUpstreamAuthAWS struct {
+	Type AIGatewayUpstreamAuthAWSType `json:"type"`
+	// The access key id for authenticating with static IAM User credentials.
+	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+	//
+	AccessKeyID *string `json:"access_key_id,omitempty"`
+	// The secret access key for authenticating with static IAM User credentials.
+	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+	//
+	SecretAccessKey *string `json:"secret_access_key,omitempty"`
+	// The session token for authenticating with temporary IAM credentials.
+	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+	//
+	SessionToken *string `json:"session_token,omitempty"`
+	// The AWS region of the upstream service. Overrides the region inferred from the environment.
+	//
+	Region *string `json:"region,omitempty"`
+	// The ARN of the IAM role to assume for generating authentication tokens.
+	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+	//
+	AssumeRoleArn *string `json:"assume_role_arn,omitempty"`
+	// The session name for the temporary credentials when assuming the IAM role.
+	// This field is [referenceable](https://developer.konghq.com/gateway/entities/vault/#how-do-i-reference-secrets-stored-in-a-vault).
+	//
+	RoleSessionName *string `json:"role_session_name,omitempty"`
+	// The STS endpoint URL to use for generating authentication tokens.
+	// If not specified, the default AWS STS endpoint will be used.
+	//
+	StsEndpointURL *string `json:"sts_endpoint_url,omitempty"`
+}
+
+func (a AIGatewayUpstreamAuthAWS) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AIGatewayUpstreamAuthAWS) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AIGatewayUpstreamAuthAWS) GetType() AIGatewayUpstreamAuthAWSType {
+	if a == nil {
+		return AIGatewayUpstreamAuthAWSType("")
+	}
+	return a.Type
+}
+
+func (a *AIGatewayUpstreamAuthAWS) GetAccessKeyID() *string {
+	if a == nil {
+		return nil
+	}
+	return a.AccessKeyID
+}
+
+func (a *AIGatewayUpstreamAuthAWS) GetSecretAccessKey() *string {
+	if a == nil {
+		return nil
+	}
+	return a.SecretAccessKey
+}
+
+func (a *AIGatewayUpstreamAuthAWS) GetSessionToken() *string {
+	if a == nil {
+		return nil
+	}
+	return a.SessionToken
+}
+
+func (a *AIGatewayUpstreamAuthAWS) GetRegion() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Region
+}
+
+func (a *AIGatewayUpstreamAuthAWS) GetAssumeRoleArn() *string {
+	if a == nil {
+		return nil
+	}
+	return a.AssumeRoleArn
+}
+
+func (a *AIGatewayUpstreamAuthAWS) GetRoleSessionName() *string {
+	if a == nil {
+		return nil
+	}
+	return a.RoleSessionName
+}
+
+func (a *AIGatewayUpstreamAuthAWS) GetStsEndpointURL() *string {
 	if a == nil {
 		return nil
 	}

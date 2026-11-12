@@ -4,6 +4,8 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -73,6 +75,29 @@ func (e *AIGatewayModelBalancerLowestLatencyConfigFailoverCriteria) IsExact() bo
 	return false
 }
 
+type AIGatewayModelBalancerLowestLatencyConfigAlgorithm string
+
+const (
+	AIGatewayModelBalancerLowestLatencyConfigAlgorithmLowestLatency AIGatewayModelBalancerLowestLatencyConfigAlgorithm = "lowest-latency"
+)
+
+func (e AIGatewayModelBalancerLowestLatencyConfigAlgorithm) ToPointer() *AIGatewayModelBalancerLowestLatencyConfigAlgorithm {
+	return &e
+}
+func (e *AIGatewayModelBalancerLowestLatencyConfigAlgorithm) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "lowest-latency":
+		*e = AIGatewayModelBalancerLowestLatencyConfigAlgorithm(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelBalancerLowestLatencyConfigAlgorithm: %v", v)
+	}
+}
+
 // LatencyStrategy - What metrics to use for latency. Available values are: `tpot` (time-per-output-token) and `e2e`.
 type LatencyStrategy string
 
@@ -108,10 +133,9 @@ type AIGatewayModelBalancerLowestLatencyConfig struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64 `default:"10000" json:"slots"`
-	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	algorithm string `const:"lowest-latency" json:"algorithm"`
+	Slots        *int64                                             `default:"10000" json:"slots"`
+	WriteTimeout *int64                                             `default:"60000" json:"write_timeout"`
+	Algorithm    AIGatewayModelBalancerLowestLatencyConfigAlgorithm `json:"algorithm"`
 	// What metrics to use for latency. Available values are: `tpot` (time-per-output-token) and `e2e`.
 	LatencyStrategy *LatencyStrategy `default:"tpot" json:"latency_strategy"`
 }
@@ -183,8 +207,11 @@ func (a *AIGatewayModelBalancerLowestLatencyConfig) GetWriteTimeout() *int64 {
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerLowestLatencyConfig) GetAlgorithm() string {
-	return "lowest-latency"
+func (a *AIGatewayModelBalancerLowestLatencyConfig) GetAlgorithm() AIGatewayModelBalancerLowestLatencyConfigAlgorithm {
+	if a == nil {
+		return AIGatewayModelBalancerLowestLatencyConfigAlgorithm("")
+	}
+	return a.Algorithm
 }
 
 func (a *AIGatewayModelBalancerLowestLatencyConfig) GetLatencyStrategy() *LatencyStrategy {

@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayAlterClientQuotasRequestRulesType string
+
+const (
+	EventGatewayAlterClientQuotasRequestRulesTypeAlterClientQuotas EventGatewayAlterClientQuotasRequestRulesType = "alter_client_quotas"
+)
+
+func (e EventGatewayAlterClientQuotasRequestRulesType) ToPointer() *EventGatewayAlterClientQuotasRequestRulesType {
+	return &e
+}
+func (e *EventGatewayAlterClientQuotasRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "alter_client_quotas":
+		*e = EventGatewayAlterClientQuotasRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayAlterClientQuotasRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayAlterClientQuotasRequestRules - The rules to apply to Kafka `AlterClientQuotas` requests.
 type EventGatewayAlterClientQuotasRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"alter_client_quotas" json:"type"`
+	Type EventGatewayAlterClientQuotasRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against each quota operation in the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayAlterClientQuotasRequestRules) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (e *EventGatewayAlterClientQuotasRequestRules) GetType() string {
-	return "alter_client_quotas"
+func (e *EventGatewayAlterClientQuotasRequestRules) GetType() EventGatewayAlterClientQuotasRequestRulesType {
+	if e == nil {
+		return EventGatewayAlterClientQuotasRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayAlterClientQuotasRequestRules) GetRules() []EventGatewayAlterClientQuotasRule {

@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayConsumerGroupHeartbeatRequestRulesType string
+
+const (
+	EventGatewayConsumerGroupHeartbeatRequestRulesTypeConsumerGroupHeartbeat EventGatewayConsumerGroupHeartbeatRequestRulesType = "consumer_group_heartbeat"
+)
+
+func (e EventGatewayConsumerGroupHeartbeatRequestRulesType) ToPointer() *EventGatewayConsumerGroupHeartbeatRequestRulesType {
+	return &e
+}
+func (e *EventGatewayConsumerGroupHeartbeatRequestRulesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "consumer_group_heartbeat":
+		*e = EventGatewayConsumerGroupHeartbeatRequestRulesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayConsumerGroupHeartbeatRequestRulesType: %v", v)
+	}
+}
+
 // EventGatewayConsumerGroupHeartbeatRequestRules - The rules to apply to Kafka `ConsumerGroupHeartbeat` requests.
 type EventGatewayConsumerGroupHeartbeatRequestRules struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"consumer_group_heartbeat" json:"type"`
+	Type EventGatewayConsumerGroupHeartbeatRequestRulesType `json:"type"`
 	// Every rule in this list is evaluated independently against the request.
 	// A rule that evaluates to `false` runs its action.
 	// A maximum of 10 rules are allowed.
@@ -29,8 +53,11 @@ func (e *EventGatewayConsumerGroupHeartbeatRequestRules) UnmarshalJSON(data []by
 	return nil
 }
 
-func (e *EventGatewayConsumerGroupHeartbeatRequestRules) GetType() string {
-	return "consumer_group_heartbeat"
+func (e *EventGatewayConsumerGroupHeartbeatRequestRules) GetType() EventGatewayConsumerGroupHeartbeatRequestRulesType {
+	if e == nil {
+		return EventGatewayConsumerGroupHeartbeatRequestRulesType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayConsumerGroupHeartbeatRequestRules) GetRules() []EventGatewayConsumerGroupHeartbeatRule {

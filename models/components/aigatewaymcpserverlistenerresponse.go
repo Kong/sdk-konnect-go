@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type AIGatewayMCPServerListenerResponseType string
+
+const (
+	AIGatewayMCPServerListenerResponseTypeListener AIGatewayMCPServerListenerResponseType = "listener"
+)
+
+func (e AIGatewayMCPServerListenerResponseType) ToPointer() *AIGatewayMCPServerListenerResponseType {
+	return &e
+}
+func (e *AIGatewayMCPServerListenerResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "listener":
+		*e = AIGatewayMCPServerListenerResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayMCPServerListenerResponseType: %v", v)
+	}
+}
 
 // AIGatewayMCPServerListenerResponseLogging - Configuration for AI Gateway logging.
 type AIGatewayMCPServerListenerResponseLogging struct {
@@ -105,7 +130,7 @@ type AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig stru
 	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 	// incoming requests.
 	//
-	Route *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
+	Route AIGatewayMCPServerRouteWithMatcher `json:"route"`
 	// Configuration for AI Gateway logging.
 	Logging *AIGatewayMCPServerListenerResponseLogging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
@@ -131,15 +156,15 @@ func (a AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) 
 }
 
 func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) GetRoute() *AIGatewayMCPServerRouteWithMatcher {
+func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig) GetRoute() AIGatewayMCPServerRouteWithMatcher {
 	if a == nil {
-		return nil
+		return AIGatewayMCPServerRouteWithMatcher{}
 	}
 	return a.Route
 }
@@ -180,8 +205,7 @@ func (a *AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig)
 }
 
 type AIGatewayMCPServerListenerResponse struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"listener" json:"type"`
+	Type AIGatewayMCPServerListenerResponseType `json:"type"`
 	// Server-side configuration specific to modes where Kong answers as the MCP server.
 	Config AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig `json:"config"`
 	// The explicit list of source MCP Servers whose tools this listener exposes.
@@ -208,7 +232,9 @@ type AIGatewayMCPServerListenerResponse struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// The Token Vault Datastore holding this entity's credential storage: the directory credentials
@@ -247,8 +273,11 @@ func (a *AIGatewayMCPServerListenerResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPServerListenerResponse) GetType() string {
-	return "listener"
+func (a *AIGatewayMCPServerListenerResponse) GetType() AIGatewayMCPServerListenerResponseType {
+	if a == nil {
+		return AIGatewayMCPServerListenerResponseType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayMCPServerListenerResponse) GetConfig() AIGatewayMCPServerListenerResponseAIGatewayMCPServerKongListenerConfig {

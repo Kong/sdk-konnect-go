@@ -4,6 +4,7 @@
 package components
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
@@ -34,6 +35,29 @@ func (e *MCPPositionalArgument2Format) IsExact() bool {
 	return false
 }
 
+type MCPPositionalArgument2Type string
+
+const (
+	MCPPositionalArgument2TypePositional MCPPositionalArgument2Type = "positional"
+)
+
+func (e MCPPositionalArgument2Type) ToPointer() *MCPPositionalArgument2Type {
+	return &e
+}
+func (e *MCPPositionalArgument2Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "positional":
+		*e = MCPPositionalArgument2Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MCPPositionalArgument2Type: %v", v)
+	}
+}
+
 type MCPPositionalArgument2 struct {
 	// A description of the input.
 	Description *string `json:"description,omitempty"`
@@ -51,9 +75,8 @@ type MCPPositionalArgument2 struct {
 	// A list of possible values for the input.
 	Choices []string `json:"choices,omitempty"`
 	// A map of variable names to their values.
-	Variables map[string]MCPInput `json:"variables,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"positional" json:"type"`
+	Variables map[string]MCPInput        `json:"variables,omitempty"`
+	Type      MCPPositionalArgument2Type `json:"type"`
 	// An identifier for the positional argument.
 	ValueHint *string `json:"value_hint,omitempty"`
 	// Whether the argument can be repeated multiple times.
@@ -134,8 +157,11 @@ func (m *MCPPositionalArgument2) GetVariables() map[string]MCPInput {
 	return m.Variables
 }
 
-func (m *MCPPositionalArgument2) GetType() string {
-	return "positional"
+func (m *MCPPositionalArgument2) GetType() MCPPositionalArgument2Type {
+	if m == nil {
+		return MCPPositionalArgument2Type("")
+	}
+	return m.Type
 }
 
 func (m *MCPPositionalArgument2) GetValueHint() *string {
@@ -180,6 +206,29 @@ func (e *MCPPositionalArgumentFormat) IsExact() bool {
 	return false
 }
 
+type MCPPositionalArgumentType string
+
+const (
+	MCPPositionalArgumentTypePositional MCPPositionalArgumentType = "positional"
+)
+
+func (e MCPPositionalArgumentType) ToPointer() *MCPPositionalArgumentType {
+	return &e
+}
+func (e *MCPPositionalArgumentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "positional":
+		*e = MCPPositionalArgumentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MCPPositionalArgumentType: %v", v)
+	}
+}
+
 type MCPPositionalArgument1 struct {
 	// A description of the input.
 	Description *string `json:"description,omitempty"`
@@ -197,9 +246,8 @@ type MCPPositionalArgument1 struct {
 	// A list of possible values for the input.
 	Choices []string `json:"choices,omitempty"`
 	// A map of variable names to their values.
-	Variables map[string]MCPInput `json:"variables,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"positional" json:"type"`
+	Variables map[string]MCPInput       `json:"variables,omitempty"`
+	Type      MCPPositionalArgumentType `json:"type"`
 	// An identifier for the positional argument.
 	ValueHint string `json:"value_hint"`
 	// Whether the argument can be repeated multiple times.
@@ -280,8 +328,11 @@ func (m *MCPPositionalArgument1) GetVariables() map[string]MCPInput {
 	return m.Variables
 }
 
-func (m *MCPPositionalArgument1) GetType() string {
-	return "positional"
+func (m *MCPPositionalArgument1) GetType() MCPPositionalArgumentType {
+	if m == nil {
+		return MCPPositionalArgumentType("")
+	}
+	return m.Type
 }
 
 func (m *MCPPositionalArgument1) GetValueHint() string {
@@ -301,11 +352,11 @@ func (m *MCPPositionalArgument1) GetIsRepeated() *bool {
 // #region class-body-mcppositionalargument1
 // #endregion class-body-mcppositionalargument1
 
-type MCPPositionalArgumentType string
+type MCPPositionalArgumentUnionType string
 
 const (
-	MCPPositionalArgumentTypeMCPPositionalArgument1 MCPPositionalArgumentType = "MCPPositionalArgument_1"
-	MCPPositionalArgumentTypeMCPPositionalArgument2 MCPPositionalArgumentType = "MCPPositionalArgument_2"
+	MCPPositionalArgumentUnionTypeMCPPositionalArgument1 MCPPositionalArgumentUnionType = "MCPPositionalArgument_1"
+	MCPPositionalArgumentUnionTypeMCPPositionalArgument2 MCPPositionalArgumentUnionType = "MCPPositionalArgument_2"
 )
 
 // MCPPositionalArgument - A positional input is a value inserted verbatim into the command line.
@@ -313,11 +364,11 @@ type MCPPositionalArgument struct {
 	MCPPositionalArgument1 *MCPPositionalArgument1 `queryParam:"inline" union:"member"`
 	MCPPositionalArgument2 *MCPPositionalArgument2 `queryParam:"inline" union:"member"`
 
-	Type MCPPositionalArgumentType
+	Type MCPPositionalArgumentUnionType
 }
 
 func CreateMCPPositionalArgumentMCPPositionalArgument1(mcpPositionalArgument1 MCPPositionalArgument1) MCPPositionalArgument {
-	typ := MCPPositionalArgumentTypeMCPPositionalArgument1
+	typ := MCPPositionalArgumentUnionTypeMCPPositionalArgument1
 
 	return MCPPositionalArgument{
 		MCPPositionalArgument1: &mcpPositionalArgument1,
@@ -326,7 +377,7 @@ func CreateMCPPositionalArgumentMCPPositionalArgument1(mcpPositionalArgument1 MC
 }
 
 func CreateMCPPositionalArgumentMCPPositionalArgument2(mcpPositionalArgument2 MCPPositionalArgument2) MCPPositionalArgument {
-	typ := MCPPositionalArgumentTypeMCPPositionalArgument2
+	typ := MCPPositionalArgumentUnionTypeMCPPositionalArgument2
 
 	return MCPPositionalArgument{
 		MCPPositionalArgument2: &mcpPositionalArgument2,
@@ -346,14 +397,14 @@ func (u *MCPPositionalArgument) UnmarshalJSON(data []byte) (err error) {
 	var mcpPositionalArgument1 MCPPositionalArgument1 = MCPPositionalArgument1{}
 	if err := utils.UnmarshalJSON(data, &mcpPositionalArgument1, "", true, nil); err == nil {
 		u.MCPPositionalArgument1 = &mcpPositionalArgument1
-		u.Type = MCPPositionalArgumentTypeMCPPositionalArgument1
+		u.Type = MCPPositionalArgumentUnionTypeMCPPositionalArgument1
 		return nil
 	}
 
 	var mcpPositionalArgument2 MCPPositionalArgument2 = MCPPositionalArgument2{}
 	if err := utils.UnmarshalJSON(data, &mcpPositionalArgument2, "", true, nil); err == nil {
 		u.MCPPositionalArgument2 = &mcpPositionalArgument2
-		u.Type = MCPPositionalArgumentTypeMCPPositionalArgument2
+		u.Type = MCPPositionalArgumentUnionTypeMCPPositionalArgument2
 		return nil
 	}
 

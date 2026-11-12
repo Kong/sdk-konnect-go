@@ -4,17 +4,41 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type SchemaValidationInlineSchemaConfigAvroSchemaType string
+
+const (
+	SchemaValidationInlineSchemaConfigAvroSchemaTypeAvro SchemaValidationInlineSchemaConfigAvroSchemaType = "avro"
+)
+
+func (e SchemaValidationInlineSchemaConfigAvroSchemaType) ToPointer() *SchemaValidationInlineSchemaConfigAvroSchemaType {
+	return &e
+}
+func (e *SchemaValidationInlineSchemaConfigAvroSchemaType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "avro":
+		*e = SchemaValidationInlineSchemaConfigAvroSchemaType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SchemaValidationInlineSchemaConfigAvroSchemaType: %v", v)
+	}
+}
 
 // SchemaValidationInlineSchemaConfigAvro - The configuration of an inline schema when using Avro.
 //
 // **Requires a minimum runtime version of `1.3`**.
 type SchemaValidationInlineSchemaConfigAvro struct {
 	// A schema that applies according to `schema_type`.
-	Schema string `json:"schema"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	schemaType string `const:"avro" json:"schema_type"`
+	Schema     string                                           `json:"schema"`
+	SchemaType SchemaValidationInlineSchemaConfigAvroSchemaType `json:"schema_type"`
 }
 
 func (s SchemaValidationInlineSchemaConfigAvro) MarshalJSON() ([]byte, error) {
@@ -35,6 +59,9 @@ func (s *SchemaValidationInlineSchemaConfigAvro) GetSchema() string {
 	return s.Schema
 }
 
-func (s *SchemaValidationInlineSchemaConfigAvro) GetSchemaType() string {
-	return "avro"
+func (s *SchemaValidationInlineSchemaConfigAvro) GetSchemaType() SchemaValidationInlineSchemaConfigAvroSchemaType {
+	if s == nil {
+		return SchemaValidationInlineSchemaConfigAvroSchemaType("")
+	}
+	return s.SchemaType
 }

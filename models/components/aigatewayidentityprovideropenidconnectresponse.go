@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type AIGatewayIdentityProviderOpenIDConnectResponseType string
+
+const (
+	AIGatewayIdentityProviderOpenIDConnectResponseTypeOpenidConnect AIGatewayIdentityProviderOpenIDConnectResponseType = "openid-connect"
+)
+
+func (e AIGatewayIdentityProviderOpenIDConnectResponseType) ToPointer() *AIGatewayIdentityProviderOpenIDConnectResponseType {
+	return &e
+}
+func (e *AIGatewayIdentityProviderOpenIDConnectResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "openid-connect":
+		*e = AIGatewayIdentityProviderOpenIDConnectResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayIdentityProviderOpenIDConnectResponseType: %v", v)
+	}
+}
 
 type AIGatewayIdentityProviderOpenIDConnectResponseAuthMethods string
 
@@ -563,11 +588,12 @@ type AIGatewayIdentityProviderOpenIDConnectResponse struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"openid-connect" json:"type"`
+	ManagedBy map[string]string                                  `json:"managed_by,omitempty"`
+	Type      AIGatewayIdentityProviderOpenIDConnectResponseType `json:"type"`
 	// Configuration for the OpenID Connect identity provider.
 	// For advanced use cases, additional config properties can be sent in the request body.
 	// See: https://developer.konghq.com/plugins/openid-connect/reference/ for the list of properties
@@ -620,8 +646,11 @@ func (a *AIGatewayIdentityProviderOpenIDConnectResponse) GetManagedBy() map[stri
 	return a.ManagedBy
 }
 
-func (a *AIGatewayIdentityProviderOpenIDConnectResponse) GetType() string {
-	return "openid-connect"
+func (a *AIGatewayIdentityProviderOpenIDConnectResponse) GetType() AIGatewayIdentityProviderOpenIDConnectResponseType {
+	if a == nil {
+		return AIGatewayIdentityProviderOpenIDConnectResponseType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayIdentityProviderOpenIDConnectResponse) GetConfig() *AIGatewayIdentityProviderOpenIDConnectResponseConfig {

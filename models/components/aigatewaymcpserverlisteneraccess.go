@@ -27,6 +27,9 @@ type AIGatewayMCPServerListenerAccess struct {
 func CreateAIGatewayMCPServerListenerAccessConsumer(consumer AIGatewayMCPServerListenerConsumer) AIGatewayMCPServerListenerAccess {
 	typ := AIGatewayMCPServerListenerAccessTypeConsumer
 
+	typStr := ACLAttributeType(typ)
+	consumer.ACLAttributeType = &typStr
+
 	return AIGatewayMCPServerListenerAccess{
 		AIGatewayMCPServerListenerConsumer: &consumer,
 		Type:                               typ,
@@ -35,6 +38,9 @@ func CreateAIGatewayMCPServerListenerAccessConsumer(consumer AIGatewayMCPServerL
 
 func CreateAIGatewayMCPServerListenerAccessOauthAccessToken(oauthAccessToken AIGatewayMCPServerListenerOauth) AIGatewayMCPServerListenerAccess {
 	typ := AIGatewayMCPServerListenerAccessTypeOauthAccessToken
+
+	typStr := AIGatewayMCPServerListenerOauthACLAttributeType(typ)
+	oauthAccessToken.ACLAttributeType = typStr
 
 	return AIGatewayMCPServerListenerAccess{
 		AIGatewayMCPServerListenerOauth: &oauthAccessToken,

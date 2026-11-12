@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayAuthStrategyKeyAuthType string
+
+const (
+	AIGatewayAuthStrategyKeyAuthTypeKeyAuth AIGatewayAuthStrategyKeyAuthType = "key-auth"
+)
+
+func (e AIGatewayAuthStrategyKeyAuthType) ToPointer() *AIGatewayAuthStrategyKeyAuthType {
+	return &e
+}
+func (e *AIGatewayAuthStrategyKeyAuthType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "key-auth":
+		*e = AIGatewayAuthStrategyKeyAuthType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayAuthStrategyKeyAuthType: %v", v)
+	}
+}
 
 // AIGatewayAuthStrategyKeyAuth - Configuration for an auth strategy.
 type AIGatewayAuthStrategyKeyAuth struct {
@@ -22,7 +47,9 @@ type AIGatewayAuthStrategyKeyAuth struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// The Token Vault Datastore holding this entity's credential storage: the directory credentials
@@ -31,10 +58,9 @@ type AIGatewayAuthStrategyKeyAuth struct {
 	// must have type `token-vault`. Only one Datastore can be referenced.
 	//
 	// **Requires a minimum runtime version of `2.3`**.
-	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                      `const:"key-auth" json:"type"`
-	Config *AIGWKeyAuthGeneratedConfig `json:"config,omitempty"`
+	Datastores []AIGatewayDatastoreRef          `json:"datastores,omitempty"`
+	Type       AIGatewayAuthStrategyKeyAuthType `json:"type"`
+	Config     *AIGWKeyAuthGeneratedConfig      `json:"config,omitempty"`
 }
 
 func (a AIGatewayAuthStrategyKeyAuth) MarshalJSON() ([]byte, error) {
@@ -83,8 +109,11 @@ func (a *AIGatewayAuthStrategyKeyAuth) GetDatastores() []AIGatewayDatastoreRef {
 	return a.Datastores
 }
 
-func (a *AIGatewayAuthStrategyKeyAuth) GetType() string {
-	return "key-auth"
+func (a *AIGatewayAuthStrategyKeyAuth) GetType() AIGatewayAuthStrategyKeyAuthType {
+	if a == nil {
+		return AIGatewayAuthStrategyKeyAuthType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayAuthStrategyKeyAuth) GetConfig() *AIGWKeyAuthGeneratedConfig {

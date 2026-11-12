@@ -103,6 +103,7 @@ func main() {
 
     res, err := s.IntegrationInstanceAuthConfig.UpsertIntegrationInstanceAuthConfig(ctx, "3f51fa25-310a-421d-bd1a-007f859021a3", components.CreateUpsertIntegrationInstanceAuthConfigOauthConfig(
         components.OauthConfig{
+            Type: components.OauthConfigTypeOauth,
             ClientID: "d745213a-b7e8-4998-abe3-41f164001970",
             ClientSecret: "s3cr3t4p1cl13ntt0k3n1234567890abcdef",
             AuthorizationEndpoint: "https://identity.service.com/oauth/authorize",

@@ -28,6 +28,9 @@ type EncryptionKey struct {
 func CreateEncryptionKeyAws(aws EncryptionKeyAWS) EncryptionKey {
 	typ := EncryptionKeyTypeAws
 
+	typStr := EncryptionKeyAWSType(typ)
+	aws.Type = typStr
+
 	return EncryptionKey{
 		EncryptionKeyAWS: &aws,
 		Type:             typ,
@@ -36,6 +39,9 @@ func CreateEncryptionKeyAws(aws EncryptionKeyAWS) EncryptionKey {
 
 func CreateEncryptionKeyStatic(static EncryptionKeyStatic) EncryptionKey {
 	typ := EncryptionKeyTypeStatic
+
+	typStr := EncryptionKeyStaticType(typ)
+	static.Type = typStr
 
 	return EncryptionKey{
 		EncryptionKeyStatic: &static,

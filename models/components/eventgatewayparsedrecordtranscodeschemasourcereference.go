@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayParsedRecordTranscodeSchemaSourceReferenceType string
+
+const (
+	EventGatewayParsedRecordTranscodeSchemaSourceReferenceTypeReference EventGatewayParsedRecordTranscodeSchemaSourceReferenceType = "reference"
+)
+
+func (e EventGatewayParsedRecordTranscodeSchemaSourceReferenceType) ToPointer() *EventGatewayParsedRecordTranscodeSchemaSourceReferenceType {
+	return &e
+}
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceReferenceType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "reference":
+		*e = EventGatewayParsedRecordTranscodeSchemaSourceReferenceType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayParsedRecordTranscodeSchemaSourceReferenceType: %v", v)
+	}
+}
+
 // EventGatewayParsedRecordTranscodeSchemaSourceReference - References a schema registered in a schema registry, computing the subject and version to use.
 type EventGatewayParsedRecordTranscodeSchemaSourceReference struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"reference" json:"type"`
+	Type EventGatewayParsedRecordTranscodeSchemaSourceReferenceType `json:"type"`
 	// A reference to a schema Registry.
 	SchemaRegistry SchemaRegistryReference `json:"schema_registry"`
 	// An expression that computes the schema registry subject of the output data's schema.
@@ -35,8 +59,11 @@ func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) UnmarshalJSON(d
 	return nil
 }
 
-func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetType() string {
-	return "reference"
+func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetType() EventGatewayParsedRecordTranscodeSchemaSourceReferenceType {
+	if e == nil {
+		return EventGatewayParsedRecordTranscodeSchemaSourceReferenceType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayParsedRecordTranscodeSchemaSourceReference) GetSchemaRegistry() SchemaRegistryReference {

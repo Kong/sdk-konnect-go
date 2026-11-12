@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EncryptionKeyAWSType string
+
+const (
+	EncryptionKeyAWSTypeAws EncryptionKeyAWSType = "aws"
+)
+
+func (e EncryptionKeyAWSType) ToPointer() *EncryptionKeyAWSType {
+	return &e
+}
+func (e *EncryptionKeyAWSType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "aws":
+		*e = EncryptionKeyAWSType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EncryptionKeyAWSType: %v", v)
+	}
+}
+
 // EncryptionKeyAWS - The AWS KMS key to use for encryption.
 type EncryptionKeyAWS struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"aws" json:"type"`
+	Type EncryptionKeyAWSType `json:"type"`
 	// The AWS KMS key ARN.
 	Arn string `json:"arn"`
 }
@@ -26,8 +50,11 @@ func (e *EncryptionKeyAWS) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EncryptionKeyAWS) GetType() string {
-	return "aws"
+func (e *EncryptionKeyAWS) GetType() EncryptionKeyAWSType {
+	if e == nil {
+		return EncryptionKeyAWSType("")
+	}
+	return e.Type
 }
 
 func (e *EncryptionKeyAWS) GetArn() string {

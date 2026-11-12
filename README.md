@@ -184,14 +184,17 @@ func main() {
 		Name: "my-add-on",
 		Owner: components.CreateAddOnOwnerControlPlaneGroupAddOnOwner(
 			components.ControlPlaneGroupAddOnOwner{
+				Kind:                 components.ControlPlaneGroupAddOnOwnerKindControlPlaneGroup,
 				ControlPlaneGroupID:  "123e4567-e89b-12d3-a456-426614174000",
 				ControlPlaneGroupGeo: components.ControlPlaneGeoSg,
 			},
 		),
 		Config: components.CreateCreateAddOnConfigManagedCache(
 			components.ManagedCache{
+				Kind: components.ManagedCacheKindManagedCacheV0,
 				CapacityConfig: components.CreateManagedCacheCapacityConfigTiered(
 					components.Tiered{
+						Kind: components.TieredKindTiered,
 						Tier: components.TierSmall,
 					},
 				),

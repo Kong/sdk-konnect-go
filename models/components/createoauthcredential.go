@@ -9,6 +9,29 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type CreateOAuthCredentialType string
+
+const (
+	CreateOAuthCredentialTypeOauth CreateOAuthCredentialType = "oauth"
+)
+
+func (e CreateOAuthCredentialType) ToPointer() *CreateOAuthCredentialType {
+	return &e
+}
+func (e *CreateOAuthCredentialType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "oauth":
+		*e = CreateOAuthCredentialType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateOAuthCredentialType: %v", v)
+	}
+}
+
 // CreateOAuthCredentialGrantType - The OAuth 2.0 grant type used for authorization (e.g., `authorization_code`).
 type CreateOAuthCredentialGrantType string
 
@@ -78,8 +101,7 @@ func (c *CreateOAuthCredentialConfig) GetRedirectURI() string {
 
 // CreateOAuthCredential - Payload used to create an `OAuth` credential for an integration instance.
 type CreateOAuthCredential struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                      `const:"oauth" json:"type"`
+	Type   CreateOAuthCredentialType   `json:"type"`
 	Config CreateOAuthCredentialConfig `json:"config"`
 }
 
@@ -94,8 +116,11 @@ func (c *CreateOAuthCredential) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *CreateOAuthCredential) GetType() string {
-	return "oauth"
+func (c *CreateOAuthCredential) GetType() CreateOAuthCredentialType {
+	if c == nil {
+		return CreateOAuthCredentialType("")
+	}
+	return c.Type
 }
 
 func (c *CreateOAuthCredential) GetConfig() CreateOAuthCredentialConfig {

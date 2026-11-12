@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type KongPrincipalIdentityAuthServerClientResponseType string
+
+const (
+	KongPrincipalIdentityAuthServerClientResponseTypeAuthServerClient KongPrincipalIdentityAuthServerClientResponseType = "auth_server_client"
+)
+
+func (e KongPrincipalIdentityAuthServerClientResponseType) ToPointer() *KongPrincipalIdentityAuthServerClientResponseType {
+	return &e
+}
+func (e *KongPrincipalIdentityAuthServerClientResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auth_server_client":
+		*e = KongPrincipalIdentityAuthServerClientResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for KongPrincipalIdentityAuthServerClientResponseType: %v", v)
+	}
+}
 
 type KongPrincipalIdentityAuthServerClientResponse struct {
 	// Contains a unique identifier used for this resource.
@@ -18,17 +43,18 @@ type KongPrincipalIdentityAuthServerClientResponse struct {
 	Labels map[string]string `json:"labels"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt time.Time `json:"updated_at"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_        string `const:"auth_server_client" json:"type"`
-	AuthServerID string `json:"auth_server_id"`
-	ClientID     string `json:"client_id"`
+	UpdatedAt    time.Time                                         `json:"updated_at"`
+	Type         KongPrincipalIdentityAuthServerClientResponseType `json:"type"`
+	AuthServerID string                                            `json:"auth_server_id"`
+	ClientID     string                                            `json:"client_id"`
 }
 
 func (k KongPrincipalIdentityAuthServerClientResponse) MarshalJSON() ([]byte, error) {
@@ -77,8 +103,11 @@ func (k *KongPrincipalIdentityAuthServerClientResponse) GetUpdatedAt() time.Time
 	return k.UpdatedAt
 }
 
-func (k *KongPrincipalIdentityAuthServerClientResponse) GetType() string {
-	return "auth_server_client"
+func (k *KongPrincipalIdentityAuthServerClientResponse) GetType() KongPrincipalIdentityAuthServerClientResponseType {
+	if k == nil {
+		return KongPrincipalIdentityAuthServerClientResponseType("")
+	}
+	return k.Type
 }
 
 func (k *KongPrincipalIdentityAuthServerClientResponse) GetAuthServerID() string {

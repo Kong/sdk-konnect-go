@@ -4,14 +4,37 @@
 package components
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type CreatePortalCustomDomainSSLStandardDomainVerificationMethod string
+
+const (
+	CreatePortalCustomDomainSSLStandardDomainVerificationMethodHTTP CreatePortalCustomDomainSSLStandardDomainVerificationMethod = "http"
+)
+
+func (e CreatePortalCustomDomainSSLStandardDomainVerificationMethod) ToPointer() *CreatePortalCustomDomainSSLStandardDomainVerificationMethod {
+	return &e
+}
+func (e *CreatePortalCustomDomainSSLStandardDomainVerificationMethod) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "http":
+		*e = CreatePortalCustomDomainSSLStandardDomainVerificationMethod(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreatePortalCustomDomainSSLStandardDomainVerificationMethod: %v", v)
+	}
+}
+
 type HTTP struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	domainVerificationMethod string `const:"http" json:"domain_verification_method"`
+	DomainVerificationMethod CreatePortalCustomDomainSSLStandardDomainVerificationMethod `json:"domain_verification_method"`
 }
 
 func (h HTTP) MarshalJSON() ([]byte, error) {
@@ -25,13 +48,38 @@ func (h *HTTP) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (h *HTTP) GetDomainVerificationMethod() string {
-	return "http"
+func (h *HTTP) GetDomainVerificationMethod() CreatePortalCustomDomainSSLStandardDomainVerificationMethod {
+	if h == nil {
+		return CreatePortalCustomDomainSSLStandardDomainVerificationMethod("")
+	}
+	return h.DomainVerificationMethod
+}
+
+type DomainVerificationMethod string
+
+const (
+	DomainVerificationMethodCustomCertificate DomainVerificationMethod = "custom_certificate"
+)
+
+func (e DomainVerificationMethod) ToPointer() *DomainVerificationMethod {
+	return &e
+}
+func (e *DomainVerificationMethod) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "custom_certificate":
+		*e = DomainVerificationMethod(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DomainVerificationMethod: %v", v)
+	}
 }
 
 type CustomCertificate struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	domainVerificationMethod string `const:"custom_certificate" json:"domain_verification_method"`
+	DomainVerificationMethod DomainVerificationMethod `json:"domain_verification_method"`
 	// Custom certificate to be used for the SSL termination.
 	CustomCertificate string `json:"custom_certificate"`
 	// Custom certificate private key to be used for the SSL termination.
@@ -52,8 +100,11 @@ func (c *CustomCertificate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *CustomCertificate) GetDomainVerificationMethod() string {
-	return "custom_certificate"
+func (c *CustomCertificate) GetDomainVerificationMethod() DomainVerificationMethod {
+	if c == nil {
+		return DomainVerificationMethod("")
+	}
+	return c.DomainVerificationMethod
 }
 
 func (c *CustomCertificate) GetCustomCertificate() string {

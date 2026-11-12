@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetHuggingfaceConfigType string
+
+const (
+	AIGatewayTargetHuggingfaceConfigTypeHuggingface AIGatewayTargetHuggingfaceConfigType = "huggingface"
+)
+
+func (e AIGatewayTargetHuggingfaceConfigType) ToPointer() *AIGatewayTargetHuggingfaceConfigType {
+	return &e
+}
+func (e *AIGatewayTargetHuggingfaceConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "huggingface":
+		*e = AIGatewayTargetHuggingfaceConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetHuggingfaceConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetHuggingfaceConfig - Hugging Face-specific configuration for a model.
 type AIGatewayTargetHuggingfaceConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetHuggingfaceConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"huggingface" json:"type"`
+	UpstreamURL *string                              `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetHuggingfaceConfigType `json:"type"`
 	// Whether to use the Hugging Face inference cache.
 	UseCache *bool `default:"false" json:"use_cache"`
 	// Whether to wait for the model to load if it is not ready.
@@ -178,8 +202,11 @@ func (a *AIGatewayTargetHuggingfaceConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetHuggingfaceConfig) GetType() string {
-	return "huggingface"
+func (a *AIGatewayTargetHuggingfaceConfig) GetType() AIGatewayTargetHuggingfaceConfigType {
+	if a == nil {
+		return AIGatewayTargetHuggingfaceConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetHuggingfaceConfig) GetUseCache() *bool {

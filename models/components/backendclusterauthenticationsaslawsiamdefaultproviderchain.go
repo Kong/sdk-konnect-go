@@ -4,15 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType string
+
+const (
+	BackendClusterAuthenticationSaslAwsIamDefaultProviderChainTypeDefaultProviderChain BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType = "default_provider_chain"
+)
+
+func (e BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType) ToPointer() *BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType {
+	return &e
+}
+func (e *BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "default_provider_chain":
+		*e = BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType: %v", v)
+	}
+}
 
 // BackendClusterAuthenticationSaslAwsIamDefaultProviderChain - Configures whether to authenticate using credentials obtained from the AWS default credentials provider chain
 //
 // **Requires a minimum runtime version of `1.3`**.
 type BackendClusterAuthenticationSaslAwsIamDefaultProviderChain struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"default_provider_chain" json:"type"`
+	Type BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType `json:"type"`
 }
 
 func (b BackendClusterAuthenticationSaslAwsIamDefaultProviderChain) MarshalJSON() ([]byte, error) {
@@ -26,6 +50,9 @@ func (b *BackendClusterAuthenticationSaslAwsIamDefaultProviderChain) UnmarshalJS
 	return nil
 }
 
-func (b *BackendClusterAuthenticationSaslAwsIamDefaultProviderChain) GetType() string {
-	return "default_provider_chain"
+func (b *BackendClusterAuthenticationSaslAwsIamDefaultProviderChain) GetType() BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType {
+	if b == nil {
+		return BackendClusterAuthenticationSaslAwsIamDefaultProviderChainType("")
+	}
+	return b.Type
 }

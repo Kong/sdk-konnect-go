@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayTLSListenerPolicyType - The type name of the policy.
+type EventGatewayTLSListenerPolicyType string
+
+const (
+	EventGatewayTLSListenerPolicyTypeTLSServer EventGatewayTLSListenerPolicyType = "tls_server"
+)
+
+func (e EventGatewayTLSListenerPolicyType) ToPointer() *EventGatewayTLSListenerPolicyType {
+	return &e
+}
+func (e *EventGatewayTLSListenerPolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "tls_server":
+		*e = EventGatewayTLSListenerPolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayTLSListenerPolicyType: %v", v)
+	}
+}
 
 // EventGatewayTLSListenerPolicy - The TLS Server policy defines the certificates and keys used by the gateway server when the client connects
 // to the gateway over TLS.
@@ -13,8 +39,7 @@ import (
 // While it is possible to have multiple TLS policies on a listener, only one can be active at a time.
 type EventGatewayTLSListenerPolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"tls_server" json:"type"`
+	Type EventGatewayTLSListenerPolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -40,8 +65,11 @@ func (e *EventGatewayTLSListenerPolicy) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (e *EventGatewayTLSListenerPolicy) GetType() string {
-	return "tls_server"
+func (e *EventGatewayTLSListenerPolicy) GetType() EventGatewayTLSListenerPolicyType {
+	if e == nil {
+		return EventGatewayTLSListenerPolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayTLSListenerPolicy) GetName() *string {

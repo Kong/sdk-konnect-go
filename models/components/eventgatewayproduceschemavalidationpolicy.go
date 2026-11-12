@@ -4,14 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayProduceSchemaValidationPolicyType - The type name of the policy.
+type EventGatewayProduceSchemaValidationPolicyType string
+
+const (
+	EventGatewayProduceSchemaValidationPolicyTypeSchemaValidation EventGatewayProduceSchemaValidationPolicyType = "schema_validation"
+)
+
+func (e EventGatewayProduceSchemaValidationPolicyType) ToPointer() *EventGatewayProduceSchemaValidationPolicyType {
+	return &e
+}
+func (e *EventGatewayProduceSchemaValidationPolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "schema_validation":
+		*e = EventGatewayProduceSchemaValidationPolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayProduceSchemaValidationPolicyType: %v", v)
+	}
+}
 
 // EventGatewayProduceSchemaValidationPolicy - A policy that validates produce messages against a schema registry.
 type EventGatewayProduceSchemaValidationPolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"schema_validation" json:"type"`
+	Type EventGatewayProduceSchemaValidationPolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -40,8 +65,11 @@ func (e *EventGatewayProduceSchemaValidationPolicy) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (e *EventGatewayProduceSchemaValidationPolicy) GetType() string {
-	return "schema_validation"
+func (e *EventGatewayProduceSchemaValidationPolicy) GetType() EventGatewayProduceSchemaValidationPolicyType {
+	if e == nil {
+		return EventGatewayProduceSchemaValidationPolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayProduceSchemaValidationPolicy) GetName() *string {

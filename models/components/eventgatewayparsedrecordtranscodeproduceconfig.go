@@ -26,6 +26,9 @@ type EventGatewayParsedRecordTranscodeProduceConfig struct {
 func CreateEventGatewayParsedRecordTranscodeProduceConfigAvro(avro EventGatewayParsedRecordTranscodeProduceConfigAvro) EventGatewayParsedRecordTranscodeProduceConfig {
 	typ := EventGatewayParsedRecordTranscodeProduceConfigTypeAvro
 
+	typStr := EventGatewayParsedRecordTranscodeProduceConfigAvroOutputFormat(typ)
+	avro.OutputFormat = typStr
+
 	return EventGatewayParsedRecordTranscodeProduceConfig{
 		EventGatewayParsedRecordTranscodeProduceConfigAvro: &avro,
 		Type: typ,

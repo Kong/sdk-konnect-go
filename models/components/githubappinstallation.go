@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type GithubAppInstallationType string
+
+const (
+	GithubAppInstallationTypeGithubAppInstallation GithubAppInstallationType = "github_app_installation"
+)
+
+func (e GithubAppInstallationType) ToPointer() *GithubAppInstallationType {
+	return &e
+}
+func (e *GithubAppInstallationType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github_app_installation":
+		*e = GithubAppInstallationType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GithubAppInstallationType: %v", v)
+	}
+}
 
 type GitHubAppInstallationCredentialConfig struct {
 	// The GitHub App installation ID
@@ -56,10 +81,9 @@ type GithubAppInstallation struct {
 	//
 	ExpiresAt *time.Time `json:"expires_at"`
 	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time `json:"created_at"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                                `const:"github_app_installation" json:"type"`
-	Config GitHubAppInstallationCredentialConfig `json:"config"`
+	CreatedAt time.Time                             `json:"created_at"`
+	Type      GithubAppInstallationType             `json:"type"`
+	Config    GitHubAppInstallationCredentialConfig `json:"config"`
 }
 
 func (g GithubAppInstallation) MarshalJSON() ([]byte, error) {
@@ -115,8 +139,11 @@ func (g *GithubAppInstallation) GetCreatedAt() time.Time {
 	return g.CreatedAt
 }
 
-func (g *GithubAppInstallation) GetType() string {
-	return "github_app_installation"
+func (g *GithubAppInstallation) GetType() GithubAppInstallationType {
+	if g == nil {
+		return GithubAppInstallationType("")
+	}
+	return g.Type
 }
 
 func (g *GithubAppInstallation) GetConfig() GitHubAppInstallationCredentialConfig {

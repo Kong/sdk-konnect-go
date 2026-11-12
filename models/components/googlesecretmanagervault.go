@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type GoogleSecretManagerVaultType string
+
+const (
+	GoogleSecretManagerVaultTypeGcp GoogleSecretManagerVaultType = "gcp"
+)
+
+func (e GoogleSecretManagerVaultType) ToPointer() *GoogleSecretManagerVaultType {
+	return &e
+}
+func (e *GoogleSecretManagerVaultType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gcp":
+		*e = GoogleSecretManagerVaultType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GoogleSecretManagerVaultType: %v", v)
+	}
+}
 
 type GoogleSecretManagerVaultConfig struct {
 	// Decode all secrets in this vault as base64. Useful for binary data.
@@ -96,12 +121,13 @@ type GoogleSecretManagerVault struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                         `const:"gcp" json:"type"`
-	Config GoogleSecretManagerVaultConfig `json:"config"`
+	ManagedBy map[string]string              `json:"managed_by,omitempty"`
+	Type      GoogleSecretManagerVaultType   `json:"type"`
+	Config    GoogleSecretManagerVaultConfig `json:"config"`
 }
 
 func (g GoogleSecretManagerVault) MarshalJSON() ([]byte, error) {
@@ -143,8 +169,11 @@ func (g *GoogleSecretManagerVault) GetManagedBy() map[string]string {
 	return g.ManagedBy
 }
 
-func (g *GoogleSecretManagerVault) GetType() string {
-	return "gcp"
+func (g *GoogleSecretManagerVault) GetType() GoogleSecretManagerVaultType {
+	if g == nil {
+		return GoogleSecretManagerVaultType("")
+	}
+	return g.Type
 }
 
 func (g *GoogleSecretManagerVault) GetConfig() GoogleSecretManagerVaultConfig {

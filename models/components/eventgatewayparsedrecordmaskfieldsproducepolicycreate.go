@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayParsedRecordMaskFieldsProducePolicyCreateType - The type name of the policy.
+type EventGatewayParsedRecordMaskFieldsProducePolicyCreateType string
+
+const (
+	EventGatewayParsedRecordMaskFieldsProducePolicyCreateTypeMaskFields EventGatewayParsedRecordMaskFieldsProducePolicyCreateType = "mask_fields"
+)
+
+func (e EventGatewayParsedRecordMaskFieldsProducePolicyCreateType) ToPointer() *EventGatewayParsedRecordMaskFieldsProducePolicyCreateType {
+	return &e
+}
+func (e *EventGatewayParsedRecordMaskFieldsProducePolicyCreateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "mask_fields":
+		*e = EventGatewayParsedRecordMaskFieldsProducePolicyCreateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayParsedRecordMaskFieldsProducePolicyCreateType: %v", v)
+	}
+}
 
 // EventGatewayParsedRecordMaskFieldsProducePolicyCreate - Redacts string fields of parsed Kafka records using a configurable masking strategy.
 //
@@ -17,8 +43,7 @@ import (
 // **Requires a minimum runtime version of `1.3`**.
 type EventGatewayParsedRecordMaskFieldsProducePolicyCreate struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"mask_fields" json:"type"`
+	Type EventGatewayParsedRecordMaskFieldsProducePolicyCreateType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -53,8 +78,11 @@ func (e *EventGatewayParsedRecordMaskFieldsProducePolicyCreate) UnmarshalJSON(da
 	return nil
 }
 
-func (e *EventGatewayParsedRecordMaskFieldsProducePolicyCreate) GetType() string {
-	return "mask_fields"
+func (e *EventGatewayParsedRecordMaskFieldsProducePolicyCreate) GetType() EventGatewayParsedRecordMaskFieldsProducePolicyCreateType {
+	if e == nil {
+		return EventGatewayParsedRecordMaskFieldsProducePolicyCreateType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayParsedRecordMaskFieldsProducePolicyCreate) GetName() *string {

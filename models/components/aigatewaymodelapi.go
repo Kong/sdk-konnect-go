@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayModelAPIType string
+
+const (
+	AIGatewayModelAPITypeAPI AIGatewayModelAPIType = "api"
+)
+
+func (e AIGatewayModelAPIType) ToPointer() *AIGatewayModelAPIType {
+	return &e
+}
+func (e *AIGatewayModelAPIType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "api":
+		*e = AIGatewayModelAPIType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelAPIType: %v", v)
+	}
+}
 
 // Capabilities - **`skills` requires a minimum runtime version of `2.2`**.
 type Capabilities string
@@ -57,13 +82,14 @@ type AIGatewayModelAPI struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Names of the Datastores this model references.
 	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"api" json:"type"`
+	Type       AIGatewayModelAPIType   `json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelAPIConfig `json:"config"`
 	// The capabilities this model supports. Set to a specific capability to
@@ -156,8 +182,11 @@ func (a *AIGatewayModelAPI) GetDatastores() []AIGatewayDatastoreRef {
 	return a.Datastores
 }
 
-func (a *AIGatewayModelAPI) GetType() string {
-	return "api"
+func (a *AIGatewayModelAPI) GetType() AIGatewayModelAPIType {
+	if a == nil {
+		return AIGatewayModelAPIType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelAPI) GetConfig() AIGatewayModelAPIConfig {

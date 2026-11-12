@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetCerebrasConfigType string
+
+const (
+	AIGatewayTargetCerebrasConfigTypeCerebras AIGatewayTargetCerebrasConfigType = "cerebras"
+)
+
+func (e AIGatewayTargetCerebrasConfigType) ToPointer() *AIGatewayTargetCerebrasConfigType {
+	return &e
+}
+func (e *AIGatewayTargetCerebrasConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cerebras":
+		*e = AIGatewayTargetCerebrasConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetCerebrasConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetCerebrasConfig - Cerebras-specific configuration for a model.
 type AIGatewayTargetCerebrasConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetCerebrasConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"cerebras" json:"type"`
+	UpstreamURL *string                           `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetCerebrasConfigType `json:"type"`
 }
 
 func (a AIGatewayTargetCerebrasConfig) MarshalJSON() ([]byte, error) {
@@ -174,6 +198,9 @@ func (a *AIGatewayTargetCerebrasConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetCerebrasConfig) GetType() string {
-	return "cerebras"
+func (a *AIGatewayTargetCerebrasConfig) GetType() AIGatewayTargetCerebrasConfigType {
+	if a == nil {
+		return AIGatewayTargetCerebrasConfigType("")
+	}
+	return a.Type
 }

@@ -11,6 +11,29 @@ import (
 	"time"
 )
 
+type AIGatewayModelModelAIGatewayModelType string
+
+const (
+	AIGatewayModelModelAIGatewayModelTypeModel AIGatewayModelModelAIGatewayModelType = "model"
+)
+
+func (e AIGatewayModelModelAIGatewayModelType) ToPointer() *AIGatewayModelModelAIGatewayModelType {
+	return &e
+}
+func (e *AIGatewayModelModelAIGatewayModelType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "model":
+		*e = AIGatewayModelModelAIGatewayModelType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelModelAIGatewayModelType: %v", v)
+	}
+}
+
 // AIGatewayModelModelAIGatewayModelCapabilities - **`decisions` requires a minimum runtime version of `2.2`**.
 type AIGatewayModelModelAIGatewayModelCapabilities string
 
@@ -69,13 +92,14 @@ type AIGatewayModelAIGatewayModelModel struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Names of the Datastores this model references.
-	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"model" json:"type"`
+	Datastores []AIGatewayDatastoreRef               `json:"datastores,omitempty"`
+	Type       AIGatewayModelModelAIGatewayModelType `json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelModelConfigOutput `json:"config"`
 	// The capabilities this model supports. Set to a specific capability to
@@ -174,8 +198,11 @@ func (a *AIGatewayModelAIGatewayModelModel) GetDatastores() []AIGatewayDatastore
 	return a.Datastores
 }
 
-func (a *AIGatewayModelAIGatewayModelModel) GetType() string {
-	return "model"
+func (a *AIGatewayModelAIGatewayModelModel) GetType() AIGatewayModelModelAIGatewayModelType {
+	if a == nil {
+		return AIGatewayModelModelAIGatewayModelType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelAIGatewayModelModel) GetConfig() AIGatewayModelModelConfigOutput {
@@ -211,6 +238,29 @@ func (a *AIGatewayModelAIGatewayModelModel) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
+}
+
+type AIGatewayModelAPIAIGatewayModelType string
+
+const (
+	AIGatewayModelAPIAIGatewayModelTypeAPI AIGatewayModelAPIAIGatewayModelType = "api"
+)
+
+func (e AIGatewayModelAPIAIGatewayModelType) ToPointer() *AIGatewayModelAPIAIGatewayModelType {
+	return &e
+}
+func (e *AIGatewayModelAPIAIGatewayModelType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "api":
+		*e = AIGatewayModelAPIAIGatewayModelType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelAPIAIGatewayModelType: %v", v)
+	}
 }
 
 // AIGatewayModelAPICapabilities - **`skills` requires a minimum runtime version of `2.2`**.
@@ -263,13 +313,14 @@ type AIGatewayModelAIGatewayModelAPI struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Names of the Datastores this model references.
-	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"api" json:"type"`
+	Datastores []AIGatewayDatastoreRef             `json:"datastores,omitempty"`
+	Type       AIGatewayModelAPIAIGatewayModelType `json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelAPIConfigOutput `json:"config"`
 	// The capabilities this model supports. Set to a specific capability to
@@ -368,8 +419,11 @@ func (a *AIGatewayModelAIGatewayModelAPI) GetDatastores() []AIGatewayDatastoreRe
 	return a.Datastores
 }
 
-func (a *AIGatewayModelAIGatewayModelAPI) GetType() string {
-	return "api"
+func (a *AIGatewayModelAIGatewayModelAPI) GetType() AIGatewayModelAPIAIGatewayModelType {
+	if a == nil {
+		return AIGatewayModelAPIAIGatewayModelType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelAIGatewayModelAPI) GetConfig() AIGatewayModelAPIConfigOutput {
@@ -425,6 +479,9 @@ type AIGatewayModel struct {
 func CreateAIGatewayModelAPI(api AIGatewayModelAIGatewayModelAPI) AIGatewayModel {
 	typ := AIGatewayModelTypeAPI
 
+	typStr := AIGatewayModelAPIAIGatewayModelType(typ)
+	api.Type = typStr
+
 	return AIGatewayModel{
 		AIGatewayModelAIGatewayModelAPI: &api,
 		Type:                            typ,
@@ -433,6 +490,9 @@ func CreateAIGatewayModelAPI(api AIGatewayModelAIGatewayModelAPI) AIGatewayModel
 
 func CreateAIGatewayModelModel(model AIGatewayModelAIGatewayModelModel) AIGatewayModel {
 	typ := AIGatewayModelTypeModel
+
+	typStr := AIGatewayModelModelAIGatewayModelType(typ)
+	model.Type = typStr
 
 	return AIGatewayModel{
 		AIGatewayModelAIGatewayModelModel: &model,

@@ -4,9 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+type KongPrincipalIdentityOIDCResponseType string
+
+const (
+	KongPrincipalIdentityOIDCResponseTypeOidc KongPrincipalIdentityOIDCResponseType = "oidc"
+)
+
+func (e KongPrincipalIdentityOIDCResponseType) ToPointer() *KongPrincipalIdentityOIDCResponseType {
+	return &e
+}
+func (e *KongPrincipalIdentityOIDCResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "oidc":
+		*e = KongPrincipalIdentityOIDCResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for KongPrincipalIdentityOIDCResponseType: %v", v)
+	}
+}
 
 type KongPrincipalIdentityOIDCResponseClaim struct {
 	Name  string `json:"name"`
@@ -48,17 +73,18 @@ type KongPrincipalIdentityOIDCResponse struct {
 	Labels map[string]string `json:"labels"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
-	UpdatedAt time.Time `json:"updated_at"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                                 `const:"oidc" json:"type"`
-	Issuer string                                 `json:"issuer"`
-	Claim  KongPrincipalIdentityOIDCResponseClaim `json:"claim"`
+	UpdatedAt time.Time                              `json:"updated_at"`
+	Type      KongPrincipalIdentityOIDCResponseType  `json:"type"`
+	Issuer    string                                 `json:"issuer"`
+	Claim     KongPrincipalIdentityOIDCResponseClaim `json:"claim"`
 }
 
 func (k KongPrincipalIdentityOIDCResponse) MarshalJSON() ([]byte, error) {
@@ -107,8 +133,11 @@ func (k *KongPrincipalIdentityOIDCResponse) GetUpdatedAt() time.Time {
 	return k.UpdatedAt
 }
 
-func (k *KongPrincipalIdentityOIDCResponse) GetType() string {
-	return "oidc"
+func (k *KongPrincipalIdentityOIDCResponse) GetType() KongPrincipalIdentityOIDCResponseType {
+	if k == nil {
+		return KongPrincipalIdentityOIDCResponseType("")
+	}
+	return k.Type
 }
 
 func (k *KongPrincipalIdentityOIDCResponse) GetIssuer() string {

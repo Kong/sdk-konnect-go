@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayModelProviderCohereType string
+
+const (
+	AIGatewayModelProviderCohereTypeCohere AIGatewayModelProviderCohereType = "cohere"
+)
+
+func (e AIGatewayModelProviderCohereType) ToPointer() *AIGatewayModelProviderCohereType {
+	return &e
+}
+func (e *AIGatewayModelProviderCohereType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cohere":
+		*e = AIGatewayModelProviderCohereType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelProviderCohereType: %v", v)
+	}
+}
 
 // AIGatewayModelProviderCohereConfig - Configuration for the model provider.
 type AIGatewayModelProviderCohereConfig struct {
@@ -34,8 +59,7 @@ func (a *AIGatewayModelProviderCohereConfig) GetAuth() AIGatewayModelProviderCon
 
 // AIGatewayModelProviderCohere - Configuration for an upstream model provider.
 type AIGatewayModelProviderCohere struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"cohere" json:"type"`
+	Type AIGatewayModelProviderCohereType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
@@ -49,7 +73,9 @@ type AIGatewayModelProviderCohere struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// The Token Vault Datastore holding this entity's credential storage: the directory credentials
@@ -84,8 +110,11 @@ func (a *AIGatewayModelProviderCohere) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderCohere) GetType() string {
-	return "cohere"
+func (a *AIGatewayModelProviderCohere) GetType() AIGatewayModelProviderCohereType {
+	if a == nil {
+		return AIGatewayModelProviderCohereType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelProviderCohere) GetDisplayName() string {

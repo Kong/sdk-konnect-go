@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type VirtualClusterNamespaceTopicSelectorGlobType string
+
+const (
+	VirtualClusterNamespaceTopicSelectorGlobTypeGlob VirtualClusterNamespaceTopicSelectorGlobType = "glob"
+)
+
+func (e VirtualClusterNamespaceTopicSelectorGlobType) ToPointer() *VirtualClusterNamespaceTopicSelectorGlobType {
+	return &e
+}
+func (e *VirtualClusterNamespaceTopicSelectorGlobType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "glob":
+		*e = VirtualClusterNamespaceTopicSelectorGlobType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for VirtualClusterNamespaceTopicSelectorGlobType: %v", v)
+	}
+}
 
 // Conflict - How to inform the user about conflicts where multiple backend topics would map to the same virtual topic name.
 // * warn - log in the Event Gateway logs. Additionally, it sets knep_namespace_topic_conflict to 1.
@@ -33,8 +58,7 @@ func (e *Conflict) IsExact() bool {
 }
 
 type VirtualClusterNamespaceTopicSelectorGlob struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"glob" json:"type"`
+	Type VirtualClusterNamespaceTopicSelectorGlobType `json:"type"`
 	// Expose any backend topic that matches this glob pattern (e.g., `operations_data_*`).
 	Glob string `json:"glob"`
 	// How to inform the user about conflicts where multiple backend topics would map to the same virtual topic name.
@@ -55,8 +79,11 @@ func (v *VirtualClusterNamespaceTopicSelectorGlob) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (v *VirtualClusterNamespaceTopicSelectorGlob) GetType() string {
-	return "glob"
+func (v *VirtualClusterNamespaceTopicSelectorGlob) GetType() VirtualClusterNamespaceTopicSelectorGlobType {
+	if v == nil {
+		return VirtualClusterNamespaceTopicSelectorGlobType("")
+	}
+	return v.Type
 }
 
 func (v *VirtualClusterNamespaceTopicSelectorGlob) GetGlob() string {

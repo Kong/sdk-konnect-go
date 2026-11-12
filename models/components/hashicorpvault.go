@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type HashiCorpVaultType string
+
+const (
+	HashiCorpVaultTypeHcv HashiCorpVaultType = "hcv"
+)
+
+func (e HashiCorpVaultType) ToPointer() *HashiCorpVaultType {
+	return &e
+}
+func (e *HashiCorpVaultType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "hcv":
+		*e = HashiCorpVaultType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for HashiCorpVaultType: %v", v)
+	}
+}
 
 type HashiCorpVault struct {
 	// A user-defined unique identifier for this vault instance, used as a stable human-readable reference.
@@ -24,11 +49,12 @@ type HashiCorpVault struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"hcv" json:"type"`
+	ManagedBy map[string]string  `json:"managed_by,omitempty"`
+	Type      HashiCorpVaultType `json:"type"`
 	// Configuration for an AI Gateway Vault.
 	Config HashiCorpVaultConfig `json:"config"`
 }
@@ -72,8 +98,11 @@ func (h *HashiCorpVault) GetManagedBy() map[string]string {
 	return h.ManagedBy
 }
 
-func (h *HashiCorpVault) GetType() string {
-	return "hcv"
+func (h *HashiCorpVault) GetType() HashiCorpVaultType {
+	if h == nil {
+		return HashiCorpVaultType("")
+	}
+	return h.Type
 }
 
 func (h *HashiCorpVault) GetConfig() HashiCorpVaultConfig {

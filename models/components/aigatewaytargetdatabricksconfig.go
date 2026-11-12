@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetDatabricksConfigType string
+
+const (
+	AIGatewayTargetDatabricksConfigTypeDatabricks AIGatewayTargetDatabricksConfigType = "databricks"
+)
+
+func (e AIGatewayTargetDatabricksConfigType) ToPointer() *AIGatewayTargetDatabricksConfigType {
+	return &e
+}
+func (e *AIGatewayTargetDatabricksConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "databricks":
+		*e = AIGatewayTargetDatabricksConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetDatabricksConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetDatabricksConfig - Databricks-specific configuration for a model.
 type AIGatewayTargetDatabricksConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetDatabricksConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"databricks" json:"type"`
+	UpstreamURL *string                             `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetDatabricksConfigType `json:"type"`
 	// The Databricks workspace instance ID.
 	WorkspaceInstanceID string `json:"workspace_instance_id"`
 }
@@ -176,8 +200,11 @@ func (a *AIGatewayTargetDatabricksConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetDatabricksConfig) GetType() string {
-	return "databricks"
+func (a *AIGatewayTargetDatabricksConfig) GetType() AIGatewayTargetDatabricksConfigType {
+	if a == nil {
+		return AIGatewayTargetDatabricksConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetDatabricksConfig) GetWorkspaceInstanceID() string {

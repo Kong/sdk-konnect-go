@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetLlama2ConfigType string
+
+const (
+	AIGatewayTargetLlama2ConfigTypeLlama2 AIGatewayTargetLlama2ConfigType = "llama2"
+)
+
+func (e AIGatewayTargetLlama2ConfigType) ToPointer() *AIGatewayTargetLlama2ConfigType {
+	return &e
+}
+func (e *AIGatewayTargetLlama2ConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "llama2":
+		*e = AIGatewayTargetLlama2ConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetLlama2ConfigType: %v", v)
+	}
+}
 
 // Format - The request format to use when communicating with the Llama2 model.
 type Format string
@@ -70,9 +95,8 @@ type AIGatewayTargetLlama2Config struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL string `json:"upstream_url"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"llama2" json:"type"`
+	UpstreamURL string                          `json:"upstream_url"`
+	Type        AIGatewayTargetLlama2ConfigType `json:"type"`
 	// The request format to use when communicating with the Llama2 model.
 	Format Format `json:"format"`
 }
@@ -200,8 +224,11 @@ func (a *AIGatewayTargetLlama2Config) GetUpstreamURL() string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetLlama2Config) GetType() string {
-	return "llama2"
+func (a *AIGatewayTargetLlama2Config) GetType() AIGatewayTargetLlama2ConfigType {
+	if a == nil {
+		return AIGatewayTargetLlama2ConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayTargetLlama2Config) GetFormat() Format {

@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type CreateDcrProviderRequestOktaProviderType string
+
+const (
+	CreateDcrProviderRequestOktaProviderTypeOkta CreateDcrProviderRequestOktaProviderType = "okta"
+)
+
+func (e CreateDcrProviderRequestOktaProviderType) ToPointer() *CreateDcrProviderRequestOktaProviderType {
+	return &e
+}
+func (e *CreateDcrProviderRequestOktaProviderType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "okta":
+		*e = CreateDcrProviderRequestOktaProviderType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDcrProviderRequestOktaProviderType: %v", v)
+	}
+}
+
 // CreateDcrProviderRequestOkta - Request body for creating an Okta DCR provider.
 type CreateDcrProviderRequestOkta struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	providerType string `const:"okta" json:"provider_type"`
+	ProviderType CreateDcrProviderRequestOktaProviderType `json:"provider_type"`
 	// Payload to create an Okta DCR provider.
 	DcrConfig CreateDcrConfigOktaInRequest `json:"dcr_config"`
 	// The name of the DCR provider. This is used to identify the DCR provider in the Konnect UI.
@@ -38,8 +62,11 @@ func (c *CreateDcrProviderRequestOkta) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *CreateDcrProviderRequestOkta) GetProviderType() string {
-	return "okta"
+func (c *CreateDcrProviderRequestOkta) GetProviderType() CreateDcrProviderRequestOktaProviderType {
+	if c == nil {
+		return CreateDcrProviderRequestOktaProviderType("")
+	}
+	return c.ProviderType
 }
 
 func (c *CreateDcrProviderRequestOkta) GetDcrConfig() CreateDcrConfigOktaInRequest {

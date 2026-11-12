@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayModelModelType string
+
+const (
+	AIGatewayModelModelTypeModel AIGatewayModelModelType = "model"
+)
+
+func (e AIGatewayModelModelType) ToPointer() *AIGatewayModelModelType {
+	return &e
+}
+func (e *AIGatewayModelModelType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "model":
+		*e = AIGatewayModelModelType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelModelType: %v", v)
+	}
+}
 
 // AIGatewayModelModelCapabilities - **`decisions` requires a minimum runtime version of `2.2`**.
 type AIGatewayModelModelCapabilities string
@@ -65,13 +90,14 @@ type AIGatewayModelModel struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Names of the Datastores this model references.
 	Datastores []AIGatewayDatastoreRef `json:"datastores,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"model" json:"type"`
+	Type       AIGatewayModelModelType `json:"type"`
 	// Routing, logging, and load balancing configuration for the model.
 	Config AIGatewayModelModelConfig `json:"config"`
 	// The capabilities this model supports. Set to a specific capability to
@@ -164,8 +190,11 @@ func (a *AIGatewayModelModel) GetDatastores() []AIGatewayDatastoreRef {
 	return a.Datastores
 }
 
-func (a *AIGatewayModelModel) GetType() string {
-	return "model"
+func (a *AIGatewayModelModel) GetType() AIGatewayModelModelType {
+	if a == nil {
+		return AIGatewayModelModelType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelModel) GetConfig() AIGatewayModelModelConfig {

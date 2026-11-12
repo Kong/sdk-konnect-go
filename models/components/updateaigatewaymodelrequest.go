@@ -28,6 +28,9 @@ type UpdateAIGatewayModelRequest struct {
 func CreateUpdateAIGatewayModelRequestAPI(api AIGatewayModelAPI) UpdateAIGatewayModelRequest {
 	typ := UpdateAIGatewayModelRequestTypeAPI
 
+	typStr := AIGatewayModelAPIType(typ)
+	api.Type = typStr
+
 	return UpdateAIGatewayModelRequest{
 		AIGatewayModelAPI: &api,
 		Type:              typ,
@@ -36,6 +39,9 @@ func CreateUpdateAIGatewayModelRequestAPI(api AIGatewayModelAPI) UpdateAIGateway
 
 func CreateUpdateAIGatewayModelRequestModel(model AIGatewayModelModel) UpdateAIGatewayModelRequest {
 	typ := UpdateAIGatewayModelRequestTypeModel
+
+	typStr := AIGatewayModelModelType(typ)
+	model.Type = typStr
 
 	return UpdateAIGatewayModelRequest{
 		AIGatewayModelModel: &model,

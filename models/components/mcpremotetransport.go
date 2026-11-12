@@ -4,15 +4,39 @@
 package components
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// MCPSseTransportMCPRemoteTransportType - Transport type
+type MCPSseTransportMCPRemoteTransportType string
+
+const (
+	MCPSseTransportMCPRemoteTransportTypeSse MCPSseTransportMCPRemoteTransportType = "sse"
+)
+
+func (e MCPSseTransportMCPRemoteTransportType) ToPointer() *MCPSseTransportMCPRemoteTransportType {
+	return &e
+}
+func (e *MCPSseTransportMCPRemoteTransportType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sse":
+		*e = MCPSseTransportMCPRemoteTransportType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MCPSseTransportMCPRemoteTransportType: %v", v)
+	}
+}
+
 type MCPSseTransportMCPSseTransport struct {
 	// Transport type
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sse" json:"type"`
+	Type MCPSseTransportMCPRemoteTransportType `json:"type"`
 	// Server-Sent Events endpoint URL template.
 	URL string `json:"url"`
 	// HTTP headers to include
@@ -32,8 +56,11 @@ func (m *MCPSseTransportMCPSseTransport) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (m *MCPSseTransportMCPSseTransport) GetType() string {
-	return "sse"
+func (m *MCPSseTransportMCPSseTransport) GetType() MCPSseTransportMCPRemoteTransportType {
+	if m == nil {
+		return MCPSseTransportMCPRemoteTransportType("")
+	}
+	return m.Type
 }
 
 func (m *MCPSseTransportMCPSseTransport) GetURL() string {
@@ -57,10 +84,33 @@ func (m *MCPSseTransportMCPSseTransport) GetVariables() map[string]MCPInput {
 	return m.Variables
 }
 
+// MCPStreamableHTTPTransportMCPRemoteTransportType - Transport type
+type MCPStreamableHTTPTransportMCPRemoteTransportType string
+
+const (
+	MCPStreamableHTTPTransportMCPRemoteTransportTypeStreamableHTTP MCPStreamableHTTPTransportMCPRemoteTransportType = "streamable-http"
+)
+
+func (e MCPStreamableHTTPTransportMCPRemoteTransportType) ToPointer() *MCPStreamableHTTPTransportMCPRemoteTransportType {
+	return &e
+}
+func (e *MCPStreamableHTTPTransportMCPRemoteTransportType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "streamable-http":
+		*e = MCPStreamableHTTPTransportMCPRemoteTransportType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MCPStreamableHTTPTransportMCPRemoteTransportType: %v", v)
+	}
+}
+
 type MCPStreamableHTTPTransportMCPStreamableHTTPTransport struct {
 	// Transport type
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"streamable-http" json:"type"`
+	Type MCPStreamableHTTPTransportMCPRemoteTransportType `json:"type"`
 	// URL template for the streamable-http transport.
 	URL string `json:"url"`
 	// HTTP headers to include
@@ -80,8 +130,11 @@ func (m *MCPStreamableHTTPTransportMCPStreamableHTTPTransport) UnmarshalJSON(dat
 	return nil
 }
 
-func (m *MCPStreamableHTTPTransportMCPStreamableHTTPTransport) GetType() string {
-	return "streamable-http"
+func (m *MCPStreamableHTTPTransportMCPStreamableHTTPTransport) GetType() MCPStreamableHTTPTransportMCPRemoteTransportType {
+	if m == nil {
+		return MCPStreamableHTTPTransportMCPRemoteTransportType("")
+	}
+	return m.Type
 }
 
 func (m *MCPStreamableHTTPTransportMCPStreamableHTTPTransport) GetURL() string {

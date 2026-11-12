@@ -4,8 +4,34 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+// EventGatewayParsedRecordEncryptFieldsPolicyType - The type name of the policy.
+type EventGatewayParsedRecordEncryptFieldsPolicyType string
+
+const (
+	EventGatewayParsedRecordEncryptFieldsPolicyTypeEncryptFields EventGatewayParsedRecordEncryptFieldsPolicyType = "encrypt_fields"
+)
+
+func (e EventGatewayParsedRecordEncryptFieldsPolicyType) ToPointer() *EventGatewayParsedRecordEncryptFieldsPolicyType {
+	return &e
+}
+func (e *EventGatewayParsedRecordEncryptFieldsPolicyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "encrypt_fields":
+		*e = EventGatewayParsedRecordEncryptFieldsPolicyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayParsedRecordEncryptFieldsPolicyType: %v", v)
+	}
+}
 
 // EventGatewayParsedRecordEncryptFieldsPolicy - Encrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
 //
@@ -14,8 +40,7 @@ import (
 // **Requires a minimum runtime version of `1.2`**.
 type EventGatewayParsedRecordEncryptFieldsPolicy struct {
 	// The type name of the policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"encrypt_fields" json:"type"`
+	Type EventGatewayParsedRecordEncryptFieldsPolicyType `json:"type"`
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
@@ -48,8 +73,11 @@ func (e *EventGatewayParsedRecordEncryptFieldsPolicy) UnmarshalJSON(data []byte)
 	return nil
 }
 
-func (e *EventGatewayParsedRecordEncryptFieldsPolicy) GetType() string {
-	return "encrypt_fields"
+func (e *EventGatewayParsedRecordEncryptFieldsPolicy) GetType() EventGatewayParsedRecordEncryptFieldsPolicyType {
+	if e == nil {
+		return EventGatewayParsedRecordEncryptFieldsPolicyType("")
+	}
+	return e.Type
 }
 
 func (e *EventGatewayParsedRecordEncryptFieldsPolicy) GetName() *string {

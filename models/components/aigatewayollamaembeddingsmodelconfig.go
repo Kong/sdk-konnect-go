@@ -4,15 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayOllamaEmbeddingsModelConfigType string
+
+const (
+	AIGatewayOllamaEmbeddingsModelConfigTypeOllama AIGatewayOllamaEmbeddingsModelConfigType = "ollama"
+)
+
+func (e AIGatewayOllamaEmbeddingsModelConfigType) ToPointer() *AIGatewayOllamaEmbeddingsModelConfigType {
+	return &e
+}
+func (e *AIGatewayOllamaEmbeddingsModelConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ollama":
+		*e = AIGatewayOllamaEmbeddingsModelConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayOllamaEmbeddingsModelConfigType: %v", v)
+	}
+}
 
 // AIGatewayOllamaEmbeddingsModelConfig - Ollama-specific configuration for a model.
 type AIGatewayOllamaEmbeddingsModelConfig struct {
 	// The URL of the embeddings model.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"ollama" json:"type"`
+	UpstreamURL *string                                  `json:"upstream_url,omitempty"`
+	Type        AIGatewayOllamaEmbeddingsModelConfigType `json:"type"`
 }
 
 func (a AIGatewayOllamaEmbeddingsModelConfig) MarshalJSON() ([]byte, error) {
@@ -33,6 +57,9 @@ func (a *AIGatewayOllamaEmbeddingsModelConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayOllamaEmbeddingsModelConfig) GetType() string {
-	return "ollama"
+func (a *AIGatewayOllamaEmbeddingsModelConfig) GetType() AIGatewayOllamaEmbeddingsModelConfigType {
+	if a == nil {
+		return AIGatewayOllamaEmbeddingsModelConfigType("")
+	}
+	return a.Type
 }

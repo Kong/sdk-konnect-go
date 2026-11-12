@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayMCPServerListenerType string
+
+const (
+	AIGatewayMCPServerListenerTypeListener AIGatewayMCPServerListenerType = "listener"
+)
+
+func (e AIGatewayMCPServerListenerType) ToPointer() *AIGatewayMCPServerListenerType {
+	return &e
+}
+func (e *AIGatewayMCPServerListenerType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "listener":
+		*e = AIGatewayMCPServerListenerType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayMCPServerListenerType: %v", v)
+	}
+}
 
 // AIGatewayMCPServerListenerLogging - Configuration for AI Gateway logging.
 type AIGatewayMCPServerListenerLogging struct {
@@ -104,8 +129,8 @@ type AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig struct {
 	// of `hosts`, `paths`, `methods`, or `headers` must be set so the route can match
 	// incoming requests.
 	//
-	Route   *AIGatewayMCPServerRouteWithMatcher `json:"route,omitempty"`
-	Logging *AIGatewayMCPServerListenerLogging  `json:"logging,omitempty"`
+	Route   AIGatewayMCPServerRouteWithMatcher `json:"route"`
+	Logging *AIGatewayMCPServerListenerLogging `json:"logging,omitempty"`
 	// Maximum size of request body to parse. Set to 0 for unlimited.
 	MaxRequestBodySize *int64 `default:"8388608" json:"max_request_body_size"`
 	// Server-side configuration for the MCP Server.
@@ -129,15 +154,15 @@ func (a AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig) MarshalJ
 }
 
 func (a *AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"route"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (a *AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig) GetRoute() *AIGatewayMCPServerRouteWithMatcher {
+func (a *AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig) GetRoute() AIGatewayMCPServerRouteWithMatcher {
 	if a == nil {
-		return nil
+		return AIGatewayMCPServerRouteWithMatcher{}
 	}
 	return a.Route
 }
@@ -178,8 +203,7 @@ func (a *AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig) GetCach
 }
 
 type AIGatewayMCPServerListener struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"listener" json:"type"`
+	Type AIGatewayMCPServerListenerType `json:"type"`
 	// Server-side configuration specific to modes where Kong answers as the MCP server.
 	Config AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig `json:"config"`
 	// The explicit list of source MCP Servers whose tools this listener exposes.
@@ -206,7 +230,9 @@ type AIGatewayMCPServerListener struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// The Token Vault Datastore holding this entity's credential storage: the directory credentials
@@ -239,8 +265,11 @@ func (a *AIGatewayMCPServerListener) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayMCPServerListener) GetType() string {
-	return "listener"
+func (a *AIGatewayMCPServerListener) GetType() AIGatewayMCPServerListenerType {
+	if a == nil {
+		return AIGatewayMCPServerListenerType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayMCPServerListener) GetConfig() AIGatewayMCPServerListenerAIGatewayMCPServerKongListenerConfig {

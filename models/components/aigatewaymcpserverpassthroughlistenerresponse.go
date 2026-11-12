@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
 
+type AIGatewayMCPServerPassthroughListenerResponseType string
+
+const (
+	AIGatewayMCPServerPassthroughListenerResponseTypePassthroughListener AIGatewayMCPServerPassthroughListenerResponseType = "passthrough-listener"
+)
+
+func (e AIGatewayMCPServerPassthroughListenerResponseType) ToPointer() *AIGatewayMCPServerPassthroughListenerResponseType {
+	return &e
+}
+func (e *AIGatewayMCPServerPassthroughListenerResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "passthrough-listener":
+		*e = AIGatewayMCPServerPassthroughListenerResponseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayMCPServerPassthroughListenerResponseType: %v", v)
+	}
+}
+
 type AIGatewayMCPServerPassthroughListenerResponse struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"passthrough-listener" json:"type"`
+	Type AIGatewayMCPServerPassthroughListenerResponseType `json:"type"`
 	// Routing, logging, and server configuration for the MCP Server.
 	Config AIGatewayMCPServerWithUpstreamConfigOutput `json:"config"`
 	// Per-tool access-control overrides for tools advertised by the remote MCP Server. Each
@@ -40,7 +64,9 @@ type AIGatewayMCPServerPassthroughListenerResponse struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// The Token Vault Datastore holding this entity's credential storage: the directory credentials
@@ -79,8 +105,11 @@ func (a *AIGatewayMCPServerPassthroughListenerResponse) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (a *AIGatewayMCPServerPassthroughListenerResponse) GetType() string {
-	return "passthrough-listener"
+func (a *AIGatewayMCPServerPassthroughListenerResponse) GetType() AIGatewayMCPServerPassthroughListenerResponseType {
+	if a == nil {
+		return AIGatewayMCPServerPassthroughListenerResponseType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayMCPServerPassthroughListenerResponse) GetConfig() AIGatewayMCPServerWithUpstreamConfigOutput {

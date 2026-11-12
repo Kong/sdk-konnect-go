@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetXaiConfigType string
+
+const (
+	AIGatewayTargetXaiConfigTypeXai AIGatewayTargetXaiConfigType = "xai"
+)
+
+func (e AIGatewayTargetXaiConfigType) ToPointer() *AIGatewayTargetXaiConfigType {
+	return &e
+}
+func (e *AIGatewayTargetXaiConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "xai":
+		*e = AIGatewayTargetXaiConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetXaiConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetXaiConfig - Xai-specific configuration for a model.
 type AIGatewayTargetXaiConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetXaiConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"xai" json:"type"`
+	UpstreamURL *string                      `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetXaiConfigType `json:"type"`
 }
 
 func (a AIGatewayTargetXaiConfig) MarshalJSON() ([]byte, error) {
@@ -174,6 +198,9 @@ func (a *AIGatewayTargetXaiConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetXaiConfig) GetType() string {
-	return "xai"
+func (a *AIGatewayTargetXaiConfig) GetType() AIGatewayTargetXaiConfigType {
+	if a == nil {
+		return AIGatewayTargetXaiConfigType("")
+	}
+	return a.Type
 }

@@ -4,15 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type BackendClusterAuthenticationSaslAwsIamAssumeRoleType string
+
+const (
+	BackendClusterAuthenticationSaslAwsIamAssumeRoleTypeAssumeRole BackendClusterAuthenticationSaslAwsIamAssumeRoleType = "assume_role"
+)
+
+func (e BackendClusterAuthenticationSaslAwsIamAssumeRoleType) ToPointer() *BackendClusterAuthenticationSaslAwsIamAssumeRoleType {
+	return &e
+}
+func (e *BackendClusterAuthenticationSaslAwsIamAssumeRoleType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "assume_role":
+		*e = BackendClusterAuthenticationSaslAwsIamAssumeRoleType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BackendClusterAuthenticationSaslAwsIamAssumeRoleType: %v", v)
+	}
+}
 
 // BackendClusterAuthenticationSaslAwsIamAssumeRole - Configures whether to authenticate using credentials obtained by first assuming a role, using the AWS default credentials provider chain
 //
 // **Requires a minimum runtime version of `1.3`**.
 type BackendClusterAuthenticationSaslAwsIamAssumeRole struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"assume_role" json:"type"`
+	Type BackendClusterAuthenticationSaslAwsIamAssumeRoleType `json:"type"`
 	// The [ARN](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns)
 	// of the IAM role to assume, formatted as `arn:aws:iam::<account-id>:role/<role-name>`.
 	//
@@ -34,8 +58,11 @@ func (b *BackendClusterAuthenticationSaslAwsIamAssumeRole) UnmarshalJSON(data []
 	return nil
 }
 
-func (b *BackendClusterAuthenticationSaslAwsIamAssumeRole) GetType() string {
-	return "assume_role"
+func (b *BackendClusterAuthenticationSaslAwsIamAssumeRole) GetType() BackendClusterAuthenticationSaslAwsIamAssumeRoleType {
+	if b == nil {
+		return BackendClusterAuthenticationSaslAwsIamAssumeRoleType("")
+	}
+	return b.Type
 }
 
 func (b *BackendClusterAuthenticationSaslAwsIamAssumeRole) GetArn() string {

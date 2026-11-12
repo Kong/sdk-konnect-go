@@ -4,6 +4,7 @@
 package components
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
@@ -757,6 +758,29 @@ func (p *PartialRedisEeConfig) GetUsername() *string {
 	return p.Username
 }
 
+type PartialRedisEeType string
+
+const (
+	PartialRedisEeTypeRedisEe PartialRedisEeType = "redis-ee"
+)
+
+func (e PartialRedisEeType) ToPointer() *PartialRedisEeType {
+	return &e
+}
+func (e *PartialRedisEeType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "redis-ee":
+		*e = PartialRedisEeType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PartialRedisEeType: %v", v)
+	}
+}
+
 type PartialRedisEe struct {
 	Config PartialRedisEeConfig `json:"config"`
 	// Unix epoch when the resource was created.
@@ -766,9 +790,8 @@ type PartialRedisEe struct {
 	// A unique string representing a UTF-8 encoded name.
 	Name *string `json:"name,omitempty"`
 	// A set of strings representing tags.
-	Tags []string `json:"tags,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"redis-ee" json:"type"`
+	Tags []string           `json:"tags,omitempty"`
+	Type PartialRedisEeType `json:"type"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
@@ -819,8 +842,11 @@ func (p *PartialRedisEe) GetTags() []string {
 	return p.Tags
 }
 
-func (p *PartialRedisEe) GetType() string {
-	return "redis-ee"
+func (p *PartialRedisEe) GetType() PartialRedisEeType {
+	if p == nil {
+		return PartialRedisEeType("")
+	}
+	return p.Type
 }
 
 func (p *PartialRedisEe) GetUpdatedAt() *int64 {

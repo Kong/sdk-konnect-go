@@ -10,6 +10,29 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type AIGatewayModelProviderSagemakerType string
+
+const (
+	AIGatewayModelProviderSagemakerTypeSagemaker AIGatewayModelProviderSagemakerType = "sagemaker"
+)
+
+func (e AIGatewayModelProviderSagemakerType) ToPointer() *AIGatewayModelProviderSagemakerType {
+	return &e
+}
+func (e *AIGatewayModelProviderSagemakerType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sagemaker":
+		*e = AIGatewayModelProviderSagemakerType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelProviderSagemakerType: %v", v)
+	}
+}
+
 type AIGatewayModelProviderSagemakerAuthType string
 
 const (
@@ -26,6 +49,9 @@ type AIGatewayModelProviderSagemakerAuth struct {
 
 func CreateAIGatewayModelProviderSagemakerAuthBasic(basic AIGatewayModelProviderConfigAuthBasic) AIGatewayModelProviderSagemakerAuth {
 	typ := AIGatewayModelProviderSagemakerAuthTypeBasic
+
+	typStr := AIGatewayModelProviderConfigAuthBasicType(typ)
+	basic.Type = typStr
 
 	return AIGatewayModelProviderSagemakerAuth{
 		AIGatewayModelProviderConfigAuthBasic: &basic,
@@ -131,8 +157,7 @@ func (a *AIGatewayModelProviderSagemakerConfig) GetAuthSagemaker() *AIGatewayMod
 
 // AIGatewayModelProviderSagemaker - Config for Sagemaker model provider.
 type AIGatewayModelProviderSagemaker struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sagemaker" json:"type"`
+	Type AIGatewayModelProviderSagemakerType `json:"type"`
 	// The display name for this model provider instance.
 	DisplayName string `json:"display_name"`
 	// A user-defined unique identifier for this model provider instance, used as a stable human-readable reference. This value is immutable after creation.
@@ -146,7 +171,9 @@ type AIGatewayModelProviderSagemaker struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// The Token Vault Datastore holding this entity's credential storage: the directory credentials
@@ -180,8 +207,11 @@ func (a *AIGatewayModelProviderSagemaker) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AIGatewayModelProviderSagemaker) GetType() string {
-	return "sagemaker"
+func (a *AIGatewayModelProviderSagemaker) GetType() AIGatewayModelProviderSagemakerType {
+	if a == nil {
+		return AIGatewayModelProviderSagemakerType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayModelProviderSagemaker) GetDisplayName() string {

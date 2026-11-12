@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType string
+
+const (
+	EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatTypeConfluentFormat EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType = "confluent_format"
+)
+
+func (e EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType) ToPointer() *EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType {
+	return &e
+}
+func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "confluent_format":
+		*e = EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType: %v", v)
+	}
+}
+
 // EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat - Prefixes the structured data bytes with a reference to the schema.
 type EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"confluent_format" json:"type"`
+	Type EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType `json:"type"`
 }
 
 func (e EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat) MarshalJSON() ([]byte, error) {
@@ -24,6 +48,9 @@ func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat) U
 	return nil
 }
 
-func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat) GetType() string {
-	return "confluent_format"
+func (e *EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormat) GetType() EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType {
+	if e == nil {
+		return EventGatewayParsedRecordTranscodeSchemaRefDestinationConfluentFormatType("")
+	}
+	return e.Type
 }

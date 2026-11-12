@@ -23,9 +23,9 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch mcpPositionalArgument.Type {
-	case components.MCPPositionalArgumentTypeMCPPositionalArgument1:
+	case components.MCPPositionalArgumentUnionTypeMCPPositionalArgument1:
 		// mcpPositionalArgument.MCPPositionalArgument1 is populated
-	case components.MCPPositionalArgumentTypeMCPPositionalArgument2:
+	case components.MCPPositionalArgumentUnionTypeMCPPositionalArgument2:
 		// mcpPositionalArgument.MCPPositionalArgument2 is populated
 }
 ```

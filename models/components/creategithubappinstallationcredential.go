@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type CreateGitHubAppInstallationCredentialType string
+
+const (
+	CreateGitHubAppInstallationCredentialTypeGithubAppInstallation CreateGitHubAppInstallationCredentialType = "github_app_installation"
+)
+
+func (e CreateGitHubAppInstallationCredentialType) ToPointer() *CreateGitHubAppInstallationCredentialType {
+	return &e
+}
+func (e *CreateGitHubAppInstallationCredentialType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github_app_installation":
+		*e = CreateGitHubAppInstallationCredentialType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateGitHubAppInstallationCredentialType: %v", v)
+	}
+}
 
 type CreateGitHubAppInstallationCredentialConfig struct {
 	// The GitHub App installation ID.
@@ -50,8 +75,7 @@ func (c *CreateGitHubAppInstallationCredentialConfig) GetAppInstalledBy() *strin
 
 // CreateGitHubAppInstallationCredential - Payload used to create an `GitHub App Installation` credential for an integration instance.
 type CreateGitHubAppInstallationCredential struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                                      `const:"github_app_installation" json:"type"`
+	Type   CreateGitHubAppInstallationCredentialType   `json:"type"`
 	Config CreateGitHubAppInstallationCredentialConfig `json:"config"`
 }
 
@@ -66,8 +90,11 @@ func (c *CreateGitHubAppInstallationCredential) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (c *CreateGitHubAppInstallationCredential) GetType() string {
-	return "github_app_installation"
+func (c *CreateGitHubAppInstallationCredential) GetType() CreateGitHubAppInstallationCredentialType {
+	if c == nil {
+		return CreateGitHubAppInstallationCredentialType("")
+	}
+	return c.Type
 }
 
 func (c *CreateGitHubAppInstallationCredential) GetConfig() CreateGitHubAppInstallationCredentialConfig {

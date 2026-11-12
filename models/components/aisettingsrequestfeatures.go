@@ -7,30 +7,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// AISettingsRequestFeaturesAISearch - AI Search configuration
-type AISettingsRequestFeaturesAISearch struct {
-	// Whether AI Search is enabled or not
-	Enabled *bool `default:"false" json:"enabled"`
-}
-
-func (a AISettingsRequestFeaturesAISearch) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AISettingsRequestFeaturesAISearch) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AISettingsRequestFeaturesAISearch) GetEnabled() *bool {
-	if a == nil {
-		return nil
-	}
-	return a.Enabled
-}
-
 // AISettingsRequestFeaturesMcpServer - MCP Server configuration
 type AISettingsRequestFeaturesMcpServer struct {
 	// Whether the Portal MCP Server is enabled or not
@@ -64,52 +40,10 @@ func (a *AISettingsRequestFeaturesMcpServer) GetWriteOperationsEnabled() *bool {
 	return a.WriteOperationsEnabled
 }
 
-type AISettingsRequestFeaturesPortalAgent struct {
-	// The display name for the Portal Agent, shown to developers in the portal
-	DisplayName *string `default:"AI" json:"display_name"`
-	// The audience allowed to interact with the Portal Agent. Currently only `all` (available to every developer, including unauthenticated ones) is supported. `authenticated` (restricted to signed-in developers only) is planned for a future release.
-	Audience *PortalAgentAudienceNullable `default:"all" json:"audience"`
-}
-
-func (a AISettingsRequestFeaturesPortalAgent) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AISettingsRequestFeaturesPortalAgent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (a *AISettingsRequestFeaturesPortalAgent) GetDisplayName() *string {
-	if a == nil {
-		return nil
-	}
-	return a.DisplayName
-}
-
-func (a *AISettingsRequestFeaturesPortalAgent) GetAudience() *PortalAgentAudienceNullable {
-	if a == nil {
-		return nil
-	}
-	return a.Audience
-}
-
 // AISettingsRequestFeatures - AI Features configuration. Only nullable when top-level `enabled` is false. When top-level `enabled` is false, every feature toggle here is automatically reset to false.
 type AISettingsRequestFeatures struct {
-	// AI Search configuration
-	AiSearch *AISettingsRequestFeaturesAISearch `json:"ai_search,omitempty"`
 	// MCP Server configuration
-	McpServer   *AISettingsRequestFeaturesMcpServer   `json:"mcp_server,omitempty"`
-	PortalAgent *AISettingsRequestFeaturesPortalAgent `json:"portal_agent,omitempty"`
-}
-
-func (a *AISettingsRequestFeatures) GetAiSearch() *AISettingsRequestFeaturesAISearch {
-	if a == nil {
-		return nil
-	}
-	return a.AiSearch
+	McpServer *AISettingsRequestFeaturesMcpServer `json:"mcp_server,omitempty"`
 }
 
 func (a *AISettingsRequestFeatures) GetMcpServer() *AISettingsRequestFeaturesMcpServer {
@@ -117,11 +51,4 @@ func (a *AISettingsRequestFeatures) GetMcpServer() *AISettingsRequestFeaturesMcp
 		return nil
 	}
 	return a.McpServer
-}
-
-func (a *AISettingsRequestFeatures) GetPortalAgent() *AISettingsRequestFeaturesPortalAgent {
-	if a == nil {
-		return nil
-	}
-	return a.PortalAgent
 }

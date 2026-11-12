@@ -28,6 +28,9 @@ type AIGatewayCustomPolicy struct {
 func CreateAIGatewayCustomPolicyInstalled(installed AIGatewayCustomPolicyInstalled) AIGatewayCustomPolicy {
 	typ := AIGatewayCustomPolicyTypeInstalled
 
+	typStr := AIGatewayCustomPolicyInstalledType(typ)
+	installed.Type = typStr
+
 	return AIGatewayCustomPolicy{
 		AIGatewayCustomPolicyInstalled: &installed,
 		Type:                           typ,
@@ -36,6 +39,9 @@ func CreateAIGatewayCustomPolicyInstalled(installed AIGatewayCustomPolicyInstall
 
 func CreateAIGatewayCustomPolicyStreaming(streaming AIGatewayCustomPolicyStreaming) AIGatewayCustomPolicy {
 	typ := AIGatewayCustomPolicyTypeStreaming
+
+	typStr := AIGatewayCustomPolicyStreamingType(typ)
+	streaming.Type = typStr
 
 	return AIGatewayCustomPolicy{
 		AIGatewayCustomPolicyStreaming: &streaming,

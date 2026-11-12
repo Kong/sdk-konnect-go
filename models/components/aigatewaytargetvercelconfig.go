@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayTargetVercelConfigType string
+
+const (
+	AIGatewayTargetVercelConfigTypeVercel AIGatewayTargetVercelConfigType = "vercel"
+)
+
+func (e AIGatewayTargetVercelConfigType) ToPointer() *AIGatewayTargetVercelConfigType {
+	return &e
+}
+func (e *AIGatewayTargetVercelConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = AIGatewayTargetVercelConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayTargetVercelConfigType: %v", v)
+	}
+}
 
 // AIGatewayTargetVercelConfig - Vercel AI Gateway-specific configuration for a model.
 type AIGatewayTargetVercelConfig struct {
@@ -46,9 +71,8 @@ type AIGatewayTargetVercelConfig struct {
 	// Nucleus sampling probability mass. Tokens with cumulative probability up to top_p are considered.
 	TopP *float64 `json:"top_p,omitempty"`
 	// The upstream URL for the model endpoint.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"vercel" json:"type"`
+	UpstreamURL *string                         `json:"upstream_url,omitempty"`
+	Type        AIGatewayTargetVercelConfigType `json:"type"`
 }
 
 func (a AIGatewayTargetVercelConfig) MarshalJSON() ([]byte, error) {
@@ -174,6 +198,9 @@ func (a *AIGatewayTargetVercelConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayTargetVercelConfig) GetType() string {
-	return "vercel"
+func (a *AIGatewayTargetVercelConfig) GetType() AIGatewayTargetVercelConfigType {
+	if a == nil {
+		return AIGatewayTargetVercelConfigType("")
+	}
+	return a.Type
 }

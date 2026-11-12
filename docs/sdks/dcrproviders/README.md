@@ -44,6 +44,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAuth0(
         components.CreateDcrProviderRequestAuth0{
+            ProviderType: components.ProviderTypeAuth0,
             DcrConfig: components.CreateDcrConfigAuth0InRequest{
                 InitialClientID: "<id>",
                 InitialClientSecret: "<value>",
@@ -98,6 +99,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAuth0(
         components.CreateDcrProviderRequestAuth0{
+            ProviderType: components.ProviderTypeAuth0,
             DcrConfig: components.CreateDcrConfigAuth0InRequest{
                 InitialClientID: "abc123",
                 InitialClientSecret: "abc123xyz098!",
@@ -153,6 +155,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestOkta(
         components.CreateDcrProviderRequestOkta{
+            ProviderType: components.CreateDcrProviderRequestOktaProviderTypeOkta,
             DcrConfig: components.CreateDcrConfigOktaInRequest{
                 DcrToken: "<value>",
             },
@@ -206,6 +209,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAzureAd(
         components.CreateDcrProviderRequestAzureAd{
+            ProviderType: components.CreateDcrProviderRequestAzureAdProviderTypeAzureAd,
             DcrConfig: components.CreateDcrConfigAzureAdInRequest{
                 InitialClientID: "abc123",
                 InitialClientSecret: "abc123xyz098!",
@@ -260,6 +264,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestCurity(
         components.CreateDcrProviderRequestCurity{
+            ProviderType: components.CreateDcrProviderRequestCurityProviderTypeCurity,
             DcrConfig: components.CreateDcrConfigCurityInRequest{
                 InitialClientID: "<id>",
                 InitialClientSecret: "<value>",
@@ -314,6 +319,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestCurity(
         components.CreateDcrProviderRequestCurity{
+            ProviderType: components.CreateDcrProviderRequestCurityProviderTypeCurity,
             DcrConfig: components.CreateDcrConfigCurityInRequest{
                 InitialClientID: "abc123",
                 InitialClientSecret: "abc123xyz098!",
@@ -368,6 +374,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestHTTP(
         components.CreateDcrProviderRequestHTTP{
+            ProviderType: components.CreateDcrProviderRequestHTTPProviderTypeHTTP,
             DcrConfig: components.CreateDcrConfigHTTPInRequest{
                 DcrBaseURL: "https://wilted-information.info",
                 APIKey: "<value>",
@@ -422,6 +429,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestHTTP(
         components.CreateDcrProviderRequestHTTP{
+            ProviderType: components.CreateDcrProviderRequestHTTPProviderTypeHTTP,
             DcrConfig: components.CreateDcrConfigHTTPInRequest{
                 DcrBaseURL: "https://my-http-dcr-server.com/v1/dcr",
                 APIKey: "gYmrbDfu_7PTsZWH",
@@ -476,6 +484,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAuth0(
         components.CreateDcrProviderRequestAuth0{
+            ProviderType: components.ProviderTypeAuth0,
             DcrConfig: components.CreateDcrConfigAuth0InRequest{
                 InitialClientID: "<id>",
                 InitialClientSecret: "<value>",
@@ -530,6 +539,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestOkta(
         components.CreateDcrProviderRequestOkta{
+            ProviderType: components.CreateDcrProviderRequestOktaProviderTypeOkta,
             DcrConfig: components.CreateDcrConfigOktaInRequest{
                 DcrToken: "abc123xyz098!",
             },
@@ -583,6 +593,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestHTTP(
         components.CreateDcrProviderRequestHTTP{
+            ProviderType: components.CreateDcrProviderRequestHTTPProviderTypeHTTP,
             DcrConfig: components.CreateDcrConfigHTTPInRequest{
                 DcrBaseURL: "https://wilted-information.info",
                 APIKey: "<value>",
@@ -637,6 +648,7 @@ func main() {
 
     res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAuth0(
         components.CreateDcrProviderRequestAuth0{
+            ProviderType: components.ProviderTypeAuth0,
             DcrConfig: components.CreateDcrConfigAuth0InRequest{
                 InitialClientID: "<id>",
                 InitialClientSecret: "<value>",

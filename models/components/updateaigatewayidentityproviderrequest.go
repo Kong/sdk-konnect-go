@@ -30,6 +30,9 @@ type UpdateAIGatewayIdentityProviderRequest struct {
 func CreateUpdateAIGatewayIdentityProviderRequestKeyAuth(keyAuth AIGatewayIdentityProviderKeyAuth) UpdateAIGatewayIdentityProviderRequest {
 	typ := UpdateAIGatewayIdentityProviderRequestTypeKeyAuth
 
+	typStr := AIGatewayIdentityProviderKeyAuthType(typ)
+	keyAuth.Type = typStr
+
 	return UpdateAIGatewayIdentityProviderRequest{
 		AIGatewayIdentityProviderKeyAuth: &keyAuth,
 		Type:                             typ,
@@ -38,6 +41,9 @@ func CreateUpdateAIGatewayIdentityProviderRequestKeyAuth(keyAuth AIGatewayIdenti
 
 func CreateUpdateAIGatewayIdentityProviderRequestOpenidConnect(openidConnect AIGatewayIdentityProviderOpenIDConnect) UpdateAIGatewayIdentityProviderRequest {
 	typ := UpdateAIGatewayIdentityProviderRequestTypeOpenidConnect
+
+	typStr := AIGatewayIdentityProviderOpenIDConnectType(typ)
+	openidConnect.Type = typStr
 
 	return UpdateAIGatewayIdentityProviderRequest{
 		AIGatewayIdentityProviderOpenIDConnect: &openidConnect,

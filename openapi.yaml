@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.17.0
+  version: 3.18.0
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -11596,6 +11596,100 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - Consumers
+  '/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups':
+    delete:
+      operationId: remove-consumer-from-all-consumer-groups
+      summary: Remove consumer from all consumer groups in a workspace
+      description: Removes a consumer from all Consumer Groups. This operation does not delete the consumer group in a workspace.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+        - $ref: '#/components/parameters/Workspace'
+      responses:
+        '204':
+          description: Consumer removed from all groups
+        '404':
+          description: Consumer does not exist
+      tags:
+        - Consumers
+    get:
+      operationId: list-consumer-groups-for-consumer
+      summary: List all Consumer Groups a Consumer belongs to in a workspace
+      description: List all Consumer Groups a Consumer belongs to in a workspace
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+        - $ref: '#/components/parameters/Workspace'
+      responses:
+        '200':
+          description: A successful response listing Consumer Groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConsumerGroup'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - Consumers
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    post:
+      operationId: add-consumer-to-specific-consumer-group
+      summary: Add consumer to a specific consumer group in a workspace
+      description: Add a consumer to a consumer group in a workspace
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+        - $ref: '#/components/parameters/Workspace'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group:
+                  type: string
+                  example: fedee695-2ae2-4e45-877a-776d9b2fc793
+                  x-speakeasy-name-override: group
+      responses:
+        '201':
+          description: Consumer added to a specific group
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumer:
+                    $ref: '#/components/schemas/Consumer'
+                  consumer_groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConsumerGroup'
+      tags:
+        - Consumers
+  '/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}':
+    delete:
+      operationId: remove-consumer-from-consumer-group
+      summary: Remove consumer from consumer group in a workspace
+      description: Removes a consumer from a Consumer Group. This operation does not delete the consumer group in a workspace.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+        - $ref: '#/components/parameters/ConsumerGroupId'
+        - $ref: '#/components/parameters/Workspace'
+      responses:
+        '204':
+          description: Consumer removed from group
+      tags:
+        - Consumers
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
   '/v2/control-planes/{controlPlaneId}/core-entities/{workspace}/consumers/{ConsumerIdForNestedEntities}/acls':
     get:
       operationId: list-acl-with-consumer
@@ -14818,96 +14912,6 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - Cloned Plugins
-  '/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups':
-    delete:
-      operationId: remove-consumer-from-all-consumer-groups
-      summary: Remove consumer from all consumer groups
-      description: Removes a consumer from all Consumer Groups. This operation does not delete the consumer group.
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-      responses:
-        '204':
-          description: Consumer removed from all groups
-        '404':
-          description: Consumer does not exist
-      tags:
-        - Consumers
-    get:
-      operationId: list-consumer-groups-for-consumer
-      summary: List all Consumer Groups a Consumer belongs to
-      description: List all Consumer Groups a Consumer belongs to
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/PaginationSize'
-        - $ref: '#/components/parameters/PaginationOffset'
-        - $ref: '#/components/parameters/PaginationTagsFilter'
-      responses:
-        '200':
-          description: A successful response listing Consumer Groups
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ConsumerGroup'
-                  next:
-                    $ref: '#/components/schemas/PaginationNextResponse'
-                  offset:
-                    $ref: '#/components/schemas/PaginationOffsetResponse'
-      tags:
-        - Consumers
-    parameters:
-      - $ref: '#/components/parameters/controlPlaneId'
-    post:
-      operationId: add-consumer-to-specific-consumer-group
-      summary: Add consumer to a specific consumer group
-      description: Add a consumer to a consumer group
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                group:
-                  type: string
-                  example: fedee695-2ae2-4e45-877a-776d9b2fc793
-                  x-speakeasy-name-override: group
-      responses:
-        '201':
-          description: Consumer added to a specific group
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  consumer:
-                    $ref: '#/components/schemas/Consumer'
-                  consumer_groups:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ConsumerGroup'
-      tags:
-        - Consumers
-  '/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}':
-    delete:
-      operationId: remove-consumer-from-consumer-group
-      summary: Remove consumer from consumer group
-      description: Removes a consumer from a Consumer Group. This operation does not delete the consumer group.
-      parameters:
-        - $ref: '#/components/parameters/ConsumerId'
-        - $ref: '#/components/parameters/ConsumerGroupId'
-      responses:
-        '204':
-          description: Consumer removed from group
-      tags:
-        - Consumers
-    parameters:
-      - $ref: '#/components/parameters/controlPlaneId'
   '/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins':
     get:
       operationId: list-custom-plugin
@@ -25644,9 +25648,6 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Applications
-      x-terraform-id-to-object:
-        auth_strategy_id: auth_strategy.id
-        environment_id: environment.id
     get:
       operationId: list-applications
       summary: List Applications
@@ -25843,8 +25844,6 @@ paths:
                 $ref: '#/components/schemas/ConflictError'
       tags:
         - Application Registrations
-      x-terraform-id-to-object:
-        api_id: api.id
     get:
       operationId: list-registrations-by-application
       summary: List Registrations by Application
@@ -26430,112 +26429,6 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Portal Customization
-  '/v3/portals/{portalId}/customization/navigations':
-    get:
-      operationId: list-portal-navigations
-      summary: List Navigation configurations
-      description: Returns a paginated list of the portal's sidebar navigation configurations. Each navigation is matched to pages by its `show_on_path_prefixes` and displayed automatically when using a named page layout that supports the sidebar UX.
-      parameters:
-        - $ref: '#/components/parameters/SortPortalNavigations'
-        - $ref: '#/components/parameters/PortalId'
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/PageNumber'
-        - name: filter
-          in: query
-          description: Filter navigations returned in the response.
-          required: false
-          schema:
-            $ref: '#/components/schemas/PortalNavigationsFilterParameters'
-          style: deepObject
-      responses:
-        '200':
-          $ref: '#/components/responses/ListPortalNavigations'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - Portal Navigation
-    post:
-      operationId: create-portal-navigation
-      summary: Create Navigation configuration
-      description: 'Creates a sidebar navigation configuration for this portal. A navigation claims every page under its `show_on_path_prefixes`, and the longest matching entry wins when more than one navigation is configured.'
-      parameters:
-        - $ref: '#/components/parameters/PortalId'
-      requestBody:
-        $ref: '#/components/requestBodies/CreatePortalNavigation'
-      responses:
-        '201':
-          $ref: '#/components/responses/PortalNavigation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - Portal Navigation
-  '/v3/portals/{portalId}/customization/navigations/{navigationId}':
-    get:
-      operationId: get-portal-navigation
-      summary: Get a Navigation configuration
-      description: Returns the configuration of a single sidebar navigation for this portal.
-      parameters:
-        - $ref: '#/components/parameters/PortalId'
-        - $ref: '#/components/parameters/NavigationId'
-      responses:
-        '200':
-          $ref: '#/components/responses/PortalNavigation'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - Portal Navigation
-    put:
-      operationId: replace-portal-navigation
-      summary: Replace Navigation configuration
-      description: Replaces the configuration of a single sidebar navigation for this portal. This is a full replacement; partial updates are not supported.
-      parameters:
-        - $ref: '#/components/parameters/PortalId'
-        - $ref: '#/components/parameters/NavigationId'
-      requestBody:
-        $ref: '#/components/requestBodies/ReplacePortalNavigation'
-      responses:
-        '200':
-          $ref: '#/components/responses/PortalNavigation'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - Portal Navigation
-    delete:
-      operationId: delete-portal-navigation
-      summary: Delete Navigation configuration
-      description: Deletes a single sidebar navigation configuration for this portal.
-      parameters:
-        - $ref: '#/components/parameters/PortalId'
-        - $ref: '#/components/parameters/NavigationId'
-      responses:
-        '204':
-          description: No Content
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - Portal Navigation
   '/v3/portals/{portalId}/default-content':
     post:
       operationId: create-default-content
@@ -31178,15 +31071,6 @@ components:
       name: 'filter[name][eq]'
       schema:
         type: string
-    NavigationId:
-      schema:
-        type: string
-        format: uuid
-        example: ebbac5b0-ac89-45c3-9d2e-c4542c657e79
-      name: navigationId
-      in: path
-      required: true
-      description: ID of the navigation configuration.
     NetworkId:
       name: networkId
       in: path
@@ -31804,18 +31688,6 @@ components:
       required: false
       schema:
         type: string
-    SortPortalNavigations:
-      name: sort
-      description: |
-        Sorts a collection of portal navigations. Supported sort attributes are:
-          - created_at
-          - updated_at
-          - name
-      in: query
-      required: false
-      schema:
-        type: string
-        default: name
     SortPortalPages:
       name: sort
       description: |
@@ -32077,6 +31949,7 @@ components:
           description: Whether this control-plane can be used for cloud-gateways.
           type: boolean
           example: false
+          default: false
           nullable: false
         proxy_urls:
           $ref: '#/components/schemas/ProxyURLs'
@@ -32160,6 +32033,7 @@ components:
               description: The ClusterType value of the cluster associated with the Control Plane.
               type: string
               example: CLUSTER_TYPE_CONTROL_PLANE
+              default: CLUSTER_TYPE_CONTROL_PLANE
               enum:
                 - CLUSTER_TYPE_CONTROL_PLANE
                 - CLUSTER_TYPE_K8S_INGRESS_CONTROLLER
@@ -32173,6 +32047,7 @@ components:
               description: The auth type value of the cluster associated with the Runtime Group.
               type: string
               example: pinned_client_certs
+              default: pinned_client_certs
               enum:
                 - pinned_client_certs
                 - pki_client_certs
@@ -32181,10 +32056,24 @@ components:
             cloud_gateway:
               description: Whether the Control Plane can be used for cloud-gateways.
               type: boolean
+              example: false
+              default: false
               nullable: false
               readOnly: true
             proxy_urls:
-              $ref: '#/components/schemas/ProxyURLs'
+              description: Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
+              type: array
+              items:
+                $ref: '#/components/schemas/ProxyURL'
+              format: set
+              example:
+                - host: example.com
+                  port: 443
+                  protocol: https
+              maxItems: 5
+              readOnly: true
+              title: ProxyURLs
+          readOnly: true
           required:
             - control_plane_endpoint
             - telemetry_endpoint
@@ -33219,15 +33108,17 @@ components:
       description: |
         Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 
-        Keys must be 1–63 characters long and start with an alphanumeric character.
+        Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+        Values must be 1–127 characters long and must not be empty.
+        Keys and values must not contain spaces or control characters.
       type: object
       example:
         owner: terraform
       additionalProperties:
         type: string
-        pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
+        pattern: '^[^\s\x00-\x1F\x7F-\x9F]+$'
         minLength: 1
-        maxLength: 63
+        maxLength: 127
       maxProperties: 5
       title: ManagedBy
     PaginationNextResponse:
@@ -33946,6 +33837,16 @@ components:
             - sg
             - '*'
           x-speakeasy-unknown-values: allow
+        konnect_managed:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            Indicates that the role is assigned and removed only by Konnect.
+          type: boolean
+          example: false
+          default: false
+          readOnly: true
       example:
         id: 54cc6168-ebb1-4300-8168-d62a0dd08fc8
         role_name: Viewer
@@ -34172,15 +34073,17 @@ components:
 
         Set a key's value to `null` to remove it.
 
-        Keys must be 1–63 characters long and start with an alphanumeric character.
+        Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+        Values must be 1–127 characters long. Value can be null.
+        Keys and values must not contain spaces or control characters.
       type: object
       example:
         owner: terraform
       additionalProperties:
         type: string
-        pattern: '^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$'
+        pattern: '^[^\s\x00-\x1F\x7F-\x9F]+$'
         minLength: 1
-        maxLength: 63
+        maxLength: 127
         nullable: true
       maxProperties: 5
       title: ManagedByUpdate
@@ -36899,7 +36802,8 @@ components:
         kind:
           description: Type of add-on configuration.
           type: string
-          const: managed-cache.v0
+          enum:
+            - managed-cache.v0
         capacity_config:
           $ref: '#/components/schemas/ManagedCacheCapacityConfig'
         data_plane_groups:
@@ -37132,7 +37036,8 @@ components:
         kind:
           description: Type of owner for the add-on.
           type: string
-          const: control-plane
+          enum:
+            - control-plane
         type:
           $ref: '#/components/schemas/ControlPlaneAddOnOwnerType'
         control_plane_id:
@@ -37155,7 +37060,8 @@ components:
         kind:
           description: Type of owner for the add-on.
           type: string
-          const: control-plane-group
+          enum:
+            - control-plane-group
         control_plane_group_id:
           description: ID of the control-plane group that owns this add-on.
           type: string
@@ -37182,7 +37088,8 @@ components:
         kind:
           description: Type of add-on configuration.
           type: string
-          const: managed-cache.v0
+          enum:
+            - managed-cache.v0
         capacity_config:
           $ref: '#/components/schemas/ManagedCacheCapacityConfig'
       additionalProperties: false
@@ -37214,7 +37121,8 @@ components:
         kind:
           description: Type of add-on configuration.
           type: string
-          const: managed-cache.v0
+          enum:
+            - managed-cache.v0
         capacity_config:
           $ref: '#/components/schemas/ManagedCacheCapacityConfig'
       additionalProperties: false
@@ -37236,7 +37144,8 @@ components:
         kind:
           description: Type of capacity configuration.
           type: string
-          const: tiered
+          enum:
+            - tiered
         tier:
           description: |
             Capacity tier that determines both cache size and performance characteristics:
@@ -38315,7 +38224,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: auth0
+          enum:
+            - auth0
         dcr_config:
           $ref: '#/components/schemas/DcrConfigAuth0InResponse'
       required:
@@ -38328,7 +38238,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: azureAd
+          enum:
+            - azureAd
         dcr_config:
           $ref: '#/components/schemas/DcrConfigAzureAdInResponse'
       required:
@@ -38341,7 +38252,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: curity
+          enum:
+            - curity
         dcr_config:
           $ref: '#/components/schemas/DcrConfigCurityInResponse'
       required:
@@ -38354,7 +38266,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: kongIdentity
+          enum:
+            - kongIdentity
         dcr_config:
           $ref: '#/components/schemas/DcrConfigKongIdentityInResponse'
       required:
@@ -38367,7 +38280,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: okta
+          enum:
+            - okta
         dcr_config:
           $ref: '#/components/schemas/DcrConfigOktaInResponse'
       required:
@@ -38380,7 +38294,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: http
+          enum:
+            - http
         dcr_config:
           $ref: '#/components/schemas/DcrConfigHttpInResponse'
       required:
@@ -38437,7 +38352,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: auth0
+          enum:
+            - auth0
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigAuth0InRequest'
         name:
@@ -38462,7 +38378,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: azureAd
+          enum:
+            - azureAd
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigAzureAdInRequest'
         name:
@@ -38487,7 +38404,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: curity
+          enum:
+            - curity
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigCurityInRequest'
         name:
@@ -38512,7 +38430,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: okta
+          enum:
+            - okta
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigOktaInRequest'
         name:
@@ -38537,7 +38456,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: kongIdentity
+          enum:
+            - kongIdentity
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigKongIdentityInRequest'
         name:
@@ -38561,7 +38481,8 @@ components:
       properties:
         provider_type:
           type: string
-          const: http
+          enum:
+            - http
         dcr_config:
           $ref: '#/components/schemas/CreateDcrConfigHttpInRequest'
         name:
@@ -39350,7 +39271,11 @@ components:
         format: uri
       nullable: false
     LoginURI:
-      description: The URI of the login page where the user is redirected to authenticate in interactive flows. The login page must be secure (HTTPS).
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        The URI of the login page where the user is redirected to authenticate in interactive flows. The login page must be secure (HTTPS).
       type: string
       format: uri
       nullable: true
@@ -40158,14 +40083,13 @@ components:
       oneOf:
         - $ref: '#/components/schemas/CreatePrincipalKeyBodyImported'
         - $ref: '#/components/schemas/CreatePrincipalKeyBodyv1'
-      x-terraform-collapse-oneof: true
-      x-terraform-no-default-null: true
     CreatePrincipalKeyBodyImported:
       type: object
       properties:
         type:
           type: string
-          const: imported
+          enum:
+            - imported
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         secret:
@@ -40185,7 +40109,8 @@ components:
       properties:
         type:
           type: string
-          const: v1
+          enum:
+            - v1
         name:
           $ref: '#/components/schemas/KongPrincipalKeyName'
         expires_at:
@@ -41003,7 +40928,8 @@ components:
           properties:
             type:
               type: string
-              const: oidc
+              enum:
+                - oidc
             issuer:
               type: string
             claim:
@@ -41027,7 +40953,8 @@ components:
           properties:
             type:
               type: string
-              const: auth_server_client
+              enum:
+                - auth_server_client
             auth_server_id:
               type: string
               format: uuid
@@ -41044,7 +40971,8 @@ components:
           properties:
             type:
               type: string
-              const: control_plane_consumer
+              enum:
+                - control_plane_consumer
             control_plane_id:
               type: string
             consumer_id:
@@ -41062,7 +40990,8 @@ components:
           properties:
             type:
               type: string
-              const: custom
+              enum:
+                - custom
             key:
               type: string
             value:
@@ -41078,7 +41007,8 @@ components:
           properties:
             type:
               type: string
-              const: oidc
+              enum:
+                - oidc
             issuer:
               type: string
             claim:
@@ -41102,7 +41032,8 @@ components:
           properties:
             type:
               type: string
-              const: auth_server_client
+              enum:
+                - auth_server_client
             auth_server_id:
               type: string
               format: uuid
@@ -41119,7 +41050,8 @@ components:
           properties:
             type:
               type: string
-              const: control_plane_consumer
+              enum:
+                - control_plane_consumer
             control_plane_id:
               type: string
             consumer_id:
@@ -41146,7 +41078,8 @@ components:
           properties:
             type:
               type: string
-              const: custom
+              enum:
+                - custom
             key:
               type: string
             value:
@@ -41382,7 +41315,8 @@ components:
           properties:
             credential_type:
               type: string
-              const: shared
+              enum:
+                - shared
             selector:
               allOf:
                 - $ref: '#/components/schemas/VaultCredentialSelector'
@@ -41412,7 +41346,8 @@ components:
           properties:
             credential_type:
               type: string
-              const: user
+              enum:
+                - user
               x-enum-varnames:
                 - VaultProviderCredentialUserCredentialTypeUser
             principal:
@@ -41755,7 +41690,7 @@ components:
       nullable: true
     TrustedIdpJitProvisioningEnabled:
       description: |
-        Whether a principal is provisioned just-in-time on first exchange when no principal matches the subject_token's issuer and sub claim.
+        Whether a principal is provisioned just-in-time on first exchange when no principal matches the subject_token's issuer and its identifier claim — `sub` by default, or the claim `jit.mapping.identifier` names.
       type: boolean
       default: true
     TrustedIdpVaultAccessEnabled:
@@ -41777,7 +41712,7 @@ components:
           $ref: '#/components/schemas/TrustedIdpJitMapping'
     TrustedIdpJitMapping:
       description: |
-        How the OIDC claims a client presents to fetch-principal map onto a principal provisioned just in time for this trusted IdP. Every field names one of those claims and is optional; a claim the mapping names but the lookup does not carry contributes nothing. An absent `mapping` — or an absent `jit` — means no claim mapping: provisioned principals get empty metadata and the lookup's claim value as display name.
+        How the OIDC claims a client presents to fetch-principal map onto a principal provisioned just in time for this trusted IdP. Every field names one of those claims and is optional; a claim the mapping names but the lookup does not carry contributes nothing — except `identifier`, which the vault token exchange uses to look up the principal, and whose absence from the subject_token fails the exchange. An absent `mapping` — or an absent `jit` — means no claim mapping: provisioned principals get empty metadata and the lookup's claim value as display name.
       type: object
       properties:
         metadata:
@@ -41803,6 +41738,12 @@ components:
             Name of the claim whose string value becomes the provisioned principal's display name. When absent from the token, the lookup's claim value is used instead.
           type: string
           example: name
+        identifier:
+          description: |
+            Name of the claim whose string value identifies the principal: the principal's OIDC identity keys on it, and an exchange looks the principal up by it. Defaults to `sub`. Set it when the IdP keys principals on another claim — Entra ID tokens, for example, carry the immutable object id in `oid`. The claim's value must identify one principal. When the claim is absent from the token, the lookup fails. Changing `identifier` re-keys existing principals' OIDC identities: they stop resolving, and the next exchange provisions anew or fails.
+          type: string
+          example: oid
+          default: sub
     TrustedIdp:
       description: |
         A trusted external IdP for a token-vault enabled directory.
@@ -44177,10 +44118,7 @@ components:
     CreateDefaultContentRequest:
       description: Options for creating default content.
       type: object
-      properties:
-        theme_name:
-          description: 'Name of the theme to use for the default content. Must match an available theme name; if omitted or unrecognized, the default theme is used.'
-          type: string
+      properties: {}
       additionalProperties: false
       title: CreateDefaultContentRequest
     PortalPageResponse:
@@ -44362,17 +44300,6 @@ components:
       description: 'AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.'
       type: object
       properties:
-        ai_search:
-          description: AI Search configuration
-          type: object
-          additionalProperties: false
-          properties:
-            enabled:
-              description: Whether AI Search is enabled or not
-              type: boolean
-              default: false
-          required:
-            - enabled
         mcp_server:
           description: MCP Server configuration
           type: object
@@ -44389,14 +44316,9 @@ components:
           required:
             - enabled
             - write_operations_enabled
-        portal_agent:
-          required:
-            - display_name
-            - audience
       additionalProperties: false
       required:
         - mcp_server
-        - ai_search
     PatchAISettingsRequest:
       type: object
       properties:
@@ -44428,17 +44350,6 @@ components:
       description: 'AI Features configuration. Only nullable when top-level `enabled` is false. When top-level `enabled` is false, every feature toggle here is automatically reset to false.'
       type: object
       properties:
-        ai_search:
-          description: AI Search configuration
-          type: object
-          additionalProperties: false
-          properties:
-            enabled:
-              description: Whether AI Search is enabled or not
-              type: boolean
-              default: false
-          required:
-            - enabled
         mcp_server:
           description: MCP Server configuration
           type: object
@@ -44454,12 +44365,6 @@ components:
               default: false
           required:
             - enabled
-        portal_agent:
-          properties:
-            display_name:
-              $ref: '#/components/schemas/PortalAgentDisplayNameNullable'
-            audience:
-              $ref: '#/components/schemas/PortalAgentAudienceNullable'
       additionalProperties: false
       minProperties: 1
       nullable: true
@@ -44467,17 +44372,6 @@ components:
       description: 'AI Features configuration. When top-level `enabled` is false, every feature toggle here must be automatically reset to false.'
       type: object
       properties:
-        ai_search:
-          description: AI Search configuration
-          type: object
-          additionalProperties: false
-          properties:
-            enabled:
-              description: Whether AI Search is enabled or not
-              type: boolean
-              default: false
-          required:
-            - enabled
         mcp_server:
           description: MCP Server configuration
           type: object
@@ -44494,16 +44388,9 @@ components:
           required:
             - enabled
             - write_operations_enabled
-        portal_agent:
-          properties:
-            display_name:
-              $ref: '#/components/schemas/PortalAgentDisplayNameNullable'
-            audience:
-              $ref: '#/components/schemas/PortalAgentAudienceNullable'
       additionalProperties: false
       required:
         - mcp_server
-        - ai_search
     CreatePortalFormRequest:
       description: |-
         Request body for creating a form, discriminated by `type`.
@@ -45324,184 +45211,6 @@ components:
           $ref: '#/components/schemas/DateTimeFieldFilter'
       additionalProperties: false
       title: PortalSnippetsFilterParameters
-    NavigationShowOnPathPrefix:
-      description: 'A route prefix this navigation claims. Use `/` for a portal-wide navigation, or a deeper prefix such as `/guides` to override it on those routes only. Must start with `/`, contain only lowercase letters, numbers, hyphens, and slashes, and must be unique per portal.'
-      type: string
-      example: /guides
-      maxLength: 512
-      pattern: '^/[a-z0-9/-]*$'
-      title: NavigationShowOnPathPrefix
-    NavigationShowOnPathPrefixes:
-      description: Route prefixes this navigation claims. The longest matching prefix across all of a portal's navigations wins.
-      type: array
-      items:
-        $ref: '#/components/schemas/NavigationShowOnPathPrefix'
-      example:
-        - /guides
-      minItems: 1
-      title: NavigationShowOnPathPrefixes
-      uniqueItems: true
-    NavigationName:
-      description: Names the navigation in the Konnect UI. Must be unique per portal.
-      type: string
-      example: Main
-      maxLength: 512
-      title: NavigationName
-    NavigationLinkText:
-      description: The link label.
-      type: string
-      example: Overview
-      maxLength: 512
-      title: NavigationLinkText
-    NavigationLinkHref:
-      description: 'The link target: a portal path (`/guides`), an anchor (`/getting-started#section`), a query (`?tab=1`), or a full `https://` URL.'
-      type: string
-      example: /getting-started
-      maxLength: 2048
-      title: NavigationLinkHref
-    NavigationLinkVisibility:
-      description: 'Who sees the link. `public` for every visitor, `private` for signed-in developers only.'
-      type: string
-      example: public
-      enum:
-        - public
-        - private
-      title: NavigationLinkVisibility
-      x-speakeasy-unknown-values: allow
-    NavigationLink:
-      description: 'A single navigation link, optionally with nested children.'
-      type: object
-      properties:
-        text:
-          $ref: '#/components/schemas/NavigationLinkText'
-        href:
-          $ref: '#/components/schemas/NavigationLinkHref'
-        visibility:
-          $ref: '#/components/schemas/NavigationLinkVisibility'
-        external:
-          description: 'When true, the link opens in a new tab.'
-          type: boolean
-          default: false
-        expanded:
-          description: 'When true, the link''s children start expanded.'
-          type: boolean
-          default: false
-        children:
-          description: 'Nested links, up to three levels total, including this link.'
-          type: array
-          items:
-            $ref: '#/components/schemas/NavigationLink'
-          example: []
-      additionalProperties: false
-      required:
-        - text
-        - href
-        - visibility
-      title: NavigationLink
-    NavigationLinkGroup:
-      description: 'A group of navigation links, rendered in order, with an optional header.'
-      type: object
-      properties:
-        header:
-          description: Heading text displayed above the group's links. Omit it for an unlabeled group.
-          type: string
-          example: Getting started
-          maxLength: 512
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/NavigationLink'
-      additionalProperties: false
-      required:
-        - links
-      title: NavigationLinkGroup
-    CreatePortalNavigationRequest:
-      description: Create a sidebar navigation configuration for a portal.
-      type: object
-      properties:
-        show_on_path_prefixes:
-          $ref: '#/components/schemas/NavigationShowOnPathPrefixes'
-        name:
-          $ref: '#/components/schemas/NavigationName'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/NavigationLinkGroup'
-      additionalProperties: false
-      required:
-        - show_on_path_prefixes
-        - name
-        - groups
-      title: CreatePortalNavigationRequest
-    ReplacePortalNavigationRequest:
-      description: Replace a sidebar navigation configuration for a portal. This is a full replacement; partial updates are not supported.
-      type: object
-      properties:
-        show_on_path_prefixes:
-          $ref: '#/components/schemas/NavigationShowOnPathPrefixes'
-        name:
-          $ref: '#/components/schemas/NavigationName'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/NavigationLinkGroup'
-      additionalProperties: false
-      required:
-        - show_on_path_prefixes
-        - name
-        - groups
-      title: ReplacePortalNavigationRequest
-    PortalNavigationResponse:
-      description: Details about a sidebar navigation configuration for a portal.
-      type: object
-      properties:
-        show_on_path_prefixes:
-          $ref: '#/components/schemas/NavigationShowOnPathPrefixes'
-        name:
-          $ref: '#/components/schemas/NavigationName'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/NavigationLinkGroup'
-        id:
-          $ref: '#/components/schemas/UUID'
-        created_at:
-          $ref: '#/components/schemas/CreatedAt'
-        updated_at:
-          $ref: '#/components/schemas/UpdatedAt'
-      additionalProperties: false
-      required:
-        - show_on_path_prefixes
-        - name
-        - groups
-        - id
-        - created_at
-        - updated_at
-      title: PortalNavigationResponse
-    ListPortalNavigationsResponse:
-      description: A paginated list of sidebar navigation configurations for a portal.
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PortalNavigationResponse'
-        meta:
-          $ref: '#/components/schemas/PaginatedMeta'
-      additionalProperties: false
-      required:
-        - data
-        - meta
-      title: ListPortalNavigationsResponse
-    PortalNavigationsFilterParameters:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/UuidFieldFilter'
-        name:
-          $ref: '#/components/schemas/StringFieldFilter'
-      additionalProperties: false
-      title: PortalNavigationsFilterParameters
     PortalCustomDomain:
       type: object
       properties:
@@ -45567,7 +45276,8 @@ components:
       properties:
         domain_verification_method:
           type: string
-          const: custom_certificate
+          enum:
+            - custom_certificate
         custom_certificate:
           description: Custom certificate to be used for the SSL termination.
           type: string
@@ -45589,7 +45299,8 @@ components:
       properties:
         domain_verification_method:
           type: string
-          const: http
+          enum:
+            - http
       additionalProperties: false
       required:
         - domain_verification_method
@@ -46760,17 +46471,6 @@ components:
       description: 'AI features configuration. When top-level `enabled` is false, every feature toggle here is automatically reset to false.'
       type: object
       properties:
-        ai_search:
-          description: AI Search config
-          type: object
-          additionalProperties: false
-          properties:
-            enabled:
-              description: Whether AI Search is enabled or not
-              type: boolean
-              default: false
-          required:
-            - enabled
         mcp_server:
           description: AI Features config
           type: object
@@ -46790,7 +46490,6 @@ components:
       additionalProperties: false
       required:
         - mcp_server
-        - ai_search
     AISettings:
       type: object
       properties:
@@ -46825,6 +46524,34 @@ components:
       pattern: '^data:image/(x-icon|ico|icon|vnd.microsoft.icon)(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
       title: ImageICODataUri
       x-validation-message: 'must be a data URL with base64 ICO image data, e.g., data:image/ico;base64,<BASE64_IMAGE_DATA>'
+    PortalCustomizationTheme:
+      description: The theme settings for this portal.
+      type: object
+      properties:
+        name:
+          description: 'The theme name to apply to this portal. Supported names are ''mesa'', ''grove'', ''pebble'', or ''ocean''. If another name is provided or this property is omitted, the portal uses the default ''ocean'' theme.'
+          type: string
+          default: ocean
+          nullable: false
+        mode:
+          type: string
+          enum:
+            - light
+            - dark
+            - system
+          x-speakeasy-unknown-values: allow
+        colors:
+          type: object
+          additionalProperties: false
+          properties:
+            primary:
+              description: The primary accent color used in the portal's theme. Must be a valid hex color value.
+              type: string
+              example: '#000000'
+              nullable: false
+              pattern: '^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$'
+              x-validation-message: must be a valid hex color value
+      additionalProperties: false
     PortalMenuItem:
       type: object
       properties:
@@ -47558,21 +47285,6 @@ components:
       required:
         - data
         - meta
-    PortalAgentDisplayNameNullable:
-      description: 'The display name for the Portal Agent, shown to developers in the portal'
-      type: string
-      example: AI
-      default: AI
-      maxLength: 120
-      minLength: 1
-      nullable: true
-    PortalAgentAudienceNullable:
-      description: 'The audience allowed to interact with the Portal Agent. Currently only `all` (available to every developer, including unauthenticated ones) is supported. `authenticated` (restricted to signed-in developers only) is planned for a future release.'
-      type: string
-      default: all
-      enum:
-        - all
-      nullable: true
     CustomFormFieldName:
       description: |
         A stable, URL-safe slug identifying the field (letters, digits,
@@ -48990,7 +48702,8 @@ components:
       properties:
         type:
           type: string
-          const: oauth
+          enum:
+            - oauth
         overridable_config:
           description: |
             A list of field names from the `config` object (e.g., `client_id`, `authorization_endpoint`, etc)
@@ -49082,7 +48795,8 @@ components:
       properties:
         type:
           type: string
-          const: multi_key_auth
+          enum:
+            - multi_key_auth
         config:
           type: object
           properties:
@@ -49129,7 +48843,8 @@ components:
       properties:
         type:
           type: string
-          const: github_app_installation
+          enum:
+            - github_app_installation
         config:
           type: object
           properties:
@@ -49682,7 +49397,8 @@ components:
       properties:
         type:
           type: string
-          const: oauth
+          enum:
+            - oauth
         config:
           type: object
           additionalProperties: false
@@ -49718,7 +49434,8 @@ components:
       properties:
         type:
           type: string
-          const: github_app_installation
+          enum:
+            - github_app_installation
         config:
           type: object
           additionalProperties: false
@@ -49748,7 +49465,8 @@ components:
       properties:
         type:
           type: string
-          const: multi_key_auth
+          enum:
+            - multi_key_auth
         config:
           type: object
           additionalProperties: false
@@ -49841,7 +49559,8 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         type:
           type: string
-          const: oauth
+          enum:
+            - oauth
       required:
         - id
         - integration_instance
@@ -49886,7 +49605,8 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         type:
           type: string
-          const: github_app_installation
+          enum:
+            - github_app_installation
         config:
           type: object
           properties:
@@ -49946,7 +49666,8 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         type:
           type: string
-          const: multi_key_auth
+          enum:
+            - multi_key_auth
       required:
         - id
         - integration_instance
@@ -50043,7 +49764,8 @@ components:
       properties:
         type:
           type: string
-          const: oauth
+          enum:
+            - oauth
         client_id:
           description: The OAuth client identifier.
           type: string
@@ -50077,7 +49799,8 @@ components:
       properties:
         type:
           type: string
-          const: oauth
+          enum:
+            - oauth
         client_id:
           description: The OAuth client identifier.
           type: string
@@ -52372,7 +52095,6 @@ components:
       anyOf:
         - $ref: '#/components/schemas/VirtualClusterReferenceById'
         - $ref: '#/components/schemas/VirtualClusterReferenceByName'
-      x-terraform-preferred: '#/components/schemas/VirtualClusterReferenceById'
     VirtualClusterReferenceById:
       description: Reference a virtual cluster by its unique identifier.
       type: object
@@ -52447,7 +52169,8 @@ components:
       properties:
         type:
           type: string
-          const: anonymous
+          enum:
+            - anonymous
       required:
         - type
     VirtualClusterAuthenticationClientCertificate:
@@ -52459,7 +52182,8 @@ components:
       properties:
         type:
           type: string
-          const: client_certificate
+          enum:
+            - client_certificate
         fetch_kong_identity_principal:
           $ref: '#/components/schemas/FetchKongIdentityPrincipal'
       example:
@@ -52536,7 +52260,6 @@ components:
       anyOf:
         - $ref: '#/components/schemas/TLSTrustBundleReferenceById'
         - $ref: '#/components/schemas/TLSTrustBundleReferenceByName'
-      x-terraform-preferred: '#/components/schemas/TLSTrustBundleReferenceById'
     TLSTrustBundleReferenceById:
       type: object
       properties:
@@ -52560,7 +52283,8 @@ components:
       properties:
         type:
           type: string
-          const: sasl_plain
+          enum:
+            - sasl_plain
         mediation:
           description: The mediation type for SASL/PLAIN authentication.
           type: string
@@ -52586,7 +52310,8 @@ components:
       properties:
         type:
           type: string
-          const: sasl_plain
+          enum:
+            - sasl_plain
         mediation:
           description: The mediation type for SASL/PLAIN authentication.
           type: string
@@ -52664,7 +52389,8 @@ components:
       properties:
         type:
           type: string
-          const: sasl_scram
+          enum:
+            - sasl_scram
         algorithm:
           description: The algorithm used for SASL/SCRAM authentication.
           type: string
@@ -52684,7 +52410,8 @@ components:
       properties:
         type:
           type: string
-          const: oauth_bearer
+          enum:
+            - oauth_bearer
         mediation:
           description: |
             Methods to mediate authentication:
@@ -53015,7 +52742,8 @@ components:
         type:
           description: The type of authentication scheme.
           type: string
-          const: anonymous
+          enum:
+            - anonymous
       additionalProperties: false
       required:
         - type
@@ -53026,7 +52754,8 @@ components:
       properties:
         type:
           type: string
-          const: sasl_plain
+          enum:
+            - sasl_plain
         username:
           $ref: '#/components/schemas/GatewaySecretReferenceOrLiteral'
         password:
@@ -53041,7 +52770,8 @@ components:
       properties:
         type:
           type: string
-          const: sasl_plain
+          enum:
+            - sasl_plain
         username:
           $ref: '#/components/schemas/GatewaySecretReferenceOrLiteral'
         password:
@@ -53058,7 +52788,8 @@ components:
       properties:
         type:
           type: string
-          const: sasl_scram
+          enum:
+            - sasl_scram
         algorithm:
           description: The algorithm used for SASL/SCRAM authentication.
           type: string
@@ -53081,7 +52812,8 @@ components:
       properties:
         type:
           type: string
-          const: sasl_scram
+          enum:
+            - sasl_scram
         algorithm:
           description: The algorithm used for SASL/SCRAM authentication.
           type: string
@@ -53109,7 +52841,8 @@ components:
       properties:
         type:
           type: string
-          const: sasl_aws_iam
+          enum:
+            - sasl_aws_iam
         sasl_aws_iam:
           type: object
           discriminator:
@@ -53138,7 +52871,8 @@ components:
       properties:
         type:
           type: string
-          const: default_provider_chain
+          enum:
+            - default_provider_chain
       additionalProperties: false
       required:
         - type
@@ -53152,7 +52886,8 @@ components:
       properties:
         type:
           type: string
-          const: assume_role
+          enum:
+            - assume_role
         arn:
           description: |
             The [ARN](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns)
@@ -53227,7 +52962,8 @@ components:
         type:
           description: The type of the schema registry.
           type: string
-          const: confluent
+          enum:
+            - confluent
         config:
           description: The configuration of the schema registry.
           type: object
@@ -53256,7 +52992,8 @@ components:
         type:
           description: The type of the schema registry.
           type: string
-          const: confluent
+          enum:
+            - confluent
         config:
           description: The configuration of the schema registry.
           type: object
@@ -53356,7 +53093,8 @@ components:
       properties:
         type:
           type: string
-          const: basic
+          enum:
+            - basic
         username:
           $ref: '#/components/schemas/GatewaySecretReferenceOrLiteral'
         password:
@@ -53370,7 +53108,8 @@ components:
       properties:
         type:
           type: string
-          const: basic
+          enum:
+            - basic
         username:
           $ref: '#/components/schemas/GatewaySecretReferenceOrLiteral'
         password:
@@ -53384,7 +53123,6 @@ components:
       oneOf:
         - $ref: '#/components/schemas/SchemaRegistryReferenceById'
         - $ref: '#/components/schemas/SchemaRegistryReferenceByName'
-      x-terraform-preferred: '#/components/schemas/SchemaRegistryReferenceById'
     SchemaRegistryReferenceById:
       type: object
       properties:
@@ -53534,7 +53272,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: tls_server
+          enum:
+            - tls_server
           maxLength: 255
           minLength: 1
         name:
@@ -53571,7 +53310,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: tls_server
+          enum:
+            - tls_server
           maxLength: 255
           minLength: 1
         name:
@@ -53911,7 +53651,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: forward_to_virtual_cluster
+          enum:
+            - forward_to_virtual_cluster
           maxLength: 255
           minLength: 1
         name:
@@ -53967,7 +53708,8 @@ components:
       properties:
         type:
           type: string
-          const: port_mapping
+          enum:
+            - port_mapping
         destination:
           $ref: '#/components/schemas/VirtualClusterReference'
         advertised_host:
@@ -54005,7 +53747,8 @@ components:
       properties:
         type:
           type: string
-          const: sni
+          enum:
+            - sni
         sni_suffix:
           description: |
             Optional suffix for TLS SNI validation.
@@ -54147,7 +53890,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: encrypt
+          enum:
+            - encrypt
           maxLength: 255
           minLength: 1
         name:
@@ -54240,7 +53984,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: encrypt_fields
+          enum:
+            - encrypt_fields
           maxLength: 255
           minLength: 1
         name:
@@ -54371,7 +54116,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: encrypt_fields
+          enum:
+            - encrypt_fields
           maxLength: 255
           minLength: 1
         name:
@@ -54587,7 +54333,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: decrypt
+          enum:
+            - decrypt
           maxLength: 255
           minLength: 1
         name:
@@ -54684,7 +54431,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: decrypt_fields
+          enum:
+            - decrypt_fields
           maxLength: 255
           minLength: 1
         name:
@@ -54815,7 +54563,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: decrypt_fields
+          enum:
+            - decrypt_fields
           maxLength: 255
           minLength: 1
         name:
@@ -54995,7 +54744,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: transcode
+          enum:
+            - transcode
           maxLength: 255
           minLength: 1
         name:
@@ -55127,7 +54877,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: transcode
+          enum:
+            - transcode
           maxLength: 255
           minLength: 1
         name:
@@ -55274,7 +55025,8 @@ components:
         output_format:
           description: The serialization format to convert the record value into.
           type: string
-          const: avro
+          enum:
+            - avro
       required:
         - failure_mode
         - output_format
@@ -55293,7 +55045,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: transcode
+          enum:
+            - transcode
           maxLength: 255
           minLength: 1
         name:
@@ -55425,7 +55178,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: transcode
+          enum:
+            - transcode
           maxLength: 255
           minLength: 1
         name:
@@ -55572,7 +55326,8 @@ components:
         output_format:
           description: The serialization format to convert the record value into.
           type: string
-          const: json
+          enum:
+            - json
       required:
         - failure_mode
         - output_format
@@ -55592,7 +55347,8 @@ components:
         output_format:
           description: The serialization format to convert the record value into.
           type: string
-          const: avro
+          enum:
+            - avro
       required:
         - failure_mode
         - output_format
@@ -55616,7 +55372,8 @@ components:
       properties:
         type:
           type: string
-          const: inline
+          enum:
+            - inline
         inline:
           description: The raw schema text (e.g. an Avro JSON schema) to use for the transcoded output data.
           type: string
@@ -55629,7 +55386,8 @@ components:
       properties:
         type:
           type: string
-          const: reference
+          enum:
+            - reference
         schema_registry:
           $ref: '#/components/schemas/SchemaRegistryReference'
         subject:
@@ -55693,7 +55451,8 @@ components:
       properties:
         type:
           type: string
-          const: confluent_format
+          enum:
+            - confluent_format
       required:
         - type
     EventGatewayParsedRecordTranscodeSchemaRefDestinationRecordHeader:
@@ -55702,7 +55461,8 @@ components:
       properties:
         type:
           type: string
-          const: record_header
+          enum:
+            - record_header
         name:
           description: The name is compatible with Confluent's serializer by default but can be changed.
           type: string
@@ -55716,7 +55476,8 @@ components:
       properties:
         type:
           type: string
-          const: none
+          enum:
+            - none
       required:
         - type
     EventGatewayParsedRecordMaskFieldsProducePolicy:
@@ -55734,7 +55495,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: mask_fields
+          enum:
+            - mask_fields
           maxLength: 255
           minLength: 1
         name:
@@ -55868,7 +55630,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: mask_fields
+          enum:
+            - mask_fields
           maxLength: 255
           minLength: 1
         name:
@@ -56023,7 +55786,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: mask_fields
+          enum:
+            - mask_fields
           maxLength: 255
           minLength: 1
         name:
@@ -56157,7 +55921,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: mask_fields
+          enum:
+            - mask_fields
           maxLength: 255
           minLength: 1
         name:
@@ -56331,7 +56096,8 @@ components:
       properties:
         type:
           type: string
-          const: keep_chars
+          enum:
+            - keep_chars
         first:
           description: Number of leading characters to keep unmasked.
           type: integer
@@ -56356,7 +56122,8 @@ components:
       properties:
         type:
           type: string
-          const: email
+          enum:
+            - email
         local_part:
           $ref: '#/components/schemas/EventGatewayMaskEmailLocalPartStrategy'
         domain:
@@ -56393,7 +56160,8 @@ components:
       properties:
         type:
           type: string
-          const: keep_all
+          enum:
+            - keep_all
       required:
         - type
     EventGatewayMaskStrategyReplace:
@@ -56402,7 +56170,8 @@ components:
       properties:
         type:
           type: string
-          const: replace
+          enum:
+            - replace
         phrase:
           description: The phrase to replace the value with.
           type: string
@@ -56418,7 +56187,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: modify_headers
+          enum:
+            - modify_headers
           maxLength: 255
           minLength: 1
         name:
@@ -56549,7 +56319,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: modify_headers
+          enum:
+            - modify_headers
           maxLength: 255
           minLength: 1
         name:
@@ -56684,7 +56455,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: skip_record
+          enum:
+            - skip_record
           maxLength: 255
           minLength: 1
         name:
@@ -56803,7 +56575,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: skip_record
+          enum:
+            - skip_record
           maxLength: 255
           minLength: 1
         name:
@@ -56936,7 +56709,8 @@ components:
       properties:
         op:
           type: string
-          const: remove
+          enum:
+            - remove
         key:
           description: The key of the header to remove.
           type: string
@@ -56949,7 +56723,8 @@ components:
       properties:
         op:
           type: string
-          const: set
+          enum:
+            - set
         key:
           description: The key of the header to set.
           type: string
@@ -56967,7 +56742,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: schema_validation
+          enum:
+            - schema_validation
           maxLength: 255
           minLength: 1
         name:
@@ -57070,7 +56846,8 @@ components:
           $ref: '#/components/schemas/ConsumeValueValidationAction'
         type:
           type: string
-          const: json
+          enum:
+            - json
       required:
         - type
     EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig:
@@ -57101,7 +56878,8 @@ components:
           $ref: '#/components/schemas/ConsumeValueValidationAction'
         type:
           type: string
-          const: confluent_schema_registry
+          enum:
+            - confluent_schema_registry
       required:
         - type
     EventGatewayProduceSchemaValidationPolicy:
@@ -57111,7 +56889,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: schema_validation
+          enum:
+            - schema_validation
           maxLength: 255
           minLength: 1
         name:
@@ -57214,7 +56993,8 @@ components:
           $ref: '#/components/schemas/ProduceValueValidationAction'
         type:
           type: string
-          const: json
+          enum:
+            - json
       required:
         - type
     EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig:
@@ -57245,7 +57025,8 @@ components:
           $ref: '#/components/schemas/ProduceValueValidationAction'
         type:
           type: string
-          const: confluent_schema_registry
+          enum:
+            - confluent_schema_registry
       required:
         - type
     EventGatewayConsumeSchemaValidationPolicyInlineSchemaConfig:
@@ -57277,7 +57058,8 @@ components:
           $ref: '#/components/schemas/ConsumeValueValidationAction'
         type:
           type: string
-          const: inline_schema
+          enum:
+            - inline_schema
         key:
           $ref: '#/components/schemas/SchemaValidationInlineSchemaConfig'
         value:
@@ -57314,7 +57096,8 @@ components:
           $ref: '#/components/schemas/ProduceValueValidationAction'
         type:
           type: string
-          const: inline_schema
+          enum:
+            - inline_schema
         key:
           $ref: '#/components/schemas/SchemaValidationInlineSchemaConfig'
         value:
@@ -57348,7 +57131,8 @@ components:
           type: string
         schema_type:
           type: string
-          const: json
+          enum:
+            - json
       required:
         - schema
         - schema_type
@@ -57365,7 +57149,8 @@ components:
           type: string
         schema_type:
           type: string
-          const: avro
+          enum:
+            - avro
       required:
         - schema
         - schema_type
@@ -57377,7 +57162,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: acls
+          enum:
+            - acls
           maxLength: 255
           minLength: 1
         name:
@@ -57577,7 +57363,8 @@ components:
         type:
           description: The type name of the policy.
           type: string
-          const: request_rule_validator
+          enum:
+            - request_rule_validator
           maxLength: 255
           minLength: 1
         name:
@@ -57705,7 +57492,8 @@ components:
       properties:
         type:
           type: string
-          const: create_topics
+          enum:
+            - create_topics
         rules:
           description: |
             Every rule in this list is evaluated independently against each topic in the request.
@@ -57814,7 +57602,8 @@ components:
       properties:
         type:
           type: string
-          const: create_partitions
+          enum:
+            - create_partitions
         rules:
           description: |
             Every rule in this list is evaluated independently against each topic in the request.
@@ -57897,7 +57686,8 @@ components:
       properties:
         type:
           type: string
-          const: alter_configs
+          enum:
+            - alter_configs
         rules:
           description: |
             Every rule in this list is evaluated independently against each resource in the request.
@@ -57986,7 +57776,8 @@ components:
       properties:
         type:
           type: string
-          const: incremental_alter_configs
+          enum:
+            - incremental_alter_configs
         rules:
           description: |
             Every rule in this list is evaluated independently against each configuration entry in the request.
@@ -58084,7 +57875,8 @@ components:
       properties:
         type:
           type: string
-          const: alter_client_quotas
+          enum:
+            - alter_client_quotas
         rules:
           description: |
             Every rule in this list is evaluated independently against each quota operation in the request.
@@ -58170,7 +57962,8 @@ components:
       properties:
         type:
           type: string
-          const: alter_user_scram_credentials
+          enum:
+            - alter_user_scram_credentials
         rules:
           description: |
             Every rule in this list is evaluated independently against each credential in the request.
@@ -58253,7 +58046,8 @@ components:
       properties:
         type:
           type: string
-          const: produce
+          enum:
+            - produce
         rules:
           description: |
             Every rule in this list is evaluated independently against the request.
@@ -58339,7 +58133,8 @@ components:
       properties:
         type:
           type: string
-          const: fetch
+          enum:
+            - fetch
         rules:
           description: |
             Every rule in this list is evaluated independently against the request.
@@ -58428,7 +58223,8 @@ components:
       properties:
         type:
           type: string
-          const: join_group
+          enum:
+            - join_group
         rules:
           description: |
             Every rule in this list is evaluated independently against the request.
@@ -58508,7 +58304,8 @@ components:
       properties:
         type:
           type: string
-          const: consumer_group_heartbeat
+          enum:
+            - consumer_group_heartbeat
         rules:
           description: |
             Every rule in this list is evaluated independently against the request.
@@ -58588,7 +58385,8 @@ components:
       properties:
         type:
           type: string
-          const: offset_commit
+          enum:
+            - offset_commit
         rules:
           description: |
             Every rule in this list is evaluated independently against the request.
@@ -58668,7 +58466,8 @@ components:
       properties:
         type:
           type: string
-          const: offset_fetch
+          enum:
+            - offset_fetch
         rules:
           description: |
             Every rule in this list is evaluated independently against the request.
@@ -58748,7 +58547,8 @@ components:
       properties:
         type:
           type: string
-          const: txn_offset_commit
+          enum:
+            - txn_offset_commit
         rules:
           description: |
             Every rule in this list is evaluated independently against the request.
@@ -58845,7 +58645,8 @@ components:
       properties:
         type:
           type: string
-          const: aws
+          enum:
+            - aws
       additionalProperties: false
       required:
         - type
@@ -58856,7 +58657,8 @@ components:
       properties:
         type:
           type: string
-          const: static
+          enum:
+            - static
       additionalProperties: false
       required:
         - type
@@ -58938,7 +58740,8 @@ components:
       properties:
         type:
           type: string
-          const: aws
+          enum:
+            - aws
         arn:
           description: The AWS KMS key ARN.
           type: string
@@ -58958,7 +58761,8 @@ components:
       properties:
         type:
           type: string
-          const: static
+          enum:
+            - static
         key:
           $ref: '#/components/schemas/EncryptionKeyStaticReference'
       required:
@@ -58970,7 +58774,6 @@ components:
       anyOf:
         - $ref: '#/components/schemas/EncryptionKeyStaticReferenceById'
         - $ref: '#/components/schemas/EncryptionKeyStaticReferenceByName'
-      x-terraform-preferred: '#/components/schemas/EncryptionKeyStaticReferenceById'
     EncryptionKeyStaticReferenceById:
       description: A static encryption key reference by ID.
       type: object
@@ -59292,7 +59095,8 @@ components:
       properties:
         type:
           type: string
-          const: glob
+          enum:
+            - glob
         glob:
           description: 'Expose any backend topic that matches this glob pattern (e.g., `operations_data_*`).'
           type: string
@@ -59318,7 +59122,8 @@ components:
       properties:
         type:
           type: string
-          const: exact_list
+          enum:
+            - exact_list
         exact_list:
           description: Explicit allow-list of backend topic names.
           type: array
@@ -59363,7 +59168,8 @@ components:
       properties:
         type:
           type: string
-          const: glob
+          enum:
+            - glob
         glob:
           description: 'Expose any id that matches this glob pattern (e.g., `my_id_*`).'
           type: string
@@ -59378,7 +59184,8 @@ components:
       properties:
         type:
           type: string
-          const: exact_list
+          enum:
+            - exact_list
         exact_list:
           type: array
           items:
@@ -82489,7 +82296,8 @@ components:
             - name: kong-managed
         type:
           type: string
-          const: model
+          enum:
+            - model
         config:
           $ref: '#/components/schemas/AIGatewayModelModelConfig'
         capabilities:
@@ -82580,7 +82388,8 @@ components:
             - name: kong-managed
         type:
           type: string
-          const: api
+          enum:
+            - api
         config:
           $ref: '#/components/schemas/AIGatewayModelAPIConfig'
         capabilities:
@@ -82962,7 +82771,8 @@ components:
           minimum: 1
         algorithm:
           type: string
-          const: consistent-hashing
+          enum:
+            - consistent-hashing
         hash_on_header:
           description: The header to use for consistent-hashing.
           type: string
@@ -83084,7 +82894,8 @@ components:
           minimum: 1
         algorithm:
           type: string
-          const: least-connections
+          enum:
+            - least-connections
       additionalProperties: false
       required:
         - algorithm
@@ -83202,7 +83013,8 @@ components:
           minimum: 1
         algorithm:
           type: string
-          const: lowest-latency
+          enum:
+            - lowest-latency
         latency_strategy:
           description: 'What metrics to use for latency. Available values are: `tpot` (time-per-output-token) and `e2e`.'
           type: string
@@ -83329,7 +83141,8 @@ components:
           minimum: 1
         algorithm:
           type: string
-          const: lowest-usage
+          enum:
+            - lowest-usage
         tokens_count_strategy:
           description: Methodology to use for token usage calculation.
           type: string
@@ -83459,7 +83272,8 @@ components:
           minimum: 1
         algorithm:
           type: string
-          const: priority
+          enum:
+            - priority
       additionalProperties: false
       required:
         - algorithm
@@ -83577,7 +83391,8 @@ components:
           minimum: 1
         algorithm:
           type: string
-          const: round-robin
+          enum:
+            - round-robin
       additionalProperties: false
       required:
         - algorithm
@@ -83695,7 +83510,8 @@ components:
           minimum: 1
         algorithm:
           type: string
-          const: semantic
+          enum:
+            - semantic
         embeddings:
           description: Embeddings model configuration for this model.
           type: object
@@ -83778,7 +83594,8 @@ components:
           type: string
         type:
           type: string
-          const: bedrock
+          enum:
+            - bedrock
         region:
           description: |
             The AWS region for the model.
@@ -83817,7 +83634,8 @@ components:
           type: string
         type:
           type: string
-          const: gemini
+          enum:
+            - gemini
         gcp_environment:
           $ref: '#/components/schemas/GCPModelConfig'
       additionalProperties: false
@@ -83832,7 +83650,8 @@ components:
           type: string
         type:
           type: string
-          const: huggingface
+          enum:
+            - huggingface
         use_cache:
           description: Whether to use the Hugging Face inference cache.
           type: boolean
@@ -83866,7 +83685,8 @@ components:
           type: string
         type:
           type: string
-          const: ollama
+          enum:
+            - ollama
       additionalProperties: false
       required:
         - type
@@ -83879,7 +83699,8 @@ components:
           type: string
         type:
           type: string
-          const: openai
+          enum:
+            - openai
       additionalProperties: false
       required:
         - type
@@ -83899,7 +83720,8 @@ components:
       properties:
         type:
           type: string
-          const: redis
+          enum:
+            - redis
         dimensions:
           description: the desired dimensionality for the vectors
           type: integer
@@ -84102,7 +83924,8 @@ components:
       properties:
         type:
           type: string
-          const: pgvector
+          enum:
+            - pgvector
         dimensions:
           description: the desired dimensionality for the vectors
           type: integer
@@ -84466,7 +84289,8 @@ components:
           format: uri
         type:
           type: string
-          const: anthropic
+          enum:
+            - anthropic
         version:
           description: The Anthropic API version to use.
           type: string
@@ -84568,7 +84392,8 @@ components:
           format: uri
         type:
           type: string
-          const: azure
+          enum:
+            - azure
         deployment_id:
           description: |
             The Azure deployment ID for the model. Applies when the Azure provider's
@@ -84694,7 +84519,8 @@ components:
           format: uri
         type:
           type: string
-          const: baseten
+          enum:
+            - baseten
       required:
         - type
       x-min-runtime-version: '2.3'
@@ -84793,7 +84619,8 @@ components:
           format: uri
         type:
           type: string
-          const: bedrock
+          enum:
+            - bedrock
         region:
           description: |
             The AWS region for the model.
@@ -84938,7 +84765,8 @@ components:
           format: uri
         type:
           type: string
-          const: cerebras
+          enum:
+            - cerebras
       required:
         - type
     AIGatewayTargetCohereConfig:
@@ -85036,7 +84864,8 @@ components:
           format: uri
         type:
           type: string
-          const: cohere
+          enum:
+            - cohere
         api_version:
           description: |
             Cohere API version. `v1` uses the legacy `/v1/chat` endpoint; `v2` (default)
@@ -85159,7 +84988,8 @@ components:
           format: uri
         type:
           type: string
-          const: dashscope
+          enum:
+            - dashscope
         international:
           description: Whether to use the international DashScope endpoint.
           type: boolean
@@ -85261,7 +85091,8 @@ components:
           format: uri
         type:
           type: string
-          const: databricks
+          enum:
+            - databricks
         workspace_instance_id:
           description: The Databricks workspace instance ID.
           type: string
@@ -85363,7 +85194,8 @@ components:
           format: uri
         type:
           type: string
-          const: deepseek
+          enum:
+            - deepseek
       required:
         - type
     AIGatewayTargetGeminiConfig:
@@ -85461,7 +85293,8 @@ components:
           format: uri
         type:
           type: string
-          const: gemini
+          enum:
+            - gemini
         gcp_environment:
           $ref: '#/components/schemas/GCPModelConfig'
       required:
@@ -85561,7 +85394,8 @@ components:
           format: uri
         type:
           type: string
-          const: huggingface
+          enum:
+            - huggingface
         use_cache:
           description: Whether to use the Hugging Face inference cache.
           type: boolean
@@ -85667,7 +85501,8 @@ components:
           format: uri
         type:
           type: string
-          const: kimi
+          enum:
+            - kimi
         international:
           description: |
             When `true`, requests are sent to `api.moonshot.ai` (international).
@@ -85771,7 +85606,8 @@ components:
           format: uri
         type:
           type: string
-          const: llama2
+          enum:
+            - llama2
         format:
           description: The request format to use when communicating with the Llama2 model.
           type: string
@@ -85879,7 +85715,8 @@ components:
           format: uri
         type:
           type: string
-          const: mistral
+          enum:
+            - mistral
         format:
           description: The request format to use when communicating with the Mistral model.
           type: string
@@ -85985,7 +85822,8 @@ components:
           format: uri
         type:
           type: string
-          const: ollama
+          enum:
+            - ollama
       required:
         - type
     AIGatewayTargetOpenaiConfig:
@@ -86083,7 +85921,8 @@ components:
           format: uri
         type:
           type: string
-          const: openai
+          enum:
+            - openai
       required:
         - type
     AIGatewayTargetVercelConfig:
@@ -86181,7 +86020,8 @@ components:
           format: uri
         type:
           type: string
-          const: vercel
+          enum:
+            - vercel
       required:
         - type
     AIGatewayTargetVllmConfig:
@@ -86279,7 +86119,8 @@ components:
           format: uri
         type:
           type: string
-          const: vllm
+          enum:
+            - vllm
       required:
         - type
         - upstream_url
@@ -86378,7 +86219,8 @@ components:
           format: uri
         type:
           type: string
-          const: xai
+          enum:
+            - xai
       required:
         - type
     AIGatewayTargetSagemakerConfig:
@@ -86476,7 +86318,8 @@ components:
           format: uri
         type:
           type: string
-          const: sagemaker
+          enum:
+            - sagemaker
         aws:
           type: object
           additionalProperties: false
@@ -86517,7 +86360,8 @@ components:
       properties:
         type:
           type: string
-          const: typesafe
+          enum:
+            - typesafe
         input_cost:
           description: Cost per 1M input tokens for billing and cost tracking.
           type: number
@@ -86872,7 +86716,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: konnect
+          enum:
+            - konnect
         config:
           type: object
           additionalProperties: false
@@ -86911,7 +86756,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: env
+          enum:
+            - env
         config:
           type: object
           properties:
@@ -86963,7 +86809,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: aws
+          enum:
+            - aws
         config:
           type: object
           properties:
@@ -87083,7 +86930,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: gcp
+          enum:
+            - gcp
         config:
           type: object
           properties:
@@ -87165,7 +87013,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: azure
+          enum:
+            - azure
         config:
           type: object
           properties:
@@ -87301,7 +87150,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: conjur
+          enum:
+            - conjur
         config:
           type: object
           properties:
@@ -87411,7 +87261,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: hcv
+          enum:
+            - hcv
         config:
           $ref: '#/components/schemas/HashiCorpVaultConfig'
       required:
@@ -87515,7 +87366,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: token
+          enum:
+            - token
         token:
           description: The token string to be used for authentication.
           type: string
@@ -87595,7 +87447,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: cert
+          enum:
+            - cert
         cert:
           description: The client certificate.
           type: string
@@ -87690,7 +87543,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: jwt
+          enum:
+            - jwt
         role:
           description: |
             The configured role name in HashiCorp Vault for JWT auth.
@@ -87789,7 +87643,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: approle
+          enum:
+            - approle
         path:
           description: |
             Path for enabling the AppRole auth method. Single leading/trailing slashes are trimmed.
@@ -87890,7 +87745,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: kubernetes
+          enum:
+            - kubernetes
         role:
           description: |
             Role assigned to the Kubernetes service account.
@@ -87980,7 +87836,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: gcp_iam
+          enum:
+            - gcp_iam
         role:
           description: The role to use for GCP IAM auth.
           type: string
@@ -88070,7 +87927,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: gcp_gce
+          enum:
+            - gcp_gce
         role:
           description: The role to use for GCP GCE auth.
           type: string
@@ -88154,7 +88012,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: azure
+          enum:
+            - azure
         role:
           description: The role to use for Azure auth.
           type: string
@@ -88238,7 +88097,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: aws_ec2
+          enum:
+            - aws_ec2
         role:
           description: The role to use for AWS EC2 auth.
           type: string
@@ -88326,7 +88186,8 @@ components:
           type: string
         auth_method:
           type: string
-          const: aws_iam
+          enum:
+            - aws_iam
         role:
           description: The role to use for AWS IAM auth.
           type: string
@@ -88528,7 +88389,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: redis-ce
+          enum:
+            - redis-ce
         config:
           $ref: '#/components/schemas/RedisCEDatastoreConfig'
       required:
@@ -88601,7 +88463,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: redis-ee
+          enum:
+            - redis-ee
         config:
           $ref: '#/components/schemas/RedisEEDatastoreConfig'
       required:
@@ -88759,7 +88622,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: vectordb
+          enum:
+            - vectordb
         config:
           $ref: '#/components/schemas/VectorDBDatastoreConfig'
       required:
@@ -88847,7 +88711,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: token-vault
+          enum:
+            - token-vault
         config:
           $ref: '#/components/schemas/TokenVaultDatastoreConfig'
       required:
@@ -89277,7 +89142,8 @@ components:
         type:
           description: An installed Kong plugin used as a custom policy.
           type: string
-          const: installed
+          enum:
+            - installed
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -89309,7 +89175,8 @@ components:
         type:
           description: A streaming Kong plugin used as a custom policy.
           type: string
-          const: streaming
+          enum:
+            - streaming
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -89357,7 +89224,8 @@ components:
         type:
           description: An installed Kong plugin used as a custom policy.
           type: string
-          const: installed
+          enum:
+            - installed
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -89389,7 +89257,8 @@ components:
         type:
           description: A streaming Kong plugin used as a custom policy.
           type: string
-          const: streaming
+          enum:
+            - streaming
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -89437,7 +89306,8 @@ components:
         type:
           description: An installed Kong plugin used as a custom policy.
           type: string
-          const: installed
+          enum:
+            - installed
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -89478,7 +89348,8 @@ components:
         type:
           description: A streaming Kong plugin used as a custom policy.
           type: string
-          const: streaming
+          enum:
+            - streaming
         display_name:
           description: The display name for this custom policy.
           type: string
@@ -90253,7 +90124,8 @@ components:
       properties:
         type:
           type: string
-          const: conversion-only
+          enum:
+            - conversion-only
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig'
         tools:
@@ -90300,7 +90172,8 @@ components:
       properties:
         type:
           type: string
-          const: conversion-listener
+          enum:
+            - conversion-listener
         config:
           description: Server-side configuration specific to modes where Kong answers as the MCP server.
           type: object
@@ -90398,6 +90271,7 @@ components:
                   $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
               x-min-runtime-version: '2.1'
           required:
+            - route
             - url
           title: AIGatewayMCPServerKongListenerConfig
         tools:
@@ -90451,7 +90325,8 @@ components:
       properties:
         type:
           type: string
-          const: listener
+          enum:
+            - listener
         config:
           description: Server-side configuration specific to modes where Kong answers as the MCP server.
           type: object
@@ -90511,6 +90386,8 @@ components:
                 discover:
                   $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
               x-min-runtime-version: '2.1'
+          required:
+            - route
           title: AIGatewayMCPServerKongListenerConfig
         sources:
           description: |
@@ -90603,7 +90480,8 @@ components:
       properties:
         type:
           type: string
-          const: passthrough-listener
+          enum:
+            - passthrough-listener
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamConfig'
         tools:
@@ -90719,7 +90597,8 @@ components:
       properties:
         type:
           type: string
-          const: upstream-server
+          enum:
+            - upstream-server
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerConfig'
         tools:
@@ -90869,7 +90748,8 @@ components:
           description: The type of attributes that ACL is evaluated with.
           type: string
           default: consumer
-          const: consumer
+          enum:
+            - consumer
         acls:
           description: |
             Server-level access control rules for allowing or denying consumer groups. This is the
@@ -90922,7 +90802,8 @@ components:
         acl_attribute_type:
           description: The type of attributes that ACL is evaluated with.
           type: string
-          const: oauth_access_token
+          enum:
+            - oauth_access_token
         access_token_claim_field:
           description: |
             The claim in the OAuth2 access token to use as the subject for ACL evaluation when `acl_attribute_type` is set to `oauth_access_token`.
@@ -91178,7 +91059,8 @@ components:
       properties:
         type:
           type: string
-          const: aws
+          enum:
+            - aws
         access_key_id:
           description: |
             AWS Access Key ID to be used for authentication.
@@ -91230,7 +91112,8 @@ components:
       properties:
         type:
           type: string
-          const: azure
+          enum:
+            - azure
         client_id:
           description: |
             Azure Client ID.
@@ -91260,7 +91143,8 @@ components:
       properties:
         type:
           type: string
-          const: gcp
+          enum:
+            - gcp
         service_account_json:
           description: |
             GCP Service Account JSON.
@@ -91618,6 +91502,8 @@ components:
         server:
           $ref: '#/components/schemas/AIGatewayMCPServerServerConfigBase'
       additionalProperties: false
+      required:
+        - route
     AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig:
       description: 'Routing, logging, and request body size limits for the MCP Server.'
       type: object
@@ -91743,6 +91629,7 @@ components:
             $ref: '#/components/schemas/AIGatewayCACertificateReference'
       additionalProperties: false
       required:
+        - route
         - url
     AIGatewayMCPServerWithUpstreamConfig:
       description: 'Routing, logging, and server configuration for the MCP Server.'
@@ -91866,6 +91753,7 @@ components:
           $ref: '#/components/schemas/AIGatewayProxyConfig'
       additionalProperties: false
       required:
+        - route
         - url
     AIGatewayMCPServerRouteWithMatcher:
       description: |
@@ -91966,6 +91854,7 @@ components:
           minimum: 0
       additionalProperties: false
       required:
+        - route
         - url
         - tools_cache_ttl_seconds
     AIGatewayMCPServerServerConfigBase:
@@ -92219,7 +92108,8 @@ components:
           type: string
         type:
           type: string
-          const: jwt
+          enum:
+            - jwt
       additionalProperties: false
       required:
         - type
@@ -92246,7 +92136,8 @@ components:
           type: string
         type:
           type: string
-          const: credentials
+          enum:
+            - credentials
         token_endpoint:
           description: |
             The token endpoint URL for fetching the OAuth 2.0 access token using client-credentials.
@@ -92334,7 +92225,8 @@ components:
       properties:
         type:
           type: string
-          const: conversion-only
+          enum:
+            - conversion-only
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamNoProxyConfigNoServerConfig'
         tools:
@@ -92391,7 +92283,8 @@ components:
       properties:
         type:
           type: string
-          const: conversion-listener
+          enum:
+            - conversion-listener
         config:
           description: Server-side configuration specific to modes where Kong answers as the MCP server.
           type: object
@@ -92489,6 +92382,7 @@ components:
                   $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
               x-min-runtime-version: '2.1'
           required:
+            - route
             - url
           title: AIGatewayMCPServerKongListenerConfig
         tools:
@@ -92552,7 +92446,8 @@ components:
       properties:
         type:
           type: string
-          const: listener
+          enum:
+            - listener
         config:
           description: Server-side configuration specific to modes where Kong answers as the MCP server.
           type: object
@@ -92612,6 +92507,8 @@ components:
                 discover:
                   $ref: '#/components/schemas/AIGatewayMCPServerCacheHint'
               x-min-runtime-version: '2.1'
+          required:
+            - route
           title: AIGatewayMCPServerKongListenerConfig
         sources:
           description: |
@@ -92676,7 +92573,8 @@ components:
       properties:
         type:
           type: string
-          const: passthrough-listener
+          enum:
+            - passthrough-listener
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerWithUpstreamConfig'
         tools:
@@ -92737,7 +92635,8 @@ components:
       properties:
         type:
           type: string
-          const: upstream-server
+          enum:
+            - upstream-server
         config:
           $ref: '#/components/schemas/AIGatewayMCPServerUpstreamServerConfig'
         tools:
@@ -92932,7 +92831,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: key-auth
+          enum:
+            - key-auth
         config:
           description: |
             Configuration for the Kong Key auth identity provider.
@@ -93019,7 +92919,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: openid-connect
+          enum:
+            - openid-connect
         config:
           description: |
             Configuration for the OpenID Connect identity provider.
@@ -93342,7 +93243,8 @@ components:
           $ref: '#/components/schemas/AIGatewayTokenVaultDatastores'
         type:
           type: string
-          const: key-auth
+          enum:
+            - key-auth
         config:
           $ref: '#/components/schemas/AIGWKeyAuthGeneratedConfig'
       required:
@@ -93373,7 +93275,8 @@ components:
           $ref: '#/components/schemas/AIGatewayTokenVaultDatastores'
         type:
           type: string
-          const: openid-connect
+          enum:
+            - openid-connect
         token_vault:
           $ref: '#/components/schemas/AIGatewayTokenVaultEnrollmentProtection'
         config:
@@ -93394,7 +93297,8 @@ components:
       properties:
         type:
           type: string
-          const: anthropic
+          enum:
+            - anthropic
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93435,7 +93339,8 @@ components:
       properties:
         type:
           type: string
-          const: baseten
+          enum:
+            - baseten
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93477,7 +93382,8 @@ components:
       properties:
         type:
           type: string
-          const: cerebras
+          enum:
+            - cerebras
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93518,7 +93424,8 @@ components:
       properties:
         type:
           type: string
-          const: cohere
+          enum:
+            - cohere
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93559,7 +93466,8 @@ components:
       properties:
         type:
           type: string
-          const: dashscope
+          enum:
+            - dashscope
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93600,7 +93508,8 @@ components:
       properties:
         type:
           type: string
-          const: databricks
+          enum:
+            - databricks
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93641,7 +93550,8 @@ components:
       properties:
         type:
           type: string
-          const: deepseek
+          enum:
+            - deepseek
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93682,7 +93592,8 @@ components:
       properties:
         type:
           type: string
-          const: huggingface
+          enum:
+            - huggingface
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93723,7 +93634,8 @@ components:
       properties:
         type:
           type: string
-          const: kimi
+          enum:
+            - kimi
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93764,7 +93676,8 @@ components:
       properties:
         type:
           type: string
-          const: llama2
+          enum:
+            - llama2
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93805,7 +93718,8 @@ components:
       properties:
         type:
           type: string
-          const: mistral
+          enum:
+            - mistral
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93846,7 +93760,8 @@ components:
       properties:
         type:
           type: string
-          const: ollama
+          enum:
+            - ollama
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93887,7 +93802,8 @@ components:
       properties:
         type:
           type: string
-          const: openai
+          enum:
+            - openai
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93928,7 +93844,8 @@ components:
       properties:
         type:
           type: string
-          const: vercel
+          enum:
+            - vercel
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -93969,7 +93886,8 @@ components:
       properties:
         type:
           type: string
-          const: vllm
+          enum:
+            - vllm
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -94010,7 +93928,8 @@ components:
       properties:
         type:
           type: string
-          const: xai
+          enum:
+            - xai
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -94051,7 +93970,8 @@ components:
       properties:
         type:
           type: string
-          const: typesafe
+          enum:
+            - typesafe
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -94093,7 +94013,8 @@ components:
       properties:
         type:
           type: string
-          const: basic
+          enum:
+            - basic
         headers:
           type: array
           items:
@@ -94157,7 +94078,8 @@ components:
       properties:
         type:
           type: string
-          const: bedrock
+          enum:
+            - bedrock
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -94204,7 +94126,8 @@ components:
       properties:
         type:
           type: string
-          const: aws
+          enum:
+            - aws
         access_key_id:
           description: |
             The access key id for authenticating with static IAM User credentials.
@@ -94268,7 +94191,8 @@ components:
       properties:
         type:
           type: string
-          const: aws
+          enum:
+            - aws
         access_key_id:
           description: |
             The access key id for authenticating with static IAM User credentials.
@@ -94324,7 +94248,8 @@ components:
       properties:
         type:
           type: string
-          const: azure
+          enum:
+            - azure
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -94403,7 +94328,8 @@ components:
       properties:
         type:
           type: string
-          const: azure
+          enum:
+            - azure
         client_id:
           description: |
             If azure_use_managed_identity is set to true, and you need to use a different user-assigned identity for this LLM instance, set the client ID.
@@ -94437,7 +94363,8 @@ components:
       properties:
         type:
           type: string
-          const: gemini
+          enum:
+            - gemini
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -94484,7 +94411,8 @@ components:
       properties:
         type:
           type: string
-          const: gcp
+          enum:
+            - gcp
         service_account_json:
           description: |
             Full JSON string of the GCP service account to authenticate. If not set (and gcp_use_service_account is true), the service account JSON will be from the environment variable GCP_SERVICE_ACCOUNT.
@@ -94558,7 +94486,8 @@ components:
       properties:
         type:
           type: string
-          const: sagemaker
+          enum:
+            - sagemaker
         display_name:
           description: The display name for this model provider instance.
           type: string
@@ -94938,7 +94867,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: key-auth
+          enum:
+            - key-auth
         config:
           description: |
             Configuration for the Kong Key auth identity provider.
@@ -95034,7 +94964,8 @@ components:
           $ref: '#/components/schemas/ManagedBy'
         type:
           type: string
-          const: openid-connect
+          enum:
+            - openid-connect
         config:
           description: |
             Configuration for the OpenID Connect identity provider.
@@ -95389,7 +95320,8 @@ components:
           $ref: '#/components/schemas/AIGatewayTokenVaultDatastores'
         type:
           type: string
-          const: key-auth
+          enum:
+            - key-auth
         config:
           $ref: '#/components/schemas/AIGWKeyAuthGeneratedConfig'
         id:
@@ -95429,7 +95361,8 @@ components:
           $ref: '#/components/schemas/AIGatewayTokenVaultDatastores'
         type:
           type: string
-          const: openid-connect
+          enum:
+            - openid-connect
         token_vault:
           $ref: '#/components/schemas/AIGatewayTokenVaultEnrollmentProtection'
         config:
@@ -100836,7 +100769,8 @@ components:
             The type of specification document. Currently always `oas` (OpenAPI Specification).
           type: string
           example: oas
-          const: oas
+          enum:
+            - oas
           readOnly: true
         spec_provider:
           description: |
@@ -101386,7 +101320,8 @@ components:
       properties:
         type:
           type: string
-          const: ai-gateway
+          enum:
+            - ai-gateway
         config:
           $ref: '#/components/schemas/CatalogMCPGatewayImplementationConfig'
       additionalProperties: false
@@ -101510,7 +101445,8 @@ components:
           description: Transport type
           type: string
           example: streamable-http
-          const: streamable-http
+          enum:
+            - streamable-http
         url:
           description: URL template for the streamable-http transport.
           type: string
@@ -101535,7 +101471,8 @@ components:
           description: Transport type
           type: string
           example: sse
-          const: sse
+          enum:
+            - sse
         url:
           description: Server-Sent Events endpoint URL template.
           type: string
@@ -101574,7 +101511,8 @@ components:
           description: Transport type
           type: string
           example: stdio
-          const: stdio
+          enum:
+            - stdio
       example:
         type: stdio
       required:
@@ -101601,7 +101539,8 @@ components:
             type:
               type: string
               example: positional
-              const: positional
+              enum:
+                - positional
             value_hint:
               description: An identifier for the positional argument.
               type: string
@@ -101633,7 +101572,8 @@ components:
             type:
               type: string
               example: named
-              const: named
+              enum:
+                - named
             name:
               description: 'The flag name, including any leading dashes.'
               type: string
@@ -103319,7 +103259,8 @@ components:
           nullable: true
         type:
           type: string
-          const: embeddings
+          enum:
+            - embeddings
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -103738,7 +103679,8 @@ components:
           nullable: true
         type:
           type: string
-          const: model
+          enum:
+            - model
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -103973,7 +103915,8 @@ components:
           nullable: true
         type:
           type: string
-          const: redis-ce
+          enum:
+            - redis-ce
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -104300,7 +104243,8 @@ components:
           nullable: true
         type:
           type: string
-          const: redis-ee
+          enum:
+            - redis-ee
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -104717,7 +104661,8 @@ components:
           nullable: true
         type:
           type: string
-          const: vectordb
+          enum:
+            - vectordb
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -110265,9 +110210,6 @@ components:
                 description: 'When enabled, portal registration notifications include the registering developer''s identifying information (such as name and email).'
                 type: boolean
                 default: false
-              theme_name:
-                description: 'Name of the theme to use for the default content created upon creation of this portal. Must match an available theme name; if omitted or unrecognized, the default theme is used. Only applies when `create_default_content` is true.'
-                type: string
             additionalProperties: false
             required:
               - name
@@ -110413,20 +110355,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/MovePageRequestPayload'
-    CreatePortalNavigation:
-      description: Create a sidebar navigation configuration for a portal.
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreatePortalNavigationRequest'
-    ReplacePortalNavigation:
-      description: Replace a sidebar navigation configuration for a portal.
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ReplacePortalNavigationRequest'
     CreatePortalSnippet:
       description: Create a snippet in a portal.
       required: true
@@ -111360,6 +111288,7 @@ components:
                 description: Details about the error.
                 type: string
                 example: Could not retrieve permissions to check resource accessibility.
+                readOnly: true
             required:
               - status
               - title
@@ -114450,6 +114379,7 @@ components:
                     - canonical_domain
                     - created_at
                     - updated_at
+                    - ai
               meta:
                 $ref: '#/components/schemas/PaginatedMeta'
             additionalProperties: false
@@ -114563,6 +114493,7 @@ components:
               - canonical_domain
               - updated_at
               - created_at
+              - ai
             title: Portal
     PortalAssetResponse:
       description: 'Image asset for the portal. Can be either png, jpeg or svg'
@@ -114618,18 +114549,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ListPortalPagesResponse'
-    ListPortalNavigations:
-      description: A paginated list of sidebar navigation configurations for a portal.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListPortalNavigationsResponse'
-    PortalNavigation:
-      description: Details about a sidebar navigation configuration for a portal.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PortalNavigationResponse'
     PortalSnippet:
       description: Details about a snippet in a portal.
       content:
@@ -117003,8 +116922,6 @@ tags:
     description: APIs related to Konnect Developer Portal Custom Pages.
   - name: Snippets
     description: APIs related to Konnect Developer Portal Custom Snippets.
-  - name: Portal Navigation
-    description: APIs related to Konnect Developer Portal sidebar navigation configuration.
   - name: AI Settings
     description: APIs related to Konnect Developer Portal AI Settings.
   - name: Applications
@@ -117373,7 +117290,7 @@ x-input-schemas:
     version: 1.12.5
     path: src/konnect/definitions/ai-builder/v1/openapi.yaml
   - title: Konnect AI Gateway
-    version: 2.3.4
+    version: 2.3.12
     path: src/konnect/definitions/ai-gateways/v2/openapi.yaml
   - title: Konnect Analytics Dashboards
     version: 2.4.0
@@ -117391,16 +117308,16 @@ x-input-schemas:
     version: 3.16.0
     path: src/konnect/definitions/control-planes-config/v2/openapi.yaml
   - title: Konnect Control Planes
-    version: 2.1.3
+    version: 2.1.4
     path: src/konnect/definitions/control-planes/v2/openapi.yaml
   - title: Konnect Control Planes Configuration for Event Gateways
-    version: 1.3.15
+    version: 1.3.16
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
     version: 3.11.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
-    version: 1.28.5
+    version: 1.29.1
     path: src/konnect/definitions/kong-identity/v2/openapi.yaml
   - title: Konnect Context Mesh
     version: 1.49.0
@@ -117415,11 +117332,11 @@ x-input-schemas:
     version: 1.1.1
     path: src/konnect/definitions/notification-hub/v1/openapi.yaml
   - title: Portal Management V3
-    version: 3.17.0
+    version: 3.18.0
     path: src/konnect/definitions/portal-management/v3/openapi.yaml
   - title: Konnect Service Catalog
     version: 1.3.4
     path: src/konnect/definitions/service-catalog/v1/openapi.yaml
   - title: Konnect Sliver
-    version: 1.9.1
+    version: 1.9.3
     path: src/konnect/definitions/sliver/v1/openapi.yaml

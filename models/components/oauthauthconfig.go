@@ -4,12 +4,36 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type OauthAuthConfigType string
+
+const (
+	OauthAuthConfigTypeOauth OauthAuthConfigType = "oauth"
+)
+
+func (e OauthAuthConfigType) ToPointer() *OauthAuthConfigType {
+	return &e
+}
+func (e *OauthAuthConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "oauth":
+		*e = OauthAuthConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OauthAuthConfigType: %v", v)
+	}
+}
+
 type OauthAuthConfig struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"oauth" json:"type"`
+	Type OauthAuthConfigType `json:"type"`
 	// The OAuth client identifier.
 	ClientID string `json:"client_id"`
 	// The URL where users are redirected to authorize access.
@@ -29,8 +53,11 @@ func (o *OauthAuthConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *OauthAuthConfig) GetType() string {
-	return "oauth"
+func (o *OauthAuthConfig) GetType() OauthAuthConfigType {
+	if o == nil {
+		return OauthAuthConfigType("")
+	}
+	return o.Type
 }
 
 func (o *OauthAuthConfig) GetClientID() string {

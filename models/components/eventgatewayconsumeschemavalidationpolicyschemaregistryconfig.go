@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType string
+
+const (
+	EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigTypeConfluentSchemaRegistry EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType = "confluent_schema_registry"
+)
+
+func (e EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType) ToPointer() *EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType {
+	return &e
+}
+func (e *EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "confluent_schema_registry":
+		*e = EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType: %v", v)
+	}
+}
 
 // EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig - The configuration of the consume schema validation policy when using a schema registry.
 type EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig struct {
@@ -46,9 +71,8 @@ type EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig struct {
 	//
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	ValueValidationAction *ConsumeValueValidationAction `json:"value_validation_action,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"confluent_schema_registry" json:"type"`
+	ValueValidationAction *ConsumeValueValidationAction                                     `json:"value_validation_action,omitempty"`
+	Type                  EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType `json:"type"`
 }
 
 func (e EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig) MarshalJSON() ([]byte, error) {
@@ -104,6 +128,9 @@ func (e *EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig) GetValue
 	return e.ValueValidationAction
 }
 
-func (e *EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig) GetType() string {
-	return "confluent_schema_registry"
+func (e *EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig) GetType() EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType {
+	if e == nil {
+		return EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfigType("")
+	}
+	return e.Type
 }

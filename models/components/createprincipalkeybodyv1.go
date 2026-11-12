@@ -4,13 +4,37 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
 
+type CreatePrincipalKeyBodyv1Type string
+
+const (
+	CreatePrincipalKeyBodyv1TypeV1 CreatePrincipalKeyBodyv1Type = "v1"
+)
+
+func (e CreatePrincipalKeyBodyv1Type) ToPointer() *CreatePrincipalKeyBodyv1Type {
+	return &e
+}
+func (e *CreatePrincipalKeyBodyv1Type) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "v1":
+		*e = CreatePrincipalKeyBodyv1Type(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreatePrincipalKeyBodyv1Type: %v", v)
+	}
+}
+
 type CreatePrincipalKeyBodyv1 struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"v1" json:"type"`
+	Type CreatePrincipalKeyBodyv1Type `json:"type"`
 	// Human-readable name of the API key. `null` if the key has no name.
 	//
 	Name *string `json:"name,omitempty"`
@@ -18,7 +42,9 @@ type CreatePrincipalKeyBodyv1 struct {
 	ExpiresAt *time.Time `json:"expires_at,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 }
@@ -34,8 +60,11 @@ func (c *CreatePrincipalKeyBodyv1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *CreatePrincipalKeyBodyv1) GetType() string {
-	return "v1"
+func (c *CreatePrincipalKeyBodyv1) GetType() CreatePrincipalKeyBodyv1Type {
+	if c == nil {
+		return CreatePrincipalKeyBodyv1Type("")
+	}
+	return c.Type
 }
 
 func (c *CreatePrincipalKeyBodyv1) GetName() *string {

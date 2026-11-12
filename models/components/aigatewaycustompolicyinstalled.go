@@ -4,16 +4,41 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+// AIGatewayCustomPolicyInstalledType - An installed Kong plugin used as a custom policy.
+type AIGatewayCustomPolicyInstalledType string
+
+const (
+	AIGatewayCustomPolicyInstalledTypeInstalled AIGatewayCustomPolicyInstalledType = "installed"
+)
+
+func (e AIGatewayCustomPolicyInstalledType) ToPointer() *AIGatewayCustomPolicyInstalledType {
+	return &e
+}
+func (e *AIGatewayCustomPolicyInstalledType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "installed":
+		*e = AIGatewayCustomPolicyInstalledType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayCustomPolicyInstalledType: %v", v)
+	}
+}
 
 type AIGatewayCustomPolicyInstalled struct {
 	// A user-defined unique identifier for this custom policy, used as a stable human-readable reference. This value is immutable after creation.
 	Name string `json:"name"`
 	// An installed Kong plugin used as a custom policy.
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"installed" json:"type"`
+	Type AIGatewayCustomPolicyInstalledType `json:"type"`
 	// The display name for this custom policy.
 	DisplayName string `json:"display_name"`
 	// The Lua schema definition for the custom policy, equivalent to a Kong plugin's `schema.lua`.
@@ -27,7 +52,9 @@ type AIGatewayCustomPolicyInstalled struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
 	ManagedBy map[string]string `json:"managed_by,omitempty"`
 	// Contains a unique identifier used for this resource.
@@ -56,8 +83,11 @@ func (a *AIGatewayCustomPolicyInstalled) GetName() string {
 	return a.Name
 }
 
-func (a *AIGatewayCustomPolicyInstalled) GetType() string {
-	return "installed"
+func (a *AIGatewayCustomPolicyInstalled) GetType() AIGatewayCustomPolicyInstalledType {
+	if a == nil {
+		return AIGatewayCustomPolicyInstalledType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayCustomPolicyInstalled) GetDisplayName() string {

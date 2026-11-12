@@ -32,6 +32,9 @@ type CreateAIGatewayDatastoreRequest struct {
 func CreateCreateAIGatewayDatastoreRequestRedisCe(redisCe RedisCEDatastore) CreateAIGatewayDatastoreRequest {
 	typ := CreateAIGatewayDatastoreRequestTypeRedisCe
 
+	typStr := RedisCEDatastoreType(typ)
+	redisCe.Type = typStr
+
 	return CreateAIGatewayDatastoreRequest{
 		RedisCEDatastore: &redisCe,
 		Type:             typ,
@@ -40,6 +43,9 @@ func CreateCreateAIGatewayDatastoreRequestRedisCe(redisCe RedisCEDatastore) Crea
 
 func CreateCreateAIGatewayDatastoreRequestRedisEe(redisEe RedisEEDatastore) CreateAIGatewayDatastoreRequest {
 	typ := CreateAIGatewayDatastoreRequestTypeRedisEe
+
+	typStr := RedisEEDatastoreType(typ)
+	redisEe.Type = typStr
 
 	return CreateAIGatewayDatastoreRequest{
 		RedisEEDatastore: &redisEe,
@@ -50,6 +56,9 @@ func CreateCreateAIGatewayDatastoreRequestRedisEe(redisEe RedisEEDatastore) Crea
 func CreateCreateAIGatewayDatastoreRequestVectordb(vectordb VectorDBDatastore) CreateAIGatewayDatastoreRequest {
 	typ := CreateAIGatewayDatastoreRequestTypeVectordb
 
+	typStr := VectorDBDatastoreType(typ)
+	vectordb.Type = typStr
+
 	return CreateAIGatewayDatastoreRequest{
 		VectorDBDatastore: &vectordb,
 		Type:              typ,
@@ -58,6 +67,9 @@ func CreateCreateAIGatewayDatastoreRequestVectordb(vectordb VectorDBDatastore) C
 
 func CreateCreateAIGatewayDatastoreRequestTokenVault(tokenVault TokenVaultDatastore) CreateAIGatewayDatastoreRequest {
 	typ := CreateAIGatewayDatastoreRequestTypeTokenVault
+
+	typStr := TokenVaultDatastoreType(typ)
+	tokenVault.Type = typStr
 
 	return CreateAIGatewayDatastoreRequest{
 		TokenVaultDatastore: &tokenVault,

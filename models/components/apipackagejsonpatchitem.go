@@ -3,21 +3,21 @@
 
 package components
 
-// Op - The operation to perform.
-type Op string
+// APIPackageJSONPatchItemOp - The operation to perform.
+type APIPackageJSONPatchItemOp string
 
 const (
-	OpAdd     Op = "add"
-	OpRemove  Op = "remove"
-	OpReplace Op = "replace"
+	APIPackageJSONPatchItemOpAdd     APIPackageJSONPatchItemOp = "add"
+	APIPackageJSONPatchItemOpRemove  APIPackageJSONPatchItemOp = "remove"
+	APIPackageJSONPatchItemOpReplace APIPackageJSONPatchItemOp = "replace"
 )
 
-func (e Op) ToPointer() *Op {
+func (e APIPackageJSONPatchItemOp) ToPointer() *APIPackageJSONPatchItemOp {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Op) IsExact() bool {
+func (e *APIPackageJSONPatchItemOp) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "add", "remove", "replace":
@@ -42,15 +42,15 @@ func (v *Value) GetRateLimitingConfig() *RateLimitingConfig {
 // APIPackageJSONPatchItem - A JSON Patch operation to add or remove an API Operation from a Package.
 type APIPackageJSONPatchItem struct {
 	// The operation to perform.
-	Op Op `json:"op"`
+	Op APIPackageJSONPatchItemOp `json:"op"`
 	// The path to the API Operation in the Package, in the format "operations/<uuid>".
 	Path  string `json:"path"`
 	Value *Value `json:"value,omitempty"`
 }
 
-func (a *APIPackageJSONPatchItem) GetOp() Op {
+func (a *APIPackageJSONPatchItem) GetOp() APIPackageJSONPatchItemOp {
 	if a == nil {
-		return Op("")
+		return APIPackageJSONPatchItemOp("")
 	}
 	return a.Op
 }

@@ -4,15 +4,39 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type AIGatewayGeminiEmbeddingsModelConfigType string
+
+const (
+	AIGatewayGeminiEmbeddingsModelConfigTypeGemini AIGatewayGeminiEmbeddingsModelConfigType = "gemini"
+)
+
+func (e AIGatewayGeminiEmbeddingsModelConfigType) ToPointer() *AIGatewayGeminiEmbeddingsModelConfigType {
+	return &e
+}
+func (e *AIGatewayGeminiEmbeddingsModelConfigType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gemini":
+		*e = AIGatewayGeminiEmbeddingsModelConfigType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayGeminiEmbeddingsModelConfigType: %v", v)
+	}
+}
 
 // AIGatewayGeminiEmbeddingsModelConfig - Google Gemini-specific configuration for a model.
 type AIGatewayGeminiEmbeddingsModelConfig struct {
 	// The URL of the embeddings model.
-	UpstreamURL *string `json:"upstream_url,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"gemini" json:"type"`
+	UpstreamURL *string                                  `json:"upstream_url,omitempty"`
+	Type        AIGatewayGeminiEmbeddingsModelConfigType `json:"type"`
 	// Configuration for a model hosted on Google Cloud Project.
 	GcpEnvironment *GCPModelConfig `json:"gcp_environment,omitempty"`
 }
@@ -35,8 +59,11 @@ func (a *AIGatewayGeminiEmbeddingsModelConfig) GetUpstreamURL() *string {
 	return a.UpstreamURL
 }
 
-func (a *AIGatewayGeminiEmbeddingsModelConfig) GetType() string {
-	return "gemini"
+func (a *AIGatewayGeminiEmbeddingsModelConfig) GetType() AIGatewayGeminiEmbeddingsModelConfigType {
+	if a == nil {
+		return AIGatewayGeminiEmbeddingsModelConfigType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayGeminiEmbeddingsModelConfig) GetGcpEnvironment() *GCPModelConfig {

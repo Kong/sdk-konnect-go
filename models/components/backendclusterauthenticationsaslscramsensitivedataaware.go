@@ -4,8 +4,33 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
+
+type BackendClusterAuthenticationSaslScramSensitiveDataAwareType string
+
+const (
+	BackendClusterAuthenticationSaslScramSensitiveDataAwareTypeSaslScram BackendClusterAuthenticationSaslScramSensitiveDataAwareType = "sasl_scram"
+)
+
+func (e BackendClusterAuthenticationSaslScramSensitiveDataAwareType) ToPointer() *BackendClusterAuthenticationSaslScramSensitiveDataAwareType {
+	return &e
+}
+func (e *BackendClusterAuthenticationSaslScramSensitiveDataAwareType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "sasl_scram":
+		*e = BackendClusterAuthenticationSaslScramSensitiveDataAwareType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for BackendClusterAuthenticationSaslScramSensitiveDataAwareType: %v", v)
+	}
+}
 
 // BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm - The algorithm used for SASL/SCRAM authentication.
 type BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm string
@@ -32,8 +57,7 @@ func (e *BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm) IsExa
 
 // BackendClusterAuthenticationSaslScramSensitiveDataAware - SASL/SCRAM authentication scheme for the backend cluster without requiring sensitive password data.
 type BackendClusterAuthenticationSaslScramSensitiveDataAware struct {
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_ string `const:"sasl_scram" json:"type"`
+	Type BackendClusterAuthenticationSaslScramSensitiveDataAwareType `json:"type"`
 	// The algorithm used for SASL/SCRAM authentication.
 	Algorithm BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm `json:"algorithm"`
 	// A literal value or a reference to an existing secret as a template string expression.
@@ -58,8 +82,11 @@ func (b *BackendClusterAuthenticationSaslScramSensitiveDataAware) UnmarshalJSON(
 	return nil
 }
 
-func (b *BackendClusterAuthenticationSaslScramSensitiveDataAware) GetType() string {
-	return "sasl_scram"
+func (b *BackendClusterAuthenticationSaslScramSensitiveDataAware) GetType() BackendClusterAuthenticationSaslScramSensitiveDataAwareType {
+	if b == nil {
+		return BackendClusterAuthenticationSaslScramSensitiveDataAwareType("")
+	}
+	return b.Type
 }
 
 func (b *BackendClusterAuthenticationSaslScramSensitiveDataAware) GetAlgorithm() BackendClusterAuthenticationSaslScramSensitiveDataAwareAlgorithm {

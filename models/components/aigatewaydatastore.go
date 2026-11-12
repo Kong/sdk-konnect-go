@@ -11,6 +11,29 @@ import (
 	"time"
 )
 
+type TokenVaultDatastoreAIGatewayDatastoreType string
+
+const (
+	TokenVaultDatastoreAIGatewayDatastoreTypeTokenVault TokenVaultDatastoreAIGatewayDatastoreType = "token-vault"
+)
+
+func (e TokenVaultDatastoreAIGatewayDatastoreType) ToPointer() *TokenVaultDatastoreAIGatewayDatastoreType {
+	return &e
+}
+func (e *TokenVaultDatastoreAIGatewayDatastoreType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "token-vault":
+		*e = TokenVaultDatastoreAIGatewayDatastoreType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TokenVaultDatastoreAIGatewayDatastoreType: %v", v)
+	}
+}
+
 type AIGatewayDatastoreTokenVaultDatastore struct {
 	// A user-defined unique identifier for this Datastore, used as a stable human-readable reference.
 	// This value is immutable after creation.
@@ -29,12 +52,13 @@ type AIGatewayDatastoreTokenVaultDatastore struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                    `const:"token-vault" json:"type"`
-	Config TokenVaultDatastoreConfig `json:"config"`
+	ManagedBy map[string]string                         `json:"managed_by,omitempty"`
+	Type      TokenVaultDatastoreAIGatewayDatastoreType `json:"type"`
+	Config    TokenVaultDatastoreConfig                 `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -91,8 +115,11 @@ func (a *AIGatewayDatastoreTokenVaultDatastore) GetManagedBy() map[string]string
 	return a.ManagedBy
 }
 
-func (a *AIGatewayDatastoreTokenVaultDatastore) GetType() string {
-	return "token-vault"
+func (a *AIGatewayDatastoreTokenVaultDatastore) GetType() TokenVaultDatastoreAIGatewayDatastoreType {
+	if a == nil {
+		return TokenVaultDatastoreAIGatewayDatastoreType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayDatastoreTokenVaultDatastore) GetConfig() TokenVaultDatastoreConfig {
@@ -130,6 +157,29 @@ func (a *AIGatewayDatastoreTokenVaultDatastore) GetKonnectManaged() *bool {
 	return a.KonnectManaged
 }
 
+type VectorDBDatastoreAIGatewayDatastoreType string
+
+const (
+	VectorDBDatastoreAIGatewayDatastoreTypeVectordb VectorDBDatastoreAIGatewayDatastoreType = "vectordb"
+)
+
+func (e VectorDBDatastoreAIGatewayDatastoreType) ToPointer() *VectorDBDatastoreAIGatewayDatastoreType {
+	return &e
+}
+func (e *VectorDBDatastoreAIGatewayDatastoreType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vectordb":
+		*e = VectorDBDatastoreAIGatewayDatastoreType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for VectorDBDatastoreAIGatewayDatastoreType: %v", v)
+	}
+}
+
 // AIGatewayDatastoreVectorDBDatastore - Carries the pgvector connection only. `strategy`, `dimensions`, `distance_metric`, and `threshold`
 // belong to the policy or model referencing this Datastore, not the Datastore itself.
 type AIGatewayDatastoreVectorDBDatastore struct {
@@ -150,12 +200,13 @@ type AIGatewayDatastoreVectorDBDatastore struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                        `const:"vectordb" json:"type"`
-	Config VectorDBDatastoreConfigOutput `json:"config"`
+	ManagedBy map[string]string                       `json:"managed_by,omitempty"`
+	Type      VectorDBDatastoreAIGatewayDatastoreType `json:"type"`
+	Config    VectorDBDatastoreConfigOutput           `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -212,8 +263,11 @@ func (a *AIGatewayDatastoreVectorDBDatastore) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayDatastoreVectorDBDatastore) GetType() string {
-	return "vectordb"
+func (a *AIGatewayDatastoreVectorDBDatastore) GetType() VectorDBDatastoreAIGatewayDatastoreType {
+	if a == nil {
+		return VectorDBDatastoreAIGatewayDatastoreType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayDatastoreVectorDBDatastore) GetConfig() VectorDBDatastoreConfigOutput {
@@ -251,6 +305,29 @@ func (a *AIGatewayDatastoreVectorDBDatastore) GetKonnectManaged() *bool {
 	return a.KonnectManaged
 }
 
+type RedisEEDatastoreAIGatewayDatastoreType string
+
+const (
+	RedisEEDatastoreAIGatewayDatastoreTypeRedisEe RedisEEDatastoreAIGatewayDatastoreType = "redis-ee"
+)
+
+func (e RedisEEDatastoreAIGatewayDatastoreType) ToPointer() *RedisEEDatastoreAIGatewayDatastoreType {
+	return &e
+}
+func (e *RedisEEDatastoreAIGatewayDatastoreType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "redis-ee":
+		*e = RedisEEDatastoreAIGatewayDatastoreType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RedisEEDatastoreAIGatewayDatastoreType: %v", v)
+	}
+}
+
 type AIGatewayDatastoreRedisEEDatastore struct {
 	// A user-defined unique identifier for this Datastore, used as a stable human-readable reference.
 	// This value is immutable after creation.
@@ -269,12 +346,13 @@ type AIGatewayDatastoreRedisEEDatastore struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                       `const:"redis-ee" json:"type"`
-	Config RedisEEDatastoreConfigOutput `json:"config"`
+	ManagedBy map[string]string                      `json:"managed_by,omitempty"`
+	Type      RedisEEDatastoreAIGatewayDatastoreType `json:"type"`
+	Config    RedisEEDatastoreConfigOutput           `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -331,8 +409,11 @@ func (a *AIGatewayDatastoreRedisEEDatastore) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayDatastoreRedisEEDatastore) GetType() string {
-	return "redis-ee"
+func (a *AIGatewayDatastoreRedisEEDatastore) GetType() RedisEEDatastoreAIGatewayDatastoreType {
+	if a == nil {
+		return RedisEEDatastoreAIGatewayDatastoreType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayDatastoreRedisEEDatastore) GetConfig() RedisEEDatastoreConfigOutput {
@@ -370,6 +451,29 @@ func (a *AIGatewayDatastoreRedisEEDatastore) GetKonnectManaged() *bool {
 	return a.KonnectManaged
 }
 
+type RedisCEDatastoreAIGatewayDatastoreType string
+
+const (
+	RedisCEDatastoreAIGatewayDatastoreTypeRedisCe RedisCEDatastoreAIGatewayDatastoreType = "redis-ce"
+)
+
+func (e RedisCEDatastoreAIGatewayDatastoreType) ToPointer() *RedisCEDatastoreAIGatewayDatastoreType {
+	return &e
+}
+func (e *RedisCEDatastoreAIGatewayDatastoreType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "redis-ce":
+		*e = RedisCEDatastoreAIGatewayDatastoreType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RedisCEDatastoreAIGatewayDatastoreType: %v", v)
+	}
+}
+
 type AIGatewayDatastoreRedisCEDatastore struct {
 	// A user-defined unique identifier for this Datastore, used as a stable human-readable reference.
 	// This value is immutable after creation.
@@ -388,12 +492,13 @@ type AIGatewayDatastoreRedisCEDatastore struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
-	// Keys must be 1–63 characters long and start with an alphanumeric character.
+	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
+	// Values must be 1–127 characters long and must not be empty.
+	// Keys and values must not contain spaces or control characters.
 	//
-	ManagedBy map[string]string `json:"managed_by,omitempty"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	type_  string                       `const:"redis-ce" json:"type"`
-	Config RedisCEDatastoreConfigOutput `json:"config"`
+	ManagedBy map[string]string                      `json:"managed_by,omitempty"`
+	Type      RedisCEDatastoreAIGatewayDatastoreType `json:"type"`
+	Config    RedisCEDatastoreConfigOutput           `json:"config"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -450,8 +555,11 @@ func (a *AIGatewayDatastoreRedisCEDatastore) GetManagedBy() map[string]string {
 	return a.ManagedBy
 }
 
-func (a *AIGatewayDatastoreRedisCEDatastore) GetType() string {
-	return "redis-ce"
+func (a *AIGatewayDatastoreRedisCEDatastore) GetType() RedisCEDatastoreAIGatewayDatastoreType {
+	if a == nil {
+		return RedisCEDatastoreAIGatewayDatastoreType("")
+	}
+	return a.Type
 }
 
 func (a *AIGatewayDatastoreRedisCEDatastore) GetConfig() RedisCEDatastoreConfigOutput {
@@ -511,6 +619,9 @@ type AIGatewayDatastore struct {
 func CreateAIGatewayDatastoreRedisCe(redisCe AIGatewayDatastoreRedisCEDatastore) AIGatewayDatastore {
 	typ := AIGatewayDatastoreTypeRedisCe
 
+	typStr := RedisCEDatastoreAIGatewayDatastoreType(typ)
+	redisCe.Type = typStr
+
 	return AIGatewayDatastore{
 		AIGatewayDatastoreRedisCEDatastore: &redisCe,
 		Type:                               typ,
@@ -519,6 +630,9 @@ func CreateAIGatewayDatastoreRedisCe(redisCe AIGatewayDatastoreRedisCEDatastore)
 
 func CreateAIGatewayDatastoreRedisEe(redisEe AIGatewayDatastoreRedisEEDatastore) AIGatewayDatastore {
 	typ := AIGatewayDatastoreTypeRedisEe
+
+	typStr := RedisEEDatastoreAIGatewayDatastoreType(typ)
+	redisEe.Type = typStr
 
 	return AIGatewayDatastore{
 		AIGatewayDatastoreRedisEEDatastore: &redisEe,
@@ -529,6 +643,9 @@ func CreateAIGatewayDatastoreRedisEe(redisEe AIGatewayDatastoreRedisEEDatastore)
 func CreateAIGatewayDatastoreVectordb(vectordb AIGatewayDatastoreVectorDBDatastore) AIGatewayDatastore {
 	typ := AIGatewayDatastoreTypeVectordb
 
+	typStr := VectorDBDatastoreAIGatewayDatastoreType(typ)
+	vectordb.Type = typStr
+
 	return AIGatewayDatastore{
 		AIGatewayDatastoreVectorDBDatastore: &vectordb,
 		Type:                                typ,
@@ -537,6 +654,9 @@ func CreateAIGatewayDatastoreVectordb(vectordb AIGatewayDatastoreVectorDBDatasto
 
 func CreateAIGatewayDatastoreTokenVault(tokenVault AIGatewayDatastoreTokenVaultDatastore) AIGatewayDatastore {
 	typ := AIGatewayDatastoreTypeTokenVault
+
+	typStr := TokenVaultDatastoreAIGatewayDatastoreType(typ)
+	tokenVault.Type = typStr
 
 	return AIGatewayDatastore{
 		AIGatewayDatastoreTokenVaultDatastore: &tokenVault,

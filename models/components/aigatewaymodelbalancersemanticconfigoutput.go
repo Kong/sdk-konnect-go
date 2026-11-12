@@ -4,6 +4,8 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -71,6 +73,29 @@ func (e *AIGatewayModelBalancerSemanticConfigFailoverCriteria) IsExact() bool {
 		}
 	}
 	return false
+}
+
+type AIGatewayModelBalancerSemanticConfigAlgorithm string
+
+const (
+	AIGatewayModelBalancerSemanticConfigAlgorithmSemantic AIGatewayModelBalancerSemanticConfigAlgorithm = "semantic"
+)
+
+func (e AIGatewayModelBalancerSemanticConfigAlgorithm) ToPointer() *AIGatewayModelBalancerSemanticConfigAlgorithm {
+	return &e
+}
+func (e *AIGatewayModelBalancerSemanticConfigAlgorithm) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "semantic":
+		*e = AIGatewayModelBalancerSemanticConfigAlgorithm(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AIGatewayModelBalancerSemanticConfigAlgorithm: %v", v)
+	}
 }
 
 // Embeddings model configuration for this model.
@@ -165,10 +190,9 @@ type AIGatewayModelBalancerSemanticConfigOutput struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64 `default:"10000" json:"slots"`
-	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	algorithm string `const:"semantic" json:"algorithm"`
+	Slots        *int64                                        `default:"10000" json:"slots"`
+	WriteTimeout *int64                                        `default:"60000" json:"write_timeout"`
+	Algorithm    AIGatewayModelBalancerSemanticConfigAlgorithm `json:"algorithm"`
 	// Embeddings model configuration for this model.
 	Embeddings Embeddings `json:"embeddings"`
 	// Configuration for the vector database used by the model.
@@ -242,8 +266,11 @@ func (a *AIGatewayModelBalancerSemanticConfigOutput) GetWriteTimeout() *int64 {
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerSemanticConfigOutput) GetAlgorithm() string {
-	return "semantic"
+func (a *AIGatewayModelBalancerSemanticConfigOutput) GetAlgorithm() AIGatewayModelBalancerSemanticConfigAlgorithm {
+	if a == nil {
+		return AIGatewayModelBalancerSemanticConfigAlgorithm("")
+	}
+	return a.Algorithm
 }
 
 func (a *AIGatewayModelBalancerSemanticConfigOutput) GetEmbeddings() Embeddings {
@@ -280,10 +307,9 @@ type AIGatewayModelBalancerSemanticConfig struct {
 	// The number of retries to execute upon failure to proxy.
 	Retries *int64 `default:"5" json:"retries"`
 	// The number of slots in the load balancer algorithm.
-	Slots        *int64 `default:"10000" json:"slots"`
-	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
-	//lint:ignore U1000 accessed via reflection for JSON marshaling
-	algorithm string `const:"semantic" json:"algorithm"`
+	Slots        *int64                                        `default:"10000" json:"slots"`
+	WriteTimeout *int64                                        `default:"60000" json:"write_timeout"`
+	Algorithm    AIGatewayModelBalancerSemanticConfigAlgorithm `json:"algorithm"`
 	// Embeddings model configuration for this model.
 	Embeddings Embeddings `json:"embeddings"`
 	// Configuration for the vector database used by the model.
@@ -357,8 +383,11 @@ func (a *AIGatewayModelBalancerSemanticConfig) GetWriteTimeout() *int64 {
 	return a.WriteTimeout
 }
 
-func (a *AIGatewayModelBalancerSemanticConfig) GetAlgorithm() string {
-	return "semantic"
+func (a *AIGatewayModelBalancerSemanticConfig) GetAlgorithm() AIGatewayModelBalancerSemanticConfigAlgorithm {
+	if a == nil {
+		return AIGatewayModelBalancerSemanticConfigAlgorithm("")
+	}
+	return a.Algorithm
 }
 
 func (a *AIGatewayModelBalancerSemanticConfig) GetEmbeddings() Embeddings {
