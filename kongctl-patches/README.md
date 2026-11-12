@@ -91,6 +91,18 @@ Explicit values, including values equal to API defaults, remain supported.
 The planner separately accounts for datastore-expanded response fields and
 inline API defaults.
 
+AI Gateway OpenID Connect auth strategy configs use presence-preserving maps
+on the request and response models. The generated plugin config types apply
+SDK defaults and collapse explicit null into nil, so removing default tags
+alone cannot retain all three states. Targeted replacements change only the
+OIDC strategy's config field and getter; generated config models remain
+available for validation and explain metadata. Maps preserve nested values,
+explicit false, empty arrays, omitted fields, and null without synthesizing
+plugin defaults. Response maps prevent null from becoming a default during
+state normalization and causing perpetual updates. Wire regressions exercise
+create and update, including explicit values equal to the API default.
+Remove these replacements when upstream models preserve config presence.
+
 The internal-only `CreatePortal.create_default_content` field also stays
 omitted when unset. Its tag replacement skips public SDKs where the field is
 absent, but fails on unexpected tags or types when the field is present.
@@ -136,9 +148,13 @@ snapshot recorded in the release's workflow lockfile before generation.
 
 Commit the snapshot, workflow changes, generated SDK code, and regression tests
 to `patch/v<VERSION>/targeted-patch-defaults`, then push the SDK branch. Update
-kongctl's `go.mod` replacement to that commit's Go pseudo-version, refresh
+kongctl's `go.mod` requirement to that commit's Go pseudo-version, refresh
 `go.sum` and vendoring, and run kongctl's local gates and relevant live scenarios
 before pushing kongctl. The SDK branch is consumed by commit; it is not released.
+Require the public patched version directly rather than selecting it only with
+`replace`: downstream Go extension modules do not inherit replacement directives.
+Run `go mod tidy` in `docs/examples/extensions/go` and `make test-extension-go`
+to verify the example inherits the patched SDK and builds with committed metadata.
 
 Run the patch-tool checks with:
 

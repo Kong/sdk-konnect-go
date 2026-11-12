@@ -51,7 +51,7 @@ type AIGatewayAuthStrategyOpenIDConnectResponse struct {
 	//
 	// **Requires a minimum runtime version of `2.3`**.
 	TokenVault *AIGatewayTokenVaultEnrollmentProtection `json:"token_vault,omitempty"`
-	Config     *AIGWOpenIDConnectGeneratedConfigOutput  `json:"config,omitempty"`
+	Config     map[string]any                           `json:"config,omitempty"`
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -117,7 +117,7 @@ func (a *AIGatewayAuthStrategyOpenIDConnectResponse) GetTokenVault() *AIGatewayT
 	return a.TokenVault
 }
 
-func (a *AIGatewayAuthStrategyOpenIDConnectResponse) GetConfig() *AIGWOpenIDConnectGeneratedConfigOutput {
+func (a *AIGatewayAuthStrategyOpenIDConnectResponse) GetConfig() map[string]any {
 	if a == nil {
 		return nil
 	}
