@@ -1,0 +1,8 @@
+# RolesContextInterfacesRolesContextProviderCredentialsAdminPositionalIds
+
+
+## Fields
+
+| Field                                                                                                                                 | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `ContextInterfaceID`                                                                                                                  | [*components.RolesContextInterfacesRolesContextInterfaceID](../../models/components/rolescontextinterfacesrolescontextinterfaceid.md) | :heavy_minus_sign:                                                                                                                    | N/A                                                                                                                                   |

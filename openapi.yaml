@@ -28588,6 +28588,8 @@ paths:
       responses:
         '201':
           $ref: '#/components/responses/AssignedRoleSingle'
+        '400':
+          $ref: '#/components/responses/IdentityBadRequest'
         '401':
           $ref: '#/components/responses/IdentityUnauthenticated'
         '403':
@@ -31949,7 +31951,6 @@ components:
           description: Whether this control-plane can be used for cloud-gateways.
           type: boolean
           example: false
-          default: false
           nullable: false
         proxy_urls:
           $ref: '#/components/schemas/ProxyURLs'
@@ -33802,6 +33803,16 @@ components:
         - created_at
         - updated_at
       title: IdpTeamGroupMapping
+    EntityIds:
+      description: The IDs of the entities associated with this role assignment. Mutually exclusive with entity_id; exactly one of entity_id or entity_ids must be provided.
+      type: array
+      items:
+        type: string
+        format: uuid
+      example:
+        - 817d0422-45c9-4d88-8d64-45aef05c1ae7
+        - 18ee2573-dec0-4b83-be99-fa7700bcdc61
+      uniqueItems: true
     AssignedRole:
       description: An assigned role is a role that has been assigned to a user or team.
       type: object
@@ -33816,10 +33827,12 @@ components:
           type: string
           example: Viewer
         entity_id:
-          description: A RBAC entity ID.
+          description: A RBAC entity ID. Deprecated in favor of entity_ids
           type: string
           format: uuid
           example: 817d0422-45c9-4d88-8d64-45aef05c1ae7
+        entity_ids:
+          $ref: '#/components/schemas/EntityIds'
         entity_type_name:
           description: Name of the entity type the role is being assigned to.
           type: string
@@ -33851,6 +33864,8 @@ components:
         id: 54cc6168-ebb1-4300-8168-d62a0dd08fc8
         role_name: Viewer
         entity_id: 18ee2573-dec0-4b83-be99-fa7700bcdc61
+        entity_ids:
+          - 18ee2573-dec0-4b83-be99-fa7700bcdc61
         entity_type_name: Control Planes
         entity_region: us
       title: AssignedRole
@@ -46729,6 +46744,7 @@ components:
               allOf:
                 - $ref: '#/components/schemas/TryItUIAudience'
                 - default: all
+              x-flatten-allOf: true
           title: PortalCustomizationSpecRenderer
         robots:
           type: string
@@ -108894,7 +108910,7 @@ components:
       content:
         application/json:
           schema:
-            description: An assigned role is a role that has been assigned to a user or team.
+            description: An assigned role is a role that has been assigned to a user or team. Exactly one of `entity_id` or `entity_ids` must be provided.
             type: object
             properties:
               role_name:
@@ -108944,10 +108960,12 @@ components:
                   - Add On Viewer
                 x-speakeasy-unknown-values: allow
               entity_id:
-                description: The ID of the entity.
+                description: The ID of the entity. Mutually exclusive with `entity_ids`.
                 type: string
                 format: uuid
                 example: e67490ce-44dc-4cbd-b65e-b52c746fc26a
+              entity_ids:
+                $ref: '#/components/schemas/EntityIds'
               entity_type_name:
                 description: The type of entity.
                 type: string
@@ -111879,14 +111897,82 @@ components:
           schema:
             type: object
             properties:
-              control_planes:
+              add_ons:
                 type: object
                 additionalProperties: false
                 properties:
                   name:
                     type: string
                     enum:
-                      - Control Planes
+                      - Add Ons
+                  roles:
+                    type: object
+                    properties:
+                      add_on_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                add_on_id:
+                                  type: string
+                                  enum:
+                                    - The add-on id
+                          name:
+                            type: string
+                            enum:
+                              - Add On Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to add-ons.
+                            enum:
+                              - Access to all read and write permissions related to add-ons.
+                        required:
+                          - name
+                          - description
+                      add_on_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                add_on_id:
+                                  type: string
+                                  enum:
+                                    - The add-on id
+                          name:
+                            type: string
+                            enum:
+                              - Add On Viewer
+                          description:
+                            type: string
+                            example: Access to read-only permissions to add-ons.
+                            enum:
+                              - Access to read-only permissions to add-ons.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              agents:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Agents
                   roles:
                     type: object
                     properties:
@@ -111894,48 +111980,26 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                agent_id:
+                                  type: string
+                                  enum:
+                                    - The agent id
                           name:
                             type: string
                             enum:
                               - Admin
                           description:
                             type: string
-                            example: This role grants full write access to all entities within a control plane.
+                            example: 'Admin of an existing Agent, providing ability to read and edit the registered agent card, and delete the Agent.'
                             enum:
-                              - This role grants full write access to all entities within a control plane.
-                        required:
-                          - name
-                          - description
-                      certificate_admin:
-                        type: object
-                        additionalProperties: false
-                        properties:
-                          name:
-                            type: string
-                            enum:
-                              - Certificate Admin
-                          description:
-                            type: string
-                            example: This role grants full write access to administer certificates.
-                            enum:
-                              - This role grants full write access to administer certificates.
-                        required:
-                          - name
-                          - description
-                      consumer_admin:
-                        type: object
-                        additionalProperties: false
-                        properties:
-                          name:
-                            type: string
-                            enum:
-                              - Consumer Admin
-                          description:
-                            description: This role grants full write access to administer Consumers. Can configure plugins and view plugin partials for Consumers they have access to. Cannot create or modify global plugins or plugins outside their scope.
-                            type: string
-                            example: This role grants full write access to administer consumers.
-                            enum:
-                              - This role grants full write access to administer consumers.
+                              - 'Admin of an existing Agent, providing ability to read and edit the registered agent card, and delete the Agent.'
                         required:
                           - name
                           - description
@@ -111943,130 +112007,53 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                agent_id:
+                                  type: string
+                                  enum:
+                                    - The agent id
                           name:
                             type: string
                             enum:
                               - Creator
                           description:
                             type: string
-                            example: Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create.
+                            example: Access to create new Agents in Konnect. The creator becomes an admin of the agent they create.
                             enum:
-                              - Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create.
+                              - Access to create new Agents in Konnect. The creator becomes an admin of the agent they create.
                         required:
                           - name
                           - description
-                      debug_session_creator:
+                      maintainer:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                agent_id:
+                                  type: string
+                                  enum:
+                                    - The agent id
                           name:
                             type: string
                             enum:
-                              - Debug Session Creator
+                              - Maintainer
                           description:
                             type: string
-                            example: This role grants access to create debug sessions. This role also grants read-only access to all entities within a control plane.
+                            example: Access to read and edit the registered agent card of an Agent.
                             enum:
-                              - This role grants access to create debug sessions. This role also grants read-only access to all entities within a control plane.
-                        required:
-                          - name
-                          - description
-                      deployer:
-                        type: object
-                        additionalProperties: false
-                        properties:
-                          name:
-                            type: string
-                            enum:
-                              - Deployer
-                          description:
-                            type: string
-                            example: 'This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub.'
-                            enum:
-                              - 'This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub.'
-                        required:
-                          - name
-                          - description
-                      gateway_service_admin:
-                        type: object
-                        additionalProperties: false
-                        properties:
-                          name:
-                            type: string
-                            enum:
-                              - Gateway Service Admin
-                          description:
-                            description: This role grants full write access to administer Gateway Services. Can configure plugins and view plugin partials for Services they have access to. Cannot create or modify global plugins or plugins outside their scope.
-                            type: string
-                            example: This role grants full write access to administer gateway services.
-                            enum:
-                              - This role grants full write access to administer gateway services.
-                        required:
-                          - name
-                          - description
-                      plugin_admin:
-                        type: object
-                        additionalProperties: false
-                        properties:
-                          name:
-                            type: string
-                            enum:
-                              - Plugin Admin
-                          description:
-                            description: 'Can configure plugins at any scope (global, Service, Route, or Consumer) within a Control Plane Group. Also has write access to plugin partials.'
-                            type: string
-                            example: This role grants full write access to administer plugins.
-                            enum:
-                              - This role grants full write access to administer plugins.
-                        required:
-                          - name
-                          - description
-                      route_admin:
-                        type: object
-                        additionalProperties: false
-                        properties:
-                          name:
-                            type: string
-                            enum:
-                              - Route Admin
-                          description:
-                            description: This role grants full write access to administer Routes. Can configure plugins and view plugin partials for Routes they have access to. Cannot create or modify global plugins or plugins outside their scope.
-                            type: string
-                            example: This role grants full write access to administer routes.
-                            enum:
-                              - This role grants full write access to administer routes.
-                        required:
-                          - name
-                          - description
-                      sni_admin:
-                        type: object
-                        additionalProperties: false
-                        properties:
-                          name:
-                            type: string
-                            enum:
-                              - SNI Admin
-                          description:
-                            type: string
-                            example: This role grants full write access to administer SNIs.
-                            enum:
-                              - This role grants full write access to administer SNIs.
-                        required:
-                          - name
-                          - description
-                      upstream_admin:
-                        type: object
-                        additionalProperties: false
-                        properties:
-                          name:
-                            type: string
-                            enum:
-                              - Upstream Admin
-                          description:
-                            type: string
-                            example: This role grants full write access to administer upstreams.
-                            enum:
-                              - This role grants full write access to administer upstreams.
+                              - Access to read and edit the registered agent card of an Agent.
                         required:
                           - name
                           - description
@@ -112074,16 +112061,232 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                agent_id:
+                                  type: string
+                                  enum:
+                                    - The agent id
                           name:
                             type: string
                             enum:
                               - Viewer
                           description:
-                            description: This role grants read-only access to all the configurations of a Control Plane Group and corresponding Data Plane nodes. Includes read-only access to plugin partials within accessible scopes.
                             type: string
-                            example: This role grants read only access to all entities within a control plane.
+                            example: Read-only access to an Agent.
                             enum:
-                              - This role grants read only access to all entities within a control plane.
+                              - Read-only access to an Agent.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              ai_gateways:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - AI Gateways
+                  roles:
+                    type: object
+                    properties:
+                      ai_gateways_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                ai_gateway_id:
+                                  type: string
+                                  enum:
+                                    - The ai gateway id
+                          name:
+                            type: string
+                            enum:
+                              - AI Gateways Admin
+                          description:
+                            type: string
+                            example: Owner of an existing AI gateway. The owners have all write access related to an AI Gateway and its configuration.
+                            enum:
+                              - Owner of an existing AI gateway. The owners have all write access related to an AI Gateway and its configuration.
+                        required:
+                          - name
+                          - description
+                      ai_gateways_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                ai_gateway_id:
+                                  type: string
+                                  enum:
+                                    - The ai gateway id
+                          name:
+                            type: string
+                            enum:
+                              - AI Gateways Creator
+                          description:
+                            type: string
+                            example: 'Access to create a new AI Gateway. The creator becomes the owner of the AI Gateway they create, gaining admin access to the new AI Gateway. This role does not grant access to existing AI Gateways or their configurations.'
+                            enum:
+                              - 'Access to create a new AI Gateway. The creator becomes the owner of the AI Gateway they create, gaining admin access to the new AI Gateway. This role does not grant access to existing AI Gateways or their configurations.'
+                        required:
+                          - name
+                          - description
+                      ai_gateways_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                ai_gateway_id:
+                                  type: string
+                                  enum:
+                                    - The ai gateway id
+                          name:
+                            type: string
+                            enum:
+                              - AI Gateways Viewer
+                          description:
+                            type: string
+                            example: Read-only access to all the configurations of an AI Gateway.
+                            enum:
+                              - Read-only access to all the configurations of an AI Gateway.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              ai_models:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - AI Models
+                  roles:
+                    type: object
+                    properties:
+                      model_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                ai_model_id:
+                                  type: string
+                                  enum:
+                                    - The ai model id
+                          name:
+                            type: string
+                            enum:
+                              - Model Admin
+                          description:
+                            type: string
+                            example: 'Admin of an existing AI Model, providing ability to read and edit configuration and delete the AI Model.'
+                            enum:
+                              - 'Admin of an existing AI Model, providing ability to read and edit configuration and delete the AI Model.'
+                        required:
+                          - name
+                          - description
+                      model_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Model Creator
+                          description:
+                            type: string
+                            example: Access to create new AI Models in Konnect. The creator becomes an admin of the AI Model they create.
+                            enum:
+                              - Access to create new AI Models in Konnect. The creator becomes an admin of the AI Model they create.
+                        required:
+                          - name
+                          - description
+                      model_maintainer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                ai_model_id:
+                                  type: string
+                                  enum:
+                                    - The ai model id
+                          name:
+                            type: string
+                            enum:
+                              - Model Maintainer
+                          description:
+                            type: string
+                            example: Access to read and edit configuration of an AI Model.
+                            enum:
+                              - Access to read and edit configuration of an AI Model.
+                        required:
+                          - name
+                          - description
+                      model_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                ai_model_id:
+                                  type: string
+                                  enum:
+                                    - The ai model id
+                          name:
+                            type: string
+                            enum:
+                              - Model Viewer
+                          description:
+                            type: string
+                            example: Read-only access to an AI Model configuration.
+                            enum:
+                              - Read-only access to an AI Model configuration.
                         required:
                           - name
                           - description
@@ -112105,6 +112308,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
                           name:
                             type: string
                             enum:
@@ -112121,6 +112335,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
                           name:
                             type: string
                             enum:
@@ -112137,6 +112362,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
                           name:
                             type: string
                             enum:
@@ -112153,6 +112389,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
                           name:
                             type: string
                             enum:
@@ -112169,6 +112416,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
                           name:
                             type: string
                             enum:
@@ -112185,6 +112443,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
                           name:
                             type: string
                             enum:
@@ -112201,6 +112470,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
                           name:
                             type: string
                             enum:
@@ -112217,6 +112497,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
                           name:
                             type: string
                             enum:
@@ -112226,6 +112517,182 @@ components:
                             example: Viewer has read-only access to an API product and its sub-entities.
                             enum:
                               - Viewer has read-only access to an API product and its sub-entities.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              apis:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - APIs
+                  roles:
+                    type: object
+                    properties:
+                      admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                api_id:
+                                  type: string
+                                  enum:
+                                    - The api id
+                          name:
+                            type: string
+                            enum:
+                              - Admin
+                          description:
+                            type: string
+                            example: 'Admin of an existing API, providing ability to read and edit configuration, view API analytics, and delete the API.'
+                            enum:
+                              - 'Admin of an existing API, providing ability to read and edit configuration, view API analytics, and delete the API.'
+                        required:
+                          - name
+                          - description
+                      creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                api_id:
+                                  type: string
+                                  enum:
+                                    - The api id
+                          name:
+                            type: string
+                            enum:
+                              - Creator
+                          description:
+                            type: string
+                            example: Access to create new API in Konnect. The creator becomes an admin of the API they create.
+                            enum:
+                              - Access to create new API in Konnect. The creator becomes an admin of the API they create.
+                        required:
+                          - name
+                          - description
+                      maintainer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                api_id:
+                                  type: string
+                                  enum:
+                                    - The api id
+                          name:
+                            type: string
+                            enum:
+                              - Maintainer
+                          description:
+                            type: string
+                            example: Access to read and edit configuration of an API and view analytics of an API.
+                            enum:
+                              - Access to read and edit configuration of an API and view analytics of an API.
+                        required:
+                          - name
+                          - description
+                      publisher:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                api_id:
+                                  type: string
+                                  enum:
+                                    - The api id
+                          name:
+                            type: string
+                            enum:
+                              - Publisher
+                          description:
+                            type: string
+                            example: Access to publish an API to visible portals.
+                            enum:
+                              - Access to publish an API to visible portals.
+                        required:
+                          - name
+                          - description
+                      registration_approver:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                api_id:
+                                  type: string
+                                  enum:
+                                    - The api id
+                          name:
+                            type: string
+                            enum:
+                              - Registration Approver
+                          description:
+                            type: string
+                            example: Access to approve an API registration request.
+                            enum:
+                              - Access to approve an API registration request.
+                        required:
+                          - name
+                          - description
+                      viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                api_id:
+                                  type: string
+                                  enum:
+                                    - The api id
+                          name:
+                            type: string
+                            enum:
+                              - Viewer
+                          description:
+                            type: string
+                            example: Read-only access to an API configuration and analytics.
+                            enum:
+                              - Read-only access to an API configuration and analytics.
                         required:
                           - name
                           - description
@@ -112253,9 +112720,9 @@ components:
                               - Admin
                           description:
                             type: string
-                            example: This role grants full write access to the Audit log configuration.
+                            example: This role grants full write access to all audit log resources.
                             enum:
-                              - This role grants full write access to the Audit log configuration.
+                              - This role grants full write access to all audit log resources.
                         required:
                           - name
                           - description
@@ -112269,9 +112736,1545 @@ components:
                               - Viewer
                           description:
                             type: string
-                            example: This role grants read access to the Audit log configuration.
+                            example: This role grants read access to all audit log resources.
                             enum:
-                              - This role grants read access to the Audit log configuration.
+                              - This role grants read access to all audit log resources.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              auth_servers:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Auth Servers
+                  roles:
+                    type: object
+                    properties:
+                      admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                auth_server_id:
+                                  type: string
+                                  enum:
+                                    - The auth server id
+                          name:
+                            type: string
+                            enum:
+                              - Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to an Authorization Server.
+                            enum:
+                              - Access to all read and write permissions related to an Authorization Server.
+                        required:
+                          - name
+                          - description
+                      viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                auth_server_id:
+                                  type: string
+                                  enum:
+                                    - The auth server id
+                          name:
+                            type: string
+                            enum:
+                              - Viewer
+                          description:
+                            type: string
+                            example: Access to all read permissions related to an Authorization Server.
+                            enum:
+                              - Access to all read permissions related to an Authorization Server.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              context_interfaces:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Context Interfaces
+                  roles:
+                    type: object
+                    properties:
+                      context_interfaces_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                context_interface_id:
+                                  type: string
+                                  enum:
+                                    - The context interface id
+                          name:
+                            type: string
+                            enum:
+                              - Context Interfaces Admin
+                          description:
+                            type: string
+                            example: Owner of an existing Context Interface. The owners have all write access related to a Context Interface and its configuration.
+                            enum:
+                              - Owner of an existing Context Interface. The owners have all write access related to a Context Interface and its configuration.
+                        required:
+                          - name
+                          - description
+                      context_interfaces_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                context_interface_id:
+                                  type: string
+                                  enum:
+                                    - The context interface id
+                          name:
+                            type: string
+                            enum:
+                              - Context Interfaces Creator
+                          description:
+                            type: string
+                            example: 'Access to create a new Context Interface. The creator becomes the owner of the Context Interface they create, gaining admin access to the new Context Interface. This role does not grant access to existing Context Interfaces or their configurations.'
+                            enum:
+                              - 'Access to create a new Context Interface. The creator becomes the owner of the Context Interface they create, gaining admin access to the new Context Interface. This role does not grant access to existing Context Interfaces or their configurations.'
+                        required:
+                          - name
+                          - description
+                      context_interfaces_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                context_interface_id:
+                                  type: string
+                                  enum:
+                                    - The context interface id
+                          name:
+                            type: string
+                            enum:
+                              - Context Interfaces Viewer
+                          description:
+                            type: string
+                            example: Read-only access to all the configurations of a Context Interface.
+                            enum:
+                              - Read-only access to all the configurations of a Context Interface.
+                        required:
+                          - name
+                          - description
+                      context_provider_credentials_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                context_interface_id:
+                                  type: string
+                                  enum:
+                                    - The context interface id
+                          name:
+                            type: string
+                            enum:
+                              - Context Provider Credentials Admin
+                          description:
+                            type: string
+                            example: Access to read and write permissions related to Context Provider Credentials
+                            enum:
+                              - Access to read and write permissions related to Context Provider Credentials
+                        required:
+                          - name
+                          - description
+                      context_provider_credentials_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                context_interface_id:
+                                  type: string
+                                  enum:
+                                    - The context interface id
+                          name:
+                            type: string
+                            enum:
+                              - Context Provider Credentials Viewer
+                          description:
+                            type: string
+                            example: Access to read permissions related to Context Provider Credentials
+                            enum:
+                              - Access to read permissions related to Context Provider Credentials
+                        required:
+                          - name
+                          - description
+                      context_sources_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                context_interface_id:
+                                  type: string
+                                  enum:
+                                    - The context interface id
+                          name:
+                            type: string
+                            enum:
+                              - Context Sources Admin
+                          description:
+                            type: string
+                            example: Access to read and write permissions related to Context Sources
+                            enum:
+                              - Access to read and write permissions related to Context Sources
+                        required:
+                          - name
+                          - description
+                      context_sources_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                context_interface_id:
+                                  type: string
+                                  enum:
+                                    - The context interface id
+                          name:
+                            type: string
+                            enum:
+                              - Context Sources Viewer
+                          description:
+                            type: string
+                            example: Access to read permissions related to Context Sources
+                            enum:
+                              - Access to read permissions related to Context Sources
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              control_planes:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Control Planes
+                  roles:
+                    type: object
+                    properties:
+                      admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Admin
+                          description:
+                            type: string
+                            example: This role grants full write access to all entities within a control plane.
+                            enum:
+                              - This role grants full write access to all entities within a control plane.
+                        required:
+                          - name
+                          - description
+                      ca_certificate_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - CA Certificate Admin
+                          description:
+                            type: string
+                            example: This role grants full write access to administer CA Certificates.
+                            enum:
+                              - This role grants full write access to administer CA Certificates.
+                        required:
+                          - name
+                          - description
+                      certificate_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Certificate Admin
+                          description:
+                            type: string
+                            example: This role grants full write access to administer certificates.
+                            enum:
+                              - This role grants full write access to administer certificates.
+                        required:
+                          - name
+                          - description
+                      cloud_gateway_cluster_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Cloud Gateway Cluster Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to cloud-gateways configurations and custom domains.
+                            enum:
+                              - Access to all read and write permissions related to cloud-gateways configurations and custom domains.
+                        required:
+                          - name
+                          - description
+                      cloud_gateway_cluster_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Cloud Gateway Cluster Viewer
+                          description:
+                            type: string
+                            example: Access to read-only permissions to cloud-gateways configurations and custom domains.
+                            enum:
+                              - Access to read-only permissions to cloud-gateways configurations and custom domains.
+                        required:
+                          - name
+                          - description
+                      consumer_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Consumer Admin
+                          description:
+                            type: string
+                            example: This role grants full write access to administer consumers.
+                            enum:
+                              - This role grants full write access to administer consumers.
+                        required:
+                          - name
+                          - description
+                      creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Creator
+                          description:
+                            type: string
+                            example: Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create.
+                            enum:
+                              - Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create.
+                        required:
+                          - name
+                          - description
+                      debug_session_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Debug Session Creator
+                          description:
+                            type: string
+                            example: This role grants access to create debug sessions and read-only access to all the configurations of a runtime group and its runtime instances.
+                            enum:
+                              - This role grants access to create debug sessions and read-only access to all the configurations of a runtime group and its runtime instances.
+                        required:
+                          - name
+                          - description
+                      deployer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Deployer
+                          description:
+                            type: string
+                            example: 'This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Catalog.'
+                            enum:
+                              - 'This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Catalog.'
+                        required:
+                          - name
+                          - description
+                      gateway_service_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Gateway Service Admin
+                          description:
+                            type: string
+                            example: This role grants full write access to administer gateway services.
+                            enum:
+                              - This role grants full write access to administer gateway services.
+                        required:
+                          - name
+                          - description
+                      high_velocity_cluster_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - High Velocity Cluster Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to high velocity cloud-gateways configurations.
+                            enum:
+                              - Access to all read and write permissions related to high velocity cloud-gateways configurations.
+                        required:
+                          - name
+                          - description
+                      high_velocity_cluster_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - High Velocity Cluster Viewer
+                          description:
+                            type: string
+                            example: Access to read-only permissions to high velocity cloud-gateways configurations.
+                            enum:
+                              - Access to read-only permissions to high velocity cloud-gateways configurations.
+                        required:
+                          - name
+                          - description
+                      key_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Key Admin
+                          description:
+                            type: string
+                            example: Full write access to administer keys.
+                            enum:
+                              - Full write access to administer keys.
+                        required:
+                          - name
+                          - description
+                      plugin_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Plugin Admin
+                          description:
+                            type: string
+                            example: This role grants full write access to administer plugins.
+                            enum:
+                              - This role grants full write access to administer plugins.
+                        required:
+                          - name
+                          - description
+                      route_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Route Admin
+                          description:
+                            type: string
+                            example: This role grants full write access to administer routes.
+                            enum:
+                              - This role grants full write access to administer routes.
+                        required:
+                          - name
+                          - description
+                      serverless_cluster_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Serverless Cluster Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to serverless cloud-gateways configurations.
+                            enum:
+                              - Access to all read and write permissions related to serverless cloud-gateways configurations.
+                        required:
+                          - name
+                          - description
+                      serverless_cluster_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Serverless Cluster Viewer
+                          description:
+                            type: string
+                            example: Access to read-only permissions to serverless cloud-gateways configurations.
+                            enum:
+                              - Access to read-only permissions to serverless cloud-gateways configurations.
+                        required:
+                          - name
+                          - description
+                      sni_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - SNI Admin
+                          description:
+                            type: string
+                            example: This role grants full write access to administer SNIs.
+                            enum:
+                              - This role grants full write access to administer SNIs.
+                        required:
+                          - name
+                          - description
+                      upstream_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Upstream Admin
+                          description:
+                            type: string
+                            example: This role grants full write access to administer upstreams.
+                            enum:
+                              - This role grants full write access to administer upstreams.
+                        required:
+                          - name
+                          - description
+                      vault_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Vault Admin
+                          description:
+                            type: string
+                            example: Full write access to administer Vaults.
+                            enum:
+                              - Full write access to administer Vaults.
+                        required:
+                          - name
+                          - description
+                      viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Viewer
+                          description:
+                            type: string
+                            example: This role grants read only access to all entities within a control plane.
+                            enum:
+                              - This role grants read only access to all entities within a control plane.
+                        required:
+                          - name
+                          - description
+                      workspace_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Admin
+                          description:
+                            type: string
+                            example: Full write access to administer Workspaces.
+                            enum:
+                              - Full write access to administer Workspaces.
+                        required:
+                          - name
+                          - description
+                      workspace_certificate_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Certificate Admin
+                          description:
+                            type: string
+                            example: Full write access to administer Kong Gateway Certificate Objects in a Workspace.
+                            enum:
+                              - Full write access to administer Kong Gateway Certificate Objects in a Workspace.
+                        required:
+                          - name
+                          - description
+                      workspace_consumer_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Consumer Admin
+                          description:
+                            type: string
+                            example: Full write access to administer consumers in a Workspace.
+                            enum:
+                              - Full write access to administer consumers in a Workspace.
+                        required:
+                          - name
+                          - description
+                      workspace_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Creator
+                          description:
+                            type: string
+                            example: Access to manage the lifecycle of Workspaces in a control plane.
+                            enum:
+                              - Access to manage the lifecycle of Workspaces in a control plane.
+                        required:
+                          - name
+                          - description
+                      workspace_deployer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Deployer
+                          description:
+                            type: string
+                            example: 'Access to deploy services, routes and plugins in a Workspace.'
+                            enum:
+                              - 'Access to deploy services, routes and plugins in a Workspace.'
+                        required:
+                          - name
+                          - description
+                      workspace_gateway_service_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Gateway Service Admin
+                          description:
+                            type: string
+                            example: Full write access to administer gateway services in a Workspace.
+                            enum:
+                              - Full write access to administer gateway services in a Workspace.
+                        required:
+                          - name
+                          - description
+                      workspace_key_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Key Admin
+                          description:
+                            type: string
+                            example: Full write access to administer keys in a Workspace.
+                            enum:
+                              - Full write access to administer keys in a Workspace.
+                        required:
+                          - name
+                          - description
+                      workspace_plugin_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Plugin Admin
+                          description:
+                            type: string
+                            example: Full write access to administer plugins in a Workspace.
+                            enum:
+                              - Full write access to administer plugins in a Workspace.
+                        required:
+                          - name
+                          - description
+                      workspace_route_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Route Admin
+                          description:
+                            type: string
+                            example: 'Write access to administer routes in a Workspace. Plugins can be configured on own routes only, no global plugins and no partials.'
+                            enum:
+                              - 'Write access to administer routes in a Workspace. Plugins can be configured on own routes only, no global plugins and no partials.'
+                        required:
+                          - name
+                          - description
+                      workspace_sni_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace SNI Admin
+                          description:
+                            type: string
+                            example: Full write access to administer SNIs in a Workspace.
+                            enum:
+                              - Full write access to administer SNIs in a Workspace.
+                        required:
+                          - name
+                          - description
+                      workspace_upstream_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Upstream Admin
+                          description:
+                            type: string
+                            example: Full write access to administer upstreams in a Workspace.
+                            enum:
+                              - Full write access to administer upstreams in a Workspace.
+                        required:
+                          - name
+                          - description
+                      workspace_vault_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Vault Admin
+                          description:
+                            type: string
+                            example: Full write access to administer Vaults in a Workspace.
+                            enum:
+                              - Full write access to administer Vaults in a Workspace.
+                        required:
+                          - name
+                          - description
+                      workspace_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The control plane id
+                                workspace_id:
+                                  type: string
+                                  enum:
+                                    - The workspace id
+                          name:
+                            type: string
+                            enum:
+                              - Workspace Viewer
+                          description:
+                            type: string
+                            example: Read-only access to all the configurations of a Workspace.
+                            enum:
+                              - Read-only access to all the configurations of a Workspace.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              dashboards:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Dashboards
+                  roles:
+                    type: object
+                    properties:
+                      admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                dashboard_id:
+                                  type: string
+                                  enum:
+                                    - The dashboard id
+                          name:
+                            type: string
+                            enum:
+                              - Admin
+                          description:
+                            type: string
+                            example: 'Allows users to edit, delete, and share a Dashboard in Konnect Analytics.'
+                            enum:
+                              - 'Allows users to edit, delete, and share a Dashboard in Konnect Analytics.'
+                        required:
+                          - name
+                          - description
+                      creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                dashboard_id:
+                                  type: string
+                                  enum:
+                                    - The dashboard id
+                          name:
+                            type: string
+                            enum:
+                              - Creator
+                          description:
+                            type: string
+                            example: Allows users to create a new Dashboard in Konnect Analytics.
+                            enum:
+                              - Allows users to create a new Dashboard in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                      editor:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                dashboard_id:
+                                  type: string
+                                  enum:
+                                    - The dashboard id
+                          name:
+                            type: string
+                            enum:
+                              - Editor
+                          description:
+                            type: string
+                            example: Allows users to edit a Dashboard in Konnect Analytics.
+                            enum:
+                              - Allows users to edit a Dashboard in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                      viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                dashboard_id:
+                                  type: string
+                                  enum:
+                                    - The dashboard id
+                          name:
+                            type: string
+                            enum:
+                              - Viewer
+                          description:
+                            type: string
+                            example: Allows users to view a Dashboard in Konnect Analytics.
+                            enum:
+                              - Allows users to view a Dashboard in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              directories:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Directories
+                  roles:
+                    type: object
+                    properties:
+                      principal_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                directory_id:
+                                  type: string
+                                  enum:
+                                    - The directory id
+                          name:
+                            type: string
+                            enum:
+                              - Principal Admin
+                          description:
+                            type: string
+                            example: 'Access to create directories, and all read and write permissions related to Principals in a Directory.'
+                            enum:
+                              - 'Access to create directories, and all read and write permissions related to Principals in a Directory.'
+                        required:
+                          - name
+                          - description
+                      principal_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                directory_id:
+                                  type: string
+                                  enum:
+                                    - The directory id
+                          name:
+                            type: string
+                            enum:
+                              - Principal Viewer
+                          description:
+                            type: string
+                            example: Access to all read permissions related to Principals in a Directory.
+                            enum:
+                              - Access to all read permissions related to Principals in a Directory.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              event_gateway:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Event Gateway
+                  roles:
+                    type: object
+                    properties:
+                      event_gateways_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                event_gateway_id:
+                                  type: string
+                                  enum:
+                                    - The event gateway id
+                          name:
+                            type: string
+                            enum:
+                              - Event Gateways Admin
+                          description:
+                            type: string
+                            example: 'Owner of an existing event gateway. The owners have all write access related to an event gateway, the gateway''s runtime instances, and its configuration.'
+                            enum:
+                              - 'Owner of an existing event gateway. The owners have all write access related to an event gateway, the gateway''s runtime instances, and its configuration.'
+                        required:
+                          - name
+                          - description
+                      event_gateways_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                event_gateway_id:
+                                  type: string
+                                  enum:
+                                    - The event gateway id
+                          name:
+                            type: string
+                            enum:
+                              - Event Gateways Creator
+                          description:
+                            type: string
+                            example: 'Access to create a new event gateway in Event Gateway Manager. The creator becomes the owner of the event gateway they create, gaining admin access to the new event gateway. This role does not grant access to existing event gateways, their runtime instances, or their configurations.'
+                            enum:
+                              - 'Access to create a new event gateway in Event Gateway Manager. The creator becomes the owner of the event gateway they create, gaining admin access to the new event gateway. This role does not grant access to existing event gateways, their runtime instances, or their configurations.'
+                        required:
+                          - name
+                          - description
+                      event_gateways_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                event_gateway_id:
+                                  type: string
+                                  enum:
+                                    - The event gateway id
+                          name:
+                            type: string
+                            enum:
+                              - Event Gateways Viewer
+                          description:
+                            type: string
+                            example: Read-only access to all the configurations of an event gateway and its runtime instances.
+                            enum:
+                              - Read-only access to all the configurations of an event gateway and its runtime instances.
                         required:
                           - name
                           - description
@@ -112299,9 +114302,136 @@ components:
                               - Admin
                           description:
                             type: string
-                            example: This role grants full write access to the Identity configuration.
+                            example: This role grants full write access to all identity resources.
                             enum:
-                              - This role grants full write access to the Identity configuration.
+                              - This role grants full write access to all identity resources.
+                        required:
+                          - name
+                          - description
+                      plan_and_usage_administrator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Plan and Usage Administrator
+                          description:
+                            type: string
+                            example: Manage your Konnect plan and monitor organization usage metrics.
+                            enum:
+                              - Manage your Konnect plan and monitor organization usage metrics.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              mcp_servers:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - MCP Servers
+                  roles:
+                    type: object
+                    properties:
+                      mcp_server_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                mcp_id:
+                                  type: string
+                                  enum:
+                                    - The MCP server id
+                          name:
+                            type: string
+                            enum:
+                              - MCP Server Admin
+                          description:
+                            type: string
+                            example: 'Admin of an existing MCP server, providing ability to read and edit configuration and delete the MCP server.'
+                            enum:
+                              - 'Admin of an existing MCP server, providing ability to read and edit configuration and delete the MCP server.'
+                        required:
+                          - name
+                          - description
+                      mcp_server_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - MCP Server Creator
+                          description:
+                            type: string
+                            example: Access to create new MCP servers in Konnect. The creator becomes an admin of the MCP server they create.
+                            enum:
+                              - Access to create new MCP servers in Konnect. The creator becomes an admin of the MCP server they create.
+                        required:
+                          - name
+                          - description
+                      mcp_server_maintainer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                mcp_id:
+                                  type: string
+                                  enum:
+                                    - The MCP server id
+                          name:
+                            type: string
+                            enum:
+                              - MCP Server Maintainer
+                          description:
+                            type: string
+                            example: Access to read and edit configuration of an MCP server.
+                            enum:
+                              - Access to read and edit configuration of an MCP server.
+                        required:
+                          - name
+                          - description
+                      mcp_server_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                mcp_id:
+                                  type: string
+                                  enum:
+                                    - The MCP server id
+                          name:
+                            type: string
+                            enum:
+                              - MCP Server Viewer
+                          description:
+                            type: string
+                            example: Read-only access to an MCP server configuration.
+                            enum:
+                              - Read-only access to an MCP server configuration.
                         required:
                           - name
                           - description
@@ -112315,7 +114445,7 @@ components:
                   name:
                     type: string
                     enum:
-                      - Mesh Control Plane
+                      - Mesh Control Planes
                   roles:
                     type: object
                     properties:
@@ -112323,15 +114453,26 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                mesh_control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The mesh control plane id
                           name:
                             type: string
                             enum:
                               - Admin
                           description:
                             type: string
-                            example: This role grants full write access to the related to Mesh control planes.
+                            example: Access to all read and write permissions related to Mesh control planes.
                             enum:
-                              - This role grants full write access to the related to Mesh control planes.
+                              - Access to all read and write permissions related to Mesh control planes.
                         required:
                           - name
                           - description
@@ -112339,6 +114480,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                mesh_control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The mesh control plane id
                           name:
                             type: string
                             enum:
@@ -112355,15 +114507,26 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                mesh_control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The mesh control plane id
                           name:
                             type: string
                             enum:
                               - Creator
                           description:
                             type: string
-                            example: This role grants access to create new Mesh control planes.
+                            example: Access to create new Mesh control planes.
                             enum:
-                              - This role grants access to create new Mesh control planes.
+                              - Access to create new Mesh control planes.
                         required:
                           - name
                           - description
@@ -112371,29 +114534,40 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                mesh_control_plane_id:
+                                  type: string
+                                  enum:
+                                    - The mesh control plane id
                           name:
                             type: string
                             enum:
                               - Viewer
                           description:
                             type: string
-                            example: This role grants access to read-only permissions to Mesh control planes.
+                            example: Access to read-only permissions to Mesh control planes.
                             enum:
-                              - This role grants access to read-only permissions to Mesh control planes.
+                              - Access to read-only permissions to Mesh control planes.
                         required:
                           - name
                           - description
                 required:
                   - name
                   - roles
-              dashboards:
+              metering:
                 type: object
                 additionalProperties: false
                 properties:
                   name:
                     type: string
                     enum:
-                      - Dashboards
+                      - Metering
                   roles:
                     type: object
                     properties:
@@ -112407,57 +114581,232 @@ components:
                               - Admin
                           description:
                             type: string
-                            example: 'Allows users to edit, delete, and share a Dashboard in Konnect Analytics.'
+                            example: Can manage all resources
                             enum:
-                              - 'Allows users to edit, delete, and share a Dashboard in Konnect Analytics.'
+                              - Can manage all resources
                         required:
                           - name
                           - description
-                      creator:
+                      billing_admin:
                         type: object
                         additionalProperties: false
                         properties:
                           name:
                             type: string
                             enum:
-                              - Creator
+                              - Billing Admin
                           description:
                             type: string
-                            example: Allows users to create a new Dashboard in Konnect Analytics.
+                            example: 'Can manage billing (invoice, subscriptions, customers, entitlements, etc.)'
                             enum:
-                              - Allows users to create a new Dashboard in Konnect Analytics.
+                              - 'Can manage billing (invoice, subscriptions, customers, entitlements, etc.)'
                         required:
                           - name
                           - description
-                      editor:
+                      billing_viewer:
                         type: object
                         additionalProperties: false
                         properties:
                           name:
                             type: string
                             enum:
-                              - Editor
+                              - Billing Viewer
                           description:
                             type: string
-                            example: Allows users to edit a Dashboard in Konnect Analytics.
+                            example: 'Can view billing (invoice, subscriptions, customers, entitlements, etc.)'
                             enum:
-                              - Allows users to edit a Dashboard in Konnect Analytics.
+                              - 'Can view billing (invoice, subscriptions, customers, entitlements, etc.)'
                         required:
                           - name
                           - description
-                      viewer:
+                      entitlement_access:
                         type: object
                         additionalProperties: false
                         properties:
                           name:
                             type: string
                             enum:
-                              - Viewer
+                              - Entitlement Access
                           description:
                             type: string
-                            example: Allows users to view any Dashboards content in Konnect Analytics.
+                            example: Can query entitlement access information from the Metering system
                             enum:
-                              - Allows users to view any Dashboards content in Konnect Analytics.
+                              - Can query entitlement access information from the Metering system
+                        required:
+                          - name
+                          - description
+                      ingest:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Ingest
+                          description:
+                            type: string
+                            example: Can ingest events into the Metering system
+                            enum:
+                              - Can ingest events into the Metering system
+                        required:
+                          - name
+                          - description
+                      meter_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Meter Admin
+                          description:
+                            type: string
+                            example: 'Can manage meters, events'
+                            enum:
+                              - 'Can manage meters, events'
+                        required:
+                          - name
+                          - description
+                      metering_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Metering Viewer
+                          description:
+                            type: string
+                            example: Can view all Metering resources
+                            enum:
+                              - Can view all Metering resources
+                        required:
+                          - name
+                          - description
+                      product_catalog_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Product Catalog Admin
+                          description:
+                            type: string
+                            example: 'Can manage product catalog (plan, feature, addon)'
+                            enum:
+                              - 'Can manage product catalog (plan, feature, addon)'
+                        required:
+                          - name
+                          - description
+                      product_catalog_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Product Catalog Viewer
+                          description:
+                            type: string
+                            example: 'Can view product catalog (plan, feature, addon)'
+                            enum:
+                              - 'Can view product catalog (plan, feature, addon)'
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              networks:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Networks
+                  roles:
+                    type: object
+                    properties:
+                      network_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                network_id:
+                                  type: string
+                                  enum:
+                                    - The network id
+                          name:
+                            type: string
+                            enum:
+                              - Network Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to a network.
+                            enum:
+                              - Access to all read and write permissions related to a network.
+                        required:
+                          - name
+                          - description
+                      network_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                network_id:
+                                  type: string
+                                  enum:
+                                    - The network id
+                          name:
+                            type: string
+                            enum:
+                              - Network Creator
+                          description:
+                            type: string
+                            example: Access to creating networks.
+                            enum:
+                              - Access to creating networks.
+                        required:
+                          - name
+                          - description
+                      network_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                network_id:
+                                  type: string
+                                  enum:
+                                    - The network id
+                          name:
+                            type: string
+                            enum:
+                              - Network Viewer
+                          description:
+                            type: string
+                            example: Access to read-only permissions to networks.
+                            enum:
+                              - Access to read-only permissions to networks.
                         required:
                           - name
                           - description
@@ -112479,15 +114828,26 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                report_id:
+                                  type: string
+                                  enum:
+                                    - The report id
                           name:
                             type: string
                             enum:
                               - Admin
                           description:
                             type: string
-                            example: 'Allows users to edit, delete, and share a Report in Konnect Analytics.'
+                            example: Allows users to edit and delete a Report in Konnect Analytics.
                             enum:
-                              - 'Allows users to edit, delete, and share a Report in Konnect Analytics.'
+                              - Allows users to edit and delete a Report in Konnect Analytics.
                         required:
                           - name
                           - description
@@ -112495,6 +114855,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                report_id:
+                                  type: string
+                                  enum:
+                                    - The report id
                           name:
                             type: string
                             enum:
@@ -112511,6 +114882,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                report_id:
+                                  type: string
+                                  enum:
+                                    - The report id
                           name:
                             type: string
                             enum:
@@ -112527,6 +114909,17 @@ components:
                         type: object
                         additionalProperties: false
                         properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                report_id:
+                                  type: string
+                                  enum:
+                                    - The report id
                           name:
                             type: string
                             enum:
@@ -112536,6 +114929,309 @@ components:
                             example: Allows users to view a Report in Konnect Analytics.
                             enum:
                               - Allows users to view a Report in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              service_hub:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Service Hub
+                  roles:
+                    type: object
+                    properties:
+                      discovery_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
+                          name:
+                            type: string
+                            enum:
+                              - Discovery Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to service discoveries.
+                            enum:
+                              - Access to all read and write permissions related to service discoveries.
+                        required:
+                          - name
+                          - description
+                      discovery_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
+                          name:
+                            type: string
+                            enum:
+                              - Discovery Viewer
+                          description:
+                            type: string
+                            example: Access to read-only permissions related to service discoveries.
+                            enum:
+                              - Access to read-only permissions related to service discoveries.
+                        required:
+                          - name
+                          - description
+                      integration_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
+                          name:
+                            type: string
+                            enum:
+                              - Integration Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to Service Catalog integrations.
+                            enum:
+                              - Access to all read and write permissions related to Service Catalog integrations.
+                        required:
+                          - name
+                          - description
+                      integration_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
+                          name:
+                            type: string
+                            enum:
+                              - Integration Viewer
+                          description:
+                            type: string
+                            example: Access to read-only permissions to integrations.
+                            enum:
+                              - Access to read-only permissions to integrations.
+                        required:
+                          - name
+                          - description
+                      scorecard_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
+                          name:
+                            type: string
+                            enum:
+                              - Scorecard Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to Service Catalog scorecards. This implicitly grants access to list all services within the catalog.
+                            enum:
+                              - Access to all read and write permissions related to Service Catalog scorecards. This implicitly grants access to list all services within the catalog.
+                        required:
+                          - name
+                          - description
+                      scorecard_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
+                          name:
+                            type: string
+                            enum:
+                              - Scorecard Viewer
+                          description:
+                            type: string
+                            example: Access to all read permissions related to Service Catalog scorecards. This implicitly grants access to list all services within the catalog.
+                            enum:
+                              - Access to all read permissions related to Service Catalog scorecards. This implicitly grants access to list all services within the catalog.
+                        required:
+                          - name
+                          - description
+                      service_admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
+                          name:
+                            type: string
+                            enum:
+                              - Service Admin
+                          description:
+                            type: string
+                            example: Access to all read and write permissions related to a Service Catalog service or resource.
+                            enum:
+                              - Access to all read and write permissions related to a Service Catalog service or resource.
+                        required:
+                          - name
+                          - description
+                      service_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
+                          name:
+                            type: string
+                            enum:
+                              - Service Creator
+                          description:
+                            type: string
+                            example: Access to creating new Service Catalog services.
+                            enum:
+                              - Access to creating new Service Catalog services.
+                        required:
+                          - name
+                          - description
+                      service_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          positional_ids:
+                            description: 'The identifiers required when assigning this role. Each key is the name of a positional id, and its value describes what that id refers to. When assigning this role, the position of the IDs in the entity_ids field will correspond to this.'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                service_id:
+                                  type: string
+                                  enum:
+                                    - The service id
+                          name:
+                            type: string
+                            enum:
+                              - Service Viewer
+                          description:
+                            type: string
+                            example: Access to read-only permissions to Service Catalog services and resources.
+                            enum:
+                              - Access to read-only permissions to Service Catalog services and resources.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              services:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Services
+                  roles:
+                    type: object
+                    properties:
+                      api_consumer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - API Consumer
+                          description:
+                            type: string
+                            example: API Consumers can make calls to the given API Product
+                            enum:
+                              - API Consumers can make calls to the given API Product
+                        required:
+                          - name
+                          - description
+                      api_viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - API Viewer
+                          description:
+                            type: string
+                            example: API Viewers have read-only access to the documentation of an API Product in a portal
+                            enum:
+                              - API Viewers have read-only access to the documentation of an API Product in a portal
                         required:
                           - name
                           - description
@@ -117438,7 +120134,7 @@ x-input-schemas:
     version: 1.3.16
     path: src/konnect/definitions/houdini-event-gateways/v1/openapi.yaml
   - title: Konnect Identity
-    version: 3.11.0
+    version: 3.12.0
     path: src/konnect/definitions/identity/v3/openapi.yaml
   - title: Konnect Kong Identity admin api
     version: 1.29.1

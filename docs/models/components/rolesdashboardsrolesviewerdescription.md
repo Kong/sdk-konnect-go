@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesDashboardsRolesViewerDescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics
+value := components.RolesDashboardsRolesViewerDescriptionAllowsUsersToViewADashboardInKonnectAnalytics
 ```
 
 
 ## Values
 
-| Name                                                                                           | Value                                                                                          |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `RolesDashboardsRolesViewerDescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics` | Allows users to view any Dashboards content in Konnect Analytics.                              |
+| Name                                                                                 | Value                                                                                |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `RolesDashboardsRolesViewerDescriptionAllowsUsersToViewADashboardInKonnectAnalytics` | Allows users to view a Dashboard in Konnect Analytics.                               |

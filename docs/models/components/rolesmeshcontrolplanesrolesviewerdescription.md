@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesMeshControlPlanesRolesViewerDescriptionThisRoleGrantsAccessToReadOnlyPermissionsToMeshControlPlanes
+value := components.RolesMeshControlPlanesRolesViewerDescriptionAccessToReadOnlyPermissionsToMeshControlPlanes
 ```
 
 
 ## Values
 
-| Name                                                                                                       | Value                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `RolesMeshControlPlanesRolesViewerDescriptionThisRoleGrantsAccessToReadOnlyPermissionsToMeshControlPlanes` | This role grants access to read-only permissions to Mesh control planes.                                   |
+| Name                                                                                         | Value                                                                                        |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `RolesMeshControlPlanesRolesViewerDescriptionAccessToReadOnlyPermissionsToMeshControlPlanes` | Access to read-only permissions to Mesh control planes.                                      |

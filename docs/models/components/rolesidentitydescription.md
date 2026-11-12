@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesIdentityDescriptionThisRoleGrantsFullWriteAccessToTheIdentityConfiguration
+value := components.RolesIdentityDescriptionThisRoleGrantsFullWriteAccessToAllIdentityResources
 ```
 
 
 ## Values
 
-| Name                                                                              | Value                                                                             |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `RolesIdentityDescriptionThisRoleGrantsFullWriteAccessToTheIdentityConfiguration` | This role grants full write access to the Identity configuration.                 |
+| Name                                                                          | Value                                                                         |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `RolesIdentityDescriptionThisRoleGrantsFullWriteAccessToAllIdentityResources` | This role grants full write access to all identity resources.                 |

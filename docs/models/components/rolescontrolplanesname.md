@@ -7,12 +7,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.RolesControlPlanesNameAdmin
+value := components.RolesControlPlanesNameControlPlanes
 ```
 
 
 ## Values
 
-| Name                          | Value                         |
-| ----------------------------- | ----------------------------- |
-| `RolesControlPlanesNameAdmin` | Admin                         |
+| Name                                  | Value                                 |
+| ------------------------------------- | ------------------------------------- |
+| `RolesControlPlanesNameControlPlanes` | Control Planes                        |
