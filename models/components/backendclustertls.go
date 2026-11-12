@@ -3,10 +3,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type TLSVersions string
 
 const (
@@ -62,7 +58,7 @@ type BackendClusterTLS struct {
 	// If true, TLS is enabled for connections to this backend cluster. If false, TLS is explicitly disabled.
 	Enabled bool `json:"enabled"`
 	// If true, skip certificate verification. It's not secure to use for production.
-	InsecureSkipVerify *bool `default:"false" json:"insecure_skip_verify"`
+	InsecureSkipVerify *bool `json:"insecure_skip_verify,omitempty"`
 	// A literal value or a reference to an existing secret as a template string expression.
 	// The value is stored and returned by the API as-is, not treated as sensitive information.
 	//
@@ -73,17 +69,6 @@ type BackendClusterTLS struct {
 	//
 	// **Requires a minimum runtime version of `1.1`**.
 	ClientIdentity *ClientIdentity `json:"client_identity,omitempty"`
-}
-
-func (b BackendClusterTLS) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(b, "", false)
-}
-
-func (b *BackendClusterTLS) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (b *BackendClusterTLS) GetEnabled() bool {

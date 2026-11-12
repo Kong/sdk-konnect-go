@@ -32,7 +32,7 @@ type ListTrustedIdpPrincipalsRequest struct {
 	// Unique identifier of the trusted idp for the vault
 	TrustedIdpID string `pathParam:"style=simple,explode=false,name=trustedIdpId"`
 	// Determines which page of the collection to retrieve.
-	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
+	Page *components.CursorPageParameters `queryParam:"style=deepObject,explode=true,name=page"`
 	// Sorts a collection of principals. Supported sort attributes are:
 	// - `display_name`
 	// - `created_at`

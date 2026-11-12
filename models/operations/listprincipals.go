@@ -141,7 +141,7 @@ type ListPrincipalsRequest struct {
 	// ID of the directory
 	DirectoryID string `pathParam:"style=simple,explode=false,name=directoryId"`
 	// Determines which page of the collection to retrieve.
-	Page *components.CursorPageParameters `queryParam:"style=form,explode=true,name=page"`
+	Page *components.CursorPageParameters `queryParam:"style=deepObject,explode=true,name=page"`
 	// Sorts a collection of principals. Supported sort attributes are:
 	// - `display_name`
 	// - `created_at`

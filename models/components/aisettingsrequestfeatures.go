@@ -12,7 +12,7 @@ type AISettingsRequestFeaturesMcpServer struct {
 	// Whether the Portal MCP Server is enabled or not
 	Enabled *bool `default:"false" json:"enabled"`
 	// Whether write operations are enabled or not for the Portal MCP Server enabled
-	WriteOperationsEnabled *bool `default:"false" json:"write_operations_enabled"`
+	WriteOperationsEnabled *bool `json:"write_operations_enabled,omitempty"`
 }
 
 func (a AISettingsRequestFeaturesMcpServer) MarshalJSON() ([]byte, error) {

@@ -5,6 +5,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -12,7 +13,7 @@ import (
 type CreatePasswordBody struct {
 	Secret *string `json:"secret,omitempty"`
 	// An ISO-8601 timestamp representation of entity expiration date.
-	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 	// Stores information about what manages this entity, such as the tool or system responsible for its lifecycle (for example, `terraform`).
 	//
 	// Keys must be 1–63 characters long, start and end with an alphanumeric character, and may contain dashes (`-`), underscores (`_`), and dots (`.`).
@@ -40,7 +41,7 @@ func (c *CreatePasswordBody) GetSecret() *string {
 	return c.Secret
 }
 
-func (c *CreatePasswordBody) GetExpiresAt() *time.Time {
+func (c *CreatePasswordBody) GetExpiresAt() optionalnullable.OptionalNullable[time.Time] {
 	if c == nil {
 		return nil
 	}

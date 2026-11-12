@@ -13,14 +13,28 @@ targets:
         sourceRevisionDigest: sha256:c639a509989846db09eb72fa0384d9d4cc7717a96710ef0075f7e4f85d3e5bed
         sourceBlobDigest: sha256:1d37bad2d56ec14c07aa336eab140bce5c3865b8072372dbd43c751527fa0e1d
         codeSamplesNamespace: konnect-go-code-samples
-        codeSamplesRevisionDigest: sha256:695917a9caf0c54c0f6cd099af0890ef5e3f944d015376f52c5ce7da8a011d75
+        codeSamplesRevisionDigest: sha256:1feae20ffec36d0d2129f0119425a805c2fc88d5c25fcaafda819f9425d768df
 workflow:
     workflowVersion: 1.0.0
-    speakeasyVersion: latest
+    speakeasyVersion: 1.808.1
     sources:
         konnect:
             inputs:
                 - location: ./openapi.yaml
+            overlays:
+                - location: ./kongctl-patches/overlays/ai-gateway-pgvector-connection-defaults.yaml
+                - location: ./kongctl-patches/overlays/ai-gateway-update-runtime-defaults.yaml
+                - location: ./kongctl-patches/overlays/backend-cluster-tls-defaults.yaml
+                - location: ./kongctl-patches/overlays/organization-team-konnect-managed-defaults.yaml
+                - location: ./kongctl-patches/overlays/patch-custom-portal-email-template-defaults.yaml
+                - location: ./kongctl-patches/overlays/portal-ai-settings-patch-defaults.yaml
+                - location: ./kongctl-patches/overlays/portal-customization-spec-renderer-defaults.yaml
+                - location: ./kongctl-patches/overlays/portal-customization-theme-defaults.yaml
+                - location: ./kongctl-patches/overlays/portal-team-konnect-managed-defaults.yaml
+                - location: ./kongctl-patches/overlays/update-dcr-config-http-defaults.yaml
+                - location: ./kongctl-patches/overlays/update-portal-audit-log-webhook-patch-defaults.yaml
+                - location: ./kongctl-patches/overlays/update-portal-identity-provider-defaults.yaml
+                - location: ./kongctl-patches/overlays/update-portal-patch-defaults.yaml
             registry:
                 location: registry.speakeasyapi.dev/kong/kong/konnect
     targets:

@@ -23,7 +23,7 @@ type TrustedIdpJitMapping struct {
 	DisplayName *string `json:"display_name,omitempty"`
 	// Name of the claim whose string value identifies the principal: the principal's OIDC identity keys on it, and an exchange looks the principal up by it. Defaults to `sub`. Set it when the IdP keys principals on another claim — Entra ID tokens, for example, carry the immutable object id in `oid`. The claim's value must identify one principal. When the claim is absent from the token, the lookup fails. Changing `identifier` re-keys existing principals' OIDC identities: they stop resolving, and the next exchange provisions anew or fails.
 	//
-	Identifier *string `default:"sub" json:"identifier"`
+	Identifier *string `json:"identifier,omitempty"`
 }
 
 func (t TrustedIdpJitMapping) MarshalJSON() ([]byte, error) {
